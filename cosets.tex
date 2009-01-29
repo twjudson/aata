@@ -1,0 +1,402 @@
+\chapter{Cosets and Lagrange's Theorem}\label{cosets}
+
+
+Lagrange's Theorem, one of the most important results in finite group theory, states that the order of a subgroup must divide the order of the group.  This theorem provides a powerful tool for analyzing finite groups; it gives us an idea of exactly what type of subgroups we might expect a finite group to possess.  Central to understanding Lagranges's Theorem is the notion of a coset.
+
+
+\section{Cosets}
+
+Let $G$ be a group and $H$ a subgroup of $G$.  Define a {\bfi left  coset\/}\index{Coset!left} of $H$ with {\bfi  representative}\index{Coset!representative} $g \in G$ to be the set 
+$$
+gH = \{ gh : h \in H \}.
+$$
+{\bfi Right cosets\/}\index{Coset!right} can be defined similarly by
+$$
+Hg = \{ hg : h \in H \}.
+$$
+If left and right cosets coincide or if it is clear from the context to which type of coset that we are referring, we will use the word {\em coset\/} without specifying left or right. 
+
+\medskip
+
+\noindent {\bf Example 1.}
+Let $H$ be the subgroup of ${\mathbb Z}_6$ consisting of the elements 0 and 3.  The cosets are 
+\begin{gather*}
+0 + H = 3 + H = \{ 0, 3 \} \\
+1 + H = 4 + H = \{ 1, 4 \} \\
+2 + H = 5 + H = \{ 2, 5 \}.
+\end{gather*}
+We will always write the cosets of subgroups of ${\mathbb Z}$ and ${\mathbb Z}_n$ with the additive notation we have used for cosets here.  In a commutative group, left and right cosets are always identical. 
+\hspace{\fill} $\blacksquare$
+
+\medskip
+
+\noindent {\bf Example 2.}
+Let $H$ be the subgroup of $S_3$ defined by the permutations $\{(1), (123), (132) \}$.  The left cosets of $H$ are 
+\begin{gather*}
+(1)H = (1 2 3)H =  (132)H = \{(1), (1 23), (132) \} \\
+(1 2)H = (1 3)H = (2 3)H =  \{ (1 2), (1 3), (2 3)  \}.
+\end{gather*}
+The right cosets of $H$ are exactly the same as the left cosets:
+\begin{gather*}
+H(1) = H(1 2 3) =  H(132) = \{(1), (1 23), (132) \} \\
+H(1 2) = H(1 3) = H(2 3) =  \{ (1 2), (1 3), (2 3)  \}.
+\end{gather*}
+
+It is not always the case that a left coset is the same as a right coset.  Let $K$ be the subgroup of $S_3$ defined by the permutations $\{(1), (1 2)\}$.  Then the left cosets of $K$ are
+\begin{gather*}
+(1)K = (1 2)K = \{(1), (1 2)\} \\
+(1 3)K = (1 2 3)K = \{(1 3), (1 2 3)\} \\
+(2 3)K = (1 3 2)K = \{(2 3), (1 3 2)\};
+\end{gather*}
+however, the right cosets of $K$ are
+\begin{gather*}
+K(1) = K(1 2) = \{(1), (1 2)\} \\
+K(1 3) = K(1 3 2) = \{(1 3), (1 3 2)\} \\
+K(2 3) = K(1 2 3) = \{(2 3), (1 2 3)\}.
+\end{gather*}
+\hspace{\fill} $\blacksquare$
+
+\medskip
+
+The following lemma is quite useful when dealing with cosets.  (We leave its proof as an exercise.)
+
+\begin{lemma}\label{cosets_theorem_1}
+Let $H$ be a subgroup of a group $G$ and suppose that $g_1, g_2 \in G$.  The following conditions are equivalent.  
+\begin{enumerate}
+ 
+\rm \item \it
+$g_1 H = g_2 H$; 
+
+\rm \item \it
+$H g_1^{-1}  = H g_2^{-1}$; 
+
+\rm \item \it
+$g_1 H \subseteq g_2 H$; 
+
+\rm \item \it
+$g_2 \in g_1 H$; 
+
+\rm \item \it
+$g_1^{-1} g_2 \in H$.
+ 
+\end{enumerate}
+\end{lemma}
+
+In all of our  examples the cosets of a subgroup $H$ partition the larger group $G$.  The following theorem proclaims that this will always be the case. 
+
+\begin{theorem}\label{cosets_theorem_2}
+Let $H$ be a subgroup of a group $G$.  Then the left cosets of $H$ in $G$ partition $G$.  That is, the group $G$ is the disjoint union of the left cosets of $H$ in $G$. 
+\end{theorem}
+
+\begin{proof}
+Let $g_1 H$ and $g_2 H$ be two cosets of $H$ in $G$.  We must show that either $g_1 H \cap g_2 H = \emptyset$ or $g_1 H = g_2 H$.  Suppose that $g_1 H \cap g_2 H \neq \emptyset$ and $a \in g_1 H \cap g_2 H$.  Then by the definition of a left coset, $a = g_1 h_1 = g_2 h_2$ for some elements $h_1$ and $h_2$ in $H$.  Hence, $g_1 = g_2 h_2 h_1^{-1}$ or $g_1 \in g_2 H$.  By Lemma~\ref{cosets_theorem_1}, $g_1 H = g_2 H$. 
+\end{proof}
+
+\medskip
+
+\noindent {\bf Remark.}
+There is nothing special in this theorem about left cosets.  Right cosets also partition $G$; the proof of this fact is exactly the same as the proof for left cosets except that all group multiplications are done on the opposite side of $H$. 
+
+\medskip
+
+Let $G$ be a group and $H$ be a subgroup of $G$.  Define the {\bfi index\/}\index{Index of a subgroup}\index{Subgroup!index of} of $H$ in $G$ to be the number of left cosets of $H$ in $G$.  We will denote the index by~$[G:H]$\label{indexofasubgroup}.  
+
+\medskip
+
+\noindent {\bf Example 3.}
+Let $G= {\mathbb Z}_6$ and $H = \{ 0, 3 \}$. Then $[G:H] = 3$.
+\hspace{\fill} $\blacksquare$
+
+\medskip
+
+\noindent {\bf Example 4.}
+Suppose that $G= S_3$, $H = \{ (1),(123), (132) \}$, and $K= \{ (1), (12) \}$.  Then $[G:H] = 2$ and $[G:K] = 3$. 
+\hspace{\fill} $\blacksquare$
+
+\begin{theorem}\label{cosets_theorem_3}
+Let $H$ be a subgroup of a group $G$.  The number of left cosets of $H$ in $G$ is the same as the number of right cosets of $H$ in $G$.  
+\end{theorem}
+
+ 
+\begin{proof}
+Let ${\mathcal L}_H$\label{notesetleft} and  ${\mathcal R}_H$\label{notesetright} denote the set of left and right cosets of $H$ in $G$, respectively.  If we can define a bijective map $\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H$, then the theorem will be proved.  If $gH \in {\mathcal L}_H$, let $\phi( gH ) = Hg^{-1}$.  By Lemma~\ref{cosets_theorem_1}, the map $\phi$ is well-defined; that is, if $g_1 H = g_2 H$, then $H g_1^{-1} = H g_2^{-1}$.  To show that $\phi$ is one-to-one, suppose that 
+$$
+H g_1^{-1} = \phi( g_1 H ) = \phi( g_2 H ) = H g_2^{-1}.
+$$
+Again by Lemma~5.1, $g_1 H = g_2 H$.  The map $\phi$ is onto since $\phi(g^{-1} H ) = H g$. 
+\mbox{\hspace{1in}}
+\end{proof}
+ 
+ 
+\section{Lagrange's Theorem}
+
+\begin{proposition}\label{cosets_theorem_4}
+Let $H$ be a subgroup of $G$ with $g \in G$ and define a map $\phi:H \rightarrow gH$ by $\phi(h) = gh$.  The map $\phi$ is bijective; hence, the number of elements in $H$ is the same as the number of elements in $gH$. 
+\end{proposition}
+ 
+\begin{proof}
+We first show that the map $\phi$ is one-to-one.  Suppose that $\phi(h_1)  = \phi(h_2)$ for elements $h_1, h_2 \in H$.  We must show that $h_1 =  h_2$, but $\phi(h_1) = gh_1$ and $\phi(h_2) = gh_2$.  So $gh_1 = gh_2$,  and by left cancellation $h_1= h_2$.  To show that $\phi$ is onto is easy.  By definition every element of $gH$ is of the form $gh$ for some $h \in H$ and $\phi(h) = gh$. 
+\end{proof}
+
+\begin{theorem}[Lagrange]\index{Lagrange's Theorem}\label{cosets_theorem_5}
+Let $G$ be a finite group and let $H$ be a subgroup of $G$.  Then $|G|/|H| = [G : H]$ is the number of distinct left cosets of $H$ in $G$.  In particular, the number of elements in $H$ must divide the number of elements in $G$. 
+\end{theorem}
+
+\begin{proof}
+The group $G$ is partitioned into $[G : H]$ distinct left cosets.  Each left coset has $|H|$ elements; therefore, $|G| = [G : H] |H|$.
+\end{proof}
+
+\begin{corollary}\index{Lagrange's Theorem}\label{cosets_theorem_6}
+Suppose that $G$ is a finite group and $g \in G$.  Then the order of $g$ must divide the number of elements in $G$. 
+\end{corollary}
+
+\begin{corollary}\index{Lagrange's Theorem}\label{cosets_theorem_7}
+Let $|G| = p$ with $p$ a prime number.  Then $G$ is cyclic and any $g \in G$ such that $g \neq e$ is a generator. 
+\end{corollary}
+
+ 
+\begin{proof}
+Let $g$ be in $G$ such that $g \neq e$.  Then by Corollary~\ref{cosets_theorem_6}, the order of $g$ must divide the order of the group. Since $|\langle g \rangle| > 1$, it must be $p$.  Hence, $g$ generates $G$. 
+\end{proof}
+
+\medskip
+
+Corollary~\ref{cosets_theorem_7} suggests that groups of prime order $p$ must somehow look like ${\mathbb Z}_p$. 
+
+\begin{corollary}\label{cosets_theorem_8}
+Let $H$ and $K$ be subgroups of a finite group $G$ such that $G \supset H \supset K$.  Then 
+$$
+[G:K] = [G:H][H:K].
+$$
+\end{corollary}
+ 
+\begin{proof}
+Observe that
+$$
+[G:K] = \frac{|G|}{|K|} = \frac{|G|}{|H|} \cdot
+\frac{|H|}{|K|} = [G:H][H:K].
+$$
+\end{proof}
+
+\medskip
+ 
+{\em The converse of Lagrange's Theorem is false}.  The group $A_4$ has order 12; however, it can be shown that it does not possess a subgroup of order 6.  According to Lagrange's Theorem, subgroups of a group of order 12 can have orders of either 1, 2, 3, 4, or  6.  However, we are not guaranteed that subgroups of every possible order exist.  To prove that $A_4$ has no subgroup of order 6, we will assume that it does have a subgroup $H$ such that $|H|=6$ and show that a contradiction must occur.  The group $A_4$ contains eight 3-cycles; hence, $H$ must contain a 3-cycle.  We will show that if $H$ contains one 3-cycle, then it must contain every 3-cycle, contradicting the assumption that $H$ has only 6 elements.
+
+\begin{theorem}\label{cosets_theorem_9}
+Two cycles $\tau$ and $\mu$ in $S_n$ have the same length if and only if there exists a $\sigma \in S_n$ such that $\mu = \sigma \tau \sigma^{-1}$.  
+\end{theorem}
+ 
+\begin{proof}
+Suppose that
+\begin{eqnarray*}
+\tau & = & (a_1, a_2, \ldots, a_k ) \\
+\mu  & = & (b_1, b_2, \ldots, b_k ).
+\end{eqnarray*}
+Define $\sigma$ to be the permutation
+\begin{eqnarray*}
+\sigma( a_1 ) & = & b_1 \\
+\sigma( a_2 ) & = & b_2 \\
+& \vdots &  \\
+\sigma( a_k ) & = & b_k.
+\end{eqnarray*}
+Then $\mu = \sigma \tau \sigma^{-1}$.
+
+Conversely, suppose that $\tau = (a_1, a_2, \ldots, a_k )$ is a $k$-cycle and $\sigma \in S_n$. If $\sigma( a_i ) = b$ and $\sigma( a_{(i \bmod k) + 1} ) = b'$, then $\mu( b) = b'$.  Hence, 
+$$
+\mu = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k) ).
+$$
+Since $\sigma$ is one-to-one and onto, $\mu$ is a cycle of the same length as $\tau$. 
+\end{proof}
+
+\begin{corollary}\label{cosets_theorem_10}
+The group $A_4$ has no subgroup of order 6.
+\end{corollary}
+
+\begin{proof}
+Since $[A_4 : H] = 2$, there are only two cosets of $H$ in $A_4$.  Inasmuch as one of the cosets is $H$ itself, right and left cosets must coincide; therefore, $gH = Hg$ or $g H g^{-1} = H$ for every $g \in A_4$.  By Theorem~\ref{cosets_theorem_9}, if $H$ contains one 3-cycle, then it must contain every 3-cycle, contradicting the order of~$H$. \hspace*{1in}
+\end{proof}
+ 
+
+\section{Fermat's and Euler's Theorems}
+
+The {\bfi Euler} $\phi$-{\bfi function\/}\index{Euler $\phi$-function} is the map $\phi : {\mathbb N } \rightarrow {\mathbb N}$ defined by $\phi(n) = 1$ for $n=1$, and, for $n > 1$,  $\phi(n)$ is the number of positive integers $m$ with $1 \leq m < n$ and $\gcd(m,n) = 1$. 
+
+From Proposition~2.1, we know that the order of $U(n)$, the group of units in ${\mathbb Z}_n$, is $\phi(n)$. For example, $|U(12)| = \phi(12)  = 4$ since the numbers that are relatively prime to 12 are 1, 5, 7, and 11. For any prime $p$, $\phi(p) = p-1$.  We state these results in the following theorem.
+
+\begin{theorem}\label{cosets_theorem_11}
+Let $U(n)$ be the group of units in ${\mathbb Z}_n$.  Then $|U(n)| = \phi(n)$.
+\end{theorem}
+
+The following theorem is an important result in number theory, due to Leonhard Euler. 
+
+\begin{theorem}[Euler's Theorem]\label{cosets_theorem_12}
+Let $a$ and $n$ be integers such that $n>0$ and $\gcd(a, n) = 1$.  Then $a^{\phi(n)} \equiv 1 \pmod{n}$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~5.11 the order of $U(n)$ is $\phi(n)$.  Consequently, $a^{\phi(n)} = 1$ for all $a \in U(n)$; or $a^{\phi(n)} - 1$ is divisible by $n$.  Therefore, $a^{\phi(n)} \equiv 1 \pmod{n}$.  
+\mbox{\hspace{1in}}
+\end{proof}
+
+\medskip
+
+If we consider the special case of Euler's Theorem in which $n = p$ is prime and recall that $\phi(p) = p - 1$, we obtain the following result, due to Pierre de Fermat\index{Fermat, Pierre de}. 
+ 
+\begin{theorem}[Fermat's Little Theorem]\index{Fermat's Little Theorem}\label{cosets_theorem_13}
+Let $p$ be any prime number and suppose that $p \notmid a$.  Then 
+$$
+a^{p-1} \equiv 1 \pmod{ p }.
+$$
+Furthermore, for any integer $b$, $b^p \equiv b \pmod{ p}$.
+\end{theorem}
+
+\histhead
+
+\noindent{\small \histf
+Joseph-Louis Lagrange\index{Lagrange, Joseph-Louis} (1736--1813), born in Turin, Italy, was of French and Italian descent.  His talent for mathematics became apparent at an early age.  Leonhard Euler\index{Euler, Leonhard} recognized Lagrange's abilities when Lagrange, who was only 19, communicated to Euler some work that he had done in the calculus of variations.  That year he was also named a professor at the Royal Artillery School in Turin.  At the age of 23 he joined the Berlin Academy. Frederick the Great had written to Lagrange proclaiming that the ``greatest king in Europe'' should have the ``greatest mathematician in Europe'' at his court.  For 20 years Lagrange held the position vacated by his mentor, Euler.  His works include contributions to number theory, group theory, physics and mechanics, the calculus of variations, the theory of equations, and differential equations.  Along with Laplace and Lavoisier, Lagrange was one of the people responsible for designing the metric system.  During his life Lagrange profoundly influenced the development of mathematics, leaving much to the next generation of mathematicians in the form of examples and new problems to be solved. 
+\histbox
+}
+
+ 
+\markright{EXERCISES}
+\section*{Exercises}
+\exrule
+ 
+{\small
+\begin{enumerate}
+ 
+\item
+Suppose that $G$ is a finite group with an element $g$ of order 5 and an element $h$ of order 7. Why must $|G| \geq 35$?
+ 
+\item
+Suppose that $G$ is a finite group with 60 elements.  What are the orders of possible subgroups of $G$?
+ 
+\item
+Prove or disprove: Every subgroup of the integers has finite index.
+ 
+\item
+Prove or disprove: Every subgroup of the integers has finite order.
+
+\item
+List the left and right cosets of the subgroups in each of the following.
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item 
+$\langle 8 \rangle$ in ${\mathbb Z}_{24}$
+
+\item
+$\langle 3 \rangle$ in $U(8)$
+
+\item
+$3 {\mathbb Z}$ in ${\mathbb Z}$
+
+\item
+$A_4$ in $S_4$
+
+\item
+$A_n$ in $S_n$
+
+\item
+$D_4$ in $S_4$
+
+\item
+${\mathbb T}$ in ${\mathbb C}^\ast$
+
+\item
+$H = \{ (1), (123), (132) \}$ in $S_4$
+
+\end{enumerate}
+\end{multicols}
+ 
+\item
+Describe the left cosets of $SL_2( {\mathbb R} )$ in $GL_2( {\mathbb R})$.   What is the index of $SL_2( {\mathbb R} )$ in $GL_2( {\mathbb R})$?
+
+\item
+Verify Euler's Theorem for $n = 15$ and $a = 4$.
+
+\item
+Use Fermat's Little Theorem to show that if $p= 4n+3$ is prime, there is no solution to the equation $x^2 \equiv -1 \pmod{p}$.
+ 
+\item
+Show that the integers have infinite index in the additive group of rational numbers.
+ 
+\item
+Show that the additive group of real numbers has infinite index in the additive group of the complex numbers.
+ 
+\item
+Let $H$ be a subgroup of a group $G$ and suppose that $g_1, g_2 \in G$.  Prove that the following conditions are equivalent.
+\begin{enumerate}
+ 
+\item
+$g_1 H = g_2 H$
+ 
+\item
+$H g_1^{-1}  = H g_2^{-1}$
+ 
+\item
+$g_1 H \subseteq g_2 H$
+ 
+\item
+$g_2 \in g_1 H$
+ 
+\item
+$g_1^{-1} g_2 \in H$
+ 
+\end{enumerate}
+ 
+\item
+If $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$, show that right cosets are identical to left cosets.
+ 
+\item
+What fails in the proof of Theorem 5.3 if $\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H$ is defined by $\phi( gH ) = Hg$?
+ 
+\item
+Suppose that $g^n = e$. Show that the order of $g$ divides
+$n$.
+ 
+\item
+Modify the proof of Theorem 5.9 to show that any two permutations $\alpha, \beta \in S_n$ have the same cycle structure if and only if there exists a  permutation $\gamma$ such that $\beta = \gamma \alpha \gamma^{-1}$.  If $\beta = \gamma \alpha \gamma^{-1}$ for some $\gamma \in S_n$, then $\alpha$ and $\beta$ are {\bfi conjugate}\index{Conjugate permutations}\index{Permutation!conjugate}.
+
+\item
+If $|G| = 2n$, prove that the number of elements of order 2 is odd.  Use this result to show that $G$ must contain a subgroup of order 2.
+
+\item
+Suppose that $[G : H] = 2$. If $a$ and $b$ are not in $H$, show that $ab \in H$.
+
+\item
+If $[G : H] = 2$, prove that $gH = Hg$.
+
+\item
+Let $H$ and $K$ be subgroups of a group $G$.  Prove that $gH \cap gK$ is a coset of $H \cap K$ in $G$.  
+ 
+\item
+Let $H$ and $K$ be subgroups of a group $G$.  Define a relation $\sim$ on $G$ by $a \sim b$ if there exists an $h \in H$ and a $k \in K$ such that $hak = b$.  Show that this relation is an equivalence relation.  The corresponding equivalence classes are called {\bfi double cosets}\index{Coset!double}.  Compute the double cosets of $H = \{ (1),(123), (132) \}$ in~$A_4$. 
+ 
+\item
+If $G$ is a group of order $p^n$ where $p$ is prime, show that $G$ must have a proper subgroup of order $p$.  If $n \geq 3$, is it true that $G$ will have a proper subgroup of order $p^2$?
+ 
+\item
+Let $G$ be a cyclic group of order $n$.  Show that there are exactly $\phi(n)$ generators for $G$.
+
+\item
+Let $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$ be the factorization of $n$ into distinct primes.  Prove that
+$$
+\phi(n) =  n 
+\left( 1- \frac{1}{p_1} \right)
+\left( 1- \frac{1}{p_2} \right)	\cdots
+\left( 1- \frac{1}{p_k} \right).
+$$
+
+\item
+Show that 
+$$
+n = \sum_{d \mid n} \phi(d)
+$$
+for all positive integers $n$.
+
+\end{enumerate}
+}
+
+
+

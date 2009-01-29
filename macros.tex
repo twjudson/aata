@@ -1,0 +1,145 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Macros for algebra text
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%********theorems, propositions, lemmas, corollaries, proofs**
+
+\newtheorem{theorem}{Theorem}[chapter]
+  
+\newtheorem{proposition}[theorem]{Proposition}[chapter]
+ 
+\newtheorem{lemma}[theorem]{Lemma}[chapter]
+ 
+\newtheorem{corollary}[theorem]{Corollary}[chapter]
+ 
+\newenvironment{proof}{\noindent {\sc
+Proof.}}{\hspace{\fill} $\square$}
+
+
+%********New commands******
+
+\newcommand{\notmid}{{\not\:\mid\ }}
+
+\newcommand{\notsubset}{\not\subset}
+
+\newcommand{\lcm}{\operatorname{lcm}}
+
+\newcommand{\cis}{\operatorname{cis}}
+
+\newcommand{\exrule}{\vspace{-0.3in} \noindent \rule{5.00in}{.5pt}}
+		%********rule for exercise headings*******
+
+\newcommand{\drawbox}{\raisebox{3pt}{\framebox[1.7in]{\hspace*{1in}}}}
+		%********draws an empty box**********
+
+\newcommand{\histbox}{\raisebox{3pt}{\hspace*{4pt}\framebox[.5in]{\hspace*{.25in}}}}
+		%********draws an empty box**********
+
+
+%********New fonts*************
+
+\newfont{\bfi}{cmbxti10 scaled\magstephalf}  	%11pt bold italic
+
+\newfont{\cmss}{cmss10}				%10pt sans serif
+
+\newfont{\histf}{cmr10}				%10pt roman
+						%Historical notes
+
+
+
+
+
+
+
+
+%********Headings for historical notes*****
+
+
+\newcommand{\histhead}{
+\vspace{3ex} \noindent \drawbox \hfill \hspace*{4pt}
+{\bfi Historical Note} \hfill \drawbox
+\vspace{2ex}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  ETP Modifications:
+%	- Chapters start new left or right, not new right
+%	- Float numbers are to be bold and punctuated with a period, not colon
+%	- Allow larger floats on a text page
+%	- Re-work the Chapter Opener
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\makeatletter
+
+\setcounter{topnumber}{2}	% Default parameter value from LaTeX book style
+\def\topfraction{.7}		% Default parameter value from LaTeX book style
+\setcounter{bottomnumber}{1}	% Default parameter value from LaTeX book style
+\def\bottomfraction{.3}		% Default parameter value from LaTeX book style
+\setcounter{totalnumber}{3}	% Default parameter value from LaTeX book style
+\def\textfraction{.15}		% CHANGE: parameter was {.2}
+\def\floatpagefraction{.7}	% CHANGE: parameter was {.5}
+
+
+
+
+% Modified to remove the period after the chapter and section numbers
+% in the running heads
+\def\ps@headings{\let\@mkboth\markboth
+\def\@oddfoot{}\def\@evenfoot{}\def\@evenhead{\rm \thepage\hfil \sl
+\leftmark}\def\@oddhead{\hbox{}\sl \rightmark \hfil
+\rm\thepage}\def\chaptermark##1{\markboth {\uppercase{\ifnum \c@secnumdepth
+>\m@ne
+ \@chapapp\ \thechapter \ \ \ \fi ##1}}{}}\def\sectionmark##1{\markright
+{\uppercase{\ifnum \c@secnumdepth >\z@
+ \thesection \ \ \ \fi ##1}}}}
+\def\ps@myheadings{\let\@mkboth\@gobbletwo
+\def\@oddhead{\hbox{}\sl\rightmark \hfil
+\rm\thepage}\def\@oddfoot{}\def\@evenhead{\rm \thepage\hfil\sl\leftmark\hbox
+{}}\def\@evenfoot{}\def\chaptermark##1{}\def\sectionmark##1{}%
+\def\subsectionmark##1{}}
+
+
+
+% Modified to embolden the figure (or table) number and punctuate with period
+\long\def\@makecaption#1#2{
+ \vskip 10pt
+ \setbox\@tempboxa\hbox{{\bf #1.} #2}
+ \ifdim \wd\@tempboxa >\hsize{\bf #1.} #2\par \else \hbox
+to\hsize{\hfil\box\@tempboxa\hfil}
+ \fi}
+
+
+\font\bigbolditalic=cmsl10 scaled\magstep5
+\def\@makechapterhead#1{%\vspace*{50pt}
+ { \parindent 0pt \centering% was\raggedright
+ \ifnum \c@secnumdepth >\m@ne\rule{2in}{.5pt}\hfill\raisebox{-.1in}{\fbox{\fbox{\bigbolditalic\thechapter\/}}}\hfill\rule{2in}{.5pt}\par
+ \vskip 20pt \fi \Huge \bf #1\par
+ \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}
+ \vskip 36pt plus 12pt minus 6pt }
+
+
+\def\@makeschapterhead#1{%\vspace*{50pt}
+ { \parindent 0pt \centering% was \raggedright
+ \hrule height .5pt\vspace{40pt}
+ \huge \bf #1\par
+ \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}
+ \vskip 36pt plus 12pt minus 6pt }
+
+
+% \clearpage below was \cleardoublepage
+\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
+\@afterindentfalse \secdef\@chapter\@schapter}
+
+
+
+
+\makeatother
+
+
