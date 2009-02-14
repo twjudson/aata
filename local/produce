@@ -1,0 +1,778 @@
+#! /usr/bin/python
+#
+# Script to produce versions of
+# "Abstract Algebra"
+# in as automated a way as possible
+#
+# History
+#    2009/02/14 Cut from similar script for FCLA
+#
+# Requirements
+#  Shell - grep, sed
+#  Python - interpreter for script
+#  pdftk - program to rotate Sony505 version
+#  PyRSS2Gen - python tool for writing an RSS feed
+#  PyX - python tool for generating diagrams
+#  convert - imagemagick tool to make PNGs from PDFs
+#
+#########
+# Modules
+#########
+#
+import sys                # exit, argv
+import os                 # stat, listdir, walk, rename, remove, chdir, mkdir(s), rmdir
+import os.path            # exists, split, basename
+import subprocess         # Popen, call
+import shutil             # File copy and tree copy/removal
+import datetime           # For RSS timestamps
+import PyRSS2Gen          # Generate RSS feed
+#
+#
+##########
+# Switches
+##########
+# 
+# Control verbiage from some commands
+# default value here, is set elsewhere
+debug = True
+#
+#############
+# Preparation
+#############
+# 
+# 1.  Clean up source directories by hand
+# 2.  Date/section to change log
+# 3.  Edit version, RSS/change strings below
+# 4.  Copyright notice to any non- .tex, .sty files (Pyx diagram source?)
+# 5.  Review data section for any new sections, editions, etc
+#
+#
+############
+# Conclusion
+############
+#
+# 1.  Edit download page
+# 2.  Edit online page
+# 3.  Set overwrite as default in FTP
+# 4.  Load up FTP Queue
+#       new downloads (sort by date)
+#         pdf editions
+#         pdf supplements
+#         tarballs
+#       two xml dirs (numbered, latest)
+#       two jsmath dirs (numbered, latest)
+#       new webpages (download, online, changes, rss-feed)
+#
+#
+#############
+#############
+#  Parameters
+#############
+#############
+#
+#
+#########################
+#  Per Version Hand Edits
+#########################
+#
+#
+#  version: 
+#    string for file names, and VERSION file in source distribution
+#    For example  version = "3.87"
+#
+#  versiondir:
+#    4 character string for directory names, notably of electronic editions
+#    not strictly a path, so no backslach incuded here
+#    For example  versiondir = "0314"
+#
+#  changes:
+#    Triple-quoted (to protect line breaks) string from changes.txt
+#    Will be inserted into the RSS feed
+#
+version="2.10"
+versiondir = "0210"
+changes = """v2.10  2009/01/11
+~~~~~~~~~~~~~
+Typo:  Archetype R, inverse linear transformation, 221/4 corrected to 221/2 (David Braithwaite)
+Typo:  Theorem CFNLT, third paragraph.  Two s_i corrected to s_p (Zoltan Toth)
+Typo:  Theorem GESD, "scalarlistpn" macro fixed (Zoltan Toth)
+Typo:  Theorem GESD, missing "+" inserted deep into proof (Zoltan Toth)
+Change: Theorem SS, reordered conclusions (Zoltan Toth)
+Change: Theorem GESIS, new argument for invariance (Zoltan Toth)
+
+New: Exercises from Chris Black, 123 in total, almost all with solutions:
+SSLE: C30,C31,C32,C33,C34
+RREF: M45
+TSS: C21,C22,C23,C24,C25,C26,C27,C28
+HSE: C21,C22,C23,C25,C26,C27
+VO: C11,C12,C13,C14,C15,T5,T6,T7
+SS: M10,M11,M12
+MO: C10,C11,C12,C13,C14
+MM: C21,C22,C23,C24,C25,C26,C30,C31,C32,C33,M30,M31
+MISLE: C16,C17,C18,C19
+MINM: C20,M10,M11,M15
+CRS: C20
+VS: M11,M12,M13,M14,M15,M20,M21
+S: C15,C16,C17,T30,T31
+LISS: C24,C25,C26
+B: C10,C11,C12,C13,C14
+D: C21,C22,C23,C35,C36,C37
+DM: C21,C22,C23,C27,C28,C29,C30,M10,N11,M15,M16
+EE: C10,C11,C12,C23,C24,C25,C26,C27
+LT: C16,C40,C41,C42,C43
+ILT: C26,C27,C28,C29,C30,C31,C32,C33
+SLT: C23,C24,C26,C27,C28,C29,C30
+IVLT: C25
+"""
+#
+#
+###############
+#  Data
+###############
+#
+# Names of switch files for PDF editions
+pdf_editions =["oneUS", "twoUS", "oneA4", "twoA4", "electric", "screen", "widescreen", "sony505"]
+#
+# Simple, top-level pdfs to handle uniformly
+simple_pdfs = ["archetypes", "flash"]
+#
+# Sections, in order of apperance, core only - makes flashcards
+# Edits here will need corresponding edit in  flash.tex
+# 2007/02/01  Moved preliminaries to front, added final sections
+sections = ["CNO", "SET", "WILA", "SSLE", "RREF", "TSS", "HSE", "NM", "VO", "LC", "SS", "LI", "LDS", "O", "MO", "MM", "MISLE", "MINM", "CRS", "FS", "VS", "S", "B", "LISS", "D", "PD", "DM", "PDM", "EE", "PEE", "SD", "LT", "ILT", "SLT", "IVLT", "VR", "MR", "CB", "NLT", "IS", "JCF"]
+#
+# Top-level files and directories for source distribution
+topsourcefiles = ["VERSION", "COPYING.txt", "fcla.tex", "flash.tex", "archetypes.tex", "changes.txt", "contributor-guide.tex", "contributor-guide.pdf"]
+topsourcedirs = ["annotatedacronyms", "appdxintros","appendices", "archetypes", "solutions", "chapintros", "computenotes", "editions", "exercises", "diagrams", "flash", "help", "includes", "readingquestions", "sections",  "styles", "techniques" ]
+#
+# Python programs in diagram code directory to be executed
+diagram_program_list = ["commutative.py", "lineartransformations.py"]
+#
+#
+######################
+#  Directory locations
+######################
+#
+# Specify all locations here in relative fashion
+# Changes in file locations should require 
+# only minimal changes here
+# Names end in "dir", values end with backslash
+#
+# Top-level of all text related files, source or not
+# With repos, just assume its the working directoruy
+textdir = "./"
+#
+## Areas underneath text directory
+#sourcedir = textdir + "fcla/"
+#scriptdir = textdir + "script/"
+#outputdir = textdir + "output/"
+#webdir    = textdir + "linear.ups.edu/"
+##
+## Portions of the source distribution
+#includedir = sourcedir + "includes/"
+#flashdir = sourcedir + "flash/"
+#sectiondir = sourcedir + "sections/"
+#diagramcodedir = sourcedir + "diagrams/code/"
+#diagrampdfdir = sourcedir + "diagrams/pdf/"
+#diagrampngdir = sourcedir + "diagrams/png/"
+##
+## A wide-open unimportant work area
+tempdir = "/tmp/aata/"
+## Areas under tempdir for processing/manipluations
+#editiondir = tempdir + "editions/"
+#pngdir = tempdir + "diagrams/png/"
+## Locations to place results
+#localpdfdir = outputdir + "pdf/"
+#localtarsourcedir = outputdir + "tarsource/"
+#localxmltardir  = outputdir + "xmltar/"
+## Locations within website
+#webdownloaddir = webdir + "download/"
+#
+############
+# File Names
+############
+#
+# Specific files that are manipulated, employed
+# Some absolute, some base
+# End with "fn" for filename
+#
+#versionfn = sourcedir + "VERSION"
+#changelogfn = sourcedir + "changes.txt"
+copyrightfn = sourcedir + "copyright.txt"
+#rssfn = webdir + "fcla_rss_feed.xml"
+#sourcefn = "fcla.tex"
+#indexfn = "fcla.ind"
+#archetypefn = "archetypes.tex"
+#currenteditionfn = "current-edition.tex"
+#defaulteditionfn = "electric.tex"
+#
+#
+########################
+########################
+#  Convenience Functions
+########################
+########################
+#
+#
+#############
+# Copy Source
+#############
+#
+# Copy source into a sandbox
+# Process here, then trash when done
+# Minimize cruft in source tree
+# For Version 2.6
+#   Filter identifies backups to be ignored
+#   Add "ignore" keyword to copytree
+#   Or replace with "ignore_patterns" factory
+#
+def backup_files( directory, contents ):
+  backups=[]
+  for filename in contents :
+    if (filename[:-1] == "~"):
+      backups.append( filename )
+  return backups
+#
+def copy_source( ):
+  # tempdir can't exist prior to this call, so always trash it after use
+  shutil.copytree( sourcedir, tempdir )
+# End of copy_source( )
+#
+#
+############
+# Trash Temp
+############
+#
+# Trash working area as a massive clean-up
+#
+def trash_temp( ):
+  shutil.rmtree( tempdir )
+# End of trash_temp( )
+#
+#
+############
+# Reversion, file Rename
+############
+#
+# Replaces target line with replacement line, 
+# to effect DRAFT/VERSION numbering
+# Copies file in the process to one with a new name
+#
+def reversion_rename( infilename, outfilename ):
+  target = '"%% version substitution %%"'
+  replace = '"\\\\\\renewcommand\\{\\\\\\FCLAversion\\}\\{' + version + '\\}"'
+  sedcommand = "sed s/" + target + "/" + replace + "/ " + infilename + " > " + outfilename
+  subprocess.call( sedcommand, shell=True )
+# End of reversion_rename( )
+#
+#
+##############
+# Make tarball
+##############
+#
+# Convenience for repeated uses
+#
+def make_tarball( parentdir, targetdir, tarbasename ):
+  # parentdir is whole path just above targetdir
+  # targetdir is leaf below parent, no paths, it migrates to the tarfile
+  # tarbasename.tar.gz is what gets built, includes path
+  tarfn = tarbasename + ".tar"
+  # Tar the whole directory from above (parentdir) to get  targetdir  as only path member
+  # -c create,  -C switch to directory,  -f archive name
+  tarcommand = "tar -C " + parentdir + " -cf " + tarfn + " " + targetdir
+  if debug :
+    tarcommand = tarcommand + " -v"
+  gzipcommand = "gzip " + tarfn
+  subprocess.call( tarcommand, shell=True )
+  subprocess.call( gzipcommand ,shell=True )
+# End of make_tarball( )
+#
+#
+#####################
+#####################
+#  Principal Routines
+#####################
+#####################
+#
+#
+###############
+#  Version File
+###############
+#
+#  Edit the orginal source
+#  to update the VERSION file
+#
+def make_version( ):
+  print "Making version file....\n"
+  if os.path.exists( versionfn ):
+    os.remove( versionfn )
+  versionfile = open( versionfn, 'w' )
+  versionfile.write( version )
+  versionfile.close( )
+# End of make_version( )
+#
+#
+###############
+#  Add copyright
+###############
+#
+#  Edit the original source files
+#  Checking for, then adding copyright information
+#
+def add_copyright( ):
+  print "Adding copyright notice....\n"
+  copyright = open( copyrightfn ).read( )
+  for fileinfo in os.walk( sourcedir ):
+    for name in fileinfo[2]:
+      filename = os.path.join( fileinfo[0], name )  # path + name
+      extension = os.path.splitext( filename )[1]
+      # Tag Python/Pyx programs for diagram generation by hand
+      if (extension == ".tex") or (extension == ".sty"):
+	pipe = subprocess. Popen( 
+	       'grep -c "^%%%%(c)" ' + filename, shell=True, stdout=subprocess.PIPE )
+	count = int((pipe.communicate()[0])[:-1])
+        if count == 0:
+          print "Annotating " + filename + "..."
+          content = open( filename ).read( )
+          os.remove( filename )
+          revisedfile = open( filename, 'w' )
+          revisedfile.write( copyright )
+          revisedfile.write( content )
+          revisedfile.close( )
+# End of add_copyright( )
+#
+#
+###################
+#  Make Simple PDFs
+###################
+#
+# Simple files in top-level source
+#
+def make_simple_pdfs( ):
+  for base in simple_pdfs:
+    current_directory = os.getcwd( )
+    copy_source( )
+    os.chdir( tempdir )
+    # Construct names
+    versionbasename = "fcla-" + base + "-" + version
+    versionfn = versionbasename + ".tex"
+    pdflatexcommand = "pdflatex " + versionfn
+    # Insert version as TeX macro, and copy into new filename
+    reversion_rename( tempdir + base + ".tex", tempdir + versionfn )
+    # Do it (just once, no linking, indexing)
+    subprocess.call( pdflatexcommand, shell=True )
+    # Copy to storage and web locations
+    shutil.copy( tempdir + versionbasename + ".pdf", localpdfdir  )
+    shutil.copy( tempdir + versionbasename + ".pdf", webdownloaddir )
+    # Restore state and clean up
+    os.chdir( current_directory )
+    trash_temp( )
+# End of make_archetypes( )
+#
+#
+################
+#  Make Diagrams
+################
+#
+def make_diagrams( ):
+  #  Generation via PyX library
+  #  Each program may create several diagrams
+  print "Making diagrams....\n"
+  for program in diagram_program_list:
+    program_command = "python " + diagramcodedir + program + " " + diagrampdfdir
+    subprocess.call( program_command, shell=True )
+  # Convert is image conversion from  imagemagick  suite
+  convert_exec = "/usr/bin/convert"
+  for filename in os.listdir( diagrampdfdir ):
+    basename = os.path.splitext( filename )[0]
+    convert_command = "convert " + diagrampdfdir + filename + " " + diagrampngdir + basename + ".png"
+    subprocess.call( convert_command, shell=True )
+# End of  make_diagrams( )
+#
+#
+########################
+#  Make Flashcard Source
+########################
+#
+# Create flashcards in source tree
+# Remove later so searches in source 
+# don't produce doubled up results
+#
+def make_flashcard_source( ):
+  print "Making flashcards....\n"
+  # Make a directory to hold theorem and definition contents
+  os.mkdir( flashdir )  
+  # Extract theorems and definitions from each section
+  # using custom sed script and dump into flashdir
+  # Copyrights inserted later
+  for section in sections:
+    sectionfn = flashdir + section + ".tex"
+    sectionfile = open( sectionfn, 'w')
+    sectionfile.write( "%%%%\n" )
+    sectionfile.write( "%%%% This file generated automatically.\n" )
+    sectionfile.write( "%%%% Do not edit by hand.\n" )
+    sectionfile.write( "%%%%\n" )
+    sectionfile.close( )
+    sedcommand = "sed -n -f " + scriptdir + "flash.sed " +\
+                  sectiondir + section + ".tex >> " + sectionfn
+    subprocess.call( sedcommand, shell=True )
+# End of make_flashcard_source( )
+#
+#
+####################
+#  Make PDF Editions
+####################
+#
+#  Loop over edition files
+#  Do basic PDF processing
+#
+def make_pdf_editions( ):
+  for edition in pdf_editions:
+    # Save state, move to temporary working area
+    current_directory = os.getcwd( )
+    copy_source( )
+    os.chdir( tempdir )
+    # Main LaTeX files
+    editionbase = "fcla-" + edition + "-" + version
+    editionfn = editionbase + ".tex"
+    # Insert version as TeX macro
+    # Side effect is to copy original TeX file into a specially named file
+    reversion_rename( tempdir + sourcefn, tempdir + editionfn )
+    # Copy  edition  file into  currentedition  to effect customizations
+    shutil.copy( editiondir + edition + ".tex", editiondir + currenteditionfn )
+    # Two basic commands to process source
+    pdflatexcommand = "pdflatex " + editionfn
+    indexcommand = "makeindex  " + editionbase + ".idx"
+    if not(debug):
+      pdflatexcommand = pdflatexcommand + " >/dev/null"
+      indexcommand = indexcommand + " >/dev/null"
+    # pdflatex once to setup xrefs and index entries
+    print "Building " + editionbase + ".pdf, pass 1..."
+    subprocess.call( pdflatexcommand, shell=True )
+    ## make index, rename as  indexfn  since this name is hardcoded into fcla.tex/copies
+    print "Building " + editionbase + " index..."
+    subprocess.call( indexcommand, shell=True )
+    os.rename( editionbase + ".ind", indexfn )
+    ## pdflatex again to get all references right
+    print "Building " + editionbase + ".pdf, pass 2..."
+    subprocess.call( pdflatexcommand, shell=True )
+    ############# FIXME  rotate sony version here with pdftk
+    # Copy resultant pdf to local & web storage for safekeeping
+    shutil.copy( tempdir + editionbase + ".pdf", localpdfdir + editionbase + ".pdf" )
+    shutil.copy( tempdir + editionbase + ".pdf", webdownloaddir + editionbase + ".pdf" )
+    # Restore state and clean up
+    os.chdir( current_directory )
+    trash_temp( )
+# End of  make_pdf_editions
+#
+#
+#################
+#  Source Tarball
+#################
+#
+#  Copy source tree to temporary directory
+#  Then prune/massage hard
+#
+def make_source_tarball( ):
+  print "Making source tarball....\n"
+  copy_source( )
+  top = os.listdir( tempdir )
+  # Clean top-level files
+  for entry in top:
+    if os.path.isfile(os.path.join(tempdir, entry)) and not(entry in topsourcefiles ):
+      os.remove(os.path.join(tempdir, entry))
+  # Clean out unwanted top-level directories
+  for entry in top:
+    if os.path.isdir(os.path.join(tempdir, entry)) and not(entry in topsourcedirs ):
+      print "Warning: Excluding directory from source tarball - ", os.path.join(tempdir, entry)
+      shutil.rmtree( os.path.join(tempdir, entry) )
+  # Clean out any backup files anywhere
+  for fileinfo in  os.walk( tempdir ):
+      directory = fileinfo[0]
+      for filename in fileinfo[2]:
+        if (filename[-1] == "~"):
+	  os.remove(os.path.join(directory,filename))
+  # Make sure a simple edition file accompanies source
+  # so anyone can compile out-of-the-box with  pdflatex
+  shutil.copy( editiondir + defaulteditionfn, editiondir + currenteditionfn )
+  #
+  tarparentdir = "/tmp/"
+  tarsubdir = "fcla-" + version
+  tardir = tarparentdir + tarsubdir + "/"
+  tarbasename = "fcla-source-" + version
+  # Change directory name to  tardir  
+  # so version number migrates to top-level of tarball
+  os.rename( tempdir, tardir )
+  make_tarball( tarparentdir, tarsubdir, tarparentdir + tarbasename )
+  gzipfn = tarparentdir + tarbasename + ".tar.gz"
+  # Copy to storage locations
+  shutil.copy( gzipfn, localtarsourcedir )
+  shutil.copy( gzipfn, webdownloaddir )
+  # Trash temp dir (using the new name)
+  os.remove( gzipfn )
+  shutil.rmtree( tardir )
+# End of make_source_tarball( )  
+#
+#
+###################
+#  Make XML Tarball
+###################
+#
+def make_xml_tarball( ):
+  print "Making XML tarball....\n"
+  sourcetree = outputdir + "xml/" + versiondir + "/"
+  tarparentdir = "/tmp/"
+  tarsubdir = "fcla-xml-" + version
+  tardir = tarparentdir + tarsubdir + "/"
+  tarbasename =  "fcla-xml-" + version
+  # Move tree from output area, call convenience function
+  shutil.copytree( sourcetree, tardir )
+  make_tarball( tarparentdir, tarsubdir, tarparentdir + tarbasename )
+  gzipfn = tarparentdir + tarbasename + ".tar.gz"
+  # Move to two storage locations
+  shutil.copy( gzipfn, localxmltardir )
+  shutil.copy( gzipfn, webdownloaddir )
+  # Clean up
+  os.remove( gzipfn )
+  shutil.rmtree( tardir )
+# End of make_xml_tarball( )
+#
+#
+##############
+#  Make tex4ht
+##############
+#
+def make_tex4ht( ):
+  #  Two runs: one as "latest", one numbered
+  #  Need two runs because file names are important in internal links
+  for edition in ["latest", version]:
+    for format in ["xml", "jsmath"]:
+      # Save state, move to temporary working area
+      current_directory = os.getcwd( )
+      copy_source( )
+      os.chdir( tempdir )
+      # Copy  edition  file into  currenteditionfile to set customizations
+      shutil.copy( editiondir + format + ".tex", editiondir + currenteditionfn )
+      # Place PNG images into temporary source directory
+      #   makes linking, moving more convenient
+      for aname in os.listdir( pngdir ):
+        shutil.copy( pngdir + aname, tempdir )
+      # Adjusted file names, per format/edition
+      editionbase = "fcla-" + format + "-" + edition
+      editionfn = editionbase + ".tex"
+      t4htconfigbase = "t4ht-" + format
+      t4htconfigfn = scriptdir + t4htconfigbase + ".cfg"
+      # Copy in tex4ht configuration file
+      shutil.copy( t4htconfigfn, tempdir )
+      # Insert version as TeX macro
+      # Side effect is to copy original file into renamed version
+      reversion_rename( tempdir + sourcefn, tempdir + editionfn )
+      # Command strings for system() calls below
+      tex4htcommand = 'htlatex ' + editionbase +' "'+ t4htconfigbase +'" " -cmozhtf"'
+      index_first = "tex '\\def\\filename{{" + editionbase + "}{idx}{4dx}{ind}} \\input  idxmake.4ht'"
+      index_second = "makeindex -o " + indexfn + " " + editionbase + ".4dx"
+      # Run TeX4ht first pass, leave behind index files, etc
+      subprocess.call( tex4htcommand, shell=True )
+      #  Index incantations come from documentation in log file
+      #  Various files are left behind from first pass, using editionbase as name
+      #  Want  fcla.ind  as final product, because this is hard-coded into the source
+      subprocess.call( index_first, shell=True )
+      subprocess.call( index_second, shell=True )
+      #  Do it again, now that a legitimate index file exists
+      subprocess.call( tex4htcommand, shell=True )
+      # Name, trash, create/re-create homes
+      localstoredir = outputdir + format + "/"
+      websitedir = webdir + format + "/"
+      if edition == "latest":
+        localdestinationdir = localstoredir + "latest/"
+        webdestinationdir = websitedir + "latest/"
+      if edition == version:
+        localdestinationdir = localstoredir + versiondir + "/"
+        webdestinationdir = websitedir + versiondir  + "/"
+      if os.path.exists(localdestinationdir):
+        shutil.rmtree(localdestinationdir)
+      os.mkdir(localdestinationdir)
+      if os.path.exists(webdestinationdir):
+        shutil.rmtree(webdestinationdir)
+      os.mkdir(webdestinationdir)
+      # Now move desirables (per format) from working dir into local, web storage
+      topfiles = os.listdir( tempdir )
+      desirables = []
+      if format == "xml":
+        desirables = [".xml", ".png", ".css"]
+      if format == "jsmath":
+        desirables = [".html", ".png", ".css"]
+      for filename in topfiles:
+        if os.path.splitext( filename )[1] in desirables:
+	  fullfilename = os.path.join(tempdir, filename)
+	  shutil.copy( fullfilename, localdestinationdir )
+	  shutil.copy( fullfilename,   webdestinationdir )
+      # Restore state and clean up
+      os.chdir( current_directory )
+      trash_temp( )
+# End of make_xml( )
+#
+#
+################
+#  Make RSS Feed
+################
+#
+def make_rss_feed( ):
+  print "Making RSS feed....\n"
+  # Documentation:  /usr/share/pycentral  for source to PyRSS2Gen source code
+  # Documentation:  /usr/share/doc/python-pyrss2gen/README.gz
+  #
+  # The file we want an RSS reader to grab, per version
+  contentfile = "http://linear.ups.edu/download/fcla-electric-" + version + ".pdf"
+  # Local file to investigate for length in bytes
+  localfile = webdownloaddir + "fcla-electric-" + version + ".pdf"
+  filesize = os.stat(localfile)[6]
+  # Include a unique identifier by edition, but don't announce it as a URL 
+  aguid = PyRSS2Gen.Guid(guid=version, isPermaLink=0)
+  # The enclosure is the real payload, latest only is good enough
+  anenclosure = PyRSS2Gen.Enclosure( 
+                url=contentfile, 
+                length=filesize, 
+                type="application/pdf" 
+                )
+  # A lone item in the feed, UTC timestamp, GUID, change log entry go here
+  item = PyRSS2Gen.RSSItem(
+         title = "Version " + version,
+         link = "http://linear.ups.edu/download.html",
+         description = changes,
+         guid = aguid,
+         enclosure = anenclosure,
+         pubDate = datetime.datetime.utcnow()
+         )
+  # Channel information, 4 hours to live, no skips, generic info here
+  rss = PyRSS2Gen.RSS2(
+        title = "A First Course in Linear Algebra textbook",
+        link = "http://linear.ups.edu",
+        description = "PDFcast of updates to the electronic version of the free textbook "+
+                      '"A First Course in Linear Algebra"',
+        ttl = 240,
+        lastBuildDate = datetime.datetime.utcnow(),
+        items=[item]
+        )
+  # Place in root of website for eventual FTP upload
+  rss.write_xml(open(rssfn, "w"))
+# End of make_rss_feed( )
+#
+#
+#################
+#  Move Web Files
+#################
+#
+def move_web_files( ):
+  # Update change log in local website
+  shutil.copy( sourcedir + "changes.txt", webdir )
+# End of move_web_files( )
+#
+#
+###############
+#  Cleanup
+###############
+def clean_up( ):
+  # Trash flash, so source tree searches 
+  # don't get double theorems/defns
+  shutil.rmtree( flashdir )
+  # Audio alert for finish
+  subprocess.call( "beep -r 5", shell=True )
+# End of clean_up( )
+#
+#
+
+################
+################
+#  Test Routines
+################
+################
+#
+#
+#############
+# Test tex4ht
+#############
+#
+def test_tex4ht( format ):
+  current_directory = os.getcwd( )
+  if os.path.exists( tempdir ):
+    shutil.rmtree( tempdir )
+  copy_source( )
+  os.chdir( tempdir )
+  # Copy  edition  file into  currenteditionfile to set customizations
+  shutil.copy( editiondir + format + ".tex", editiondir + currenteditionfn )
+  # Place PNG images into temporary source directory
+  #   makes linking, moving more convenient
+  for aname in os.listdir( pngdir ):
+    shutil.copy( pngdir + aname, tempdir )
+  # Copy in tex4ht configuration file
+  t4htconfigbase = "t4ht-" + format
+  t4htconfigfn = scriptdir + t4htconfigbase + ".cfg"
+  shutil.copy( t4htconfigfn, tempdir )
+  # Command strings for system() calls below
+  tex4htcommand = 'htlatex fcla "'+ t4htconfigbase +'" " -cmozhtf"'
+  ### index_first = "tex '\\def\\filename{{" + editionbase + "}{idx}{4dx}{ind}} \\input  idxmake.4ht'"
+  ### index_second = "makeindex -o " + indexfn + " " + editionbase + ".4dx"
+  # Run TeX4ht first pass, leave behind index files, etc
+  subprocess.call( tex4htcommand, shell=True )
+# End of test_tex4ht
+#
+#
+###############
+#  Main
+###############
+#
+if len(sys.argv) == 1:  # no args yields help
+  print "produce"
+  print "produce all {debug}"
+  print "produce test {xml|jsmath}"
+  sys.exit(0)
+#
+#
+if sys.argv[1] == "test" :
+  debug = True
+  if sys.argv[2] == "xml":
+    test_tex4ht( "xml" )
+  if sys.argv[2] == "jsmath":
+    test_tex4ht( "jsmath" )
+  sys.exit(0)
+#
+#
+################
+# The main event
+################
+#
+# Notes on ordering
+# Produce flashcard source prior to inserting copyrights
+# Produce flashcard source before making simple PDFs
+# Insert copyrights prior to building source tarball
+# Make XML version (t4ht) before making XML tarball
+#
+if sys.argv[1] == "all" :
+  debug = (len(sys.argv) == 3) and (sys.argv[2] == "debug")
+  if os.path.exists( tempdir ):
+    shutil.rmtree( tempdir )
+  #
+  # Pre-process source files
+  #
+  #make_version( )
+  #make_flashcard_source( )
+  add_copyright( )
+  #make_diagrams( )
+  ##
+  ## Create main products in temp directory
+  ##
+  #make_pdf_editions( )
+  #make_tex4ht( )
+  #make_source_tarball( )
+  #make_xml_tarball( )
+  #make_simple_pdfs( )
+  ##
+  ## Post-processing, web, cleanup
+  ##
+  #make_rss_feed( )
+  #move_web_files( )
+  #clean_up( )
+  #
+  sys.exit(0)
+# End of main()
