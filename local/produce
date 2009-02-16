@@ -142,8 +142,9 @@ simple_pdfs = ["archetypes", "flash"]
 sections = ["CNO", "SET", "WILA", "SSLE", "RREF", "TSS", "HSE", "NM", "VO", "LC", "SS", "LI", "LDS", "O", "MO", "MM", "MISLE", "MINM", "CRS", "FS", "VS", "S", "B", "LISS", "D", "PD", "DM", "PDM", "EE", "PEE", "SD", "LT", "ILT", "SLT", "IVLT", "VR", "MR", "CB", "NLT", "IS", "JCF"]
 #
 # Top-level files and directories for source distribution
-topsourcefiles = ["VERSION", "COPYING.txt", "fcla.tex", "flash.tex", "archetypes.tex", "changes.txt", "contributor-guide.tex", "contributor-guide.pdf"]
-topsourcedirs = ["annotatedacronyms", "appdxintros","appendices", "archetypes", "solutions", "chapintros", "computenotes", "editions", "exercises", "diagrams", "flash", "help", "includes", "readingquestions", "sections",  "styles", "techniques" ]
+# topsourcefiles = ["VERSION", "COPYING.txt", "fcla.tex", "flash.tex", "archetypes.tex", "changes.txt", "contributor-guide.tex", "contributor-guide.pdf"]
+# Ignore all subdirs
+topsourcedirs = [ ]
 #
 # Python programs in diagram code directory to be executed
 diagram_program_list = ["commutative.py", "lineartransformations.py"]
@@ -163,10 +164,10 @@ diagram_program_list = ["commutative.py", "lineartransformations.py"]
 textdir = "./"
 #
 ## Areas underneath text directory
-#sourcedir = textdir + "fcla/"
+sourcedir = textdir
 #scriptdir = textdir + "script/"
 #outputdir = textdir + "output/"
-#webdir    = textdir + "linear.ups.edu/"
+webdir    = textdir + "abstract.ups.edu/"
 ##
 ## Portions of the source distribution
 #includedir = sourcedir + "includes/"
@@ -186,7 +187,7 @@ tempdir = "/tmp/aata/"
 #localtarsourcedir = outputdir + "tarsource/"
 #localxmltardir  = outputdir + "xmltar/"
 ## Locations within website
-#webdownloaddir = webdir + "download/"
+webdownloaddir = webdir + "download/"
 #
 ############
 # File Names
@@ -478,10 +479,12 @@ def make_source_tarball( ):
   copy_source( )
   top = os.listdir( tempdir )
   # Clean top-level files
-  for entry in top:
-    if os.path.isfile(os.path.join(tempdir, entry)) and not(entry in topsourcefiles ):
-      os.remove(os.path.join(tempdir, entry))
-  # Clean out unwanted top-level directories
+  # Keep everything at the top as far as files go
+  #for entry in top:
+    #if os.path.isfile(os.path.join(tempdir, entry)) and not(entry in topsourcefiles ):
+      #os.remove(os.path.join(tempdir, entry))
+  #
+  # Clean out unwanted top-level directories (all of them)
   for entry in top:
     if os.path.isdir(os.path.join(tempdir, entry)) and not(entry in topsourcedirs ):
       print "Warning: Excluding directory from source tarball - ", os.path.join(tempdir, entry)
@@ -494,19 +497,22 @@ def make_source_tarball( ):
 	  os.remove(os.path.join(directory,filename))
   # Make sure a simple edition file accompanies source
   # so anyone can compile out-of-the-box with  pdflatex
-  shutil.copy( editiondir + defaulteditionfn, editiondir + currenteditionfn )
+  # Not needed yet for Judson
+  # shutil.copy( editiondir + defaulteditionfn, editiondir + currenteditionfn )
   #
+  #  Could use versions here
+  version = "original"
   tarparentdir = "/tmp/"
-  tarsubdir = "fcla-" + version
+  tarsubdir = "aata-" + version
   tardir = tarparentdir + tarsubdir + "/"
-  tarbasename = "fcla-source-" + version
+  tarbasename = "aata-source-" + version
   # Change directory name to  tardir  
   # so version number migrates to top-level of tarball
   os.rename( tempdir, tardir )
   make_tarball( tarparentdir, tarsubdir, tarparentdir + tarbasename )
   gzipfn = tarparentdir + tarbasename + ".tar.gz"
   # Copy to storage locations
-  shutil.copy( gzipfn, localtarsourcedir )
+  ## shutil.copy( gzipfn, localtarsourcedir )
   shutil.copy( gzipfn, webdownloaddir )
   # Trash temp dir (using the new name)
   os.remove( gzipfn )
@@ -764,7 +770,7 @@ if sys.argv[1] == "all" :
   ##
   #make_pdf_editions( )
   #make_tex4ht( )
-  #make_source_tarball( )
+  make_source_tarball( )
   #make_xml_tarball( )
   #make_simple_pdfs( )
   ##
