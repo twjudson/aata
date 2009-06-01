@@ -29,7 +29,34 @@
 
 \setlength{\fboxrule}{0.5pt}
 
- 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hyperref setup
+\usepackage[pdftex]{hyperref}
+\hypersetup{breaklinks=true}  % across line breaks
+\hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
+% Comma in title not allowed
+\hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
+\hypersetup{pdfkeywords=free linear algebra textbook}
+\hypersetup{colorlinks=true,linkcolor=green}
+
+% Per-chapter items
+\newcommand{\chaplabel}{\relax}
+\newcounter{example}
+
+% Usage: \chap{title}{label}
+\newcommand{\chap}[2]{%
+\setcounter{example}{0}%
+\renewcommand{\chaplabel}{#2}%
+\chapter{#1}\label{#2}%
+}
+
+% Examples as environment
+\newenvironment{example}[1]
+  {\refstepcounter{example}{\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
+  {\hspace\fill$\blacksquare$\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \input{macros}
