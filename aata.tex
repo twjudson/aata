@@ -38,7 +38,7 @@
 % Comma in title not allowed
 \hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
 \hypersetup{pdfkeywords=free linear algebra textbook}
-\hypersetup{colorlinks=true,linkcolor=green}
+\hypersetup{colorlinks=true,linkcolor=blue}
 
 % Per-chapter items
 \newcommand{\chaplabel}{\relax}
@@ -53,8 +53,13 @@
 
 % Examples as environment
 \newenvironment{example}[1]
-  {\refstepcounter{example}{\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
-  {\hspace\fill$\blacksquare$\par}
+  {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
+  {\hspace\fill$\blacksquare$\par\bigskip}
+  
+\numberwithin{example}{chapter}
+ 
+% include only these files when latexing 
+%\includeonly{groups}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}

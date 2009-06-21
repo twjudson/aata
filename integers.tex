@@ -8,12 +8,14 @@
 %%%%(c)
 %%%%(c)
 \chapter{The Integers}\label{integers}
+
+
  
  
 The integers are the building blocks of mathematics. In this chapter we will investigate  the fundamental properties of the integers, including mathematical induction, the division algorithm, and the Fundamental Theorem of Arithmetic.
  
 
-\section{Mathematical Induction}\label{integers_section_1}
+\section{Mathematical Induction}\label{integers_math_induction}
 
 Suppose we wish to show that
 $$
@@ -41,9 +43,7 @@ This method of proof is known as {\bfi mathematical induction}.  Instead of atte
 {\bf First Principle of Mathematical Induction.}\index{Induction!first principle of} 
 Let $S(n)$ be a statement about integers for  $n \in {\mathbb N}$ and suppose $S(n_0)$ is true for some integer $n_0$.  If for all integers $k$ with $k \geq n_0$ $S(k)$ implies that $S(k+1)$ is true, then $S(n)$ is true for all integers $n$ greater than $n_0$.  
 
-\medskip
- 
-\noindent {\bf Example 1.}
+\begin{example}{induction}
 For all integers $n \geq 3$, $2^n > n + 4$. Since
 $$
 8 = 2^3 > 3 + 4 = 7,
@@ -53,11 +53,9 @@ $$
 2(k + 4) = 2k + 8 > k + 5 = (k + 1) + 4
 $$
 since $k$ is positive.  Hence, by induction, the statement holds for all integers $n \geq 3$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 2.}
+\begin{example}{induction_divisible}
 Every integer $10^{n + 1} + 3 \cdot 10^n + 5$ is divisible by 9 for $n \in {\mathbb N}$.  For $n = 1$, 
 $$
 10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15
@@ -71,11 +69,9 @@ is divisible by 9.  Suppose that $10^{k + 1} + 3 \cdot 10^k + 5$ is divisible by
 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45
 \end{eqnarray*}
 is divisible by 9.
-\hspace{\fill} $\blacksquare$
- 
-\medskip
+\end{example}
 
-\noindent {\bf Example 3.}
+\begin{example}{binomial_theorem}
 We will prove the binomial theorem using mathematical induction; that is, 
 $$
 (a + b)^n = \sum_{k = 0}^{n} \left( \begin{array}{c} n \\ k \end{array} \right) a^k b^{n - k},
@@ -141,9 +137,7 @@ a^k b^{n + 1 - k} + b^{n + 1} \\
 \sum_{k = 0}^{n + 1}   \left( \begin{array}{c} n + 1 \\ k
 \end{array} \right) a^k b^{n + 1- k}.
 \end{eqnarray*}
-\hspace{\fill} $\blacksquare$
-
-\medskip
+\end{example}
  
 We have an equivalent statement of the Principle of Mathematical Induction that is often very useful:
  
@@ -166,7 +160,7 @@ Every nonempty subset of the natural numbers is well-ordered.
  
 The Principle of Well-Ordering is equivalent to the Principle  of Mathematical Induction. 
  
-\begin{lemma}\label{integers_theorem_1}
+\begin{lemma}\label{integers_smallest_natural_num}
 The Principle of Mathematical Induction implies that $1$ is the least positive natural number. 
 \end{lemma}
 
@@ -174,12 +168,12 @@ The Principle of Mathematical Induction implies that $1$ is the least positive n
 Let $S = \{ n \in {\mathbb N} : n \geq 1 \}$. Then $1 \in S$.  Now assume that $n \in S$; that is, $n \geq 1$.  Since $n+1 \geq 1$, $n+ 1 \in S$; hence, by induction, every natural number is greater than or equal to 1. 
 \end{proof}
 
-\begin{theorem}\label{integers_theorem_2}
+\begin{theorem}\label{integers_PMI_implies_PWO}
 The Principle of Mathematical Induction implies that the natural numbers are well-ordered. 
 \end{theorem}
  
 \begin{proof}
-We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers_theorem_1}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
+We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers_smallest_natural_num}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
 \mbox{\hspace{1in}} 
 \end{proof}
  
@@ -200,11 +194,11 @@ $n! = n(n - 1)!$ for $n > 1$.
 Every good mathematician or computer scientist knows that looking at problems recursively, as opposed to explicitly, often results in better understanding of complex issues.  
 
  
-\section{The Division Algorithm}\label{integers_section_2}
+\section{The Division Algorithm}\label{integers_division_algorithm}
 
 An application of the Principle of Well-Ordering that we will use often is the division algorithm. 
 
-\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers_theorem_3}
+\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers_theorem_division_alg}
 Let $a$ and $b$ be integers, with $b > 0$.  Then there exist unique integers $q$ and $r$ such that 
 $$
 a = bq + r
@@ -242,7 +236,7 @@ Then $ bq + r =  bq' + r'$.  Assume that $r' \geq r$.  From the last equation we
 
 Let $a$ and $b$ be integers.  If $b = ak$ for some integer $k$, we write $a \mid b$\label{divides}.  An integer $d$ is called a {\bfi  common divisor\/} of $a$ and $b$ if $d \mid a$ and $d \mid b$.  The {\bfi greatest common divisor\/}\index{Greatest common divisor!of two integers} of integers $a$ and $b$ is a positive integer $d$ such that $d$ is a common divisor  of $a$ and $b$ and if $d'$ is any other common divisor of $a$ and $b$, then $d' \mid d$.  We write $d = \gcd(a, b)$\label{greatestcd}; for example, $\gcd( 24, 36) = 12$ and $\gcd(120, 102) = 6$.  We say that two integers $a$ and $b$ are {\bfi relatively prime\/} if $\gcd( a, b ) = 1$. 
 
-\begin{theorem}\label{integers_theorem_4}
+\begin{theorem}\label{integers_theorem_gcd}
 Let $a$ and $b$ be nonzero integers. Then there exist integers $r$ and $s$ such that
 $$
 \gcd( a, b) = ar + bs.
@@ -279,11 +273,11 @@ Let $a$ and $b$ be two integers that are relatively prime. Then there exist  int
  
 \subsection*{The Euclidean Algorithm}
 
-Among other things, Theorem~\ref{integers_theorem_4} allows us to compute the greatest common divisor of two integers. 
+Among other things, Theorem~\ref{integers_theorem_gcd} allows us to compute the greatest common divisor of two integers. 
 
 \medskip
 
-\noindent {\bf Example 4.}
+\begin{example}{gcd}
 Let us compute the greatest common divisor of $945$ and $2415$.  First observe that 
 \begin{eqnarray*}
 2415 & = & 945 \cdot 2 + 525 \\
@@ -302,9 +296,7 @@ If we work backward through the above sequence of equations, we can also obtain 
 & = & 2 \cdot 2415 + (-5) \cdot 945.
 \end{eqnarray*}
 So $r = -5$ and $s= 2$.  Notice that $r$ and $s$ are not unique, since $r = 41$ and $s = -16$ would also work.
-\hspace{\fill} $\blacksquare$
-
-\medskip
+\end{example}
 
 To compute $\gcd(a,b) = d$, we are using repeated divisions to obtain a decreasing sequence of positive integers $r_1 > r_2 > \cdots > r_n = d$; that is,
 \begin{eqnarray*}
@@ -331,7 +323,7 @@ The algorithm that we have just used to find the greatest common divisor $d$ of 
 
 Let $p$ be an integer such that $p > 1$.  We say that $p$ is a {\bfi prime number}\index{Prime integer}, or simply $p$ is {\bfi prime}, if the only positive numbers that divide $p$ are 1 and $p$ itself.  An integer $n > 1$ that is not prime is said to be {\bfi composite}\index{Composite integer}.  
 
-\begin{lemma}[Euclid]\label{integers_theorem_6}
+\begin{lemma}[Euclid]\label{integers_theorem_prime_divide}
 Let $a$ and $b$ be integers and $p$ be a prime number.  If $p \mid ab$, then either $p \mid a$ or $p \mid b$. 
 \end{lemma}
 
@@ -343,7 +335,7 @@ $$
 Since $p$ divides both $ab$ and itself, $p$ must divide $b = (ab)r + p(bs)$. 
 \end{proof}
 
-\begin{theorem}[Euclid]\label{integers_theorem_7}
+\begin{theorem}[Euclid]\label{integers_theorem_inifinite_primes}
 There exist an infinite number of primes.
 \end{theorem}
 
@@ -351,7 +343,7 @@ There exist an infinite number of primes.
 We will prove this theorem by contradiction.  Suppose that there are only a finite number of primes, say $p_1, p_2, \ldots, p_n$.  Let $p = p_1  p_2  \cdots  p_n + 1$.  We will show that $p$ must be a different prime number, which contradicts the assumption that we have only $n$ primes.  If $p$ is not prime, then it must be divisible by some $p_i$ for $1 \leq i \leq n$. In this  case $p_i$ must divide $p_1 p_2 \cdots p_n$ and also divide 1.  This is a contradiction, since $p > 1$. 
 \end{proof}
 
-\begin{theorem} {\bf (Fundamental Theorem of Arithmetic)}\index{Fundamental Theorem!of Arithmetic} \label{integers_theorem_8}
+\begin{theorem} {\bf (Fundamental Theorem of Arithmetic)}\index{Fundamental Theorem!of Arithmetic} \label{integers_theorem_FTA}
 Let $n$ be an integer such that $n > 1$.  Then
 $$
 n = p_1 p_2 \cdots p_k,
@@ -369,7 +361,7 @@ To show uniqueness we will use induction on $n$. The theorem is certainly true f
 $$
 n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,
 $$
-where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers_theorem_6}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
+where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers_theorem_prime_divide}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
 $$
 n' = p_2 \cdots p_k = q_2 \cdots q_l
 $$
@@ -480,7 +472,7 @@ $$
 For every positive integer $n$, show that a set with exactly $n$ elements has a power set with exactly $2^n$ elements.
 
 \item
-Prove that the two principles of mathematical induction stated in Section~\ref{integers_section_1} are equivalent. 
+Prove that the two principles of mathematical induction stated in Section~\ref{integers_math_induction} are equivalent. 
 
 \item
 Show that the Principle of Well-Ordering for the natural numbers implies that 1 is the smallest natural number.  Use this result to show that the Principle of Well-Ordering implies the Principle of Mathematical Induction; that is, show that if $S \subset {\mathbb N}$ such that $1 \in S$ and $n + 1 \in S$ whenever $n \in S$, then $S = {\mathbb N}$.  
