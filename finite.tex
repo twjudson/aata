@@ -7,7 +7,7 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Finite Fields}
+\chapter{Finite Fields}\label{finite}
 
 
 Finite fields appear in many applications of algebra, including coding theory and cryptography.  We already know one finite field, ${\mathbb Z}_p$, where $p$ is prime.  In this chapter we will show that a unique finite field of order $p^n$ exists for every prime $p$, where $n$ is a positive integer.  Finite fields are also called Galois fields in honor of \'{E}variste Galois, who was one of the first mathematicians to
@@ -44,7 +44,6 @@ $$
 for all positive integers $n$.  
 \end{lemma}
 
-
 \begin{proof}
 We will prove this lemma using mathematical induction on $n$.  We can use the binomial formula (see Chapter~1, Example~3) to verify the case for $n = 1$; that is,
 $$
@@ -61,7 +60,6 @@ $$
 $$
 must be divisible by $p$, since $p$ cannot divide $k!(p - k)!$.  Note that $D$ is an integral domain of characteristic $p$, so all but the first and last terms in the sum must be zero.  Therefore, $(a + b)^p =
 a^p + b^p$.  
-
 
 Now suppose that the result holds for all $k$, where $1 \leq k \leq n$.  By the induction hypothesis,
 $$
@@ -82,17 +80,13 @@ Therefore, the lemma is true for $n + 1$ and the proof is complete.
 
 Let $F$ be a field.  A polynomial $f(x) \in F[x]$ of degree $n$ is {\bfi separable\/}\index{Polynomial separable} if it has $n$ distinct roots in the splitting field of $f(x)$; that is, $f(x)$ is separable when it factors into distinct linear factors over the splitting field of $F$.  An extension $E$ of $F$ is a {\bfi separable extension\/}\index{Extension!separable} of $F$ if every element in $E$ is the root of a separable polynomial in $F[x]$.   
 
-\medskip
-
-\noindent {\bf Example 1.}
+\begin{example}{}
 The polynomial $x^2 - 2$ is separable over ${\mathbb Q}$ since it factors as $(x - \sqrt{2}\, )(x + \sqrt{2}\, )$. In fact, ${\mathbb Q}(\sqrt{2}\, )$ is a separable extension of ${\mathbb Q}$.  Let $\alpha =  a + b \sqrt{2}$ be any element in ${\mathbb Q}$. If $b = 0$, then $\alpha$ is a root of $x - a$.  If $b \neq 0$, then $\alpha$ is the root  of the separable polynomial 
 $$
 x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, )).
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-\medskip
-
 Fortunately, we have an easy test to  determine the separability of any polynomial.  Let
 $$
 f(x) = a_0 + a_1 x + \cdots + a_n x^n
@@ -101,7 +95,6 @@ be any polynomial in  $F[x]$. Define the {\bfi derivative\/}\index{Derivative} o
 $$
 f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n-1}.
 $$
-
 
 \begin{lemma}
 Let $F$ be a field and $f(x) \in F[x]$.  Then $f(x)$ is separable if and only if $f(x)$ and $f'(x)$ are relatively prime. 
@@ -130,6 +123,7 @@ Therefore, $f(x)$ and $f'(x)$ have a common factor.
 For every  prime $p$ and every positive integer $n$, there exists a finite field $F$ with $p^n$ elements. Furthermore, any field of order $p^n$ is isomorphic to the splitting field of $x^{p^n} -x$ over ${\mathbb Z}_p$.
 \end{theorem}
  
+ 
 \begin{proof}
 Let $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$.  Then by Lemma~20.4, $f(x)$ has $p^n$ distinct zeros in $F$, since $f'(x) = p^n x^{p^n - 1} - 1 = -1$ is relatively prime to $f(x)$.  We claim that the roots of $f(x)$ form a subfield of $F$.  Certainly 0 and 1 are zeros of $f(x)$.  If $\alpha$ and $\beta$ are zeros of $f(x)$, then $\alpha + \beta$ and $\alpha \beta$ are also zeros of $f(x)$, since $\alpha^{p^n} + \beta^{p^n} =  (\alpha + \beta)^{p^n}$ and $\alpha^{p^n} \beta^{p^n} = (\alpha \beta)^{p^n}$. We also need to show that the additive inverse and the multiplicative inverse of each root of $f(x)$ are roots of $f(x)$.  For any zero $\alpha$ of $f(x)$, $-\alpha = (p - 1)\alpha$ is also a zero of $f(x)$. If $\alpha \neq 0$, then $(\alpha^{-1})^{p^n} = (\alpha^{p^n})^{-1} = \alpha^{-1}$. Since the zeros of $f(x)$ form a subfield of $F$ and $f(x)$ splits in this subfield, the subfield must be all of $F$. 
 
@@ -150,9 +144,8 @@ Let $F$ be a subfield of $E = {\rm GF}(p^n)$.  Then $F$ must be a field extensio
 To prove the converse, suppose that $m \mid n$ for some $m > 0$.  Then $p^m -1$ divides $p^n -1$. Consequently, $x^{p^m -1} - 1$ divides $x^{p^n -1} -1$. Therefore, $x^{p^m} - x$ must divide $x^{p^n} - x$, and every zero of $x^{p^m} - x$ is also a zero of $x^{p^n} - x$. Thus, ${\rm GF}(p^n)$ contains, as a subfield, a splitting field of $x^{p^m} - x$, which must be isomorphic to ${\rm GF}(p^m)$.
 \end{proof}
      
-\medskip
 
-\noindent {\bf Example 2.}
+\begin{example}{GF_p24}
 The lattice of subfields of ${\rm GF}(p^{24})$ is given inFigure~\ref{FieldLattice}.
 
 \begin{figure}
@@ -183,9 +176,9 @@ The lattice of subfields of ${\rm GF}(p^{24})$ is given inFigure~\ref{FieldLatti
 \label{FieldLattice}
 \end{figure}
 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-\medskip
+
 
 With each field $F$ we have a multiplicative group of nonzero elements of $F$ which we will denote by $F^*$\label{ntmultgrp}.   The multiplicative group of any finite field is cyclic.  This result follows from the more general result that we will prove in the next theorem. 
 
@@ -214,9 +207,8 @@ Every finite extension $E$ of a finite field $F$ is a simple extension of $F$.
 Let $\alpha$ be a generator for the cyclic group $E^{\ast}$ of nonzero elements of $E$. Then $E = F( \alpha )$. 
 \end{proof}
  
-\medskip
 
-\noindent {\bf Example 3.}
+\begin{example}{GF_2^4}
 The finite field ${\rm GF}(2^4)$ is isomorphic to the field ${\mathbb Z}_2/ \langle 1 + x + x^4 \rangle$. Therefore, the elements of  ${\rm GF}(2^4)$ can be taken to be
 $$
 \{
@@ -244,7 +236,7 @@ $$
 \alpha^{15} & = & 1. 
 \end{array}
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
 \section{Polynomial Codes}
@@ -253,9 +245,8 @@ With knowledge of polynomial rings and finite fields, it is now possible to deri
 
 We are interested in a class of codes known as cyclic codes\index{Code!cyclic}.  Let $\phi : {\mathbb Z}_2^k \rightarrow {\mathbb  Z}_2^n$ be a binary $(n,k)$-block code.  Then $\phi$ is a {\bfi cyclic code\/} if for every codeword $(a_1, a_2, \ldots, a_n )$, the cyclically shifted $n$-tuple $(a_n, a_1, a_2, \ldots, a_{n-1} )$ is also a codeword.  Cyclic codes are particularly easy to implement on a  computer using shift registers [2, 3].  
 
-\medskip
 
-\noindent {\bf Example 4.}
+\begin{example}{6-3-linear_code}
 Consider the $(6,3)$-linear codes generated by the two matrices
 $$
 G_1 
@@ -302,7 +293,7 @@ $$
 \end{array}
 $$
 This code cannot be cyclic, since $(101101)$ is a codeword but $(011011)$ is not a codeword.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
 \subsection*{Polynomial Codes}
@@ -321,9 +312,8 @@ Conversely, with any polynomial $f(x) \in {\mathbb Z}_2[x]$ with $\deg f(x) < n$
 Let us fix a nonconstant polynomial $g(x)$ in ${\mathbb Z}_2[x]$ of degree \mbox{$n - k$}.  We can define an $(n,k)$-code $C$ in the following manner.  If $(a_0, \ldots, a_{k-1})$ is a $k$-tuple to be encoded, then $f(x) = a_0 + a_1 x +  \cdots + a_{k-1} x^{k-1}$ is the corresponding polynomial
 in ${\mathbb Z}_2[x]$.  To encode $f(x)$, we multiply by $g(x)$.  The codewords in $C$ are all those polynomials in ${\mathbb Z}_2[x]$ of degree less than  $n$ that are divisible by $g(x)$.  Codes obtained in this manner are called {\bfi polynomial codes}\index{Polynomial!code}\index{Code!polynomial}.  
 
-\medskip
 
-\noindent {\bf Example 5.}
+\begin{example}{generator_63-code}
 If we let $g(x)= 1 + x^3$, we can define a $(6,3)$-code $C$ as follows.  To encode a 3-tuple $( a_0, a_1, a_2 )$, we multiply the corresponding polynomial $f(x) = a_0 + a_1 x + a_2 x^2$ by $1 + x^3$.  We are defining a map $\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6$ by $\phi  : f(x) \mapsto g(x) f(x)$.  It is easy to check that this map is a group homomorphism.  In fact, if we regard ${\mathbb Z}_2^n$ as a vector space over ${\mathbb Z}_2$, $\phi$ is a linear transformation of vector spaces (see Exercise~13, Chapter~18).  Let us compute the kernel of $\phi$.  Observe that $\phi ( a_0, a_1, a_2 ) = (000000)$ exactly when 
 \begin{eqnarray*}
 0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 
@@ -352,10 +342,9 @@ H
 \right).
 $$
 Since the smallest weight of any nonzero codeword is 2, this code has the ability to detect all single errors.  
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
- 
+
 Rings of polynomials have a great deal of structure; therefore, our immediate goal is to establish a link between polynomial codes and ring theory. Recall that $x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)$.  The factor ring 
 $$
 R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle
@@ -392,9 +381,8 @@ C= \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \mbox{ and $g(x)
 $$ 
 The unique monic polynomial of the smallest degree that generates $C$ is called the {\bfi minimal generator polynomial\/}\index{Minimal generator polynomial}\index{Polynomial!minimal generator} of $C$. 
 
-\medskip
 
-\noindent {\bf Example 6.}
+\begin{example}{factor_x7-1}
 If we factor $x^7 - 1$ into irreducible components, we have
 $$
 x^7 - 1 = (1 + x)(1 + x + x^3)(1+ x^2 + x^3).
@@ -414,9 +402,8 @@ G =
 \end{array}
 \right).
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
  
 In general, we can determine a generator matrix for an $(n, k)$-code $C$ by the manner in which the elements $t^k$ are encoded. Let $x^n - 1 = g(x) h(x)$ in ${\mathbb Z}_2[x]$. If $g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}$ and $h(x) = h_0 + h_1 x +  \cdots + h_k x^k$, then the $n \times k$ matrix
 $$
@@ -451,9 +438,8 @@ We will leave the details of the proof of the following proposition as an exerci
 Let $C = \langle g(t) \rangle$ be a cyclic code in $R_n$ and suppose that $x^n - 1 = g(x) h(x)$.  Then $G$ and $H$ are generator and parity-check matrices  for $C$, respectively.  Furthermore, $HG = 0$. 
 \end{proposition}
 
-\medskip
 
-\noindent {\bf Example 7.}
+\begin{example}{parity-check}
 In Example~6,
 $$
 x^7 - 1 = g(x) h(x) = (1 + x + x^3)(1 + x + x^2 + x^4).
@@ -469,9 +455,8 @@ H =
 \end{array}
 \right).
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
 To determine the error-detecting and error-correcting capabilities of a cyclic code, we need to know something about determinants.  If $\alpha_1, \ldots, \alpha_n$ are elements in a field $F$, then the $n 
 \times n$ matrix  
@@ -722,10 +707,8 @@ m_{2r}(t)]$.  Therefore, $C = \langle g(t) \rangle$.
 \end{proof}
 
 
-\medskip
 
-
-\noindent {\bf Example 8.}
+\begin{example}{x15-1}
 It is easy to verify that $x^{15} - 1 \in {\mathbb Z}_2[x]$ has a
 factorization
 $$
@@ -766,7 +749,7 @@ $$
 \end{array}
 \right).
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
  

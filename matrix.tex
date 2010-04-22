@@ -7,10 +7,8 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Matrix Groups and Symmetry}
- 
- 
- 
+\chapter{Matrix Groups and Symmetry}\label{matrix}
+
 When Felix Klein\index{Klein, Felix} (1849--1925) accepted a chair at
 the University of Erlangen, he outlined in his inaugural address a
 program to classify different geometries. Central to Klein's
@@ -23,16 +21,11 @@ examine some of the classical matrix groups, such as the general linear
 group, the special linear group, and the orthogonal group. We will
 then use these matrix groups to investigate some of the ideas behind
 geometric symmetry.  
- 
- 
- 
+
+
 \section{Matrix Groups}
- 
- 
- 
+
 \subsection*{Some Facts from Linear Algebra}
- 
- 
  
 Before we study matrix groups, we must recall some basic facts from
 linear algebra.  One of the most fundamental ideas of linear algebra
@@ -126,10 +119,7 @@ A {\bold x}.
 \end{eqnarray*}
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 1.}
+\begin{example}{linear_transform}
 If we let $T : {\Bbb R}^2 \rightarrow {\Bbb R}^2$ be the map given by 
 \[
 T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),
@@ -147,10 +137,7 @@ A =
 \end{array}
 \right).
 \]
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{1.5ex}
+\end{example}
  
  
 Since we are interested in groups of matrices, we need to know
@@ -175,10 +162,7 @@ Sometimes an invertible matrix is said to be {\bfi
 nonsingular}\index{Matrix!nonsingular}. 
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 2.}
+\begin{example}{inverse_matrix}
 If $A$ is the matrix
 \[
 \left(
@@ -200,10 +184,7 @@ A^{-1} =
 \]
 We are guaranteed  that $A^{-1}$ exists, since $\det(A) = 2 \cdot 3 - 5
 \cdot 1 = 1$ is nonzero. \mbox{\hspace*{1in}}
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{1.5ex}
+\end{example}
  
  
 Some other facts about determinants will also prove useful in the
@@ -241,8 +222,6 @@ concerned.
  
 \subsection*{The General and Special Linear Groups}
  
- 
- 
 The set of all $n \times n$  invertible matrices forms a group called
 the {\bfi general linear group}\index{Group!general linear}.  We will
 denote this group by $GL_n({\Bbb R})$.  The general linear group has
@@ -255,10 +234,7 @@ that $\det(A) =1$ and $\det(B) = 1$. Then $\det(AB) = \det(A) \det (B)
 denoted by $SL_n({\Bbb R})$. 
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 3.}
+\begin{example}{determinant}
 Given a $2 \times 2$ matrix
 \[
 A =
@@ -309,7 +285,7 @@ y} =  (0,1)^{\rm t}$ is taken  by $A$ to the parallelogram with sides
 $(1,0)^{\rm t}$ and $(1, 1)^{\rm t}$; that is, $A {\bold x} =
 (1,0)^{\rm t}$ and $A {\bold y} = (1, 1)^{\rm t}$. Notice that these
 two parallelograms have the same area.   
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{figure}[htb]
@@ -339,10 +315,7 @@ leave as an exercise the proof that $O(n)$ is a subgroup of $GL_n(
 {\Bbb R})$.
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 4.}
+\begin{example}{orthogonal}
 The following matrices are orthogonal:
 \[
 \left(
@@ -365,11 +338,8 @@ The following matrices are orthogonal:
 \end{array}
 \right).
 \]
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{1.5ex}
- 
+\end{example}
+
  
 There is a more geometric way of viewing the group $O(n)$. The
 orthogonal matrices are exactly those matrices that preserve the
@@ -439,7 +409,7 @@ ${\Bbb R}^n$, then ${\bold y} = 0$.
 \end{proposition}
  
  
-\noindent {\bf Example 5.}
+\begin{example}{}
 The vector ${\bold x} =(3,4)^{\rm t}$ has length $\sqrt{3^2 + 4^2} = 5$.  We
 can also see that the orthogonal matrix 
 \[
@@ -453,10 +423,7 @@ A=
 \]
 preserves the length of this vector. The vector $A{\bold x} =
 (-7/5,24/5)^{\rm t}$ also has length 5. 
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{1.5ex}
+\end{example}
  
  
 Since $\det(A A^{\rm t}) = \det(I) = 1$ and $\det(A) = \det( A^{\rm t}
@@ -635,8 +602,7 @@ Observe that
 \end{eqnarray*}
 \end{proof}
  
- 
-\vspace{1.5ex}
+
  
  
 \begin{figure}[htb]
@@ -649,8 +615,7 @@ Observe that
 \label{O2}
 \end{figure}
  
- 
-\noindent {\bf Example 6.}
+\begin{example}{O2}
 Let us examine the orthogonal group  on ${\Bbb R}^2$ a bit more
 closely.  An element $T \in O(2)$ is determined by its action on
 ${\bold e}_1 = (1, 0)^{\rm t}$ and ${\bold e}_2 = (0, 1)^{\rm t}$. If
@@ -695,10 +660,8 @@ must come from a matrix of the form
 \right).
 \]
 If $\det A =-1$, then $A$ gives a reflection.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
- 
-\vspace{1.5ex}
  
  
 Two of the other matrix or matrix-related groups that we will consider
@@ -841,7 +804,7 @@ The linearity of $f$ easily follows.
 \end{proof}
  
  
-\vspace{1.5ex}
+\medskip
  
  
 For any arbitrary isometry, $f$,  $T_{\bold x} f$ will fix the origin

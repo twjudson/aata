@@ -15,14 +15,12 @@ Many groups may appear to be different at first glance, but can be shown to be t
 \section{Definition and Examples}\label{isomorph_section_1}
 
 Two groups $(G, \cdot)$ and $(H, \circ)$ are {\bfi isomorphic\/}\index{Group!isomorphic} if there exists a one-to-one and onto map $\phi : G \rightarrow H$ such that the group operation is preserved;  that~is, 
-$$
+\[
 \phi( a \cdot b) = \phi( a) \circ \phi( b)
-$$
+\]
 for all $a$ and $b$ in $G$. If $G$ is isomorphic to $H$, we write $G \cong H$\label{noteisomorph}. The map $\phi$ is called an {\bfi isomorphism}\index{Group!isomorphism of}\index{Isomorphism!of groups}. 
 
-\medskip
-
-\noindent {\bf Example 1.}
+\begin{example}{Z4_isomorph}
 To show that ${\mathbb Z}_4 \cong \langle i \rangle$, define a map $\phi: {\mathbb Z}_4 \rightarrow \langle i \rangle$ by $\phi(n) = i^n$.  We must show that $\phi$ is bijective and preserves the group operation.  The map $\phi$ is one-to-one and onto because
 \begin{eqnarray*}
 \phi(0) & = & 1 \\
@@ -31,35 +29,29 @@ To show that ${\mathbb Z}_4 \cong \langle i \rangle$, define a map $\phi: {\math
 \phi(3) & = & -i.
 \end{eqnarray*}
 Since
-$$
+\[
 \phi(m + n) = i^{m+n} = i^m i^n = \phi(m) \phi( n),
-$$
+\]
 the group operation is preserved.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 2.}
+\begin{example}{real_isomorph}
 We can define an isomorphism $\phi$ from the additive group of real numbers $( {\mathbb R}, + )$ to the multiplicative group of positive real numbers  $( {\mathbb R^+}, \cdot )$  with the exponential map; that is,
-$$
+\[
 \phi( x + y) = e^{x + y} = e^x e^y = \phi( x ) \phi( y).
-$$
+\]
 Of course, we must still show that $\phi$ is one-to-one and onto, but this can be determined using calculus. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 3.}
+\begin{example}{rational_isomorph}
 The integers are isomorphic to the subgroup of ${\mathbb Q}^\ast$ consisting of elements of the form $2^n$.  Define a map $\phi: {\mathbb Z} \rightarrow {\mathbb Q}^\ast$ by $\phi( n ) = 2^n$. Then
-$$
+\[
 \phi( m + n ) = 2^{m + n} = 2^m 2^n = \phi( m ) \phi( n ).
-$$
+\]
 By definition the map $\phi$ is onto the subset $\{2^n :n \in {\mathbb Z} \}$ of  ${\mathbb Q}^\ast$.  To show that the map is injective, assume that $m \neq n$.  If we can show that $\phi(m) \neq \phi(n)$, then we are done.  Suppose that $m>n$ and assume that $\phi(m) = \phi(n)$.  Then $2^m = 2^n$ or $2^{m-n} = 1$, which is impossible since $m-n>0$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 4.}
+\begin{example}{units}
 The groups ${\mathbb Z}_8$ and ${\mathbb Z}_{12}$  cannot be isomorphic since they have different orders; however, it is true that $U(8) \cong U(12)$.  We know that
 \begin{eqnarray*}
 U(8) & = & \{1, 3, 5, 7 \} \\
@@ -73,23 +65,21 @@ An isomorphism $\phi : U(8) \rightarrow U(12)$ is then given by
 7 & \mapsto & 11.
 \end{eqnarray*}
 The map $\phi$ is not the only possible isomorphism between these two groups.  We could define another isomorphism $\psi$ by $\psi(1) = 1$, $\psi(3) = 11$, $\psi(5) = 5$, $\psi(7) = 7$. In fact, both of these groups are isomorphic to ${\mathbb Z}_2 \times {\mathbb Z}_2$ (see Example~14 in Chapter~\ref{groups}). 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 5.}
+\begin{example}{not_isomorph}
 Even though $S_3$ and ${\mathbb Z}_6$ possess the same number of elements, we would suspect that they are not isomorphic, because ${\mathbb Z}_6$ is abelian and $S_3$ is nonabelian.  To demonstrate that this is indeed the case, suppose that $\phi : {\mathbb Z}_6 \rightarrow  S_3$ is an isomorphism.  Let $a , b \in S_3$ be two elements such that $ab \neq ba$.  Since $\phi$ is an isomorphism, there exist elements $m$ and $n$ in ${\mathbb Z}_6$ such~that 
 \begin{eqnarray*}
 \phi( m ) & = & a \\
 \phi( n ) & = & b.
 \end{eqnarray*}
 However,
-$$
+\[
 ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n )
 \phi(m) = ba,
-$$
+\]
 which contradicts the fact that $a$ and $b$ do not commute.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 \begin{theorem}\label{isomorph_theorem_1}
 Let $\phi : G \rightarrow H$ be an isomorphism of two groups.  Then the following statements are true. 
@@ -118,9 +108,9 @@ Assertions (1) and (2) follow from the fact that $\phi$ is a bijection.  We will
  
 (3)
 Suppose that $h_1$ and $h_2$ are elements of $H$.  Since $\phi$ is onto, there exist elements $g_1, g_2 \in G$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$.  Therefore, 
-$$
+\[
 h_1 h_2 = \phi(g_1) \phi(g_2) =  \phi(g_1 g_2) = \phi(g_2 g_1) = \phi(g_2) \phi(g_1) = h_2 h_1. 
-$$
+\]
 \end{proof}
 
 \medskip
@@ -133,9 +123,9 @@ All cyclic groups of infinite order are isomorphic to ${\mathbb Z}$.
 
 \begin{proof}
 Let $G$ be a cyclic group with infinite order and suppose that $a$ is a generator of $G$.  Define a map $\phi : {\mathbb Z} \rightarrow  G$ by $\phi : n \mapsto a^n$. Then 
-$$
+\[
 \phi( m+n ) = a^{m+n} = a^m a^n = \phi( m ) \phi( n ).
-$$
+\]
 To show that $\phi$ is injective, suppose that $m$ and $n$ are two elements in ${\mathbb Z}$, where $m \neq n$.  We can assume that $m > n$.  We must show that $a^m \neq a^n$. Let us suppose the contrary; that is, $a^m = a^n$. In this case $a^{m - n} = e$, where $m - n>0$, which contradicts the fact that $a$ has infinite order.  Our map is onto since any element in $G$ can be written as $a^n$ for some integer $n$ and $\phi(n) = a^n$.   
 \end{proof}
 
@@ -170,11 +160,9 @@ Hence, we can modify our goal of classifying all groups to classifying all group
 
 Cayley proved that if $G$ is a group, it is isomorphic to a group of permutations on some set; hence, every group is a permutation group.  Cayley's Theorem is what  we call a representation theorem.  The aim of representation theory is to find an isomorphism of some group $G$ that we wish to study into a group that we know a great deal about, such as a group of permutations or matrices.
 
-\medskip
-
-\noindent {\bf Example 6.}
+\begin{example}{cayley_isomorph}
 Consider the group ${\mathbb Z}_3$.  The Cayley table for ${\mathbb Z}_3$ is as follows. 
-$$
+\[
 \begin{array}{c|ccc}
 +     & 0 & 1 & 2 \\
 \hline
@@ -182,29 +170,29 @@ $$
 1     & 1 & 2 & 0 \\
 2     & 2 & 0 & 1
 \end{array}
-$$
+\]
 The addition table of ${\mathbb Z}_3$ suggests that it is the same as the permutation group $G = \{ (0), (0 1 2), (0 2 1) \}$.  The isomorphism here is 
-\begin{eqnarray*}
-0 \mapsto
+\begin{align*}
+0 & \mapsto
 \begin{pmatrix}
 0 & 1 & 2 \\
 0 & 1 & 2
 \end{pmatrix}
-& = & (0) \\
-1 \mapsto
+= (0) \\
+1 & \mapsto
 \begin{pmatrix}
 0 & 1 & 2 \\
 1 & 2 & 0
 \end{pmatrix}
-& = & (0 1 2) \\
-2 \mapsto
+= (0 1 2) \\
+2 & \mapsto
 \begin{pmatrix}
 0 & 1 & 2 \\
 2 & 0 & 1
 \end{pmatrix}
-& = & (0 2 1).
-\end{eqnarray*}
-\hspace{\fill} $\blacksquare$
+= (0 2 1).
+\end{align*}
+\end{example}
  
 \begin{theorem}[Cayley]\index{Cayley's Theorem}\label{isomorph_theorem_6}
 Every group is isomorphic to a group of permutations.
@@ -212,41 +200,39 @@ Every group is isomorphic to a group of permutations.
 
 \begin{proof}
 Let $G$ be a group.  We must find a group of permutations $\overline{G}$ that is isomorphic to $G$.  For any $g \in G$, define a  function $\lambda_g : G \rightarrow G$ by $\lambda_g(a) = ga$.  We claim that $\lambda_g$ is a permutation of $G$.  To show that $\lambda_g$ is one-to-one, suppose that $\lambda_g(a) = \lambda_g(b)$.  Then  
-$$
+\[
 ga =\lambda_g(a) = \lambda_g(b) = gb.
-$$
+\]
 Hence, $a = b$.  To show that $\lambda_g$ is onto, we must prove that for each $a \in G$, there is a $b$ such that $\lambda_g (b) = a$.  Let $b = g^{-1} a$.  
 
 Now we are ready to define our group $\overline{G}$. Let
-$$
+\[
 \overline{G} = \{ \lambda_g : g \in G \}.
-$$
+\]
 We must show that $\overline{G}$ is a group under composition of functions and find an isomorphism between $G$ and $\overline{G}$.  We have closure under composition of functions since 
-$$
+\[
 (\lambda_g \circ \lambda_h )(a) = \lambda_g(ha) = gha = \lambda_{gh} (a).
-$$
+\]
 Also,
-$$
+\[
 \lambda_e (a) = ea = a
-$$
+\]
 and
-$$
+\[
 (\lambda_{g^{-1}} \circ \lambda_g) (a) = \lambda_{g^{-1}} (ga) = g^{-1} g a = a = \lambda_e (a).
-$$
+\]
 
 We can define an isomorphism from $G$ to $\overline{G}$ by $\phi : g
 \mapsto \lambda_g$. The group operation is preserved since
-$$
+\[
 \phi(gh) = \lambda_{gh} = \lambda_g \lambda_h = \phi(g) \phi(h).
-$$
+\]
 It is also one-to-one, because if $\phi(g)(a) = \phi(h)(a)$, then
-$$
+\[
 ga = \lambda_g a = \lambda_h a=  ha.
-$$
+\]
 Hence, $g = h$.  That $\phi$ is onto follows from the fact that $\phi( g ) = \lambda_g$ for any $\lambda_g \in \overline{G}$. 
 \end{proof}
-
-\medskip
 
 The isomorphism $g \mapsto \lambda_g$ is known as the {\bfi left regular representation\/}\index{Left regular representation} of~$G$. 
 
@@ -267,9 +253,9 @@ Given two groups $G$ and $H$, it is possible to construct a new group from the C
 \subsection*{External Direct Products}
 
 If $(G,\cdot)$ and $(H, \circ)$ are groups, then we can make the Cartesian product of $G$ and $H$ into a new group.  As a set, our group is just the ordered pairs $(g, h) \in G \times H$ where $g \in G$ and $h \in H$. We can define a binary operation on $G \times H$ by 
-$$
+\[
 (g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2);
-$$
+\]
 that is, we just multiply elements in the first coordinate as we do in $G$ and elements in the second coordinate as we do in $H$.  We have specified the particular operations $\cdot$ and $\circ$ in each group here for the sake of clarity; we usually just write $(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)$.  
 
 \begin{proposition}\label{isomorph_theorem_7}
@@ -280,42 +266,34 @@ Let $G$ and $H$ be groups. The set $G \times H$ is a group under the operation $
 Clearly the binary operation defined above is closed. If $e_G$ and $e_H$ are the identities of the groups $G$ and $H$ respectively, then $(e_G, e_H)$ is the identity of $G \times H$.  The inverse of $(g, h) \in G \times H$ is $(g^{-1}, h^{-1})$.  The fact that the operation is associative follows directly from the associativity of $G$ and~$H$.
 \end{proof}
 
-\medskip
-
-\noindent {\bf Example 7. }
+\begin{example}{R2_prodiuct}
 Let ${\mathbb R}$ be the group of real numbers under addition.  The Cartesian product of ${\mathbb R}$ with itself, ${\mathbb R} \times {\mathbb R} = {\mathbb R}^2$, is also a group, in which the group operation is just addition in each coordinate; that is, $(a, b) + (c, d) = (a + c, b + d)$.  The identity is $(0,0)$ and the inverse of $(a, b)$ is $(-a, -b)$.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 8. }
+\begin{example}{Z2xZ2}
 Consider
-$$
+\[
 {\mathbb Z}_2 \times {\mathbb Z}_2 = \{ (0, 0), (0, 1), (1, 0),(1, 1) \}.
-$$
+\]
 Although ${\mathbb Z}_2 \times {\mathbb Z}_2$ and ${\mathbb Z}_4$ both contain four elements, it is easy to see that they are not isomorphic since for every element $(a,b)$ in ${\mathbb Z}_2 \times {\mathbb Z}_2$, $(a,b) + (a,b) = (0,0)$, but ${\mathbb Z}_4$ is cyclic.
-\hspace{\fill} $\blacksquare$
-
-\medskip
+\end{example}
 
 The group $G \times H$ is called the {\bfi external direct product\/}\index{Direct product of groups!external}\index{External direct product} of  $G$ and $H$. Notice that there is nothing special about the fact that we have used only two groups to build a new group. The direct product
-$$
+\[
 \prod_{i = 1}^n G_i = G_1 \times G_2 \times \cdots \times G_n
-$$
+\]
 of the groups $G_1, G_2, \ldots, G_n$ is defined in exactly the same manner. If $G = G_1 = G_2 = \cdots = G_n$, we often write $G^n$ instead of $G_1 \times G_2 \times \cdots \times G_n$.
  
-\medskip
-
-\noindent {\bf Example 9. }
+\begin{example}{Z2^n}
 The group ${\mathbb Z}_2^n$, considered as a set, is just the set of all
 binary $n$-tuples. The group operation is the ``exclusive or'' of two
 binary $n$-tuples. For example, 
-$$
+\[
 (01011101) + (01001011) = (00010110).
-$$
+\]
 This group is important in coding theory, in cryptography, and in many
 areas of computer science.  
-\hspace{\fill} $\blacksquare$
+\end{example}
 
  
 \begin{theorem}
@@ -328,12 +306,10 @@ least common multiple of $r$ and $s$.
 \begin{proof}
 Suppose that $m$ is the least common multiple of $r$ and $s$ and let
 $n = |(g,h)|$. Then 
-$$
-\begin{array}{c}
-(g,h)^m = (g^m, h^m) = (e_G,e_H) \\
-(g^n, h^n) = (g, h)^n = (e_G,e_H).
-\end{array}
-$$
+\begin{align*}
+(g,h)^m & = (g^m, h^m) = (e_G,e_H) \\
+(g^n, h^n) & = (g, h)^n = (e_G,e_H).
+\end{align*}
 Hence, $n$ must divide $m$, and $n \leq m$.  However, by the second
 equation, both $r$ and $s$ must divide $n$; therefore, $n$ is a common
 multiple of $r$ and $s$. Since $m$ is the {\em least common multiple\/}
@@ -348,45 +324,36 @@ is the least common multiple of $r_1, \ldots, r_n$.
 \end{corollary}
  
  
-\medskip
-
- 
-\noindent {\bf Example 10.}
+\begin{example}{Z12xZ60}
 Let $(8, 56) \in {\mathbb Z}_{12} \times  {\mathbb Z}_{60}$. Since
 $\gcd(8,12) = 4$, the order of 8 is $12/4 = 3$ in ${\mathbb Z}_{12}$.
 Similarly, the order of $56$ in ${\mathbb Z}_{60}$ is $15$. The least
 common multiple of 3 and 15 is 15; hence, $(8, 56)$ has order 15 in
 ${\mathbb Z}_{12} \times  {\mathbb Z}_{60}$.
-\hspace{\fill} $\blacksquare$
- 
-
-\medskip
+\end{example}
 
  
-\noindent {\bf Example 11. }
+\begin{example}{Z2xZ3}
 The group ${\mathbb Z}_2 \times {\mathbb Z}_3$ consists of the pairs
-$$
+\[
 \begin{array}{cccccc}
 (0,0),& (0, 1),& (0, 2),& (1,0),& (1, 1),& (1, 2).
 \end{array}
-$$
+\]
 In this case, unlike that of ${\mathbb Z}_2 \times {\mathbb Z}_2$ and
 ${\mathbb Z}_4$, it 
 is true that ${\mathbb Z}_2  \times {\mathbb Z}_3 \cong {\mathbb Z}_6$. We need
 only show that ${\mathbb Z}_2  \times {\mathbb Z}_3$ is cyclic.  It is
 easy to see that $(1,1)$ is a generator for ${\mathbb Z}_2  \times {\mathbb
 Z}_3$. 
-\hspace{\fill} $\blacksquare$
- 
-
-\medskip
+\end{example}
 
  
 The next theorem tells us exactly when the direct product of two
 cyclic groups is cyclic. 
  
 
-\begin{theorem}
+\begin{theorem}\label{Z_pq_theorem}
 The group ${\mathbb Z}_m \times {\mathbb Z}_n$ is isomorphic to ${\mathbb
 Z}_{mn}$ if and only if $\gcd(m,n)=1$. 
 \end{theorem}
@@ -399,11 +366,11 @@ contrapositive; that is, we will show that if $\gcd(m, n) = d >
 1$, then ${\mathbb Z}_m \times {\mathbb Z}_n$ cannot be cyclic. Notice that
 $mn/d$ is divisible by both $m$ and $n$; hence, for any element $(a,b)
 \in {\mathbb Z}_m \times {\mathbb Z}_n$,  
-$$
+\[
 \underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; {\rm
 times}}
 = (0, 0).
-$$
+\]
 Therefore, no $(a, b)$ can generate all of ${\mathbb Z}_m \times {\mathbb
 Z}_n$. 
 
@@ -415,23 +382,23 @@ $\lcm(m,n) = mn$ if and only if $\gcd(m,n)=1$.
 
 \begin{corollary}
 Let $n_1, \ldots, n_k$ be positive integers. Then
-$$
+\[
 \prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}
-$$
+\]
 if and only if $\gcd( n_i, n_j) =1$ for $i \neq j$.
 \end{corollary}
 
  
 \begin{corollary}
 If
-$$
+\[
 m = p_1^{e_1} \cdots  p_k^{e_k},
-$$
+\]
 where the $p_i$s are distinct primes, then
-$$
+\[
 {\mathbb Z}_m \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb
 Z}_{p_k^{e_k}}.
-$$
+\]
 \end{corollary}
  
  
@@ -441,16 +408,16 @@ Since the greatest common divisor of $p_i^{e_i}$ and $p_j^{e_j}$ is
 \end{proof}
 
 
-\vspace{2ex}
+\medskip
 
 
-In Chapter~11, we will prove that all finite abelian groups are
+In Chapter~\ref{struct}, we will prove that all finite abelian groups are
 isomorphic to direct products of
 the form
-$$
+\[
 {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb
 Z}_{p_k^{e_k}}
-$$
+\]
 where $p_1, \ldots, p_k$ are (not necessarily distinct) primes.
 
  
@@ -483,22 +450,16 @@ Then $G$ is the {\bfi internal direct product\/}\index{Direct product of
 groups!internal}\index{Internal direct product} of $H$ and $K$.
 
  
-\medskip
-
- 
-\noindent {\bf Example 12.}
+\begin{example}{U8}
 The group $U(8)$ is the internal direct product of
 \begin{eqnarray*}
 H & = & \{1, 3 \} \\
 K & = & \{1, 5 \}.
 \end{eqnarray*}
-\hspace{\fill} $\blacksquare$
+\end{example}
 
  
-\medskip
-
- 
-\noindent {\bf Example 13.}
+\begin{example}{D6_product}
 The dihedral group $D_6$ is an internal direct product of its two
 subgroups 
 \begin{eqnarray*}
@@ -507,13 +468,10 @@ K & = & \{id, r^2, r^4, s, r^2s, r^4 s   \}.
 \end{eqnarray*}
 It can easily be shown that $K \cong S_3$; consequently, $D_6 \cong
 {\mathbb Z}_2 \times S_3$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
  
-\medskip
-
- 
-\noindent {\bf Example 14.}
+\begin{example}{S3_not_a_product}
 Not every group can be written as the internal direct product of two
 of its proper subgroups.  If the group $S_3$ were an internal direct
 product of its proper subgroups $H$ and $K$, then one of the  subgroups,
@@ -522,7 +480,7 @@ say $H$, would have to have order 3. In this case $H$ is the subgroup $\{
 matter which subgroup we choose for $K$, the condition that $hk = kh$
 will never be satisfied for $h \in H$ and $k \in K$.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
 
  
 \begin{theorem}
@@ -559,16 +517,10 @@ as an exercise.
 \end{proof}
 
  
-\medskip
-
- 
-\noindent {\bf Example 15.}
+\begin{example}{Z6_product}
 The group ${\mathbb Z}_6$ is an internal direct product isomorphic to $\{
 0, 2, 4\} \times \{ 0, 3 \}$. 
-\hspace{\fill} $\blacksquare$
-
- 
-\medskip
+\end{example}
 
  
 We can extend the definition of an internal direct product of $G$ to a
@@ -615,14 +567,12 @@ Prove that ${\mathbb Z} \cong n{\mathbb Z}$ for $n \neq 0$.
 \item
 Prove that ${\mathbb C}^\ast$ is isomorphic to the subgroup of $GL_2(
 {\mathbb R} )$ consisting of matrices of the form 
-$$
-\left(
-\begin{array}{ccc}
+\[
+\begin{pmatrix}
 a & b \\
 -b & a
-\end{array}
-\right).
-$$
+\end{pmatrix}
+\]
  
 
 \item
@@ -631,32 +581,24 @@ Prove or disprove: $U(8) \cong {\mathbb Z}_4$.
 
 \item
 Prove that $U(8)$ is isomorphic to the group of matrices
-$$
-\left(
-\begin{array}{ccc}
+\[
+\begin{pmatrix}
 1 & 0 \\
 0 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{ccc}
+\end{pmatrix},
+\begin{pmatrix}
 1 & 0 \\
 0 & -1
-\end{array}
-\right),
-\left(
-\begin{array}{ccc}
+\end{pmatrix},
+\begin{pmatrix}
 -1 & 0 \\
 0 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{ccc}
+\end{pmatrix},
+\begin{pmatrix}
 -1 & 0 \\
 0 & -1
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
  
 
 \item
@@ -678,61 +620,51 @@ Prove that ${\mathbb Q}$ is not isomorphic to ${\mathbb Z}$.
 \item
 Let $G = {\mathbb R} \setminus \{ -1 \}$ and define a binary operation on
 $G$ by 
-$$
+\[
 a \ast b = a + b + ab.
-$$
+\]
 Prove that $G$ is a group under this operation. Show that $(G, *)$ is
 isomorphic to the multiplicative group of nonzero real numbers.
  
 
 \item
 Show that the matrices
-$$
-\left(
-\begin{array}{ccc}
+\begin{gather*}
+\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\quad
+\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 0 & 1 \\
 0 & 1 & 0
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\quad
+\begin{pmatrix}
 0 & 1 & 0 \\
 1 & 0 & 0 \\
 0 & 0 & 1
-\end{array}
-\right)
-$$
-$$
-\left(
-\begin{array}{ccc}
+\end{pmatrix} \\
+\begin{pmatrix}
 0 & 0 & 1 \\
 1 & 0 & 0 \\
 0 & 1 & 0
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\quad
+\begin{pmatrix}
 0 & 0 & 1 \\
 0 & 1 & 0 \\
 1 & 0 & 0
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\quad
+\begin{pmatrix}
 0 & 1 & 0 \\
 0 & 0 & 1 \\
 1 & 0 & 0
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\end{gather*}
 form a group. Find an isomorphism of $G$ with a more familiar group of
 order~6. 
 
@@ -744,43 +676,37 @@ Find five non-isomorphic groups of order 8.
 \item
 Prove $S_4$ is not isomorphic to $D_{12}$.
  
+% TWJ, 2010/04/21
+% Made correction to exercise at the suggestion of C. Thon
 
 \item
-Let $\omega = \mbox{ cis } (2 \pi i/n)$ be a primitive $n$th root of
+Let $\omega = \cis(2 \pi /n)$ be a primitive $n$th root of
 unity.  Prove that the matrices 
-$$
+\[
 A=
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 \omega & 0 \\
 0 & \omega^{-1}
-\end{array}
-\right)
-$$
-and
-$$
+\end{pmatrix}
+\quad \text{and} \quad
 B =
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 0 & 1 \\
 1 & 0
-\end{array}
-\right)
-$$
-form a multiplicative group isomorphic to $D_n$.
+\end{pmatrix}
+\]
+generate a multiplicative group isomorphic to $D_n$.
  
 
 \item
 Show that the set of all matrices of the form
-$$
+\[
 B =
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 \pm 1 & n \\
 0 & 1
-\end{array}
-\right),
-$$
+\end{pmatrix},
+\]
 where $n \in {\mathbb Z}_n$, is a group isomorphic to $D_n$.
  
 
@@ -790,6 +716,7 @@ List all of the elements of ${\mathbb Z}_4 \times {\mathbb Z}_2$.
 
 \item
 Find the order of each of the following elements.
+
 \begin{enumerate}
  
  \item
@@ -985,9 +912,9 @@ Prove that $G \times H$ is isomorphic to $H \times G$.
 
 \item
 Let $n_1, \ldots, n_k$ be positive integers. Show that
-$$
+\[
 \prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}
-$$
+\]
 if and only if $\gcd( n_i, n_j) =1$ for $i \neq j$.
  
 

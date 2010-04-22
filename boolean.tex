@@ -31,15 +31,12 @@ The relation is {\bfi transitive}: if $(a, b) \in P$ and $(b, c) \in P$, then $(
 \end{enumerate}
 We will usually write $a \preceq b$\label{lessthan} to mean $(a, b) \in P$  unless some symbol is naturally associated with a particular partial order, such as $a \leq b$ with integers $a$ and $b$, or $X \subseteq Y$ with sets $X$ and $Y$.  A set $X$ together with a partial order $\preceq$ is called a {\bfi partially ordered set},\index{Partially ordered set} or {\bfi poset}\index{Poset!definition of}. 
 
-\medskip
-
-\noindent {\bf Example 1.}
+\begin{example}{Z_less_equal}
 The set of integers (or rationals  or reals) is a poset where $a \leq  b$ has the usual meaning for two integers $a$ and $b$ in ${\mathbb Z}$.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 2.}
+\begin{example}{power_set_subset}
 Let $X$ be any set.  We will define the {\bfi power set\/}\index{Power set} of $X$ to be the set of all subsets of $X$. We denote the power set of $X$ by ${\cal P}(X)$. For example, let $X = \{ a, b, c \}$.  Then ${\cal P}(X)$ is  the set of all subsets of the set  $\{ a, b, c \}$: 
 $$
 \begin{array}{cccc}
@@ -48,7 +45,7 @@ $$
 \end{array}
 $$
 On any power set of a set $X$, set inclusion, $\subseteq$, is a partial order.  We can represent the order on $\{ a, b, c \}$ schematically by a diagram such as the one in  Figure~\ref{partial}. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 \begin{figure}[htb]
 \begin{center}
@@ -81,23 +78,20 @@ On any power set of a set $X$, set inclusion, $\subseteq$, is a partial order.  
 \label{partial}
 \end{figure}
 
-\noindent {\bf Example 3.}
+\begin{example}{subgroup_poset}
 Let $G$ be a group. The set of subgroups of $G$ is a poset, where the partial order is set inclusion.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 4.}
+\begin{example}{poorder_not_unique}
 There can be more than one partial order on a particular set.  We can form a partial order on ${\mathbb N}$ by $a \preceq b$ if $a \mid b$.  The relation is certainly reflexive since $a \mid a$ for all $a \in {\mathbb N}$.  If $m \mid n$ and $n \mid m$, then $m = n$; hence, the relation is also antisymmetric.  The relation is transitive, because if $m \mid n$ and $n \mid p$, then $m \mid p$.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 5.}
+\begin{example}{poset_div}
 Let $X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}$ be the set of divisors of 24 with the partial order defined in Example~4. Figure~\ref{Poset1} shows the partial order on $X$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
 \begin{figure}[htb]
 \begin{center}
@@ -129,13 +123,11 @@ Let $X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}$ be the set of divisors of 24 with the p
 
 Let $Y$ be a subset of a poset $X$. An element $u$ in $X$ is an {\bfi upper bound\/}\index{Upper bound} of $Y$ if $a \preceq u$ for every element $a \in Y$. If $u$ is an upper bound of $Y$ such that $u \preceq v$ for every other upper bound $v$ of $Y$, then $u$ is called a {\bfi least upper bound\/}\index{Least upper bound} or {\bfi supremum\/}\index{Supremum} of $Y$. An element $l$ in $X$ is said to be a {\bfi lower bound\/}\index{Lower bound} of $Y$ if $l \preceq a$ for all $a \in Y$. If $l$ is a lower bound of $Y$ such that $k \preceq l$ for every other lower bound $k$ of $Y$, then $l$ is called a {\bfi greatest lower bound\/}\index{Greatest lower bound} or {\bfi infimum\/}\index{Infimum} of $Y$.
 
-\medskip
 
-\noindent {\bf Example 6.}
+\begin{example}{poset_gcd}
 Let $Y = \{  2, 3, 4, 6 \}$ be contained in the set $X$ of Example 5.  Then $Y$ has upper bounds 12 and 24, with 12 as a least upper bound.  The only lower bound is 1; hence, it must be a greatest lower bound.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
 As it turns out, least upper bounds and greatest lower bounds are unique if they exist.
 
@@ -166,10 +158,8 @@ the {\bfi meet\/}\index{Meet}\label{meet} of $a$ and $b$ and is denoted
 by $a \wedge b$.
  
  
-\medskip
- 
- 
-\noindent {\bf Example 7.}
+
+\begin{example}{lub_glb}
 Let $X$ be a set. Then the power set of $X$, ${\cal P}(X)$, is a
 lattice. For two sets $A$ and $B$ in ${\cal P}(X)$, the least upper
 bound of $A$ and $B$ is $A \cup B$. Certainly $A \cup B$ is an upper
@@ -178,13 +168,11 @@ bound of $A$ and $B$, since $A \subseteq A \cup B$ and $B \subseteq A
 $C$ must contain $A \cup B$; hence, $A \cup B$ is the least upper bound
 of $A$ and $B$. Similarly,  the greatest lower bound of $A$ and $B$ is
 $A \cap B$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 8.}
+
+\begin{example}{subgroup_lattice}
 Let $G$ be a group and suppose that $X$ is the set of subgroups of
 $G$.  Then $X$ is a poset ordered by set-theoretic inclusion,
 $\subseteq$.  The set of subgroups of $G$ is also a lattice.  If $H$
@@ -192,10 +180,9 @@ and $K$ are subgroups of $G$, the greatest lower bound of $H$ and $K$
 is $H \cap K$. The set $H \cup K$ may not be a subgroup of $G$.  We
 leave it as an exercise to show that the least upper bound of $H$ and
 $K$ is the subgroup generated by $H \cup K$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
- 
-\medskip
+
  
  
 In set theory we have certain duality conditions. For example, by De
@@ -945,12 +932,11 @@ a' = I$ are shown in Figure~\ref{IandO}.
  
  
  
- 
-\noindent {\bf Example 9.}
+\begin{example}{switching_circuit}
 Every Boolean expression represents a switching circuit. For
 example, given the expression $(a \vee b) \wedge (a \vee b') \wedge (a
 \vee b)$, we can construct the circuit in Figure~\ref{Circuit2}.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
 \begin{figure}[htb]
@@ -1008,10 +994,8 @@ algebra axioms not yet verified. We can now apply the techniques of
 Boolean algebras to switching theory. 
  
  
-\medskip
- 
- 
-\noindent {\bf Example 10.}
+
+\begin{example}{boolean_circuit}
 Given a complex circuit, we can now apply the techniques of
 Boolean algebra to reduce it to a simpler one. Consider the circuit in 
 Figure~\ref{Circuit2}. Since 
@@ -1028,7 +1012,7 @@ a,
 \end{eqnarray*}
 we can replace the more complicated circuit with a circuit containing
 the single switch $a$ and achieve the same function.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  

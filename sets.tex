@@ -9,11 +9,14 @@
 %%%%(c)
 \chap{Preliminaries}{sets}
 %% \chapter{Preliminaries}\label{sets}
+
+%% TWJ, 2010/03/31
+%% Chapters now begin with Chapter 1
  
 A certain amount of mathematical maturity is necessary to find and study applications of abstract algebra.  A basic knowledge of set theory, mathematical induction, equivalence relations, and matrices is a must.  Even more important is the ability to read and understand mathematical proofs.  In this chapter we will outline the background needed for a course in abstract algebra. 
  
 
-\section{A Short Note on Proofs}\label{sets_a_short_note}
+\section{A Short Note on Proofs}\label{sets_short_note}
  
 Abstract mathematics is different from other sciences. In laboratory sciences such as chemistry and physics, scientists perform experiments to discover new principles and verify theories.  Although mathematics is often motivated by physical experimentation or by computer simulations, it is made rigorous through the use of logical arguments.  In studying abstract mathematics, we take what is called an  axiomatic approach; that is, we take a collection of objects $\mathcal S$ and assume some rules about their structure.  These rules are called {\bfi axioms}.  Using the axioms for $\mathcal S$, we wish to derive other information about $\mathcal S$ by using logical arguments.  We require that our axioms be consistent; that is, they should not contradict one another.  We also demand that there not be too many axioms.  If a system of axioms is too restrictive,  there will be few examples of the mathematical structure.  
 
@@ -34,9 +37,9 @@ $2x = 6$ exactly when $x = 4$.
  
 \item
 If $ax^2 + bx + c = 0$ and $a \neq 0$, then
-$$
+\[
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
-$$
+\]
  
 \item
 $x^3 - 4x^2 + 5 x - 6$.
@@ -45,16 +48,15 @@ $x^3 - 4x^2 + 5 x - 6$.
 All but the first  and last examples are statements, and must be either true or false.  
  
 A {\bfi mathematical proof\/} is nothing more than a convincing argument about the accuracy  of a statement. Such an argument should contain enough detail to convince the audience; for instance, we can see that the statement ``$2x=6$ exactly when $x = 4$'' is false by evaluating $2 \cdot 4$ and noting that $6 \neq 8$, an argument that would satisfy anyone. Of course, audiences may vary widely: proofs can be addressed to another student, to a professor, or to the reader of a text.  If more detail than  needed is presented in the proof, then the  explanation will be either long-winded or poorly written.  If too much detail is omitted, then the proof may  not be convincing.  Again it is important to keep the audience in mind.  High school students require much more detail than do graduate students.  A good rule of thumb for an argument in an introductory abstract algebra course is that it should be written to convince one's peers, whether those peers be other students or other readers of the text. 
- 
- 
+
 Let us examine different types of statements.  A statement could be as simple as ``$10/5 = 2$''; however, mathematicians are usually interested in more complex statements such as ``If $p$, then $q$,'' where $p$ and $q$ are both statements.  If certain statements are known or assumed to be true, we wish to know what we can say about other statements.  Here $p$ is called the {\bfi hypothesis\/} and $q$ is known as the {\bfi conclusion}.  Consider the following statement: If $ax^2 + bx + c = 0$ and $a \neq 0$, then  
-$$
+\[
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
-$$
+\]
 The hypothesis is $ax^2 + bx + c = 0$ and $a \neq 0$; the conclusion is 
-$$
+\[
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
-$$
+\]
 Notice that the  statement says nothing about whether or not the hypothesis is true. However, if this entire statement is true and we can show that $ax^2 + bx + c = 0$ with $a \neq 0$ is true, then the conclusion {\em must\/} be true.  A proof of this statement might simply be a series of equations: 
 \begin{eqnarray*}
 ax^2 + bx + c & = & 0 \\
@@ -98,7 +100,7 @@ Although it is usually better to find a direct proof of a theorem, this task  ca
 Remember that one of the main objectives of higher mathematics is proving theorems. Theorems are tools that make new and productive applications of mathematics possible.  We use examples to give insight  into existing theorems and to foster intuitions as to what new theorems might be true.  Applications, examples, and proofs are tightly interconnected---much more so than they may seem at first appearance.
  
  
-\section{Sets and Equivalence Relations}\label{sets_sets_and_equivalence}
+\section{Sets and Equivalence Relations}\label{sets_equivalence}
  
  
 \subsection*{Set Theory}
@@ -106,21 +108,19 @@ Remember that one of the main objectives of higher mathematics is proving theore
 A {\bfi set\/} is a well-defined collection of objects; that is, it is defined in such a manner that we can determine for any given object $x$ whether or not $x$ belongs to the set.  The objects that belong to a set are called its {\bfi elements} or {\bfi members}. We will denote sets by capital letters, such as $A$ or $X$; if $a$ is an element of the set $A$, we write $a \in A$\label{sets_membership}.
 
 A set is usually specified either by listing all of its elements inside a pair of braces or by stating the property that determines whether or not an object $x$ belongs to the set. We might write
-$$
+\[
 X = \{ x_1, x_2, \ldots, x_n \}
-$$
+\]
 for a set containing elements $x_1, x_2, \ldots, x_n$ or
-$$
+\[
 X = \{ x :x \mbox{ satisfies ${\mathcal P}$}\}
-$$
+\]
 if each $x$ in $X$ satisfies a certain property ${\mathcal P}$.  For example, if $E$ is the set of even positive integers, we can describe $E$ by writing either 
-$$
+\[
 E = \{2, 4, 6, \ldots \}
-$$
-or
-$$
+\quad \text{or} \quad
 E = \{ x : x \mbox{ is an even integer and $x > 0$} \}.
-$$
+\]
 We write $2 \in E$ when we want to say that 2 is in the set $E$, and $-3 \notin E$ to say that $-3$ is not in the set $E$.
 
 Some of the more important sets that we will consider are the following: 
@@ -133,69 +133,60 @@ Some of the more important sets that we will consider are the following:
 \end{gather*}
 
 We find various relations between sets and can perform operations on sets.  A set $A$ is a {\bfi subset\/} of $B$, written $A \subset B$\label{sets_contain} or $B \supset A$, if every element of $A$ is also an element of $B$.  For example,  
-$$
+\[
 \{4,5,8\} \subset \{2, 3, 4, 5, 6, 7, 8, 9 \}
-$$
+\]
 and
-$$
+\[
 {\mathbb N} \subset {\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}.
-$$
+\]
 Trivially, every set is a subset of itself.  A set $B$ is a {\bfi proper subset\/} of a set $A$ if $B \subset A$ but $B \neq A$. If $A$ is not a subset of $B$, we write $A \notsubset B$; for example, $\{4, 7, 9\} \notsubset \{2, 4, 5,  8, 9 \}$.  Two sets are {\bfi equal}, written $A = B$, if we can show that $A \subset B$ and $B \subset A$.  
 
 It is convenient to have a set with no elements in it.  This set is called the {\bfi empty set\/} and is denoted by $\emptyset$\label{sets_emptyset}.  Note that the empty set is a subset of every set.  
 
 To construct new sets out of old sets, we can perform certain operations: the {\bfi union\/} $A \cup B$ of two sets $A$ and $B$ is defined as  
-$$
+\[
 A \cup B\label{sets_union} = \{x : \mbox{ $x \in A$ or $x \in B$} \};
-$$
+\]
 the {\bfi intersection\/} of $A$ and $B$  is defined by
-$$
+\[
 A \cap B\label{sets_intersection} = \{x : \mbox{ $x \in A$ and $x \in B$} \}.
-$$
+\]
 If $A = \{1, 3, 5\}$ and $B = \{ 1, 2, 3, 9 \}$, then
-$$
+\[
 A \cup B = \{1, 2, 3, 5, 9 \}
-$$
-and
-$$
+\quad \text{and} \quad
 A \cap B = \{ 1, 3 \}.
-$$
+\]
 We can consider the union and the intersection of more than two sets.  In this case we write 
-$$
+\[
 \bigcup_{i = 1}^{n} A_{i} = A_{1} \cup \ldots \cup A_n
-$$
+\]
 and
-$$
+\[
 \bigcap_{i = 1}^{n} A_{i} = A_{1} \cap \ldots \cap A_n
-$$
+\]
 for the union and intersection, respectively, of the collection of sets $A_1, \ldots A_n$.
 
 When two sets have no elements in common, they are said to be {\bfi disjoint}; for example, if $E$ is the set of even integers and $O$ is the set of odd integers, then $E$ and $O$ are disjoint.  Two sets $A$ and $B$ are disjoint exactly when $A \cap B = \emptyset$. 
 
 Sometimes we will work within one fixed set $U$, called the {\bfi universal set}.  For any set $A \subset U$, we define the {\bfi complement\/} of $A$, denoted by $A'$\label{sets_complement}, to be the set 
-$$
+\[
 A' = \{ x : \mbox{ $x \in U$ and $x \notin A$} \}.
-$$
+\]
 
 We define the {\bfi difference\/} of two sets $A$ and $B$ to be
-$$
+\[
 A \setminus B\label{sets_difference} = A \cap B'  = \{ x : \mbox{ $x \in A$ and $x \notin B$} \}.
-$$
+\]
 
-%\begin{example}{universal}
-%Suppose $A$ is a universal set and we know everything there is to know about this set and all of its subsets and its properties and everything else there is to know.  Then we can prove anything.
-%\end{example}
-
- 
-\begin{example}{universal}
+\begin{example}{operations}
 Let ${\mathbb R}$ be the universal set and suppose that
-$$
+\[
 A = \{ x \in {\mathbb R} : 0 < x \leq 3 \}
-$$
-and
-$$
+\quad \text{and} \quad
 B = \{ x \in {\mathbb R} : 2 \leq x < 4 \}.
-$$
+\]
 Then
 \begin{eqnarray*}
 A \cap B & = & \{ x \in {\mathbb R} : 2 \leq x \leq 3 \} \\
@@ -210,22 +201,22 @@ A' & = & \{ x \in {\mathbb R} : \mbox{ $x \leq 0$ or $x > 3$
 Let $A$, $B$, and $C$ be sets. Then
 \begin{enumerate}
  
-\rm \item \it
+\rm\item\it
 $A \cup A = A$, $A \cap A = A$, and $A \setminus A = \emptyset$;
  
-\rm \item \it
+\rm\item\it
 $A \cup \emptyset = A$ and $A \cap \emptyset = \emptyset$;
  
-\rm \item \it
+\rm\item\it
 $A \cup (B \cup C) = (A \cup B) \cup C$ and  $A \cap (B \cap C) = (A \cap B) \cap C$;
  
-\rm \item \it
+\rm\item\it
 $A \cup B = B \cup A$ and $A \cap B = B \cap A$;
  
-\rm \item \it
+\rm\item\it
 $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$;
  
-\rm \item \it
+\rm\item\it
 $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
  
 \end{enumerate}
@@ -272,14 +263,14 @@ C$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{theorem}[De Morgan's Laws]\index{De Morgan's laws!for sets}\label{sets_theorem_de_morgan}
+\begin{theorem}[De Morgan's Laws]\index{De Morgan's laws!for sets}\label{sets_de_morgan}
 Let $A$ and $B$ be sets. Then 
 \begin{enumerate}
  
-\rm \item \it
+\rm\item\it
 $(A \cup B)' = A' \cap B'$; 
  
-\rm \item \it
+\rm\item\it
 $(A \cap B)' = A' \cup B'$.
  
 \end{enumerate}
@@ -294,13 +285,11 @@ To show the reverse inclusion, suppose that $x \in A' \cap B'$.  Then $x \in A'$
 The proof of (2) is left as an exercise.
 \end{proof}
  
-\medskip
- 
 \begin{example}{other_relations}
 Other relations between sets often hold true.  For example,
-$$
+\[
 ( A \setminus B) \cap (B \setminus A) = \emptyset.
-$$
+\]
 To see that this is true, observe that
 \begin{eqnarray*}
 ( A \setminus B) \cap (B \setminus A)
@@ -316,43 +305,40 @@ A \cap A' \cap B \cap B' \\
 \subsection*{Cartesian Products and Mappings}
 
 Given sets $A$ and $B$, we can define a new set $A \times\label{sets_cartesian} B$, called the {\bfi Cartesian product\/}  of $A$ and $B$, as a set of ordered pairs.  That is, 
-$$
+\[
 A \times B = \{ (a,b) : \mbox{ $a \in A$ and $b \in B$} \}.
-$$
+\]
+
  
-\medskip
- 
-\begin{example}{cartesian}
+\begin{example}{cartesian_products}
 If $A = \{ x, y \}$, $B = \{ 1, 2, 3 \}$, and $C = \emptyset$, then $A \times B$ is the set 
-$$
+\[
 \{ (x, 1), (x, 2), (x, 3), (y, 1), (y, 2), (y, 3) \}
-$$
+\]
 and
-$$
+\[
 A \times C = \emptyset.
-$$
+\]
 \end{example}
 
 We define the {\bfi Cartesian product of $n$ sets\/} to be
-$$
+\[
 A_1 \times \cdots \times A_n = \{ (a_1, \ldots, a_n): a_i \in A_i {\rm\; for\;} i = 1, \ldots, n \}.
-$$
+\]
 If $A = A_1 = A_2 = \cdots = A_n$, we often write $A^n$ for $A \times \cdots \times A$ (where $A$ would be written $n$ times)\label{sets_ncartesian}.   For example, the set ${\mathbb R}^3$ consists of all of 3-tuples of real numbers.
  
 Subsets of $A \times B$ are called {\bfi relations}.  We will define a  {\bfi mapping\/}\index{Mapping|see{Function}} or {\bfi function}\index{Function!definition of} $f \subset A \times B$ from a set $A$ to a set $B$ to be the special type of  relation in which for each element $a \in A$ there is a unique element $b \in B$ such that $(a, b) \in f$; another way of saying this is that for every element in $A$, $f$ assigns a unique element in $B$.  We usually write $f:A \rightarrow B$ or $A \stackrel{f}{\rightarrow} B$.  Instead of writing down ordered pairs  $(a,b) \in A \times B$, we write $f(a) = b$ or $f : a \mapsto b$.  The set  $A$ is called the {\bfi domain\/}\index{Function!domain of} of $f$ and   
-$$
+\[
 f(A) = \{ f(a) : a \in A \} \subset B
-$$
+\]
 is called the {\bfi range\/}\index{Function!range of} or {\bfi image\/} of $f$.  We can think of the elements in the function's domain as input values and the elements in the function's range as output values.  
  
-\begin{figure}[htb]
-\begin{center}
-\centerline {
-\includegraphics[width=2.5in]{sets_figure_mappings}
-}
-\end{center}
+\begin{figure}[htb]\label{sets_figure_mappings}
 \caption{Mappings}
-\label{sets_figure_mappings}
+\bigskip
+\begin{center}
+\includegraphics[width=2.5in]{sets_figure_mappings}
+\end{center}
 \end{figure}
 
 \begin{example}{mappings}
@@ -365,26 +351,20 @@ Consider the relation $f : {\mathbb Q} \rightarrow {\mathbb Z}$ given by $f(p/q)
 
 If $f:A \rightarrow B$ is a map and the image of $f$ is $B$, i.e., $f(A) = B$, then $f$ is said to be {\bfi onto\/}\index{Function!onto} or {\bfi surjective}\index{Function!surjective}.  A map is {\bfi one-to-one\/}\index{Function!one-to-one} or {\bfi injective\/}\index{Function!injective} if $a_1 \neq a_2$ implies $f(a_1) \neq f(a_2)$.  Equivalently, a function is one-to-one if $f(a_1) = f(a_2)$ implies $a_1 = a_2$.  A map that is both one-to-one and onto is called {\bfi bijective}\index{Function!bijective}.
 
-
-
 \begin{example}{one_to_one_onto}
 Let $f:{\mathbb Z} \rightarrow {\mathbb Q}$ be defined by $f(n) = n/1$.  Then $f$ is one-to-one but not onto.  Define $g : {\mathbb Q} \rightarrow {\mathbb Z}$ by $g(p/q) = p$ where $p/q$ is a rational number expressed in its lowest terms with a positive denominator.  The function $g$ is onto but not one-to-one. 
 \end{example}
 
 Given two functions, we can construct a new function by using the range of the first function as the domain of the second function.  Let $f : A \rightarrow B$ and $g : B \rightarrow C$ be mappings.  Define a new map, the {\bfi composition\/}\index{Function!composition of} of $f$ and $g$ from $A$ to $C$, by $(g \circ f)(x) = g(f(x))$.
 
-\begin{figure}[htb]
+\begin{figure}[htb]\label{sets_figure_composition}
 \begin{center}
-\centerline {
-\includegraphics[width=3.5in]{sets_figure_composition}
-}
-\end{center}
-\label{sets_figure_composition}
 \caption{Composition of maps}
+\bigskip
+\includegraphics[width=3.5in]{sets_figure_composition}
+\end{center}
 \end{figure}
- 
 
- 
 \begin{example}{composition}
 Consider the functions $f: A \rightarrow B$ and $g: B \rightarrow C$ that are defined in Figure~\ref{sets_figure_composition}(a).  The composition of these functions, $g \circ f: A \rightarrow C$, is defined in
 Figure~\ref{sets_figure_composition}(b). 
@@ -392,42 +372,42 @@ Figure~\ref{sets_figure_composition}(b).
 
 \begin{example}{composition_noncommute}
 Let $f(x) = x^2$ and $g(x) = 2x + 5$. Then
-$$
+\[
 (f \circ g)(x) = f(g(x)) = (2x + 5)^2 = 4x^2 + 20x + 25 
-$$
+\]
 and
-$$
+\[
 (g \circ f)(x) = g(f(x)) = 2x^2 + 5.
-$$
+\]
 In general, order makes a difference; that is, in most cases $f \circ g \neq g \circ f$. 
 \end{example}
  
 \begin{example}{composition_commute}
 Sometimes it is the case that $f \circ g= g \circ f$.  Let $f(x) = x^3$ and $g(x) = \sqrt[3]{x}$. Then 
-$$
+\[
 (f \circ g )(x) = f(g(x)) = f( \sqrt[3]{x}\, ) = (\sqrt[3]{x}\, )^3 = x
-$$
+\]
 and
-$$
+\[
 (g \circ f )(x) = g(f(x)) = g( x^3) = \sqrt[3]{ x^3} = x.
-$$
+\]
 \end{example}
  
 \begin{example}{linear_map}
 Given a $2 \times 2$ matrix
-$$
+\[
 A =
 \begin{pmatrix}
 a & b \\
 c & d
 \end{pmatrix},
-$$
+\]
 we can define a map $T_A : {\mathbb R}^2 \rightarrow {\mathbb R}^2$ by 
-$$
+\[
 T_A (x,y) = (ax + by, cx +dy)
-$$
+\]
 for $(x,y)$ in ${\mathbb R}^2$.  This is actually matrix multiplication; that is,
-$$
+\[
 \begin{pmatrix}
 a & b \\
 c & d
@@ -440,7 +420,7 @@ x \\ y
 ax + by \\
 cx +dy
 \end{pmatrix}.
-$$
+\]
 Maps from ${\mathbb R}^n$ to ${\mathbb R}^m$ given by matrices are called {\bfi linear maps\/} or {\bfi linear transformations}\index{Linear transformation!definition of}.
 \end{example}
 
@@ -452,7 +432,7 @@ Suppose that $S = \{ 1,2,3  \}$. Define a map $\pi :S\rightarrow S$ by
 \pi( 3 ) & = & 3.
 \end{eqnarray*}
 This is a bijective map.  An alternative way to  write $\pi$ is
-$$
+\[
 \begin{pmatrix}
 1 & 2 & 3 \\
 \pi(1) & \pi(2) & \pi(3)
@@ -462,7 +442,7 @@ $$
 1 & 2 & 3 \\
 2 & 1 & 3
 \end{pmatrix}.
-$$
+\]
 For any set $S$, a one-to-one and onto mapping $\pi : S \rightarrow S$ is called a {\bfi permutation\/}\index{Permutation!definition of} of $S$. 
 \end{example}
 
@@ -470,16 +450,16 @@ For any set $S$, a one-to-one and onto mapping $\pi : S \rightarrow S$ is called
 Let $f : A \rightarrow B$, $g : B \rightarrow C$, and $h : C \rightarrow D$. Then  
 \begin{enumerate}
  
-\rm \item \it
+\rm\item\it
 The composition of mappings is associative; that is, $(h \circ g) \circ f = h \circ (g \circ f)$;  
  
-\rm \item \it
+\rm\item\it
 If $f$ and $g$ are both one-to-one, then the mapping $g \circ f$ is one-to-one; 
  
-\rm \item \it
+\rm\item\it
 If $f$ and $g$ are both onto, then the mapping $g \circ f$ is onto;  
  
-\rm \item \it
+\rm\item\it
 If $f$ and $g$ are bijective, then so is $g \circ f$.
  
 \end{enumerate}
@@ -490,9 +470,9 @@ We will prove (1) and (3). Part (2) is left as an exercise.  Part (4) follows di
  
 (1) 
 We must show that
-$$
+\[
 h \circ (g \circ f) = (h \circ g) \circ f.
-$$
+\]
 For $a \in A$ we have
 \begin{eqnarray*}
 (h \circ (g \circ f))(a) & = & h((g \circ f)(a)) \\
@@ -503,9 +483,9 @@ For $a \in A$ we have
  
 (3) 
 Assume that $f$ and $g$ are both onto functions.  Given $c \in C$, we must show that there exists an $a \in A$ such that $(g \circ f)(a) = g(f(a)) = c$.  However, since $g$ is onto, there is a $b \in B$ such that $g(b) = c$.  Similarly, there is an $a \in A$ such that $f(a) = b$.  Accordingly, 
-$$
+\[
 (g \circ f)(a) = g(f(a)) = g(b) = c.
-$$
+\]
 \end{proof}
  
 \medskip
@@ -513,90 +493,91 @@ $$
 If $S$ is any set, we will use $id_S$ or $id$\label{sets_identity} to denote the {\bfi identity mapping\/}\index{Function!identity} from $S$ to itself.  Define this map by $id(s) = s$ for all $s \in S$.  A map $g: B \rightarrow A$ is an {\bfi inverse mapping\/} of $f: A \rightarrow B$ if $g \circ f = id_A$ and $f \circ g = id_B$; in other words, the inverse function of a function simply ``undoes'' the function.   A map is said to be {\bfi invertible\/}\index{Function!invertible} if it has an inverse.  We usually write $f^{-1}$ for the inverse of $f$.  
 
 \begin{example}{inverse_function}
-The function $f(x) = x^3$ has inverse $f^{-1}(x) = \sqrt[3]{x}$ by Example~\ref{example:sets:composition_commute}. \mbox{\hspace{1in}}
+The function $f(x) = x^3$ has inverse $f^{-1}(x) = \sqrt[3]{x}$ by Example~\ref{example:sets:composition_commute}. 
+\hspace*{1in}
 \end{example}
 
 \begin{example}{exponential}
 The natural logarithm and the exponential functions, $f(x) = \ln x$ and $f^{-1}(x) = e^x$, are inverses of each other provided that we are careful about choosing domains.  Observe that  
-$$
+\[
 f(f^{-1}(x)) = f(e^x) = \ln e^x = x
-$$
+\]
 and
-$$
+\[
 f^{-1}(f(x)) = f^{-1}(\ln x) = e^{\ln x} = x
-$$
+\]
 whenever composition makes sense.
 \end{example}
 
 \begin{example}{inverse_matrix}
 Suppose that
-$$
+\[
 A =
 \begin{pmatrix}
 3 & 1 \\
 5 & 2
 \end{pmatrix}.
-$$
+\]
 Then $A$ defines a map from ${\mathbb R}^2$ to ${\mathbb R}^2$ by
-$$
+\[
 T_A (x,y) = (3x +  y, 5x +2y).
-$$
+\]
 We can find an inverse map of $T_A$ by simply inverting the matrix $A$; that is, $T_A^{-1} = T_{A^{-1}}$. In this example,
-$$
+\[
 A^{-1} =
 \begin{pmatrix}
 2  & -1 \\
 -5 &  3
 \end{pmatrix};
-$$
+\]
 hence, the inverse map is given by
-$$
+\[
 T_A^{-1} (x,y) = (2x -  y, -5x + 3y).
-$$
+\]
 It is easy to check that
-$$
+\[
 T^{-1}_A \circ T_A (x,y) = T_A \circ T_A^{-1} (x,y) = (x,y).
-$$
+\]
 Not every map has an inverse.  If we consider the map
-$$
+\[
 T_B (x,y) = (3x , 0 )
-$$
+\]
 given by the matrix
-$$
+\[
 B =
 \begin{pmatrix}
 3 & 0 \\
 0 & 0
 \end{pmatrix},
-$$
+\]
 then an inverse map would have to be of the form
-$$
+\[
 T_B^{-1} (x,y) = (ax + by, cx +dy)
-$$
+\]
 and
-$$
+\[
 (x,y) = T \circ T_B^{-1} (x,y) = (3ax + 3by, 0)
-$$
+\]
 for all $x$ and $y$.  Clearly this is  impossible because $y$ might not be 0. 
 \end{example}
 
 \begin{example}{inverse_permutation}
 Given the permutation
-$$
+\[
 \pi =
 \begin{pmatrix}
 1 & 2 & 3 \\
 2 & 3 & 1
 \end{pmatrix}
-$$
+\]
 on $S = \{ 1,2,3 \}$, it is easy to see that the permutation defined by
-$$
+\[
 \pi^{-1} =
 \begin{pmatrix}
 1 & 2 & 3 \\
 3 & 1 & 2
 \end{pmatrix}
-$$
+\]
 is the inverse of $\pi$.  In fact, any bijective mapping possesses an inverse, as we will see in the next theorem.
 \end{example}
  
@@ -631,17 +612,17 @@ use that notation.
 
 \begin{example}{equivalent_fractions}
 Let $p$, $q$, $r$, and $s$ be integers, where $q$ and $s$ are nonzero.  Define $p/q \sim r/s$ if $ps = qr$.  Clearly $\sim$ is reflexive and symmetric.  To show that it is also transitive, suppose that $p/q \sim r/s$ and $r/s \sim t/u$, with $q$, $s$, and $u$ all nonzero.  Then $ps = qr$ and $ru = st$. Therefore, 
-$$
+\[
 psu = qru = qst.
-$$
+\]
 Since $s \neq 0$, $pu = qt$. Consequently, $p/q \sim t/u$.
 \end{example}
 
 \begin{example}{equivalent_derivative}
 Suppose that $f$ and $g$ are differentiable functions on ${\mathbb R}$.  We can define an equivalence relation on such functions by letting $f(x) \sim g(x)$ if $f'(x) = g'(x)$. It is clear that $\sim$ is both reflexive and symmetric.  To demonstrate transitivity, suppose that $f(x) \sim g(x)$ and  $g(x) \sim h(x)$.  From calculus we know that $f(x) - g(x) = c_1$ and $g(x)- h(x) = c_2$, where $c_1$ and $c_2$ are both constants. Hence, 
-$$
+\[
 f(x) - h(x) = ( f(x) - g(x)) + ( g(x)- h(x))  = c_1 - c_2
-$$
+\]
 and $f'(x) - h'(x) =0$. Therefore, $f(x) \sim h(x)$.
 \end{example}
 
@@ -651,45 +632,43 @@ For $(x_1, y_1 )$ and $(x_2, y_2)$ in ${\mathbb R}^2$, define $(x_1, y_1 ) \sim 
 
 \begin{example}{equivalent_matrices}
 Let $A$ and $B$ be \mbox{$2 \times 2$} matrices with entries in the real numbers. We can define an equivalence relation on the set of $2 \times 2$ matrices, by saying $A \sim B$ if there exists an invertible matrix $P$ such that $PAP^{-1} = B$.  For example, if 
-$$
+\[
 A =
 \begin{pmatrix}
 1 & 2 \\
 -1 & 1
 \end{pmatrix}
-$$
-and
-$$
+\quad \text{and} \quad
 B =
 \begin{pmatrix}
 -18 & 33 \\
 -11 & 20
 \end{pmatrix},
-$$
+\]
 then $A \sim B$ since $PAP^{-1} = B$ for
-$$
+\[
 P =
 \begin{pmatrix}
 2 & 5 \\
 1 & 3
 \end{pmatrix}.
-$$
+\]
 Let $I$ be the $2 \times 2$ identity matrix; that is,
-$$
+\[
 I =
 \begin{pmatrix}
 1 & 0 \\
 0 & 1
 \end{pmatrix}.
-$$
+\]
 Then $IAI^{-1} = IAI = A$; therefore, the relation is reflexive.  To show symmetry, suppose that $A \sim B$.  Then there exists an invertible matrix $P$ such that $PAP^{-1} = B$.  So 
-$$
+\[
 A = P^{-1} B P = P^{-1} B (P^{-1})^{-1}.
-$$
+\]
 Finally, suppose that $A \sim B$ and $B \sim C$.  Then there exist invertible matrices $P$ and $Q$ such that $PAP^{-1} = B$ and  $QBQ^{-1} = C$.  Since 
-$$
+\[
 C = QBQ^{-1} = QPAP^{-1} Q^{-1} = (QP)A(QP)^{-1},
-$$
+\]
 the relation is transitive.  Two matrices that are equivalent in this manner are said to be {\bfi similar}\index{Matrix!similar}. 
 \end{example}
 
@@ -727,9 +706,9 @@ We defined an equivalence class on ${\mathbb R}^2$ by $(x_1, y_1 ) \sim (x_2, y_
  
 \begin{example}{congruent_integers}
 Let $r$ and $s$ be two integers and suppose that $n \in {\mathbb N}$.  We say that $r$ is {\bfi congruent\index{Congruence modulo $n$} to $s$ \bfi modulo} $n$, or $r$ is {\bfi congruent to $s$ \bfi mod} $n$, if $r - s$ is evenly divisible by $n$; that is, $r - s = nk$  for some $k \in {\mathbb Z}$.  In this case we write $r \equiv s \pmod{n}$\label{sets_a_mod_b}.  For example, \mbox{$41 \equiv 17 \pmod{ 8}$} since $41 - 17=24$ is divisible by 8.  We claim that congruence modulo $n$ forms an equivalence relation of ${\mathbb Z}$.  Certainly any integer $r$ is equivalent to itself since $r - r = 0$ is divisible by $n$.  We will now show that the relation is symmetric.  If $r \equiv s \pmod{ n}$, then $r - s = -(s -r)$ is divisible by $n$. So $s - r$ is divisible by $n$ and $s \equiv r \pmod{ n}$.  Now suppose that $r \equiv s \pmod{ n}$ and $s \equiv t \pmod{ n}$.  Then there exist integers $k$ and $l$ such that $r -s = kn$ and $s - t = ln$.  To show transitivity, it is necessary to prove that $r - t$ is divisible by $n$.  However,   
-$$
+\[
 r - t = r - s + s - t = kn + ln = (k + l)n,
-$$
+\]
 and so $r - t$ is divisible by $n$.
  
  
@@ -838,8 +817,11 @@ Prove  $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$.
 \item
 Prove  $A \cap (B \setminus C) = (A \cap B) \setminus (A \cap C)$. 
  
+ 
+%% TWJ, 2010/03/31
+%% Fixed the error in the exercise
 \item
-Prove  $(A \setminus B) \cup (B \setminus C) = (A \cup B) \setminus (A \cap B)$. 
+Prove  $(A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)$. 
  
 \item
 Which of the following relations $f: {\mathbb Q} \rightarrow {\mathbb Q}$
@@ -923,9 +905,9 @@ If $g \circ f$ is onto and $g$ is one-to-one, show that $f$ is onto.
  
 \item
 Define a function on the real numbers by
-$$
+\[
 f(x) = \frac{x + 1}{x - 1}.
-$$
+\]
 What are the domain and range of $f$? What is the inverse of $f$?  Compute $f \circ f^{-1}$ and $f^{-1} \circ f$. 
  
 \item
@@ -940,9 +922,9 @@ Prove $f( A_1 \cap A_2 ) \subset f( A_1) \cap f( A_2 )$.  Give an example in whi
  
 \item
 Prove $f^{-1}( B_1 \cup B_2 ) = f^{-1}( B_1) \cup f^{-1}(B_2 )$, where
-$$
+\[
 f^{-1}(B) = \{ x \in X : f(x) \in B \}.
-$$
+\]
  
 \item
 Prove $f^{-1}( B_1 \cap B_2 ) = f^{-1}( B_1) \cap f^{-1}( B_2 )$. 

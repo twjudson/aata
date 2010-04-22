@@ -26,71 +26,59 @@ $(g_1 g_2)x = g_1(g_2 x)$ for all $x \in X$ and all $g_1, g_2 \in G$.
 \end{enumerate}
 Under these considerations $X$ is called a {\bfi $G$-set}\index{$G$-set}.  Notice that we are not requiring $X$ to be related to $G$ in any way.  It is true that every group $G$ acts on every set $X$ by the trivial action $(g,x) \mapsto x$; however, group actions are more interesting if the set $X$ is somehow related to the group $G$. 
 
-\medskip
- 
-\noindent {\bf Example 1.}
+\begin{example}{GL2_action}
 Let $G = GL_2( {\Bbb R} )$ and $X = {\Bbb R}^2$. Then $G$ acts on $X$ by left multiplication.  If $v \in {\Bbb R}^2$ and $I$ is the identity matrix, then $Iv = v$.  If $A$ and $B$ are $2 \times 2$ invertible matrices, then $(AB)v = A(Bv)$ since matrix multiplication is
 associative. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 2.}
-Let $G = D_4$, the symmetry group of a square.  If $X = \{ 1, 2, 3, 4 \}$ is the set of vertices of the square, then we can consider $D_4$
+\begin{example}{D4_action}
+et $G = D_4$, the symmetry group of a square.  If $X = \{ 1, 2, 3, 4 \}$ is the set of vertices of the square, then we can consider $D_4$
 to consist of the following permutations: 
-$$
+\[
 \{ (1), (13), (24), (1432), (1234), (12)(34), (14)(23), (13)(24) \}.
-$$
+\]
 The elements of $D_4$ act on $X$ as functions.  The permutation $(13)(24)$ acts on vertex 1 by sending it to vertex 3, on vertex 2 by
 sending it to vertex 4, and so on.  It is easy to see that the  axioms of a group action are satisfied.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 \medskip
 
 In general, if $X$ is any set and $G$ is a subgroup of $S_X$, the
 group of all permutations acting on $X$, then $X$ is a $G$-set under
 the group action 
-$$
+\[
 (\sigma, x) \mapsto \sigma(x)
-$$
+\]
 for $\sigma \in G$ and $x \in X$.
  
  
-\medskip
- 
- 
-\noindent {\bf Example 3.}
+\begin{example}{left_action}
 If we let $X = G$, then every group $G$ acts on itself by the left
 regular representation; that is, $(g,x) \mapsto \lambda_g(x) = gx$, 
 where  $\lambda_g$ is left multiplication:
-$$
-\begin{array}{c}
+\begin{gather*}
 e \cdot x = \lambda_e x = ex = x \\
 (gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x =
 \lambda_g(hx) = g \cdot ( h \cdot x).
-\end{array}
-$$
+\end{gather*}
 If $H$ is a subgroup of $G$, then $G$ is an $H$-set under left
 multiplication by elements of $H$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 4.}
+\begin{example}{conj_action}
 Let $G$ be a group and suppose that $X=G$. If $H$ is a subgroup of
 $G$, then $G$ is an $H$-set under {\bfi
 conjugation}\index{Conjugation}; that is, we can define an action of
 $H$ on $G$, 
-$$
+\[
 H \times G \rightarrow G,
-$$
+\]
 via
-$$
+\[
 (h,g) \mapsto hgh^{-1}
-$$
+\]
 for $h \in H$ and $g \in G$.  Clearly, the first axiom for a group
 action holds.  Observing that 
 \begin{eqnarray*}
@@ -99,24 +87,19 @@ action holds.  Observing that
 & = & (h_1, (h_2, g) ),
 \end{eqnarray*}
 we see that the second condition is also satisfied.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 5.}
-Let $H$ be a subgroup of $G$ and ${\cal L}_H$ the set of left cosets
-of $H$.  The set ${\cal L}_H$ is a $G$-set under the action
-$$
+\begin{example}{left_coset_action}
+Let $H$ be a subgroup of $G$ and ${\mathcal L}_H$ the set of left cosets
+of $H$.  The set ${\mathcal L}_H$ is a $G$-set under the action
+\[
 (g, xH) \mapsto gxH.
-$$
+\]
 Again, it is easy to see that the first axiom is true. Since $(g g')xH
 = g( g'x H)$, the second axiom is  also true.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
- 
-\medskip
  
  
 If $G$ acts on a set $X$ and $x, y \in X$, then $x$ is said to be
@@ -147,25 +130,22 @@ exist group elements $g$ and $h$ such that $gx = y$ and $hy= z$. So $z
 If $X$ is a $G$-set, then each partition of $X$ associated with
 $G$-equivalence is called an {\bfi orbit\/}\index{Orbit} of $X$ under
 $G$.  We will denote the orbit that contains an element $x$  of $X$ by
-${\cal O}_x$\label{noteorbit}. 
+${\mathcal O}_x$\label{noteorbit}. 
  
  
-\medskip
- 
- 
-\noindent {\bf Example 6.}
+\begin{example}{permute_action}
 Let $G$ be the permutation group defined by
-$$
+\[
 G =\{(1), (1 2
 3), (1 3 2), (4 5), (1 2 3)(4 5), (1 3 2)(4 5) \}
-$$
+\]
 and $X = \{ 1, 2, 3, 4, 5\}$. Then $X$ is a $G$-set. The orbits are
-${\cal O}_1 = {\cal O}_2 = {\cal O}_3 =\{1, 2, 3\}$ and $ {\cal O}_4=
-{\cal O}_5 = \{4, 5\}$. 
-\hspace{\fill} $\blacksquare$
+${\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}$ and $ {\mathcal O}_4=
+{\mathcal O}_5 = \{4, 5\}$. 
+\end{example}
  
  
-\medskip
+
  
  
 Now suppose that $G$ is a group acting on a set $X$ and let $g$ be
@@ -180,42 +160,35 @@ subgroup\/}\index{Subgroup!isotropy} of $x$. We will denote the
 stabilizer subgroup of $x$ by $G_x$\label{noteisotropy}. 
  
  
-\vspace{2ex}
+\medskip
  
  
 \noindent {\bf Remark.}  
 It is important to remember that $X_g \subset X$ and $G_x \subset G$. 
  
  
-\medskip
- 
- 
-\noindent {\bf Example 7.}
+\begin{example}{stabilizer_action}
 Let $X = \{1, 2, 3, 4, 5, 6\}$ and suppose that $G$ is the permutation
 group given by the permutations 
-$$
+\[
 \{
 (1), (1 2)(3 4 5 6), (3 5)(4 6), (1 2)( 3 6 5 4)
 \}.
-$$
+\]
 Then the fixed point sets  of $X$ under the action of $G$ are
-$$
-\begin{array}{c}
+\begin{gather*}
 X_{(1)}  =  X, \\
 X_{(3 5)(4 6)}  =  \{1,2\}, \\
 X_{(1 2)(3 4 5 6)}  = X_{(1 2)(3 6 5 4)}  =  \emptyset,
-\end{array}
-$$
+\end{gather*}
 and the stabilizer subgroups are
-$$
-\begin{array}{c}
+\begin{gather*}
 G_1 =  G_2  =  \{(1), (3 5)(4 6) \}, \\
 G_3  = G_4  = G_5  = G_6 =  \{(1)\}.
-\end{array}
-$$
+\end{gather*}
 It is easily  seen that  $G_x$ is a subgroup of $G$ for each $x \in
 X$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{proposition}
@@ -233,27 +206,27 @@ in $G_x$. Finally, if $g \in G_x$, then $x = ex = (g^{-1}g)x =
 \end{proof}
  
  
-\vspace{2 ex }
+\medskip
  
  
 We will denote the number of elements in the fixed point set of an
 element $g \in G$ by $|X_g|$ and denote the number of elements in the
-orbit of $x$ of $x \in X$ by $|{\cal O}_x|$. The next theorem
+orbit of $x$ of $x \in X$ by $|{\mathcal O}_x|$. The next theorem
 demonstrates the relationship between orbits of an element $x \in X$
 and the left cosets of $G_x$ in $G$.
  
  
-\begin{theorem}
+\begin{theorem}\label{orbit_theorem}
 Let $G$ be a finite group and $X$ a finite $G$-set. If $x \in X$,
-then $|{\cal O}_x| = [G:G_x]$. 
+then $|{\mathcal O}_x| = [G:G_x]$. 
 \end{theorem}
  
  
 \begin{proof}
 We know that  $|G|/|G_x|$ is the number of left cosets of $G_x$ in $G$
 by Lagrange's Theorem. We will define a bijective  map $\phi$
-between the orbit ${\cal O}_x$ of $X$ and the set of left cosets 
-${\cal L}_{G_x}$ of $G_x$ in $G$. Let $y \in {\cal O}_x$. Then there 
+between the orbit ${\mathcal O}_x$ of $X$ and the set of left cosets 
+${\mathcal L}_{G_x}$ of $G_x$ in $G$. Let $y \in {\mathcal O}_x$. Then there 
 exists a $g$ in $G$ such that $g x = y$. Define $\phi$ by $\phi( y ) 
 = g G_x$. First we must show that this map is well-defined and does 
 not depend on our selection of $g$. Suppose that $h$ is another 
@@ -267,9 +240,9 @@ To show that $\phi$ is one-to-one, assume that $\phi(x_1) =
 \phi(x_2)$. Then there exist $g_1, g_2 \in G$ such that $x_1 = g_1 x$
 and $x_2 = g_2 x$. Since there exists a $g \in G_x$ such that $g_2=g_1
 g$, 
-$$
+\[
 x_2 = g_2 x = g_1 g x = g_1 x = x_1;
-$$
+\]
 consequently, the map $\phi$ is  one-to-one. Finally, we must show
 that the map $\phi$ is onto. Let $g G_x$ be a left coset. If $g x =
 y$, then $\phi(y) = g G_x$. 
@@ -284,13 +257,13 @@ y$, then $\phi(y) = g G_x$.
  
 Let $X$ be a finite $G$-set and $X_G$\label{noteXG} be the set of fixed 
 points in $X$; that is, 
-$$
+\[
 X_G = \{ x \in X : gx = x \mbox{ for all $g \in G$} \}.
-$$
+\]
 Since the orbits of the action partition $X$,
-$$
-|X| = |X_G| + \sum_{i = k}^n |{\cal O}_{x_i}|,
-$$
+\[
+|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,
+\]
 where $x_k, \ldots, x_n$ are representatives from the distinct
 nontrivial orbits of $X$. 
  
@@ -298,71 +271,58 @@ nontrivial orbits of $X$.
 Now consider the special case in which $G$ acts on itself by conjugation,
 $(g,x) \mapsto gxg^{-1}$. The {\bfi center\/}\index{Group!center of} of
 $G$, 
-$$
+\[
 Z(G) = \{x : xg = gx \mbox{ for all $g \in G$} \},
-$$
+\]
 is the set of points that are fixed by conjugation. The nontrivial
 orbits of the action are called the {\bfi conjugacy
 classes\/}\index{Conjugacy classes} of $G$. If $x_1, \ldots, x_k$ are
 representatives from each of the nontrivial conjugacy classes of $G$
-and $|{\cal O}_{x_1}| = n_1, \ldots, |{\cal O}_{x_k}| = n_k$, then 
-$$
+and $|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k$, then 
+\[
 |G| = |Z(G)| + n_1 + \cdots + n_k.
-$$
+\]
 The stabilizer subgroups of each of the $x_i$'s, $C(x_i) = \{ g \in G
 : g x_i = x_i g \}$, are called the {\bfi centralizer
 subgroups\/}\index{Subgroup!centralizer}\index{Centralizer!of a
 subgroup} of the $x_i$'s. From Theorem~12.3, we obtain the {\bfi class
 equation\/}\index{Class equation}: 
-$$
+\[
 |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].
-$$
+\]
 One of the consequences of the class equation is that the order of
 each conjugacy class must divide the order of $|G|$.
  
  
-\medskip
- 
- 
-\noindent {\bf Example 8.}
+\begin{example}{conjugacy_class_S3}
 It is easy to check that  the conjugacy classes in $S_3$ are the
 following: 
-$$
-\begin{array}{ccc}
-\{ (1) \},  & \{ (123), (132) \}, & \{(12), (13), (23) \}.
-\end{array}
-$$
+\[
+\{ (1) \},  \quad \{ (123), (132) \}, \quad \{(12), (13), (23) \}.
+\]
 The class equation is $6 = 1+2+3$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 9.}
+\begin{example}{conjugacy_class_D4}
 The conjugacy classes for $D_4$ are
-$$
-\begin{array}{cccc}
-\{ (1) \}, &
-\{ (13), (24) \}, &
-\{ (1432), (1234) \}, &
+\[
+\{ (1) \}, \quad
+\{ (13), (24) \}, \quad
+\{ (1432), (1234) \}, \quad
 \{ (12)(34), (14)(23), (13)(24) \}.
-\end{array}
-$$
+\]
 The class equation is $8 = 1 + 2 + 2 + 3$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 10.}
+\begin{example}{Conjugacy_Class_Sn}
 For $S_n$ it takes a bit of work to find the conjugacy classes.  We
 begin with cycles.  Suppose that $\sigma = ( a_1, \ldots, a_k)$ is a
 cycle and let $\tau \in S_n$. By Theorem~5.9,
-$$
+\[
 \tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k)).
-$$
+\]
 Consequently, any two cycles of the same length are conjugate. Now let
 $\sigma = \sigma_1 \sigma_2 \cdots \sigma_r$ be a cycle decomposition,
 where the length of each cycle $\sigma_i$ is $r_i$. Then $\sigma$ is
@@ -383,13 +343,13 @@ the number of such partitions for any positive integer $n$ is what
 computer scientists call {\bfi NP-complete}.  This effectively means
 that the problem cannot be solved for a large $n$ because the
 computations would be too time-consuming for even the largest computer. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
+
  
  
-\begin{theorem}
+\begin{theorem}\label{pn_theorem}
 Let $G$ be a group of order $p^n$ where $p$ is prime. Then $G$ has a
 nontrivial center. 
 \end{theorem}
@@ -397,9 +357,9 @@ nontrivial center.
  
 \begin{proof}
 We apply the class equation
-$$
+\[
 |G| = |Z(G)|  + n_1 + \cdots + n_k.
-$$
+\]
 Since each $n_i>1$ and $n_i \mid G$, $p$  must divide each $n_i$.
 Also, $p \mid |G|$; hence, $p$ must divide $|Z(G)|$. Since the
 identity is always in the center of $G$, $|Z(G)| \geq 1$. Therefore,
@@ -416,7 +376,7 @@ abelian.
  
  
 \begin{proof}
-By Theorem~12.4, $|Z(G)| = p$ or $p^2$.  If $|Z(G)| = p^2$, then
+By Theorem~\ref{pn_theorem}, $|Z(G)| = p$ or $p^2$.  If $|Z(G)| = p^2$, then
 we are done.  Suppose that $|Z(G)| = p$. Then $Z(G)$ and $G / Z(G)$
 both have order $p$ and must both be cyclic groups.  Choosing  a
 generator $aZ(G)$ for $G / Z(G)$, we can write any element $gZ(G)$ in
@@ -425,9 +385,9 @@ x$ for some $x$ in the center of $G$.  Similarly, if $hZ(G) \in G /
 Z(G)$, there exists a $y$ in $Z(G)$ such that $h = a^n y$ for some
 integer $n$.  Since $x$ and $y$ are in the center of $G$, they commute
 with all other elements of $G$; therefore, 
-$$
+\[
 gh  =  a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg,
-$$
+\]
 and $G$ must be abelian.
 \end{proof}
  
@@ -479,7 +439,7 @@ to areas in switching theory and chemistry. The proof of Burnside's
 Counting Theorem depends on the following lemma.
  
  
-\begin{lemma}
+\begin{lemma}\label{Gset_lemma}
 Let $X$ be a $G$-set and suppose that $x \sim y$. Then $G_x$ is
 isomorphic to $G_y$.  In particular, $|G_x| = |G_y|$. 
 \end{lemma}
@@ -489,22 +449,22 @@ isomorphic to $G_y$.  In particular, $|G_x| = |G_y|$.
 Let $G$ act on $X$ by $(g,x) \mapsto g \cdot x$. Since $x \sim y$,
 there exists a $g \in G$ such that $g \cdot x=y$. Let $a \in G_x$.
 Since 
-$$
+\[
 gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot
 x = y,
-$$
+\]
 we can define a map $\phi: G_x \rightarrow G_y$ by $\phi(a) =
 gag^{-1}$. The map $\phi$ is a homomorphism since 
-$$
+\[
 \phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(a).
-$$
+\]
 Suppose that $\phi(a) = \phi(b)$. Then $gag^{-1}= gbg^{-1}$ or $a=b$;
 hence, the map is injective.  To show that $\phi$ is onto, let $b$ be
 in $G_y$; then $g^{-1}bg$ is in $G_x$ since
-$$
+\[
 g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y
 = x; 
-$$
+\]
 and $\phi(g^{-1}bg ) = b$.
 \end{proof}
  
@@ -512,9 +472,9 @@ and $\phi(g^{-1}bg ) = b$.
 \begin{theorem}[Burnside]\index{Burnside's Counting Theorem}
 Let $G$ be a  finite group acting on a set $X$ and let $k$ denote the
 number of orbits of $X$. Then
-$$
+\[
 k = \frac{1}{|G|} \sum_{g \in G} |X_g|.
-$$
+\]
 \end{theorem}
  
  
@@ -523,30 +483,27 @@ We look at all the fixed points $x$ of all the elements in $g \in G$;
 that is, we look at all $g$'s and all $x$'s such that $gx =x$.
 If viewed in terms of fixed point sets, the number of all $g$'s fixing
 $x$'s is 
-$$
+\[
 \sum_{g \in G} |X_g|.
-$$
+\]
 However, if viewed in terms of the stabilizer subgroups, this number
 is 
-$$
+\[
 \sum_{x \in X} |G_x|;
-$$
-hence, $\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|$. By Lemma~12.6, 
-$$
-\sum_{y \in {\cal O}_x} |G_y|  =  | {\cal O}_x| \cdot |G_x|.
-$$
-By Theorem~12.3 and Lagrange's Theorem, this expression is equal 
+\]
+hence, $\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|$. By Lemma~\ref{Gset_lemma}, 
+\[
+\sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|.
+\]
+By Theorem~\ref{orbit_theorem} and Lagrange's Theorem, this expression is equal 
 to $|G|$. Summing over all of the $k$ distinct orbits, we conclude that
-$$
+\[
 \sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|.
-$$
+\]
 \end{proof}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 11.}
+\begin{example}{Burnside_example}
 Let $X = \{1, 2, 3, 4, 5 \}$ and suppose that $G$ is the permutation
 group $G= \{(1), (1 3), (1 3)(2 5), (2 5) \}$. The orbits of $X$ are
 $\{1, 3\}$, $\{2, 5\}$, and $\{4\}$. The fixed point sets are 
@@ -557,11 +514,11 @@ X_{(1 3)(2 5)} & = & \{4\} \\
 X_{(2 5)} & = & \{1, 3, 4 \} .
 \end{eqnarray*}
 Burnside's Theorem says that
-$$
+\[
 k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5+
 3+1+3) = 3.
-$$
-\hspace{\fill} $\blacksquare$
+\]
+\end{example}
  
  
  
@@ -580,12 +537,12 @@ was colored black since a rotation will give an equivalent coloring.
  
 The  symmetry group of a square, $D_4$, is given by the following
 permutations: 
-$$
+\[
 \begin{array}{cccc}
 (1)    & (13)     & (24)     & (1432) \\
 (1234) & (12)(34) & (14)(23) & (13)(24)
 \end{array}
-$$
+\]
 The group $G$ acts on the set of vertices $\{ 1, 2, 3, 4\}$ in the
 usual manner. We can describe the different colorings by mappings from
 $X$ into $Y = \{ B, W \}$ where $B$ and $W$ represent the colors black
@@ -642,10 +599,10 @@ $|\widetilde{X}_{(2 4)}| = 8$.
  
 \end{enumerate}
 By Burnside's Theorem, we can conclude that there are exactly
-$$
+\[
 \frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3)
 = 6
-$$
+\]
 ways to color the vertices of the square.
  
  
@@ -665,12 +622,12 @@ Let $\sigma \in G$ and $f \in  \widetilde{X}$. Clearly, $f \circ
 \sigma$ is also in $\widetilde{X}$. Suppose that $g$ is another
 function from $X$ to $Y$ such that $\widetilde{\sigma}(f) =
 \widetilde{\sigma}(g)$. Then for each $x \in X$,
-$$
+\[
 f( \sigma(x ))
 = \widetilde{\sigma}(f)(x)
 = \widetilde{\sigma}(g)(x)
 = g( \sigma(x )).
-$$
+\]
 Since $\sigma$ is a permutation of $X$, every element $x'$ in $X$ is
 the image of some $x$ in $X$ under $\sigma$; hence, $f$ and $g$ agree
 on all elements of $X$. Therefore, $f=g$ and $\widetilde{\sigma}$ is
@@ -686,30 +643,25 @@ each cycle, $|{\widetilde{X}}_{\sigma}| = |Y|^n$.
 \end{proof}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 12.}
+\begin{example}{burnside_X7}
 Let $X = \{1, 2, \ldots, 7\}$ and suppose that $Y = \{ A, B, C \}$. If
 $g$ is the permutation of $X$ given by $(1 3)(2 4 5) = (1 3)(2 4
-5)(6)(7)$, then $n = 4$. Any $f \in {\cal F}_g$ must have the same
+5)(6)(7)$, then $n = 4$. Any $f \in {\mathcal F}_g$ must have the same
 value on each cycle in $g$. There are $|Y|=3$ such choices for any
-value, so $|{\cal F}_g|  = 3^4 = 81$.
-\hspace{\fill} $\blacksquare$
+value, so $|{\mathcal F}_g|  = 3^4 = 81$.
+\end{example}
  
  
-\vspace{ 2 ex}
- 
- 
-\noindent {\bf Example 13.}
+\begin{example}{color_square}
 Suppose that we wish to color the vertices of a square using four
 different colors. By Proposition~12.8, we can immediately
 decide that there are 
-$$
+\[
 \frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3)
 =55
-$$
+\]
 possible ways.
+\end{example}
  
  
 \begin{figure}[thb]
@@ -795,24 +747,23 @@ kinds of modules that are needed to build a large circuit.
  
  
 The possible switching functions  with two input variables $a$ and
-$b$ are listed in Table~12.1. Two switching functions $f$ and $g$
+$b$ are listed in Table~\ref{switching_2variable}. Two switching functions $f$ and $g$
 are equivalent if $g$ can be obtained from $f$ by a permutation of the
 input variables. For example, $g(a, b, c) = f(b, c, a)$. In this 
 case $g \sim f$ via the permutation $(acb)$. In the case of switching
 functions of two variables, the permutation $(ab)$ reduces 16
 possible switching functions to 12 equivalent functions since
-$$
-\begin{array}{rcl}
+\begin{eqnarray*}
 f_2 & \sim & f_4 \\
 f_3 & \sim & f_5 \\
 f_{10} & \sim & f_{12} \\
 f_{11} & \sim & f_{13}.
-\end{array}
-$$
+\end{eqnarray*}
  
  
-\begin{table}[htb]
+\begin{table}[htb]\label{switching_2variable}
 \caption{Switching functions in two variables}{\small
+\medskip
 \begin{center}
 \begin{tabular}{|cc|cccccccc|}
 \hline
@@ -856,16 +807,14 @@ $a$, $b$, and $c$, so when we consider equivalent switching functions, we
 are permuting $2^3$ possible outputs, not just three input values. For
 example, each binary triple $(a, b, c)$ has a specific output
 associated with it. The  permutation $(acb)$ changes outputs as follows: 
-$$
-\begin{array}{c}
-(0, 0, 0) \mapsto (0, 0, 0) \\
-(0, 0, 1) \mapsto (0, 1, 0) \\
-(0, 1, 0) \mapsto (1, 0, 0) \\
-\vdots \\
-(1, 1, 0) \mapsto (1, 0, 1) \\
-(1, 1, 1) \mapsto (1, 1, 1).
-\end{array}
-$$
+\begin{eqnarray*}
+(0, 0, 0) & \mapsto & (0, 0, 0) \\
+(0, 0, 1) & \mapsto & (0, 1, 0) \\
+(0, 1, 0) & \mapsto & (1, 0, 0) \\
+& \vdots & \\
+(1, 1, 0) & \mapsto & (1, 0, 1) \\
+(1, 1, 1) & \mapsto & (1, 1, 1).
+\end{eqnarray*}
  
  
 Let $X$ be the set of output values for a switching function in $n$
@@ -880,18 +829,17 @@ variables. Then $|X|=2^n$. We can enumerate these values as follows:
 Now let us consider a circuit with four input variables and a single
 output. Suppose that we can permute the leads  of any circuit
 according to the following permutation group: 
-$$
-\begin{array}{cccc}
-(a)    & (ac)     & (bd)     & (adcb) \\
-(abcd) & (ab)(cd) & (ad)(bc) & (ac)(bd).
-\end{array}
-$$
+\begin{gather*}
+(a)    \quad (ac)     \quad (bd)     \quad (adcb) \\
+(abcd) \quad (ab)(cd) \quad (ad)(bc) \quad (ac)(bd).
+\end{gather*}
 The permutations of the four possible input variables induce the
-permutations of the output values in Table~12.2. 
+permutations of the output values in Table~\ref{switching_permute}. 
  
  
-\begin{table}
+\begin{table}\label{switching_permute}
 \caption{Permutations of switching functions in four variables}{\small 
+\medskip
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -914,10 +862,10 @@ $(a c)(b d)$ & $(1,4)(2,8)(3,12)(6,9)(7,13)(11,14)$ & 10 \\
  
  
 Hence, there are
-$$
+\[
 \frac{1}{8} (2^{16} + 2 \cdot 2^{12} + 2 \cdot 2^6 + 3 \cdot
 2^{10}) = 9616
-$$
+\]
 possible switching functions of four variables under this group of
 permutations. This number will be even smaller if we consider the full
 symmetric group on four letters. 
@@ -938,10 +886,10 @@ famous contributions were in group theory.  Several of Burnside's
 conjectures have stimulated research to this day.  One such conjecture
 was that every group of odd order is solvable; that is, for a group
 $G$ of odd order, there exists a sequence of subgroups 
-$$
+\[
 G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset
 H_0 = \{ e \}
-$$
+\]
 such that $H_i$ is normal in $H_{i+1}$ and $H_{i+1} / H_i$ is abelian.
 This conjecture was finally proven by W. Feit\index{Feit, W.}
 and J. Thompson\index{Thompson, J.} in 1963. 
@@ -968,7 +916,7 @@ is still a classic.
 %***************Calculations************************
  
 \bf\item\rm
-Compute the $G$-equivalence classes for Examples~1--5 in the first
+Compute the $G$-equivalence classes for Examples~1--5  in the first
 section. 
  
  
@@ -990,7 +938,7 @@ $G = \{(1), (12), (345), (354), (12)(345), (12)(354)  \}$
  
 \bf\item\rm
 Compute the $G$-equivalence classes of $X$ for each of the $G$-sets in
-Exercise~2. For each $x \in X$ verify that $|G|=|{\cal O}_x| \cdot
+Exercise~2. For each $x \in X$ verify that $|G|=|{\mathcal O}_x| \cdot
 |G_x|$.  
  
  
