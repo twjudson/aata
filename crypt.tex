@@ -71,11 +71,7 @@ transformation $f$ must be relatively easy to compute, as must
 $f^{-1}$; however, $f$ must be extremely difficult to guess at if only
 examples of coded messages are available.
  
- 
-\medskip
- 
- 
-\noindent {\bf Example 1.}
+\begin{example}{caesar}
 One of the first and most famous private key cryptosystems was the
 shift code used by Julius Caesar.  We first digitize the alphabet by
 letting $\mbox{A}  = 00, \mbox{B}  = 01, \ldots, \mbox{Z} = 25$.
@@ -101,7 +97,7 @@ or ALGEBRA. Notice here that there is nothing special about either of
 the numbers 3 or 26. We could have used a larger alphabet or a
 different shift.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \medskip
@@ -115,10 +111,7 @@ characters appearing in the intercepted message often makes its
 decryption possible.  
  
  
-\medskip
- 
- 
-\noindent {\bf Example 2.}
+\begin{example}{crypt_analysis}
 Suppose we receive a message that we know was encrypted by using a
 shift transformation on single letters of the 26-letter alphabet. To
 find out exactly what the shift transformation was, we must compute
@@ -136,10 +129,7 @@ $$
 f^{-1}(p) = p + 12 \bmod 26.
 $$
 It is now easy to determine whether or not our guess is correct.
-\hspace{\fill} $\blacksquare$
- 
- 
-\medskip
+\end{example}
  
  
 Simple shift codes are examples of {\bfi monoalphabetic
@@ -161,7 +151,7 @@ Such a decoding function exists when we can solve the equation
 $$
 c = ap + b \bmod 26
 $$
-for $p$. By Proposition~2.1, this is possible exactly when $a$ has an
+for $p$. By Proposition~\ref{Zn_equiv_classes}, this is possible exactly when $a$ has an
 inverse or, equivalently, when $\gcd( a, 26) =1$. In this case 
 $$
 f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.
@@ -170,12 +160,9 @@ Such a cryptosystem is called an {\bfi affine
 cryptosystem}\index{Cryptosystem!affine}. 
  
  
-\medskip
- 
- 
-\noindent {\bf Example 3.}
+\begin{example}{affine_crypt}
 Let us consider the affine cryptosystem $f(p) = ap + b \bmod 26$. For
-this cryptosystem to work we must choose an $a \in {\Bbb Z}_{26}$
+this cryptosystem to work we must choose an $a \in {\mathbb Z}_{26}$
 that is invertible. This is only possible if $\gcd(a, 26) = 1$.
 Recognizing this fact, we will let $a = 5$ since $\gcd(5, 26) = 1$. It
 is easy to see that $a^{-1} = 21$. Therefore, we can take our
@@ -185,11 +172,7 @@ function will~be
 $$
 f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.
 $$
-\hspace{\fill} $\blacksquare$
- 
- 
-\medskip
- 
+\end{example} 
  
 A cryptosystem would be more secure if a ciphertext letter could
 represent more than one plaintext letter.  To give an example of this
@@ -200,7 +183,7 @@ before; however, instead of encrypting one letter at a time we will
 encrypt pairs of letters.  We can store a pair of letters $p_1$ and
 $p_2$ in a vector  
 $$
-{\bold p} = 
+{\mathbf p} = 
 \left(
 \begin{array}{c}
 p_1 \\ p_2
@@ -208,21 +191,18 @@ p_1 \\ p_2
 \right).
 $$
 Let $A$ be a $2 \times 2$ invertible matrix
-with entries in ${\Bbb Z}_{26}$. We can define an encoding function by
+with entries in ${\mathbb Z}_{26}$. We can define an encoding function by
 $$
-f({\bold p}) = A {\bold p} + {\bold b} ,
+f({\mathbf p}) = A {\mathbf p} + {\mathbf b} ,
 $$
-where ${\bold b}$ is a fixed column vector and matrix operations are
-performed in ${\Bbb Z}_{26}$. The decoding function must be
+where ${\mathbf b}$ is a fixed column vector and matrix operations are
+performed in ${\mathbb Z}_{26}$. The decoding function must be
 $$
-f^{-1}({\bold p}) = A^{-1} {\bold p} - A^{-1} {\bold b}.
+f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.
 $$
  
  
-\medskip
- 
- 
-\noindent {\bf Example 4.}
+\begin{example}{HELP}\label{CryptHELP}
 Suppose that we wish to encode the word HELP. The corresponding
 digit string is $7, 4, 11, 15$. If
 $$
@@ -245,13 +225,10 @@ A^{-1}
 \end{array}
 \right).
 $$
-If ${\bold b} = ( 2, 2)^{\rm t}$, then our message is encrypted as
+If ${\mathbf b} = ( 2, 2)^{\rm t}$, then our message is encrypted as
 RRCR. The encrypted letter R represents more than one plaintext
 letter. 
-\hspace{\fill} $\blacksquare$ 
- 
- 
-\medskip
+\end{example}
  
  
 Frequency analysis can still be performed on a polyalphabetic
@@ -259,7 +236,10 @@ cryptosystem, because we have a good understanding of how pairs of
 letters appear in the English language. The pair {\em th} appears
 quite often; the pair {\em qz} never appears.  To avoid decryption by
 a third party, we must use a larger matrix than the one we used in
-Example~4. 
+Example~\ref{CryptHELP}. 
+
+%TWJ 4/7/2010 Need to resolve this reference
+
   
  
  
@@ -319,10 +299,7 @@ Alice. For Alice to recover $x$, she need only compute $x = y^D \bmod
 n$. Only Alice knows $D$.  
  
  
-\vspace{2 ex}
- 
- 
-\noindent {\bf Example 5.}
+\begin{example}{RSA}
 Before exploring the theory behind the RSA cryptosystem or attempting
 to use large integers, we will use some small integers just to see
 that the system does indeed work. Suppose that we wish to send some
@@ -347,10 +324,7 @@ message by calculating
 $$
 368^{191} \bmod 667 = 23.
 $$
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{ 2 ex}
+\end{example}
  
  
 Now let us examine why the RSA cryptosystem works.  We know that $DE
@@ -468,15 +442,15 @@ grounds that ``gentlemen do not read each other's mail.''
 {\small 
 \begin{enumerate}
  
-\bf\item\rm
+\item
 Encode IXLOVEXMATH using the cryptosystem in Example~1.
  
-\bf\item\rm
+\item
 Decode ZLOOA WKLVA EHARQ WKHA ILQDO, which was encoded using the
 cryptosystem in Example~1. 
  
  
-\bf\item\rm
+\item
 Assuming that monoalphabetic code was used to encode the following
 secret message, what was the original message?
 \begin{center}
@@ -485,18 +459,18 @@ NBQFRSMXZF YAWJUFHWFF ESKGQCFWDQ AFNBQFTILO FCWP
  
  
  
-\bf\item\rm
+\item
 What is the total number of possible monoalphabetic cryptosystems? How 
 secure are such cryptosystems?
  
  
-\bf\item\rm
-Prove that a $2 \times 2$ matrix $A$ with entries in ${\Bbb Z}_{26}$
+\item
+Prove that a $2 \times 2$ matrix $A$ with entries in ${\mathbb Z}_{26}$
 is invertible if and only if $\gcd( \det(A), 26 ) = 1$.
  
  
  
-\bf\item\rm
+\item
 Given the matrix 
 $$
 A =
@@ -507,138 +481,98 @@ A =
 \end{array}
 \right),
 $$
-use the encryption function $f({\bold p}) = A {\bold p} + {\bold b}$
-to encode the message CRYPTOLOGY, where ${\bold b} = ( 2, 5)^{\rm
+use the encryption function $f({\mathbf p}) = A {\mathbf p} + {\mathbf b}$
+to encode the message CRYPTOLOGY, where ${\mathbf b} = ( 2, 5)^{\rm
 t}$.  What is the decoding function?  
  
  
-\bf\item\rm
+\item\label{RSA_Exercise}
 Encrypt each of the following RSA messages $x$ so that $x$ is divided
 into blocks of integers of length 2;  that is, if $x = 142528$, encode 
 14, 25, and 28 separately.
+\begin{multicols}{2}
+\begin{enumerate}
  
  
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\item
 $n = 3551, E = 629, x = 31$
  
- \item[{\bf (c)}]
+\item
+$n = 2257, E = 47, x = 23$
+
+\item
 $n = 120979, E = 13251,\\ x = 142371$
  
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-$n = 2257, E = 47, x = 23$
- 
- \item[{\bf (d)}]
+\item
 $n = 45629, E = 781,\\ x = 231561$
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+
+ \end{enumerate}
+ \end{multicols}
  
  
- 
-\bf\item\rm
+\item
 Compute the decoding key $D$ for each of the encoding keys in
-Exercise~7. 
+Exercise~\ref{RSA_Exercise}. 
  
  
-\bf\item\rm
+\item
 Decrypt each of the following RSA messages $y$.
- 
+\begin{multicols}{2}
+\begin{enumerate}
  
 \vspace{3pt}        %two column exercise list
  
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\item
 $n = 3551, D = 1997, y = 2791$
- 
- \item[{\bf (c)}]
-$n = 120979, D = 27331,\\ y = 112135$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 $n = 5893, D = 81, y = 34$
  
- \item[{\bf (d)}]
+\item
+$n = 120979, D = 27331,\\ y = 112135$
+ 
+\item
 $n = 79403, D = 671,\\ y = 129381$
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
+\end{enumerate}
+\end{multicols}
  
-\vspace{2pt}        %end two column exercise list
+
  
- 
- 
-\bf\item\rm
+\item
 For each of the following encryption keys $(n, E)$ in the RSA
 cryptosystem, compute $D$.
+\begin{multicols}{2}
+\begin{enumerate}
  
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+ \item
 $(n, E) = (451, 231)$
+
  
- \item[{\bf (c)}]
-$(n, E) = (37986733, 12371)$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+ \item
 $(n, E) = (3053, 1921)$
  
- \item[{\bf (d)}]
+ \item
+$(n, E) = (37986733, 12371)$
+ 
+ \item
 $(n, E) =\\ (16394854313, 34578451)$
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+\end{enumerate}
+\end{multicols}
  
  
+  
  
- 
-\bf\item\rm
+\item
 Encrypted messages are often divided into blocks of $n$ letters. A
 message such as THE WORLD WONDERS WHY might be encrypted as 
 JIW OCFRJ LPOEVYQ IOC but sent as JIW OCF RJL POE VYQ
 IOC.  What are the advantages of using blocks of $n$ letters? 
  
  
-\bf\item\rm
+\item
 Find integers $n$, $E$, and $X$ such that
 $$
 X^E \equiv X \pmod{n}.
@@ -646,7 +580,7 @@ $$
 Is this a potential problem in the RSA cryptosystem?
  
  
-\bf\item\rm
+\item
 Every person in the class should construct an RSA cryptosystem using primes
 that are 10 to 15 digits long.  Hand in $(n, E)$ and an encoded 
 message. Keep $D$ secret. See if you can break one another's codes.
@@ -673,13 +607,13 @@ time-consuming if $n$ is very large.
 \begin{enumerate}
  
  
-\bf\item\rm
+\item
 A better algorithm for factoring odd positive integers is {\bfi
 Fermat's factorization algorithm}\index{Fermat's factorization
 algorithm}. 
 \begin{enumerate}
  
-\bf\item\rm
+\item
 Let $n= ab$ be an odd composite number. Prove that $n$ can be written
 as the difference of two perfect squares:
 $$
@@ -688,7 +622,7 @@ $$
 Consequently, a positive odd integer can be factored exactly when we
 can find integers $x$ and $y$ such that $n = x^2 - y^2$.
  
-\bf\item\rm
+\item
 Write a program to implement the following factorization algorithm
 based on the observation in part (a).
  
@@ -728,9 +662,9 @@ two algorithms. Which algorithm is faster and why?
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 {\bf Primality Testing.}
-Recall Fermat's Little Theorem from Chapter~5. Let $p$ be prime with
+Recall Fermat's Little Theorem from Chapter~\ref{cosets}. Let $p$ be prime with
 $\gcd(a, p) = 1$. Then $a^{p-1} \equiv 1 \pmod{p}$.  We can use
 Fermat's Little Theorem as a screening test for primes. For example, 15
 cannot be prime since
@@ -747,54 +681,40 @@ $$
 2^{n-1} \equiv 1 \pmod{n}.
 $$
 Which of the following numbers are primes  and which are pseudoprimes?
- 
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 342
- 
- \item[{\bf (c)}]
-601
- 
- \item[{\bf (e)}]
-771
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 811
- 
- \item[{\bf (d)}]
+
+\item
+601
+
+\item
 561
- 
- \item[{\bf (f)}]
+
+\item
+771
+
+\item
 631
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+\end{enumerate}
+\end{multicols}
  
  
-\bf\item\rm
+
+\item
 Let $n$ be an odd composite number and $b$ be a positive integer such
 that $\gcd(b, n) = 1$. If $b^{n-1} \equiv 1 \pmod{n}$, then $n$ is a
 {\bfi pseudoprime base} $b$. Show that 341 is a pseudoprime base 2 but
 not a pseudoprime base 3.
  
  
-\bf\item\rm
+\item
 Write a program to determine all primes less than 2000 using
 trial division. Write a second program that will determine all numbers
 less than 2000 that are either primes or pseudoprimes. Compare the

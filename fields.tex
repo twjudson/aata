@@ -39,20 +39,14 @@ We wish to be able to compute and study such fields for arbitrary
 polynomials over a field $F$.  
 
 
- 
 \section{Extension Fields}
-
 
 A field $E$ is an {\bfi extension
 field\/}\index{Extension!field}\index{Field!extension} of a field $F$
 if $F$ is a subfield of $E$. The field $F$ is called the {\bfi base 
 field}\index{Field!base}.  We write $F \subset E$.
 
-
-\medskip
-
-
-\noindent {\bf Example 1.}
+\begin{example}{field_Q_sqrt2}
 For example, let 
 $$
 F = {\mathbb Q}( \sqrt{2}\,) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}
@@ -67,13 +61,10 @@ is in $E$. Since $\sqrt{2} + \sqrt{3}$ is in $E$, $1 / (\sqrt{2} +
 \sqrt{3}\,) = \sqrt{3} - \sqrt{2}$ must also be in $E$. Taking linear
 combinations of $\sqrt{2} + \sqrt{3}$ and $\sqrt{3} - \sqrt{2}$, we
 find that $\sqrt{2}$ and $\sqrt{3}$ must both be in $E$.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
-\medskip
-
-
-\noindent {\bf Example 2.}
+\begin{example}{finite_field4}
 Let $p(x) = x^2 + x + 1 \in {\mathbb Z}_2[x]$. Since neither 0 nor 1 is a
 root of this polynomial, we know that $p(x)$ is irreducible over
 ${\mathbb Z}_2$. We will construct a field extension of ${\mathbb Z}_2$
@@ -131,11 +122,7 @@ $$
 1 + \alpha & 0 & 1 + \alpha  & 1          & \alpha
 \end{array}
 $$
-\hspace{\fill} $\blacksquare$
- 
-
-\medskip
-
+\end{example}
 
 
 The following theorem, due to Kronecker, is so important and so basic 
@@ -209,10 +196,8 @@ Therefore, we have found an element $\alpha \in E = F[x]/\langle p(x)
 \end{proof}
  
 
-\vspace{ 2ex}
- 
 
-\noindent {\bf Example 3.}
+\begin{example}{finite_field8}
 Let $p(x) = x^5 + x^4 + 1 \in {\mathbb Z}_2[x]$. Then $p(x)$ has irreducible
 factors $x^2 + x + 1$ and $x^3 + x + 1$. For a field extension $E$ of
 ${\mathbb Z}_2$ such that $p(x)$ has a root in $E$, we can let $E$
@@ -220,7 +205,7 @@ be either ${\mathbb Z}_2[x] / \langle x^2 + x + 1 \rangle$ or ${\mathbb Z}_2[x] 
 \langle x^3 + x + 1 \rangle$.  We will leave it as an exercise to
 show that ${\mathbb Z}_2[x] / \langle x^3 + x + 1 \rangle$ is a field
 with $2^3=8$ elements. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
  
@@ -242,10 +227,7 @@ $E$, we denote the smallest field containing $F$ and $\alpha_1,
 extension\/}\index{Simple extension}\index{Extension!simple} of $F$.  
 
 
-\medskip
-
- 
-\noindent {\bf Example 4.}
+\begin{example}{extension_pi}
 Both $\sqrt{2}$ and $i$ are algebraic over ${\mathbb Q}$ since they are
 zeros of the polynomials $x^2 -2$ and $x^2 + 1$, respectively. Clearly
 $\pi$ and $e$ are algebraic over the real numbers; however, it is a
@@ -258,32 +240,23 @@ Q}$.}
 (In many cases we do not know whether or not a particular number is 
 transcendental; for example, it is not known whether $\pi + e$ is
 transcendental or algebraic.)  
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-
-\medskip
-
-
+ 
 A complex number that is algebraic over ${\mathbb Q}$ is an {\bfi
 algebraic number}\index{Algebraic number}. A {\bfi transcendental
 number\/}\index{Transcendental number} is an element of ${\mathbb C}$ that
 is transcendental over ${\mathbb Q}$.  
 
 
-\medskip
- 
- 
-\noindent {\bf Example 5.}
+\begin{example}{field_sqrt3}
 We will show that $\sqrt{2 + \sqrt{3} }$ is algebraic over ${\mathbb Q}$.
 If $\alpha = \sqrt{2 + \sqrt{3} }$, then $\alpha^2 = 2 + \sqrt{3}$.
 Hence, $\alpha^2 -  2 = \sqrt{3}$ and $( \alpha^2 -  2)^2 = 3$. Since
 $\alpha^4 - 4 \alpha^2 + 1 = 0$, it must be true that $\alpha$ is a
 zero of the polynomial $x^4 - 4 x^2 + 1 \in {\mathbb Q}[x]$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-
-\medskip
-  
 
 It is very easy to give an example of an extension field $E$ over a 
 field $F$, where $E$ contains an element transcendental over $F$. 
@@ -359,17 +332,11 @@ $\alpha$ over $F$. The degree of $p(x)$ is the {\bfi degree of
 $\alpha$ over $F$}. 
 
 
-\medskip
- 
-
-\noindent {\bf Example 6.}
+\begin{example}{}
 Let $f(x) = x^2 - 2$ and $g(x) = x^4 - 4 x^2 + 1$. These polynomials
 are the minimal polynomials of $\sqrt{2}$ and $\sqrt{2 + \sqrt{3} }$,
 respectively. 
-\hspace{\fill} $\blacksquare$
- 
-
-\medskip
+\end{example}
  
 
 \begin{proposition}
@@ -452,11 +419,8 @@ or $b_i = c_i$ for $i = 0, 1, \ldots, n-1$.  Therefore, we have shown
 uniqueness. 
 \end{proof}
   
- 
-\medskip
- 
 
-\noindent {\bf Example 7.}
+\begin{example}{field_iso}
 Since $x^2 + 1$ is irreducible over ${\mathbb R}$, $\langle x^2 + 1
 \rangle$ is a maximal ideal in ${\mathbb R}[x]$. So $E = {\mathbb
 R}[x]/\langle x^2 + 1 \rangle$ is a field extension of ${\mathbb R}$ that
@@ -474,10 +438,8 @@ since
 \end{eqnarray*}
 Hence, we have an isomorphism of ${\mathbb R}( \alpha )$ with ${\mathbb C}$
 defined by the map that takes $a + b \alpha$ to $a + bi$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-
-\medskip
 
 
 Let $E$ be a field extension of a field $F$.  If we regard $E$ as a
@@ -634,10 +596,7 @@ $$
 \end{proof}
  
 
-\medskip
- 
- 
-\noindent {\bf Example 8.}
+\begin{example}{sqrt_3_5}
 Let us determine an extension field of ${\mathbb Q}$ containing $\sqrt{3}
 + \sqrt{5}$. It is easy to determine that the minimal  polynomial of
 $\sqrt{3} + \sqrt{5}$ is $x^4 - 16 x + 4$. It follows that
@@ -655,13 +614,10 @@ over ${\mathbb Q}( \sqrt{3}\, )$ and $\{ 1, \sqrt{3}, \sqrt{5}, \sqrt{3}
 This example shows that it is possible
 that some extension $F( \alpha_1, \ldots, \alpha_n )$ is actually a
 simple extension of $F$ even though $n > 1$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 
-\medskip
-
- 
-\noindent {\bf Example 9.}
+\begin{example}{sqrt_3_5_i}
 Let us compute a basis for ${\mathbb Q}( \sqrt[3]{5}, \sqrt{5} \, i )$, where
 $\sqrt{5}$ is the positive square root of 5 and $\sqrt[3]{5}$ is the
 real cube root of 5.  We know that $\sqrt{5} \, i \notin {\mathbb
@@ -689,7 +645,7 @@ $$
 But it must be the case that ${\mathbb Q}( \sqrt[6]{5}\, i) = {\mathbb Q}(
 \sqrt[3]{5}, \sqrt{5}\, i )$, since the degree of both of these
 extensions is 6. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}
@@ -887,21 +843,15 @@ $$
 A polynomial $p(x) \in F[x]$ {\bfi splits\/} in $E$ if it is the
 product of linear factors in~$E[x]$.   
  
- 
-\medskip
- 
 
-\noindent {\bf Example 10.}
+\begin{example}{split_field_eg}
 Let $p(x) = x^4 + 2x^2 - 8$ be in ${\mathbb Q}[x]$. Then $p(x)$ has
 irreducible factors $x^2 -2$ and $x^2 + 4$. Therefore, the field
 ${\mathbb Q}( \sqrt{2}, i )$ is a splitting field for~$p(x)$. 
-\hspace{\fill} $\blacksquare$
- 
- 
-\medskip
+\end{example}
  
 
-\noindent {\bf Example 11.}
+\begin{example}{field_cuberoot}
 Let $p(x) = x^3 -3$ be in ${\mathbb Q}[x]$. Then $p(x)$ has a root in
 the field ${\mathbb Q}( \sqrt[3]{3}\, )$.  However, this field is not a
 splitting field for $p(x)$ since the complex cube roots of 3,
@@ -910,7 +860,7 @@ $$
 $$
 are not 
 in ${\mathbb Q}( \sqrt[3]{3}\, )$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}

@@ -8,23 +8,25 @@
 %%%%(c)
 %%%%(c)
 \chapter{The Integers}\label{integers}
+
+
  
  
 The integers are the building blocks of mathematics. In this chapter we will investigate  the fundamental properties of the integers, including mathematical induction, the division algorithm, and the Fundamental Theorem of Arithmetic.
- 
 
-\section{Mathematical Induction}\label{integers_section_1}
+
+\section{Mathematical Induction}\label{integers_math_induction}
 
 Suppose we wish to show that
-$$
+\[
 1 + 2 + \cdots + n = \frac{n(n + 1)}{2}
-$$
+\]
 for any natural number $n$. This formula is easily  verified for small numbers such as $n = 1$, 2, 3, or 4, but it is impossible to verify for all natural numbers on a case-by-case basis.  To prove the formula true in general, a more generic method is required.
 
 Suppose we have verified the equation for the first $n$ cases.  We will attempt to show that we can generate the formula for the $(n + 1)$th case from this knowledge.  The formula is true for $n = 1$ since 
-$$
+\[
 1 = \frac{1(1 + 1)}{2}.
-$$
+\]
 If we have verified the first $n$ cases, then
 \begin{eqnarray*}
 1 + 2 + \cdots + n + (n + 1) & = & \frac{n(n + 1)}{2} + n + 1 \\
@@ -41,27 +43,23 @@ This method of proof is known as {\bfi mathematical induction}.  Instead of atte
 {\bf First Principle of Mathematical Induction.}\index{Induction!first principle of} 
 Let $S(n)$ be a statement about integers for  $n \in {\mathbb N}$ and suppose $S(n_0)$ is true for some integer $n_0$.  If for all integers $k$ with $k \geq n_0$ $S(k)$ implies that $S(k+1)$ is true, then $S(n)$ is true for all integers $n$ greater than $n_0$.  
 
-\medskip
- 
-\noindent {\bf Example 1.}
+\begin{example}{induction_greater_than}
 For all integers $n \geq 3$, $2^n > n + 4$. Since
-$$
+\[
 8 = 2^3 > 3 + 4 = 7,
-$$
+\]
 the statement is true for $n_0 = 3$.  Assume that $2^k > k + 4$ for $k \geq 3$.  Then $2^{k + 1} = 2 \cdot 2^{k} > 2(k + 4)$.  But 
-$$
+\[
 2(k + 4) = 2k + 8 > k + 5 = (k + 1) + 4
-$$
+\]
 since $k$ is positive.  Hence, by induction, the statement holds for all integers $n \geq 3$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
-
-\noindent {\bf Example 2.}
+\begin{example}{induction_divisible}
 Every integer $10^{n + 1} + 3 \cdot 10^n + 5$ is divisible by 9 for $n \in {\mathbb N}$.  For $n = 1$, 
-$$
+\[
 10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15
-$$
+\]
 is divisible by 9.  Suppose that $10^{k + 1} + 3 \cdot 10^k + 5$ is divisible by 9 for $k \geq 1$.  Then 
 \begin{eqnarray*}
 10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5
@@ -71,44 +69,34 @@ is divisible by 9.  Suppose that $10^{k + 1} + 3 \cdot 10^k + 5$ is divisible by
 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45
 \end{eqnarray*}
 is divisible by 9.
-\hspace{\fill} $\blacksquare$
- 
-\medskip
+\end{example}
 
-\noindent {\bf Example 3.}
+\begin{example}{binomial_theorem}
 We will prove the binomial theorem using mathematical induction; that is, 
-$$
-(a + b)^n = \sum_{k = 0}^{n} \left( \begin{array}{c} n \\ k \end{array} \right) a^k b^{n - k},
-$$
+\[
+(a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k},
+\]
 where $a$ and $b$ are real numbers, $n \in \mathbb{N}$, and
-$$
-\left(
-\begin{array}{c}
-n \\ k
-\end{array}
-\right)\label{binomial}
+\[
+\binom{n}{k}
 = \frac{n!}{k! (n - k)!}\label{factorial}
-$$
-is the binomial coefficient.  We first show that
-$$
-\left( \begin{array}{c} n + 1 \\ k \end{array} \right)
+\]
+is the binomial coefficient.\label{binomial}  We first show that
+\[
+\binom{n + 1}{k}
 =
-\left( \begin{array}{c} n \\ k \end{array} \right)
-+
-\left( \begin{array}{c} n \\ k - 1  \end{array} \right).
-$$
+\binom{n}{k} + \binom{n}{k - 1}.
+\]
 This result follows from
 \begin{eqnarray*}
-\left( \begin{array}{c} n \\ k \end{array} \right)
-+
-\left( \begin{array}{c} n \\ k - 1  \end{array} \right)
+\binom{n}{k} + \binom{n}{k - 1}
 & = &
 \frac{n!}{k!(n - k)!}
 +\frac{n!}{(k-1)!(n - k + 1)!} \\
 & = &
 \frac{(n + 1)!}{k!(n + 1 - k)!} \\
 & = &
-\left( \begin{array}{c} n + 1 \\ k \end{array} \right).
+\binom{n + 1}{k}.
 \end{eqnarray*}
 If $n = 1$, the binomial theorem is easy to verify. Now assume that the result is true for $n$ greater than or equal to 1.  Then
 \begin{eqnarray*}
@@ -118,34 +106,26 @@ If $n = 1$, the binomial theorem is easy to verify. Now assume that the result i
 & = &
 (a + b) 
 \left(
-\sum_{k = 0}^{n} \left( \begin{array}{c} n \\ k \end{array} \right) a^k b^{n - k}
+\sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}
 \right) \\
 &  = &
-\sum_{k = 0}^{n} \left( \begin{array}{c} n \\ k
-\end{array} \right) a^{k + 1} b^{n - k}   +
-\sum_{k = 0}^{n} \left( \begin{array}{c} n \\ k
-\end{array} \right) a^k b^{n + 1 - k} \\
+\sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k}   +
+\sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k} \\
 &  = &
-a^{n + 1} + \sum_{k = 1}^{n} \left( \begin{array}{c} n \\ k - 1
-\end{array} \right) a^{k} b^{n + 1 - k} \\
+a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} \\
 &  & +
-\sum_{k = 1}^{n} \left( \begin{array}{c} n \\ k
-\end{array} \right) a^k b^{n + 1 - k} + b^{n + 1}\\
+\sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}\\
 &  = &
-a^{n + 1} + \sum_{k = 1}^{n} \left[ \left( \begin{array}{c} n \\
-k - 1 \end{array} \right)
+a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1}
 +
-\left( \begin{array}{c} n \\ k \end{array} \right) \right]
+\binom{n}{k} \right]
 a^k b^{n + 1 - k} + b^{n + 1} \\
 &  = &
-\sum_{k = 0}^{n + 1}   \left( \begin{array}{c} n + 1 \\ k
-\end{array} \right) a^k b^{n + 1- k}.
+\sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.
 \end{eqnarray*}
-\hspace{\fill} $\blacksquare$
-
-\medskip
+\end{example}
  
-We have an equivalent statement of the Principle of Mathematical Induction that is often very useful:
+We have an equivalent statement of the Principle of Mathematical Induction that is often very useful.
  
 \medskip
 
@@ -166,7 +146,7 @@ Every nonempty subset of the natural numbers is well-ordered.
  
 The Principle of Well-Ordering is equivalent to the Principle  of Mathematical Induction. 
  
-\begin{lemma}\label{integers_theorem_1}
+\begin{lemma}\label{integers_smallest_natural_num}
 The Principle of Mathematical Induction implies that $1$ is the least positive natural number. 
 \end{lemma}
 
@@ -174,13 +154,13 @@ The Principle of Mathematical Induction implies that $1$ is the least positive n
 Let $S = \{ n \in {\mathbb N} : n \geq 1 \}$. Then $1 \in S$.  Now assume that $n \in S$; that is, $n \geq 1$.  Since $n+1 \geq 1$, $n+ 1 \in S$; hence, by induction, every natural number is greater than or equal to 1. 
 \end{proof}
 
-\begin{theorem}\label{integers_theorem_2}
+\begin{theorem}\label{integers_PMI_implies_PWO}
 The Principle of Mathematical Induction implies that the natural numbers are well-ordered. 
 \end{theorem}
  
 \begin{proof}
-We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers_theorem_1}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
-\mbox{\hspace{1in}} 
+We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers_smallest_natural_num}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
+\hspace*{1in} 
 \end{proof}
  
 \medskip
@@ -200,15 +180,15 @@ $n! = n(n - 1)!$ for $n > 1$.
 Every good mathematician or computer scientist knows that looking at problems recursively, as opposed to explicitly, often results in better understanding of complex issues.  
 
  
-\section{The Division Algorithm}\label{integers_section_2}
+\section{The Division Algorithm}\label{integers_division_algorithm}
 
 An application of the Principle of Well-Ordering that we will use often is the division algorithm. 
 
-\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers_theorem_3}
+\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers_theorem_division_alg}
 Let $a$ and $b$ be integers, with $b > 0$.  Then there exist unique integers $q$ and $r$ such that 
-$$
+\[
 a = bq + r
-$$
+\]
 where $0 \leq r < b$.
 \end{theorem}
 
@@ -217,24 +197,24 @@ This is a perfect example of the existence-and-uniqueness type of proof.  We mus
  
 {\em Existence of q and r}.
 Let
-$$
+\[
 S = \{ a - bk : k \in {\mathbb Z} \mbox{ and } a - bk \geq 0 \}.
-$$
+\]
 If $0 \in S$, then $b$ divides $a$, and  we can let $q = a/b$ and $r = 0$.  If $0 \notin S$, we can use the Well-Ordering Principle.  We must first show that $S$ is nonempty.  If $a > 0$, then $a - b \cdot 0 \in S$. If $a < 0$, then $a - b(2a) = a(1 - 2b) \in S$.  In either case $S \neq \emptyset$.  By the Well-Ordering Principle, $S$ must have a smallest member, say $r = a - bq$. Therefore, $a = bq + r$, $r \geq 0$. We now show that $r < b$. Suppose that $r > b$. Then   
-$$
+\[
 a - b(q + 1)= a - bq - b = r - b > 0.
-$$
+\]
 In this case we would have $a - b(q + 1)$ in the set $S$. But then $a - b(q + 1) < a - bq$, which would contradict the fact that $r = a - bq$ is the smallest member  of $S$. So $r \leq b$.  Since $0 \notin S$, $r \neq b$ and so $r < b$. 
  
 {\em Uniqueness of q and r}.
 Suppose there exist integers $r$, $r'$, $q$, and $q'$ such that
-$$
+\[
 a = bq + r, \mbox{ $0 \leq r < b$ }
-$$
+\]
 and
-$$
+\[
 a = bq' + r', \mbox{  $0 \leq r' < b$}.
-$$
+\]
 Then $ bq + r =  bq' + r'$.  Assume that $r' \geq r$.  From the last equation we have $b(q - q') = r' - r$; therefore, $b$ must divide $r' - r$ and $0 \leq r'- r \leq r' < b$.  This is possible only if $r' - r = 0$.  Hence, $r = r'$ and  $q = q'$. 
 \end{proof}
 
@@ -242,19 +222,19 @@ Then $ bq + r =  bq' + r'$.  Assume that $r' \geq r$.  From the last equation we
 
 Let $a$ and $b$ be integers.  If $b = ak$ for some integer $k$, we write $a \mid b$\label{divides}.  An integer $d$ is called a {\bfi  common divisor\/} of $a$ and $b$ if $d \mid a$ and $d \mid b$.  The {\bfi greatest common divisor\/}\index{Greatest common divisor!of two integers} of integers $a$ and $b$ is a positive integer $d$ such that $d$ is a common divisor  of $a$ and $b$ and if $d'$ is any other common divisor of $a$ and $b$, then $d' \mid d$.  We write $d = \gcd(a, b)$\label{greatestcd}; for example, $\gcd( 24, 36) = 12$ and $\gcd(120, 102) = 6$.  We say that two integers $a$ and $b$ are {\bfi relatively prime\/} if $\gcd( a, b ) = 1$. 
 
-\begin{theorem}\label{integers_theorem_4}
+\begin{theorem}\label{integers_theorem_gcd}
 Let $a$ and $b$ be nonzero integers. Then there exist integers $r$ and $s$ such that
-$$
+\[
 \gcd( a, b) = ar + bs.
-$$
+\]
 Furthermore, the greatest common divisor of $a$ and $b$ is unique.
 \end{theorem}
  
 \begin{proof}
 Let
-$$
+\[
 S = \{ am + bn : m, n \in {\mathbb Z} \mbox{ and } am + bn	> 0 \}.
-$$
+\]
 Clearly, the set $S$ is nonempty; hence, by the Well-Ordering Principle $S$ must have a smallest member, say $d = ar + bs$.  We claim that $d = \gcd( a, b)$.  Write $a = dq + r$ where $0 \leq r < d$ . If $r > 0$, then 
 \begin{eqnarray*}
 r 
@@ -266,24 +246,24 @@ r
 which is in $S$.  But this would contradict the fact that $d$ is the smallest member of $S$.  Hence, $r = 0$ and $d$ divides $a$.  A similar argument shows that $d$ divides $b$.  Therefore, $d$ is a common divisor of $a$ and $b$.
 
 Suppose that $d'$ is another common divisor of $a$ and $b$, and we want to show that $d' \mid d$. If we let $a = d'h$ and $b = d'k$, then
-$$
+\[
 d = ar + bs = d'hr + d'ks = d'(hr + ks).
-$$
+\]
 So $d'$ must divide $d$. Hence, $d$ must be the unique greatest common divisor of $a$ and $b$. 
 \end{proof}
 
-\begin{corollary}\label{integers_theorem_5}
+\begin{corollary}\label{integers_theorem_coprime}
 Let $a$ and $b$ be two integers that are relatively prime. Then there exist  integers $r$ and $s$ such that $ar + bs = 1$. 
 \end{corollary}
  
  
 \subsection*{The Euclidean Algorithm}
 
-Among other things, Theorem~\ref{integers_theorem_4} allows us to compute the greatest common divisor of two integers. 
+Among other things, Theorem~\ref{integers_theorem_gcd} allows us to compute the greatest common divisor of two integers. 
 
 \medskip
 
-\noindent {\bf Example 4.}
+\begin{example}{gcd}
 Let us compute the greatest common divisor of $945$ and $2415$.  First observe that 
 \begin{eqnarray*}
 2415 & = & 945 \cdot 2 + 525 \\
@@ -302,9 +282,7 @@ If we work backward through the above sequence of equations, we can also obtain 
 & = & 2 \cdot 2415 + (-5) \cdot 945.
 \end{eqnarray*}
 So $r = -5$ and $s= 2$.  Notice that $r$ and $s$ are not unique, since $r = 41$ and $s = -16$ would also work.
-\hspace{\fill} $\blacksquare$
-
-\medskip
+\end{example}
 
 To compute $\gcd(a,b) = d$, we are using repeated divisions to obtain a decreasing sequence of positive integers $r_1 > r_2 > \cdots > r_n = d$; that is,
 \begin{eqnarray*}
@@ -331,19 +309,19 @@ The algorithm that we have just used to find the greatest common divisor $d$ of 
 
 Let $p$ be an integer such that $p > 1$.  We say that $p$ is a {\bfi prime number}\index{Prime integer}, or simply $p$ is {\bfi prime}, if the only positive numbers that divide $p$ are 1 and $p$ itself.  An integer $n > 1$ that is not prime is said to be {\bfi composite}\index{Composite integer}.  
 
-\begin{lemma}[Euclid]\label{integers_theorem_6}
+\begin{lemma}[Euclid]\label{integers_theorem_prime_divide}
 Let $a$ and $b$ be integers and $p$ be a prime number.  If $p \mid ab$, then either $p \mid a$ or $p \mid b$. 
 \end{lemma}
 
 \begin{proof}
 Suppose that $p$ does not divide $a$.  We must show that $p \mid b$. Since $\gcd( a, p ) = 1$, there exist integers $r$ and $s$ such that $ar + ps = 1$.  So 
-$$
+\[
 b = b(ar + ps) = (ab)r + p(bs).
-$$
+\]
 Since $p$ divides both $ab$ and itself, $p$ must divide $b = (ab)r + p(bs)$. 
 \end{proof}
 
-\begin{theorem}[Euclid]\label{integers_theorem_7}
+\begin{theorem}[Euclid]\label{integers_inifinite_primes}
 There exist an infinite number of primes.
 \end{theorem}
 
@@ -351,28 +329,28 @@ There exist an infinite number of primes.
 We will prove this theorem by contradiction.  Suppose that there are only a finite number of primes, say $p_1, p_2, \ldots, p_n$.  Let $p = p_1  p_2  \cdots  p_n + 1$.  We will show that $p$ must be a different prime number, which contradicts the assumption that we have only $n$ primes.  If $p$ is not prime, then it must be divisible by some $p_i$ for $1 \leq i \leq n$. In this  case $p_i$ must divide $p_1 p_2 \cdots p_n$ and also divide 1.  This is a contradiction, since $p > 1$. 
 \end{proof}
 
-\begin{theorem} {\bf (Fundamental Theorem of Arithmetic)}\index{Fundamental Theorem!of Arithmetic} \label{integers_theorem_8}
+\begin{theorem} {\bf (Fundamental Theorem of Arithmetic)}\index{Fundamental Theorem!of Arithmetic} \label{integers_theorem_FTA}
 Let $n$ be an integer such that $n > 1$.  Then
-$$
+\[
 n = p_1 p_2 \cdots p_k,
-$$
+\]
 where $p_1, \ldots, p_k$ are  primes (not necessarily distinct).  Furthermore, this factorization is unique; that is, if 
-$$
+\[
 n = q_1 q_2 \cdots q_l,
-$$
+\]
 then $k = l$ and the $q_i$'s are just the $p_i$'s rearranged.
 \end{theorem}
 
 \begin{proof}
 {\em Uniqueness}.
 To show uniqueness we will use induction on $n$. The theorem is certainly true for $n = 2$ since in this case $n$ is prime.  Now assume that the result holds for all integers $m$ such that $1 \leq m < n$, and 
-$$
+\[
 n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,
-$$
-where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers_theorem_6}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
-$$
+\]
+where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers_theorem_prime_divide}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
+\[
 n' = p_2 \cdots p_k = q_2 \cdots q_l
-$$
+\]
 has a unique factorization.  Hence, $k=l$ and $q_i = p_i$ for $i = 1, \ldots, k$. 
 
 {\em Existence}.
@@ -382,9 +360,9 @@ a_1 & = & p_1 \cdots p_r \\
 a_2 & = & q_1 \cdots q_s.
 \end{eqnarray*}
 Therefore,
-$$
+\[
 a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s.
-$$
+\]
 So $a \notin S$, which is a contradiction.
 \end{proof}
  
@@ -394,9 +372,9 @@ So $a \notin S$, which is a contradiction.
 \parbox{\textwidth}
 {\small \histf
 Prime numbers were first studied by the ancient Greeks.  Two important results from antiquity are Euclid's proof that an infinite number of primes exist and the Sieve of Eratosthenes, a method of computing all of the prime numbers less than a fixed positive integer $n$.  One problem in number theory is to find a function $f$ such that $f(n)$ is prime for each integer $n$. Pierre Fermat (1601?--1665) conjectured that $2^{2^n} + 1$ was prime for all $n$, but later it was shown by Leonhard Euler (1707--1783) that 
-$$
+\[
 2^{2^5} + 1 = \mbox{4,294,967,297}
-$$
+\]
 is a composite number. One of the many unproven conjectures about prime numbers is Goldbach's Conjecture.  In a letter to Euler in 1742, Christian Goldbach stated the conjecture that every even integer with the exception of 2 seemed to be the sum of two primes:  $4 = 2 + 2$, $6 = 3 + 3$, $8 =3 + 5$, $\ldots$.  Although the conjecture has been verified for the numbers up through 100 million, it has yet to be proven in general.  Since prime numbers play an important role in public key cryptography, there is currently a great deal of interest in determining whether or not a large number is prime.
 \histbox
 }
@@ -412,16 +390,16 @@ is a composite number. One of the many unproven conjectures about prime numbers 
  
 \item
 Prove that
-$$
+\[
 1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}
-$$
+\]
 for $n \in {\mathbb N}$.
 
 \item
 Prove that
-$$
+\[
 1^3 + 2^3 + \cdots + n^3 = \frac{n^2(n + 1)^2}{4}
-$$
+\]
 for $n \in {\mathbb N}$.
 
 \item
@@ -429,9 +407,9 @@ Prove that $n! > 2^n$ for $n \geq 4$.
 
 \item
 Prove that
-$$
+\[
 x + 4x + 7x + \cdots + (3n-2)x = \frac{n(3n - 1)x}{2}
-$$
+\]
 for $n \in {\mathbb N}$.
 
 \item
@@ -442,30 +420,24 @@ Prove that $4 \cdot 10^{2n} + 9 \cdot 10^{2n - 1} + 5$ is divisible by 99 for $n
 
 \item
 Show that
-$$
+\[
 \sqrt[n]{a_1 a_2 \cdots a_n} \leq \frac{1}{n} \sum_{k = 1}^{n} a_k.
-$$
+\]
 
 \item
 Prove the Leibniz rule for $f^{(n)} (x)$, where $f^{(n)}$ is the $n$th derivative of $f$; that is, show that 
-$$
-(fg)^{(n)} (x) = \sum_{k=0}^{n}
-\left(
-\begin{array}{c}
-n \\ k
-\end{array}
-\right)
-f^{(k)}(x) g^{(n-k)} (x).
-$$
+\[
+(fg)^{(n)} (x) = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}(x) g^{(n-k)} (x).
+\]
 
 \item
 Use induction to prove that $1 + 2 + 2^2 + \cdots + 2^n = 2^{n + 1} - 1$ for $n \in {\mathbb N}$. 
 
 \item 
 Prove that
-$$
+\[
 \frac{1}{2}+ \frac{1}{6} + \cdots + \frac{1}{n(n + 1)} = \frac{n}{n + 1} 
-$$
+\]
 for $n \in {\mathbb N}$.
 
 \item 
@@ -473,14 +445,14 @@ If $x$ is a nonnegative real number, then show that $(1 + x)^n - 1 \geq nx$ for 
  
 \item
 {\bf Power Sets.} 
-Let $X$ be a set.  Define the {\bfi power set\/}\index{Power set} of $X$, denoted ${\cal P}(X)$\label{powerset}, to be the set of all subsets  of $X$.  For example,  
-$$
-{\cal P}( \{a, b\} ) = \{ \emptyset, \{a\}, \{b\}, \{a, b\} \}.
-$$
+Let $X$ be a set.  Define the {\bfi power set\/}\index{Power set} of $X$, denoted ${\mathcal P}(X)$\label{powerset}, to be the set of all subsets  of $X$.  For example,  
+\[
+{\mathcal P}( \{a, b\} ) = \{ \emptyset, \{a\}, \{b\}, \{a, b\} \}.
+\]
 For every positive integer $n$, show that a set with exactly $n$ elements has a power set with exactly $2^n$ elements.
 
 \item
-Prove that the two principles of mathematical induction stated in Section~\ref{integers_section_1} are equivalent. 
+Prove that the two principles of mathematical induction stated in Section~\ref{integers_math_induction} are equivalent. 
 
 \item
 Show that the Principle of Well-Ordering for the natural numbers implies that 1 is the smallest natural number.  Use this result to show that the Principle of Well-Ordering implies the Principle of Mathematical Induction; that is, show that if $S \subset {\mathbb N}$ such that $1 \in S$ and $n + 1 \in S$ whenever $n \in S$, then $S = {\mathbb N}$.  
@@ -518,9 +490,9 @@ Let $a$ and $b$ be nonzero integers. If there exist integers $r$ and $s$ such th
 \item
 {\bf Fibonacci Numbers.}
 The Fibonacci numbers are
-$$
+\[
 1, 1, 2, 3, 5, 8, 13, 21, \ldots.
-$$
+\]
 We can define them inductively by $f_1 = 1$, $f_2 = 1$, and $f_{n + 2} = f_{n + 1} + f_n$ for $n \in {\mathbb N}$. 
 \begin{enumerate}
  
@@ -543,9 +515,9 @@ Prove that $f_n$ and $f_{n + 1}$ are relatively prime.
 
 \item
 Let $a$ and $b$ be integers such that $\gcd(a,b) = 1$.  Let $r$ and $s$ be integers such that $ar + bs =1$.  Prove that 
-$$
+\[
 \gcd(a,s) = \gcd(r,b) = \gcd(r,s) =  1.
-$$
+\]
 
 \item
 Let $x, y \in {\mathbb N}$ be relatively prime.  If $xy$ is a perfect square, prove that $x$ and $y$ must both be perfect squares.
@@ -615,9 +587,9 @@ Use this definition to compute $A(3, 1)$.  Write a program to evaluate Ackermann
 
 \item
 Write a computer program that will implement the Euclidean algorithm.  The program should accept two positive integers $a$ and $b$ as input and should output $\gcd( a,b)$ as well as integers $r$ and $s$ such that 
-$$
+\[
 \gcd( a,b) = ra + sb.
-$$
+\]
  
 \end{enumerate}
 }

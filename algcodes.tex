@@ -7,7 +7,7 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Algebraic Coding Theory}
+\chapter{Algebraic Coding Theory}\label{algcodes}
  
  
  
@@ -30,8 +30,10 @@ coding theory.
  
 Let us examine a simple model of a communications system for
 transmitting and receiving coded messages (Figure~\ref{encoding}).  
+
 \begin{figure}[htb]
 \begin{center}
+\caption{Encoding and decoding messages}
 \setlength{\unitlength}{.15in}
 \begin{picture}(19,23)(0,1)
 \thicklines
@@ -50,9 +52,9 @@ transmitting and receiving coded messages (Figure~\ref{encoding}).
 \multiput(10,8)(0,5){3}{\line(0,-1){1}}
 \end{picture}
 \end{center}
-\caption{Encoding and decoding messages}
 \label{encoding}
 \end{figure}
+
 Uncoded messages may be composed of letters or characters, but
 typically they consist of binary $m$-tuples. These messages are
 encoded into codewords, consisting of binary $n$-tuples, by a device
@@ -70,10 +72,7 @@ to correct the error and reconstruct the original message. Our goal is
 to transmit error-free messages as cheaply and quickly as possible.
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 1.}
+\begin{example}{repeat}
 One possible coding scheme would be to send a message several
 times and to compare the received copies with one another. Suppose
 that the message to be encoded is a binary $n$-tuple $(x_{1}, x_{2},
@@ -99,13 +98,10 @@ consisting of $n$ bits, $2n$ extra bits are required, and we can only
 detect and correct single errors. We will see that it is possible to
 find an encoding scheme that will encode a message of $n$ bits into
 $m$ bits with $m$ much smaller than $3n$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{1.5ex}
- 
- 
-\noindent {\bf Example 2.}
+\begin{example}{even_parity}
 {\bfi Even parity}, a  commonly  used coding scheme, is much
 more efficient than the simple repetition scheme. The ASCII (American
 Standard Code for Information Interchange) coding system uses binary
@@ -161,10 +157,7 @@ even to odd, so the new word is not a codeword. (We could also
 construct an error detection scheme based on {\bfi odd parity}; that
 is, we could set the parity check bit so that a codeword always has an
 odd number of 1's.)  
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{1.5ex}
+\end{example}
  
  
 The even parity system is easy to implement, but has two drawbacks.
@@ -176,12 +169,10 @@ Second, we do not have the ability to correct errors.  If the 8-tuple
 have no idea which bit has been changed. We will now investigate a
 coding scheme that will not only allow us to detect transmission
 errors but will actually correct the errors. 
+
  
  
-\vspace{1.5ex}
- 
- 
-\begin{table}[htb]
+\begin{table}[htb]\label{repetition_code}
 \caption{A repetition code}{\small
 \begin{center}
 \begin{tabular}{|lc|cccccccc|}
@@ -199,7 +190,7 @@ Codeword   & 111 & 3   &  2  & 2   &  1  &  2  &   1 &  1
 \end{table}
 
  
-\noindent {\bf Example 3.}
+\begin{example}{nearest}
 Suppose that our original message is either a 0 or a 1, and that 0
 encodes to (000) and 1 encodes to (111). If only a single
 error occurs during transmission, we can detect and correct the
@@ -209,11 +200,11 @@ codeword must have been (111). 	This method will detect and correct
 all single errors. 
  
  
-In Table~7.1, we present all possible words that might be received
-for the transmitted codewords (000) and (111). Table~7.1 also shows 
+In Table~\ref{repetition_code}, we present all possible words that might be received
+for the transmitted codewords (000) and (111). Table~\ref{repetition_code} also shows 
 the number of bits by which each received 3-tuple differs from each
 original codeword. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  
@@ -333,10 +324,7 @@ q^{k}p^{n-k}.
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 4.}
+\begin{example}{probability}
 Suppose that $p = 0.995$ and a 500-bit message is sent. The
 probability that the message was sent error-free is 
 \[
@@ -367,7 +355,7 @@ The probability of more than two errors is approximately
 \[
 1-0.082-0.204 -0.257=0.457.
 \]
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \subsection*{Block Codes}
@@ -381,11 +369,11 @@ coded can be divided into blocks of $m$ binary digits, each of which
 can be encoded into $n$ binary digits. More specifically, an $(n,
 m)$-block code consists of an {\bfi encoding function} 
 \[
-E:{\Bbb Z}^{m}_{2} \rightarrow {\Bbb Z}^{n}_{2}
+E:{\mathbb Z}^{m}_{2} \rightarrow {\mathbb Z}^{n}_{2}
 \]
 and a {\bfi decoding function}
 \[
-D:{\Bbb Z}^{n}_{2} \rightarrow {\Bbb Z}^{m}_{2}.
+D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}.
 \]
 A {\bfi codeword\/} is any element in the image of $E$. We also require
 that $E$ be one-to-one so that two information blocks will not be
@@ -393,61 +381,49 @@ encoded into the same codeword. If our code is to be error-correcting,
 then $D$ must be onto.
  
  
-\vspace{2ex }
- 
- 
-\noindent {\bf Example 5.}
+\begin{example}{block_code}
 The even-parity coding system developed to detect single errors in
 ASCII characters is an $(8,7)$-block code. The encoding function is
 \[
 E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),
 \]
-where $x_8 = x_7 + x_6 + \cdots + x_1$ with addition in ${\Bbb Z}_2$. 
-\hspace{\fill} $\blacksquare$
+where $x_8 = x_7 + x_6 + \cdots + x_1$ with addition in ${\mathbb Z}_2$. 
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-Let ${\bold x} = (x_1, \ldots, x_n)$ and ${\bold y} = (y_1, \ldots,
+Let ${\mathbf x} = (x_1, \ldots, x_n)$ and ${\mathbf y} = (y_1, \ldots,
 y_n)$ be binary $n$-tuples. The {\bfi Hamming distance\/}\index{Hamming
-distance} or {\bfi distance}, $d({\bold x}, {\bold
-y})$\label{noteHammingdist}, between ${\bold x}$ and ${\bold y}$ is
-the number of bits in which ${\bold x}$ and ${\bold y}$ differ. The
+distance} or {\bfi distance}, $d({\mathbf x}, {\mathbf
+y})$\label{noteHammingdist}, between ${\mathbf x}$ and ${\mathbf y}$ is
+the number of bits in which ${\mathbf x}$ and ${\mathbf y}$ differ. The
 distance between two codewords is the minimum number of transmission
 errors required to change one codeword into the other. The
 {\bfi minimum distance\/}\index{Code!minimum distance of} for a code,
 $d_{\min}$\label{notemindist}, is the minimum of all distances
-$d({\bold x}, {\bold y})$, where ${\bold x}$ and ${\bold y}$ are
+$d({\mathbf x}, {\mathbf y})$, where ${\mathbf x}$ and ${\mathbf y}$ are
 distinct codewords. The {\bfi weight}\index{Weight of a codeword},
-$w({\bold x})$\label{noteweight}, of a binary codeword ${\bold x}$ is
-the number of 1's in ${\bold x}$. Clearly, $w({\bold x}) = d({\bold
-x}, {\bold 0})$, where ${\bold 0} = (00 \cdots 0)$. 
+$w({\mathbf x})$\label{noteweight}, of a binary codeword ${\mathbf x}$ is
+the number of 1's in ${\mathbf x}$. Clearly, $w({\mathbf x}) = d({\mathbf
+x}, {\mathbf 0})$, where ${\mathbf 0} = (00 \cdots 0)$. 
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 6.}
-Let ${\bold x} = (10101)$, ${\bold y} = (11010)$, and ${\bold z} =
+\begin{example}{min_distance}
+Let ${\mathbf x} = (10101)$, ${\mathbf y} = (11010)$, and ${\mathbf z} =
 (00011)$ be all of the codewords in some code $C$. Then we have the
 following Hamming distances: 
 \begin{eqnarray*}
-d({\bold x},{\bold y}) & = & 4, \\
-d({\bold x},{\bold z}) & = & 3, \\
-d({\bold y},{\bold z}) & = & 3.
+d({\mathbf x},{\mathbf y}) & = & 4, \\
+d({\mathbf x},{\mathbf z}) & = & 3, \\
+d({\mathbf y},{\mathbf z}) & = & 3.
 \end{eqnarray*}
 The minimum distance  for this code is 3. We also have the
 following weights: 
 \begin{eqnarray*}
-w({\bold x}) & = & 3, \\
-w({\bold y}) & = & 3, \\
-w({\bold z}) & = & 2.
+w({\mathbf x}) & = & 3, \\
+w({\mathbf y}) & = & 3, \\
+w({\mathbf z}) & = & 2.
 \end{eqnarray*}
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 The following proposition lists some basic properties about the weight
@@ -456,25 +432,25 @@ left as an exercise.
  
  
 \begin{proposition}
-Let ${\bold x}$, ${\bold y}$, and ${\bold z}$ be binary $n$-tuples.
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf z}$ be binary $n$-tuples.
 Then 
 \begin{enumerate}
  
 \rm \item \it
-$w({\bold x}) = d( {\bold x}, {\bold 0})$; 
+$w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})$; 
  
 \rm \item \it
-$d( {\bold x}, {\bold y}) \geq 0$; 
+$d( {\mathbf x}, {\mathbf y}) \geq 0$; 
  
 \rm \item \it
-$d( {\bold x}, {\bold y}) = 0$ exactly when ${\bold x} = {\bold y}$; 
+$d( {\mathbf x}, {\mathbf y}) = 0$ exactly when ${\mathbf x} = {\mathbf y}$; 
  
 \rm \item \it
-$d( {\bold x}, {\bold y})= d( {\bold y}, {\bold x})$; 
+$d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})$; 
  
 \rm \item \it
-$d( {\bold x}, {\bold y}) \leq d( {\bold x}, {\bold z}) + d( {\bold
-z}, {\bold y})$. 
+$d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf
+z}, {\mathbf y})$. 
  
 \end{enumerate}
 \end{proposition}
@@ -485,15 +461,15 @@ than the Hamming distances between all codewords in the code. If a
 code is set up carefully, we can use this fact to our advantage.
  
  
-Suppose that ${\bold x} = (1101)$ and ${\bold y} = (1100)$ are
+Suppose that ${\mathbf x} = (1101)$ and ${\mathbf y} = (1100)$ are
 codewords in some code. If we transmit (1101) and an error occurs in
 the rightmost bit, then (1100) will be received. Since (1100) is a
 codeword, the decoder will decode (1100) as the transmitted message.
 This code is clearly not very appropriate for error detection. The
-problem is that $d({\bold x}, {\bold y}) = 1$. If ${\bold x} = (1100)$
-and ${\bold y} = (1010)$ are codewords, then $d({\bold x}, {\bold y})
-= 2$. If ${\bold x}$ is transmitted and a single error occurs, then
-${\bold y}$ can never be received. Table~7.2 gives the distances
+problem is that $d({\mathbf x}, {\mathbf y}) = 1$. If ${\mathbf x} = (1100)$
+and ${\mathbf y} = (1010)$ are codewords, then $d({\mathbf x}, {\mathbf y})
+= 2$. If ${\mathbf x}$ is transmitted and a single error occurs, then
+${\mathbf y}$ can never be received. Table~\ref{4-bit_words} gives the distances
 between all 4-bit codewords in which the first three bits carry
 information and the fourth is an even parity check bit. We can see
 that the minimum distance here is 2; hence, the code is suitable as
@@ -501,7 +477,9 @@ a single error-correcting code.
  
  
 \begin{table}[hbt]
-\caption{Distances between 4-bit codewords}{\small
+\caption{Distances between 4-bit codewords}\label{4-bit_words}
+\medskip
+{\small
 \begin{center}
 \begin{tabular}{|c|cccccccc|}
 \hline
@@ -525,28 +503,28 @@ a single error-correcting code.
  
 To determine exactly what the error-detecting and error-correcting
 capabilities for a code are, we need to analyze the minimum distance
-for the code. Let ${\bold x}$ and ${\bold y}$ be codewords. If
-$d({\bold x}, {\bold y}) = 1$ and an error occurs where ${\bold x}$
-and ${\bold y}$ differ, then ${\bold x}$ is changed to ${\bold y}$.
-The received codeword is ${\bold y}$ and no error message is given.
-Now suppose $d({\bold x}, {\bold y}) = 2$. Then a single error cannot
-change ${\bold x}$ to ${\bold y}$. Therefore, if $d_{\min} = 2$, we
+for the code. Let ${\mathbf x}$ and ${\mathbf y}$ be codewords. If
+$d({\mathbf x}, {\mathbf y}) = 1$ and an error occurs where ${\mathbf x}$
+and ${\mathbf y}$ differ, then ${\mathbf x}$ is changed to ${\mathbf y}$.
+The received codeword is ${\mathbf y}$ and no error message is given.
+Now suppose $d({\mathbf x}, {\mathbf y}) = 2$. Then a single error cannot
+change ${\mathbf x}$ to ${\mathbf y}$. Therefore, if $d_{\min} = 2$, we
 have the ability to detect single errors. However, suppose that
-$d({\bold x}, {\bold y}) = 2$, ${\bold y}$ is sent, and a noncodeword
-${\bold z}$ is received such that
+$d({\mathbf x}, {\mathbf y}) = 2$, ${\mathbf y}$ is sent, and a noncodeword
+${\mathbf z}$ is received such that
 \[
-d({\bold x}, {\bold z}) = d({\bold y}, {\bold z}) = 1.
+d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1.
 \]
-Then the decoder cannot decide between ${\bold x}$ and ${\bold y}$. Even
+Then the decoder cannot decide between ${\mathbf x}$ and ${\mathbf y}$. Even
 though we are aware that an error has occurred, we do not know what
 the error is.
  
  
 Suppose $d_{\min} \geq 3$. Then the maximum-likelihood decoding scheme
-corrects all single errors. Starting with a codeword ${\bold x}$, an
-error in the transmission of a single bit gives ${\bold y}$ with
-$d({\bold x}, {\bold y}) = 1$, but $d({\bold z}, {\bold y}) \geq 2$
-for any other codeword ${\bold z} \neq {\bold x}$. If we do not
+corrects all single errors. Starting with a codeword ${\mathbf x}$, an
+error in the transmission of a single bit gives ${\mathbf y}$ with
+$d({\mathbf x}, {\mathbf y}) = 1$, but $d({\mathbf z}, {\mathbf y}) \geq 2$
+for any other codeword ${\mathbf z} \neq {\mathbf x}$. If we do not
 require the correction of errors, then we can detect multiple errors
 when a code has a minimum distance that is greater than 3.  
  
@@ -559,41 +537,40 @@ detected in~$C$.
  
  
 \begin{proof}
-Suppose that a codeword ${\bold x}$ is sent and the word ${\bold y}$
-is received with at most $n$ errors. Then $d( {\bold x}, {\bold y})
-\leq n$. If ${\bold z}$ is any codeword other than ${\bold x}$, then
+Suppose that a codeword ${\mathbf x}$ is sent and the word ${\mathbf y}$
+is received with at most $n$ errors. Then $d( {\mathbf x}, {\mathbf y})
+\leq n$. If ${\mathbf z}$ is any codeword other than ${\mathbf x}$, then
 \[
 2n+1
 \leq
-d( {\bold x}, {\bold z})
+d( {\mathbf x}, {\mathbf z})
 \leq
-d( {\bold x}, {\bold y}) + d( {\bold y}, {\bold z})
+d( {\mathbf x}, {\mathbf y}) + d( {\mathbf y}, {\mathbf z})
 \leq
-n + d( {\bold y}, {\bold z}).
+n + d( {\mathbf y}, {\mathbf z}).
 \]
-Hence, $d({\bold y}, {\bold z} ) \geq n+1$ and ${\bold y}$ will be
-correctly decoded as ${\bold x}$. Now suppose that ${\bold x}$ is
-transmitted and ${\bold y}$ is received and that at least one error 
-has occurred, but not more than $2n$ errors. Then $1 \leq d( {\bold x},
-{\bold y} ) \leq 2n$.  Since the minimum distance between codewords is
-$2n +1$, ${\bold y}$ cannot be a codeword.  Consequently, the code can
+Hence, $d({\mathbf y}, {\mathbf z} ) \geq n+1$ and ${\mathbf y}$ will be
+correctly decoded as ${\mathbf x}$. Now suppose that ${\mathbf x}$ is
+transmitted and ${\mathbf y}$ is received and that at least one error 
+has occurred, but not more than $2n$ errors. Then $1 \leq d( {\mathbf x},
+{\mathbf y} ) \leq 2n$.  Since the minimum distance between codewords is
+$2n +1$, ${\mathbf y}$ cannot be a codeword.  Consequently, the code can
 detect between 1 and $2n$ errors. 
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 7.}
-In Table~7.3, the codewords ${\bold c}_1 = (00000)$, ${\bold c}_2 = (00111)$,
-${\bold c}_3 = (11100)$, and ${\bold c}_4 = (11011)$ determine a
+\begin{example}{single_correct}
+In Table~\ref{Hamming_dist}, the codewords ${\mathbf c}_1 = (00000)$, ${\mathbf c}_2 = (00111)$,
+${\mathbf c}_3 = (11100)$, and ${\mathbf c}_4 = (11011)$ determine a
 single error-correcting code.  
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{table}[htb]
-\caption{ Hamming distances for an error-correcting code}{\small
+\caption{ Hamming distances for an error-correcting code}\label{Hamming_dist}
+{\small
 \begin{center}
+\medskip
 \begin{tabular}{|c|cccc|}
 \hline
       & 00000 & 00111 & 11100 & 11011 \\ \hline
@@ -641,7 +618,7 @@ To gain more knowledge of a particular code and develop more efficient
 techniques of encoding, decoding, and error detection, we need to add
 additional structure to our codes. One way to accomplish this is to
 require that the code also be a group. A {\bfi group
-code\/}\index{Code!group} is a code that is also a subgroup of ${\Bbb
+code\/}\index{Code!group} is a code that is also a subgroup of ${\mathbb
 Z}_2^n$.  
  
  
@@ -649,14 +626,14 @@ To check that a code is a group code, we need only verify one thing.
 If we add any two elements in the code, the result must be an $n$-tuple
 that is again in the code. It is not necessary to check that the
 inverse of the $n$-tuple is in the code, since every codeword is its own
-inverse, nor is it necessary to check that ${\bold 0}$ is a codeword.
+inverse, nor is it necessary to check that ${\mathbf 0}$ is a codeword.
 For instance,
 \[
 (11000101) + (11000101) = (00000000).
 \]
  
  
-\noindent {\bf Example 8.}
+\begin{example}{weights}\label{7tuple_weights}
 Suppose that we have a code that consists of the following 7-tuples: 
 \[
 \begin{array}{cccc}
@@ -667,7 +644,7 @@ Suppose that we have a code that consists of the following 7-tuples:
 \end{array}
 \]
 It is a straightforward though tedious task to verify that this code
-is also a subgroup of ${\Bbb Z}_2^7$ and, therefore, a group code.
+is also a subgroup of ${\mathbb Z}_2^7$ and, therefore, a group code.
 This code is a single error-detecting and single error-correcting 
 code, but
 it is a long and tedious process to compute all of the distances
@@ -677,20 +654,20 @@ codewords is 3. As we will soon see, this is no coincidence.
 However, the relationship between weights and distances in a
 particular code is heavily dependent on the fact that the code is a
 group. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{lemma}
-Let ${\bold x}$ and ${\bold y}$ be  binary $n$-tuples. Then $w({\bold
-x} + {\bold y}) = d({\bold x}, {\bold y})$. 
+Let ${\mathbf x}$ and ${\mathbf y}$ be  binary $n$-tuples. Then $w({\mathbf
+x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})$. 
 \end{lemma}
  
  
 \begin{proof}
-Suppose that ${\bold x}$ and ${\bold y}$ are binary $n$-tuples. Then
-the distance between ${\bold x}$ and ${\bold y}$ is exactly the number
-of places in which ${\bold x}$ and ${\bold y}$ differ. But ${\bold x}$
-and ${\bold y}$ differ in a particular coordinate exactly when the sum
+Suppose that ${\mathbf x}$ and ${\mathbf y}$ are binary $n$-tuples. Then
+the distance between ${\mathbf x}$ and ${\mathbf y}$ is exactly the number
+of places in which ${\mathbf x}$ and ${\mathbf y}$ differ. But ${\mathbf x}$
+and ${\mathbf y}$ differ in a particular coordinate exactly when the sum
 in the coordinate is 1, since
 \begin{eqnarray*}
 1 + 1 & = & 0 \\
@@ -708,7 +685,7 @@ Let $d_{\min}$ be the minimum distance for a group code $C$. Then
 $d_{\min}$ is the minimum of all the nonzero weights of the nonzero
 codewords in $C$. That is, 
 \[
-d_{\min} = \min\{ w({\bold x}) : { {\bold x} \neq {\bold 0}
+d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0}
 } \}.
 \]
 \end{theorem}
@@ -717,14 +694,14 @@ d_{\min} = \min\{ w({\bold x}) : { {\bold x} \neq {\bold 0}
 \begin{proof}
 Observe that
 \begin{eqnarray*}
-d_{\min} &= & \min \{ d({\bold x},{\bold y}) : {\bold x}
+d_{\min} &= & \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}
 \neq
-{\bold y} \} \\
-&= & \min \{ d({\bold x},{\bold y}) : {\bold x}+{\bold y}
-\neq {\bold 0} \} \\
-&=& \min\{ w({\bold x} + {\bold y}) : {\bold x}+{\bold y}
-\neq {\bold 0} \} \\
-& = & \min\{ w({\bold z}) : {\bold z} \neq {\bold 0} \}.
+{\mathbf y} \} \\
+&= & \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y}
+\neq {\mathbf 0} \} \\
+&=& \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}
+\neq {\mathbf 0} \} \\
+& = & \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.
 \end{eqnarray*}
 \end{proof}
  
@@ -732,7 +709,7 @@ d_{\min} &= & \min \{ d({\bold x},{\bold y}) : {\bold x}
 \subsection*{Linear Codes}
  
  
-From Example~8, it is now easy to check that the minimum nonzero
+From Example~\ref{7tuple_weights}, it is now easy to check that the minimum nonzero
 weight is 3; hence, the code does indeed detect and correct all
 single errors. We have now reduced the problem of finding ``good''
 codes to that of generating group codes. One easy way to generate
@@ -742,17 +719,17 @@ group codes is to employ a bit of matrix theory.
 Define the {\bfi inner product\/}\index{Inner product} of two binary
 $n$-tuples to be 
 \[
-{\bold x} \cdot {\bold y} = x_1 y_1 + \cdots + x_n y_n,
+{\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,
 \]
-where ${\bold x} = (x_1, x_2, \ldots, x_n)^{\rm t}$ and ${\bold y} =
+where ${\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}$ and ${\mathbf y} =
 (y_1, y_2, \ldots, y_n)^{\rm t}$ are column vectors.\footnote{Since we
 will be working with matrices, we will write binary $n$-tuples as
 column vectors for the remainder of this chapter.} For example, if
-${\bold x} = (011001)^{\rm t}$ and ${\bold y} = (110101)^{\rm t}$,
-then ${\bold x} \cdot {\bold y} = 0$. We can also look at an inner
+${\mathbf x} = (011001)^{\rm t}$ and ${\mathbf y} = (110101)^{\rm t}$,
+then ${\mathbf x} \cdot {\mathbf y} = 0$. We can also look at an inner
 product as the product of a row matrix with a column matrix; that is, 
 \begin{eqnarray*}
-{\bold x} \cdot {\bold y} & = & {\bold x}^{\rm t}  {\bold y}
+{\mathbf x} \cdot {\mathbf y} & = & {\mathbf x}^{\rm t}  {\mathbf y}
 \\
 & = &
 \left(
@@ -773,19 +750,19 @@ x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.
 \end{eqnarray*}
  
  
-\noindent {\bf Example 9.}
+\begin{example}{matrix_codes}
 Suppose that the words to be encoded consist of all binary
 \mbox{3-tuples}
 and that our encoding scheme is even-parity. To encode an arbitrary
 3-tuple, we add a fourth bit to obtain an even number of 1's. Notice
-that an arbitrary $n$-tuple ${\bold x} = (x_1, x_2, \ldots, x_n)^{\rm
+that an arbitrary $n$-tuple ${\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm
 t}$ has an even number of 1's exactly when $x_1 + x_2 + \cdots + x_n =
-0$; hence, a 4-tuple ${\bold x} = (x_1, x_2, x_3, x_4)^{\rm t}$ has an
+0$; hence, a 4-tuple ${\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}$ has an
 even number of 1's if $ x_1+ x_2+ x_3+ x_4 = 0$, or 
 \[
-{\bold x} \cdot {\bold 1} 
+{\mathbf x} \cdot {\mathbf 1} 
 = 
-{\bold x}^{\rm t} {\bold 1} 
+{\mathbf x}^{\rm t} {\mathbf 1} 
 =
 \left(
 \begin{array}{cccc}
@@ -803,26 +780,20 @@ x_1 & x_2 & x_3 & x_4
 \]
 This example leads us to hope that there is a connection between
 matrices and coding theory. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-Let ${\Bbb M}_{m \times n}({\Bbb Z}_2)$\label{notembyn} denote the set
-of all $m \times n$ matrices with entries in ${\Bbb Z}_2$. We do
+Let ${\mathbb M}_{m \times n}({\mathbb Z}_2)$\label{notembyn} denote the set
+of all $m \times n$ matrices with entries in ${\mathbb Z}_2$. We do
 matrix operations as usual except that all our addition and multiplication
-operations occur in ${\Bbb Z}_2$. Define the {\bfi null
+operations occur in ${\mathbb Z}_2$. Define the {\bfi null
 space\/}\index{Matrix!null space of}\index{Null space!of a matrix} of 
-a matrix $H \in {\Bbb M}_{m \times n}({\Bbb Z}_2)$ to be the set of
-all binary $n$-tuples ${\bold x}$ such that $H{\bold x} = {\bold 0}$.
+a matrix $H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)$ to be the set of
+all binary $n$-tuples ${\mathbf x}$ such that $H{\mathbf x} = {\mathbf 0}$.
 We denote the null space of a matrix $H$ by ${\rm Null}(H)$\label{notenull}.  
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 10.}
+\begin{example}{group_code}
 Suppose that
 \[
 H =
@@ -834,8 +805,8 @@ H =
 \end{array}
 \right).
 \]
-For a 5-tuple ${\bold x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}$ to be in
-the null space of $H$, $H{\bold x} = {\bold 0}$. Equivalently, the
+For a 5-tuple ${\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}$ to be in
+the null space of $H$, $H{\mathbf x} = {\mathbf 0}$. Equivalently, the
 following system of equations must be satisfied:   
 \begin{eqnarray*}
  x_2 + x_4   & = & 0 \\
@@ -849,47 +820,45 @@ The set of binary 5-tuples satisfying these equations is
 \end{array}
 \]
 This code is easily determined to be a group code.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}
-Let $H$ be in ${\Bbb M}_{m \times n}({\Bbb Z}_2)$. Then the null space of
+Let $H$ be in ${\mathbb M}_{m \times n}({\mathbb Z}_2)$. Then the null space of
 $H$ is a group~code. 
 \end{theorem}
  
  
 \begin{proof}
-Since each element of ${\Bbb Z}_2^n$ is its own inverse, the only
-thing that really needs to be checked here is closure. Let ${\bold x},
-{\bold y} \in {\rm Null}(H)$ for some matrix $H$ in ${\Bbb M}_{m \times
-n}({\Bbb Z}_2)$. Then $H{\bold x} = {\bold 0}$ and $H{\bold y} =
-{\bold 0}$. So 
+Since each element of ${\mathbb Z}_2^n$ is its own inverse, the only
+thing that really needs to be checked here is closure. Let ${\mathbf x},
+{\mathbf y} \in {\rm Null}(H)$ for some matrix $H$ in ${\mathbb M}_{m \times
+n}({\mathbb Z}_2)$. Then $H{\mathbf x} = {\mathbf 0}$ and $H{\mathbf y} =
+{\mathbf 0}$. So 
 \[
-H({\bold x}+{\bold y}) = H({\bold x} +{\bold y})
+H({\mathbf x}+{\mathbf y}) = H({\mathbf x} +{\mathbf y})
 =
-H{\bold x} + H{\bold y} = {\bold 0}
+H{\mathbf x} + H{\mathbf y} = {\mathbf 0}
 +
-{\bold 0}
-= {\bold 0}.
+{\mathbf 0}
+= {\mathbf 0}.
 \]
-Hence, ${\bold x}+{\bold y}$ is in the null space of $H$ and
+Hence, ${\mathbf x}+{\mathbf y}$ is in the null space of $H$ and
 therefore must be a codeword. 
-\mbox{\hspace{1in}}
+\hspace*{1in}
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 A code is a {\bfi linear code\/}\index{Code!linear} if it is
-determined by the null space of some matrix $H \in {\Bbb M}_{m \times
-n}({\Bbb Z}_2)$.  
+determined by the null space of some matrix $H \in {\mathbb M}_{m \times
+n}({\mathbb Z}_2)$.  
  
  
-\vspace{2ex}
  
- 
-\noindent {\bf Example 11.}
+\begin{example}{linear_code}
 Let $C$ be the code given by the matrix
 \[
 H =
@@ -901,11 +870,11 @@ H =
 \end{array}
 \right).
 \]
-Suppose that the 7-tuple ${\bold x} = (010011)^{\rm t}$ is received.
+Suppose that the 7-tuple ${\mathbf x} = (010011)^{\rm t}$ is received.
 It is a simple matter of matrix multiplication to determine whether or
-not ${\bold x}$ is a codeword. Since 
+not ${\mathbf x}$ is a codeword. Since 
 \[
-H{\bold x} =
+H{\mathbf x} =
 \left(
 \begin{array}{c}
 0 \\
@@ -916,7 +885,7 @@ H{\bold x} =
 \]
 the received word is not a codeword.  We must either attempt to
 correct the word or request that it be transmitted again.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  
@@ -932,7 +901,7 @@ matrices.
  
  
 Suppose that $H$ is an $m \times n$ matrix with entries in
-${\Bbb Z}_2$ and $n > m$. If the last $m$ columns of the
+${\mathbb Z}_2$ and $n > m$. If the last $m$ columns of the
 matrix form the $m \times m$ identity matrix, $I_m$, then
 the matrix is a {\bfi canonical parity-check
 matrix}\index{Matrix!parity-check}. More specifically, $H= (A \mid I_m
@@ -966,16 +935,13 @@ G =
 \frac{I_{n-m}}{A}
 \right).
 \]
-Our goal will be to show that $G {\bold x} = {\bold y}$ if and only if
-$H{\bold y} = {\bold 0}$.  Given a message block ${\bold x}$ to be
+Our goal will be to show that $G {\mathbf x} = {\mathbf y}$ if and only if
+$H{\mathbf y} = {\mathbf 0}$.  Given a message block ${\mathbf x}$ to be
 encoded, $G$ will allow us to quickly encode it into a linear
-codeword ${\bold y}$. 
+codeword ${\mathbf y}$. 
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 12.}
+\begin{example}{parity_check}
 Suppose that we have the following eight words to be
 encoded:
 \[
@@ -1023,12 +989,12 @@ respectively.
  
 Observe that the rows in $H$  represent the parity checks on certain
 bit positions in a 6-tuple. The 1's in the identity matrix serve as
-parity checks for the 1's in the same row. If ${\bold x} = (x_1, x_2,
+parity checks for the 1's in the same row. If ${\mathbf x} = (x_1, x_2,
 x_3, x_4, x_5, x_6)$, then 
 \[
-{\bold 0}
+{\mathbf 0}
 =
-H{\bold x}
+H{\mathbf x}
 =
 \left(
 \begin{array}{l}
@@ -1058,7 +1024,7 @@ space of $H$ is easily computed to be
 \]
 An even easier way to compute the null space is with the generator
 matrix $G$ (Table~7.4). 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{table}[htb]
@@ -1067,7 +1033,7 @@ matrix $G$ (Table~7.4).
 \begin{tabular}{|c|c|}
 \hline
 Message Word  & Codeword \\
-${\bold x}$ & $G {\bold x}$ \\ \hline
+${\mathbf x}$ & $G {\mathbf x}$ \\ \hline
 000 & 000000 \\
 001 & 001101 \\
 010 & 010110 \\
@@ -1084,18 +1050,18 @@ ${\bold x}$ & $G {\bold x}$ \\ \hline
  
  
 \begin{theorem}
-Let $H \in {\Bbb M}_{m \times n}({\Bbb Z}_2)$ be a canonical
+Let $H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)$ be a canonical
 parity-check matrix. Then ${\rm Null}(H)$ consists of all 
-${\bold x} \in {\Bbb
+${\mathbf x} \in {\mathbb
 Z}_2^n$ whose first $n-m$ bits are arbitrary but whose last $m$ bits
-are determined by $H{\bold x} = {\bold 0}$. Each of
+are determined by $H{\mathbf x} = {\mathbf 0}$. Each of
 the last $m$ bits serves as an even parity check bit for some of the
 first $n-m$ bits. Hence, $H$ gives rise to an $(n, n-m)$-block code. 
 \end{theorem}
  
  
 We leave the proof of this theorem as an exercise. In light of the
-theorem, the first $n-m$ bits in ${\bold x}$ are called {\bfi
+theorem, the first $n-m$ bits in ${\mathbf x}$ are called {\bfi
 information bits\/} and the last $m$ bits are called {\bfi check bits}.
 In Example~12, the first three bits are the information bits
 and the last three are the check bits.
@@ -1103,43 +1069,42 @@ and the last three are the check bits.
  
 \begin{theorem}
 Suppose that $G$ is an $n \times k$  standard generator matrix.  Then
-\mbox{$C = \{ {\bold y} : G {\bold x} ={\bold y} \mbox{ for ${\bold x} \in
-{\Bbb  Z}_2^k$} \}$} is an  $(n,k)$-block code. More specifically, $C$
+\mbox{$C = \{ {\mathbf y} : G {\mathbf x} ={\mathbf y} \mbox{ for ${\mathbf x} \in
+{\mathbb  Z}_2^k$} \}$} is an  $(n,k)$-block code. More specifically, $C$
 is a group code.  
 \end{theorem}
  
  
 \begin{proof}
-Let $G {\bold x}_1 = {\bold y}_1$ and $G {\bold
-x}_2 ={\bold y}_2$ be two codewords. Then ${\bold y}_1
-+ {\bold y}_2$ is in $C$ since 
+Let $G {\mathbf x}_1 = {\mathbf y}_1$ and $G {\mathbf
+x}_2 ={\mathbf y}_2$ be two codewords. Then ${\mathbf y}_1
++ {\mathbf y}_2$ is in $C$ since 
 \[
-G( {\bold x}_1 + {\bold x}_2)
+G( {\mathbf x}_1 + {\mathbf x}_2)
 =
-G {\bold x}_1 + G {\bold x}_2
+G {\mathbf x}_1 + G {\mathbf x}_2
 =
-{\bold y}_1 + {\bold y}_2.
+{\mathbf y}_1 + {\mathbf y}_2.
 \]
 We must also show that two message blocks cannot be encoded into the
-same codeword. That is, we must show that if $G {\bold x} = G
-{\bold y}$, then ${\bold x} = {\bold y}$.  Suppose that $G
-{\bold x} = G {\bold y}$. Then
+same codeword. That is, we must show that if $G {\mathbf x} = G
+{\mathbf y}$, then ${\mathbf x} = {\mathbf y}$.  Suppose that $G
+{\mathbf x} = G {\mathbf y}$. Then
 \[
-G {\bold x} - G {\bold y}
+G {\mathbf x} - G {\mathbf y}
 =
-G( {\bold x} - {\bold y})
+G( {\mathbf x} - {\mathbf y})
 =
-{\bold 0}.
+{\mathbf 0}.
 \]
-However, the first $k$ coordinates in $G( {\bold x} - {\bold
+However, the first $k$ coordinates in $G( {\mathbf x} - {\mathbf
 y})$ are exactly $x_1 -y_1, \ldots, x_k - y_k$, since they are
 determined by the identity matrix, $I_k$, part of $G$. Hence, $G(
-{\bold x} - {\bold y}) = {\bold 0}$ exactly when
-${\bold x} = {\bold y}$.
+{\mathbf x} - {\mathbf y}) = {\mathbf 0}$ exactly when
+${\mathbf x} = {\mathbf y}$.
 \end{proof}
  
- 
-\vspace{2ex}
+ \medskip
  
  
 Before we can prove the relationship between canonical parity-check
@@ -1150,7 +1115,7 @@ matrices and standard generating matrices, we need to prove a lemma.
 Let $H = (A \mid I_m )$ be an $m \times n$ canonical parity-check
 matrix and $G = \left( \frac{I_{n-m} }{A} \right)$ be the
 corresponding $n \times (n-m)$ standard generator matrix. Then $HG =
-{\bold 0}$. 
+{\mathbf 0}$. 
 \end{lemma}
  
  
@@ -1190,22 +1155,22 @@ is the Kronecker delta\index{Kronecker delta}.
 Let $H = (A \mid I_m )$ be an $m \times n$ canonical parity-check
 matrix and let $G = \left( \frac{I_{n-m} }{A} \right) $ be the $n
 \times (n-m)$ standard generator matrix associated with $H$. Let $C$
-be the code generated by $G$. Then ${\bold y}$ is in $C$ if and only
-if $H {\bold y} = {\bold 0}$. In particular, $C$ is a linear code with
+be the code generated by $G$. Then ${\mathbf y}$ is in $C$ if and only
+if $H {\mathbf y} = {\mathbf 0}$. In particular, $C$ is a linear code with
 canonical parity-check matrix $H$. 
 \end{theorem}
  
  
 \begin{proof}
-First suppose that ${\bold y} \in C$. Then $G {\bold x} = {\bold y}$
-for some ${\bold x} \in {\Bbb Z}_2^m$. By Lemma~7.9, $H {\bold y} = HG
-{\bold x} = {\bold 0}$. 
+First suppose that ${\mathbf y} \in C$. Then $G {\mathbf x} = {\mathbf y}$
+for some ${\mathbf x} \in {\mathbb Z}_2^m$. By Lemma~7.9, $H {\mathbf y} = HG
+{\mathbf x} = {\mathbf 0}$. 
  
  
-Conversely, suppose that ${\bold y} = (y_1, \ldots, y_n)^{\rm t}$ is
-in the null space of $H$.  We need to find an ${\bold x}$ in ${\Bbb
-Z}_2^{n-m}$ such that $G {\bold x}^{\rm t} = {\bold y}$. Since $H
-{\bold y} = {\bold 0}$, the following set of equations must be
+Conversely, suppose that ${\mathbf y} = (y_1, \ldots, y_n)^{\rm t}$ is
+in the null space of $H$.  We need to find an ${\mathbf x}$ in ${\mathbb
+Z}_2^{n-m}$ such that $G {\mathbf x}^{\rm t} = {\mathbf y}$. Since $H
+{\mathbf y} = {\mathbf 0}$, the following set of equations must be
 satisfied:  
 \begin{eqnarray*}
 a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} +
@@ -1237,7 +1202,7 @@ Consequently, we can let $x_i = y_i$ for $i= 1, \ldots, n - m$.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 It would be helpful if we could compute the minimum distance of a
@@ -1245,20 +1210,17 @@ linear code directly from its matrix $H$ in order to determine the
 error-detecting and error-correcting capabilities of the code. Suppose
 that  
 \begin{eqnarray*}
-{\bold e}_1 & = & (100 \cdots 00)^{\rm t} \\
-{\bold e}_2 & = & (010 \cdots 00)^{\rm t} \\
+{\mathbf e}_1 & = & (100 \cdots 00)^{\rm t} \\
+{\mathbf e}_2 & = & (010 \cdots 00)^{\rm t} \\
  & \vdots & \\
-{\bold e}_n & = & (000 \cdots 01)^{\rm t}
+{\mathbf e}_n & = & (000 \cdots 01)^{\rm t}
 \end{eqnarray*}
-are the $n$-tuples in ${\Bbb Z}_2^n$ of weight 1. For an $m \times
-n$ binary matrix $H$, $H{\bold e}_i$ is exactly the $i$th column of
+are the $n$-tuples in ${\mathbb Z}_2^n$ of weight 1. For an $m \times
+n$ binary matrix $H$, $H{\mathbf e}_i$ is exactly the $i$th column of
 the matrix $H$. 
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 13.}
+\begin{example}{ith_column}
 Observe that
 \[
 \left(
@@ -1286,19 +1248,16 @@ Observe that
 \end{array}
 \right).
 \]
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 We state this result in the following proposition and leave the proof
 as an exercise. 
  
 \begin{proposition}
-Let ${\bold e}_i$ be the binary $n$-tuple with a $1$ in the $i$th
-coordinate and $0$'s elsewhere and suppose that $H \in {\Bbb M}_{m
-\times n}({\Bbb Z}_2)$. Then $H{\bold e}_i$ is the $i$th column of
+Let ${\mathbf e}_i$ be the binary $n$-tuple with a $1$ in the $i$th
+coordinate and $0$'s elsewhere and suppose that $H \in {\mathbb M}_{m
+\times n}({\mathbb Z}_2)$. Then $H{\mathbf e}_i$ is the $i$th column of
 the matrix $H$.  
 \end{proposition}
  
@@ -1315,22 +1274,19 @@ Suppose that ${\rm Null}(H)$ is a single error-detecting code. Then the minimum
 distance of the code must be at least 2. Since the null space is a
 group code, it is sufficient to require that the code contain no
 codewords of less than weight 2 other than the zero codeword. That
-is, ${\bold e}_i$ must not be a codeword for $i = 1, \ldots, n$. Since
-$H{\bold e}_i$ is the $i$th column of $H$, the only way in which
-${\bold e}_i$ could be in the null space of $H$ would be if the $i$th
+is, ${\mathbf e}_i$ must not be a codeword for $i = 1, \ldots, n$. Since
+$H{\mathbf e}_i$ is the $i$th column of $H$, the only way in which
+${\mathbf e}_i$ could be in the null space of $H$ would be if the $i$th
 column were all zeros, which is impossible; hence, the code must have
 the capability to detect at least single errors.
  
  
 Conversely, suppose that no column of $H$ is the zero column. By 
-Proposition~7.11, $H{\bold e}_i \neq {\bold 0}$.
+Proposition~7.11, $H{\mathbf e}_i \neq {\mathbf 0}$.
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 14.}
+\begin{example}{null_space}
 If we consider the matrices
 \[
 H_1 =
@@ -1355,10 +1311,7 @@ H_2 =
 \]
 then the null space of $H_1$ is a single error-detecting code and the
 null space of $H_2$ is not. 
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 We can even do better than Theorem~7.12. This theorem gives us
@@ -1368,10 +1321,7 @@ determine when the minimum distance of a linear code is 3 by
 examining the corresponding matrix.
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 15.}
+\begin{example}{check_matrix}
 If we let
 \[
 H =
@@ -1393,7 +1343,7 @@ indeed determine that the code generated by $H$ is error-correcting by
 examining the columns of $H$. Notice in this example that not only
 does $H$ have no zero columns, but also that no two columns are the
 same. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}
@@ -1404,20 +1354,20 @@ columns and no two columns of $H$ are identical.
  
  
 \begin{proof}
-The $n$-tuple ${\bold e}_{i} +{\bold e}_{j}$ has 1's in the $i$th and
-$j$th entries and 0's elsewhere, and $w( {\bold e}_{i} +{\bold
+The $n$-tuple ${\mathbf e}_{i} +{\mathbf e}_{j}$ has 1's in the $i$th and
+$j$th entries and 0's elsewhere, and $w( {\mathbf e}_{i} +{\mathbf
 e}_{j}) = 2$ for $i \neq j$. Since
 \[
-{\bold 0}
-= H({\bold e}_{i} +{\bold e}_{j})
-= H{\bold e}_{i} + H{\bold e}_{j}
+{\mathbf 0}
+= H({\mathbf e}_{i} +{\mathbf e}_{j})
+= H{\mathbf e}_{i} + H{\mathbf e}_{j}
 \]
 can only occur if the $i$th and $j$th columns are identical, the
 null space of $H$ is a single error-correcting code.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 Suppose now that we have a canonical parity-check matrix $H$ with
@@ -1447,8 +1397,8 @@ distance of 3.
 In general, if $H$ is an $m \times n$ canonical parity-check matrix,
 then there are $n-m$ information positions in each codeword. Each
 column has $m$ bits, so there are $2^m$ possible distinct columns.
-It is necessary that the columns ${\bold 0}, {\bold e}_1, \ldots,
-{\bold e}_n$ be excluded, leaving $2^m - (1 + n)$ remaining columns for
+It is necessary that the columns ${\mathbf 0}, {\mathbf e}_1, \ldots,
+{\mathbf e}_n$ be excluded, leaving $2^m - (1 + n)$ remaining columns for
 information if we are still to maintain the ability not only to detect
 but also to correct single errors. 
  
@@ -1463,11 +1413,7 @@ is the closest codeword, because the received $n$-tuple must be compared
 to each possible codeword to determine the proper decoding.
 This can be a serious impediment if the code is very large.
  
- 
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 16.}
+\begin{example}{syndrome}
 Given the binary matrix
 \[
 H =
@@ -1479,75 +1425,72 @@ H =
 \end{array}
 \right)
 \]
-and the 5-tuples ${\bold x} = (11011)^{\rm t}$ and ${\bold y} =
+and the 5-tuples ${\mathbf x} = (11011)^{\rm t}$ and ${\mathbf y} =
 (01011)^{\rm t}$, we can compute
 \[
-H{\bold x} =
+H{\mathbf x} =
 \left(
 \begin{array}{c} 0 \\ 0 \\ 0 \end{array}
 \right)
 \]
 and
 \[
-H{\bold y} =
+H{\mathbf y} =
 \left(
 \begin{array}{c} 1 \\ 0 \\ 1 \end{array}
 \right).
 \]
-Hence, ${\bold x}$ is a codeword and ${\bold y}$ is not, since
-${\bold x}$ is in the null space and ${\bold y}$ is not. Notice that
-$H{\bold x}$ is identical to the first column of $H$. In fact, this is
-where the error occurred. If we flip the first bit in ${\bold y}$ from
-0 to 1, then we obtain ${\bold x}$.  
-\hspace{\fill} $\blacksquare$
+Hence, ${\mathbf x}$ is a codeword and ${\mathbf y}$ is not, since
+${\mathbf x}$ is in the null space and ${\mathbf y}$ is not. Notice that
+$H{\mathbf x}$ is identical to the first column of $H$. In fact, this is
+where the error occurred. If we flip the first bit in ${\mathbf y}$ from
+0 to 1, then we obtain ${\mathbf x}$.  
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-If $H$ is an $m \times n$ matrix and ${\bold x} \in {\Bbb Z}_2^n$,
+If $H$ is an $m \times n$ matrix and ${\mathbf x} \in {\mathbb Z}_2^n$,
 then we say that the {\bfi syndrome\/}\index{Syndrome of a code} of
-${\bold x}$ is $H{\bold x}$. The following proposition allows
+${\mathbf x}$ is $H{\mathbf x}$. The following proposition allows
 the quick detection and correction of errors.
  
  
 \begin{proposition}
 Let the $m \times n$ binary matrix $H$ determine a linear code and let
-${\bold x}$ be the received $n$-tuple. Write ${\bold x}$ as ${\bold x}
-=  {\bold c} +{\bold e}$, where ${\bold c}$ is the transmitted codeword
-and ${\bold e}$ is the transmission error. Then the syndrome  $H{\bold
-x}$ of the received codeword ${\bold x}$ is also the syndrome
-of the error ${\bold e}$.
+${\mathbf x}$ be the received $n$-tuple. Write ${\mathbf x}$ as ${\mathbf x}
+=  {\mathbf c} +{\mathbf e}$, where ${\mathbf c}$ is the transmitted codeword
+and ${\mathbf e}$ is the transmission error. Then the syndrome  $H{\mathbf
+x}$ of the received codeword ${\mathbf x}$ is also the syndrome
+of the error ${\mathbf e}$.
 \end{proposition}
  
  
 \begin{proof}
-$H{\bold x} = H({\bold c} +{\bold e}) = H{\bold c} + H{\bold e} =
-{\bold 0} + H{\bold e} = H{\bold e}$.  
+$H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} =
+{\mathbf 0} + H{\mathbf e} = H{\mathbf e}$.  
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 This proposition tells us that the syndrome of a received word depends
 solely on the error and not on the transmitted codeword. The proof of the
 following theorem follows immediately from Proposition~7.14 and from
-the fact that $H{\bold e}$ is the $i$th column of the matrix $H$.
+the fact that $H{\mathbf e}$ is the $i$th column of the matrix $H$.
  
  
 \begin{theorem}
-Let $H \in {\Bbb M}_{ m \times n} ( {\Bbb Z}_2)$ and suppose that the
+Let $H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)$ and suppose that the
 linear code corresponding to $H$ is single error-correcting. Let
-${\bold r}$ be a received $n$-tuple that was transmitted with at most
-one error. If the syndrome of ${\bold r}$ is ${\bold 0}$, then no
-error has occurred; otherwise, if the syndrome of ${\bold r}$ is equal
+${\mathbf r}$ be a received $n$-tuple that was transmitted with at most
+one error. If the syndrome of ${\mathbf r}$ is ${\mathbf 0}$, then no
+error has occurred; otherwise, if the syndrome of ${\mathbf r}$ is equal
 to some column of $H$, say the $i$th column, then the error has
 occurred in the $i$th bit.  
 \end{theorem}
  
  
-\noindent {\bf Example 17.}
+\begin{example}{detecting_errors}
 Consider the matrix
 \[
 H =
@@ -1559,50 +1502,47 @@ H =
 \end{array}
 \right)
 \]
-and suppose that the  6-tuples ${\bold x} = (111110)^{\rm t}$,
-${\bold y} = (111111)^{\rm t}$, and ${\bold z} = (010111)^{\rm t}$
+and suppose that the  6-tuples ${\mathbf x} = (111110)^{\rm t}$,
+${\mathbf y} = (111111)^{\rm t}$, and ${\mathbf z} = (010111)^{\rm t}$
 have been received. Then  
 \[
-H{\bold x} =
+H{\mathbf x} =
 \left(
 \begin{array}{c} 1 \\ 1 \\ 1 \end{array}
 \right),
-H{\bold y} =
+H{\mathbf y} =
 \left(
 \begin{array}{c} 1 \\ 1 \\ 0 \end{array}
 \right),
-H{\bold z} =
+H{\mathbf z} =
 \left(
 \begin{array}{c} 1 \\ 0 \\ 0 \end{array}
 \right).
 \]
-Hence, ${\bold x}$ has an error in the third bit and ${\bold z}$ has
-an error in the fourth bit. The transmitted codewords for ${\bold x}$
-and ${\bold z}$ must have been $(110110)$ and $(010011)$,
-respectively. The syndrome of ${\bold y}$ does not occur in any of the
+Hence, ${\mathbf x}$ has an error in the third bit and ${\mathbf z}$ has
+an error in the fourth bit. The transmitted codewords for ${\mathbf x}$
+and ${\mathbf z}$ must have been $(110110)$ and $(010011)$,
+respectively. The syndrome of ${\mathbf y}$ does not occur in any of the
 columns of the matrix $H$, so multiple
-errors must have occurred to produce~${\bold y}$.
-\hspace{\fill} $\blacksquare$
+errors must have occurred to produce~${\mathbf y}$.
+\end{example}
  
  
 \subsection*{Coset Decoding}
  
  
 We can use group theory to obtain another way of decoding messages.  A
-linear code $C$ is a subgroup of ${\Bbb Z}_2^n$. {\bfi
+linear code $C$ is a subgroup of ${\mathbb Z}_2^n$. {\bfi
 Coset\/}\index{Coset decoding} or {\bfi standard
-decoding\/}\index{Standard decoding} uses the cosets of $C$ in ${\Bbb
+decoding\/}\index{Standard decoding} uses the cosets of $C$ in ${\mathbb
 Z}_2^n$ to implement maximum-likelihood decoding. Suppose that $C$ is
-an $(n,m)$-linear code. A coset of $C$ in ${\Bbb Z}_2^n$ is written in
-the form ${\bold x} + C$, where ${\bold x} \in {\Bbb Z}_2^n$. By
+an $(n,m)$-linear code. A coset of $C$ in ${\mathbb Z}_2^n$ is written in
+the form ${\mathbf x} + C$, where ${\mathbf x} \in {\mathbb Z}_2^n$. By
 Lagrange's Theorem, there are $2^{n-m}$ distinct cosets of $C$ in 
-${\Bbb Z}_2^n$.
+${\mathbb Z}_2^n$.
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 18.}
+\begin{example}{coset_decoding}
 Let $C$ be the $(5,3)$-linear code given by the parity-check matrix
 \[
 H =
@@ -1620,14 +1560,15 @@ The code consists of the codewords
 (00000)& (01101)& (10011)& (11110).
 \end{array}
 \]
-There are $2^{5-2} = 2^3$ cosets of $C$ in ${\Bbb Z}_2^5$, each with
+There are $2^{5-2} = 2^3$ cosets of $C$ in ${\mathbb Z}_2^5$, each with
 order $2^2 =4$.  These cosets are listed in Table~7.5. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{table}
 \caption{Cosets of $C$}{\small
 \begin{center}
+\medskip
 \begin{tabular}{|c|c|}
 \hline
  & Cosets \\
@@ -1647,38 +1588,31 @@ order $2^2 =4$.  These cosets are listed in Table~7.5.
 \end{table}
  
  
-\vspace{2ex}
+
  
  
 Our task is to find out how knowing the cosets might help us to 
 decode a
-message. Suppose that ${\bold x}$ was the original codeword sent and
-that ${\bold r}$ is the \mbox{$n$-tuple received}. If ${\bold e}$ is the
-transmission error, then ${\bold r} = {\bold e} + {\bold x}$ or,
-equivalently, ${\bold x} = {\bold e} + {\bold r}$. However, this is
-exactly the statement that ${\bold r}$ is an element in the coset 
-${\bold e} + C$. In maximum-likelihood decoding we expect the error
-${\bold e}$ to be as small as possible; that is, ${\bold e}$ will have
+message. Suppose that ${\mathbf x}$ was the original codeword sent and
+that ${\mathbf r}$ is the \mbox{$n$-tuple received}. If ${\mathbf e}$ is the
+transmission error, then ${\mathbf r} = {\mathbf e} + {\mathbf x}$ or,
+equivalently, ${\mathbf x} = {\mathbf e} + {\mathbf r}$. However, this is
+exactly the statement that ${\mathbf r}$ is an element in the coset 
+${\mathbf e} + C$. In maximum-likelihood decoding we expect the error
+${\mathbf e}$ to be as small as possible; that is, ${\mathbf e}$ will have
 the least weight. An $n$-tuple of least weight in a coset is called a
 {\bfi coset leader}\index{Coset!leader}. Once we have determined a
 coset leader for each coset, the decoding process becomes a task
-of calculating ${\bold r} + {\bold e}$ to obtain ${\bold x}$.
+of calculating ${\mathbf r} + {\mathbf e}$ to obtain ${\mathbf x}$.
  
- 
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 19.}
+\begin{example}{representative}
 In Table~7.5, notice that we have chosen a representative of the least
 possible weight for each coset.  These representatives are coset
-leaders. Now suppose that ${\bold r} = (01111)$ is the received word.
-To decode ${\bold r}$, we find that it is in the coset $(00010) + C$;
+leaders. Now suppose that ${\mathbf r} = (01111)$ is the received word.
+To decode ${\mathbf r}$, we find that it is in the coset $(00010) + C$;
 hence, the originally transmitted codeword must have been $(01101) =
 (01111) + (00010)$. 
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 A potential problem with this method of decoding is that we might have
@@ -1691,30 +1625,27 @@ a list is called a {\bfi decoding table}\index{Decoding table}.
  
 \begin{proposition}
 Let $C$ be an $(n,k)$-linear code given by the matrix $H$ and suppose
-that ${\bold x}$ and ${\bold y}$ are in ${\Bbb Z}_2^n$. Then ${\bold
-x}$ and ${\bold y}$ are in the same coset of $C$ if and only if
-$H{\bold x} = H{\bold y}$. That is, two $n$-tuples are in the same
+that ${\mathbf x}$ and ${\mathbf y}$ are in ${\mathbb Z}_2^n$. Then ${\mathbf
+x}$ and ${\mathbf y}$ are in the same coset of $C$ if and only if
+$H{\mathbf x} = H{\mathbf y}$. That is, two $n$-tuples are in the same
 coset if and only if their syndromes are the same.
 \end{proposition}
  
  
 \begin{proof}
-Two $n$-tuples ${\bold x}$ and ${\bold y}$ are in the same coset of
-$C$ exactly when ${\bold x} - {\bold y} \in C$; however, this is
-equivalent to $H({\bold x} - {\bold y}) = 0$ or $H {\bold x} = H
-{\bold y}$. 
+Two $n$-tuples ${\mathbf x}$ and ${\mathbf y}$ are in the same coset of
+$C$ exactly when ${\mathbf x} - {\mathbf y} \in C$; however, this is
+equivalent to $H({\mathbf x} - {\mathbf y}) = 0$ or $H {\mathbf x} = H
+{\mathbf y}$. 
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 20.}
+\begin{example}{decoding_table}
 Table~7.6 is a decoding table for the code $C$ given in Example~18. If
-${\bold x} = (01111)$ is received, then its syndrome can be computed
+${\mathbf x} = (01111)$ is received, then its syndrome can be computed
 to be
 \[
-H {\bold x} =
+H {\mathbf x} =
 \left(
 \begin{array}{c}
 0 \\
@@ -1725,10 +1656,7 @@ H {\bold x} =
 \]
 Examining the decoding table, we determine that the coset leader is
 $(00010)$. It is now easy to decode the received codeword. 
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 Given an $(n,k)$-block code, the question arises of whether or not
@@ -1772,7 +1700,7 @@ Syndrome & Coset Leader \\
 \begin{enumerate}
  
  
-\bf\item\rm
+\item
 Why is the following encoding scheme not acceptable?
 \[
 \begin{array}{lcccccccccc}
@@ -1785,9 +1713,9 @@ Why is the following encoding scheme not acceptable?
 \]
  
  
-\bf\item\rm
+\item
 Without doing any addition, explain why the following set of 4-tuples in
-${\Bbb Z}_2^4$ cannot be a group code. 
+${\mathbb Z}_2^4$ cannot be a group code. 
 \[
 \begin{array}{cccc}
 (0110) & (1001) & (1010) & (1100)
@@ -1795,7 +1723,7 @@ ${\Bbb Z}_2^4$ cannot be a group code.
 \]
  
  
-\bf\item\rm    %%%%%%%%%%%%%%%%
+\item    %%%%%%%%%%%%%%%%
 Compute the Hamming distances between the following pairs of
 $n$-tuples. 
  
@@ -1835,7 +1763,7 @@ $(1001), (0111)$
  
  
  
-\bf\item\rm  %%%%%%%%%%%%%%%%%%%
+\item  %%%%%%%%%%%%%%%%%%%
 Compute the weights of the following $n$-tuples.
  
 \vspace{3pt}        %two column exercise list
@@ -1871,35 +1799,35 @@ $(1011)$
  
  
  
-\bf\item\rm  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 Suppose that a linear code $C$ has a minimum weight of 7. What are the
 error-detection and error-correction capabilities of $C$?
  
  
-\bf\item\rm
+\item
 In each of the following codes, what is the minimum distance for the
 code? What is the best situation we might hope for in connection with
 error detection and error correction? 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 $(011010) \; (011100) \; (110111) \; (110000)$
  
- \bf\item\rm
+ \item
 $(011100) \; (011011) \; (111011) \; (100011)$ \\
 $(000000) \; (010101) \; (110100) \; (110011)$
  
- \bf\item\rm
+ \item
 $(000000) \; (011100) \; (110101) \; (110001)$
  
- \bf\item\rm
+ \item
 $(0110110) \; (0111100) \; (1110000) \; (1111111)$ \\
 $(1001001) \; (1000011) \; (0001111) \; (0000000)$
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Compute the null space of each of the following matrices.  What type
 of $(n,k)$-block codes are the null spaces? Can you find a matrix (not
 necessarily a standard generator matrix) that generates each code?
@@ -1995,12 +1923,12 @@ Are your generator matrices unique?
  
  
  
-\bf\item\rm %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item %%%%%%%%%%%%%%%%%%%%%%%%%%%
 Construct a $(5,2)$-block code. Discuss the error-detection and
 error-correction capabilities of your code.
  
  
-\bf\item\rm
+\item
 Let $C$ be the code obtained from the null space of the matrix
 \[
 H =
@@ -2021,7 +1949,7 @@ Decode the message
 if possible.
  
  
-\bf\item\rm
+\item
 Suppose that a 1000-bit binary message is transmitted. Assume that the
 probability of a single error is $p$ and that the errors occurring in
 different bits are independent of one another. If $p = 0.01$, what is
@@ -2030,7 +1958,7 @@ probability of exactly two errors occurring?  Repeat this problem for
 $p = 0.0001$.
  
  
-\bf\item\rm
+\item
 Which matrices are canonical parity-check matrices? For those matrices
 that are canonical parity-check matrices, what are the corresponding
 standard generator matrices? What are the error-detection and
@@ -2112,12 +2040,12 @@ matrices?
 \vspace{4pt}        %end two column exercise list
  
  
-\bf\item\rm %%%%%%%%%%%%%%%%%%%%%%%%%
+\item %%%%%%%%%%%%%%%%%%%%%%%%%
 List all possible syndromes for the codes generated by each of the
 matrices in the previous exercise. 
  
  
-\bf\item\rm
+\item
 Let
 \[
 H =
@@ -2133,29 +2061,29 @@ Compute the syndrome caused by each of the following transmission
 errors. 
 \begin{enumerate}
  
- \bf\item\rm 
+ \item 
 An error in the first bit
  
- \bf\item\rm 
+ \item 
 An error in the third bit
  
- \bf\item\rm 
+ \item 
 An error in the last bit
  
- \bf\item\rm 
+ \item 
 Errors in the third and fourth bits
  
 \end{enumerate}
  
  
-\bf\item\rm
-Let $C$ be the group code in ${\Bbb Z}_2^3$ defined by the codewords
-$(000)$ and $(111)$. Compute the cosets of $H$ in ${\Bbb Z}_2^3$. Why
+\item
+Let $C$ be the group code in ${\mathbb Z}_2^3$ defined by the codewords
+$(000)$ and $(111)$. Compute the cosets of $H$ in ${\mathbb Z}_2^3$. Why
 was there no need to specify right or left cosets? Give the
 single transmission error, if any, to which each coset corresponds.
  
  
-\bf\item\rm
+\item
 For each of the following matrices, find the cosets of the
 corresponding code $C$. Give a decoding table for each code if
 possible. 
@@ -2254,61 +2182,61 @@ possible.
 %**********************Theory
  
  
-\bf\item\rm
-Let ${\bold x}$, ${\bold y}$, and ${\bold z}$ be binary $n$-tuples.
+\item
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf z}$ be binary $n$-tuples.
 Prove each of the following statements. 
 \begin{enumerate}
  
- \bf\item\rm
-$w({\bold x}) = d( {\bold x}, {\bold 0})$
+ \item
+$w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})$
  
- \bf\item\rm
-$d( {\bold x}, {\bold y}) = d( {\bold x} + {\bold z}, {\bold
-y} + {\bold z} )$
+ \item
+$d( {\mathbf x}, {\mathbf y}) = d( {\mathbf x} + {\mathbf z}, {\mathbf
+y} + {\mathbf z} )$
  
- \bf\item\rm
-$d({\bold x}, {\bold y}) = w({\bold x}- {\bold y})$
+ \item
+$d({\mathbf x}, {\mathbf y}) = w({\mathbf x}- {\mathbf y})$
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 A {\bfi metric\/}\index{Metric} on a set $X$ is a map $d: X \times X
-\rightarrow {\Bbb R}$ satisfying the following conditions. 
+\rightarrow {\mathbb R}$ satisfying the following conditions. 
 \begin{enumerate}
  
- \bf\item\rm
-$d( {\bold x}, {\bold y}) \geq 0$ for all ${\bold x}, {\bold y} \in
+ \item
+$d( {\mathbf x}, {\mathbf y}) \geq 0$ for all ${\mathbf x}, {\mathbf y} \in
 X$; 
  
- \bf\item\rm
-$d( {\bold x}, {\bold y}) = 0$ exactly when ${\bold x} = {\bold y}$; 
+ \item
+$d( {\mathbf x}, {\mathbf y}) = 0$ exactly when ${\mathbf x} = {\mathbf y}$; 
  
- \bf\item\rm
-$d( {\bold x}, {\bold y})= d( {\bold y}, {\bold x})$;
+ \item
+$d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})$;
  
- \bf\item\rm
-$d( {\bold x}, {\bold y}) \leq d( {\bold x}, {\bold z}) + d( {\bold
-z}, {\bold y})$. 
+ \item
+$d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf
+z}, {\mathbf y})$. 
  
 \end{enumerate}
 In other words, a metric is simply a generalization of the notion of
-distance. Prove that Hamming distance is a metric on ${\Bbb Z}_2^n$.
+distance. Prove that Hamming distance is a metric on ${\mathbb Z}_2^n$.
 Decoding a message actually reduces to deciding which is the closest
 codeword in terms of distance.
  
  
-\bf\item\rm
+\item
 Let $C$ be a linear code. Show that either the $i$th coordinates in the
 codewords of $C$ are all zeros or exactly half of them are zeros. 
  
  
-\bf\item\rm
+\item
 Let $C$ be a linear code. Show that either every codeword has even
 weight or exactly half of the codewords have even weight.
  
  
-\bf\item\rm
+\item
 Show that the codewords of even weight in a linear code $C$ are also a
 linear code. 
  
@@ -2316,44 +2244,44 @@ linear code.
 %***************Calculations--parity-check matrices
  
  
-\bf\item\rm
+\item
 If we are to use an error-correcting linear code to transmit the 128
 ASCII characters, what size matrix must be used? What size matrix must
 be used to transmit the extended ASCII character set of 256
 characters?  What if we require only error detection in both cases?
  
  
-\bf\item\rm
+\item
 Find the canonical parity-check matrix that gives the even
 parity check bit code with three information positions. What is the
 matrix for seven information positions?  What are the corresponding
 standard generator matrices? 
  
  
-\bf\item\rm
+\item
 How many check positions are needed for a single error-correcting code
 with 20 information positions? With 32 information positions?
  
  
 %***************Theory
  
-\bf\item\rm
-Let ${\bold e}_i$ be the binary $n$-tuple with a 1 in the $i$th
-coordinate and $0$'s elsewhere and suppose that $H \in {\Bbb M}_{m
-\times n}({\Bbb Z}_2)$. Show that $H{\bold e}_i$ is the $i$th
+\item
+Let ${\mathbf e}_i$ be the binary $n$-tuple with a 1 in the $i$th
+coordinate and $0$'s elsewhere and suppose that $H \in {\mathbb M}_{m
+\times n}({\mathbb Z}_2)$. Show that $H{\mathbf e}_i$ is the $i$th
 column of the matrix $H$. 
  
  
-\bf\item\rm
+\item
 Let $C$ be an $(n,k)$-linear code. Define the {\bfi
 dual\/}\index{Code!dual} or {\bfi orthogonal code\/} of $C$  to be 
 \[
-C^\perp = \{ {\bold x} \in {\Bbb Z}_2^n :  {\bold x} \cdot {\bold y} =
-0 \mbox{ for all } {\bold y} \in C \}. 
+C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} =
+0 \mbox{ for all } {\mathbf y} \in C \}. 
 \]
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 Find the dual code of the linear code $C$ where $C$ is given by the
 matrix 
 \[
@@ -2366,24 +2294,24 @@ matrix
 \right).
 \]
  
- \bf\item\rm
+ \item
 Show that $C^\perp$ is an $(n, n-k)$-linear code.
  
- \bf\item\rm
+ \item
 Find the standard generator and parity-check matrices of $C$ and
 $C^\perp$. What happens in general? Prove your conjecture. 
  
 \end{enumerate}
  
  
-\bf\item\rm
-Let $H$ be an $m \times n$ matrix over ${\Bbb Z}_2$, where the $i$th
+\item
+Let $H$ be an $m \times n$ matrix over ${\mathbb Z}_2$, where the $i$th
 column is the number $i$ written in binary with $m$ bits. The null
 space of such a matrix is called a {\bfi Hamming
 code}\index{Code!Hamming!definition of}. 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 Show  that the matrix
 \[
 H =
@@ -2398,7 +2326,7 @@ H =
 generates a Hamming code. What are the error-correcting properties of
 a Hamming code? 
  
- \bf\item\rm
+ \item
 The column corresponding to the syndrome also marks the bit that was
 in error; that is, the $i$th column of the matrix is $i$ written as a
 binary number, and the syndrome 
@@ -2407,21 +2335,21 @@ $(101011)$, compute the syndrome.  In
 which bit did the error occur in this case, and what codeword was
 originally transmitted?
  
- \bf\item\rm
+ \item
 Give a binary matrix $H$ for the Hamming code with six information
 positions and four check positions. What are the check positions and
 what are the information positions? Encode the messages $(101101)$ and
 $(001001)$. Decode the received words $(0010000101)$ and
 $(0000101100)$.  What are the possible syndromes for this code?
  
- \bf\item\rm
+ \item
 What is the number of check bits and the number of information bits in an
 $(m,n)$-block Hamming code? Give both an upper and a lower bound on the
 number of information bits in terms of the number of check bits.
 Hamming codes having the maximum possible number of information bits
 with $k$ check bits are called {\bfi
 perfect}\index{Code!Hamming!perfect}. Every possible syndrome except
-${\bold 0}$ occurs as a column. If the number of information bits is
+${\mathbf 0}$ occurs as a column. If the number of information bits is
 less than the maximum, then the code is called {\bfi
 shortened}\index{Code!Hamming!shortened}. In this case, give an example
 showing that some syndromes can represent multiple errors.  

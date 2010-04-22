@@ -7,7 +7,7 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Integral Domains}
+\chapter{Integral Domains}\label{domains}
  
 One of the most important rings we study is the ring of integers.  It was our first example of an algebraic structure: the first polynomial
 ring that we examined was ${\mathbb Z}[x]$.  We also know that the integers sit naturally inside the field of rational numbers, ${\mathbb
@@ -232,19 +232,14 @@ the zero element $[ 0, b]$ in $F_D$, and $\psi$ is injective.
 \end{proof}
  
 
-\medskip
- 
- 
-\noindent {\bf Example 1.}
+\begin{example}{rational_polys}
 Since ${\mathbb Q}$ is a field, ${\mathbb Q}[x]$ is an integral domain. The
 field of fractions of ${\mathbb Q}[x]$ is the set of all rational
 expressions $p(x)/q(x)$, where $p(x)$ and $q(x)$ are polynomials over
 the rationals and $q(x)$ is not the zero polynomial. We will denote 
 this field by ${\mathbb Q}(x)$.\label{noteratpoly} 
-\hspace{\fill} $\blacksquare$
- 
+\end{example}
 
-\medskip
  
 
 We will leave the proofs of the following corollaries of Theorem 16.4
@@ -291,15 +286,14 @@ Furthermore, $p$ is {\bfi
 prime\/}\index{Prime element}\index{Element!prime} if whenever $p \mid
 ab$ either $p \mid a$ or $p \mid b$.
 
-\medskip
- 
-\noindent {\bf Example 2.}
+
+\begin{example}{Qxy}
 It is important to notice that prime and irreducible elements do not
 always coincide. Let $R$ be the subring of ${\mathbb Q}[x, y]$ generated
 by $x^2$, $y^2$, and $xy$.  Each of these elements is irreducible in
 $R$; however, $xy$ is not prime, since $xy$ divides $x^2 y^2$ but does
 not divide either $x^2$ or $y^2$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 \medskip
  
@@ -327,18 +321,15 @@ that $p_i = q_{\pi(j)}$ for \mbox{$j = 1, \ldots, r = s$}.
  
 \end{enumerate}
 
-\medskip
 
-\noindent {\bf Example 3.}
+\begin{example}{Z_UFD}
 The integers are a unique factorization domain by the Fundamental
 Theorem of Arithmetic.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 
-\medskip
 
-
-\noindent {\bf Example 4.}
+\begin{example}{not_a_UFD}
 Not every integral domain is a unique factorization domain. The
 subring ${\mathbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i\}$ of the
 complex numbers is an integral domain (Exercise~12, Chapter~14). Let
@@ -366,7 +357,7 @@ are irreducible. Since 2 is not a unit multiple of either $1 -
 \sqrt{3}\, i$ or $1 + \sqrt{3}\, i$, 4 has at least two distinct
 factorizations into irreducible elements.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 
  
@@ -576,12 +567,12 @@ and the factorization of $a$ is unique.
 Let $F$ be a field.  Then $F[x]$ is a UFD.
 \end{corollary}
 
-\noindent {\bf Example 5.}
+\begin{example}{Zx_UFD}
 Every PID is a UFD, but it is not the case that every UFD is a PID. In Corollary~16.22, we will prove that ${\mathbb Z}[x]$ is a UFD.  However,
 ${\mathbb Z}[x]$ is not a PID.  Let $I = \{ 5 f(x) + x g(x) : f(x), g(x)  \in {\mathbb Z}[x] \}$.  We can easily show that $I$ is an ideal of 
 ${\mathbb Z}[x]$.  Suppose that $I = \langle p(x) \rangle$.  Since $5 \in I$,  $5 = f(x) p(x)$.  In this case $p(x) = p$ must be a constant.  Since $x  \in I$, $x = p g(x)$; consequently, $p = \pm 1$. However, it follows from this fact that $\langle p(x) \rangle = {\mathbb Z}[x]$. But this would 
 mean that 3 is in $I$. Therefore, we can write $3 = 5 f(x) + x g(x)$ for  some $f(x)$ and $g(x)$ in ${\mathbb Z}[x]$.  Examining the constant term of  this polynomial, we see that $3 = 5 f(x)$, which is impossible. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 
 \subsection*{Euclidean Domains}
@@ -603,21 +594,18 @@ $\nu(r) < \nu(b)$.
 \end{enumerate}
 Then $D$ is called a {\bfi Euclidean domain\/}\index{Euclidean domain}\index{Domain!Euclidean} and $\nu$ is called a {\bfi Euclidean valuation}\index{Euclidean valuation}.  
 
-\medskip
 
-\noindent {\bf Example 6.}
+\begin{example}{abs_value}
 Absolute value on ${\mathbb Z}$ is a Euclidean valuation.
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 7.}
+\begin{example}{Fx_Euc_val}
 Let $F$ be a field. Then the degree of a polynomial in $F[x]$ is a Euclidean valuation. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 8.}
+\begin{example}{Gaussian_valuation}
 Recall that the Gaussian integers in Example~9 of Chapter~14 are defined by
 $$
 {\mathbb Z}[i] = \{  a + b i : a, b \in {\mathbb Z} \}.
@@ -666,7 +654,7 @@ where $q = m_1 + m_2 i$ and $r =  w (s + ti)$.  Since $z$ and $qw$ are in ${\mat
 $$
 \nu(r) = \nu(w) \nu(s + ti) \leq \frac{1}{2} \nu(w) < \nu(w).
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
 
 \begin{theorem}
 Every Euclidean domain is a principal ideal domain.
@@ -701,12 +689,10 @@ $$
 in $D[x]$.  Then the {\bfi content\/}\index{Polynomial!content of} of $p(x)$ is the greatest common divisor of $a_0, \ldots, a_1$.  We say
 that $p(x)$ is {\bfi primitive\/}\index{Primitive polynomial}\index{Polynomial!primitive} if $\gcd(a_0, \ldots, a_n ) = 1$.    
  
-\medskip
- 
-\noindent {\bf Example 9.}
+\begin{example}{poly_gcd}
 In ${\mathbb Z}[x]$ the polynomial $p(x)= 5 x^4 - 3 x^3 + x -4$ is a primitive polynomial since the greatest common divisor of the
 coefficients is 1; however, the polynomial $q(x) = 4 x^2 - 6 x + 8$ is not primitive since the content of $q(x)$ is 2.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 \begin{theorem}[Gauss's Lemma]\index{Gauss's Lemma}
 Let $D$ be a UFD and let $f(x)$ and $g(x)$ be primitive polynomials in $D[x]$.  Then $f(x) g(x)$ is primitive.

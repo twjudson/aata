@@ -23,6 +23,7 @@
 \usepackage{amscd}
 \usepackage{multicol}
 \usepackage{makeidx}
+%\usepackage{tikz}
  
  
 \makeindex 
@@ -38,11 +39,11 @@
 % Comma in title not allowed
 \hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
 \hypersetup{pdfkeywords=free linear algebra textbook}
-\hypersetup{colorlinks=true,linkcolor=green}
+\hypersetup{colorlinks=true,linkcolor=blue}
 
 % Per-chapter items
 \newcommand{\chaplabel}{\relax}
-\newcounter{example}
+\newcounter{example}[chapter]
 
 % Usage: \chap{title}{label}
 \newcommand{\chap}[2]{%
@@ -53,8 +54,9 @@
 
 % Examples as environment
 \newenvironment{example}[1]
-  {\refstepcounter{example}{\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
-  {\hspace\fill$\blacksquare$\par}
+  {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
+  {\hspace\fill$\blacksquare$\par\medskip}
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -93,8 +95,11 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 
 %**********************included files************************ 
 
+%% TWJ, 2010/03/31
+%% Chapters now begin with Chapter 1
+
 \cleardoublepage 
-\setcounter{chapter}{-1}
+%\setcounter{chapter}{-1}
 \pagenumbering{arabic}
 
 
@@ -107,7 +112,14 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \include{crypt}    %Cryptography
 \include{algcodes} %Coding Theory
 \include{isomorph} %Isomorphisms
+
+% TWJ, 2010/03/31
+% The chapter HOMOMORPHISMS AND FACTOR GROUPS is now
+% two chapters: (10) NORMAL SUBGROUPS AND FACTOR GROUPS
+% (11) HOMOMORPHISMS
+
 \include{normal}   %Normal Subgroups
+\include{homomorph}   %Homomorphisms
 \include{matrix}   %Groups of Symmetries
 \include{struct}   %Abelian and Solvable Groups
 \include{actions}  %Group Actions
@@ -122,9 +134,9 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \include{galois}   %Galois Theory
 \include{notation}
 \include{solution}
-%% RAB, 2009/01/28
-%% Include GFDL as an appendix
-%%
+% RAB, 2009/01/28
+% Include GFDL as an appendix
+%
 {\small\include{gfdl}}
 
 \clearpage\addcontentsline{toc}{chapter}{Index}

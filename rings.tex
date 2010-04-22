@@ -9,8 +9,6 @@
 %%%%(c)
 \chapter{Rings}\label{rings}
  
- 
- 
 Up to this point we have studied sets with a single binary operation
 satisfying certain axioms, but often we are more interested in working
 with sets that have two binary operations.  For example, one of the
@@ -22,11 +20,9 @@ satisfying certain axioms, we have an algebraic structure called a
 ring. In a ring we add and multiply such elements as real numbers,
 complex numbers, matrices, and functions. 
  
- 
- 
+
 \section{Rings}
- 
- 
+
 A nonempty set $R$ is a {\bfi ring\/}\index{Ring!definition of} if
 it has two closed binary operations, addition and multiplication,
 satisfying the following conditions.  
@@ -111,31 +107,25 @@ fields is shown in Figure~\ref{Rings}.
  
  
  
-\noindent {\bf Example 1.}
+\begin{example}{integer_ring}
 As we have mentioned previously, the integers form a ring. In fact, ${\Bbb
 Z}$ is an integral domain.  Certainly if $a b = 0$ for two integers
 $a$ and $b$, either $a=0$ or $b=0$. However, ${\Bbb Z}$ is not a
 field. There is no integer that is the multiplicative inverse of 2,
 since $1/2$ is not an integer.  The only integers with multiplicative
 inverses are 1 and $-1$.  
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 2.}
+\begin{example}{field_ring}
 Under the ordinary operations of addition and multiplication, all of
 the familiar number systems are rings: the rationals, ${\Bbb Q}$; the
 real numbers, ${\Bbb R}$; and the complex numbers, ${\Bbb C}$. Each of
 these rings is a field. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 3.}
+\begin{example}{Zn_rings}
 We can define the product of two elements $a$ and $b$ in ${\Bbb Z}_n$
 by $ab~\pmod{n}$. For instance, in ${\Bbb Z}_{12}$,  $5 \cdot 7 \equiv
 11 \pmod{12}$.  This product makes the abelian group ${\Bbb Z}_n$ into
@@ -143,10 +133,8 @@ a ring. Certainly ${\Bbb Z}_n$ is a commutative ring; however, it may
 fail to be an integral domain.  If we consider $3 \cdot 4 \equiv 0
 \pmod{12}$ in ${\Bbb Z}_{12}$, it is easy to see that a product of two 
 nonzero elements in the ring can be equal to zero.  
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
+
  
  
 A nonzero element $a$ in a ring $R$ is called a {\bfi zero
@@ -155,35 +143,26 @@ such that $ab = 0$. In the previous example,  3 and 4 are zero
 divisors in ${\Bbb Z}_{12}$.  
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 4.}
+\begin{example}{function_ring}
 In calculus the continuous real-valued functions on an interval
 $[a,b]$ form a commutative ring. We add or multiply two functions by 
 adding or multiplying the values of the functions.  If $f(x) = x^2$ and
 $g(x) = \cos x$, then $(f+g)(x) = f(x) + g(x) = x^2 + \cos x$ and
 $(fg)(x) = f(x) g(x) = x^2 \cos x$.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 5.}
+\begin{example}{matrix_ring}
 The $2 \times 2$ matrices  with entries in ${\Bbb R}$ form a ring
 under the usual operations of matrix addition and multiplication. This
 ring is \mbox{noncommutative}, since it is usually the case that $AB \neq
 BA$. Also, notice that we can have $AB = 0$ when neither $A$ nor $B$
 is zero. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 6.}
+\begin{example}{noncommute_ring}
 For an example of a noncommutative division ring, let
 \[
 \begin{array}{ccc}
@@ -295,7 +274,7 @@ all zero. So if $a + b {\bold i}  + c {\bold j} +d {\bold k}
 \right)
 = 1.
 \]
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{proposition}
@@ -327,7 +306,7 @@ a(b-b) = a0 = 0$; consequently, $-ab = a(-b)$. Similarly, $-ab =
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 Just as we have subgroups of groups, we have an analogous class of 
@@ -337,10 +316,7 @@ $R$ is a subset $S$ of $R$ such that $S$ is also a ring under the
 inherited operations from $R$.
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 7.} 
+\begin{example}{subring_chain}
 The ring $n {\Bbb Z}$ is a subring of ${\Bbb Z}$.  Notice that even
 though the original ring may have an identity, we do not require
 that its subring have an identity. We have the following chain of
@@ -348,10 +324,10 @@ subrings:
 \[
 {\Bbb Z} \subset {\Bbb Q} \subset {\Bbb R} \subset {\Bbb C}.
 \]
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
+
  
  
 The following proposition gives us some easy criteria for determining
@@ -377,7 +353,7 @@ $r-s \in S$ for all $r, s \in S$.
 \end{proposition}
  
  
-\noindent {\bf Example 8.}
+\begin{example}{M2_ring}
 Let  $R ={\Bbb M}_2( {\Bbb R} )$ be the ring of $2 \times 2$ matrices
 with entries in ${\Bbb R}$. If $T$ is the set of upper triangular
 matrices in $R$, i.e.,
@@ -422,7 +398,7 @@ a a' & ab' + bc' \\
 \right)
 \]
 is in $T$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  
@@ -440,10 +416,7 @@ called a {\bfi division ring}.  A commutative division ring is called
 a {\bfi field}. 
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 9.}
+\begin{example}{gaussian_ring}
 If $i^2 = -1$, then the set ${\Bbb Z}[ i ] = \{ m + ni : m, n \in
 {\Bbb Z} \}$ forms a ring known as the {\bfi Gaussian
 integers}\index{Gaussian integers}\label{gaussianintegers}. It is
@@ -463,13 +436,10 @@ Therefore, $a^2 + b^2$ must either be 1 or $-1$; or, equivalently, $a
 $\pm 1$ and $\pm i$; hence, the Gaussian integers are not a field. We
 will leave it as an exercise to prove that the Gaussian integers are
 an integral domain. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 10.}
+\begin{example}{matrix_Z2}
 The set of matrices
 \[
 F
@@ -502,23 +472,20 @@ F
 \right\}
 \]
 with entries in ${\Bbb Z}_2$ forms a field.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 11.}
+\begin{example}{Q_sqrt2_field}
 The set ${\Bbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\Bbb Q}
 \}$ is a field. The inverse of an element $a + b \sqrt{2}$ in ${\Bbb
 Q}( \sqrt{2}\, )$ is  
 \[
 \frac{a}{a^2 - 2 b^2} +\frac{- b}{ a^2 - 2 b^2} \sqrt{2}.
 \]
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
+
  
  
 We have the following alternative characterization of integral
@@ -549,7 +516,7 @@ divisor.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 The following surprising theorem is due to Wedderburn.
@@ -578,7 +545,7 @@ Consequently, $D$ is a field.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 For any nonnegative integer $n$ and any element $r$ in a ring $R$ we 
@@ -590,16 +557,13 @@ If no such integer exists, then the characteristic of $R$ is defined
 to be 0.  
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 12.}
+\begin{example}{Zp_field}
 For every prime $p$, ${\Bbb Z}_p$ is a field of characteristic $p$. By
 Proposition~2.1, every nonzero element in ${\Bbb Z}_p$ has an inverse;
 hence, ${\Bbb Z}_p$ is a field. If $a$ is any nonzero element in the
 field, then $pa =0$, since the order of any nonzero element in the
 abelian group ${\Bbb Z}_p$ is $p$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}
@@ -647,10 +611,7 @@ homomorphism} of a ring homomorphism to be the set
 \]
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 13.}
+\begin{example}{ring_homo}
 For any integer $n$ we can define a ring homomorphism $\phi~:~{\Bbb Z}
 \rightarrow {\Bbb Z}_n$ by $a \mapsto a \pmod{n}$. This is indeed a
 ring homomorphism, since 
@@ -666,13 +627,10 @@ and
  & = & \phi( a ) \phi(b).
 \end{eqnarray*}
 The kernel of the homomorphism $\phi$ is $n {\Bbb Z}$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 14.}
+\begin{example}{cont_function_homomorpj}
 Let $C[a, b]$ be the ring of continuous real-valued functions on an
 interval $[a,b]$ as in Example~4. For a fixed  $\alpha \in [a, b]$,
 we can define a ring homomorphism $\phi_{\alpha} : C[a, b] \rightarrow
@@ -688,10 +646,10 @@ homomorphism since
 \]
 Ring homomorphisms of the type $\phi_{\alpha}$ are called {\bfi
 evaluation homomorphisms}\index{Homomorphism!evaluation}.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
+
  
  
 In the next proposition we will examine some fundamental properties
@@ -731,16 +689,13 @@ $r$ is in $R$, then both $ar$ and $ra$ are in $I$; that is, $rI
 \subset I$ and $Ir \subset I$ for all $r \in R$.  
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 15.}
+\begin{example}{trivial_ideal}
 Every ring $R$ has at least two ideals, $\{ 0 \}$ and $R$.  These
 ideals are called the {\bfi trivial ideals}\index{Ideal!trivial}. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
+
  
  
 Let $R$ be a ring with identity and suppose that $I$ is an ideal in
@@ -748,10 +703,7 @@ $R$ such that $1$ is in $R$. Since for any $r \in R$, $r1 = r \in
 I$ by the definition of an ideal, $I = R$.
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 16.}
+\begin{example}{commute_ideal}
 If $a$ is any element in a commutative ring $R$ with identity, then
 the set   
 \[
@@ -765,10 +717,10 @@ a (-r) \in \langle a \rangle$.  Finally, if we multiply an element $ar
 \in \langle a \rangle$ by an arbitrary element $s \in R$, we have
 $s(ar) = a(sr)$.  Therefore, $\langle a \rangle$ satisfies the
 definition of an ideal. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{2ex}
+
  
  
 If $R$ is a commutative ring with identity, then an ideal of the form
@@ -798,15 +750,12 @@ Therefore, $a = nq$ and $I = \langle n \rangle$.
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 17.}
+\begin{example}{integer_ideal}
 The set $n {\Bbb Z}$ is ideal in the ring of integers. If $na$ is in
 $n{\Bbb Z}$ and $b$ is in ${\Bbb Z}$, then $nab$ is in  $n {\Bbb Z}$
 as required. In fact, by Theorem~14.7, these are the only
 ideals of ${\Bbb Z}$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{proposition}
@@ -829,7 +778,7 @@ and
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 \noindent {\bf Remark.}
@@ -872,7 +821,7 @@ associative law for multiplication and the distributive laws.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 The ring $R/I$ in Theorem~14.9 is called the {\bfi
@@ -900,7 +849,7 @@ which completes the proof of the theorem.
 \end{proof}
  
  
-\vspace{2ex}
+\medskip
  
  
 The map $\psi : R \rightarrow R/I$ is often called the {\bfi
@@ -1033,17 +982,14 @@ $r \in R$. Consequently, $I = R$.
 \end{proof}
  
  
-\vspace{3.5ex}
- 
- 
-\noindent {\bf Example 18.}
+\begin{example}{prime_ideal}
 Let $p{\Bbb Z}$ be an ideal in ${\Bbb Z}$, where $p$ is prime. Then
 $p{\Bbb Z}$  is a maximal ideal since ${\Bbb Z}/ p {\Bbb Z} \cong
 {\Bbb Z}_p$ is a field. 
-\hspace{\fill} $\blacksquare$
+\end{example}
   
  
-\vspace{3.5ex}
+
  
  
 An ideal $P$ in a commutative ring $R$ is called a {\bfi prime
@@ -1053,14 +999,11 @@ then either $a \in P$ or $b \in P$.
 %\footnote{It is possible to define prime ideals in a noncommutative ring. See [1] or [3].}
  
  
-\vspace{3.5ex}
- 
- 
-\noindent{\bf  Example 19.}
+\begin{example}{Z12_ideal}
 It is easy to check that the set $P = \{ 0, 2, 4, 6, 8, 10  \}$ is an
 ideal in ${\Bbb Z}_{12}$. This ideal is prime. In fact, it is a
 maximal ideal.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{proposition}
@@ -1087,10 +1030,7 @@ integral domain.
 \end{proof}
  
  
-\vspace{3.5ex}
- 
- 
-\noindent{\bf  Example 20.}
+\begin{example}{nZ_ideal}
 Every ideal in ${\Bbb Z}$ is of the form $n {\Bbb Z}$.  The factor
 ring ${\Bbb Z} / n{\Bbb Z} \cong {\Bbb Z}_n$ is an integral domain
 only when $n$ is prime.  It is actually a field.  Hence, the nonzero
@@ -1098,10 +1038,10 @@ prime ideals in ${\Bbb Z}$ are the ideals $p{\Bbb Z}$, where $p$ is
 prime. This example really justifies the use of the word ``prime'' in
 our  definition of prime ideals. 
 \mbox{\hspace{1in}}  
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\vspace{3.5ex}
+
  
  
 Since every field is an integral domain, we have the following
@@ -1242,10 +1182,7 @@ $c_2 \equiv c_1 \pmod{mn}$.
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 21.}
+\begin{example}{solve_system}
 Let us solve the system
 \begin{eqnarray*}
 x & \equiv & 3 \pmod{4} \\
@@ -1257,7 +1194,7 @@ Consequently,
 \[
 x = a + k_1 m = 3 + 4k_1 = 3 + 4[(5-4)4] = 19.
 \]
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{theorem}[Chinese Remainder Theorem]\index{Chinese Remainder
@@ -1298,10 +1235,7 @@ lemma.
 \end{proof}
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 22.}
+\begin{example}{system_mod4or5}
 Let us solve the system
 \begin{eqnarray*}
 x & \equiv & 3 \pmod{4} \\
@@ -1325,10 +1259,7 @@ x & \equiv & 5 \pmod{7}.
 \end{eqnarray*}
 Solving this last system, we find that 19 is a solution for the system
 that is unique up to modulo 1260.
-\hspace{\fill} $\blacksquare$
- 
- 
-\vspace{2ex}
+\end{example}
  
  
 One interesting application of the Chinese Remainder Theorem in the
@@ -1358,10 +1289,7 @@ simultaneously on those parts, we can work with an integer that the
 computer would not be able to handle as a whole.  
  
  
-\vspace{2ex}
- 
- 
-\noindent {\bf Example 23.}
+\begin{example}{ring2134}
 Suppose that we wish to multiply 2134 by 1531. We will use the integers
 95, 97, 98, and 99 because they are relatively prime. We can break down
 each integer into four parts:
@@ -1408,9 +1336,9 @@ congruences can also take considerable time.  However, if we have
 many computations to be performed on a particular set of numbers, it
 makes sense to transform the problem as we have done above and to perform
 the necessary calculations simultaneously.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
-\vspace{1ex}
+
  
  
 \markright{EXERCISES}

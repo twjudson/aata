@@ -7,7 +7,7 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Galois Theory}
+\chapter{Galois Theory}\label{galois}
  
  
 A classic problem of algebra has been to find the solutions of a polynomial equation.  The solution to the quadratic equation was known in antiquity.  Italian mathematicians found general solutions to the
@@ -53,19 +53,17 @@ G(E/F)\label{notegalois} = \{ \sigma \in Aut(E) : \sigma(\alpha)
 $$ 
 If $f(x)$ is a polynomial in $F[x]$ and $E$ is the splitting field of $f(x)$ over $F$, then we define the Galois group of $f(x)$ to be $G(E/F)$. 
 
-\medskip
 
-\noindent {\bf Example 1.}
+\begin{example}{complex_conj}
 Complex conjugation, defined by $\sigma : a + bi \mapsto a - bi$, is an automorphism of the complex numbers.  Since 
 $$
 \sigma(a) = \sigma(a + 0i) = a - 0i = a,
 $$
 the automorphism defined by complex conjugation must be in $G( {\mathbb C} / {\mathbb R} )$. 
-\hspace{\fill} $\blacksquare$
+\end{example}
 
-\medskip
 
-\noindent {\bf Example 2.}
+\begin{example}{Q_sqrt5}
 Consider the fields ${\mathbb Q} \subset {\mathbb Q}(\sqrt{5}\, ) \subset {\mathbb Q}( \sqrt{3}, \sqrt{5}\, )$.  Then for $a, b \in {\mathbb Q}( \sqrt{5}\, )$,
 $$
 \sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}
@@ -87,7 +85,7 @@ id  & id & \sigma & \tau & \mu \\
 $$
 We may also regard the field ${\mathbb Q}( \sqrt{3}, \sqrt{5}\, )$ as a vector space over ${\mathbb Q}$ that has basis $\{ 1, \sqrt{3}, \sqrt{5}, \sqrt{15}\, \}$.  It is no coincidence that $|G( {\mathbb Q}( \sqrt{3},
 \sqrt{5}\, ) /{\mathbb Q})| = [{\mathbb Q}(\sqrt{3}, \sqrt{5}\, ):{\mathbb Q})] = 4$.
-\hspace{\fill} $\blacksquare$ 
+\end{example} 
  
 \begin{proposition}
 Let $E$ be a field extension of $F$ and $f(x)$ be a polynomial in $F[x]$. Then any automorphism in $G(E/F)$ defines a permutation of the roots of $f(x)$ that lie in $E$. 
@@ -159,11 +157,8 @@ $$
 by Lemma 20.3.  Also, it is easy to show that $\sigma(\alpha \beta) = \sigma( \alpha ) \sigma( \beta )$. Since $\sigma$ is a nonzero homomorphism of fields, it must be injective.  It must also be onto, since $E$ is a finite field.  We know that $\sigma$ must be in $G(E/F)$, since $F$ is the splitting field of $x^{p^n} - x$ over the base field of order $p$. This means that $\sigma$ leaves every element in $F$ fixed.  Finally, we must show that the order of $\sigma$ is $k$. By Theorem~21.5, we know that $\sigma^k( \alpha ) = \alpha^{p^k} = \alpha$ is the identity of $G( E/F)$.  However, $\sigma^r$ cannot be the identity for $1 \leq r < k$; otherwise, $x^{p^{rk}} - x$ would have $p^m$ roots, which is impossible. 
 \end{proof}
  
- 
-\medskip
- 
- 
-\noindent {\bf Example 3.}
+
+\begin{example}{galois_group_35}
 We can now confirm that the Galois group of ${\mathbb Q}( \sqrt{3},
 \sqrt{5}\, )$ over ${\mathbb Q}$ in Example~2 is indeed isomorphic to
 ${\mathbb Z}_2 \times {\mathbb Z}_2$.  Certainly the group $H = \{ id,
@@ -174,13 +169,10 @@ $$
 |H| = [{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ):{\mathbb Q}] = |G({\mathbb Q}(
 \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})| = 4.
 $$
-\hspace{\fill} $\blacksquare$
+\end{example}
  
- 
-\medskip
- 
- 
-\noindent {\bf Example 4.}
+
+\begin{example}{galois_group_x4}
 Let us compute the Galois group of 
 $$
 f(x) = x^4 + x^3 + x^2 + x + 1
@@ -204,7 +196,7 @@ $$
 the $\sigma_i$'s must be all of $G( {\mathbb
 Q}( \omega) / {\mathbb Q} )$. Therefore, $G({\mathbb Q}( \omega) / {\mathbb Q})
 \cong {\mathbb Z}_4$ since $\omega$ is a generator for the Galois group. 
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  
@@ -364,17 +356,14 @@ The subfield $F_{ \{\sigma_i \} }$ of $F$ is called the {\bfi fixed
 field\/}\index{Field!fixed} of $\{ \sigma_i \}$. The field fixed for a
 subgroup $G$ of $Aut(F)$ will be denoted by $F_G$. 
  
- 
-\medskip
- 
- 
-\noindent {\bf Example 5.} 
+
+\begin{example}{}
 Let $\sigma : {\mathbb Q}(\sqrt{3}, \sqrt{5}\, ) \rightarrow {\mathbb
 Q}(\sqrt{3}, \sqrt{5}\, )$ be the automorphism that maps $\sqrt{3}$ to
 $-\sqrt{3}$. Then ${\mathbb Q}( \sqrt{5}\, )$ is the subfield of 
 ${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$ left fixed by $\sigma$.
 \mbox{\hspace{1in}}
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
 \begin{proposition}
@@ -550,20 +539,17 @@ It follows that $G = G(K/F)$, since they must have the same order.
 Before we determine the exact correspondence between field extensions
 and automorphisms of fields, let us return to a familiar example. 
  
- 
-\medskip
- 
- 
-\noindent {\bf Example 6.}
+
+\begin{example}{field_lattice}
 In Example 2 we examined the automorphisms of ${\mathbb Q}( \sqrt{3},
 \sqrt{5}\, )$ fixing ${\mathbb Q}$. Figure~\ref{Galois1}  compares the
 lattice of field extensions of ${\mathbb Q}$ with the lattice of
 subgroups of $G( {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) /{\mathbb Q})$.
 The Fundamental Theorem of Galois Theory tells us what the 
 relationship is between the two lattices.
-\hspace{\fill} $\blacksquare$ 
+\end{example} 
  
-\medskip
+
 
 \begin{figure}[t]
 \begin{center}
@@ -751,10 +737,8 @@ $$
 \end{proof}
  
  
-\medskip
- 
- 
-\noindent {\bf Example 7.}
+
+\begin{example}{galois_x4-2}
 In this example we will illustrate the Fundamental Theorem of Galois
 Theory by determining the lattice of subgroups of the Galois group of
 $f(x) = x^4 - 2$. We will compare this lattice to the lattice of field
@@ -791,7 +775,7 @@ computation that the elements of $G$ are $\{ id, \sigma, \sigma^2,
 the relations $\tau^2 = id$, $\sigma^4 = id$, and $\tau \sigma \tau =
 \sigma^{-1}$ are satisfied; hence, $G$ must be isomorphic to $D_4$.
 The lattice of subgroups of $G$ is illustrated in Figure~\ref{Galois3}(b).
-\hspace{\fill} $\blacksquare$
+\end{example}
  
 \begin{figure}[htb]
 \begin{center}
@@ -857,7 +841,7 @@ The lattice of subgroups of $G$ is illustrated in Figure~\ref{Galois3}(b).
 \label{Galois3}
 \end{figure}
 
-\vspace{1ex} 
+\medskip
  
 \histhead
  
@@ -953,10 +937,8 @@ generator of this group is called a {\bfi primitive nth root of
 unity}\index{Primitive $n$th root of unity}. 
  
  
-\medskip
- 
- 
-\noindent {\bf Example 8.}
+
+\begin{example}{galois_xn-1}
 The polynomial $x^n - 1$ is solvable by radicals over ${\mathbb Q}$. The
 roots of this polynomial are $1, \omega, \omega^2, \ldots,
 \omega^{n-1}$, where
@@ -965,10 +947,10 @@ $$
 i \sin\left( \frac{2 \pi}{n} \right).
 $$ 
 The splitting field of $x^n - 1$ over ${\mathbb Q}$ is ${\mathbb Q}(\omega)$.
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
-\medskip
+
  
  
 Recall that a subnormal series of a group $G$ is a finite sequence
@@ -1156,8 +1138,8 @@ j) = (i j)$.  The transpositions generate $S_n$.
 \end{figure}
 
  
- 
-\noindent {\bf Example 9.}
+
+\begin{example}{galois_x5}
 We will show that $f(x) = x^5 - 6 x^3 - 27 x - 3 \in {\mathbb Q}[x]$ is
 not solvable. We claim that the Galois group of $f(x)$ over ${\mathbb Q}$
 is $S_5$. By Eisenstein's Criterion, $f(x)$ is irreducible and,
@@ -1184,7 +1166,7 @@ S_5$. By Lemma~21.19, $S_5$ is generated by a transposition and an
 element of order 5; therefore, $G(K/F)$ must be all of $S_5$. By
 Theorem~9.8, $S_5$ is not solvable. Consequently, $f(x)$ cannot be
 solved by radicals.  
-\hspace{\fill} $\blacksquare$
+\end{example}
  
  
  
