@@ -257,12 +257,6 @@ A  similar argument proves that  $A \cap (B \cap C) = (A \cap B) \cap
 C$. 
 \end{proof}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%As we see in the fake Example~\ref{example:sets:universal}, anything is possible.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{theorem}[De Morgan's Laws]\index{De Morgan's laws!for sets}\label{sets_de_morgan}
 Let $A$ and $B$ be sets. Then 
 \begin{enumerate}
@@ -333,11 +327,42 @@ f(A) = \{ f(a) : a \in A \} \subset B
 \]
 is called the {\bfi range\/}\index{Function!range of} or {\bfi image\/} of $f$.  We can think of the elements in the function's domain as input values and the elements in the function's range as output values.  
  
-\begin{figure}[htb]\label{sets_figure_mappings}
+\begin{figure}[htb]\label{sets_figure_mappings} %Changed the figure to a tikz diagram - TWJ 5/4/2010
 \caption{Mappings}
 \bigskip
 \begin{center}
-\includegraphics[width=2.5in]{sets_figure_mappings}
+%\includegraphics[width=2.5in]{sets_figure_mappings} \\
+\begin{tikzpicture}[scale=0.5]
+\draw (0,0) ellipse (2 and 3);
+\draw (7,0) ellipse (2 and 3);
+\draw (0,8) ellipse (2 and 3);
+\draw (7,8) ellipse (2 and 3);
+\draw [->] (0.5,9.5) -- (6.5,8);
+\draw [->] (0.5,8) -- (6.5,6.7);
+\draw [->] (0.5,6.5) -- (6.5,6.5);
+\draw [->] (0.5,1.5) -- (6.5,1.5);
+\draw [->] (0.5,1.3) -- (6.5,0);
+\draw [->] (0.5,0) -- (6.5,-1.5);
+\draw [->] (0.5,-1.5) -- (6.5,1.3);
+\node at (0, 1.5) {1};
+\node at (0, 0) {2};
+\node at (0, -1.5) {3};
+\node at (7, 1.5) {$a$};
+\node at (7, 0) {$b$};
+\node at (7, -1.5) {$c$};
+\node at (0, 9.5) {1};
+\node at (0, 8) {2};
+\node at (0, 6.5) {3};
+\node at (7, 9.5) {$a$};
+\node at (7, 8) {$b$};
+\node at (7, 6.5) {$c$};
+\node at (-1.5,11) {$A$};
+\node at (5.5,11) {$B$};
+\node at (-1.5,3) {$A$};
+\node at (5.5,3) {$B$};
+\node at (3.5,3) {$g$};
+\node at (3.5,10) {$f$};
+\end{tikzpicture}
 \end{center}
 \end{figure}
 
@@ -357,11 +382,58 @@ Let $f:{\mathbb Z} \rightarrow {\mathbb Q}$ be defined by $f(n) = n/1$.  Then $f
 
 Given two functions, we can construct a new function by using the range of the first function as the domain of the second function.  Let $f : A \rightarrow B$ and $g : B \rightarrow C$ be mappings.  Define a new map, the {\bfi composition\/}\index{Function!composition of} of $f$ and $g$ from $A$ to $C$, by $(g \circ f)(x) = g(f(x))$.
 
-\begin{figure}[htb]\label{sets_figure_composition}
+\begin{figure}[htb]\label{sets_figure_composition} %Changed the figure to a tikz diagram - TWJ 5/4/2010
 \begin{center}
 \caption{Composition of maps}
 \bigskip
-\includegraphics[width=3.5in]{sets_figure_composition}
+%\includegraphics[width=3.5in]{sets_figure_composition}
+\begin{tikzpicture}[scale=0.5]
+\draw (-6,8) ellipse (2 and 3);
+\draw (0,8) ellipse (2 and 3);
+\draw (6,8) ellipse (2 and 3);
+
+\node at (-7.5,11) {$A$};
+\node at (-1.5,11) {$B$};
+\node at (4.5,11) {$C$};
+\node at (-6, 9.5) {1};
+\node at (-6, 8) {2};
+\node at (-6, 6.5) {3};
+\node at (0, 9.5) {$a$};
+\node at (0, 8) {$b$};
+\node at (0, 6.5) {$c$};
+\node at (6, 9.5) {$X$};
+\node at (6, 8) {$Y$};
+\node at (6, 6.5) {$Z$};
+\node at (-3,10) {$f$};
+\node at (3,10) {$g$};
+
+\draw [->] (0.5,9.5) -- (5.5,6.7);
+\draw [->] (0.5,8) -- (5.5,6.5);
+\draw [->] (0.5,6.5) -- (5.5,9.5);
+
+\draw [->] (-5.5,9.5) -- (-0.5,8);
+\draw [->] (-5.5,8) -- (-0.5,6.5);
+\draw [->] (-5.5,6.5) -- (-0.5,9.5);
+
+
+\draw (-3,0) ellipse (2 and 3);
+\draw (3,0) ellipse (2 and 3);
+
+\node at (-5,3) {$A$};
+\node at (1.5,3) {$C$};
+\node at (-3, 1.5) {1};
+\node at (-3, 0) {2};
+\node at (-3, -1.5) {3};
+\node at (3, 1.5) {$X$};
+\node at (3, 0) {$Y$};
+\node at (3, -1.5) {$Z$};
+\node at (0,2.5) {$g \circ f$};
+
+\draw [->] (-2.5,1.5) -- (2.5,-1.3);
+\draw [->] (-2.5,0) -- (2.5,1.5);
+\draw [->] (-2.5,-1.5) -- (2.5,-1.5);
+
+\end{tikzpicture}
 \end{center}
 \end{figure}
 
@@ -976,72 +1048,86 @@ Define a relation on ${\mathbb R}^2 \setminus  (0,0)$ by letting $(x_1, y_1) \si
 
  
 {\small
-The following list contains references suitable for further reading.  With the exception of [7] and [8], all of these books are more or less  at the same level as this text. Interesting applications of algebra  can be found in [1], [4], [9], and [10].
+The following list contains references suitable for further reading.  With the exception of [8] and [9] and perhaps [1] and [3], all of these books are more or less  at the same level as this text.  Interesting applications of algebra  can be found in [2], [5], [10], and [11].
 \begin{itemize}
+
+\item[{ \bf [1]}] %Reference updated 5/4/2010 - TWJ
+Artin, M. 
+{\it Abstract Algebra}. 2nd ed.
+Pearson, Upper Saddle River, NJ, 2011. 
  
-\item[{ \bf [1]}]
+\item[{ \bf [2]}] %Reference updated 5/4/2010 - TWJ
 Childs, L. 
-{\it A Concrete Introduction to Higher Algebra}.
-Springer-Verlag, New York, 1979. 
- 
-\item[{ \bf [2]}]
-Ehrlich, G. 
-{\it Fundamental Concepts of Algebra}. PWS-KENT, Boston,
-1991. 
- 
+{\it A Concrete Introduction to Higher Algebra}. 2nd ed.
+Springer-Verlag, New York, 1995. 
+
 \item[{ \bf [3]}]
+Dummit, D. and Foote, R. %Reference updated 5/4/2010 - TWJ
+{\it Abstract Algebra}. 3rd ed. Wiley, New York,
+2003. 
+ 
+%\item[{ \bf [2]}] %Seems to be out of print 5/4/2010 - TWJ
+%Ehrlich, G. 
+%{\it Fundamental Concepts of Algebra}. PWS-KENT, Boston,
+%1991. 
+ 
+\item[{ \bf [4]}] %Reference updated 5/4/2010 - TWJ
 Fraleigh, J. B. 
-{\it A First Course in Abstract Algebra}. 4th ed.
-Addison-Wesley, Reading, MA, 1989. 
+{\it A First Course in Abstract Algebra}. 7th ed.
+Pearson, Upper Saddle River, NJ, 2003. 
  
-\item[{ \bf [4]}]
+\item[{ \bf [5]}] %Reference updated 5/4/2010 - TWJ
 Gallian, J. A. 
-{\it Contemporary Abstract Algebra}. 2nd ed. D. C.
-Heath, Lexington, MA, 1990.  
+{\it Contemporary Abstract Algebra}. 7th ed. Brooks/Cole, Belmont, CA, 2009.  
  
-\item[{ \bf [5]}]
+\item[{ \bf [6]}] %I believe that this is not still in print, but it is certainly available through amazon.com 5/4/2010 - TWJ
 Halmos, P. 
-{\it Naive Set Theory}.  Springer-Verlag, New York, 1991.
-A good reference for set theory. 
+{\it Naive Set Theory}.  Springer, New York, 1991.
+One of the best references for set theory. 
  
-\item[{ \bf [6]}]
+\item[{ \bf [7]}]  %Reference updated 5/4/2010 - TWJ
 Herstein, I. N. 
-{\it Abstract Algebra}. Macmillan, New York, 1986. 
+{\it Abstract Algebra}. 3rd ed. Wiley, New York, 1996. 
  
-\item[{ \bf [7]}] %%%%%%%%%%%%%%checked
+\item[{ \bf [8]}] %Reference updated 5/4/2010 - TWJ
 Hungerford, T. W. 
-{\it Algebra}. Springer-Verlag, New York, 1974. One
+{\it Algebra}. Springer, New York, 1974. One
 of the standard graduate algebra texts.
  
-\item[{ \bf [8]}]
+ \item[{ \bf [9]}] %Reference updated 5/4/2010 - TWJ
 Lang, S. 
-{\it Algebra}. 3rd ed. Addison-Wesley, Reading, MA, 1992.
+{\it Algebra}. 3rd ed. Springer, New York, 2002.
 Another standard graduate text.
  
-\item[{ \bf [9]}]
+\item[{ \bf [10]}] %Reference updated 5/4/2010 - TWJ
 Lidl, R. and Pilz, G. 
-{\it Applied Abstract Algebra}. Springer-Verlag,
-New York, 1984. 
+{\it Applied Abstract Algebra}. 2nd ed. Springer,
+New York, 1998. 
  
-\item[{ \bf [10]}]
+\item[{ \bf [11]}] %No longer in print 5/4/2010 - TWJ
 Mackiw, G. {\it Applications of Abstract Algebra}. Wiley, New York,
 1985. 
  
-\item[{ \bf [11]}]
-Nickelson, W. K. 
-{\it Introduction to Abstract Algebra}. PWS-KENT,
-Boston, 1993.
- 
- 
 \item[{ \bf [12]}]
-Solow, D. 
-{\it How to Read and Do Proofs}. 2nd ed. Wiley, New York,
-1990. 
+Nickelson, W. K. %Reference updated 5/4/2010 - TWJ
+{\it Introduction to Abstract Algebra}. 3rd ed. Wiley, New York,
+2006. 
  
-\item[{ \bf [13]}]
+ 
+\item[{ \bf [13]}] %Reference updated 5/4/2010 - TWJ
+Solow, D. 
+{\it How to Read and Do Proofs}. 5th ed. Wiley, New York,
+2009. 
+ 
+\item[{ \bf [14]}] %No longer in print 5/4/2010 - TWJ
 van der Waerden, B. L. 
 {\it A History of Algebra}. Springer-Verlag,
 New York, 1985. An account of the historical development of algebra. 
+
+
+
+
+ 
  
 \end{itemize}
 }
