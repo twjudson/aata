@@ -19,55 +19,44 @@ of permutations of the three vertices, where a {\bfi
 permutation}\index{Permutation!definition of} of the set $S = \{ A, B, 
 C \}$ is a one-to-one and onto map $\pi :S \rightarrow S$. The three
 vertices have the following six permutations.  
-$$
-\left(
-\begin{array}{ccc}
+\begin{gather*}
+\begin{pmatrix}
 A & B & C \\
 A & B & C
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
 A & B & C \\
 C & A & B
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
 A & B & C \\
 B & C & A
-\end{array}
-\right)
-$$
-$$
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\\
+\begin{pmatrix}
 A & B & C \\
 A & C & B
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
 A & B & C \\
 C & B & A
-\end{array}
-\right)
-\left(
-\begin{array}{ccc}
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
 A & B & C \\
 B & A & C
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\end{gather*}
 We have used the array
-$$
-\left(
-\begin{array}{ccc}
+\[
+\begin{pmatrix}
 A & B & C \\
 B & C & A
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\]
 to  denote the permutation  that sends $A$ to $B$, $B$ to $C$, and $C$
 to $A$. That is, 
 \begin{eqnarray*}
@@ -112,32 +101,26 @@ permutation $id$ and the permutations
 \begin{eqnarray*}
 \sigma
 & = &
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 1 & 2 & 3 & 5 & 4
-\end{array}
-\right) \\
+\end{pmatrix} \\
 \tau
 & = &
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 3 & 2 & 1 & 4 & 5
-\end{array}
-\right) \\
+\end{pmatrix} \\
 \mu
 & = &
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 3 & 2 & 1 & 5 & 4
-\end{array}
-\right).
+\end{pmatrix}.
 \end{eqnarray*}
 The following table tells us how to multiply elements in the
 permutation group $G$. 
-$$
+\[
 \begin{array}{c|cccc}
 \circ  & id     & \sigma & \tau   & \mu    \\
 \hline
@@ -146,7 +129,7 @@ id     & id     & \sigma & \tau   & \mu    \\
 \tau   & \tau   & \mu    & id     & \sigma \\
 \mu    & \mu    & \tau   & \sigma & id
 \end{array}
-$$
+\]
 \end{example}
  
 \noindent {\bf Remark.}
@@ -169,43 +152,35 @@ Permutation multiplication is not usually commutative. Let
 \begin{eqnarray*}
 \sigma
 & = &
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4  \\
 4 & 1 & 2 & 3
-\end{array}
-\right) \\
+\end{pmatrix} \\
 \tau
 & = &
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 \\
 2 & 1 & 4 & 3
-\end{array}
-\right).
+\end{pmatrix}.
 \end{eqnarray*}
 Then
-$$
+\[
 \sigma \tau
 =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 \\
 1 & 4 & 3 & 2
-\end{array}
-\right),
-$$
+\end{pmatrix},
+\]
 but
-$$
+\[
 \tau \sigma
 =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 \\
 3 & 2 & 1 & 4
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 \end{example}
  
  
@@ -233,41 +208,36 @@ $\sigma$. Cycles are the building blocks of all permutations.
  
 \begin{example}{cycle_notation}
 The permutation
-$$
+\[
 \sigma =
-\left(
-\begin{array}{ccccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 & 7\\
 6 & 3 & 5 & 1 & 4 & 2 & 7
-\end{array}
-\right)
+\end{pmatrix}
 =
 (1 6 2 3 5 4 )
-$$
+\]
 is a cycle of length 6, whereas
-$$
+\[
 \tau =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 1 & 4 & 2 & 3 & 5 & 6
-\end{array}
-\right)
+\end{pmatrix}
 =
 (2 4 3)
-$$
+\]
 is a cycle of length 3.
  
  
 Not every permutation is a cycle. Consider the permutation
-$$
-\left(
-\begin{array}{cccccc}
+\[
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 2 & 4 & 1 & 3 & 6 & 5
-\end{array}
-\right) = (1 2 4 3)(5 6).
-$$
+\end{pmatrix}
+ = (1 2 4 3)(5 6).
+\]
 This permutation actually contains a cycle of length 2 and a cycle
 of length~4. 
 \hspace*{1in}
@@ -327,10 +297,10 @@ b_l )$. We must show that $\sigma \tau(x) = \tau \sigma(x)$ for all $x
 \in X$. If $x$ is neither $\{ a_1, a_2, \ldots, a_k \}$ nor $\{b_1,
 b_2, \ldots, b_l  \}$, then both $\sigma$ and $\tau$ fix $x$. That is,
 $\sigma(x)=x$ and $\tau(x)=x$. Hence, 
-$$
+\[
 \sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x)
 = \tau( \sigma(x)) =  \tau \sigma(x).
-$$
+\]
 {\em Do not forget that we are multiplying permutations right to left,
 which is the opposite of the order in which we usually multiply group
 elements.}  Now suppose that $x \in \{ a_1, a_2, \ldots, a_k \}$. Then 
@@ -344,11 +314,11 @@ a_k & \mapsto & a_1.
 \end{eqnarray*}
 However, $\tau(a_i) = a_i$ since $\sigma$ and $\tau$ are disjoint.
 Therefore, 
-$$
+\[
 \sigma \tau(a_i) = \sigma( \tau(a_i)) = \sigma(a_i) = a_{(i \bmod
 k)+1}
 = \tau( a_{(i \bmod k)+1} ) = \tau( \sigma(a_i) ) = \tau \sigma(a_i).
-$$
+\]
 Similarly, if $x \in \{b_1, b_2, \ldots, b_l  \}$, then $\sigma$ and
 $\tau$ also commute. 
 \end{proof}
@@ -370,7 +340,7 @@ this manner, we can define finite disjoint sets $X_3, X_4, \ldots$.
 Since $X$ is a finite set, we are guaranteed that this process will
 end and there will be only a finite number of these sets, say $r$. If
 $\sigma_i$ is the cycle defined by 
-$$
+\[
 \sigma_i( x )
 = \left\{
 \begin{array}{ll}
@@ -378,7 +348,7 @@ $$
 x & x \notin X_i,
 \end{array}
 \right.
-$$
+\]
 then $\sigma = \sigma_1 \sigma_2 \cdots \sigma_r$. Since the sets
 $X_1, X_2, \ldots, X_r$ are disjoint, the cycles $\sigma_1, \sigma_2,
 \ldots, \sigma_r$ must also be disjoint.
@@ -388,19 +358,15 @@ $X_1, X_2, \ldots, X_r$ are disjoint, the cycles $\sigma_1, \sigma_2,
 Let
 \begin{eqnarray*}
 \sigma & = &
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 6 & 4 & 3 & 1 & 5 & 2
-\end{array}
-\right) \\
+\end{pmatrix} \\
 \tau & = &
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 3 & 2 & 1 & 5 & 6 & 4
-\end{array}
-\right).
+\end{pmatrix}.
 \end{eqnarray*}
 Using cycle notation, we can write
 \begin{eqnarray*}
@@ -422,10 +388,10 @@ by $(1)$.
 
 The simplest permutation is a cycle of length 2. Such
 cycles are called  {\bfi transpositions}\index{Transposition}. Since
-$$
+\[
 (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 )
 (a_1 a_2 ),
-$$
+\]
 any cycle can be written as the product of transpositions, leading to
 the following proposition. 
 
@@ -436,10 +402,10 @@ be written as the product of transpositions.
 
 \begin{example}{transpositions}
 Consider the permutation
-$$
+\[
 ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) 
 = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 ).
-$$
+\]
 As we can see, there is no unique way to represent permutation as the
 product of transpositions. For instance, we can write the identity 
 permutation as $(1 2 )(1 2 )$, as $(1 3 )(2 4 )(1 3 )( 2 4 )$, and in
@@ -447,22 +413,22 @@ many other ways. However, as it turns out, no permutation can be
 written as the product of both an even number of transpositions and an
 odd number of transpositions. For instance, we could represent the
 permutation $(1 6)$ by
-$$
+\[
 (2 3 )(1 6)( 2 3)
-$$
+\]
 or by
-$$
+\[
 (3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6),
-$$
+\]
 but $(1 6)$ will always be the product of an odd number of 
 transpositions.
 \end{example}
  
 \begin{lemma}\label{identity_even_trans}
 If the identity is written as the product of $r$ transpositions,
-$$
+\[
 id = \tau_1 \tau_2 \cdots \tau_r,
-$$
+\]
 then $r$ is an even number.
 \end{lemma}
  
@@ -484,9 +450,9 @@ where $a$, $b$, $c$, and $d$ are distinct.
 The first equation simply says that a transposition is its own
 inverse. If this case occurs, delete $\tau_{r-1} \tau_r$ from the 
 product to obtain 
-$$
+\[
 id = \tau_1 \tau_2 \cdots \tau_{r-3} \tau_{r-2}.
-$$
+\]
 By induction $r - 2$ is even; hence, $r$ must be even.
  
 In each of the other three cases, we can replace $\tau_{r - 1} \tau_r$ 
@@ -520,16 +486,16 @@ equaling $\sigma$ must also contain an odd number of transpositions.
 
 \begin{proof}
 Suppose that
-$$
+\[
 \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots
 \tau_n, 
-$$
+\]
 where $m$ is even. We must show that $n$ is also an even number.  The
 inverse of $\sigma^{-1}$ is $\sigma_m \cdots \sigma_1$. Since 
-$$
+\[
 id = \sigma \sigma_m \cdots \sigma_1
 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1,
-$$
+\]
 $n$ must be even by Lemma~\ref{identity_even_trans}.  The proof for the case in which
 $\sigma$ can be expressed as an odd number of transpositions is left
 as an exercise.  
@@ -560,14 +526,14 @@ The set $A_n$ is a subgroup of $S_n$.
 Since the product of two even permutations must also be an even
 permutation, $A_n$ is closed.  The identity is an even permutation and
 therefore is in $A_n$. If $\sigma$ is an even permutation, then
-$$
+\[
 \sigma = \sigma_1 \sigma_2 \cdots \sigma_r,
-$$
+\]
 where $\sigma_i$ is a transposition and $r$ is even. Since the inverse
 of any transposition is itself, 
-$$
+\[
 \sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1
-$$
+\]
 is also in $A_n$.
 \end{proof}
  
@@ -584,19 +550,19 @@ set of odd permutations.  If we can show that there is a bijection
 between these sets, they must contain the same number of elements.  
 Fix a transposition $\sigma$ in $S_n$.  Since $n \geq 2$, such a
 $\sigma$ exists.  Define
-$$
+\[
 \lambda_{\sigma} : A_n \rightarrow B_n
-$$
+\]
 by
-$$
+\[
 \lambda_{\sigma} ( \tau ) = \sigma  \tau .
-$$
+\]
 Suppose that $\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )$.
 Then $\sigma  \tau = \sigma  \mu$ and so 
-$$
+\[
 \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu =
 \mu.
-$$
+\]
 Therefore, $\lambda_{\sigma}$ is one-to-one.  We will leave the proof
 that $\lambda_{\sigma}$ is surjective to the reader.
 \end{proof}
@@ -604,13 +570,13 @@ that $\lambda_{\sigma}$ is surjective to the reader.
 \begin{example}{S4}
 The group $A_4$ is the subgroup of $S_4$ consisting of even
 permutations.  There are twelve elements in  $A_4$: 
-$$
-\begin{array}{cccc}
-(1)   &  (12)(34) & (13)(24) & (14)(23) \\
-(123) &  (132)    & (124)    & (142)    \\
-(134) &  (143)    & (234)    & (243).
+\[
+\begin{array}{llll}
+(1)       \qquad  & (12)(34)  \qquad   & (13)(24)   \qquad  & (14)(23) \\
+(123)    \qquad & (132)      \qquad & (124)          \qquad & (142)    \\
+(134)    \qquad & (143)      \qquad  & (234)          \qquad &  (243).
 \end{array}
-$$
+\]
 One of the end-of-chapter exercises will be to write down all the
 subgroups of $A_4$. You will find that there is no subgroup of
 order 6.  Does this surprise you? 
@@ -642,9 +608,23 @@ other mathematician.
  
 \medskip
  
-\begin{figure}[hbt]
+\begin{figure}[hbt] %Replace figure with tikz figure - TWJ 5/7/2010
 \begin{center}
-\includegraphics[width=1.75in]{regular}
+
+\begin{tikzpicture}[scale=1.5]
+
+\draw (1,0) -- (45:1) -- (90:1) -- (135:1) -- (180:1);
+\draw[dashed] (-1,0) -- (225:1) -- (270:1);
+\draw (270:1) -- (315:1) -- (1,0);
+\node [above] at (0,1) {$1$};
+\node [left] at (-1,0) {$n-1$};
+\node [right] at (1,0) {$3$};
+\node at (45:1.2) {$2$};
+\node at (135:1.2) {$n$};
+\node at (315:1.2) {$4$};
+
+\end{tikzpicture}
+
 \end{center}
 \caption{A regular $n$-gon}
 \label{regular}
@@ -655,7 +635,7 @@ other mathematician.
  
 
 Another special type of permutation group is the dihedral group. 
-Recall the symmetry group of an equilateral triangle in Chapter~2. 
+Recall the symmetry group of an equilateral triangle in Chapter~\ref{groups}. 
 Such groups consist of the  rigid motions of a regular $n$-sided 
 polygon or $n$-gon. For $n = 3, 4, \ldots$, we define the {\bfi 
 nth dihedral group\/}\index{Group!dihedral} to be the group of 
@@ -673,11 +653,28 @@ the following theorem.
 The dihedral group, $D_n$, is a subgroup of $S_n$ of order $2n$.
 \end{theorem}
  
-%% TWJ, 2010/03/31
-%% It would be more accurate to draw this figure with a counterclockwise rotation.
+
+%% Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/7/2010
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=2.75in]{rotations}
+\begin{tikzpicture}[scale=1.3]
+
+\draw (2,0)  +(45:1) node [right] {8} -- +(90:1) node [above] {1} -- +(135:1) node [left] {2} -- +(180:1) node [left] {3} -- +(225:1) node [left] {4} -- +(270:1) node [below] {5} -- +(315:1) node [right] {6} -- +(360:1) node [right] {7} -- cycle;
+
+\draw (-2,0)  +(45:1) node [right] {2} -- +(90:1) node [above] {1} -- +(135:1) node [left] {8} -- +(180:1) node [left] {7} -- +(225:1) node [left] {6} -- +(270:1) node [below] {5} -- +(315:1) node [right] {4} -- +(360:1) node [right] {3} -- cycle;
+\draw [->] (-0.5,0) -- (0.5,0);
+\node [above] at (0,0) {{\em reflection}};
+
+\draw (2,2.75)  +(45:1) node [right] {3} -- +(90:1) node [above] {2} -- +(135:1) node [left] {1} -- +(180:1) node [left] {8} -- +(225:1) node [left] {7} -- +(270:1) node [below] {6} -- +(315:1) node [right] {5} -- +(360:1) node [right] {4} -- cycle;
+
+\draw (-2,2.75)  +(45:1) node [right] {2} -- +(90:1) node [above] {1} -- +(135:1) node [left] {8} -- +(180:1) node [left] {7} -- +(225:1) node [left] {6} -- +(270:1) node [below] {5} -- +(315:1) node [right] {4} -- +(360:1) node [right] {3} -- cycle;
+
+\draw [->] (-0.5,2.75) -- (0.5,2.75);
+\node [above] at (0,2.75) {{\em rotation}};
+
+
+
+\end{tikzpicture}
 \end{center}
 \caption{Rotations and reflections of a regular $n$-gon}
 \label{rotations}
@@ -687,6 +684,8 @@ The dihedral group, $D_n$, is a subgroup of $S_n$ of order $2n$.
 \begin{figure}[hbt]
 \begin{center}
 \includegraphics[width=2.75in]{types}
+
+
 \end{center}
 \caption{Types of  reflections of a regular $n$-gon}
 \label{types}
@@ -711,15 +710,15 @@ srs & = & r^{-1}.
 The possible motions of a regular $n$-gon are either reflections or 
 rotations (Figure~\ref{rotations}). There are exactly $n$ possible
 rotations:
-$$
+\[
 id, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n},
 \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.
-$$
+\]
 We will denote the rotation $360^{\circ} /n$ by $r$. The rotation $r$
 generates all  of the other rotations. That is,
-$$
+\[
 r^k = k \cdot \frac{360^{\circ} }{n}.
-$$
+\]
 Label the $n$ reflections $s_1, s_2, \ldots, s_n$, where $s_k$ is the 
 reflection that leaves vertex $k$ fixed. There are two cases of 
 reflection, depending on whether $n$ is even or odd. If there are an 
@@ -1125,9 +1124,9 @@ elements.
  
 \item
 Recall that the {\bfi center}\index{Group!center of} of a group $G$ is
-$$
+\[
 Z(G) = \{ g \in G : \mbox{$gx = xg$ for all $x \in G$} \}.
-$$
+\]
 Find the center of $D_8$. What about the center of $D_{10}$? What is
 the center of $D_n$? 
  
@@ -1138,10 +1137,10 @@ Let $\tau = (a_1, a_2, \ldots, a_k)$ be a cycle of length $k$.
  
  \item
 Prove that if $\sigma$ is any permutation, then
-$$
+\[
 \sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots,
 \sigma(a_k))
-$$
+\]
 is a cycle of length $k$.
  
  \item
@@ -1172,9 +1171,9 @@ If $\sigma \in A_n$ and $\tau \in S_n$, show that $\tau^{-1} \sigma
 \item
 Define the {\bfi orbit}\index{Orbit} of $x \in X$ under $\sigma \in
 S_X$ to be the set 
-$$
+\[
 {\cal O}_{x, \sigma} = \{ y : x \sim y  \}.
-$$
+\]
 Compute the orbits of $\alpha, \beta, \gamma$ where
 \begin{eqnarray*}
 \alpha & = & (1254) \\
