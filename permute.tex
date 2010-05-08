@@ -672,8 +672,6 @@ The dihedral group, $D_n$, is a subgroup of $S_n$ of order $2n$.
 \draw [->] (-0.5,2.75) -- (0.5,2.75);
 \node [above] at (0,2.75) {{\em rotation}};
 
-
-
 \end{tikzpicture}
 \end{center}
 \caption{Rotations and reflections of a regular $n$-gon}
@@ -681,10 +679,30 @@ The dihedral group, $D_n$, is a subgroup of $S_n$ of order $2n$.
 \end{figure}
 
  
-\begin{figure}[hbt]
+\begin{figure}[hbt]  %% Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010
 \begin{center}
-\includegraphics[width=2.75in]{types}
+\begin{tikzpicture}[scale=1.2]
 
+\draw (2,0)  +(18:1) node [right] {5} -- +(90:1) node [above] {1} -- +(162:1) node [left] {2} -- +(234:1) node [left] {3} -- +(306:1) node [right] {4} -- cycle;
+\draw[dashed] (2,-0.80901) -- (2,1);
+
+\draw (-2,0)  +(18:1) node [right] {2} -- +(90:1) node [above] {1} -- +(162:1) node [left] {5} -- +(234:1) node [left] {4} -- +(306:1) node [right] {3} -- cycle;
+\draw[dashed] (-2,-0.80901) -- (-2,1);
+
+\draw [->] (-0.5,0) -- (0.5,0);
+
+
+\draw (2,3)  +(30:1) node [right] {6} -- +(90:1) node [above] {1} -- +(150:1) node [left] {2} -- +(210:1) node [left] {3} -- +(270:1) node [below] {4}  -- +(330:1) node [right] {5} -- cycle;
+\draw[dashed] (2,2) -- (2,4);
+
+
+\draw (-2,3)  +(30:1) node [right] {2} -- +(90:1) node [above] {1} -- +(150:1) node [left] {6} -- +(210:1) node [left] {5} -- +(270:1) node [below] {4}  -- +(330:1) node [right] {3} -- cycle;
+\draw[dashed] (-2,2) -- (-2,4);
+
+\draw [->] (-0.5,3) -- (0.5,3);
+
+
+\end{tikzpicture}
 
 \end{center}
 \caption{Types of  reflections of a regular $n$-gon}
@@ -738,7 +756,18 @@ and $s$. We will leave the proof that $srs = r^{-1}$ as an exercise.
  
 \begin{figure}[hbt]
 \begin{center}
-\includegraphics[width=1.75in]{D4}
+
+
+\begin{tikzpicture}[scale=1.2] %% Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010
+
+\draw (0,0)  +(45:2) node [right] {2} -- +(135:2) node [left] {1} -- +(225:2) node [left] {4} -- +(315:2) node [right] {3} -- cycle;
+
+\draw[dashed] (0,-1.6) -- (0,1.6);
+\draw[dashed] (-1.6,0) -- (1.6,0);
+\draw[dashed] (45:2.2) -- (225:2.2);
+\draw[dashed] (135:2.2) -- (315:2.2);
+
+\end{tikzpicture}
 \end{center}
 \caption{The group $D_4$}
 \label{D4}
@@ -771,7 +800,22 @@ r^3 s_1 & = & (14)(23).
  
 \begin{figure}[hbt]
 \begin{center}
-\includegraphics[width=2in]{motions}
+\begin{tikzpicture}[scale=1.5] %% Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010
+
+\draw (0,0)  -- (0,2) -- (2,2) -- (2,0) -- cycle;
+\draw (0,2)  -- (0.8,2.3) -- (2.8,2.3) -- (2.8,0.3) -- (2,0);
+\draw (2,2) -- (2.8,2.3);
+\draw[dashed] (0,0) -- (0.8,0.3) -- (2.8,0.3);
+\draw[dashed] (0.8,2.3) -- (0.8,0.3);
+
+\draw[densely dotted] (0,0) node [below] {2}-- (2.8,2.3) node [above] {2};
+\draw[densely dotted] (0,2) node [above] {4} -- (2.8,0.3) node [below] {4};
+\draw[densely dotted] (2,0) node [below] {1} -- (0.8,2.3) node [above] {1};
+\draw[densely dotted] (2,2) node [above] {3} -- (0.8,0.3) node [below] {3};
+
+
+\end{tikzpicture}
+
 \end{center}
 \caption{The motion group of a cube}
 \label{motions}
@@ -807,7 +851,27 @@ The group of rigid motions of a cube is $S_4$.
  
 \begin{figure}[hbt]
 \begin{center}
-\includegraphics[width=3in]{transpose}
+
+\begin{tikzpicture}[scale=1.5] %% Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010
+
+\draw (0,0) node [below] {2} -- (0,2) node [above] {4} -- (2,2) node [above] {3}-- (2,0) node [below] {1} -- cycle;
+\draw (0,2)  -- (0.8,2.3) node [above] {1} -- (2.8,2.3) node [above] {2}-- (2.8,0.3) node [below] {4} -- (2,0);
+\draw (2,2) -- (2.8,2.3);
+\draw[dashed] (0,0) -- (0.8,0.3) -- (2.8,0.3);
+\draw[dashed] (0.8,2.3) -- (0.8,0.3)  node [below] {3};
+
+\draw[densely dotted] (1,0) -- (1.8,2.3);
+
+\draw (3.5,0) node [below] {1} -- (3.5,2) node [above] {4} -- (5.5,2) node [above] {3}-- (5.5,0) node [below] {2} -- cycle;
+\draw (3.5,2)  -- (4.3,2.3) node [above] {2} -- (6.3,2.3) node [above] {1}-- (6.3,0.3) node [below] {4} -- (5.5,0);
+\draw (5.5,2) -- (6.3,2.3);
+\draw[dashed] (3.5,0) -- (4.3,0.3) -- (6.3,0.3);
+\draw[dashed] (4.3,2.3) -- (4.3,0.3) node [below] {3};
+
+\draw[densely dotted] (4.5,0) -- (5.3,2.3);
+
+\end{tikzpicture}
+
 \end{center}
 \caption{Transpositions in the motion group of a cube}
 \label{transpose}
