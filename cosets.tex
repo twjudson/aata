@@ -16,13 +16,13 @@ Lagrange's Theorem, one of the most important results in finite group theory, st
 \section{Cosets}
 
 Let $G$ be a group and $H$ a subgroup of $G$.  Define a {\bfi left  coset\/}\index{Coset!left} of $H$ with {\bfi  representative}\index{Coset!representative} $g \in G$ to be the set 
-$$
+\[
 gH = \{ gh : h \in H \}.
-$$
+\]
 {\bfi Right cosets\/}\index{Coset!right} can be defined similarly by
-$$
+\[
 Hg = \{ hg : h \in H \}.
-$$
+\]
 If left and right cosets coincide or if it is clear from the context to which type of coset that we are referring, we will use the word {\em coset\/} without specifying left or right. 
 
 \begin{example}{Z6_cosets}
@@ -119,10 +119,10 @@ Let $H$ be a subgroup of a group $G$.  The number of left cosets of $H$ in $G$ i
  
 \begin{proof}
 Let ${\mathcal L}_H$\label{notesetleft} and  ${\mathcal R}_H$\label{notesetright} denote the set of left and right cosets of $H$ in $G$, respectively.  If we can define a bijective map $\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H$, then the theorem will be proved.  If $gH \in {\mathcal L}_H$, let $\phi( gH ) = Hg^{-1}$.  By Lemma~\ref{cosets_theorem_1}, the map $\phi$ is well-defined; that is, if $g_1 H = g_2 H$, then $H g_1^{-1} = H g_2^{-1}$.  To show that $\phi$ is one-to-one, suppose that 
-$$
+\[
 H g_1^{-1} = \phi( g_1 H ) = \phi( g_2 H ) = H g_2^{-1}.
-$$
-Again by Lemma~5.1, $g_1 H = g_2 H$.  The map $\phi$ is onto since $\phi(g^{-1} H ) = H g$. 
+\]
+Again by Lemma~\ref{cosets_theorem_1}, $g_1 H = g_2 H$.  The map $\phi$ is onto since $\phi(g^{-1} H ) = H g$. 
 \hspace*{1in}
 \end{proof}
  
@@ -164,22 +164,22 @@ Corollary~\ref{cosets_theorem_7} suggests that groups of prime order $p$ must so
 
 \begin{corollary}\label{cosets_theorem_8}
 Let $H$ and $K$ be subgroups of a finite group $G$ such that $G \supset H \supset K$.  Then 
-$$
+\[
 [G:K] = [G:H][H:K].
-$$
+\]
 \end{corollary}
  
 \begin{proof}
 Observe that
-$$
+\[
 [G:K] = \frac{|G|}{|K|} = \frac{|G|}{|H|} \cdot
 \frac{|H|}{|K|} = [G:H][H:K].
-$$
+\]
 \end{proof}
 
 \medskip
  
-{\em The converse of Lagrange's Theorem is false}.  The group $A_4$ has order 12; however, it can be shown that it does not possess a subgroup of order 6.  According to Lagrange's Theorem, subgroups of a group of order 12 can have orders of either 1, 2, 3, 4, or  6.  However, we are not guaranteed that subgroups of every possible order exist.  To prove that $A_4$ has no subgroup of order 6, we will assume that it does have a subgroup $H$ such that $|H|=6$ and show that a contradiction must occur.  The group $A_4$ contains eight 3-cycles; hence, $H$ must contain a 3-cycle.  We will show that if $H$ contains one 3-cycle, then it must contain every 3-cycle, contradicting the assumption that $H$ has only 6 elements.
+{\bf \em The converse of Lagrange's Theorem is false}.  The group $A_4$ has order 12; however, it can be shown that it does not possess a subgroup of order 6.  According to Lagrange's Theorem, subgroups of a group of order 12 can have orders of either 1, 2, 3, 4, or  6.  However, we are not guaranteed that subgroups of every possible order exist.  To prove that $A_4$ has no subgroup of order 6, we will assume that it does have a subgroup $H$ such that $|H|=6$ and show that a contradiction must occur.  The group $A_4$ contains eight 3-cycles; hence, $H$ must contain a 3-cycle.  We will show that if $H$ contains one 3-cycle, then it must contain every 3-cycle, contradicting the assumption that $H$ has only 6 elements.
 
 \begin{theorem}\label{cosets_theorem_9}
 Two cycles $\tau$ and $\mu$ in $S_n$ have the same length if and only if there exists a $\sigma \in S_n$ such that $\mu = \sigma \tau \sigma^{-1}$.  
@@ -201,9 +201,9 @@ Define $\sigma$ to be the permutation
 Then $\mu = \sigma \tau \sigma^{-1}$.
 
 Conversely, suppose that $\tau = (a_1, a_2, \ldots, a_k )$ is a $k$-cycle and $\sigma \in S_n$. If $\sigma( a_i ) = b$ and $\sigma( a_{(i \bmod k) + 1} ) = b'$, then $\mu( b) = b'$.  Hence, 
-$$
+\[
 \mu = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k) ).
-$$
+\]
 Since $\sigma$ is one-to-one and onto, $\mu$ is a cycle of the same length as $\tau$. 
 \end{proof}
 
@@ -220,7 +220,7 @@ Since $[A_4 : H] = 2$, there are only two cosets of $H$ in $A_4$.  Inasmuch as o
 
 The {\bfi Euler} $\phi$-{\bfi function\/}\index{Euler $\phi$-function} is the map $\phi : {\mathbb N } \rightarrow {\mathbb N}$ defined by $\phi(n) = 1$ for $n=1$, and, for $n > 1$,  $\phi(n)$ is the number of positive integers $m$ with $1 \leq m < n$ and $\gcd(m,n) = 1$. 
 
-From Proposition~2.1, we know that the order of $U(n)$, the group of units in ${\mathbb Z}_n$, is $\phi(n)$. For example, $|U(12)| = \phi(12)  = 4$ since the numbers that are relatively prime to 12 are 1, 5, 7, and 11. For any prime $p$, $\phi(p) = p-1$.  We state these results in the following theorem.
+From Proposition~\ref{Zn_equiv_classes}, we know that the order of $U(n)$, the group of units in ${\mathbb Z}_n$, is $\phi(n)$. For example, $|U(12)| = \phi(12)  = 4$ since the numbers that are relatively prime to 12 are 1, 5, 7, and 11. For any prime $p$, $\phi(p) = p-1$.  We state these results in the following theorem.
 
 \begin{theorem}\label{cosets_theorem_11}
 Let $U(n)$ be the group of units in ${\mathbb Z}_n$.  Then $|U(n)| = \phi(n)$.
@@ -233,7 +233,7 @@ Let $a$ and $n$ be integers such that $n>0$ and $\gcd(a, n) = 1$.  Then $a^{\phi
 \end{theorem}
 
 \begin{proof}
-By Theorem~5.11 the order of $U(n)$ is $\phi(n)$.  Consequently, $a^{\phi(n)} = 1$ for all $a \in U(n)$; or $a^{\phi(n)} - 1$ is divisible by $n$.  Therefore, $a^{\phi(n)} \equiv 1 \pmod{n}$.  
+By Theorem~\ref{cosets_theorem_11} the order of $U(n)$ is $\phi(n)$.  Consequently, $a^{\phi(n)} = 1$ for all $a \in U(n)$; or $a^{\phi(n)} - 1$ is divisible by $n$.  Therefore, $a^{\phi(n)} \equiv 1 \pmod{n}$.  
 \hspace*{1in}
 \end{proof}
 
@@ -243,9 +243,9 @@ If we consider the special case of Euler's Theorem in which $n = p$ is prime and
  
 \begin{theorem}[Fermat's Little Theorem]\index{Fermat's Little Theorem}\label{cosets_theorem_13}
 Let $p$ be any prime number and suppose that $p \notdivide a$.  Then 
-$$
+\[
 a^{p-1} \equiv 1 \pmod{ p }.
-$$
+\]
 Furthermore, for any integer $b$, $b^p \equiv b \pmod{ p}$.
 \end{theorem}
 
@@ -348,14 +348,14 @@ $g_1^{-1} g_2 \in H$
 If $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$, show that right cosets are identical to left cosets.
  
 \item
-What fails in the proof of Theorem 5.3 if $\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H$ is defined by $\phi( gH ) = Hg$?
+What fails in the proof of Theorem~\ref{cosets_theorem_3} if $\phi :  {\mathcal L}_H \rightarrow {\mathcal R}_H$ is defined by $\phi( gH ) = Hg$?
  
 \item
 Suppose that $g^n = e$. Show that the order of $g$ divides
 $n$.
  
 \item
-Modify the proof of Theorem 5.9 to show that any two permutations $\alpha, \beta \in S_n$ have the same cycle structure if and only if there exists a  permutation $\gamma$ such that $\beta = \gamma \alpha \gamma^{-1}$.  If $\beta = \gamma \alpha \gamma^{-1}$ for some $\gamma \in S_n$, then $\alpha$ and $\beta$ are {\bfi conjugate}\index{Conjugate permutations}\index{Permutation!conjugate}.
+Modify the proof of Theorem~\ref{cosets_theorem_9} to show that any two permutations $\alpha, \beta \in S_n$ have the same cycle structure if and only if there exists a  permutation $\gamma$ such that $\beta = \gamma \alpha \gamma^{-1}$.  If $\beta = \gamma \alpha \gamma^{-1}$ for some $\gamma \in S_n$, then $\alpha$ and $\beta$ are {\bfi conjugate}\index{Conjugate permutations}\index{Permutation!conjugate}.
 
 \item
 If $|G| = 2n$, prove that the number of elements of order 2 is odd.  Use this result to show that $G$ must contain a subgroup of order 2.
@@ -380,18 +380,18 @@ Let $G$ be a cyclic group of order $n$.  Show that there are exactly $\phi(n)$ g
 
 \item
 Let $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$ be the factorization of $n$ into distinct primes.  Prove that
-$$
+\[
 \phi(n) =  n 
 \left( 1- \frac{1}{p_1} \right)
 \left( 1- \frac{1}{p_2} \right)	\cdots
 \left( 1- \frac{1}{p_k} \right).
-$$
+\]
 
 \item
 Show that 
-$$
+\[
 n = \sum_{d \mid n} \phi(d)
-$$
+\]
 for all positive integers $n$.
 
 \end{enumerate}
