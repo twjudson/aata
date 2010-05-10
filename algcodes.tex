@@ -31,26 +31,38 @@ coding theory.
 Let us examine a simple model of a communications system for
 transmitting and receiving coded messages (Figure~\ref{encoding}).  
 
-\begin{figure}[htb]
+\begin{figure}[htb] %Replaced figure with tikz figure - TWJ 5/10/2010
 \begin{center}
+
+\begin{tikzpicture}[scale=1]
+
+\draw [->] (0,8)  node [above] {\em $m$-digit message} -- (0,7.5);
+
+\node at (0,7) {Encoder};
+\draw (-1.5,6.5) rectangle (1.5,7.5);
+\draw (0,6.5)  -- (0,6.25);
+\draw [->] (0,5.75)  -- (0,5.5);
+\node at (0,6) {\em $n$-digit code word};
+
+\node at (0,5) {Transmitter};
+\draw (-1.5,4.5) rectangle (1.5,5.5);
+\draw (0,4.5)  -- (0,4.25);
+\draw [->] (0,3.75)  -- (0,3.5);
+\node at (0,4) {\em Noise};
+
+\node at (0,3) {Receiver};
+\draw (-1.5,2.5) rectangle (1.5,3.5);
+\draw (0,2.5)  -- (0,2.25);
+\draw [->] (0,1.75)  -- (0,1.5);
+\node at (0,2) {\em $n$-digit received word};
+
+\node at (0,1) {Decoder};
+\draw (-1.5,0.5) rectangle (1.5,1.5);
+\draw [->] (0,0.5)  -- (0,0) node [below] {\em $m$-digit received message or error};
+
+\end{tikzpicture}
+
 \caption{Encoding and decoding messages}
-\setlength{\unitlength}{.15in}
-\begin{picture}(19,23)(0,1)
-\thicklines
-\put(3.2,1.2){\small \it m-digit received message or error}
-\put(5.8,6.3){\small \it n-digit received word}
-\put(8.8,11.3){\small \it Noise}
-\put(6.7,16.3){\small \it n-digit codeword}
-\put(6.7,21.3){\small \it m-digit message}
-\put(7,3){\framebox(6,2){\small Decoder}}
-\put(7,8){\framebox(6,2){\small Receiver}}
-\put(7,13){\framebox(6,2){\small Transmitter}}
-\put(7,18){\framebox(6,2){\small Encoder}}
-\thinlines
-\multiput(10,6)(0,5){4}{\vector(0,-1){1}}
-\put(10,3){\vector(0,-1){1}}
-\multiput(10,8)(0,5){3}{\line(0,-1){1}}
-\end{picture}
 \end{center}
 \label{encoding}
 \end{figure}
@@ -87,9 +99,9 @@ x_{1}, x_{2}, \ldots, x_{n}).
 To decode the message, we choose as the $i$th digit the one that
 appears in the $i$th place in at least two of the three transmissions.
 For example, if the original message is $(0110)$, then the transmitted
-message will be \mbox{$(0110\,0110\,0110)$}. If there is a transmission error
+message will be \mbox{$(0110\;  0110\;  0110)$}. If there is a transmission error
 in the fifth digit, then the received codeword will be
-$(0110\,1110\,0110)$, which will be correctly decoded as
+$(0110\;  1110\;  0110)$, which will be correctly decoded as
 $(0110)$.\footnote{We will adopt the convention that bits are numbered
 left to right in binary $n$-tuples.} 
 This triple-repetition method will automatically detect and correct
@@ -135,7 +147,7 @@ for A, B, and C now become
 \end{eqnarray*}
 Suppose an A is sent and a transmission error in the sixth
 bit is caused by noise over the communication channel so that 
-(01000101) is received. We know an error has occurred since the
+(0100\; 0101) is received. We know an error has occurred since the
 received word has an odd number of 1's, and we can now request that the
 codeword be transmitted again. When used for error checking, the
 leftmost bit is called a {\bfi parity check bit}.  
@@ -165,7 +177,7 @@ First, multiple errors are not detectable. Suppose an A is sent and
 the first and seventh bits are changed from 0 to 1. The received word
 is a codeword, but will be decoded into a C instead of an A.
 Second, we do not have the ability to correct errors.  If the 8-tuple
-(10011000) is received, we know that an error has occurred, but we
+(1001\; 1000) is received, we know that an error has occurred, but we
 have no idea which bit has been changed. We will now investigate a
 coding scheme that will not only allow us to detect transmission
 errors but will actually correct the errors. 
@@ -173,8 +185,7 @@ errors but will actually correct the errors.
  
  
 \begin{table}[htb]\label{repetition_code}
-\caption{A repetition code}{\small
-\begin{center}
+\begin{center}{\small
 \begin{tabular}{|lc|cccccccc|}
 \hline
 & & \multicolumn{8}{|c|}{Received Word}    \\
@@ -185,8 +196,9 @@ Transmitted & 000 & 0   & 1   & 1   & 2   & 1   & 2   & 2
 Codeword   & 111 & 3   &  2  & 2   &  1  &  2  &   1 &  1
 &  0 \\ \hline
 \end{tabular}
-\end{center}
 }
+\caption{A repetition code}
+\end{center}
 \end{table}
 
  
@@ -237,23 +249,25 @@ the receiver uses {\bfi maximum-likelihood
 decoding}\index{Maximum-likelihood decoding}.
  
  
-\begin{figure}[htb]
+\begin{figure}[htb]  %Replaced figure with tikz figure - TWJ 5/10/2010
 \begin{center}
-\setlength{\unitlength}{.1in}
-\begin{picture}(14,9)
-\put(2,2){\vector(1,0){10}}
-\put(2,8){\vector(1,0){10}}
-\put(2,2.5){\vector(2,1){10}}
-\put(2,7.5){\vector(2,-1){10}}
-\put(0.8,7.5){\small 0}
-\put(0.8,1.6){\small 1}
-\put(12.6,7.5){\small 0}
-\put(12.6,1.6){\small 1}
-\put(6.5,8.6){\small $p$}
-\put(6.5,1){\small $p$}
-\put(7.5,6){\small $q$}
-\put(7.5,3.5){\small $q$}
-\end{picture}
+
+\begin{tikzpicture}[scale=1]
+
+\node at (1.5,0) [below] {$p$};
+\draw [->] (0,0)  node [left] {1} -- (3,0) node [right] {1};
+\node at (1.5,2) [above] {$p$};
+\draw [->] (0,2)  node [left] {0} -- (3,2) node [right] {0};
+
+\draw [->] (0,0.2) -- (3,1.8);
+\draw [->] (0,1.8) -- (3,0.2);
+
+\node at (1.8,1.15) [above] {$q$};
+\node at (1.8,0.85) [below] {$q$};
+
+
+\end{tikzpicture}
+
 \end{center}
 \caption{Binary symmetric channel}
 \label{channel}
@@ -283,12 +297,7 @@ binary symmetric channel with probability $p$ that no error will occur
 in each coordinate, then the probability that there are errors in
 exactly $k$ coordinates~is
 \[
-\left(
-\begin{array}{c}
-n \\ k
-\end{array}
-\right)
- q^kp^{n-k}.
+\binom{n}{k} q^kp^{n-k}.
 \]
 \end{theorem}
  
@@ -303,22 +312,14 @@ probability of each of these $n$ independent events is
 $q^{k}p^{n-k}$. The number of possible error patterns with exactly $k$
 errors occurring is equal to 
 \[
-\left(
-\begin{array}{c}
-n \\ k
-\end{array}
-\right)
+\binom{n}{k} 
 = \frac{n!}{k!(n-k)!},
 \]
 the number of combinations of $n$ things taken $k$ at a time. Each of
 these error patterns has probability $q^{k}p^{n-k}$ of occurring;
 hence, the probability of all of these error patterns is
 \[
-\left(
-\begin{array}{c}
-n \\ k
-\end{array}
-\right)
+\binom{n}{k} 
 q^{k}p^{n-k}.
 \]
 \end{proof}
@@ -332,21 +333,13 @@ p^{n} = (0.995)^{500} \approx 0.082.
 \]
 The probability of exactly one error occurring is
 \[
-\left(
-\begin{array}{c}
-n \\ 1
-\end{array}
-\right)
+\binom{n}{1} 
 qp^{n-1}= 500(0.005)(0.995)^{499}
 \approx 0.204.
 \]
 The probability of exactly two errors is
 \[
-\left(
-\begin{array}{c}
-n \\ 2
-\end{array}
-\right)
+\binom{n}{2} 
 q^{2}p^{n-2}=
 \frac{500 \cdot 499}{2}(0.005)^{2}(0.995)^{498} \approx
 0.257.
@@ -411,18 +404,18 @@ x}, {\mathbf 0})$, where ${\mathbf 0} = (00 \cdots 0)$.
 Let ${\mathbf x} = (10101)$, ${\mathbf y} = (11010)$, and ${\mathbf z} =
 (00011)$ be all of the codewords in some code $C$. Then we have the
 following Hamming distances: 
-\begin{eqnarray*}
-d({\mathbf x},{\mathbf y}) & = & 4, \\
-d({\mathbf x},{\mathbf z}) & = & 3, \\
-d({\mathbf y},{\mathbf z}) & = & 3.
-\end{eqnarray*}
+\[
+d({\mathbf x},{\mathbf y}) = 4, \qquad
+d({\mathbf x},{\mathbf z}) = 3, \qquad
+d({\mathbf y},{\mathbf z}) = 3.
+\]
 The minimum distance  for this code is 3. We also have the
 following weights: 
-\begin{eqnarray*}
-w({\mathbf x}) & = & 3, \\
-w({\mathbf y}) & = & 3, \\
-w({\mathbf z}) & = & 2.
-\end{eqnarray*}
+\[
+w({\mathbf x}) = 3, \qquad
+w({\mathbf y}) = 3, \qquad
+w({\mathbf z}) = 2.
+\]
 \end{example}
  
  
@@ -477,8 +470,6 @@ a single error-correcting code.
  
  
 \begin{table}[hbt]
-\caption{Distances between 4-bit codewords}\label{4-bit_words}
-\medskip
 {\small
 \begin{center}
 \begin{tabular}{|c|cccccccc|}
@@ -495,6 +486,7 @@ a single error-correcting code.
 1111 & 4 & 2 & 2 & 2 & 2 & 2 & 2 & 0 \\
 \hline
 \end{tabular}
+\caption{Distances between 4-bit codewords}\label{4-bit_words}
 \end{center}
 }
 \end{table}
@@ -567,10 +559,9 @@ single error-correcting code.
  
  
 \begin{table}[htb]
-\caption{ Hamming distances for an error-correcting code}\label{Hamming_dist}
-{\small
+
 \begin{center}
-\medskip
+{\small
 \begin{tabular}{|c|cccc|}
 \hline
       & 00000 & 00111 & 11100 & 11011 \\ \hline
@@ -580,8 +571,9 @@ single error-correcting code.
 11011 & 4     & 3     & 3     & 0 \\
 \hline
 \end{tabular}
-\end{center}
 }
+\caption{ Hamming distances for an error-correcting code}\label{Hamming_dist}
+\end{center}
 \end{table}
  
  
@@ -732,19 +724,15 @@ product as the product of a row matrix with a column matrix; that is,
 {\mathbf x} \cdot {\mathbf y} & = & {\mathbf x}^{\rm t}  {\mathbf y}
 \\
 & = &
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 x_1 & x_2 & \cdots & x_n
-\end{array}
-\right)
-\left(
-\begin{array}{c}
+\end{pmatrix}
+\begin{pmatrix}
 y_1 \\
 y_2 \\
 \vdots \\
 y_n
-\end{array}
-\right) \\
+\end{pmatrix} \\
 & = &
 x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.
 \end{eqnarray*}
@@ -764,19 +752,12 @@ even number of 1's if $ x_1+ x_2+ x_3+ x_4 = 0$, or
 = 
 {\mathbf x}^{\rm t} {\mathbf 1} 
 =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 x_1 & x_2 & x_3 & x_4
-\end{array}
-\right)
-\left(
-\begin{array}{c}
-1 \\
-1 \\
-1 \\
-1
-\end{array}
-\right) = 0.
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ 1 \\ 1 \\ 1
+\end{pmatrix} = 0.
 \]
 This example leads us to hope that there is a connection between
 matrices and coding theory. 
@@ -797,27 +778,23 @@ We denote the null space of a matrix $H$ by ${\rm Null}(H)$\label{notenull}.
 Suppose that
 \[
 H =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 1 & 0 & 1 & 0 \\
 1 & 1 & 1 & 1 & 0 \\
 0 & 0 & 1 & 1 & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 For a 5-tuple ${\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}$ to be in
 the null space of $H$, $H{\mathbf x} = {\mathbf 0}$. Equivalently, the
 following system of equations must be satisfied:   
-\begin{eqnarray*}
- x_2 + x_4   & = & 0 \\
-x_1 + x_2 + x_3 + x_4  & = & 0 \\
- x_3 + x_4 + x_5 & = & 0.
-\end{eqnarray*}
+\begin{align*}
+  x_2 +  x_4  & =  0 \\
+x_1 +  x_2 + x_3  + x_4   & =  0 \\
+  x_3  + x_4  +  x_5 & =  0.
+\end{align*}
 The set of binary 5-tuples satisfying these equations is
 \[
-\begin{array}{cccc}
-(00000) & (11110) & (10101) & (01011).
-\end{array}
+(00000) \qquad (11110) \qquad (10101) \qquad (01011).
 \]
 This code is easily determined to be a group code.
 \end{example}
@@ -862,13 +839,11 @@ n}({\mathbb Z}_2)$.
 Let $C$ be the code given by the matrix
 \[
 H =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 0 & 0 & 0 & 1 & 1 & 1 \\
 0 & 1 & 1 & 0 & 1 & 1 \\
 1 & 0 & 1 & 0 & 0 & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 Suppose that the 7-tuple ${\mathbf x} = (010011)^{\rm t}$ is received.
 It is a simple matter of matrix multiplication to determine whether or

@@ -54,10 +54,8 @@ cryptosystem allows $A$ and $B$ to send messages to $C$ using the same
 encoding key.  Anyone is capable of encoding a message to be sent to
 $C$, but only $C$ knows how to decode such a message.
  
- 
- 
+
 \section{Private Key Cryptography}
- 
  
 In {\bfi single\/}\index{Key!single}\index{Cryptosystem!single key} or
 {\bfi private key
@@ -76,32 +74,29 @@ One of the first and most famous private key cryptosystems was the
 shift code used by Julius Caesar.  We first digitize the alphabet by
 letting $\mbox{A}  = 00, \mbox{B}  = 01, \ldots, \mbox{Z} = 25$.
 The encoding function will be 
-$$
+\[
 f(p) = p + 3 \bmod 26;
-$$
+\]
 that is, $A \mapsto D, B \mapsto E, \ldots, Z \mapsto C$. The decoding
 function is then 
-$$
+\[
 f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.
-$$
+\]
 Suppose we receive the encoded message DOJHEUD. To decode this
 message, we first digitize it:  
-$$
+\[
 3, 14, 9, 7, 4, 20, 3.
-$$
+\]
 Next we apply the inverse transformation to get
-$$
+\[
 0, 11, 6, 4, 1, 17, 0,
-$$
+\]
 or ALGEBRA. Notice here that there is nothing special about either of
 the numbers 3 or 26. We could have used a larger alphabet or a
 different shift.
 \mbox{\hspace{1in}}
 \end{example}
- 
- 
-\medskip
- 
+
  
 {\bfi Cryptanalysis\/}\index{Cryptanalysis} is concerned with
 deciphering a received or intercepted message. Methods from
@@ -121,13 +116,13 @@ occurring letter in the English language. Suppose that $\mbox{S} = 18$
 is the most commonly occurring letter in the ciphertext.  Then we have
 good reason to suspect that  $18 = 4 + b \bmod 26$, or $b= 14$.
 Therefore, the most likely encrypting function is
-$$
+\[
 f(p) = p + 14 \bmod 26.
-$$
+\]
 The corresponding decrypting function is
-$$
+\[
 f^{-1}(p) = p + 12 \bmod 26.
-$$
+\]
 It is now easy to determine whether or not our guess is correct.
 \end{example}
  
@@ -143,19 +138,19 @@ to try them all rather than to use frequency analysis.
  
 Let us investigate a slightly more sophisticated cryptosystem. Suppose
 that the encoding function is given by  
-$$
+\[
 f(p) = ap + b \bmod 26.
-$$
+\]
 We first need to find out when a decoding function $f^{-1}$ exists.
 Such a decoding function exists when we can solve the equation
-$$
+\[
 c = ap + b \bmod 26
-$$
+\]
 for $p$. By Proposition~\ref{Zn_equiv_classes}, this is possible exactly when $a$ has an
 inverse or, equivalently, when $\gcd( a, 26) =1$. In this case 
-$$
+\[
 f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.
-$$
+\]
 Such a cryptosystem is called an {\bfi affine
 cryptosystem}\index{Cryptosystem!affine}. 
  
@@ -169,9 +164,9 @@ is easy to see that $a^{-1} = 21$. Therefore, we can take our
 encryption function to be $f(p) = 5p + 3 \bmod 26$. Thus, ALGEBRA is
 encoded as $3, 6, 7, 23, 8, 10, 3$, or DGHXIKD. The decryption
 function will~be   
-$$
+\[
 f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.
-$$
+\]
 \end{example} 
  
 A cryptosystem would be more secure if a ciphertext letter could
@@ -182,49 +177,43 @@ affine codes by using matrices. The idea works roughly the same as
 before; however, instead of encrypting one letter at a time we will
 encrypt pairs of letters.  We can store a pair of letters $p_1$ and
 $p_2$ in a vector  
-$$
+\[
 {\mathbf p} = 
-\left(
-\begin{array}{c}
+\begin{pmatrix}
 p_1 \\ p_2
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 Let $A$ be a $2 \times 2$ invertible matrix
 with entries in ${\mathbb Z}_{26}$. We can define an encoding function by
-$$
+\[
 f({\mathbf p}) = A {\mathbf p} + {\mathbf b} ,
-$$
+\]
 where ${\mathbf b}$ is a fixed column vector and matrix operations are
 performed in ${\mathbb Z}_{26}$. The decoding function must be
-$$
+\[
 f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.
-$$
+\]
  
  
 \begin{example}{HELP}\label{CryptHELP}
 Suppose that we wish to encode the word HELP. The corresponding
 digit string is $7, 4, 11, 15$. If
-$$
+\[
 A =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3 & 5 \\
 1 & 2
-\end{array}
-\right),
-$$
+\end{pmatrix},
+\]
 then
-$$
+\[
 A^{-1} 
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 2 & 21 \\
 25 & 3
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 If ${\mathbf b} = ( 2, 2)^{\rm t}$, then our message is encrypted as
 RRCR. The encrypted letter R represents more than one plaintext
 letter. 
@@ -304,38 +293,38 @@ Before exploring the theory behind the RSA cryptosystem or attempting
 to use large integers, we will use some small integers just to see
 that the system does indeed work. Suppose that we wish to send some
 message, which when digitized is 23. Let $p = 23$ and $q = 29$. Then 
-$$
+\[
 n = pq = 667
-$$
+\]
 and
-$$
+\[
 \phi(n) = m = (p - 1)(q - 1) = 616.
-$$
+\]
 We can let $E = 487$, since $\gcd(616, 487) = 1$. The encoded message
 is computed to be  
-$$
+\[
 23^{487} \bmod 667 = 368.
-$$
+\]
 This computation can be reasonably done by using the method of
 repeated squares as described in Chapter~3. Using the Euclidean
 algorithm, we determine that $191 E = 1 + 151 m$; therefore, the
 decrypting key is $(n, D) = ( 667, 191)$. We can recover the original 
 message by calculating  
-$$
+\[
 368^{191} \bmod 667 = 23.
-$$
+\]
 \end{example}
  
  
 Now let us examine why the RSA cryptosystem works.  We know that $DE
 \equiv 1 \pmod{ m}$; hence, there exists a $k$ such that 
-$$
+\[
 DE = km + 1 = k \phi(n) + 1.
-$$
+\]
 By Theorem~5.12,
-$$
+\[
 y^D = (x^E)^D = x^{DE} = x^{km+1} = (x^{\phi(n)})^k x = x \bmod n.
-$$
+\]
  
  
 We can now ask how one would go about breaking the RSA cryptosystem.
@@ -359,15 +348,15 @@ encryption keys are public information, they can exchange coded
 messages at their convenience.  Bob wishes to assure Alice that the
 message he is sending is authentic. Before Bob sends the message $x$
 to Alice, he decrypts  $x$ with his own key:
-$$
+\[
 x' = x ^{D'} \bmod n'.
-$$
+\]
 Anyone can change $x'$ back to $x$ just by encryption, but only Bob
 has the ability to form $x'$. Now Bob encrypts $x'$ with Alice's
 encryption key to form 
-$$
+\[
 y' = {x'}^E  \bmod n,
-$$
+\]
 a message that only Alice can decode.  Alice decodes the message and
 then encodes the result with Bob's key to read the original message, a
 message that could have only been sent by Bob.
@@ -472,15 +461,13 @@ is invertible if and only if $\gcd( \det(A), 26 ) = 1$.
  
 \item
 Given the matrix 
-$$
+\[
 A =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3 & 4 \\
 2 & 3
-\end{array}
-\right),
-$$
+\end{pmatrix},
+\]
 use the encryption function $f({\mathbf p}) = A {\mathbf p} + {\mathbf b}$
 to encode the message CRYPTOLOGY, where ${\mathbf b} = ( 2, 5)^{\rm
 t}$.  What is the decoding function?  
@@ -490,7 +477,6 @@ t}$.  What is the decoding function?
 Encrypt each of the following RSA messages $x$ so that $x$ is divided
 into blocks of integers of length 2;  that is, if $x = 142528$, encode 
 14, 25, and 28 separately.
-\begin{multicols}{2}
 \begin{enumerate}
  
  
@@ -501,14 +487,14 @@ $n = 3551, E = 629, x = 31$
 $n = 2257, E = 47, x = 23$
 
 \item
-$n = 120979, E = 13251,\\ x = 142371$
+$n = 120979, E = 13251, x = 142371$
  
 \item
-$n = 45629, E = 781,\\ x = 231561$
+$n = 45629, E = 781, x = 231561$
  
 
  \end{enumerate}
- \end{multicols}
+
  
  
 \item
@@ -518,10 +504,8 @@ Exercise~\ref{RSA_Exercise}.
  
 \item
 Decrypt each of the following RSA messages $y$.
-\begin{multicols}{2}
 \begin{enumerate}
  
-\vspace{3pt}        %two column exercise list
  
 \item
 $n = 3551, D = 1997, y = 2791$
@@ -530,20 +514,19 @@ $n = 3551, D = 1997, y = 2791$
 $n = 5893, D = 81, y = 34$
  
 \item
-$n = 120979, D = 27331,\\ y = 112135$
+$n = 120979, D = 27331, y = 112135$
  
 \item
-$n = 79403, D = 671,\\ y = 129381$
+$n = 79403, D = 671, y = 129381$
  
 \end{enumerate}
-\end{multicols}
+
  
 
  
 \item
 For each of the following encryption keys $(n, E)$ in the RSA
 cryptosystem, compute $D$.
-\begin{multicols}{2}
 \begin{enumerate}
  
  \item
@@ -557,10 +540,10 @@ $(n, E) = (3053, 1921)$
 $(n, E) = (37986733, 12371)$
  
  \item
-$(n, E) =\\ (16394854313, 34578451)$
+$(n, E) = (16394854313, 34578451)$
  
 \end{enumerate}
-\end{multicols}
+
  
  
   
@@ -574,9 +557,9 @@ IOC.  What are the advantages of using blocks of $n$ letters?
  
 \item
 Find integers $n$, $E$, and $X$ such that
-$$
+\[
 X^E \equiv X \pmod{n}.
-$$
+\]
 Is this a potential problem in the RSA cryptosystem?
  
  
@@ -616,9 +599,9 @@ algorithm}.
 \item
 Let $n= ab$ be an odd composite number. Prove that $n$ can be written
 as the difference of two perfect squares:
-$$
+\[
 n = x^2 - y^2 = (x-y)(x+y).
-$$
+\]
 Consequently, a positive odd integer can be factored exactly when we
 can find integers $x$ and $y$ such that $n = x^2 - y^2$.
  
@@ -626,7 +609,7 @@ can find integers $x$ and $y$ such that $n = x^2 - y^2$.
 Write a program to implement the following factorization algorithm
 based on the observation in part (a).
  
-\vspace{1ex}
+\medskip
  
 {\tt
 \begin{tabbing}
@@ -649,16 +632,13 @@ xxxx\=xxxx\=xxxx\=xxxx \kill
  
 }
  
-\vspace{1ex}
+\medskip
  
 The expression  $\lceil \sqrt{n}\, \rceil$ means the smallest integer
 greater than or equal to the square root of $n$. Write another program
 to do factorization using trial division and compare the speed of the
 two algorithms. Which algorithm is faster and why?
- 
- 
- 
- 
+
 \end{enumerate}
  
  
@@ -668,20 +648,20 @@ Recall Fermat's Little Theorem from Chapter~\ref{cosets}. Let $p$ be prime with
 $\gcd(a, p) = 1$. Then $a^{p-1} \equiv 1 \pmod{p}$.  We can use
 Fermat's Little Theorem as a screening test for primes. For example, 15
 cannot be prime since
-$$
+\[
 2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.
-$$
+\]
 However, 17 is a potential prime since
-$$
+\[
 2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.
-$$
+\]
 We say that an odd composite number $n$ is a {\bfi
 pseudoprime\/}\index{Pseudoprime} if 
-$$
+\[
 2^{n-1} \equiv 1 \pmod{n}.
-$$
+\]
 Which of the following numbers are primes  and which are pseudoprimes?
-\begin{multicols}{2}
+\begin{multicols}{3}
 \begin{enumerate}
 
 \item
@@ -760,16 +740,15 @@ Granville, A. ``Primality Testing and Carmichael Numbers,'' {\it
 Notices of the American Mathematical Society} {\bf 39}(1992),
 696--700. 
  
- 
- 
 \item[{\bf [5]}]
 Hellman, M. E. ``The Mathematics of Public Key
 Cryptography,''  {\it Scientific American} {\bf 241}
 (1979), 130--39.
  
-\item[{\bf [6]}]%%%%%%%%%%%%%%checked
-Koblitz, N. {\it A Course in Number Theory and Cryptography}.
-Springer-Verlag, New York, 1987. 
+
+\item[{\bf [6]}] %reference updated - TWJ 5/10/2010
+Koblitz, N. {\it A Course in Number Theory and Cryptography}. 2nd ed.
+Springer, New York, 1994.  
  
  
 \item[{\bf [7]}]
@@ -777,7 +756,6 @@ Pomerance, C., ed. {\it Cryptology and Computational Number
 Theory}. Proceedings of Symposia in Applied Mathematics,
 vol. 42. American Mathematical Society, Providence, RI,
 1990.
- 
  
 \item[{\bf [8]}]
 Rivest, R. L., Shamir, A., and Adleman, L., ``A Method for
