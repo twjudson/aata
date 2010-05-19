@@ -564,6 +564,7 @@ for all $a$ and $b$ in $B$.
  
  
 % 2010/05/18 R Beezer, added a "nonzero" to  b  in definition of an atom
+% Identified by Ricky Roy, U of Puget Sound
 We will show that any finite Boolean algebra is isomorphic to the 
 Boolean algebra obtained by taking the power set of some finite set 
 $X$. We will need a few lemmas and definitions before we prove this result.
@@ -996,6 +997,8 @@ Boolean algebras to switching theory.
  
  
 
+% 2010/05/18 R Beezer, meet/join mixup at end, added one new step
+% Identified by Ricky Roy, U of Puget Sound
 \begin{example}{boolean_circuit}
 Given a complex circuit, we can now apply the techniques of
 Boolean algebra to reduce it to a simpler one. Consider the circuit in 
@@ -1007,7 +1010,9 @@ Figure~\ref{Circuit2}. Since
 & = &
 (a \vee b) \wedge (a \vee b') \\
 & = &
-a \vee ( b \vee b') \\
+a \vee ( b \wedge b') \\
+& = &
+a \vee O \\
 & = &
 a,
 \end{eqnarray*}
