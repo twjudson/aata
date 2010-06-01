@@ -28,11 +28,11 @@ Suppose we have verified the equation for the first $n$ cases.  We will attempt 
 1 = \frac{1(1 + 1)}{2}.
 \]
 If we have verified the first $n$ cases, then
-\begin{eqnarray*}
-1 + 2 + \cdots + n + (n + 1) & = & \frac{n(n + 1)}{2} + n + 1 \\
-& = & \frac{n^2 + 3n + 2}{2} \\
-& = & \frac{(n + 1)[(n + 1) + 1]}{2}.
-\end{eqnarray*}
+\begin{align*}
+1 + 2 + \cdots + n + (n + 1) & = \frac{n(n + 1)}{2} + n + 1 \\
+& = \frac{n^2 + 3n + 2}{2} \\
+& = \frac{(n + 1)[(n + 1) + 1]}{2}.
+\end{align*}
 This is exactly the formula for the $(n + 1)$th case.
  
 This method of proof is known as {\bfi mathematical induction}.  Instead of attempting to verify a statement about some subset $S$ of the positive integers ${\mathbb N}$ on a case-by-case basis, an impossible task if $S$ is an infinite set, we give a specific proof for the smallest integer being considered, followed by a generic argument showing that if the statement holds for a given case, then it must also hold for the next  case in the sequence.  We summarize mathematical induction in the following axiom. 
@@ -61,13 +61,13 @@ Every integer $10^{n + 1} + 3 \cdot 10^n + 5$ is divisible by 9 for $n \in {\mat
 10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15
 \]
 is divisible by 9.  Suppose that $10^{k + 1} + 3 \cdot 10^k + 5$ is divisible by 9 for $k \geq 1$.  Then 
-\begin{eqnarray*}
+\begin{align*}
 10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5
-& = &
+& =
 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45 \\
-& = &
+& =
 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45
-\end{eqnarray*}
+\end{align*}
 is divisible by 9.
 \end{example}
 
@@ -88,41 +88,41 @@ is the binomial coefficient.\label{binomial}  We first show that
 \binom{n}{k} + \binom{n}{k - 1}.
 \]
 This result follows from
-\begin{eqnarray*}
+\begin{align*}
 \binom{n}{k} + \binom{n}{k - 1}
-& = &
+& =
 \frac{n!}{k!(n - k)!}
 +\frac{n!}{(k-1)!(n - k + 1)!} \\
-& = &
+& =
 \frac{(n + 1)!}{k!(n + 1 - k)!} \\
-& = &
+& =
 \binom{n + 1}{k}.
-\end{eqnarray*}
+\end{align*}
 If $n = 1$, the binomial theorem is easy to verify. Now assume that the result is true for $n$ greater than or equal to 1.  Then
-\begin{eqnarray*}
+\begin{align*}
 (a + b)^{n + 1}
-&  = &
+& = 
 (a + b)(a + b)^n \\
-& = &
+& =
 (a + b) 
 \left(
 \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}
 \right) \\
-&  = &
+& = 
 \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k}   +
 \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k} \\
-&  = &
-a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} \\
-&  & +
+& = 
+a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} 
+ +
 \sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}\\
-&  = &
+&  = 
 a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1}
 +
 \binom{n}{k} \right]
 a^k b^{n + 1 - k} + b^{n + 1} \\
-&  = &
+&  = 
 \sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.
-\end{eqnarray*}
+\end{align*}
 \end{example}
  
 We have an equivalent statement of the Principle of Mathematical Induction that is often very useful.
@@ -236,13 +236,13 @@ Let
 S = \{ am + bn : m, n \in {\mathbb Z} \mbox{ and } am + bn	> 0 \}.
 \]
 Clearly, the set $S$ is nonempty; hence, by the Well-Ordering Principle $S$ must have a smallest member, say $d = ar + bs$.  We claim that $d = \gcd( a, b)$.  Write $a = dq + r$ where $0 \leq r < d$ . If $r > 0$, then 
-\begin{eqnarray*}
+\begin{align*}
 r 
-& = & a - dq \\
-& = & a - (ar + bs)q \\
-& = & a - arq - bsq \\
-& = & a( 1 - rq ) + b( -sq ),
-\end{eqnarray*}
+& = a - dq \\
+& = a - (ar + bs)q \\
+& = a - arq - bsq \\
+& = a( 1 - rq ) + b( -sq ),
+\end{align*}
 which is in $S$.  But this would contradict the fact that $d$ is the smallest member of $S$.  Hence, $r = 0$ and $d$ divides $a$.  A similar argument shows that $d$ divides $b$.  Therefore, $d$ is a common divisor of $a$ and $b$.
 
 Suppose that $d'$ is another common divisor of $a$ and $b$, and we want to show that $d' \mid d$. If we let $a = d'h$ and $b = d'k$, then
@@ -265,43 +265,43 @@ Among other things, Theorem~\ref{integers_theorem_gcd} allows us to compute the 
 
 \begin{example}{gcd}
 Let us compute the greatest common divisor of $945$ and $2415$.  First observe that 
-\begin{eqnarray*}
-2415 & = & 945 \cdot 2 + 525 \\
-945 & = & 525 \cdot 1 + 420 \\
-525 & = & 420 \cdot 1 + 105 \\
-420 & = & 105 \cdot 4 + 0.
-\end{eqnarray*}
+\begin{align*}
+2415 & = 945 \cdot 2 + 525 \\
+945 & = 525 \cdot 1 + 420 \\
+525 & = 420 \cdot 1 + 105 \\
+420 & = 105 \cdot 4 + 0.
+\end{align*}
 Reversing our steps, 105 divides 420, 105 divides 525, 105 divides 945, and 105 divides 2415.  Hence, 105 divides both 945 and 2415.  If $d$ were another common divisor of 945 and 2415, then $d$ would also have to divide 105.  Therefore, $\gcd( 945, 2415 ) = 105$.
 
 If we work backward through the above sequence of equations, we can also obtain numbers $r$ and $s$ such that $945 r + 2415 s = 105$.  Observe that 
-\begin{eqnarray*}
-105 & = & 525 + (-1) \cdot 420 \\
-& = & 525 + (-1) \cdot [945 + (-1) \cdot 525] \\
-& = & 2 \cdot 525 + (-1) \cdot 945 \\
-& = & 2 \cdot [2415 + (-2) \cdot 945] + (-1) \cdot 945 \\
-& = & 2 \cdot 2415 + (-5) \cdot 945.
-\end{eqnarray*}
+\begin{align*}
+105 & = 525 + (-1) \cdot 420 \\
+& = 525 + (-1) \cdot [945 + (-1) \cdot 525] \\
+& = 2 \cdot 525 + (-1) \cdot 945 \\
+& = 2 \cdot [2415 + (-2) \cdot 945] + (-1) \cdot 945 \\
+& = 2 \cdot 2415 + (-5) \cdot 945.
+\end{align*}
 So $r = -5$ and $s= 2$.  Notice that $r$ and $s$ are not unique, since $r = 41$ and $s = -16$ would also work.
 \end{example}
 
 To compute $\gcd(a,b) = d$, we are using repeated divisions to obtain a decreasing sequence of positive integers $r_1 > r_2 > \cdots > r_n = d$; that is,
-\begin{eqnarray*}
-b & = & a q_1 + r_1 \\
-a & = & r_1 q_2 + r_2 \\
-r_1 & = & r_2 q_3 + r_3 \\
-& \vdots & \\
-r_{n - 2} & = & r_{n - 1} q_{n} + r_{n} \\
-r_{n - 1} & = & r_n q_{n + 1}.
-\end{eqnarray*}
+\begin{align*}
+b & = a q_1 + r_1 \\
+a & = r_1 q_2 + r_2 \\
+r_1 & = r_2 q_3 + r_3 \\
+& \vdots  \\
+r_{n - 2} & = r_{n - 1} q_{n} + r_{n} \\
+r_{n - 1} & = r_n q_{n + 1}.
+\end{align*}
 To find $r$ and $s$ such that $ar + bs = d$, we begin with this last equation and substitute results obtained from the previous equations:
-\begin{eqnarray*}
-d & = & r_n \\
-& = & r_{n - 2} - r_{n - 1} q_n \\
-& = & r_{n - 2} - q_n( r_{n - 3} - q_{n - 1} r_{n - 2} ) \\
-& = & -q_n r_{n - 3} + ( 1+ q_n q_{n-1} ) r_{n - 2}  \\
-& \vdots & \\
-& = & ra + sb.
-\end{eqnarray*}
+\begin{align*}
+d & = r_n \\
+& = r_{n - 2} - r_{n - 1} q_n \\
+& = r_{n - 2} - q_n( r_{n - 3} - q_{n - 1} r_{n - 2} ) \\
+& = -q_n r_{n - 3} + ( 1+ q_n q_{n-1} ) r_{n - 2}  \\
+& \vdots  \\
+& = ra + sb.
+\end{align*}
 The algorithm that we have just used to find the greatest common divisor $d$ of two integers $a$ and $b$ and to write $d$ as the linear combination of $a$ and $b$ is known as the {\bfi Euclidean algorithm}\index{Euclidean algorithm}\index{Algorithm!Euclidean}.  
  
  
@@ -355,10 +355,10 @@ has a unique factorization.  Hence, $k=l$ and $q_i = p_i$ for $i = 1, \ldots, k$
 
 {\em Existence}.
 To show existence, suppose that there is some integer that cannot be written as the product of primes.  Let $S$ be the set of all such numbers.  By the Principle of Well-Ordering, $S$ has a smallest number, say $a$.  If the only positive factors of $a$ are $a$ and 1, then $a$ is prime, which is a contradiction.  Hence, $a = a_1 a_2$ where $1 < a_1 < a$ and $1 < a_2 < a$.  Neither $a_1\in S$ nor $a_2 \in S$, since $a$ is the smallest element in $S$.  So 
-\begin{eqnarray*}
-a_1 & = & p_1 \cdots p_r \\
-a_2 & = & q_1 \cdots q_s.
-\end{eqnarray*}
+\begin{align*}
+a_1 & = p_1 \cdots p_r \\
+a_2 & = q_1 \cdots q_s.
+\end{align*}
 Therefore,
 \[
 a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s.
@@ -527,10 +527,10 @@ Using the division algorithm, show that every perfect square is of the form $4k$
 
 \item
 Suppose that $a, b, r, s$ are coprime and that
-\begin{eqnarray*}
+\begin{align*}
 a^2 + b^2 &=& r^2 \\
 a^2 - b^2 &=& s^2.
-\end{eqnarray*}
+\end{align*}
 Prove that $a$, $r$, and $s$ are odd and $b$ is even.
  
 \item
@@ -578,11 +578,11 @@ One method of computing all of the prime numbers less than a certain fixed posit
 
 \item
 Let ${\mathbb N}^0 = {\mathbb N} \cup \{ 0 \}$. Ackermann's function\index{Ackermann's function} is the function $A :{\mathbb N}^0 \times {\mathbb N}^0 \rightarrow {\mathbb N}^0$ defined by the equations 
-\begin{eqnarray*}
-A(0, y) & = & y + 1, \\
-A(x + 1, 0) & = & A(x, 1), \\
-A(x + 1, y + 1) & = & A(x, A(x + 1, y)).
-\end{eqnarray*}
+\begin{align*}
+A(0, y) & = y + 1, \\
+A(x + 1, 0) & = A(x, 1), \\
+A(x + 1, y + 1) & = A(x, A(x + 1, y)).
+\end{align*}
 Use this definition to compute $A(3, 1)$.  Write a program to evaluate Ackermann's function.  Modify the  program to count the number of statements executed in the program when Ackermann's function is evaluated.  How many statements are executed in the evaluation of $A(4, 1)$?  What about $A(5, 1)$?
 
 \item

@@ -122,29 +122,27 @@ bits are needed since there are only $2^7 = 128$ ASCII characters.
 What can or should be done with the extra bit? Using the full eight
 bits, we can detect single transmission errors. For example, the ASCII
 codes for A, B, and C are 
-\[
-\begin{array}{rcccl}
-\mbox{A} & = & 65_{10} & = & 01000001_{2}, \\
-\mbox{B} & = & 66_{10} & = & 01000010_{2}, \\
-\mbox{C} & = & 67_{10} & = & 01000011_{2}.
-\end{array}
-\]
+\begin{align*}
+\mbox{A} & = 65_{10} = 01000001_{2}, \\
+\mbox{B} & = 66_{10} = 01000010_{2}, \\
+\mbox{C} & = 67_{10} = 01000011_{2}.
+\end{align*}
 Notice that the leftmost bit is always set to 0; that is, the 128 ASCII
 characters have codes 
-\begin{eqnarray*}
-00000000_{2} & = & 0_{10}, \\
-& \vdots & \\
-01111111_{2} & = & 127_{10}.
-\end{eqnarray*}
+\begin{align*}
+00000000_{2} & = 0_{10}, \\
+& \vdots \\
+01111111_{2} & = 127_{10}.
+\end{align*}
 The bit can be used for error checking on the other seven bits. It is
 set to either 0 or 1 so that the total number of 1 bits in the
 representation of a character is even. Using even parity, the codes
 for A, B, and C now become 
-\begin{eqnarray*}
-\mbox{A} & = & 01000001_{2}, \\
-\mbox{B} & = & 01000010_{2}, \\
-\mbox{C} & = & 11000011_{2}.
-\end{eqnarray*}
+\begin{align*}
+\mbox{A} & = 01000001_{2}, \\
+\mbox{B} & = 01000010_{2}, \\
+\mbox{C} & = 11000011_{2}.
+\end{align*}
 Suppose an A is sent and a transmission error in the sixth
 bit is caused by noise over the communication channel so that 
 (0100\; 0101) is received. We know an error has occurred since the
@@ -661,12 +659,12 @@ the distance between ${\mathbf x}$ and ${\mathbf y}$ is exactly the number
 of places in which ${\mathbf x}$ and ${\mathbf y}$ differ. But ${\mathbf x}$
 and ${\mathbf y}$ differ in a particular coordinate exactly when the sum
 in the coordinate is 1, since
-\begin{eqnarray*}
-1 + 1 & = & 0 \\
-0 + 0 & = & 0 \\
-1 + 0 & = & 1 \\
-0 + 1 & = & 1.
-\end{eqnarray*}
+\begin{align*}
+1 + 1 & = 0 \\
+0 + 0 & = 0 \\
+1 + 0 & = 1 \\
+0 + 1 & = 1.
+\end{align*}
 Consequently, the weight of the sum must be the distance between the two
 codewords.
 \end{proof}
@@ -677,24 +675,23 @@ Let $d_{\min}$ be the minimum distance for a group code $C$. Then
 $d_{\min}$ is the minimum of all the nonzero weights of the nonzero
 codewords in $C$. That is, 
 \[
-d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0}
-} \}.
+d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}.
 \]
 \end{theorem}
  
  
 \begin{proof}
 Observe that
-\begin{eqnarray*}
-d_{\min} &= & \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}
+\begin{align*}
+d_{\min} & =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}
 \neq
 {\mathbf y} \} \\
-&= & \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y}
+&=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y}
 \neq {\mathbf 0} \} \\
-&=& \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}
+&= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}
 \neq {\mathbf 0} \} \\
-& = & \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.
-\end{eqnarray*}
+& =  \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.
+\end{align*}
 \end{proof}
  
  
@@ -720,10 +717,10 @@ column vectors for the remainder of this chapter.} For example, if
 ${\mathbf x} = (011001)^{\rm t}$ and ${\mathbf y} = (110101)^{\rm t}$,
 then ${\mathbf x} \cdot {\mathbf y} = 0$. We can also look at an inner
 product as the product of a row matrix with a column matrix; that is, 
-\begin{eqnarray*}
-{\mathbf x} \cdot {\mathbf y} & = & {\mathbf x}^{\rm t}  {\mathbf y}
+\begin{align*}
+{\mathbf x} \cdot {\mathbf y} & = {\mathbf x}^{\rm t}  {\mathbf y}
 \\
-& = &
+& =
 \begin{pmatrix}
 x_1 & x_2 & \cdots & x_n
 \end{pmatrix}
@@ -733,9 +730,9 @@ y_2 \\
 \vdots \\
 y_n
 \end{pmatrix} \\
-& = &
+& =
 x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.
-\end{eqnarray*}
+\end{align*}
  
  
 \begin{example}{matrix_codes}
@@ -850,13 +847,9 @@ It is a simple matter of matrix multiplication to determine whether or
 not ${\mathbf x}$ is a codeword. Since 
 \[
 H{\mathbf x} =
-\left(
-\begin{array}{c}
-0 \\
-1 \\
-1
-\end{array}
-\right),
+\begin{pmatrix} 
+0 \\ 1 \\ 1
+\end{pmatrix},
 \]
 the received word is not a codeword.  We must either attempt to
 correct the word or request that it be transmitted again.
@@ -882,25 +875,21 @@ the matrix is a {\bfi canonical parity-check
 matrix}\index{Matrix!parity-check}. More specifically, $H= (A \mid I_m
 )$, where $A$ is the $m \times (n-m)$ matrix
 \[
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1,n-m} \\
 a_{21} & a_{22} & \cdots & a_{2,n-m} \\
-\vdots & \vdots & \ddots & \vdots    \\
+\vdots & \vdots \ddots & \vdots    \\
 a_{m1} & a_{m2} & \cdots & a_{m,n-m}
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and $I_m$ is the $m \times m$ identity matrix
 \[
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 0 & \cdots & 0 \\
 0 & 1 & \cdots & 0 \\
-\vdots & \vdots & \ddots & \vdots \\
+\vdots & \vdots \ddots & \vdots \\
 0 & 0 & \cdots & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 With each canonical parity-check matrix we can associate an $n \times
 (n-m)$ {\bfi standard generator matrix}\index{Matrix!generator} 
@@ -925,39 +914,33 @@ encoded:
 For
 \[
 A =
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 0 & 1 & 1 \\
 1 & 1 & 0 \\
 1 & 0 & 1
-\end{array}
-\right),
+\end{pmatrix},
 \]
 the associated standard generator and canonical parity-check matrices
 are 
 \[
 G=
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1 \\
 0 & 1 & 1 \\
 1 & 1 & 0 \\
 1 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and
 \[
 H =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 0 & 1 & 1 & 1 & 0 & 0 \\
 1 & 1 & 0 & 0 & 1 & 0 \\
 1 & 0 & 1 & 0 & 0 & 1
-\end{array}
-\right),
+\end{pmatrix},
 \]
 respectively.
  
@@ -971,20 +954,18 @@ x_3, x_4, x_5, x_6)$, then
 =
 H{\mathbf x}
 =
-\left(
-\begin{array}{l}
+\begin{pmatrix}
 x_2 + x_3 + x_4 \\
 x_1 + x_2 + x_5\\
 x_1 + x_3 + x_6
-\end{array}
-\right),
+\end{pmatrix},
 \]
 which yields a system of equations:
-\begin{eqnarray*}
-x_2 + x_3 + x_4 & = & 0 \\
-x_1 + x_2 + x_5 & = & 0 \\
-x_1 + x_3 + x_6 & = & 0.
-\end{eqnarray*}
+\begin{align*}
+x_2 + x_3 + x_4 & = 0 \\
+x_1 + x_2 + x_5 & = 0 \\
+x_1 + x_3 + x_6 & = 0.
+\end{align*}
 Here $x_4$ serves as a check bit for $x_2$ and $x_3$; $x_5$ is a check
 bit for $x_1$ and $x_2$; and $x_6$ is a check bit for $x_1$ and $x_3$.
 The identity matrix keeps $x_4$, $x_5$, and $x_6$ from having to check
@@ -998,12 +979,12 @@ space of $H$ is easily computed to be
 \end{array}
 \]
 An even easier way to compute the null space is with the generator
-matrix $G$ (Table~7.4). 
+matrix $G$ (Table~\ref{matrix_gen_code}). 
 \end{example}
  
  
 \begin{table}[htb]
-\caption{A matrix-generated code}{\small
+{\small
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
@@ -1019,8 +1000,9 @@ ${\mathbf x}$ & $G {\mathbf x}$ \\ \hline
 111 & 111000 \\
 \hline
 \end{tabular}
-\end{center}
+\end{center}\label{matrix_gen_code}
 }
+\caption{A matrix-generated code}
 \end{table}
  
  
@@ -1036,9 +1018,10 @@ first $n-m$ bits. Hence, $H$ gives rise to an $(n, n-m)$-block code.
  
  
 We leave the proof of this theorem as an exercise. In light of the
-theorem, the first $n-m$ bits in ${\mathbf x}$ are called {\bfi
+theorem, the first $n - m$ bits in ${\mathbf x}$ are called {\bfi
 information bits\/} and the last $m$ bits are called {\bfi check bits}.
-In Example~12, the first three bits are the information bits
+In Example~12\ref{example:algcodes:parity_check},  %Can't figure out how to make this reference work - TWJ 5/20/2010
+the first three bits are the information bits
 and the last three are the check bits.
  
  
@@ -1096,31 +1079,23 @@ corresponding $n \times (n-m)$ standard generator matrix. Then $HG =
  
 \begin{proof}
 Let $C = HG$.  The $ij$th entry in $C$ is
-\begin{eqnarray*}
+\begin{align*}
 c_{ij}
-& = &
+& = 
 \sum_{k=1}^n h_{ik} g_{kj} \\
-& = &
-\sum_{k=1}^{n-m} h_{ik} g_{kj}
-+ \sum_{k=n-m+1}^n h_{ik} g_{kj} \\
-& = &
-\sum_{k=1}^{n-m} a_{ik} \delta_{kj}
-+ \sum_{k=n-m+1}^n \delta_{i-(m-n),k} a_{kj} \\
-& = &
-a_{ij} + a_{ij} \\
-& = &
-0,
-\end{eqnarray*}
+& =  \sum_{k=1}^{n-m} h_{ik} g_{kj} + \sum_{k=n-m+1}^n h_{ik} g_{kj} \\
+& = \sum_{k=1}^{n-m} a_{ik} \delta_{kj} + \sum_{k=n-m+1}^n \delta_{i-(m-n),k} a_{kj} \\
+& =  a_{ij} + a_{ij} \\
+& = 0,
+\end{align*}
 where
 \[
 \delta_{ij}\label{notekron}
 =
-\left\{
-\begin{array}{cc}
-1 & i = j \\
-0 & i \neq j
-\end{array}
-\right.
+\begin{cases}
+1, & i = j \\
+0, & i \neq j
+\end{cases}
 \]
 is the Kronecker delta\index{Kronecker delta}.
 \end{proof}
@@ -1147,32 +1122,26 @@ in the null space of $H$.  We need to find an ${\mathbf x}$ in ${\mathbb
 Z}_2^{n-m}$ such that $G {\mathbf x}^{\rm t} = {\mathbf y}$. Since $H
 {\mathbf y} = {\mathbf 0}$, the following set of equations must be
 satisfied:  
-\begin{eqnarray*}
-a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} +
-y_{n-m+1}
-& = & 0 \\
-a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} +
-y_{n-m+1}
-& = & 0 \\
-\vdots  &  & \\
-a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} +
-y_{n-m+1}
-& = & 0.
-\end{eqnarray*}
+\begin{align*}
+a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1}
+& = 0 \\
+a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+1}
+& = 0 \\
+& \vdots   \\
+a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} + y_{n-m+1}
+& = 0.
+\end{align*}
 Equivalently, $y_{n-m+1}, \ldots, y_n$ are determined by $y_1, \ldots,
 y_{n-m}$: 
-\begin{eqnarray*}
+\begin{align*}
 y_{n-m+1}
-& = &
-a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} \\
+& = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} \\
 y_{n-m+1}
-& = &
-a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} \\
-& \vdots & \\
+& = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} \\
+& \vdots \\
 y_{n-m+1}
-& = &
-a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}.
-\end{eqnarray*}
+& = a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}.
+\end{align*}
 Consequently, we can let $x_i = y_i$ for $i= 1, \ldots, n - m$.
 \end{proof}
  
@@ -1184,12 +1153,12 @@ It would be helpful if we could compute the minimum distance of a
 linear code directly from its matrix $H$ in order to determine the
 error-detecting and error-correcting capabilities of the code. Suppose
 that  
-\begin{eqnarray*}
-{\mathbf e}_1 & = & (100 \cdots 00)^{\rm t} \\
-{\mathbf e}_2 & = & (010 \cdots 00)^{\rm t} \\
- & \vdots & \\
-{\mathbf e}_n & = & (000 \cdots 01)^{\rm t}
-\end{eqnarray*}
+\begin{align*}
+{\mathbf e}_1 & = (100 \cdots 00)^{\rm t} \\
+{\mathbf e}_2 & = (010 \cdots 00)^{\rm t} \\
+ & \vdots \\
+{\mathbf e}_n & = (000 \cdots 01)^{\rm t}
+\end{align*}
 are the $n$-tuples in ${\mathbb Z}_2^n$ of weight 1. For an $m \times
 n$ binary matrix $H$, $H{\mathbf e}_i$ is exactly the $i$th column of
 the matrix $H$. 
@@ -1198,30 +1167,18 @@ the matrix $H$.
 \begin{example}{ith_column}
 Observe that
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 & 0 \\
 1 & 0 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 1
-\end{array}
-\right)
-\left(
-\begin{array}{c}
- 0 \\
-1 \\
-0 \\
-0 \\
-0
-\end{array}
-\right)
+\end{pmatrix}
+\begin{pmatrix}
+ 0 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
 =
-\left(
-\begin{array}{c}
-1 \\
-0 \\
-1
-\end{array}
-\right).
+\begin{pmatrix}
+1 \\ 0 \\ 1
+\end{pmatrix}.
 \]
 \end{example}
  
@@ -1265,24 +1222,20 @@ Proposition~7.11, $H{\mathbf e}_i \neq {\mathbf 0}$.
 If we consider the matrices
 \[
 H_1 =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 & 0 \\
 1 & 0 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and
 \[
 H_2 =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 & 0 \\
 1 & 0 & 0 & 0 & 0 \\
 1 & 1 & 0 & 0 & 1
-\end{array}
-\right),
+\end{pmatrix},
 \]
 then the null space of $H_1$ is a single error-detecting code and the
 null space of $H_2$ is not. 
@@ -1300,13 +1253,11 @@ examining the corresponding matrix.
 If we let
 \[
 H =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 \\
 1 & 0 & 0 & 1 \\
 1 & 1 & 0 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and  want to determine whether or not $H$ is the canonical
 parity-check matrix for an error-correcting code, it is necessary to
@@ -1352,18 +1303,18 @@ error-detecting and single error-correcting code. Since each column
 has three entries, there are $2^3 = 8$ possible distinct columns. We
 cannot add the columns 
 \[
-\left(
-\begin{array}{c} 0 \\ 0 \\ 0 \end{array}
-\right),
-\left(
-\begin{array}{c} 1 \\ 0 \\ 0 \end{array}
-\right),
-\left(
-\begin{array}{c} 0 \\ 1 \\ 0 \end{array}
-\right),
-\left(
-\begin{array}{c} 0 \\ 0 \\ 1 \end{array}
-\right).
+\begin{pmatrix}
+ 0 \\ 0 \\ 0 
+\end{pmatrix},
+\begin{pmatrix}
+ 1 \\ 0 \\ 0 
+\end{pmatrix},
+\begin{pmatrix}
+ 0 \\ 1 \\ 0 
+ \end{pmatrix},
+\begin{pmatrix}
+ 0 \\ 0 \\ 1 
+ \end{pmatrix}.
 \]
 So we can add as many as four columns and still maintain a minimum
 distance of 3. 
@@ -1392,28 +1343,26 @@ This can be a serious impediment if the code is very large.
 Given the binary matrix
 \[
 H =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 & 0 \\
 0 & 1 & 0 & 1 & 0 \\
 1 & 0 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and the 5-tuples ${\mathbf x} = (11011)^{\rm t}$ and ${\mathbf y} =
 (01011)^{\rm t}$, we can compute
 \[
 H{\mathbf x} =
-\left(
-\begin{array}{c} 0 \\ 0 \\ 0 \end{array}
-\right)
-\]
-and
-\[
+\begin{pmatrix}
+0 \\ 0 \\ 0 
+\end{pmatrix}
+\qquad
+\text{and}
+\qquad
 H{\mathbf y} =
-\left(
-\begin{array}{c} 1 \\ 0 \\ 1 \end{array}
-\right).
+\begin{pmatrix}
+1 \\ 0 \\ 1 
+\end{pmatrix}.
 \]
 Hence, ${\mathbf x}$ is a codeword and ${\mathbf y}$ is not, since
 ${\mathbf x}$ is in the null space and ${\mathbf y}$ is not. Notice that
@@ -1469,30 +1418,28 @@ occurred in the $i$th bit.
 Consider the matrix
 \[
 H =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 0 & 1 & 1 & 0 & 0 \\
 0 & 1 & 1 & 0 & 1 & 0 \\
 1 & 1 & 1 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 and suppose that the  6-tuples ${\mathbf x} = (111110)^{\rm t}$,
 ${\mathbf y} = (111111)^{\rm t}$, and ${\mathbf z} = (010111)^{\rm t}$
 have been received. Then  
 \[
 H{\mathbf x} =
-\left(
-\begin{array}{c} 1 \\ 1 \\ 1 \end{array}
-\right),
+\begin{pmatrix}
+1 \\ 1 \\ 1 
+\end{pmatrix},
 H{\mathbf y} =
-\left(
-\begin{array}{c} 1 \\ 1 \\ 0 \end{array}
-\right),
+\begin{pmatrix}
+1 \\ 1 \\ 0 
+\end{pmatrix},
 H{\mathbf z} =
-\left(
-\begin{array}{c} 1 \\ 0 \\ 0 \end{array}
-\right).
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}.
 \]
 Hence, ${\mathbf x}$ has an error in the third bit and ${\mathbf z}$ has
 an error in the fourth bit. The transmitted codewords for ${\mathbf x}$
@@ -1521,19 +1468,15 @@ ${\mathbb Z}_2^n$.
 Let $C$ be the $(5,3)$-linear code given by the parity-check matrix
 \[
 H =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 0 & 1 & 1 & 0 & 0 \\
 1 & 0 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 The code consists of the codewords
 \[
-\begin{array}{cccc}
-(00000)& (01101)& (10011)& (11110).
-\end{array}
+(00000) \quad (01101) \quad (10011) \quad (11110).
 \]
 There are $2^{5-2} = 2^3$ cosets of $C$ in ${\mathbb Z}_2^5$, each with
 order $2^2 =4$.  These cosets are listed in Table~7.5. 
@@ -1541,7 +1484,7 @@ order $2^2 =4$.  These cosets are listed in Table~7.5.
  
  
 \begin{table}
-\caption{Cosets of $C$}{\small
+{\small
 \begin{center}
 \medskip
 \begin{tabular}{|c|c|}
@@ -1560,6 +1503,7 @@ order $2^2 =4$.  These cosets are listed in Table~7.5.
 \end{tabular}
 \end{center}
 }
+\caption{Cosets of $C$}
 \end{table}
  
  
@@ -1598,6 +1542,28 @@ table that designates a coset leader corresponding to each syndrome. Such
 a list is called a {\bfi decoding table}\index{Decoding table}.
  
  
+ \begin{table}[htb]
+{\small
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Syndrome & Coset Leader \\
+\hline
+(000) & (00000) \\
+(001) & (00001) \\
+(010) & (00010) \\
+(011) & (10000) \\
+(100) & (00100) \\
+(101) & (01000) \\
+(110) & (00110) \\
+(111) & (10100) \\
+\hline
+\end{tabular}
+\end{center}
+}
+\caption{Syndromes for each coset}
+\end{table}
+ 
 \begin{proposition}
 Let $C$ be an $(n,k)$-linear code given by the matrix $H$ and suppose
 that ${\mathbf x}$ and ${\mathbf y}$ are in ${\mathbb Z}_2^n$. Then ${\mathbf
@@ -1621,13 +1587,9 @@ ${\mathbf x} = (01111)$ is received, then its syndrome can be computed
 to be
 \[
 H {\mathbf x} =
-\left(
-\begin{array}{c}
-0 \\
-1 \\
-1
-\end{array}
-\right).
+\begin{pmatrix}
+0 \\ 1 \\ 1
+\end{pmatrix}.
 \]
 Examining the decoding table, we determine that the coset leader is
 $(00010)$. It is now easy to decode the received codeword. 
@@ -1641,26 +1603,7 @@ $C$.  Suppose that we have a $(32, 24)$-block code.  We have a huge
 number of codewords, $2^{24}$, yet there are only $2^{32-24} = 2^{8} =
 256$ cosets.  
  
-\begin{table}[htb]
-\caption{Syndromes for each coset}{\small
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-Syndrome & Coset Leader \\
-\hline
-(000) & (00000) \\
-(001) & (00001) \\
-(010) & (00010) \\
-(011) & (10000) \\
-(100) & (00100) \\
-(101) & (01000) \\
-(110) & (00110) \\
-(111) & (10100) \\
-\hline
-\end{tabular}
-\end{center}
-}
-\end{table}
+
  
  
  

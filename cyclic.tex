@@ -314,11 +314,11 @@ and
 z  w = (2 + 3i)( 1-2i ) = 8-i.
 \]
 Also,
-\begin{eqnarray*}
-z^{-1} & = & \frac{2}{13} - \frac{3}{13}i \\
-|z| & = & \sqrt{13} \\
-\overline{z} & = & 2-3i.
-\end{eqnarray*}
+\begin{align*}
+z^{-1} & = \frac{2}{13} - \frac{3}{13}i \\
+|z| & = \sqrt{13} \\
+\overline{z} & = 2-3i.
+\end{align*}
 \end{example}
  
 \begin{figure}[hbt]  %Replaced figure with tikz figure - TWJ 5/6/2010
@@ -395,10 +395,10 @@ Hence,
 r = |z| = \sqrt{a^2+b^2}
 \]
 and
-\begin{eqnarray*}
-a & = & r \cos \theta \\
-b & = & r \sin \theta.
-\end{eqnarray*}
+\begin{align*}
+a & = r \cos \theta \\
+b & = r \sin \theta.
+\end{align*}
 We sometimes abbreviate $r( \cos \theta + i \sin \theta)$ as $r \cis
 \theta$\label{cosisin}.  To assure that the representation of $z$ is 
 well-defined, we also require that $0^{\circ} \leq \theta <
@@ -467,22 +467,22 @@ for $n = 1, 2, \ldots$.
 We will use induction on $n$. For $n = 1$ the theorem is trivial.
 Assume that the theorem is true for all $k$ such that $1  \leq k \leq
 n$. Then 
-\begin{eqnarray*}
-z^{n+1} & = & z^n z \\
-& = &
+\begin{align*}
+z^{n+1} & = z^n z \\
+& =
 r^n( \cos  n \theta + i \sin n \theta ) r( \cos \theta + i
 \sin \theta ) \\
-& = &
+& =
 r^{n+1} [( \cos n \theta \cos \theta - \sin n \theta \sin
 \theta )
  + i ( \sin n \theta \cos \theta + \cos n \theta \sin \theta
 )] \\
-& = &
+& =
 r^{n+1} [ \cos( n \theta + \theta) + i \sin( n \theta +
 \theta) ] \\
-& = &
+& =
 r^{n+1} [ \cos( n +1) \theta + i \sin( n+1) \theta  ].
-\end{eqnarray*}
+\end{align*}
 \end{proof}
  
  
@@ -490,20 +490,20 @@ r^{n+1} [ \cos( n +1) \theta + i \sin( n+1) \theta  ].
 Suppose that $z= 1+i$ and we wish to compute $z^{10}$. Rather than
 computing $(1+i)^{10}$ directly, it is much easier to switch to polar
 coordinates and calculate $z^{10}$ using DeMoivre's Theorem:
-\begin{eqnarray*}
+\begin{align*}
 z^{10}
-& = &
+& =
 (1+i)^{10} \\
-& = &
+& =
 \left( \sqrt{2} \cis \left( \frac{\pi }{4} \right)
 \right)^{10} \\
-& = &
+& =
 ( \sqrt{2}\, )^{10} \cis \left( \frac{5\pi }{2} \right)
 \\
-& = &
+& =
 32  \cis \left( \frac{\pi }{2} \right) \\
-& = & 32i.
-\end{eqnarray*}
+& = 32i.
+\end{align*}
 \end{example}
  
  
@@ -571,12 +571,12 @@ unity}.
 The 8th roots of unity can be represented as
 eight equally spaced points on the unit circle (Figure~\ref{rtsunity}).  The
 primitive 8th roots of unity are
-\begin{eqnarray*}
-\omega & = & \frac{\sqrt{2}}{2}  + \frac{\sqrt{2}}{2} i \\
-\omega^3 & = & -\frac{\sqrt{2}}{2}  + \frac{\sqrt{2}}{2} i \\
-\omega^5 & = & -\frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2} i \\
-\omega^7 & = & \frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2}i. 
-\end{eqnarray*}
+\begin{align*}
+\omega & = \frac{\sqrt{2}}{2}  + \frac{\sqrt{2}}{2} i \\
+\omega^3 & = -\frac{\sqrt{2}}{2}  + \frac{\sqrt{2}}{2} i \\
+\omega^5 & = -\frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2} i \\
+\omega^7 & = \frac{\sqrt{2}}{2}  - \frac{\sqrt{2}}{2}i. 
+\end{align*}
 \end{example}
  
  
@@ -677,23 +677,21 @@ We will compute $271^{321} \pmod{ 481}$. Notice that
 \]
 hence, computing $271^{ 321} \pmod{ 481}$ is the same as computing
 \[
-271^{ 2^0 +2^6 + 2^8 } \equiv 271^{ 2^0 } \cdot 271^{
-2^6 } \cdot 271^{ 2^8 } \pmod{ 481}.
+271^{ 2^0 +2^6 + 2^8 } \equiv 271^{ 2^0 } \cdot 271^{2^6 } \cdot 271^{ 2^8 } \pmod{ 481}.
 \]
 So it will suffice to compute $271^{ 2^i } \pmod{ 481}$ where $i = 0,
 6, 8$. It is very easy to see that 
-\begin{eqnarray*}
-271^{ 2^1}  & \equiv & 73,441 \pmod{ 481}  \\
-& \equiv & 329 \pmod{ 481}.
-\end{eqnarray*}
-We can square this result to obtain a value for $271^{ 2^2} \pmod{
-481}$: 
-\begin{eqnarray*}
-271^{ 2^2}  & \equiv & (271^{ 2^1})^2 \pmod{ 481}
-\\ & \equiv & (329)^2 \pmod{ 481} \\
-& \equiv & 1,082,411 \pmod{ 481} \\
-& \equiv & 16 \pmod{ 481}.
-\end{eqnarray*}
+\begin{align*}
+271^{ 2^1}  & \equiv 73,441 \pmod{ 481}  \\
+& \equiv 329 \pmod{ 481}.
+\end{align*}
+We can square this result to obtain a value for $271^{ 2^2} \pmod{481}$: 
+\begin{align*}
+271^{ 2^2}  & \equiv (271^{ 2^1})^2 \pmod{ 481} \\ 
+& \equiv (329)^2 \pmod{ 481} \\
+& \equiv 1,082,411 \pmod{ 481} \\
+& \equiv 16 \pmod{ 481}.
+\end{align*}
 We are using the fact that $(a^{2^n})^2  \equiv a^{2 \cdot 2^n} \equiv
 a^{ 2^{n+1} } \pmod{ n}$. Continuing, we can calculate
 \[
@@ -704,15 +702,14 @@ and
 271^{ 2^8 }  \equiv 16 \pmod{ 481}.
 \]
 Therefore,
-\begin{eqnarray*}
+\begin{align*}
 271^{ 321}
-& \equiv & 271^{ 2^0 +2^6 + 2^8 } \pmod{ 481} \\
-& \equiv & 271^{ 2^0 } \cdot 271^{ 2^6 } \cdot 271^{ 2^8 }
-\pmod{ 481} \\
-& \equiv & 271 \cdot 419 \cdot 16 \pmod{ 481} \\
-& \equiv & 1,816,784 \pmod{ 481} \\
-& \equiv & 47 \pmod{ 481}.
-\end{eqnarray*}
+& \equiv 271^{ 2^0 +2^6 + 2^8 } \pmod{ 481} \\
+& \equiv 271^{ 2^0 } \cdot 271^{ 2^6 } \cdot 271^{ 2^8 } \pmod{ 481} \\
+& \equiv 271 \cdot 419 \cdot 16 \pmod{ 481} \\
+& \equiv 1,816,784 \pmod{ 481} \\
+& \equiv 47 \pmod{ 481}.
+\end{align*}
 \end{example}
  
  

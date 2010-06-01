@@ -58,16 +58,14 @@ The hypothesis is $ax^2 + bx + c = 0$ and $a \neq 0$; the conclusion is
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
 \]
 Notice that the  statement says nothing about whether or not the hypothesis is true. However, if this entire statement is true and we can show that $ax^2 + bx + c = 0$ with $a \neq 0$ is true, then the conclusion {\em must\/} be true.  A proof of this statement might simply be a series of equations: 
-\begin{eqnarray*}
-ax^2 + bx + c & = & 0 \\
-x^2 + \frac{b}{a}x & = & - \frac{c}{a} \\
-x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2
-& = & \left( \frac{b}{2a} \right)^2 - \frac{c}{a} \\
-\left(x + \frac{b}{2a} \right)^2
-& = & \frac{b^2 - 4ac}{4a^2} \\
-x + \frac{b}{2a}  & = & \frac{ \pm \sqrt{ b^2 -4ac}}{2a} \\
-x & = & \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
-\end{eqnarray*}
+\begin{align*}
+ax^2 + bx + c & =  0 \\
+x^2 + \frac{b}{a}x & =  - \frac{c}{a} \\
+x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2 & =  \left( \frac{b}{2a} \right)^2 - \frac{c}{a} \\
+\left(x + \frac{b}{2a} \right)^2 & =  \frac{b^2 - 4ac}{4a^2} \\
+x + \frac{b}{2a}  & =  \frac{ \pm \sqrt{ b^2 -4ac}}{2a} \\
+x & =  \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\end{align*}
 
 If we can prove a statement true, then that statement is called a {\bfi proposition}.  A proposition of major importance is called a {\bfi theorem}.  Sometimes instead of proving a theorem or proposition all at once, we break the proof down into modules; that is, we prove several supporting propositions, which are called {\bfi lemmas}, and use the results of these propositions to prove the main result. If we can prove a proposition or a theorem, we will often, with very little effort, be able to derive other related propositions called {\bfi corollaries}. 
  
@@ -188,13 +186,13 @@ A = \{ x \in {\mathbb R} : 0 < x \leq 3 \}
 B = \{ x \in {\mathbb R} : 2 \leq x < 4 \}.
 \]
 Then
-\begin{eqnarray*}
-A \cap B & = & \{ x \in {\mathbb R} : 2 \leq x \leq 3 \} \\
-A \cup B & = & \{ x \in {\mathbb R} : 0 < x < 4 \} \\
-A \setminus B & = & \{ x \in {\mathbb R} : 0 < x < 2  \} \\
-A' & = & \{ x \in {\mathbb R} : \mbox{ $x \leq 0$ or $x > 3$
+\begin{align*}
+A \cap B & =  \{ x \in {\mathbb R} : 2 \leq x \leq 3 \} \\
+A \cup B & =  \{ x \in {\mathbb R} : 0 < x < 4 \} \\
+A \setminus B & =  \{ x \in {\mathbb R} : 0 < x < 2  \} \\
+A' & =  \{ x \in {\mathbb R} : \mbox{ $x \leq 0$ or $x > 3$
 } \}.
-\end{eqnarray*}
+\end{align*}
 \end{example}
  
 \begin{proposition}\label{sets_theorem_set_ops}
@@ -227,32 +225,32 @@ We will prove (1) and (3) and leave the remaining results to be proven in the ex
 
 (1)
 Observe that
-\begin{eqnarray*}
-A \cup A & = & \{ x : \mbox{ $x \in A$ or $x \in A$} \} \\
-& = & \{ x : \mbox{ $x \in A$} \} \\
-& = & A
-\end{eqnarray*}
+\begin{align*}
+A \cup A & =  \{ x : \mbox{ $x \in A$ or $x \in A$} \} \\
+& =  \{ x : \mbox{ $x \in A$} \} \\
+& =  A
+\end{align*}
 and
-\begin{eqnarray*}
-A \cap A & = & \{ x : \mbox{ $x \in A$ and $x \in A$} \} \\
-& = & \{ x : \mbox{ $x \in A$}  \} \\
-& = & A.
-\end{eqnarray*}
+\begin{align*}
+A \cap A & =  \{ x : \mbox{ $x \in A$ and $x \in A$} \} \\
+& =  \{ x : \mbox{ $x \in A$}  \} \\
+& =  A.
+\end{align*}
 Also, $A \setminus A = A \cap A' = \emptyset$.
  
 (3)
 For sets $A$, $B$, and $C$,
-\begin{eqnarray*}
+\begin{align*}
 A \cup (B \cup C)
-& = &
+& =
 A \cup \{ x : \mbox{ $x \in B$ or $x \in C$} \} \\
-& = &
+& =
 \{ x : \mbox{ $x \in A$ or $x \in B$, or $x \in C$} \} \\
-& = &
+& =
 \{ x : \mbox{ $x \in A$ or $x \in B$} \} \cup C \\
-& = &
+& =
 (A \cup B) \cup C.
-\end{eqnarray*}
+\end{align*}
 A  similar argument proves that  $A \cap (B \cap C) = (A \cap B) \cap
 C$. 
 \end{proof}
@@ -285,14 +283,14 @@ Other relations between sets often hold true.  For example,
 ( A \setminus B) \cap (B \setminus A) = \emptyset.
 \]
 To see that this is true, observe that
-\begin{eqnarray*}
+\begin{align*}
 ( A \setminus B) \cap (B \setminus A)
-& = &
+& =
 ( A \cap B') \cap (B \cap A') \\
-& = &
+& =
 A \cap A' \cap B \cap B' \\
-& = & \emptyset.
-\end{eqnarray*}
+& = \emptyset.
+\end{align*}
 \end{example}
  
  
@@ -498,11 +496,11 @@ Maps from ${\mathbb R}^n$ to ${\mathbb R}^m$ given by matrices are called {\bfi 
 
 \begin{example}{permutation}
 Suppose that $S = \{ 1,2,3  \}$. Define a map $\pi :S\rightarrow S$ by 
-\begin{eqnarray*}
-\pi( 1 ) & = & 2 \\
-\pi( 2 ) & = & 1 \\
-\pi( 3 ) & = & 3.
-\end{eqnarray*}
+\[
+\pi( 1 )  = 2, \qquad
+\pi( 2 )  = 1, \qquad
+\pi( 3 )  = 3.
+\]
 This is a bijective map.  An alternative way to  write $\pi$ is
 \[
 \begin{pmatrix}
@@ -546,12 +544,12 @@ We must show that
 h \circ (g \circ f) = (h \circ g) \circ f.
 \]
 For $a \in A$ we have
-\begin{eqnarray*}
-(h \circ (g \circ f))(a) & = & h((g \circ f)(a)) \\
-& = & h(g(f(a)))  \\
-& = & (h \circ g)(f(a)) \\
-& = & ((h \circ g) \circ f)(a).
-\end{eqnarray*}
+\begin{align*}
+(h \circ (g \circ f))(a) & = h((g \circ f)(a)) \\
+& = h(g(f(a)))  \\
+& = (h \circ g)(f(a)) \\
+& = ((h \circ g) \circ f)(a).
+\end{align*}
  
 (3) 
 Assume that $f$ and $g$ are both onto functions.  Given $c \in C$, we must show that there exists an $a \in A$ such that $(g \circ f)(a) = g(f(a)) = c$.  However, since $g$ is onto, there is a $b \in B$ such that $g(b) = c$.  Similarly, there is an $a \in A$ such that $f(a) = b$.  Accordingly, 
@@ -785,11 +783,11 @@ and so $r - t$ is divisible by $n$.
  
  
 If we consider the equivalence relation established by the integers modulo 3, then 
-\begin{eqnarray*}
-{[0]} & = & \{ \ldots, -3, 0, 3, 6, \ldots \}, \\
-{[1]} & = & \{ \ldots, -2, 1, 4, 7, \ldots \}, \\
-{[2]} & = & \{ \ldots, -1, 2, 5, 8, \ldots \}.
-\end{eqnarray*}
+\begin{align*}
+{[0]} & = \{ \ldots, -3, 0, 3, 6, \ldots \}, \\
+{[1]} & = \{ \ldots, -2, 1, 4, 7, \ldots \}, \\
+{[2]} & = \{ \ldots, -1, 2, 5, 8, \ldots \}.
+\end{align*}
 Notice that $[0] \cup [1] \cup [2] = {\mathbb Z}$ and also that the sets are disjoint.  The sets $[0]$, $[1]$, and $[2]$ form a partition of the integers. 
 
 The integers modulo $n$ are a very important example in the study of abstract algebra and will become quite useful in our investigation of various algebraic structures such as groups and rings.  In our discussion of the integers modulo $n$ we have actually assumed a result known as the division algorithm, which will be stated and proved in Chapter~\ref{integers}.
@@ -806,11 +804,11 @@ The integers modulo $n$ are a very important example in the study of abstract al
 
 \item
 Suppose that
-\begin{eqnarray*}
-A & = & \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is even} \}, \\
-B & = & \{x : \mbox{$x \in {\mathbb N}$ and $x$ is prime}\}, \\
-C & = & \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is a multiple of $5$}\}.
-\end{eqnarray*}
+\begin{align*}
+A & = \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is even} \}, \\
+B & = \{x : \mbox{$x \in {\mathbb N}$ and $x$ is prime}\}, \\
+C & = \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is a multiple of $5$}\}.
+\end{align*}
 Describe each of the following sets. 
 \begin{multicols}{2}
 \begin{enumerate}

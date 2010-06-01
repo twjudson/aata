@@ -59,11 +59,11 @@ B & C & A
 \]
 to  denote the permutation  that sends $A$ to $B$, $B$ to $C$, and $C$
 to $A$. That is, 
-\begin{eqnarray*}
-A & \mapsto & B \\
-B & \mapsto & C \\
-C & \mapsto & A.
-\end{eqnarray*}
+\begin{align*}
+A & \mapsto  B \\
+B & \mapsto  C \\
+C & \mapsto  A.
+\end{align*}
 The symmetries of a triangle form a group. In this chapter we will
 study groups of this type.  
  
@@ -98,26 +98,26 @@ group}\index{Group!permutation}\index{Permutation group}.
 \begin{example}{permute_S5}
 Consider the subgroup $G$ of $S_5$ consisting of the identity
 permutation $id$ and the permutations 
-\begin{eqnarray*}
+\begin{align*}
 \sigma
-& = &
+& =
 \begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 1 & 2 & 3 & 5 & 4
 \end{pmatrix} \\
 \tau
-& = &
+& =
 \begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 3 & 2 & 1 & 4 & 5
 \end{pmatrix} \\
 \mu
-& = &
+& =
 \begin{pmatrix}
 1 & 2 & 3 & 4 & 5 \\
 3 & 2 & 1 & 5 & 4
 \end{pmatrix}.
-\end{eqnarray*}
+\end{align*}
 The following table tells us how to multiply elements in the
 permutation group $G$. 
 \[
@@ -149,20 +149,20 @@ group. Certainly all of these methods have been used.
  
 \begin{example}{S4_nonabelian}
 Permutation multiplication is not usually commutative. Let
-\begin{eqnarray*}
+\begin{align*}
 \sigma
-& = &
+& =
 \begin{pmatrix}
 1 & 2 & 3 & 4  \\
 4 & 1 & 2 & 3
 \end{pmatrix} \\
 \tau
-& = &
+& =
 \begin{pmatrix}
 1 & 2 & 3 & 4 \\
 2 & 1 & 4 & 3
 \end{pmatrix}.
-\end{eqnarray*}
+\end{align*}
 Then
 \[
 \sigma \tau
@@ -195,12 +195,12 @@ down and manipulating permutations.
 A permutation $\sigma \in S_X$ is a {\bfi cycle of
 length}\index{Cycle!definition of}
 $k$ if there exist elements $a_1, a_2, \ldots, a_k \in X$ such that 
-\begin{eqnarray*}
-\sigma( a_1 ) & = & a_2 \\
-\sigma( a_2 ) & = & a_3 \\
-              & \vdots &  \\
-\sigma( a_k ) & = & a_1
-\end{eqnarray*}
+\begin{align*}
+\sigma( a_1 ) & = a_2 \\
+\sigma( a_2 ) & = a_3 \\
+              & \vdots   \\
+\sigma( a_k ) & = a_1
+\end{align*}
 and $\sigma( x) =x$ for all other elements $x \in X$. We will write
 $(a_1, a_2, \ldots, a_k )$\label{notecycle} to denote the cycle 
 $\sigma$. Cycles are the building blocks of all permutations.
@@ -246,23 +246,23 @@ of length~4.
  
 \begin{example}{cycle_mult}
 It is very easy to compute products of cycles. Suppose that
-\begin{eqnarray*}
-\sigma & = & (1 3 5 2 ) \\
-\tau   & = & (2 5 6).
-\end{eqnarray*}
+\begin{align*}
+\sigma & = (1 3 5 2 ) \\
+\tau   & = (2 5 6).
+\end{align*}
 We can think of $\sigma$ as
-\begin{eqnarray*}
-1 & \mapsto & 3 \\
-3 & \mapsto & 5 \\
-5 & \mapsto & 2 \\
-2 & \mapsto & 1
-\end{eqnarray*}
+\begin{align*}
+1 & \mapsto  3 \\
+3 & \mapsto  5 \\
+5 & \mapsto  2 \\
+2 & \mapsto  1
+\end{align*}
 and $\tau$ as
-\begin{eqnarray*}
-2 & \mapsto & 5 \\
-5 & \mapsto & 6 \\
-6 & \mapsto & 2
-\end{eqnarray*}
+\begin{align*}
+2 & \mapsto  5 \\
+5 & \mapsto  6 \\
+6 & \mapsto  2
+\end{align*}
 Hence, $\sigma \tau =  (1 3 5 6 )$.
 If $\mu = (1634)$, then $\sigma \mu = (1 6 5 2)(3 4)$.
 \end{example}
@@ -276,10 +276,10 @@ if $a_i \neq b_j$ for all $i$ and $j$.
 The  cycles $(1 3 5)$ and $(2 7 )$ are disjoint; however, the cycles
 $(1 3 5)$ and $(3 4 7 )$ are not.  Calculating their products, we find
 that 
-\begin{eqnarray*}
-(1 3 5)(2 7 ) & = & (1 3 5)(2 7 ) \\
-(1 3 5)(3 4 7 ) & = & (1 3 4 7 5).
-\end{eqnarray*}
+\begin{align*}
+(1 3 5)(2 7 ) & = (1 3 5)(2 7 ) \\
+(1 3 5)(3 4 7 ) & = (1 3 4 7 5).
+\end{align*}
 The product of two cycles that are not disjoint may reduce to
 something less complicated; the product of disjoint cycles cannot be 
 simplified. 
@@ -305,20 +305,23 @@ $\sigma(x)=x$ and $\tau(x)=x$. Hence,
 which is the opposite of the order in which we usually multiply group
 elements.}  Now suppose that $x \in \{ a_1, a_2, \ldots, a_k \}$. Then 
 $\sigma( a_i ) = a_{(i \bmod k) + 1}$; that is, 
-\begin{eqnarray*}
-a_1 & \mapsto & a_2 \\
-a_2 & \mapsto & a_3 \\
-& \vdots & \\
-a_{k-1} & \mapsto & a_k \\
-a_k & \mapsto & a_1.
-\end{eqnarray*}
+\begin{align*}
+a_1 & \mapsto  a_2 \\
+a_2 & \mapsto  a_3 \\
+& \vdots  \\
+a_{k-1} & \mapsto  a_k \\
+a_k & \mapsto  a_1.
+\end{align*}
 However, $\tau(a_i) = a_i$ since $\sigma$ and $\tau$ are disjoint.
 Therefore, 
-\[
-\sigma \tau(a_i) = \sigma( \tau(a_i)) = \sigma(a_i) = a_{(i \bmod
-k)+1}
-= \tau( a_{(i \bmod k)+1} ) = \tau( \sigma(a_i) ) = \tau \sigma(a_i).
-\]
+\begin{align*}
+\sigma \tau(a_i) & = \sigma( \tau(a_i)) \\
+& = \sigma(a_i) \\ 
+& = a_{(i \bmod k)+1} \\
+& = \tau( a_{(i \bmod k)+1} ) \\
+& = \tau( \sigma(a_i) ) \\
+& = \tau \sigma(a_i).
+\end{align*}
 Similarly, if $x \in \{b_1, b_2, \ldots, b_l  \}$, then $\sigma$ and
 $\tau$ also commute. 
 \end{proof}
@@ -356,25 +359,25 @@ $X_1, X_2, \ldots, X_r$ are disjoint, the cycles $\sigma_1, \sigma_2,
  
 \begin{example}{cycle_products}
 Let
-\begin{eqnarray*}
-\sigma & = &
+\begin{align*}
+\sigma & =
 \begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 6 & 4 & 3 & 1 & 5 & 2
 \end{pmatrix} \\
-\tau & = &
+\tau & =
 \begin{pmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 3 & 2 & 1 & 5 & 6 & 4
 \end{pmatrix}.
-\end{eqnarray*}
+\end{align*}
 Using cycle notation, we can write
-\begin{eqnarray*}
-\sigma & = & (1624) \\
-\tau & = & (13)(456) \\
-\sigma \tau & = &  (1 3 6) ( 2 4 5) \\
-\tau \sigma  & = & (1 4 3 )(2 5 6). 
-\end{eqnarray*}
+\begin{align*}
+\sigma & = (1624) \\
+\tau & = (13)(456) \\
+\sigma \tau & =  (1 3 6) ( 2 4 5) \\
+\tau \sigma  & = (1 4 3 )(2 5 6). 
+\end{align*}
 \end{example}
  
 \noindent {\bf Remark.} 
@@ -439,12 +442,12 @@ We will employ  induction  on $r$.  A transposition cannot be the
 identity; hence,   $r > 1$. If $r=2$, then we are done. Suppose that
 $r > 2$. In this case the product of the last two transpositions,
 $\tau_{r-1} \tau_r$, must be one of the following cases: 
-\begin{eqnarray*}
-(a b)(a b) & = & id \\
-(b c)(a b) & = & (a c)(b c) \\
-(c d)(a b) & = & (a b)(c d) \\
-(a c)(a b) & = & (a b)(b c),
-\end{eqnarray*}
+\begin{align*}
+(a b)(a b) & = id \\
+(b c)(a b) & = (a c)(b c) \\
+(c d)(a b) & = (a b)(c d) \\
+(a c)(a b) & = (a b)(b c),
+\end{align*}
 where $a$, $b$, $c$, and $d$ are distinct.
 
 The first equation simply says that a transposition is its own
@@ -714,11 +717,11 @@ The dihedral group, $D_n$, is a subgroup of $S_n$ of order $2n$.
 \begin{theorem}
 The group $D_n$, $n \geq 3$, consists of all products of the two 
 elements $r$ and $s$, satisfying the relations
-\begin{eqnarray*}
-r^n & = & id \\
-s^2 & = & id \\
-srs & = & r^{-1}.
-\end{eqnarray*}
+\begin{align*}
+r^n & = id \\
+s^2 & = id \\
+srs & = r^{-1}.
+\end{align*}
 \end{theorem}
  
  
@@ -778,22 +781,22 @@ and $s$. We will leave the proof that $srs = r^{-1}$ as an exercise.
 The group of rigid motions of a square, $D_4$, consists of eight
 elements. With the vertices numbered 1, 2, 3, 4 (Figure~\ref{D4}), the 
 rotations are 
-\begin{eqnarray*}
-r & = & (1234) \\
-r^2 & = & (13)(24) \\
-r^3 & = & (1432) \\
-r^4 & = & id
-\end{eqnarray*}
+\begin{align*}
+r & = (1234) \\
+r^2 & = (13)(24) \\
+r^3 & = (1432) \\
+r^4 & = id
+\end{align*}
 and the reflections are
-\begin{eqnarray*}
-s_1 & = & (24) \\
-s_2 & = & (13).
-\end{eqnarray*}
+\begin{align*}
+s_1 & = (24) \\
+s_2 & = (13).
+\end{align*}
 The order of $D_4$ is 8. The remaining two elements are
-\begin{eqnarray*}
-r s_1 & = & (12)(34) \\
-r^3 s_1 & = & (14)(23).
-\end{eqnarray*}
+\begin{align*}
+r s_1 & = (12)(34) \\
+r^3 s_1 & = (14)(23).
+\end{align*}
 \end{example}
  
  
@@ -1239,11 +1242,11 @@ S_X$ to be the set
 {\cal O}_{x, \sigma} = \{ y : x \sim y  \}.
 \]
 Compute the orbits of $\alpha, \beta, \gamma$ where
-\begin{eqnarray*}
-\alpha & = & (1254) \\
-\beta & = & (123)(45)\\
-\gamma & = & (13)(25).
-\end{eqnarray*}
+\begin{align*}
+\alpha & = (1254) \\
+\beta & = (123)(45)\\
+\gamma & = (13)(25).
+\end{align*}
  
  \item
 If ${\cal O}_{x, \sigma} \cap {\cal O}_{y, \sigma} \neq \emptyset$,

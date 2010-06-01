@@ -26,14 +26,35 @@ Let us now investigate some mathematical structures that can be viewed as sets w
 The integers mod $n$ have become indispensable in the theory and applications of algebra.  In mathematics they are used in cryptography, coding theory, and the detection of errors in identification codes.
  
 We have already seen that two integers $a$ and $b$ are equivalent mod $n$ if $n$ divides $a - b$.  The integers mod $n$ also partition ${\mathbb Z}$ into $n$ different equivalence classes; we will denote the set of these equivalence classes by ${\mathbb Z}_n$.  Consider the integers modulo 12 and the corresponding partition of the integers:  
-\begin{eqnarray*}
-{[0]} & = & \{ \ldots, -12, 0, 12, 24, \ldots \}, \\
-{[1]} & = & \{ \ldots, -11, 1, 13, 25, \ldots \}, \\
-      & \vdots & \\
-{[11]} & = & \{ \ldots, -1, 11, 23, 35, \ldots \}.
-\end{eqnarray*}
+\begin{align*}
+{[0]} & = \{ \ldots, -12, 0, 12, 24, \ldots \}, \\
+{[1]} & = \{ \ldots, -11, 1, 13, 25, \ldots \}, \\
+      & \vdots  \\
+{[11]} & = \{ \ldots, -1, 11, 23, 35, \ldots \}.
+\end{align*}
 When no confusion can arise, we will use $0, 1, \ldots, 11$ to indicate the equivalence classes  ${[0]}, {[1]}, \ldots, {[11]}$ respectively.  We can do arithmetic on ${\mathbb Z}_n$.  For two integers $a$ and $b$, define addition modulo $n$ to be $(a + b) \pmod{n}$; that is, the remainder when $a + b$ is divided by $n$.  Similarly, multiplication modulo $n$ is defined as $(a  b) \pmod{ n}$, the remainder when $a  b$ is divided by $n$.
 
+
+
+\begin{table}[htb]\label{groups_Z8_mult_table}
+\caption{Multiplication table for ${\mathbb Z}_8$}{\small
+\[
+\begin{array}{c|cccccccc}
+\cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\hline
+0     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+1     & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+2     & 0 & 2 & 4 & 6 & 0 & 2 & 4 & 6 \\
+3     & 0 & 3 & 6 & 1 & 4 & 7 & 2 & 5 \\
+4     & 0 & 4 & 0 & 4 & 0 & 4 & 0 & 4 \\
+5     & 0 & 5 & 2 & 7 & 4 & 1 & 6 & 3 \\
+6     & 0 & 6 & 4 & 2 & 0 & 6 & 4 & 2 \\
+7     & 0 & 7 & 6 & 5 & 4 & 3 & 2 & 1
+\end{array}
+\]
+}
+\end{table}
+ 
 
 
 \begin{example}{Zn_addition}
@@ -69,24 +90,7 @@ Most, but not all, of the usual laws of arithmetic hold for addition and multipl
 \mbox{\hspace*{1in}}
 \end{example}
 
-\begin{table}[htb]\label{groups_Z8_mult_table}
-\caption{Multiplication table for ${\mathbb Z}_8$}{\small
-\[
-\begin{array}{c|cccccccc}
-\cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-\hline
-0     & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-1     & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
-2     & 0 & 2 & 4 & 6 & 0 & 2 & 4 & 6 \\
-3     & 0 & 3 & 6 & 1 & 4 & 7 & 2 & 5 \\
-4     & 0 & 4 & 0 & 4 & 0 & 4 & 0 & 4 \\
-5     & 0 & 5 & 2 & 7 & 4 & 1 & 6 & 3 \\
-6     & 0 & 6 & 4 & 2 & 0 & 6 & 4 & 2 \\
-7     & 0 & 7 & 6 & 5 & 4 & 3 & 2 & 1
-\end{array}
-\]
-}
-\end{table}
+
 
 \begin{proposition}\label{Zn_equiv_classes}
 Let ${\mathbb Z}_n$ be the set of equivalence classes of the integers mod $n$ and $a, b, c \in {\mathbb Z}_n$.
@@ -94,25 +98,25 @@ Let ${\mathbb Z}_n$ be the set of equivalence classes of the integers mod $n$ an
  
 \rm \item \it %1
 Addition and multiplication are commutative:
-\begin{eqnarray*}
-a + b  & \equiv & b + a \pmod{ n} \\
-a  b   & \equiv & b  a \pmod{ n}.
-\end{eqnarray*}
+\begin{align*}
+a + b  & \equiv  b + a \pmod{ n} \\
+a  b   & \equiv  b  a \pmod{ n}.
+\end{align*}
  
 \rm \item \it %2
 Addition and multiplication are associative:
-\begin{eqnarray*}
-(a + b) + c  & \equiv & a + (b + c) \pmod{ n} \\
-(a  b)  c    & \equiv & a   (b  c)
+\begin{align*}
+(a + b) + c  & \equiv  a + (b + c) \pmod{ n} \\
+(a  b)  c    & \equiv  a   (b  c)
 \pmod{ n}.
-\end{eqnarray*}
+\end{align*}
  
 \rm \item \it %3
 There are both an additive and a multiplicative identity:
-\begin{eqnarray*}
-a + 0  & \equiv & a \pmod{ n} \\
-a \cdot  1  & \equiv & a \pmod{ n}.
-\end{eqnarray*} 
+\begin{align*}
+a + 0  & \equiv  a \pmod{ n} \\
+a \cdot  1  & \equiv  a \pmod{ n}.
+\end{align*} 
  
 \rm \item \it %4
 Multiplication distributes over addition:
@@ -147,7 +151,6 @@ Suppose that $\gcd(a, n) = 1$.  Then there exist integers $r$ and $s$ such that 
 Conversely, suppose that there exists a $b$ such that $ab  \equiv 1 \pmod{ n}$.  Then $n$ divides $ab -1$, so there is an integer $k$ such that $ab - nk = 1$.  Let $d = \gcd(a,n)$.  Since $d$ divides $ab - nk$, $d$ must also divide 1; hence, $d = 1$.
 \mbox{\hspace*{1in}}
 \end{proof}
- 
  
 \subsection*{Symmetries}
 
