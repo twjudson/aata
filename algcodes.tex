@@ -905,7 +905,7 @@ encoded, $G$ will allow us to quickly encode it into a linear
 codeword ${\mathbf y}$. 
  
  
-\begin{example}{parity_check}
+\begin{example}{ParityCheck}
 Suppose that we have the following eight words to be
 encoded:
 \[
@@ -1020,7 +1020,7 @@ first $n-m$ bits. Hence, $H$ gives rise to an $(n, n-m)$-block code.
 We leave the proof of this theorem as an exercise. In light of the
 theorem, the first $n - m$ bits in ${\mathbf x}$ are called {\bfi
 information bits\/} and the last $m$ bits are called {\bfi check bits}.
-In Example~12\ref{example:algcodes:parity_check},  %Can't figure out how to make this reference work - TWJ 5/20/2010
+In Example~12\ref{example:algcodes:ParityCheck},  %Can't figure out how to make this reference work - TWJ 5/20/2010
 the first three bits are the information bits
 and the last three are the check bits.
  
@@ -1069,7 +1069,7 @@ Before we can prove the relationship between canonical parity-check
 matrices and standard generating matrices, we need to prove a lemma.
  
  
-\begin{lemma}
+\begin{lemma}\label{ParityCheckLemma}
 Let $H = (A \mid I_m )$ be an $m \times n$ canonical parity-check
 matrix and $G = \left( \frac{I_{n-m} }{A} \right)$ be the
 corresponding $n \times (n-m)$ standard generator matrix. Then $HG =
@@ -1113,7 +1113,7 @@ canonical parity-check matrix $H$.
  
 \begin{proof}
 First suppose that ${\mathbf y} \in C$. Then $G {\mathbf x} = {\mathbf y}$
-for some ${\mathbf x} \in {\mathbb Z}_2^m$. By Lemma~7.9, $H {\mathbf y} = HG
+for some ${\mathbf x} \in {\mathbb Z}_2^m$. By Lemma~\ref{ParityCheckLemma}, $H {\mathbf y} = HG
 {\mathbf x} = {\mathbf 0}$. 
  
  
@@ -1186,7 +1186,7 @@ Observe that
 We state this result in the following proposition and leave the proof
 as an exercise. 
  
-\begin{proposition}
+\begin{proposition}\label{ColumnProp}
 Let ${\mathbf e}_i$ be the binary $n$-tuple with a $1$ in the $i$th
 coordinate and $0$'s elsewhere and suppose that $H \in {\mathbb M}_{m
 \times n}({\mathbb Z}_2)$. Then $H{\mathbf e}_i$ is the $i$th column of
@@ -1194,7 +1194,7 @@ the matrix $H$.
 \end{proposition}
  
  
-\begin{theorem}
+\begin{theorem}\label{SingleErrorTheorem}
 Let $H$ be an $m \times n$ binary matrix. Then the null space of $H$
 is a single error-detecting code if and only if no column of $H$
 consists entirely of zeros. 
@@ -1214,7 +1214,7 @@ the capability to detect at least single errors.
  
  
 Conversely, suppose that no column of $H$ is the zero column. By 
-Proposition~7.11, $H{\mathbf e}_i \neq {\mathbf 0}$.
+Proposition~\ref{ColumnProp}, $H{\mathbf e}_i \neq {\mathbf 0}$.
 \end{proof}
  
  
@@ -1242,7 +1242,7 @@ null space of $H_2$ is not.
 \end{example}
  
  
-We can even do better than Theorem~7.12. This theorem gives us
+We can even do better than Theorem~\ref{SingleErrorTheorem}. This theorem gives us
 conditions on a matrix $H$ that tell us when the minimum weight of
 the code formed by the null space of $H$ is 2.  We can also
 determine when the minimum distance of a linear code is 3 by
@@ -1378,7 +1378,7 @@ ${\mathbf x}$ is $H{\mathbf x}$. The following proposition allows
 the quick detection and correction of errors.
  
  
-\begin{proposition}
+\begin{proposition}\label{SyndromeProp}
 Let the $m \times n$ binary matrix $H$ determine a linear code and let
 ${\mathbf x}$ be the received $n$-tuple. Write ${\mathbf x}$ as ${\mathbf x}
 =  {\mathbf c} +{\mathbf e}$, where ${\mathbf c}$ is the transmitted codeword
@@ -1399,7 +1399,7 @@ $H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} =
  
 This proposition tells us that the syndrome of a received word depends
 solely on the error and not on the transmitted codeword. The proof of the
-following theorem follows immediately from Proposition~7.14 and from
+following theorem follows immediately from Proposition~\ref{SyndromeProp} and from
 the fact that $H{\mathbf e}$ is the $i$th column of the matrix $H$.
  
  
@@ -1460,7 +1460,7 @@ decoding\/}\index{Standard decoding} uses the cosets of $C$ in ${\mathbb
 Z}_2^n$ to implement maximum-likelihood decoding. Suppose that $C$ is
 an $(n,m)$-linear code. A coset of $C$ in ${\mathbb Z}_2^n$ is written in
 the form ${\mathbf x} + C$, where ${\mathbf x} \in {\mathbb Z}_2^n$. By
-Lagrange's Theorem, there are $2^{n-m}$ distinct cosets of $C$ in 
+Lagrange's Theorem (Theorem~\ref{LagrangeTheorem}), there are $2^{n-m}$ distinct cosets of $C$ in 
 ${\mathbb Z}_2^n$.
  
  
@@ -1479,7 +1479,7 @@ The code consists of the codewords
 (00000) \quad (01101) \quad (10011) \quad (11110).
 \]
 There are $2^{5-2} = 2^3$ cosets of $C$ in ${\mathbb Z}_2^5$, each with
-order $2^2 =4$.  These cosets are listed in Table~7.5. 
+order $2^2 =4$.  These cosets are listed in Table~\ref{CosetsofC}. 
 \end{example}
  
  
@@ -1503,7 +1503,7 @@ order $2^2 =4$.  These cosets are listed in Table~7.5.
 \end{tabular}
 \end{center}
 }
-\caption{Cosets of $C$}
+\caption{Cosets of $C$}\label{CosetsofC}
 \end{table}
  
  
@@ -1525,7 +1525,7 @@ coset leader for each coset, the decoding process becomes a task
 of calculating ${\mathbf r} + {\mathbf e}$ to obtain ${\mathbf x}$.
  
 \begin{example}{representative}
-In Table~7.5, notice that we have chosen a representative of the least
+In Table~\ref{CosetsofC}, notice that we have chosen a representative of the least
 possible weight for each coset.  These representatives are coset
 leaders. Now suppose that ${\mathbf r} = (01111)$ is the received word.
 To decode ${\mathbf r}$, we find that it is in the coset $(00010) + C$;
@@ -1561,7 +1561,7 @@ Syndrome & Coset Leader \\
 \end{tabular}
 \end{center}
 }
-\caption{Syndromes for each coset}
+\caption{Syndromes for each coset}\label{SyndromeTable}
 \end{table}
  
 \begin{proposition}
@@ -1582,9 +1582,8 @@ equivalent to $H({\mathbf x} - {\mathbf y}) = 0$ or $H {\mathbf x} = H
  
  
 \begin{example}{decoding_table}
-Table~7.6 is a decoding table for the code $C$ given in Example~18. If
-${\mathbf x} = (01111)$ is received, then its syndrome can be computed
-to be
+Table~\ref{SyndromeTable} is a decoding table for the code $C$ given in Example~18\ref{example:algcodes:coset_decoding}. %Example reference needs to be fixed - TWJ 6/1/2010
+If ${\mathbf x} = (01111)$ is received, then its syndrome can be computed to be
 \[
 H {\mathbf x} =
 \begin{pmatrix}
@@ -1635,85 +1634,53 @@ Why is the following encoding scheme not acceptable?
 Without doing any addition, explain why the following set of 4-tuples in
 ${\mathbb Z}_2^4$ cannot be a group code. 
 \[
-\begin{array}{cccc}
-(0110) & (1001) & (1010) & (1100)
-\end{array}
+(0110) \quad (1001) \quad (1010) \quad (1100)
 \]
  
  
 \item    %%%%%%%%%%%%%%%%
 Compute the Hamming distances between the following pairs of
 $n$-tuples. 
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 $(011010), (011100)$
- 
- \item[{\bf (c)}]
-$(00110), (01111)$
- 
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 $(11110101), (01010100)$
- 
- \item[{\bf (d)}]
+
+\item
+$(00110), (01111)$
+
+\item
 $(1001), (0111)$
+
+\end{enumerate}
+\end{multicols}
+
+
  
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
- 
- 
-\item  %%%%%%%%%%%%%%%%%%%
+\item
 Compute the weights of the following $n$-tuples.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 $(011010)$
- 
- \item[{\bf (c)}]
-$(01111)$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 $(11110101)$
- 
- \item[{\bf (d)}]
+
+\item
+$(01111)$
+
+\item
 $(1011)$
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+
+\end{enumerate}
+\end{multicols}
+
  
  
  
@@ -1744,102 +1711,57 @@ $(1001001) \; (1000011) \; (0001111) \; (0000000)$
  
 \end{enumerate}
  
+
  
 \item
 Compute the null space of each of the following matrices.  What type
 of $(n,k)$-block codes are the null spaces? Can you find a matrix (not
 necessarily a standard generator matrix) that generates each code?
 Are your generator matrices unique?
-  
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
-\raisebox{-11.5pt}{\parbox{1.85in}{
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 1 & 0 & 0 & 0 \\
 1 & 0 & 1 & 0 & 1 \\
 1 & 0 & 0 & 1 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
-  
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 0 & 1 & 0 & 0 & 0 \\
 1 & 1 & 0 & 1 & 0 & 0 \\
 0 & 1 & 0 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{3pt}        %two column exercise list
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (c)}]
-\raisebox{-5.75pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 0 & 0 & 1 & 1 \\
 0 & 1 & 0 & 1 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (d)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccccc}
+\begin{pmatrix}
 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
 0 & 1 & 1 & 0 & 0 & 1 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
+
+
+\end{enumerate}
+\end{multicols}
+
  
 \item %%%%%%%%%%%%%%%%%%%%%%%%%%%
 Construct a $(5,2)$-block code. Discuss the error-detection and
@@ -1850,19 +1772,15 @@ error-correction capabilities of your code.
 Let $C$ be the code obtained from the null space of the matrix
 \[
 H =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 1 & 0 & 0 & 1 \\
 1 & 0 & 1 & 0 & 1 \\
 0 & 0 & 1 & 1 & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 Decode the message
 \[
-\begin{array}{cccc}
-01111 & 10101 & 01110 & 00011  \\
-\end{array}
+01111 \quad 10101 \quad 01110 \quad 00011  \\
 \]
 if possible.
  
@@ -1876,88 +1794,57 @@ probability of exactly two errors occurring?  Repeat this problem for
 $p = 0.0001$.
  
  
-\item
+ \item
 Which matrices are canonical parity-check matrices? For those matrices
 that are canonical parity-check matrices, what are the corresponding
 standard generator matrices? What are the error-detection and
 error-correction capabilities of the code generated by each of these
 matrices? 
- 
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 0 & 0 & 0 \\
 0 & 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1 & 0 \\
 1 & 0 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
- \item[{\bf (c)}]
-\raisebox{-5.75pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{cccc}
-1 & 1 & 1 & 0 \\
-1 & 0 & 0 & 1
-\end{array}
-\right)
-\]
-}}
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
-\[
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 0 & 1 & 1 & 0 & 0 & 0 \\
 1 & 1 & 0 & 1 & 0 & 0 \\
 0 & 1 & 0 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
- \item[{\bf (d)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccccc}
+\begin{pmatrix}
+1 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1
+\end{pmatrix}
+\]
+
+\item
+\[
+\begin{pmatrix}
 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
 1 & 0 & 1 & 0 & 0 & 1 & 0 \\
 0 & 1 & 1 & 0 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
+
+\end{enumerate}
+\end{multicols}
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{4pt}        %end two column exercise list
- 
- 
+
 \item %%%%%%%%%%%%%%%%%%%%%%%%%
 List all possible syndromes for the codes generated by each of the
 matrices in the previous exercise. 
@@ -1967,13 +1854,11 @@ matrices in the previous exercise.
 Let
 \[
 H =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 1 & 1 & 1 & 1 \\
 0 & 0 & 0 & 1 & 1 \\
 1 & 0 & 1 & 0 & 1
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 Compute the syndrome caused by each of the following transmission
 errors. 
@@ -2000,102 +1885,57 @@ $(000)$ and $(111)$. Compute the cosets of $H$ in ${\mathbb Z}_2^3$. Why
 was there no need to specify right or left cosets? Give the
 single transmission error, if any, to which each coset corresponds.
  
+
  
 \item
 For each of the following matrices, find the cosets of the
 corresponding code $C$. Give a decoding table for each code if
 possible. 
- 
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
-\raisebox{-11.5pt}{\parbox{1.85in}{
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 1 & 0 & 0 & 0 \\
 1 & 0 & 1 & 0 & 1 \\
 1 & 0 & 0 & 1 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 0 & 0 & 1 & 0 & 0  \\
 1 & 1 & 0 & 1 & 0 \\
 0 & 1 & 0 & 1 & 0 \\
 1 & 1 & 0 & 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{3pt}
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (c)}]
-\raisebox{-5.75pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 0 & 0 & 1 & 1 \\
 0 & 1 & 0 & 1 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (d)}]
-\raisebox{-17.5pt}{\parbox{1.85in}{
+
+\item
 \[
-\left(
-\begin{array}{ccccccc}
+\begin{pmatrix}
 1 & 0 & 0 & 1 & 1 & 1 & 1 \\
 1 & 1 & 1 & 0 & 0 & 1 & 1 \\
 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
 1 & 1 & 1 & 0 & 0 & 1 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{4pt}        %end two column exercise list
+
+\end{enumerate}
+\end{multicols}
  
  
+
  
 %**********************Theory
  
@@ -2203,13 +2043,11 @@ C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} =
 Find the dual code of the linear code $C$ where $C$ is given by the
 matrix 
 \[
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1 & 1 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 & 1 \\
 1 & 0 & 0 & 1 & 0
-\end{array}
-\right).
+\end{pmatrix}.
 \]
  
  \item
@@ -2233,13 +2071,11 @@ code}\index{Code!Hamming!definition of}.
 Show  that the matrix
 \[
 H =
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 0 & 0 & 0 & 1 & 1 & 1 \\
 0 & 1 & 1 & 0 & 0 & 1 \\
 1 & 0 & 1 & 0 & 1 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \]
 generates a Hamming code. What are the error-correcting properties of
 a Hamming code? 
@@ -2300,22 +2136,25 @@ your simulation with the theoretically predicted error probability.
 Blake, I. F. ``Codes and Designs,'' {\it Mathematics Magazine} {\bf
 52} (1979), 81--95. 
  
-\item[{\bf [2]}]
+\item[{\bf [2]}] %Reference updated - TWJ 6/1/2010
 Hill, R. {\it A First Course in Coding Theory}. Oxford University
-Press, Oxford, 1986. 
+Press, Oxford, 1990. 
  
 \item[{\bf [3]}]
 Levinson, N. ``Coding Theory: A Counterexample to G. H. Hardy's
 Conception of Applied Mathematics,'' {\it American Mathematical
 Monthly} {\bf 77} (1970), 249--58. 
  
-\item[{ \bf [4]}]
-Lidl, R. and Pilz, G. {\it Applied Abstract Algebra}. Springer-Verlag,
-New York, 1984. 
+\item[{ \bf [4]}]  %Reference updated - TWJ 6/1/2010
+Lidl, R. and Pilz, G. 
+{\it Applied Abstract Algebra}. 2nd ed. Springer,
+New York, 1998. 
  
-\item[{\bf [5]}]
-MacWilliams, F. J. and Sloane, N. J. A. {\it The Theory of
-Error-Correcting Codes}. North Holland, Amsterdam, 1977. 
+\item[{\bf [5]}] %Reference updated - TWJ 6/1/2010
+MacWilliams, F. J. and Sloane, N. J. A. 
+{\it The Theory of Error-Correcting Codes}. 
+North-Holland Mathematical Library, 16,
+Elsevier, Amsterdam, 1983. 
  
  
 \item[{\bf [6]}]
@@ -2332,9 +2171,9 @@ Thompson, T. M. {\it From Error-Correcting Codes through Sphere
 Packing to Simple Groups}. Carus Monograph Series, No. 21. Mathematical
 Association of America, Washington, DC, 1983. 
  
-\item[{\bf [9]}]
-van Lint, J. H. {\it Introduction to Coding Theory}. Springer-Verlag,
-New York, 1982. 
+\item[{\bf [9]}] %Reference updated - TWJ 6/1/2010
+van Lint, J. H. {\it Introduction to Coding Theory}. Springer,
+New York, 1999. 
  
 \end{itemize}
 }
