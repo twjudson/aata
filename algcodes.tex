@@ -7,10 +7,9 @@
 %%%%(c)  See the file COPYING.txt for copying conditions
 %%%%(c)
 %%%%(c)
-\chapter{Algebraic Coding Theory}\label{algcodes}
+\chapter{Algebraic Coding Theory}{algcodes}
  
- 
- 
+
 Coding theory is an application of algebra that has become
 increasingly important over the last several decades. When we transmit
 data, we are concerned about sending a message over a channel that
@@ -23,11 +22,9 @@ technology. Probability, combinatorics, group theory, linear algebra,
 and polynomial rings over finite fields all play important roles in
 coding theory.  
  
- 
- 
+
 \section{Error-Detecting and Correcting Codes}
- 
- 
+
 Let us examine a simple model of a communications system for
 transmitting and receiving coded messages (Figure~\ref{encoding}).  
 
@@ -372,7 +369,7 @@ encoded into the same codeword. If our code is to be error-correcting,
 then $D$ must be onto.
  
  
-\begin{example}{block_code}
+\begin{example}{BlockCode}
 The even-parity coding system developed to detect single errors in
 ASCII characters is an $(8,7)$-block code. The encoding function is
 \[
@@ -381,6 +378,7 @@ E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),
 where $x_8 = x_7 + x_6 + \cdots + x_1$ with addition in ${\mathbb Z}_2$. 
 \end{example}
  
+
  
 Let ${\mathbf x} = (x_1, \ldots, x_n)$ and ${\mathbf y} = (y_1, \ldots,
 y_n)$ be binary $n$-tuples. The {\bfi Hamming distance\/}\index{Hamming
@@ -698,7 +696,8 @@ d_{\min} & =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}
 \subsection*{Linear Codes}
  
  
-From Example~\ref{7tuple_weights}, it is now easy to check that the minimum nonzero
+From Example~\ref{7tuple_weights}, %This reference needs to be fixed to work with the example environment - TWJ 6/2/2010
+it is now easy to check that the minimum nonzero
 weight is 3; hence, the code does indeed detect and correct all
 single errors. We have now reduced the problem of finding ``good''
 codes to that of generating group codes. One easy way to generate
@@ -905,7 +904,7 @@ encoded, $G$ will allow us to quickly encode it into a linear
 codeword ${\mathbf y}$. 
  
  
-\begin{example}{ParityCheck}
+\begin{example}{ParityCheck}\label{ParityCheckFix}
 Suppose that we have the following eight words to be
 encoded:
 \[
@@ -1020,7 +1019,7 @@ first $n-m$ bits. Hence, $H$ gives rise to an $(n, n-m)$-block code.
 We leave the proof of this theorem as an exercise. In light of the
 theorem, the first $n - m$ bits in ${\mathbf x}$ are called {\bfi
 information bits\/} and the last $m$ bits are called {\bfi check bits}.
-In Example~12\ref{example:algcodes:ParityCheck},  %Can't figure out how to make this reference work - TWJ 5/20/2010
+In Example~\ref{ParityCheckFix},  %This reference needs to be fixed to work with the example environment - TWJ 6/2/2010
 the first three bits are the information bits
 and the last three are the check bits.
  
@@ -1464,7 +1463,7 @@ Lagrange's Theorem (Theorem~\ref{LagrangeTheorem}), there are $2^{n-m}$ distinct
 ${\mathbb Z}_2^n$.
  
  
-\begin{example}{coset_decoding}
+\begin{example}{coset_decoding}\label{CosetDecodeFix}
 Let $C$ be the $(5,3)$-linear code given by the parity-check matrix
 \[
 H =
@@ -1481,8 +1480,8 @@ The code consists of the codewords
 There are $2^{5-2} = 2^3$ cosets of $C$ in ${\mathbb Z}_2^5$, each with
 order $2^2 =4$.  These cosets are listed in Table~\ref{CosetsofC}. 
 \end{example}
- 
- 
+
+
 \begin{table}
 {\small
 \begin{center}
@@ -1582,7 +1581,7 @@ equivalent to $H({\mathbf x} - {\mathbf y}) = 0$ or $H {\mathbf x} = H
  
  
 \begin{example}{decoding_table}
-Table~\ref{SyndromeTable} is a decoding table for the code $C$ given in Example~18\ref{example:algcodes:coset_decoding}. %Example reference needs to be fixed - TWJ 6/1/2010
+Table~\ref{SyndromeTable} is a decoding table for the code $C$ given in Example~\ref{CosetDecodeFix}. %This reference needs to be fixed to work with the example environment - TWJ 6/2/2010
 If ${\mathbf x} = (01111)$ is received, then its syndrome can be computed to be
 \[
 H {\mathbf x} =
