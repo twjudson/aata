@@ -22,12 +22,12 @@ for all $a$ and $b$ in $G$. If $G$ is isomorphic to $H$, we write $G \cong H$\la
 
 \begin{example}{Z4_isomorph}
 To show that ${\mathbb Z}_4 \cong \langle i \rangle$, define a map $\phi: {\mathbb Z}_4 \rightarrow \langle i \rangle$ by $\phi(n) = i^n$.  We must show that $\phi$ is bijective and preserves the group operation.  The map $\phi$ is one-to-one and onto because
-\begin{eqnarray*}
-\phi(0) & = & 1 \\
-\phi(1) & = & i \\
-\phi(2) & = & -1 \\
-\phi(3) & = & -i.
-\end{eqnarray*}
+\begin{align*}
+\phi(0) & = 1 \\
+\phi(1) & = i \\
+\phi(2) & = -1 \\
+\phi(3) & = -i.
+\end{align*}
 Since
 \[
 \phi(m + n) = i^{m+n} = i^m i^n = \phi(m) \phi( n),
@@ -35,7 +35,7 @@ Since
 the group operation is preserved.
 \end{example}
 
-\begin{example}{real_isomorph}
+\begin{example}{RealIsomorph}
 We can define an isomorphism $\phi$ from the additive group of real numbers $( {\mathbb R}, + )$ to the multiplicative group of positive real numbers  $( {\mathbb R^+}, \cdot )$  with the exponential map; that is,
 \[
 \phi( x + y) = e^{x + y} = e^x e^y = \phi( x ) \phi( y).
@@ -53,26 +53,26 @@ By definition the map $\phi$ is onto the subset $\{2^n :n \in {\mathbb Z} \}$ of
 
 \begin{example}{units}
 The groups ${\mathbb Z}_8$ and ${\mathbb Z}_{12}$  cannot be isomorphic since they have different orders; however, it is true that $U(8) \cong U(12)$.  We know that
-\begin{eqnarray*}
-U(8) & = & \{1, 3, 5, 7 \} \\
-U(12) & = & \{1, 5, 7, 11 \}.
-\end{eqnarray*}
+\begin{align*}
+U(8) & = \{1, 3, 5, 7 \} \\
+U(12) & = \{1, 5, 7, 11 \}.
+\end{align*}
 An isomorphism $\phi : U(8) \rightarrow U(12)$ is then given by
-\begin{eqnarray*}
-1 & \mapsto & 1 \\
-3 & \mapsto & 5 \\
-5 & \mapsto & 7 \\
-7 & \mapsto & 11.
-\end{eqnarray*}
-The map $\phi$ is not the only possible isomorphism between these two groups.  We could define another isomorphism $\psi$ by $\psi(1) = 1$, $\psi(3) = 11$, $\psi(5) = 5$, $\psi(7) = 7$. In fact, both of these groups are isomorphic to ${\mathbb Z}_2 \times {\mathbb Z}_2$ (see Example~14 in Chapter~\ref{groups}). 
+\begin{align*}
+1 & \mapsto  1 \\
+3 & \mapsto  5 \\
+5 & \mapsto  7 \\
+7 & \mapsto  11.
+\end{align*}
+The map $\phi$ is not the only possible isomorphism between these two groups.  We could define another isomorphism $\psi$ by $\psi(1) = 1$, $\psi(3) = 11$, $\psi(5) = 5$, $\psi(7) = 7$. In fact, both of these groups are isomorphic to ${\mathbb Z}_2 \times {\mathbb Z}_2$ (see Example~\ref{example:groups:Z2xZ2} in Chapter~\ref{groups}). 
 \end{example}
 
 \begin{example}{not_isomorph}
 Even though $S_3$ and ${\mathbb Z}_6$ possess the same number of elements, we would suspect that they are not isomorphic, because ${\mathbb Z}_6$ is abelian and $S_3$ is nonabelian.  To demonstrate that this is indeed the case, suppose that $\phi : {\mathbb Z}_6 \rightarrow  S_3$ is an isomorphism.  Let $a , b \in S_3$ be two elements such that $ab \neq ba$.  Since $\phi$ is an isomorphism, there exist elements $m$ and $n$ in ${\mathbb Z}_6$ such~that 
-\begin{eqnarray*}
-\phi( m ) & = & a \\
-\phi( n ) & = & b.
-\end{eqnarray*}
+\[
+\phi( m )  = a \quad \text{and} \quad
+\phi( n )  = b.
+\]
 However,
 \[
 ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n )
@@ -234,6 +234,8 @@ ga = \lambda_g a = \lambda_h a=  ha.
 Hence, $g = h$.  That $\phi$ is onto follows from the fact that $\phi( g ) = \lambda_g$ for any $\lambda_g \in \overline{G}$. 
 \end{proof}
 
+\medskip
+
 The isomorphism $g \mapsto \lambda_g$ is known as the {\bfi left regular representation\/}\index{Left regular representation} of~$G$. 
 
 
@@ -306,10 +308,10 @@ least common multiple of $r$ and $s$.
 \begin{proof}
 Suppose that $m$ is the least common multiple of $r$ and $s$ and let
 $n = |(g,h)|$. Then 
-\begin{align*}
-(g,h)^m & = (g^m, h^m) = (e_G,e_H) \\
-(g^n, h^n) & = (g, h)^n = (e_G,e_H).
-\end{align*}
+\begin{gather*}
+(g,h)^m  = (g^m, h^m) = (e_G,e_H) \\
+(g^n, h^n)  = (g, h)^n = (e_G,e_H).
+\end{gather*}
 Hence, $n$ must divide $m$, and $n \leq m$.  However, by the second
 equation, both $r$ and $s$ must divide $n$; therefore, $n$ is a common
 multiple of $r$ and $s$. Since $m$ is the {\em least common multiple\/}
@@ -380,7 +382,7 @@ $\lcm(m,n) = mn$ if and only if $\gcd(m,n)=1$.
 \end{proof}
  
 
-\begin{corollary}
+\begin{corollary}\label{RelativelyPrime}
 Let $n_1, \ldots, n_k$ be positive integers. Then
 \[
 \prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}
@@ -404,14 +406,14 @@ Z}_{p_k^{e_k}}.
  
 \begin{proof}
 Since the greatest common divisor of $p_i^{e_i}$ and $p_j^{e_j}$ is
-1 for $i \neq j$, the proof follows from Corollary~8.11.
+1 for $i \neq j$, the proof follows from Corollary~\ref{RelativelyPrime}.
 \end{proof}
 
 
 \medskip
 
 
-In Chapter~\ref{struct}, we will prove that all finite abelian groups are
+In Chapter~\ref{struct}, we will prove that all finite abelian groups are %This reference needs to be fixed - TWJ 6/2/2010
 isomorphic to direct products of
 the form
 \[
@@ -452,20 +454,19 @@ groups!internal}\index{Internal direct product} of $H$ and $K$.
  
 \begin{example}{U8}
 The group $U(8)$ is the internal direct product of
-\begin{eqnarray*}
-H & = & \{1, 3 \} \\
-K & = & \{1, 5 \}.
-\end{eqnarray*}
+\[
+H  = \{1, 3 \} \quad \text{and} \quad K  = \{1, 5 \}.
+\]
 \end{example}
 
  
 \begin{example}{D6_product}
 The dihedral group $D_6$ is an internal direct product of its two
 subgroups 
-\begin{eqnarray*}
-H & = & \{id, r^3  \} \\
-K & = & \{id, r^2, r^4, s, r^2s, r^4 s   \}.
-\end{eqnarray*}
+\[
+H  = \{id, r^3  \} \quad \text{and} \quad
+K  = \{id, r^2, r^4, s, r^2s, r^4 s   \}.
+\]
 It can easily be shown that $K \cong S_3$; consequently, $D_6 \cong
 {\mathbb Z}_2 \times S_3$. 
 \end{example}
@@ -505,13 +506,13 @@ well-defined.
  
 To show that $\phi$ preserves the group operation, let $g_1 = h_1 k_1$
 and $g_2 = h_2 k_2$ and observe that 
-\begin{eqnarray*}
-\phi( g_1 g_2 ) & = & \phi( h_1 k_1 h_2 k_2 )\\
-& = & \phi(h_1  h_2 k_1 k_2) \\
-& = & (h_1  h_2, k_1 k_2) \\
-& = & (h_1, k_1)( h_2, k_2) \\
-& = & \phi( g_1 ) \phi(  g_2 ).
-\end{eqnarray*}
+\begin{align*}
+\phi( g_1 g_2 ) & = \phi( h_1 k_1 h_2 k_2 )\\
+& = \phi(h_1  h_2 k_1 k_2) \\
+& = (h_1  h_2, k_1 k_2) \\
+& = (h_1, k_1)( h_2, k_2) \\
+& = \phi( g_1 ) \phi(  g_2 ).
+\end{align*}
 We will leave the proof that $\phi$ is one-to-one and onto
 as an exercise.
 \end{proof}
