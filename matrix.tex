@@ -35,10 +35,10 @@ linear map}\index{Linear map} $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$
 is a map that preserves vector addition and scalar multiplication;
 that is, for vectors ${\bold x}$ and ${\bold y}$ in ${\Bbb R}^n$ and a
 scalar $\alpha \in {\Bbb R}$, 
-\begin{eqnarray*}
-T({\bold x}+{\bold y}) & = & T({\bold x}) + T({\bold y}) \\
-T(\alpha {\bold y}) & = & \alpha T({\bold y}).
-\end{eqnarray*}
+\begin{align*}
+T({\bold x}+{\bold y}) & = T({\bold x}) + T({\bold y}) \\
+T(\alpha {\bold y}) & = \alpha T({\bold y}).
+\end{align*}
 An $m \times n$ matrix with entries in ${\Bbb R}$ represents a linear
 transformation from ${\Bbb R}^n$ to ${\Bbb R}^m$. If we write vectors
 ${\bold x} = (x_1, \ldots, x_n)^{\rm t}$ and ${\bold y} = (y_1,
@@ -47,37 +47,34 @@ ${\bold x} = (x_1, \ldots, x_n)^{\rm t}$ and ${\bold y} = (y_1,
 \[
 A
 =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
-\end{array}
-\right)
+\end{pmatrix}
 \]
 maps the vectors to ${\Bbb R}^m$ linearly by matrix
 multiplication.  Observe that if $\alpha$ is a real number,
-\begin{eqnarray*}
+\[
 A({\bold x} + {\bold y} ) 
-& = & 
-A {\bold x }+ A {\bold y} \\
+ = 
+A {\bold x }+ A {\bold y} 
+\qquad \text{and} \qquad
 \alpha A {\bold x} 
-& = & 
+ = 
 A ( \alpha {\bold x}),
-\end{eqnarray*}
+\]
 where
 \[
 {\bold x}
 =
-\left(
-\begin{array}{c}
+\begin{pmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
 x_n
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 We will often abbreviate the matrix $A$ by writing
 $(a_{ij})$\label{matrixnote}.  
@@ -86,37 +83,38 @@ $(a_{ij})$\label{matrixnote}.
 Conversely, if $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$ is a linear
 map, we can associate a matrix $A$ with $T$ by considering what $T$
 does to the vectors 
-\begin{eqnarray*}
-{\bold e}_1 & = & (1, 0, \ldots, 0)^{\rm t} \\
-{\bold e}_2 & = & (0, 1, \ldots, 0)^{\rm t} \\
+\begin{align*}
+{\bold e}_1 & = (1, 0, \ldots, 0)^{\rm t} \\
+{\bold e}_2 & = (0, 1, \ldots, 0)^{\rm t} \\
             &  \vdots &  \\
-{\bold e}_n & = & (0, 0, \ldots, 1)^{\rm t}.
-\end{eqnarray*}
+{\bold e}_n & = (0, 0, \ldots, 1)^{\rm t}.
+\end{align*}
 We can write any vector ${\bold x} = (x_1, \ldots, x_n)^{\rm t}$ as
 \[
 x_1 {\bold e}_1 + x_2 {\bold e}_2 + \cdots + x_n {\bold e}_n.
 \]
 Consequently, if
-\begin{eqnarray*}
-T({\bold e}_1) & = & (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t}, \\
-T({\bold e}_2) & = & (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t}, \\
+\begin{align*}
+T({\bold e}_1) & = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t}, \\
+T({\bold e}_2) & = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t}, \\
             &  \vdots &  \\
-T({\bold e}_n) & = & (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},
-\end{eqnarray*}
+T({\bold e}_n) & = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},
+\end{align*}
 then
-\begin{eqnarray*}
+\begin{align*}
 T({\bold x} )
-& = &
+& =
 T(x_1 {\bold e}_1 + x_2 {\bold e}_2 + \cdots + x_n {\bold e}_n) \\
-& = &
+& =
 x_1 T({\bold e}_1) + x_2 T({\bold e}_2) + \cdots + x_n T({\bold e}_n)
 \\ 
-& = &
-\left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k
+& =
+\left(
+\sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k
 \right)^{\rm t} \\ 
-& = & 
+& = 
 A {\bold x}.
-\end{eqnarray*}
+\end{align*}
  
  
 \begin{example}{linear_transform}
@@ -130,12 +128,10 @@ and $T {\bold e}_2 = (5,3)^{\rm t}$  tell us that $T$ is given by the
 matrix 
 \[
 A =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 2 & 5 \\
 -4 & 3
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 \end{example}
  
@@ -147,14 +143,12 @@ when there exists another matrix $A^{-1}$ such that $A A^{-1} = A^{-1}
 A = I$, where 
 \[
 I =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 0 & \cdots & 0 \\
 0 & 1 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 is the $n \times n$ identity matrix. From linear algebra we know that
 $A$ is invertible if and only if the determinant of $A$ is nonzero.
@@ -165,22 +159,18 @@ nonsingular}\index{Matrix!nonsingular}.
 \begin{example}{inverse_matrix}
 If $A$ is the matrix
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 2 & 1 \\
 5 & 3
-\end{array}
-\right),
+\end{pmatrix},
 \]
 then the inverse of $A$ is
 \[
 A^{-1} =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3 & -1 \\
 -5 & 2
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 We are guaranteed  that $A^{-1}$ exists, since $\det(A) = 2 \cdot 3 - 5
 \cdot 1 = 1$ is nonzero. \mbox{\hspace*{1in}}
@@ -238,12 +228,10 @@ denoted by $SL_n({\Bbb R})$.
 Given a $2 \times 2$ matrix
 \[
 A =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & b \\
 c & d
-\end{array}
-\right),
+\end{pmatrix},
 \]
 the determinant of $A$ is \mbox{$ad-bc$}. The group $GL_2({\Bbb R})$
 consists of those matrices in which $ad-bc \neq 0$. The inverse of $A$
@@ -251,33 +239,27 @@ is
 \[
 A^{-1} =
 \frac{1}{ad-bc}
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 d & -b \\
 -c & a
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 If $A$ is in $SL_2({\Bbb R})$, then
 \[
 A^{-1} =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 d & -b \\
 -c & a
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 Geometrically, $SL_2({\Bbb R})$ is the group that preserves the areas
 of parallelograms.  Let 
 \[
 A =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1 & 1 \\
 0 & 1
-\end{array}
-\right)
+\end{pmatrix}
 \]
 be in $SL_2({\Bbb R})$. In Figure~\ref{SL2}, the unit square
 corresponding to the vectors ${\bold x} = (1,0)^{\rm t}$ and ${\bold
@@ -288,17 +270,35 @@ two parallelograms have the same area.
 \end{example}
  
  
-\begin{figure}[htb]
+\begin{figure}[htb] %Replaced figure with tikz figure - TWJ 6/11/2010
+
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{SL2}
-}
+\begin{tikzpicture}[scale=1.5]
+
+\draw [->]  (0,-0.5) -- (0,2);
+\draw  [->] (-0.5,0) -- (2,0);
+\node [right] at (0,2) {$y$};
+\node [below] at (2,0) {$x$};
+\draw [->, very thick, black]  (0,0) -- (0,1) node [left] {$(0,1)$};
+\draw  [->, very thick, black] (0,0) -- (1,0) node [below] {$(1,0)$};
+\draw (0,1) -- (1,1) -- (1,0);
+
+\draw [->]  (4,-0.5) -- (4,2);
+\draw  [->] (3.5,0) -- (6,0);
+\node [right] at (4,2) {$y$};
+\node [below] at (6,0) {$x$};
+\draw [->, very thick, black]  (4,0) -- (5,1) node [above] {$(1,1)$};
+\draw  [->, very thick, black] (4,0) -- (5,0) node [below] {$(1,0)$};
+\draw (5,1) -- (6,1) -- (5,0);
+
+\end{tikzpicture}
 \end{center}
+
 \caption{$SL_2({\Bbb R})$ acting on the unit square}
 \label{SL2}
 \end{figure}
- 
- 
+
+
  
 \subsection*{The Orthogonal Group $O(n)$}
  
@@ -318,25 +318,21 @@ leave as an exercise the proof that $O(n)$ is a subgroup of $GL_n(
 \begin{example}{orthogonal}
 The following matrices are orthogonal:
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3/5 & -4/5 \\
 4/5 & 3/5
-\end{array}
-\right), \; \;
-\left(
-\begin{array}{cc}
+\end{pmatrix}, 
+\quad
+\begin{pmatrix}
 1/2 & -\sqrt{3}/2 \\
 \sqrt{3}/2 & 1/2
-\end{array}
-\right), \; \;
-\left(
-\begin{array}{ccc}
+\end{pmatrix}, 
+\quad
+\begin{pmatrix}
 -1/\sqrt{2} & 0 & 1/ \sqrt{2} \\
 1/\sqrt{6} & -2/\sqrt{6} & 1/\sqrt{6} \\
 1/ \sqrt{3} & 1/ \sqrt{3} & 1/ \sqrt{3} 
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 \end{example}
 
@@ -354,14 +350,9 @@ y}=(y_1, \ldots, y_n)^{\rm t}$ is
 {\bold x}^{\rm t}  {\bold y}
 =
 (x_1, x_2, \ldots, x_n)
-\left(
-\begin{array}{c}
-y_1 \\
-y_2 \\
-\vdots \\
-y_n
-\end{array}
-\right)
+\begin{pmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_n
+\end{pmatrix}
 =
 x_1 y_1 + \cdots + x_n y_n.
 \]
@@ -414,12 +405,10 @@ The vector ${\bold x} =(3,4)^{\rm t}$ has length $\sqrt{3^2 + 4^2} = 5$.  We
 can also see that the orthogonal matrix 
 \[
 A=
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3/5 & -4/5 \\
 4/5 & 3/5
-\end{array}
-\right)
+\end{pmatrix}
 \]
 preserves the length of this vector. The vector $A{\bold x} =
 (-7/5,24/5)^{\rm t}$ also has length 5. 
@@ -432,14 +421,9 @@ Consider the column vectors
 \[
 {\bold a}_j
 =
-\left(
-\begin{array}{c}
-a_{1j} \\
-a_{2j} \\
-\vdots \\
-a_{nj}
-\end{array}
-\right)
+\begin{pmatrix}
+a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
+\end{pmatrix}
 \]
 of the orthogonal matrix
 $A= (a_{ij})$. Since
@@ -505,29 +489,29 @@ For any vector ${\bold x}$, $\| A{\bold x} \| = \| {\bold x}\|$.
 We have already shown (1) and (2) to be equivalent.
  
 $(2) \Rightarrow (3)$.
-\begin{eqnarray*}
+\begin{align*}
 \langle A{\bold x}, A{\bold y} \rangle
-& = &
+& =
 (A {\bold x})^{\rm t} A {\bold y} \\
-& = &
+& =
 {\bold x}^{\rm t} A^{\rm t} A {\bold y} \\
-& = &
+& =
 {\bold x}^{\rm t} {\bold y} \\
-& = &
+& =
 \langle {\bold x}, {\bold y} \rangle.
-\end{eqnarray*}
+\end{align*}
  
 $(3) \Rightarrow (2)$.
 Since
-\begin{eqnarray*}
+\begin{align*}
 \langle {\bold x}, {\bold x} \rangle
-& = &
+& =
 \langle A{\bold x}, A{\bold x} \rangle \\
-& = &
+& =
 {\bold x}^{\rm t} A^{\rm t} A {\bold y} \\
-& = &
+& =
 \langle {\bold x}, A^{\rm t} A{\bold x} \rangle,
-\end{eqnarray*}
+\end{align*}
 we know that $\langle {\bold x}, (A^{\rm t} A - I){\bold x} \rangle =
 0$ for all ${\bold x}$.  Therefore, $A^{\rm t} A -I = 0$ or $A^{-1} =
 A^{\rm t}$. 
@@ -536,21 +520,21 @@ A^{\rm t}$.
 $(3) \Rightarrow (4)$.
 If $A$ is inner product-preserving, then $A$ is distance-preserving,
 since 
-\begin{eqnarray*}
+\begin{align*}
 \| A{\bold x} - A{\bold y} \|^2
-& = &
+& =
 \| A({\bold x} - {\bold y}) \|^2 \\
-& = &
+& =
 \langle
 A({\bold x} - {\bold y}), A({\bold x} - {\bold y})
 \rangle \\
-& = &
+& =
 \langle
 {\bold x} - {\bold y}, {\bold x} - {\bold y}
 \rangle \\
-& = &
+& =
 \| {\bold x} - {\bold y} \|^2.
-\end{eqnarray*}
+\end{align*}
  
  
 $(4) \Rightarrow (5)$.
@@ -577,40 +561,61 @@ inner product-preserving:
 \right].
 \]
 Observe that
-\begin{eqnarray*}
+\begin{align*}
 \langle A {\bold x}, A {\bold y} \rangle
-& = &
+& =
 \frac{1}{2}
 \left[
 \|A {\bold x} + A {\bold y} \|^2
 - \|A {\bold x} \|^2 -  \|A {\bold y} \|^2
 \right] \\
-& = &
+& =
 \frac{1}{2}
 \left[
 \|A ( {\bold x} + {\bold y} ) \|^2
 - \|A {\bold x} \|^2 -  \|A {\bold y} \|^2
 \right] \\
-& = &
+& =
 \frac{1}{2}
 \left[
 \|{\bold x} + {\bold y}\|^2
 - \|{\bold x}\|^2 - \|{\bold y}\|^2
 \right] \\
-& = &
+& =
 \langle {\bold x}, {\bold y} \rangle.
-\end{eqnarray*}
+\end{align*}
 \end{proof}
  
 
  
  
 \begin{figure}[htb]
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{O2}
-}
+\begin{tikzpicture}[scale=1.5]
+
+\draw [->]  (0,-1) -- (0,1.75);
+\draw  [->] (-1,0) -- (1.75,0);
+\node [right] at (0,2) {$y$};
+\node [below] at (2,0) {$x$};
+\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$(a,b)$};
+\draw  [->, very thick, black] (0,0) -- (330:1.25) node [right] {$(a,-b)$};
+
+
+\draw [->]  (4,-1) -- (4,1.75);
+\draw  [->] (3,0) -- (5.75,0);
+\node [right] at (4,2) {$y$};
+\node [below] at (6,0) {$x$};
+\draw [->, very thick, black]  (4,0) -- +(105:1.25) node [left] {$(\sin \theta, - \cos \theta)$};
+\draw  [->, very thick, black] (4,0) -- +(45:1.25) node [right] {$(\cos \theta, \sin \theta)$};
+\draw (4.5,0) arc (0:45:0.5);
+\node at (4.6,0.25) {$\theta$};
+
+
+\end{tikzpicture}
 \end{center}
+
 \caption{$O(2)$ acting on ${\Bbb R}^2$}
 \label{O2}
 \end{figure}
@@ -624,40 +629,32 @@ e}_2) = (-b, a)^{\rm t}$. Hence, $T$ can be represented by
 \[
 A
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & -b \\
 b & a
-\end{array}
-\right)
+\end{pmatrix}
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \cos \theta & - \sin \theta \\
 \sin \theta & \cos \theta
-\end{array}
-\right),
+\end{pmatrix},
 \]
 where $0 \leq \theta < 2 \pi$. A matrix $T$ in $O(2)$ either reflects
 or rotates a vector in ${\Bbb R}^2$ (Figure~\ref{O2}). A reflection is
 given by the matrix 
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1 & 0 \\
 0 & -1
-\end{array}
-\right),
+\end{pmatrix},
 \]
 whereas a rotation by an angle $\theta$ in a counterclockwise direction
 must come from a matrix of the form 
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \cos \theta & \sin \theta \\
 \sin \theta & -\cos \theta
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 If $\det A =-1$, then $A$ gives a reflection.
 \end{example}
@@ -687,10 +684,24 @@ are asked to check that $E(n)$ is indeed a group under this operation.
  
  
 \begin{figure}[hbt]
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{Isometries}
-}
+\begin{tikzpicture}[scale=1.5]
+
+\draw [->]  (0,-1) -- (0,1.75);
+\draw  [->] (-1,0) -- (1.75,0);
+\node [right] at (0,2) {$y$};
+\node [below] at (2,0) {$x$};
+\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+
+\draw [->]  (4,-1) -- (4,1.75);
+\draw  [->] (3,0) -- (5.75,0);
+\node [right] at (4,2) {$y$};
+\node [below] at (6,0) {$x$};
+\draw [->, very thick, black]  (4.5,1) -- +(30:1.25) node [right] {${\mathbf x} + {\mathbf y}$};
+
+\end{tikzpicture}
 \end{center}
 \caption{Translations in ${\Bbb R}^2$}
 \label{Isometries}
@@ -733,10 +744,24 @@ generalize.
  
  
 \begin{figure}[htb]
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{Glide}
-}
+\begin{tikzpicture}[scale=1.5]
+
+\draw [->]  (0,-1.5) -- (0,1.5);
+\draw  [->] (-1,0) -- (1.75,0);
+\node [right] at (0,2) {$y$};
+\node [below] at (2,0) {$x$};
+\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+
+\draw [->]  (4,-1.5) -- (4,1.5);
+\draw  [->] (3,0) -- (5.75,0);
+\node [right] at (4,2) {$y$};
+\node [below] at (6,0) {$x$};
+\draw [->, very thick, black]  (4.5,0) -- +(330:1.25) node [right] {$T({\mathbf x})$};
+
+\end{tikzpicture}
 \end{center}
 \caption{Glide reflections}
 \label{Glide}
@@ -753,27 +778,27 @@ transformation.  In particular, $f$ is given by an element in $O(2)$.
 Let $f$ be an isometry in ${\Bbb R}^2$ fixing the origin. We will
 first show that $f$ preserves inner products. Since $f(0) = 0$, $\|
 f({\bold x})\| = \| {\bold x} \|$; therefore,
-\begin{eqnarray*}
+\begin{align*}
 \| {\bold x} \|^2 - 2 \langle f({\bold x}), f({\bold y}) \rangle + \|
 {\bold y} \|^2 
-& = &
+& =
 \| f({\bold x}) \|^2 - 2 \langle f({\bold x}), f({\bold y}) \rangle +
 \| f({\bold y}) \|^2 \\ 
-& = &
+& =
 \langle
 f({\bold x}) -  f({\bold y}), f({\bold x}) -  f({\bold y})
 \rangle \\
-& = &
+& =
 \| f({\bold x}) -  f({\bold y}) \|^2 \\
-& = &
+& =
 \| {\bold x} -  {\bold y} \|^2 \\
-& = &
+& =
 \langle
 {\bold x} -  {\bold y}, {\bold x} -  {\bold y} \rangle \\
-& = &
+& =
 \| {\bold x} \|^2 - 2 \langle {\bold x}, {\bold y} \rangle + \| {\bold
 y} \|^2. 
-\end{eqnarray*}
+\end{align*}
 Consequently,
 \[
 \langle f({\bold x}), f({\bold y}) \rangle
@@ -812,10 +837,10 @@ for some vector ${\bold x}$ in ${\Bbb R}^2$; hence, $T_{\bold x}
 f({\bold y}) = A {\bold y}$ for some matrix $A \in O(2)$.
 Consequently, $f({\bold y}) = A {\bold y} + {\bold x}$.  Given the
 isometries 
-\begin{eqnarray*}
-f({\bold y}) & = & A {\bold y} + {\bold x}_1 \\
-g({\bold y}) & = & B {\bold y} + {\bold x}_2,
-\end{eqnarray*}
+\begin{align*}
+f({\bold y}) & = A {\bold y} + {\bold x}_1 \\
+g({\bold y}) & = B {\bold y} + {\bold x}_2,
+\end{align*}
 their composition is
 \[
 f(g({\bold y})) =
@@ -854,26 +879,22 @@ the form $(A, {\bold x})$, where ${\bold x} \neq 0$.  Such an element
 must have infinite order. 
  
  
-By Example~6, elements in $O(2)$ are either rotations of the form
+By Example~\ref{example:matrix:O2}, elements in $O(2)$ are either rotations of the form
 \[
 R_{\theta}
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \cos \theta & - \sin \theta \\
 \sin \theta & \cos \theta
-\end{array}
-\right)
+\end{pmatrix}
 \]
 or reflections of the form
 \[T_{\theta}
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \cos \theta & - \sin \theta \\
 \sin \theta & \cos \theta
-\end{array}
-\right).
+\end{pmatrix}.
 \]
 Notice that $\det(R_{\theta})=1$,  $\det(T_{\theta})=-1$,
 and $T_{\theta}^2=I$. We can divide the proof up into two cases.  In
@@ -917,10 +938,40 @@ Consequently, $G$ must be isomorphic to $D_n$ in this case.
  
  
 \begin{figure}[thb]
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{Wallpaper}
-}
+\begin{tikzpicture}[scale=1]
+
+
+\draw  (0,0) -- (1,-0.75) -- (2,0) -- (3,-0.75) -- (4, 0) -- (5,-0.75)-- (6, 0) -- (7,-0.75)-- (8, 0) -- (9,-0.75)-- (10, 0);
+\draw  (0,0.5) -- (1,-0.25) -- (2,0.5) -- (3,-0.25) -- (4, 0.5) -- (5,-0.25)-- (6, 0.5) -- (7,-0.25)-- (8, 0.5) -- (9,-0.25)-- (10, 0.5) -- (11,-0.25);
+\draw  (0,1) -- (1,0.25) -- (2,1) -- (3,0.25) -- (4, 1) -- (5,0.25)-- (6, 1) -- (7,0.25)-- (8, 1) -- (9,0.25)-- (10, 1) -- (11,0.25);
+\draw  (0,1.5) -- (1,0.75) -- (2,1.5) -- (3,0.75) -- (4, 1.5) -- (5,0.75)-- (6, 1.5) -- (7,0.75)-- (8, 1.5) -- (9,0.75)-- (10, 1.5) -- (11,0.75);
+\draw  (0,2) -- (1,1.25) -- (2,2) -- (3,1.25) -- (4, 2) -- (5,1.25)-- (6, 2) -- (7,1.25)-- (8, 2) -- (9,1.25)-- (10, 2) -- (11,1.25);
+\draw  (0,2.5) -- (1,1.75) -- (2,2.5) -- (3,1.75) -- (4, 2.5) -- (5,1.75)-- (6, 2.5) -- (7,1.75)-- (8, 2.5) -- (9,1.75)-- (10, 2.5) -- (11,1.75);
+\draw  (0,3) -- (1,2.25) -- (2,3) -- (3,2.25) -- (4, 3) -- (5,2.25)-- (6, 3) -- (7,2.25)-- (8, 3) -- (9,2.25)-- (10, 3) -- (11,2.25);
+\draw  (0,3.5) -- (1,2.75) -- (2,3.5) -- (3,2.75) -- (4, 3.5) -- (5,2.75)-- (6, 3.5) -- (7,2.75)-- (8,3.5) -- (9,2.75)-- (10, 3.5);
+
+
+\draw (0,0) -- (0,0.5)   (0,1) -- (0,1.5)  (0,2) -- (0,2.5)  (0,3) -- (0,3.5);
+\draw (2,0) -- (2,0.5)   (2,1) -- (2,1.5)  (2,2) -- (2,2.5)  (2,3) -- (2,3.5);
+\draw (4,0) -- (4,0.5)   (4,1) -- (4,1.5)  (4,2) -- (4,2.5)  (4,3) -- (4,3.5);
+\draw (6,0) -- (6,0.5)   (6,1) -- (6,1.5)  (6,2) -- (6,2.5)  (6,3) -- (6,3.5);
+\draw (8,0) -- (8,0.5)   (8,1) -- (8,1.5)  (8,2) -- (8,2.5)  (8,3) -- (8,3.5);
+\draw (10,0) -- (10,0.5)   (10,1) -- (10,1.5)  (10,2) -- (10,2.5)  (10,3) -- (10,3.5);
+
+\draw (1,-0.25)  -- (1,0.25)  (1,0.75) -- (1,1.25) (1,1.75) -- (1,2.25);
+\draw (3,-0.25) --  (3,0.25)  (3,0.75) -- (3,1.25) (3,1.75) -- (3,2.25);
+\draw (5,-0.25)  -- (5,0.25)  (5,0.75) --  (5,1.25)  (5,1.75) -- (5,2.25);
+\draw (7,-0.25) --  (7,0.25) (7,0.75)  --(7,1.25) (7,1.75) -- (7,2.25);
+\draw (9,-0.25)  -- (9,0.25) (9,0.75) -- (9,1.25) (9,1.75)  --(9,2.25);
+\draw (11,-0.25)  -- (11,0.25) (11,0.75) -- (11,1.25)  (11,1.75) -- (11,2.25);
+
+
+
+
+\end{tikzpicture}
 \end{center}
 \caption{A wallpaper pattern in ${\Bbb R}^2$}
 \label{Wallpaper}
@@ -943,10 +994,43 @@ crystal pattern is called a  lattice.
  
  
 \begin{figure}[hbt]
+
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{Crystals}
-}
+\begin{tikzpicture}[scale=1.75]
+
+
+\draw  (0,0) -- (2,0)  (0.25,0.25) -- (2.25,0.25)  (0.5,0.5) -- (2.5,0.5);
+
+\foreach \x in {0,1,2} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+\foreach \x in {0.25,1.25,2.25} \filldraw[fill=black, draw=black] (\x,0.25) circle (0.03);
+\foreach \x in {0.5,1.5,2.5} \filldraw[fill=black, draw=black] (\x,0.5) circle (0.03);
+
+\draw  (0.2,1) -- (2.2,1)  (0.45,1.25) -- (2.45,1.25)  (0.7,1.5) -- (2.7,1.5) ;
+
+\foreach \x in {0.2,1.2,2.2} \filldraw[fill=black, draw=black] (\x,1) circle (0.03);
+\foreach \x in {0.45,1.45,2.45} \filldraw[fill=black, draw=black] (\x,1.25) circle (0.03);
+\foreach \x in {0.7,1.7,2.7} \filldraw[fill=black, draw=black] (\x,1.5) circle (0.03);
+
+\draw  (0.4,2) -- (2.4,2)  (0.65,2.25) -- (2.65,2.25)  (0.9,2.5) -- (2.9,2.5) ;
+
+\foreach \x in {0.4,1.4,2.4} \filldraw[fill=black, draw=black] (\x,2) circle (0.03);
+\foreach \x in {0.65,1.65,2.65} \filldraw[fill=black, draw=black] (\x,2.25) circle (0.03);
+\foreach \x in {0.9,1.9,2.9} \filldraw[fill=black, draw=black] (\x,2.5) circle (0.03);
+
+\draw (0,0) -- (0.4,2)  (0.25,0.25) -- (0.65,2.25) (0.5,0.5) -- (0.9,2.5);
+\draw (1,0) -- (1.4,2)  (1.25,0.25) -- (1.65,2.25) (1.5,0.5) -- (1.9,2.5);
+\draw (2,0) -- (2.4,2)  (2.25,2.25) -- (2.65,2.25) (2.5,0.5) -- (2.9,2.5);
+
+\draw (0,0) -- (0.5,0.5)  (1,0) -- (1.5,0.5)  (2,0) -- (2.5,0.5);
+
+\draw  (0.2,1) -- (0.7,1.5)  (1.2,1) -- (1.7,1.5)  (2.2,1) -- (2.7,1.5);
+
+\draw  (0.4,2) -- (0.9,2.5) (1.4,2) -- (1.9,2.5)   (2.4,2) -- (2.9,2.5);
+
+
+\end{tikzpicture}
 \end{center}
 \caption{A crystal structure in ${\Bbb R}^3$}
 \label{Crystals}
@@ -965,10 +1049,35 @@ said to be a {\bfi basis\/}\index{Basis of a lattice} for the lattice.
  
  
 \begin{figure}[htb]
+
+
+%Replaced figure with tikz figure - TWJ 6/11/2010
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{LatticeExample}
-}
+\begin{tikzpicture}[scale=1]
+
+
+
+\foreach \x in {-2, -1, 0, 1, 2} \draw  (-6,\x) -- (6,\x); 
+
+\draw (3.5,-2.5) -- (6,0);
+\draw (1.5,-2.5) -- (6,2);
+\draw (-0.5,-2.5) -- (4.5,2.5);
+\draw (-2.5,-2.5) -- (2.5,2.5);
+\draw (-4.5,-2.5) -- (0.5,2.5);
+\draw (-6,-2) -- (-1.5,2.5);
+\draw (-6,0) -- (-3.5,2.5);
+
+\draw [->, very thick, black]  (0,0) -- (2,0);
+\draw [->, very thick, black]  (0,0) -- (1,1);
+\draw [->, very thick, black]  (0,0) -- (-1,1);
+\draw [->, very thick, black]  (0,0) -- (-1,-1); 
+
+\node [right] at (1.9,-0.3) {$(2,0)$};
+\node [above] at (1.9,1) {$(1,1)$};
+\node [above] at (-1.45,1) {$(-1,1)$};
+\node [below] at (-0.4,-1) {$(-1,-1)$};
+
+\end{tikzpicture}
 \end{center}
 \caption{A lattice in  ${\Bbb R}^2$}
 \label{lattice}
@@ -981,10 +1090,10 @@ vectors $(-1, 1)^{\rm t}$ and $(-1, -1)^{\rm t}$
 (Figure~\ref{lattice}). However, any lattice is completely determined
 by a basis. Given two bases for the same lattice, say $\{ {\bold x}_1,
 {\bold x}_2 \}$ and $\{ {\bold y}_1, {\bold y}_2 \}$, we can write 
-\begin{eqnarray*}
-{\bold y}_1 & = & \alpha_1  {\bold x}_1 + \alpha_2 {\bold x}_2 \\
-{\bold y}_2 & = & \beta_1  {\bold x}_1 + \beta_2 {\bold x}_2,
-\end{eqnarray*}
+\begin{align*}
+{\bold y}_1 & = \alpha_1  {\bold x}_1 + \alpha_2 {\bold x}_2 \\
+{\bold y}_2 & = \beta_1  {\bold x}_1 + \beta_2 {\bold x}_2,
+\end{align*}
 where $\alpha_1$, $\alpha_2$, $\beta_1$, and $\beta_2$ are integers.
 The matrix corresponding to this transformation is 
 \[
@@ -1083,15 +1192,15 @@ $b$}  \}$. In particular, $G_0$ must be a subgroup of $O(2)$. Suppose
 that ${\bold x}$ is a vector in a lattice $L$ with space group $G$,
 translation group $H$, and point group $G_0$. For any element $(A,
 {\bold y})$ in $G$,   
-\begin{eqnarray*}
+\begin{align*}
 (A, {\bold y}) (I, {\bold x}) (A, {\bold y})^{-1}
-& = &
+& =
 (A,A {\bold x} + {\bold y}) (A^{-1},-A^{-1} {\bold y}) \\
-& = &
+& =
 (A A^{-1},-A A^{-1} {\bold y} + A {\bold x} + {\bold y}) \\
-& = &
+& =
 (I, A {\bold x});
-\end{eqnarray*}
+\end{align*}
 hence, $(I, A {\bold x})$ is in the translation group of $G$. More
 specifically, $A {\bold x}$ must be in the lattice $L$. It is
 important to note that $G_0$ is not usually a subgroup of the space
