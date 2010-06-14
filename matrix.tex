@@ -33,15 +33,15 @@ is that of a linear transformation. A {\bfi linear
 transformation\/}\index{Linear transformation!definition of} or {\bfi 
 linear map}\index{Linear map} $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$
 is a map that preserves vector addition and scalar multiplication;
-that is, for vectors ${\bold x}$ and ${\bold y}$ in ${\Bbb R}^n$ and a
+that is, for vectors ${\mathbf x}$ and ${\mathbf y}$ in ${\Bbb R}^n$ and a
 scalar $\alpha \in {\Bbb R}$, 
 \begin{align*}
-T({\bold x}+{\bold y}) & = T({\bold x}) + T({\bold y}) \\
-T(\alpha {\bold y}) & = \alpha T({\bold y}).
+T({\mathbf x}+{\mathbf y}) & = T({\mathbf x}) + T({\mathbf y}) \\
+T(\alpha {\mathbf y}) & = \alpha T({\mathbf y}).
 \end{align*}
 An $m \times n$ matrix with entries in ${\Bbb R}$ represents a linear
 transformation from ${\Bbb R}^n$ to ${\Bbb R}^m$. If we write vectors
-${\bold x} = (x_1, \ldots, x_n)^{\rm t}$ and ${\bold y} = (y_1,
+${\mathbf x} = (x_1, \ldots, x_n)^{\rm t}$ and ${\mathbf y} = (y_1,
 \ldots, y_n)^{\rm t}$ in ${\Bbb R}^n$ as column matrices, then an $m
 \times n$ matrix 
 \[
@@ -57,17 +57,17 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 maps the vectors to ${\Bbb R}^m$ linearly by matrix
 multiplication.  Observe that if $\alpha$ is a real number,
 \[
-A({\bold x} + {\bold y} ) 
+A({\mathbf x} + {\mathbf y} ) 
  = 
-A {\bold x }+ A {\bold y} 
+A {\mathbf x }+ A {\mathbf y} 
 \qquad \text{and} \qquad
-\alpha A {\bold x} 
+\alpha A {\mathbf x} 
  = 
-A ( \alpha {\bold x}),
+A ( \alpha {\mathbf x}),
 \]
 where
 \[
-{\bold x}
+{\mathbf x}
 =
 \begin{pmatrix}
 x_1 \\
@@ -84,36 +84,36 @@ Conversely, if $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$ is a linear
 map, we can associate a matrix $A$ with $T$ by considering what $T$
 does to the vectors 
 \begin{align*}
-{\bold e}_1 & = (1, 0, \ldots, 0)^{\rm t} \\
-{\bold e}_2 & = (0, 1, \ldots, 0)^{\rm t} \\
+{\mathbf e}_1 & = (1, 0, \ldots, 0)^{\rm t} \\
+{\mathbf e}_2 & = (0, 1, \ldots, 0)^{\rm t} \\
             &  \vdots &  \\
-{\bold e}_n & = (0, 0, \ldots, 1)^{\rm t}.
+{\mathbf e}_n & = (0, 0, \ldots, 1)^{\rm t}.
 \end{align*}
-We can write any vector ${\bold x} = (x_1, \ldots, x_n)^{\rm t}$ as
+We can write any vector ${\mathbf x} = (x_1, \ldots, x_n)^{\rm t}$ as
 \[
-x_1 {\bold e}_1 + x_2 {\bold e}_2 + \cdots + x_n {\bold e}_n.
+x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n.
 \]
 Consequently, if
 \begin{align*}
-T({\bold e}_1) & = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t}, \\
-T({\bold e}_2) & = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t}, \\
+T({\mathbf e}_1) & = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t}, \\
+T({\mathbf e}_2) & = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t}, \\
             &  \vdots &  \\
-T({\bold e}_n) & = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},
+T({\mathbf e}_n) & = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},
 \end{align*}
 then
 \begin{align*}
-T({\bold x} )
+T({\mathbf x} )
 & =
-T(x_1 {\bold e}_1 + x_2 {\bold e}_2 + \cdots + x_n {\bold e}_n) \\
+T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n) \\
 & =
-x_1 T({\bold e}_1) + x_2 T({\bold e}_2) + \cdots + x_n T({\bold e}_n)
+x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)
 \\ 
 & =
 \left(
 \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k
 \right)^{\rm t} \\ 
 & = 
-A {\bold x}.
+A {\mathbf x}.
 \end{align*}
  
  
@@ -123,8 +123,8 @@ If we let $T : {\Bbb R}^2 \rightarrow {\Bbb R}^2$ be the map given by
 T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),
 \]
 the axioms that $T$ must satisfy to be a linear transformation are
-easily verified. The column vectors $T {\bold e}_1 = (2, -4)^{\rm t}$
-and $T {\bold e}_2 = (5,3)^{\rm t}$  tell us that $T$ is given by the
+easily verified. The column vectors $T {\mathbf e}_1 = (2, -4)^{\rm t}$
+and $T {\mathbf e}_2 = (5,3)^{\rm t}$  tell us that $T$ is given by the
 matrix 
 \[
 A =
@@ -262,10 +262,10 @@ A =
 \end{pmatrix}
 \]
 be in $SL_2({\Bbb R})$. In Figure~\ref{SL2}, the unit square
-corresponding to the vectors ${\bold x} = (1,0)^{\rm t}$ and ${\bold
+corresponding to the vectors ${\mathbf x} = (1,0)^{\rm t}$ and ${\mathbf
 y} =  (0,1)^{\rm t}$ is taken  by $A$ to the parallelogram with sides
-$(1,0)^{\rm t}$ and $(1, 1)^{\rm t}$; that is, $A {\bold x} =
-(1,0)^{\rm t}$ and $A {\bold y} = (1, 1)^{\rm t}$. Notice that these
+$(1,0)^{\rm t}$ and $(1, 1)^{\rm t}$; that is, $A {\mathbf x} =
+(1,0)^{\rm t}$ and $A {\mathbf y} = (1, 1)^{\rm t}$. Notice that these
 two parallelograms have the same area.   
 \end{example}
  
@@ -342,12 +342,12 @@ orthogonal matrices are exactly those matrices that preserve the
 length of vectors. We can define the length of a vector using the
 {\bfi Euclidean inner product},\index{Euclidean inner product} or
 {\bfi dot product}, of two vectors. The Euclidean inner product of
-two vectors ${\bold x}=(x_1, \ldots, x_n)^{\rm t}$ and ${\bold
+two vectors ${\mathbf x}=(x_1, \ldots, x_n)^{\rm t}$ and ${\mathbf
 y}=(y_1, \ldots, y_n)^{\rm t}$ is
 \[
-\langle  {\bold x}, {\bold y} \rangle
+\langle  {\mathbf x}, {\mathbf y} \rangle
 =
-{\bold x}^{\rm t}  {\bold y}
+{\mathbf x}^{\rm t}  {\mathbf y}
 =
 (x_1, x_2, \ldots, x_n)
 \begin{pmatrix}
@@ -356,52 +356,52 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 =
 x_1 y_1 + \cdots + x_n y_n.
 \]
-We define the length of a vector ${\bold x}=(x_1, \ldots, x_n)^{\rm
+We define the length of a vector ${\mathbf x}=(x_1, \ldots, x_n)^{\rm
 t}$ to be 
 \[
-\| {\bold x} \|\label{notelengthvect} 
-= \sqrt{\langle  {\bold x}, {\bold x} \rangle} 
+\| {\mathbf x} \|\label{notelengthvect} 
+= \sqrt{\langle  {\mathbf x}, {\mathbf x} \rangle} 
 = \sqrt{x_1^2 + \cdots + x_n^2}.
 \]
 Associated with the notion of the length of a vector is the idea of
 the distance between two vectors. We define the {\bfi distance\/}
-between two vectors ${\bold x}$ and ${\bold y}$ to be $\| {\bold
-x}-{\bold y} \|$. We leave as an exercise the proof of the following
+between two vectors ${\mathbf x}$ and ${\mathbf y}$ to be $\| {\mathbf
+x}-{\mathbf y} \|$. We leave as an exercise the proof of the following
 proposition about the properties of Euclidean inner products.  
  
  
 \begin{proposition}
-Let ${\bold x}$, ${\bold y}$, and ${\bold w}$ be vectors in ${\Bbb
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\Bbb
 R}^n$ and $\alpha \in {\Bbb R}$. Then 
 \begin{enumerate}
  
 \rm \item \it
-$\langle {\bold x}, {\bold y} \rangle = \langle {\bold y}, {\bold x}
+$\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x}
 \rangle$. 
  
 \rm \item \it
-$\langle {\bold x}, {\bold y} + {\bold w} \rangle = \langle {\bold x},
-{\bold y} \rangle + \langle {\bold x}, {\bold w} \rangle$.
+$\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x},
+{\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle$.
  
 \rm \item \it
-$\langle \alpha {\bold x}, {\bold y} \rangle = \langle {\bold x},
-\alpha {\bold y} \rangle = \alpha \langle  {\bold x}, {\bold y}
+$\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x},
+\alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf x}, {\mathbf y}
 \rangle$. 
  
 \rm \item \it
-$\langle {\bold x}, {\bold x} \rangle \geq 0$ with equality exactly
-when ${\bold x} = 0$. 
+$\langle {\mathbf x}, {\mathbf x} \rangle \geq 0$ with equality exactly
+when ${\mathbf x} = 0$. 
  
 \rm \item \it
-If $\langle {\bold x}, {\bold y} \rangle = 0$  for all ${\bold x}$ in
-${\Bbb R}^n$, then ${\bold y} = 0$. 
+If $\langle {\mathbf x}, {\mathbf y} \rangle = 0$  for all ${\mathbf x}$ in
+${\Bbb R}^n$, then ${\mathbf y} = 0$. 
  
 \end{enumerate}
 \end{proposition}
  
  
 \begin{example}{}
-The vector ${\bold x} =(3,4)^{\rm t}$ has length $\sqrt{3^2 + 4^2} = 5$.  We
+The vector ${\mathbf x} =(3,4)^{\rm t}$ has length $\sqrt{3^2 + 4^2} = 5$.  We
 can also see that the orthogonal matrix 
 \[
 A=
@@ -410,7 +410,7 @@ A=
 4/5 & 3/5
 \end{pmatrix}
 \]
-preserves the length of this vector. The vector $A{\bold x} =
+preserves the length of this vector. The vector $A{\mathbf x} =
 (-7/5,24/5)^{\rm t}$ also has length 5. 
 \end{example}
  
@@ -419,7 +419,7 @@ Since $\det(A A^{\rm t}) = \det(I) = 1$ and $\det(A) = \det( A^{\rm t}
 )$, the determinant of any orthogonal matrix is either 1 or $-1$.
 Consider the column vectors 
 \[
-{\bold a}_j
+{\mathbf a}_j
 =
 \begin{pmatrix}
 a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
@@ -428,7 +428,7 @@ a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
 of the orthogonal matrix
 $A= (a_{ij})$. Since
 $AA^{\rm t} = I$,
-$\langle {\bold a}_r, {\bold a}_s \rangle = \delta_{rs}$,
+$\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}$,
 where
 \[
 \delta_{rs}
@@ -452,9 +452,9 @@ We say that a matrix $A$ is {\bfi
 distance-preserving}\index{Matrix!distance-preserving}, {\bfi
 length-preserving}\index{Matrix!length-preserving}, or {\bfi inner
 product-preserving\/}\index{Matrix!inner product-preserving} when $\|
-T{\bold x}- T{\bold y} \| =\| {\bold x}- {\bold y} \|$, $\| T{\bold x}
-\| =\| {\bold x} \|$, or $\langle  T{\bold x}, T{\bold y} \rangle =
-\langle {\bold x},{\bold y} \rangle$, respectively. The following
+T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|$, $\| T{\mathbf x}
+\| =\| {\mathbf x} \|$, or $\langle  T{\mathbf x}, T{\mathbf y} \rangle =
+\langle {\mathbf x},{\mathbf y} \rangle$, respectively. The following
 theorem, which characterizes the orthogonal group, says that these
 notions are the same.
  
@@ -471,15 +471,15 @@ The columns of the matrix $A$ form an orthonormal set.
 $A^{-1} = A^{\rm t}$.
  
 \rm \item \it
-For vectors ${\bold x}$ and ${\bold y}$, $\langle  A{\bold x}, A
-{\bold y} \rangle = \langle  {\bold x}, {\bold y} \rangle$.
+For vectors ${\mathbf x}$ and ${\mathbf y}$, $\langle  A{\mathbf x}, A
+{\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle$.
  
 \rm \item \it
-For vectors ${\bold x}$ and ${\bold y}$, $\| A{\bold x}- A{\bold y} \|
-=\| {\bold x}- {\bold y} \|$. 
+For vectors ${\mathbf x}$ and ${\mathbf y}$, $\| A{\mathbf x}- A{\mathbf y} \|
+=\| {\mathbf x}- {\mathbf y} \|$. 
  
 \rm \item \it
-For any vector ${\bold x}$, $\| A{\bold x} \| = \| {\bold x}\|$.
+For any vector ${\mathbf x}$, $\| A{\mathbf x} \| = \| {\mathbf x}\|$.
  
 \end{enumerate}
 \end{theorem}
@@ -490,30 +490,30 @@ We have already shown (1) and (2) to be equivalent.
  
 $(2) \Rightarrow (3)$.
 \begin{align*}
-\langle A{\bold x}, A{\bold y} \rangle
+\langle A{\mathbf x}, A{\mathbf y} \rangle
 & =
-(A {\bold x})^{\rm t} A {\bold y} \\
+(A {\mathbf x})^{\rm t} A {\mathbf y} \\
 & =
-{\bold x}^{\rm t} A^{\rm t} A {\bold y} \\
+{\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y} \\
 & =
-{\bold x}^{\rm t} {\bold y} \\
+{\mathbf x}^{\rm t} {\mathbf y} \\
 & =
-\langle {\bold x}, {\bold y} \rangle.
+\langle {\mathbf x}, {\mathbf y} \rangle.
 \end{align*}
  
 $(3) \Rightarrow (2)$.
 Since
 \begin{align*}
-\langle {\bold x}, {\bold x} \rangle
+\langle {\mathbf x}, {\mathbf x} \rangle
 & =
-\langle A{\bold x}, A{\bold x} \rangle \\
+\langle A{\mathbf x}, A{\mathbf x} \rangle \\
 & =
-{\bold x}^{\rm t} A^{\rm t} A {\bold y} \\
+{\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y} \\
 & =
-\langle {\bold x}, A^{\rm t} A{\bold x} \rangle,
+\langle {\mathbf x}, A^{\rm t} A{\mathbf x} \rangle,
 \end{align*}
-we know that $\langle {\bold x}, (A^{\rm t} A - I){\bold x} \rangle =
-0$ for all ${\bold x}$.  Therefore, $A^{\rm t} A -I = 0$ or $A^{-1} =
+we know that $\langle {\mathbf x}, (A^{\rm t} A - I){\mathbf x} \rangle =
+0$ for all ${\mathbf x}$.  Therefore, $A^{\rm t} A -I = 0$ or $A^{-1} =
 A^{\rm t}$. 
  
  
@@ -521,30 +521,30 @@ $(3) \Rightarrow (4)$.
 If $A$ is inner product-preserving, then $A$ is distance-preserving,
 since 
 \begin{align*}
-\| A{\bold x} - A{\bold y} \|^2
+\| A{\mathbf x} - A{\mathbf y} \|^2
 & =
-\| A({\bold x} - {\bold y}) \|^2 \\
+\| A({\mathbf x} - {\mathbf y}) \|^2 \\
 & =
 \langle
-A({\bold x} - {\bold y}), A({\bold x} - {\bold y})
+A({\mathbf x} - {\mathbf y}), A({\mathbf x} - {\mathbf y})
 \rangle \\
 & =
 \langle
-{\bold x} - {\bold y}, {\bold x} - {\bold y}
+{\mathbf x} - {\mathbf y}, {\mathbf x} - {\mathbf y}
 \rangle \\
 & =
-\| {\bold x} - {\bold y} \|^2.
+\| {\mathbf x} - {\mathbf y} \|^2.
 \end{align*}
  
  
 $(4) \Rightarrow (5)$.
 If $A$ is distance-preserving, then $A$ is length-preserving. Letting
-${\bold y} = 0$, we have
+${\mathbf y} = 0$, we have
 \[
-\| A{\bold x}\|
-= \| A{\bold x}- A{\bold y} \|
-= \| {\bold x}- {\bold y} \|
-= \| {\bold x} \|.
+\| A{\mathbf x}\|
+= \| A{\mathbf x}- A{\mathbf y} \|
+= \| {\mathbf x}- {\mathbf y} \|
+= \| {\mathbf x} \|.
 \]
  
  
@@ -552,37 +552,37 @@ $(5) \Rightarrow (3)$.
 We use the following identity to show that length-preserving implies
 inner product-preserving: 
 \[
-\langle {\bold x}, {\bold y} \rangle
+\langle {\mathbf x}, {\mathbf y} \rangle
 =
 \frac{1}{2}
 \left[
-\|{\bold x} +{\bold y}\|^2 -
- \|{\bold x}\|^2 - \|{\bold y}\|^2
+\|{\mathbf x} +{\mathbf y}\|^2 -
+ \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2
 \right].
 \]
 Observe that
 \begin{align*}
-\langle A {\bold x}, A {\bold y} \rangle
+\langle A {\mathbf x}, A {\mathbf y} \rangle
 & =
 \frac{1}{2}
 \left[
-\|A {\bold x} + A {\bold y} \|^2
-- \|A {\bold x} \|^2 -  \|A {\bold y} \|^2
+\|A {\mathbf x} + A {\mathbf y} \|^2
+- \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2
 \right] \\
 & =
 \frac{1}{2}
 \left[
-\|A ( {\bold x} + {\bold y} ) \|^2
-- \|A {\bold x} \|^2 -  \|A {\bold y} \|^2
+\|A ( {\mathbf x} + {\mathbf y} ) \|^2
+- \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2
 \right] \\
 & =
 \frac{1}{2}
 \left[
-\|{\bold x} + {\bold y}\|^2
-- \|{\bold x}\|^2 - \|{\bold y}\|^2
+\|{\mathbf x} + {\mathbf y}\|^2
+- \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2
 \right] \\
 & =
-\langle {\bold x}, {\bold y} \rangle.
+\langle {\mathbf x}, {\mathbf y} \rangle.
 \end{align*}
 \end{proof}
  
@@ -623,8 +623,8 @@ Observe that
 \begin{example}{O2}
 Let us examine the orthogonal group  on ${\Bbb R}^2$ a bit more
 closely.  An element $T \in O(2)$ is determined by its action on
-${\bold e}_1 = (1, 0)^{\rm t}$ and ${\bold e}_2 = (0, 1)^{\rm t}$. If
-$T({\bold e}_1) = (a,b)^{\rm t}$, then $a^2 + b^2 = 1$ and $T({\bold
+${\mathbf e}_1 = (1, 0)^{\rm t}$ and ${\mathbf e}_2 = (0, 1)^{\rm t}$. If
+$T({\mathbf e}_1) = (a,b)^{\rm t}$, then $a^2 + b^2 = 1$ and $T({\mathbf
 e}_2) = (-b, a)^{\rm t}$. Hence, $T$ can be represented by 
 \[
 A
@@ -669,15 +669,15 @@ and $SL_n({\Bbb R})$; that is, those elements in $O(n)$ with determinant
 one. The {\bfi Euclidean
 group}\index{Euclidean group}\index{Group!Euclidean},
 $E(n)$\label{noteeuclidgroup}, can be written as ordered pairs $(A,
-{\bold x})$, where $A$ is in $O(n)$ and ${\bold x}$ is in ${\Bbb
+{\mathbf x})$, where $A$ is in $O(n)$ and ${\mathbf x}$ is in ${\Bbb
 R}^n$. We define multiplication by
 \[
-(A, {\bold x}) (B, {\bold y})
+(A, {\mathbf x}) (B, {\mathbf y})
 =
-(AB, A {\bold y} +{\bold x}).
+(AB, A {\mathbf y} +{\mathbf x}).
 \]
-The identity of the group is $(I,{\bold 0})$; the inverse of $(A,
-{\bold x})$ is $(A^{-1}, -A^{-1} {\bold x})$. In Exercise~6, you 
+The identity of the group is $(I,{\mathbf 0})$; the inverse of $(A,
+{\mathbf x})$ is $(A^{-1}, -A^{-1} {\mathbf x})$. In Exercise~6, you 
 are asked to check that $E(n)$ is indeed a group under this operation.
  
  
@@ -721,14 +721,14 @@ motion\/}\index{Rigid motion} in ${\Bbb R}^n$  is a
 distance-preserving function $f$ from ${\Bbb R}^n$ to ${\Bbb R}^n$.
 This means that $f$ must satisfy 
 \[
-\| f({\bold x}) - f({\bold y}) \| =
-\|{\bold x} - {\bold y} \|
+\| f({\mathbf x}) - f({\mathbf y}) \| =
+\|{\mathbf x} - {\mathbf y} \|
 \]
-for all ${\bold x}, {\bold y} \in {\Bbb R}^n$. It is not difficult to
+for all ${\mathbf x}, {\mathbf y} \in {\Bbb R}^n$. It is not difficult to
 show that $f$ must be a one-to-one map. By Theorem~10.2, any element in
 $O(n)$ is an isometry on ${\Bbb R}^n$; however, $O(n)$ does not
 include all possible isometries on ${\Bbb R}^n$. Translation by a
-vector ${\bold x}$, $T_{\bold y}({\bold x}) = {\bold x} + {\bold y}$
+vector ${\mathbf x}$, $T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}$
 is also an isometry (Figure~\ref{Isometries}); however, $T$ cannot be
 in $O(n)$ since it is not a linear map. 
  
@@ -777,53 +777,53 @@ transformation.  In particular, $f$ is given by an element in $O(2)$.
 \begin{proof}
 Let $f$ be an isometry in ${\Bbb R}^2$ fixing the origin. We will
 first show that $f$ preserves inner products. Since $f(0) = 0$, $\|
-f({\bold x})\| = \| {\bold x} \|$; therefore,
+f({\mathbf x})\| = \| {\mathbf x} \|$; therefore,
 \begin{align*}
-\| {\bold x} \|^2 - 2 \langle f({\bold x}), f({\bold y}) \rangle + \|
-{\bold y} \|^2 
+\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \|
+{\mathbf y} \|^2 
 & =
-\| f({\bold x}) \|^2 - 2 \langle f({\bold x}), f({\bold y}) \rangle +
-\| f({\bold y}) \|^2 \\ 
+\| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle +
+\| f({\mathbf y}) \|^2 \\ 
 & =
 \langle
-f({\bold x}) -  f({\bold y}), f({\bold x}) -  f({\bold y})
+f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) -  f({\mathbf y})
 \rangle \\
 & =
-\| f({\bold x}) -  f({\bold y}) \|^2 \\
+\| f({\mathbf x}) -  f({\mathbf y}) \|^2 \\
 & =
-\| {\bold x} -  {\bold y} \|^2 \\
+\| {\mathbf x} -  {\mathbf y} \|^2 \\
 & =
 \langle
-{\bold x} -  {\bold y}, {\bold x} -  {\bold y} \rangle \\
+{\mathbf x} -  {\mathbf y}, {\mathbf x} -  {\mathbf y} \rangle \\
 & =
-\| {\bold x} \|^2 - 2 \langle {\bold x}, {\bold y} \rangle + \| {\bold
+\| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf
 y} \|^2. 
 \end{align*}
 Consequently,
 \[
-\langle f({\bold x}), f({\bold y}) \rangle
+\langle f({\mathbf x}), f({\mathbf y}) \rangle
 =
-\langle {\bold x}, {\bold y} \rangle.
+\langle {\mathbf x}, {\mathbf y} \rangle.
 \]
-Now let ${\bold e}_1$ and ${\bold e_2}$ be $(1, 0)^{\rm t}$ and $(0,
+Now let ${\mathbf e}_1$ and ${\mathbf e_2}$ be $(1, 0)^{\rm t}$ and $(0,
 1)^{\rm t}$, respectively. If 
 \[
-{\bold x} = (x_1, x_2) = x_1 {\bold e}_1 + x_2 {\bold e}_2,
+{\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2,
 \]
 then
 \[
-f({\bold x})
+f({\mathbf x})
 =
 \langle
-f({\bold x}), f({\bold e}_1)
+f({\mathbf x}), f({\mathbf e}_1)
 \rangle
-f({\bold e}_1)
+f({\mathbf e}_1)
 +\langle
-f({\bold x}), f({\bold e}_2)
+f({\mathbf x}), f({\mathbf e}_2)
 \rangle
-f({\bold e}_2)
+f({\mathbf e}_2)
 =
-x_1 f({\bold e}_1)+x_2 f({\bold e}_2).
+x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2).
 \]
 The linearity of $f$ easily follows.
 \end{proof}
@@ -832,20 +832,20 @@ The linearity of $f$ easily follows.
 \medskip
  
  
-For any arbitrary isometry, $f$,  $T_{\bold x} f$ will fix the origin
-for some vector ${\bold x}$ in ${\Bbb R}^2$; hence, $T_{\bold x}
-f({\bold y}) = A {\bold y}$ for some matrix $A \in O(2)$.
-Consequently, $f({\bold y}) = A {\bold y} + {\bold x}$.  Given the
+For any arbitrary isometry, $f$,  $T_{\mathbf x} f$ will fix the origin
+for some vector ${\mathbf x}$ in ${\Bbb R}^2$; hence, $T_{\mathbf x}
+f({\mathbf y}) = A {\mathbf y}$ for some matrix $A \in O(2)$.
+Consequently, $f({\mathbf y}) = A {\mathbf y} + {\mathbf x}$.  Given the
 isometries 
 \begin{align*}
-f({\bold y}) & = A {\bold y} + {\bold x}_1 \\
-g({\bold y}) & = B {\bold y} + {\bold x}_2,
+f({\mathbf y}) & = A {\mathbf y} + {\mathbf x}_1 \\
+g({\mathbf y}) & = B {\mathbf y} + {\mathbf x}_2,
 \end{align*}
 their composition is
 \[
-f(g({\bold y})) =
-f(B {\bold y} + {\bold x}_2) =
-AB {\bold y} + A{\bold x}_2 + {\bold x}_1.
+f(g({\mathbf y})) =
+f(B {\mathbf y} + {\mathbf x}_2) =
+AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1.
 \]
 This last computation allows us to identify the group of isometries on
 ${\Bbb R}^2$ with~$E(2)$. 
@@ -875,7 +875,7 @@ $D_n$.
 \begin{proof}
 Any finite symmetry group $G$ in ${\Bbb R}^2$ must be a finite
 subgroup of $O(2)$; otherwise, $G$ would have an element in $E(2)$ of
-the form $(A, {\bold x})$, where ${\bold x} \neq 0$.  Such an element
+the form $(A, {\mathbf x})$, where ${\mathbf x} \neq 0$.  Such an element
 must have infinite order. 
  
  
@@ -1039,12 +1039,12 @@ crystal pattern is called a  lattice.
  
 
 Let us examine wallpaper patterns in the plane a
-little more closely. Suppose that ${\bold x}$ and ${\bold y}$ are
+little more closely. Suppose that ${\mathbf x}$ and ${\mathbf y}$ are
 linearly independent vectors in ${\Bbb R}^2$; that is, one vector
 cannot be a scalar multiple of the other. A {\bfi
-lattice\/}\index{Lattice of points} of ${\bold x}$ and ${\bold y}$ is
-the set of all linear combinations $m {\bold x} + n {\bold y}$, where
-$m$ and $n$ are integers. The vectors ${\bold x}$ and ${\bold y}$ are
+lattice\/}\index{Lattice of points} of ${\mathbf x}$ and ${\mathbf y}$ is
+the set of all linear combinations $m {\mathbf x} + n {\mathbf y}$, where
+$m$ and $n$ are integers. The vectors ${\mathbf x}$ and ${\mathbf y}$ are
 said to be a {\bfi basis\/}\index{Basis of a lattice} for the lattice.
  
  
@@ -1088,41 +1088,33 @@ Notice that a lattice can have several bases. For example, the vectors
 $(1,1)^{\rm t}$ and $(2,0)^{\rm t}$ have the  same lattice as the
 vectors $(-1, 1)^{\rm t}$ and $(-1, -1)^{\rm t}$
 (Figure~\ref{lattice}). However, any lattice is completely determined
-by a basis. Given two bases for the same lattice, say $\{ {\bold x}_1,
-{\bold x}_2 \}$ and $\{ {\bold y}_1, {\bold y}_2 \}$, we can write 
+by a basis. Given two bases for the same lattice, say $\{ {\mathbf x}_1,
+{\mathbf x}_2 \}$ and $\{ {\mathbf y}_1, {\mathbf y}_2 \}$, we can write 
 \begin{align*}
-{\bold y}_1 & = \alpha_1  {\bold x}_1 + \alpha_2 {\bold x}_2 \\
-{\bold y}_2 & = \beta_1  {\bold x}_1 + \beta_2 {\bold x}_2,
+{\mathbf y}_1 & = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2 \\
+{\mathbf y}_2 & = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2,
 \end{align*}
 where $\alpha_1$, $\alpha_2$, $\beta_1$, and $\beta_2$ are integers.
 The matrix corresponding to this transformation is 
 \[
 U
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \alpha_1 & \alpha_2 \\
 \beta_1 & \beta_2
-\end {array}
-\right).
+\end{pmatrix}.
 \]
-If we wish to give ${\bold x}_1$ and ${\bold x}_2$ in terms of ${\bold
-y}_1$ and ${\bold y}_2$, we need only calculate $U^{-1}$; that is, 
+If we wish to give ${\mathbf x}_1$ and ${\mathbf x}_2$ in terms of ${\mathbf
+y}_1$ and ${\mathbf y}_2$, we need only calculate $U^{-1}$; that is, 
 \[
 U^{-1}
-\left(
-\begin{array}{c}
-{\bold y}_1 \\
-{\bold y}_2
-\end{array}
-\right)
+\begin{pmatrix}
+{\mathbf y}_1 \\ {\mathbf y}_2
+\end{pmatrix}
 =
-\left(
-\begin{array}{c}
-{\bold x}_1 \\
-{\bold x}_2
-\end{array}
-\right).
+\begin{pmatrix}
+{\mathbf x}_1 \\ {\mathbf x}_2
+\end{pmatrix}.
 \]
 Since $U$ has integer entries, $U^{-1}$ must also have integer
 entries; hence the determinants of both $U$ and $U^{-1}$ must be
@@ -1134,12 +1126,10 @@ consequently, $\det(U) = \pm 1$. A matrix with determinant $\pm 1$ and
 integer entries is called {\bfi unimodular}\index{Matrix!unimodular}.
 For example, the matrix 
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 3 & 1 \\
 5 & 2
-\end{array}
-\right)
+\end{pmatrix}
 \]
 is unimodular. It should be clear that there is a minimum length for
 vectors in a lattice.  
@@ -1177,10 +1167,60 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
  
  
 \begin{figure}[bht]
+
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{TypeLattice}
-}
+\begin{tikzpicture}[scale=1] %Replaced figure with tikz figure - TWJ 6/14/2010
+
+\node [above] at (0,7) {Rectangular};
+\draw (-1,4) -- (1,4) -- (1,7) -- (-1,7) -- cycle;
+\draw  (0,4) -- (0,7)  (-1,5.5) -- (1,5.5);
+\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,4) circle (0.03);
+\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+\foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,7) circle (0.03);
+
+\node [above] at (-3.5,6.5) {Square};
+\draw (-2,4.5) -- (-5,4.5) -- (-5,6.5) -- (-2,6.5) -- cycle;
+\draw  (-2,5.5) -- (-5,5.5)  (-3,4.5) -- (-3,6.5) (-4,4.5) -- (-4,6.5);
+\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
+\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+\foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
+
+\node [above] at (3.8,6.5) {Rhombic};
+\draw (3.5,4.5)   -- (6.5,4.5) -- (5.3,6.5) -- (2.3,6.5) -- cycle;
+\draw (2.9,5.5) -- (5.9,5.5);
+\draw (4.5,4.5) -- (3.3,6.5);
+\draw  (5.5,4.5) -- (4.3,6.5);
+\foreach \x in {3.5,4.5,5.5,6.5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
+\foreach \x in {2.9,3.9,4.9,5.9} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
+\foreach \x in {2.3,3.3,4.3,5.3} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
+
+\node [above] at (-2.5,3) {Parallelogram};
+\draw (-1,0) -- (-3,0) -- (-3.5,3) -- (-1.5,3) -- cycle;
+\draw  (-2,0) -- (-2.5,3)  (-3.25,1.5) -- (-1.25,1.5);
+\foreach \x in {-1,-2,-3} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+\foreach \x in {-1.25,-2.25,-3.25} \filldraw[fill=black, draw=black] (\x,1.5) circle (0.03);
+\foreach \x in {-1.5,-2.5,-3.5} \filldraw[fill=black, draw=black] (\x,3) circle (0.03);
+
+\node [above] at (2,2.6) {Hexagonal}; %Couldn't figure out an elegant way to do the hexagonal lattice - TWJ 6/14/2010
+\draw (2,0) -- (5,0);
+\draw (1.5,0.866) -- (4.5,0.866);
+\draw (1,1.732) -- (4,1.732);
+\draw (0.5,2.598) -- (3.5,2.598);
+\draw (2,0) -- (0.5,2.598);
+\draw (3,0) -- (1.5,2.598);
+\draw (4,0) -- (2.5,2.598);
+\draw (5,0) -- (3.5,2.598);
+\draw (2,0) -- (3.5,2.598);
+\draw (3,0) -- (4,1.732);
+\draw (4,0) -- (4.5,0.866);
+\draw (1.5,0.866) -- (2.5,2.598);
+\draw (1,1.732) -- (1.5,2.598);
+\foreach \x in {2,3,4,5} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
+\foreach \x in {1.5,2.5,3.5,4.5} \filldraw[fill=black, draw=black] (\x,0.866) circle (0.03);
+\foreach \x in {1,2,3,4} \filldraw[fill=black, draw=black] (\x,1.732) circle (0.03);
+\foreach \x in {0.5, 1.5,2.5,3.5} \filldraw[fill=black, draw=black] (\x,2.598) circle (0.03);
+
+\end{tikzpicture}
 \end{center}
 \caption{Types of lattices in  ${\Bbb R}^2$}
 \label{Types}
@@ -1189,20 +1229,20 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
  
 The point group of $G$ is $G_0 = \{A : (A,b) \in G \mbox{ for some
 $b$}  \}$. In particular, $G_0$ must be a subgroup of $O(2)$. Suppose
-that ${\bold x}$ is a vector in a lattice $L$ with space group $G$,
+that ${\mathbf x}$ is a vector in a lattice $L$ with space group $G$,
 translation group $H$, and point group $G_0$. For any element $(A,
-{\bold y})$ in $G$,   
+{\mathbf y})$ in $G$,   
 \begin{align*}
-(A, {\bold y}) (I, {\bold x}) (A, {\bold y})^{-1}
+(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1}
 & =
-(A,A {\bold x} + {\bold y}) (A^{-1},-A^{-1} {\bold y}) \\
+(A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y}) \\
 & =
-(A A^{-1},-A A^{-1} {\bold y} + A {\bold x} + {\bold y}) \\
+(A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y}) \\
 & =
-(I, A {\bold x});
+(I, A {\mathbf x});
 \end{align*}
-hence, $(I, A {\bold x})$ is in the translation group of $G$. More
-specifically, $A {\bold x}$ must be in the lattice $L$. It is
+hence, $(I, A {\mathbf x})$ is in the translation group of $G$. More
+specifically, $A {\mathbf x}$ must be in the lattice $L$. It is
 important to note that $G_0$ is not usually a subgroup of the space
 group $G$; however, if $T$ is the translation subgroup of $G$, then
 $G/T \cong G_0$. The proof of the following theorem can be found in
@@ -1251,7 +1291,7 @@ p3m1, p31m & $D_3$ & hexagonal & both \\
 p4m, p4g & $D_4$ & square & both \\
 p6m & $D_6$ & hexagonal & both \\
 \hline
-\end{tabular}
+\end{tabular} \label{table:wallpaper}
 \end{center}
 }
 \end{table}
@@ -1263,10 +1303,29 @@ There are exactly 17 wallpaper groups.
  
  
 \begin{figure}[htb]
+
+
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{p4m}
-}
+\begin{tikzpicture}[scale=1] %Replaced figure with tikz figure - TWJ 6/14/2010
+
+\draw[step=1] (-5,0) grid (-1,4);
+\node [below] at (-3,0) {$p4m$};
+
+\draw[step=1] (1,0) grid (5,4);
+\node [below] at (3,0) {$p4g$};
+\draw (1.25,0) -- (1.25,0.5) -- (1.75,0.5) -- (1.75,1.5) -- (1.25,1.5) -- (1.25,2.5) -- (1.75,2.5) -- (1.75,3.5) -- (1.25,3.5) -- (1.25,4);
+\draw  (2.75,0) -- (2.75,0.5) -- (2.25,0.5) -- (2.25,1.5) -- (2.75,1.5) -- (2.75,2.5) -- (2.25,2.5) -- (2.25,3.5) -- (2.75,3.5) -- (2.75,4);
+\draw   (3.25,0) -- (3.25,0.5) -- (3.75,0.5) -- (3.75,1.5) -- (3.25,1.5) -- (3.25,2.5) -- (3.75,2.5) -- (3.75,3.5) -- (3.25,3.5) -- (3.25,4);
+\draw   (4.75,0) -- (4.75,0.5) -- (4.25,0.5) -- (4.25,1.5) -- (4.75,1.5) -- (4.75,2.5) -- (4.25,2.5) -- (4.25,3.5) -- (4.75,3.5) -- (4.75,4);
+
+\draw  (1,0.75) -- (1.5,0.75) -- (1.5,0.25) -- (2.5,0.25) -- (2.5,0.75) -- (3.5,0.75) -- (3.5,0.25) -- (4.5,0.25) -- (4.5,0.75) -- (5, 0.75);
+\draw  (1,1.25) -- (1.5,1.25) -- (1.5,1.75) -- (2.5,1.75) -- (2.5,1.25) -- (3.5,1.25) -- (3.5,1.75) -- (4.5,1.75) -- (4.5,1.25) -- (5, 1.25);
+
+\draw  (1,2.75) -- (1.5,2.75) -- (1.5,2.25) -- (2.5,2.25) -- (2.5,2.75) -- (3.5,2.75) -- (3.5,2.25) -- (4.5,2.25) -- (4.5,2.75) -- (5, 2.75);
+\draw (1,3.25) -- (1.5,3.25) -- (1.5,3.75) -- (2.5,3.75) -- (2.5,3.25) -- (3.5,3.25) -- (3.5,3.75) -- (4.5,3.75) -- (4.5,3.25) -- (5, 3.25);
+
+
+\end{tikzpicture}
 \end{center}
 \caption{The wallpaper groups p4m and  p4g}
 \label{p4m}
@@ -1274,7 +1333,7 @@ There are exactly 17 wallpaper groups.
  
  
  
-The 17 wallpaper groups are listed in Table~10.1. The groups p3m1 and
+The 17 wallpaper groups are listed in Table~\ref{table:wallpaper}. The groups p3m1 and
 p31m can be distinguished by whether or not all of their threefold
 centers lie on the reflection axes: those of p3m1 must, whereas those
 of p31m may not. Similarly, the fourfold centers of p4m must lie on
@@ -1319,198 +1378,185 @@ different types of crystals were actually discovered in nature.
  
  
  
-\bf\item\rm
+\item
 Prove the identity
 \[
-\langle {\bold x}, {\bold y} \rangle = \frac{1}{2}
+\langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2}
 \left[
-\|{\bold x} + {\bold y}\|^2 - \|{\bold x}\|^2 - \| {\bold y}\|^2
+\|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2
 \right].
 \]
  
  
-\bf\item\rm
+\item
 Show that $O(n)$ is a group.
  
  
-\bf\item\rm
+\item
 Prove that the following matrices are orthogonal. Are any of
 these matrices in $SO(n)$?
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
-\raisebox{-5.5pt}{\parbox{1.85in}{
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1/\sqrt{2} & -1/\sqrt{2} \\
 1/\sqrt{2} & 1/\sqrt{2}
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
 
- 
- \item[{\bf (c)}]
-\raisebox{-11.5pt}{\parbox{1.85in}{
+\item
 \[
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
+1 / \sqrt{5} & 2 / \sqrt{5} \\
+- 2 /\sqrt{5} & 1/ \sqrt{5}
+\end{pmatrix}
+\]
+
+\item
+\[
+\begin{pmatrix}
 4/ \sqrt{5} & 0 & 3 / \sqrt{5} \\
 -3 / \sqrt{5} & 0 & 4 / \sqrt{5} \\
 0 & -1 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \] 
-}}
 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-\raisebox{-5.5pt}{\parbox{1.85in}{
+\item
 \[
-\left(
-\begin{array}{cc}
-1 / \sqrt{5} & 2 / \sqrt{5} \\
-- 2 /\sqrt{5} & 1/ \sqrt{5}
-\end{array}
-\right)
-\]
-}} 
- 
- 
- \item[{\bf (d)}]
-\raisebox{-11.5pt}{\parbox{1.85in}{
-\[
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 1/3 & 2/3 & - 2/3 \\
 - 2/3 & 2/3 & 1/3 \\
 -2/3 & 1/3 & 2/3
-\end{array}
-\right)
+\end{pmatrix}
 \]
-}}
+
+
+\end{enumerate}
+\end{multicols}
  
+
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
- 
-\bf\item\rm %%%%%%%%%%%%%%%%%%%%%%
+\item %%%%%%%%%%%%%%%%%%%%%%
 Determine the symmetry group of each of the figures in
 Figure~\ref{Determine}. 
 \begin{figure}[htb]
+
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{SymmetryGrp}
-}
+\begin{tikzpicture}[scale=0.7] %Replaced figure with tikz figure - TWJ 6/14/2010
+
+\draw (-2,0) -- (2,0) -- (2,4) -- (-2,4) -- cycle;
+\draw (0,0) -- (2,2) -- (0,4) -- (-2,2) -- cycle;
+\draw (-2,0) -- (2,4) (2,0) -- (-2,4);
+\node [below] at (0,0) {(b)};
+
+\draw (-3,3) -- (-8,3) -- (-8,6) -- (-3,6) -- cycle;
+\draw (-6,4) ellipse (1.55 and 0.65);
+\filldraw[fill=black, draw=black] (-4,5.2) circle (0.3);
+\node [below] at (-5.5,3) {(a)};
+
+
+
+\draw (5.5,4.5)  +(270:1) circle (1.25);
+\draw (5.5,4.5)  +(30:1) circle (1.25);
+\draw (5.5,4.5)  +(150:1) circle (1.25);
+\node [below] at (5.5,2.35) {(c)};
+
+
+\end{tikzpicture}
 \end{center}
 \caption{}
 \label{Determine}
 \end{figure}
  
  
-\bf\item\rm
-Let ${\bold x}$, ${\bold y}$, and ${\bold w}$ be vectors in ${\Bbb
+\item
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\Bbb
 R}^n$ and $\alpha \in {\Bbb R}$.  Prove each of the following
 properties of inner products.
 \begin{enumerate}
  
- \bf\item\rm
-$\langle {\bold x}, {\bold y} \rangle = \langle {\bold y}, {\bold x}
+ \item
+$\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x}
 \rangle$. 
  
- \bf\item\rm
-$\langle {\bold x}, {\bold y} + {\bold w} \rangle = \langle
-{\bold x}, {\bold y} \rangle + \langle {\bold x}, {\bold w}
+ \item
+$\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle
+{\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w}
 \rangle$.
  
- \bf\item\rm
-$\langle \alpha {\bold x}, {\bold y} \rangle = \langle
-{\bold x}, \alpha {\bold y} \rangle = \alpha \langle  {\bold
-x}, {\bold y} \rangle$.
+ \item
+$\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle
+{\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf
+x}, {\mathbf y} \rangle$.
  
- \bf\item\rm
-$\langle {\bold x}, {\bold x} \rangle \geq 0$ with equality exactly
-when ${\bold x} = 0$. 
+ \item
+$\langle {\mathbf x}, {\mathbf x} \rangle \geq 0$ with equality exactly
+when ${\mathbf x} = 0$. 
  
- \bf\item\rm
-If $\langle {\bold x}, {\bold y} \rangle = 0$  for all ${\bold x}$ in
-${\Bbb R}^n$, then ${\bold y} = 0$. 
+ \item
+If $\langle {\mathbf x}, {\mathbf y} \rangle = 0$  for all ${\mathbf x}$ in
+${\Bbb R}^n$, then ${\mathbf y} = 0$. 
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Verify that
 \[
 E(n)
 =
-\{(A, {\bold x}) : A \in O(n) \mbox{ and } {\bold x} \in
+\{(A, {\mathbf x}) : A \in O(n) \mbox{ and } {\mathbf x} \in
 {\Bbb R}^n \}
 \]
 is a group.
  
  
-\bf\item\rm
+\item
 Prove that $\{ (2,1), (1,1) \}$  and $\{ ( 12, 5), ( 7, 3) \}$ are bases
 for the same lattice. 
  
  
-\bf\item\rm
+\item
 Let $G$ be a subgroup of $E(2)$ and suppose that $T$ is the
 translation subgroup of $G$.  Prove that the point group of $G$ is
 isomorphic to $G/T$. 
  
  
-\bf\item\rm
-Let $A \in SL_2({\Bbb R})$ and suppose that the vectors ${\bold x}$
-and ${\bold y}$ form two sides of a parallelogram in ${\Bbb R}^2$.
+\item
+Let $A \in SL_2({\Bbb R})$ and suppose that the vectors ${\mathbf x}$
+and ${\mathbf y}$ form two sides of a parallelogram in ${\Bbb R}^2$.
 Prove that the area of this parallelogram is the same as the area of
-the parallelogram with sides $A{\bold x}$ and $A{\bold y}$. 
+the parallelogram with sides $A{\mathbf x}$ and $A{\mathbf y}$. 
  
  
-\bf\item\rm
+\item
 Prove that $SO(n)$ is a normal subgroup of $O(n)$.
  
  
-\bf\item\rm
+\item
 Show that any isometry $f$ in ${\Bbb R}^n$ is a one-to-one map.
  
  
-\bf\item\rm
-Show that an element in $E(2)$ of the form $(A, {\bold x})$,
-where ${\bold x} \neq 0$, has infinite order.
+\item
+Show that an element in $E(2)$ of the form $(A, {\mathbf x})$,
+where ${\mathbf x} \neq 0$, has infinite order.
  
  
-\bf\item\rm
+\item
 Prove or disprove: There exists an infinite abelian subgroup of 
 $O(n)$.
  
  
-\bf\item\rm
-Let ${\bold x} = (x_1, x_2)$ be a point on the unit circle in ${\Bbb
+\item
+Let ${\mathbf x} = (x_1, x_2)$ be a point on the unit circle in ${\Bbb
 R}^2$; that is, $x_1^2 + x_2^2 = 1$. If $A \in O(2)$, show that $A
-{\bold x}$ is also a point on the unit circle. 
+{\mathbf x}$ is also a point on the unit circle. 
  
  
  
-\bf\item\rm
+\item
 Let $G$ be a group with a subgroup $H$ (not necessarily normal) and a
 normal subgroup $N$. Then $G$ is a {\bfi semidirect
 product\/}\index{Semidirect product} of $N$ by $H$ if  
@@ -1526,13 +1572,13 @@ $HN=G$.
 Show that each of the following is true.
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 $S_3$ is the semidirect product of $A_3$ by $H = \{(1), (12) \}$.
  
- \bf\item\rm
+ \item
 The quaternion group, $Q_8$, cannot be written as a semidirect product. 
  
- \bf\item\rm
+ \item
 $E(2)$ is the semidirect product of $O(2)$ by $H$, where $H$ consists
 of all translations in ${\Bbb R}^2$. 
  
@@ -1540,32 +1586,62 @@ of all translations in ${\Bbb R}^2$.
  
  
  
-\bf\item\rm
+\item
 Determine which of the 17 wallpaper groups preserves the symmetry of
 the pattern in Figure~\ref{Wallpaper}.  
  
 \begin{figure}[htb]
+
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{p6m}
-}
+\begin{tikzpicture}[scale=0.7] %Replaced figure with tikz figure - TWJ 6/14/2010
+
+\draw (0.5,0) -- (1.5,0)  (3.5,0) -- (4.5,0) (6.5,0) -- (7.5,0) (9.5,0) -- (10.5,0);
+\draw (1,0.886) -- (3,0.886) (4,0.886) -- (6,0.886) (7,0.886) -- (9,0.886) (10,0.886) -- (12,0.886);
+\draw (0.5,1.732) -- (1.5,1.732)  (2.5,1.732) -- (4.5,1.732) (5.5,1.732) -- (7.5,1.732) (8.5,1.732) -- (10.5,1.732) (11.5,1.732) -- (12.5,1.732);
+\draw (1,2.598) -- (3,2.598) (4,2.598) -- (6,2.598) (7,2.598) -- (9,2.598) (10,2.598) -- (12,2.598);
+\draw (0.5,3.464) -- (1.5,3.464)  (2.5,3.464) -- (4.5,3.464) (5.5,3.464) -- (7.5,3.464) (8.5,3.464) -- (10.5,3.464) (11.5,3.464) -- (12.5,3.464);
+\draw (1,4.33) -- (3,4.33) (4,4.33) -- (6,4.33) (7,4.33) -- (9,4.33) (10,4.33) -- (12,4.33);
+\draw (0.5,5.196) -- (1.5,5.196)  (3.5,5.196) -- (4.5,5.196) (6.5,5.196) -- (7.5,5.196) (9.5,5.196) -- (10.5,5.196);
+
+\draw (0.5,0) -- (0,0.886) -- (0.5,1.732) -- (0,2.598) -- (0.5,3.464) -- (0,4.33) -- (0.5,5.196);
+\draw (0.5,0) -- (1,0.886) -- (0.5,1.732) -- (1,2.598) -- (0.5,3.464) -- (1,4.33) -- (0.5,5.196);
+\draw (1.5,0) -- (2,0.886) -- (1.5,1.732) -- (2,2.598) -- (1.5,3.464) -- (2,4.33) -- (1.5,5.196);
+\draw (2,0.886) -- (2.5,1.732) -- (2,2.598) -- (2.5,3.464) -- (2,4.33);
+\draw (3,0.886) -- (3.5,1.732) -- (3,2.598) -- (3.5,3.464) -- (3,4.33);
+\draw (3.5,0) -- (3,0.886) (3,4.33) -- (3.5,5.196);
+\draw (3.5,0) -- (4,0.886) -- (3.5,1.732) -- (4,2.598) -- (3.5,3.464) -- (4,4.33) -- (3.5,5.196);
+\draw (4.5,0) -- (5,0.886) -- (4.5,1.732) -- (5,2.598) -- (4.5,3.464) -- (5,4.33) -- (4.5,5.196);
+\draw (5,0.886) -- (5.5,1.732) -- (5,2.598) -- (5.5,3.464) -- (5,4.33);
+\draw (6.5,0) -- (6,0.886) -- (6.5,1.732) -- (6,2.598) -- (6.5,3.464) -- (6,4.33) -- (6.5,5.196);
+\draw (6.5,0) -- (7,0.886) -- (6.5,1.732) -- (7,2.598) -- (6.5,3.464) -- (7,4.33) -- (6.5,5.196);
+\draw (7.5,0) -- (8,0.886) -- (7.5,1.732) -- (8,2.598) -- (7.5,3.464) -- (8,4.33) -- (7.5,5.196);
+\draw (8,0.886) -- (8.5,1.732) -- (8,2.598) -- (8.5,3.464) -- (8,4.33);
+\draw (9.5,0) -- (9,0.886) -- (9.5,1.732) -- (9,2.598) -- (9.5,3.464) -- (9,4.33) -- (9.5,5.196);
+\draw (9.5,0) -- (10,0.886) -- (9.5,1.732) -- (10,2.598) -- (9.5,3.464) -- (10,4.33) -- (9.5,5.196);
+\draw (10.5,0) -- (11,0.886) -- (10.5,1.732) -- (11,2.598) -- (10.5,3.464) -- (11,4.33) -- (10.5,5.196);
+\draw (11,0.886) -- (11.5,1.732) -- (11,2.598) -- (11.5,3.464) -- (11,4.33);
+\draw (12,0.886) -- (12.5,1.732) -- (12,2.598) -- (12.5,3.464) -- (12,4.33);
+
+
+
+\end{tikzpicture}
 \end{center}
 \caption{}
 \label{For17}
 \end{figure}
  
-\bf\item\rm
+\item
 Determine which of the 17 wallpaper groups preserves the symmetry of
 the pattern in Figure~\ref{For17}.  
  
  
  
-\bf\item\rm
+\item
 Find the rotation group of a dodecahedron.
  
   
  
-\bf\item\rm
+\item
 For each of the 17 wallpaper groups, draw a wallpaper pattern having
 that group as a symmetry group.  
  
@@ -1579,7 +1655,7 @@ that group as a symmetry group.
  
  
 {\small
-\begin{itemize}
+\begin{itemize} %%References checked -- TWJ 6/14/2010
  
 \item[{\bf [1]}]
 Coxeter, H. M. and Moser, W. O. J. {\it Generators and
