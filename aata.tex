@@ -9,12 +9,6 @@
 %%%%(c)
 \documentclass[11pt]{book}
 
-\title{{\bf Abstract Algebra}\\ Theory and Applications}
- 
- 
-\author{ Thomas W. Judson \\ Stephen F. Austin State University }
- 
-\date{\today}
 
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -25,10 +19,12 @@
 \usepackage{makeidx}
 \usepackage{tikz}
  
- 
-\makeindex 
+% Widows and orphans, from VCU edition
+% R Beezer, 2010/06/14
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
 
-\setlength{\fboxrule}{0.5pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,7 +34,7 @@
 \hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
 % Comma in title not allowed
 \hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
-\hypersetup{pdfkeywords=free linear algebra textbook}
+\hypersetup{pdfkeywords=free abstract algebra textbook}
 \hypersetup{colorlinks=true,linkcolor=blue}
 
 % Per-chapter items
@@ -59,18 +55,25 @@
   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
 
+\setlength{\fboxrule}{0.5pt}
 \input{macros}
 
+
+\title{{\bf Abstract Algebra}\\ Theory and Applications}
+\author{Thomas W. Judson \\ Stephen F. Austin State University}
+\date{\today}
+%
+\makeindex
+%
+\begin{document}
+%
 \pagestyle{headings}
-
-%**********************formatting*****************************
- 
-\pagenumbering{roman}
-
+%
+\frontmatter
+%
 \maketitle
-
+%
 %% RAB, 2009/01/28
 %% Added short copyright section
 %%
@@ -84,25 +87,16 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \vspace*{\stretch{1}}
 \clearpage
 %
-
-\setcounter{page}{7}
-
 \include{preface}
-
+%
 \tableofcontents
-
-
-
-%**********************included files************************ 
-
+%
+\mainmatter
+%
 %% TWJ, 2010/03/31
 %% Chapters now begin with Chapter 1
-
-\cleardoublepage 
-%\setcounter{chapter}{-1}
-\pagenumbering{arabic}
-
-
+%% \setcounter{chapter}{-1}
+%
 \include{sets}     %Set Theory
 \include{integers} %Integers
 \include{groups}   %Groups
@@ -112,12 +106,12 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \include{crypt}    %Cryptography
 \include{algcodes} %Coding Theory
 \include{isomorph} %Isomorphisms
-
+%
 % TWJ, 2010/03/31
 % The chapter HOMOMORPHISMS AND FACTOR GROUPS is now
 % two chapters: (10) NORMAL SUBGROUPS AND FACTOR GROUPS
 % (11) HOMOMORPHISMS
-
+%
 \include{normal}   %Normal Subgroups
 \include{homomorph}   %Homomorphisms
 \include{matrix}   %Groups of Symmetries
@@ -132,20 +126,25 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \include{fields}   %Extension Fields
 \include{finite}   %Finite Fields
 \include{galois}   %Galois Theory
-\include{notation}
-\include{solution}
+%
 %% RAB, 2009/01/28
 %% Include GFDL as an appendix
 %%
+%% To build index with included sectioning info via "style file" execute:
+%%    makeindex -s aata-index-style.ist aata.idx
+%% See:  http://www.troubleshooters.com/linux/lyx/makeindex.htm
+%% Needs "\phantomsection", http://www.tug.org/applications/hyperref/manual.html
+%
+\backmatter
+%
+\include{solution}
 {\small\include{gfdl}}
-
-\clearpage\addcontentsline{toc}{chapter}{Index}
+\include{notation}
 {\small\printindex}
-
+%
 %% RAB, 2009/01/28
 %% Ditched endnotes for improved notation.tex
 %%
 %% \include{endnotes}
- 
+%
 \end{document}
- 
