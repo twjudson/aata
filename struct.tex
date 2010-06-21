@@ -859,40 +859,33 @@ H^* ( H \cap K) / H^* ( H \cap K^*)
 [{\em Hint:\/} Use the diagram in Figure~\ref{Butterfly}. The Zassenhaus Lemma is often
 referred to as the Butterfly Lemma because of this diagram.]
 \begin{figure}[htb]
+
+
+%Replaced figure with tikz figure - TWJ 5/21/2010
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(24,16)
-\put(8.8,3){\small $(H^* \cap K)(H \cap K^*)$}
-\put(10.9,11){\small $H \cap K$}
-\put(5.7,14.3){\small $H$}
-\put(17.7,14.3){\small $K$}
-\put(5.05,10.8){\small $H^*(H \cap K)$}
-\put(15.05,10.8){\small $K^*(H \cap K)$}
-\put(1.8,5){\small $H^*$}
-\put(21.4,5){\small $K^*$}
-\put(16.9,1){\small $H \cap K^*$}
-\put(4.55,1){\small $H^* \cap K$}
-\put(4.4,8.1){\small $H^*(H \cap K^*)$}
-\put(15.5,8.1){\small $K^*(H^* \cap K)$}
-\put(12,6){\line(0,1){4}}
-\put(9,8){\line(0,1){4}}
-\put(15,8){\line(0,1){4}}
-\put(12,6){\line(3,2){3}}
-\put(12,6){\line(-3,2){3}}
-\put(12,6){\line(3,-2){6}}
-\put(12,6){\line(-3,-2){6}}
-\put(12,10){\line(3,2){6}}
-\put(12,10){\line(-3,2){6}}
-\put(15,8){\line(1,-2){3}}
-\put(9,8){\line(-1,-2){3}}
-\put(18,2){\line(1,1){3}}
-\put(6,2){\line(-1,1){3}}
-\put(15,8){\line(2,-1){6}}
-\put(9,8){\line(-2,-1){6}}
-\put(18,14){\line(1,-3){3}}
-\put(6,14){\line(-1,-3){3}}
-\end{picture}
+\begin{tikzpicture}[scale=1.7]
+
+\draw  (0,0) -- (1,0.5) -- (2,-1.5) -- cycle;
+\draw  (0,0) -- (0,1.25) -- (1,1.75) -- (1,0.5);
+\draw (1,0.5) -- (3,-0.75) -- (2,-1.5) node [below] {$H \cap K^*$};
+\draw (1,1.75) -- (2,2.25) node [above] {$K$} -- (3,-0.75) node [right] {$K^*$};
+\node at (1, 0.6) [right] {$K^*(H^* \cap K)$};
+\node at (1, 1.5) [right] {$K^*(H \cap K)$};
+
+
+\draw  (0,0) -- (-1,0.5) -- (-2,-1.5) -- cycle;
+\draw  (0,1.25) -- (-1,1.75) -- (-1,0.5);
+\draw (-1,0.5) -- (-3,-0.75) -- (-2,-1.5) node [below] {$H^* \cap K$};
+\draw (-1,1.75) -- (-2,2.25) node [above] {$H$} -- (-3,-0.75) node [left] {$H^*$};
+\node at (-1, 0.6) [left] {$H^*(H \cap K^*)$};
+\node at (-1, 1.5) [left] {$H^*(H \cap K)$};
+
+\node at (0, -1) {$(H^* \cap K)(H \cap K^*)$};
+\node at (0, 1.65) {$H \cap K$};
+
+\end{tikzpicture}
 \end{center}
+
 \caption{The Zassenhaus Lemma}
 \label{Butterfly}
 \end{figure}
