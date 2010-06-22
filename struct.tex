@@ -181,10 +181,7 @@ g^{a_i b_i}$. Then $g = g_1 \cdots g_n$ and $G_i \cap G_j = \{ e \}$ for $i
 \neq j$. 
  
  
-To show uniqueness, suppose that 
-\[
-g = g_1 \cdots g_n = h_1 \cdots h_n
-\]
+To show uniqueness, suppose that $g = g_1 \cdots g_n = h_1 \cdots h_n$,
 with $h_i \in G_i$. Then
 \[
 e = (g_1 \cdots g_n)(h_1 \cdots h_n)^{-1} = g_1 h_1^{-1} \cdots g_n
@@ -256,14 +253,9 @@ ${\Bbb Z}_4 \times {\Bbb Z}_{27} \times {\Bbb Z}_5$.
 \end{itemize}
 \end{example}
  
-
- 
- 
 The  proof of the Fundamental Theorem relies on the following lemma.
- 
- 
- 
-\begin{lemma}
+
+\begin{lemma}\label{struct:lemma:finite_abelian}
 Let $G$ be a finite abelian $p$-group and suppose that $g \in G$ has
 maximal order. Then $G$ can be written as $\langle g \rangle \times H$
 for some subgroup $H$~of~$G$. 
@@ -322,14 +314,11 @@ $b \in \langle g \rangle \cap H = \{ e \}$. It follows that $G =
 \langle g \rangle K$ implies that $G \cong \langle g \rangle \times H$. 
 \end{proof}
  
- 
- 
 \medskip
 
- 
- 
+
 The proof of the Fundamental Theorem of Finite Abelian Groups follows
-very quickly from Lemma~11.4.  Suppose that $G$ is a finite abelian
+very quickly from Lemma~\ref{struct:lemma:finite_abelian}.  Suppose that $G$ is a finite abelian
 group and let $g$ be an element of maximal order in $G$. If $\langle g
 \rangle = G$, then we are done; otherwise, $G \cong {\Bbb Z}_{|g|}
 \times H$ for some subgroup $H$ contained in $G$ by the lemma.  Since
@@ -360,13 +349,10 @@ product of cyclic groups of the form
 \]
 where the $p_i$'s are primes (not necessarily distinct).
 \end{theorem}
- 
- 
+
  
 \section{Solvable Groups}
- 
- 
- 
+
 A {\bfi subnormal series\/}\index{Subnormal series of a group} 
 of a group $G$ is a finite sequence of subgroups 
 \[
@@ -378,22 +364,18 @@ is normal in $G$, then the series is called a {\bfi normal
 series}\index{Normal series of a group}. The {\bfi length\/} of a 
 subnormal or normal series is the number of proper inclusions. 
  
- 
- 
+
 \begin{example}{normal_series}
 Any series of subgroups of an abelian group is a normal series.
 Consider the following  series of groups: 
-\[
-\begin{array}{c}
+\begin{gather*}
 {\Bbb Z} \supset 9{\Bbb Z} \supset 45{\Bbb Z} \supset 180{\Bbb Z} 
 \supset \{0\}, \\
 {\Bbb Z}_{24} \supset \langle 2 \rangle \supset \langle 6 \rangle 
 \supset \langle 12 \rangle
 \supset \{0\}.
-\end{array}
-\]
+\end{gather*}
 \end{example}
- 
  
  
 \begin{example}{subnormal_series}
@@ -407,16 +389,13 @@ D_4 \supset \{ (1),
 The subgroup $\{  (1), (12)(34) \}$ is not normal in $D_4$;
 consequently, this series is not a normal series.
 \end{example}
- 
- 
- 
+
  
 A subnormal (normal) series $\{ K_j \}$ is a {\bfi refinement of a
 subnormal (normal) series\/} $\{ H_i \}$ if $\{ H_i \} \subset \{ K_j
 \}$. That is, each $H_i$ is one of the $K_j$. 
  
- 
- 
+
 \begin{example}{refinement}
 The series
 \[
@@ -429,10 +408,7 @@ is a refinement of the series
 \supset \{0\}.
 \]
 \end{example}
- 
- 
 
- 
  
 The correct way to study a subnormal or normal series of subgroups,
 $\{ H_i \}$ of $G$, is actually to study the factor groups
@@ -441,21 +417,17 @@ and $\{ K_j \}$ of a group $G$ are {\bfi isomorphic\/} if there is a
 one-to-one correspondence between the collections of factor groups
 $\{H_{i+1}/H_i \}$ and $\{ K_{j+1}/ K_j \}$. 
  
- 
- 
+
 \begin{example}{isomorph_series}
 The two normal series
-\[
-\begin{array}{c}
+\begin{gather*}
 {\Bbb Z}_{60} \supset \langle 3 \rangle \supset  \langle 15 \rangle
 \supset \{ 0 \} \\
 {\Bbb Z}_{60} \supset \langle 4 \rangle \supset  \langle 20 \rangle
 \supset \{ 0 \}
-\end{array}
-\]
+\end{gather*}
 of the group ${\Bbb Z}_{60}$ are isomorphic since
-\[
-\begin{array}{c}
+\begin{gather*}
 {\Bbb Z}_{60} / \langle 3 \rangle \cong \langle 20 \rangle /
 \{ 0 \} \cong {\Bbb Z}_{3}
 \\
@@ -464,14 +436,10 @@ of the group ${\Bbb Z}_{60}$ are isomorphic since
 \\
 \langle 15 \rangle / \{ 0 \} \cong {\Bbb Z}_{60} / \langle 4 \rangle
 \cong {\Bbb Z}_4.
-\end{array}
-\]
+\end{gather*}
 \end{example}
  
- 
 
- 
- 
 A subnormal series $\{ H_i \}$ of a group $G$ is a {\bfi composition
 series\/}\index{Composition series} if all the factor groups are 
 simple; that is, if none of the factor groups of the series contains a
@@ -488,12 +456,12 @@ The group ${\Bbb Z}_{60}$ has  a composition series
 \supset \langle 30 \rangle  \supset \{ 0 \}
 \]
 with factor groups
-\begin{eqnarray*}
-{\Bbb Z}_{60} / \langle 3 \rangle & \cong & {\Bbb Z}_{3} \\
-\langle 3 \rangle / \langle 15 \rangle & \cong & {\Bbb Z}_{5} \\
-\langle 15 \rangle / \langle 30 \rangle & \cong & {\Bbb Z}_{2} \\
-\langle 30 \rangle / \{ 0 \} & \cong & {\Bbb Z}_2.
-\end{eqnarray*}
+\begin{align*}
+{\Bbb Z}_{60} / \langle 3 \rangle & \cong  {\Bbb Z}_{3} \\
+\langle 3 \rangle / \langle 15 \rangle & \cong  {\Bbb Z}_{5} \\
+\langle 15 \rangle / \langle 30 \rangle & \cong  {\Bbb Z}_{2} \\
+\langle 30 \rangle / \{ 0 \} & \cong  {\Bbb Z}_2.
+\end{align*}
 Since ${\Bbb Z}_{60}$ is an abelian group, this series is
 automatically a principal series. Notice that a composition series
 need not be unique.  The series 
@@ -554,32 +522,28 @@ series are isomorphic.
  
 Suppose now that the theorem is true for all groups having a
 composition series of length $k$, where $1 \leq k <n$. Let 
-\[
-\begin{array}{c}
+\begin{gather*}
 G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset
 H_0 = \{ e \} \\
 G = K_m \supset K_{m-1} \supset \cdots \supset K_1 \supset
 K_0 = \{ e \}
-\end{array}
-\]
+\end{gather*}
 be two composition series for $G$.  We can form two new subnormal
 series for $G$ since $H_i \cap K_{m-1}$ is normal in $H_{i+1} \cap
 K_{m-1}$ and $K_j \cap H_{n-1}$ is normal in $K_{j+1} \cap H_{n-1}$:
-\[
-\begin{array}{c}
+\begin{gather*}
 G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset 
 \cdots \supset H_0 \cap K_{m-1} = \{ e \} \\
 G = K_m \supset K_{m-1} \supset K_{m-1} \cap H_{n-1} \supset 
 \cdots \supset K_0 \cap H_{n-1} = \{ e \}.
-\end{array}
-\]
+\end{gather*}
 Since $H_i \cap K_{m-1}$ is normal in $H_{i+1} \cap K_{m-1}$, the
-Second Isomorphism Theorem implies that 
-\begin{eqnarray*}
+Second Isomorphism Theorem (Theorem~\ref{homomorph:theorem:2nd_isomorph}) implies that 
+\begin{align*}
 (H_{i+1} \cap K_{m-1}) / (H_i \cap K_{m-1}) 
-& = & (H_{i+1} \cap K_{m-1}) / (H_i \cap ( H_{i+1} \cap K_{m-1} )) \\
-& \cong & H_i (H_{i+1} \cap K_{m-1})/ H_i,
-\end{eqnarray*}
+& =  (H_{i+1} \cap K_{m-1}) / (H_i \cap ( H_{i+1} \cap K_{m-1} )) \\
+& \cong  H_i (H_{i+1} \cap K_{m-1})/ H_i,
+\end{align*}
 where $H_i$ is normal in $H_i (H_{i+1} \cap K_{m-1})$. Since $\{ H_i
 \}$  is a composition series, $H_{i+1} / H_i$ must be simple;
 consequently, $H_i (H_{i+1} \cap K_{m-1})/ H_i$ is either $H_{i+1}/
@@ -665,82 +629,69 @@ Therefore, $S_n$ is not a solvable group for $n \geq 5$.
 {\small
 \begin{enumerate}
  
-\bf\item\rm
+\item
 Find all of the abelian groups of order less than or equal to 40 up to
 isomorphism.
  
-\bf\item\rm
+\item
 Find all of the abelian groups of order 200 up to isomorphism.
  
-\bf\item\rm
+\item
 Find all of the abelian groups of order 720 up to isomorphism.
  
-\bf\item\rm
+\item
 Find all of the composition series for each of the following groups.
- 
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 ${\Bbb Z}_{12}$
- 
- \item[{\bf (c)}]
-The quaternions, $Q_8$
- 
- \item[{\bf (e)}]
-$S_3 \times {\Bbb Z}_4$
- 
- \item[{\bf (g)}]
-$S_n$, $n \geq 5$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 ${\Bbb Z}_{48}$
- 
- \item[{\bf (d)}]
+
+\item
+The quaternions, $Q_8$
+
+\item
 $D_4$
- 
- \item[{\bf (f)}]
+
+\item
+$S_3 \times {\Bbb Z}_4$
+
+\item
 $S_4$
- 
- \item[{\bf (h)}]
+
+\item
+$S_n$, $n \geq 5$
+
+\item
 ${\Bbb Q}$
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+
+
+\end{enumerate}
+\end{multicols}
  
  
  
-\bf\item\rm  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\item  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Show that the infinite direct product $G = {\Bbb Z}_2 \times {\Bbb
 Z}_2 \times \cdots$ is not finitely generated.
  
  
 %*******************THEORY*****************
  
-\bf\item\rm
+\item
 Let $G$ be an abelian group of order $m$.  If $n$ divides $m$, prove
 that $G$ has a subgroup of order $n$.
  
-\bf\item\rm
+\item
 A group $G$ is a {\bfi torsion group\/}\index{Group!torsion} if every 
 element of $G$ has finite order.  Prove that a finitely generated 
 torsion group must be finite.
  
-\bf\item\rm
+\item
 Let $G$, $H$, and $K$ be finitely generated abelian
 groups. Show that if $G \times H \cong G \times K$, then $H
 \cong K$.  Give a counterexample to show that this cannot be
@@ -748,28 +699,28 @@ true in general.
  
 %****************************************
  
-\bf\item\rm
+\item
 Let $G$ and $H$ be solvable groups.  Show that $G \times H$ is also
 solvable.
  
  
-\bf\item\rm
+\item
 If $G$ has a composition (principal) series and if $N$ is a
 proper normal subgroup of $G$, show there exists a
 composition (principal) series containing $N$.
  
  
  
-\bf\item\rm
+\item
 Prove or disprove:
 Let $N$ be a normal subgroup of $G$.  If $N$ and $G/N$ have
 composition series, then $G$ must also have a composition series.
  
-\bf\item\rm
+\item
 Let $N$ be a normal subgroup of $G$.  If $N$ and $G/N$ are solvable
 groups, show that $G$ is also a solvable group.
  
-\bf\item\rm
+\item
 Prove that $G$ is a solvable group if and only if $G$ has a series of
 subgroups
 \[
@@ -778,31 +729,31 @@ G = P_n \supset P_{n-1} \supset \cdots \supset P_1 \supset P_0 = \{ e \}
 where $P_i$ is normal in $P_{i+1}$ and the order of $P_{i+1} / P_i$ is
 prime. 
  
-\bf\item\rm
+\item
 Let $G$ be a solvable group.  Prove that any subgroup of $G$ is also
 solvable.
  
-\bf\item\rm
+\item
 Let $G$ be a solvable group and $N$ a normal subgroup of $G$.  Prove
 that $G/N$ is solvable.
  
-\bf\item\rm
+\item
 Prove that $D_n$ is solvable for all integers $n$.
  
  
-\bf\item\rm
+\item
 Suppose that $G$ has a composition series.  If $N$ is a normal
 subgroup of $G$, show that $N$ and $G/N$ also have composition series.
  
-\bf\item\rm
+\item
 Let $G$ be a cyclic $p$-group with subgroups $H$ and $K$.  Prove that
 either $H$ is contained in $K$ or $K$ is contained in $H$.
  
-\bf\item\rm
+\item
 Suppose that $G$ is a solvable group with order $n \geq 2$.
 Show that $G$ contains a normal nontrivial abelian subgroup.
  
-\bf\item\rm
+\item
 Recall that the {\bfi commutator
 subgroup\/}\index{Subgroup!commutator} $G'$ of a group $G$ is
 defined as the subgroup of $G$ generated by elements of the form
@@ -811,7 +762,7 @@ subgroups of $G$ by $G^{(0)} = G$, $G^{(1)} = G'$, and $G^{(i+1)} =
 (G^{(i)})'$.
 \begin{enumerate}
  
-\bf\item\rm
+\item
 Prove that $G^{(i+1)}$ is normal in $(G^{(i)})'$.  The series of
 subgroups
 \[
@@ -819,39 +770,39 @@ G^{(0)} = G \supset G^{(1)} \supset G^{(2)} \supset \cdots
 \]
 is called the {\bfi derived series\/}\index{Derived series} of $G$.
  
-\bf\item\rm
+\item
 Show that $G$ is solvable if and only if $G^{(n)} = \{ e \}$ for some
 integer $n$.
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Suppose that $G$ is a solvable group with order $n \geq 2$.
 Show that $G$ contains a normal nontrivial abelian factor group.
  
  
  
  
-\bf\item\rm
+\item
 {\bf Zassenhaus Lemma.}\index{Zassenhaus Lemma}
 Let $H$ and $K$ be subgroups of a group $G$. Suppose also that $H^*$
 and $K^*$ are normal subgroups of $H$ and $K$ respectively.  Then
 \begin{enumerate}
  
-\bf\item\rm
+\item
 $H^* ( H \cap K^*)$ is a normal subgroup of $H^* ( H \cap K)$.
  
-\bf\item\rm
+\item
 $K^* ( H^* \cap K)$ is a normal subgroup of $K^* ( H \cap K)$.
  
-\bf\item\rm
+\item
 \raisebox{-5.5pt}{\parbox{4in}{
-\begin{eqnarray*}
+\begin{align*}
 H^* ( H \cap K) / H^* ( H \cap K^*) 
-& \cong & K^* ( H \cap K) / K^* ( H^* \cap K) \\
-& \cong & (H \cap K) / (H^* \cap K)(H \cap K^*).
-\end{eqnarray*}
+& \cong  K^* ( H \cap K) / K^* ( H^* \cap K) \\
+& \cong  (H \cap K) / (H^* \cap K)(H \cap K^*).
+\end{align*}
 }}
  
 
@@ -890,13 +841,13 @@ referred to as the Butterfly Lemma because of this diagram.]
 \label{Butterfly}
 \end{figure}
  
-\bf\item\rm
+\item
 {\bf Schreier's Theorem.}\index{Schreier's Theorem}
 Use the Zassenhaus Lemma to prove that two subnormal (normal) series 
 of a group $G$ have isomorphic refinements.
  
  
-\bf\item\rm
+\item
 Use Schreier's Theorem to prove the  Jordan-H\"{o}lder Theorem.
  
 \end{enumerate}
@@ -912,24 +863,25 @@ program will work?
  
  
  
-\subsection*{References and Suggested Readings}
- 
- 
+\subsection*{References and Suggested Readings}  %%References checked and updated - TWJ 6/22/2010
  
 {\small
 Each of the following references contains a proof of the Fundamental
 Theorem of Finitely Generated Abelian Groups.
 \begin{itemize}
  
-\item[{\bf [1]}]   %%%%%%%%%%%%%%checked
-Hungerford, T. W. {\it Algebra}. Springer-Verlag, New York, 1974.
+\item[{\bf [1]}]   %%Reference updated 6/22/2010 - TWJ
+Hungerford, T. W. 
+{\it Algebra}. Springer, New York, 1974. .
  
-\item[{\bf [2]}]
-Lang,~S. {\it Algebra}. 3rd ed. Addison-Wesley, Reading, MA, 1992.
+\item[{\bf [2]}] %%Reference updated 6/22/2010 - TWJ
+Lang, S. 
+{\it Algebra}. 3rd ed. Springer, New York, 2002.
+
  
-\item[{\bf [3]}]
+\item[{\bf [3]}] %%Reference updated 6/22/2010 - TWJ
 Rotman, J. J. {\it An Introduction to the Theory of
-Groups}. 3rd ed. Allyn and Bacon, Boston, 1984.
+Groups}. 4th ed. Springer, New York, 1995.
  
  
 \end{itemize}
