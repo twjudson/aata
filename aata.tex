@@ -8,25 +8,61 @@
 %%%%(c)
 %%%%(c)
 \documentclass[11pt]{book}
+%
+%
+\usepackage{ifthen}
+\newboolean{basic}  % Minimalist common base edition
+\newboolean{vcu}    % Enhanced print version for VCU
+%
+% Exactly one of the following needs to be true
+\setboolean{basic}{true}
+\setboolean{vcu}{false}
+%
+%
+\ifthenelse{\boolean{vcu}}
+{
+\usepackage[opticals,nonormalsize,medfamily,minionint,openg,textosf,mathlf,fourierbb,footnotefigures]{MinionPro}
+\usepackage[toc,eqno,enum]{tabfigures}
+\usepackage[scaled]{helvet}
+\usepackage{courier}
+\usepackage{setspace,verbatim}
+\usepackage[papersize={6.14in,9.21in},tmargin=.75in,bmargin=1in,hmargin=.75in,bindingoffset=.25in,nomarginpar,nofoot,includehead]{geometry}
+\usepackage{mathdots,mathtools}
+\usepackage{breakcites}
+\usepackage[tracking=true]{microtype}
+\SetTracking[ no ligatures = f ]{ encoding = *, shape = sc}{ 10 }
+\usepackage{ellipsis,tabls,fixmath,fixltx2e}
+\usepackage[pdftex]{color}
+\usepackage[noadjust]{cite}
+\usepackage{csquotes}
+\usepackage{lettrine}
+\usepackage{addlines}
+\renewcommand{\LettrineFontHook}{\fontshape{sw}}%
+\renewcommand{\LettrineTextFont}{\normalfont}
+\renewcommand{\DefaultLoversize}{.2}
+\usepackage{epic}
+\usepackage{setspace}
+}{}
 
 
-\usepackage{graphicx}
+
+\usepackage[pdftex]{graphicx}
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{amsmath}
-\usepackage{amscd}
+\usepackage{amscd}   %% redundant after tikz conversions?
+\usepackage{tikz}
 \usepackage{multicol}
 \usepackage{makeidx}
-\usepackage{tikz}
- 
+
 % Widows and orphans, from VCU edition
 % R Beezer, 2010/06/14
 \widowpenalty=10000
 \clubpenalty=10000
 \raggedbottom
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\fboxrule}{0.5pt}
+\input{macros}
 
 % Hyperref setup
 \usepackage[pdftex]{hyperref}
@@ -52,16 +88,14 @@
 \newenvironment{example}[1]
   {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
   {\hspace\fill$\blacksquare$\par\medskip}
-  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fancy initial letters at start of first paragraph of each chapter
+\ifthenelse{\boolean{vcu}}
+{\newcommand{\chapterletter}[1]{\lettrine[findent={2pt},nindent={.5em}]{#1}}}
+{\newcommand{\chapterletter}[1]{#1}}
 
-\setlength{\fboxrule}{0.5pt}
-\input{macros}
-
-
-\title{{\bf Abstract Algebra}\\ Theory and Applications}
-\author{Thomas W. Judson \\ Stephen F. Austin State University}
+\title{{\bf Abstract Algebra}\\Theory and Applications}
+\author{Thomas W. Judson\\Stephen F. Austin State University}
 \date{\today}
 %
 \makeindex
@@ -87,6 +121,7 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \vspace*{\stretch{1}}
 \clearpage
 %
+\ifthenelse{\boolean{vcu}}{\setstretch{1.03}}{}
 \include{preface}
 %
 \tableofcontents
