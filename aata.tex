@@ -10,13 +10,17 @@
 \documentclass[11pt]{book}
 %
 %
-\usepackage{ifthen}
-\newboolean{basic}  % Minimalist common base edition
-\newboolean{vcu}    % Enhanced print version for VCU
+% RAB, 2010/06/17
+% Support for multiple editions
 %
-% Exactly one of the following needs to be true
-\setboolean{basic}{true}
-\setboolean{vcu}{false}
+\usepackage{ifthen}
+\newboolean{basic}\setboolean{basic}{false}    % Minimalist common base edition
+\newboolean{vcu}\setboolean{vcu}{false}        % Enhanced print version for VCU
+\newboolean{xhtml}\setboolean{vcu}{false}      % Web pages from tex4ht processor
+%
+% Set exactly one version to true
+% Edit version here to change version
+\setboolean{xhtml}{true}
 %
 %
 \ifthenelse{\boolean{vcu}}
@@ -45,8 +49,8 @@
 }{}
 
 
-
-\usepackage[pdftex]{graphicx}
+\ifthenelse{\boolean{basic}}{\usepackage[pdftex]{graphicx}}{}
+\ifthenelse{\boolean{vcu}\or\boolean{xhtml}}{\usepackage{graphicx}}{}
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{amsmath}
@@ -64,14 +68,21 @@
 \setlength{\fboxrule}{0.5pt}
 \input{macros}
 
+% Support for tex4ht and pgf (tikzpicture)
+\ifthenelse{\boolean{xhtml}}{\def\pgfsysdriver{pgfsys-tex4ht.def}}{}
+
 % Hyperref setup
-\usepackage[pdftex]{hyperref}
+% VCU version meant for print, so not needed/desired
+\ifthenelse{\boolean{basic}}{\usepackage[pdftex]{hyperref}}{}
+\ifthenelse{\boolean{xhtml}}{\usepackage[tex4ht]{hyperref}}{}
+\ifthenelse{\boolean{basic}\or\boolean{xhtml}}{
 \hypersetup{breaklinks=true}  % across line breaks
 \hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
 % Comma in title not allowed
 \hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
 \hypersetup{pdfkeywords=free abstract algebra textbook}
 \hypersetup{colorlinks=true,linkcolor=blue}
+}{}
 
 % Per-chapter items
 \newcommand{\chaplabel}{\relax}
@@ -82,6 +93,11 @@
 \setcounter{example}{0}%
 \renewcommand{\chaplabel}{#2}%
 \chapter{#1}\label{#2}%
+% Web page versions get info and link on every page
+\ifthenelse{\boolean{xhtml}}{%
+From: \href{http:\\abstract.pugetsound.edu}{Abstract Algebra: Theory and Applications}\\
+\copyright 1997, Thomas W. Judson, \href{http://www.gnu.org/licenses/fdl.html}{GFDL} License\\}
+{}
 }
 
 % Examples as environment
@@ -89,7 +105,7 @@
   {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
   {\hspace\fill$\blacksquare$\par\medskip}
 
-% Fancy initial letters at start of first paragraph of each chapter
+% Fancy initial letters at start of first paragraph of each chapter for VCU print only
 \ifthenelse{\boolean{vcu}}
 {\newcommand{\chapterletter}[1]{\lettrine[findent={2pt},nindent={.5em}]{#1}}}
 {\newcommand{\chapterletter}[1]{#1}}
@@ -124,7 +140,8 @@ A current version of this text can always be found at {\tt abstract.ups.edu}.
 \ifthenelse{\boolean{vcu}}{\setstretch{1.03}}{}
 \include{preface}
 %
-\tableofcontents
+% tex4ht makes its own table of contents automatically, latex's is inferior
+\ifthenelse{\boolean{basic}\or\boolean{vcu}}{\tableofcontents}{}
 %
 \mainmatter
 %

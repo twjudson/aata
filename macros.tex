@@ -129,26 +129,31 @@ to\hsize{\hfil\box\@tempboxa\hfil}
  \fi}
 
 
+% RAB, 2010/06/17
+% Fancy chapter headings for print versions
+% Do nothing for tex4ht versions
+\ifthenelse{\boolean{basic}\or\boolean{vcu}}{%
 \font\bigbolditalic=cmsl10 scaled\magstep5
 \def\@makechapterhead#1{%\vspace*{50pt}
  { \parindent 0pt \centering% was\raggedright
- \ifnum \c@secnumdepth >\m@ne\rule{2in}{.5pt}\hfill\raisebox{-.1in}{\fbox{\fbox{\bigbolditalic\thechapter\/}}}\hfill\rule{2in}{.5pt}\par
- \vskip 20pt \fi \Huge \bf #1\par
- \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}
- \vskip 36pt plus 12pt minus 6pt }
+ \ifnum \c@secnumdepth >\m@ne\rule{2in}{.5pt}\hfill\raisebox{-.1in}{\fbox{\fbox{\bigbolditalic\thechapter\/}}}\hfill\rule{2in}{.5pt}\par%
 
-
+ \vskip 20pt \fi \Huge \bf #1\par%
+ \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}%
+ \vskip 36pt plus 12pt minus 6pt }%
+%
 \def\@makeschapterhead#1{%\vspace*{50pt}
  { \parindent 0pt \centering% was \raggedright
- \hrule height .5pt\vspace{40pt}
- \huge \bf #1\par
- \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}
- \vskip 36pt plus 12pt minus 6pt }
-
-
+ \hrule height .5pt\vspace{40pt}%
+ \huge \bf #1\par%
+ \nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}%
+ \vskip 36pt plus 12pt minus 6pt }%
+%
 % \clearpage below was \cleardoublepage
-\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
+\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@%
 \@afterindentfalse \secdef\@chapter\@schapter}
+}{}
+
 
 
 

@@ -1,9 +1,13 @@
 preamble
 "\\begin{theindex}
+% Print versions need page headers, ToC entry
+% tex4ht versions get their own ToC automatically
+\\ifthenelse{\\boolean{basic}\\or\\boolean{vcu}}{%
 \\phantomsection
 \\addcontentsline{toc}{chapter}{Index}
 \\pagestyle{myheadings}
 \\markboth{INDEX}{INDEX}
+}{}
 {\n"
 
 postamble
