@@ -50,7 +50,7 @@ fonts (like the Stix fonts) to view
 (4) Edit  aata.tex  and set boolean variable "xhtml" to true
     by editing the one line early on that determines the version
 (5) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
-(5) isuue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
+(5) issue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
 (7) issue:  makeindex -o aata.ind  aata.4dx
 (8) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
 (9) Result starts with  aata.xml
@@ -64,7 +64,7 @@ Sketch:
     Follow webpage version, except
         (5),(8) htlatex aata.tex "/path/to/tex4ht-sage.cfg" " -cunihtf -utf8"
         results are html files
-
+    Then run tex2sws converter
 
 
 Generating tikz pictures
