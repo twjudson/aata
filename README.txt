@@ -34,7 +34,7 @@ Requirements: a standard TeX distribution
 To create a PDF version optimized for print (Virginia Commonwealth Series)
 -------------------------------------------------------------------------
 Requirements: a standard TeX distribution, speciallized fonts, packages;
-see contetns of VCU-specific preamble in  aata.tex
+see contents of preamble in  aata.tex  with VCU-specific packages
 
 Follow same directions as for a PDF version, but after step 2, add
 (2a) Edit  aata.tex  and set boolean variable "vcu" to true
@@ -46,10 +46,40 @@ Web page (XHTML) version
 Requirements:  tex4ht processor to build, Firefox with math
 fonts (like the Stix fonts) to view
 
-(3) Edit  aata.tex  and set boolean variable "xhtml" to true
-by editing the one line early on that determines the version
-(4) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
+(3) Create external tikz pictures (see below)
+(4) Edit  aata.tex  and set boolean variable "xhtml" to true
+    by editing the one line early on that determines the version
+(5) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
 (5) isuue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
-(6) issue:  makeindex -o aata.ind  aata.4dx
-(7) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
-(8) Result starts with  aata.xml
+(7) issue:  makeindex -o aata.ind  aata.4dx
+(8) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
+(9) Result starts with  aata.xml
+
+
+Sage worksheet version
+----------------------
+Requires: tex4ht, nascent tex2sws package
+Sketch:
+    Create external graphics
+    Follow webpage version, except
+        (5),(8) htlatex aata.tex "/path/to/tex4ht-sage.cfg" " -cunihtf -utf8"
+        results are html files
+
+
+
+Generating tikz pictures
+~~~~~~~~~~~~~~~~~~~~~~~~
+Requirements: the  mogrify  command from the  ImageMagick  suite
+
+For HTML versions of the book, versions of the graphics sre needed in
+PNG format, external to the source.  So this is a one-time only step,
+and only necessary if you are creating web page or Sage worksheet versions.
+The mogrify command is often called an in-place conversion, but with the format
+switch, it will make new versions in the requested format.
+
+(3)  Edit  aata.tex  and set the version to  basic  and find
+     the  externalgraphics  boolean variable and set it to true.
+(4)  Create the <right> subdirectory, <TBD>
+(5)  issue:  pdflatex -shell-escape aata.tex
+(6)  issue:  mogrify -format png -trim +repage -density 110x110 -transparent '#FFFFFF' graphics/tikz/*.pdf
+     (this can take a while)  sync directory here with (4)!

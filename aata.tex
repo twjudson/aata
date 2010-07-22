@@ -55,9 +55,44 @@
 \usepackage{epstopdf}
 \usepackage{amsmath}
 \usepackage{amscd}   %% redundant after tikz conversions?
-\usepackage{tikz}
 \usepackage{multicol}
 \usepackage{makeidx}
+
+
+
+% tikz is a great package for graphics ("pictures").  With pdflatex it makes pdf images, automatically included in the document.  With tex4ht, the special pgf driver (\def\pgfsysdriver{pgfsys-tex4ht.def}) will make great SVG output.  Usually.  But if your tikz picture has text using TeX, then pdflatex still does a nice job, but tex4ht does not and the graphics are a mess.  It does not appear this situation will improve anytime soon (July 2010).
+%
+% So, we use the pgf "external graphics" system (from the CVS version, July 2010) with pdflatex to create stand-alone named PDF files in a subdirectory.  These are converted to 110dpi PNG files for web page use, since tex4ht also seems to have trouble with converting these files after pulling them into a DVI and extracting them again.
+%
+% On subsequent runs, pdflatex will just grab these files and use them.  When we run tex4ht, we turn off tikz totally and use a comment-ing package to just gobble up any picture.  This all requires a brief setup just prior to each tikz picture.  This would all be easier with conditional macros, but the external graphics facility cannot recognize the tikzpicture environment buried inside macros.
+
+\ifthenelse{\boolean{basic}\or\boolean{vcu}}
+{
+\usepackage{tikz}
+\newcommand{\tikzpreface}[1]{\relax}
+}{}
+%
+%
+\ifthenelse{\boolean{xhtml}}
+{
+\usepackage{comment}
+\excludecomment{tikzpicture}
+\newcommand{\tikzpreface}[1]{\includegraphics{graphics/tikz/#1.png}}
+}{}
+%
+%
+\newboolean{externalgraphics}\setboolean{externalgraphics}{false}
+\ifthenelse{\boolean{externalgraphics}}
+{
+\usetikzlibrary{external}
+\tikzexternalize
+\tikzsetexternalprefix{graphics/tikz/}
+\renewcommand{\tikzpreface}[1]{\tikzsetnextfilename{#1}}
+}{}
+
+
+
+
 
 % Widows and orphans, from VCU edition
 % R Beezer, 2010/06/14
@@ -67,9 +102,6 @@
 
 \setlength{\fboxrule}{0.5pt}
 \input{macros}
-
-% Support for tex4ht and pgf (tikzpicture)
-\ifthenelse{\boolean{xhtml}}{\def\pgfsysdriver{pgfsys-tex4ht.def}}{}
 
 % Hyperref setup
 % VCU version meant for print, so not needed/desired
