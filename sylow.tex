@@ -14,25 +14,14 @@ We already know that the converse of Lagrange's Theorem is false.  If $G$ is a g
  
 \section{The Sylow Theorems}
 
-We will use the idea of  group actions to prove the Sylow Theorems.  Recall for a moment what it means for $G$ to act on itself by
-conjugation and how conjugacy classes are distributed in the group according to the class equation, discussed in Chapter~\ref{actions}.   A group  $G$ acts on itself by conjugation via the map $(g,x) \mapsto gxg^{-1}$. Let $x_1, \ldots,
-x_k$ be representatives from each  of the distinct conjugacy classes
-of $G$ that consist of more than one element. Then the class equation
-can be written as 
+We will use the idea of  group actions to prove the Sylow Theorems.  Recall for a moment what it means for $G$ to act on itself by conjugation and how conjugacy classes are distributed in the group according to the class equation, discussed in Chapter~\ref{actions}.   A group  $G$ acts on itself by conjugation via the map $(g,x) \mapsto gxg^{-1}$. Let $x_1, \ldots, x_k$ be representatives from each  of the distinct conjugacy classes of $G$ that consist of more than one element. Then the class equation can be written as 
 \[
 |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)],
 \]
-where $Z(G) = \{g \in G : gx = xg \mbox{ for all $x \in G$} \}$ is the
-center of $G$ and  $C(x_i) = \{ g \in G : g x_i = x_i g \}$ is the
-centralizer subgroup of $x_i$. 
+where $Z(G) = \{g \in G : gx = xg \mbox{ for all $x \in G$} \}$ is the center of $G$ and  $C(x_i) = \{ g \in G : g x_i = x_i g \}$ is the centralizer subgroup of $x_i$. 
  
-We now begin our investigation of the Sylow Theorems by examining
-subgroups of order $p$, where $p$ is prime. A group $G$ is a {\bfi
-$p$-group\/}\index{Group!$p$-group} if every element in $G$ has as
-its order
-a power of $p$, where $p$ is a prime number. A subgroup of a group $G$
-is a {\bfi $p$-subgroup\/}\index{Subgroup!$p$-subgroup} if it is a 
-$p$-group.  
+We now begin our investigation of the Sylow Theorems by examining subgroups of order $p$, where $p$ is prime.  A group $G$ is a {\bfi $p$-group\/}\index{Group!$p$-group} if every element in $G$ has as
+its order a power of $p$, where $p$ is a prime number. A subgroup of a group $G$ is a {\bfi $p$-subgroup\/}\index{Subgroup!$p$-subgroup} if it is a  $p$-group.  
  
 \begin{theorem} {\bf (Cauchy)}\index{Cauchy's Theorem}
 Let $G$ be a finite group and $p$ a prime such that $p$ divides the
@@ -346,7 +335,7 @@ abelian.  By the Third Sylow Theorem, there are $1 + 3k$ Sylow
 $1 + 3k$ must divide 11; hence, there can only be a single normal
 Sylow 3-subgroup $H$ in $G$.  Similarly, there are $1 +11k$ Sylow
 11-subgroups and $1 +11k$ must divide $9$.  Consequently, there is
-only one Sylow 11-subgroup $K$ in $G$.  By Corollary~12.5, any group
+only one Sylow 11-subgroup $K$ in $G$.  By Corollary~\ref{actions:p2abelian}, any group
 of order $p^2$ is abelian for $p$ prime; hence, $H$ is isomorphic either 
 to ${\mathbb Z}_3 \times {\mathbb Z}_3$ or to ${\mathbb Z}_9$.  Since $K$ has 
 order 11, it must be isomorphic to ${\mathbb Z}_{11}$.  Therefore, the only
@@ -354,8 +343,7 @@ possible groups of order 99 are ${\mathbb Z}_3 \times {\mathbb Z}_3 \times
 {\mathbb Z}_{11}$ or ${\mathbb Z}_9 \times {\mathbb Z}_{11}$ up to isomorphism.
 \end{example}
  
- 
-\medskip
+
  
  
 To determine all of the groups of order $5 \cdot 7 \cdot 47 = 1645$,
@@ -377,7 +365,7 @@ this theorem as an exercise.
  
 \begin{example}{G1645_subgroups}
 We will now show that every group of order $5 \cdot 7 \cdot 47 =
-1645$ is abelian, and cyclic by Corollary~8.11. By the Third Sylow
+1645$ is abelian, and cyclic by Corollary~\ref{RelativelyPrime}. By the Third Sylow
 Theorem, $G$ has only one subgroup $H_1$ of order $47$.  So $G/H_1$
 has order 35 and must be abelian by Theorem~13.8. Hence, the
 commutator subgroup of $G$ is contained in $H$ which tells us that
@@ -422,7 +410,7 @@ Theorem~\ref{pn_theorem}, $G$ has a nontrivial center. Since the center of any
 group $G$ is a normal subgroup, $G$ cannot be a simple group.
 Therefore, groups of orders 4, 8, 9, 16, 25, 27, 32, 49, 64, and 81
 are not simple.  In fact, the groups of order 4, 9, 25, and 49 are 
-abelian by Corollary~12.5.
+abelian by Corollary~\ref{actions:p2abelian}.
 \end{example}
  
  
@@ -500,7 +488,7 @@ any element $hk \in HK$ can be written in the form $h_i k_i$ for $h_i
  
  
 \begin{example}{G48}
-o demonstrate that a group $G$ of order 48 is not simple, we will
+To demonstrate that a group $G$ of order 48 is not simple, we will
 show that $G$ contains either a normal subgroup of order 8 or a normal
 subgroup of order 16.  By the Third Sylow Theorem, $G$ has either one
 or three Sylow 2-subgroups of order 16.  If there is only one
@@ -724,7 +712,7 @@ Number \\
 15 & 1  & 30 & 4  & 45 & *  & 60 & 13 \\
 \hline
 \end{tabular}
-\end{center}}
+\end{center}}\label{sylow:project}
 \end{table}
  
  
@@ -753,12 +741,12 @@ Find the  actual groups (up to isomorphism) for each $n$.
 This is a challenging project that requires a working knowledge of the
 group theory you have learned up to this point. Even if you do
 not complete it, it will teach you a great deal about finite groups. You
-can use Table~13.1 as a guide. 
+can use Table~\ref{sylow:project} as a guide. 
 }
  
  
  
-\subsection*{References and Suggested Readings}
+\subsection*{References and Suggested Readings}  %%TWJ 8/13/2010 - References checked and updated
  
  
 {\small
@@ -783,13 +771,14 @@ Gorenstein, D. ``Classifying the Finite Simple Groups,''
 14} (1986), 1--98.
  
 \item[{\bf [5]}]
-Gorenstein, D. {\it Finite Simple Groups: An Introduction to
-Their Classification}. Plenum Press, New York, 1982.
+Gorenstein, D. {\it Finite Groups}. AMS Chelsea Publishing, Providence RI, 1968.
+
+
  
 \item[{\bf [6]}]
-Gorenstein, D. {\it The Classification of Finite Simple
-Groups, Vol. I: Groups of Noncharacteristic 2 Type}.
-Plenum Press, New York, 1983.
+Gorenstein, D., Lyons, R., and Solomon, R. {\it The Classification of Finite Simple
+Groups}.
+American Mathematical Society, Providence RI, 1994.
  
 \end{itemize}
 }
