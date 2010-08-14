@@ -22,15 +22,15 @@ Every field is also an integral domain; however, there are many integral domains
 
 An element $p/q \in {\mathbb Q}$ is the quotient of two integers $p$ and $q$; however, different pairs of integers can represent the same
 rational number.  For instance, $1/2 = 2/4 = 3/6$. We know that 
-$$
+\[
 \frac{a}{b} = \frac{c}{d}
-$$
+\]
 if and only if $ad = bc$. A more formal way of considering this problem is to examine fractions in terms of equivalence relations.  We can think of elements in ${\mathbb Q}$ as ordered pairs in ${\mathbb Z} \times {\mathbb Z}$.  A quotient $p/q$ can be written as $(p, q)$.  For instance, $(3, 7)$ would represent the fraction $3/7$.  However, there are problems if we consider all possible pairs in ${\mathbb Z} \times {\mathbb Z}$.  There is no fraction $5/0$ corresponding to the pair $(5,0)$.  Also, the pairs $(3,6)$ and $(2,4)$ both represent the fraction $1/2$.  The first problem is easily solved if we require the second coordinate to be nonzero.  The second problem is solved by considering two pairs $(a, b)$ and $(c, d)$ to be equivalent if $ad = bc$.
 
 If we use the approach of ordered pairs instead of fractions, then we can study integral domains in general.  Let $D$ be any integral domain and let 
-$$
+\[
 S = \{ (a, b) : a, b \in D \mbox{ and } b \neq 0 \}.
-$$
+\]
 Define a relation on $S$ by $(a, b) \sim (c, d)$ if $ad=bc$.
 
 \begin{lemma}
@@ -44,9 +44,9 @@ Therefore, $(c,d) \sim (a, b)$ and the relation is symmetric. Finally,
 to show that the relation is transitive, let $(a, b) \sim (c, d)$ and
 $(c, d) \sim (e,f)$. In this case $ad=bc$ and $cf = de$. Multiplying
 both sides of $ad=bc$ by $f$ yields
-$$
+\[
 a f d = a d f = b c f = b d e = bed.
-$$
+\]
 Since $D$ is an integral domain, we can deduce that $af = be$ or 
 $(a,b ) \sim (e, f)$. \mbox{\hspace{1in}}
 \end{proof}
@@ -59,21 +59,21 @@ We will denote the set of equivalence classes on $S$ by $F_D$. We now
 need to define the operations of addition and multiplication on
 $F_D$.  Recall how fractions are added and multiplied in ${\mathbb
 Q}$:
-\begin{eqnarray*}
-\frac{a}{b} + \frac{c}{d} & = & \frac{ad + b c}{b d}; \\
-\frac{a}{b} \cdot \frac{c}{d} & = & \frac{ac}{b d}.
-\end{eqnarray*}
+\begin{align*}
+\frac{a}{b} + \frac{c}{d} & = \frac{ad + b c}{b d}; \\
+\frac{a}{b} \cdot \frac{c}{d} & = \frac{ac}{b d}.
+\end{align*}
 It seems reasonable to define the operations of addition and
 multiplication on $F_D$ in a similar manner.  If we denote the
 equivalence class of $(a, b) \in S$ by $[a, b]$, then we are led to
 define the operations of addition and multiplication on $F_D$ by
-$$
+\[
 [a, b] + [c, d] = [ad + b c,b d]
-$$
+\]
 and
-$$
+\[
 [a, b] \cdot [c, d] = [ac, b d],
-$$
+\]
 respectively.  The next lemma demonstrates that these operations are
 independent of the choice of representatives from each equivalence
 class.
@@ -89,37 +89,37 @@ We will prove that the operation of addition is well-defined.  The
 proof that multiplication is well-defined is left as an exercise.
 Let $[a_1, b_1] = [a_2, b_2]$ and $[c_1, d_1] =[ c_2, d_2]$.  We must
 show that
-$$
+\[
 [a_1 d_1 + b_1 c_1,b_1 d_1] = [a_2 d_2 + b_2 c_2,b_2 d_2]
-$$
+\]
 or, equivalently, that
-$$
+\[
 (a_1 d_1 + b_1 c_1)( b_2 d_2) = (b_1 d_1) (a_2 d_2 + b_2 c_2).
-$$
+\]
 Since  $[a_1, b_1] = [a_2, b_2]$ and $[c_1, d_1] =[ c_2, d_2]$, we
 know that $a_1 b_2 = b_1 a_2$ and $c_1 d_2 = d_1 c_2$.  Therefore,
-\begin{eqnarray*}
+\begin{align*}
 (a_1 d_1 + b_1 c_1)( b_2 d_2) 
-& = & 
+& = 
 a_1 d_1 b_2 d_2 + b_1 c_1 b_2 d_2 \\
-& = &
+& =
 a_1 b_2 d_1 d_2 + b_1 b_2 c_1 d_2 \\
-& = &
+& =
 b_1 a_2 d_1 d_2 + b_1 b_2 d_1 c_2 \\
-& = & 
+& = 
 (b_1 d_1) (a_2 d_2 + b_2 c_2).
-\end{eqnarray*}
+\end{align*}
 \end{proof}
  
 
-\begin{lemma}
+\begin{lemma}\label{domains:field__fractions_lemma}
 The set of equivalence classes of $S$, $F_D$, under the equivalence
 relation $\sim$, together with the operations of addition and 
 multiplication defined~by
-\begin{eqnarray*}
-[a, b] + [c, d] & = & [ad + b c, b d] \\
-{[ a, b]} \cdot [c, d] & = & [ac, b d],
-\end{eqnarray*}
+\begin{align*}
+[a, b] + [c, d] & = [ad + b c, b d] \\
+{[ a, b]} \cdot [c, d] & = [ac, b d],
+\end{align*}
 is a field.
 \end{lemma}
  
@@ -128,9 +128,9 @@ is a field.
 The additive and multiplicative identities are $[0,1]$ and $[1,1]$, 
 respectively. To show that $[0,1]$ is the additive identity, observe 
 that
-$$
+\[
 [a, b] + [0, 1] =  [ a 1 + b 0, b 1] = [a,b].
-$$
+\]
 It is easy to show that $[1, 1]$ is the multiplicative identity. Let
 $[a, b] \in F_D$ such that $a \neq 0$. Then $[b, a]$ is also in $F_D$
 and $[a,b] \cdot [b, a] = [1,1]$; hence, $[b, a]$ is the
@@ -143,31 +143,31 @@ group under addition.
  
 It remains to show that the distributive property holds in $F_D$;
 however, 
-\begin{eqnarray*}
+\begin{align*}
 [a, b] [e, f] + [c, d][ e, f ] 
-& = & 
+& = 
 [a e, b f ] + [c e, d f] \\
-& = &
+& =
 [a e d f + b f c e, b d f^2 ] \\
-& = &
+& =
 [a e d + b c e, b d f ] \\
-& = &
+& =
 [a d e + b c e, b d f ] \\
-& = &
+& =
 ( [a, b]  + [c, d] ) [ e, f ] 
-\end{eqnarray*}
+\end{align*}
 and the lemma is proved.
 \end{proof} 	
 
 
 \medskip
 
-The field $F_D$ in Lemma~16.3 is called the {\bfi field of
+The field $F_D$ in Lemma~\ref{domains:field__fractions_lemma} is called the {\bfi field of
 fractions\/}\index{Field!of fractions} or {\bfi field of
 quotients\/}\index{Field!of quotients} of the integral domain $D$.  
  
 
-\begin{theorem}
+\begin{theorem}\label{domains:field_of_quotients_ther}
 Let $D$ be an integral domain.  Then $D$ can be embedded in a field of
 fractions $F_D$, where any element in $F_D$ can be expressed as the
 quotient of two elements in $D$.  Furthermore, the field of fractions
@@ -182,21 +182,21 @@ D$.
 We will first demonstrate that $D$ can be embedded in the field 
 $F_D$.  Define a map $\phi : D \rightarrow F_D$ by $\phi(a) 
 = [a, 1]$.  Then for $a$ and $b$ in $D$,
-$$
+\[
 \phi( a + b ) = [a+b, 1] = [a, 1] + [b, 1] = \phi(a ) + \phi(b)
-$$							       
+\]							       
 and
-$$
+\[
 \phi( a b ) = [a b, 1] = [a, 1]  [b, 1] = \phi(a ) \phi(b);
-$$
+\]
 hence, $\phi$ is a homomorphism.  To show that $\phi$ is one-to-one,
 suppose that $\phi(a) = \phi( b)$.  Then $[a, 1] = [b, 1]$, or $a = a1
 = 1b = b$. Finally, any element of $F_D$ can expressed as the quotient
 of two elements in $D$, since   
-$$
+\[
 \phi(a) [\phi(b)]^{-1} = [a, 1] [b, 1]^{-1} = [a, 1] \cdot [1, b]
 = [a, b].
-$$
+\]
 
  
 Now let $E$ be a field containing $D$ and define a map $\psi :F_D
@@ -207,20 +207,20 @@ Therefore, $a_1 b_1^{-1} = a_2 b_2^{-1}$  and $\psi( [a_1, b_1]) =
  
 
 If $[a, b ]$ and $[c, d]$ are in $F_D$, then
-\begin{eqnarray*}
+\begin{align*}
 \psi( [a, b] + [c, d] ) 
-& = & \psi( [ad + b c, b d ] ) \\
-& = &  (ad +b c)(b d)^{-1} \\
-& = & a b^{-1} + c d^{-1} \\
-& = & \psi( [a, b] ) + \psi( [c, d] )
-\end{eqnarray*}
+& = \psi( [ad + b c, b d ] ) \\
+& =  (ad +b c)(b d)^{-1} \\
+& = a b^{-1} + c d^{-1} \\
+& = \psi( [a, b] ) + \psi( [c, d] )
+\end{align*}
 and
-\begin{eqnarray*}
-\psi( [a, b] \cdot [c, d] ) & = & \psi( [ac, b d ] )\\
- & = &  (ac)(b d)^{-1}\\
-& = & a b^{-1}  c d^{-1}\\
- & = & \psi( [a, b] )  \psi( [c, d] ).
-\end{eqnarray*}
+\begin{align*}
+\psi( [a, b] \cdot [c, d] ) & = \psi( [ac, b d ] )\\
+ & =  (ac)(b d)^{-1}\\
+& = a b^{-1}  c d^{-1}\\
+ & = \psi( [a, b] )  \psi( [c, d] ).
+\end{align*}
 Therefore, $\psi$ is a homomorphism.
  
 
@@ -242,7 +242,7 @@ this field by ${\mathbb Q}(x)$.\label{noteratpoly}
 
  
 
-We will leave the proofs of the following corollaries of Theorem 16.4
+We will leave the proofs of the following corollaries of Theorem~\ref{domains:field_of_quotients_ther}
 as exercises. 
  
 
@@ -295,7 +295,6 @@ $R$; however, $xy$ is not prime, since $xy$ divides $x^2 y^2$ but does
 not divide either $x^2$ or $y^2$.
 \end{example}
  
-\medskip
  
 The Fundamental Theorem of Arithmetic states that every positive
 integer $n >1$ can be factored into a product of prime numbers $p_1
@@ -332,7 +331,7 @@ Theorem of Arithmetic.
 \begin{example}{not_a_UFD}
 Not every integral domain is a unique factorization domain. The
 subring ${\mathbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i\}$ of the
-complex numbers is an integral domain (Exercise~12, Chapter~14). Let
+complex numbers is an integral domain (Exercise~\ref{rings:gaussian_exercise}, Chapter~\ref{rings}). Let
 $z = a + b \sqrt{3}\, i$ and define \mbox{$\nu : {\mathbb Z}[ \sqrt{3}\, i ]
 \rightarrow {\mathbb N} \cup \{ 0 \}$} by $\nu( z) = |z|^2 = a^2 + 3 b^2$.
 It is clear that $\nu(z) \geq 0$ with equality when $z = 0$. Also,
@@ -343,9 +342,9 @@ and that the only units of ${\mathbb Z}[ \sqrt{3}\, i ]$ are 1 and $-1$.
 
 We claim that 4 has two distinct factorizations into irreducible
 elements: 
-$$
+\[
 4 = 2 \cdot 2 = (1 - \sqrt{3}\, i) (1 + \sqrt{3}\, i).
-$$
+\]
 We must show that each of these factors is an irreducible element in
 ${\mathbb Z}[ \sqrt{3}\, i ]$. If 2 is not irreducible, then $2 = z w$ for
 elements $z, w$ in ${\mathbb Z}[ \sqrt{3}\, i ]$ where $\nu( z) = \nu(w) =
@@ -371,7 +370,7 @@ is principal is called a {\bfi principal ideal domain},\index{Principal
 ideal domain (PID)}\index{Domain!principal ideal} or  {\bfi PID}. 
  
 
-\begin{lemma}
+\begin{lemma}\label{domains:PI_lemma}
 Let $D$ be an integral domain and let $a, b \in D$.
 Then  
 \begin{enumerate}
@@ -451,14 +450,14 @@ Let $D$ be a PID. If $p$ is irreducible, then $p$ is prime.
 
 \begin{proof}
 Let $p$ be irreducible and suppose that $p \mid ab$.  Then $\langle
-ab \rangle \subset \langle p \rangle$. By Corollary~14.17, since
+ab \rangle \subset \langle p \rangle$. By Corollary~\ref{rings:max_ideal_corollary}, since
 $\langle p \rangle$ is a maximal ideal, $\langle p \rangle$ must also
 be a prime ideal. Thus, either $a \in \langle p \rangle$ or $b \in
 \langle p \rangle$.  Hence, either $p \mid a $ or $p \mid b$. 
 \end{proof}
 
 
-\begin{lemma}
+\begin{lemma}\label{domains:ACC_lemma}
 Let $D$ be a PID.  Let $I_1, I_2, \ldots$ be a set of ideals such that 
 $I_1 \subset I_2 \subset \cdots$. Then there exists an integer $N$
 such that $I_n = I_N$ for all $n \geq N$.
@@ -486,7 +485,7 @@ $I_N$ for some $N \in {\mathbb N}$, we know that $I_N = I = \langle
 \medskip
 
 
-Any commutative ring satisfying the condition in Lemma~16.10 is said
+Any commutative ring satisfying the condition in Lemma~\ref{domains:ACC_lemma} is said
 to satisfy the {\bfi ascending chain condition},\index{Ascending chain
 condition} or {\bfi ACC}.  Such rings are called {\bfi
 Noetherian rings},\index{Ring!Noetherian} after Emmy Noether.  
@@ -503,16 +502,16 @@ Let $D$ be a PID and $a$ be a nonzero element in $D$ that is not a
 unit. If $a$ is irreducible, then we are done. If not, then there
 exists a factorization $a = a_1 b_1$, where neither $a_1$ nor $b_1$ is
 a unit. Hence, $\langle a \rangle \subset \langle a_1 \rangle$. By
-Lemma~16.7, we know that $\langle a \rangle \neq \langle a_1 \rangle$;
+Lemma~\ref{domains:PI_lemma}, we know that $\langle a \rangle \neq \langle a_1 \rangle$;
 otherwise, $a$ and $a_1$ would be associates and $b_1$ would be a unit,
 which would contradict our assumption. Now suppose that $a_1 =  a_2
 b_2$, where neither $a_2$ nor $b_2$ is a unit. By the same argument as
 before, $\langle a_1 \rangle \subset \langle a_2 \rangle$.  We can
 continue with this construction to obtain an ascending chain of ideals
-$$
+\[
 \langle a \rangle \subset \langle a_1 \rangle \subset \langle a_2
 \rangle \subset \cdots.
-$$
+\]
 By Lemma~16.10, there exists a positive integer $N$ such that
 $\langle a_n \rangle = \langle a_N \rangle$ for all $n \geq N$. 
 Consequently, $a_N$ must be irreducible. We have now shown that $a$ is
@@ -525,39 +524,39 @@ $\langle a \rangle \subset \langle c_1 \rangle$. Either $c_1$ is
 irreducible or $c_1 = c_2 p_2$, where $p_2$ is irreducible and $c_2$
 is not a unit.  Continuing in this manner, we obtain another chain of
 ideals
-$$
+\[
 \langle a \rangle \subset \langle c_1 \rangle \subset \langle c_2
 \rangle \subset \cdots.	   
-$$
+\]
 This chain must satisfy the ascending chain condition; therefore, 
-$$
+\[
 a = p_1 p_2 \cdots p_r
-$$
+\]
 for irreducible elements $p_1, \ldots, p_r$.
 
 
 {\em Uniqueness of the factorization.}
 To show uniqueness, let
-$$
+\[
 a= p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s,
-$$
+\]
 where each $p_i$ and each $q_i$ is irreducible.  Without loss of
 generality, we can assume that $r < s$. Since $p_1$ divides $q_1 q_2
 \cdots q_s$, by Corollary~16.9 it must divide some $q_i$. By
 rearranging the $q_i$'s, we can assume that $p_1 \mid q_1$; hence,
 $q_1 = u_1 p_1$ for some unit $u_1$ in $D$. Therefore,
-$$
+\[
 a = p_1 p_2 \cdots p_r = u_1 p_1 q_2 \cdots q_s
-$$
+\]
 or 
-$$
+\[
 p_2 \cdots p_r = u_1 q_2 \cdots q_s.
-$$
+\]
 Continuing in this manner, we can arrange the $q_i$'s such that $p_2
 = q_2, p_3 = q_3, \ldots, p_r = q_r$, to obtain
-$$
+\[
 u_1 u_2 \cdots u_r q_{r+1} \cdots q_s = 1.
-$$
+\]
 In this case $q_{r+1} \cdots q_s$ is a unit, which contradicts the
 fact that $q_{r+1}, \ldots, q_s$ are irreducibles. Therefore, $r=s$
 and the factorization of $a$ is unique.
@@ -568,7 +567,7 @@ Let $F$ be a field.  Then $F[x]$ is a UFD.
 \end{corollary}
 
 \begin{example}{Zx_UFD}
-Every PID is a UFD, but it is not the case that every UFD is a PID. In Corollary~16.22, we will prove that ${\mathbb Z}[x]$ is a UFD.  However,
+Every PID is a UFD, but it is not the case that every UFD is a PID. In Corollary~\ref{domains:int_poly_UFD_corollary}, we will prove that ${\mathbb Z}[x]$ is a UFD.  However,
 ${\mathbb Z}[x]$ is not a PID.  Let $I = \{ 5 f(x) + x g(x) : f(x), g(x)  \in {\mathbb Z}[x] \}$.  We can easily show that $I$ is an ideal of 
 ${\mathbb Z}[x]$.  Suppose that $I = \langle p(x) \rangle$.  Since $5 \in I$,  $5 = f(x) p(x)$.  In this case $p(x) = p$ must be a constant.  Since $x  \in I$, $x = p g(x)$; consequently, $p = \pm 1$. However, it follows from this fact that $\langle p(x) \rangle = {\mathbb Z}[x]$. But this would 
 mean that 3 is in $I$. Therefore, we can write $3 = 5 f(x) + x g(x)$ for  some $f(x)$ and $g(x)$ in ${\mathbb Z}[x]$.  Examining the constant term of  this polynomial, we see that $3 = 5 f(x)$, which is impossible. 
@@ -606,10 +605,10 @@ Let $F$ be a field. Then the degree of a polynomial in $F[x]$ is a Euclidean val
 
 
 \begin{example}{Gaussian_valuation}
-Recall that the Gaussian integers in Example~9 of Chapter~14 are defined by
-$$
+Recall that the Gaussian integers in Example~\ref{example:rings:gaussian_ring} of Chapter~\ref{rings} are defined by
+\[
 {\mathbb Z}[i] = \{  a + b i : a, b \in {\mathbb Z} \}.
-$$
+\]
 We usually measure the size of a complex number $a + bi$ by its absolute value, $|a + bi| = \sqrt{ a^2 + b^2}$; however, $\sqrt{a^2 + b^2}$ may not be an integer. For our valuation we will let $\nu(a + bi) = a^2 + b^2$ to ensure that we have an integer.  
 
 We claim that $\nu( a+ bi) = a^2 + b^2$ is a Euclidean valuation on ${\mathbb Z}[i]$. Let $z, w \in {\mathbb Z}[i]$.  Then $\nu( zw) = |zw|^2 =
@@ -618,11 +617,11 @@ We claim that $\nu( a+ bi) = a^2 + b^2$ is a Euclidean valuation on ${\mathbb Z}
 Next, we must show that for any $z= a+bi$ and $w = c+di$ in ${\mathbb Z}[i]$ with $w \neq 0$, there exist elements $q$ and $r$ in 
 ${\mathbb Z}[i]$  such that $z = qw + r$ with either $r=0$ or  $\nu(r) < \nu(w)$.  We can view $z$ and $w$ as elements in ${\mathbb
 Q}(i) = \{ p + qi : p, q \in {\mathbb Q} \}$, the field of fractions of ${\mathbb Z}[i]$.  Observe that
-\begin{eqnarray*}
-z w^{-1} & = & (a +b i) \frac{c -d i}{c^2 + d^2} \\
-& = &
+\begin{align*}
+z w^{-1} & = (a +b i) \frac{c -d i}{c^2 + d^2} \\
+& =
 \frac{ac + b d}{c^2 + d^2} + \frac{b c -ad}{c^2 + d^2}i \\
-& = &
+& =
 \left( 
 m_1 + \frac{n_1}{c^2 + d^2}
 \right)
@@ -630,30 +629,30 @@ m_1 + \frac{n_1}{c^2 + d^2}
 \left(
 m_2 + \frac{n_2}{c^2 + d^2}
 \right) i \\
-& = &
+& =
 (m_1 + m_2 i) + \left( 
 \frac{n_1}{c^2 + d^2}
 + 
 \frac{n_2}{c^2 + d^2}i
 \right) \\
-& = &
+& =
 (m_1 + m_2 i) + (s + ti)
-\end{eqnarray*}
+\end{align*}
 in ${\mathbb Q}(i)$.  In the last steps we are writing the real and imaginary parts as an integer plus a proper fraction.  That is, we take
 the closest integer $m_i$ such that the fractional part satisfies $|n_i / (a^2 + b^2)| \leq 1/2$.  For example, we write 
-\begin{eqnarray*}
-\frac{9}{8} & = & 1 + \frac{1}{8} \\
-\frac{15}{8} & = & 2 - \frac{1}{8}.
-\end{eqnarray*}
+\begin{align*}
+\frac{9}{8} & = 1 + \frac{1}{8} \\
+\frac{15}{8} & = 2 - \frac{1}{8}.
+\end{align*}
 Thus, $s$ and $t$ are the ``fractional parts'' of $z w^{-1} = (m_1 + m_2 i) + (s + ti)$. We also know that $s^2 + t^2 \leq 1/4 + 1/4 =
 1/2$.  Multiplying by $w$, we have
-$$
+\[
 z = z w^{-1} w = w (m_1 + m_2 i) + w (s + ti)  = q w + r,
-$$
+\]
 where $q = m_1 + m_2 i$ and $r =  w (s + ti)$.  Since $z$ and $qw$ are in ${\mathbb Z}[i]$, $r$ must be in ${\mathbb Z}[i]$.  Finally, we need to show that either $r = 0$ or $\nu(r) < \nu(w)$.  However,
-$$
+\[
 \nu(r) = \nu(w) \nu(s + ti) \leq \frac{1}{2} \nu(w) < \nu(w).
-$$
+\]
 \end{example}
 
 \begin{theorem}
@@ -680,12 +679,12 @@ Every Euclidean domain is a unique factorization domain.
 \subsection*{Factorization in $D[x]$}
 
 One of the most important polynomial rings is ${\mathbb Z}[x]$.  One of the first questions that come to mind about ${\mathbb Z}[x]$ is whether or not it is a UFD.  We will prove a more general statement here.  Our first task is to obtain a more general version of Gauss's Lemma
-(Theorem~15.9).  
+(Theorem~\ref{poly:Gauss_lemma}).  
 
 Let $D$ be a unique factorization domain and suppose that 
-$$
+\[
 p(x) = a_n x^n + \cdots + a_1 x + a_0
-$$
+\]
 in $D[x]$.  Then the {\bfi content\/}\index{Polynomial!content of} of $p(x)$ is the greatest common divisor of $a_0, \ldots, a_1$.  We say
 that $p(x)$ is {\bfi primitive\/}\index{Primitive polynomial}\index{Polynomial!primitive} if $\gcd(a_0, \ldots, a_n ) = 1$.    
  
@@ -694,7 +693,7 @@ In ${\mathbb Z}[x]$ the polynomial $p(x)= 5 x^4 - 3 x^3 + x -4$ is a primitive p
 coefficients is 1; however, the polynomial $q(x) = 4 x^2 - 6 x + 8$ is not primitive since the content of $q(x)$ is 2.
 \end{example}
  
-\begin{theorem}[Gauss's Lemma]\index{Gauss's Lemma}
+\begin{theorem}[Gauss's Lemma]\index{Gauss's Lemma}\label{domains:Gauss_lemma}
 Let $D$ be a UFD and let $f(x)$ and $g(x)$ be primitive polynomials in $D[x]$.  Then $f(x) g(x)$ is primitive.
 \end{theorem}
  
@@ -702,10 +701,10 @@ Let $D$ be a UFD and let $f(x)$ and $g(x)$ be primitive polynomials in $D[x]$.  
 Let $f(x) = \sum_{i=0}^{m} a_i x^i$ and $g(x) = \sum_{i=0}^{n} b_i x^i$.  Suppose that $p$ is a prime dividing the coefficients of $f(x)
 g(x)$.  Let $r$ be the smallest integer such that $p \notdivide a_r$ and $s$ be the smallest integer such that $p \notdivide b_s$.  The
 coefficient of $x^{r+s}$ in $f(x) g(x)$ is 
-$$
+\[
 c_{r+s} = a_0 b_{r+s} + a_1 b_{r+s-1} + \cdots + a_{r+s-1} b_1 +
 a_{r+s} b_0. 
-$$
+\]
 Since $p$ divides $a_0, \ldots, a_{r-1}$ and $b_0, \ldots, b_{s-1}$, $p$ divides every term of $c_{r+s}$ except for the term $a_r b_s$.  However, since $p \mid c_{r+s}$, either $p$ divides $a_r$ or $p$ divides $b_s$. But this is impossible.
 \end{proof}
  
@@ -724,7 +723,7 @@ q_1(x)$. Since $p_1(x) q_1(x)$ is primitive, the content of $p(x)
 q(x)$ must be $cd$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{domains:UFD_factor_lemma}
 Let $D$ be a UFD and $F$ its field of fractions. Suppose that $p(x)
 \in D[x]$ and $p(x) = f(x) g(x)$, where $f(x)$ and $g(x)$ are in 
 $F[x]$. Then $p(x) = f_1(x) g_1(x)$, where $f_1(x)$ and $g_1(x)$ are in
@@ -745,9 +744,9 @@ f(x) = \deg f_1(x)$ and $\deg g(x) = \deg g_1(x)$.
 
 \medskip
 
-The following corollaries are direct consequences of Lemma~16.17. 
+The following corollaries are direct consequences of Lemma~\ref{domains:UFD_factor_lemma}. 
 
-\begin{corollary}
+\begin{corollary}\label{domains:irred_poly_lemma}
 Let $D$ be a UFD and $F$ its field of fractions.  A primitive
 polynomial $p(x)$ in $D[x]$ is irreducible in $F[x]$ if and only if it
 is irreducible in $D[x]$.
@@ -775,11 +774,11 @@ f_1(x) f_2(x) \cdots f_n(x)$ by a factorization of $p(x)$, where each
 $f_i(x)$ is irreducible. Choose $a_i \in D$ such that $a_i f_i(x)$ is in
 $D[x]$. There exist $b_1, \ldots, b_n \in D$ such that $a_i f_i(x) =
 b_i g_i(x)$, where $g_i(x)$ is a primitive polynomial in $D[x]$. By 
-Corollary 16.18, each $g_i(x)$ is irreducible in $D[x]$. Consequently, 
+Corollary \ref{domains:irred_poly_lemma}, each $g_i(x)$ is irreducible in $D[x]$. Consequently, 
 we can write
-$$
+\[
 a_1 \cdots a_n p(x) = b_1 \cdots b_n g_1(x) \cdots g_n(x).
-$$
+\]
 Let $b = b_1 \cdots b_n$. Since $g_1(x) \cdots g_n(x)$ is primitive,
 $a_1 \cdots a_n$ divides $b$. Therefore, $p(x) = a g_1(x) \cdots
 g_n(x)$, where $a \in D$. Since $D$ is a UFD, we can factor $a$ as $u
@@ -788,12 +787,12 @@ irreducible in $D$.
 
 
 We will now show the uniqueness of this factorization. Let
-$$
+\[
 p(x) = a_1 \cdots a_m f_1(x) \cdots f_n(x) = b_1 \cdots b_r g_1(x)
 \cdots g_s(x)
-$$
+\]
 be two factorizations of $p(x)$, where all of the factors are
-irreducible in $D[x]$.  By Corollary~16.18, each of the $f_i$'s and
+irreducible in $D[x]$.  By Corollary~\ref{domains:irred_poly_lemma}, each of the $f_i$'s and
 $g_i$'s is irreducible in $F[x]$. The $a_i$'s and the $b_i$'s are
 units in $F$. Since $F[x]$ is a PID, it is a UFD; therefore, $n=s$.
 Now rearrange the $g_i(x)$'s so that $f_i(x)$ and $g_i(x)$ are
@@ -820,7 +819,7 @@ Let $F$ be a field. Then $F[x]$ is a UFD.
 \end{corollary}
 
 
-\begin{corollary}
+\begin{corollary}\label{domains:int_poly_UFD_corollary}
 ${\mathbb Z}[x]$ is a UFD.
 \end{corollary}
 
@@ -950,9 +949,9 @@ of characteristic $p$.
 \item
 Prove that the field of fractions of the Gaussian integers, ${\mathbb
 Z}[i]$, is 
-$$
+\[
 {\mathbb Q}(i) = \{ p + q i : p, q \in {\mathbb Q}  \}.
-$$
+\]
 
  
 \item
@@ -1088,10 +1087,10 @@ Let $a/s$ denote the equivalence class of $(a,s) \in R \times S$ and
 let $ S^{-1}R$ be the set of all equivalence classes with respect to
 $\sim$.  Define  the operations of addition and multiplication on
 $S^{-1} R$ by
-\begin{eqnarray*}
-\frac{a}{s} + \frac{b}{t} & = & \frac{at + b s}{s t} \\
-\frac{a}{s}  \frac{b}{t} & = & \frac{a b}{s t},
-\end{eqnarray*}
+\begin{align*}
+\frac{a}{s} + \frac{b}{t} & = \frac{at + b s}{s t} \\
+\frac{a}{s}  \frac{b}{t} & = \frac{a b}{s t},
+\end{align*}
 respectively. Prove that these operations are well-defined on $S^{-1}R$
 and that $S^{-1}R$ is a ring with identity under these operations.
 The ring $S^{-1}R$ is called the {\bfi ring of
@@ -1135,16 +1134,15 @@ ring}\index{Ring!local}.
  
 \begin{itemize}
  
-\item[{\bf [1]}]
+\item[{\bf [1]}] %Reference updated - TWJ 8/14/2010
 Atiyah, M. F.  and MacDonald, I. G. {\it Introduction to
-Commutative Algebra}. Addison-Wesley, Reading, MA, 1969.
+Commutative Algebra}. Westview Press, Boulder, CO, 1994.
  
 
 
-\item[{\bf [2]}]
+\item[{\bf [2]}] %Reference updated - TWJ 8/14/2010
 Zariski, O. and Samuel, P. {\it Commutative Algebra}, vols. I
-and II. Springer-Verlag, New York, 1986, 1991.
- 
+and II. Springer, New York, 1975, 1960. 
  
 \end{itemize}
 }
