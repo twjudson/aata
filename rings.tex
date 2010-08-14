@@ -47,10 +47,10 @@ $(ab)  c = a  ( b  c)$ for $a, b, c  \in R$.
  
 \item
 For $a, b, c \in R$,
-\begin{eqnarray*}
+\begin{align*}
 a( b + c)&  = & ab +ac \\
-(a + b)c & = & ac + bc.
-\end{eqnarray*}
+(a + b)c & = ac + bc.
+\end{align*}
  
 \end{enumerate}
 This last condition, the distributive axiom, relates the binary
@@ -78,28 +78,28 @@ A commutative division ring is called a {\bfi field}\index{Field}.
 The relationship among rings, integral domains, division rings, and
 fields is shown in Figure~\ref{Rings}.  
  
-\begin{figure}[hbt]
+\begin{figure}[hbt] %Replaced figure with tikz figure - TWJ 8/13/2010
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(15,11.5)
-\put(6.5,10.5){\small \it Rings}
-\put(1.6,8){\small \it Commutative}
-\put(3,7){\small \it Rings}
-\put(9.4,8){\small \it Rings with}
-\put(9.85,7){\small \it Identity}
-\put(2.7,4){\small \it Integral}
-\put(2.4,3){\small \it Domains}
-\put(9.5,4){\small \it Division}
-\put(9.9,3){\small \it Rings}
-\put(6.5,0.5){\small \it Fields}
-\put(11,5){\line(0,1){1.5}}
-\put(4,5){\line(0,1){1.5}}
-\put(6,5){\line(5,3){3}}
-\put(8.5,1.5){\line(5,3){1.5}}
-\put(8.5,10){\line(5,-3){1.5}}
-\put(6.5,1.5){\line(-5,3){1.5}}
-\put(6.5,10){\line(-5,-3){1.5}}
-\end{picture}
+\begin{tikzpicture}[scale=0.8]
+
+\draw  (2,0.4) -- (2,-0.4);
+\draw  (-2,0.4) -- (-2,-0.4);
+\draw  (1,0.8) -- (-1,-0.8);
+\draw  (1.6,1.6) -- (0.4,2.6);
+\draw  (-1.6,1.6) -- (-0.4,2.6);
+\draw  (1.6,-1.6) -- (0.4,-2.6);
+\draw  (-1.6,-1.6) -- (-0.4,-2.6);
+
+\node [text width=2cm, text centered] at (2, 1) {\small \it Rings with Identity};
+\node [text width=1.5cm, text centered] at (2, -1) {\small \it Division Rings};
+
+\node [text width=2cm, text centered] at (-2, 1) {\small \it Commutative Rings};
+\node [text width=1.5cm, text centered] at (-2, -1) {\small \it Integral Domains};
+
+\node at (0,3) {\small \it Rings};
+\node at (0,-3) {\small \it Fields};
+\end{tikzpicture}
+
 \end{center}
 \caption{Types of rings}
 \label{Rings}
@@ -108,9 +108,9 @@ fields is shown in Figure~\ref{Rings}.
  
  
 \begin{example}{integer_ring}
-As we have mentioned previously, the integers form a ring. In fact, ${\Bbb
+As we have mentioned previously, the integers form a ring. In fact, ${\mathbb
 Z}$ is an integral domain.  Certainly if $a b = 0$ for two integers
-$a$ and $b$, either $a=0$ or $b=0$. However, ${\Bbb Z}$ is not a
+$a$ and $b$, either $a=0$ or $b=0$. However, ${\mathbb Z}$ is not a
 field. There is no integer that is the multiplicative inverse of 2,
 since $1/2$ is not an integer.  The only integers with multiplicative
 inverses are 1 and $-1$.  
@@ -119,19 +119,19 @@ inverses are 1 and $-1$.
  
 \begin{example}{field_ring}
 Under the ordinary operations of addition and multiplication, all of
-the familiar number systems are rings: the rationals, ${\Bbb Q}$; the
-real numbers, ${\Bbb R}$; and the complex numbers, ${\Bbb C}$. Each of
+the familiar number systems are rings: the rationals, ${\mathbb Q}$; the
+real numbers, ${\mathbb R}$; and the complex numbers, ${\mathbb C}$. Each of
 these rings is a field. 
 \end{example}
  
  
 \begin{example}{Zn_rings}
-We can define the product of two elements $a$ and $b$ in ${\Bbb Z}_n$
-by $ab~\pmod{n}$. For instance, in ${\Bbb Z}_{12}$,  $5 \cdot 7 \equiv
-11 \pmod{12}$.  This product makes the abelian group ${\Bbb Z}_n$ into
-a ring. Certainly ${\Bbb Z}_n$ is a commutative ring; however, it may
+We can define the product of two elements $a$ and $b$ in ${\mathbb Z}_n$
+by $ab~\pmod{n}$. For instance, in ${\mathbb Z}_{12}$,  $5 \cdot 7 \equiv
+11 \pmod{12}$.  This product makes the abelian group ${\mathbb Z}_n$ into
+a ring. Certainly ${\mathbb Z}_n$ is a commutative ring; however, it may
 fail to be an integral domain.  If we consider $3 \cdot 4 \equiv 0
-\pmod{12}$ in ${\Bbb Z}_{12}$, it is easy to see that a product of two 
+\pmod{12}$ in ${\mathbb Z}_{12}$, it is easy to see that a product of two 
 nonzero elements in the ring can be equal to zero.  
 \end{example}
 
@@ -140,7 +140,7 @@ nonzero elements in the ring can be equal to zero.
 A nonzero element $a$ in a ring $R$ is called a {\bfi zero
 divisor\/}\index{Zero divisor} if there is a nonzero element $b$ in $R$
 such that $ab = 0$. In the previous example,  3 and 4 are zero
-divisors in ${\Bbb Z}_{12}$.  
+divisors in ${\mathbb Z}_{12}$.  
  
  
 \begin{example}{function_ring}
@@ -154,7 +154,7 @@ $(fg)(x) = f(x) g(x) = x^2 \cos x$.
  
  
 \begin{example}{matrix_ring}
-The $2 \times 2$ matrices  with entries in ${\Bbb R}$ form a ring
+The $2 \times 2$ matrices  with entries in ${\mathbb R}$ form a ring
 under the usual operations of matrix addition and multiplication. This
 ring is \mbox{noncommutative}, since it is usually the case that $AB \neq
 BA$. Also, notice that we can have $AB = 0$ when neither $A$ nor $B$
@@ -165,111 +165,97 @@ is zero.
 \begin{example}{noncommute_ring}
 For an example of a noncommutative division ring, let
 \[
-\begin{array}{ccc}
 1 = 
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1 & 0 \\
 0 & 1
-\end{array}
-\right)
-& &
-{\bold i}
+\end{pmatrix},
+\quad
+{\mathbf i}
 =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 0 & 1 \\
 -1 & 0
-\end{array}
-\right)
-\\ & & \\
-{\bold j} =
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\quad
+{\mathbf j} =
+\begin{pmatrix}
 0 & i \\
 i & 0
-\end{array}
-\right)
-& &
-{\bold k} = 
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\quad
+{\mathbf k} = 
+\begin{pmatrix}
 i & 0 \\
 0 & -i
-\end{array}
-\right),
-\end{array}
+\end{pmatrix},
 \]
 where $i^2 = -1$. These elements satisfy the following relations: 
-\[
-\begin{array}{ccrclcc}
-{\bold i}^2 & = & {\bold j}^2 & = &  {\bold k}^2 & = & -1 \\
-& & {\bold i}  {\bold j} & = &  {\bold k} && \\
-& & {\bold j}  {\bold k} & = &  {\bold i} && \\
-& & {\bold k}  {\bold i} & = &  {\bold j} && \\
-& & {\bold j}  {\bold i} & = &  - {\bold k} && \\
-& & {\bold k}  {\bold j} & = &  - {\bold i} && \\
-& & {\bold i}  {\bold k} & = &  - {\bold j}. &&
-\end{array}
-\]
-Let ${\Bbb H}$\label{noteringH} consist of elements of the form $a + b
-{\bold i}  + c {\bold j} +d {\bold k}$, where $a, b , c, d$ are real
-numbers. Equivalently, ${\Bbb H}$ can be considered to be the set of
+\begin{align*}
+{\mathbf i}^2 = {\mathbf j}^2 & =  {\mathbf k}^2 = -1 \\
+{\mathbf i}  {\mathbf j} & =  {\mathbf k}  \\
+{\mathbf j}  {\mathbf k} & =  {\mathbf i}  \\
+{\mathbf k}  {\mathbf i} & =  {\mathbf j}  \\
+{\mathbf j}  {\mathbf i} & =  - {\mathbf k}  \\
+{\mathbf k}  {\mathbf j} & =  - {\mathbf i}  \\
+{\mathbf i}  {\mathbf k} & =  - {\mathbf j}. 
+\end{align*}
+Let ${\mathbb H}$\label{noteringH} consist of elements of the form $a + b
+{\mathbf i}  + c {\mathbf j} +d {\mathbf k}$, where $a, b , c, d$ are real
+numbers. Equivalently, ${\mathbb H}$ can be considered to be the set of
 all $2 \times 2$ matrices of the form  
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 \alpha & \beta \\
 -\overline{\beta} & \overline{\alpha }
-\end{array}
-\right),
+\end{pmatrix},
 \]
 where $\alpha = a + di$ and $\beta = b+ci$ are complex numbers. We can
-define addition and multiplication on ${\Bbb H}$ either by the usual matrix
-operations or in terms of the generators 1, ${\bold i}$, ${\bold j}$,
-and ${\bold k}$: 
-\begin{eqnarray*}
-\lefteqn{ (a_1 + b_1 {\bold i}  + c_1 {\bold j} +d_1 {\bold k} )
-+ ( a_2 + b_2 {\bold i}  + c_2 {\bold j} +d_2 {\bold k} )
-= } \\
-& & (a_1 + a_2) + ( b_1 + b_2) {\bold i}  + ( c_1 + c_2)
-{\bold j} + ( d_1 + d_2) {\bold k}
-\end{eqnarray*}
+define addition and multiplication on ${\mathbb H}$ either by the usual matrix
+operations or in terms of the generators 1, ${\mathbf i}$, ${\mathbf j}$,
+and ${\mathbf k}$: 
+\begin{multline*}
+(a_1 + b_1 {\mathbf i}  + c_1 {\mathbf j} +d_1 {\mathbf k} )
++ ( a_2 + b_2 {\mathbf i}  + c_2 {\mathbf j} +d_2 {\mathbf k} ) \\
+=
+(a_1 + a_2) + ( b_1 + b_2) {\mathbf i}  + ( c_1 + c_2)
+{\mathbf j} + ( d_1 + d_2) {\mathbf k}
+\end{multline*}
 and
 \[
-(a_1 + b_1 {\bold i}  + c_1 {\bold j} +d_1 {\bold k} ) ( a_2 + b_2
-{\bold i}  + c_2 {\bold j} +d_2 {\bold k} ) = \alpha + \beta {\bold
-i}  + \gamma {\bold j} + \delta {\bold k},
+(a_1 + b_1 {\mathbf i}  + c_1 {\mathbf j} +d_1 {\mathbf k} ) ( a_2 + b_2
+{\mathbf i}  + c_2 {\mathbf j} +d_2 {\mathbf k} ) = \alpha + \beta {\mathbf
+i}  + \gamma {\mathbf j} + \delta {\mathbf k},
 \]
 where
-\begin{eqnarray*}
-\alpha & = & a_1 a_2 - b_1 b_2 - c_1 c_2 -d_1 d_2 \\
-\beta & = & a_1 b_2 + a_1 b_1 + c_1 d_2 - d_1 c_2 \\
-\gamma & = & a_1 c_2 - b_1 d_2 + c_1 a_2 - d_1 b_2 \\
-\delta & = & a_1 d_2 + b_1 c_2 - c_1 b_2 - d_1 a_2.
-\end{eqnarray*}
+\begin{align*}
+\alpha & =  a_1 a_2 - b_1 b_2 - c_1 c_2 -d_1 d_2 \\
+\beta & =  a_1 b_2 + a_1 b_1 + c_1 d_2 - d_1 c_2 \\
+\gamma & =  a_1 c_2 - b_1 d_2 + c_1 a_2 - d_1 b_2 \\
+\delta & =  a_1 d_2 + b_1 c_2 - c_1 b_2 - d_1 a_2.
+\end{align*}
 Though multiplication looks complicated, it is actually a
 straightforward computation if we remember that we just add and
-multiply elements in ${\Bbb H}$ like polynomials and keep in mind the
-relationships between the generators ${\bold i}$, ${\bold j}$, and
-${\bold k}$. The ring ${\Bbb H}$ is called the ring of {\bfi
+multiply elements in ${\mathbb H}$ like polynomials and keep in mind the
+relationships between the generators ${\mathbf i}$, ${\mathbf j}$, and
+${\mathbf k}$. The ring ${\mathbb H}$ is called the ring of {\bfi
 quaternions}\index{Quaternions}.
  
  
 To show that the quaternions are a division ring, we must be able to
 find an inverse for each nonzero element. Notice that 
 \[
-( a + b {\bold i}  + c {\bold j} +d {\bold k} )( a - b
-{\bold i}  - c {\bold j}
--d {\bold k} ) = a^2 + b^2 + c^2 + d^2.
+( a + b {\mathbf i}  + c {\mathbf j} +d {\mathbf k} )( a - b
+{\mathbf i}  - c {\mathbf j}
+-d {\mathbf k} ) = a^2 + b^2 + c^2 + d^2.
 \]
 This element can be zero only if $a$, $b$, $c$, and $d$ are
-all zero. So if $a + b {\bold i}  + c {\bold j} +d {\bold k}
+all zero. So if $a + b {\mathbf i}  + c {\mathbf j} +d {\mathbf k}
 \neq 0$,
 \[
-( a + b {\bold i}  + c {\bold j} +d {\bold k} )
+( a + b {\mathbf i}  + c {\mathbf j} +d {\mathbf k} )
 \left(
-\frac{a - b {\bold i} - c {\bold j} - d {\bold k} }{ a^2 + b^2 + c^2
+\frac{a - b {\mathbf i} - c {\mathbf j} - d {\mathbf k} }{ a^2 + b^2 + c^2
 + d^2 }
 \right)
 = 1.
@@ -317,12 +303,12 @@ inherited operations from $R$.
  
  
 \begin{example}{subring_chain}
-The ring $n {\Bbb Z}$ is a subring of ${\Bbb Z}$.  Notice that even
+The ring $n {\mathbb Z}$ is a subring of ${\mathbb Z}$.  Notice that even
 though the original ring may have an identity, we do not require
 that its subring have an identity. We have the following chain of
 subrings: 
 \[
-{\Bbb Z} \subset {\Bbb Q} \subset {\Bbb R} \subset {\Bbb C}.
+{\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}.
 \]
 \end{example}
  
@@ -354,48 +340,40 @@ $r-s \in S$ for all $r, s \in S$.
  
  
 \begin{example}{M2_ring}
-Let  $R ={\Bbb M}_2( {\Bbb R} )$ be the ring of $2 \times 2$ matrices
-with entries in ${\Bbb R}$. If $T$ is the set of upper triangular
-matrices in $R$, i.e.,
+Let  $R ={\mathbb M}_2( {\mathbb R} )$ be the ring of $2 \times 2$ matrices
+with entries in ${\mathbb R}$. If $T$ is the set of upper triangular
+matrices in $R$; i.e.,
 \[
 T =
 \left\{
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & b \\
 0 & c
-\end{array}
-\right)
-: a, b, c \in {\Bbb R}
+\end{pmatrix}
+: a, b, c \in {\mathbb R}
 \right\},
 \]
 then $T$ is a subring of $R$. If
 \[
 A=
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & b \\
 0 & c
-\end{array}
-\right)
-\mbox{ and }
+\end{pmatrix}
+\quad \text{and} \quad
 B =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a' & b' \\
 0 & c'
-\end{array}
-\right)
+\end{pmatrix}
 \]
 are in $T$, then clearly $A-B$ is also in $T$. Also,
 \[
 AB =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a a' & ab' + bc' \\
 0 & cc'
-\end{array}
-\right)
+\end{pmatrix}
 \]
 is in $T$.
 \end{example}
@@ -417,12 +395,12 @@ a {\bfi field}.
  
  
 \begin{example}{gaussian_ring}
-If $i^2 = -1$, then the set ${\Bbb Z}[ i ] = \{ m + ni : m, n \in
-{\Bbb Z} \}$ forms a ring known as the {\bfi Gaussian
+If $i^2 = -1$, then the set ${\mathbb Z}[ i ] = \{ m + ni : m, n \in
+{\mathbb Z} \}$ forms a ring known as the {\bfi Gaussian
 integers}\index{Gaussian integers}\label{gaussianintegers}. It is
 easily seen that the Gaussian integers are a subring of the complex
 numbers since they are closed under addition and multiplication. Let
-$\alpha = a + bi$ be a unit in ${\Bbb Z}[ i ]$. Then
+$\alpha = a + bi$ be a unit in ${\mathbb Z}[ i ]$. Then
 $\overline{\alpha} = a - bi$ is also a unit since if $\alpha \beta =
 1$, then $\overline{\alpha} \overline{\beta} = 1$. If $\beta = c +
 di$, then   
@@ -445,39 +423,31 @@ The set of matrices
 F
 =
 \left\{
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1 & 0 \\
 0 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 1 & 1 \\
 1 & 0
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 0 & 1 \\
 1 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 0 & 0 \\
 0 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \right\}
 \]
-with entries in ${\Bbb Z}_2$ forms a field.
+with entries in ${\mathbb Z}_2$ forms a field.
 \end{example}
  
  
 \begin{example}{Q_sqrt2_field}
-The set ${\Bbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\Bbb Q}
-\}$ is a field. The inverse of an element $a + b \sqrt{2}$ in ${\Bbb
+The set ${\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q}
+\}$ is a field. The inverse of an element $a + b \sqrt{2}$ in ${\mathbb
 Q}( \sqrt{2}\, )$ is  
 \[
 \frac{a}{a^2 - 2 b^2} +\frac{- b}{ a^2 - 2 b^2} \sqrt{2}.
@@ -558,11 +528,11 @@ to be 0.
  
  
 \begin{example}{Zp_field}
-For every prime $p$, ${\Bbb Z}_p$ is a field of characteristic $p$. By
-Proposition~2.1, every nonzero element in ${\Bbb Z}_p$ has an inverse;
-hence, ${\Bbb Z}_p$ is a field. If $a$ is any nonzero element in the
+For every prime $p$, ${\mathbb Z}_p$ is a field of characteristic $p$. By
+Proposition~\ref{Zn_equiv_classes}, every nonzero element in ${\mathbb Z}_p$ has an inverse;
+hence, ${\mathbb Z}_p$ is a field. If $a$ is any nonzero element in the
 field, then $pa =0$, since the order of any nonzero element in the
-abelian group ${\Bbb Z}_p$ is $p$. 
+abelian group ${\mathbb Z}_p$ is $p$. 
 \end{example}
  
  
@@ -591,10 +561,10 @@ preserves the operations of addition and multiplication in the ring.
 More specifically, if  $R$ and $S$ are rings, then   a {\bfi ring
 homomorphism\/}\index{Homomorphism!ring}\index{Ring!homomorphism} is a
 map $\phi : R \rightarrow S$ satisfying  
-\begin{eqnarray*}
-\phi( a + b ) & = & \phi( a ) + \phi(b) \\
-\phi( a b ) & = & \phi( a ) \phi(b)
-\end{eqnarray*}
+\begin{align*}
+\phi( a + b ) & = \phi( a ) + \phi(b) \\
+\phi( a b ) & = \phi( a ) \phi(b)
+\end{align*}
 for all $a, b \in R$.  
 If $\phi : R \rightarrow S$ is a one-to-one and onto homomorphism,
 then $\phi$ is called an {\bfi
@@ -612,29 +582,29 @@ homomorphism} of a ring homomorphism to be the set
  
  
 \begin{example}{ring_homo}
-For any integer $n$ we can define a ring homomorphism $\phi~:~{\Bbb Z}
-\rightarrow {\Bbb Z}_n$ by $a \mapsto a \pmod{n}$. This is indeed a
+For any integer $n$ we can define a ring homomorphism $\phi~:~{\mathbb Z}
+\rightarrow {\mathbb Z}_n$ by $a \mapsto a \pmod{n}$. This is indeed a
 ring homomorphism, since 
-\begin{eqnarray*}
-\phi( a + b )  & = & (a + b) \pmod{n} \\
- & = &  a \pmod{n} + b \pmod{n}\\
- & = & \phi( a ) + \phi(b)
-\end{eqnarray*}
+\begin{align*}
+\phi( a + b )  & = (a + b) \pmod{n} \\
+ & =  a \pmod{n} + b \pmod{n}\\
+ & = \phi( a ) + \phi(b)
+\end{align*}
 and
-\begin{eqnarray*}
-\phi( a b )  & = &  ab \pmod{n} \\
- & = & a \pmod{n}\cdot  b \pmod{n} \\
- & = & \phi( a ) \phi(b).
-\end{eqnarray*}
-The kernel of the homomorphism $\phi$ is $n {\Bbb Z}$.
+\begin{align*}
+\phi( a b )  & =  ab \pmod{n} \\
+ & = a \pmod{n}\cdot  b \pmod{n} \\
+ & = \phi( a ) \phi(b).
+\end{align*}
+The kernel of the homomorphism $\phi$ is $n {\mathbb Z}$.
 \end{example}
  
  
 \begin{example}{cont_function_homomorpj}
 Let $C[a, b]$ be the ring of continuous real-valued functions on an
-interval $[a,b]$ as in Example~4. For a fixed  $\alpha \in [a, b]$,
+interval $[a,b]$ as in Example~\ref{example:rings:function_ring}. For a fixed  $\alpha \in [a, b]$,
 we can define a ring homomorphism $\phi_{\alpha} : C[a, b] \rightarrow
-{\Bbb R}$ by $\phi_{\alpha} (f ) = f( \alpha)$. This  is a ring
+{\mathbb R}$ by $\phi_{\alpha} (f ) = f( \alpha)$. This  is a ring
 homomorphism since 
 \[
 \begin{array}{c}
@@ -728,14 +698,14 @@ $\langle a \rangle  = \{ ar : r \in R \}$  is called a {\bfi principal
 ideal}\index{Ideal!principal}\index{Principal ideal}.  
  
  
-\begin{theorem}
-Every ideal in the ring of integers ${\Bbb Z}$ is a principal ideal.
+\begin{theorem}\label{rings:Z_ideals}
+Every ideal in the ring of integers ${\mathbb Z}$ is a principal ideal.
 \end{theorem}
  
  
 \begin{proof}
 The zero ideal $\{ 0 \}$ is a principal ideal since $\langle 0
-\rangle = \{ 0 \}$. If  $I$ is any nonzero ideal in ${\Bbb Z}$, then 
+\rangle = \{ 0 \}$. If  $I$ is any nonzero ideal in ${\mathbb Z}$, then 
 $I$ must contain some positive integer $m$.  There exists at least one
 such positive integer $n$ in $I$ by the Principle of Well-Ordering. 
 Now let $a$ be any element in $I$. Using the division algorithm, we 
@@ -751,10 +721,10 @@ Therefore, $a = nq$ and $I = \langle n \rangle$.
  
  
 \begin{example}{integer_ideal}
-The set $n {\Bbb Z}$ is ideal in the ring of integers. If $na$ is in
-$n{\Bbb Z}$ and $b$ is in ${\Bbb Z}$, then $nab$ is in  $n {\Bbb Z}$
-as required. In fact, by Theorem~14.7, these are the only
-ideals of ${\Bbb Z}$.
+The set $n {\mathbb Z}$ is ideal in the ring of integers. If $na$ is in
+$n{\mathbb Z}$ and $b$ is in ${\mathbb Z}$, then $nab$ is in  $n {\mathbb Z}$
+as required. In fact, by Theorem~\ref{rings:Z_ideals}, these are the only
+ideals of ${\mathbb Z}$.
 \end{example}
  
  
@@ -795,7 +765,7 @@ two-sided ideals.
 
  
  
-\begin{theorem}
+\begin{theorem}\label{rings:factor_ring_theorem}
 Let $I$ be an ideal of $R$. The factor group $R/I$ is a ring with
 multiplication defined by
 \[
@@ -824,7 +794,7 @@ associative law for multiplication and the distributive laws.
 \medskip
  
  
-The ring $R/I$ in Theorem~14.9 is called the {\bfi
+The ring $R/I$ in Theorem~\ref{rings:factor_ring_theorem} is called the {\bfi
 factor\/}\index{Ring!factor} or {\bfi quotient
 ring}\index{Ring!quotient}. Just as with group homomorphisms and
 normal subgroups, there is a relationship between ring homomorphisms
@@ -857,7 +827,7 @@ natural\/}\index{Homomorphism!natural} or {\bfi canonical
 homomorphism}\index{Homomorphism!canonical}. In ring theory we have
 isomorphism  theorems relating ideals and ring homomorphisms similar
 to the isomorphism theorems for groups that relate normal subgroups
-and homomorphisms in Chapter~9. We will prove only the First
+and homomorphisms in Chapter~\ref{homomorph}. We will prove only the First
 Isomorphism Theorem for rings in this chapter and  leave the proofs of
 the other two theorems as exercises. All of the proofs are similar to
 the proofs of the isomorphism theorems for groups. 
@@ -879,12 +849,12 @@ exists a well-defined group homomorphism $\eta: R/K \rightarrow
 groups $R$ and $R/K$.  To show that this is a ring homomorphism, we
 need only show that $\eta( (r + K)(s + K) ) = \eta(r + K) \eta( s +
 K)$; but
-\begin{eqnarray*}
-\eta( (r + K)( s +K )) & = & \eta(r s +K ) \\
-& = & \psi(r s) \\
-& = & \psi(r) \psi(s) \\
-&= & \eta( r + K ) \eta( s + K ).
-\end{eqnarray*}
+\begin{align*}
+\eta( (r + K)( s +K )) & = \eta(r s +K ) \\
+& = \psi(r s) \\
+& = \psi(r) \psi(s) \\
+& = \eta( r + K ) \eta( s + K ).
+\end{align*}
 \end{proof}
  
  
@@ -983,9 +953,9 @@ $r \in R$. Consequently, $I = R$.
  
  
 \begin{example}{prime_ideal}
-Let $p{\Bbb Z}$ be an ideal in ${\Bbb Z}$, where $p$ is prime. Then
-$p{\Bbb Z}$  is a maximal ideal since ${\Bbb Z}/ p {\Bbb Z} \cong
-{\Bbb Z}_p$ is a field. 
+Let $p{\mathbb Z}$ be an ideal in ${\mathbb Z}$, where $p$ is prime. Then
+$p{\mathbb Z}$  is a maximal ideal since ${\mathbb Z}/ p {\mathbb Z} \cong
+{\mathbb Z}_p$ is a field. 
 \end{example}
   
  
@@ -1001,7 +971,7 @@ then either $a \in P$ or $b \in P$.
  
 \begin{example}{Z12_ideal}
 It is easy to check that the set $P = \{ 0, 2, 4, 6, 8, 10  \}$ is an
-ideal in ${\Bbb Z}_{12}$. This ideal is prime. In fact, it is a
+ideal in ${\mathbb Z}_{12}$. This ideal is prime. In fact, it is a
 maximal ideal.
 \end{example}
  
@@ -1031,10 +1001,10 @@ integral domain.
  
  
 \begin{example}{nZ_ideal}
-Every ideal in ${\Bbb Z}$ is of the form $n {\Bbb Z}$.  The factor
-ring ${\Bbb Z} / n{\Bbb Z} \cong {\Bbb Z}_n$ is an integral domain
+Every ideal in ${\mathbb Z}$ is of the form $n {\mathbb Z}$.  The factor
+ring ${\mathbb Z} / n{\mathbb Z} \cong {\mathbb Z}_n$ is an integral domain
 only when $n$ is prime.  It is actually a field.  Hence, the nonzero
-prime ideals in ${\Bbb Z}$ are the ideals $p{\Bbb Z}$, where $p$ is
+prime ideals in ${\mathbb Z}$ are the ideals $p{\mathbb Z}$, where $p$ is
 prime. This example really justifies the use of the word ``prime'' in
 our  definition of prime ideals. 
 \mbox{\hspace{1in}}  
@@ -1131,11 +1101,11 @@ consequences in the design of software for parallel processors.
  
 \begin{lemma}
 Let $m$ and $n$ be positive integers such that $\gcd( m, n) = 1$. Then
-for $a, b \in {\Bbb Z}$ the system
-\begin{eqnarray*}
-x & \equiv & a \pmod{m} \\
-x & \equiv & b \pmod{n} 
-\end{eqnarray*}
+for $a, b \in {\mathbb Z}$ the system
+\begin{align*}
+x & \equiv  a \pmod{m} \\
+x & \equiv  b \pmod{n} 
+\end{align*}
 has a solution.  If $x_1$ and $x_2$ are two solutions of the system,
 then  $x_1 \equiv x_2 \pmod{mn}$.
 \end{lemma}
@@ -1143,7 +1113,7 @@ then  $x_1 \equiv x_2 \pmod{mn}$.
  
 \begin{proof}
 The equation $x \equiv a \pmod{m}$ has a solution since $a +km$
-satisfies the equation for all $k \in {\Bbb Z}$.  We must show that
+satisfies the equation for all $k \in {\mathbb Z}$.  We must show that
 there exists an integer $k_1$ such that 
 \[
 a + k_1 m \equiv b \pmod{n}.
@@ -1167,15 +1137,15 @@ Now let $k_1 = (b-a)s$.
  
 To show that any two solutions are congruent modulo $mn$, let $c_1$ and
 $c_2$ be two solutions of  the system. That is,
-\begin{eqnarray*}
-c_i & \equiv & a \pmod{m} \\
-c_i & \equiv & b \pmod{n} 
-\end{eqnarray*}
+\begin{align*}
+c_i & \equiv  a \pmod{m} \\
+c_i & \equiv  b \pmod{n} 
+\end{align*}
 for $i = 1, 2$. Then
-\begin{eqnarray*}
-c_2 & \equiv & c_1 \pmod{m} \\
-c_2 & \equiv & c_1 \pmod{n}. 
-\end{eqnarray*}
+\begin{align*}
+c_2 & \equiv  c_1 \pmod{m} \\
+c_2 & \equiv  c_1 \pmod{n}. 
+\end{align*}
 Therefore, both $m$ and $n$ divide $c_1 - c_2$. Consequently,
 $c_2 \equiv c_1 \pmod{mn}$.
 \mbox{\hspace*{1in}}  
@@ -1184,10 +1154,10 @@ $c_2 \equiv c_1 \pmod{mn}$.
  
 \begin{example}{solve_system}
 Let us solve the system
-\begin{eqnarray*}
-x & \equiv & 3 \pmod{4} \\
-x & \equiv & 4 \pmod{5}. 
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  3 \pmod{4} \\
+x & \equiv  4 \pmod{5}. 
+\end{align*}
 Using the Euclidean algorithm, we can find integers $s$ and $t$ such
 that $4s + 5t =1$. Two such integers are $s = -1$ and $t = 1$.
 Consequently,
@@ -1202,12 +1172,12 @@ Theorem!for integers}
 Let $n_1, n_2, \ldots, n_k$ be positive integers such that $\gcd(n_i, n_j)
 = 1$ for $i \neq j$. Then for any integers $a_1, \ldots, a_k$, the
 system
-\begin{eqnarray*}
-x & \equiv & a_1 \pmod{n_1} \\
-x & \equiv & a_2 \pmod{n_2} \\
-  & \vdots & \\
-x & \equiv & a_k \pmod{n_k}
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  a_1 \pmod{n_1} \\
+x & \equiv  a_2 \pmod{n_2} \\
+ &  \vdots  \\
+x & \equiv  a_k \pmod{n_k}
+\end{align*}
 has a solution.  Furthermore, any two solutions of the system are
 congruent modulo $n_1 n_2 \cdots n_k$.
 \end{theorem}
@@ -1217,19 +1187,19 @@ We will use mathematical induction on the number of equations in the
 system. If there are $k= 2$ equations, then the theorem is true by 
 Lemma~14.18. Now suppose that the result is true for a system of $k$ 
 equations or less and that we wish to find a solution of 
-\begin{eqnarray*}
-x & \equiv & a_1 \pmod{n_1} \\
-x & \equiv & a_2 \pmod{n_2} \\
-  & \vdots & \\
-x & \equiv & a_{k+1} \pmod{n_{k+1}}.
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  a_1 \pmod{n_1} \\
+x & \equiv  a_2 \pmod{n_2} \\
+  & \vdots  \\
+x & \equiv  a_{k+1} \pmod{n_{k+1}}.
+\end{align*}
 Considering the first $k$ equations, there exists a solution that is
 unique modulo $n_1 \cdots n_k$, say $a$. Since $n_1 \cdots n_k$ and
 $n_{k+1}$ are relatively prime, the system 
-\begin{eqnarray*}
-x & \equiv & a \pmod{n_1 \cdots n_k } \\
-x & \equiv & a_{k+1} \pmod{n_{k+1}}
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  a \pmod{n_1 \cdots n_k } \\
+x & \equiv  a_{k+1} \pmod{n_{k+1}}
+\end{align*}
 has a solution that is unique modulo $n_1 \ldots n_{k+1}$ by the
 lemma.
 \end{proof}
@@ -1237,26 +1207,26 @@ lemma.
  
 \begin{example}{system_mod4or5}
 Let us solve the system
-\begin{eqnarray*}
-x & \equiv & 3 \pmod{4} \\
-x & \equiv & 4 \pmod{5} \\
-x & \equiv & 1 \pmod{9} \\
-x & \equiv & 5 \pmod{7}. 
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  3 \pmod{4} \\
+x & \equiv  4 \pmod{5} \\
+x & \equiv  1 \pmod{9} \\
+x & \equiv  5 \pmod{7}. 
+\end{align*}
 From Example 21 we know that 19 is a solution of the first two
 congruences and any other solution of the system is congruent to $19
 \pmod{20}$. Hence, we can reduce the system to a system of three 
 congruences:
-\begin{eqnarray*}
-x & \equiv & 19 \pmod{20} \\
-x & \equiv & 1 \pmod{9} \\
-x & \equiv & 5 \pmod{7}. 
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  19 \pmod{20} \\
+x & \equiv  1 \pmod{9} \\
+x & \equiv  5 \pmod{7}. 
+\end{align*}
 Solving the next two equations, we can reduce the system to
-\begin{eqnarray*}
-x & \equiv & 19 \pmod{180} \\
-x & \equiv & 5 \pmod{7}. 
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  19 \pmod{180} \\
+x & \equiv  5 \pmod{7}. 
+\end{align*}
 Solving this last system, we find that 19 is a solution for the system
 that is unique up to modulo 1260.
 \end{example}
@@ -1293,37 +1263,35 @@ computer would not be able to handle as a whole.
 Suppose that we wish to multiply 2134 by 1531. We will use the integers
 95, 97, 98, and 99 because they are relatively prime. We can break down
 each integer into four parts:
-\begin{eqnarray*}
-2134 & \equiv & 44 \pmod{95} \\
-2134 & \equiv & 0 \pmod{97} \\
-2134 & \equiv & 76 \pmod{98} \\
-2134 & \equiv & 55 \pmod{99} 
-\end{eqnarray*}
+\begin{align*}
+2134 & \equiv  44 \pmod{95} \\
+2134 & \equiv  0 \pmod{97} \\
+2134 & \equiv  76 \pmod{98} \\
+2134 & \equiv  55 \pmod{99} 
+\end{align*}
 and
-\begin{eqnarray*}
-1531 & \equiv & 11 \pmod{95} \\
-1531 & \equiv & 76 \pmod{97} \\
-1531 & \equiv & 61 \pmod{98} \\
-1531 & \equiv & 46 \pmod{99}. 
-\end{eqnarray*}
+\begin{align*}
+1531 & \equiv  11 \pmod{95} \\
+1531 & \equiv  76 \pmod{97} \\
+1531 & \equiv  61 \pmod{98} \\
+1531 & \equiv  46 \pmod{99}. 
+\end{align*}
 Multiplying the corresponding equations, we obtain
-\[
-\begin{array}{rcccl}
-2134 \cdot 1531 & \equiv & 44 \cdot 11 & \equiv & 9 \pmod{95} \\
-2134 \cdot 1531 & \equiv & 0  \cdot 76 & \equiv & 0 \pmod{97} \\
-2134 \cdot 1531 & \equiv & 76 \cdot 61 & \equiv & 30 \pmod{98} \\
-2134 \cdot 1531 & \equiv & 55 \cdot 46 & \equiv & 55 \pmod{99}. 
-\end{array}
-\]
+\begin{align*}
+2134 \cdot 1531 & \equiv  44 \cdot 11  \equiv  9 \pmod{95} \\
+2134 \cdot 1531 & \equiv  0  \cdot 76  \equiv  0 \pmod{97} \\
+2134 \cdot 1531 & \equiv  76 \cdot 61  \equiv  30 \pmod{98} \\
+2134 \cdot 1531 & \equiv  55 \cdot 46  \equiv 55 \pmod{99}. 
+\end{align*}
 Each of these four computations can be sent to a different processor
 if our computer has several CPUs. By the above calculation, we know
 that \mbox{$2134 \cdot 1531$} is a solution of the system
-\begin{eqnarray*}
-x & \equiv & 9 \pmod{95} \\
-x & \equiv & 0 \pmod{97} \\
-x & \equiv & 30 \pmod{98} \\
-x & \equiv & 55 \pmod{99}. 
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  9 \pmod{95} \\
+x & \equiv  0 \pmod{97} \\
+x & \equiv  30 \pmod{98} \\
+x & \equiv  55 \pmod{99}. 
+\end{align*}
 The Chinese Remainder Theorem tells us that solutions are unique up to
 modulo $95 \cdot 97 \cdot 98 \cdot 99 = \mbox{89,403,930}$. Solving
 this system of congruences for $x$ tells us that $2134 \cdot 1531 =
@@ -1350,329 +1318,279 @@ the necessary calculations simultaneously.
 \begin{enumerate}
  
  
-\bf\item\rm
+\item
 Which of the following sets are rings with respect to the usual
 operations of addition and multiplication?  If the set is a ring, is
 it also a field?
 \begin{enumerate}
  
- \bf\item\rm
-$7 {\Bbb Z}$
+ \item
+$7 {\mathbb Z}$
  
- \bf\item\rm
-${\Bbb Z}_{18}$
+ \item
+${\mathbb Z}_{18}$
  
- \bf\item\rm
-${\Bbb Q} ( \sqrt{2}\, ) = \{a + b \sqrt{2} : a, b \in {\Bbb Q}\}$
+ \item
+${\mathbb Q} ( \sqrt{2}\, ) = \{a + b \sqrt{2} : a, b \in {\mathbb Q}\}$
  
- \bf\item\rm
-${\Bbb Q} ( \sqrt{2}, \sqrt{3}\, ) = \{a + b \sqrt{2} + c \sqrt{3} + d
-\sqrt{6} :  a, b, c, d \in {\Bbb Q}\}$
+ \item
+${\mathbb Q} ( \sqrt{2}, \sqrt{3}\, ) = \{a + b \sqrt{2} + c \sqrt{3} + d
+\sqrt{6} :  a, b, c, d \in {\mathbb Q}\}$
  
- \bf\item\rm
-${\Bbb Z}[\sqrt{3}\, ] = \{ a + b \sqrt{3} : a, b \in {\Bbb Z} \}$
+ \item
+${\mathbb Z}[\sqrt{3}\, ] = \{ a + b \sqrt{3} : a, b \in {\mathbb Z} \}$
  
- \bf\item\rm
-$R = \{a + b \sqrt[3]{3} : a, b \in {\Bbb Q} \}$
+ \item
+$R = \{a + b \sqrt[3]{3} : a, b \in {\mathbb Q} \}$
  
- \bf\item\rm
-${\Bbb Z}[ i ] = \{ a + b i :\mbox{ $a, b \in {\Bbb Z}$ and  $i^2 =
+ \item
+${\mathbb Z}[ i ] = \{ a + b i :\mbox{ $a, b \in {\mathbb Z}$ and  $i^2 =
 -1$ } \}$ 
  
- \bf\item\rm
-${\Bbb Q}( \sqrt[3]{3}\, ) = \{ a + b \sqrt[3]{3} + c \sqrt[3]{9} : a, b,
-c \in {\Bbb Q} \}$ 
+ \item
+${\mathbb Q}( \sqrt[3]{3}\, ) = \{ a + b \sqrt[3]{3} + c \sqrt[3]{9} : a, b,
+c \in {\mathbb Q} \}$ 
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Let $R$ be the ring of $2 \times 2$ matrices of the form
 \[
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & b \\
 0 & 0
-\end{array}
-\right),
+\end{pmatrix},
 \]
-where $a, b \in {\Bbb R}$.  Show that although $R$ is a ring that has no
+where $a, b \in {\mathbb R}$.  Show that although $R$ is a ring that has no
 identity, we can find a subring $S$ of $R$ with an identity.
  
  
-\bf\item\rm
+\item
 List or characterize all of the units in each of the following rings.
 \begin{enumerate}
  
- \bf\item\rm
-${\Bbb Z}_{10}$
+ \item
+${\mathbb Z}_{10}$
  
- \bf\item\rm
-${\Bbb Z}_{12}$
+ \item
+${\mathbb Z}_{12}$
  
- \bf\item\rm
-${\Bbb Z}_{7}$
+ \item
+${\mathbb Z}_{7}$
  
- \bf\item\rm
-${\Bbb M}_2( {\Bbb Z} )$, the $2 \times 2$ matrices with entries in
-${\Bbb Z}$ 
+ \item
+${\mathbb M}_2( {\mathbb Z} )$, the $2 \times 2$ matrices with entries in
+${\mathbb Z}$ 
  
- \bf\item\rm
-${\Bbb M}_2( {\Bbb Z}_2 )$, the $2 \times 2$ matrices with entries in
-${\Bbb Z}_2$  
+ \item
+${\mathbb M}_2( {\mathbb Z}_2 )$, the $2 \times 2$ matrices with entries in
+${\mathbb Z}_2$  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Find all of the ideals in each of the following rings.  Which of these
 ideals are maximal and which are prime?
 \begin{enumerate}
  
- \bf\item\rm
-${\Bbb Z}_{18}$
+ \item
+${\mathbb Z}_{18}$
  
- \bf\item\rm
-${\Bbb Z}_{25}$
+ \item
+${\mathbb Z}_{25}$
  
- \bf\item\rm
-${\Bbb M}_2( {\Bbb R} )$, the $2 \times 2$ matrices with entries in
-${\Bbb R}$ 
+ \item
+${\mathbb M}_2( {\mathbb R} )$, the $2 \times 2$ matrices with entries in
+${\mathbb R}$ 
  
- \bf\item\rm
-${\Bbb M}_2( {\Bbb Z} )$, the $2 \times 2$ matrices with entries in
-${\Bbb Z}$ 
+ \item
+${\mathbb M}_2( {\mathbb Z} )$, the $2 \times 2$ matrices with entries in
+${\mathbb Z}$ 
  
- \bf\item\rm
-${\Bbb Q}$
+ \item
+${\mathbb Q}$
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 For each of the following rings $R$ with ideal $I$, give an addition
 table and a multiplication table for $R/I$. 
 \begin{enumerate}
  
- \bf\item\rm
-$R = {\Bbb Z}$ and $I = 6 {\Bbb Z}$
+ \item
+$R = {\mathbb Z}$ and $I = 6 {\mathbb Z}$
  
- \bf\item\rm
-$R = {\Bbb Z}_{12}$ and $I = \{ 0, 3, 6, 9 \}$
+ \item
+$R = {\mathbb Z}_{12}$ and $I = \{ 0, 3, 6, 9 \}$
  
 \end{enumerate}
  
  
-\bf\item\rm
-Find all homomorphisms $\phi : {\Bbb Z} / 6 {\Bbb Z} \rightarrow {\Bbb
-Z} / 15 {\Bbb Z}$. 
+\item
+Find all homomorphisms $\phi : {\mathbb Z} / 6 {\mathbb Z} \rightarrow {\mathbb
+Z} / 15 {\mathbb Z}$. 
  
  
-\bf\item\rm
-Prove that ${\Bbb R}$ is not isomorphic to ${\Bbb C}$.
+\item
+Prove that ${\mathbb R}$ is not isomorphic to ${\mathbb C}$.
  
  
-\bf\item\rm
-Prove or disprove: The ring ${\Bbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2}
-: a, b \in {\Bbb Q} \}$ is isomorphic to the ring ${\Bbb Q}( \sqrt{3}\,
-) = \{a + b \sqrt{3} : a, b \in {\Bbb Q}  \}$.
+\item
+Prove or disprove: The ring ${\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2}
+: a, b \in {\mathbb Q} \}$ is isomorphic to the ring ${\mathbb Q}( \sqrt{3}\,
+) = \{a + b \sqrt{3} : a, b \in {\mathbb Q}  \}$.
  
  
-\bf\item\rm
+\item
 What is the characteristic of the field formed by the set of matrices
 \[
 F
 =
 \left\{
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 1 & 0 \\
 0 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 1 & 1 \\
 1 & 0
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 0 & 1 \\
 1 & 1
-\end{array}
-\right),
-\left(
-\begin{array}{cc}
+\end{pmatrix},
+\begin{pmatrix}
 0 & 0 \\
 0 & 0
-\end{array}
-\right)
+\end{pmatrix}
 \right\}
 \]
-with entries in ${\Bbb Z}_2$?
+with entries in ${\mathbb Z}_2$?
  
  
-\bf\item\rm
-Define a map $\phi : {\Bbb C} \rightarrow {\Bbb M}_2 ({\Bbb R})$ by
+\item
+Define a map $\phi : {\mathbb C} \rightarrow {\mathbb M}_2 ({\mathbb R})$ by
 \[
 \phi( a + bi) =
-\left(
-\begin{array}{cc}
+\begin{pmatrix}
 a & b \\
 -b & a
-\end{array}
-\right).
+\end{pmatrix}.
 \]
-Show that $\phi$ is an isomorphism of ${\Bbb C}$ with its image in
-${\Bbb M}_2 ({\Bbb R})$.
+Show that $\phi$ is an isomorphism of ${\mathbb C}$ with its image in
+${\mathbb M}_2 ({\mathbb R})$.
  
  
  
-\bf\item\rm
-Prove that the Gaussian integers, ${\Bbb Z}[i ]$, are an integral
+\item
+Prove that the Gaussian integers, ${\mathbb Z}[i ]$, are an integral
 domain. 
  
  
  
-\bf\item\rm
-Prove that  ${\Bbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i : a, b \in
-{\Bbb Z} \}$ is an integral domain.
+\item
+Prove that  ${\mathbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i : a, b \in
+{\mathbb Z} \}$ is an integral domain.
  
  
-\bf\item\rm
+\item
 Solve each of the following systems of congruences.
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
+\begin{align*}
+x & \equiv  2 \pmod{5} \\
+x & \equiv  6 \pmod{11}
+\end{align*}
+
+\item
+\begin{align*}
+x & \equiv  3 \pmod{7} \\
+x & \equiv  0 \pmod{8} \\
+x & \equiv  5 \pmod{15} 
+\end{align*}
+
+\item
+\begin{align*}
+x & \equiv  2 \pmod{4} \\
+x & \equiv  4 \pmod{7} \\
+x & \equiv  7 \pmod{9} \\
+x & \equiv  5 \pmod{11} 
+\end{align*}
+
+\item
+\begin{align*}
+x & \equiv  3 \pmod{5} \\
+x & \equiv  0 \pmod{8} \\
+x & \equiv  1 \pmod{11} \\
+x & \equiv  5 \pmod{13} 
+\end{align*}
+
+
+\end{enumerate}
+\end{multicols}
  
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
-\raisebox{-5pt}{\parbox{1.85in}{
-\begin{eqnarray*}
-x & \equiv & 2 \pmod{5} \\
-x & \equiv & 6 \pmod{11}
-\end{eqnarray*}
-}}
- 
-  
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-\raisebox{-12.75pt}{\parbox{1.85in}{
-\begin{eqnarray*}
-x & \equiv & 3 \pmod{7} \\
-x & \equiv & 0 \pmod{8} \\
-x & \equiv & 5 \pmod{15} 
-\end{eqnarray*}
-}}
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{3pt}        %two column exercise list
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (c)}]
-\raisebox{-20pt}{\parbox{1.85in}{
-\begin{eqnarray*}
-x & \equiv & 2 \pmod{4} \\
-x & \equiv & 4 \pmod{7} \\
-x & \equiv & 7 \pmod{9} \\
-x & \equiv & 5 \pmod{11} 
-\end{eqnarray*}
-}}
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (d)}]
-\raisebox{-20pt}{\parbox{1.85in}{
-\begin{eqnarray*}
-x & \equiv & 3 \pmod{5} \\
-x & \equiv & 0 \pmod{8} \\
-x & \equiv & 1 \pmod{11} \\
-x & \equiv & 5 \pmod{13} 
-\end{eqnarray*}
-}}
 
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
  
  
- 
- 
-\bf\item\rm  %%%%%%%%%%%%%%%
+\item  %%%%%%%%%%%%%%%
 Use the method of parallel computation outlined in the text to
 calculate $2234 + 4121$ by dividing the calculation 
 into four separate additions modulo 95, 97, 98, and 99. 
  
-\bf\item\rm
+\item
 Explain why the method of parallel computation outlined in the text
 fails for $2134 \cdot 1531$ if we attempt to break the calculation
 down into two smaller calculations modulo 98 and 99.
  
 %***********THEORY************
  
-\bf\item\rm
+\item
 If $R$ is a field,
  show that the only two ideals of $R$ are $\{ 0 \}$
 and $R$ itself.
  
  
-\bf\item\rm
+\item
 Let $a$ be any element in a ring $R$ with identity. Show that $(-1)a=
 -a$. 
  
  
-\bf\item\rm
+\item
 Prove that $(-a)(-b) = ab$ for any elements $a$ and $b$ in a ring $R$. 
  
   
-\bf\item\rm
+\item
 Let $\phi : R \rightarrow S$ be a ring homomorphism. Prove each of the
 following statements. 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 If $R$ is a commutative ring, then $\phi(R)$ is a commutative ring. 
  
- \bf\item\rm
+ \item
 $\phi( 0 ) = 0$.
  
- \bf\item\rm
+ \item
 Let $1_R$ and $1_S$ be the identities for $R$ and $S$, respectively.
 If $\phi$ is onto, then $\phi(1_R) = 1_S$. 
  
- \bf\item\rm
+ \item
 If $R$ is a field and $\phi(R) \neq 0$, then $\phi(R)$ is a field.
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Prove that the associative law for multiplication and the distributive
 laws hold in $R/I$. 
  
  
-\bf\item\rm
+\item
 Prove the Second Isomorphism Theorem for rings: Let $I$ be a  subring
 of a ring $R$  and  $J$ an ideal in $R$.  Then $I \cap J$ is an ideal
 in $I$ and 
@@ -1681,7 +1599,7 @@ I / I \cap J \cong I + J /J.
 \]
  
  
-\bf\item\rm
+\item
 Prove the Third Isomorphism Theorem for rings: Let $R$ be a ring and
 $I$ and $J$ be ideals of $R$, where $J \subset I$.  Then
 \[
@@ -1689,7 +1607,7 @@ R/I \cong \frac{R/J}{I/J}.
 \]
  
  
-\bf\item\rm
+\item
 Prove the Correspondence Theorem:
 Let $I$ be a ideal of a ring $R$. Then $S \rightarrow S/I$ is a
 one-to-one correspondence between the set of subrings $S$ containing
@@ -1698,77 +1616,77 @@ of $R$ correspond to ideals of $R/I$.
  
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring and $S$ a subset of $R$.  Show that $S$ is a subring
 of $R$ if and only if each of the following conditions is satisfied. 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 $S \neq \emptyset$. 
  
- \bf\item\rm
+ \item
 $rs \in S$ for all $r, s \in S$.
  
- \bf\item\rm
+ \item
 $r-s \in S$ for all $r, s \in S$.
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring with a collection of subrings $\{ R_{\alpha} \}$.
 Prove that $\bigcap  R_{\alpha}$ is a subring of $R$.  Give an example
 to show that the union of two subrings cannot be a subring.
  
  
-\bf\item\rm
+\item
 Let $\{ I_{\alpha} \}_{\alpha \in A}$ be a collection of ideals in a
 ring $R$.  Prove that $\bigcap_{\alpha \in A} I_{\alpha}$ is also an
 ideal in $R$. Give an example to show that if $I_1$ and $I_2$ are
 ideals in $R$, then $I_1 \cup I_2$ may not be an ideal. 
  
  
-\bf\item\rm
+\item
 Let $R$ be an integral domain.  Show that if the only ideals in $R$ 
 are $\{ 0 \}$ and $R$ itself, $R$ must be a field. 
  
  
-\bf\item\rm
+\item
 Let $R$ be a commutative ring.  An element $a$ in $R$ is {\bfi
 nilpotent\/}\index{Nilpotent element}\index{Element!nilpotent} if $a^n =
 0$ for some positive integer $n$. Show that the set of all nilpotent
 elements forms an ideal in $R$.   
  
  
-\bf\item\rm
+\item
 A ring $R$ is a {\bfi Boolean
 ring\/}\index{Boolean ring}\index{Ring!Boolean} if for every $a \in R$,
 $a^2 = a$. Show that every Boolean ring is a commutative ring.
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring, where $a^3 =a$ for all $a \in R$. Prove that $R$
 must be a commutative ring. 
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring with identity $1_R$ and $S$ a subring of $R$ with
 identity $1_S$.  Prove or disprove that $1_R = 1_S$.
  
  
  
-\bf\item\rm
+\item
 If we do not require the identity of a ring to be distinct from 0, we
 will not have a very interesting mathematical structure. Let $R$ be a
 ring such that $1 = 0$. Prove that $R = \{ 0 \}$. 
  
  
-\bf\item\rm
+\item
 Let $S$ be a subset of a ring $R$.  Prove that there is a subring $R'$
 of $R$ that contains $S$. 
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring. Define the {\bfi center\/}\index{Center!of a
 ring}\index{Ring!center of} of $R$ to be 
 \[
@@ -1777,36 +1695,36 @@ Z(R) = \{ a \in R : \mbox{ $ar = ra$ for all $r \in R$ } \}.
 Prove that $Z(R)$ is a commutative subring of $R$.
  
  
-\bf\item\rm
+\item
 Let $p$ be prime. Prove that
 \[
-{\Bbb Z}_{(p)}\label{notelocalint} = \{ a / b :  \mbox{ $a, b \in
-{\Bbb Z}$ and $\gcd( b,p) =  1$}  \}  
+{\mathbb Z}_{(p)}\label{notelocalint} = \{ a / b :  \mbox{ $a, b \in
+{\mathbb Z}$ and $\gcd( b,p) =  1$}  \}  
 \]
-is a ring.  The ring ${\Bbb Z}_{(p)}$ is called the {\bfi ring of
+is a ring.  The ring ${\mathbb Z}_{(p)}$ is called the {\bfi ring of
 integers localized at $p$}\index{Ring!of integers localized at $p$}.  
  
  
-\bf\item\rm
+\item
 Prove or disprove: Every finite integral domain is isomorphic to
-${\Bbb Z}_p$. 
+${\mathbb Z}_p$. 
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring.
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 Let $u$ be a unit in $R$.  Define a map $i_u : R \rightarrow R$ by $r
 \mapsto uru^{-1}$. Prove that $i_u$ is an automorphism of $R$. Such an
 automorphism of $R$ is called an inner automorphism of $R$. Denote the
 set of all inner automorphisms of $R$ by $Inn(R)$.
  
- \bf\item\rm
+ \item
 Denote the set of all automorphisms of $R$ by $Aut(R)$. Prove that
 $Inn(R)$ is a normal subgroup of  $Aut(R)$. 
  
- \bf\item\rm
+ \item
 Let $U(R)$ be the group of units in $R$. Prove that the map
 \[
 \phi : U(R) \rightarrow Inn(R)
@@ -1814,56 +1732,56 @@ Let $U(R)$ be the group of units in $R$. Prove that the map
 defined by $u \mapsto i_u$ is a homomorphism.  Determine the kernel of
 $\phi$. 
  
- \bf\item\rm
-Compute $Aut( {\Bbb Z})$, $Inn( {\Bbb Z})$,  and $U( {\Bbb Z})$. 
+ \item
+Compute $Aut( {\mathbb Z})$, $Inn( {\mathbb Z})$,  and $U( {\mathbb Z})$. 
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Let $R$ and $S$ be arbitrary rings.  Show that their Cartesian product
 is a ring if we define addition and multiplication in $R \times S$  by 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 $(r, s) + (r', s') = ( r + r', s + s')$
  
- \bf\item\rm
+ \item
 $(r, s)(r', s') = ( rr', ss')$
  
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 An element $a$ in a ring is called an {\bfi
 idempotent\/}\index{Idempotent}\index{Element!idempotent} if $x^2 = x$.
 Prove that the only idempotents in an integral domain are $0$ and $1$. 
 Find a ring with a idempotent $x$ not equal to 0 or 1.
  
-\bf\item\rm
+\item
 Let $\gcd(a, n) = d$ and $\gcd(b, d) = 1$.  Prove that $ax \equiv b
 \pmod{n}$ does not have a solution.
  
-\bf\item\rm
+\item
 {\bf The Chinese Remainder Theorem for Rings.}\index{Chinese Remainder
 Theorem!for rings}
 Let $R$ be a ring and $I$ and $J$ be ideals in $R$ such that $I+J =
 R$. 
 \begin{enumerate}
  
-  \bf\item\rm
+  \item
 Show that for any $r$ and $s$ in $R$, the system of equations
-\begin{eqnarray*}
-x & \equiv & r \pmod{I} \\
-x & \equiv & s \pmod{J}
-\end{eqnarray*}
+\begin{align*}
+x & \equiv  r \pmod{I} \\
+x & \equiv  s \pmod{J}
+\end{align*}
 has a solution.  
  
-  \bf\item\rm
+  \item
 In addition, prove that any two solutions of the system are congruent
 modulo $I \cap J$. 
  
-  \bf\item\rm
+  \item
 Let $I$ and $J$ be ideals in a ring $R$ such that $I + J = R$. Show
 that there exists a ring isomorphism
 \[
@@ -1881,7 +1799,7 @@ R/(I \cap J) \cong R/I \times R/J.
 \subsection*{Programming Exercise}
  
  
-Write a computer program to simulate fast addition and multiplication
+Write a computer program implementing fast addition and multiplication
 using the Chinese Remainder Theorem and the method outlined in the
 text. 
  
@@ -1892,49 +1810,49 @@ text.
 {\small
 \begin{itemize}
  
-\item[{\bf [1]}]
+\item[{\bf [1]}] %Reference updated - TWJ 8/14/2010
 Anderson, F. W. and Fuller, K. R. {\it Rings and Categories of
-Modules}. 2nd ed.  Springer-Verlag, New York, 1992.
+Modules}. 2nd ed.  Springer, New York, 1992.
  
-\item[{\bf [2]}]
+\item[{\bf [2]}] %Reference updated - TWJ 8/14/2010
 Atiyah, M. F.  and MacDonald, I. G. {\it Introduction to
-Commutative Algebra}. Addison-Wesley, Reading, MA, 1969.
+Commutative Algebra}. Westview Press, Boulder, CO, 1994.
  
-\item[{\bf [3]}]
-Herstein, I. N. {\it Noncommutative Rings}, Carus Monograph
-Series, No.~15. Mathematical Association of America,
-Washington, DC, 1968.
+\item[{\bf [3]}] %Reference updated - TWJ 8/14/2010
+Herstein, I. N. {\it Noncommutative Rings}. Mathematical Association of America,
+Washington, DC, 1994.
  
  
-\item[{\bf [4]}]
+\item[{\bf [4]}] %Out of print - TWJ 8/14/2010
 Kaplansky, I. {\it Commutative Rings}. Revised edition.
 University of Chicago Press, Chicago, 1974.
  
  
-\item[{\bf [5]}]
+\item[{\bf [5]}] %Reference updated - TWJ 8/14/2010
 Knuth, D. E. {\it The Art of Computer Programming: Semi-Numerical
-Algorithms}, vol. 2. 2nd ed. Addison-Wesley, Reading, MA, 1981. 
+Algorithms}, vol. 2. 3rd ed. Addison-Wesley Professional, Boston, 1997. 
  
  
-\item[{\bf [6]}]
-Lidl, R. and Pilz, G. {\it Applied Abstract Algebra}.
-Springer-Verlag, New York, 1984. A good source for applications.
+\item[{\bf [6]}] %Reference updated - TWJ 8/14/2010
+Lidl, R. and Pilz, G. 
+{\it Applied Abstract Algebra}. 2nd ed. Springer,
+New York, 1998. A good source for applications.
  
-\item[{\bf [7]}]
+\item[{\bf [7]}] %Out of print ??? - TWJ 8/14/2010
 Mackiw, G. {\it Applications of Abstract Algebra}. Wiley,
 New York, 1985.
  
  
-\item[{\bf [8]}]
+\item[{\bf [8]}] %Out of print ??? - TWJ 8/14/2010
 McCoy,  N. H. {\it  Rings and Ideals}. Carus Monograph Series, No. 8.
 Mathematical Association of America, Washington, DC, 1968. 
  
-\item[{\bf [9]}]
+\item[{\bf [9]}] %Out of print ??? - TWJ 8/14/2010
 McCoy,  N. H. {\it  The Theory of Rings}. Chelsea, New York, 1972.
  
-\item[{\bf [10]}]
+\item[{\bf [10]}] %Reference updated - TWJ 8/14/2010
 Zariski, O. and Samuel, P. {\it Commutative Algebra}, vols. I
-and II. Springer-Verlag, New York, 1986, 1991.
+and II. Springer, New York, 1975, 1960.
  
  
  
