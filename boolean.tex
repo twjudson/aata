@@ -38,41 +38,47 @@ The set of integers (or rationals  or reals) is a poset where $a \leq  b$ has th
 
 \begin{example}{power_set_subset}
 Let $X$ be any set.  We will define the {\bfi power set\/}\index{Power set} of $X$ to be the set of all subsets of $X$. We denote the power set of $X$ by ${\cal P}(X)$. For example, let $X = \{ a, b, c \}$.  Then ${\cal P}(X)$ is  the set of all subsets of the set  $\{ a, b, c \}$: 
-$$
+\[
 \begin{array}{cccc}
 \emptyset & \{ a \} & \{ b \} & \{ c \} \\
 \{ a, b \} & \{ a, c\} &\{ b, c\} & \{ a, b, c \}.
 \end{array}
-$$
+\]
 On any power set of a set $X$, set inclusion, $\subseteq$, is a partial order.  We can represent the order on $\{ a, b, c \}$ schematically by a diagram such as the one in  Figure~\ref{partial}. 
 \end{example}
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.15in}
-\begin{picture}(20,10)
-\put(8.25,9){$\{a, b, c \}$}
-\put(3.9,6){$\{a, b \}$}
-\put(8.8,6){$\{a, c \}$}
-\put(13.9,6){$\{b, c \}$}
-\put(4.2,3){$\{a \}$}
-\put(9.2,3){$\{b \}$}
-\put(14.2,3){$\{ c \}$}
-\put(9.8,0){$\emptyset$}
-\put(10,4){\line(0,1){1.5}}
-\put(10,1){\line(0,1){1.5}}
-\put(10,7){\line(0,1){1.5}}
-\put(15,4){\line(0,1){1.5}}
-\put(5,4){\line(0,1){1.5}}
-\put(11,1){\line(5,2){3}}
-\put(9,1){\line(-5,2){3}}
-\put(9,8.5){\line(-5,-2){3}}
-\put(11,8.5){\line(5,-2){3}}
-\put(11,4){\line(5,2){3}}
-\put(9,4){\line(-5,2){3}}
-\put(6,4){\line(5,2){3}}
-\put(14,4){\line(-5,2){3}}
-\end{picture}
+
+\begin{tikzpicture}[scale=0.7] %Replaced figure with tikz figure and corrected figure - TWJ 8/17/2010
+
+\draw  (0,2.6) -- (0,1.6);
+\draw  (0,-2.6) -- (0,-1.6);
+
+\draw  (2,0.4) -- (2,-0.4);
+\draw  (-2,0.4) -- (-2,-0.4);
+
+\draw  (1.6,1.6) -- (0.4,2.6);
+\draw  (-1.6,-1.6) -- (-0.4,-2.6);
+\draw  (-1.6,1.6) -- (-0.4,2.6);
+\draw  (1.6,-1.6) -- (0.4,-2.6);
+
+\draw  (1.6,0.6) -- (0.4,-0.6);
+\draw  (-1.6,0.6) -- (-0.4,-0.6);
+
+\draw  (0.4,0.6) -- (1.6,-0.6);
+\draw  (-0.4,0.6) -- (-1.6,-0.6);
+
+\node at (0, 3) {$\{ a, b, c \}$};
+\node at (-2, 1) {$\{ a, b \}$};
+\node at (0, 1) {$\{ a, c \}$};
+\node at (2, 1) {$\{ b, c \}$};
+\node at (-2, -1) {$\{ a \}$};
+\node at (0, -1) {$\{ b \}$};
+\node at (2, -1) {$\{ c \}$};
+\node at (0, -3) {$\emptyset$};
+
+\end{tikzpicture}
 \end{center}
 \caption{Partial order on ${\cal P}( \{ a, b, c \})$}
 \label{partial}
@@ -89,33 +95,43 @@ There can be more than one partial order on a particular set.  We can form a par
 
 
 \begin{example}{poset_div}
-Let $X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}$ be the set of divisors of 24 with the partial order defined in Example~4. Figure~\ref{Poset1} shows the partial order on $X$. 
+Let $X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}$ be the set of divisors of 24 with the partial order defined in Example~\ref{example:boolean:poorder_not_unique}. Figure~\ref{Poset1} shows the partial order on $X$. 
 \end{example}
 
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.15in}
-\begin{picture}(15,12.5)
-\put(7.1,11.3){24}
-\put(4.8,9){8}
-\put(9.6,9){12}
-\put(4.8,6){4}
-\put(9.8,6){6}
-\put(4.8,3){2}
-\put(9.8,3){3}
-\put(7.25,0.5){1}
-\put(10,4){\line(0,1){1.5}}
-\put(5,7){\line(0,1){1.5}}
-\put(6,7){\line(5,3){3}}
-\put(10,7){\line(0,1){1.5}}
-\put(5,4){\line(0,1){1.5}}
-\put(6,4){\line(5,3){3}}
-\put(8,1.5){\line(5,3){1.5}}
-\put(7,1.5){\line(-5,3){1.5}}
-\put(8,11){\line(5,-3){1.5}}
-\put(7,11){\line(-5,-3){1.5}}
-\end{picture}
+
+\begin{tikzpicture}[scale=0.6] %Replaced figure with tikz figure - TWJ 8/17/2010
+
+
+\draw  (1.2,2.4) -- (0.35,3.1);
+\draw  (-1.2,2.4) -- (-0.35,3.1);
+\draw  (1.2,-2.4) -- (0.35,-3.1);
+\draw  (-1.2,-2.4) -- (-0.35,-3.1);
+
+\draw (1.5,1.6) -- (1.5,0.4);
+\draw (-1.5,1.6) -- (-1.5,0.4);
+\draw (1.5,-1.6) -- (1.5,-0.4);
+\draw (-1.5,-1.6) -- (-1.5,-0.4);
+
+\draw (-1.1,0.2) -- (1.1,1.8);
+\draw (-1.1,-1.8) -- (1.1,-0.2);
+
+\node at (0, 3.5) {24};
+
+\node at (1.5, 2) {12};
+\node at (1.5, 0) {6};
+\node at (1.5, -2) {3};
+
+\node at (-1.5, 2) {8};
+\node at (-1.5, 0) {4};
+\node at (-1.5, -2) {2};
+
+\node at (0, -3.5) {1};
+
+\end{tikzpicture}
+
 \end{center}
 \caption{A partial order on the divisors of 24}
 \label{Poset1}
@@ -125,7 +141,7 @@ Let $Y$ be a subset of a poset $X$. An element $u$ in $X$ is an {\bfi upper boun
 
 
 \begin{example}{poset_gcd}
-Let $Y = \{  2, 3, 4, 6 \}$ be contained in the set $X$ of Example 5.  Then $Y$ has upper bounds 12 and 24, with 12 as a least upper bound.  The only lower bound is 1; hence, it must be a greatest lower bound.
+Let $Y = \{  2, 3, 4, 6 \}$ be contained in the set $X$ of Example~\ref{example:boolean:poset_div}.  Then $Y$ has upper bounds 12 and 24, with 12 as a least upper bound.  The only lower bound is 1; hence, it must be a greatest lower bound.
 \end{example}
 
 
@@ -143,9 +159,7 @@ Therefore, $u_1 = u_2$ by antisymmetry.  A similar argument show that
 the greatest lower bound is unique.
 \end{proof}
  
- 
 \medskip
- 
  
 On many posets it is possible to define binary operations
 by using the greatest lower bound and the least upper bound of two
@@ -246,9 +260,9 @@ $b \vee a$ is the least upper bound of $\{ b, a \}$; however, $\{ a, b\}
 We will show that $a \vee ( b \vee c)$ and $(a \vee b) \vee c$
 are both least upper bounds of $\{ a, b, c \}$.	 Let $d =  a \vee b$.
 Then $c \preceq  d \vee c = (a \vee b) \vee c$. We also know that 
-$$
+\[
 a \preceq  a \vee b =d \preceq  d \vee c = (a \vee b) \vee c.
-$$
+\]
 A similar argument demonstrates that $b \preceq (a \vee b) \vee c$.
 Therefore, $(a \vee b) \vee c$ is an upper bound of $\{ a, b, c \}$.
 We now need to show that $(a \vee b) \vee c$ is the least upper bound
@@ -282,7 +296,7 @@ to ask whether or not this set comes from some lattice.  The
 following theorem says that this is always the case.
  
  
-\begin{theorem}
+\begin{theorem}\label{boolean:PO_theorem}
 Let $L$ be a nonempty set with two binary operations $\vee$ and
 $\wedge$ satisfying the commutative, associative, idempotent, and  
 absorption laws.  We can define a partial order on $L$ by  $a \preceq
@@ -301,9 +315,9 @@ is antisymmetric, let $a \preceq b$ and $b \preceq a$. Then $a \vee b
 = b \vee a = a$.   Finally, we must show that $\preceq$ is
 transitive. Let $a \preceq b$ and $b \preceq c$. Then $a \vee b = b$
 and $b \vee c = c$.  Thus,
-$$
+\[
 a \vee c = a \vee (b \vee c ) = ( a \vee b) \vee c = b \vee c = c,
-$$
+\]
 or $a \preceq c$.
  
 To show that $L$ is a lattice, we must prove that $a \vee b$ and $a
@@ -313,9 +327,9 @@ it follows that $a \preceq a \vee b$.  Similarly, $b \preceq a \vee
 b$. Therefore, $a \vee b$ is an upper bound for $a$ and $b$. Let $u$
 be any other upper bound of both $a$ and $b$. Then $a \preceq u$ and
 $b \preceq u$. But $a \vee b \preceq u$ since 
-$$
+\[
 (a \vee b) \vee u = a \vee (b \vee u) = a \vee u = u.
-$$
+\]
 The proof that $a \wedge b$ is the greatest lower bound of $a$ and
 $b$ is left as an exercise.
 \end{proof}
@@ -341,9 +355,9 @@ all $a \in X$.
  
  
 Let $A$ be in ${\cal P}(X)$. Recall that the complement of $A$ is
-$$
+\[
 A' = X \setminus A = \{ x : \mbox{ $x \in X$ and $x \notin A$}  \}.
-$$
+\]
 We know that $A \cup A' = X$ and $A \cap A' = \emptyset$. We can
 generalize this example for lattices. A lattice $L$ with a largest
 element $I$ and a smallest element $O$ is {\bfi
@@ -355,43 +369,43 @@ such that $a \vee a' = I$ and $a \wedge a' = O$.
 In a lattice $L$, the binary operations $\vee$ and $\wedge$ satisfy
 commutative and associative laws; however, they need not satisfy the
 distributive law 
-$$ 
+\[ 
 a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c );
-$$ 
+\] 
 however, in ${\cal P}(X)$ the distributive law is satisfied since
-$$
+\[
 A \cap ( B \cup C ) = (A \cap B ) \cup ( A \cap C )
-$$
+\]
 for $A, B, C \in {\cal P}(X)$. We will say that a lattice $L$ is
 {\bfi distributive\/}\index{Lattice!distributive} if the following
 distributive law holds:
-$$
+\[
 a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )
-$$
+\]
 for all $a, b, c \in L$.
  
  
-\begin{theorem}
+\begin{theorem}\label{boolean:dist_lattice_theorem}
 A lattice $L$ is distributive if and only if 
-$$
+\[
 a \vee ( b \wedge c ) = ( a \vee b ) \wedge ( a \vee c )
-$$
+\]
 for all $a, b, c \in L$.
 \end{theorem}
  
  
 \begin{proof}
 Let us assume that $L$ is a distributive lattice.
-\begin{eqnarray*}
+\begin{align*}
 a \vee ( b \wedge c ) 
-& = & [a \vee (a \wedge c) ] \vee ( b \wedge c ) \\
-& = & a \vee [(a \wedge c)  \vee ( b \wedge c )] \\
-& = & a \vee [(c \wedge a)  \vee ( c \wedge b )] \\
-& = & a \vee [c \wedge ( a  \vee b )] \\
-& = & a \vee [( a  \vee b ) \wedge c ] \\
-& = & [( a  \vee b ) \wedge a ] \vee [(a \vee b) \wedge c ] \\
-& = & ( a \vee b ) \wedge ( a \vee c ).
-\end{eqnarray*}
+& = [a \vee (a \wedge c) ] \vee ( b \wedge c ) \\
+& = a \vee [(a \wedge c)  \vee ( b \wedge c )] \\
+& = a \vee [(c \wedge a)  \vee ( c \wedge b )] \\
+& = a \vee [c \wedge ( a  \vee b )] \\
+& = a \vee [( a  \vee b ) \wedge c ] \\
+& = [( a  \vee b ) \wedge a ] \vee [(a \vee b) \wedge c ] \\
+& = ( a \vee b ) \wedge ( a \vee c ).
+\end{align*}
 The converse follows directly from the Duality Principle.
 \end{proof}
  
@@ -442,27 +456,27 @@ I$ and $a \wedge a' = O$.
 \begin{proof}
 Let $B$ be a set satisfying (1)--(5) in the theorem.  One of the
 idempotent laws is satisfied since
-\begin{eqnarray*}
-a & = & a \vee O \\
-& = & a \vee (a \wedge a') \\
-& = & (a \vee a) \wedge (a \vee a') \\
-& = & (a \vee a ) \wedge I \\
-& = & a \vee a.
-\end{eqnarray*}
+\begin{align*}
+a & = a \vee O \\
+& = a \vee (a \wedge a') \\
+& = (a \vee a) \wedge (a \vee a') \\
+& = (a \vee a ) \wedge I \\
+& = a \vee a.
+\end{align*}
 Observe that 
-$$
+\[
 I \vee b = (I \vee b ) \wedge I = (I \wedge I) \vee (b \wedge I) = I
 \vee I =  I.  
-$$
+\]
 Consequently, the first of the two absorption laws holds, since
-\begin{eqnarray*}
-a \vee (a \wedge b) & = & (a \wedge I) \vee (a \wedge b) \\
-& = & a \wedge (I \vee b) \\
-& = & a  \wedge I \\
-& = & a.
-\end{eqnarray*}
+\begin{align*}
+a \vee (a \wedge b) & = (a \wedge I) \vee (a \wedge b) \\
+& = a \wedge (I \vee b) \\
+& = a  \wedge I \\
+& = a.
+\end{align*}
 The other idempotent and absorption laws are proven similarly. Since
-$B$ also satisfies (1)--(3), the conditions of Theorem~17.3 are met;
+$B$ also satisfies (1)--(3), the conditions of Theorem~\ref{boolean:PO_theorem} are met;
 therefore, $B$ must be a lattice.  Condition (4) tells us that $B$ is
 a distributive lattice.
  
@@ -472,9 +486,9 @@ smallest element in $B$. To show that $I$ is the largest element in
 $B$, we will first show that $a \vee b = b$ is equivalent to $a \wedge
 b = a$.  Since $a \vee I = a$ for all $a \in B$, using the absorption
 laws we can determine that
-$$
+\[
 a \vee I =(a \wedge I) \vee I = I \vee ( I \wedge a) = I
-$$
+\]
 or $a \preceq I$ for all $a$ in $B$. Finally, since we know that $B$
 is complemented by (5), $B$ must be a Boolean algebra. 
  
@@ -482,8 +496,8 @@ is complemented by (5), $B$ must be a Boolean algebra.
 Conversely, suppose that $B$ is a Boolean algebra. Let $I$ and $O$ be
 the greatest and least elements in $B$, respectively.  If we define $a
 \vee b$ and $a \wedge b$ as least upper and greatest lower bounds of
-$\{ a, b\}$, then $B$ is a Boolean algebra by Theorem~17.3, 
-Theorem~17.4, and our hypothesis. 
+$\{ a, b\}$, then $B$ is a Boolean algebra by Theorem~\ref{boolean:PO_theorem} , 
+Theorem~\ref{boolean:dist_lattice_theorem}, and our hypothesis. 
 \end{proof}
  
  
@@ -526,19 +540,19 @@ Morgan's Laws)\index{De Morgan's laws!for Boolean algebras}.
 We will prove only (2). The rest of the identities are left as
 exercises. For $a \vee b = a \vee c$ and $a \wedge b = a \wedge c$, we
 have  
-\begin{eqnarray*}
-b & = & b \vee (b \wedge a)  \\
-& = &  b \vee (a \wedge b)  \\
-& = &  b \vee (a \wedge c)  \\
-& = &  ( b \vee a) \wedge ( b \vee c)  \\
-& = &  ( a \vee b) \wedge ( b \vee c)  \\
-& = &  ( a \vee c) \wedge ( b \vee c)  \\
-& = &  ( c \vee a ) \wedge ( c\vee b )  \\
-& = & c \vee (a \wedge b) \\
-& = & c \vee ( a \wedge c ) \\
-& = & c \vee ( c \wedge a ) \\
-& = & c.
-\end{eqnarray*}
+\begin{align*}
+b & = b \vee (b \wedge a)  \\
+& =  b \vee (a \wedge b)  \\
+& =  b \vee (a \wedge c)  \\
+& =  ( b \vee a) \wedge ( b \vee c)  \\
+& =  ( a \vee b) \wedge ( b \vee c)  \\
+& =  ( a \vee c) \wedge ( b \vee c)  \\
+& =  ( c \vee a ) \wedge ( c\vee b )  \\
+& = c \vee (a \wedge b) \\
+& = c \vee ( a \wedge c ) \\
+& = c \vee ( c \wedge a ) \\
+& = c.
+\end{align*}
 \end{proof}
  
  
@@ -556,10 +570,10 @@ Let $B$ and $C$ be Boolean algebras.  A bijective map $\phi : B
 \rightarrow C$ is an {\bfi isomorphism\/}\index{Boolean
 algebra!isomorphism}\index{Isomorphism!of Boolean algebras} of Boolean
 algebras  if 
-\begin{eqnarray*}
-\phi( a \vee b )  & = & \phi(a) \vee \phi(b) \\
-\phi( a \wedge b )  & = & \phi(a) \wedge \phi(b)
-\end{eqnarray*}
+\begin{align*}
+\phi( a \vee b )  & = \phi(a) \vee \phi(b) \\
+\phi( a \wedge b )  & = \phi(a) \wedge \phi(b)
+\end{align*}
 for all $a$ and $b$ in $B$. 
  
  
@@ -588,15 +602,15 @@ this is possible since $b$ is not an atom. If $b_1$ is an atom, then
 we are done.  If not, choose $b_2$, not equal to $O$ or $b_1$, such that 
 $b_2 \preceq b_1$. Again, if $b_2$ is an atom, let $a = b_2$.
 Continuing this process, we can obtain a chain
-$$
+\[
 O \preceq \cdots \preceq b_3 \preceq b_2 \preceq b_1 \preceq b.
-$$
+\]
 Since $B$ is a finite Boolean algebra, this chain must be finite.  That
 is, for some $k$, $b_k$ is an atom. Let $a = b_k$.
 \end{proof}
  
  
-\begin{lemma}
+\begin{lemma}\label{boolean:zero_vee_lemma}
 Let $a$ and $b$ be atoms in a finite Boolean algebra $B$ such that $a
 \neq b$. Then $a \wedge b = O$.
 \end{lemma}
@@ -611,7 +625,7 @@ $b$ are both atoms; therefore, $a \wedge b = O$.
 \end{proof}
  
  
-\begin{lemma}
+\begin{lemma}\label{boolean:PO_equivalent_lemma}
 Let $B$ be a Boolean algebra and $a, b \in B$. The following 
 statements are equivalent. 
 \begin{enumerate}
@@ -632,13 +646,13 @@ $a' \vee b = I$.
 \begin{proof}
 (1) $\Rightarrow$ (2).
 If $a \preceq b$, then $a \vee b = b$. Therefore,
-\begin{eqnarray*} 
-a \wedge b' & = & a \wedge (a \vee b)' \\
-& = & a \wedge ( a' \wedge b') \\
-& = & ( a \wedge a') \wedge b' \\     
-& = & O \wedge b' \\
-& = & O.
-\end{eqnarray*}
+\begin{align*} 
+a \wedge b' & = a \wedge (a \vee b)' \\
+& = a \wedge ( a' \wedge b') \\
+& = ( a \wedge a') \wedge b' \\     
+& = O \wedge b' \\
+& = O.
+\end{align*}
  
  
 (2) $\Rightarrow$ (3).
@@ -647,12 +661,12 @@ If $a \wedge b' = O$, then $a' \vee b = (a \wedge b')' = O' = I$.
  
 (3) $\Rightarrow$ (1). 
 If $a' \vee b = I$, then
-\begin{eqnarray*}
-a & = &  a \wedge (a' \vee b)  \\
-& = &  (a \wedge a') \vee (a  \wedge  b) \\
-& = & O \vee (a  \wedge  b) \\
-& = & a \wedge b.
-\end{eqnarray*}
+\begin{align*}
+a & =  a \wedge (a' \vee b)  \\
+& =  (a \wedge a') \vee (a  \wedge  b) \\
+& = O \vee (a  \wedge  b) \\
+& = a \wedge b.
+\end{align*}
 Thus, $a \preceq b$.
 \end{proof}
  
@@ -665,13 +679,13 @@ $a \preceq b$ and $a \not\preceq c$.
  
  
 \begin{proof}
-By  Lemma~17.9, $b \wedge c' \neq O$. Hence, there exists an
+By  Lemma~\ref{boolean:PO_equivalent_lemma}, $b \wedge c' \neq O$. Hence, there exists an
 atom $a$ such that $a \preceq b \wedge c'$. Consequently, $a \preceq
 b$ and $a \not\preceq c$.
 \end{proof}
  
  
-\begin{lemma}
+\begin{lemma}\label{boolean:atoms_lemma}
 Let $b \in B$ and $a_1, \ldots, a_n$ be the atoms of $B$ such that
 $a_i \preceq b$. Then $b = a_1 \vee \cdots \vee a_n$. Furthermore, if
 $a, a_1, \ldots, a_n$ are atoms of $B$ such that $a \preceq b$, $a_i
@@ -692,14 +706,14 @@ since $a \preceq b_1$. Therefore, $b \preceq b_1$.
  
 Now suppose that $b = a_1 \vee \cdots \vee a_n$. If $a$ is an atom
 less than $b$, 
-$$
+\[
 a 
 = a \wedge b 
 = a \wedge( a_1 \vee \cdots \vee a_n ) 
 = (a \wedge a_1) \vee \cdots \vee ( a \wedge a_n ).
-$$
+\]
 But each term is $O$ or $a$ with $a \wedge a_i$ occurring for only one
-$a_i$. Hence, by Lemma~17.8, $a = a_i$ for some $i$.
+$a_i$. Hence, by Lemma~\ref{boolean:zero_vee_lemma}, $a = a_i$ for some $i$.
 \end{proof}
  
  
@@ -711,13 +725,13 @@ that $B$ is isomorphic to ${\cal P}(X)$.
  
 \begin{proof} 
 We will show that $B$ is isomorphic to ${\cal P}(X)$, where $X$ is the
-set of atoms of $B$. Let $a \in B$. By Lemma 17.11, we can write $a$
+set of atoms of $B$. Let $a \in B$. By Lemma~\ref{boolean:atoms_lemma}, we can write $a$
 uniquely as $a = a_1 \vee \cdots \vee a_n$ for $a_1, \ldots, a_n \in
 X$. Consequently, we can define a  map $\phi : B \rightarrow {\cal
 P}(X)$ by  
-$$
+\[
 \phi(a) = \phi(  a_1 \vee \cdots \vee a_n ) = \{a_1, \ldots, a_n \}.
-$$
+\]
 Clearly, $\phi$ is onto.
  
  
@@ -728,15 +742,15 @@ atom. If $\phi(a) = \phi(b)$, then $\{a_1, \ldots, a_n \} = \{b_1,
  
  
 The join of $a$ and $b$ is preserved by $\phi$ since
-\begin{eqnarray*}
-\phi(a \vee b) & = & \phi( a_1 \vee \cdots \vee a_n \vee b_1 \vee
+\begin{align*}
+\phi(a \vee b) & = \phi( a_1 \vee \cdots \vee a_n \vee b_1 \vee
 \cdots \vee b_m ) \\
-& = & \{ a_1, \ldots, a_n, b_1, \ldots, b_m \} \\
-& = & \{ a_1, \ldots, a_n \} \cup \{ b_1, \ldots, b_m \} \\
-& = & \phi( a_1 \vee \cdots \vee a_n ) \cup \phi( b_1 \wedge \cdots
+& = \{ a_1, \ldots, a_n, b_1, \ldots, b_m \} \\
+& = \{ a_1, \ldots, a_n \} \cup \{ b_1, \ldots, b_m \} \\
+& = \phi( a_1 \vee \cdots \vee a_n ) \cup \phi( b_1 \wedge \cdots
 \vee b_m ) \\ 
-& = & \phi(a) \cup \phi(b).
-\end{eqnarray*}
+& = \phi(a) \cup \phi(b).
+\end{align*}
 Similarly, $\phi( a \wedge b ) = \phi(a) \cap \phi(b)$.
 \end{proof}
  
@@ -797,16 +811,19 @@ combination of circuits $a$ and $b$ by $a \vee b$.
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(10,3)
-\put(.25,0.8){$A$}
-\put(9.25,0.8){$B$}
-\put(3.35,0.8){$a$}
-\put(6.4,0.8){$b$}
-\put(1,1){\line(1,0){2}}
-\put(4,1){\line(1,0){2}}
-\put(7,1){\line(1,0){2}}
-\end{picture}
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure - TWJ 8/17/2010
+
+\draw  (0.3,0) -- (1.7,0);
+\draw  (2.3,0) -- (3.7,0);
+\draw  (4.3,0) -- (5.7,0);
+
+\node at (0,0) {$A$};
+\node at (2,0) {$a$};
+\node at (4,0) {$b$};
+\node at (6,0) {$B$};
+
+\end{tikzpicture}
+
 \end{center}
 \caption{$a \wedge b$}
 \label{Series}
@@ -816,23 +833,20 @@ combination of circuits $a$ and $b$ by $a \vee b$.
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(10,4.5)
-\put(.25,1.8){$A$}
-\put(9.25,1.8){$B$}
-\put(4.85,3.3){$a$}
-\put(4.85,0.4){$b$}
-\put(1,2){\line(1,0){2}}
-\put(7,2){\line(1,0){2}}
-\put(7,2){\line(0,1){1.5}}
-\put(7,2){\line(0,-1){1.5}}
-\put(3,2){\line(0,1){1.5}}
-\put(3,2){\line(0,-1){1.5}}
-\put(3,3.5){\line(1,0){1.5}}
-\put(3,0.5){\line(1,0){1.5}}
-\put(7,3.5){\line(-1,0){1.5}}
-\put(7,0.5){\line(-1,0){1.5}}
-\end{picture}
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure - TWJ 8/17/2010
+
+\draw  (0.3,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
+\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
+\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
+\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
+\draw  (4.3,0) -- (5.7,0);
+
+\node at (0,0) {$A$};
+\node at (3,1) {$a$};
+\node at (3,-1) {$b$};
+\node at (6,0) {$B$};
+
+\end{tikzpicture}
 \end{center}
 \caption{$a \vee b$}
 \label{Parallel}
@@ -867,39 +881,28 @@ a' = I$ are shown in Figure~\ref{IandO}.
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(17,4.5)
-\put(1.25,1.8){$a$}
-\put(4.85,3.3){$b$}
-\put(4.85,0.4){$c$}
-\put(2,2){\line(1,0){1}}
-\put(0,2){\line(1,0){1}}
-\put(7,2){\line(1,0){1}}
-\put(7,2){\line(0,1){1.5}}
-\put(7,2){\line(0,-1){1.5}}
-\put(3,2){\line(0,1){1.5}}
-\put(3,2){\line(0,-1){1.5}}
-\put(3,3.5){\line(1,0){1.5}}
-\put(3,0.5){\line(1,0){1.5}}
-\put(7,3.5){\line(-1,0){1.5}}
-\put(7,0.5){\line(-1,0){1.5}}
-\put(10,2){\line(1,0){1}}
-\put(11,3.5){\line(1,0){1}}
-\put(11,0.5){\line(1,0){1}}
-\put(13,3.5){\line(1,0){1}}
-\put(13,0.5){\line(1,0){1}}
-\put(16,3.5){\line(-1,0){1}}
-\put(16,0.5){\line(-1,0){1}}
-\put(16,2){\line(0,1){1.5}}
-\put(16,2){\line(0,-1){1.5}}
-\put(11,2){\line(0,1){1.5}}
-\put(11,2){\line(0,-1){1.5}}
-\put(16,2){\line(1,0){1}}
-\put(12.3,3.3){$a$}
-\put(12.3,0.4){$a$}
-\put(14.3,3.3){$b$}
-\put(14.3,0.4){$c$}
-\end{picture}
+\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex] %Replaced figure with tikz figure - TWJ 8/17/2010
+
+\draw  (0,0) -- (0.65,0) (1.15,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
+\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
+\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
+\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
+\draw  (4.3,0) -- (5,0);
+
+\node at (0.9,0) {$a$};
+\node at (3,1) {$b$};
+\node at (3,-1) {$c$};
+
+\draw (6.3,0) -- (7,0);
+\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1) -- (8.7,1) (9.3,1) -- (10,1) -- (10,0) -- (10.7,0);
+\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1) -- (8.7,-1) (9.3,-1) -- (10,-1) -- (10,0);
+
+\node at (8,1) {$a$};
+\node at (9,1) {$b$};
+\node at (8,-1) {$a$};
+\node at (9,-1) {$c$};
+
+\end{tikzpicture}
 \end{center}
 \caption{$a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )$} 
 \label{Distributive}
@@ -907,26 +910,22 @@ a' = I$ are shown in Figure~\ref{IandO}.
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(15,4.5)
-\put(1.25,1.8){$a$}
-\put(3.25,1.8){$a'$}
-\put(2,2){\line(1,0){1}}
-\put(0,2){\line(1,0){1}}
-\put(4,2){\line(1,0){1}}
-\put(10,2){\line(1,0){1}}
-\put(11,3.5){\line(1,0){1}}
-\put(11,0.5){\line(1,0){1}}
-\put(13,3.5){\line(1,0){1}}
-\put(13,0.5){\line(1,0){1}}
-\put(14,2){\line(0,1){1.5}}
-\put(14,2){\line(0,-1){1.5}}
-\put(11,2){\line(0,1){1.5}}
-\put(11,2){\line(0,-1){1.5}}
-\put(14,2){\line(1,0){1}}
-\put(12.3,3.3){$a$}
-\put(12.3,0.4){$a'$}
-\end{picture}
+\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex] %%Replaced figure with tikz figure - TWJ 8/18/2010
+
+\node at (1,0) {$a$};
+\node at (2.5,0) {$a'$};
+\draw (0,0) -- (0.7,0)  (1.3,0) -- (2.2,0)  (2.8,0) --(3.5,0);
+
+\draw (5,0) -- (5.7,0);
+\draw (5.7,0) -- (5.7,1) -- (6.4,1)  (7,1) -- (7.7,1) -- (7.7, 0);
+\draw (5.7,0) -- (5.7,-1) -- (6.4,-1)  (7,-1) -- (7.7,-1) -- (7.7, 0);
+\draw (7.7, 0) -- (8.1, 0);
+
+\node at (6.7,1) {$a$};
+\node at (6.7,-1) {$a'$};
+
+\end{tikzpicture}
+
 \end{center}
 \caption{$a \wedge a' = O$ and $a \vee a' = I$}
 \label{IandO}
@@ -943,50 +942,38 @@ example, given the expression $(a \vee b) \wedge (a \vee b') \wedge (a
 
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(18,4.5)
-\put(2.8,3.3){$a$}
-\put(2.8,0.4){$b$}
-\put(0,2){\line(1,0){1}}
-\put(1,2){\line(0,1){1.5}}
-\put(1,2){\line(0,-1){1.5}}
-\put(1,3.5){\line(1,0){1.5}}
-\put(1,0.5){\line(1,0){1.5}}
-\put(5,2){\line(1,0){2}}
-\put(5,2){\line(0,1){1.5}}
-\put(5,2){\line(0,-1){1.5}}
-\put(5,3.5){\line(-1,0){1.5}}
-\put(5,0.5){\line(-1,0){1.5}}
-\put(8.8,3.3){$a$}
-\put(8.8,0.4){$b'$}
-\put(7,2){\line(0,1){1.5}}
-\put(7,2){\line(0,-1){1.5}}
-\put(7,3.5){\line(1,0){1.5}}
-\put(7,0.5){\line(1,0){1.5}}
-\put(11,2){\line(1,0){2}}
-\put(11,2){\line(0,1){1.5}}
-\put(11,2){\line(0,-1){1.5}}
-\put(11,3.5){\line(-1,0){1.5}}
-\put(11,0.5){\line(-1,0){1.5}}
-\put(14.8,3.3){$a$}
-\put(14.8,0.4){$b$}
-\put(13,2){\line(0,1){1.5}}
-\put(13,2){\line(0,-1){1.5}}
-\put(13,3.5){\line(1,0){1.5}}
-\put(13,0.5){\line(1,0){1.5}}
-\put(17,2){\line(1,0){1}}
-\put(17,2){\line(0,1){1.5}}
-\put(17,2){\line(0,-1){1.5}}
-\put(17,3.5){\line(-1,0){1.5}}
-\put(17,0.5){\line(-1,0){1.5}}
-\end{picture}
+\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex] %%Replaced figure with tikz figure - TWJ 8/19/2010
+
+\draw (0,0) -- (1,0) (3,0) -- (4,0) (6,0) -- (7,0) (9,0) -- (10,0);
+
+\draw (1,0) -- (1,1) -- (1.7,1)  (2.3,1)-- (3,1) -- (3,0);
+\draw (1,0) -- (1,-1) -- (1.7,-1)  (2.3,-1)-- (3,-1) -- (3,0);
+
+\draw (4,0) -- (4,1) -- (4.7,1)  (5.3,1)-- (6,1) -- (6,0);
+\draw (4,0) -- (4,-1) -- (4.7,-1)  (5.3,-1)-- (6,-1) -- (6,0);
+
+\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1)-- (9,1) -- (9,0);
+\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1)-- (9,-1) -- (9,0);
+
+
+\node at (2,1) {$a$};
+\node at (2,-1) {$b$};
+
+\node at (5,1) {$a$};
+\node at (5,-1) {$b'$};
+
+\node at (8,1) {$a$};
+\node at (8,-1) {$b$};
+
+\end{tikzpicture}
+
 \end{center}
 \caption{$(a \vee b) \wedge (a \vee b') \wedge (a \vee b)$} 
 \label{Circuit2}
 \end{figure}
  
 
-\begin{theorem}
+\begin{theorem}\label{boolean:circuit_theorem}
 The set of all circuits is a Boolean algebra.
 \end{theorem}
  
@@ -1003,19 +990,19 @@ Boolean algebras to switching theory.
 Given a complex circuit, we can now apply the techniques of
 Boolean algebra to reduce it to a simpler one. Consider the circuit in 
 Figure~\ref{Circuit2}. Since 
-\begin{eqnarray*}
+\begin{align*}
 (a \vee b) \wedge (a \vee b') \wedge (a \vee b)
-& = &
+& =
 (a \vee b) \wedge (a \vee b) \wedge (a \vee b') \\
-& = &
+& =
 (a \vee b) \wedge (a \vee b') \\
-& = &
+& =
 a \vee ( b \wedge b') \\
-& = &
+& =
 a \vee O \\
-& = &
+& =
 a,
-\end{eqnarray*}
+\end{align*}
 we can replace the more complicated circuit with a circuit containing
 the single switch $a$ and achieve the same function.
 \end{example}
@@ -1079,220 +1066,153 @@ biosystems.
 \begin{enumerate}
  
  
-\bf\item\rm
+\item
 Draw the lattice diagram for the power set of $X = \{ a, b, c, d \}$
 with the set inclusion relation, $\subseteq$. 
  
  
-\bf\item\rm
+\item
 Draw the diagram for the set of positive integers that are divisors
 of 30. Is this poset a Boolean algebra?
  
  
-\bf\item\rm 
+\item 
 Draw a diagram of the lattice of subgroups of ${\mathbb Z}_{12}$.
  
  
-\bf\item\rm
+\item
 Let $B$ be the set of positive integers that are divisors of 36. Define
 an order on $B$ by $a \preceq b$ if $a \mid b$.  Prove that $B$ is a
 Boolean algebra. Find a set $X$ such that $B$ is isomorphic to ${\cal
 P}(X)$.
  
  
-\bf\item\rm
+\item
 Prove or disprove: ${\mathbb Z}$ is a poset under the relation $a \preceq
 b$ if $a \mid b$. 
 
 
-\bf\item\rm
+\item
 Draw the switching circuit for each of the following Boolean
 expressions.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item
 $(a \vee b \vee a') \wedge a$
- 
- \item[{\bf (c)}]
-$a \vee (a \wedge b)$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item
 $(a \vee b)' \wedge (a \vee b)$
- 
- \item[{\bf (d)}]
+
+\item
+$a \vee (a \wedge b)$
+
+\item
 $(c \vee a \vee b) \wedge c' \wedge (a \vee b)'$
+
+\end{enumerate}
+\end{multicols}
+  
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
- 
-\bf\item\rm
+\item
 Draw a circuit that will be closed exactly when only one of three
 switches $a$, $b$, and $c$ are closed.
  
  
-\bf\item\rm
+\item
 Prove or disprove that the two circuits shown are equivalent.
+
 \begin{center}
-\setlength{\unitlength}{.2in}
-\begin{picture}(17,4.5)
-\put(2.3,3.3){$a$}
-\put(4.33,3.3){$b$}
-\put(6.3,3.3){$c$}
-\put(2.75,1.8){$a'$}
-\put(5.9,1.8){$b$}
-\put(2.8,0.4){$a$}
-\put(5.8,0.4){$c'$}
-\put(0,2){\line(1,0){2.5}}
-\put(8,2){\line(1,0){1}}
-\put(8,2){\line(0,1){1.5}}
-\put(8,2){\line(0,-1){1.5}}
-\put(1,2){\line(0,1){1.5}}
-\put(1,2){\line(0,-1){1.5}}
-\put(1,3.5){\line(1,0){1}}
-\put(3,3.5){\line(1,0){1}}
-\put(5,3.5){\line(1,0){1}}
-\put(7,3.5){\line(1,0){1}}
-\put(1,0.5){\line(1,0){1.5}}
-\put(3.5,0.5){\line(1,0){2}}
-\put(6.5,0.5){\line(1,0){1.5}}
-\put(3.5,2){\line(1,0){2}}
-\put(6.5,2){\line(1,0){1.5}}
-\put(12.3,3.3){$a$}
-\put(12.3,0.4){$a$}
-\put(14.3,3.3){$b$}
-\put(14.3,0.4){$c'$}
-\put(10,2){\line(1,0){1}}
-\put(11,3.5){\line(1,0){1}}
-\put(11,0.5){\line(1,0){1}}
-\put(13,3.5){\line(1,0){1}}
-\put(13,0.5){\line(1,0){1}}
-\put(16,3.5){\line(-1,0){1}}
-\put(16,0.5){\line(-1,0){1}}
-\put(16,2){\line(0,1){1.5}}
-\put(16,2){\line(0,-1){1.5}}
-\put(11,2){\line(0,1){1.5}}
-\put(11,2){\line(0,-1){1.5}}
-\put(16,2){\line(1,0){1}}
-\end{picture}
+\begin{tikzpicture}[scale=0.7,node distance=5mm, text height=1.5ex,text depth=.25ex] %%Replaced figure with tikz figure - TWJ 8/19/2010
+
+
+\node at (2,1) {$a$};
+\node at (3,1) {$b$};
+\node at (4,1) {$c$};
+
+\node at (2.5,0) {$a'$};
+\node at (3.5,0) {$b$};
+
+\node at (2.5,-1) {$a$};
+\node at (3.5,-1) {$c'$};
+
+\draw (1,0) -- (1,1) -- (1.7,1)  (2.3,1) -- (2.7,1)  (3.3,1) -- (3.7,1) (4.3,1) -- (5,1) -- (5,0);
+\draw (1,0) -- (1,-1) -- (2.2,-1)  (2.8,-1) -- (3.2,-1)  (3.8,-1) -- (5,-1) -- (5,0);
+\draw (0,0) -- (2.2,0)  (2.8,0) -- (3.2,0)  (3.8,0) -- (6,0);
+
+
+\node at (9,1) {$a$};
+\node at (9,-1) {$a$};
+\node at (10,1) {$b$};
+\node at (10,-1) {$c'$};
+
+\draw (8,0) -- (8,1) -- (8.7,1)  (9.3,1) -- (9.7,1) (10.3,1) -- (11,1) -- (11,0);
+\draw (8,0) -- (8,-1) -- (8.7,-1)  (9.3,-1) -- (9.7,-1) (10.3,-1) -- (11,-1) -- (11,0);
+\draw (7,0) -- (8,0) (11,0) -- (12,0);
+
+\end{tikzpicture}
 \end{center}
  
  
-\bf\item\rm
+\item
 Let $X$ be a finite set containing $n$ elements.  Prove that ${\cal
 P}(X) = 2^n$. Conclude that the order of any finite Boolean algebra
 must be $2^n$ for some $n \in {\mathbb N}$.
  
 
  
-\bf\item\rm 
+\item 
 For each of the following circuits, write a Boolean expression. If the
 circuit can be replaced by one with fewer switches, give the
 Boolean expression and draw a diagram for the new circuit. 
 \begin{center}  %%%%%%%%%%%%%1st Figure
-\setlength{\unitlength}{.2in}
-\begin{picture}(9,4.5)
-\put(1.25,1.8){$a'$}
-\put(4.4,3.3){$a$}
-\put(6.4,3.3){$b'$}
-\put(5.3,0.4){$b$}
-\put(2,2){\line(1,0){1}}
-\put(0,2){\line(1,0){1}}
-\put(8,2){\line(1,0){1}}
-\put(8,2){\line(0,1){1.5}}
-\put(8,2){\line(0,-1){1.5}}
-\put(3,2){\line(0,1){1.5}}
-\put(3,2){\line(0,-1){1.5}}
-\put(3,3.5){\line(1,0){1}}
-\put(5,3.5){\line(1,0){1}}
-\put(7,3.5){\line(1,0){1}}
-\put(3,0.5){\line(1,0){1.75}}
-\put(8,0.5){\line(-1,0){1.75}}
-\end{picture}
-\end{center}
-\begin{center}
-\setlength{\unitlength}{.2in}  %%%%%%%2nd figure
-\begin{picture}(12,4.5)
-\put(2.85,3.3){$a$}
-\put(2.85,0.4){$b$}
-\put(8.25,1.8){$a'$}
-\put(0,2){\line(1,0){1}}
-\put(6,2){\line(1,0){2}}
-\put(11,2){\line(-1,0){2}}
-\put(5,2){\line(1,0){1}}
-\put(5,2){\line(0,1){1.5}}
-\put(5,2){\line(0,-1){1.5}}
-\put(1,2){\line(0,1){1.5}}
-\put(1,2){\line(0,-1){1.5}}
-\put(1,3.5){\line(1,0){1.5}}
-\put(1,0.5){\line(1,0){1.5}}
-\put(5,3.5){\line(-1,0){1.5}}
-\put(5,0.5){\line(-1,0){1.5}}
-\put(5,2){\line(1,0){1}}
-\put(6,3.5){\line(1,0){1}}
-\put(6,0.5){\line(1,0){1}}
-\put(8,3.5){\line(1,0){1}}
-\put(8,0.5){\line(1,0){1}}
-\put(11,3.5){\line(-1,0){1}}
-\put(11,0.5){\line(-1,0){1}}
-\put(11,2){\line(0,1){1.5}}
-\put(11,2){\line(0,-1){1.5}}
-\put(6,2){\line(0,1){1.5}}
-\put(6,2){\line(0,-1){1.5}}
-\put(11,2){\line(1,0){1}}
-\put(7.3,3.3){$a$}
-\put(7.3,0.4){$a'$}
-\put(9.3,3.3){$b$}
-\put(9.3,0.4){$b$}
-\end{picture}
-\end{center}
-\begin{center}
-\setlength{\unitlength}{.2in}  %%%%%%%%%%3rd Figure
-\begin{picture}(9,4.5)
-\put(2.3,3.3){$a$}
-\put(4.33,3.3){$b$}
-\put(6.3,3.3){$c$}
-\put(2.3,1.8){$a'$}
-\put(4.33,1.8){$b'$}
-\put(6.3,1.8){$c$}
-\put(2.3,0.4){$a$}
-\put(4.33,0.4){$b'$}
-\put(6.3,0.4){$c'$}
-\put(0,2){\line(1,0){1}}
-\put(8,2){\line(1,0){1}}
-\put(8,2){\line(0,1){1.5}}
-\put(8,2){\line(0,-1){1.5}}
-\put(1,2){\line(0,1){1.5}}
-\put(1,2){\line(0,-1){1.5}}
-\put(1,3.5){\line(1,0){1}}
-\put(3,3.5){\line(1,0){1}}
-\put(5,3.5){\line(1,0){1}}
-\put(7,3.5){\line(1,0){1}}
-\put(1,0.5){\line(1,0){1}}
-\put(3,0.5){\line(1,0){1}}
-\put(5,0.5){\line(1,0){1}}
-\put(7,0.5){\line(1,0){1}}
-\put(1,2){\line(1,0){1}}
-\put(3,2){\line(1,0){1}}
-\put(5,2){\line(1,0){1}}
-\put(7,2){\line(1,0){1}}
-\end{picture}
+
+
+
+\begin{tikzpicture}[scale=0.7,node distance=5mm, text height=1.5ex,text depth=.25ex] %%Replaced figure with tikz figure - TWJ 8/19/2010
+
+
+\node at (-1,1) {$a$};
+\node at (0,1) {$b$};
+\node at (1,1) {$c$};
+
+\node at (-1,0) {$a'$};
+\node at (0,0) {$b'$};
+\node at (1,0) {$c$};
+
+\node at (-1,-1) {$a$};
+\node at (0,-1) {$b'$};
+\node at (1,-1) {$c'$};
+
+\draw (-2,0) -- (-2,1) -- (-1.3,1)  (-0.7,1) -- (-0.3,1)  (0.3,1) -- (0.7,1) (1.3,1) -- (2,1) -- (2,0);
+\draw (-2,0) -- (-2,-1) -- (-1.3,-1)  (-0.7,-1) -- (-0.3,-1)  (0.3,-1) -- (0.7,-1) (1.3,-1) -- (2,-1) -- (2,0);
+\draw (-3,0) -- (-1.3,0)  (-0.7,0) -- (-0.3,0)  (0.3,0) -- (0.7,0) (1.3,0) -- (3,0);
+
+
+\node at (-2,5) {$a$};
+\node at (1,5) {$a$};
+\node at (2,5) {$b$};
+
+\node at (1.5,4) {$a'$};
+
+\node at (-2,3) {$b$};
+\node at (1,3) {$a'$};
+\node at (2,3) {$b$};
+
+\draw (-3,4) -- (-3,5) -- (-2.3,5) (-1.7,5) -- (-1,5) -- (-1,4)  (0,4) -- (0,5) -- (0.7,5)  (1.3,5) -- (1.8,5) (2.3,5) -- (3,5) -- (3,4);
+\draw (-3,4) -- (-3,3) -- (-2.3,3) (-1.7,3) -- (-1,3) -- (-1,4)  (0,4) -- (0,3) -- (0.7,3)  (1.3,3) -- (1.8,3) (2.3,3) -- (3,3) -- (3,4);
+\draw (-4,4) -- (-3,4)  (-1,4) -- (1.2,4) (1.8,4) -- (4,4);
+
+\node at (-2,8) {$a'$};
+\node at (0,9) {$a$};
+\node at (1,9) {$b'$};
+\node at (0.5,7) {$b$};
+
+\draw (-3,8) -- (-2.3,8) (-1.7,8) -- (-1,8) (2,8) -- (3,8);
+\draw (-1,8) -- (-1,9) -- (-0.3,9) (0.3,9) -- (0.7,9) (1.3,9) -- (2,9) -- (2,8);
+\draw (-1,8) -- (-1,7) -- (0.2,7) (0.8,7)  -- (2,7) -- (2,8);
+
+\end{tikzpicture}
 \end{center}
  
  
@@ -1302,32 +1222,32 @@ Boolean expression and draw a diagram for the new circuit.
  
  
  
-\bf\item\rm
+\item
 Prove or disprove: The set of all nonzero integers is a lattice, where
 $a \preceq b$ is defined by $a \mid b$.
  
  
-\bf\item\rm
+\item
 Prove that $a \wedge b$ is the greatest lower bound of $a$ and $b$ in
-Theorem~17.3.
+Theorem~\ref{boolean:PO_theorem}.
  
  
-\bf\item\rm
+\item
 Let $L$ be a nonempty set with two binary operations $\vee$ and
 $\wedge$ satisfying the commutative, associative, idempotent, and  
 absorption laws.  We can define a partial order on $L$, as in
-Theorem~17.3, by $a \preceq b$ if $a \vee b = b$. Prove that the
+Theorem~\ref{boolean:PO_theorem}, by $a \preceq b$ if $a \vee b = b$. Prove that the
 greatest lower bound of $a$ and $b$ is $a \wedge b$.
  
  
-\bf\item\rm
+\item
 Let $G$ be a group and $X$ be the set of subgroups of $G$ ordered by
 set-theoretic inclusion. If $H$ and $K$ are subgroups of $G$, show
 that the least upper bound of $H$ and $K$ is the subgroup generated by
 $H \cup K$. 
  
  
-\bf\item\rm
+\item
 Let $R$ be a ring and suppose that $X$ is the set of ideals of
 $R$.  Show that $X$ is a poset ordered by set-theoretic inclusion,
 $\subseteq$. Define the meet of two ideals $I$ and $J$ in $X$ by $I \cap
@@ -1335,56 +1255,56 @@ J$ and the join of $I$ and $J$ by $I + J$. Prove that the set of
 ideals of $R$ is a lattice under these operations. 
  
  
-\bf\item\rm
+\item
 Let $B$ be a Boolean algebra. Prove each of the following identities.
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 $a \vee I = I$ and $a \wedge O = O$ for all $a \in B$. 
  
- \bf\item\rm
+ \item
 If $a \vee b = I$ and $a \wedge b = O$, then $b = a'$.
  
- \bf\item\rm
+ \item
 $(a')'=a$ for all $a \in B$.
  
- \bf\item\rm
+ \item
 $I' = O$ and $O' = I$.
  
- \bf\item\rm
+ \item
 $(a \vee b)' = a' \wedge b'$ and $(a \wedge b)' = a' \vee b'$ (De
 Morgan's laws).
  
 \end{enumerate}
  
  
-\bf\item\rm 
+\item 
 By drawing the appropriate diagrams, complete the proof of
-Theorem~17.14 to show that the switching functions form a Boolean
+Theorem~\ref{boolean:circuit_theorem} to show that the switching functions form a Boolean
 algebra. 
  
  
-\bf\item\rm
+\item
 Let $B$ be a Boolean algebra. Define binary operations $+$ and
 $\cdot$ on $B$ by
-\begin{eqnarray*}
-a + b & = & (a \wedge b') \vee (a' \wedge b) \\
-a \cdot b & = & a \wedge b.
-\end{eqnarray*}
+\begin{align*}
+a + b & = (a \wedge b') \vee (a' \wedge b) \\
+a \cdot b & = a \wedge b.
+\end{align*}
 Prove that $B$ is a commutative ring under these operations
 satisfying $a^2 = a$ for all $a \in B$.
  
  
-\bf\item\rm
+\item
 Let $X$  be a poset such that for every $a$ and $b$ in $X$, either $a
 \preceq  b$ or $b \preceq a$. Then $X$ is said to be a {\bfi totally
 ordered set}\index{Totally ordered set}.
 \begin{enumerate}			
 
- \bf\item\rm
+ \item
 Is $a \mid b$ a total order on ${\mathbb N}$?
  
- \bf\item\rm
+ \item
 Prove that ${\mathbb N}$, ${\mathbb Z}$, ${\mathbb Q}$, and ${\mathbb R}$ are
 totally ordered sets under the usual ordering~$\leq$.
  
@@ -1392,7 +1312,7 @@ totally ordered sets under the usual ordering~$\leq$.
 \end{enumerate}
  
  
-\bf\item\rm
+\item
 Let $X$ and $Y$ be posets.  A map $\phi : X \rightarrow Y$ is {\bfi
 order-preserving\/}\index{Function!order-preserving} if $a \preceq b$
 implies that $\phi(a) \preceq \phi(b)$.  Let $L$ and $M$ be lattices.
@@ -1404,15 +1324,15 @@ order-preserving, but that it is not the case that every
 order-preserving homomorphism is a lattice homomorphism.  
  
  
-\bf\item\rm
+\item
 Let $B$ be a Boolean algebra. Prove that $a = b$ if and only if 
 $(a \wedge b') \vee ( a' \wedge b) = O$ for $a, b \in B$.
  
-\bf\item\rm
+\item
 Let $B$ be a Boolean algebra. Prove that $a = 0$ if and only if 
 $(a \wedge b') \vee ( a' \wedge b) = b$ for all $b \in B$.
  
-\bf\item\rm
+\item
 Let $L$ and $M$ be lattices. Define an order relation on $L \times M$
 by $( a, b) \preceq (c, d)$ if $a \preceq c$ and $b \preceq d$. Show
 that $L \times M$ is a lattice under this partial order.
@@ -1459,12 +1379,13 @@ Write a program to evaluate Boolean polynomials.
  
  
 \subsection*{References and Suggested Readings}
+%%TWJ 8/19/2010 - References checked.
  
  
 {\small
 \begin{itemize}
  
-\item[{\bf [1]}]
+\item[{\bf [1]}]  %Out of print - TWJ 8/19/2010
 Donnellan, T. {\it Lattice Theory}. Pergamon Press, Oxford,
 1968.
  
@@ -1477,18 +1398,19 @@ Halmos, P. R. ``The Basic Concepts of Algebraic Logic,''
 Hohn, F. ``Some Mathematical Aspects of Switching,'' {\it
 American Mathematical Monthly} {\bf 62} (1955), 75--90.
  
-\item[{\bf [4]}]
+\item[{\bf [4]}] %Out of print - TWJ 8/19/2010
 Hohn, F. {\it Applied Boolean Algebra}. 2nd ed. Macmillan, New York,
 1966. 
   
  
-\item[{\bf [5]}]
-Lidl, R. and Pilz, G. {\it Applied Abstract Algebra}.
-Springer-Verlag, New York, 1984.
+\item[{\bf [5]}] %Reference updated - TWJ 8/19/2010
+Lidl, R. and Pilz, G. 
+{\it Applied Abstract Algebra}. 2nd ed. Springer,
+New York, 1998. 
  
-\item[{\bf [6]}]
+\item[{\bf [6]}] %Reference updated - TWJ 8/19/2010
 Whitesitt, J. {\it Boolean Algebra and Its
-Applications}. Addison-Wesley, Reading, MA, 1961.
+Applications}. Dover, Mineola, NY, 2010.
  
 \end{itemize}
 }
