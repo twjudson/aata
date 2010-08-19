@@ -16,7 +16,7 @@ investigate them.
  
 \section{Structure of a Finite Field}
 
-Recall that a field $F$ has {\bfi characteristic} $p$ if $p$ is the smallest positive integer such that for every nonzero element $\alpha$ in $F$, we have $p \alpha = 0$.  If no such integer exists, then $F$ has characteristic 0.  From Theorem~14.5 we know that $p$ must be prime.  Suppose that $F$ is a finite field with $n$ elements. Then $n \alpha = 0$ for all $\alpha$ in $F$.  Consequently, the characteristic of $F$ must be $p$, where $p$ is a prime dividing $n$.  This discussion is summarized in the following proposition.   
+Recall that a field $F$ has {\bfi characteristic} $p$ if $p$ is the smallest positive integer such that for every nonzero element $\alpha$ in $F$, we have $p \alpha = 0$.  If no such integer exists, then $F$ has characteristic 0.  From Theorem~\ref{rings:characteristic_theorem} we know that $p$ must be prime.  Suppose that $F$ is a finite field with $n$ elements. Then $n \alpha = 0$ for all $\alpha$ in $F$.  Consequently, the characteristic of $F$ must be $p$, where $p$ is a prime dividing $n$.  This discussion is summarized in the following proposition.   
 
 \begin{proposition}
 If $F$ is a finite field, then the characteristic of $F$ is $p$, where $p$ is prime.
@@ -30,39 +30,40 @@ If $F$ is a finite field of characteristic $p$, then the order of $F$ is $p^n$ f
 
 \begin{proof}
 Let $\phi : {\mathbb Z} \rightarrow F$ be the ring homomorphism defined by $\phi(n) = n \cdot 1$.  Since the characteristic of $F$ is $p$, the kernel of $\phi$ must be $p {\mathbb Z}$ and the image of $\phi$ must be a subfield of $F$ isomorphic to ${\mathbb Z}_p$.  We will denote this subfield by $K$.  Since $F$ is a finite field, it must be a finite extension of $K$ and, therefore, an algebraic extension of $K$. Suppose that $[F : K] = n$ is the dimension of $F$, where $F$ is a $K$ vector space.  There must exist elements $\alpha_1, \ldots, \alpha_n \in F$ such that any element $\alpha$ in $F$ can be written uniquely in the form   
-$$
+\[
 \alpha = a_1 \alpha_1 + \cdots + a_n \alpha_n,
-$$
+\]
 where the $a_i$'s are in $K$.  Since there are $p$ elements in $K$, there are $p^n$ possible linear combinations of the $\alpha_i$'s.  Therefore, the order of $F$ must be $p^n$.  
 \end{proof}
 
 \begin{lemma}[Freshman's Dream]\index{Freshman's Dream}
 Let $p$ be prime and $D$ be an integral domain of characteristic $p$.  Then
-$$
+\[
 a^{p^n} + b^{p^n} = (a + b)^{p^n}
-$$
+\]
 for all positive integers $n$.  
 \end{lemma}
 
 \begin{proof}
-We will prove this lemma using mathematical induction on $n$.  We can use the binomial formula (see Chapter~1, Example~3) to verify the case for $n = 1$; that is,
-$$
+We will prove this lemma using mathematical induction on $n$.  We can use the binomial formula (see Chapter~\ref{integers}, Example~\ref{example:integers:binomial_theorem}) to verify the case for $n = 1$; that is,
+\[
 (a+b)^p 
 = 
 \sum_{k=0}^{p} 
-\left( \begin{array}{c} p \\ k \end{array} \right)
+\binom{p}{k}
 a^k b^{p-k}.
-$$
+\]
 If $0 < k < p$, then
-$$
-\left( \begin{array}{c} p \\ k \end{array} \right) =
+\[
+\binom{p}{k}
+=
 \frac{p!}{k!(p-k)!}
-$$
+\]
 must be divisible by $p$, since $p$ cannot divide $k!(p - k)!$.  Note that $D$ is an integral domain of characteristic $p$, so all but the first and last terms in the sum must be zero.  Therefore, $(a + b)^p =
 a^p + b^p$.  
 
 Now suppose that the result holds for all $k$, where $1 \leq k \leq n$.  By the induction hypothesis,
-$$
+\[
 (a + b)^{p^{n + 1}}
 =
 ((a + b)^p)^{p^{n}}
@@ -72,7 +73,7 @@ $$
 (a^p)^{p^{n}} + (b^p)^{p^{n}}
 =
 a^{p^{n + 1}} + b^{p^{n + 1}}.
-$$
+\]
 Therefore, the lemma is true for $n + 1$ and the proof is complete.
 \end{proof}
 
@@ -82,19 +83,19 @@ Let $F$ be a field.  A polynomial $f(x) \in F[x]$ of degree $n$ is {\bfi separab
 
 \begin{example}{}
 The polynomial $x^2 - 2$ is separable over ${\mathbb Q}$ since it factors as $(x - \sqrt{2}\, )(x + \sqrt{2}\, )$. In fact, ${\mathbb Q}(\sqrt{2}\, )$ is a separable extension of ${\mathbb Q}$.  Let $\alpha =  a + b \sqrt{2}$ be any element in ${\mathbb Q}$. If $b = 0$, then $\alpha$ is a root of $x - a$.  If $b \neq 0$, then $\alpha$ is the root  of the separable polynomial 
-$$
+\[
 x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, )).
-$$
+\]
 \end{example}
  
 Fortunately, we have an easy test to  determine the separability of any polynomial.  Let
-$$
+\[
 f(x) = a_0 + a_1 x + \cdots + a_n x^n
-$$
+\]
 be any polynomial in  $F[x]$. Define the {\bfi derivative\/}\index{Derivative} of $f(x)$ to be 
-$$
+\[
 f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n-1}.
-$$
+\]
 
 \begin{lemma}
 Let $F$ be a field and $f(x) \in F[x]$.  Then $f(x)$ is separable if and only if $f(x)$ and $f'(x)$ are relatively prime. 
@@ -104,17 +105,17 @@ Let $F$ be a field and $f(x) \in F[x]$.  Then $f(x)$ is separable if and only if
 \begin{proof}
 Let $f(x)$ be separable.  Then $f(x)$ factors over some extension field of $F$ as $f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$, where $\alpha_i \neq \alpha_j$ for $i \neq j$. Taking the derivative
 of $f(x)$, we see that
-\begin{eqnarray*}
-f'(x) & = & (x - \alpha_2) \cdots (x - \alpha_n) \\
-& & +  (x - \alpha_1) (x - \alpha_3) \cdots (x - \alpha_n) \\
-& & + \cdots + (x - \alpha_1) \cdots (x - \alpha_{n - 1}).
-\end{eqnarray*}
+\begin{align*}
+f'(x) & =  (x - \alpha_2) \cdots (x - \alpha_n) \\
+&  +  (x - \alpha_1) (x - \alpha_3) \cdots (x - \alpha_n) \\
+&  + \cdots + (x - \alpha_1) \cdots (x - \alpha_{n - 1}).
+\end{align*}
 Hence, $f(x)$ and $f'(x)$ can have no common factors.
 
 To prove the converse, we will show that the contrapositive of the statement is true.  Suppose that $f(x) = (x - \alpha)^k g(x)$, where $k > 1$.  Differentiating, we have
-$$
+\[
 f'(x) = k ( x - \alpha)^{k-1} g(x) + (x- \alpha)^k g'(x).
-$$
+\]
 Therefore, $f(x)$ and $f'(x)$ have a common factor.
 \end{proof}
 
@@ -127,7 +128,7 @@ For every  prime $p$ and every positive integer $n$, there exists a finite field
 \begin{proof}
 Let $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$.  Then by Lemma~20.4, $f(x)$ has $p^n$ distinct zeros in $F$, since $f'(x) = p^n x^{p^n - 1} - 1 = -1$ is relatively prime to $f(x)$.  We claim that the roots of $f(x)$ form a subfield of $F$.  Certainly 0 and 1 are zeros of $f(x)$.  If $\alpha$ and $\beta$ are zeros of $f(x)$, then $\alpha + \beta$ and $\alpha \beta$ are also zeros of $f(x)$, since $\alpha^{p^n} + \beta^{p^n} =  (\alpha + \beta)^{p^n}$ and $\alpha^{p^n} \beta^{p^n} = (\alpha \beta)^{p^n}$. We also need to show that the additive inverse and the multiplicative inverse of each root of $f(x)$ are roots of $f(x)$.  For any zero $\alpha$ of $f(x)$, $-\alpha = (p - 1)\alpha$ is also a zero of $f(x)$. If $\alpha \neq 0$, then $(\alpha^{-1})^{p^n} = (\alpha^{p^n})^{-1} = \alpha^{-1}$. Since the zeros of $f(x)$ form a subfield of $F$ and $f(x)$ splits in this subfield, the subfield must be all of $F$. 
 
-Let $E$ be any other field of order $p^n$.  To show that $E$ is isomorphic to $F$, we must show that every element in $E$ is a root of $f(x)$.  Certainly 0 is a root of $f(x)$.  Let $\alpha$ be a nonzero element of $E$.  The order of the multiplicative group of nonzero elements of $E$ is $p^n-1$; hence, $\alpha^{p^n-1} =1$ or $\alpha^{p^n} -\alpha = 0$.  Since $E$ contains $p^n$ elements, $E$ must be a splitting field of $f(x)$; however, by Corollary~19.20, the splitting field of any polynomial is unique up to isomorphism. 
+Let $E$ be any other field of order $p^n$.  To show that $E$ is isomorphic to $F$, we must show that every element in $E$ is a root of $f(x)$.  Certainly 0 is a root of $f(x)$.  Let $\alpha$ be a nonzero element of $E$.  The order of the multiplicative group of nonzero elements of $E$ is $p^n-1$; hence, $\alpha^{p^n-1} =1$ or $\alpha^{p^n} -\alpha = 0$.  Since $E$ contains $p^n$ elements, $E$ must be a splitting field of $f(x)$; however, by Corollary~\ref{fields:splitting_field_corollary}, the splitting field of any polynomial is unique up to isomorphism. 
 \end{proof}
  
 \medskip
@@ -190,9 +191,9 @@ If $G$ is a finite  subgroup of $F^\ast$, the multiplicative group of nonzero el
 
 \begin{proof}
 Let $G$ be a finite subgroup of $F^\ast$ with $n = p_1^{e_1} \cdots p_k^{e_k}$ elements, where $p_i$'s are (not necessarily distinct) primes. By the Fundamental Theorem of Finite Abelian Groups,  
-$$
+\[
 G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}.
-$$
+\]
 Let $m$ be the least common multiple of $p_1^{e_1}, \ldots, p_k^{e_k}$.  Then $G$ contains an element of order $m$.  Since every $\alpha$ in $G$ satisfies $x^r - 1$ for some $r$ dividing $m$, $\alpha$ must also be a root of $x^m - 1$.  Since $x^m -1$ has at most $m$ roots in $F$, $n \leq m$.  On the other hand, we know that $m \leq |G|$; therefore, $m = n$. Thus, $G$ contains an element of order $n$ and must be cyclic. 
 \end{proof}
 
@@ -211,14 +212,14 @@ Let $\alpha$ be a generator for the cyclic group $E^{\ast}$ of nonzero elements 
 
 \begin{example}{GF_2^4}
 The finite field ${\rm GF}(2^4)$ is isomorphic to the field ${\mathbb Z}_2/ \langle 1 + x + x^4 \rangle$. Therefore, the elements of  ${\rm GF}(2^4)$ can be taken to be
-$$
+\[
 \{
 a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2
-\mbox{ and } 1 + \alpha + \alpha^4 = 0
+\text{ and } 1 + \alpha + \alpha^4 = 0
 \}.
-$$
+\]
 Remembering that $1 + \alpha +\alpha^4 = 0$, we add and multiply elements of ${\rm GF}(2^4)$ exactly as we add and multiply polynomials.  The multiplicative group of ${\rm GF}(2^4)$ is isomorphic to ${\mathbb  Z}_{15}$ with generator $\alpha$: 
-$$
+\[
 \begin{array}{rclcrclcrcl}
 \alpha^1 & = & \alpha & &
 \alpha^6  & = & \alpha^2 + \alpha^3 & &
@@ -236,7 +237,7 @@ $$
 \alpha^{10}  & = & 1 + \alpha + \alpha^2 & &
 \alpha^{15} & = & 1. 
 \end{array}
-$$
+\]
 \end{example}
 
 
@@ -249,50 +250,48 @@ We are interested in a class of codes known as cyclic codes\index{Code!cyclic}. 
 
 \begin{example}{6-3-linear_code}
 Consider the $(6,3)$-linear codes generated by the two matrices
-$$
+\[
 G_1 
 = 
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1 \\
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1 
-\end{array}
-\right)
-\mbox{ and }
+\end{pmatrix}
+\quad
+\text{and}
+\quad
 G_2 = 
-\left(
-\begin{array}{ccc}
+\begin{pmatrix}
 1 & 0 & 0 \\
 1 & 1 & 0 \\
 1 & 1 & 1 \\
 1 & 1 & 1 \\
 0 & 1 & 1 \\
 0 & 0 & 1
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 Messages in the first code are encoded as follows:
-$$
+\[
 \begin{array}{rclccrcl}
 (000) & \mapsto & (000000) & & & (100) & \mapsto & (100100) \\
 (001) & \mapsto & (001001) & & & (101) & \mapsto & (101101) \\
 (010) & \mapsto & (010010) & & & (110) & \mapsto & (110110) \\
 (011) & \mapsto & (011011) & & & (111) & \mapsto & (111111).
 \end{array}
-$$
+\]
 It is easy to see that the codewords form a cyclic code.  In the second code, 3-tuples are encoded in the following manner:
-$$
+\[
 \begin{array}{rclccrcl}
 (000) & \mapsto & (000000) & & & (100) & \mapsto & (111100) \\
 (001) & \mapsto & (001111) & & & (101) & \mapsto & (110011) \\
 (010) & \mapsto & (011110) & & & (110) & \mapsto & (100010) \\
 (011) & \mapsto & (010001) & & & (111) & \mapsto & (101101).
 \end{array}
-$$
+\]
 This code cannot be cyclic, since $(101101)$ is a codeword but $(011011)$ is not a codeword.
 \end{example}
 
@@ -301,13 +300,13 @@ This code cannot be cyclic, since $(101101)$ is a codeword but $(011011)$ is not
 
 We would like to find an easy method of obtaining cyclic linear codes.  To accomplish this, we can use our knowledge of finite fields and  polynomial rings over ${\mathbb Z}_2$.  Any binary $n$-tuple can be
 interpreted as a polynomial in ${\mathbb Z}_2[x]$.  Stated another way, the $n$-tuple $(a_0, a_1, \ldots, a_{n-1} )$ corresponds to the polynomial
-$$
+\[
 f(x) = a_0 +  a_1 x +  \cdots + a_{n-1} x^{n-1},
-$$
+\]
 where the degree of $f(x)$ is at most $n-1$.   For example, the polynomial corresponding to the 5-tuple $(10011)$ is  
-$$
+\[
 1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4.
-$$
+\]
 Conversely, with any polynomial $f(x) \in {\mathbb Z}_2[x]$ with $\deg f(x) < n$ we can associate a binary $n$-tuple.  The polynomial $x + x^2 + x^4$ corresponds to the 5-tuple $(01101)$.
 
 Let us fix a nonconstant polynomial $g(x)$ in ${\mathbb Z}_2[x]$ of degree \mbox{$n - k$}.  We can define an $(n,k)$-code $C$ in the following manner.  If $(a_0, \ldots, a_{k-1})$ is a $k$-tuple to be encoded, then $f(x) = a_0 + a_1 x +  \cdots + a_{k-1} x^{k-1}$ is the corresponding polynomial
@@ -315,55 +314,53 @@ in ${\mathbb Z}_2[x]$.  To encode $f(x)$, we multiply by $g(x)$.  The codewords 
 
 
 \begin{example}{generator_63-code}
-If we let $g(x)= 1 + x^3$, we can define a $(6,3)$-code $C$ as follows.  To encode a 3-tuple $( a_0, a_1, a_2 )$, we multiply the corresponding polynomial $f(x) = a_0 + a_1 x + a_2 x^2$ by $1 + x^3$.  We are defining a map $\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6$ by $\phi  : f(x) \mapsto g(x) f(x)$.  It is easy to check that this map is a group homomorphism.  In fact, if we regard ${\mathbb Z}_2^n$ as a vector space over ${\mathbb Z}_2$, $\phi$ is a linear transformation of vector spaces (see Exercise~13, Chapter~18).  Let us compute the kernel of $\phi$.  Observe that $\phi ( a_0, a_1, a_2 ) = (000000)$ exactly when 
-\begin{eqnarray*}
+If we let $g(x)= 1 + x^3$, we can define a $(6,3)$-code $C$ as follows.  To encode a 3-tuple $( a_0, a_1, a_2 )$, we multiply the corresponding polynomial $f(x) = a_0 + a_1 x + a_2 x^2$ by $1 + x^3$.  We are defining a map $\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6$ by $\phi  : f(x) \mapsto g(x) f(x)$.  It is easy to check that this map is a group homomorphism.  In fact, if we regard ${\mathbb Z}_2^n$ as a vector space over ${\mathbb Z}_2$, $\phi$ is a linear transformation of vector spaces (see Exercise~\ref{vect:linear_transformation}, Chapter~\ref{vect}).  Let us compute the kernel of $\phi$.  Observe that $\phi ( a_0, a_1, a_2 ) = (000000)$ exactly when 
+\begin{align*}
 0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 
-& = & (1 + x^3) ( a_0 + a_1 x + a_2 x^2 ) \\ 
-& = & a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.
-\end{eqnarray*}
+& = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 ) \\ 
+& = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.
+\end{align*}
 Since the polynomials over a field form an integral domain, $a_0 + a_1 x + a_2 x^2$ must be the zero polynomial. Therefore, $\ker \phi = \{ (000) \}$ and $\phi$ is one-to-one. 
  
 
 To calculate a generator matrix for $C$, we merely need to examine the way the polynomials $1$, $x$, and $x^2$ are encoded:
-\begin{eqnarray*}
-(1 + x^3) \cdot 1 & = & 1 + x^3 \\
-(1 + x^3)x & = & x + x^4 \\
-(1 + x^3)x^3 & = & x^2 + x^5. 
-\end{eqnarray*}
-We obtain the code corresponding to the generator matrix $G_1$ in Example~4.  The parity-check matrix for this code is
-$$
+\begin{align*}
+(1 + x^3) \cdot 1 & = 1 + x^3 \\
+(1 + x^3)x & = x + x^4 \\
+(1 + x^3)x^3 & = x^2 + x^5. 
+\end{align*}
+We obtain the code corresponding to the generator matrix $G_1$ in Example~\ref{example:finite:6-3-linear_code}.  The parity-check matrix for this code is
+\[
 H
 = 
-\left(
-\begin{array}{cccccc}
+\begin{pmatrix}
 1 & 0 & 0 & 1 & 0 & 0 \\
 0 & 1 & 0 & 0 & 1 & 0 \\
 0 & 0 & 1 & 0 & 0 & 1 
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 Since the smallest weight of any nonzero codeword is 2, this code has the ability to detect all single errors.  
 \end{example}
 
 
 Rings of polynomials have a great deal of structure; therefore, our immediate goal is to establish a link between polynomial codes and ring theory. Recall that $x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)$.  The factor ring 
-$$
+\[
 R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle
-$$ 
+\] 
 can be considered to be the ring of polynomials of the form 
-$$
+\[
 f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}
-$$
+\]
 that satisfy the condition $t^n = 1$.  It is an easy exercise to show that ${\mathbb Z}_2^n$ and $R_n$ are isomorphic as vector spaces.  We will often identify elements in ${\mathbb Z}_2^n$ with elements in
 ${\mathbb Z}[x] / \langle x^n - 1 \rangle$.  In this manner we can interpret a linear code as a subset of ${\mathbb Z}[x] / \langle x^n - 1 \rangle$.  
 
 The additional ring structure on polynomial codes is very powerful in describing cyclic codes. A cyclic shift of an $n$-tuple can be described by polynomial multiplication.  If $f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}$ is a code polynomial in $R_n$, then
-$$
+\[
 tf(t) = a_{n-1} + a_0 t + \cdots + a_{n-2} t^{n-1}
-$$
+\]
 is the cyclically shifted word obtained from multiplying $f(t)$ by $t$.  The following theorem gives a beautiful classification of cyclic codes in terms of the ideals of $R_n$.
 
-\begin{theorem} 
+\begin{theorem} \label{finite:cyclic_code_theorem}
 A linear code $C$ in ${\mathbb Z}_2^n$ is cyclic if and only if it is an ideal in $R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle$. 
 \end{theorem}
  
@@ -375,24 +372,23 @@ Conversely, let $C$ be an ideal in ${\mathbb Z}_2[x]/\langle x^n + 1\rangle$. Su
 
 \medskip
 
-Theorem~20.10 tells us that knowing the ideals of $R_n$ is equivalent to knowing the linear cyclic codes in ${\mathbb Z}_2^n$.  Fortunately, the ideals in $R_n$ are easy to describe.  The  natural ring homomorphism $\phi : {\mathbb Z}_2[x] \rightarrow R_n$ defined by $\phi[f(x)] = f(t)$ is a surjective homomorphism.  The kernel of $\phi$ is the ideal generated by $x^n - 1$.  By Theorem~14.14, every ideal $C$ in $R_n$ is of the form $\phi(I)$, where $I$ is an ideal in ${\mathbb Z}_2[x]$ that contains $\langle x^n - 1 \rangle$.  By Theorem~15.12, we know that every ideal $I$ in ${\mathbb Z}_2[x]$ is a principal ideal, since ${\mathbb Z}_2$ is a field. Therefore, $I = \langle g(x) \rangle$ for some unique monic polynomial in ${\mathbb Z}_2[x]$. Since $\langle x^n - 1 \rangle$ is contained in $I$, it must be the case that $g(x)$ divides $x^n - 1$. Consequently, every ideal $C$ in $R_n$ is of the form 
-$$
+Theorem~\ref{finite:cyclic_code_theorem} tells us that knowing the ideals of $R_n$ is equivalent to knowing the linear cyclic codes in ${\mathbb Z}_2^n$.  Fortunately, the ideals in $R_n$ are easy to describe.  The  natural ring homomorphism $\phi : {\mathbb Z}_2[x] \rightarrow R_n$ defined by $\phi[f(x)] = f(t)$ is a surjective homomorphism.  The kernel of $\phi$ is the ideal generated by $x^n - 1$.  By Theorem~\ref{rings:correspond_theorem}, every ideal $C$ in $R_n$ is of the form $\phi(I)$, where $I$ is an ideal in ${\mathbb Z}_2[x]$ that contains $\langle x^n - 1 \rangle$.  By Theorem~\ref{poly:PI_theorem}, we know that every ideal $I$ in ${\mathbb Z}_2[x]$ is a principal ideal, since ${\mathbb Z}_2$ is a field. Therefore, $I = \langle g(x) \rangle$ for some unique monic polynomial in ${\mathbb Z}_2[x]$. Since $\langle x^n - 1 \rangle$ is contained in $I$, it must be the case that $g(x)$ divides $x^n - 1$. Consequently, every ideal $C$ in $R_n$ is of the form 
+\[
 C= \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \mbox{ and $g(x)
 \mid (x^n - 1)$ in } {\mathbb Z}_2[x] \}.
-$$ 
+\] 
 The unique monic polynomial of the smallest degree that generates $C$ is called the {\bfi minimal generator polynomial\/}\index{Minimal generator polynomial}\index{Polynomial!minimal generator} of $C$. 
 
 
 \begin{example}{factor_x7-1}
 If we factor $x^7 - 1$ into irreducible components, we have
-$$
+\[
 x^7 - 1 = (1 + x)(1 + x + x^3)(1+ x^2 + x^3).
-$$
-We see that $g(t) = (1 + t + t^3)$ generates an ideal $C$ in $R_7$.  This code is a $(7, 4)$-block code.  As in Example~5, it is easy to calculate a generator matrix by examining what $g(t)$ does to the polynomials 1, $t$, $t^2$, and $t^3$.  A generator matrix for $C$ is 
-$$
+\]
+We see that $g(t) = (1 + t + t^3)$ generates an ideal $C$ in $R_7$.  This code is a $(7, 4)$-block code.  As in Example~\ref{example:finite:generator_63-code}, it is easy to calculate a generator matrix by examining what $g(t)$ does to the polynomials 1, $t$, $t^2$, and $t^3$.  A generator matrix for $C$ is 
+\[
 G =
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1 & 0 & 0 & 0 \\
 1 & 1 & 0 & 0 \\
 0 & 1 & 1 & 0 \\
@@ -400,17 +396,15 @@ G =
 0 & 1 & 0 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 \end{example}
 
  
 In general, we can determine a generator matrix for an $(n, k)$-code $C$ by the manner in which the elements $t^k$ are encoded. Let $x^n - 1 = g(x) h(x)$ in ${\mathbb Z}_2[x]$. If $g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}$ and $h(x) = h_0 + h_1 x +  \cdots + h_k x^k$, then the $n \times k$ matrix
-$$
+\[
 G = 
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 g_0 & 0   & \cdots & 0 \\
 g_1 & g_0 & \cdots & 0 \\
 \vdots & \vdots &\ddots & \vdots \\
@@ -418,21 +412,18 @@ g_{n-k}   & g_{n-k-1} & \cdots & g_0 \\
 0   & g_{n-k} & \cdots & g_{1} \\
 \vdots & \vdots & \ddots & \vdots \\
 0   & 0 & \cdots & g_{n-k}
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\]
 is a generator matrix for the code $C$ with generator polynomial $g(t)$.  The parity-check matrix for $C$ is the $(n-k) \times n$ matrix 
-$$
+\[
 H =
-\left(
-\begin{array}{cccccccc}
+\begin{pmatrix}
 0   & \cdots & 0   & 0      & h_k    & \cdots & h_0 \\
 0   & \cdots & 0 & h_k & \cdots & h_0    & 0 \\
 \cdots  & \cdots & \cdots  & \cdots &  \cdots &  \cdots & \cdots \\
 h_k & \cdots & h_0 & 0      & 0      & \cdots & 0 
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 We will leave the details of the proof of the following proposition as an exercise.  
 
 \begin{proposition}
@@ -441,98 +432,88 @@ Let $C = \langle g(t) \rangle$ be a cyclic code in $R_n$ and suppose that $x^n -
 
 
 \begin{example}{parity-check}
-In Example~6,
-$$
+In Example~\ref{example:finite:factor_x7-1},
+\[
 x^7 - 1 = g(x) h(x) = (1 + x + x^3)(1 + x + x^2 + x^4).
-$$
+\]
 Therefore, a parity-check matrix for this code is
-$$
+\[
 H =
-\left(
-\begin{array}{ccccccc}
+\begin{pmatrix}
 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
 1 & 0 & 1 & 1 & 1 & 0 & 0
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 \end{example}
 
 
 To determine the error-detecting and error-correcting capabilities of a cyclic code, we need to know something about determinants.  If $\alpha_1, \ldots, \alpha_n$ are elements in a field $F$, then the $n 
 \times n$ matrix  
-$$
-\left(
-\begin{array}{cccc}
+\[
+\begin{pmatrix}
 1          & 1          & \cdots & 1 \\
 \alpha_1   & \alpha_2   & \cdots & \alpha_n \\
 \alpha_1^2 & \alpha_2^2 & \cdots & \alpha_n^2 \\
 \vdots     & \vdots     & \ddots & \vdots \\
 \alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1} 
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\]
 is called the {\bfi Vandermonde matrix}\index{Vandermonde matrix}\index{Matrix, Vandermonde}.  The
 determinant of this matrix is called the {\bfi Vandermonde determinant}\index{Vandermonde determinant}\index{Determinant, Vandermonde}.  We will need the following lemma in our investigation of cyclic codes.
 
-\begin{lemma}
+\begin{lemma}\label{finite:V_det_lemma}
 Let $\alpha_1, \ldots, \alpha_n$ be elements in a field $F$ with $n \geq 2$.  Then
-$$
+\[
 \det
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1              & 1              & \cdots & 1 \\
 \alpha_1       & \alpha_2       & \cdots & \alpha_n \\
 \alpha_1^2     & \alpha_2^2     & \cdots & \alpha_n^2 \\
 \vdots         & \vdots         & \ddots & \vdots \\
 \alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1} 
-\end{array}
-\right)
+\end{pmatrix}
 = 
 \prod_{1 \leq j < i \leq n} (\alpha_i - \alpha_j).
-$$
+\]
 In particular, if the $\alpha_i$'s are distinct, then the determinant is nonzero.
 \end{lemma}
 
 
 \begin{proof}
 We will induct on $n$. If $n = 2$, then the determinant is $\alpha_2 - \alpha_1$.  Let us assume the result for $n  - 1$ and consider the polynomial $p(x)$ defined~by
-$$
+\[
 p(x)
 =
 \det
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1              & 1              & \cdots & 1              & 1 \\
 \alpha_1       & \alpha_2       & \cdots & \alpha_{n-1}   & x \\
 \alpha_1^2     & \alpha_2^2     & \cdots & \alpha_{n-1}^2 & x^2 \\
 \vdots         & \vdots         & \ddots & \vdots         & \vdots \\
 \alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_{n-1}^{n-1} & x^{n-1}
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 Expanding this determinant by cofactors on the last column, we see that $p(x)$ is a polynomial of at most degree $n-1$.  Moreover, the roots of $p(x)$ are $\alpha_1, \ldots, \alpha_{n-1}$, since the substitution of any one of these elements in the last column will produce a column identical to the last column in the matrix.  Remember that the determinant of a matrix is zero if it has two identical columns. Therefore,     
-$$
+\[
 p(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_{n-1}) \beta, 
-$$
+\]
 where
-$$
+\[
 \beta = (-1)^{n+n}
 \det
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 1              & 1              & \cdots & 1 \\
 \alpha_1       & \alpha_2       & \cdots & \alpha_{n-1} \\
 \alpha_1^2     & \alpha_2^2     & \cdots & \alpha_{n-1}^2 \\
 \vdots         & \vdots         & \ddots & \vdots \\
 \alpha_1^{n-2} & \alpha_2^{n-2} & \cdots & \alpha_{n-1}^{n-2} 
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 By our induction hypothesis,
-$$
+\[
 \beta = (-1)^{n+n} \prod_{1 \leq j < i \leq n-1} (\alpha_i - \alpha_j).
-$$
+\]
 If we let $x = \alpha_n$, the result now follows immediately.
 \end{proof}
 
@@ -540,63 +521,61 @@ If we let $x = \alpha_n$, the result now follows immediately.
 
 The following theorem gives us an estimate on the error detection and correction capabilities for a particular generator polynomial.
 
-\begin{theorem}
+\begin{theorem}\label{finite:min_dist_theorem}
 Let $C = \langle g(t) \rangle$ be a cyclic code in $R_n$ and suppose that $\omega$ is a primitive $n$th root of unity over ${\mathbb Z}_2$.  If $s$ consecutive powers of $\omega$ are roots of $g(x)$, then the minimum distance of $C$ is at least $s+1$.
 \end{theorem}
 
 
 \begin{proof}
 Suppose that 
-$$
+\[
 g( \omega^r) = g(\omega^{r+1}) = \cdots = g( \omega^{r+s-1}) = 0.
-$$
+\]
 Let $f(x)$ be some polynomial in $C$ with $s$ or fewer nonzero coefficients.  We can assume that 
-$$
+\[
 f(x) = a_{i_0} x^{i_0} + a_{i_1} x^{i_1} + \cdots + a_{i_{s-1}}
 x^{i_{s-1}} 
-$$
+\]
 be some polynomial in $C$. It will suffice to show that all of the $a_i$'s must be 0.  Since 
-$$
+\[
 g( \omega^r) = g(\omega^{r+1}) = \cdots = g( \omega^{r+s-1}) = 0
-$$
+\]
 and $g(x)$ divides $f(x)$,
-$$
+\[
 f( \omega^r) = f(\omega^{r+1}) = \cdots = f( \omega^{r+s-1}) = 0.
-$$
+\]
 Equivalently, we have the following system of equations:
-\begin{eqnarray*}
+\begin{align*}
 a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots +
-a_{i_{s-1}} (\omega^r)^{i_{s-1}} & = & 0 \\ 
+a_{i_{s-1}} (\omega^r)^{i_{s-1}} & = 0 \\ 
 a_{i_0} (\omega^{r+1})^{i_0} + a_{i_1} (\omega^{r+1})^{i_2} + \cdots +
-a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} & = & 0 \\ 
-& \vdots & \\
+a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} & = 0 \\ 
+& \vdots  \\
 a_{i_0} (\omega^{r+s-1})^{i_0} + a_{i_1} (\omega^{r+s-1})^{i_1} +
-\cdots + a_{i_{s-1}} (\omega^{r+s-1})^{i_{s-1}} & = & 0.
-\end{eqnarray*}
+\cdots + a_{i_{s-1}} (\omega^{r+s-1})^{i_{s-1}} & = 0.
+\end{align*}
 Therefore, $(a_{i_0}, a_{i_1}, \ldots, a_{i_{s-1}})$ is a solution to the homogeneous system of linear equations
-\begin{eqnarray*}
+\begin{align*}
 (\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots +
-(\omega^{i_{s-1}})^r x_{n-1} & = & 0 \\ 
+(\omega^{i_{s-1}})^r x_{n-1} & = 0 \\ 
 (\omega^{i_0})^{r+1} x_0 + (\omega^{i_1})^{r+1} x_1 + \cdots +
-(\omega^{i_{s-1}})^{r+1} x_{n-1} & = & 0 \\ 
-& \vdots & \\
+(\omega^{i_{s-1}})^{r+1} x_{n-1} & = 0 \\ 
+& \vdots  \\
 (\omega^{i_0})^{r+s-1} x_0 + (\omega^{i_1})^{r+s-1} x_1 + \cdots +
-(\omega^{i_{s-1}})^{r+s-1} x_{n-1} & = & 0.
-\end{eqnarray*}
+(\omega^{i_{s-1}})^{r+s-1} x_{n-1} & = 0.
+\end{align*}
 However, this system has a unique solution, since the determinant of the matrix
-$$
-\left(
-\begin{array}{cccc}
+\[
+\begin{pmatrix}
 (\omega^{i_0})^r & (\omega^{i_1})^r & \cdots & (\omega^{i_{s-1}})^r \\
 (\omega^{i_0})^{r+1} & (\omega^{i_1})^{r+1} & \cdots &
 (\omega^{i_{s-1}})^{r+1} \\
 \vdots & \vdots         & \ddots & \vdots \\
 (\omega^{i_0})^{r+s-1} & (\omega^{i_1})^{r+s-1} & \cdots &
 (\omega^{i_{s-1}})^{r+s-1} 
-\end{array}
-\right)
-$$
-can be shown to be nonzero using Lemma~20.12 and the basic properties of determinants (Exercise).   Therefore, 
+\end{pmatrix}
+\]
+can be shown to be nonzero using Lemma~\ref{finite:V_det_lemma} and the basic properties of determinants (Exercise).   Therefore, 
 this solution must be $a_{i_0} = a_{i_1} = \cdots = a_{i_{s-1}} = 0$.  
 \end{proof}
 
@@ -619,12 +598,12 @@ capabilities. Let $d = 2r + 1$ for some $r \geq 0$.  Suppose that
 $\omega$ is a primitive $n$th root of unity over ${\mathbb Z}_2$, and
 let $m_i(x)$ be the minimal polynomial over ${\mathbb Z}_2$ of
 $\omega^i$. If  
-$$
+\[
 g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],
-$$
+\]
 then the cyclic code $\langle g(t) \rangle$ in $R_n$ is called the
 {\bfi BCH code of length}\index{Code!BCH} $n$ {\bfi and distance} $d$.
-By Theorem~20.13, the minimum distance of $C$ is at least $d$. 
+By Theorem~\ref{finite:min_dist_theorem}, the minimum distance of $C$ is at least $d$. 
 
 
 \begin{theorem}
@@ -642,19 +621,17 @@ for $1 \leq i < d$.
 
 \rm\item\it
 The matrix 
-$$
+\[
 H
 =
-\left(
-\begin{array}{ccccc}
+\begin{pmatrix}
 1      & \omega      & \omega^2    & \cdots & \omega^{n-1}\\
 1      & \omega^2    & \omega^{4}  & \cdots & \omega^{(n-1)(2)} \\
 1      & \omega^3    & \omega^{6}  & \cdots & \omega^{(n-1)(3)} \\
 \vdots & \vdots      & \vdots      & \ddots & \vdots \\
 1      & \omega^{2r} & \omega^{4r} & \cdots & \omega^{(n-1)(2r)} 
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\]
 is a parity-check matrix for $C$.
 
 \end{enumerate}
@@ -675,28 +652,24 @@ definition of $g(x)$. Consequently, $f(x)$ is a codeword.
 Let \mbox{$f(t) = a_0 + a_1 t + \cdots + a_{n-1}v t^{n-1}$} be in $R_n$. The
 corresponding $n$-tuple in ${\mathbb Z}_2^n$ is ${\bold x} = (a_0 a_1
 \cdots a_{n-1})^{\rm t}$. By (2),
-$$
+\[
 H {\bold x}
 =
-\left(
-\begin{array}{c}
+\begin{pmatrix}
 a_0 + a_1 \omega + \cdots + a_{n-1} \omega^{n-1} \\
 a_0 + a_1 \omega^2 + \cdots + a_{n-1} (\omega^2)^{n-1} \\
 \vdots \\
 a_0 + a_1 \omega^{2r} + \cdots + a_{n-1} (\omega^{2r})^{n-1}
-\end{array}
-\right)
+\end{pmatrix}
 =
-\left(
-\begin{array}{c}
+\begin{pmatrix}
 f(\omega) \\
 f(\omega^2) \\
 \vdots \\
 f(\omega^{2r})
-\end{array}
-\right)
+\end{pmatrix}
 =0
-$$
+\]
 exactly when $f(t)$ is in $C$. Thus, $H$ is a parity-check matrix for
 $C$.
 
@@ -712,32 +685,32 @@ m_{2r}(t)]$.  Therefore, $C = \langle g(t) \rangle$.
 \begin{example}{x15-1}
 It is easy to verify that $x^{15} - 1 \in {\mathbb Z}_2[x]$ has a
 factorization
-$$
+\[
 x^{15} - 1 = (x + 1)(x^2 + x + 1)(x^4 + x + 1)(x^4 + x^3 + 1)(x^4 +
 x^3 + x^2 + x + 1),
-$$
+\]
 where each of the factors is an irreducible polynomial.
 Let $\omega$ be a root of $1 + x + x^4$. The Galois field GF($2^4$) is
-$$
+\[
 \{
 a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2
 \mbox{ and } 1 + \omega + \omega^4 = 0
 \}.
-$$
+\]
 By Example~3, $\omega$ is a primitive 15th root of unity. The
 minimal polynomial of $\omega$ is $m_1(x) = 1 + x + x^4$. It is easy
 to see that $\omega^2$ and $\omega^4$ are also roots of $m_1(x)$. The
 minimal polynomial of $\omega^3$ is $m_2(x) = 1 + x + x^2 + x^3 +
 x^4$. Therefore, 
-$$
+\[
 g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8
-$$
+\]
 has roots $\omega$, $\omega^2$, $\omega^3$, $\omega^4$.  Since both $m_1(x)$
 and $m_2(x)$ divide $x^{15} - 1$, the BCH code is a $(15, 7)$-code. If
 $x^{15} -1 = g(x)h(x)$, then $h(x) = 1 + x^4 + x^6 + x^7$; therefore,
 a parity-check matrix for this code is
-$$
-\left(
+\[
+\left( %This matrix is too large for pmatrix - TWJ 8/19/2010
 \begin{array}{ccccccccccccccc}
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 \\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
@@ -749,7 +722,7 @@ $$
 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0
 \end{array}
 \right).
-$$
+\]
 \end{example}
 
 
@@ -762,129 +735,103 @@ $$
 {\small
 \begin{enumerate}
 
-\bf\item\rm
+\item
 Calculate each of the following.
+\begin{multicols}{2}
+\begin{enumerate}
 
-\vspace{3pt}        %two column exercise list
-
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\item 
 $[{\rm GF}(3^6) : {\rm GF}(3^3)]$
- 
- \item[{\bf (c)}]
-$[{\rm GF}(625) : {\rm GF}(25) ]$
 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+\item 
 $[{\rm GF}(128): {\rm GF}(16)]$
 
- \item[{\bf (d)}]
+\item 
+$[{\rm GF}(625) : {\rm GF}(25) ]$
+
+\item 
 $[{\rm GF}(p^{12}): {\rm GF}(p^2)]$
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
-
-\vspace{2pt}        %end two column exercise list
 
 
-\bf\item\rm
+\end{enumerate}
+\end{multicols}
+
+
+
+\item
 Calculate $[{\rm GF}(p^m): {\rm GF}(p^n)]$, where $n \mid m$.
 
 
-\bf\item\rm
+\item
 What is the lattice of subfields for ${\rm GF}(p^{30})$?
 
 
-\bf\item\rm
+\item
 Let $\alpha$ be a zero of $x^3 + x^2 + 1$ over ${\mathbb Z}_2$. 
 Construct a finite field of order 8. Show that
 $x^3 + x^2 + 1$ splits in ${\mathbb Z}_2(\alpha)$. 
  
 
-\bf\item\rm
+\item
 Construct a finite field of order 27.
 
 
-\bf\item\rm
+\item
 Prove or disprove: ${\mathbb Q}^\ast$ is cyclic.
 
  
-\bf\item\rm
+\item
 Factor each of the following polynomials in ${\mathbb Z}_2[x]$.
 
-\vspace{3pt}        %two column exercise list
+\begin{multicols}{2}
+\begin{enumerate}
 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\item 
 $x^5- 1$
- 
- \item[{\bf (c)}]
-$x^9 - 1$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item 
 $x^6 + x^5 + x^4 + x^3 + x^2 + x + 1$
 
- \item[{\bf (d)}]
+\item 
+$x^9 - 1$
+
+\item 
 $x^4 +x^3 + x^2 + x + 1$ 
 
-\end{itemize}
-\end{minipage}
-\end{minipage}
 
-\vspace{2pt}        %end two column exercise list
+\end{enumerate}
+\end{multicols}
 
 
 
-
-
-
-
-\bf\item\rm
+\item
 Prove or disprove: ${\mathbb Z}_2[x] / \langle x^3 + x + 1 \rangle \cong
 {\mathbb Z}_2[x] / \langle x^3 + x^2 + 1 \rangle$. 
 
 
-\bf\item\rm
+\item
 Determine the number of cyclic codes of length $n$ for $n = 6$, 7, 8,
 10.
 
 
-\bf\item\rm
+\item
 Prove that the ideal $\langle t + 1 \rangle$ in $R_n$ is the code in
 ${\mathbb Z}_2^n$ consisting of all words of even parity.
 
 
-\bf\item\rm
+\item
 Construct all BCH codes of
+\begin{multicols}{2}
 \begin{enumerate}
 
-\bf\item\rm
+\item
 length 7.
 
-\bf\item\rm
+\item
 length 15.
 
 \end{enumerate}
+\end{multicols}
 
 
 
@@ -892,83 +839,83 @@ length 15.
 
 
 
-\bf\item\rm
+\item
 Prove or disprove: There exists a finite field that is algebraically
 closed. 
 
 
-\bf\item\rm
+\item
 Let $p$ be prime.  Prove that the field of rational functions ${\mathbb
 Z}_p(x)$ is an infinite field of characteristic $p$.
 
 
-\bf\item\rm
+\item
 Let $D$ be an integral domain of characteristic $p$.  Prove that $(a -
 b)^{p^n} = a^{p^n} - b^{p^n}$ for all $a, b \in D$.
 
 
-\bf\item\rm
+\item
 Show that every element in a finite field can be written as the sum
 of two squares.
 
 
 
 
-\bf\item\rm
+\item
 Let $E$ and $F$ be subfields of a finite field $K$. If $E$ is
 isomorphic to $F$, show that $E=F$.
 
 
-\bf\item\rm
+\item
 Let $F \subset E \subset K$ be fields. If $K$ is separable over $F$,
 show that $K$ is also separable over $E$.
 
 
-\bf\item\rm
+\item
 Let $E$ be an extension of a finite field $F$, where $F$ has $q$
 elements. Let $\alpha \in E$ be algebraic over $F$ of degree $n$.
 Prove that $F( \alpha )$ has $q^n$ elements. 
 
 
-\bf\item\rm
+\item
 Show that every finite extension of a finite field $F$ is simple;
 that is, if $E$ is a finite extension of a finite field $F$, prove
 that there exists an $\alpha \in E$ such that $E = F( \alpha )$.
 
 
-\bf\item\rm
+\item
 Show that for every $n$ there exists an irreducible polynomial of 
 degree $n$ in~${\mathbb Z}_p[x]$.
 
 
 
-\bf\item\rm
+\item
 Prove that the {\bfi Frobenius map}\index{Frobenius map} $\phi : {\rm
 GF}(p^n) \rightarrow {\rm GF}(p^n)$ given by $\phi : \alpha \mapsto
 \alpha^p$ is an automorphism of order $n$. 
 
 
-\bf\item\rm
+\item
 Show that every element in ${\rm GF}(p^n)$ can be written in the form
 $a^p$ for some unique $a \in {\rm GF}(p^n)$.
 
 
-\bf\item\rm
+\item
 Let $E$ and $F$ be subfields of ${\rm GF}(p^n)$. If $|E| = p^r$ and
 $|F| = p^s$, what is the order of $E \cap F$? 
 
 
-\bf\item\rm
+\item
 {\bf Wilson's Theorem.}\index{Wilson's Theorem}
 Let $p$ be prime.  Prove that $(p-1)! \equiv -1 \pmod{p}$. 
 
 
-\bf\item\rm
+\item
 If $g(t)$ is the minimal generator polynomial for a cyclic code $C$ in
 $R_n$, prove that the constant term of $g(x)$ is $1$.
 
 
-\bf\item\rm
+\item
 Often it is conceivable that a burst of errors might occur during
 transmission, as in the case of a power surge.  Such a momentary burst
 of interference might alter several consecutive bits in a codeword.
@@ -977,27 +924,26 @@ $(n,k)$-cyclic code. Prove that any error burst up to $n-k$ digits can
 be detected.  
 
 
-\bf\item\rm
+\item
 Prove that the rings $R_n$ and ${\mathbb Z}_2^n$ are isomorphic as vector
 spaces. 
 
 
-\bf\item\rm
+\item
 Let $C$ be a code in $R_n$ that is generated by $g(t)$. If $\langle
 f(t) \rangle$ is another code in $R_n$, show that $\langle g(t) \rangle
 \subset \langle f(t) \rangle$ if and only if $f(x)$ divides $g(x)$ in
 ${\mathbb Z}_2[x]$.
 
 
-\bf\item\rm
+\item
 Let $C = \langle g(t) \rangle$ be a cyclic code in $R_n$ and suppose
 that $x^n - 1 = g(x) h(x)$, where $g(x) = g_0 + g_1 x + \cdots +
 g_{n-k} x^{n-k}$ and $h(x) = h_0 + h_1 x +  \cdots + h_k x^k$. Define
 $G$ to be the $n \times k$ matrix
-$$
+\[
 G = 
-\left(
-\begin{array}{cccc}
+\begin{pmatrix}
 g_0 & 0   & \cdots & 0 \\
 g_1 & g_0 & \cdots & 0 \\
 \vdots & \vdots &\ddots & \vdots \\
@@ -1005,31 +951,28 @@ g_{n-k}   & g_{n-k-1} & \cdots & g_0 \\
 0   & g_{n-k} & \cdots & g_{1} \\
 \vdots & \vdots & \ddots & \vdots \\
 0   & 0 & \cdots & g_{n-k}
-\end{array}
-\right)
-$$
+\end{pmatrix}
+\]
 and $H$ to be the $(n-k) \times n$ matrix 
-$$
+\[
 H =
-\left(
-\begin{array}{cccccccc}
+\begin{pmatrix}
 0   & \cdots & 0   & 0      & h_k    & \cdots & h_0 \\
 0   & \cdots & 0   & h_k    & \cdots & h_0    & 0 \\
 \cdots & \cdots & \cdots  & \cdots & \cdots & \cdots & \cdots  \\
 h_k & \cdots & h_0 & 0      & 0      & \cdots & 0 
-\end{array}
-\right).
-$$
+\end{pmatrix}.
+\]
 \begin{enumerate}
 
-\bf\item\rm
+\item
 Prove that $G$ is a generator matrix for $C$.
 
-\bf\item\rm
+\item
 Prove that $H$ is a parity-check matrix for $C$.
 
 
-\bf\item\rm
+\item
 Show that $HG = 0$.
 
 
@@ -1065,34 +1008,34 @@ syndrome\/}\index{Syndrome of a code} of $w(t)$ is $s_1, \ldots,
 s_{2r}$. 
 \begin{enumerate}
 
-\bf\item\rm
+\item
 Show that $w(t)$ is a code polynomial if and only if $s_i = 0$ for all
 $i$. 
 
-\bf\item\rm
+\item
 Show that 
-$$
+\[
 s_i = w( \omega^i) = e( \omega^i) = \omega^{i a_1} + \omega^{i a_2} +
 \cdots + \omega^{i a_k} 
-$$
+\]
 for $i = 1, \ldots, 2r$. The {\bfi error-locator
 polynomial\/}\index{Polynomial!error-locator} is defined to be 
-$$
+\[
 s(x) = (x + \omega^{a_1})(x + \omega^{a_2}) \cdots  (x +
 \omega^{a_k}). 
-$$
+\]
 
-\bf\item\rm
+\item
 Recall the $(15,7)$-block BCH code in Example~7.  By Theorem~7.3, this
 code is capable of correcting two errors. Suppose that these errors
 occur in bits $a_1$ and $a_2$. The error-locator polynomial
 is $s(x) = (x + \omega^{a_1})(x + \omega^{a_2})$. Show that
-$$
+\[
 s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right).
-$$
+\]
 
 
-\bf\item\rm
+\item
 Let $w(t) = 1 + t^2 +t^4 + t^5 + t^7 + t^{12} + t^{13}$. Determine
 what the originally transmitted code polynomial was.
 
