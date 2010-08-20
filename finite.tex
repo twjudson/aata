@@ -152,27 +152,35 @@ The lattice of subfields of ${\rm GF}(p^{24})$ is given in Figure~\ref{FieldLatt
 
 \begin{figure}
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(15,13)
-\put(6,12){GF($p^{24}$)}
-\put(3,9){GF($p^8$)}
-\put(9.6,9){GF($p^{12}$)}
-\put(3,6){GF($p^4$)}
-\put(9.8,6){GF($p^6$)}
-\put(3,3){GF($p^2$)}
-\put(9.8,3){GF($p^3$)}
-\put(6.2,0.5){GF($p$)}
-\put(11,4){\line(0,1){1.5}}
-\put(4,7){\line(0,1){1.5}}
-\put(6,7){\line(5,3){3}}
-\put(11,7){\line(0,1){1.5}}
-\put(4,4){\line(0,1){1.5}}
-\put(6,4){\line(5,3){3}}
-\put(8.5,1.5){\line(5,3){1.5}}
-\put(6.5,1.5){\line(-5,3){1.5}}
-\put(8.5,11.5){\line(5,-3){1.5}}
-\put(6.5,11.5){\line(-5,-3){1.5}}
-\end{picture}
+\begin{tikzpicture}[scale=0.7] %Replaced figure with tikz figure - TWJ 8/20/2010
+
+
+\draw  (1.7,2.4) -- (0.7,3);
+\draw  (-1.7,2.4) -- (-0.7,3);
+\draw  (1.7,-2.4) -- (0.7,-3);
+\draw  (-1.7,-2.4) -- (-0.7,-3);
+
+\draw (3,1.5) -- (3,0.5);
+\draw (-3,1.5) -- (-3,0.5);
+\draw (3,-1.5) -- (3,-0.5);
+\draw (-3,-1.5) -- (-3,-0.5);
+
+\draw (-1.7,0.2) -- (1.7,1.8);
+\draw (-1.7,-1.8) -- (1.7,-0.2);
+
+\node at (0, 3.5) {${\rm GF}(p^{24})$};
+
+\node at (3, 2) {${\rm GF}(p^{12})$};
+\node at (3, 0) {${\rm GF}(p^{6})$};
+\node at (3, -2) {${\rm GF}(p^{3})$};
+
+\node at (-3, 2) {${\rm GF}(p^{8})$};
+\node at (-3, 0) {${\rm GF}(p^{4})$};
+\node at (-3, -2) {${\rm GF}(p^{2})$};
+
+\node at (0, -3.5) {${\rm GF}(p)$};
+
+\end{tikzpicture}
 \end{center}
 \caption{Subfields of ${\rm GF}(p^{24})$}
 \label{FieldLattice}
@@ -190,7 +198,7 @@ If $G$ is a finite  subgroup of $F^\ast$, the multiplicative group of nonzero el
  
 
 \begin{proof}
-Let $G$ be a finite subgroup of $F^\ast$ with $n = p_1^{e_1} \cdots p_k^{e_k}$ elements, where $p_i$'s are (not necessarily distinct) primes. By the Fundamental Theorem of Finite Abelian Groups,  
+Let $G$ be a finite subgroup of $F^\ast$ with $n = p_1^{e_1} \cdots p_k^{e_k}$ elements, where $p_i$'s are (not necessarily distinct) primes. By the Fundamental Theorem of Finite Abelian Groups (Theorem \ref{struct:Finite_Abelian_Grps_Theorem}),  
 \[
 G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}.
 \]
@@ -1053,20 +1061,23 @@ what the originally transmitted code polynomial was.
 
 \begin{itemize}
  
-\item[{\bf [1]}]
-Childs, L. {\it A Concrete Introduction to Higher Algebra}.
-Springer-Verlag, New York, 1979.
+\item[{\bf [1]}] %Reference updated 5/4/2010 - TWJ
+Childs, L. 
+{\it A Concrete Introduction to Higher Algebra}. 2nd ed.
+Springer-Verlag, New York, 1995. .
 
-\item[{\bf [2]}]
+\item[{\bf [2]}] %No longer in print 8/20/2010 - TWJ
 G{\aa}ding, L. and Tambour, T. {\it Algebra for Computer
 Science}. Springer-Verlag, New York, 1988.
 
-\item[{\bf [3]}]
-Lidl, R. and Pilz, G. {\it Applied Abstract Algebra}.
-Springer-Verlag, New York, 1984. An excellent presentation of finite
+\item[{\bf [3]}] %Reference updated 8/20/2010 - TWJ
+Lidl, R. and Pilz, G. 
+{\it Applied Abstract Algebra}. 2nd ed. Springer,
+New York, 1998. 
+An excellent presentation of finite
 fields and their applications.
 
-\item[{\bf [4]}]
+\item[{\bf [4]}] %No longer in print 8/20/2010 - TWJ
 Mackiw, G. {\it Applications of Abstract Algebra}. Wiley,
 New York, 1985.
  
@@ -1075,10 +1086,9 @@ Roman, S. {\it Coding and Information Theory}. Springer-Verlag,
 New York, 1992. 
 
 
-\item[{\bf [6]}]
-van Lint, J. H. {\it Introduction to Coding Theory}.
-Springer-Verlag, New York, 1982.
- 
+\item[{\bf [6]}] %Reference updated - TWJ 8/20/2010
+van Lint, J. H. {\it Introduction to Coding Theory}. Springer,
+New York, 1999. 
 \end{itemize}
 }
 
