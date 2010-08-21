@@ -12,9 +12,9 @@
  
 A classic problem of algebra has been to find the solutions of a polynomial equation.  The solution to the quadratic equation was known in antiquity.  Italian mathematicians found general solutions to the
 general cubic and quartic equations in the sixteenth century; however,  attempts to solve the general fifth-degree, or quintic, polynomial were repulsed for the next three hundred years. Certainly, equations such as $x^5 - 1 = 0$ or $x^6 - x^3 - 6 = 0$ could be solved, but no solution like the quadratic formula was found for the general quintic, 
-$$
+\[
 a x^5 + b x^4 +c x^3 + d x^2 + e x + f = 0.
-$$
+\]
 Finally, at the beginning of the nineteenth century, Ruffini and Abel both found quintics that could not be solved with any formula.  It was Galois, however, who provided the full explanation by showing which
 polynomials could and could not be solved by formulas.  He discovered the connection between groups and field extensions.  Galois theory demonstrates the strong interdependence of group and field theory, and has had far-reaching implications beyond its original purpose.  
  
@@ -46,32 +46,32 @@ We need only show that the set of automorphisms of $E$ that fix $F$ elementwise 
 
 Let $E$ be a field extension of $F$.  We will denote the full group of automorphisms of $E$ by $Aut(E)$.  We define the {\bfi Galois group\/}\index{Group!Galois}\index{Galois group} of $E$ over $F$ to be
 the group of automorphisms of $E$ that fix $F$ elementwise; that is,
-$$
+\[
 G(E/F)\label{notegalois} = \{ \sigma \in Aut(E) : \sigma(\alpha)
 =
 \alpha \mbox{ for all $\alpha \in F$} \}.
-$$ 
+\] 
 If $f(x)$ is a polynomial in $F[x]$ and $E$ is the splitting field of $f(x)$ over $F$, then we define the Galois group of $f(x)$ to be $G(E/F)$. 
 
 
 \begin{example}{complex_conj}
 Complex conjugation, defined by $\sigma : a + bi \mapsto a - bi$, is an automorphism of the complex numbers.  Since 
-$$
+\[
 \sigma(a) = \sigma(a + 0i) = a - 0i = a,
-$$
+\]
 the automorphism defined by complex conjugation must be in $G( {\mathbb C} / {\mathbb R} )$. 
 \end{example}
 
 
 \begin{example}{Q_sqrt5}
 Consider the fields ${\mathbb Q} \subset {\mathbb Q}(\sqrt{5}\, ) \subset {\mathbb Q}( \sqrt{3}, \sqrt{5}\, )$.  Then for $a, b \in {\mathbb Q}( \sqrt{5}\, )$,
-$$
+\[
 \sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}
-$$
+\]
 is an automorphism of ${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$ leaving ${\mathbb Q}( \sqrt{5}\, )$ fixed.  Similarly,
-$$
+\[
 \tau( a + b \sqrt{5}\, ) = a - b \sqrt{5}
-$$
+\]
 is an automorphism of ${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$ leaving ${\mathbb Q}( \sqrt{3}\, )$ fixed. The automorphism $\mu = \sigma \tau$ moves both $\sqrt{3}$ and $\sqrt{5}$.  It will soon be clear that $\{ id, \sigma, \tau, \mu  \}$ is the Galois group of ${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$ over ${\mathbb Q}$. The following table shows that this group is isomorphic to ${\mathbb Z}_2 \times {\mathbb Z}_2$.  
 \begin{center}
 \begin{tabular}{c|cccc}
@@ -87,23 +87,23 @@ We may also regard the field ${\mathbb Q}( \sqrt{3}, \sqrt{5}\, )$ as a vector s
 \sqrt{5}\, ) /{\mathbb Q})| = [{\mathbb Q}(\sqrt{3}, \sqrt{5}\, ):{\mathbb Q})] = 4$.
 \end{example} 
  
-\begin{proposition}
+\begin{proposition}\label{galois:roots_permute_prop}
 Let $E$ be a field extension of $F$ and $f(x)$ be a polynomial in $F[x]$. Then any automorphism in $G(E/F)$ defines a permutation of the roots of $f(x)$ that lie in $E$. 
 \end{proposition}
  
 \begin{proof}
 Let 
-$$
+\[
 f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
-$$
+\]
 and suppose that $\alpha \in E$ is a zero of $f(x)$. Then for $\sigma \in G(E/F)$,
-\begin{eqnarray*}
-0 & = & \sigma( 0 ) \\
-& = & \sigma( f( \alpha )) \\
-& = & \sigma(a_0 + a_1\alpha + a_2 \alpha^2 + \cdots + a_n \alpha^n) \\
-& = & a_0 + a_1 \sigma(\alpha) + a_2 [\sigma(\alpha)]^2 + \cdots + a_n
+\begin{align*}
+0 & = \sigma( 0 ) \\
+& = \sigma( f( \alpha )) \\
+& = \sigma(a_0 + a_1\alpha + a_2 \alpha^2 + \cdots + a_n \alpha^n) \\
+& = a_0 + a_1 \sigma(\alpha) + a_2 [\sigma(\alpha)]^2 + \cdots + a_n
 [\sigma(\alpha)]^n;
-\end{eqnarray*} 
+\end{align*} 
 therefore, $\sigma( \alpha )$ is also a zero of $f(x)$.
 \end{proof}
 
@@ -111,32 +111,32 @@ therefore, $\sigma( \alpha )$ is also a zero of $f(x)$.
  
 Let $E$ be an algebraic extension of a field $F$.  Two elements $\alpha, \beta \in E$ are {\bfi conjugate\/}\index{Conjugate elements} over $F$ if they have the same minimal polynomial. For example, in the field ${\mathbb Q}( \sqrt{2}\, )$ the elements $\sqrt{2}$ and $-\sqrt{2}$ are conjugate over ${\mathbb Q}$ since they are both roots of the irreducible polynomial $x^2 - 2$.  
  
-A converse of the last proposition exists. The proof follows directly from Lemma~19.18. 
+A converse of the last proposition exists. The proof follows directly from Lemma~\ref{fields:isomorph_lemma}. 
 
 \begin{proposition}
 If $\alpha$ and $\beta$ are conjugate over $F$, there exists an isomorphism $\sigma : F( \alpha ) \rightarrow F( \beta )$ such that $\sigma$ is the identity when restricted to~$F$.
 \end{proposition}
 
-\begin{theorem}
+\begin{theorem}\label{galois:extension_order_theorem}
 Let $f(x)$ be a polynomial in $F[x]$ and suppose that $E$ is the splitting field for $f(x)$ over $F$.  If $f(x)$ has no repeated roots, then 
-$$
+\[
 |G(E/F)| = [E:F].
-$$
+\]
 \end{theorem}
  
 \begin{proof}
-The proof is similar to the proof of Theorem~19.19.  We will use mathematical induction on the degree of $f(x)$.  If the degree of $f(x)$ is 0 or 1, then $E = F$ and there is nothing to show.  Assume
+The proof is similar to the proof of Theorem~\ref{fields:isomorph_extension_theorem}.  We will use mathematical induction on the degree of $f(x)$.  If the degree of $f(x)$ is 0 or 1, then $E = F$ and there is nothing to show.  Assume
 that the result holds for all polynomials of degree $k$ with $0 \leq k < n$.  Let $p(x)$ be an irreducible factor of $f(x)$ of degree $r$.  Since all of the roots of $p(x)$ are in $E$, we can choose one of
-these roots, say $\alpha$, so that $F \subset F( \alpha ) \subset E$.  If $\beta$ is any other root of $p(x)$, then $F \subset F( \beta ) \subset E$.  By Lemma~19.18, there exists a unique isomorphism $\overline{\sigma}: F( \alpha ) \rightarrow F( \beta )$ for each such $\beta$ that fixes $F$ elementwise.  Since $E$ is a splitting field of $F(\beta)$, there are exactly $r$ such isomorphisms.  We can factor
+these roots, say $\alpha$, so that $F \subset F( \alpha ) \subset E$.  If $\beta$ is any other root of $p(x)$, then $F \subset F( \beta ) \subset E$.  By Lemma~\ref{fields:isomorph_lemma}, there exists a unique isomorphism $\overline{\sigma}: F( \alpha ) \rightarrow F( \beta )$ for each such $\beta$ that fixes $F$ elementwise.  Since $E$ is a splitting field of $F(\beta)$, there are exactly $r$ such isomorphisms.  We can factor
 $p(x)$ in $F(\alpha)$ as $p(x) = (x - \alpha) p_1(x)$.  The degrees of $p_1(x)$ and $q_1(x)$ are both less than $r$.  Since we know that $E$ is the  splitting field of $p_1(x)$ over $F(\alpha)$, we can apply
 the induction  hypothesis to conclude that 
-$$
+\[
 |G(E/F(\alpha))| = [E:F(\alpha)].
-$$
+\]
 Consequently, there are
-$$
+\[
 [E:F] = [E:F(\alpha)] [F( \alpha):F]
-$$
+\]
 possible automorphisms of $E$ that fix $F$, or $|G(E/F)| = [E:F]$.
 \end{proof}
  
@@ -146,53 +146,53 @@ Let $F$ be a finite field with a finite extension $E$ such that $[E:F]=k$. T hen
 
 \begin{proof}
 Let $p$ be the characteristic of $E$ and $F$ and assume that the orders of $E$ and $F$ are $p^m$ and $p^n$, respectively.  Then $nk = m$.  We can also assume that $E$ is the splitting field of $x^{p^m} - x$
-over a subfield of order $p$.  Therefore, $E$ must also be the splitting field of $x^{p^m} - x$ over $F$.  Applying Theorem~21.5, we find that $|G(E/F)| = k$.     
+over a subfield of order $p$.  Therefore, $E$ must also be the splitting field of $x^{p^m} - x$ over $F$.  Applying Theorem~\ref{galois:extension_order_theorem}, we find that $|G(E/F)| = k$.     
 
 To prove that $G(E/F)$ is cyclic, we must find a generator for $G(E/F)$.  Let $\sigma : E \rightarrow E$ be defined by $\sigma(\alpha) = \alpha^{p^n}$.  We claim that $\sigma$ is the element in $G(E/F)$ that
 we are seeking.  We first need to show that $\sigma$ is in $Aut(E)$.  If $\alpha$ and $\beta$ are in $E$,   
-$$
+\[
 \sigma(\alpha + \beta) = (\alpha + \beta)^{p^n}
 = \alpha^{p^n} + \beta^{p^n} = \sigma(\alpha) + \sigma(\beta)
-$$
-by Lemma 20.3.  Also, it is easy to show that $\sigma(\alpha \beta) = \sigma( \alpha ) \sigma( \beta )$. Since $\sigma$ is a nonzero homomorphism of fields, it must be injective.  It must also be onto, since $E$ is a finite field.  We know that $\sigma$ must be in $G(E/F)$, since $F$ is the splitting field of $x^{p^n} - x$ over the base field of order $p$. This means that $\sigma$ leaves every element in $F$ fixed.  Finally, we must show that the order of $\sigma$ is $k$. By Theorem~21.5, we know that $\sigma^k( \alpha ) = \alpha^{p^k} = \alpha$ is the identity of $G( E/F)$.  However, $\sigma^r$ cannot be the identity for $1 \leq r < k$; otherwise, $x^{p^{rk}} - x$ would have $p^m$ roots, which is impossible. 
+\]
+by Lemma \ref{finite:freshmans_dream}.  Also, it is easy to show that $\sigma(\alpha \beta) = \sigma( \alpha ) \sigma( \beta )$. Since $\sigma$ is a nonzero homomorphism of fields, it must be injective.  It must also be onto, since $E$ is a finite field.  We know that $\sigma$ must be in $G(E/F)$, since $F$ is the splitting field of $x^{p^n} - x$ over the base field of order $p$. This means that $\sigma$ leaves every element in $F$ fixed.  Finally, we must show that the order of $\sigma$ is $k$. By Theorem~\ref{galois:extension_order_theorem}, we know that $\sigma^k( \alpha ) = \alpha^{p^k} = \alpha$ is the identity of $G( E/F)$.  However, $\sigma^r$ cannot be the identity for $1 \leq r < k$; otherwise, $x^{p^{rk}} - x$ would have $p^m$ roots, which is impossible. 
 \end{proof}
  
 
 \begin{example}{galois_group_35}
 We can now confirm that the Galois group of ${\mathbb Q}( \sqrt{3},
-\sqrt{5}\, )$ over ${\mathbb Q}$ in Example~2 is indeed isomorphic to
+\sqrt{5}\, )$ over ${\mathbb Q}$ in Example~\ref{example:galois:Q_sqrt5} is indeed isomorphic to
 ${\mathbb Z}_2 \times {\mathbb Z}_2$.  Certainly the group $H = \{ id,
 \sigma, \tau, \mu \}$ is a subgroup of $G({\mathbb Q}( \sqrt{3}, \sqrt{5}\,
 )/{\mathbb Q})$; however,  $H$ must be all of $G({\mathbb Q}( \sqrt{3},
 \sqrt{5}\, )/{\mathbb Q})$, since  
-$$
+\[
 |H| = [{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ):{\mathbb Q}] = |G({\mathbb Q}(
 \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})| = 4.
-$$
+\]
 \end{example}
  
 
 \begin{example}{galois_group_x4}
 Let us compute the Galois group of 
-$$
+\[
 f(x) = x^4 + x^3 + x^2 + x + 1
-$$
-over ${\mathbb Q}$. We know that $f(x)$ is irreducible by Exercise~19 in
-Chapter~15.  Furthermore, since $(x -1)f(x) = x^5 -1$, we can use
+\]
+over ${\mathbb Q}$. We know that $f(x)$ is irreducible by Exercise~\ref{poly:Cyclotomic_Polynomials} in
+Chapter~\ref{poly}.  Furthermore, since $(x -1)f(x) = x^5 -1$, we can use
 DeMoivre's Theorem to determine that the roots of $f(x)$ are
 $\omega^i$,  where  $i = 1, \ldots, 4$ and 
-$$
+\[
 \omega = \cos(2 \pi / 5 ) + i \sin(2 \pi / 5 ).
-$$
+\]
 Hence, the splitting field of $f(x)$ must be ${\mathbb Q}(\omega)$.  We 
 can define automorphisms $\sigma_i$ of ${\mathbb Q}(\omega )$ by 
 $\sigma_i( \omega ) = \omega^i$ for $i = 1, \ldots, 4$.  It is easy to check
 that these are indeed distinct automorphisms in $G( {\mathbb Q}( \omega)
 / {\mathbb Q} )$.  Since 
-$$
+\[
 [{\mathbb Q}( \omega) : {\mathbb Q}] = | G( {\mathbb Q}(
 \omega) / {\mathbb Q})| = 4,
-$$
+\]
 the $\sigma_i$'s must be all of $G( {\mathbb
 Q}( \omega) / {\mathbb Q} )$. Therefore, $G({\mathbb Q}( \omega) / {\mathbb Q})
 \cong {\mathbb Z}_4$ since $\omega$ is a generator for the Galois group. 
@@ -209,10 +209,10 @@ field. It is evident that we need to know exactly when a
 polynomial factors into distinct linear factors in its splitting
 field. Let $E$ be the splitting field of a polynomial $f(x)$ in $F[x]$.
 Suppose that $f(x)$ factors over $E$ as
-$$
+\[
 f(x) = (x - \alpha_1)^{n_1} (x - \alpha_2)^{n_2} \cdots (x -
 \alpha_r)^{n_r} = \prod_{i=1}^{r} (x - \alpha_i)^{n_i}.
-$$
+\]
 We define the {\bfi multiplicity\/}\index{Multiplicity of a
 root}\index{Zero!multiplicity of} of a root $\alpha_i$ of $f(x)$ to be
 $n_i$.  A root with multiplicity 1 is called a {\bfi simple
@@ -224,7 +224,7 @@ An extension $E$ of $F$ is a {\bfi separable
 extension\/}\index{Extension!separable} of $F$ if every element in $E$
 is the root of a separable polynomial in $F[x]$. Also recall that
 $f(x)$ is separable if and only if $\gcd( f(x), f'(x)) = 1$
-(Lemma~20.4). 
+(Lemma~\ref{finite:separable_derivative_lemma}). 
  
 % 2010/05/18 R Beezer, replaced "over F[x]" by "over F"
 \begin{proposition}
@@ -256,14 +256,14 @@ element $\alpha \in E$ such that $E = F( \alpha )$. In this case,
 $\alpha$ is called a {\bfi primitive
 element}\index{Element!primitive}\index{Primitive element}. We already
 know that primitive elements exist for certain extensions. For example,
-$$
+\[
 {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) = {\mathbb Q}( \sqrt{3} + \sqrt{5}\, )
-$$
+\]
 and
-$$
+\[
 {\mathbb Q}( \sqrt[3]{5}, \sqrt{5}\, i ) = {\mathbb Q}( \sqrt[6]{5}\, i ).
-$$
-Corollary~20.9 tells us that there exists a primitive element for any 
+\]
+Corollary~\ref{finite:finite_extension_corollary} tells us that there exists a primitive element for any 
 finite extension of a finite field. The next theorem tells us that we 
 can often find a primitive element.
  
@@ -286,14 +286,14 @@ has zeros $\alpha = \alpha_1, \ldots, \alpha_n$ in $K$ and $g(x)$ has
 zeros $\beta = \beta_1, \ldots, \beta_m$ in $K$. All of these zeros
 have multiplicity 1, since $E$ is separable over $F$. Since $F$ is
 infinite, we can find an $a$ in $F$ such that  
-$$
+\[
 a \neq \frac{\alpha_i - \alpha}{\beta - \beta_j}
-$$
+\]
 for all $i$ and $j$ with $j \neq 1$. Therefore, $a( \beta - \beta_j ) 
 \neq \alpha_i - \alpha$. Let $\gamma = \alpha +a \beta$. Then
-$$
+\[
 \gamma = \alpha + a \beta \neq \alpha_i + a \beta_j;
-$$
+\]
 hence, $\gamma - a \beta_j \neq \alpha_i$ for all $i, j$ with $j \neq 1$. 
 Define $h(x) \in F( \gamma )[x]$ by $h(x) = f( \gamma - ax)$. Then $h(
 \beta ) = f( \alpha ) = 0$. However, $h( \beta_j ) \neq 0$ for $j \neq
@@ -317,23 +317,23 @@ $G(E/F)$ and the intermediate fields between $E$ and $F$.
 \begin{proposition}
 Let $\{\sigma_i : i \in I  \}$ be a  collection of automorphisms of a
 field $F$.  Then 
-$$
+\[
 F_{ \{\sigma_i \}    } = \{ a \in F : \sigma_i(a) = a \mbox{
 for all $\sigma_i$}  \}\label{noteFixedfield}
-$$
+\]
 is a subfield of $F$.
 \end{proposition}
  
  
 \begin{proof}
 Let $\sigma_i(a) = a$ and $\sigma_i(b)=b$. Then
-$$
+\[
 \sigma_i(a \pm b) = \sigma_i(a) \pm \sigma_i(b) = a \pm b
-$$
+\]
 and
-$$
+\[
 \sigma_i(a b) = \sigma_i(a) \sigma_i(b) = a  b.
-$$
+\]
 If $a \neq 0$, then  $\sigma_i(a^{-1}) = [\sigma_i(a)]^{-1} = a^{-1}$.
 Finally, $\sigma_i(0) = 0$ and $\sigma_i(1)=1$ since $\sigma_i$ is an
 automorphism.  
@@ -341,15 +341,15 @@ automorphism.
  
 \begin{corollary}
 Let $F$ be a field and let $G$ be a subgroup of $Aut(F)$. Then 
-$$
+\[
 F_G\label{noteFixedG} = \{ \alpha \in F : \sigma( \alpha ) = \alpha
 \mbox{ for all $\sigma \in G$} \}
-$$
+\]
 is a subfield of $F$.
 \end{corollary}
  
  
-\medskip
+%\medskip
  
  
 The subfield $F_{ \{\sigma_i \} }$ of $F$ is called the {\bfi fixed
@@ -366,7 +366,7 @@ ${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$ left fixed by $\sigma$.
 \end{example}
  
  
-\begin{proposition}
+\begin{proposition}\label{galois:fixed_field_prop}
 Let $E$ be a splitting field over $F$ of a separable polynomial.
 Then $E_{G(E/F)} = F$.
 \end{proposition}
@@ -375,10 +375,10 @@ Then $E_{G(E/F)} = F$.
 \begin{proof}
 Let $G = G(E/F)$. Clearly, $F \subset E_G \subset E$. Also, $E$ 
 must be a splitting field of $E_G$ and $G(E/F) = G(E/E_G)$. By
-Theorem~21.5,
-$$
+Theorem~\ref{galois:extension_order_theorem},
+\[
 |G| = [E: E_G] =[ E:F].
-$$
+\]
 Therefore, $[E_G : F ] =1$. Consequently,  $E_G = F$.
 \end{proof}
  
@@ -401,28 +401,28 @@ Then $[E:F] \leq |G|$.
 Let $|G| = n$. We must show that any set of $n+1$ elements $\alpha_1,
 \ldots, \alpha_{n+1}$ in $E$ is linearly dependent over $F$; that is,
 we need to find elements $a_i \in F$, not all zero, such that 
-$$
+\[
 a_1 \alpha_1 + a_2 \alpha_2 + \cdots + a_{n+1} \alpha_{n+1} = 0.
-$$
+\]
 Suppose that $\sigma_1 = id, \sigma_2, \ldots, \sigma_n$ are the
 automorphisms in $G$. The homogeneous system of linear
 equations 
-\begin{eqnarray*}
+\begin{align*}
 \sigma_1( \alpha_1 ) x_1 + \sigma_1(\alpha_2) x_2 + \cdots +
-\sigma_1(\alpha_{n+1} ) x_{n+1} & = & 0 \\
+\sigma_1(\alpha_{n+1} ) x_{n+1} & = 0 \\
 \sigma_2( \alpha_1 ) x_1 + \sigma_2(\alpha_2) x_2 + \cdots +
-\sigma_2(\alpha_{n+1} ) x_{n+1} & = & 0 \\
+\sigma_2(\alpha_{n+1} ) x_{n+1} & = 0 \\
 & \vdots & \\
 \sigma_n( \alpha_1 ) x_1 + \sigma_n(\alpha_2) x_2 + \cdots +
-\sigma_n(\alpha_{n+1} ) x_{n+1} & = & 0
-\end{eqnarray*}
+\sigma_n(\alpha_{n+1} ) x_{n+1} & = 0
+\end{align*}
 has more equations than unknowns. From linear algebra we know that
 this system has a nontrivial solution, say $x_i = a_i$ for $i = 1, 2,
 \ldots, n+1$. Since $\sigma_1$ is the identity, the first equation
 translates to
-$$
+\[
 a_1 \alpha_1 +  a_2 \alpha_2  + \cdots + a_{n+1} \alpha_{n+1} = 0.
-$$
+\]
 The problem is that some of the $a_i$'s may be in $E$ but not in $F$. 
 We must show that this is impossible.
  
@@ -442,12 +442,12 @@ homogeneous system, since $G$ is a group. Therefore, $x_1 =
 \sigma_i(a_{n+1} )$ is also a solution of the original system. We know
 that a linear combination of two solutions of a homogeneous system is
 also a solution; consequently,   
-\begin{eqnarray*}
-x_1 & = & 1 -1 = 0 \\
-x_2 & = & a_2 - \sigma_i(a_2) \\
+\begin{align*}
+x_1 & = 1 -1 = 0 \\
+x_2 & = a_2 - \sigma_i(a_2) \\
 & \vdots & \\
-x_{n+1} & = & a_{n+1} - \sigma_i(a_{n+1}) 
-\end{eqnarray*}
+x_{n+1} & = a_{n+1} - \sigma_i(a_{n+1}) 
+\end{align*}
 must be another solution of the system. This is a nontrivial solution
 because $\sigma_i( a_2 ) \neq a_2$, and has fewer nonzero entries than
 our original solution. This is a contradiction, since the number of
@@ -496,7 +496,7 @@ a normal extension $F$; hence, $E$ is a splitting field for $f(x)$.
  
 (2) $\Rightarrow$ (3). 
 Let $E$ be the splitting field over $F$ of a separable polynomial. By
-Proposition 21.11, $E_{G(E/F)} = F$. Since $| G(E/F)| = [E:F]$, this is
+Proposition~\ref{galois:fixed_field_prop}, $E_{G(E/F)} = F$. Since $| G(E/F)| = [E:F]$, this is
 a finite group. 
  
 (3) $\Rightarrow$ (1). 
@@ -505,7 +505,7 @@ $[E:F] \leq |G|$, $E$ is a finite extension of $F$. To show that $E$
 is a finite, normal extension of  $F$, let $f(x) \in F[x]$ be an
 irreducible monic polynomial that has a root $\alpha$ in $E$. We must
 show that $f(x)$ is the product of distinct linear factors in $E[x]$.
-By Proposition 21.3, automorphisms in $G$ permute the roots of $f(x)$
+By Proposition \ref{galois:roots_permute_prop}, automorphisms in $G$ permute the roots of $f(x)$
 lying in $E$. Hence, if we let $G$ act on $\alpha$, we can obtain
 distinct roots $\alpha_1 = \alpha, \alpha_2, \ldots, \alpha_n$ in $E$.
 Let $g(x) = \prod_{i=1}^{n} (x -\alpha_i)$. Then $g(x)$ is separable
@@ -526,9 +526,9 @@ finite group of automorphisms $G$ of $K$. Then $G = G(K/F)$.
  
 \begin{proof}
 Since $F = K_G$, $G$ is a subgroup of $G(K/F)$. Hence,
-$$
+\[
 [K : F ]  \leq |G| \leq |G(K/F)| = [K:F].
-$$
+\]
 It follows that $G = G(K/F)$, since they must have the same order.
 \end{proof}
  
@@ -541,7 +541,7 @@ and automorphisms of fields, let us return to a familiar example.
  
 
 \begin{example}{field_lattice}
-In Example 2 we examined the automorphisms of ${\mathbb Q}( \sqrt{3},
+In Example \ref{example:galois:Q_sqrt5} we examined the automorphisms of ${\mathbb Q}( \sqrt{3},
 \sqrt{5}\, )$ fixing ${\mathbb Q}$. Figure~\ref{Galois1}  compares the
 lattice of field extensions of ${\mathbb Q}$ with the lattice of
 subgroups of $G( {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) /{\mathbb Q})$.
@@ -553,31 +553,39 @@ relationship is between the two lattices.
 
 \begin{figure}[t]
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(25,9)
-\put(4,8){$\{ id, \sigma, \tau, \mu \}$}
-\put(1.2,4){$\{id, \sigma \}$}
-\put(4.85,4){$\{ id, \tau \}$}
-\put(8.3,4){$\{id, \mu  \}$}
-\put(5.2,0){$\{ id \}$}
-\put(6,1){\line(0,1){2}}
-\put(7,1){\line(1,1){2}}
-\put(5,1){\line(-1,1){2}}
-\put(6,5.2){\line(0,1){2}}
-\put(7,7.2){\line(1,-1){2}}
-\put(5,7.2){\line(-1,-1){2}}
-\put(17,8){${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$}
-\put(14,4){${\mathbb Q}(\sqrt{3}\, )$}
-\put(17.5,4){${\mathbb Q}(\sqrt{5}\, )$}
-\put(21,4){${\mathbb Q}(\sqrt{15}\, )$}
-\put(18.7,0){${\mathbb Q}$}
-\put(19,1){\line(0,1){2}}
-\put(20,1){\line(1,1){2}}
-\put(18,1){\line(-1,1){2}}
-\put(19,5.2){\line(0,1){2}}
-\put(20,7.2){\line(1,-1){2}}
-\put(18,7.2){\line(-1,-1){2}}
-\end{picture}
+
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
+
+\draw  (2,0.5) -- (2,1.5);
+\draw  (2,-0.5) -- (2,-1.5);
+
+\draw  (0.25,0.5) -- (1.5,1.5);
+\draw  (0.25,-0.5) -- (1.5,-1.5);
+\draw  (3.75,0.5) -- (2.5,1.5);
+\draw  (3.75,-0.5) -- (2.5,-1.5);
+
+\draw  (9,0.5) -- (9,1.5);
+\draw  (9,-0.5) -- (9,-1.5);
+
+\draw  (7.25,0.5) -- (8.5,1.5);
+\draw  (7.25,-0.5) -- (8.5,-1.5);
+\draw  (10.75,0.5) -- (9.5,1.5);
+\draw  (10.75,-0.5) -- (9.5,-1.5);
+
+\node at (0,0)  {$\{  id, \sigma \}$};
+\node at (2,0)  {$\{  id, \tau \}$};
+\node at (4,0)  {$\{  id, \mu \}$};
+\node at (2,2)  {$\{  id, \sigma, \tau, \mu \}$};
+\node at (2,-2)  {$\{  id \}$};
+
+\node at (7,0)  {${\mathbb Q}(\sqrt{3}\, )$};
+\node at (9,0)  {${\mathbb Q}(\sqrt{5}\, )$};
+\node at (11,0)  {${\mathbb Q}(\sqrt{15}\, )$};
+\node at (9,2)  {${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$};
+\node at (9,-2)  {${\mathbb Q}$};
+
+
+\end{tikzpicture}
 \end{center}
 \caption{$G({\mathbb Q}( \protect\sqrt{3}, \protect\sqrt{5}\, ) / {\mathbb
 Q})$} 
@@ -603,11 +611,11 @@ containing $F$ with the subgroups of $G(E/F)$.
  
 \rm \item \it 
 If $F \subset K \subset E$, then 
-$$
+\[
 [E:K] = |G(E/K)|
 \mbox{ and }
 [K:F] = [G(E/F):G(E/K)].
-$$
+\]
  
 \rm \item \it 
 $F \subset K \subset L \subset E$ if and only if $\{ id \} \subset
@@ -617,9 +625,9 @@ G(E/L) \subset G(E/K) \subset G(E/F)$.
 \rm \item \it 
 $K$ is a normal extension of $F$ if and only if $G(E/K)$ is a normal 
 subgroup of $G( E/F)$. In this case
-$$
+\[
 G(K/F) \cong G(E/F) / G( E/K ).
-$$ 
+\] 
  
 \end{enumerate}
 \end{theorem}
@@ -636,10 +644,10 @@ and the map $K \mapsto G(E/K)$ is a bijection.
  
  
 (2)
-By Proposition 21.5, $|G(E/K)| = [E:K]$; therefore, 
-$$
+By Theorem \ref{galois:extension_order_theorem}, $|G(E/K)| = [E:K]$; therefore, 
+\[
 |G(E/F)| = [G(E/F):G(E/K)] \cdot |G(E/K)| = [E:F] = [E:K][K:F].
-$$
+\]
 Thus, $[K:F] = [G(E/F):G(E/K)]$.
  
  
@@ -649,27 +657,34 @@ We leave the proof of this property as an exercise.
  
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(15,10)
-\put(4.62,9){$E$}
-\put(4.65,6){$L$}
-\put(4.6,3){$K$}
-\put(4.6,0){$F$}
-\put(5,1){\line(0,1){1.5}}
-\put(5,4){\line(0,1){1.5}}
-\put(5,7){\line(0,1){1.5}}
-\put(8.5,0){$G(E/F)$}
-\put(8.5,3){$G(E/K)$}
-\put(8.5,6){$G(E/L)$}
-\put(9.2,9){$\{ id \}$}
-\put(10,1){\line(0,1){1.5}}
-\put(10,4){\line(0,1){1.5}}
-\put(10,7){\line(0,1){1.5}}
-\put(5.7,0.3){\vector(1,0){2.2}}
-\put(5.7,3.3){\vector(1,0){2.2}}
-\put(5.7,6.3){\vector(1,0){2.2}}
-\put(5.7,9.3){\vector(1,0){2.2}}
-\end{picture}
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
+
+\draw  (0,0.5) -- (0,1.5);
+\draw  (0,2.5) -- (0,3.5);
+\draw  (0,4.5) -- (0,5.5);
+
+\draw  (3,0.5) -- (3,1.5);
+\draw  (3,2.5) -- (3,3.5);
+\draw  (3,4.5) -- (3,5.5);
+
+\draw [->] (0.5,0) -- (2,0);
+\draw [->] (0.5,2) -- (2,2);
+\draw [->] (0.5,4) -- (2,4);
+\draw [->] (0.5,6) -- (2,6);
+
+\node at (0,0)  {$F$};
+\node at (3,0)  {$G(E/F)$};
+
+\node at (0,2)  {$K$};
+\node at (3,2)  {$G(E/K)$};
+
+\node at (0,4)  {$L$};
+\node at (3,4)  {$G(E/L)$};
+
+\node at (0,6)  {$E$};
+\node at (3,6)  {$\{  id \}$};
+
+\end{tikzpicture}
 \end{center}
 \caption{Subgroups of $G(E/F)$ and subfields of $E$} 
 \label{Galois2}
@@ -693,11 +708,11 @@ show that $F = K_{G(K/F)}$. Let $\tau \in G(E/K)$. For all $\sigma
 \in G(E/F)$ there exists a $\overline{\tau} \in G(E/K)$ such that
 $\tau \sigma = \sigma \overline{\tau}$.  Consequently, for all $\alpha
 \in K$
-$$
+\[
 \tau( \sigma( \alpha ) )
 = \sigma( \overline{\tau}( \alpha ) )
 = \sigma( \alpha );
-$$
+\]
 hence, $\sigma( \alpha )$ must be in the fixed field of $G(E/K)$.
 Let $\overline{\sigma}$ be the restriction of $\sigma$ to $K$. Then
 $\overline{\sigma}$ is an automorphism of $K$ fixing $F$, since
@@ -710,30 +725,30 @@ Therefore, $\beta$ belongs to the fixed field $F$ of $G(E/F)$.
  
  
 Finally, we must show that when $K$ is a normal extension of $F$, 
-$$
+\[
 G(K/F) \cong G(E/F) / G(E/K).
-$$
+\]
 For $\sigma \in G(E/F)$, let $\sigma_K$ be the automorphism of $K$
 obtained by restricting $\sigma$ to $K$. Since $K$ is a normal
 extension, the argument in the preceding paragraph shows that
 $\sigma_K \in G( K/F)$. Consequently, we have a map \mbox{$\phi:G(E/F)
 \rightarrow G(K/F)$} defined by $\sigma \mapsto \sigma_K$. This map is
 a group homomorphism since
-$$
+\[
 \phi( \sigma \tau ) 
 = (\sigma \tau)_K 
 = \sigma_K \tau_K 
 = \phi( \sigma) \phi( \tau ).
-$$
+\]
 The kernel of $\phi$ is $G(E/K)$.  By (2), 
-$$
+\[
 |G(E/F)| / |G(E/K)| = [K:F] = |G(K/F)|.
-$$
+\]
 Hence, the image of $\phi$ is $G(K/F)$ and $\phi$ is 
 onto. Applying the First Isomorphism Theorem, we have
-$$
+\[
 G(K/F) \cong G(E/F) / G( E/K ).
-$$
+\]
 \end{proof}
  
  
@@ -756,10 +771,10 @@ Since $[ {\mathbb Q}( \sqrt[4]{2}\, ) : {\mathbb Q}] = 4$ and $i$ is not in
 ${\mathbb Q}( \sqrt[4]{2}\, )$, it must be the case that $[ {\mathbb Q}(
 \sqrt[4]{2}, i ): {\mathbb Q}(\sqrt[4]{2}\, )] = 2$. Hence, $[ {\mathbb Q}(
 \sqrt[4]{2}, i ):{\mathbb Q}] = 8$. The set
-$$
+\[
 \{ 1, \sqrt[4]{2}, (\sqrt[4]{2}\, )^2, (\sqrt[4]{2}\, )^3, i, i
 \sqrt[4]{2}, i (\sqrt[4]{2}\, )^2, i(\sqrt[4]{2}\, )^3 \}
-$$
+\]
 is a basis of ${\mathbb Q}( \sqrt[4]{2}, i )$ over ${\mathbb Q}$. The
 lattice of field extensions of ${\mathbb Q}$ contained in ${\mathbb Q}(
 \sqrt[4]{2}, i)$ is illustrated in Figure~\ref{Galois3}(a).
@@ -779,63 +794,76 @@ The lattice of subgroups of $G$ is illustrated in Figure~\ref{Galois3}(b).
  
 \begin{figure}[htb]
 \begin{center}
-\setlength{\unitlength}{.18in}
-\begin{picture}(25,10)
-\put(12.2,0){\small ${\mathbb Q}$}
-\put(11.6,3){\small ${\mathbb Q}(i)$}
-\put(6.5,3){\small ${\mathbb Q}(\sqrt{2}\, )$}
-\put(16.4,3){\small ${\mathbb Q}( \sqrt{2}\, i)$}
-\put(11,6){\small ${\mathbb Q}(\sqrt{2}, i)$}
-\put(2,6){\small ${\mathbb Q}(\sqrt[4]{2}\, )$}
-\put(6,6){\small ${\mathbb Q}(\sqrt[4]{2}\, i)$}
-\put(15,6){\small ${\mathbb Q}((1+i)\sqrt[4]{2}\, )$}
-\put(20,6){\small ${\mathbb Q}((1-i)\sqrt[4]{2}\, )$}
-\put(11.5,9){\small ${\mathbb Q}(\sqrt[4]{2}\, )$}
-\put(12.5,1){\line(0,1){1.5}}
-\put(11,1){\line(-2,1){2.5}}
-\put(14,1){\line(2,1){2.5}}
-\put(12.5,4){\line(0,1){1.5}}
-\put(7.5,4){\line(0,1){1.5}}
-\put(8.5,4){\line(2,1){2.5}}
-\put(6.5,4){\line(-2,1){2.5}}
-\put(17.5,4){\line(0,1){1.5}}
-\put(18.5,4){\line(2,1){2.5}}
-\put(16.5,4){\line(-2,1){2.5}}
-\put(12.5,7){\line(0,1){1.5}}
-\put(11,8.5){\line(-2,-1){2.5}}
-\put(14,8.5){\line(2,-1){2.5}}
-\put(8.5,8.5){\line(-3,-1){4.5}}
-\put(16.5,8.5){\line(3,-1){4.5}}
-\put(20,0){(a)}
-\end{picture}
-\begin{picture}(25,12)
-\put(12,0){\small $\{ id \}$}
-\put(11.3,3){\small $\{ id, \sigma^2 \}$}
-\put(16.25,3){\small $\{ id, \sigma \tau \}$}
-\put(5.9,3){\small $\{ id, \sigma^2 \tau  \}$}
-\put(10.4,6){\small $\{ id, \sigma, \sigma^2, \sigma^3 \}$}
-\put(2.5,3){\small $\{ id, \tau \}$}
-\put(4,6){\small $\{ id, \sigma^2, \tau, \sigma^2 \tau \}$}
-\put(16,6){\small $\{ id, \sigma^2, \sigma \tau, \sigma^3 \tau \}$}
-\put(20,3){\small $\{id, \sigma^3 \tau  \}$}
-\put(12,9){\small $D_4$}
-\put(12.5,1){\line(0,1){1.5}}
-\put(11,1){\line(-2,1){2.5}}
-\put(14,1){\line(2,1){2.5}}
-\put(12.5,4){\line(0,1){1.5}}
-\put(7.5,4){\line(0,1){1.5}}
-\put(8.5,5.5){\line(2,-1){2.5}}
-\put(6.5,5.5){\line(-2,-1){2.5}}
-\put(17.5,4){\line(0,1){1.5}}
-\put(18.5,5.5){\line(2,-1){2.5}}
-\put(16.5,5.5){\line(-2,-1){2.5}}
-\put(12.5,7){\line(0,1){1.5}}
-\put(11,8.5){\line(-2,-1){2.5}}
-\put(14,8.5){\line(2,-1){2.5}}
-\put(8.5,1){\line(-3,1){4.5}}
-\put(16.5,1){\line(3,1){4.5}}
-\put(20,0){(b)}
-\end{picture}
+
+
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
+
+\draw  (-1,0.5) -- (-5.5,1.5);
+\draw  (-0.5,0.5) -- (-2.5,1.5);
+\draw  (0,0.5) -- (0,1.5);
+\draw  (0.5,0.5) -- (2.5,1.5);
+\draw  (1,0.5) -- (5.5,1.5);
+
+
+\draw  (-5.5,2.5) -- (-3.5,3.5);
+\draw  (-3,2.5) -- (-3,3.5);
+\draw  (-0.5,2.5) -- (-2.5,3.5);
+\draw  (0,2.5) -- (0,3.5);
+\draw  (5.5,2.5) -- (3.5,3.5);
+\draw  (3,2.5) -- (3,3.5);
+\draw  (0.5,2.5) -- (2.5,3.5);
+\draw  (3,2.5) -- (3,3.5);
+
+\draw  (-3,4.5) -- (-0.5,5.5);
+\draw  (0,4.5) -- (0,5.5);
+\draw  (3,4.5) -- (0.5,5.5);
+
+\node at (0,0)  {$\{  id \}$};
+\node at (-6,2)  {$\{  id, \tau \}$};
+\node at (-3,2)  {$\{  id, \sigma^2 \tau \}$};
+\node at (0,2)  {$\{  id, \sigma^2 \}$};
+\node at (3,2)  {$\{  id, \sigma \tau \}$};
+\node at (6,2)  {$\{  id, \sigma^3 \tau \}$};
+\node at (-3,4)  {$\{  id, \sigma^2, \tau, \sigma^2 \tau \}$};
+\node at (0,4)  {$\{  id, \sigma, \sigma^2, \sigma^3 \}$};
+\node at (3,4)  {$\{  id, \sigma^2, \sigma \tau, \sigma^3 \tau \}$};
+\node at (0,6)  {$D_4$};
+\node at (6,0) {(b)};
+
+\draw  (-0.5,8.5) -- (-2.5,9.5);
+\draw  (0,8.5) -- (0,9.5);
+\draw  (0.5,8.5) -- (2.5,9.5);
+
+\draw  (-5.5,11.5) -- (-3.5,10.5);
+\draw  (-3,11.5) -- (-3,10.5);
+\draw  (-0.5,11.5) -- (-2.5,10.5);
+
+\draw  (0,10.5) -- (0,11.5);
+
+\draw  (5.5,11.5) -- (3.5,10.5);
+\draw  (3,11.5) -- (3,10.5);
+\draw  (0.5,11.5) -- (2.5,10.5);
+
+\draw  (-5.5,12.5) -- (-1,13.5);
+\draw  (-2.5,12.5) -- (-0.5,13.5);
+\draw  (0,12.5) -- (0,13.5);
+\draw  (2.5,12.5) -- (0.5,13.5);
+\draw  (5.5,12.5) -- (1,13.5);
+
+\node at (0,8)  {${\mathbb Q}$};
+\node at (-3,10)  {${\mathbb Q}(\sqrt{2}\, )$};
+\node at (0,10)  {${\mathbb Q}(i)$};
+\node at (3,10)  {${\mathbb Q}(\sqrt{2}\, i)$};
+\node at (-6,12)  {${\mathbb Q}( \sqrt[4]{2}\, )$};
+\node at (-3,12)  {${\mathbb Q}( \sqrt[4]{2}\, i)$};
+\node at (0,12)  {${\mathbb Q}( \sqrt{2}, i)$};
+\node at (3,12)  {${\mathbb Q}((1 + i) \sqrt[4]{2}\,)$};
+\node at (6,12)  {${\mathbb Q}( (1 - i)\sqrt[4]{2}\, )$};
+\node at (0,14)  {${\mathbb Q}(\sqrt[4]{2}, i )$};
+\node at (6,8) {(a)};
+
+
+\end{tikzpicture}
 \end{center}
 \caption{Galois group of $x^4-2$}
 \label{Galois3}
@@ -902,9 +930,9 @@ operations on the coefficients of $f(x)$. The allowable operations are
 addition, subtraction, multiplication, division, and the extraction
 of $n$th roots. Certainly the solution to the quadratic equation,
 $a x^2 + b x +c=0$, illustrates this process:
-$$
+\[
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
-$$
+\]
 The only one of these operations that might demand a larger field is
 the taking of $n$th roots.  We are led to the following definition.
  
@@ -913,13 +941,13 @@ An extension field $E$ of a field $F$ is an
 {\bfi extension by radicals\/}\index{Extension!radical} if there are
 elements $\alpha_1, \ldots, \alpha_r \in K$ and positive integers
 $n_1, \ldots, n_r$ such that  
-$$
+\[
 E=F(\alpha_1, \ldots, \alpha_r ),
-$$
+\]
 where $\alpha_1^{n_1} \in F$ and
-$$
+\[
 \alpha_i^{n_i} \in F( \alpha_1, \ldots, \alpha_{i-1} )
-$$
+\]
 for $i = 2, \dots, r$. A polynomial $f(x)$ is {\bfi solvable by
 radicals\/}\index{Solvability by radicals} over $F$ if the splitting
 field $K$ of $f(x)$ over $F$ is contained in an extension of $F$ by
@@ -929,10 +957,10 @@ solvable by radicals by examining the Galois group $f(x)$.
  
  
 The easiest polynomial to solve by radicals is one of the form $x^n -
-a$. As we discussed in Chapter~3, the roots of $x^n - 1$ are called
+a$. As we discussed in Chapter~\ref{cyclic}, the roots of $x^n - 1$ are called
 the {\bfi nth roots of unity}\index{$n$th root of unity}.  These
 roots are a finite subgroup of the splitting field of $x^n -1$. By
-Theorem~20.7, the $n$th roots of unity form a cyclic group.  Any
+Theorem~\ref{finite:mult_group_theorem}, the $n$th roots of unity form a cyclic group.  Any
 generator of this group is called a {\bfi primitive nth root of
 unity}\index{Primitive $n$th root of unity}. 
  
@@ -942,10 +970,10 @@ unity}\index{Primitive $n$th root of unity}.
 The polynomial $x^n - 1$ is solvable by radicals over ${\mathbb Q}$. The
 roots of this polynomial are $1, \omega, \omega^2, \ldots,
 \omega^{n-1}$, where
-$$
+\[
 \omega = \cos\left( \frac{2 \pi}{n} \right) + 
 i \sin\left( \frac{2 \pi}{n} \right).
-$$ 
+\] 
 The splitting field of $x^n - 1$ over ${\mathbb Q}$ is ${\mathbb Q}(\omega)$.
 \end{example}
  
@@ -955,22 +983,22 @@ The splitting field of $x^n - 1$ over ${\mathbb Q}$ is ${\mathbb Q}(\omega)$.
  
 Recall that a subnormal series of a group $G$ is a finite sequence
 of subgroups
-$$
+\[
 G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset
 H_0 = \{ e \},
-$$
+\]
 where $H_i$ is normal in $H_{i+1}$. A subnormal series is a composition 
 series if all the factor groups are simple; that is, if none of the factor 
 groups of the series contains a normal subgroup. A group $G$ is solvable 
 if it has a composition series $\{ H_i \}$ such that all of the factor 
 groups $H_{i+1} /H_i$ are abelian.  For example, if we examine the
 series $\{ id \} \subset A_3 \subset S_3$, we see that $A_3$ is
-solvable.  On the other hand, $S_5$ is not solvable, by Theorem~9.8.
+solvable.  On the other hand, $S_5$ is not solvable, by Theorem~\ref{normal:An_simple}.
  
  
 
  
-\begin{lemma}
+\begin{lemma}\label{galois:xn-a_solvable_lemma}
 Let $F$ be a field of characteristic zero and $E$ be the splitting
 field of $x^n - a$ over $F$ with $a \in F$. Then $G(E/F)$ is a
 solvable group.  
@@ -988,11 +1016,11 @@ $G(E/F)$ must be determined by their action on these roots. Let $\sigma$
 and $\tau$ be in $G(E/F)$ and suppose that $\sigma( \zeta ) = \omega^i 
 \zeta$ and $\tau( \zeta ) = \omega^j \zeta$. If $F$ contains the
 roots of unity, then 
-$$
+\[
 \sigma \tau( \zeta ) = \sigma( \omega^j \zeta) = \omega^j \sigma(
 \zeta ) = \omega^{ij} \zeta = \omega^i \tau( \zeta ) = \tau( \omega^i
 \zeta ) = \tau \sigma( \zeta ). 
-$$
+\]
 Therefore, $\sigma \tau = \tau \sigma$ and $G(E/F)$ is abelian, and
 $G(E/F)$ is solvable. 
  
@@ -1008,27 +1036,27 @@ $G(F( \omega)/ F)$ is determined by $\sigma( \omega)$.  It must be
 the case that $\sigma( \omega ) = \omega^i$ for some integer $i$ since
 all of the zeros of $x^n-1$ are powers of $\omega$. If $\tau( \omega
 ) = \omega^j$ is in $G(F(\omega)/F)$, then
-$$
+\[
 \sigma \tau( \omega ) = \sigma( \omega^j ) = [ \sigma(
 \omega )]^j = \omega^{ij} = [\tau( \omega ) ]^i = \tau( \omega^i ) 
 = \tau \sigma( \omega ). 
-$$
+\]
 Therefore, $G(F( \omega ) / F)$ is abelian.  By the Fundamental
 Theorem of Galois Theory the series 
-$$
+\[
 \{ id \} \subset G(E/ F(\omega)) \subset G(E/F)
-$$
+\]
 is a normal series. Since $G(E/F(\omega))$ and 
-$$
+\[
 G(E/F) /G(E/F( \omega)) \cong G(F(\omega)/F)
-$$
+\]
 are both abelian, $G(E/F)$ is solvable.
 \end{proof}
  
  
  
  
-\begin{lemma}
+\begin{lemma}\label{galois:radical_extension_lemma}
 Let $F$ be a field of characteristic zero and let $E$ be a radical
 extension of $F$. Then there exists a normal radical extension $K$ of
 $F$ that contains $E$.
@@ -1039,13 +1067,13 @@ $F$ that contains $E$.
 Since $E$ is a radical extension of $F$, there exist elements
 $\alpha_1, \ldots, \alpha_r \in K$ and positive integers  
 $n_1, \ldots, n_r$ such that 
-$$
+\[
 E=F(\alpha_1, \ldots, \alpha_r ),
-$$
+\]
 where $\alpha_1^{n_1} \in F$ and
-$$
+\[
 \alpha_i^{n_i} \in F( \alpha_1, \ldots, \alpha_{i-1} )
-$$
+\]
 for $i = 2, \dots, r$. Let $f(x) = f_1(x) \cdots f_r(x)$, where $f_i$
 is the minimal polynomial of $\alpha_i$ over $F$, and let $K$ be the
 splitting field of $K$ over $F$.  Every root  of $f(x)$ in $K$ is of
@@ -1064,7 +1092,7 @@ extension of $F$.
 We will now prove the main theorem about solvability by radicals.
  
  
-\begin{theorem}
+\begin{theorem}\label{galois:solvable_by_radicals_theorem}
 Let $f(x)$ be in $F[x]$, where ${\rm char} F = 0$. If $f(x)$ is
 solvable by radicals, then the Galois group of $f(x)$ over $F$ is 
 solvable.
@@ -1075,19 +1103,19 @@ solvable.
 Let $K$ be a splitting field of $f(x)$ over $F$. Since $f(x)$ is
 solvable, there exists an extension $E$ of radicals $F = F_0 \subset
 F_1 \subset \cdots F_n = E$. Since $F_i$ is normal over $F_{i-1}$, we
-know by Lemma~21.17 that $E$ is a normal extension of each $F_i$. By
+know by Lemma~\ref{galois:radical_extension_lemma} that $E$ is a normal extension of each $F_i$. By
 the Fundamental Theorem of Galois Theory, $G(E/F_i)$ is a normal
 subgroup of $G(E/F_{i-1})$.  Therefore, we have a subnormal series of
 subgroups of $G(E/F)$:  
-$$
+\[
 \{ id \} \subset G(E/F_{n-1}) \subset \cdots \subset G(E/F_1) \subset
 G(E/F).
-$$
+\]
 Again by the Fundamental Theorem of Galois Theory, we know that
-$$
+\[
 G(E/F_{i-1})/G(E/F_i) \cong G(F_i/F_{i-1}).
-$$
-By Lemma~21.16, $G(F_i/F_{i-1})$ is solvable; hence, $G(E/F)$ is also
+\]
+By Lemma~\ref{galois:xn-a_solvable_lemma}, $G(F_i/F_{i-1})$ is solvable; hence, $G(E/F)$ is also
 solvable. 
 \mbox{\hspace{1in}}
 \end{proof}
@@ -1096,7 +1124,7 @@ solvable.
 \medskip
 
 
-The converse of Theorem~21.18 is also true.  For a proof, see any of the
+The converse of Theorem~\ref{galois:solvable_by_radicals_theorem} is also true.  For a proof, see any of the
 references at the end of this chapter.
  
  
@@ -1109,7 +1137,7 @@ solvable by radicals.  We merely need to find a polynomial whose
 Galois group is $S_5$. We begin by proving a lemma.
 
  
-\begin{lemma}
+\begin{lemma}\label{galois:Sn_generating_lemma}
 Any subgroup of $S_n$ that contains a transposition and a cycle of length
 $n$ must be all of $S_n$. 
 \end{lemma}
@@ -1129,9 +1157,25 @@ j) = (i j)$.  The transpositions generate $S_n$.
 \medskip
 \begin{figure}
 \begin{center}
-\centerline {
-\includegraphics[width=2in]{Galois4}
-}
+
+\begin{tikzpicture}[xscale=0.8,yscale=0.05,domain=-3.2:3.2] 
+\draw[very thin,color=gray] (-4,-75) grid [xstep=1,ystep=10] (4,75);
+\draw[->] (-4.2,0) -- (4.2,0) node[right] {$x$}; 
+\draw[->] (0,-80.2) -- (0,80.2) node[above] {$y$};
+
+\draw[thick,color=red]	plot[id=x]	function{x**5 - 6 *x**3 - 27 *x - 3}	node[above] {$f(x) =x^5 - 6 x^3 - 27 x - 3$}; 
+
+\node [right] at (0,40)  {40};
+\node [right] at (0,-40)  {-40};
+
+\node [above] at (4,0)  {4};
+\node [above] at (2,0)  {2};
+\node [above] at (-2,0)  {-2};
+\node [above] at (-4,0)  {-4};
+
+\end{tikzpicture}
+
+
 \end{center}
 \caption{The graph of $f(x) = x^5 - 6 x^3 - 27 x - 3$}
 \label{Galois4}
@@ -1146,9 +1190,9 @@ is $S_5$. By Eisenstein's Criterion, $f(x)$ is irreducible and,
 therefore, must be separable. The derivative of $f(x)$ is $f'(x) = 5
 x^4 - 18 x^2 - 27$; hence, setting $f'(x) = 0$ and solving, we find
 that the only real roots of $f'(x)$ are
-$$
+\[
 x = \pm \sqrt{ \frac{6 \sqrt{6} + 9 }{5} }.
-$$
+\]
 Therefore, $f(x)$ can have at most one maximum and one minimum.  It is
 easy to show that $f(x)$ changes sign between $-3$ and $-2$, between
 $-2$ and $0$, and once again between $0$ and $4$
@@ -1162,9 +1206,9 @@ there is an element in $\sigma \in G(K/{\mathbb Q})$ such that $\sigma(a)
 = b$ for two roots $a$ and $b$ of $f(x)$. The automorphism of ${\mathbb
 C}$ that takes $a+bi \mapsto a-bi$ leaves the real roots fixed and
 interchanges the complex roots; consequently, $G(K/{\mathbb Q} ) \subset
-S_5$. By Lemma~21.19, $S_5$ is generated by a transposition and an
+S_5$. By Lemma~\ref{galois:Sn_generating_lemma}, $S_5$ is generated by a transposition and an
 element of order 5; therefore, $G(K/F)$ must be all of $S_5$. By
-Theorem~9.8, $S_5$ is not solvable. Consequently, $f(x)$ cannot be
+Theorem~\ref{normal:An_simple}, $S_5$ is not solvable. Consequently, $f(x)$ cannot be
 solved by radicals.  
 \end{example}
  
@@ -1256,231 +1300,175 @@ fields of mathematics.
 \begin{enumerate}
  
  
-\bf\item\rm
+\item
 Compute each of the following Galois groups. Which of these field
 extensions are normal field extensions? If the extension is not
 normal, find a normal extension of ${\mathbb Q}$ in which the extension
 field is contained.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item 
 $G({\mathbb Q}(\sqrt{30}\, ) / {\mathbb Q})$
- 
- \item[{\bf (c)}]
+
+\item 
+$G({\mathbb Q}(\sqrt[4]{5}\, ) / {\mathbb Q})$
+
+\item 
 $G( {\mathbb Q}(\sqrt{2}, \sqrt{3}, \sqrt{5}\, )/ {\mathbb Q} )$
 
- 
- \item[{\bf (e)}]
-$G({\mathbb Q}(\sqrt{6}, i) / {\mathbb Q})$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
-$G({\mathbb Q}(\sqrt[4]{5}\, ) / {\mathbb Q})$
- 
- \item[{\bf (d)}]
+\item 
 $G({\mathbb Q}(\sqrt{2}, \sqrt[3]{2}, i) / {\mathbb Q})$
+
+\item 
+$G({\mathbb Q}(\sqrt{6}, i) / {\mathbb Q})$
+
+
+\end{enumerate}
+
+\end{multicols}
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
+
  
  
- 
-\bf\item\rm
+\item
 Determine the separability of each of the following polynomials.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item 
 $x^3 + 2 x^2 - x - 2$ over ${\mathbb Q}$
- 
- \item[{\bf (c)}]
-$x^4 + x^2 + 1$ over ${\mathbb Z}_3$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item 
 $x^4 + 2 x^2 + 1$ over ${\mathbb Q}$
- 
- \item[{\bf (d)}]
+
+\item 
+$x^4 + x^2 + 1$ over ${\mathbb Z}_3$
+
+\item 
 $x^3 +x^2 + 1$ over ${\mathbb Z}_2$
+
+\end{enumerate}
+\end{multicols}
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
- 
-\bf\item\rm
+
+\item
 Give the order and describe a generator of the Galois group of
 GF$(729)$ over~GF$(9)$.
+
  
- 
- 
- 
-\bf\item\rm
+\item
 Determine the Galois groups of each of the following polynomials in
 ${\mathbb Q}[x]$; hence, determine the solvability by radicals of each 
 of the polynomials.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item 
 $x^5 - 12 x^2 + 2$
- 
- \item[{\bf (c)}]
-$x^3 - 5$
- 
- \item[{\bf (e)}]
-$x^5 + 1$
- 
- \item[{\bf (g)}]
-$x^8 - 1$
- 
- \item[{\bf (i)}]
-$x^4 - 3 x^2 -10$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item 
 $x^5 - 4 x^4 + 2 x + 2$
- 
- \item[{\bf (d)}]
+
+\item 
+$x^3 - 5$
+
+\item 
 $x^4 - x^2 - 6$
- 
- \item[{\bf (f)}]
+
+\item 
+$x^5 + 1$
+
+\item 
 $(x^2 - 2)(x^2 + 2)$
- 
- \item[{\bf (h)}]
+
+\item 
+$x^8 - 1$
+
+\item 
 $x^8 + 1$
+
+\item 
+$x^4 - 3 x^2 -10$
+
+
+\end{enumerate}
+\end{multicols}
  
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
  
  
-\bf\item\rm
+\item
 Find a primitive element in the splitting field of each of the
 following polynomials in ${\mathbb Q}[x]$.
- 
-\vspace{3pt}        %two column exercise list
- 
-\hspace{-7pt}
-\begin{minipage}[t]{4.6in}
-\noindent
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (a)}]
+\begin{multicols}{2}
+\begin{enumerate}
+
+\item 
 $x^4 - 1$
- 
- \item[{\bf (c)}]
-$x^4 - 2 x^2 - 15$
- 
-\end{itemize}
-\end{minipage} \hfill
-\begin{minipage}[t]{2.25in}
-\begin{itemize}
- 
- \item[{\bf (b)}]
+
+\item 
 $x^4 - 8 x^2 + 15$
- 
- \item[{\bf (d)}]
+
+\item 
+$x^4 - 2 x^2 - 15$
+
+\item 
 $x^3 - 2$
- 
-\end{itemize}
-\end{minipage}
-\end{minipage}
- 
-\vspace{2pt}        %end two column exercise list
- 
- 
+
+\end{enumerate}
+\end{multicols}
+  
  
 %******************************THEORY*****************
  
  
  
  
-\bf\item\rm
+\item
 Prove that the Galois group of an irreducible quadratic polynomial is
 isomorphic to ${\mathbb Z}_2$.
  
  
-\bf\item\rm
+\item
 Prove that the Galois group of an irreducible cubic polynomial is
 isomorphic to $S_3$ or ${\mathbb Z}_3$.
  
  
-\bf\item\rm
+\item
 Let $F \subset K \subset E$ be fields. If E is a normal extension of
 $F$, show that $E$ must also be a normal extension of $K$.
  
  
-\bf\item\rm
+\item
 Let $G$ be the Galois group of a polynomial of degree $n$.  Prove
 that $|G|$ divides~$n!$.
  
  
-\bf\item\rm
+\item
 Let $F \subset E$.  If $f(x)$ is solvable over $F$, show that $f(x)$
 is also solvable over $E$.
  
  
-\bf\item\rm
+\item
 Construct a polynomial $f(x)$ in ${\mathbb Q}[x]$ of degree 7 that is not
 solvable by \linebreak radicals.
  
  
-\bf\item\rm
+\item
 Let $p$ be prime.  Prove that there exists a polynomial $f(x) \in
 {\mathbb Q}[x]$ of degree $p$ with Galois group isomorphic to $S_p$.
 Conclude that for each prime $p$ with $p \geq 5$ there exists a
 polynomial of degree $p$ that is not solvable by radicals. 
  
  
-\bf\item\rm
+\item
 Let $p$ be a prime and ${\mathbb Z}_p(t)$ be the field of rational
 functions over ${\mathbb Z}_p$.  Prove that $f(x) = x^p - t$ is an
 irreducible polynomial in ${\mathbb Z}_p(t)[x]$.  Show that $f(x)$ is not
 separable. 
  
  
-\bf\item\rm
+\item
 Let $E$ be an extension field of $F$. Suppose that $K$ and $L$ are two 
 intermediate fields.  If there exists an element $\sigma \in G(E/F)$
 such that $\sigma(K) = L$, then $K$ and $L$ are said to be {\bfi
@@ -1489,67 +1477,67 @@ Prove that $K$ and $L$ are conjugate if and only if $G(E/K)$ and
 $G(E/L)$ are conjugate subgroups of $G(E/F)$. 
  
  
-\bf\item\rm 
+\item 
 Let $\sigma \in Aut( {\mathbb R} )$.  If $a$ is a positive real
 number, show that $\sigma( a) > 0$.
  
  
-\bf\item\rm 
+\item 
 Let $K$ be the splitting field of $x^3 + x^2 + 1 \in {\mathbb Z}_2[x]$.
 Prove or disprove that $K$ is an extension by radicals.
  
-\bf\item\rm
+\item
 Let $F$ be a field such that ${\rm char}\, F \neq 2$. Prove that the
 splitting field of $f(x) = a x^2 + b x + c$ is $F( \sqrt{\alpha}\, )$,
 where $\alpha = b^2 - 4ac$. 
  
  
-\bf\item\rm
+\item
 Prove or disprove: Two different subgroups of a Galois group will
 have different fixed fields.
  
  
  
-\bf\item\rm
+\item
 Let $K$ be the splitting field of a polynomial over $F$. If $E$ is a
 field extension of $F$ contained in $K$ and $[E:F] = 2$, then $E$ is
 the splitting field of some polynomial in $F[x]$.
  
   
  
-\bf\item\rm
+\item
 We know that the cyclotomic polynomial
-$$
+\[
 \Phi_p(x) = \frac{x^p - 1}{x-1} = x^{p-1} + x^{p-2} + \cdots
 + x + 1
-$$
+\]
 is irreducible over ${\mathbb Q}$ for every prime $p$. Let $\omega$ be a
 zero of $\Phi_p(x)$, and consider the field ${\mathbb Q}(\omega)$.
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 Show that $\omega, \omega^2, \ldots, \omega^{p-1}$ are distinct zeros of
 $\Phi_p(x)$, and conclude that they are all the zeros of $\Phi_p(x)$.
  
- \bf\item\rm
+ \item
 Show that $G( {\mathbb Q}( \omega ) / {\mathbb Q} )$ is abelian of order
 $p-1$. 
  
- \bf\item\rm
+ \item
 Show that the fixed field of $G( {\mathbb Q}( \omega ) / {\mathbb Q} )$ is
 ${\mathbb Q}$. 
  
 \end{enumerate}
  
   
-\bf\item\rm
+\item
 Let $F$ be a finite field or a field of characteristic zero.
 Let $E$ be a finite normal extension of $F$ with Galois group
 $G(E/F)$. Prove that $F \subset K \subset L \subset E$ if and 
 only if $\{ id \} \subset G(E/L) \subset G(E/K) \subset G(E/F)$.
  
  
-\bf\item\rm
+\item
 Let $F$ be a field of characteristic zero and let $f(x) \in F[x]$ be
 a separable polynomial of degree $n$. If $E$ is the splitting field
 of $f(x)$, let $\alpha_1, \ldots, \alpha_n$ be the roots of $f(x)$ in
@@ -1558,28 +1546,28 @@ define the {\bfi discriminant\/}\index{Discriminant!of a separable
 polynomial}\label{discriminant} of $f(x)$ to be $\Delta^2$. 
 \begin{enumerate}
  
- \bf\item\rm
+ \item
 If $f(x) = a x^2 + b x + c$, show that $\Delta^2 = b^2 - 4ac$.
  
- \bf\item\rm
+ \item
 If $f(x) = x^3 + p x + q$, show that $\Delta^2 = - 4p^3 - 27q^2$.
  
- \bf\item\rm
+ \item
 Prove that $\Delta^2$ is in $F$.
  
- \bf\item\rm
+ \item
 If $\sigma \in G(E/F)$ is a transposition of two roots of $f(x)$, show
 that $\sigma( \Delta )~=~-\Delta$.
  
-  \bf\item\rm
+  \item
 If $\sigma \in G(E/F)$ is an even permutation of the roots of $f(x)$, show
 that $\sigma( \Delta ) = \Delta$.
  
-  \bf\item\rm
+  \item
 Prove that $G(E/F)$ is isomorphic to a subgroup of $A_n$ if and
 only if $\Delta \in F$.
  
- \bf\item\rm
+ \item
 Determine the Galois groups of $x^3 + 2 x - 4$ and $x^3 + x -3$.
  
 \end{enumerate}
