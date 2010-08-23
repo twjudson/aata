@@ -460,7 +460,7 @@ theorem, which characterizes the orthogonal group, says that these
 notions are the same.
  
  
-\begin{theorem}
+\begin{theorem}\label{matrix:orthnormal_theorem}
 Let $A$ be an $n \times n$ matrix.  The following statements are
 equivalent. 
 \begin{enumerate}
@@ -679,7 +679,7 @@ R}^n$. We define multiplication by
 (AB, A {\mathbf y} +{\mathbf x}).
 \]
 The identity of the group is $(I,{\mathbf 0})$; the inverse of $(A,
-{\mathbf x})$ is $(A^{-1}, -A^{-1} {\mathbf x})$. In Exercise~6, you 
+{\mathbf x})$ is $(A^{-1}, -A^{-1} {\mathbf x})$. In Exercise~\ref{matrix:En_group_exercise}, you 
 are asked to check that $E(n)$ is indeed a group under this operation.
  
  
@@ -728,7 +728,7 @@ This means that $f$ must satisfy
 \|{\mathbf x} - {\mathbf y} \|
 \]
 for all ${\mathbf x}, {\mathbf y} \in {\Bbb R}^n$. It is not difficult to
-show that $f$ must be a one-to-one map. By Theorem~10.2, any element in
+show that $f$ must be a one-to-one map. By Theorem~\ref{matrix:orthnormal_theorem}, any element in
 $O(n)$ is an isometry on ${\Bbb R}^n$; however, $O(n)$ does not
 include all possible isometries on ${\Bbb R}^n$. Translation by a
 vector ${\mathbf x}$, $T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}$
@@ -1182,6 +1182,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 \node [above] at (0,7) {Rectangular};
 \draw (-1,4) -- (1,4) -- (1,7) -- (-1,7) -- cycle;
 \draw  (0,4) -- (0,7)  (-1,5.5) -- (1,5.5);
+\draw [very thick] (-1,5.5) -- (-1,7) -- (0,7) -- (0,5.5) -- cycle;
 \foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,4) circle (0.03);
 \foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
 \foreach \x in {-1,0,1} \filldraw[fill=black, draw=black] (\x,7) circle (0.03);
@@ -1189,6 +1190,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 \node [above] at (-3.5,6.5) {Square};
 \draw (-2,4.5) -- (-5,4.5) -- (-5,6.5) -- (-2,6.5) -- cycle;
 \draw  (-2,5.5) -- (-5,5.5)  (-3,4.5) -- (-3,6.5) (-4,4.5) -- (-4,6.5);
+\draw [very thick] (-5,5.5) -- (-5,6.5) -- (-4,6.5) -- (-4,5.5) -- cycle;
 \foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
 \foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
 \foreach \x in {-2, -3, -4, -5} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
@@ -1198,6 +1200,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 \draw (2.9,5.5) -- (5.9,5.5);
 \draw (4.5,4.5) -- (3.3,6.5);
 \draw  (5.5,4.5) -- (4.3,6.5);
+\draw [very thick] (2.3,6.5) -- (3.3,6.5) -- (3.9,5.5) -- (2.9,5.5) -- cycle;
 \foreach \x in {3.5,4.5,5.5,6.5} \filldraw[fill=black, draw=black] (\x,4.5) circle (0.03);
 \foreach \x in {2.9,3.9,4.9,5.9} \filldraw[fill=black, draw=black] (\x,5.5) circle (0.03);
 \foreach \x in {2.3,3.3,4.3,5.3} \filldraw[fill=black, draw=black] (\x,6.5) circle (0.03);
@@ -1205,6 +1208,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 \node [above] at (-2.5,3) {Parallelogram};
 \draw (-1,0) -- (-3,0) -- (-3.5,3) -- (-1.5,3) -- cycle;
 \draw  (-2,0) -- (-2.5,3)  (-3.25,1.5) -- (-1.25,1.5);
+\draw [very thick] (-3.25,1.5) -- (-3.5,3) -- (-2.5,3) -- (-2.25,1.5) -- cycle;
 \foreach \x in {-1,-2,-3} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
 \foreach \x in {-1.25,-2.25,-3.25} \filldraw[fill=black, draw=black] (\x,1.5) circle (0.03);
 \foreach \x in {-1.5,-2.5,-3.5} \filldraw[fill=black, draw=black] (\x,3) circle (0.03);
@@ -1223,6 +1227,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 \draw (4,0) -- (4.5,0.866);
 \draw (1.5,0.866) -- (2.5,2.598);
 \draw (1,1.732) -- (1.5,2.598);
+\draw [very thick] (1.5,0.866) -- (1,1.732) -- (1.5,2.598) -- (2.5,2.598) -- (3,1.732) --  (2.5,0.866) -- cycle;
 \foreach \x in {2,3,4,5} \filldraw[fill=black, draw=black] (\x,0) circle (0.03);
 \foreach \x in {1.5,2.5,3.5,4.5} \filldraw[fill=black, draw=black] (\x,0.866) circle (0.03);
 \foreach \x in {1,2,3,4} \filldraw[fill=black, draw=black] (\x,1.732) circle (0.03);
@@ -1512,7 +1517,7 @@ ${\Bbb R}^n$, then ${\mathbf y} = 0$.
 \end{enumerate}
  
  
-\item
+\item \label{matrix:En_group_exercise}
 Verify that
 \[
 E(n)
