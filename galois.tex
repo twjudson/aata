@@ -553,7 +553,7 @@ relationship is between the two lattices.
 
 \begin{figure}[t]
 \begin{center}
-
+\tikzpreface{galois_root3_root5}
 \begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
 
 \draw  (2,0.5) -- (2,1.5);
@@ -657,6 +657,7 @@ We leave the proof of this property as an exercise.
  
 \begin{figure}[htb]
 \begin{center}
+\tikzpreface{galois_correspondence}
 \begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
 
 \draw  (0,0.5) -- (0,1.5);
@@ -795,7 +796,7 @@ The lattice of subgroups of $G$ is illustrated in Figure~\ref{Galois3}(b).
 \begin{figure}[htb]
 \begin{center}
 
-
+\tikzpreface{galois_fourth_root2}
 \begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010
 
 \draw  (-1,0.5) -- (-5.5,1.5);
@@ -1157,13 +1158,14 @@ j) = (i j)$.  The transpositions generate $S_n$.
 \medskip
 \begin{figure}
 \begin{center}
-
-\begin{tikzpicture}[xscale=0.8,yscale=0.05,domain=-3.2:3.2] 
+\tikzpreface{galois_quintic}
+\begin{tikzpicture}[xscale=0.8,yscale=0.05,domain=-3.2:3.2,samples=320]
 \draw[very thin,color=gray] (-4,-75) grid [xstep=1,ystep=10] (4,75);
-\draw[->] (-4.2,0) -- (4.2,0) node[right] {$x$}; 
+
+\draw[->] (-4.2,0) -- (4.2,0) node[right] {$x$}; 
 \draw[->] (0,-80.2) -- (0,80.2) node[above] {$y$};
 
-\draw[thick,color=red]	plot[id=x]	function{x**5 - 6 *x**3 - 27 *x - 3}	node[above] {$f(x) =x^5 - 6 x^3 - 27 x - 3$}; 
+\draw[thick,color=red]	plot[smooth,id=quintic]	function{x**5 - 6 *x**3 - 27 *x - 3}	node[above] {$f(x) =x^5 - 6 x^3 - 27 x - 3$};
 
 \node [right] at (0,40)  {40};
 \node [right] at (0,-40)  {-40};
