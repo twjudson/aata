@@ -61,11 +61,25 @@
 
 
 
-% tikz is a great package for graphics ("pictures").  With pdflatex it makes pdf images, automatically included in the document.  With tex4ht, the special pgf driver (\def\pgfsysdriver{pgfsys-tex4ht.def}) will make great SVG output.  Usually.  But if your tikz picture has text using TeX, then pdflatex still does a nice job, but tex4ht does not and the graphics are a mess.  It does not appear this situation will improve anytime soon (July 2010).
+% tikz is a great package for graphics ("pictures").  With pdflatex it makes pdf images,
+% automatically included in the document.  With tex4ht, the special pgf driver
+% (\def\pgfsysdriver{pgfsys-tex4ht.def}) will make great SVG output.  Usually.
+% But if your tikz picture has text using TeX, then pdflatex still does a nice
+% job, but tex4ht does not and the graphics are a mess.  It does not appear this
+% situation will improve anytime soon (July 2010).
 %
-% So, we use the pgf "external graphics" system (from the CVS version, July 2010) with pdflatex to create stand-alone named PDF files in a subdirectory.  These are converted to 110dpi PNG files for web page use, since tex4ht also seems to have trouble with converting these files after pulling them into a DVI and extracting them again.
+% So, we use the pgf "external graphics" system (from the CVS version, July 2010)
+% with pdflatex to create stand-alone named PDF files in a subdirectory.  These are
+% converted to 110dpi PNG files for web page use, since tex4ht also seems to have
+% trouble with converting these files after pulling them into a DVI and extracting
+% them again (tex4ht does better with EPS files, which we could make the tikz
+% externalization produce, but we won't).
 %
-% On subsequent runs, pdflatex will just grab these files and use them.  When we run tex4ht, we turn off tikz totally and use a comment-ing package to just gobble up any picture.  This all requires a brief setup just prior to each tikz picture.  This would all be easier with conditional macros, but the external graphics facility cannot recognize the tikzpicture environment buried inside macros.
+% On subsequent runs, pdflatex will just grab these files and use them.  When we
+% run tex4ht, we turn off tikz totally and use a comment-ing package to just gobble
+% up any picture.  This all requires a brief setup just prior to each tikz picture.
+% This would all be easier with conditional macros, but the external graphics facility
+% cannot recognize the tikzpicture environment buried inside macros.
 
 \ifthenelse{\boolean{basic}\or\boolean{vcu}}
 {
@@ -78,7 +92,7 @@
 {
 \usepackage{comment}
 \excludecomment{tikzpicture}
-\newcommand{\tikzpreface}[1]{\includegraphics{graphics/tikz/#1.png}}
+\newcommand{\tikzpreface}[1]{\includegraphics{tikz/#1.png}}
 }{}
 %
 %
@@ -87,7 +101,7 @@
 {
 \usetikzlibrary{external}
 \tikzexternalize
-\tikzsetexternalprefix{graphics/tikz/}
+\tikzsetexternalprefix{tikz/}
 \renewcommand{\tikzpreface}[1]{\tikzsetnextfilename{#1}}
 }{}
 

@@ -30,6 +30,7 @@ Requirements: a standard TeX distribution
 (5) issue:  pdflatex aata.tex   twice
 (6) verify that  aata.pdf  has an "Index" entry in the Table of Contents
 
+Clean:  rm aata.log aata.toc aata.out aata.idx aata.ind aata.ilg *.aux
 
 To create a PDF version optimized for print (Virginia Commonwealth Series)
 -------------------------------------------------------------------------
@@ -51,11 +52,12 @@ fonts (like the Stix fonts) to view
 (4) Edit  aata.tex  and set boolean variable "xhtml" to true
     by editing the one line early on that determines the version
 (5) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
-(5) issue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
+(6) issue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
 (7) issue:  makeindex -o aata.ind  aata.4dx
 (8) issue:  htlatex aata "xhtml,mozilla,index=3,2" " -cmozhtf"
-(9) Result starts with  aata.xml
+(9) Result starts with  aata.xml, keep all aata*.xml
 
+Clean:  rm aata.4dx aata.4ix idxmake.dvi idxmake.log aata.ilg aata.ind aata.4ct aata.dvi aata.idx aata.log aata.xref aata.4tc aata.css aata.idv aata.lg aata.tmp *.aux
 
 Sage worksheet version
 ----------------------
@@ -63,15 +65,17 @@ Requires: tex4ht, nascent tex2sws package
 Sketch:
     Create external graphics
     Follow webpage version, except
-        (5),(8) htlatex aata.tex "/path/to/tex4ht-sage.cfg,2" " -cunihtf -utf8"
+        (5),(8) htlatex aata.tex "/full/path/to/tex4ht-sage.cfg,2" " -cunihtf -utf8"
         results are html files
     Then run tex2sws converter
+    Result in aata.zip
 
+Clean:  rm aata.4dx aata.4ix idxmake.dvi idxmake.log aata.ilg aata.ind aata.4ct aata.dvi aata.idx aata.log aata.xref aata.4tc aata.css aata.idv aata.lg aata.tmp *.html *.aux
 
 Generating tikz pictures
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Requirements: the  mogrify  command from the  ImageMagick  suite,
-gnuplot  program to generate quintic in  galois.tex
+gnuplot  program to generate quintic polynomial graph in  galois.tex
 
 For PDF versions of the book, computed points for plots need to
 be available to tikz (absent having gnuplot installed).  gnuplot
@@ -95,10 +99,9 @@ requested format.
 
 (3)  Edit  aata.tex  and set the version to  basic  and find
      the  externalgraphics  boolean variable and set it to true.
-(4)  Create the <right> subdirectory, <TBD>
+(4)  Create, or perhaps clean-out, the  tikz  subdirectory
 (5)  issue:  pdflatex -shell-escape aata.tex
 (6)  move <file_name>.<id>.gnuplot  and  <file_name>.<id>.table files
      to main aata directory as  aata.<id>.gnuplot and aata.<id>.table
-(7)  issue:  mogrify -format png -trim +repage -density 110x110 -transparent '#FFFFFF' graphics/tikz/*.pdf
-     (this can take a while)  <sync directory here with (4)!>
-(8)  delete *.log files in <directory>
+(7)  issue:  mogrify -format png -trim +repage -density 110x110 -transparent '#FFFFFF' tikz/*.pdf
+(8)  delete *.log files in  tikz  subdirectory
