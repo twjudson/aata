@@ -5,7 +5,7 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash = '<p><img alt="New" src="graphics/rednew.gif"> Updated edition available for <a href="download.html">download</a> in very late August 2010</p>'
+    flash = '<p><img alt="New" src="graphics/rednew.gif"> Updated PDF version available for <a href="download.html">download</a> in very late August 2010</p>'
     // Comment/uncomment next line to turn off/on
     document.write(flash)
 }
@@ -16,6 +16,7 @@ function nav_links( thispage ){
     pages = [
         ['index', 'index.html', 'Home', false],
         ['download', 'download.html', 'Download', false],
+        ['purchase', 'purchase.html', 'Purchase', false],
         ['adoption', 'adoption.html', 'Course Adoption', false],
         ['sage', 'sage-aata.html', 'Sage and AATA', false],
         ['fcla', 'http://linear.pugetsound.edu', 'Linear Algebra', true],
