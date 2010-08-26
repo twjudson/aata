@@ -31,18 +31,18 @@ Before we study matrix groups, we must recall some basic facts from
 linear algebra.  One of the most fundamental ideas of linear algebra
 is that of a linear transformation. A {\bfi linear
 transformation\/}\index{Linear transformation!definition of} or {\bfi 
-linear map}\index{Linear map} $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$
+linear map}\index{Linear map} $T : {\mathbb R}^n \rightarrow {\mathbb R}^m$
 is a map that preserves vector addition and scalar multiplication;
-that is, for vectors ${\mathbf x}$ and ${\mathbf y}$ in ${\Bbb R}^n$ and a
-scalar $\alpha \in {\Bbb R}$, 
+that is, for vectors ${\mathbf x}$ and ${\mathbf y}$ in ${\mathbb R}^n$ and a
+scalar $\alpha \in {\mathbb R}$, 
 \begin{align*}
 T({\mathbf x}+{\mathbf y}) & = T({\mathbf x}) + T({\mathbf y}) \\
 T(\alpha {\mathbf y}) & = \alpha T({\mathbf y}).
 \end{align*}
-An $m \times n$ matrix with entries in ${\Bbb R}$ represents a linear
-transformation from ${\Bbb R}^n$ to ${\Bbb R}^m$. If we write vectors
+An $m \times n$ matrix with entries in ${\mathbb R}$ represents a linear
+transformation from ${\mathbb R}^n$ to ${\mathbb R}^m$. If we write vectors
 ${\mathbf x} = (x_1, \ldots, x_n)^{\rm t}$ and ${\mathbf y} = (y_1,
-\ldots, y_n)^{\rm t}$ in ${\Bbb R}^n$ as column matrices, then an $m
+\ldots, y_n)^{\rm t}$ in ${\mathbb R}^n$ as column matrices, then an $m
 \times n$ matrix 
 \[
 A
@@ -54,7 +54,7 @@ a_{21} & a_{22} & \cdots & a_{2n} \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
 \]
-maps the vectors to ${\Bbb R}^m$ linearly by matrix
+maps the vectors to ${\mathbb R}^m$ linearly by matrix
 multiplication.  Observe that if $\alpha$ is a real number,
 \[
 A({\mathbf x} + {\mathbf y} ) 
@@ -80,7 +80,7 @@ We will often abbreviate the matrix $A$ by writing
 $(a_{ij})$\label{matrixnote}.  
  
  
-Conversely, if $T : {\Bbb R}^n \rightarrow {\Bbb R}^m$ is a linear
+Conversely, if $T : {\mathbb R}^n \rightarrow {\mathbb R}^m$ is a linear
 map, we can associate a matrix $A$ with $T$ by considering what $T$
 does to the vectors 
 \begin{align*}
@@ -118,7 +118,7 @@ A {\mathbf x}.
  
  
 \begin{example}{linear_transform}
-If we let $T : {\Bbb R}^2 \rightarrow {\Bbb R}^2$ be the map given by 
+If we let $T : {\mathbb R}^2 \rightarrow {\mathbb R}^2$ be the map given by 
 \[
 T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),
 \]
@@ -196,7 +196,7 @@ t} = (a_{ji})$, then $\det(A^{\rm t}) = \det A$.
 \item
 Let $T$ be the linear transformation associated with an $n \times n$
 matrix $A$. Then $T$ multiplies volumes by a factor of $|\det A|$. In
-the case of ${\Bbb R}^2$, this means that $T$ multiplies areas by
+the case of ${\mathbb R}^2$, this means that $T$ multiplies areas by
 $|\det A|$.
  
 \end{itemize}
@@ -214,14 +214,14 @@ concerned.
  
 The set of all $n \times n$  invertible matrices forms a group called
 the {\bfi general linear group}\index{Group!general linear}.  We will
-denote this group by $GL_n({\Bbb R})$.  The general linear group has
+denote this group by $GL_n({\mathbb R})$.  The general linear group has
 several important subgroups. The multiplicative properties of the
 determinant imply that the set of matrices with determinant one is a
 subgroup of the general linear group.  Stated another way, suppose
 that $\det(A) =1$ and $\det(B) = 1$. Then $\det(AB) = \det(A) \det (B)
 = 1$ and $\det(A^{-1}) = 1 / \det A = 1$. This subgroup is called the
 {\bfi special linear group\/}\index{Group!special linear} and is
-denoted by $SL_n({\Bbb R})$. 
+denoted by $SL_n({\mathbb R})$. 
  
  
 \begin{example}{determinant}
@@ -233,7 +233,7 @@ a & b \\
 c & d
 \end{pmatrix},
 \]
-the determinant of $A$ is \mbox{$ad-bc$}. The group $GL_2({\Bbb R})$
+the determinant of $A$ is \mbox{$ad-bc$}. The group $GL_2({\mathbb R})$
 consists of those matrices in which $ad-bc \neq 0$. The inverse of $A$
 is 
 \[
@@ -244,7 +244,7 @@ d & -b \\
 -c & a
 \end{pmatrix}.
 \]
-If $A$ is in $SL_2({\Bbb R})$, then
+If $A$ is in $SL_2({\mathbb R})$, then
 \[
 A^{-1} =
 \begin{pmatrix}
@@ -252,7 +252,7 @@ d & -b \\
 -c & a
 \end{pmatrix}.
 \]
-Geometrically, $SL_2({\Bbb R})$ is the group that preserves the areas
+Geometrically, $SL_2({\mathbb R})$ is the group that preserves the areas
 of parallelograms.  Let 
 \[
 A =
@@ -261,7 +261,7 @@ A =
 0 & 1
 \end{pmatrix}
 \]
-be in $SL_2({\Bbb R})$. In Figure~\ref{SL2}, the unit square
+be in $SL_2({\mathbb R})$. In Figure~\ref{SL2}, the unit square
 corresponding to the vectors ${\mathbf x} = (1,0)^{\rm t}$ and ${\mathbf
 y} =  (0,1)^{\rm t}$ is taken  by $A$ to the parallelogram with sides
 $(1,0)^{\rm t}$ and $(1, 1)^{\rm t}$; that is, $A {\mathbf x} =
@@ -295,7 +295,7 @@ two parallelograms have the same area.
 \end{tikzpicture}
 \end{center}
 
-\caption{$SL_2({\Bbb R})$ acting on the unit square}
+\caption{$SL_2({\mathbb R})$ acting on the unit square}
 \label{SL2}
 \end{figure}
 
@@ -305,7 +305,7 @@ two parallelograms have the same area.
  
  
  
-Another subgroup of $GL_n({\Bbb R})$ is the orthogonal group. A matrix
+Another subgroup of $GL_n({\mathbb R})$ is the orthogonal group. A matrix
 $A$ is {\bfi
 orthogonal\/}\index{Orthogonal matrix}\index{Matrix!orthogonal} if
 $A^{-1} = A^{\rm t}$. The {\bfi orthogonal
@@ -313,7 +313,7 @@ group\/}\index{Group!orthogonal}\index{Orthogonal group} consists of
 the set of all orthogonal matrices. We write
 $O(n)$\label{noteorthogonal} for the $n \times n$ orthogonal group. We
 leave as an exercise the proof that $O(n)$ is a subgroup of $GL_n(
-{\Bbb R})$.
+{\mathbb R})$.
  
  
 \begin{example}{orthogonal}
@@ -372,8 +372,8 @@ proposition about the properties of Euclidean inner products.
  
  
 \begin{proposition}
-Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\Bbb
-R}^n$ and $\alpha \in {\Bbb R}$. Then 
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\mathbb
+R}^n$ and $\alpha \in {\mathbb R}$. Then 
 \begin{enumerate}
  
 \rm \item \it
@@ -395,7 +395,7 @@ when ${\mathbf x} = 0$.
  
 \rm \item \it
 If $\langle {\mathbf x}, {\mathbf y} \rangle = 0$  for all ${\mathbf x}$ in
-${\Bbb R}^n$, then ${\mathbf y} = 0$. 
+${\mathbb R}^n$, then ${\mathbf y} = 0$. 
  
 \end{enumerate}
 \end{proposition}
@@ -618,12 +618,12 @@ Observe that
 \end{tikzpicture}
 \end{center}
 
-\caption{$O(2)$ acting on ${\Bbb R}^2$}
+\caption{$O(2)$ acting on ${\mathbb R}^2$}
 \label{O2}
 \end{figure}
  
 \begin{example}{O2}
-Let us examine the orthogonal group  on ${\Bbb R}^2$ a bit more
+Let us examine the orthogonal group  on ${\mathbb R}^2$ a bit more
 closely.  An element $T \in O(2)$ is determined by its action on
 ${\mathbf e}_1 = (1, 0)^{\rm t}$ and ${\mathbf e}_2 = (0, 1)^{\rm t}$. If
 $T({\mathbf e}_1) = (a,b)^{\rm t}$, then $a^2 + b^2 = 1$ and $T({\mathbf
@@ -642,7 +642,7 @@ b & a
 \end{pmatrix},
 \]
 where $0 \leq \theta < 2 \pi$. A matrix $T$ in $O(2)$ either reflects
-or rotates a vector in ${\Bbb R}^2$ (Figure~\ref{O2}). A reflection is
+or rotates a vector in ${\mathbb R}^2$ (Figure~\ref{O2}). A reflection is
 given by the matrix 
 \[
 \begin{pmatrix}
@@ -667,11 +667,11 @@ Two of the other matrix or matrix-related groups that we will consider
 are the special orthogonal group  and the group of Euclidean motions.
 The {\bfi special orthogonal group}\index{Group!special orthogonal},
 $SO(n)$\label{notespecialorthog}, is just the intersection of $O(n)$
-and $SL_n({\Bbb R})$; that is, those elements in $O(n)$ with determinant
+and $SL_n({\mathbb R})$; that is, those elements in $O(n)$ with determinant
 one. The {\bfi Euclidean
 group}\index{Euclidean group}\index{Group!Euclidean},
 $E(n)$\label{noteeuclidgroup}, can be written as ordered pairs $(A,
-{\mathbf x})$, where $A$ is in $O(n)$ and ${\mathbf x}$ is in ${\Bbb
+{\mathbf x})$, where $A$ is in $O(n)$ and ${\mathbf x}$ is in ${\mathbb
 R}^n$. We define multiplication by
 \[
 (A, {\mathbf x}) (B, {\mathbf y})
@@ -706,7 +706,7 @@ are asked to check that $E(n)$ is indeed a group under this operation.
 
 \end{tikzpicture}
 \end{center}
-\caption{Translations in ${\Bbb R}^2$}
+\caption{Translations in ${\mathbb R}^2$}
 \label{Isometries}
 \end{figure}
  
@@ -720,28 +720,28 @@ are asked to check that $E(n)$ is indeed a group under this operation.
  
  
 An {\bfi isometry\/}\index{Isometry} or {\bfi rigid
-motion\/}\index{Rigid motion} in ${\Bbb R}^n$  is a
-distance-preserving function $f$ from ${\Bbb R}^n$ to ${\Bbb R}^n$.
+motion\/}\index{Rigid motion} in ${\mathbb R}^n$  is a
+distance-preserving function $f$ from ${\mathbb R}^n$ to ${\mathbb R}^n$.
 This means that $f$ must satisfy 
 \[
 \| f({\mathbf x}) - f({\mathbf y}) \| =
 \|{\mathbf x} - {\mathbf y} \|
 \]
-for all ${\mathbf x}, {\mathbf y} \in {\Bbb R}^n$. It is not difficult to
+for all ${\mathbf x}, {\mathbf y} \in {\mathbb R}^n$. It is not difficult to
 show that $f$ must be a one-to-one map. By Theorem~\ref{matrix:orthnormal_theorem}, any element in
-$O(n)$ is an isometry on ${\Bbb R}^n$; however, $O(n)$ does not
-include all possible isometries on ${\Bbb R}^n$. Translation by a
+$O(n)$ is an isometry on ${\mathbb R}^n$; however, $O(n)$ does not
+include all possible isometries on ${\mathbb R}^n$. Translation by a
 vector ${\mathbf x}$, $T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}$
 is also an isometry (Figure~\ref{Isometries}); however, $T$ cannot be
 in $O(n)$ since it is not a linear map. 
  
  
  
-We are mostly interested in isometries in ${\Bbb R}^2$. In fact, the
-only isometries in ${\Bbb R}^2$ are rotations and reflections  about
+We are mostly interested in isometries in ${\mathbb R}^2$. In fact, the
+only isometries in ${\mathbb R}^2$ are rotations and reflections  about
 the origin, translations, and combinations of the two. For example, a
 {\bfi glide reflection\/}\index{Glide reflection} is a translation
-followed by a reflection (Figure~\ref{Glide}).   In ${\Bbb R}^n$ all
+followed by a reflection (Figure~\ref{Glide}).   In ${\mathbb R}^n$ all
 isometries are given in the same manner. The proof is very easy to
 generalize. 
  
@@ -773,13 +773,13 @@ generalize.
  
  
 \begin{lemma}
-An isometry $f$ that fixes the origin in ${\Bbb R}^2$ is a linear
+An isometry $f$ that fixes the origin in ${\mathbb R}^2$ is a linear
 transformation.  In particular, $f$ is given by an element in $O(2)$. 
 \end{lemma}
  
  
 \begin{proof}
-Let $f$ be an isometry in ${\Bbb R}^2$ fixing the origin. We will
+Let $f$ be an isometry in ${\mathbb R}^2$ fixing the origin. We will
 first show that $f$ preserves inner products. Since $f(0) = 0$, $\|
 f({\mathbf x})\| = \| {\mathbf x} \|$; therefore,
 \begin{align*}
@@ -837,7 +837,7 @@ The linearity of $f$ easily follows.
  
  
 For any arbitrary isometry, $f$,  $T_{\mathbf x} f$ will fix the origin
-for some vector ${\mathbf x}$ in ${\Bbb R}^2$; hence, $T_{\mathbf x}
+for some vector ${\mathbf x}$ in ${\mathbb R}^2$; hence, $T_{\mathbf x}
 f({\mathbf y}) = A {\mathbf y}$ for some matrix $A \in O(2)$.
 Consequently, $f({\mathbf y}) = A {\mathbf y} + {\mathbf x}$.  Given the
 isometries 
@@ -852,32 +852,32 @@ f(B {\mathbf y} + {\mathbf x}_2) =
 AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1.
 \]
 This last computation allows us to identify the group of isometries on
-${\Bbb R}^2$ with~$E(2)$. 
+${\mathbb R}^2$ with~$E(2)$. 
  
  
 \begin{theorem}
-The group of isometries on ${\Bbb R}^2$ is the Euclidean group,
+The group of isometries on ${\mathbb R}^2$ is the Euclidean group,
 $E(2)$. 
 \end{theorem}
  
  
-A {\bfi symmetry group\/}\index{Group!symmetry} in ${\Bbb R}^n$ is a
-subgroup of the group of isometries on ${\Bbb R}^n$ that fixes a set
-of points $X \subset {\Bbb R}^2$.  It is important to realize that the
-symmetry group of $X$ depends {\em both\/} on ${\Bbb R}^n$ and on
-$X$. For example, the symmetry group of the origin in ${\Bbb R}^1$ is
-${\Bbb Z}_2$, but the symmetry group of the origin in ${\Bbb R}^2$ is
+A {\bfi symmetry group\/}\index{Group!symmetry} in ${\mathbb R}^n$ is a
+subgroup of the group of isometries on ${\mathbb R}^n$ that fixes a set
+of points $X \subset {\mathbb R}^2$.  It is important to realize that the
+symmetry group of $X$ depends {\em both\/} on ${\mathbb R}^n$ and on
+$X$. For example, the symmetry group of the origin in ${\mathbb R}^1$ is
+${\mathbb Z}_2$, but the symmetry group of the origin in ${\mathbb R}^2$ is
 $O(2)$. 
  
  
 \begin{theorem}
-The only finite symmetry groups in ${\Bbb R}^2$ are ${\Bbb Z}_n$ and
+The only finite symmetry groups in ${\mathbb R}^2$ are ${\mathbb Z}_n$ and
 $D_n$. 
 \end{theorem}
  
  
 \begin{proof}
-Any finite symmetry group $G$ in ${\Bbb R}^2$ must be a finite
+Any finite symmetry group $G$ in ${\mathbb R}^2$ must be a finite
 subgroup of $O(2)$; otherwise, $G$ would have an element in $E(2)$ of
 the form $(A, {\mathbf x})$, where ${\mathbf x} \neq 0$.  Such an element
 must have infinite order. 
@@ -978,7 +978,7 @@ Consequently, $G$ must be isomorphic to $D_n$ in this case.
 
 \end{tikzpicture}
 \end{center}
-\caption{A wallpaper pattern in ${\Bbb R}^2$}
+\caption{A wallpaper pattern in ${\mathbb R}^2$}
 \label{Wallpaper}
 \end{figure}
  
@@ -991,7 +991,7 @@ Consequently, $G$ must be isomorphic to $D_n$ in this case.
 Suppose that we wish to study wallpaper patterns in the plane or
 crystals in three dimensions. Wallpaper patterns are simply repeating
 patterns in the plane (Figure~\ref{Wallpaper}). The analogs of
-wallpaper patterns in ${\Bbb R}^3$ are crystals, which we can think of
+wallpaper patterns in ${\mathbb R}^3$ are crystals, which we can think of
 as repeating patterns of molecules in three dimensions
 (Figure~\ref{Crystals}). The mathematical equivalent of a wallpaper or
 crystal pattern is called a  lattice. 
@@ -1038,7 +1038,7 @@ crystal pattern is called a  lattice.
 
 \end{tikzpicture}
 \end{center}
-\caption{A crystal structure in ${\Bbb R}^3$}
+\caption{A crystal structure in ${\mathbb R}^3$}
 \label{Crystals}
 \end{figure}
  
@@ -1046,7 +1046,7 @@ crystal pattern is called a  lattice.
 
 Let us examine wallpaper patterns in the plane a
 little more closely. Suppose that ${\mathbf x}$ and ${\mathbf y}$ are
-linearly independent vectors in ${\Bbb R}^2$; that is, one vector
+linearly independent vectors in ${\mathbb R}^2$; that is, one vector
 cannot be a scalar multiple of the other. A {\bfi
 lattice\/}\index{Lattice of points} of ${\mathbf x}$ and ${\mathbf y}$ is
 the set of all linear combinations $m {\mathbf x} + n {\mathbf y}$, where
@@ -1086,7 +1086,7 @@ said to be a {\bfi basis\/}\index{Basis of a lattice} for the lattice.
 
 \end{tikzpicture}
 \end{center}
-\caption{A lattice in  ${\Bbb R}^2$}
+\caption{A lattice in  ${\mathbb R}^2$}
 \label{lattice}
 \end{figure}
  
@@ -1144,9 +1144,9 @@ vectors in a lattice.
  
 We can classify lattices by studying their symmetry groups. The
 symmetry group of a lattice is the subgroup of $E(2)$ that maps the
-lattice to itself. We consider two lattices in ${\Bbb R}^2$ to be
+lattice to itself. We consider two lattices in ${\mathbb R}^2$ to be
 equivalent if they have the same symmetry group.  Similarly,
-classification of crystals in ${\Bbb R}^3$ is accomplished by
+classification of crystals in ${\mathbb R}^3$ is accomplished by
 associating a symmetry group, called a {\bfi space group}, with each
 type of crystal\index{Group!space}. Two lattices are considered
 different if their space groups are not the same.  The natural
@@ -1168,8 +1168,8 @@ geometric arguments, we can prove the following theorem (see [5] or [6]).
  
  
 \begin{theorem}
-Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
-\times {\Bbb Z}$.
+Every translation group in ${\mathbb R}^2$ is isomorphic to ${\mathbb Z}
+\times {\mathbb Z}$.
 \end{theorem}
  
  
@@ -1235,7 +1235,7 @@ Every translation group in ${\Bbb R}^2$ is isomorphic to ${\Bbb Z}
 
 \end{tikzpicture}
 \end{center}
-\caption{Types of lattices in  ${\Bbb R}^2$}
+\caption{Types of lattices in  ${\mathbb R}^2$}
 \label{Types}
 \end{figure}
  
@@ -1264,7 +1264,7 @@ $G/T \cong G_0$. The proof of the following theorem can be found in
  
  
 \begin{theorem}
-The point group in the wallpaper groups is isomorphic to ${\Bbb Z}_n$
+The point group in the wallpaper groups is isomorphic to ${\mathbb Z}_n$
 or $D_n$, where $n = 1, 2, 3, 4, 6$. 
 \end{theorem}
  
@@ -1288,11 +1288,11 @@ reflections, both, or none.
 Notation and &             &              & Reflections  \\
 Space Groups & Point Group & Lattice Type & or Glide Reflections? \\
 \hline
-p1 & ${\Bbb Z}_1$ & parallelogram & none \\
-p2 & ${\Bbb Z}_2$ & parallelogram & none \\
-p3 & ${\Bbb Z}_3$ & hexagonal & none \\
-p4 & ${\Bbb Z}_4$ & square & none \\
-p6 & ${\Bbb Z}_6$ & hexagonal & none \\
+p1 & ${\mathbb Z}_1$ & parallelogram & none \\
+p2 & ${\mathbb Z}_2$ & parallelogram & none \\
+p3 & ${\mathbb Z}_3$ & hexagonal & none \\
+p4 & ${\mathbb Z}_4$ & square & none \\
+p6 & ${\mathbb Z}_6$ & hexagonal & none \\
 pm & $D_1$ & rectangular & reflections \\
 pg & $D_1$ & rectangular & glide reflections\\
 cm & $D_1$ & rhombic & both \\
@@ -1371,11 +1371,11 @@ century.  Hilbert's eighteenth problem asked whether or not
 crystallographic groups in $n$ dimensions were always finite.  In
 1910, L.~Bieberbach\index{Bieberbach, L.} proved that crystallographic
 groups are finite in every dimension.  Finding out how many of these
-groups there are in each dimension is another matter. In ${\Bbb R}^3$
-there are 230 different space groups; in ${\Bbb R}^4$ there are 4783.
-No one has been able to compute the number of space groups for ${\Bbb
+groups there are in each dimension is another matter. In ${\mathbb R}^3$
+there are 230 different space groups; in ${\mathbb R}^4$ there are 4783.
+No one has been able to compute the number of space groups for ${\mathbb
 R}^5$ and beyond. It is interesting to note that the crystallographic
-groups were found mathematically for ${\Bbb R}^3$ before the 230
+groups were found mathematically for ${\mathbb R}^3$ before the 230
 different types of crystals were actually discovered in nature.
 \histbox
 }
@@ -1487,8 +1487,8 @@ Figure~\ref{Determine}.
  
  
 \item
-Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\Bbb
-R}^n$ and $\alpha \in {\Bbb R}$.  Prove each of the following
+Let ${\mathbf x}$, ${\mathbf y}$, and ${\mathbf w}$ be vectors in ${\mathbb
+R}^n$ and $\alpha \in {\mathbb R}$.  Prove each of the following
 properties of inner products.
 \begin{enumerate}
  
@@ -1512,7 +1512,7 @@ when ${\mathbf x} = 0$.
  
  \item
 If $\langle {\mathbf x}, {\mathbf y} \rangle = 0$  for all ${\mathbf x}$ in
-${\Bbb R}^n$, then ${\mathbf y} = 0$. 
+${\mathbb R}^n$, then ${\mathbf y} = 0$. 
  
 \end{enumerate}
  
@@ -1523,7 +1523,7 @@ Verify that
 E(n)
 =
 \{(A, {\mathbf x}) : A \in O(n) \mbox{ and } {\mathbf x} \in
-{\Bbb R}^n \}
+{\mathbb R}^n \}
 \]
 is a group.
  
@@ -1540,8 +1540,8 @@ isomorphic to $G/T$.
  
  
 \item
-Let $A \in SL_2({\Bbb R})$ and suppose that the vectors ${\mathbf x}$
-and ${\mathbf y}$ form two sides of a parallelogram in ${\Bbb R}^2$.
+Let $A \in SL_2({\mathbb R})$ and suppose that the vectors ${\mathbf x}$
+and ${\mathbf y}$ form two sides of a parallelogram in ${\mathbb R}^2$.
 Prove that the area of this parallelogram is the same as the area of
 the parallelogram with sides $A{\mathbf x}$ and $A{\mathbf y}$. 
  
@@ -1551,7 +1551,7 @@ Prove that $SO(n)$ is a normal subgroup of $O(n)$.
  
  
 \item
-Show that any isometry $f$ in ${\Bbb R}^n$ is a one-to-one map.
+Show that any isometry $f$ in ${\mathbb R}^n$ is a one-to-one map.
  
  
 \item
@@ -1565,7 +1565,7 @@ $O(n)$.
  
  
 \item
-Let ${\mathbf x} = (x_1, x_2)$ be a point on the unit circle in ${\Bbb
+Let ${\mathbf x} = (x_1, x_2)$ be a point on the unit circle in ${\mathbb
 R}^2$; that is, $x_1^2 + x_2^2 = 1$. If $A \in O(2)$, show that $A
 {\mathbf x}$ is also a point on the unit circle. 
  
@@ -1595,7 +1595,7 @@ The quaternion group, $Q_8$, cannot be written as a semidirect product.
  
  \item
 $E(2)$ is the semidirect product of $O(2)$ by $H$, where $H$ consists
-of all translations in ${\Bbb R}^2$. 
+of all translations in ${\mathbb R}^2$. 
  
 \end{enumerate}
  
