@@ -122,14 +122,14 @@ We write $2 \in E$ when we want to say that 2 is in the set $E$, and $-3 \notin 
 
 Some of the more important sets that we will consider are the following: 
 \begin{gather*}
-{\mathbb N}\label{sets_naturalnum}  = \{n: n \mbox{ is a natural number}\}  = \{1, 2, 3, \ldots \}; \\
+{\mathbb N}\label{naturalnum}  = \{n: n \mbox{ is a natural number}\}  = \{1, 2, 3, \ldots \}; \\
 {\mathbb Z}\label{sets_integers}  = \{n : n \mbox{ is an integer} \} = \{\ldots, -1, 0, 1,  2, \ldots \} ; \\
-{\mathbb Q}\label{sets_rationals} = \{r : r \mbox{ is a rational number}\} = \{p/q : p, q \in {\mathbb Z} \mbox{ where $q \neq 0$}\}; \\
-{\mathbb R}\label{sets_reals} = \{ x : x \mbox{ is a real number} \}; \\
-{\mathbb C}\label{sets_complexnum} = \{z : z \mbox{ is a complex number}\}.
+{\mathbb Q}\label{rationals} = \{r : r \mbox{ is a rational number}\} = \{p/q : p, q \in {\mathbb Z} \mbox{ where $q \neq 0$}\}; \\
+{\mathbb R}\label{reals} = \{ x : x \mbox{ is a real number} \}; \\
+{\mathbb C}\label{complexnum} = \{z : z \mbox{ is a complex number}\}.
 \end{gather*}
 
-We find various relations between sets and can perform operations on sets.  A set $A$ is a {\bfi subset\/} of $B$, written $A \subset B$\label{sets_contain} or $B \supset A$, if every element of $A$ is also an element of $B$.  For example,  
+We find various relations between sets and can perform operations on sets.  A set $A$ is a {\bfi subset\/} of $B$, written $A \subset B$\label{setcontain} or $B \supset A$, if every element of $A$ is also an element of $B$.  For example,  
 \[
 \{4,5,8\} \subset \{2, 3, 4, 5, 6, 7, 8, 9 \}
 \]
@@ -139,15 +139,15 @@ and
 \]
 Trivially, every set is a subset of itself.  A set $B$ is a {\bfi proper subset\/} of a set $A$ if $B \subset A$ but $B \neq A$. If $A$ is not a subset of $B$, we write $A \notsubset B$; for example, $\{4, 7, 9\} \notsubset \{2, 4, 5,  8, 9 \}$.  Two sets are {\bfi equal}, written $A = B$, if we can show that $A \subset B$ and $B \subset A$.  
 
-It is convenient to have a set with no elements in it.  This set is called the {\bfi empty set\/} and is denoted by $\emptyset$\label{sets_emptyset}.  Note that the empty set is a subset of every set.  
+It is convenient to have a set with no elements in it.  This set is called the {\bfi empty set\/} and is denoted by $\emptyset$\label{theemptyset}.  Note that the empty set is a subset of every set.  
 
 To construct new sets out of old sets, we can perform certain operations: the {\bfi union\/} $A \cup B$ of two sets $A$ and $B$ is defined as  
 \[
-A \cup B\label{sets_union} = \{x : \mbox{ $x \in A$ or $x \in B$} \};
+A \cup B\label{union} = \{x : \mbox{ $x \in A$ or $x \in B$} \};
 \]
 the {\bfi intersection\/} of $A$ and $B$  is defined by
 \[
-A \cap B\label{sets_intersection} = \{x : \mbox{ $x \in A$ and $x \in B$} \}.
+A \cap B\label{intersection} = \{x : \mbox{ $x \in A$ and $x \in B$} \}.
 \]
 If $A = \{1, 3, 5\}$ and $B = \{ 1, 2, 3, 9 \}$, then
 \[
@@ -167,14 +167,14 @@ for the union and intersection, respectively, of the collection of sets $A_1, \l
 
 When two sets have no elements in common, they are said to be {\bfi disjoint}; for example, if $E$ is the set of even integers and $O$ is the set of odd integers, then $E$ and $O$ are disjoint.  Two sets $A$ and $B$ are disjoint exactly when $A \cap B = \emptyset$. 
 
-Sometimes we will work within one fixed set $U$, called the {\bfi universal set}.  For any set $A \subset U$, we define the {\bfi complement\/} of $A$, denoted by $A'$\label{sets_complement}, to be the set 
+Sometimes we will work within one fixed set $U$, called the {\bfi universal set}.  For any set $A \subset U$, we define the {\bfi complement\/} of $A$, denoted by $A'$\label{setcomplement}, to be the set 
 \[
 A' = \{ x : \mbox{ $x \in U$ and $x \notin A$} \}.
 \]
 
 We define the {\bfi difference\/} of two sets $A$ and $B$ to be
 \[
-A \setminus B\label{sets_difference} = A \cap B'  = \{ x : \mbox{ $x \in A$ and $x \notin B$} \}.
+A \setminus B\label{setdifference} = A \cap B'  = \{ x : \mbox{ $x \in A$ and $x \notin B$} \}.
 \]
 
 \begin{example}{operations}
@@ -295,7 +295,7 @@ A \cap A' \cap B \cap B' \\
  
 \subsection*{Cartesian Products and Mappings}
 
-Given sets $A$ and $B$, we can define a new set $A \times\label{sets_cartesian} B$, called the {\bfi Cartesian product\/}  of $A$ and $B$, as a set of ordered pairs.  That is, 
+Given sets $A$ and $B$, we can define a new set $A \times\label{cartesian} B$, called the {\bfi Cartesian product\/}  of $A$ and $B$, as a set of ordered pairs.  That is, 
 \[
 A \times B = \{ (a,b) : \mbox{ $a \in A$ and $b \in B$} \}.
 \]
@@ -316,7 +316,7 @@ We define the {\bfi Cartesian product of $n$ sets\/} to be
 \[
 A_1 \times \cdots \times A_n = \{ (a_1, \ldots, a_n): a_i \in A_i {\rm\; for\;} i = 1, \ldots, n \}.
 \]
-If $A = A_1 = A_2 = \cdots = A_n$, we often write $A^n$ for $A \times \cdots \times A$ (where $A$ would be written $n$ times)\label{sets_ncartesian}.   For example, the set ${\mathbb R}^3$ consists of all of 3-tuples of real numbers.
+If $A = A_1 = A_2 = \cdots = A_n$, we often write $A^n$ for $A \times \cdots \times A$ (where $A$ would be written $n$ times)\label{ncartesian}.   For example, the set ${\mathbb R}^3$ consists of all of 3-tuples of real numbers.
  
 Subsets of $A \times B$ are called {\bfi relations}.  We will define a  {\bfi mapping\/}\index{Mapping|see{Function}} or {\bfi function}\index{Function!definition of} $f \subset A \times B$ from a set $A$ to a set $B$ to be the special type of  relation in which for each element $a \in A$ there is a unique element $b \in B$ such that $(a, b) \in f$; another way of saying this is that for every element in $A$, $f$ assigns a unique element in $B$.  We usually write $f:A \rightarrow B$ or $A \stackrel{f}{\rightarrow} B$.  Instead of writing down ordered pairs  $(a,b) \in A \times B$, we write $f(a) = b$ or $f : a \mapsto b$.  The set  $A$ is called the {\bfi domain\/}\index{Function!domain of} of $f$ and   
 \[
@@ -562,7 +562,7 @@ Assume that $f$ and $g$ are both onto functions.  Given $c \in C$, we must show 
  
 \medskip
  
-If $S$ is any set, we will use $id_S$ or $id$\label{sets_identity} to denote the {\bfi identity mapping\/}\index{Function!identity} from $S$ to itself.  Define this map by $id(s) = s$ for all $s \in S$.  A map $g: B \rightarrow A$ is an {\bfi inverse mapping\/} of $f: A \rightarrow B$ if $g \circ f = id_A$ and $f \circ g = id_B$; in other words, the inverse function of a function simply ``undoes'' the function.   A map is said to be {\bfi invertible\/}\index{Function!invertible} if it has an inverse.  We usually write $f^{-1}$ for the inverse of $f$.  
+If $S$ is any set, we will use $id_S$ or $id$\label{noteidentity} to denote the {\bfi identity mapping\/}\index{Function!identity} from $S$ to itself.  Define this map by $id(s) = s$ for all $s \in S$.  A map $g: B \rightarrow A$ is an {\bfi inverse mapping\/} of $f: A \rightarrow B$ if $g \circ f = id_A$ and $f \circ g = id_B$; in other words, the inverse function of a function simply ``undoes'' the function.   A map is said to be {\bfi invertible\/}\index{Function!invertible} if it has an inverse.  We usually write $f^{-1}$\label{inversefunc} for the inverse of $f$.  
 
 \begin{example}{inverse_function}
 The function $f(x) = x^3$ has inverse $f^{-1}(x) = \sqrt[3]{x}$ by Example~\ref{example:sets:composition_commute}. 
@@ -777,7 +777,7 @@ We defined an equivalence class on ${\mathbb R}^2$ by $(x_1, y_1 ) \sim (x_2, y_
 \end{example}
  
 \begin{example}{congruent_integers}
-Let $r$ and $s$ be two integers and suppose that $n \in {\mathbb N}$.  We say that $r$ is {\bfi congruent\index{Congruence modulo $n$} to $s$ \bfi modulo} $n$, or $r$ is {\bfi congruent to $s$ \bfi mod} $n$, if $r - s$ is evenly divisible by $n$; that is, $r - s = nk$  for some $k \in {\mathbb Z}$.  In this case we write $r \equiv s \pmod{n}$\label{sets_a_mod_b}.  For example, \mbox{$41 \equiv 17 \pmod{ 8}$} since $41 - 17=24$ is divisible by 8.  We claim that congruence modulo $n$ forms an equivalence relation of ${\mathbb Z}$.  Certainly any integer $r$ is equivalent to itself since $r - r = 0$ is divisible by $n$.  We will now show that the relation is symmetric.  If $r \equiv s \pmod{ n}$, then $r - s = -(s -r)$ is divisible by $n$. So $s - r$ is divisible by $n$ and $s \equiv r \pmod{ n}$.  Now suppose that $r \equiv s \pmod{ n}$ and $s \equiv t \pmod{ n}$.  Then there exist integers $k$ and $l$ such that $r -s = kn$ and $s - t = ln$.  To show transitivity, it is necessary to prove that $r - t$ is divisible by $n$.  However,   
+Let $r$ and $s$ be two integers and suppose that $n \in {\mathbb N}$.  We say that $r$ is {\bfi congruent\index{Congruence modulo $n$} to $s$ \bfi modulo} $n$, or $r$ is {\bfi congruent to $s$ \bfi mod} $n$, if $r - s$ is evenly divisible by $n$; that is, $r - s = nk$  for some $k \in {\mathbb Z}$.  In this case we write $r \equiv s \pmod{n}$\label{amodb}.  For example, \mbox{$41 \equiv 17 \pmod{ 8}$} since $41 - 17=24$ is divisible by 8.  We claim that congruence modulo $n$ forms an equivalence relation of ${\mathbb Z}$.  Certainly any integer $r$ is equivalent to itself since $r - r = 0$ is divisible by $n$.  We will now show that the relation is symmetric.  If $r \equiv s \pmod{ n}$, then $r - s = -(s -r)$ is divisible by $n$. So $s - r$ is divisible by $n$ and $s \equiv r \pmod{ n}$.  Now suppose that $r \equiv s \pmod{ n}$ and $s \equiv t \pmod{ n}$.  Then there exist integers $k$ and $l$ such that $r -s = kn$ and $s - t = ln$.  To show transitivity, it is necessary to prove that $r - t$ is divisible by $n$.  However,   
 \[
 r - t = r - s + s - t = kn + ln = (k + l)n,
 \]
