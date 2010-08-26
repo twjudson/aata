@@ -1100,7 +1100,7 @@ first century A.D\@. This theorem has some interesting
 consequences in the design of software for parallel processors.
  
  
-\begin{lemma}
+\begin{lemma}\label{rings:chinese_remainder_lemma}
 Let $m$ and $n$ be positive integers such that $\gcd( m, n) = 1$. Then
 for $a, b \in {\mathbb Z}$ the system
 \begin{align*}
@@ -1186,7 +1186,7 @@ congruent modulo $n_1 n_2 \cdots n_k$.
 \begin{proof}
 We will use mathematical induction on the number of equations in the
 system. If there are $k= 2$ equations, then the theorem is true by 
-Lemma~14.18. Now suppose that the result is true for a system of $k$ 
+Lemma~\ref{rings:chinese_remainder_lemma}. Now suppose that the result is true for a system of $k$ 
 equations or less and that we wish to find a solution of 
 \begin{align*}
 x & \equiv  a_1 \pmod{n_1} \\
@@ -1214,7 +1214,7 @@ x & \equiv  4 \pmod{5} \\
 x & \equiv  1 \pmod{9} \\
 x & \equiv  5 \pmod{7}. 
 \end{align*}
-From Example 21 we know that 19 is a solution of the first two
+From Example \ref{example:rings:solve_system} we know that 19 is a solution of the first two
 congruences and any other solution of the system is congruent to $19
 \pmod{20}$. Hence, we can reduce the system to a system of three 
 congruences:
