@@ -27,7 +27,7 @@ Requirements: a standard TeX distribution
 
 (3) issue:  pdflatex aata.tex
 (4) issue:  makeindex -s aata-index-style.ist aata
-(5) issue:  pdflatex aata.tex   twice
+(5) issue:  pdflatex aata.tex   (twice!)
 (6) verify that  aata.pdf  has an "Index" entry in the Table of Contents
 
 Clean:  rm aata.log aata.toc aata.out aata.idx aata.ind aata.ilg *.aux
