@@ -950,18 +950,43 @@ isomorphisms
 defined by evaluation at $\alpha$ and $\beta$, respectively.
 Therefore, $\psi = \tau^{-1} \overline{\phi} \sigma$ is the required
 isomorphism.
-\[
-\begin{array}{ccc}
-E(\alpha) &
-\stackrel{\psi}{\longrightarrow} & F(\beta) \\  
-\Bigl\downarrow\vcenter{\rlap{$\sigma$}}\Bigr. & &
-\Bigl\downarrow\vcenter{\rlap{$\tau$}}\Bigr. \\ 
-E[x] / \langle p(x) \rangle & \stackrel{\overline{\phi}}{\longrightarrow} &
-F[x]/\langle q(x) \rangle \\
-\Bigl\downarrow\Bigr. & & \Bigl\downarrow\Bigr. \\
-E & \stackrel{\phi}{\longrightarrow} & F
-\end{array}
-\]
+
+\begin{center}
+\tikzpreface{fields:extension_isomorph}
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure - TWJ 8/29/2010
+
+\draw [<-] (0,0.5) -- (0,1.5);
+\draw [<-] (0,2.5) -- (0,3.5);
+
+
+\draw [<-] (4,0.5) -- (4,1.5);
+\draw  [<-] (4,2.5) -- (4,3.5);
+
+
+\draw [->] (1.5,0) -- (2.5,0);
+\draw [->] (1.5,2) -- (2.5,2);
+\draw [->] (1.5,4) -- (2.5,4);
+
+
+\node at (0,0)  {$E$};
+\node at (4,0)  {$F$};
+
+\node at (0,2)  {$E[x] / \langle p(x) \rangle$};
+\node at (4,2)  {$F[x]/\langle q(x) \rangle$};
+
+\node at (0,4)  {$E(\alpha)$};
+\node at (4,4)  {$F(\beta)$};
+
+\node [above] at (2,0) {$\phi$};
+\node [above] at (2,2) {$\overline{\phi}$};
+\node [above] at (2,4) {$\psi$};
+
+\node [right] at (0,3) {$\sigma$};
+\node [right] at (4,3) {$\tau$};
+
+\end{tikzpicture}
+\end{center}
+
 We leave the proof of uniqueness as a exercise.
 \end{proof}
 
@@ -990,15 +1015,42 @@ of $q(x)$ in $L$ such that $F \subset F( \beta) \subset L$.
 By Lemma~\ref{fields:isomorph_lemma}, there exists an isomorphism $\overline{\phi} : E(
 \alpha ) \rightarrow F( \beta)$ such that $\overline{\phi}( \alpha ) =
 \beta$  and $\overline{\phi}$ agrees with $\phi$ on $E$. 
-\[
-\begin{array}{ccc}
-K & \stackrel{\psi}{\longrightarrow} & L \\  
-\Bigl\downarrow\Bigr. & & \Bigl\downarrow\Bigr. \\
-E( \alpha ) & \stackrel{\overline{\phi}}{\longrightarrow} & F( \beta ) \\
-\Bigl\downarrow\Bigr. & & \Bigl\downarrow\Bigr. \\
-E & \stackrel{\phi}{\longrightarrow} & F
-\end{array}
-\]
+
+\begin{center}
+\tikzpreface{fields:splitting_isomorph}
+\begin{tikzpicture}[scale=0.8] %Replaced figure with tikz figure - TWJ 8/29/2010
+
+\draw [<-] (0,0.5) -- (0,1.5);
+\draw [<-] (0,2.5) -- (0,3.5);
+
+
+\draw [<-] (3,0.5) -- (3,1.5);
+\draw  [<-] (3,2.5) -- (3,3.5);
+
+
+\draw [->] (0.75,0) -- (2.25,0);
+\draw [->] (0.75,2) -- (2.25,2);
+\draw [->] (0.75,4) -- (2.25,4);
+
+
+\node at (0,0)  {$E$};
+\node at (3,0)  {$F$};
+
+\node at (0,2)  {$E( \alpha )$};
+\node at (3,2)  {$F( \beta )$};
+
+\node at (0,4)  {$K$};
+\node at (3,4)  {$L$};
+
+\node [above] at (1.5,0) {$\phi$};
+\node [above] at (1.5,2) {$\overline{\phi}$};
+\node [above] at (1.5,4) {$\psi$};
+
+
+
+\end{tikzpicture}
+\end{center}
+
 Now write
 $p(x) = (x - \alpha ) f(x)$ and $q(x) = ( x - \beta) g(x)$, where the
 degrees of $f(x)$ and $g(x)$ are less than the degrees of $p(x)$ and
