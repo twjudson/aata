@@ -15,7 +15,7 @@
 \chapterletter{A}{ }certain amount of mathematical maturity is necessary to find and study applications of abstract algebra.  A basic knowledge of set theory, mathematical induction, equivalence relations, and matrices is a must.  Even more important is the ability to read and understand mathematical proofs.  In this chapter we will outline the background needed for a course in abstract algebra.
  
 
-\section{A Short Note on Proofs}\label{sets_short_note}
+\section{A Short Note on Proofs}
  
 Abstract mathematics is different from other sciences. In laboratory sciences such as chemistry and physics, scientists perform experiments to discover new principles and verify theories.  Although mathematics is often motivated by physical experimentation or by computer simulations, it is made rigorous through the use of logical arguments.  In studying abstract mathematics, we take what is called an  axiomatic approach; that is, we take a collection of objects $\mathcal S$ and assume some rules about their structure.  These rules are called {\bfi axioms}.  Using the axioms for $\mathcal S$, we wish to derive other information about $\mathcal S$ by using logical arguments.  We require that our axioms be consistent; that is, they should not contradict one another.  We also demand that there not be too many axioms.  If a system of axioms is too restrictive,  there will be few examples of the mathematical structure.  
 
@@ -97,7 +97,7 @@ Although it is usually better to find a direct proof of a theorem, this task  ca
 Remember that one of the main objectives of higher mathematics is proving theorems. Theorems are tools that make new and productive applications of mathematics possible.  We use examples to give insight  into existing theorems and to foster intuitions as to what new theorems might be true.  Applications, examples, and proofs are tightly interconnected---much more so than they may seem at first appearance.
  
  
-\section{Sets and Equivalence Relations}\label{sets_equivalence}
+\section{Sets and Equivalence Relations}
  
  
 \subsection*{Set Theory}
@@ -193,7 +193,7 @@ A' & =  \{ x \in {\mathbb R} : x \leq 0 \text{ or } x > 3 \}.
 \end{align*}
 \end{example}
  
-\begin{proposition}\label{sets_theorem_set_ops}
+\begin{proposition}
 Let $A$, $B$, and $C$ be sets. Then
 \begin{enumerate}
  
@@ -224,14 +224,14 @@ We will prove (1) and (3) and leave the remaining results to be proven in the ex
 (1)
 Observe that
 \begin{align*}
-A \cup A & =  \{ x : \mbox{ $x \in A$ or $x \in A$} \} \\
-& =  \{ x : \mbox{ $x \in A$} \} \\
+A \cup A & =  \{ x :  x \in A \text{ or } x \in A \} \\
+& =  \{ x : x \in A \} \\
 & =  A
 \end{align*}
 and
 \begin{align*}
-A \cap A & =  \{ x : \mbox{ $x \in A$ and $x \in A$} \} \\
-& =  \{ x : \mbox{ $x \in A$}  \} \\
+A \cap A & =  \{ x : x \in A \text{ and } x \in A \} \\
+& =  \{ x : x \in A  \} \\
 & =  A.
 \end{align*}
 Also, $A \setminus A = A \cap A' = \emptyset$.
@@ -241,11 +241,11 @@ For sets $A$, $B$, and $C$,
 \begin{align*}
 A \cup (B \cup C)
 & =
-A \cup \{ x : \mbox{ $x \in B$ or $x \in C$} \} \\
+A \cup \{ x : x \in B \text{ or } x \in C \} \\
 & =
-\{ x : \mbox{ $x \in A$ or $x \in B$, or $x \in C$} \} \\
+\{ x : x \in A \text{ or } x \in B, \text{ or } x \in C \} \\
 & =
-\{ x : \mbox{ $x \in A$ or $x \in B$} \} \cup C \\
+\{ x : x \in A \text{ or } x \in B \} \cup C \\
 & =
 (A \cup B) \cup C.
 \end{align*}
@@ -253,7 +253,7 @@ A  similar argument proves that  $A \cap (B \cap C) = (A \cap B) \cap
 C$. 
 \end{proof}
 
-\begin{theorem}[De Morgan's Laws]\index{De Morgan's laws!for sets}\label{sets_de_morgan}
+\begin{theorem}[De Morgan's Laws]\index{De Morgan's laws!for sets}
 Let $A$ and $B$ be sets. Then 
 \begin{enumerate}
  
@@ -296,7 +296,7 @@ A \cap A' \cap B \cap B' \\
 
 Given sets $A$ and $B$, we can define a new set $A \times\label{cartesian} B$, called the {\bfi Cartesian product\/}  of $A$ and $B$, as a set of ordered pairs.  That is, 
 \[
-A \times B = \{ (a,b) : \mbox{ $a \in A$ and $b \in B$} \}.
+A \times B = \{ (a,b) : a \in A \text{ and } b \in B \}.
 \]
 
  
@@ -517,7 +517,7 @@ This is a bijective map.  An alternative way to  write $\pi$ is
 For any set $S$, a one-to-one and onto mapping $\pi : S \rightarrow S$ is called a {\bfi permutation\/}\index{Permutation!definition of} of $S$. 
 \end{example}
 
-\begin{theorem}\label{sets_theorem_mapping_properties}
+\begin{theorem}
 Let $f : A \rightarrow B$, $g : B \rightarrow C$, and $h : C \rightarrow D$. Then  
 \begin{enumerate}
  
@@ -652,7 +652,7 @@ on $S = \{ 1,2,3 \}$, it is easy to see that the permutation defined by
 is the inverse of $\pi$.  In fact, any bijective mapping possesses an inverse, as we will see in the next theorem.
 \end{example}
  
-\begin{theorem}\label{sets_theorem_invertible_maps}
+\begin{theorem}
 A mapping is invertible if and only if it is both one-to-one and onto. 
 \end{theorem}
 
@@ -702,7 +702,7 @@ For $(x_1, y_1 )$ and $(x_2, y_2)$ in ${\mathbb R}^2$, define $(x_1, y_1 ) \sim 
 \end{example}
 
 \begin{example}{equivalent_matrices}
-Let $A$ and $B$ be \mbox{$2 \times 2$} matrices with entries in the real numbers. We can define an equivalence relation on the set of $2 \times 2$ matrices, by saying $A \sim B$ if there exists an invertible matrix $P$ such that $PAP^{-1} = B$.  For example, if 
+Let $A$ and $B$ be $2 \times 2$ matrices with entries in the real numbers. We can define an equivalence relation on the set of $2 \times 2$ matrices, by saying $A \sim B$ if there exists an invertible matrix $P$ such that $PAP^{-1} = B$.  For example, if 
 \[
 A =
 \begin{pmatrix}
@@ -745,7 +745,7 @@ the relation is transitive.  Two matrices that are equivalent in this manner are
 
 A {\bfi partition}\index{Partitions} ${\mathcal P}$ of a set $X$ is a collection of nonempty sets $X_1, X_2, \ldots$ such that $X_i \cap X_j = \emptyset$ for $i  \neq j$ and $\bigcup_k X_k = X$. Let $\sim$ be an equivalence relation on a set $X$ and let $x \in X$.  Then $[x] = \{ y \in X : y \sim x \}$ is called the {\bfi equivalence class\/}\index{Equivalence class} of $x$.  We will see that an equivalence relation gives rise to a partition via equivalence classes.  Also, whenever a partition of a set exists, there is some natural  underlying equivalence relation, as the following theorem demonstrates.  
  
-\begin{theorem}\label{sets_theorem_partitions}
+\begin{theorem}
 Given an equivalence relation $\sim$ on a set $X$, the equivalence classes of $X$ form a partition of $X$.  Conversely, if ${\mathcal P} = \{ X_i\}$ is a partition of a set $X$, then there is an equivalence relation on $X$ with equivalence classes $X_i$. 
 \end{theorem}
 
@@ -755,7 +755,7 @@ Suppose there exists an equivalence relation $\sim$ on the set $X$.  For any $x 
 Conversely, suppose that ${\mathcal P} = \{X_i\}$ is a partition of a set $X$.  Let two elements be equivalent if they are in the same partition.  Clearly, the relation is reflexive.  If $x$ is in the same partition as $y$, then $y$ is in the same partition as $x$, so $x \sim y$ implies $y \sim x$.  Finally, if $x$ is in the same partition as $y$ and $y$ is in the same partition as $z$, then $x$ must be in the same partition as $z$, and transitivity holds.
 \end{proof}
 
-\begin{corollary}\label{sets_theorem_equivalence_classes}
+\begin{corollary}
 Two equivalence classes of an equivalence relation are either disjoint or equal.
 \end{corollary}
  
@@ -776,7 +776,7 @@ We defined an equivalence class on ${\mathbb R}^2$ by $(x_1, y_1 ) \sim (x_2, y_
 \end{example}
  
 \begin{example}{congruent_integers}
-Let $r$ and $s$ be two integers and suppose that $n \in {\mathbb N}$.  We say that $r$ is {\bfi congruent\index{Congruence modulo $n$} to $s$ \bfi modulo} $n$, or $r$ is {\bfi congruent to $s$ \bfi mod} $n$, if $r - s$ is evenly divisible by $n$; that is, $r - s = nk$  for some $k \in {\mathbb Z}$.  In this case we write $r \equiv s \pmod{n}$\label{amodb}.  For example, \mbox{$41 \equiv 17 \pmod{ 8}$} since $41 - 17=24$ is divisible by 8.  We claim that congruence modulo $n$ forms an equivalence relation of ${\mathbb Z}$.  Certainly any integer $r$ is equivalent to itself since $r - r = 0$ is divisible by $n$.  We will now show that the relation is symmetric.  If $r \equiv s \pmod{ n}$, then $r - s = -(s -r)$ is divisible by $n$. So $s - r$ is divisible by $n$ and $s \equiv r \pmod{ n}$.  Now suppose that $r \equiv s \pmod{ n}$ and $s \equiv t \pmod{ n}$.  Then there exist integers $k$ and $l$ such that $r -s = kn$ and $s - t = ln$.  To show transitivity, it is necessary to prove that $r - t$ is divisible by $n$.  However,   
+Let $r$ and $s$ be two integers and suppose that $n \in {\mathbb N}$.  We say that $r$ is {\bfi congruent\index{Congruence modulo $n$} to $s$ \bfi modulo} $n$, or $r$ is {\bfi congruent to $s$ \bfi mod} $n$, if $r - s$ is evenly divisible by $n$; that is, $r - s = nk$  for some $k \in {\mathbb Z}$.  In this case we write $r \equiv s \pmod{n}$\label{amodb}.  For example, $41 \equiv 17 \pmod{ 8}$ since $41 - 17=24$ is divisible by 8.  We claim that congruence modulo $n$ forms an equivalence relation of ${\mathbb Z}$.  Certainly any integer $r$ is equivalent to itself since $r - r = 0$ is divisible by $n$.  We will now show that the relation is symmetric.  If $r \equiv s \pmod{ n}$, then $r - s = -(s -r)$ is divisible by $n$. So $s - r$ is divisible by $n$ and $s \equiv r \pmod{ n}$.  Now suppose that $r \equiv s \pmod{ n}$ and $s \equiv t \pmod{ n}$.  Then there exist integers $k$ and $l$ such that $r -s = kn$ and $s - t = ln$.  To show transitivity, it is necessary to prove that $r - t$ is divisible by $n$.  However,   
 \[
 r - t = r - s + s - t = kn + ln = (k + l)n,
 \]
@@ -806,9 +806,9 @@ The integers modulo $n$ are a very important example in the study of abstract al
 \item
 Suppose that
 \begin{align*}
-A & = \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is even} \}, \\
-B & = \{x : \mbox{$x \in {\mathbb N}$ and $x$ is prime}\}, \\
-C & = \{ x : \mbox{$x \in {\mathbb N}$ and $x$ is a multiple of $5$}\}.
+A & = \{ x : x \in \mathbb N \text{ and } x \text{ is even} \}, \\
+B & = \{x : x \in \mathbb N \text{ and } x \text{ is prime}\}, \\
+C & = \{ x : x \in \mathbb N \text{ and } x \text{ is a multiple of 5}\}.
 \end{align*}
 Describe each of the following sets. 
 \begin{multicols}{2}
