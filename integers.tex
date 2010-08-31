@@ -146,7 +146,7 @@ Every nonempty subset of the natural numbers is well-ordered.
  
 The Principle of Well-Ordering is equivalent to the Principle  of Mathematical Induction. 
  
-\begin{lemma}\label{integers_smallest_natural_num}
+\begin{lemma}\label{integers:smallest_number_lemma}
 The Principle of Mathematical Induction implies that $1$ is the least positive natural number. 
 \end{lemma}
 
@@ -159,7 +159,7 @@ The Principle of Mathematical Induction implies that the natural numbers are wel
 \end{theorem}
  
 \begin{proof}
-We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers_smallest_natural_num}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
+We must show that if $S$ is a nonempty subset of the natural numbers, then $S$ contains a smallest element.  If $S$ contains 1, then the theorem is true by Lemma~\ref{integers:smallest_number_lemma}.  Assume that if $S$ contains an integer $k$ such that $1 \leq k \leq n$, then $S$ contains a smallest element.  We will show that if a set $S$ contains an integer less than or equal to $n + 1$, then $S$ has a smallest element.  If $S$ does not contain an integer less than $n+1$, then $n+1$ is the smallest integer in $S$.  Otherwise, since $S$ is nonempty, $S$ must contain an integer less than or equal to $n$. In this case, by induction, $S$ contains a smallest integer. 
 \hspace*{1in} 
 \end{proof}
  
@@ -180,11 +180,11 @@ $n! = n(n - 1)!$ for $n > 1$.
 Every good mathematician or computer scientist knows that looking at problems recursively, as opposed to explicitly, often results in better understanding of complex issues.  
 
  
-\section{The Division Algorithm}\label{integers_division_algorithm}
+\section{The Division Algorithm}
 
 An application of the Principle of Well-Ordering that we will use often is the division algorithm. 
 
-\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers:algorithm_division}
+\begin{theorem}[Division Algorithm]\index{Division algorithm!for integers}\label{integers:division_algorithm}
 Let $a$ and $b$ be integers, with $b > 0$.  Then there exist unique integers $q$ and $r$ such that 
 \[
 a = bq + r
@@ -198,7 +198,7 @@ This is a perfect example of the existence-and-uniqueness type of proof.  We mus
 {\em Existence of q and r}.
 Let
 \[
-S = \{ a - bk : k \in {\mathbb Z} \mbox{ and } a - bk \geq 0 \}.
+S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}.
 \]
 If $0 \in S$, then $b$ divides $a$, and  we can let $q = a/b$ and $r = 0$.  If $0 \notin S$, we can use the Well-Ordering Principle.  We must first show that $S$ is nonempty.  If $a > 0$, then $a - b \cdot 0 \in S$. If $a < 0$, then $a - b(2a) = a(1 - 2b) \in S$.  In either case $S \neq \emptyset$.  By the Well-Ordering Principle, $S$ must have a smallest member, say $r = a - bq$. Therefore, $a = bq + r$, $r \geq 0$. We now show that $r < b$. Suppose that $r > b$. Then   
 \[
@@ -209,11 +209,11 @@ In this case we would have $a - b(q + 1)$ in the set $S$. But then $a - b(q + 1)
 {\em Uniqueness of q and r}.
 Suppose there exist integers $r$, $r'$, $q$, and $q'$ such that
 \[
-a = bq + r, \mbox{ $0 \leq r < b$ }
+a = bq + r, 0 \leq r < b 
 \]
 and
 \[
-a = bq' + r', \mbox{  $0 \leq r' < b$}.
+a = bq' + r', 0 \leq r' < b.
 \]
 Then $ bq + r =  bq' + r'$.  Assume that $r' \geq r$.  From the last equation we have $b(q - q') = r' - r$; therefore, $b$ must divide $r' - r$ and $0 \leq r'- r \leq r' < b$.  This is possible only if $r' - r = 0$.  Hence, $r = r'$ and  $q = q'$. 
 \end{proof}
@@ -233,7 +233,7 @@ Furthermore, the greatest common divisor of $a$ and $b$ is unique.
 \begin{proof}
 Let
 \[
-S = \{ am + bn : m, n \in {\mathbb Z} \mbox{ and } am + bn	> 0 \}.
+S = \{ am + bn : m, n \in {\mathbb Z} \text{ and } am + bn	> 0 \}.
 \]
 Clearly, the set $S$ is nonempty; hence, by the Well-Ordering Principle $S$ must have a smallest member, say $d = ar + bs$.  We claim that $d = \gcd( a, b)$.  Write $a = dq + r$ where $0 \leq r < d$ . If $r > 0$, then 
 \begin{align*}
@@ -252,7 +252,7 @@ d = ar + bs = d'hr + d'ks = d'(hr + ks).
 So $d'$ must divide $d$. Hence, $d$ must be the unique greatest common divisor of $a$ and $b$. 
 \end{proof}
 
-\begin{corollary}\label{integers_theorem_coprime}
+\begin{corollary}\label{integers:coprime_corollary}
 Let $a$ and $b$ be two integers that are relatively prime. Then there exist  integers $r$ and $s$ such that $ar + bs = 1$. 
 \end{corollary}
  
@@ -309,7 +309,7 @@ The algorithm that we have just used to find the greatest common divisor $d$ of 
 
 Let $p$ be an integer such that $p > 1$.  We say that $p$ is a {\bfi prime number}\index{Prime integer}, or simply $p$ is {\bfi prime}, if the only positive numbers that divide $p$ are 1 and $p$ itself.  An integer $n > 1$ that is not prime is said to be {\bfi composite}\index{Composite integer}.  
 
-\begin{lemma}[Euclid]\label{integers_theorem_prime_divide}
+\begin{lemma}[Euclid]\label{integers:prime_divisor_theorem}
 Let $a$ and $b$ be integers and $p$ be a prime number.  If $p \mid ab$, then either $p \mid a$ or $p \mid b$. 
 \end{lemma}
 
@@ -347,7 +347,7 @@ To show uniqueness we will use induction on $n$. The theorem is certainly true f
 \[
 n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,
 \]
-where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers_theorem_prime_divide}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
+where $p_1 \leq p_2 \leq \cdots \leq p_k$ and $q_1 \leq q_2 \leq \cdots \leq q_l$. By Lemma~\ref{integers:prime_divisor_theorem}, $p_1  \mid  q_i$ for some $i = 1, \ldots, l$ and $q_1  \mid  p_j$ for some $j = 1, \ldots, k$.  Since all of the $p_i$'s and $q_i$'s are prime, $p_1 = q_i$ and  $q_1 = p_j$. Hence, $p_1 = q_1$ since $p_1 \leq p_j = q_1 \leq q_i = p_1$.  By the induction hypothesis, 
 \[
 n' = p_2 \cdots p_k = q_2 \cdots q_l
 \]
@@ -373,7 +373,7 @@ So $a \notin S$, which is a contradiction.
 {\small \histf
 Prime numbers were first studied by the ancient Greeks.  Two important results from antiquity are Euclid's proof that an infinite number of primes exist and the Sieve of Eratosthenes, a method of computing all of the prime numbers less than a fixed positive integer $n$.  One problem in number theory is to find a function $f$ such that $f(n)$ is prime for each integer $n$. Pierre Fermat (1601?--1665) conjectured that $2^{2^n} + 1$ was prime for all $n$, but later it was shown by Leonhard Euler (1707--1783) that 
 \[
-2^{2^5} + 1 = \mbox{4,294,967,297}
+2^{2^5} + 1 = \text{4,294,967,297}
 \]
 is a composite number. One of the many unproven conjectures about prime numbers is Goldbach's Conjecture.  In a letter to Euler in 1742, Christian Goldbach stated the conjecture that every even integer with the exception of 2 seemed to be the sum of two primes:  $4 = 2 + 2$, $6 = 3 + 3$, $8 =3 + 5$, $\ldots$.  Although the conjecture has been verified for the numbers up through 100 million, it has yet to be proven in general.  Since prime numbers play an important role in public key cryptography, there is currently a great deal of interest in determining whether or not a large number is prime.
 \histbox
