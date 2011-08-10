@@ -1,0 +1,64 @@
+These exercises are designed to help you become familiar with permutation groups in Sage.
+%
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{1}%
+Create the full symmetric group $S_{10}$ with the command \verb?G = SymmetricGroup(10)?.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{2}
+Create elements of \verb?G? with the following (varying) syntax.  Pay attention to commas, quotes, brackets, parentheses.  The first two use a string (characters) as input, mimicking the way we write permuations (but with commas).  The second two use a list of tuples.\par\noindent
+(a) \verb?a = G("(5,7,2,9,3,1,8)")?\\
+(b) \verb?b = G("(1,3)(4,5)")?\\
+(c) \verb?c = G([(1,2),(3,4)])?\\
+(d) \verb?d = G([(1,3),(2,5,8),(4,6,7,9,10)])?
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{3}
+%
+Compute $a^3$, $bc$, $ad^{-1}b$.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{4}
+%
+Compute the orders of each of these four individual elements (\verb?a? through \verb?d?) using a single permutation group element method.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{5}
+Use the permutation group element method \verb?.sign()? to determine if $a,b,c,d$ are even or odd permutations.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{6}
+Create two cyclic subgroups of $G$ with the commands:
+%
+\begin{itemize}
+\item\verb?H = G.subgroup([a])?
+\item\verb?K = G.subgroup([d])?
+\end{itemize}
+%
+List, and study, the elements of each subgroup.  List the size and number of all of the subgroups of $K$ (without using Sage), and construct a subgroup of $K$ of size 10 using Sage.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{7}
+More complicated subgroups can be formed by using two or more generators.  Construct a subgroup $L$ of $G$ with the command \verb?L = G.subgroup([b,c])?.  Compute the order of $L$ and list all of the elements of $L$.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{8}
+Construct the group of symmetries of the tetrahedron (also the alternating group on 4 symbols, $A_4$) with the command \verb?A=AlternatingGroup(4)?.  Using tools such as orders of elements, and generators of subgroups, see if you can find \emph{all of} the subgroups of $A_4$ (each one exactly once).  Provide a nice summary as your answer - not just piles of output.  So use Sage as a tool, as needed, but basically your answer will be a concise paragraph and/or table.  This is the one part of this assignment without clear, precise directions, so spend some time on this portion to get it right.  Hint: no subgroup of $A_4$ requires more than two generators.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{9}
+Save your work, and then see if you can crash your Sage session with the commands:
+%
+\begin{itemize}
+\item\verb?N = G.subgroup([b,d])?
+\item\verb?N.list()?
+\end{itemize}
+%
+How big is $N$?
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{10}
+Answer the five questions above about the permutations of the cube expressed as permutations of the 8 vertices.
+\begin{sageverbatim}\end{sageverbatim}
+%
