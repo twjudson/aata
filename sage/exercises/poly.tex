@@ -1,0 +1,26 @@
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{1}%
+Consider the polynomial $x^3-3x+4$.  Compute the most thorough factorization of this polynomial over each of the following fields:  (a) the finite field ${\mathbb Z}_5$, (b) a finite field with 125 elements, (c) the rationals, (d) the real numbers and (e) the complex numbers.  To do this, build the appropriate polynomial ring, and construct the polynomial as a member of this ring, and use the \verb?.factor()? method.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{2}%
+``Conway polynomials'' are irreducible polynomials over ${\mathbb Z}_p$ that Sage (and other software) uses to build maximal ideals in polynomial rings, and thus quotient rings that are fields. Roughly speaking, they are ``canonical'' choices for each degree and each prime.  The command \verb?conway_polynomial(p, n)? will return a database entry that is an irreducible polynomial of degree $n$ over ${\mathbb Z}_p$.\par
+%
+Execute the command \verb?conway_polynomial(5, 4)? to obtain an allegedly irreducible polynomial of degree 4 over ${\mathbb Z}_5$:  $p = x^{4} + 4x^{2} + 4x + 2$.  First determine that p has no linear factors.  The only possibility left is that \verb?p? factors as two quadratic polynomials over ${\mathbb Z}_5$.  Use a list comprehension with \emph{three} \verb?for? statements to create \emph{every} possible quadratic polynomial over ${\mathbb Z}_5$.  Now use this list to create every possible product of two quadratic polynomials and check to see if \verb?p? is in this list.\par
+%
+More on Conway polynomials is available at
+\url{http://www.math.rwth-aachen.de/~Frank.Luebeck/data/ConwayPol/index.html}
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{3}%
+Construct a finite field of order $729$ as a quotient of a polynomial ring by a principal ideal generated with a Conway polynomial.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{4}%
+Define the polynomials $p = x^3 + 2x^2 + 2x + 4$ and $q = x^4 + 2x^2$ as polynomials with coefficients from the integers.  Compute \verb?gcd(p, q)? and verify that the result divides both \verb?p? and \verb?q? (just form a fraction in Sage and see that it simplifies cleanly).  Now compute the extended gcd, \verb?xgcd(p, q)?.  Verify divisibility and the property that makes this an extended gcd.  Can you explain why there are two different results for the gcd?  Why does this not violate Proposition~\extref{poly:gcd_ther}{17.7}{existence of polynomial gcd}?
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{5}%
+For a polynomial ring over a field, every ideal is principal.  Begin with the ring of polynomials over the rationals.  Experiment with constructing ideals using two generators and then see that Sage converts the ideal to a principal ideal with a single generator.  (You can get this generator with the ideal method \verb?.gen()?.)  Can you explain how this single generator is computed?
+\begin{sageverbatim}\end{sageverbatim}
