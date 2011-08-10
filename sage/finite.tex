@@ -1,0 +1,58 @@
+You have noticed in this chapter that finite fields have a great deal of structure.  We have also seen finite fields in Sage regularly as examples of rings and fields.  Now we can combine the two, mostly using commands we already know, plus a few new ones.
+%
+\sagesubsection{Creating Finite Fields}
+%
+By Theorem~\ref{finite:splitting_field_theorem} we know that all finite fields of a given order are isomorphic and that possible orders are limited to powers of primes.  We can use the \verb?FiniteField()? command, as before, or a shorter equivalent is \verb?GF()?.  Optionally, we can specify an irreducible polynomial for the contruction of the field.  We can view this polynomial as the generator of the principal ideal of a polynomial ring, or we can view it as a ``re-writing'' rule for powers of the field's generator that allow us to multiply elements and reformulate them as linear combinations of lesser powers.\par
+%
+Absent providing an irreducible polynomial, Sage will use a Conway polynomial.  You can determine these with the \verb?conway_polynomial()? command, or just build a finite field and request the defining polynomial with the \verb?.polynomial()? method.
+%
+\begin{sageexample}
+sage: F.<a> = GF(7^15); F
+Finite Field in a of size 7^15
+sage: F.polynomial()
+a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+sage: a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+0
+sage: conway_polynomial(7, 15)
+x^15 + 5*x^6 + 6*x^5 + 6*x^4 + 4*x^3 + x^2 + 2*x + 4
+sage: y = polygen(Integers(7), 'y')
+\end{sageexample}
+%
+Just to be more readable, we coerce a list of coefficients into the set of polynomials (obtained with the \verb?.parent()? method on a simple polynomial) to define a polynomial.
+%
+\begin{sageexample}
+sage: y = polygen(Integers(7), 'y')
+sage: P = y.parent()
+sage: p = P([4, 5, 2, 6, 3, 3, 6, 2, 1, 1, 2, 5, 6, 3, 5, 1]); p
+y^15 + 5*y^14 + 3*y^13 + 6*y^12 + 5*y^11 + 2*y^10 + y^9 +
+y^8 + 2*y^7 + 6*y^6 + 3*y^5 + 3*y^4 + 6*y^3 + 2*y^2 + 5*y + 4
+sage: p.is_irreducible()
+True
+sage: T.<b> = GF(7^15, modulus=p); T
+Finite Field in b of size 7^15
+\end{sageexample}
+%
+One useful command we have not described is the \verb?.log()? method for elements of a finite field.  Since we now know that the multiplicative group of nonzero elements is cyclic, we can express every element as a power of the generator.  The \verb?log? method will return that power.\par
+%
+Usually we will want to use the generator as the base of a lograithm computation in a finite field.  However, other bases may be used, wih the understanding that if the base is not a generator, then the logarithm may note exist (i.e.\ there may not be a solution to the relevant equation).
+%
+\begin{sageexample}
+sage: F.<a> = GF(5^4)
+sage: a^458
+3*a^3 + 2*a^2 + a + 3
+sage: (3*a^3 + 2*a^2 + a + 3).log(a)
+458
+sage: exponent = (3*a^3 + 2*a^2 + a + 3).log(2*a^3 + 4*a^2 + 4*a)
+sage: exponent
+211
+sage: (2*a^3 + 4*a^2 + 4*a)^exponent == 3*a^3 + 2*a^2 + a + 3
+True
+sage: (3*a^3 + 2*a^2 + a + 3).log(a^2 + 4*a + 4)
+Traceback (most recent call last):
+...
+ValueError: No discrete log of 3*a^3 + 2*a^2 + a + 3 found
+to base a^2 + 4*a + 4
+\end{sageexample}
+%
+Since we already know many Sage commands, there is nothing else to introduce before we can work profitably with finite fields.  The exercises explore the ways we can examine and exploit the structure of finite fields in Sage.
+%
