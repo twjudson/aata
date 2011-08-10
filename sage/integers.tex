@@ -1,0 +1,187 @@
+Many properties of the algebraic objects we will study can be determined from properties of associated integers.  And Sage has many powerful functions for analyzing integers.
+%
+%
+\sagesubsection{Division Algorithm}
+%
+\verb?a % b? will return the remainder upon division of $a$ by $b$.  In other words, the result is the unique integer $r$ such that (1) $0\leq r< b$, and (2) $a=bq+r$ for some integer $q$ (the quotient), as guaranteed by the Division Algorithm (Theorem \ref{integers:division_algorithm}).  Then $(a-r)/b$ will equal $q$.  For example,
+%
+\begin{sageexample}
+sage: r = 14 % 3
+sage: r
+2
+sage: q = (14 - r)/3
+sage: q
+4
+\end{sageexample}
+%
+It is also possible to get both the quotient and remainder at the same time with the \verb?.quo_rem()? method (quotient and remainder).
+%
+\begin{sageexample}
+sage: a = 14
+sage: b = 3
+sage: a.quo_rem(b)
+(4, 2)
+\end{sageexample}
+%
+A remainder of zero indicates divisibility.  So \verb?(a % b) == 0?
+will return \verb?True? if $b$ divides $a$, and will otherwise return \verb?False?.
+%
+\begin{sageexample}
+sage: (20 % 5) == 0
+True
+sage: (17 % 4) == 0
+False
+\end{sageexample}
+%
+The \verb?.divides()? method is another option.
+%
+\begin{sageexample}
+sage: c = 5
+sage: c.divides(20)
+True
+sage: d = 4
+sage: d.divides(17)
+False
+\end{sageexample}
+%
+\sagesubsection{Greatest Common Divisor}
+%
+The greatest common divisor of $a$ and $b$ is obtained with the command \verb?gcd(a, b)?, where in our first uses, $a$ and $b$ are integers.  Later, $a$ and $b$ can be other objects with a notion of divisibility and ``greatness,'' such as polynomials.  For example,
+%
+\begin{sageexample}
+sage: gcd(2776, 2452)
+4
+\end{sageexample}
+%
+We can use the \verb?gcd? command to determine if a pair of integers are relatively prime.
+%
+\begin{sageexample}
+sage: a = 31049
+sage: b = 2105
+sage: gcd(a, b) == 1
+True
+sage: a = 3563
+sage: b = 2947
+sage: gcd(a, b) == 1
+False
+\end{sageexample}
+%
+The command \verb?xgcd(a,b)? (``eXtended GCD'') returns a triple where the first element is the greatest common divisor of $a$ and $b$ (as with the \verb?gcd(a,b)? command above), but the next two elements are the values of $r$ and $s$ such that $ra+sb=\gcd(a,b)$.
+%
+\begin{sageexample}
+sage: xgcd(633,331)
+(1, -137, 262)
+\end{sageexample}
+%
+Portions of the triple can be extracted using \verb?[ ]? to access the entries of the triple, starting with the first as number \verb?0?.  For example, the following should return the result \verb?True?, even if you change the values of \verb?a? and \verb?b?.  Try changing the values of \verb?a? and \verb?b? below, to see that the result is always \verb?True?.\par
+%
+\begin{sageexample}
+sage: a = 633
+sage: b = 331
+sage: extended = xgcd(a, b)
+sage: g = extended[0]
+sage: r = extended[1]
+sage: s = extended[2]
+sage: g == r*a + s*b
+True
+\end{sageexample}
+%
+Studying this block of code will go a long way towards helping you get the most out of Sage's output.  (Note that \verb?=? is how a value is assigned to a variable, while as in the last line, \verb?==? is how we compare two items for equality.)
+%
+%
+\sagesubsection{Primes and Factoring}
+%
+The method \verb?.is_prime()? will determine if an integer is prime or not.
+%
+\begin{sageexample}
+sage: a = 117371
+sage: a.is_prime()
+True
+sage: b = 14547073
+sage: b.is_prime()
+False
+sage: b == 1597 * 9109
+True
+\end{sageexample}
+%
+The command \verb?random_prime(a, proof=True)? will generate a random prime number between $2$ and $a$.
+Experiment by executing the following two compute cells several times.  (Replacing \verb?proof=True? by \verb?proof=False? will speed up the search, but there will be a very, very small probability the result will not be prime.)  The \verb!# random! comment is a signal to the automated testing of our examples that the output will be random --- you do not need to include that in your own work.
+%
+\begin{sageexample}
+sage: a = random_prime(10^21, proof=True)
+sage: a                          # random
+424729101793542195193
+sage: a.is_prime()
+True
+\end{sageexample}
+%
+The command \verb?prime_range(a, b)? returns an ordered list of all the primes from $a$ to $b-1$, inclusive.  For example,
+%
+\begin{sageexample}
+sage: prime_range(500, 550)
+[503, 509, 521, 523, 541, 547]
+\end{sageexample}
+%
+The commands \verb?next_prime(a)? and \verb?previous_prime(a)? are other ways to get a single prime number of a desired size.  Give them a try in the empty compute cell below.
+%
+\begin{sageverbatim}
+
+\end{sageverbatim}
+%
+In addition to checking if integers are prime or not, or generating prime numbers, Sage can also decompose any integer into its prime factors, as described by the Fundamental Theorem of Arithmetic (Theorem \ref{integers_theorem_FTA}).
+%
+\begin{sageexample}
+sage: a = 2600
+sage: a.factor()
+2^3 * 5^2 * 13
+\end{sageexample}
+%
+So $2600 = 2^3\times 5^2\times 13$ and this is the unique way to write $2600$ as a product of prime numbers (other than rearranging the order of the primes themselves in the product).\par
+%
+While Sage will print a factorization nicely, it is carried internally as a list of pairs of integers, with each pair being a base (a prime number) and an exponent (a positive integer).  Study the following carefully, as it is another good exercise in working with Sage output in the form of lists.
+%
+\begin{sageexample}
+sage: a = 2600
+sage: factored = a.factor()
+sage: first_term = factored[0]
+sage: first_term
+(2, 3)
+sage: second_term = factored[1]
+sage: second_term
+(5, 2)
+sage: third_term = factored[2]
+sage: third_term
+(13, 1)
+sage: first_prime = first_term[0]
+sage: first_prime
+2
+sage: first_exponent = first_term[1]
+sage: first_exponent
+3
+\end{sageexample}
+%
+The next compute cell reveals the internal version of the factorization by asking for the actual list.  And we show how you could determine exactly how many terms the factorization has by using the length command, \verb?len()?.
+%
+\begin{sageexample}
+sage: list(factored)
+[(2, 3), (5, 2), (13, 1)]
+sage: len(factored)
+3
+\end{sageexample}
+%
+Can you extract the next two primes and their exponents?
+%
+\begin{sageverbatim}
+\end{sageverbatim}
+%
+
+
+
+
+
+
+
+
+
+
+
