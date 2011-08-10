@@ -1,0 +1,316 @@
+Cyclic groups are very important, so it is no surprise that they appear in many different forms in Sage.  Each is slightly different, and no one implementation is ideal for an introduction, but together they can illustrate most of the important ideas.  Here is a guide to the various ways to construct, and study, a cyclic group in Sage.
+%
+\sagesubsection{Infinite Cyclic Groups}
+%
+In Sage, the integers $\mathbb Z$ are constructed with \verb?ZZ?.  To build the infinite cyclic group such as $3\mathbb Z$ from Example~\ref{example:cyclic:Cyclic_Z3}, simply use \verb?3*ZZ?.  As an infinite set, there is not a whole lot you can do with this.  You can test if integers are in this set, or not.  You can also recall the generator with the \verb?.gen()? command.
+%
+\begin{sageexample}
+sage: G = 3*ZZ
+sage: -12 in G
+True
+sage: 37 in G
+False
+sage: G.gen()
+3
+\end{sageexample}
+%
+\sagesubsection{Additive Cyclic Groups}
+%
+The additive cyclic group $\mathbb Z_n$ can be built as a special case of a more general Sage construction.  First we build $\mathbb Z_{14}$ and capture its generator.  Throughout, pay close attention to the use of parentheses and square brackets for when you experiment on your own.
+%
+\begin{sageexample}
+sage: G = AdditiveAbelianGroup([14])
+sage: G.order()
+14
+sage: G.list()
+[(0), (1), (2), (3), (4), (5), (6), (7),
+ (8), (9), (10), (11), (12), (13)]
+sage: a = G.gen(0)
+sage: a
+(1)
+\end{sageexample}
+%
+You can compute in this group, by using the generator, or by using new elements formed by coercing integers into the group, or by taking the result of operations on other elements.  And we can compute the order of elements in this group.  Notice that we can perform repeated additions with the shortcut of taking integer multiples of an element.
+%
+\begin{sageexample}
+sage: a + a
+(2)
+sage: a + a + a + a
+(4)
+sage: 4*a
+(4)
+sage: 37*a
+(9)
+sage: b = G([2]); b
+(2)
+sage: b + b
+(4)
+sage: 2*b == 4*a
+True
+sage: 7*b
+(0)
+sage: b.order()
+7
+sage: c = a - 6*b; c
+(3)
+sage: c + c + c + c
+(12)
+sage: c.order()
+14
+\end{sageexample}
+%
+It is possible to create cyclic subgroups, from an element designated to be the new generator.  Unfortunately, to do this requires the \verb?.submodule()? method (which should be renamed in Sage).
+%
+\begin{sageexample}
+sage: H = G.submodule([b]); H
+Additive abelian group isomorphic to Z/7
+sage: H.list()
+[(0), (2), (4), (6), (8), (10), (12)]
+sage: H.order()
+7
+sage: e = H.gen(0); e
+(2)
+sage: 3*e
+(6)
+sage: e.order()
+7
+\end{sageexample}
+%
+The cyclic subgroup \verb?H? just created has more than one generator.  We can test this by building a new subgroup and comparing the two subgroups.
+%
+\begin{sageexample}
+sage: f = 12*a; f
+(12)
+sage: f.order()
+7
+sage: K = G.submodule([f]); K
+Additive abelian group isomorphic to Z/7
+sage: K.order()
+7
+sage: K.list()
+[(0), (2), (4), (6), (8), (10), (12)]
+sage: K.gen(0)
+(2)
+sage: H == K
+True
+\end{sageexample}
+%
+Certainly the list of elements, and the common generator of \verb?(2)? lead us to belive that \verb?H? and \verb?K? are the same, but the comparison in the last line leaves no doubt.\par
+%
+Results in this section, especially Theorem~\ref{cyclic:orders} and Corollary~\ref{cyclic:modngenerators}, can be investigated by creating generators of subgroups from a generator of one additive cyclic group, creating the subgroups, and computing the orders of both elements and orders of groups.
+%
+\sagesubsection{Abstract Multiplicative Cyclic Groups}
+%
+We can create an abstract cyclic group in the style of Theorems~\ref{cyclic:cyclicsubgroup}, \ref{cyclic:cyclicabelian}, \ref{cyclic:subgroups}.  In the syntax below \verb?a? is a name for the generator, and \verb?14? is the order of the element.  Notice that the notation is now multiplicative, so we multiply elements, and repeated products can be written as powers.
+%
+\begin{sageexample}
+sage: G.<a> = AbelianGroup([14])
+sage: G.order()
+14
+sage: G.list()
+[1, a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9, a^10, a^11, a^12, a^13]
+sage: a.order()
+14
+\end{sageexample}
+%
+Computations in the group are similar to before, only with different notation.  Now products, with repeated products written as exponentiation.
+%
+\begin{sageexample}
+sage: b = a^2
+sage: b.order()
+7
+sage: b*b*b
+a^6
+sage: c = a^7
+sage: c.order()
+2
+sage: c^2
+1
+sage: b*c
+a^9
+sage: b^37*c^42
+a^4
+\end{sageexample}
+%
+Subgroups can be formed with a \verb?.subgroup()? command.  But do not try to list the contents of a subgroup, it'll look strangely unfamiliar.  Also, comparison of subgroups is not implemented.
+%
+\begin{sageexample}
+sage: H = G.subgroup([a^2])
+sage: H.order()
+7
+sage: K = G.subgroup([a^12])
+sage: K.order()
+7
+\end{sageexample}
+%
+One advantage of this implementation is the possibility to create all possible subgroups.  Here we create the list of subgroups, extract one in particular (the third), and check its order.
+%
+\begin{sageexample}
+sage: allsg = G.subgroups(); allsg
+[Multiplicative Abelian Group isomorphic to C2 x C7,
+ which is the subgroup of Multiplicative Abelian Group
+ isomorphic to C14 generated by [a],
+ Multiplicative Abelian Group isomorphic to C7,
+ which is the subgroup of Multiplicative Abelian Group
+ isomorphic to C14 generated by [a^2],
+ Multiplicative Abelian Group isomorphic to C2,
+ which is the subgroup of Multiplicative Abelian Group
+ isomorphic to C14 generated by [a^7],
+ Trivial Abelian Group,
+ which is the subgroup of Multiplicative Abelian Group
+ isomorphic to C14 generated by []]
+sage: sub = allsg[2]
+sage: sub.order()
+2
+\end{sageexample}
+%
+\sagesubsection{Cyclic Permutation Groups}
+%
+We will learn more about permutation groups in the next chapter.  But we will mention here that it is easy to create cyclic groups as permutation groups, and a variety of methods are available for working with them, even if the actual elements get a bit cumbersome to work with.  As before, notice that the notation and syntax is multiplicative.
+%
+\begin{sageexample}
+sage: G=CyclicPermutationGroup(14)
+sage: a = G.gen(0); a
+(1,2,3,4,5,6,7,8,9,10,11,12,13,14)
+sage: b = a^2
+sage: b = a^2; b
+(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)
+sage: b.order()
+7
+sage: a*a*b*b*b
+(1,9,3,11,5,13,7)(2,10,4,12,6,14,8)
+sage: c = a^37*b^26; c
+(1,6,11,2,7,12,3,8,13,4,9,14,5,10)
+sage: c.order()
+14
+\end{sageexample}
+%
+We can create subgroups, check their orders, and list their elements.
+%
+\begin{sageexample}
+sage: H = G.subgroup([a^2])
+sage: H.order()
+7
+sage: H.gen(0)
+(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)
+sage: H.list()
+[(),
+ (1,3,5,7,9,11,13)(2,4,6,8,10,12,14),
+ (1,5,9,13,3,7,11)(2,6,10,14,4,8,12),
+ (1,7,13,5,11,3,9)(2,8,14,6,12,4,10),
+ (1,9,3,11,5,13,7)(2,10,4,12,6,14,8),
+ (1,11,7,3,13,9,5)(2,12,8,4,14,10,6),
+ (1,13,11,9,7,5,3)(2,14,12,10,8,6,4)]
+\end{sageexample}
+%
+It could help to visualize this group, and the subgroup, as rotations of a regular 12-gon with the vertices labeled with the integers 1 through 12.  This is not the full group of symmetries, since it does not include reflections, just the 12 rotations.
+%
+\sagesubsection{Cayley Tables}
+%
+As groups, each of the examples above (groups and subgroups) should have Cayley tables implemented.  Since the groups are cyclic, and their subgroups are therefore cyclic, the Cayley tables should have a similar ``cyclic'' pattern.  Note that the letters used in the default table are generic, and are not related to the letters used above for specific elements --- they just match up with the group elements in the order given by \verb?.list()?.
+%
+\begin{sageexample}
+sage: G.<a> = AbelianGroup([14])
+sage: G.cayley_table()
+*  a b c d e f g h i j k l m n
+ +----------------------------
+a| a b c d e f g h i j k l m n
+b| b c d e f g h i j k l m n a
+c| c d e f g h i j k l m n a b
+d| d e f g h i j k l m n a b c
+e| e f g h i j k l m n a b c d
+f| f g h i j k l m n a b c d e
+g| g h i j k l m n a b c d e f
+h| h i j k l m n a b c d e f g
+i| i j k l m n a b c d e f g h
+j| j k l m n a b c d e f g h i
+k| k l m n a b c d e f g h i j
+l| l m n a b c d e f g h i j k
+m| m n a b c d e f g h i j k l
+n| n a b c d e f g h i j k l m
+\end{sageexample}
+%
+If the real names of the elements are not too complicated, the table could be more informative using these names.
+%
+\begin{sageexample}
+sage: K.<b> = AbelianGroup([10])
+sage: K.cayley_table(names='elements')
+  *    1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9
+   +----------------------------------------
+  1|   1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9
+  b|   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9   1
+b^2| b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9   1   b
+b^3| b^3 b^4 b^5 b^6 b^7 b^8 b^9   1   b b^2
+b^4| b^4 b^5 b^6 b^7 b^8 b^9   1   b b^2 b^3
+b^5| b^5 b^6 b^7 b^8 b^9   1   b b^2 b^3 b^4
+b^6| b^6 b^7 b^8 b^9   1   b b^2 b^3 b^4 b^5
+b^7| b^7 b^8 b^9   1   b b^2 b^3 b^4 b^5 b^6
+b^8| b^8 b^9   1   b b^2 b^3 b^4 b^5 b^6 b^7
+b^9| b^9   1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8
+\end{sageexample}
+%
+\sagesubsection{Complex Roots of Unity}
+%
+The finite cyclic subgroups of ${\mathbb T}$, generated by a primitive $n$th root of unity are implemented as a more general construction in Sage, known as a cyclotomic field.  If you concentrate on just the multiplication of powers of a generator (and ignore the infinitely many other elements) then this is a finite cyclic group.  Since this is not implemented directly in Sage as a group, {\it per se}, it is a bit harder to construct things like subgroups, but it is an excellent exercise to try.  It is a nice example since the complex numbers are a concrete and familiar construction.  Here are a few sample calculations to provide you with some exploratory tools.  See the notes following the computations.
+%
+\begin{sageexample}
+sage: G = CyclotomicField(14)
+sage: w = G.gen(0); w
+zeta14
+sage: wc = CDF(w)
+sage: wc.abs()
+1.0
+sage: wc.arg()/N(2*pi/14)
+1.0
+sage: b = w^2
+sage: b.multiplicative_order()
+7
+sage: bc = CDF(b); bc
+0.623489801859 + 0.781831482468*I
+sage: bc.abs()
+1.0
+sage: bc.arg()/N(2*pi/14)
+2.0
+sage: sg = [b^i for i in range(7)]; sg
+[1, zeta14^2, zeta14^4,
+zeta14^5 - zeta14^4 + zeta14^3 - zeta14^2 + zeta14 - 1,
+-zeta14, -zeta14^3, -zeta14^5]
+sage: c = sg[3]; d = sg[5]
+sage: c*d
+zeta14^2
+sage: c = sg[3]; d = sg[6]
+sage: c*d in sg
+True
+sage: c*d == sg[2]
+True
+sage: sg[5]*sg[6] == sg[4]
+True
+sage: G.multiplication_table(elements=sg)
+*  a b c d e f g
+ +--------------
+a| a b c d e f g
+b| b c d e f g a
+c| c d e f g a b
+d| d e f g a b c
+e| e f g a b c d
+f| f g a b c d e
+g| g a b c d e f
+\end{sageexample}
+%
+Notes:
+\begin{enumerate}
+%
+\item \verb?zeta14? is the name of the generator used for the cyclotomic field, it is a primitive root of unity (a $14$th root of unity in this case).  We have captured it as \verb?w?.
+%
+\item The syntax \verb?CDF(w)? will convert the complex number \verb?w? into the more familiar form with real and imaginary parts.
+%
+\item The method \verb?.abs()? will return the modulus of a complex number, $r$ as described in the text.  For elements of ${\mathbb C}^\ast$ this should always equal $1$.
+%
+\item The method \verb?.arg()? will return the argument of a complex number, $\theta$ as described in the text.  Every element of the cyclic group in this example should have an argument that is an integer multiple of $\frac{2\pi}{14}$.  The \verb?N()? syntax converts the symbolic value of \verb?pi? to a numerical approximation.
+%
+\item \verb?sg? is a list of elements that form a cyclic subgroup of order 7, composed of the first 7 powers of \verb?b = w^2?.  So, for example, the last comparison multiplies the fifth power of \verb?b? with the sixth power of \verb?b?, which would be the eleventh power of \verb?b?.  But since \verb?b? has order 7, this reduces to the fourth power.
+%
+If you know a subset of an infinite group forms a subgroup, then you can produce its Cayley table by specifying the list of elements you want to use.  Here we ask for a multiplication table, since that is the relevant operation.
+%
+\end{enumerate}
+%
