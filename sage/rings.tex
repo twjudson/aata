@@ -1,0 +1,322 @@
+Rings are very important in your study of abstract algebra, and similarly, they are very important in the design and use of Sage.  There is a lot of material in this chapter, and there are many corresponding commands in Sage.
+%
+\sagesubsection{Creating Rings}
+%
+Here is a list of various rings, domains and fields you can construct simply.\par
+%
+1. \verb?Integers()?, \verb?ZZ?: the integral domain of positive and negative integers, ${\mathbb Z}$.\par
+%
+2.  \verb?Integers(n)?: the integers mod $n$, ${\mathbb Z_n}$.  A field when $n$ is prime, but just a ring for composite $n$.\par
+%
+3.  \verb?QQ?: the field of rational numbers, ${\mathbb Q}$.\par
+%
+4.  \verb?RR?, \verb?CC?: the field of real numbers and the field of complex numbers, ${\mathbb R}$, ${\mathbb C}$.  It is impossible to create \emph{every} real number inside a computer, so technically these sets do not behave as fields, but only give a good imitiation of the real thing.  We say they are ``inexact'' rings to make this point.\par
+%
+5.  \verb?QuadraticField(n)?:  the field formed by combining the rationals with a solution to the polynomial equation $x^2-n=0$.  The notation in the text is ${\mathbb Q}[\sqrt{n}]$.  A functional equivalent can be made with the syntax \verb?QQ[sqrt(n)]?.  Note that \verb?n? can be negative.\par
+%
+6.  \verb?CyclotomicField(n)?: the field formed by combining the rationals with the solutions to the polynomial equation $x^n-1=0$.\par
+%
+7.  \verb?QQbar?: the field formed by combining the rationals with the solutions to \emph{every} polynomial equation with integer coefficients.  This is known as a the field of algebraic numbers, denoted as $\overline{{\mathbb Q}}$.\par
+%
+8.  \verb?FiniteField(p)?: For a prime $p$, the field of integers ${\mathbb Z_p}$.\par
+%
+If you print a description of some of the above rings, you will sometimes see a new symbol introduced.  Consider the following example:
+%
+\begin{sageexample}
+sage: F = QuadraticField(7)
+sage: F
+Number Field in a with defining polynomial x^2 - 7
+sage: root = F.gen(0)
+sage: root^2
+7
+sage: root
+a
+sage: (2*root)^3
+56*a
+\end{sageexample}
+%
+Here \verb?Number Field? describes an object generally formed by combining the rationals with another number (here $\sqrt{7}$).  ``a'' is a new symbol which behaves as a root of the polynomial $x^2-7$.  We do not say which root, $\sqrt{7}$ or $-\sqrt{7}$, and as we understand the theory better we will see that this does not really matter.\par
+%
+We can obtain this root as a generator of the number field, and then manipulate it.  First squaring \verb?root? yields 7.  Notice that \verb?root? prints as \verb?a?.  Notice, too, that computations with \verb?root? behave as if it was \emph{either} root of $x^2-7$, and results print using \verb?a?.\par
+%
+This can get a bit confusing, inputing computations with \verb?root? and getting output in terms of \verb?a?.  Fortunately, there is a better way.  Consider the following example:
+%
+\begin{sageexample}
+sage: F.<b> = QuadraticField(7)
+sage: F
+Number Field in b with defining polynomial x^2 - 7
+sage: b^2
+7
+sage: (2*b)^3
+56*b
+\end{sageexample}
+%
+With the syntax \verb?F.<b>? we can create the field \verb?F? along with specifying a generator \verb?b? using a name of our choosing.  Then computations can use \verb?b? in both input and output as a root of $x^2-7$.\par
+%
+Here are three new rings that are best created using this new syntax.\par
+%
+1. \verb?F.<a> = FiniteField(p^n)?: We will later have a theorem that tells us that finite fields only exist with orders equal to to a power of a prime.  When the power is larger than 1, then we need a gnerator, here given as \verb?a?.\par
+%
+2. \verb?P.<x>=R[]?: the ring of all polynomials in the variable \verb?x?, with coefficients from the ring \verb?R?.  Notice that \verb?R? can be \emph{any} ring, so this is a very general construction that uses one ring to form another.  See an example below.\par
+%
+3. \verb?Q.<r,s,t> = QuaternionAlgebra(n, m)?: the rationals combined with indeterminates \verb?r?, \verb?s? and \verb?t? such that $r^2=n$, $s^2=m$ and $t = rs = -sr$.  This is a generalization of the quaternions described in this chapter, though over the rationals rather than the reals, so it is an exact ring.  Notice that this is one of the few noncommutative rings in Sage.  The "usual" quaternions would be constructed with \verb?Q.<I,J,K> = QuaternionAlgebra(-1, -1)?.  (Notice that using \verb?I? here is not a good choice, because it will then clobber the symbol \verb?I? used for complex numbers.)
+\par
+%
+Syntax specifying names for generators can be used for many of the above rings as well, such as demonstrated above for quadratic fields and below for cyclotomic fields.
+%
+\begin{sageexample}
+sage: C.<t> = CyclotomicField(8)
+sage: C.random_element()  # random
+-2/11*t^2 + t - 1
+\end{sageexample}
+%
+\sagesubsection{Properties of Rings}
+%
+The examples below demonstrate how to query certain properties of rings.  If you are playing along, be sure to execute the first compute cell to define the various rings involved in the examples.
+%
+\begin{sageexample}
+sage: Z7 = Integers(7)
+sage: Z9 = Integers(9)
+sage: Q = QuadraticField(-11)
+sage: F.<a> = FiniteField(3^2)
+sage: P.<x> = Z7[]
+sage: S.<f,g,h> = QuaternionAlgebra(-7, 3)
+\end{sageexample}
+%
+Exact versus inexact.
+%
+\begin{sageexample}
+sage: QQ.is_exact()
+True
+sage: RR.is_exact()
+False
+\end{sageexample}
+%
+Finite versus infinite.
+%
+\begin{sageexample}
+sage: Z7.is_finite()
+True
+sage: P.is_finite()
+False
+\end{sageexample}
+%
+Integral domain?
+%
+\begin{sageexample}
+sage: Z7.is_integral_domain()
+True
+sage: Z9.is_integral_domain()
+False
+\end{sageexample}
+%
+Field?
+%
+\begin{sageexample}
+sage: Z9.is_field()
+False
+sage: F.is_field()
+True
+sage: Q.is_field()
+True
+\end{sageexample}
+%
+Commutative?
+%
+\begin{sageexample}
+sage: Q.is_commutative()
+True
+sage: S.is_commutative()
+False
+\end{sageexample}
+%
+Characteristic.
+%
+\begin{sageexample}
+sage: Z7.characteristic()
+7
+sage: Z9.characteristic()
+9
+sage: Q.characteristic()
+0
+sage: F.characteristic()
+3
+sage: P.characteristic()
+7
+sage: S.characteristic()
+0
+\end{sageexample}
+%
+Additive and multiplicative identities \emph{print} like you would expect, but notice that while they may \emph{print} identically, they could be \emph{different} because of the ring they are in.
+%
+\begin{sageexample}
+sage: b = Z9.zero(); b
+0
+sage: b.parent()
+Ring of integers modulo 9
+sage: c = Q.zero(); c
+0
+sage: c.parent()
+Number Field in a with defining polynomial x^2 + 11
+sage: b == c
+False
+sage: d = Z9.one(); d
+1
+sage: d.parent()
+Ring of integers modulo 9
+sage: e = Q.one(); e
+1
+sage: e.parent()
+Number Field in a with defining polynomial x^2 + 11
+sage: d == e
+False
+\end{sageexample}
+%
+There is some support for subrings.  For example, \verb?Q? and \verb?S? are extensions of the rationals, while \verb?F? is totally distinct from the rationals.
+%
+\begin{sageexample}
+sage: QQ.is_subring(Q)
+True
+sage: QQ.is_subring(S)
+True
+sage: QQ.is_subring(F)
+False
+\end{sageexample}
+%
+Not every element of a ring may have a multiplicative inverse, in other words, not every element has to be a unit (unless the ring is a field).  It would now be good practice to check if an element is a unit before you try computing its inverse.
+%
+\begin{sageexample}
+sage: three = Z9(3)
+sage: three.is_unit()
+False
+sage: three*three
+0
+sage: four = Z9(4)
+sage: four.is_unit()
+True
+sage: g = four^-1; g
+7
+sage: four*g
+1
+\end{sageexample}
+%
+\sagesubsection{Quotient Structure}
+%
+Ideals are the normal subgroups of rings and allow us to build ``quotients'' --- basically new rings defined on equivalence classes of elements of the original ring.  Sage support for ideals is variable.  When they can be created, there is not always a lot you can do with them.  But they work well in certain very important cases.
+%
+The integers, ${\mathbb Z}$, have ideals that are just multiples of a single integer.  We can create them with the \verb?.ideal()? method or just by wrting a scalar multiple of \verb?ZZ?.  And then the quotient is isomorphic to a well-understood ring.  (Notice that \verb?I? is a bad name for an ideal if we want to work with complex numbers later.)
+%
+\begin{sageexample}
+sage: I1 = ZZ.ideal(4)
+sage: I2 = 4*ZZ
+sage: I3 = (-4)*ZZ
+sage: I1 == I2
+True
+sage: I2 == I3
+True
+sage: Q = ZZ.quotient(I1); Q
+Ring of integers modulo 4
+sage: Q == Integers(4)
+True
+\end{sageexample}
+%
+We might normally be more careful about the last statement.  The quotient is a set of equivalence classes, each infinite, and certainly not a single integer.  But the quotient is \emph{isomorphic} to ${\mathbb Z}_4$, so Sage just makes this identification.\par
+%
+\begin{sageexample}
+sage: Z7 = Integers(7)
+sage: P.<y> = Z7[]
+sage: M = P.ideal(y^2+4)
+sage: Q = P.quotient(M)
+sage: Q
+Univariate Quotient Polynomial Ring in ybar over
+Ring of integers modulo 7 with modulus y^2 + 4
+sage: Q.random_element() # random
+2*ybar + 6
+sage: Q.order()
+49
+sage: Q.is_field()
+True
+\end{sageexample}
+%
+Notice that the construction of the quotient ring has created a new generator, converting \verb?y? ($y$) to \verb?ybar? ($\overline{y}$).  We can override this as before with the syntax demonstrated below.
+%
+\begin{sageexample}
+sage: Q.<t> = P.quotient(M); Q
+Univariate Quotient Polynomial Ring in t over
+Ring of integers modulo 7 with modulus y^2 + 4
+sage: Q.random_element() # random
+4*t + 6
+\end{sageexample}
+%
+So from a quotient of an infinite ring and an ideal (which is also a ring), we create a field, which is finite.  Understanding this construction will be an important theme in the next few chapters.  To see how remarkable it is, consider what happens with just one little change.
+%
+\begin{sageexample}
+sage: Z7 = Integers(7)
+sage: P.<y> = Z7[]
+sage: M = P.ideal(y^2+3)
+sage: Q.<t> = P.quotient(M)
+sage: Q
+Univariate Quotient Polynomial Ring in t over
+Ring of integers modulo 7 with modulus y^2 + 3
+sage: Q.random_element() #random
+3*t + 1
+sage: Q.order()
+49
+sage: Q.is_field()
+False
+\end{sageexample}
+%
+There are a few methods available which will give us properties of ideals.  In particular, we can check for prime and maximal ideals in rings of polynomials.  Examine the results above and below in the context of Theorem~\ref{theorem:maximalfield}.
+%
+\begin{sageexample}
+sage: Z7 = Integers(7)
+sage: P.<y> = Z7[]
+sage: M = P.ideal(y^2+4)
+sage: N = P.ideal(y^2+3)
+sage: M.is_maximal()
+True
+sage: N.is_maximal()
+False
+\end{sageexample}
+%
+The fact that \verb?M? is a prime ideal is verification of Corollary~\ref{rings:max_ideal_corollary}.
+%
+\begin{sageexample}
+sage: M.is_prime()
+True
+sage: N.is_prime()
+False
+\end{sageexample}
+%
+\sagesubsection{Ring Homomorphisms}
+%
+When Sage is presented with \verb?3 + 4/3?, how does it know that 3 is meant to be an integer? And then to add it to a rational, how does it know that we really want to view the computation as 3/1 + 4/3?  This is really easy for you and me, but devilishly hard for a program, and you can imagine it getting ever more complicated with the many possible rings in Sage, subrings, matrices, etc.  Part of the answer is that Sage uses ring homomorphisms to ``translate'' objects (numbers) between rings.\par
+%
+We will give an example below, but not pursue the topic much further.  For the curious, reading the Sage documentation and experimenting would be a good exercise.
+%
+\begin{sageexample}
+sage: H = Hom(ZZ, QQ)
+sage: phi = H([1])
+sage: phi
+Ring morphism:
+  From: Integer Ring
+  To:   Rational Field
+  Defn: 1 |--> 1
+sage: phi.parent()
+Set of Homomorphisms from Integer Ring to Rational Field
+sage: a = 3; a
+3
+sage: a.parent()
+Integer Ring
+sage: b = phi(3); b
+3
+sage: b.parent()
+Rational Field
+\end{sageexample}
+%
+So \verb?phi? is a homomorphism (``morphism'') that converts integers (the domain is \verb?ZZ?) into rationals (the codomain is \verb?QQ?), whose parent is a set of homomorphisms that Sage calls a ``homset.''  Even though \verb?a? and \verb?b? both print as \verb?3?, which is indistinguishable to our eyes, the parents of \verb?a? and \verb?b? are different.  Yet the numerical value of the two objects has not changed.
+%
+
+
+
+
