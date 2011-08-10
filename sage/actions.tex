@@ -1,0 +1,149 @@
+Groups can be realized in many ways, such as as sets of permutations, as sets of matrices, or as sets of abstract symbols related by certain rules (``presentations'') and in myriad other ways.  We have concentrated on permutation groups because of their concrete feel with elements written as functions and because of their thorough implementation in Sage.  Group actions are of great interest when the set they act on is the group itself, and that will be the main application of this chapter in the next chapter.  However, any time we have a group action on a set, we can view that group as a permutation group on the elements of the set.  So permutation groups are an area of group theory of independent interest with its own definitions and theorems.\par
+%
+We will describe Sage's commands applicable when a group action arises naturally via conjugation, and then move into the more general situation in a more general application.\par
+%
+\sagesubsection{Conjugation as a Group Action}
+%
+We might think we need to be careful how Sage defines conjugation ($gxg^{-1}$ versus $g^{-1}xg$) and the difference between Sage and the text on the order of products.  However, if you look at the definition of the center and centralizer subgroups you can see that any difference in ordering is irrelevant.  Here are the group action commands for the particular action that is conjugation of the elements of the group.\par
+%
+Sage has a permutation group method \verb?.center()? which returns the subgroup of fixed points.  The permutation group method, \verb?.centralizer(g)?, returns a subgroup that is the stabilizer of the group element \verb?g?.  Finally, the orbits are given by conjugacy classes, but Sage will not flood you with the full conjugacy classes and instead gives back a list of one element per conjugacy class, the representatives, via the permutation group method \verb?.conjugacy_classes_representatives()?.  You can manually reconstruct a conjugacy class from a representative, as we do in the example below.\par
+%
+Here is an example of the above commands in action.  Notice that an abelian group would be a bad choice for this example.
+%
+\begin{sageexample}
+sage: D = DihedralGroup(8)
+sage: C = D.center(); C
+Permutation Group with generators [(1,5)(2,6)(3,7)(4,8)]
+sage: C.list()
+[(), (1,5)(2,6)(3,7)(4,8)]
+sage: a = D("(1,2)(3,8)(4,7)(5,6)")
+sage: C1 = D.centralizer(a); C1.list()
+[(), (1,2)(3,8)(4,7)(5,6), (1,5)(2,6)(3,7)(4,8), (1,6)(2,5)(3,4)(7,8)]
+sage: b = D("(1,2,3,4,5,6,7,8)")
+sage: C2 = D.centralizer(b); C2.order()
+8
+sage: CCR = D.conjugacy_classes_representatives(); CCR
+[(), (2,8)(3,7)(4,6), (1,2)(3,8)(4,7)(5,6), (1,2,3,4,5,6,7,8),
+ (1,3,5,7)(2,4,6,8), (1,4,7,2,5,8,3,6), (1,5)(2,6)(3,7)(4,8)]
+sage: r = CCR[2]; r
+(1,2)(3,8)(4,7)(5,6)
+sage: conj = []
+sage: x = [conj.append(g^-1*r*g) for g in D if not g^-1*r*g in conj]
+sage: conj
+[(1,2)(3,8)(4,7)(5,6), (1,8)(2,7)(3,6)(4,5), (1,4)(2,3)(5,8)(6,7),
+ (1,6)(2,5)(3,4)(7,8)]
+\end{sageexample}
+%
+Notice that in the one conjugacy class constructed all the elements have the same cycle structure, which is no accident.  Notice too that \verb?rep? and \verb?a? are the same element, and the product of the order of the centralizer ($4$) and the size of the conjugacy class ($4$) equals the order of the group ($16$), which is a variant of Theorem~\ref{orbit_theorem}.\par
+%
+Verify that the following is a demonstration of the class equation in the special case when the action is conjugation, but would be valid for any group, rather than just \verb?D?.
+%
+\begin{sageexample}
+sage: sizes = [D.order()/D.centralizer(g).order()
+...                for g in D.conjugacy_classes_representatives()]
+sage: sizes
+[1, 4, 4, 2, 2, 2, 1]
+sage: D.order() == sum(sizes)
+True
+\end{sageexample}
+%
+\sagesubsection{Graph Automorphisms}
+%
+As mentioned, group actions can be even more interesting when the set they act on is different from the group itself.  One class of examples is the group of symmetries of a geometric solid, where the objects in the set are the vertices of the object, or perhaps some other aspect such as edges, faces or diagonals.  In this case, the group is all those permutations that move the solid but leave it filling the same space before the motion (``rigid motions'').\par
+%
+In this section we will examine something very similar.  A {\bf graph} is a mathematical object, consisting of vertices and edges, but the only structure is whether or not any given pair of vertices are joined by an edge or not.  The group consists of permutations of vertices that preserve the structure, that is, permutaions of vertices that take edges to edges and non-edges to non-edges.  It is very similar to a symmetry group, but there is no notion of any geometric relationships being preserved.\par
+%
+Here is an example.  You will need to run the first compute cell to define the graph and get a nice graphic representation.
+%
+\begin{sageexample}
+sage: Q = graphs.CubeGraph(3)
+sage: Q.plot(layout='spring')      # not tested
+\end{sageexample}
+%
+\begin{sageexample}
+sage: A = Q.automorphism_group()
+sage: A.order()
+48
+\end{sageexample}
+%
+Your plot should look like the vertices and edges of a cube, but may not quite look regular, which is fine, since the geometry is not relevant.  Vertices are labeled with strings of three binary digits, $0$ or $1$, and any two vertices are connected by an edge if their strings differ in exactly one location.  We might expect the group of symmetries to have order 24, rather than order 48, given its resemblance to a cube (in appearance and in name).  However, when not restricted to rigid motions, we have new permutations that preserve edges.  One in particular is to interchange two ``opposite faces.''  Locate two $4$-cycles opposite of each other, listed in the same order:  $000, 010, 110, 100$ and $001, 011, 111, 101$.  Notice that each cycle looks very similar, but all the vertices of the first end in a zero and the second cycle has vertices ending in a one.\par
+%
+Here is how we can see this permutation precisely.  You may have noticed that our permutation group has the symbols $1$ through $8$, while our graph has 8 vertices labeled by binary strings.  We build the automorphism group again, but this time we ask for a correspondence (``translation'') between the two symbol sets.
+%
+\begin{sageexample}
+sage: (A, trans) = Q.automorphism_group(translation=True)
+sage: sorted(trans.items())
+[('000', 8), ('001', 1), ('010', 2), ('011', 3),
+ ('100', 4), ('101', 5), ('110', 6), ('111', 7)]
+\end{sageexample}
+%
+To create the permutation that exchanges the two 4-cycles described above, we use this correspondence to convert from the symbol set for the graph into the symbol set for the group.  Then it is easy to see if the permuation is in the automorphism group.
+%
+\begin{sageexample}
+sage: a = PermutationGroupElement("(1,8)(2,3)(4,5)(6,7)")
+sage: a in A
+True
+\end{sageexample}
+%
+We can use this group to illustrate the relevant Sage commands for group actions.
+%
+\begin{sageexample}
+sage: A.orbits()
+[[1, 2, 8, 4, 3, 5, 6, 7]]
+\end{sageexample}
+%
+So this action has only one (big) orbit.  This implies that every vertex is ``like'' any other.  When a permutation group behaves this way, we say it is ``transitive''.
+%
+\begin{sageexample}
+sage: A.is_transitive()
+True
+\end{sageexample}
+%
+If every vertex is ``the same'' we can compute the stabilizer of any vertex, since they will all be isomorphic.  Because vertex $000$ is the simplest in some sense, we compute its stabilizer, using symbol $8$ in the permutation group.
+%
+\begin{sageexample}
+sage: S = A.stabilizer(8)
+sage: S.list()
+[(), (2,4)(3,5), (1,2)(5,6), (1,2,4)(3,6,5), (1,4,2)(3,5,6),
+ (1,4)(3,6)]
+\end{sageexample}
+%
+That \verb?S? has $6$ elements is no surprise, since the group has order $48$ and the size of the lone orbit is $8$.  But we can go one step further.  The three vertices connected directly to $000$ are $100$, $010$, $001$, which are numbered $4, 2, 1$ in the permutation group.  Any automorphism of the graph that fixes $000 = 8$ must then permute the three adjacent vertices.  There are $3!=6$ possible ways to do this, and you can check that each appears in one of the six elements of the stabilizer.  So we can understand a transitive group by considering the smaller stabilizer, and in this case we can see that each element of the stabilizer is determined by how it permutes the neighbors of the stabilized vertex.
+%
+Transitive groups are both unusual and important.  To contrast, here is a graph automorphism group that is far from transitive (without being trivial).  A path is a graph that has all of its vertices in a line.  Run the first compute cell to see a path on 11 vertices.
+%
+%
+\begin{sageexample}
+sage: P = graphs.PathGraph(11)
+sage: P.plot()       # not tested
+\end{sageexample}
+%
+\begin{sageexample}
+sage: A, trans = P.automorphism_group(translation=True)
+sage: sorted(trans.items())
+[(0, 11), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
+ (6,  6), (7, 7), (8, 8), (9, 9), (10, 10)]
+sage: A.list()
+[(), (1,9)(2,8)(3,7)(4,6)(10,11)]
+\end{sageexample}
+%
+The translation is a bit simpler, with the only unusual change being the vertex $0$ translated to the permutation group symbol $11$.  The automorphism group is the trivial identity automorphism (always) and an order 2 permutation that ``flips'' the path end-to-end.  The group is far from transitive and there are many orbits.
+%
+\begin{sageexample}
+sage: A.is_transitive()
+False
+sage: A.orbits()
+[[1, 9], [2, 8], [3, 7], [4, 6], [5], [10, 11]]
+\end{sageexample}
+%
+Most of the stabilizers are trivial, with one exception.  As subgroups of a group of order 2, there really are not too many options.
+%
+\begin{sageexample}
+sage: A.stabilizer(2).list()
+[()]
+sage: A.stabilizer(5).list()
+[(), (1,9)(2,8)(3,7)(4,6)(10,11)]
+\end{sageexample}
+%
+How would this final example have been different if we had used a path on 10 vertices?
+%

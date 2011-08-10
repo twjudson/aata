@@ -1,0 +1,56 @@
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{1}%
+Construct the Higman-Sims graph with the command \verb?graphs.HigmanSimsGraph()?.  Then construct the automorphism group and determine the order of the one interesting normal subgroup of this group.  You can try plotting the graph, but the graphic is unlikely to be very informative.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{2}%
+This exercise asks you to verify the class equation outside of the usual situation where the group action is conjugation.  Consider the example of the automorphism group of the path on 11 vertices.  First construct the list of orbits.  From each orbit, grab the first element of the orbit as a representative.  Compute the size of the orbit as the index of the stabilizer of the representative in the group via Theorem~\extref{orbit_theorem}{14.3}{theorem on orbit size as index}.  (Yes, you could just compute the size of the full orbit, but the idea of the exercise is to use more group-theoretic results.)  Then sum these orbit-sizes, which should equal the size of the whole vertex set since the orbits form a partition.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{3}%
+Construct a graph, with at last one edge, whose automorphism group is trivial.  You might start by drawing pictures before constructing the graph.  A command like the following will let you construct a graph from edges.  The graph below looks like a triangle or $3$-cycle.
+%
+\begin{sageexample}
+sage: G = Graph([(1,2), (2,3), (3,1)])
+sage: G.plot()            # not tested
+\end{sageexample}
+%
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{4}%
+For the following two pairs of groups, compute the list of conjugacy class representatives for each group in the pair.  For each part, compare and contrast the results for the two groups in the pair, with thoughtful and insightful comments.\\
+(a) The full symmetric group on 5 symbols, $S_5$, and the alternating group on 5 symbols, $A_5$.\\
+(b) The dihedral groups that are symmetries of a $7$-gon and an $8$-gon, $D_{14}$ and $D_{16}$.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{5}%
+Use the command \verb?graphs.CubeGraph(4)? to build the four-dimensional cube graph, $Q_4$.  Using a plain \verb?.plot()? command (without a spring layout) should create a nice plot.  Construct the automorphism group of the graph and the translation between vertices of the graph and the symbols used in the automorphism group.  Then this group (and any of its subgroups) will provide a group action on the vertex set.\\
+%
+(a) Construct the orbits of this action, and comment.\\
+(b) Construct a stabilizer of a single vertex (which is a subgroup of the full automorphism group) and then consider the action of \emph{this} group on the vertex set.  Construct the orbits of this new action, and comment carefully and fully on your observations, especially in terms of the vertices of the graph.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{6}%
+Build the graph given by the commands below.  The result should be a symmetric-looking graph with an automorphism group of order 16.
+%
+% Graph is number 3.8 in Cvetkovic, Doob, Sachs
+%
+\begin{sageexample}
+sage: G = graphs.CycleGraph(8)
+sage: G.add_edges([(0,2),(1,3),(4,6),(5,7)])
+sage: G.plot()                  # not tested
+\end{sageexample}
+%
+Repeat parts (a) and (b) of the previous exercise, but realize that in part (b) there are now two different stabilizers to create, so build both and compare the differences in the stabilizers and their orbits.  Creating a second plot with \verb?G.plot(layout='planar')? might provide extra insight.\par
+%
+\emph{NOTE}: There is a small bug with stabilizers being created as subgroups of symmetric groups on fewer symbols than the correct number.  This leads to some size 1 orbits not appearing in the final part of this problem.  This happens in Sage 4.7.1 and should be fixed soon.  When this is fixed, the code below will produce a singleton orbit \texttt{[4]} and our testing framework will take notice.  (And then we can remove this note.)
+%
+\begin{sageexample}
+sage: G = SymmetricGroup(4)
+sage: S = G.stabilizer(4)
+sage: S.orbits()
+[[1, 3, 2]]
+\end{sageexample}
+%
+
