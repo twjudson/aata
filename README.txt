@@ -2,6 +2,9 @@ Abstract Algebra: Theory and Applications
 GDL licensed textbook
 Source distribution README
 
+This is the source distribution for the textbook.  Most of this
+file describs how to create the book in different formats.
+
 To create this text from the source requires a standard
 installation of TeX/LaTeX, such as TeXLive, teTeX, MikTeX or
 TeXShop.
@@ -25,10 +28,13 @@ To create a PDF version with hyperlinked cross-references
 ---------------------------------------------------------
 Requirements: a standard TeX distribution
 
-(3) issue:  pdflatex aata.tex
+(3) issue:  pdflatex aata.tex (twice!)
 (4) issue:  makeindex -s aata-index-style.ist aata
 (5) issue:  pdflatex aata.tex   (twice!)
 (6) verify that  aata.pdf  has an "Index" entry in the Table of Contents
+
+If you are making a PDF version of the Sage content, you may wish
+to save the *.aux files for the crossreferences
 
 Clean:  rm aata.log aata.toc aata.out aata.idx aata.ind aata.ilg *.aux
 
@@ -61,16 +67,45 @@ Clean:  rm aata.4dx aata.4ix idxmake.dvi idxmake.log aata.ilg aata.ind aata.4ct 
 
 Sage worksheet version
 ----------------------
-Requires: tex4ht, nascent tex2sws package
-Sketch:
-    Create external graphics
-    Follow webpage version, except
-        (5),(8) htlatex aata.tex "/full/path/to/tex4ht-sage.cfg,index=3,2" " -cunihtf -utf8"
-        results are html files
-    Then run tex2sws converter
-    Result in aata.zip
+Requires: tex4ht, tex2sws package
+
+(Similar to the webpage version, but with tex2sws config file)
+(3) Create external tikz pictures (see below)
+(4) set boolean variable "sageworksheet" to true
+    by editing the one line early on that determines the version
+(5) issue:  htlatex aata.tex "/full/path/to/tex4ht-sage.cfg,index=3,2" " -cunihtf -utf8"
+(6) issue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
+(7) issue:  makeindex -o aata.ind  aata.4dx
+(8) issue:  htlatex aata.tex "/full/path/to/tex4ht-sage.cfg,index=3,2" " -cunihtf -utf8"
+(9) issue:  /path/to/tex2sws.py
+
+Result is aata.zip, a collection of Sage worksheets
 
 Clean:  rm aata.4dx aata.4ix idxmake.dvi idxmake.log aata.ilg aata.ind aata.4ct aata.dvi aata.idx aata.log aata.xref aata.4tc aata.css aata.idv aata.lg aata.tmp *.html *.aux
+
+
+Sage Content PDF, Sage Doctesting
+---------------------------------
+Leave *.aux from a "regular" PDF run so external references are generated
+
+(1)  pdflatex aatasage.tex
+(2)  sage aatasage.sagetex.sage (to generate sage sections, doctests)
+(3)  pdflatex aatasage.tex
+
+to doctest
+
+(4)  sage -t aatasage_doctest.sage  (use -verbose to debug doctesting)
+
+
+Sage exercises, as worksheets
+-----------------------------
+Follow Sage worksheet version above, except
+
+(a) In aatasage.tex set boolean variable "discussions" to false
+(b) Run htlatex script as above, but on  aatasage.tex  and without  index=3
+(c) Skip two index-related commands, and second htlatex run
+(d) Finish with tex2sws.py script (be sure no extra CSS files are in directory)
+
 
 Generating tikz pictures
 ~~~~~~~~~~~~~~~~~~~~~~~~
