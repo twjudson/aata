@@ -14,12 +14,13 @@
 % Support for multiple editions
 %
 \usepackage{ifthen}
-\newboolean{basic}\setboolean{basic}{false}    % Minimalist common base edition
-\newboolean{vcu}\setboolean{vcu}{false}        % Enhanced print version for VCU
-\newboolean{xhtml}\setboolean{vcu}{false}      % Web pages from tex4ht processor
+\newboolean{basic}\setboolean{basic}{false}                    % Minimalist common base edition
+\newboolean{vcu}\setboolean{vcu}{false}                        % Enhanced print version for VCU
+\newboolean{xhtml}\setboolean{xhtml}{false}                    % Web pages from tex4ht processor
+\newboolean{sageworksheet}\setboolean{sageworksheet}{false}    % Sage content, as worksheets
 %
 % Set exactly one version to true
-% Edit version here to change version
+% Edit version here to change version for next run
 \setboolean{basic}{true}
 %
 %
@@ -51,7 +52,7 @@
 \ifthenelse{\boolean{basic}}{\usepackage{microtype}}{}
 
 \ifthenelse{\boolean{basic}}{\usepackage[pdftex]{graphicx}}{}
-\ifthenelse{\boolean{vcu}\or\boolean{xhtml}}{\usepackage{graphicx}}{}
+\ifthenelse{\boolean{vcu}\or\boolean{xhtml}\or\boolean{sageworksheet}}{\usepackage{graphicx}}{}
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -87,7 +88,7 @@
 }{}
 %
 %
-\ifthenelse{\boolean{xhtml}}
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}
 {
 \usepackage{comment}
 \excludecomment{tikzpicture}
@@ -117,15 +118,53 @@
 % Hyperref setup
 % VCU version meant for print, so not needed/desired
 \ifthenelse{\boolean{basic}}{\usepackage[pdftex]{hyperref}}{}
-\ifthenelse{\boolean{xhtml}}{\usepackage[tex4ht]{hyperref}}{}
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}{\usepackage[tex4ht]{hyperref}}{}
 \ifthenelse{\boolean{basic}\or\boolean{xhtml}}{
 \hypersetup{breaklinks=true}  % across line breaks
 \hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
 % Comma in title not allowed
 \hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
 \hypersetup{pdfkeywords=free abstract algebra textbook}
-\hypersetup{colorlinks=true,linkcolor=blue}
+% RAB 2011/08/04  Sage URLs in Preface, color 'em blue
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 }{}
+
+% RAB, 2011/08/10
+% The following accomodates the Sage worksheet version.
+% Every chapter which has Sage content ends with a \sagesection command
+%   1.  If we are not making worksheets it pulls in a blurb from sage/info
+%   2.  If we are making worksheets, it pulls in lots of material
+%       and we set macros to help number exercises, and to process
+%       handcoded references in the exercises
+% \chaplabel is set when the chapter is begun, the \sagesection command
+%   expects files of the same name in the directories:
+%     sage, sage/exercises, sage/info
+%   so \sagesection takes no arguments
+% Sage discussions are sectioned, which we realize here as
+%   unnumbered subsections
+% Sage exercises cannot be formatted as lists
+%   since we cannot bury top-level compute cells
+%   in a subsidiary list, so we do the numbering ourselves
+%   *Precede* every question by a  sageverbatim  environment for spacing
+%   Usage: \sageexercise{number}
+% \extref is a device to allow refrences in Sage worksheets of
+%   exercises to be hardcoded since external references do not
+%   survive the conversion process
+\ifthenelse{\boolean{sageworksheet}}{%
+\newcommand{\sagesection}{%
+\section{Sage}%
+Section Copyright 2011 Robert A. Beezer, \href{http://www.gnu.org/licenses/fdl.html}{GFDL} License\par
+\input{sage/\chaplabel.tex}%
+\sagesubsection{Exercises}%
+\input{sage/exercises/\chaplabel.tex}}
+\newcommand{\sagesubsection}[1]{\subsection*{#1}}
+\newcommand{\sageexercise}[1]{\noindent\textbf{#1}\ \ }
+\newcommand{\extref}[3]{\ref{#1}}
+}{%
+\newcommand{\sagesection}{%
+\noindent\textbf{\large Sage}\ \ %
+\input{sage/info/\chaplabel.tex}}%
+}
 
 % Per-chapter items
 \newcommand{\chaplabel}{\relax}
@@ -139,13 +178,15 @@
 % Web page versions get info and link on every page
 % Copyright symbol ("\copyright") causes trouble in xhtml/jsmath conversion
 % RAB (2010/08/27) \par needed to make jsMath conversion wrap this header material properly
-\ifthenelse{\boolean{xhtml}}{%
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}{%
 \par From: \href{http://abstract.pugetsound.edu}{Abstract Algebra: Theory and Applications}\\
 Copyright 1997, Thomas W. Judson, \href{http://www.gnu.org/licenses/fdl.html}{GFDL} License\\}
 {}
 }
 
 % Examples as environment
+% Every example has a label of the form  example:chap:foo
+%   where chap is the string for the filename, foo supplied in environment
 \newenvironment{example}[1]
   {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
   {\hspace\fill$\blacksquare$\par\medskip}
@@ -214,7 +255,7 @@ A current version can always be found via {\tt abstract.pugetsound.edu}.
 % (11) HOMOMORPHISMS
 %
 \include{normal}   %Normal Subgroups
-\include{homomorph}   %Homomorphisms
+\include{homomorph}%Homomorphisms
 \include{matrix}   %Groups of Symmetries
 \include{struct}   %Abelian and Solvable Groups
 \include{actions}  %Group Actions
@@ -228,24 +269,21 @@ A current version can always be found via {\tt abstract.pugetsound.edu}.
 \include{finite}   %Finite Fields
 \include{galois}   %Galois Theory
 %
-%% RAB, 2009/01/28
-%% Include GFDL as an appendix
-%%
-%% To build index with included sectioning info via "style file" execute:
-%%    makeindex -s aata-index-style.ist aata.idx
-%% See:  http://www.troubleshooters.com/linux/lyx/makeindex.htm
-%% Needs "\phantomsection", http://www.tug.org/applications/hyperref/manual.html
+% RAB, 2009/01/28
+% Include GFDL as an appendix
+%
+% To build index with included sectioning info via "style file" execute:
+%    makeindex -s aata-index-style.ist aata.idx
+% See:  http://www.troubleshooters.com/linux/lyx/makeindex.htm
+% Needs "\phantomsection", http://www.tug.org/applications/hyperref/manual.html
 %
 \backmatter
-%
 \include{solution}
 {\small\include{gfdl}}
 \include{notation}
 {\small\printindex}
 %
-%% RAB, 2009/01/28
-%% Ditched endnotes for improved notation.tex
-%%
-%% \include{endnotes}
+% RAB, 2009/01/28
+% Ditched endnotes in favor of improved notation.tex
 %
 \end{document}
