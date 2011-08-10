@@ -1,0 +1,49 @@
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{1}%
+Use  \verb?R = Posets.RandomPoset(30,0.05)? to construct a random poset.  Use \verb?R.plot()? to get an idea of what you have built.\\
+%
+(a) Illustrate the use of the poset methods\\
+\verb?.is_lequal()?\\
+\verb?.is_less_than()?\\
+\verb?.is_gequal()?\\
+\verb?.is_greater_than()?\\
+to determine if two elements are related or incomparable.\\
+%
+(b) Use \verb?.minimal_elements()? and \verb?,maximal_elements()? to find the smallest and largest elements of your poset.\\
+%
+(c) Use \verb?LatticePoset(R)? to see if the poset \verb?R? is a lattice by attempting to convert it into a lattice.\\
+%
+(d) Find a linear extension of your poset.  Confirm that consecutive elements of the output are comparable in the orginal lattice, and that they compare properly.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{2}%
+Construct the poset on the positive divisors of $72=2^3\cdot 3^2$ with divisiblity as the relation, and then convert to a lattice.\\
+%
+(a) Determine the one and zero element using \verb?.top()? and \verb?.bottom()?.\\
+%
+(b) Determine all the pairs of elements of the lattice that are complements of each other \emph{without} using the \verb?.complement()? method, but rather just use the \verb?.meet()? and \verb?.join()? methods.  Extra credit if you can output each pair just once.\\
+%
+(c) Determine if the lattice is distributive using just the \verb?.meet()? and \verb?.join()? methods, and not the \verb?.is_distributive()? method.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{3}%
+Construct several diamond lattices with \verb?Posets.DiamondPoset(n)? by varying the value of \verb?n?.  Give answers, with justifications, to these questions for \emph{general} $n$, based on observations obtained from experiments with Sage.\\
+%
+(a) Which elements have complements and which do not, and why?\\
+%
+(b) Read the documentation of the \verb?.antichains()? method to learn what an antichain is.  How many antichains are there?\\
+%
+(c) Is the lattice distributive?
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{4}%
+Use \verb?Posets.BooleanLattice(4)? to construct an instance of the prototypical Boolean algebra on 16 elements (i.e.\ all subsets of a $4$-set).\par
+%
+Then use \verb?Posets.IntegerCompositions(5)? to construct the poset whose 16 elements are the compositions of the integer $5$.  We have seen above that the integer composition lattice is distributive and complemented, making it a Boolean algebra.  And by Theorem~\extref{boolean:classification_boolean_algebra}{19.12}{classify boolean algebras} we can conclude that these two Boolean algebras are isomorphic.\par
+%
+Plot each to see the similarity, as follows.  Use the method \verb?.hasse_diagram()? on each poset to get back a directed graph and ask for their plots.  Then use the graph method \verb?.is_isomorphic()? to see that the two Hasse diagrams really are the same.
+\begin{sageverbatim}\end{sageverbatim}
+%
+\sageexercise{5}%
+(Advanced) For the previous question, construct an explicit isomorphism between the two Boolean algebras.  This would be a bijective function (constructed with the \verb?def? command) that converts compositions into sets (or if, you choose, sets into compositions) and which respects the meet and join operations.  You can test and illustrate your function by its interaction with specific elements evaluated in the meet and join operations, as described in the definition of an isomorphism of Boolean algebras.
