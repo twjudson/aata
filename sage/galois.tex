@@ -1,0 +1,470 @@
+Again, our competence at examining fields with Sage will allow us to study the main concepts of Galois Theory easily.  We will thoroughly examine Example 7 carefully using our computational tools.\par
+%
+\sagesubsection{Galois Groups}
+%
+We will repeat Example~\ref{example:galois:galois_x4-2} and analyze carefully the splitting field of the polynomial $p(x)=x^4-2$.  We begin with an initial field extension containing at least one root.
+%
+\begin{sageexample}
+sage: x = polygen(QQ, 'x')
+sage: N.<a> = NumberField(x^4 - 2); N
+Number Field in a with defining polynomial x^4 - 2
+\end{sageexample}
+%
+The \verb?.galois_closure()? method will create an extension containing all of the roots of the defining polynomial of a number field.
+%
+\begin{sageexample}
+sage: L.<b> = N.galois_closure(); L
+Number Field in b with defining polynomial x^8 + 28*x^4 + 2500
+sage: L.degree()
+8
+sage: y = polygen(L, 'y')
+sage: (y^4 - 2).factor()
+(y - 1/120*b^5 -  19/60*b) *
+(y - 1/240*b^5 + 41/120*b) *
+(y + 1/240*b^5 - 41/120*b) *
+(y + 1/120*b^5 +  19/60*b)
+\end{sageexample}
+%
+From the factorization, it is clear that \verb?L? is the splitting field of the polynomial, even if the factorization is not pretty.  It is easy to then obtain the Galois group of this field extension.
+%
+\begin{sageexample}
+sage: G = L.galois_group(); G
+Galois group of Number Field in b with
+defining polynomial x^8 + 28*x^4 + 2500
+\end{sageexample}
+%
+We can examine this group, and identify it.  Notice that since the field is a degree 8 extension, the group is described as a permutation group on 8 symbols.  (It is just a coincidence that the group has 8 elements.)  With a paucity of nonabelian groups of order 8, it is not hard to guess the nature of the group.
+%
+\begin{sageexample}
+sage: G.is_abelian()
+False
+sage: G.order()
+8
+sage: G.list()
+[(), (1,2,8,7)(3,4,6,5),
+(1,3)(2,5)(4,7)(6,8), (1,4)(2,3)(5,8)(6,7),
+(1,5)(2,6)(3,7)(4,8), (1,6)(2,4)(3,8)(5,7),
+(1,7,8,2)(3,5,6,4), (1,8)(2,7)(3,6)(4,5)]
+sage: G.is_isomorphic(DihedralGroup(4))
+True
+\end{sageexample}
+%
+That's it.  But maybe not very satisfying.  Let's dig deeper for more understanding.  We will start over and create the splitting field of $p(x)=x^4-2$ again, but the primary difference is that we will make the roots extremely obvious so we can work more carefully with the Galois group and the fixed fields.  Along the way, we will see another example of linear algebra enabling certain computations.  The following construction should be familiar by now.
+%
+\begin{sageexample}
+sage: x = polygen(QQ, 'x')
+sage: p = x^4 - 2
+sage: N.<a> = NumberField(p); N
+Number Field in a with defining polynomial x^4 - 2
+sage: y = polygen(N, 'y')
+sage: p = p.subs(x=y)
+sage: p.factor()
+(y - a) * (y + a) * (y^2 + a^2)
+sage: M.<b> = NumberField(y^2 + a^2); M
+Number Field in b with defining polynomial y^2 + a^2 over
+its base field
+sage: z = polygen(M, 'z')
+sage: (z^4 - 2).factor()
+(z - b) * (z - a) * (z + a) * (z + b)
+\end{sageexample}
+%
+The important thing to notice here is that we have arranged the splitting field so that the four roots, \verb?a, -a, b, -b?, are very simple functions of the generators.  In more traditional notation, \verb?a? is $2^{\frac{1}{4}}=\sqrt[4]{2}$, and \verb?b? is $2^{\frac{1}{4}}i=\sqrt[4]{2}i$.\par
+%
+We will find it easier to compute in the flattened tower, a now familiar construction.
+%
+\begin{sageexample}
+sage: L.<c> = M.absolute_field(); L
+Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+sage: fromL, toL = L.structure()
+\end{sageexample}
+%
+We can return to our original polynomial (over the rationals), and ask for its roots in the flattened tower, custom-designed to contain these roots.
+%
+\begin{sageexample}
+sage: roots = p.roots(ring=L, multiplicities=False); roots
+[1/120*c^5 +  19/60*c,
+ 1/240*c^5 - 41/120*c,
+-1/240*c^5 + 41/120*c,
+-1/120*c^5 -  19/60*c]
+\end{sageexample}
+%
+Hmmm.  Do those look right?  If you look back at the factorization obtained in the field constructed with the \verb?.galois_closure()? method, then they look right.  But we can do better.
+%
+\begin{sageexample}
+sage: [fromL(r) for r in roots]
+[b, a, -a, -b]
+\end{sageexample}
+%
+Yes, those are the roots.
+%
+The \verb?End()? command will create the group of automorphisms of the field \verb?L?.
+%
+\begin{sageexample}
+sage: G = End(L); G
+Automorphism group of Number Field in c with
+defining polynomial x^8 + 28*x^4 + 2500
+\end{sageexample}
+%
+We can check that each of these automorphisms fixes the rational numbers elementwise.  If a field homomorphism fixes 1, then it will fix the integers, and thus fix all fractions of integers.
+%
+\begin{sageexample}
+sage: [tau(1) for tau in G]
+[1, 1, 1, 1, 1, 1, 1, 1]
+\end{sageexample}
+%
+So each element of \verb?G? fixes the rationals elementwise and thus \verb?G? is the Galois group of the splitting field \verb?L? over the rationals.\par
+%
+Proposition~\ref{galois:roots_permute_prop} is fundamental.  It says every automorphism in the Galois group of a field extension creates a permutation of the roots of a polynomial with coefficients in the base field.  We have all of those ingredients here.  So we will evaluate each automorphism of the Galois group at each of the four roots of our polynomial, which in each case should be another root.  (We use the \verb?Sequence()? constructor just to get nicely-aligned output.)
+%
+\begin{sageexample}
+sage: Sequence([[fromL(tau(r)) for r in roots] for tau in G], cr=True)
+[
+[b, a, -a, -b],
+[-b, -a, a, b],
+[a, -b, b, -a],
+[b, -a, a, -b],
+[-a, -b, b, a],
+[a, b, -b, -a],
+[-b, a, -a, b],
+[-a, b, -b, a]
+]
+\end{sageexample}
+%
+Each row of the output is a list of the roots, but permuted, and so corresponds to a permutation of four objects (the roots).  For example, the second row shows the second automorphism interchanging \verb?a? with \verb?-a?, and \verb?b? with \verb?-b?.  (notice that the first row is the result of the identity automorphism, so we can mentally comine the first row with any other row to imagine a "two-row" form of a permutation.)  We can number the roots, 1 through 4, and create each permutation as an element of $S_4$.  It is overkill, but we can then build the permutation group by letting \emph{all} of these elements generate a group.
+%
+\begin{sageexample}
+sage: S4 = SymmetricGroup(4)
+sage: elements = [S4([1, 2, 3, 4]),
+...               S4([4, 3, 2, 1]),
+...               S4([2, 4, 1, 3]),
+...               S4([1, 3, 2, 4]),
+...               S4([3, 4, 1, 2]),
+...               S4([2, 1, 4, 3]),
+...               S4([4, 2, 3, 1]),
+...               S4([3, 1, 4, 2])]
+sage: elements
+[(), (1,4)(2,3), (1,2,4,3), (2,3), (1,3)(2,4),
+ (1,2)(3,4), (1,4), (1,3,4,2)]
+sage: P = S4.subgroup(elements)
+sage: P.is_isomorphic(DihedralGroup(4))
+True
+\end{sageexample}
+%
+Notice that we now have built an isomorphism from the Galois group to a group of permutations \emph{using just four symbols}, rather than the eight used previously.
+%
+\sagesubsection{Fixed Fields}
+%
+In a previous exercise, we computed the fixed fields of single field automorphisms for finite fields.  This was ``easy'' in the sense that we could just test every element of the field to see if it was fixed, since the field was finite.  Now we have an infinite field extension.  How are we going to determine which elements are fixed by individual automorphisms, or subgroups of automorphisms?\par
+%
+The answer is to use the vector space structure of the flattened tower.  As a degree 8 extension of the rationals, the first 8 powers of the primitive element \verb?c? form a basis when the field is viewed as a vector space with the rationals as the scalars.  It is sufficient to know how each field automorphism behaves on this basis to fully specify the definition of the automorphism.  To wit,
+%
+\begin{align*}
+\tau(x)
+&=\tau\left(\sum_{i=0}^7\,q_ic^i\right)&&q_i\in{\mathbb Q}\\
+&=\sum_{i=0}^7\,\tau(q_i)\tau(c^i)&&\tau\text{ is a field automorphism}\\
+&=\sum_{i=0}^7\,q_i\tau(c^i)&&\text{rationals are fixed}
+\end{align*}
+%
+So we can compute the value of a field automorphism at any linear combination of powers of the primitive element as a linear combination of the values of the field automorphism at just the powers of the primitive element.  This is known as the ``power basis'', which we can obtain simply with the \verb?.power_basis()? method.  We will begin with an example of how we can use this basis.  We will illustrate with the fourth automorphism of the Galois group.  Notice that the \verb?.vector()? method is a convenience that strips a linear combination of the powers of \verb?c? into a vector of just the coefficients.  (Notice too that $\tau$ is totally defined by the value of $\tau(c)$, since as a field automorphism $\tau(c^k)=(\tau(c))^k$.  However, we still need to work with the entire power basis to exploit the vector space structure.)
+%
+\begin{sageexample}
+sage: basis = L.power_basis(); basis
+[1, c, c^2, c^3, c^4, c^5, c^6, c^7]
+sage: tau = G[3]
+sage: z = 4 + 5*c+ 6*c^3-7*c^6
+sage: tz = tau(4 + 5*c+ 6*c^3-7*c^6); tz
+11/250*c^7 - 98/25*c^6 + 1/12*c^5 + 779/125*c^3 +
+6006/25*c^2 - 11/6*c + 4
+sage: tz.vector()
+(4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
+sage: tau_matrix = column_matrix([tau(be).vector() for be in basis])
+sage: tau_matrix
+[  1       0       0        0  -28       0        0          0]
+[  0  -11/30       0        0    0  779/15        0          0]
+[  0       0  -14/25        0    0       0  -858/25          0]
+[  0       0       0  779/750    0       0        0  -4031/375]
+[  0       0       0        0   -1       0        0          0]
+[  0    1/60       0        0    0   11/30        0          0]
+[  0       0   -1/50        0    0       0    14/25          0]
+[  0       0       0  11/1500    0       0        0   -779/750]
+sage: tau_matrix*z.vector()
+(4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
+sage: tau_matrix*(z.vector()) == (tau(z)).vector()
+True
+\end{sageexample}
+%
+The last line expresses the fact that \verb?tau_matrix? is a matrix representation of the field automorphism, viewed as a linear transformation of the vector space structure.  As a representation of an invertible field homomorphism, the matrix is invertible, and as an order 2 permutation of the roots, the inverse of the matrix is itself.  But these facts are just verifications that we have the right thing, we are interested in other properties.\par
+%
+To construct fixed fields, we want to find elements fixed by automorphisms.  Continuing with tau from above, we seek elements \verb?z? (written as vectors) such that \verb?tau_matrix*z=z?.  These are eigenvectors for the eigenvalue 1, or elements of the null space of \verb?(tau_matrix - I)? (null spaces are obtained with \verb?.right_kernel()? in Sage).
+%
+\begin{sageexample}
+sage: K = (tau_matrix-identity_matrix(8)).right_kernel(); K
+Vector space of degree 8 and dimension 4 over Rational Field
+Basis matrix:
+[    1     0     0     0     0     0     0     0]
+[    0     1     0     0     0  1/38     0     0]
+[    0     0     1     0     0     0 -1/22     0]
+[    0     0     0     1     0     0     0 1/278]
+\end{sageexample}
+%
+Each row of the basis matrix is a vector representing an element of the field, specifically \verb?1?, \verb?c + (1/38)*c^5?, \verb?c^2 - (1/22)*c^6?, \verb?c^3 + (1/278)*c^7?.  Let's take a closer look at these fixed elements, in terms we recognize.
+%
+\begin{sageexample}
+sage: fromL(1)
+1
+sage: fromL(c + (1/38)*c^5)
+60/19*b
+sage: fromL(c^2 - (1/22)*c^6)
+150/11*a^2
+sage: fromL(c^3 + (1/278)*c^7)
+1500/139*a^2*b
+\end{sageexample}
+%
+Any element fixed by \verb?tau? will be a linear combination of these four elements.  We can ignore any rational multiples present, the first element is just saying the rationals are fixed, and the last element is just a product of the middle two.  So fundamentally \verb?tau? is fixing rationals, \verb?b? (which is $\sqrt[4]{2}i$) and \verb?a^2? (which is $\sqrt{2}$).  Furthermore, \verb?b^2 = -a^2? (check below), so we can create any fixed element by just adjoining $\sqrt[4]{2}i$ to the rationals.  So the elements fixed by \verb?tau? are ${\mathbb Q}(\sqrt[4]{2}i)$.
+%
+\begin{sageexample}
+sage: a^2 + b^2
+0
+\end{sageexample}
+%
+%
+\sagesubsection{Galois Correspondence}
+%
+The entire subfield structure of our splitting field is determined by the subgroup structure of the Galois group (Theorem~\ref{galois:fundamental_theorem}), which is isomorphic to a group we know well.  What are the subgroups of our Galois group, expressed as a permutation group? (The \verb?Sequence()? constructor with the \verb?cr=True? option will format the output nicely.)
+%
+\begin{sageexample}
+sage: sg = P.subgroups(); sg
+[Permutation Group with generators [()],
+ Permutation Group with generators [(2,3)],
+ Permutation Group with generators [(1,4)],
+ Permutation Group with generators [(1,4)(2,3)],
+ Permutation Group with generators [(1,2)(3,4)],
+ Permutation Group with generators [(1,3)(2,4)],
+ Permutation Group with generators [(2,3), (1,4)],
+ Permutation Group with generators [(1,4)(2,3), (1,3)(2,4)],
+ Permutation Group with generators [(1,4)(2,3), (1,3,4,2)],
+ Permutation Group with generators [(2,3), (1,4)(2,3), (1,3)(2,4)]]
+sage: [H.order() for H in sg]
+[1, 2, 2, 2, 2, 2, 4, 4, 4, 8]
+\end{sageexample}
+%
+\verb?tau? above is the fourth element of the automorphism group, and the fourth permutation in \verb?elements? is the permutation \verb?(2,3)?, the generator (of order 2) for the second subgroup.  So as the only nontrivial element of this subgroup, we know that the corresponding fixed field is ${\mathbb Q}(\sqrt[4]{2}i)$.\par
+%
+Let's analyze another subgroup of order 2, without all the explanation, and starting with the subgroup.  The sixth subgroup is generated by the fifth automorphism, so let's determine the elements that are fixed.
+%
+\begin{sageexample}
+sage: tau = G[4]
+sage: tau_matrix = column_matrix([tau(be).vector() for be in basis])
+sage: (tau_matrix-identity_matrix(8)).right_kernel()
+Vector space of degree 8 and dimension 4 over Rational Field
+Basis matrix:
+[     1      0      0      0      0      0      0      0]
+[     0      1      0      0      0  1/158      0      0]
+[     0      0      1      0      0      0   1/78      0]
+[     0      0      0      1      0      0      0 13/614]
+sage: fromL(tau(1))
+1
+sage: fromL(tau(c+(1/158)*c^5))
+120/79*b - 120/79*a
+sage: fromL(tau(c^2+(1/78)*c^6))
+-200/39*a*b
+sage: fromL(tau(c^3+(13/614)*c^7))
+3000/307*a^2*b + 3000/307*a^3
+\end{sageexample}
+%
+The first element indicates that the rationals are fixed (we knew that).  Scaling the second element gives \verb?b - a? as a fixed element.  Scaling the third and fourth fixed elements, we recognize that they can be obtained from powers of \verb?b - a?.
+%
+\begin{sageexample}
+sage: (b-a)^2
+-2*a*b
+sage: (b-a)^3
+2*a^2*b + 2*a^3
+\end{sageexample}
+%
+So the fixed field of this subgroup can be formed by adjoining \verb?b - a? to the rationals, which in mathematical notation is
+$\sqrt[4]{2}i - \sqrt[4]{2} = (1-i)\sqrt[4]{2}$, so the fixed field is ${\mathbb Q}(\sqrt[4]{2}i - \sqrt[4]{2} = (1-i)\sqrt[4]{2})$\par
+%
+We can create this fixed field, though as created here it is not strictly a subfield of \verb?L?.  We will use an expression for \verb?b - a? that is a linear combination of powers of \verb?c?.
+%
+\begin{sageexample}
+sage: subinfo = L.subfield((79/120)*(c+(1/158)*c^5)); subinfo
+(Number Field in c0 with defining polynomial x^4 + 8, Ring morphism:
+  From: Number Field in c0 with defining polynomial x^4 + 8
+  To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+  Defn: c0 |--> 1/240*c^5 + 79/120*c)
+\end{sageexample}
+%
+The \verb?.subfield()? method returns a pair.  The first item is a new number field, isomorphic to a subfield of \verb?L?.  The second item is an injective mapping from the new number field into \verb?L?.  In this case, the image of the primitive element \verb?c0? is the element we have specified as the generator of the subfield.  The primitive element of the new field will satisfy the defining polynomial $x^4+8$ --- you can check that $(1-i)\sqrt[4]{2}$ is indeed a root of the polynomial $x^4 + 8$.\par
+%
+There are five subgroups of order 2, we have found fixed fields for two of them.  The other three are similar, so it would be a good exercise to work through them.  Our automorphism group has three subgroups of order 4, and at least one of each possible type (cyclic versus non-cyclic).  Fixed fields of larger subgroups require that we find elements fixed by all of the automorphisms in the subgroup.  (We were conveniently ignoring the identity automorphism above.)  This will require more computation, but will restrict the possibilities (smaller fields) to where it will be easier to deduce a primitive element for each field.\par
+%
+The seventh subgroup is generated by two elements of order 2 and is composed entirely of elements of order 2 (except the identity), so is isomorphic to ${\mathbb Z}_2\times{\mathbb Z}_2$.  The permutations correspond to automorphisms number 0, 1, 3 and 6.  To determine the elements fixed by \emph{all four} automorphisms, we will build the kernel for each one and as we go form the \emph{intersection} of all four kernels.  We will work via a loop over the four automorphisms.
+%
+\begin{sageexample}
+sage: V = QQ^8
+sage: for tau in [G[0], G[1], G[3], G[6]]:
+...     tau_matrix = column_matrix([tau(be).vector() for be in basis])
+...     K = (tau_matrix-identity_matrix(8)).right_kernel()
+...     V = V.intersection(K)
+sage: V
+Vector space of degree 8 and dimension 2 over Rational Field
+Basis matrix:
+[    1     0     0     0     0     0     0     0]
+[    0     0     1     0     0     0 -1/22     0]
+\end{sageexample}
+%
+Outside the rationals, there is a single fixed element.
+%
+\begin{sageexample}
+sage: fromL(tau(c^2 - (1/22)*c^6))
+150/11*a^2
+\end{sageexample}
+%
+Removing a scalar multiple, our primitive element is \verb?a^2?, which mathematically is $\sqrt{2}$, so the fixed field is ${\mathbb Q}(\sqrt{2})$.  Again, we can build this fixed field, but ignore the mapping.
+%
+\begin{sageexample}
+sage: F, mapping = L.subfield((11/150)*(c^2 - (1/22)*c^6))
+sage: F
+Number Field in c0 with defining polynomial x^2 - 2
+\end{sageexample}
+%
+One more subgroup.  The penultimate subgroup has a permutation of order 4 as a generator, so is a cyclic group of order 4.  The individual permutations of the subgroup correspond to automorphisms 0, 1, 2, 7.
+%
+\begin{sageexample}
+sage: V = QQ^8
+sage: for tau in [G[0], G[1], G[2], G[7]]:
+...     tau_matrix = column_matrix([tau(be).vector() for be in basis])
+...     K = (tau_matrix-identity_matrix(8)).right_kernel()
+...     V = V.intersection(K)
+sage: V
+Vector space of degree 8 and dimension 2 over Rational Field
+Basis matrix:
+[1 0 0 0 0 0 0 0]
+[0 0 0 0 1 0 0 0]
+\end{sageexample}
+%
+So we compute the primitive element.
+%
+\begin{sageexample}
+sage: fromL(tau(c^4))
+-24*a^3*b - 14
+\end{sageexample}
+%
+Since rationals are fixed, we can remove the $-14$ and the multiple and take \verb?a^3*b? as the primitive element.  Mathematically, this is $2i$, so we might as well use just $i$ as the primitive element and the fixed field is ${\mathbb Q}(i)$.  We can then build the fixed field (and ignore the mapping also returned).
+%
+\begin{sageexample}
+sage: F, mapping = L.subfield((c^4+14)/-48)
+sage: F
+Number Field in c0 with defining polynomial x^2 + 1
+\end{sageexample}
+%
+There is one more subgroup of order 4, which we will leave as an exercise to analyze.  There are also two trivial subgroups (the identity and the full group) which are not very interesting or surprising.\par
+%
+If the above seems like too much work, you can always just have Sage do it all with the \verb?.subfields()? method.
+%
+\begin{sageexample}
+sage: L.subfields()
+[
+(Number Field in c0 with defining polynomial x,
+ Ring morphism:
+   From: Number Field in c0 with defining polynomial x
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: 0 |--> 0,
+ None),
+(Number Field in c1 with defining polynomial x^2 + 112*x + 40000,
+ Ring morphism:
+   From: Number Field in c1 with defining polynomial x^2 + 112*x + 40000
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c1 |--> 4*c^4,
+ None),
+(Number Field in c2 with defining polynomial x^2 + 512,
+ Ring morphism:
+   From: Number Field in c2 with defining polynomial x^2 + 512
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c2 |--> 1/25*c^6 + 78/25*c^2,
+ None),
+(Number Field in c3 with defining polynomial x^2 - 288,
+ Ring morphism:
+   From: Number Field in c3 with defining polynomial x^2 - 288
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c3 |--> -1/25*c^6 + 22/25*c^2,
+ None),
+(Number Field in c4 with defining polynomial x^4 + 112*x^2 + 40000,
+ Ring morphism:
+   From: Number Field in c4 with defining polynomial x^4 + 112*x^2 + 40000
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c4 |--> 2*c^2,
+ None),
+(Number Field in c5 with defining polynomial x^4 + 648,
+ Ring morphism:
+   From: Number Field in c5 with defining polynomial x^4 + 648
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c5 |--> 1/80*c^5 + 79/40*c,
+ None),
+(Number Field in c6 with defining polynomial x^4 + 8,
+Ring morphism:
+  From: Number Field in c6 with defining polynomial x^4 + 8
+  To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+  Defn: c6 |--> -1/80*c^5 + 1/40*c,
+  None),
+(Number Field in c7 with defining polynomial x^4 - 512,
+ Ring morphism:
+   From: Number Field in c7 with defining polynomial x^4 - 512
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c7 |--> -1/60*c^5 + 41/30*c,
+ None),
+(Number Field in c8 with defining polynomial x^4 - 32,
+ Ring morphism:
+   From: Number Field in c8 with defining polynomial x^4 - 32
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c8 |--> 1/60*c^5 + 19/30*c,
+ None),
+(Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500,
+ Ring morphism:
+   From: Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500
+   To:   Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c9 |--> c,
+ Ring morphism:
+   From: Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
+   To:   Number Field in c9 with defining polynomial x^8 + 28*x^4 + 2500
+   Defn: c |--> c9)
+]
+\end{sageexample}
+%
+Ten subfields are described, which is what we would expect, given the 10 subgroups of the Galois group.  Each begins with a new number field that is a subfield.  Technically, each is not a subset of \verb?L?, but the second item returned for each subfield is an injective homomorphism, also known generally as an ``embedding.''  Each embedding describes how a primitive element of the subfield translates to an element of \verb?L?.  Some of these primitive elements could be manipulated (as we have done above) to yield slightly simpler minimal polynomials, but the results are quite impressive nonetheless.  Each item in the list has a third component, which is almost always \verb?None?, except when the subfield is the whole field, and then the third component is an injective homomorphism ``in the other direction.''
+%
+\sagesubsection{Normal Extensions}
+%
+Consider the third subgroup in the list above, generated by the permutation \verb?(1,4)?. As a subgroup of order 2, it only has one nontrivial element, which here corresponds to the seventh automorphism.  We determine the fixed elements as before.
+%
+\begin{sageexample}
+sage: tau = G[6]
+sage: tau_matrix = column_matrix([tau(be).vector() for be in basis])
+sage: (tau_matrix-identity_matrix(8)).right_kernel()
+Vector space of degree 8 and dimension 4 over Rational Field
+Basis matrix:
+[    1     0     0     0     0     0     0     0]
+[    0     1     0     0     0 -1/82     0     0]
+[    0     0     1     0     0     0 -1/22     0]
+[    0     0     0     1     0     0     0 11/58]
+sage: fromL(tau(1))
+1
+sage: fromL(tau(c+(-1/82)*c^5))
+-120/41*a
+sage: fromL(tau(c^2+(-1/22)*c^6))
+150/11*a^2
+sage: fromL(tau(c^3+(11/58)*c^7))
+3000/29*a^3
+\end{sageexample}
+%
+As usual, ignoring rational multiples, we see powers of \verb?a? and recognize that \verb?a? alone will be a primitive element for the fixed field, which is thus ${\mathbb Q}(\sqrt[4]{2})$.  Recognize that \verb?a? was our first root of $x^4-2$, and was used to create the first part of original tower, \verb?N?.  So \verb?N? is both ${\mathbb Q}(\sqrt[4]{2})$ and the fixed field of $H=\langle(1,4)\rangle$.\par
+%
+${\mathbb Q}(\sqrt[4]{2})$ contains at least one root of the irreducible $x^4-2$, but not all of the roots (witness the factorization above) and therefore does not qualify as a normal extension.  By part (4) of Theorem~\ref{galois:fundamental_theorem} the automorphism group of the extension is not normal in the full Galois group.
+%
+\begin{sageexample}
+sage: sg[2].is_normal(P)
+False
+\end{sageexample}
+%
+As expected.
+%
