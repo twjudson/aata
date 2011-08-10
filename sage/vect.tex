@@ -1,0 +1,186 @@
+Many computations, in seemingly very different areas of mathematics, can be translated into questions about linear combinations, or other areas of linear algebra.  So Sage has extensive and thorough support for topics such as vector spaces.
+%
+\sagesubsection{Vector Spaces}
+%
+The simplest way to create a vector space is to begin with a field and write a ``power'' to indicate the number of entries in the vectors of the space.
+%
+\begin{sageexample}
+sage: V = QQ^4; V
+Vector space of dimension 4 over Rational Field
+sage: F.<a> = FiniteField(3^4)
+sage: W = F^5; W
+Vector space of dimension 5 over Finite Field in a of size 3^4                                                                                                            \end{sageexample}
+%
+Elements can be built with the vector constructor.
+%
+\begin{sageexample}
+sage: v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
+(1, 1/2, 1/3, 1/4)
+sage: v in V
+True
+sage: w = vector(F, [1, a^2, a^4, a^6, a^8]); w
+(1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
+sage: w in W
+True
+\end{sageexample}
+%
+Notice that vectors are printed with parentheses, which helps distinguish them from lists.  Vectors print horizontally, but in Sage there is no such thing as a ``row vector'' or a ``column vector,'' though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.
+%
+Once we have vector spaces full of vectors, we can perform computations with them.  Ultimately, all the action in a vector space comes back to vector addition and scalar multiplication, which together create linear combinations.
+%
+\begin{sageexample}
+sage: u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
+sage: v = vector(QQ, [-1, 2, -4, 8, -16, 32])
+sage: 3*u - 2*v
+(5, 2, 17, -4, 47, -46)                                                                                                                                                   \end{sageexample}
+%
+\begin{sageexample}
+sage: w = vector(F, [1, a^2, a^4, a^6,  a^8])
+sage: x = vector(F, [1,   a, 2*a,   a,    1])
+sage: y = vector(F, [1, a^3, a^6, a^9, a^12])
+sage: a^25*w + a^43*x + a^66*y
+(a^3 + a^2 + a + 2, a^2 + 2*a, 2*a^3 + a^2 + 2, 2*a^3 + a^2 + a,
+ a^3 + 2*a^2 + a + 2)
+\end{sageexample}
+%
+\sagesubsection{Subspaces}
+%
+Sage can create subspaces in a variety of ways, such as in the creation of row or column spaces of matrices.  However, the most direct way is to begin with a set of vectors to use as a spanning set.
+%
+\begin{sageexample}
+sage: u = vector(QQ, [1, -1, 3])
+sage: v = vector(QQ, [2, 1, -1])
+sage: w = vector(QQ, [3, 0, 2])
+sage: S = (QQ^3).subspace([u, v, w]); S
+Vector space of degree 3 and dimension 2 over Rational Field
+Basis matrix:
+[   1    0  2/3]
+[   0    1 -7/3]
+sage: 3*u - 6*v + (1/2)*w in S
+True
+sage: vector(QQ, [4, -1, -2]) in S
+False
+\end{sageexample}
+%
+Notice that the information printed about \verb?S? includes a ``basis matrix.''  The rows of this matrix are a basis for the vector space.  We can get the basis, as a list of vectors (not rows of a matrix), with the \verb?.basis()? method.
+%
+\begin{sageexample}
+sage: S.basis()
+[
+(1, 0, 2/3),
+(0, 1, -7/3)
+]
+\end{sageexample}
+%
+Notice that Sage has converted the spanning set of three vectors into a basis with two vectors.  This is partially due to the fact that the original set of three vectors is linearly dependent, but a more substantial change has occurred.\par
+%
+This is a good place to discuss some of the mathematics behind what makes Sage work.  A vector space over an infinite field, like the rationals or the reals, is an infinite set.  No matter how expansive computer memory may seem, it is still finite.  How does Sage fit an infinite set into our finite machines?  The main idea is that a finite-dimensional vector space has a finite set of generators, which we know as a basis.  So Sage really only needs the elements of a basis (two vectors in the previous example) to be able to work with the infinitely many possibilities for elements of the subspace.\par
+%
+Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given into another ``standard'' basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.
+%
+\begin{sageexample}
+sage: u = vector(QQ, [1, -1,  3])
+sage: v = vector(QQ, [2,  1, -1])
+sage: w = vector(QQ, [3,  0,  2])
+sage: u + v == w
+True
+sage: S1 = (QQ^3).subspace([u, v, w])
+sage: S2 = (QQ^3).subspace([u-v, v-w, w-u])
+sage: S1 == S2
+True
+\end{sageexample}
+%
+As you might expect, it is easy to determine the dimension of a vector space.
+%
+\begin{sageexample}
+sage: u = vector(QQ, [1, -1,  3,  4])
+sage: v = vector(QQ, [2,  1, -1, -2])
+sage: S = (QQ^4).subspace([u, v, 2*u+3*v, -u+2*v])
+sage: S.dimension()
+2
+\end{sageexample}
+%
+\sagesubsection{Linear Independence}
+%
+There are a variety of ways in Sage to determine if a set of vectors is linearly independent or not, and to find relations of linear dependence if they exist.  The technique we will show here is a simple test to see if a set of vectors is linearly independent or not.  Simply use the vectors as a spanning set for a subspace, and check the dimension of the subspace.  The dimension equals the number of vectors in the spanning set if and only if the spanning set is linearly independent.
+%
+\begin{sageexample}
+sage: F.<a> = FiniteField(3^4)
+sage: u = vector(F, [a^i for i in range(0,  7, 1)])
+sage: v = vector(F, [a^i for i in range(0, 14, 2)])
+sage: w = vector(F, [a^i for i in range(0, 21, 3)])
+sage: S = (F^7).subspace([u, v, w])
+sage: S.dimension()
+3
+sage: S = (F^7).subspace([u, v, a^3*u + a^11*v])
+sage: S.dimension()
+2
+\end{sageexample}
+%
+So the first set of vectors, \verb?[u, v, w]?, is linearly independent, while the second set, \verb?[u, v, a^3*u + a^11*v]?, is not.
+%
+\sagesubsection{Abstract Vector Spaces}
+%
+Sage does not implement many abstract vector spaces directly, such as $P_n$, the vector space of polynomials of degree $n$ or less.  This is due in part to the fact that a finite-dimensional vector space over a field $F$ is isomorphic to the vector space $F^n$.  So Sage captures all the functionality of finite-dimensional vector spaces, and it is left to the user to perform the conversions according to the isomorphism (which is often trivial with the choice of an obvious basis).\par
+%
+However, there are instances where rings behave naturally as vector spaces and we can exploit this extra structure.  We will see much more of this in the chapters on fields and Galois theory.  As an example, finite fields have a single generator, and the first few powers of the generator form a basis.  Consider creating a vector space from the elements of a finite field of order $7^6=117\,649$.  As elements of a field we know they can be added, so we will \emph{define} this to be the addition in our vector space.  For any element of the integers mod 7, we can multiply an element of the field by the integer, so we \emph{define} this to be our scalar multiplication.  Later, we will be certain that these two definitions lead to a vector space, but take that for granted now.  So here are some operations in our new vector space.
+%
+\begin{sageexample}
+sage: F.<a> = FiniteField(7^6)
+sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+sage: u + v
+6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
+sage: 4*u
+a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
+sage: 2*u + 5*v
+3*a^5 + 4*a^4 + 3*a^3 + a^2 + a + 1
+\end{sageexample}
+%
+You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from ${\mathbb Z}_7$, a basis is the first six powers of the generator, $\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}$.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations --- now you know why.\par
+%
+Here is what Sage knows about a finite field as a vector space.  First, it knows that the finite field \emph{is} a vector space, and what the field of scalars is.
+%
+\begin{sageexample}
+sage: V = F.vector_space(); V
+Vector space of dimension 6 over Finite Field of size 7
+sage: R = V.base_ring(); R
+Finite Field of size 7
+sage: R == FiniteField(7)
+True
+sage: V.dimension()
+6
+\end{sageexample}
+%
+So the finite field (as a vector space) is isomorphic to the vector space $({\mathbb Z}_7)^6$.  Notice this is not a ring or field isomorphism, as it does not fully address multiplication of elements, even though that is possible in the field.\par
+%
+Second, elements of the field can be converted to elements of the vector space easily.
+%
+\begin{sageexample}
+sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+sage: x = V(u); x
+(3, 2, 3, 2, 6, 2)
+sage: y = V(v); y
+(6, 5, 6, 4, 4, 4)
+\end{sageexample}
+%
+Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism between the finite field and $({\mathbb Z}_7)^6$.
+%
+\begin{sageexample}
+sage: F.<a> = FiniteField(7^6)
+sage: V = F.vector_space()
+sage: R = V.base_ring()
+sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+sage: V(u + v) == V(u) + V(v)
+True
+sage: two = R(2)
+sage: V(two*u) == two*V(u)
+True
+\end{sageexample}
+%
+\sagesubsection{Linear Algebra}
+%
+Sage has extensive support for linear algebra, well beyond what we have described here, or what we will need for the remaining chapters.  Create vector spaces and vectors (with different fields of scalars), and then use tab-completion on these objects to explore the large sets of available commands.
+%
