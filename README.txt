@@ -1,5 +1,5 @@
 Abstract Algebra: Theory and Applications
-GDL licensed textbook
+GFDL licensed textbook
 Source distribution README
 
 This is the source distribution for the textbook.  Most of this
