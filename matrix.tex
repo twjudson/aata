@@ -593,6 +593,8 @@ Observe that
 \begin{figure}[htb]
 
 %Replaced figure with tikz figure - TWJ 6/11/2010
+%Fixed tikz figure - TWJ 12/8/2011
+
 \begin{center}
 \tikzpreface{matrix_O2}
 \begin{tikzpicture}[scale=1.5]
@@ -609,10 +611,11 @@ Observe that
 \draw  [->] (3,0) -- (5.75,0);
 \node [right] at (4,2) {$y$};
 \node [below] at (6,0) {$x$};
-\draw [->, very thick, black]  (4,0) -- +(105:1.25) node [left] {$(\sin \theta, - \cos \theta)$};
-\draw  [->, very thick, black] (4,0) -- +(45:1.25) node [right] {$(\cos \theta, \sin \theta)$};
-\draw (4.5,0) arc (0:45:0.5);
-\node at (4.6,0.25) {$\theta$};
+\draw [->, very thick, black]  (4,0) -- ++(120:1.25);
+\draw  [->, very thick, black] (4,0) -- ++(30:1.25) node [right] {$(\cos \theta, \sin \theta)$};
+\node at (3.15,1.3) {$(\sin \theta, - \cos \theta)$};
+\draw (4.5,0) arc (0:30:0.5);
+\node at (4.6,0.2) {$\theta$};
 
 
 \end{tikzpicture}
@@ -621,6 +624,9 @@ Observe that
 \caption{$O(2)$ acting on ${\mathbb R}^2$}
 \label{O2}
 \end{figure}
+ 
+ 
+%Clarified what it means to be a reflection - TWJ 12/8/2011
  
 \begin{example}{O2}
 Let us examine the orthogonal group  on ${\mathbb R}^2$ a bit more
@@ -642,7 +648,7 @@ b & a
 \end{pmatrix},
 \]
 where $0 \leq \theta < 2 \pi$. A matrix $T$ in $O(2)$ either reflects
-or rotates a vector in ${\mathbb R}^2$ (Figure~\ref{O2}). A reflection is
+or rotates a vector in ${\mathbb R}^2$ (Figure~\ref{O2}). A reflection about the horizontal axis is
 given by the matrix 
 \[
 \begin{pmatrix}
@@ -658,7 +664,7 @@ must come from a matrix of the form
 \sin \theta & -\cos \theta
 \end{pmatrix}.
 \]
-If $\det A =-1$, then $A$ gives a reflection.
+A reflection about a line $\ell$ is simply a reflection about the horizontal axis followed by a rotation.  If $\det A =-1$, then $A$ gives a reflection.
 \end{example}
  
  
@@ -883,6 +889,9 @@ the form $(A, {\mathbf x})$, where ${\mathbf x} \neq 0$.  Such an element
 must have infinite order. 
  
  
+%Fixed proof.  Suggested by S. Engle, - TWJ 6/11/2010
+ 
+ 
 By Example~\ref{example:matrix:O2}, elements in $O(2)$ are either rotations of the form
 \[
 R_{\theta}
@@ -893,15 +902,24 @@ R_{\theta}
 \end{pmatrix}
 \]
 or reflections of the form
-\[T_{\theta}
+\[T_{\phi}
 =
 \begin{pmatrix}
-\cos \theta & - \sin \theta \\
-\sin \theta & \cos \theta
+\cos \phi &  - \sin \phi \\
+\sin \phi & \cos \phi
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+\cos \phi &  \sin \phi \\
+\sin \phi & - \cos \phi
 \end{pmatrix}.
 \]
-Notice that $\det(R_{\theta})=1$,  $\det(T_{\theta})=-1$,
-and $T_{\theta}^2=I$. We can divide the proof up into two cases.  In
+Notice that $\det(R_{\theta})=1$,  $\det(T_{\phi})=-1$,
+and $T_{\phi}^2=I$. We can divide the proof up into two cases.  In
 the first case, all of the elements in $G$ have determinant one. In the
 second case, there exists at least one element in $G$ with 
 determinant~$-1$.  
@@ -921,7 +939,7 @@ the minimality of $\theta_0$.
  
  
 {\em Case 2.}  
-The group $G$ contains a reflection $T_{\theta}$.  The kernel of the
+The group $G$ contains a reflection $T$.  The kernel of the
 homomorphism $\phi : G \rightarrow \{-1, 1\}$ given by $A \mapsto
 \det(A)$ consists of elements whose determinant is 1.  Therefore, $|G/
 \ker \phi|=2$.  We know that the kernel is cyclic by the first case
