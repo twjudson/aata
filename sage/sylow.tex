@@ -16,7 +16,7 @@ The Sage permutation group method \verb?.sylow_subgroup(p)? will return a single
 %
 With repeated conjugations of a single Sylow $p$-subgroup, we will likely create duplicate subgroups.  So we need to use a slightly complicated construction to form a list of just the unique subgroups in the list of conjugates.  The list comprehension will modify the list of unique subgroups, but also create some output we do not care about, so we assign the unwanted output to the variable \verb?junk?.\par
 %
-Lets investigate the Sylow subgroups of the dihedral group $D_{36}$.  As a group of order $36=2^2\cdot 3^2$, we know by the First Sylow Theorem that there is a Sylow $2$-subgroup of order $4$ and a Sylow $3$-subgroup of order $9$.  First for $p=2$, we obtain one Sylow $2$-subgroup, form all the conjugates, and form a list of non-duplicate subgroups.  (These commands take a while to execute, so be patient.)
+Lets investigate the Sylow subgroups of the dihedral group $D_{18}$.  As a group of order $36=2^2\cdot 3^2$, we know by the First Sylow Theorem that there is a Sylow $2$-subgroup of order $4$ and a Sylow $3$-subgroup of order $9$.  First for $p=2$, we obtain one Sylow $2$-subgroup, form all the conjugates, and form a list of non-duplicate subgroups.  (These commands take a while to execute, so be patient.)
 %
 \begin{sageexample}
 sage: G = DihedralGroup(18)
@@ -78,7 +78,7 @@ sage: len(uniqS3)
 1
 \end{sageexample}
 %
-What does the Third Sylow Theorem predict?  Just $1$ or $4$ Sylow $3$-subgroups.  Having found just one subgroup computationally, we know that all of the conjugates of the lone Sylow $3$-subgroup are equal.  In other words, the Sylow $3$-subgroup is normal in $D_{36}$.  Let's check.
+What does the Third Sylow Theorem predict?  Just $1$ or $4$ Sylow $3$-subgroups.  Having found just one subgroup computationally, we know that all of the conjugates of the lone Sylow $3$-subgroup are equal.  In other words, the Sylow $3$-subgroup is normal in $D_{18}$.  Let's check.
 %
 \begin{sageexample}
 sage: S3.is_normal(G)
@@ -92,7 +92,7 @@ sage: S3.is_cyclic()
 True
 \end{sageexample}
 %
-Remember that there are many other subgroups, of other orders.  For example, can you construct a subgroup of order $6=2\cdot 3$ in $D_{36}$?\par
+Remember that there are many other subgroups, of other orders.  For example, can you construct a subgroup of order $6=2\cdot 3$ in $D_{18}$?\par
 %
 \sagesubsection{Normalizers}
 %
@@ -118,7 +118,7 @@ sage: N3 == G
 True
 \end{sageexample}
 %
-The normalizer of a subgroup always contains the whole subgroup, so the normalizer of \verb?S2? is as small as possible.  We already knew \verb?S3? is normal in \verb?G?, so it is no surprise that its normalizer is as big as possible --- every element of \verb?G? normalizes \verb?S3?.  Let's compute a normalizer in $D_{36}$ that is more ``interesting.''
+The normalizer of a subgroup always contains the whole subgroup, so the normalizer of \verb?S2? is as small as possible.  We already knew \verb?S3? is normal in \verb?G?, so it is no surprise that its normalizer is as big as possible --- every element of \verb?G? normalizes \verb?S3?.  Let's compute a normalizer in $D_{18}$ that is more ``interesting.''
 %
 \begin{sageexample}
 sage: G = DihedralGroup(18)
