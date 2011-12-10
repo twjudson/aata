@@ -25,15 +25,17 @@ Check that the groups have the same size with the \verb?.order()? method.  Deter
 Use the \verb?.cayley_table()? method to create the Cayley table for each group.
 \begin{sageverbatim}\end{sageverbatim}
 %
-\sageexercise{5}%
+\sageexercise{4}%
 Write a nicely formatted discussion (Shift-click on a blue bar to bring up the mini-word-processor, use dollar signs to embed bits of \TeX) identifying differences between the two groups that are discernible in properties of their Cayley tables.  In other words, what is {\em different} about these two groups that you can ``see'' in the Cayley tables?
 \begin{sageverbatim}\end{sageverbatim}
 %
 \sageexercise{5}%
-For each group, list the elements of one non-trivial subgroup (not just the identity, and not the whole group).  Write out your subgroup as a set of elements from the group, and do {\em not} use letters as the names.  If you need to translate between letters in the table and the actual elements, then employ the \verb?.list()? method for the group to matchup the letters and elements.  Expressing elements using the ``bottom row'' representation might make the most sense at this point.
+For each group, use the \verb?.subgroups()? method to locate a largest subgroup that is not the entire group, and then use the \verb?.list()? method of the subgroup to get a list of elements (which you might save as \verb?elts?).\par
+%
+Now, \verb?.cayley_table(elements=elts)? for the original group will produce the Cayley table of the subgroup.  What properties of this table would you check to see if the output is correct?
 \begin{sageverbatim}\end{sageverbatim}
 %
 \sageexercise{6}%
-(Advanced)  See if you can actually construct your subgroup within Sage so that the \verb?.is_subgroup()? command returns \verb?True?.  (Hint: extract the right elements from the list of all the group elements and use all of them as generators of a subgroup.)
+The \verb?.subgroup(elt_list)? method of the original group will create the smallest subgroup containing specified elements of the group, when given the elements as a list \verb?elt_list?.  Discover the shortest list of elements necessary to recreate the subgroup you used in the previous exercise.  The equality comparison, \verb?==?, can be used to test if two subgroups are equal.
 \begin{sageverbatim}\end{sageverbatim}
 %
