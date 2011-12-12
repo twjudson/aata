@@ -1,0 +1,156 @@
+%%%%(c)
+%%%%(c)  This file is a portion of the source for the textbook
+%%%%(c)
+%%%%(c)    Abstract Algebra: Theory and Applications
+%%%%(c)    by Thomas W. Judson
+%%%%(c)
+%%%%(c)    Sage Material
+%%%%(c)    Copyright 2011 by Robert A. Beezer
+%%%%(c)
+%%%%(c)  See the file COPYING.txt for copying conditions
+%%%%(c)
+%%%%(c)
+Since Sage began as software to support research in number theory, we can quickly and easily demonstrate the internal workings of the RSA algorithm.  Recognize that, in practice, many other details such as encoding between letters and integers, or protecting one's private key, are equally important for the security of communications.  So RSA itself is just the theoretical foundation.
+%
+\sagesubsection{Constructing Keys}
+%
+We will suppose that Alice wants to send a secret message to Bob, along with message verification (also known as a message with a digital signature).  So we begin with the construction of key pairs (private and public) for both Alice and Bob.  We first need two large primes for both individuals, and their product.  In practice, values of $n$ would have hundreds of digits, rather than just $21$ as we have done here.
+%
+\begin{sageexample}
+sage: p_a = next_prime(10^10)
+sage: q_a = next_prime(p_a)
+sage: p_b = next_prime((3/2)*10^10)
+sage: q_b = next_prime(p_b)
+sage: n_a = p_a * q_a
+sage: n_b = p_b * q_b
+sage: n_a, n_b
+(100000000520000000627, 225000000300000000091)
+\end{sageexample}
+%
+Computationally, the value of the Euler $\phi$-function for a product of primes $pq$ can be obtained from $(p-1)(q-1)$, but we could use Sage's built-in function just as well.
+%
+\begin{sageexample}
+sage: m_a = euler_phi(n_a)
+sage: m_b = euler_phi(n_b)
+sage: m_a, m_b
+(100000000500000000576, 225000000270000000072)
+\end{sageexample}
+%
+Now we can create the encryption and decryption exponents.  We choose the encryption exponent as a (small) number relatively prime to the value of $m$.  With Sage we can factor $m$ quickly to help us choose this value.  In practice we would not want to do this computation for large values of $m$, so we might more easily choose ``random'' values and check for the first value which is relatively prime to $m$.  The decryption exponent is the multiplicaive inverse, mod $m$, of the encryption exponent.  If you construct an improper encryption exponent (not relatively prime to $m$), the computation of the multiplicative inverse will fail (and Sage will tell you so).  We do this twice ---- for both Alice and Bob.
+%
+\begin{sageexample}
+sage: factor(m_a)
+2^6 * 3 * 11 * 17 * 131 * 521 * 73259 * 557041
+sage: E_a = 5*23
+sage: D_a = inverse_mod(E_a, m_a)
+sage: D_a
+20869565321739130555
+\end{sageexample}
+%
+\begin{sageexample}
+sage: factor(m_b)
+2^3 * 3^4 * 107 * 1298027 * 2500000001
+sage: E_b = 7*29
+sage: D_b = inverse_mod(E_b, m_b)
+sage: D_b
+24384236482463054195
+\end{sageexample}
+%
+At this stage, each individual would publish their values of $n$ and $E$, while keeping $D$ very private and secure.  In practice $D$ might be protected on the user's hard disk (or USB thumb drive they always carry with them) by a password only they know.  Every time the person uses $D$ they would need to provide the password.  The value of $m$ can be discarded.  So for the record, here are all the keys:
+%
+\begin{sageexample}
+sage: print "Alice's public key, n:", n_a, " E:", E_a
+Alice's public key, n: 100000000520000000627  E: 115
+sage: print "Alice's private key, D:", D_a
+Alice's private key, D: 20869565321739130555
+\end{sageexample}
+%
+\begin{sageexample}
+sage: print "Bob's public key, n:", n_b, " E:", E_b
+Bob's public key, n: 225000000300000000091  E: 203
+sage: print "Bob's private key, D:", D_b
+Bob's private key, D: 24384236482463054195
+\end{sageexample}
+%
+\sagesubsection{Signing and Encoding a Message}
+%
+Alice is going to construct a message as an English word with four letters.  From these four letters we will construct a single number to represent the message in a form we can use in the RSA algorithm.  The function \verb?ord()? will convert a single letter to its ASCII code value, a number between 0 and 127.  If we use these numbers as ``digits'' mod 128, we can be sure that Alice's four-letter word will encode to an integer less than $128^4=268,435,456$.  The particular maximum value is not important, so long as it is smaller than our value of $n$ since all of our subsequent arithmetic is mod $n$.  We choose a popular four-letter word, convert to ASCII ``digits'' with a list comprehension, and then construct the integer from the digits with the right base.  Notice how we can treat the word as a list and that the first digit in the list is in the ``ones'' place (we say the list is being treated as in ``little-endian'' order).
+%
+\begin{sageexample}
+sage: word = 'Sage'
+sage: digits = [ord(letter) for letter in word]
+sage: digits
+[83, 97, 103, 101]
+sage: message = ZZ(digits, 128)
+sage: message
+213512403
+\end{sageexample}
+%
+First, Alice will sign her message to provide message verification.  She uses her private key for this, since this is an act that only she should be able to perform.
+%
+\begin{sageexample}
+sage: signed = power_mod(message, D_a, n_a)
+sage: signed
+47838774644892618423
+\end{sageexample}
+%
+Then Alice encrypts her message so that only Bob can read it.  To do this, she uses Bob's public key.  Notice how she does not have to even know Bob --- for example, she could have obtained Bob's public key off his web site.
+%
+\begin{sageexample}
+sage: encrypted = power_mod(signed, E_b, n_b)
+sage: encrypted
+111866209291209840488
+\end{sageexample}
+%
+Alice's communication is now ready to travel on any communications network, no matter how insecure it might be.
+%
+\sagesubsection{Decoding and Verifying a Message}
+%
+Now assume that the value of \verb?encrypted? has reached Bob.  Realize that Bob may not know Alice, and realize that Bob does not even necessarily believe what he has received has genuinely originated from Alice.  An adversary could be trying to confuse Bob by sending messages that claim to be from Alice.  First, Bob must unwrap the encyption Alice has provided.  This is an act only Bob, as the intended recipient, should be able to do.  And he does it by using his private key, which only he knows, and which he has kept securely in his possession.
+%
+\begin{sageexample}
+sage: decrypted = power_mod(encrypted, D_b, n_b)
+sage: decrypted
+47838774644892618423
+\end{sageexample}
+%
+Right now, this means very little to Bob.  Anybody could have sent him an encoded message.  However, this was a message Alice signed.  Lets unwrap the message signing.  Notice that this uses Alice's public key.  Bob does not need to know Alice --- for example, he could obtain Alice's key off her web site.
+%
+\begin{sageexample}
+sage: received = power_mod(decrypted, E_a, n_a)
+sage: received
+213512403
+\end{sageexample}
+%
+Bob needs to transform this integer representation back to a word with letters.  The \verb?chr()? function converts ASCII code values to letters, and we use a list comprehension to do this repeatedly.
+%
+\begin{sageexample}
+sage: digits = received.digits(base=128)
+sage: letters = [chr(ascii) for ascii in digits]
+sage: letters
+['S', 'a', 'g', 'e']
+\end{sageexample}
+%
+If we would like a slightly more recognizable result, we can combine the letters into a string.
+%
+\begin{sageexample}
+sage: ''.join(letters)
+'Sage'
+\end{sageexample}
+%
+Bob is pleased to obtain such an informative message from Alice.  What would have happened if an imposter had sent a message ostensibly from Alice, or what if an adversary had intercepted Alice's original message and replaced it with a tampered message?  (The latter is known as a ``man in the middle'' attack.)\par
+%
+In either case, the rogue party would not be able to duplicate Alice's first action --- signing her message.  If an adversary somehow signs the message, or tampers with it, the step where Bob unwraps the signing will lead to total garbage.  (Try it!)  Because Bob received a legitimate word, properly capitalized, he has confidence that the message he unsigned is the same as the message Alice signed.  In practice, if Alice sent several hundred words as her message, the odds that it will unsign as cohrent text are astronomically small.\par
+%
+What have we demonstrated?
+%
+\begin{enumerate}
+\item Alice can send messages only Bob can read.
+\item Bob can receive secret messages from anybody.
+\item Alice can sign messages, so Bob knows they come from Alice.
+\end{enumerate}
+%
+Of course, without making new keys, you can reverse the roles of Alice and Bob.  And if Carol makes a key pair, she can communicate with both Alice and Bob in the same fashion.\par
+%
+If you want to use RSA public-key encryption seriously, investigate the open source software GNU Privacy Guard, aka \verb?GPG?.
+%
