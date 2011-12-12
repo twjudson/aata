@@ -56,13 +56,13 @@ sage: G.plot()                  # not tested
 %
 Repeat parts (a) and (b) of the previous exercise, but realize that in part (b) there are now two different stabilizers to create, so build both and compare the differences in the stabilizers and their orbits.  Creating a second plot with \verb?G.plot(layout='planar')? might provide extra insight.\par
 %
-\emph{NOTE}: There is a small bug with stabilizers being created as subgroups of symmetric groups on fewer symbols than the correct number.  This leads to some size 1 orbits not appearing in the final part of this problem.  This happens in Sage 4.7.1 and should be fixed soon.  When this is fixed, the code below will produce a singleton orbit \texttt{[4]} and our testing framework will take notice.  (And then we can remove this note.)
+\emph{NOTE}: There was a small bug with stabilizers being created as subgroups of symmetric groups on fewer symbols than the correct number.  This is fixed in Sage 4.8 and newer.  Note the correct output below, and you can check your installation by running the commands.
 %
 \begin{sageexample}
 sage: G = SymmetricGroup(4)
 sage: S = G.stabilizer(4)
 sage: S.orbits()
-[[1, 3, 2]]
+[[1, 3, 2], [4]]
 \end{sageexample}
 %
 
