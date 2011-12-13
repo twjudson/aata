@@ -124,11 +124,11 @@ An internal direct product is a statement about subgroups of a single group, tog
 %
 Given an integer $n$, the set of positive integers less than $n$, and relatively prime to $n$ forms a group under multiplication mod $n$.  We will work in the set \verb?Integers(n)? where we can add \emph{and} multiply, but we want to stay strictly with multiplication only.\par
 %
-First we build the subgroup itself.  Notice how we must convert \verb?x? into an \verb?Integer? so that the greatest common divisor computation performs correctly.
+First we build the subgroup itself.  Notice how we must convert \verb?x? into an integer (an element of \verb?ZZ?) so that the greatest common divisor computation performs correctly.
 %
 \begin{sageexample}
 sage: Z36 = Integers(36)
-sage: U = [x for x in Z36 if gcd(Integer(x), 36) == 1]
+sage: U = [x for x in Z36 if gcd(ZZ(x), 36) == 1]
 sage: U
 [1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
 \end{sageexample}
