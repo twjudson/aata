@@ -292,7 +292,7 @@ n$. Only Alice knows $D$.
 Before exploring the theory behind the RSA cryptosystem or attempting
 to use large integers, we will use some small integers just to see
 that the system does indeed work. Suppose that we wish to send some
-message, which when digitized is 23. Let $p = 23$ and $q = 29$. Then 
+message, which when digitized is 25. Let $p = 23$ and $q = 29$. Then 
 \[
 n = pq = 667
 \]
@@ -303,7 +303,7 @@ and
 We can let $E = 487$, since $\gcd(616, 487) = 1$. The encoded message
 is computed to be  
 \[
-23^{487} \bmod 667 = 368.
+25^{487} \bmod 667 = 169.
 \]
 This computation can be reasonably done by using the method of
 repeated squares as described in Chapter~\ref{cyclic}. Using the Euclidean
@@ -311,9 +311,12 @@ algorithm, we determine that $191 E = 1 + 151 m$; therefore, the
 decrypting key is $(n, D) = ( 667, 191)$. We can recover the original 
 message by calculating  
 \[
-368^{191} \bmod 667 = 23.
+169^{191} \bmod 667 = 25.
 \]
 \end{example}
+
+%Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer.
+%TWJ - 12/19/2011
  
  
 Now let us examine why the RSA cryptosystem works.  We know that $DE
