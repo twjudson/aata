@@ -5,7 +5,7 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash = '<p><img alt="New" src="graphics/rednew.gif"> 2011 hardback <a href="purchase.html">ready to order</a> (2011/08/19)</p><p><img alt="New" src="graphics/rednew.gif"> <a href="sage-aata.html">Sage-enhanced version</a> debuts</p><p><img alt="New" src="graphics/rednew.gif"> New <a href="download.html">2011-12 academic year version</a> available (2011/08/10)</p>'
+    flash = '<p><img alt="New" src="graphics/rednew.gif">  <a href="http://mathdl.maa.org/mathDL/19/?pa=reviews&sa=viewBook&bookId=72767">MAA Book Review</a> published (2011/11/08)'
     // Comment/uncomment next line to turn off/on
     document.write(flash)
 }
@@ -15,6 +15,7 @@ function nav_links( thispage ){
     // key, href, text for visible link, boolean to open in new page
     pages = [
         ['index', 'index.html', 'Home', false],
+        ['reviews', 'reviews.html', 'Reviews', false],
         ['download', 'download.html', 'Download', false],
         ['purchase', 'purchase.html', 'Purchase', false],
         ['adoption', 'adoption.html', 'Course Adoption', false],
