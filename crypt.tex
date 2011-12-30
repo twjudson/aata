@@ -318,18 +318,40 @@ message by calculating
 %Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer.
 %TWJ - 12/19/2011
  
- 
 Now let us examine why the RSA cryptosystem works.  We know that $DE
 \equiv 1 \pmod{ m}$; hence, there exists a $k$ such that 
 \[
 DE = km + 1 = k \phi(n) + 1.
 \]
-By Theorem~\ref{cosets:Eulers_theorem},
+There are two cases to consider.  In the first case assume that $\gcd(x, n) = 1$.  Then by Theorem~\ref{cosets:Eulers_theorem},
 \[
-y^D = (x^E)^D = x^{DE} = x^{km+1} = (x^{\phi(n)})^k x = x \bmod n.
+y^D = (x^E)^D = x^{DE} = x^{km+1} = (x^{\phi(n)})^k x
+= (1)^k x= x \bmod n.
 \]
- 
- 
+So we see that Alice recovers the original message $x$ when
+she computes $y^D \bmod n$.
+
+For the other case, assume that $\gcd(x, n) \neq 1$.  Since
+$n=pq$ and $x<n$, we know $x$ is a multiple of $p$ or a multiple
+of $q$, but not both.  We will describe the first possibility only,
+since the second is entirely similar.  There is then an integer $r$,
+with $r<q$ and $x=rp$.  Note that we have $\gcd(x, q) = 1$
+and that $m=\phi(n)=(p-1)(q-1)=\phi(p)\phi(q)$.  Then, using
+Theorem~\ref{cosets:Eulers_theorem}, but now mod $q$,
+\[
+x^{km} = x^{k\phi(p)\phi(q)} = (x^{\phi(q)})^{k\phi(p)}
+= (1)^{k\phi(p)} = 1 \bmod q.
+\]
+So there is an integer $t$ such that $x^{km}=1 + tq$.
+Thus Alice also recovers the message in this case,
+\[
+y^D = x^{km+1} = x^{km} x = (1+tq) x
+= x + tq(rp) = x + trn = x \bmod n.
+\]
+
+%Demonstration expanded to two cases.  Suggested by Kevin Halasz.
+%RAB - 12/30/2011
+
 We can now ask how one would go about breaking the RSA cryptosystem.
 To find $D$ given $n$ and $E$, we simply need to factor $n$ and solve
 for $D$ by using the Euclidean algorithm. If we had known that $667 =
