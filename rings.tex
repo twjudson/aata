@@ -535,6 +535,20 @@ hence, ${\mathbb Z}_p$ is a field. If $a$ is any nonzero element in the
 field, then $pa =0$, since the order of any nonzero element in the
 abelian group ${\mathbb Z}_p$ is $p$. 
 \end{example}
+
+\begin{lemma}\label{rings:char_lemma}
+Let $R$ be a ring with identity.  If 1 has order $n$, then the characteristic of $R$ is $n$.
+\end{lemma}
+
+%Lemma suggested by R. Beezer to correct the proof in the following theorem.  TWJ - 2/15/2012
+
+\begin{proof}
+If 1 has order $n$, then $n$ is the least positive integer such that $n 1 = 0$.  Thus, for all $r \in R$,
+\[
+nr = n(1r) = (n 1) r = 0r = 0.
+\]
+On the other hand, if no positive $n$ exists such that $n1 = 0$, then the characteristic of $R$ is zero.
+\end{proof}
  
  
 \begin{theorem}\label{rings:characteristic_theorem}
@@ -545,7 +559,7 @@ The characteristic of an integral domain is either prime or~zero.
 \begin{proof}
 Let $D$ be an integral domain and suppose that the characteristic of
 $D$ is $n$ with $n \neq 0$. If $n$ is not prime, then $n = ab$, where
-$1 < a <n$ and $1 < b < n$. Since $0 = n 1 = (ab)1 = (a1)(b1)$ and
+$1 < a <n$ and $1 < b < n$. By Lemma~\ref{rings:char_lemma}, we need only consider the case $n 1 = 0$.  Since $0 = n 1 = (ab)1 = (a1)(b1)$ and
 there are no zero divisors in $D$, either $a1 =0$ or $b1=0$. Hence,
 the characteristic of $D$ must be less than $n$, which is a
 contradiction.  Therefore, $n$ must be prime. 
