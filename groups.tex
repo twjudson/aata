@@ -943,8 +943,16 @@ Let $H$ be a subset of a group $G$.  Then $H$ is a subgroup of $G$ if and only i
  
  
 \begin{proof}
-Let $H$ be a nonempty subset of $G$.  Then $H$ contains some element $g$.  So $gg^{-1} = e$ is in $H$.  If $g \in H$, then $eg^{-1} = g^{-1}$ is also in $H$. Finally, let $g, h \in H$. We must show that their product is also in $H$.  However, $g(h^{-1})^{-1} = gh \in H$.  Hence, $H$ is indeed a subgroup of $G$. Conversely, if $g$ and $h$ are in $H$, we want to show that $gh^{-1} \in H$.  Since $h$ is in $H$, its inverse $h^{-1}$ must also be in $H$.  Because of the closure of the group operation, $gh^{-1} \in H$. 
+First assume that $H$ is a subgroup of $G$.  We wish to show that $gh^{-1} \in H$ whenever $g$ and $h$ are in $H$.  Since $h$ is in $H$, its inverse $h^{-1}$ must also be in $H$.  Because of the closure of the group operation, $gh^{-1} \in H$. 
+
+Conversely, suppose that $H \subset G$ such that $H \neq \emptyset$ and  $g h^{-1} \in H$ whenever $g, h \in H$.  If $g \in H$, then $gg^{-1} = e$ is in $H$.  If $g \in H$, then $eg^{-1} = g^{-1}$ is also in $H$. Now let $h_1, h_2 \in H$. We must show that their product is also in $H$.  However, $h_1(h_2^{-1})^{-1} = h_1 h_2 \in H$.  Hence, $H$ is a subgroup of $G$. 
 \end{proof}
+
+%% TWJ, 2012/11/21
+%% Proof rewritten for clarity.  Suggested by R. Beezer.
+
+%Let $H$ be a nonempty subset of $G$.  Then $H$ contains some element $g$.  So $gg^{-1} = e$ is in $H$.  If $g \in H$, then $eg^{-1} = g^{-1}$ is also in $H$. Finally, let $g, h \in H$. We must show that their product is also in $H$.  However, $g(h^{-1})^{-1} = gh \in H$.  Hence, $H$ is indeed a subgroup of $G$. Conversely, if $g$ and $h$ are in $H$, we want to show that $gh^{-1} \in H$.  Since $h$ is in $H$, its inverse $h^{-1}$ must also be in $H$.  Because of the closure of the group operation, $gh^{-1} \in H$. 
+%\end{proof}
  
  
 \markright{EXERCISES}
@@ -1380,9 +1388,10 @@ If $xy = x^{-1} y^{-1}$ for all $x$ and $y$ in $G$, prove that $G$
 must be abelian. 
  
  
-\item
-If $(xy)^2 = xy$ for all $x$ and $y$ in $G$, prove that $G$ must be
-abelian.
+%\item
+%If $(xy)^2 = xy$ for all $x$ and $y$ in $G$, prove that $G$ must be
+%abelian.
+%TWJ - 2012/10/21 Exercise deleted since $G$ must also be the trivial group.
  
  
 \item
@@ -1402,11 +1411,12 @@ centralizer\/}\index{Centralizer} of $H$ in $G$.
 %TWJ 12/19/2011
 
 \item
-Let $H$ be a subgroup of $G$.  If $g \in G$, show that $gHg^{-1}$ is also a subgroup of $G$.
+Let $H$ be a subgroup of $G$.  If $g \in G$, show that $gHg^{-1} =  \{g^{-1}hg : h\in H\}$ is also a subgroup of $G$.
 
 %Exercise suggested by R. Beezer
 %TWJ - 12/19/2011
-
+%Updated
+%TWJ = 2012/10/21
  
 \end{enumerate}
 }
@@ -1426,10 +1436,13 @@ codes that they use.
 %% TWJ, 2010/03/31
 %% Fixed figure reference
 
+%% TWJ, 2012/10/21
+%% Deleted the word "now" in the description of UPC symbols.  Suggested by R. Beezer.
+
 \item
 {\bf UPC Symbols.}
 Universal Product
-Code\index{Universal Product Code} (UPC) symbols are now found on most
+Code\index{Universal Product Code} (UPC) symbols are found on most
 products in grocery and retail stores. The UPC symbol is a 12-digit
 code identifying the manufacturer of a product and the product itself
 (Figure~\ref{groups_figure_3}). The first 11 digits contain information about the
