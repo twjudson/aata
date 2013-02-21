@@ -37,7 +37,7 @@ The set of integers (or rationals  or reals) is a poset where $a \leq  b$ has th
 
 
 \begin{example}{power_set_subset}
-Let $X$ be any set.  We will define the {\bfi power set\/}\index{Power set} of $X$ to be the set of all subsets of $X$. We denote the power set of $X$ by ${\cal P}(X)$. For example, let $X = \{ a, b, c \}$.  Then ${\cal P}(X)$ is  the set of all subsets of the set  $\{ a, b, c \}$: 
+Let $X$ be any set.  We will define the {\bfi power set\/}\index{Power set} of $X$ to be the set of all subsets of $X$. We denote the power set of $X$ by ${\mathcal P}(X)$. For example, let $X = \{ a, b, c \}$.  Then ${\mathcal P}(X)$ is  the set of all subsets of the set  $\{ a, b, c \}$: 
 \[
 \begin{array}{cccc}
 \emptyset & \{ a \} & \{ b \} & \{ c \} \\
@@ -80,7 +80,7 @@ On any power set of a set $X$, set inclusion, $\subseteq$, is a partial order.  
 
 \end{tikzpicture}
 \end{center}
-\caption{Partial order on ${\cal P}( \{ a, b, c \})$}
+\caption{Partial order on ${\mathcal P}( \{ a, b, c \})$}
 \label{partial}
 \end{figure}
 
@@ -174,8 +174,8 @@ by $a \wedge b$.
  
 
 \begin{example}{lub_glb}
-Let $X$ be a set. Then the power set of $X$, ${\cal P}(X)$, is a
-lattice. For two sets $A$ and $B$ in ${\cal P}(X)$, the least upper
+Let $X$ be a set. Then the power set of $X$, ${\mathcal P}(X)$, is a
+lattice. For two sets $A$ and $B$ in ${\mathcal P}(X)$, the least upper
 bound of $A$ and $B$ is $A \cup B$. Certainly $A \cup B$ is an upper
 bound of $A$ and $B$, since $A \subseteq A \cup B$ and $B \subseteq A
 \cup B$.  If $C$ is some other set containing both $A$ and $B$, then
@@ -339,11 +339,11 @@ $b$ is left as an exercise.
 \section{Boolean Algebras}
  
  
-Let us investigate the example of the power set, ${\cal P}(X)$, of a
+Let us investigate the example of the power set, ${\mathcal P}(X)$, of a
 set $X$ more  closely. The power set is a lattice that is  ordered by
 inclusion. By the definition of the power set, the largest element in
-${\cal P}(X)$ is $X$ itself and the smallest element is $\emptyset$,
-the empty set. For any set $A$ in ${\cal P}(X)$, we know that $A \cap
+${\mathcal P}(X)$ is $X$ itself and the smallest element is $\emptyset$,
+the empty set. For any set $A$ in ${\mathcal P}(X)$, we know that $A \cap
 X = A$ and $A \cup \emptyset = A$. This suggests the following
 definition for lattices. An element $I$\label{notelargeposet} 
 in a poset $X$ is a {\bfi
@@ -354,7 +354,7 @@ element\/}\index{Poset!smallest element in} of $X$ if $O \preceq a$ for
 all $a \in X$.  
  
  
-Let $A$ be in ${\cal P}(X)$. Recall that the complement of $A$ is
+Let $A$ be in ${\mathcal P}(X)$. Recall that the complement of $A$ is
 \[
 A' = X \setminus A = \{ x : \mbox{ $x \in X$ and $x \notin A$}  \}.
 \]
@@ -372,11 +372,11 @@ distributive law
 \[ 
 a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c );
 \] 
-however, in ${\cal P}(X)$ the distributive law is satisfied since
+however, in ${\mathcal P}(X)$ the distributive law is satisfied since
 \[
 A \cap ( B \cup C ) = (A \cap B ) \cup ( A \cap C )
 \]
-for $A, B, C \in {\cal P}(X)$. We will say that a lattice $L$ is
+for $A, B, C \in {\mathcal P}(X)$. We will say that a lattice $L$ is
 {\bfi distributive\/}\index{Lattice!distributive} if the following
 distributive law holds:
 \[
@@ -416,7 +416,7 @@ The converse follows directly from the Duality Principle.
 A {\bfi Boolean algebra\/}\index{Boolean algebra!definition of} is a
 lattice $B$ with a greatest element $I$ and a smallest element $O$
 such that $B$ is both distributive and complemented. The power set of
-$X$, ${\cal P}(X)$, is our prototype for a Boolean algebra.  As it
+$X$, ${\mathcal P}(X)$, is our prototype for a Boolean algebra.  As it
 turns out, it is also one of the most important Boolean algebras. The
 following theorem allows us to characterize Boolean algebras in terms
 of the binary relations $\vee$ and $\wedge$ without mention of the
@@ -719,15 +719,15 @@ $a_i$. Hence, by Lemma~\ref{boolean:zero_vee_lemma}, $a = a_i$ for some $i$.
  
 \begin{theorem}\label{boolean:classification_boolean_algebra}
 Let $B$ be a finite Boolean algebra.  Then there exists a set $X$ such
-that $B$ is isomorphic to ${\cal P}(X)$. 
+that $B$ is isomorphic to ${\mathcal P}(X)$. 
 \end{theorem} 
  
  
 \begin{proof} 
-We will show that $B$ is isomorphic to ${\cal P}(X)$, where $X$ is the
+We will show that $B$ is isomorphic to ${\mathcal P}(X)$, where $X$ is the
 set of atoms of $B$. Let $a \in B$. By Lemma~\ref{boolean:atoms_lemma}, we can write $a$
 uniquely as $a = a_1 \vee \cdots \vee a_n$ for $a_1, \ldots, a_n \in
-X$. Consequently, we can define a  map $\phi : B \rightarrow {\cal
+X$. Consequently, we can define a  map $\phi : B \rightarrow {\mathcal
 P}(X)$ by  
 \[
 \phi(a) = \phi(  a_1 \vee \cdots \vee a_n ) = \{a_1, \ldots, a_n \}.
@@ -1161,7 +1161,7 @@ Prove or disprove that the two circuits shown are equivalent.
  
  
 \item
-Let $X$ be a finite set containing $n$ elements.  Prove that ${\cal
+Let $X$ be a finite set containing $n$ elements.  Prove that ${\mathcal
 P}(X) = 2^n$. Conclude that the order of any finite Boolean algebra
 must be $2^n$ for some $n \in {\mathbb N}$.
  
