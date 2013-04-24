@@ -127,9 +127,9 @@ Let $f(x)$ be a polynomial in $F[x]$ and suppose that $E$ is the splitting field
  
 \begin{proof}
 The proof is similar to the proof of Theorem~\ref{fields:isomorph_extension_theorem}.  We will use mathematical induction on the degree of $f(x)$.  If the degree of $f(x)$ is 0 or 1, then $E = F$ and there is nothing to show.  Assume
-that the result holds for all polynomials of degree $k$ with $0 \leq k < n$.  Let $p(x)$ be an irreducible factor of $f(x)$ of degree $r$.  Since all of the roots of $p(x)$ are in $E$, we can choose one of
+that the result holds for all polynomials of degree $k$ with $0 \leq k < n$.  Suppose that the degree of $f(x)$ is $n$.  Let $p(x)$ be an irreducible factor of $f(x)$ of degree $r$.  Since all of the roots of $p(x)$ are in $E$, we can choose one of
 these roots, say $\alpha$, so that $F \subset F( \alpha ) \subset E$.  If $\beta$ is any other root of $p(x)$, then $F \subset F( \beta ) \subset E$.  By Lemma~\ref{fields:isomorph_lemma}, there exists a unique isomorphism $\overline{\sigma}: F( \alpha ) \rightarrow F( \beta )$ for each such $\beta$ that fixes $F$ elementwise.  Since $E$ is a splitting field of $F(\beta)$, there are exactly $r$ such isomorphisms.  We can factor
-$p(x)$ in $F(\alpha)$ as $p(x) = (x - \alpha) p_1(x)$.  The degrees of $p_1(x)$ and $q_1(x)$ are both less than $r$.  Since we know that $E$ is the  splitting field of $p_1(x)$ over $F(\alpha)$, we can apply
+$p(x)$ in $F(\alpha)$ as $p(x) = (x - \alpha) q(x)$.  The degree of $q(x)$ is less than $r$.  Since we know that $E$ is the  splitting field of $q(x)$ over $F(\alpha)$, we can apply
 the induction  hypothesis to conclude that 
 \[
 |G(E/F(\alpha))| = [E:F(\alpha)].
@@ -140,6 +140,8 @@ Consequently, there are
 \]
 possible automorphisms of $E$ that fix $F$, or $|G(E/F)| = [E:F]$.
 \end{proof}
+
+%Proof fixed---I hope.  TWJ 24/4/2013
  
 \begin{corollary}
 Let $F$ be a finite field with a finite extension $E$ such that $[E:F]=k$. Then $G(E/F)$ is cyclic of order $k$.
