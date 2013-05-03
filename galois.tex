@@ -945,12 +945,14 @@ the next day, at the age of 20.
  
  
 \subsection*{Solvability by Radicals}
- 
+
+%Major clean up of the section
+%TWJ 3/5/2013
  
 Throughout this section we shall assume that all fields have
 characteristic zero to ensure that irreducible polynomials do not have
 multiple roots. The immediate goal of this section is to determine when
-the roots of a polynomial $f(x)$ can be computed in a finite number of
+the roots of a polynomial $f(x)$ can be computed with a finite number of
 operations on the coefficients of $f(x)$. The allowable operations are
 addition, subtraction, multiplication, division, and the extraction
 of $n$th roots. Certainly the solution to the quadratic equation,
@@ -963,17 +965,12 @@ the taking of $n$th roots.  We are led to the following definition.
  
  
 An extension field $E$ of a field $F$ is an 
-{\bfi extension by radicals\/}\index{Extension!radical} if there are
-elements $\alpha_1, \ldots, \alpha_r \in K$ and positive integers
-$n_1, \ldots, n_r$ such that  
+{\bfi extension by radicals\/}\index{Extension!radical} if there exists a chain of subfields
 \[
-E=F(\alpha_1, \ldots, \alpha_r ),
+F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E
 \]
-where $\alpha_1^{n_1} \in F$ and
-\[
-\alpha_i^{n_i} \in F( \alpha_1, \ldots, \alpha_{i-1} )
-\]
-for $i = 2, \dots, r$. A polynomial $f(x)$ is {\bfi solvable by
+such for $i = 1, 2, \ldots, r$, we have  $F_i = F_{i - 1}(\alpha_i)$ and $\alpha_i^{n_i} \in F_{i-1}$ for some positive integer $n_i$.
+A polynomial $f(x)$ is {\bfi solvable by
 radicals\/}\index{Solvability by radicals} over $F$ if the splitting
 field $K$ of $f(x)$ over $F$ is contained in an extension of $F$ by
 radicals. Our goal is to arrive at  
@@ -1007,7 +1004,7 @@ The splitting field of $x^n - 1$ over ${\mathbb Q}$ is ${\mathbb Q}(\omega)$.
  
 
  
- 
+We shall prove that a polynomial is solvable by radicals if its Galois group is solvable.
 Recall that a subnormal series of a group $G$ is a finite sequence
 of subgroups
 \[
@@ -1019,7 +1016,7 @@ series if all the factor groups are simple; that is, if none of the factor
 groups of the series contains a normal subgroup. A group $G$ is solvable 
 if it has a composition series $\{ H_i \}$ such that all of the factor 
 groups $H_{i+1} /H_i$ are abelian.  For example, if we examine the
-series $\{ id \} \subset A_3 \subset S_3$, we see that $A_3$ is
+series $\{ id \} \subset A_3 \subset S_3$, we see that $S_3$ is
 solvable.  On the other hand, $S_5$ is not solvable, by Theorem~\ref{normal:An_simple}.
  
  
@@ -1033,12 +1030,12 @@ solvable group.
  
  
 \begin{proof}
-First suppose that $F$ contains all of its $n$th roots of unity.
 The roots of $x^n - a$ are $\sqrt[n]{a}, \omega	\sqrt[n]{a}, \ldots,
 \omega^{n-1} \sqrt[n]{a}$, where $\omega$ is a primitive $n$th root of
-unity. If $\zeta$ is one of these roots, then distinct roots of $x^n
-- 1$ are $\zeta, \omega \zeta, \ldots, \omega^{n-1} \zeta$, and $E =
-F(\zeta)$. Since $G(E/F)$ permutes the roots $x^n - 1$, the elements in 
+unity.  Suppose that $F$ contains all of its $n$th roots of unity. 
+If $\zeta$ is one of these roots, then distinct roots of $x^n
+- a$ are $\zeta, \omega \zeta, \ldots, \omega^{n-1} \zeta$, and $E =
+F(\zeta)$. Since $G(E/F)$ permutes the roots $x^n - a$, the elements in 
 $G(E/F)$ must be determined by their action on these roots. Let $\sigma$ 
 and $\tau$ be in $G(E/F)$ and suppose that $\sigma( \zeta ) = \omega^i 
 \zeta$ and $\tau( \zeta ) = \omega^j \zeta$. If $F$ contains the
@@ -1049,20 +1046,20 @@ roots of unity, then
 \zeta ) = \tau \sigma( \zeta ). 
 \]
 Therefore, $\sigma \tau = \tau \sigma$ and $G(E/F)$ is abelian, and
-$G(E/F)$ is solvable. 
+$G(E/F)$ must be solvable. 
 
 %typo correction in proof.  Suggested by L.Handricks and K. Kelley.
 %TWJ - 5/3/2013
  
  
  
-Suppose that $F$ does not contain a primitive $n$th root of unity.
+Now suppose that $F$ does not contain a primitive $n$th root of unity.
 Let $\omega$ be a generator of the cyclic group of the $n$th roots
 of unity.  Let $\alpha$ be a zero of $x^n - a$. Since $\alpha$ and
 $\omega \alpha$ are both in the splitting field of $x^n - a$, $\omega
 = (\omega \alpha)/ \alpha$ is also in $E$. Let $K = F( \omega)$. Then
 $F \subset K \subset E$. Since $K$ is the splitting field of $x^n -
-1$, $K$ is a normal extension of $F$. Any automorphism $\sigma$ in
+1$, $K$ is a normal extension of $F$.  Therefore, any automorphism $\sigma$ in
 $G(F( \omega)/ F)$ is determined by $\sigma( \omega)$.  It must be
 the case that $\sigma( \omega ) = \omega^i$ for some integer $i$ since
 all of the zeros of $x^n-1$ are powers of $\omega$. If $\tau( \omega
@@ -1077,11 +1074,11 @@ Theorem of Galois Theory the series
 \[
 \{ id \} \subset G(E/ F(\omega)) \subset G(E/F)
 \]
-is a normal series. Since $G(E/F(\omega))$ and 
+is a normal series. By our previous argument, $G(E/F(\omega))$ is abelian.  Since
 \[
 G(E/F) /G(E/F( \omega)) \cong G(F(\omega)/F)
 \]
-are both abelian, $G(E/F)$ is solvable.
+is also abelian, $G(E/F)$ is solvable.
 \end{proof}
 
  
@@ -1089,32 +1086,34 @@ are both abelian, $G(E/F)$ is solvable.
  
 \begin{lemma}\label{galois:radical_extension_lemma}
 Let $F$ be a field of characteristic zero and let $E$ be a radical
-extension of $F$. Then there exists a normal radical extension $K$ of
-$F$ that contains $E$.
+extension of $F$. Then there exists a normal radical extension 
+\[
+F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
+\]
+such that $K$ that contains $E$ and $K_i$ is a normal extension of $K_{i-1}$.
 \end{lemma}
  
  
 \begin{proof}
-Since $E$ is a radical extension of $F$, there exist elements
-$\alpha_1, \ldots, \alpha_r \in K$ and positive integers  
-$n_1, \ldots, n_r$ such that 
+Since $E$ is a radical extension of $F$,  there exists a chain of subfields
 \[
-E=F(\alpha_1, \ldots, \alpha_r ),
+F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E
 \]
-where $\alpha_1^{n_1} \in F$ and
+such for $i = 1, 2, \ldots, r$, we have  $F_i = F_{i - 1}(\alpha_i)$ and $\alpha_i^{n_i} \in F_{i-1}$ for some positive integer $n_i$.  We will build a normal radical extension of $F$,
 \[
-\alpha_i^{n_i} \in F( \alpha_1, \ldots, \alpha_{i-1} )
+F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
 \]
-for $i = 2, \dots, r$. Let $f(x) = f_1(x) \cdots f_r(x)$, where $f_i$
-is the minimal polynomial of $\alpha_i$ over $F$, and let $K$ be the
-splitting field of $K$ over $F$.  Every root  of $f(x)$ in $K$ is of
-the form $\sigma( \alpha_i)$, where $\sigma \in G(K/F)$. Therefore,
-for any $\sigma \in G(K/F)$, we have $[\sigma(\alpha_1)]^{n_1} \in F$
-and $[\sigma(\alpha_i)]^{n_i} \in F( \alpha_1, \ldots, \alpha_{i-1} )$
-for $i = 2, \dots, r$.  Hence, if $G(K/F) = \{\sigma_1 = id, \sigma_2,
-\ldots, \sigma_k \}$, then $K = F( \sigma_1( \alpha_j) )$ is a radical
-extension of $F$. 
+such that $K \supseteq E$.  Define $K_1$ for be the splitting field of $x^{n_1} - \alpha_1^{n_1}$.  The roots of this polynomial are $\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}$, where $\omega$ is an $n_1$th primitive root of unity.  Thus, $K_1 = F_0( \alpha_1 \omega)$ and $K_1 \supseteq F_1$.  Now let $K_2$ be the splitting field for  $x^{n_2} - \alpha_2^{n_2}$.  The roots of this polynomial are $\alpha_2, \alpha_2 \omega, \alpha_2 \omega^2, \ldots, \alpha_2 \omega^{n_2 - 1}$, where $\omega$ is an $n_2$th primitive root of unity.  Hence, $K_2 = K_1(\alpha_2 \omega)$ contains $F_2$ and is a normal radical extension of $F$.  Continuing in this manner, we obtain
+\[
+F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
+\]
+such that $K$ contains $E$ and is a normal radical extension of
+$F$.
 \end{proof}
+
+
+%Major rewrite of the proof.
+%TWJ - 3/5/2013
 
 
 \medskip
@@ -1124,17 +1123,16 @@ We will now prove the main theorem about solvability by radicals.
  
  
 \begin{theorem}\label{galois:solvable_by_radicals_theorem}
-Let $f(x)$ be in $F[x]$, where ${\rm char} F = 0$. If $f(x)$ is
+Let $f(x)$ be in $F[x]$, where $\chr F = 0$. If $f(x)$ is
 solvable by radicals, then the Galois group of $f(x)$ over $F$ is 
 solvable.
 \end{theorem}
  
  
 \begin{proof}
-Let $K$ be a splitting field of $f(x)$ over $F$. Since $f(x)$ is
-solvable, there exists an extension $E$ of radicals $F = F_0 \subset
-F_1 \subset \cdots F_n = E$. Since $F_i$ is normal over $F_{i-1}$, we
-know by Lemma~\ref{galois:radical_extension_lemma} that $E$ is a normal extension of each $F_i$. By
+Since $f(x)$ is
+solvable by radicals there exists an extension $E$ of $F$ by radicals $F = F_0 \subseteq
+F_1 \subseteq \cdots \subseteq F_n = E$. By  Lemma~\ref{galois:radical_extension_lemma}, we can assume that $E$ is a splitting field $f(x)$ and   $F_i$ is normal over $F_{i-1}$.  By
 the Fundamental Theorem of Galois Theory, $G(E/F_i)$ is a normal
 subgroup of $G(E/F_{i-1})$.  Therefore, we have a subnormal series of
 subgroups of $G(E/F)$:  
