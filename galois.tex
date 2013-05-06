@@ -1033,7 +1033,7 @@ solvable group.
 The roots of $x^n - a$ are $\sqrt[n]{a}, \omega	\sqrt[n]{a}, \ldots,
 \omega^{n-1} \sqrt[n]{a}$, where $\omega$ is a primitive $n$th root of
 unity.  Suppose that $F$ contains all of its $n$th roots of unity. 
-If $\zeta$ is one of these roots, then distinct roots of $x^n
+If $\zeta$ is one of the roots of  $x^n - a$, then distinct roots of $x^n
 - a$ are $\zeta, \omega \zeta, \ldots, \omega^{n-1} \zeta$, and $E =
 F(\zeta)$. Since $G(E/F)$ permutes the roots $x^n - a$, the elements in 
 $G(E/F)$ must be determined by their action on these roots. Let $\sigma$ 
@@ -1085,8 +1085,11 @@ is also abelian, $G(E/F)$ is solvable.
  
  
 \begin{lemma}\label{galois:radical_extension_lemma}
-Let $F$ be a field of characteristic zero and let $E$ be a radical
-extension of $F$. Then there exists a normal radical extension 
+Let $F$ be a field of characteristic zero and let
+\[
+F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E
+\]
+a radical extension of $F$. Then there exists a normal radical extension 
 \[
 F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
 \]
@@ -1103,17 +1106,22 @@ such for $i = 1, 2, \ldots, r$, we have  $F_i = F_{i - 1}(\alpha_i)$ and $\alpha
 \[
 F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
 \]
-such that $K \supseteq E$.  Define $K_1$ for be the splitting field of $x^{n_1} - \alpha_1^{n_1}$.  The roots of this polynomial are $\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}$, where $\omega$ is an $n_1$th primitive root of unity.  Thus, $K_1 = F_0( \alpha_1 \omega)$ and $K_1 \supseteq F_1$.  Now let $K_2$ be the splitting field for  $x^{n_2} - \alpha_2^{n_2}$.  The roots of this polynomial are $\alpha_2, \alpha_2 \omega, \alpha_2 \omega^2, \ldots, \alpha_2 \omega^{n_2 - 1}$, where $\omega$ is an $n_2$th primitive root of unity.  Hence, $K_2 = K_1(\alpha_2 \omega)$ contains $F_2$ and is a normal radical extension of $F$.  Continuing in this manner, we obtain
+such that $K \supseteq E$.  Define $K_1$ for be the splitting field of $x^{n_1} - \alpha_1^{n_1}$.  The roots of this polynomial are $\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}$, where $\omega$ is a primitive  $n_1$th root of unity.  If $F$ contains all of its $n_1$ roots of unity, then  $K_1 = F(\alpha_!)$.   On the other hand, suppose that $F$ does not contain a primitive $n_1$th root of unity.  If $\beta$ is a root of  $x^{n_1} - \alpha_1^{n_1}$, then all of the roots of  $x^{n_1} - \alpha_1^{n_1}$ must be $\beta, \omega \beta, \ldots, \omega^{n_1-1}$, where  $\omega$ is a primitive  $n_1$th root of unity. In this case, $K_1 = F(\omega \beta)$.  Thus, $K_1$ is a normal radical extension of $F$ containing $F_1$.  
+Continuing in this manner, we obtain
 \[
 F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K
 \]
-such that $K$ contains $E$ and is a normal radical extension of
-$F$.
+such that $K_i$ is a normal extension of $K_{i-1}$ and $K_i \supseteq F_i$ for $i = 1, 2, \ldots, r$.
+\hspace*{0.5in}
 \end{proof}
 
 
 %Major rewrite of the proof.
 %TWJ - 3/5/2013
+
+%Proof should be correct now.
+%TWJ - 6/5/2013
+
 
 
 \medskip
