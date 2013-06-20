@@ -33,29 +33,29 @@ transmitting and receiving coded messages (Figure~\ref{encoding}).
 \tikzpreface{algcode_encode_decode}
 \begin{tikzpicture}[scale=1]
 
-\draw [->] (0,8)  node [above] {\em $m$-digit message} -- (0,7.5);
+\draw [->] (0,8)  node [above] {\emph{$m$-digit message}} -- (0,7.5);
 
 \node at (0,7) {Encoder};
 \draw (-1.5,6.5) rectangle (1.5,7.5);
 \draw (0,6.5)  -- (0,6.25);
 \draw [->] (0,5.75)  -- (0,5.5);
-\node at (0,6) {\em $n$-digit code word};
+\node at (0,6) {\emph{$n$-digit code word}};
 
 \node at (0,5) {Transmitter};
 \draw (-1.5,4.5) rectangle (1.5,5.5);
 \draw (0,4.5)  -- (0,4.25);
 \draw [->] (0,3.75)  -- (0,3.5);
-\node at (0,4) {\em Noise};
+\node at (0,4) {\emph{Noise}};
 
 \node at (0,3) {Receiver};
 \draw (-1.5,2.5) rectangle (1.5,3.5);
 \draw (0,2.5)  -- (0,2.25);
 \draw [->] (0,1.75)  -- (0,1.5);
-\node at (0,2) {\em $n$-digit received word};
+\node at (0,2) {\emph{$n$-digit received word}};
 
 \node at (0,1) {Decoder};
 \draw (-1.5,0.5) rectangle (1.5,1.5);
-\draw [->] (0,0.5)  -- (0,0) node [below] {\em $m$-digit received message or error};
+\draw [->] (0,0.5)  -- (0,0) node [below] {\emph{$m$-digit received message or error}};
 
 \end{tikzpicture}
 
@@ -67,10 +67,10 @@ transmitting and receiving coded messages (Figure~\ref{encoding}).
 Uncoded messages may be composed of letters or characters, but
 typically they consist of binary $m$-tuples. These messages are
 encoded into codewords, consisting of binary $n$-tuples, by a device
-called an {\bfi encoder}. The message is transmitted and then decoded.
+called an \boldemph{encoder}. The message is transmitted and then decoded.
 We will consider the occurrence of errors during transmission. An
-{\bfi error\/} occurs if there is a change in one or more bits in the
-codeword. A {\bfi decoding scheme\/} is a method that either converts
+\boldemph{error} occurs if there is a change in one or more bits in the
+codeword. A \boldemph{decoding scheme} is a method that either converts
 an arbitrarily received $n$-tuple into a meaningful decoded message or
 gives an error message for that $n$-tuple. If the received message is
 a codeword (one of the special $n$-tuples allowed to be transmitted),
@@ -111,7 +111,7 @@ $m$ bits with $m$ much smaller than $3n$.
  
  
 \begin{example}{even_parity}
-{\bfi Even parity}, a  commonly  used coding scheme, is much
+\boldemph{Even parity}, a  commonly  used coding scheme, is much
 more efficient than the simple repetition scheme. The ASCII (American
 Standard Code for Information Interchange) coding system uses binary
 8-tuples, yielding $2^{8} = 256$ possible 8-tuples. However, only seven
@@ -145,12 +145,12 @@ bit is caused by noise over the communication channel so that
 (0100\; 0101) is received. We know an error has occurred since the
 received word has an odd number of 1's, and we can now request that the
 codeword be transmitted again. When used for error checking, the
-leftmost bit is called a {\bfi parity check bit}.  
+leftmost bit is called a \boldemph{parity check bit}.  
  
  
 By far the most common error-detecting
 codes used in computers are based on the addition of a parity bit.
-Typically, a computer stores information in $m$-tuples called {\bfi
+Typically, a computer stores information in $m$-tuples called \boldemph{
 words}. Common word lengths are 8, 16, and 32 bits. One bit in the 
 word is set aside as the parity check bit, and is not used to store
 information. This bit is set to either 0 or 1, depending on the
@@ -161,7 +161,7 @@ Adding a parity check bit allows the detection of all single errors
 because changing a single bit either increases or decreases the number
 of 1's by one, and in either case the parity has been changed from
 even to odd, so the new word is not a codeword. (We could also
-construct an error detection scheme based on {\bfi odd parity}; that
+construct an error detection scheme based on \boldemph{odd parity}; that
 is, we could set the parity check bit so that a codeword always has an
 odd number of 1's.)  
 \end{example}
@@ -246,7 +246,7 @@ bit, then the probability of errors occurring in both of these bits at
 the same time is $pq$. We will also assume that a received $n$-tuple 
 is
 decoded into a codeword that is closest to it; that is, we assume that
-the receiver uses {\bfi maximum-likelihood
+the receiver uses \boldemph{maximum-likelihood
 decoding}\index{Maximum-likelihood decoding}.
  
  
@@ -276,7 +276,7 @@ decoding}\index{Maximum-likelihood decoding}.
  
  
  
-A {\bfi binary symmetric channel\/}\index{Binary symmetric channel}
+A \boldemph{binary symmetric channel}\index{Binary symmetric channel}
 is a model that consists of a transmitter capable of sending a binary 
 signal, either a 0 or a 1, together with a receiver. Let $p$ be the 
 probability that the signal is correctly
@@ -358,18 +358,18 @@ The probability of more than two errors is approximately
 If we are to develop efficient error-detecting and error-correcting
 codes, we will need more sophisticated mathematical tools.  Group
 theory  will allow faster methods of encoding and decoding messages. A
-code is an $(n, m)$-{\bfi block code\/} if the information that is to be
+code is an $(n, m)$-\boldemph{block code} if the information that is to be
 coded can be divided into blocks of $m$ binary digits, each of which
 can be encoded into $n$ binary digits. More specifically, an $(n,
-m)$-block code consists of an {\bfi encoding function} 
+m)$-block code consists of an \boldemph{encoding function} 
 \[
 E:{\mathbb Z}^{m}_{2} \rightarrow {\mathbb Z}^{n}_{2}
 \]
-and a {\bfi decoding function}
+and a \boldemph{decoding function}
 \[
 D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}.
 \]
-A {\bfi codeword\/} is any element in the image of $E$. We also require
+A \boldemph{codeword} is any element in the image of $E$. We also require
 that $E$ be one-to-one so that two information blocks will not be
 encoded into the same codeword. If our code is to be error-correcting,
 then $D$ must be onto.
@@ -387,16 +387,16 @@ where $x_8 = x_7 + x_6 + \cdots + x_1$ with addition in ${\mathbb Z}_2$.
 
  
 Let ${\mathbf x} = (x_1, \ldots, x_n)$ and ${\mathbf y} = (y_1, \ldots,
-y_n)$ be binary $n$-tuples. The {\bfi Hamming distance\/}\index{Hamming
-distance} or {\bfi distance}, $d({\mathbf x}, {\mathbf
+y_n)$ be binary $n$-tuples. The \boldemph{Hamming distance}\index{Hamming
+distance} or \boldemph{distance}, $d({\mathbf x}, {\mathbf
 y})$\label{noteHammingdist}, between ${\mathbf x}$ and ${\mathbf y}$ is
 the number of bits in which ${\mathbf x}$ and ${\mathbf y}$ differ. The
 distance between two codewords is the minimum number of transmission
 errors required to change one codeword into the other. The
-{\bfi minimum distance\/}\index{Code!minimum distance of} for a code,
+\boldemph{minimum distance}\index{Code!minimum distance of} for a code,
 $d_{\min}$\label{notemindist}, is the minimum of all distances
 $d({\mathbf x}, {\mathbf y})$, where ${\mathbf x}$ and ${\mathbf y}$ are
-distinct codewords. The {\bfi weight}\index{Weight of a codeword},
+distinct codewords. The \boldemph{weight}\index{Weight of a codeword},
 $w({\mathbf x})$\label{noteweight}, of a binary codeword ${\mathbf x}$ is
 the number of 1's in ${\mathbf x}$. Clearly, $w({\mathbf x}) = d({\mathbf
 x}, {\mathbf 0})$, where ${\mathbf 0} = (00 \cdots 0)$. 
@@ -594,7 +594,7 @@ Hamming\index{Hamming, R.} began working with linear codes at Bell
 Labs in the late 1940s and early 1950s after becoming frustrated
 because the programs that he was running could not recover from simple
 errors generated by noise. Coding theory has grown tremendously in the
-past several years. {\it The Theory of Error-Correcting Codes}, by 
+past several years. \textit{The Theory of Error-Correcting Codes}, by 
 MacWilliams and Sloane [5], published in 1977, already
 contained over 1500 references. Linear codes (Reed-Muller $(32,
 6)$-block codes) were used on NASA's Mariner space probes.  More recent
@@ -611,8 +611,8 @@ codes, which are heavily dependent on algebraic geometry.
 To gain more knowledge of a particular code and develop more efficient
 techniques of encoding, decoding, and error detection, we need to add
 additional structure to our codes. One way to accomplish this is to
-require that the code also be a group. A {\bfi group
-code\/}\index{Code!group} is a code that is also a subgroup of ${\mathbb
+require that the code also be a group. A \boldemph{group
+code}\index{Code!group} is a code that is also a subgroup of ${\mathbb
 Z}_2^n$.  
  
  
@@ -709,7 +709,7 @@ codes to that of generating group codes. One easy way to generate
 group codes is to employ a bit of matrix theory. 
  
  
-Define the {\bfi inner product\/}\index{Inner product} of two binary
+Define the \boldemph{inner product}\index{Inner product} of two binary
 $n$-tuples to be 
 \[
 {\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,
@@ -768,8 +768,8 @@ matrices and coding theory.
 Let ${\mathbb M}_{m \times n}({\mathbb Z}_2)$\label{notembyn} denote the set
 of all $m \times n$ matrices with entries in ${\mathbb Z}_2$. We do
 matrix operations as usual except that all our addition and multiplication
-operations occur in ${\mathbb Z}_2$. Define the {\bfi null
-space\/}\index{Matrix!null space of}\index{Null space!of a matrix} of 
+operations occur in ${\mathbb Z}_2$. Define the \boldemph{null
+space}\index{Matrix!null space of}\index{Null space!of a matrix} of 
 a matrix $H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)$ to be the set of
 all binary $n$-tuples ${\mathbf x}$ such that $H{\mathbf x} = {\mathbf 0}$.
 We denote the null space of a matrix $H$ by ${\rm Null}(H)$\label{notenull}.  
@@ -832,7 +832,7 @@ therefore must be a codeword.
 \medskip
  
  
-A code is a {\bfi linear code\/}\index{Code!linear} if it is
+A code is a \boldemph{linear code}\index{Code!linear} if it is
 determined by the null space of some matrix $H \in {\mathbb M}_{m \times
 n}({\mathbb Z}_2)$.  
  
@@ -880,7 +880,7 @@ matrices.
 Suppose that $H$ is an $m \times n$ matrix with entries in
 ${\mathbb Z}_2$ and $n > m$. If the last $m$ columns of the
 matrix form the $m \times m$ identity matrix, $I_m$, then
-the matrix is a {\bfi canonical parity-check
+the matrix is a \boldemph{canonical parity-check
 matrix}\index{Matrix!parity-check}. More specifically, $H= (A \mid I_m
 )$, where $A$ is the $m \times (n-m)$ matrix
 \[
@@ -901,7 +901,7 @@ and $I_m$ is the $m \times m$ identity matrix
 \end{pmatrix}.
 \]
 With each canonical parity-check matrix we can associate an $n \times
-(n-m)$ {\bfi standard generator matrix}\index{Matrix!generator} 
+(n-m)$ \boldemph{standard generator matrix}\index{Matrix!generator} 
 \[
 G =
 \left(
@@ -1028,8 +1028,8 @@ first $n-m$ bits. Hence, $H$ gives rise to an $(n, n-m)$-block code.
  
  
 We leave the proof of this theorem as an exercise. In light of the
-theorem, the first $n - m$ bits in ${\mathbf x}$ are called {\bfi
-information bits\/} and the last $m$ bits are called {\bfi check bits}.
+theorem, the first $n - m$ bits in ${\mathbf x}$ are called \boldemph{
+information bits} and the last $m$ bits are called \boldemph{check bits}.
 In Example~\ref{example:algcodes:ParityCheck},  the first three bits are the information bits
 and the last three are the check bits.
  
@@ -1387,7 +1387,7 @@ where the error occurred. If we flip the first bit in ${\mathbf y}$ from
  
  
 If $H$ is an $m \times n$ matrix and ${\mathbf x} \in {\mathbb Z}_2^n$,
-then we say that the {\bfi syndrome\/}\index{Syndrome of a code} of
+then we say that the \boldemph{syndrome}\index{Syndrome of a code} of
 ${\mathbf x}$ is $H{\mathbf x}$. The following proposition allows
 the quick detection and correction of errors.
  
@@ -1468,9 +1468,9 @@ errors must have occurred to produce~${\mathbf y}$.
  
  
 We can use group theory to obtain another way of decoding messages.  A
-linear code $C$ is a subgroup of ${\mathbb Z}_2^n$. {\bfi
-Coset\/}\index{Coset decoding} or {\bfi standard
-decoding\/}\index{Standard decoding} uses the cosets of $C$ in ${\mathbb
+linear code $C$ is a subgroup of ${\mathbb Z}_2^n$. \boldemph{
+Coset}\index{Coset decoding} or \boldemph{standard
+decoding}\index{Standard decoding} uses the cosets of $C$ in ${\mathbb
 Z}_2^n$ to implement maximum-likelihood decoding. Suppose that $C$ is
 an $(n,m)$-linear code. A coset of $C$ in ${\mathbb Z}_2^n$ is written in
 the form ${\mathbf x} + C$, where ${\mathbf x} \in {\mathbb Z}_2^n$. By
@@ -1534,7 +1534,7 @@ exactly the statement that ${\mathbf r}$ is an element in the coset
 ${\mathbf e} + C$. In maximum-likelihood decoding we expect the error
 ${\mathbf e}$ to be as small as possible; that is, ${\mathbf e}$ will have
 the least weight. An $n$-tuple of least weight in a coset is called a
-{\bfi coset leader}\index{Coset!leader}. Once we have determined a
+\boldemph{coset leader}\index{Coset!leader}. Once we have determined a
 coset leader for each coset, the decoding process becomes a task
 of calculating ${\mathbf r} + {\mathbf e}$ to obtain ${\mathbf x}$.
  
@@ -1553,7 +1553,7 @@ to examine every coset for the received codeword. The following
 proposition gives a method of implementing coset decoding. It states
 that we can associate a syndrome with each coset; hence, we can make a
 table that designates a coset leader corresponding to each syndrome. Such
-a list is called a {\bfi decoding table}\index{Decoding table}.
+a list is called a \boldemph{decoding table}\index{Decoding table}.
  
  
  \begin{table}[htb]
@@ -1973,7 +1973,7 @@ $d({\mathbf x}, {\mathbf y}) = w({\mathbf x}- {\mathbf y})$
  
  
 \item
-A {\bfi metric\/}\index{Metric} on a set $X$ is a map $d: X \times X
+A \boldemph{metric}\index{Metric} on a set $X$ is a map $d: X \times X
 \rightarrow {\mathbb R}$ satisfying the following conditions. 
 \begin{enumerate}
  
@@ -2045,8 +2045,8 @@ column of the matrix $H$.
  
  
 \item
-Let $C$ be an $(n,k)$-linear code. Define the {\bfi
-dual\/}\index{Code!dual} or {\bfi orthogonal code\/} of $C$  to be 
+Let $C$ be an $(n,k)$-linear code. Define the \boldemph{
+dual}\index{Code!dual} or \boldemph{orthogonal code} of $C$  to be 
 \[
 C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} =
 0 \mbox{ for all } {\mathbf y} \in C \}. 
@@ -2077,7 +2077,7 @@ $C^\perp$. What happens in general? Prove your conjecture.
 \item
 Let $H$ be an $m \times n$ matrix over ${\mathbb Z}_2$, where the $i$th
 column is the number $i$ written in binary with $m$ bits. The null
-space of such a matrix is called a {\bfi Hamming
+space of such a matrix is called a \boldemph{Hamming
 code}\index{Code!Hamming!definition of}. 
 \begin{enumerate}
  
@@ -2115,10 +2115,10 @@ What is the number of check bits and the number of information bits in an
 $(m,n)$-block Hamming code? Give both an upper and a lower bound on the
 number of information bits in terms of the number of check bits.
 Hamming codes having the maximum possible number of information bits
-with $k$ check bits are called {\bfi
+with $k$ check bits are called \boldemph{
 perfect}\index{Code!Hamming!perfect}. Every possible syndrome except
 ${\mathbf 0}$ occurs as a column. If the number of information bits is
-less than the maximum, then the code is called {\bfi
+less than the maximum, then the code is called \boldemph{
 shortened}\index{Code!Hamming!shortened}. In this case, give an example
 showing that some syndromes can represent multiple errors.  
  
@@ -2146,47 +2146,47 @@ your simulation with the theoretically predicted error probability.
 {\small
 \begin{itemize}
  
-\item[{\bf [1]}]
-Blake, I. F. ``Codes and Designs,'' {\it Mathematics Magazine} {\bf
+\item[\textbf{[1]}]
+Blake, I. F. ``Codes and Designs,'' \textit{Mathematics Magazine} \textbf{
 52} (1979), 81--95. 
  
-\item[{\bf [2]}] %Reference updated - TWJ 6/1/2010
-Hill, R. {\it A First Course in Coding Theory}. Oxford University
+\item[\textbf{[2]}] %Reference updated - TWJ 6/1/2010
+Hill, R. \textit{A First Course in Coding Theory}. Oxford University
 Press, Oxford, 1990. 
  
-\item[{\bf [3]}]
+\item[\textbf{[3]}]
 Levinson, N. ``Coding Theory: A Counterexample to G. H. Hardy's
-Conception of Applied Mathematics,'' {\it American Mathematical
-Monthly} {\bf 77} (1970), 249--58. 
+Conception of Applied Mathematics,'' \textit{American Mathematical
+Monthly} \textbf{77} (1970), 249--58. 
  
-\item[{ \bf [4]}]  %Reference updated - TWJ 6/1/2010
+\item[\textbf{[4]}]  %Reference updated - TWJ 6/1/2010
 Lidl, R. and Pilz, G. 
-{\it Applied Abstract Algebra}. 2nd ed. Springer,
+\textit{Applied Abstract Algebra}. 2nd ed. Springer,
 New York, 1998. 
  
-\item[{\bf [5]}] %Reference updated - TWJ 6/1/2010
+\item[\textbf{[5]}] %Reference updated - TWJ 6/1/2010
 MacWilliams, F. J. and Sloane, N. J. A. 
-{\it The Theory of Error-Correcting Codes}. 
+\textit{The Theory of Error-Correcting Codes}. 
 North-Holland Mathematical Library, 16,
 Elsevier, Amsterdam, 1983. 
  
  
-\item[{\bf [6]}]
-Roman, S. {\it Coding and Information Theory}. Springer-Verlag,
+\item[\textbf{[6]}]
+Roman, S. \textit{Coding and Information Theory}. Springer-Verlag,
 New York, 1992. 
  
  
-\item[{\bf [7]}]
-Shannon, C. E. ``A Mathematical Theory of Communication,'' {\it Bell
-System Technical Journal} {\bf 27} (1948), 379--423, 623--56.
+\item[\textbf{[7]}]
+Shannon, C. E. ``A Mathematical Theory of Communication,'' \textit{Bell
+System Technical Journal} \textbf{27} (1948), 379--423, 623--56.
  
-\item[{\bf [8]}]
-Thompson, T. M. {\it From Error-Correcting Codes through Sphere
+\item[\textbf{[8]}]
+Thompson, T. M. \textit{From Error-Correcting Codes through Sphere
 Packing to Simple Groups}. Carus Monograph Series, No. 21. Mathematical
 Association of America, Washington, DC, 1983. 
  
-\item[{\bf [9]}] %Reference updated - TWJ 6/1/2010
-van Lint, J. H. {\it Introduction to Coding Theory}. Springer,
+\item[\textbf{[9]}] %Reference updated - TWJ 6/1/2010
+van Lint, J. H. \textit{Introduction to Coding Theory}. Springer,
 New York, 1999. 
  
 \end{itemize}

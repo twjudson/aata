@@ -16,7 +16,7 @@ investigate them.
  
 \section{Structure of a Finite Field}
 
-Recall that a field $F$ has {\bfi characteristic} $p$ if $p$ is the smallest positive integer such that for every nonzero element $\alpha$ in $F$, we have $p \alpha = 0$.  If no such integer exists, then $F$ has characteristic 0.  From Theorem~\ref{rings:characteristic_theorem} we know that $p$ must be prime.  Suppose that $F$ is a finite field with $n$ elements. Then $n \alpha = 0$ for all $\alpha$ in $F$.  Consequently, the characteristic of $F$ must be $p$, where $p$ is a prime dividing $n$.  This discussion is summarized in the following proposition.   
+Recall that a field $F$ has \boldemph{characteristic} $p$ if $p$ is the smallest positive integer such that for every nonzero element $\alpha$ in $F$, we have $p \alpha = 0$.  If no such integer exists, then $F$ has characteristic 0.  From Theorem~\ref{rings:characteristic_theorem} we know that $p$ must be prime.  Suppose that $F$ is a finite field with $n$ elements. Then $n \alpha = 0$ for all $\alpha$ in $F$.  Consequently, the characteristic of $F$ must be $p$, where $p$ is a prime dividing $n$.  This discussion is summarized in the following proposition.   
 
 \begin{proposition}
 If $F$ is a finite field, then the characteristic of $F$ is $p$, where $p$ is prime.
@@ -79,7 +79,7 @@ Therefore, the lemma is true for $n + 1$ and the proof is complete.
 
 \medskip
 
-Let $F$ be a field.  A polynomial $f(x) \in F[x]$ of degree $n$ is {\bfi separable\/}\index{Polynomial separable} if it has $n$ distinct roots in the splitting field of $f(x)$; that is, $f(x)$ is separable when it factors into distinct linear factors over the splitting field of $f$.  An extension $E$ of $F$ is a {\bfi separable extension\/}\index{Extension!separable} of $F$ if every element in $E$ is the root of a separable polynomial in $F[x]$.   
+Let $F$ be a field.  A polynomial $f(x) \in F[x]$ of degree $n$ is \boldemph{separable}\index{Polynomial separable} if it has $n$ distinct roots in the splitting field of $f(x)$; that is, $f(x)$ is separable when it factors into distinct linear factors over the splitting field of $f$.  An extension $E$ of $F$ is a \boldemph{separable extension}\index{Extension!separable} of $F$ if every element in $E$ is the root of a separable polynomial in $F[x]$.   
 
 %Corrected typo.  Suggested by C. Wall. - TWJ 5/15/2012
 
@@ -95,7 +95,7 @@ Fortunately, we have an easy test to  determine the separability of any polynomi
 \[
 f(x) = a_0 + a_1 x + \cdots + a_n x^n
 \]
-be any polynomial in  $F[x]$. Define the {\bfi derivative\/}\index{Derivative} of $f(x)$ to be 
+be any polynomial in  $F[x]$. Define the \boldemph{derivative}\index{Derivative} of $f(x)$ to be 
 \[
 f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n-1}.
 \]
@@ -138,7 +138,7 @@ Let $E$ be any other field of order $p^n$.  To show that $E$ is isomorphic to $F
  
 \medskip
 
-The unique finite field with $p^n$ elements is called the {\bfi Galois field\/}\index{Galois field}\index{Field!Galois} of order $p^n$. We will denote this field by $\gf(p^n)$\label{galoisfield}. 
+The unique finite field with $p^n$ elements is called the \boldemph{Galois field\/}\index{Galois field}\index{Field!Galois} of order $p^n$. We will denote this field by $\gf(p^n)$\label{galoisfield}. 
 
 \begin{theorem}\label{finite:subfields_theorem}
 Every subfield of the Galois field $\gf(p^n)$ has $p^m$ elements, where $m$ divides $n$.  Conversely, if $m \mid n$ for $m > 0$, then  there exists a unique subfield of $\gf(p^n)$ isomorphic to  $\gf(p^m)$.
@@ -266,7 +266,7 @@ Remembering that $1 + \alpha +\alpha^4 = 0$, we add and multiply elements of $\g
 
 With knowledge of polynomial rings and finite fields, it is now possible to derive more sophisticated codes than those of Chapter~\ref{algcodes}.  First let us recall that an $(n, k)$-block code consists of a one-to-one encoding function $E:{\mathbb Z}^{k}_{2} \rightarrow {\mathbb Z}^{n}_{2}$ and a decoding function $D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{k}_{2}$.  The code is error-correcting if $D$ is onto.  A code is a linear code if it is the null space of a matrix $H \in {\mathbb M}_{k \times n}({\mathbb Z}_2)$.  
 
-We are interested in a class of codes known as cyclic codes\index{Code!cyclic}.  Let $\phi : {\mathbb Z}_2^k \rightarrow {\mathbb  Z}_2^n$ be a binary $(n,k)$-block code.  Then $\phi$ is a {\bfi cyclic code\/} if for every codeword $(a_1, a_2, \ldots, a_n )$, the cyclically shifted $n$-tuple $(a_n, a_1, a_2, \ldots, a_{n-1} )$ is also a codeword.  Cyclic codes are particularly easy to implement on a  computer using shift registers [2, 3].  
+We are interested in a class of codes known as cyclic codes\index{Code!cyclic}.  Let $\phi : {\mathbb Z}_2^k \rightarrow {\mathbb  Z}_2^n$ be a binary $(n,k)$-block code.  Then $\phi$ is a \boldemph{cyclic code} if for every codeword $(a_1, a_2, \ldots, a_n )$, the cyclically shifted $n$-tuple $(a_n, a_1, a_2, \ldots, a_{n-1} )$ is also a codeword.  Cyclic codes are particularly easy to implement on a  computer using shift registers [2, 3].  
 
 
 \begin{example}{6-3-linear_code}
@@ -331,7 +331,7 @@ where the degree of $f(x)$ is at most $n-1$.   For example, the polynomial corre
 Conversely, with any polynomial $f(x) \in {\mathbb Z}_2[x]$ with $\deg f(x) < n$ we can associate a binary $n$-tuple.  The polynomial $x + x^2 + x^4$ corresponds to the 5-tuple $(01101)$.
 
 Let us fix a nonconstant polynomial $g(x)$ in ${\mathbb Z}_2[x]$ of degree \mbox{$n - k$}.  We can define an $(n,k)$-code $C$ in the following manner.  If $(a_0, \ldots, a_{k-1})$ is a $k$-tuple to be encoded, then $f(x) = a_0 + a_1 x +  \cdots + a_{k-1} x^{k-1}$ is the corresponding polynomial
-in ${\mathbb Z}_2[x]$.  To encode $f(x)$, we multiply by $g(x)$.  The codewords in $C$ are all those polynomials in ${\mathbb Z}_2[x]$ of degree less than  $n$ that are divisible by $g(x)$.  Codes obtained in this manner are called {\bfi polynomial codes}\index{Polynomial!code}\index{Code!polynomial}.  
+in ${\mathbb Z}_2[x]$.  To encode $f(x)$, we multiply by $g(x)$.  The codewords in $C$ are all those polynomials in ${\mathbb Z}_2[x]$ of degree less than  $n$ that are divisible by $g(x)$.  Codes obtained in this manner are called \boldemph{polynomial codes}\index{Polynomial!code}\index{Code!polynomial}.  
 
 
 \begin{example}{generator_63-code}
@@ -398,7 +398,7 @@ Theorem~\ref{finite:cyclic_code_theorem} tells us that knowing the ideals of $R_
 C= \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \mbox{ and $g(x)
 \mid (x^n - 1)$ in } {\mathbb Z}_2[x] \}.
 \] 
-The unique monic polynomial of the smallest degree that generates $C$ is called the {\bfi minimal generator polynomial\/}\index{Minimal generator polynomial}\index{Polynomial!minimal generator} of $C$. 
+The unique monic polynomial of the smallest degree that generates $C$ is called the \boldemph{minimal generator polynomial}\index{Minimal generator polynomial}\index{Polynomial!minimal generator} of $C$. 
 
 
 \begin{example}{factor_x7-1}
@@ -480,8 +480,8 @@ To determine the error-detecting and error-correcting capabilities of a cyclic c
 \alpha_1^{n-1} & \alpha_2^{n-1} & \cdots & \alpha_n^{n-1} 
 \end{pmatrix}
 \]
-is called the {\bfi Vandermonde matrix}\index{Vandermonde matrix}\index{Matrix, Vandermonde}.  The
-determinant of this matrix is called the {\bfi Vandermonde determinant}\index{Vandermonde determinant}\index{Determinant, Vandermonde}.  We will need the following lemma in our investigation of cyclic codes.
+is called the \boldemph{Vandermonde matrix}\index{Vandermonde matrix}\index{Matrix, Vandermonde}.  The
+determinant of this matrix is called the \boldemph{Vandermonde determinant}\index{Vandermonde determinant}\index{Determinant, Vandermonde}.  We will need the following lemma in our investigation of cyclic codes.
 
 \begin{lemma}\label{finite:V_det_lemma}
 Let $\alpha_1, \ldots, \alpha_n$ be elements in a field $F$ with $n \geq 2$.  Then
@@ -623,7 +623,7 @@ $\omega^i$. If
 g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],
 \]
 then the cyclic code $\langle g(t) \rangle$ in $R_n$ is called the
-{\bfi BCH code of length}\index{Code!BCH} $n$ {\bfi and distance} $d$.
+\boldemph{BCH code of length}\index{Code!BCH} $n$ \boldemph{and distance} $d$.
 By Theorem~\ref{finite:min_dist_theorem}, the minimum distance of $C$ is at least $d$. 
 
 
@@ -910,7 +910,7 @@ degree $n$ in~${\mathbb Z}_p[x]$.
 
 
 \item \label{exercise:finite:frobeniusmap}
-Prove that the {\bfi Frobenius map}\index{Frobenius map} $\phi : \gf(p^n) \rightarrow \gf(p^n)$ given by $\phi : \alpha \mapsto
+Prove that the \boldemph{Frobenius map}\index{Frobenius map} $\phi : \gf(p^n) \rightarrow \gf(p^n)$ given by $\phi : \alpha \mapsto
 \alpha^p$ is an automorphism of order $n$. 
 
 
@@ -925,7 +925,7 @@ $|F| = p^s$, what is the order of $E \cap F$?
 
 
 \item
-{\bf Wilson's Theorem.}\index{Wilson's Theorem}
+\textbf{Wilson's Theorem.}\index{Wilson's Theorem}
 Let $p$ be prime.  Prove that $(p-1)! \equiv -1 \pmod{p}$. 
 
 
@@ -1018,12 +1018,12 @@ c_1 t + \cdots + c_{n-1} t^{n-1}$ is transmitted. Let $w(t) = w_0 +
 w_1 t + \cdots w_{n-1} t^{n-1}$ be the polynomial in $R_n$ that is
 received.  If errors have occurred in bits $a_1, \ldots, a_k$, then
 $w(t) = c(t) + e(t)$, where $e(t) = t^{a_1} + t^{a_2} + \cdots +
-t^{a_k}$ is the {\bfi error polynomial}\index{Polynomial!error}. The
+t^{a_k}$ is the \boldemph{error polynomial}\index{Polynomial!error}. The
 decoder must determine the integers $a_i$ and then recover $c(t)$ from
 $w(t)$ by flipping the $a_i$th bit. From $w(t)$ we can compute
 $w( \omega^i ) = s_i$ for $i = 1, \ldots, 2r$, where $\omega$ is a
-primitive $n$th root of unity over ${\mathbb Z}_2$. We say the {\bfi
-syndrome\/}\index{Syndrome of a code} of $w(t)$ is $s_1, \ldots,
+primitive $n$th root of unity over ${\mathbb Z}_2$. We say the \boldemph{
+syndrome}\index{Syndrome of a code} of $w(t)$ is $s_1, \ldots,
 s_{2r}$. 
 \begin{enumerate}
 
@@ -1037,8 +1037,8 @@ Show that
 s_i = w( \omega^i) = e( \omega^i) = \omega^{i a_1} + \omega^{i a_2} +
 \cdots + \omega^{i a_k} 
 \]
-for $i = 1, \ldots, 2r$. The {\bfi error-locator
-polynomial\/}\index{Polynomial!error-locator} is defined to be 
+for $i = 1, \ldots, 2r$. The \boldemph{error-locator
+polynomial}\index{Polynomial!error-locator} is defined to be 
 \[
 s(x) = (x + \omega^{a_1})(x + \omega^{a_2}) \cdots  (x +
 \omega^{a_k}). 
@@ -1072,33 +1072,33 @@ what the originally transmitted code polynomial was.
 
 \begin{itemize}
  
-\item[{\bf [1]}] %Reference updated 5/4/2010 - TWJ
+\item[\textbf{[1]}] %Reference updated 5/4/2010 - TWJ
 Childs, L. 
-{\it A Concrete Introduction to Higher Algebra}. 2nd ed.
+\textit{A Concrete Introduction to Higher Algebra}. 2nd ed.
 Springer-Verlag, New York, 1995. .
 
-\item[{\bf [2]}] %No longer in print 8/20/2010 - TWJ
-G{\aa}ding, L. and Tambour, T. {\it Algebra for Computer
+\item[\textbf{[2]}] %No longer in print 8/20/2010 - TWJ
+G{\aa}ding, L. and Tambour, T. \textit{Algebra for Computer
 Science}. Springer-Verlag, New York, 1988.
 
-\item[{\bf [3]}] %Reference updated 8/20/2010 - TWJ
+\item[\textbf{[3]}] %Reference updated 8/20/2010 - TWJ
 Lidl, R. and Pilz, G. 
-{\it Applied Abstract Algebra}. 2nd ed. Springer,
+\textit{Applied Abstract Algebra}. 2nd ed. Springer,
 New York, 1998. 
 An excellent presentation of finite
 fields and their applications.
 
-\item[{\bf [4]}] %No longer in print 8/20/2010 - TWJ
-Mackiw, G. {\it Applications of Abstract Algebra}. Wiley,
+\item[\textbf{[4]}] %No longer in print 8/20/2010 - TWJ
+Mackiw, G. \textit{Applications of Abstract Algebra}. Wiley,
 New York, 1985.
  
-\item[{\bf [5]}]
-Roman, S. {\it Coding and Information Theory}. Springer-Verlag,
+\item[\textbf{[5]}]
+Roman, S. \textit{Coding and Information Theory}. Springer-Verlag,
 New York, 1992. 
 
 
-\item[{\bf [6]}] %Reference updated - TWJ 8/20/2010
-van Lint, J. H. {\it Introduction to Coding Theory}. Springer,
+\item[\textbf{[6]}] %Reference updated - TWJ 8/20/2010
+van Lint, J. H. \textit{Introduction to Coding Theory}. Springer,
 New York, 1999. 
 \end{itemize}
 }
