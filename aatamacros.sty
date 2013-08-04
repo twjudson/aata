@@ -1,0 +1,208 @@
+%%%%(c)
+%%%%(c)  This file is a portion of the source for the textbook
+%%%%(c)
+%%%%(c)    Abstract Algebra: Theory and Applications
+%%%%(c)    Copyright 1997 by Thomas W. Judson
+%%%%(c)
+%%%%(c)  See the file COPYING.txt for copying conditions
+%%%%(c)
+%%%%(c)
+\ProvidesPackage{aatamacros}[2013/08/04 v1.0 Commands for Thomas Judson's Abstract Algebra: Theory and Applications]
+%
+%
+% RAB, 2010/06/17
+% Support for multiple editions
+%
+%
+%
+\usepackage{ifthen}
+\newboolean{basic}\setboolean{basic}{false}                    % Minimalist common base edition
+\newboolean{xhtml}\setboolean{xhtml}{false}                    % Web pages from tex4ht processor
+\newboolean{sageworksheet}\setboolean{sageworksheet}{false}    % Sage content, as worksheets
+%
+% Set exactly one version to true
+% Edit version here to change version for next run
+\setboolean{basic}{true}
+%
+%
+\ifthenelse{\boolean{basic}}{\usepackage{microtype}}{}
+
+\ifthenelse{\boolean{basic}}{\usepackage[pdftex]{graphicx}}{}
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}{\usepackage{graphicx}}{}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage{makeidx}
+
+
+% tikz is a great package for graphics ("pictures").  With pdflatex it makes pdf images,
+% automatically included in the document.  With tex4ht, the special pgf driver
+% (\def\pgfsysdriver{pgfsys-tex4ht.def}) will make great SVG output.  Usually.
+% But if your tikz picture has text using TeX, then pdflatex still does a nice
+% job, but tex4ht does not and the graphics are a mess.  It does not appear this
+% situation will improve anytime soon (July 2010).
+%
+% So, we use the pgf "external graphics" system (from the CVS version, July 2010)
+% with pdflatex to create stand-alone named PDF files in a subdirectory.  These are
+% converted to 110dpi PNG files for web page use, since tex4ht also seems to have
+% trouble with converting these files after pulling them into a DVI and extracting
+% them again (tex4ht does better with EPS files, which we could make the tikz
+% externalization produce, but we won't).
+%
+% On subsequent runs, pdflatex will just grab these files and use them.  When we
+% run tex4ht, we turn off tikz totally and use a comment-ing package to just gobble
+% up any picture.  This all requires a brief setup just prior to each tikz picture.
+% This would all be easier with conditional macros, but the external graphics facility
+% cannot recognize the tikzpicture environment buried inside macros.
+
+\ifthenelse{\boolean{basic}}
+{
+\usepackage{tikz}
+\newcommand{\tikzpreface}[1]{\relax}
+}{}
+%
+%
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}
+{
+\usepackage{comment}
+\excludecomment{tikzpicture}
+\newcommand{\tikzpreface}[1]{\includegraphics{tikz/#1.png}}
+}{}
+%
+%
+\newboolean{externalgraphics}\setboolean{externalgraphics}{false}
+\ifthenelse{\boolean{externalgraphics}}
+{
+\usetikzlibrary{external}
+\tikzexternalize
+\tikzsetexternalprefix{tikz/}
+\renewcommand{\tikzpreface}[1]{\tikzsetnextfilename{#1}}
+}{}
+
+
+% Widows and orphans
+% R Beezer, 2010/06/14
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+\setlength{\fboxrule}{0.5pt}
+\input{macros}
+
+% Hyperref setup
+\ifthenelse{\boolean{basic}}{\usepackage[pdftex]{hyperref}}{}
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}{\usepackage[tex4ht]{hyperref}}{}
+\ifthenelse{\boolean{basic}\or\boolean{xhtml}}{
+\hypersetup{breaklinks=true}  % across line breaks
+\hypersetup{bookmarksopen=true,bookmarksopenlevel=1}
+% Comma in title not allowed
+\hypersetup{pdftitle="Abstract Algebra: Theory and Applications", pdfauthor=Thomas W. Judson}
+\hypersetup{pdfkeywords=free abstract algebra textbook}
+% RAB 2011/08/04  Sage URLs in Preface, color 'em blue
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+}{}
+
+% RAB, 2011/08/10
+% The following accomodates the Sage worksheet version.
+% Every chapter which has Sage content ends with a \sagesection command
+%   1.  If we are not making worksheets it pulls in a blurb from sage/info
+%   2.  If we are making worksheets, it pulls in lots of material
+%       and we set macros to help number exercises, and to process
+%       handcoded references in the exercises
+% \chaplabel is set when the chapter is begun, the \sagesection command
+%   expects files of the same name in the directories:
+%     sage, sage/exercises, sage/info
+%   so \sagesection takes no arguments
+% Sage discussions are sectioned, which we realize here as
+%   unnumbered subsections
+% Sage exercises cannot be formatted as lists
+%   since we cannot bury top-level compute cells
+%   in a subsidiary list, so we do the numbering ourselves
+%   *Precede* every question by a  sageverbatim  environment for spacing
+%   Usage: \sageexercise{number}
+% \extref is a device to allow refrences in Sage worksheets of
+%   exercises to be hardcoded since external references do not
+%   survive the conversion process
+\ifthenelse{\boolean{sageworksheet}}{%
+\newcommand{\sagesection}{%
+\section{Sage}%
+Section Copyright 2011 Robert A. Beezer, \href{http://www.gnu.org/licenses/fdl.html}{GFDL} License\par
+\input{sage/\chaplabel.tex}%
+\sagesubsection{Exercises}%
+\input{sage/exercises/\chaplabel.tex}}
+\newcommand{\sagesubsection}[1]{\subsection*{#1}}
+\newcommand{\sageexercise}[1]{\noindent\textbf{#1}\ \ }
+\newcommand{\extref}[3]{\ref{#1}}
+}{%
+\newcommand{\sagesection}{%
+\noindent\textbf{\large Sage}\ \ %
+\input{sage/info/\chaplabel.tex}}%
+}
+
+% Per-chapter items
+\newcommand{\chaplabel}{\relax}
+\newcounter{example}[chapter]
+
+% Usage: \chap{title}{label}
+\newcommand{\chap}[2]{%
+\setcounter{example}{0}%
+\renewcommand{\chaplabel}{#2}%
+\chapter{#1}\label{#2}%
+% Web page versions get info and link on every page
+% Copyright symbol ("\copyright") causes trouble in xhtml/jsmath conversion
+% RAB (2010/08/27) \par needed to make jsMath conversion wrap this header material properly
+\ifthenelse{\boolean{xhtml}\or\boolean{sageworksheet}}{%
+\par From: \href{http://abstract.pugetsound.edu}{Abstract Algebra: Theory and Applications}\\
+Copyright 1997, Thomas W. Judson, \href{http://www.gnu.org/licenses/fdl.html}{GFDL} License\\}
+{}
+}
+
+% Examples as environment
+% Every example has a label of the form  example:chap:foo
+%   where chap is the string for the filename, foo supplied in environment
+\newenvironment{example}[1]
+  {\refstepcounter{example}{\bigskip\noindent\bf Example~\arabic{example}.}\label{example:\chaplabel:#1}}
+  {\hspace\fill$\blacksquare$\par\medskip}
+
+% Fancy initial letters at start of first paragraph of each chapter for print only
+\newcommand{\chapterletter}[1]{#1}
+
+%
+%% RAB, 2009/01/28
+%% Added short copyright section
+%% RAB, 2010/07/21
+%% Copyright symbol ("\copyright") causes trouble in xhtml/jsmath conversion
+
+\newcommand{\aatamaketitle}{%
+\pagestyle{headings}
+%
+\maketitle
+%
+\vspace*{\stretch{2}}
+\noindent Copyright\ 1997 by Thomas W.\ Judson.\\[12pt]
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the appendix entitled ``GNU Free Documentation License''.\par
+\bigskip
+%
+\noindent
+A current version can always be found via {\tt abstract.pugetsound.edu}.
+\vspace*{\stretch{1}}
+\clearpage
+}
+
+% Table of Contents
+% tex4ht makes its own table of contents automatically, latex's is inferior
+\ifthenelse{\boolean{basic}}%
+{\newcommand{\aatatableofcontents}{\tableofcontents}}%
+{\newcommand{\aatatableofcontents}{}}
+
+%  \makeindex
+\newcommand{\aatamakeindex}{\makeindex}
+
+% Title and author
+\title{{\bf Abstract Algebra}\\Theory and Applications}
+\author{Thomas W. Judson\\Stephen F. Austin State University}
+% RAB (2010/08/27) set date manually for annual edition
+% Normally leave as \today for for draft work and for snapshots
+\date{\today}
