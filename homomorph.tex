@@ -169,7 +169,7 @@ $\phi(H_1)$ is a subgroup of $G_2$ by Proposition~\ref{groups:subgroup_prop}.
 (4)
 Let $H_2$ be a subgroup of $G_2$ and define $H_1$ to be
 $\phi^{-1}(H_2)$; that is, $H_1$ is the set of all $g \in G_1$ such
-that $\phi(g) \in H_2$.  The identity is in $H_1$ since $\phi(e) = e$.
+that $\phi(g) \in H_2$.  The identity is in $H_1$ since $\phi(e) = e'$.
 If $a$ and $b$ are in $H_1$, then $\phi(ab^{-1}) = \phi(a)[ \phi(b)
 ]^{-1}$ is in $H_2$ since $H_2$ is a subgroup of $G_2$.  Therefore,
 $ab^{-1} \in H_1$ and $H_1$ is a subgroup of $G_1$. If $H_2$ is normal
@@ -286,23 +286,19 @@ the canonical homomorphism.  Then there exists a unique isomorphism
 $\eta: G/K \rightarrow \psi(G)$ such that $\psi =  \eta \phi$.
 \end{theorem}
  
-
+ % Proof rewritten for clarification.  Suggested by P. Diethelm.  TWJ 16/8/2013.
  
 \begin{proof}
 We already know that $K$ is normal in $G$. Define $\eta: G/K
-\rightarrow \psi(G)$ by $\eta(gK) = \psi(g)$.  We must first show that
-this is a well-defined map. Suppose that $g_1 K =g_2 K$. For some $k \in
+\rightarrow \psi(G)$ by $\eta(gK) = \psi(g)$.  We first show that
+$\eta$ is a well-defined map.  If $g_1 K =g_2 K$, then for some $k \in
 K$, $g_1 k=g_2$; consequently, 
 \[
 \eta(g_1 K) = \psi(g_1) = \psi(g_1) \psi(k) = \psi(g_1k) = \psi(g_2)
 = \eta(g_2 K). 
 \]
-Since $\eta(g_1 K) = \eta(g_2 K)$, $\eta$ does not depend on the 
-choice of coset representative. Clearly $\eta$ is onto $\psi( G)$. 
-To show that $\eta$ is one-to-one, suppose that $\eta(g_1 K) = 
-\eta(g_2 K)$. Then $\psi(g_1) = \psi(g_2)$. This implies that 
-$\psi( g_1^{-1} g_2 ) = e$, or $g_1^{-1} g_2$ is in the kernel of $\psi$; 
-hence, $g_1^{-1} g_2K = K$; that is, $g_1K =g_2K$.  Finally, we must 
+Thus, $\eta$ does not depend on the choice of coset representatives and the map $\eta: G/K \rightarrow \psi(G)$  is uniquely defined since $\psi =  \eta \phi$.
+We must also
 show that $\eta$ is a homomorphism, but 
 \begin{align*}
 \eta( g_1K g_2K ) & = \eta(g_1 g_2K) \\
@@ -310,6 +306,11 @@ show that $\eta$ is a homomorphism, but
 & = \psi(g_1) \psi(g_2) \\
 & = \eta( g_1K) \eta( g_2K ).
 \end{align*}
+Clearly, $\eta$ is onto $\psi( G)$. 
+To show that $\eta$ is one-to-one, suppose that $\eta(g_1 K) = 
+\eta(g_2 K)$. Then $\psi(g_1) = \psi(g_2)$. This implies that 
+$\psi( g_1^{-1} g_2 ) = e$, or $g_1^{-1} g_2$ is in the kernel of $\psi$; 
+hence, $g_1^{-1} g_2K = K$; that is, $g_1K =g_2K$.  
 \end{proof}
  
  
