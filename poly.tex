@@ -263,9 +263,7 @@ to review Theorem~\ref{integers:division_algorithm} at this point.
  
 \begin{theorem} 
 \textbf{(Division Algorithm)}\index{Division algorithm!for
-polynomials}\index{Algorithm!division} Let $f(x)$ and $g(x)$ be two
-nonzero polynomials in $F[x]$, where $F$ is a field and  $g(x)$ is a
-nonconstant polynomial.  Then there exist unique polynomials $q(x),
+polynomials}\index{Algorithm!division} Let $f(x)$ and $g(x)$ be polynomials in $F[x]$, where $F$ is a field and  $g(x)$ is a nonzero polynomial.  Then there exist unique polynomials $q(x),
 r(x) \in F[x]$ such that 
 \[
 f(x) = g(x) q(x) + r(x),
@@ -273,68 +271,55 @@ f(x) = g(x) q(x) + r(x),
 where either  $\deg r(x) < \deg g(x)$ or $r(x)$ is the zero
 polynomial. 
 \end{theorem}
+
+%Statement of the division algorithm and the proof corrected.  Suggested by  P. Diethelm.
+%TWJ 16/8/2013
  
  
 \begin{proof}
-We will first consider the existence of $q(x)$ and $r(x)$. Let $S = \{
-f(x) - g(x) h(x)   :  h(x) \in F[x]  \}$ and assume that 
-\[
-g(x) = a_0 + a_1 x + \cdots + a_n x^n
-\]
-is a polynomial of degree $n$. This set is nonempty since $f(x) \in
-S$. If the zero polynomial is in $S$, then 
+We will first consider the existence of $q(x)$ and $r(x)$.  If $f(x)$ is the zero polynomial, then 
 \[
 0 = 0 \cdot g(x) + 0;
 \]
-hence, both $q$ and $r$ must also be the zero polynomial. 
-
-%Changed wording  Suggested by  P. Diethelm.
-%TWJ 14/8/2013
- 
- 
-Now suppose that the zero polynomial is not in $S$. In this case the
-degree of every polynomial in $S$ is nonnegative.  Choose a polynomial
-$r(x)$ of smallest degree in $S$; hence, there must exist a $q(x) \in
-F[x]$ such that  
-\[
-r(x) = f(x) - g(x) q(x),
-\]
-or 
-\[
-f(x) = g(x ) q(x) + r(x).
-\]
-We need to show that the degree of $r(x)$ is less than the degree of
-$g(x)$. Assume that $\deg g(x) \leq \deg r(x)$. Say $r(x) = b_0 + b_1 
-x + \cdots + b_m x^m$ and $m \geq n$. Then
+hence, both $q$ and $r$ must also be the zero polynomial.  Now suppose that $f(x)$ is not the zero polynomial and that $\deg f(x) = n$ and $\deg g(x) = m$.   If $m > n$, then we can let $q(x) = 0$ and $r(x) = f(x)$.  Hence, we may assume that $m  \leq n$ and proceed by induction on $n$.   If
 \begin{align*}
-f(x) - g(x) [ q(x) + (b_m/a_n) x^{m-n} ]
-& = f(x) - g(x) q(x) 
-    -  (b_m/a_n) x^{m-n} g(x)  \\
-& = r(x) - (b_m/a_n) x^{m-n} g(x) \\
-& = r(x) - b_m x^m    + \mbox{ terms of lower degree}
+f(x) & = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \\
+g(x) & = b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x + b_0
 \end{align*}
-is in $S$. This is a polynomial of lower degree than $r(x)$, which
-contradicts the fact that $r(x)$ is a polynomial of smallest degree
-in $S$; hence, $\deg r(x) < \deg g(x)$.
-%Correction suggested by K. Hubbard.  TWJ 5/15/2012
- 
+the polynomial
+\[
+f'(x) = f(x) - \frac{a_n}{b_m} x^{n-m} g(x)
+\]
+has degree less than $n$ or is the zero polynomial.  By induction, there exist polynomials $q'(x)$ and $r(x)$ such that 
+\[
+f'(x) = q'(x) g(x) + r(x),
+\]
+where $r(x) = 0$ or the degree of $r(x)$ is less than the degree of $g(x)$.  Now let
+\[
+q(x) = q'(x) + \frac{a_n}{b_m} x^{n-m}.
+\]
+Then
+\[
+f(x) = g(x) q(x) + r(x),
+\]
+with $r(x)$ the zero polynomial or $\deg r(x) < \deg g(x)$. 
  
 To show that  $q(x)$ and $r(x)$ are unique, suppose that there exist
-two other polynomials $q'(x)$ and $r'(x)$ such that $f(x) = g(x) q'(x)
-+ r'(x)$ and $\deg r'(x) < \deg g(x)$ or $r'(x) = 0$, so that
+two other polynomials $q_1(x)$ and $r_1(x)$ such that $f(x) = g(x) q_1(x)
++ r_1(x)$ with $\deg r_1(x) < \deg g(x)$ or $r_1(x) = 0$, so that
 \[
-f(x) = g(x) q(x) + r(x) = g(x) q'(x) + r'(x),
+f(x) = g(x) q(x) + r(x) = g(x) q_1(x) + r_1(x),
 \]
 and
 \[
-g(x) [q(x) - q'(x) ] = r'(x) - r(x).
+g(x) [q(x) - q_1(x) ] = r_1(x) - r(x).
 \]
 If $g(x)$ is not the zero polynomial, then 
 \[
-\deg( g(x) [q(x) - q'(x) ] )= \deg( r'(x) - r(x) ) \geq \deg g(x).
+\deg( g(x) [q(x) - q_1(x) ] )= \deg( r_1(x) - r(x) ) \geq \deg g(x).
 \]
-However, the degrees of both $r(x)$ and $r'(x)$ are strictly less than
-the degree of $g(x)$; therefore, $r(x) = r'(x)$ and $q(x) = q'(x)$.
+However, the degrees of both $r(x)$ and $r_1(x)$ are strictly less than
+the degree of $g(x)$; therefore, $r(x) = r_1(x)$ and $q(x) = q_1(x)$.
 \end{proof}
 
 %Changed g to g(x).  Suggested by  P. Diethelm.
