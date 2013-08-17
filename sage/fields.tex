@@ -215,21 +215,19 @@ sage: r = p.roots(ring=QQbar); r
  (-1.272019649514069?*I, 1), (1.272019649514069?*I, 1)]
 \end{sageexample}
 %
-So we asked for the roots of a polynomial over the rationals, but requested any root that may lie outside the rationals and within the field of algebraic numbers.  Since the field of algebraic numbers contains all such roots, we get a full four roots of the fourth-degree polynomial.  These roots are computed to lie within an interval and the question mark indicates that the preceding digits are accurate.  (The integers paired with each roo are the multiplicities of each root. Use the keyword \verb?multiplicities=False? to turn them off.)  Lets take a look under the hood and see how Sage manages the field of algebraic numbers.
+So we asked for the roots of a polynomial over the rationals, but requested any root that may lie outside the rationals and within the field of algebraic numbers.  Since the field of algebraic numbers contains all such roots, we get a full four roots of the fourth-degree polynomial.  These roots are computed to lie within an interval and the question mark indicates that the preceding digits are accurate.  (The integers paired with each root are the multiplicities of that root. Use the keyword \verb?multiplicities=False? to turn them off.)  Lets take a look under the hood and see how Sage manages the field of algebraic numbers.
 %
 \begin{sageexample}
 sage: r1 = r[0][0]; r1
 -0.7861513777574233?
 sage: r1.as_number_field_element()
-(Number Field in a with defining polynomial y^4 - y^2 - 1,
- a^3 - a,
- Ring morphism:
-   From: Number Field in a with defining polynomial y^4 - y^2 - 1
-   To:   Algebraic Real Field
-   Defn: a |--> -1.272019649514069?)
+(Number Field in a with defining polynomial y^4 + y^2 - 1, a, Ring morphism:
+    From: Number Field in a with defining polynomial y^4 + y^2 - 1
+    To:   Algebraic Real Field
+    Defn: a |--> -0.7861513777574233?)
 \end{sageexample}
 %
-Three items are associated with this initial root.  First is a number field, with generator \verb?a? and a defining polynomial similar to the polynomial we the finding roots of, but not identical.  Second is an expression in the generator \verb?a? which is the actual root.  Finally, there is a ring homomorphism from the number field to the ``Algebraic Real Field'', \verb?AA?, the subfield of \verb?QQbar? with just real elements, which associates the generator \verb?a? with the number \verb!-1.272019649514069?!.  Let's verify that the root given is really a root, in two ways.
+Three items are associated with this initial root.  First is a number field, with generator \verb?a? and a defining polynomial similar to the polynomial we the finding roots of, but not identical.  Second is an expression in the generator \verb?a?, which is the actual root.  In this example, the expression is simple, but it could be more complex in other examples.  Finally, there is a ring homomorphism from the number field to the ``Algebraic Real Field'', \verb?AA?, the subfield of \verb?QQbar? with just real elements, which associates the generator \verb?a? with the number \verb!-0.7861513777574233?!.  Let's verify that the root given is really a root, in two ways.
 %
 \begin{sageexample}
 sage: r1^4 + r1^2 - 1

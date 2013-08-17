@@ -75,7 +75,7 @@ The integers mod $n$ are very important, so Sage implements both addition and mu
 %
 The symmetries of some geometric shapes are already defined in Sage, albeit with different names.  They are implemented as ``permutation groups'' which we will begin to study carefully in Chapter~\ref{permute}.\par
 %
-Sage uses integers to label vertices, starting the count at \verb?1?, instead of letters.  Elements by default are printed using ``cycle notation'' which we will see described carefully in Chapter~\ref{permute}.  For now, if \verb?a? is an element of a group of symmetries, then \verb?a.list()? will give the \emph{bottom row} of the notation we are using for permutations.  Here is an example, with both the mathematics and Sage.  For the Sage part, we create the group of symmetries and then create the symmetry $\rho_2$ with coercion, followed by outputting the element in cycle notation, and again as a bottom row (coming full circle).
+Sage uses integers to label vertices, starting the count at \verb?1?, instead of letters.  Elements by default are printed using ``cycle notation'' which we will see described carefully in Chapter~\ref{permute}.    Here is an example, with both the mathematics and Sage.  For the Sage part, we create the group of symmetries and then create the symmetry $\rho_2$ with coercion, followed by outputting the element in cycle notation.  Then we create just the \emph{bottom row} of the notation we are using for permutations.
 %
 \begin{align*}
 \rho_2&=
@@ -95,14 +95,16 @@ sage: triangle = SymmetricGroup(3)
 sage: rho2 = triangle([3,1,2])
 sage: rho2
 (1,3,2)
-sage: rho2.list()
+sage: [rho2(x) for x in triangle.domain()]
 [3, 1, 2]
 \end{sageexample}
 %
-With a list comprehension we can list all six elements of the group in the ``bottom row'' format.  A good exercise would be to pair up each element with its name as given in Figure~\ref{S3_Symmetry_Figure}.
+The final list comprehension deserves comment.  The \verb?.domain()? method gives a lait of the symbols used for the permutation group \verb?triangle? and then \verb?rho2? is employed with syntax like it is a function (it \emph{is} a function) to create the images that would occupy the bottom row.\par
+%
+With a double list comprehension we can list all six elements of the group in the ``bottom row'' format.  A good exercise would be to pair up each element with its name as given in Figure~\ref{S3_Symmetry_Figure}.
 %
 \begin{sageexample}
-sage: [a.list() for a in triangle]
+sage: [[a(x) for x in triangle.domain()] for a in triangle]
 [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 \end{sageexample}
 %
@@ -118,7 +120,7 @@ sage: rho1 = triangle([2,3,1])
 sage: product = rho1*mu1
 sage: product == mu2
 True
-sage: product.list()
+sage: [product(x) for x in triangle.domain()]
 [3, 2, 1]
 sage: rho1*mu1 == mu1*rho1
 False
@@ -166,7 +168,7 @@ Sage implements the quaternions, but the elements are not matrices, but rather a
 %
 \begin{sageexample}
 sage: Q = QuaternionGroup()
-sage: [x.list() for x in Q]
+sage: [[a(x) for x in Q.domain()] for a in Q]
 [[1, 2, 3, 4, 5, 6, 7, 8], [2, 3, 4, 1, 6, 7, 8, 5],
  [3, 4, 1, 2, 7, 8, 5, 6], [4, 1, 2, 3, 8, 5, 6, 7],
  [5, 8, 7, 6, 3, 2, 1, 4], [6, 5, 8, 7, 4, 3, 2, 1],
@@ -188,7 +190,7 @@ It should be fairly obvious that \verb?a? is the identity element of the group (
 %
 \begin{sageexample}
 sage: id = Q.identity()
-sage: id.list()
+sage: [id(x) for x in Q.domain()]
 [1, 2, 3, 4, 5, 6, 7, 8]
 \end{sageexample}
 %
@@ -221,8 +223,8 @@ Elements of the quaternions were represented by certain permutations of the inte
 %
 \begin{sageexample}
 sage: S8 = SymmetricGroup(8)
-sage: a = S8.random_element().list()
-sage: a                     # random
+sage: a = S8.random_element()
+sage: [a(x) for x in S8.domain()]     # random
 [5, 2, 6, 4, 1, 8, 3, 7]
 sage: S8.order()
 40320
