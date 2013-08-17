@@ -3,7 +3,7 @@ GFDL licensed textbook
 Source distribution README
 
 This is the source distribution for the textbook.  Most of this
-file describs how to create the book in different formats.
+file describes how to create the book in different formats.
 
 To create this text from the source requires a standard
 installation of TeX/LaTeX, such as TeXLive, teTeX, MikTeX or
@@ -38,15 +38,14 @@ to save the *.aux files for the crossreferences
 
 Clean:  rm aata.log aata.toc aata.out aata.idx aata.ind aata.ilg *.aux
 
-To create a PDF version optimized for print (Virginia Commonwealth Series)
--------------------------------------------------------------------------
-Requirements: a standard TeX distribution, specialized fonts, packages;
-see contents of preamble in  aata.tex  that contains VCU-specific packages
 
-Follow same directions as for a PDF version, but after step 2, add
+To create alternate PDF versions
+--------------------------------
+Look for substitute versions of aatamacros.sty to allow
+for alternate ways to process the various macros embedded in
+the LaTeX source.
 
-(2a) Edit  aata.tex  and set boolean variable "vcu" to true
-     by editing the one line early on that determines the version
+Then follow same directions as for a PDF version.
 
 
 Web page (XHTML) version
@@ -72,7 +71,7 @@ Requires: tex4ht, tex2sws package
 (Similar to the webpage version, but with tex2sws config file)
 (3) Create external tikz pictures (see below)
 (4) set boolean variable "sageworksheet" to true
-    by editing the one line early on that determines the version
+    by editing the one line in aatamacros.sty that determines the version
 (5) issue:  htlatex aata.tex "/full/path/to/tex4ht-sage.cfg,index=3,2" " -cunihtf -utf8"
 (6) issue:  tex '\def\filename{{aata}{idx}{4dx}{ind}} \input  idxmake.4ht'
 (7) issue:  makeindex -o aata.ind  aata.4dx
@@ -86,11 +85,13 @@ Clean:  rm aata.4dx aata.4ix idxmake.dvi idxmake.log aata.ilg aata.ind aata.4ct 
 
 Sage Content PDF, Sage Doctesting
 ---------------------------------
-Leave *.aux from a "regular" PDF run so external references are generated
+Begin with a totally clean source directory
+  (external references need to be right)
 
-(1)  pdflatex aatasage.tex
-(2)  sage aatasage.sagetex.sage (to generate sage sections, doctests)
-(3)  pdflatex aatasage.tex
+(1)  pdflatex aata (twice, generates references)
+(2)  pdflatex aatasage.tex
+(3)  sage aatasage.sagetex.sage (to generate sage sections, doctests)
+(4)  pdflatex aatasage.tex
 
 to doctest
 
