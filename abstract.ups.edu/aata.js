@@ -5,9 +5,8 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash = '<p><img alt="New" src="graphics/rednew.gif">  Hardcover version is unavailable until mid-September 2013. See the <a href="purchase.html">Purchase</a> page for details.</p>'
+    flash = '<p><img alt="New" src="graphics/rednew.gif">  Hardcover version is unavailable until mid-September 2013. See the <a href="purchase.html">Purchase</a> page for details.</p><p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2013 Annual</a> edition now available (2013/08/16)</p>'
     //<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">Snapshot</a> edition now available (2013/02/19)</p>'
-    //flash = '<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2012 Annual</a> edition now available (2012/08/11)</p>'
     // Comment/uncomment next line to turn off/on
     document.write(flash)
 }
