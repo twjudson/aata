@@ -197,19 +197,6 @@ s/\\end{sageverbatim}/<\/input>\n<output>\n<\/output>\n<\/sage>/g
 
 ####
 #
-# Lists
-#
-####
-#
-s/\\begin{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<ol>/g
-s/\\end{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<\/ol>/g
-s/\\begin{itemize}/<ul>/g
-s/\\end{itemize}/<\/ul>/g
-s/\item/<\/li><li>/g
-
-
-####
-#
 # Figures
 #
 ####
@@ -284,6 +271,23 @@ s/%\(.*\)$/<!-- \1 -->/g
 # (**)  Bibliography only, for cut/paste
 s/\\textit{\([^}]*\)}/<title>\1<\/title>/g
 
+####
+#
+# Lists
+#
+####
+#
+# After items get fixed in references
+#
+s/\\begin{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<ol>/g
+s/\\end{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<\/ol>/g
+s/\\begin{itemize}/<ul>/g
+s/\\end{itemize}/<\/ul>/g
+s/\item/<\/li><li>/g
+
+
+
+
 
 ####
 #
@@ -299,7 +303,7 @@ s/\\chap{\([^}]*\)}{\([^}]*\)}/\n<\/chapter>\n<chapter xml:id="\2">\n<title>\1<\
 
 # Section
 # eg, \section{Cyclic Subgroups}
-s/\\section{\([^}]*\)}/\n<\/section>\n<section>\n<title>\1<\/title>/g
+s/\\section{\([^}]*\)}/\n<\/section>\n<section xml:id="">\n<title>\1<\/title>/g
 
 # Suggested Reading
 # eg, \subsection*{References and Suggested Readings}
