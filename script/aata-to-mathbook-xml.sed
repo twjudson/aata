@@ -250,6 +250,9 @@ s/\\item\[\\textbf{\[\([^]]*\)\]}\]/<\/biblio>\n<biblio type="raw"> <!-- was [\1
 # grep  "\\\\boldemph{[^}]*$" *.tex
 s/\\boldemph{\([^}]*\)}/<term>\1<\/term>/g
 
+# Emphasis
+# eg, \emph{Cyclic Subgroups}
+s/\\emph{\([^}]*\)}/<em>\1<\/em>/g
 
 # Notation
 # (**) notation.tex, 100 \pageref; grep "pageref" *.tex
