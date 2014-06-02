@@ -1,99 +1,68 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<exercises>
+	<title>Sage Exercises</title>
 
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
+	<p>These exercises are designed to help you become familiar with permutation groups in Sage.</p>
 
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
-<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
-<!-- See the file COPYING for copying conditions.  -->
+	<exercise number="1">
+		<statement>
+			<p>Create the full symmetric group <m>S_{10}</m> with the command <c>G = SymmetricGroup(10)</c>.</p>
+		</statement>
+		<sage />
+	</exercise>
 
+	<exercise number="2">
+		<statement>
+			<p>Create elements of <c>G</c> with the following (varying) syntax.  Pay attention to commas, quotes, brackets, parentheses.  The first two use a string (characters) as input, mimicking the way we write permuations (but with commas).  The second two use a list of tuples.</p>
 
-These exercises are designed to help you become familiar with permutation groups in Sage.
+			<ul>
+				<li><c>a = G("(5,7,2,9,3,1,8)")</c></li>
+				<li><c>b = G("(1,3)(4,5)")</c></li>
+				<li><c>c = G([(1,2),(3,4)])</c></li>
+				<li><c>d = G([(1,3),(2,5,8),(4,6,7,9,10)])</c></li>
+			</ul>
 
-</p>
-</statement>
-<sage />
-</exercise>
+			<ol>	
+				<li>Compute <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.</li>
+				<li>Compute the orders of each of these four individual elements (<c>a</c> through <c>d</c>) using a single permutation group element method.</li>
+				<li>Use the permutation group element method <c>.sign()</c> to determine if <m>a,b,c,d</m> are even or odd permutations.</li>
+				<li>Create two cyclic subgroups of <m>G</m> with the commands:
+				<ul>
+					<li><c>H = G.subgroup([a])</c></li>
+					<li><c>K = G.subgroup([d])</c></li>
+				</ul>
+				List, and study, the elements of each subgroup.  Without using Sage, list the order of each subgroup of <m>K</m>.  Then use Sage to construct a subgroup of <m>K</m> with order 10.</li>
+				<li>More complicated subgroups can be formed by using two or more generators.  Construct a subgroup <m>L</m> of <m>G</m> with the command <c>L = G.subgroup([b,c])</c>.  Compute the order of <m>L</m> and list all of the elements of <m>L</m>.</li>
+			</ol>
+		</statement>
+		<sage />
+	</exercise>
 
-<exercise number="1">
-<statement>
-<p>
-Create the full symmetric group <m>S_{10}</m> with the command <c>G = SymmetricGroup(10)</c>.
-</p>
-</statement>
-<sage />
-</exercise>
+	<exercise number="3">
+		<statement>
+			<p>Construct the group of symmetries of the tetrahedron (also the alternating group on 4 symbols, <m>A_4</m>) with the command <c>A=AlternatingGroup(4)</c>.  Using tools such as orders of elements, and generators of subgroups, see if you can find <em>all of</em> the subgroups of <m>A_4</m> (each one exactly once).  Do this without using the <c>.subgroups()</c> method to justify the correctness of your answer (though it might be a convenient way to check your work).</p>
 
-<exercise number="2">
-<statement>
-<p>
-Create elements of <c>G</c> with the following (varying) syntax.  Pay attention to commas, quotes, brackets, parentheses.  The first two use a string (characters) as input, mimicking the way we write permuations (but with commas).  The second two use a list of tuples.</p><p>\noindent
-<c>a = G("(5,7,2,9,3,1,8)")</c>\\
-<c>b = G("(1,3)(4,5)")</c>\\
-<c>c = G([(1,2),(3,4)])</c>\\
-<c>d = G([(1,3),(2,5,8),(4,6,7,9,10)])</c></p><p>\noindent
+			<p>Provide a nice summary as your answer - not just piles of output.  So use Sage as a tool, as needed, but basically your answer will be a concise paragraph and/or table.  This is the one part of this assignment without clear, precise directions, so spend some time on this portion to get it right.  Hint: no subgroup of <m>A_4</m> requires more than two generators.</p>
+		</statement>
+		<sage />
+	</exercise>
 
-(a)  Compute <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.</p><p>\noindent
+	<exercise number="4">
+		<statement>
+			<p>Save your work, and then see if you can crash your Sage session with the commands.  Do not submit the list of elements of <c>N</c> as part of your submitted worksheet.</p>
+			<ul>
+				<li><c>N = G.subgroup([b,d])</c></li>
+				<li><c>N.list()</c></li>
+			</ul>
+			<p>How big is <m>N</m>?</p>
+		</statement>
+		<sage />
+	</exercise>
 
-(b)  Compute the orders of each of these four individual elements (<c>a</c> through <c>d</c>) using a single permutation group element method.</p><p>\noindent
+	<exercise number="5">
+		<statement>
+		<p>Answer the five questions above about the permutations of the cube expressed as permutations of the 8 vertices.</p>
+	</statement>
+	<sage />
+	</exercise>
 
-(c)  Use the permutation group element method <c>.sign()</c> to determine if <m>a,b,c,d</m> are even or odd permutations.</p><p>\noindent
-
-(d)  Create two cyclic subgroups of <m>G</m> with the commands:
-
-<ul>
-</li><li><c>H = G.subgroup([a])</c>
-</li><li><c>K = G.subgroup([d])</c>
-</ul>
-
-List, and study, the elements of each subgroup.  Without using Sage, list the order of each subgroup of <m>K</m>.  Then use Sage to construct a subgroup of <m>K</m> with order 10.</p><p>\noindent
-
-(e)  More complicated subgroups can be formed by using two or more generators.  Construct a subgroup <m>L</m> of <m>G</m> with the command <c>L = G.subgroup([b,c])</c>.  Compute the order of <m>L</m> and list all of the elements of <m>L</m>.
-</p>
-</statement>
-<sage />
-</exercise>
-
-<exercise number="3">
-<statement>
-<p>
-Construct the group of symmetries of the tetrahedron (also the alternating group on 4 symbols, <m>A_4</m>) with the command <c>A=AlternatingGroup(4)</c>.  Using tools such as orders of elements, and generators of subgroups, see if you can find <em>all of</em> the subgroups of <m>A_4</m> (each one exactly once).  Do this without using the <c>.subgroups()</c> method to justify the correctness of your answer (though it might be a convenient way to check your work).</p><p>
-
-Provide a nice summary as your answer - not just piles of output.  So use Sage as a tool, as needed, but basically your answer will be a concise paragraph and/or table.  This is the one part of this assignment without clear, precise directions, so spend some time on this portion to get it right.  Hint: no subgroup of <m>A_4</m> requires more than two generators.
-</p>
-</statement>
-<sage />
-</exercise>
-
-<exercise number="4">
-<statement>
-<p>
-Save your work, and then see if you can crash your Sage session with the commands.  Do not submit the list of elements of <c>N</c> as part of your submitted worksheet.
-
-<ul>
-</li><li><c>N = G.subgroup([b,d])</c>
-</li><li><c>N.list()</c>
-</ul>
-
-How big is <m>N</m>?
-</p>
-</statement>
-<sage />
-</exercise>
-
-<exercise number="5">
-<statement>
-<p>
-Answer the five questions above about the permutations of the cube expressed as permutations of the 8 vertices.
-</p>
-</statement>
-<sage />
-</exercise>
-
+</exercises>
