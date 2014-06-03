@@ -1,0 +1,2357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+</chapter>
+<chapter xml:id="algcodes">
+<title>Algebraic Coding Theory</title>
+
+<introduction>
+<p>FIXME: Move content in here</p>
+</introduction>
+ 
+
+Coding theory is an application of algebra that has become
+increasingly important over the last several decades. When we transmit
+data, we are concerned about sending a message over a channel that
+could be affected by <q>noise.</q> We wish to be able to encode and
+decode the information in a manner that will allow the detection, and
+possibly the correction, of errors caused by noise. This situation
+arises in many areas of communications, including radio, telephone,
+television, computer communications, and even compact disc player
+technology. Probability, combinatorics, group theory, linear algebra,
+and polynomial rings over finite fields all play important roles in
+coding theory.  
+ 
+
+
+</section>
+<section xml:id="">
+<title>Error-Detecting and Correcting Codes</title>
+
+Let us examine a simple model of a communications system for
+transmitting and receiving coded messages (Figure<nbsp /><xref ref="encoding" />).  
+
+<figure xml:id="">
+ <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
+
+<tikz filebase="algcode_encode_decode"><![CDATA[
+\begin{tikzpicture}[scale=1]
+
+\draw [->] (0,8)  node [above] {<em>$m$-digit message</em>} -- (0,7.5);
+
+\node at (0,7) {Encoder};
+\draw (-1.5,6.5) rectangle (1.5,7.5);
+\draw (0,6.5)  -- (0,6.25);
+\draw [->] (0,5.75)  -- (0,5.5);
+\node at (0,6) {<em>$n$-digit code word</em>};
+
+\node at (0,5) {Transmitter};
+\draw (-1.5,4.5) rectangle (1.5,5.5);
+\draw (0,4.5)  -- (0,4.25);
+\draw [->] (0,3.75)  -- (0,3.5);
+\node at (0,4) {<em>Noise</em>};
+
+\node at (0,3) {Receiver};
+\draw (-1.5,2.5) rectangle (1.5,3.5);
+\draw (0,2.5)  -- (0,2.25);
+\draw [->] (0,1.75)  -- (0,1.5);
+\node at (0,2) {<em>$n$-digit received word</em>};
+
+\node at (0,1) {Decoder};
+\draw (-1.5,0.5) rectangle (1.5,1.5);
+\draw [->] (0,0.5)  -- (0,0) node [below] {<em>$m$-digit received message or error</em>};
+
+\end{tikzpicture}]]>
+</tikz>
+
+<caption>Encoding and decoding messages</caption>
+
+\label{encoding}
+</figure>
+
+
+Uncoded messages may be composed of letters or characters, but
+typically they consist of binary <m>m</m>-tuples. These messages are
+encoded into codewords, consisting of binary <m>n</m>-tuples, by a device
+called an <term>encoder</term>. The message is transmitted and then decoded.
+We will consider the occurrence of errors during transmission. An
+<term>error</term> occurs if there is a change in one or more bits in the
+codeword. A <term>decoding scheme</term> is a method that either converts
+an arbitrarily received <m>n</m>-tuple into a meaningful decoded message or
+gives an error message for that <m>n</m>-tuple. If the received message is
+a codeword (one of the special <m>n</m>-tuples allowed to be transmitted),
+then the decoded message must be the unique message that was encoded
+into the codeword. For received non-codewords, the decoding scheme will
+give an error indication, or, if we are more clever, will actually try
+to correct the error and reconstruct the original message. Our goal is
+to transmit error-free messages as cheaply and quickly as possible.
+ 
+ 
+<example xml:id="repeat">
+<p>
+One possible coding scheme would be to send a message several
+times and to compare the received copies with one another. Suppose
+that the message to be encoded is a binary <m>n</m>-tuple $(x_{1}, x_{2},
+\ldots, x_{n})<m>. The message is encoded into a binary </m>3n$-tuple by
+simply repeating the message three times: 
+<me>
+(x_{1}, x_{2}, \ldots, x_{n})
+\mapsto
+(x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n},
+x_{1}, x_{2}, \ldots, x_{n}).
+</me>
+To decode the message, we choose as the <m>i</m>th digit the one that
+appears in the <m>i</m>th place in at least two of the three transmissions.
+For example, if the original message is <m>(0110)</m>, then the transmitted
+message will be \mbox{<m>(0110\;  0110\;  0110)</m>}. If there is a transmission error
+in the fifth digit, then the received codeword will be
+<m>(0110\;  1110\;  0110)</m>, which will be correctly decoded as
+<m>(0110)</m>.<footnote>FIXME: Move content in here</footnote>{We will adopt the convention that bits are numbered
+left to right in binary <m>n</m>-tuples.} 
+This triple-repetition method will automatically detect and correct
+all single errors, but it is slow and inefficient: to send a message
+consisting of <m>n</m> bits, <m>2n</m> extra bits are required, and we can only
+detect and correct single errors. We will see that it is possible to
+find an encoding scheme that will encode a message of <m>n</m> bits into
+<m>m</m> bits with <m>m</m> much smaller than <m>3n</m>.
+</p>
+</example>
+ 
+ 
+<example xml:id="even_parity">
+<p>
+<term>Even parity</term>, a  commonly  used coding scheme, is much
+more efficient than the simple repetition scheme. The ASCII (American
+Standard Code for Information Interchange) coding system uses binary
+8-tuples, yielding <m>2^{8} = 256</m> possible 8-tuples. However, only seven
+bits are needed since there are only <m>2^7 = 128</m> ASCII characters.
+What can or should be done with the extra bit? Using the full eight
+bits, we can detect single transmission errors. For example, the ASCII
+codes for A, B, and C are 
+<md><mrow>
+\mbox{A} &amp; = 65_{10} = 01000001_{2},</mrow><mrow>
+\mbox{B} &amp; = 66_{10} = 01000010_{2},</mrow><mrow>
+\mbox{C} &amp; = 67_{10} = 01000011_{2}.
+</mrow></md>
+Notice that the leftmost bit is always set to 0; that is, the 128 ASCII
+characters have codes 
+<md><mrow>
+00000000_{2} &amp; = 0_{10},</mrow><mrow>
+&amp; \vdots</mrow><mrow>
+01111111_{2} &amp; = 127_{10}.
+</mrow></md>
+The bit can be used for error checking on the other seven bits. It is
+set to either 0 or 1 so that the total number of 1 bits in the
+representation of a character is even. Using even parity, the codes
+for A, B, and C now become 
+<md><mrow>
+\mbox{A} &amp; = 01000001_{2},</mrow><mrow>
+\mbox{B} &amp; = 01000010_{2},</mrow><mrow>
+\mbox{C} &amp; = 11000011_{2}.
+</mrow></md>
+Suppose an A is sent and a transmission error in the sixth
+bit is caused by noise over the communication channel so that 
+(0100\; 0101) is received. We know an error has occurred since the
+received word has an odd number of 1's, and we can now request that the
+codeword be transmitted again. When used for error checking, the
+leftmost bit is called a <term>parity check bit</term>.  
+ 
+ 
+By far the most common error-detecting
+codes used in computers are based on the addition of a parity bit.
+Typically, a computer stores information in <m>m</m>-tuples called <term> words</term>. Common word lengths are 8, 16, and 32 bits. One bit in the 
+word is set aside as the parity check bit, and is not used to store
+information. This bit is set to either 0 or 1, depending on the
+number of 1's in the word. 
+ 
+ 
+Adding a parity check bit allows the detection of all single errors
+because changing a single bit either increases or decreases the number
+of 1's by one, and in either case the parity has been changed from
+even to odd, so the new word is not a codeword. (We could also
+construct an error detection scheme based on <term>odd parity</term>; that
+is, we could set the parity check bit so that a codeword always has an
+odd number of 1's.)  
+</p>
+</example>
+ 
+ 
+The even parity system is easy to implement, but has two drawbacks.
+First, multiple errors are not detectable. Suppose an A is sent and 
+the first and seventh bits are changed from 0 to 1. The received word
+is a codeword, but will be decoded into a C instead of an A.
+Second, we do not have the ability to correct errors.  If the 8-tuple
+(1001\; 1000) is received, we know that an error has occurred, but we
+have no idea which bit has been changed. We will now investigate a
+coding scheme that will not only allow us to detect transmission
+errors but will actually correct the errors. 
+
+ 
+ 
+\begin{table}[htb]\label{repetition_code}
+{\small
+\begin{tabular}{|lc|cccccccc|}
+\hline
+&amp; &amp; \multicolumn{8}{|c|}{Received Word}    \\
+            &amp;     &amp; 000 &amp; 001 &amp; 010 &amp; 011 &amp; 100 &amp; 101 &amp; 110
+&amp; 111 \\ \hline
+Transmitted &amp; 000 &amp; 0   &amp; 1   &amp; 1   &amp; 2   &amp; 1   &amp; 2   &amp; 2
+&amp; 3 \\
+Codeword   &amp; 111 &amp; 3   &amp;  2  &amp; 2   &amp;  1  &amp;  2  &amp;   1 &amp;  1
+&amp;  0 \\ \hline
+\end{tabular}
+}
+<caption>A repetition code</caption>
+
+\end{table}
+
+ 
+<example xml:id="nearest">
+<p>
+Suppose that our original message is either a 0 or a 1, and that 0
+encodes to (000) and 1 encodes to (111). If only a single
+error occurs during transmission, we can detect and correct the
+error. For example, if a 101 is received, then the second bit must
+have been changed from a 1 to a 0.  The originally transmitted
+codeword must have been (111). 	This method will detect and correct 
+all single errors. 
+ 
+ 
+In Table<nbsp /><xref ref="repetition_code" />, we present all possible words that might be received
+for the transmitted codewords (000) and (111). Table<nbsp /><xref ref="repetition_code" /> also shows 
+the number of bits by which each received 3-tuple differs from each
+original codeword. 
+</p>
+</example>
+ 
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Maximum-Likelihood Decoding</title>
+
+<!-- % Footnote in subsection header undigestable by tex4ht -->
+<!-- %   it can follow just outside the {}, -->
+<!-- %   but formats weirdly in both PDF and XHTML -->
+<!-- % <footnote>FIXME: Move content in here</footnote>{This section -->
+<!-- % requires a knowledge of probability, but can be -->
+<!-- % skipped without loss of continuity.} -->
+
+<!-- Label repaired.  Suggested by R. Beezer. -->
+<!-- TWJ - 12/19/2011 -->
+The coding scheme presented in Example<nbsp /><xref ref="example:algcodes:nearest" /> is not a complete solution to
+the problem because it does not account for the possibility of
+multiple errors. For example, either a (000) or a (111) could be sent
+and a (001) received. We have no means of deciding from the received
+word whether there was a single error in the third bit or two errors,
+one in the first bit and one in the second.  No matter what coding 
+scheme is used, an incorrect message could
+be received: we could transmit a (000), have errors in all three
+bits, and receive the codeword (111). It is important to make explicit
+assumptions about the likelihood and distribution of transmission
+errors so that, in a particular application, it will be known whether
+a given
+error detection scheme is appropriate. We will assume that
+transmission errors are rare, and, that when they do occur, they occur
+independently in each bit; that is, if <m>p</m> is the probability of an
+error in one bit and <m>q</m> is the probability of an error in a different
+bit, then the probability of errors occurring in both of these bits at
+the same time is <m>pq</m>. We will also assume that a received <m>n</m>-tuple 
+is
+decoded into a codeword that is closest to it; that is, we assume that
+the receiver uses <term>maximum-likelihood decoding</term><index><main>Maximum-likelihood decoding</main></index>.
+ 
+ 
+<figure xml:id="">
+  <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
+
+<tikz filebase="algcode_binary_channel"><![CDATA[
+\begin{tikzpicture}[scale=1]
+
+\node at (1.5,0) [below] {$p$};
+\draw [->] (0,0)  node [left] {1} -- (3,0) node [right] {1};
+\node at (1.5,2) [above] {$p$};
+\draw [->] (0,2)  node [left] {0} -- (3,2) node [right] {0};
+
+\draw [->] (0,0.2) -- (3,1.8);
+\draw [->] (0,1.8) -- (3,0.2);
+
+\node at (1.8,1.15) [above] {$q$};
+\node at (1.8,0.85) [below] {$q$};
+
+
+\end{tikzpicture}]]>
+</tikz>
+
+
+<caption>Binary symmetric channel</caption>
+\label{channel}
+</figure>
+
+ 
+ 
+ 
+A <term>binary symmetric channel</term><index><main>Binary symmetric channel</main></index>
+is a model that consists of a transmitter capable of sending a binary 
+signal, either a 0 or a 1, together with a receiver. Let <m>p</m> be the 
+probability that the signal is correctly
+received. Then <m>q=1-p</m> is the probability of an incorrect reception.
+If a 1 is sent, then the probability that a 1 is received is <m>p</m> and
+the probability that a 0 is received is <m>q</m> (Figure<nbsp /><xref ref="channel" />).
+The probability that no errors occur during the transmission of a binary
+codeword of length <m>n</m> is <m>p^{n}</m>. For example, if <m>p=0.999</m> and a
+message consisting of 10,000 bits is sent, then the probability of a
+perfect transmission is 
+<me>
+(0.999)^{10,000} \approx 0.00005.
+</me>
+ 
+ 
+<theorem>
+<statement>
+<p>
+If a binary <m>n</m>-tuple <m>(x_{1}, \ldots, x_{n})</m> is transmitted across a
+binary symmetric channel with probability <m>p</m> that no error will occur
+in each coordinate, then the probability that there are errors in
+exactly <m>k</m> coordinates~is
+<me>
+\binom{n}{k} q^kp^{n-k}.
+</me>
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Fix <m>k</m> different coordinates. We first compute the probability that
+an error has occurred in this fixed set of coordinates. The
+probability of an error occurring in a particular one of these <m>k</m>
+coordinates is <m>q</m>; the probability that an error will not occur
+in any of the remaining <m>n-k</m> coordinates is <m>p</m>. The
+probability of each of these <m>n</m> independent events is
+<m>q^{k}p^{n-k}</m>. The number of possible error patterns with exactly <m>k</m>
+errors occurring is equal to 
+<me>
+\binom{n}{k} 
+= \frac{n!}{k!(n-k)!},
+</me>
+the number of combinations of <m>n</m> things taken <m>k</m> at a time. Each of
+these error patterns has probability <m>q^{k}p^{n-k}</m> of occurring;
+hence, the probability of all of these error patterns is
+<me>
+\binom{n}{k} 
+q^{k}p^{n-k}.
+</me>
+</p></proof>
+ 
+ 
+<example xml:id="probability">
+<p>
+Suppose that <m>p = 0.995</m> and a 500-bit message is sent. The
+probability that the message was sent error-free is 
+<me>
+p^{n} = (0.995)^{500} \approx 0.082.
+</me>
+The probability of exactly one error occurring is
+<me>
+\binom{n}{1} 
+qp^{n-1}= 500(0.005)(0.995)^{499}
+\approx 0.204.
+</me>
+The probability of exactly two errors is
+<me>
+\binom{n}{2} 
+q^{2}p^{n-2}=
+\frac{500 \cdot 499}{2}(0.005)^{2}(0.995)^{498} \approx
+0.257.
+</me>
+The probability of more than two errors is approximately
+<me>
+1-0.082-0.204 -0.257=0.457.
+</me>
+</p>
+</example>
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Block Codes</title>
+ 
+ 
+If we are to develop efficient error-detecting and error-correcting
+codes, we will need more sophisticated mathematical tools.  Group
+theory  will allow faster methods of encoding and decoding messages. A
+code is an <m>(n, m)</m>-<term>block code</term> if the information that is to be
+coded can be divided into blocks of <m>m</m> binary digits, each of which
+can be encoded into <m>n</m> binary digits. More specifically, an $(n,
+m)$-block code consists of an <term>encoding function</term> 
+<me>
+E:{\mathbb Z}^{m}_{2} \rightarrow {\mathbb Z}^{n}_{2}
+</me>
+and a <term>decoding function</term>
+<me>
+D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}.
+</me>
+A <term>codeword</term> is any element in the image of <m>E</m>. We also require
+that <m>E</m> be one-to-one so that two information blocks will not be
+encoded into the same codeword. If our code is to be error-correcting,
+then <m>D</m> must be onto.
+ 
+ 
+<example xml:id="BlockCode">
+<p>
+The even-parity coding system developed to detect single errors in
+ASCII characters is an <m>(8,7)</m>-block code. The encoding function is
+<me>
+E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),
+</me>
+where <m>x_8 = x_7 + x_6 + \cdots + x_1</m> with addition in <m>{\mathbb Z}_2</m>. 
+</p>
+</example>
+ 
+
+ 
+Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and ${\mathbf y} = (y_1, \ldots,
+y_n)<m> be binary </m>n$-tuples. The <term>Hamming distance</term>\index{Hamming
+distance} or <term>distance</term>, $d({\mathbf x}, {\mathbf
+y})<m>\label{noteHammingdist}, between </m>{\mathbf x}<m> and </m>{\mathbf y}$ is
+the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The
+distance between two codewords is the minimum number of transmission
+errors required to change one codeword into the other. The
+<term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code,
+<m>d_{\min}</m>\label{notemindist}, is the minimum of all distances
+<m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are
+distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>,
+<m>w({\mathbf x})</m>\label{noteweight}, of a binary codeword <m>{\mathbf x}</m> is
+the number of 1's in <m>{\mathbf x}</m>. Clearly, $w({\mathbf x}) = d({\mathbf
+x}, {\mathbf 0})<m>, where </m>{\mathbf 0} = (00 \cdots 0)$. 
+ 
+ 
+<example xml:id="min_distance">
+<p>
+Let <m>{\mathbf x} = (10101)</m>, <m>{\mathbf y} = (11010)</m>, and ${\mathbf z} =
+(00011)<m> be all of the codewords in some code </m>C$. Then we have the
+following Hamming distances: 
+<me>
+d({\mathbf x},{\mathbf y}) = 4, \qquad
+d({\mathbf x},{\mathbf z}) = 3, \qquad
+d({\mathbf y},{\mathbf z}) = 3.
+</me>
+The minimum distance  for this code is 3. We also have the
+following weights: 
+<me>
+w({\mathbf x}) = 3, \qquad
+w({\mathbf y}) = 3, \qquad
+w({\mathbf z}) = 2.
+</me>
+</p>
+</example>
+ 
+ 
+The following proposition lists some basic properties about the weight
+of a codeword and the distance between two codewords. The proof is
+left as an exercise.
+ 
+ 
+<proposition>
+<statement>
+<p>
+Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, and <m>{\mathbf z}</m> be binary <m>n</m>-tuples.
+Then 
+\begin{enumerate}
+ 
+\rm \</li><li> \it
+<m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m>; 
+ 
+\rm \</li><li> \it
+<m>d( {\mathbf x}, {\mathbf y}) \geq 0</m>; 
+ 
+\rm \</li><li> \it
+<m>d( {\mathbf x}, {\mathbf y}) = 0</m> exactly when <m>{\mathbf x} = {\mathbf y}</m>; 
+ 
+\rm \</li><li> \it
+<m>d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})</m>; 
+ 
+\rm \</li><li> \it
+$d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf
+z}, {\mathbf y})$. 
+ 
+\end{enumerate}
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+The weights in a particular code are usually much easier to compute
+than the Hamming distances between all codewords in the code. If a
+code is set up carefully, we can use this fact to our advantage.
+ 
+ 
+Suppose that <m>{\mathbf x} = (1101)</m> and <m>{\mathbf y} = (1100)</m> are
+codewords in some code. If we transmit (1101) and an error occurs in
+the rightmost bit, then (1100) will be received. Since (1100) is a
+codeword, the decoder will decode (1100) as the transmitted message.
+This code is clearly not very appropriate for error detection. The
+problem is that <m>d({\mathbf x}, {\mathbf y}) = 1</m>. If <m>{\mathbf x} = (1100)</m>
+and <m>{\mathbf y} = (1010)</m> are codewords, then $d({\mathbf x}, {\mathbf y})
+= 2<m>. If </m>{\mathbf x}$ is transmitted and a single error occurs, then
+<m>{\mathbf y}</m> can never be received. Table<nbsp /><xref ref="4-bit_words" /> gives the distances
+between all 4-bit codewords in which the first three bits carry
+information and the fourth is an even parity check bit. We can see
+that the minimum distance here is 2; hence, the code is suitable as
+a single error-correcting code. 
+ 
+ 
+\begin{table}[hbt]
+{\small
+
+\begin{tabular}{|c|cccccccc|}
+\hline
+    &amp; 0000 &amp; 0011 &amp; 0101 &amp; 0110 &amp; 1001 &amp; 1010 &amp; 1100 &amp; 1111
+\\ \hline
+0000 &amp; 0 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 4 \\
+0011 &amp; 2 &amp; 0 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 4 &amp; 2 \\
+0101 &amp; 2 &amp; 2 &amp; 0 &amp; 2 &amp; 2 &amp; 4 &amp; 2 &amp; 2 \\
+0110 &amp; 2 &amp; 2 &amp; 2 &amp; 0 &amp; 4 &amp; 2 &amp; 2 &amp; 2 \\
+1001 &amp; 2 &amp; 2 &amp; 2 &amp; 4 &amp; 0 &amp; 2 &amp; 2 &amp; 2 \\
+1010 &amp; 2 &amp; 2 &amp; 4 &amp; 2 &amp; 2 &amp; 0 &amp; 2 &amp; 2 \\
+1100 &amp; 2 &amp; 4 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 0 &amp; 2 \\
+1111 &amp; 4 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 2 &amp; 0 \\
+\hline
+\end{tabular}
+<caption>Distances between 4-bit codewords</caption>\label{4-bit_words}
+
+}
+\end{table}
+ 
+ 
+ 
+To determine exactly what the error-detecting and error-correcting
+capabilities for a code are, we need to analyze the minimum distance
+for the code. Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be codewords. If
+<m>d({\mathbf x}, {\mathbf y}) = 1</m> and an error occurs where <m>{\mathbf x}</m>
+and <m>{\mathbf y}</m> differ, then <m>{\mathbf x}</m> is changed to <m>{\mathbf y}</m>.
+The received codeword is <m>{\mathbf y}</m> and no error message is given.
+Now suppose <m>d({\mathbf x}, {\mathbf y}) = 2</m>. Then a single error cannot
+change <m>{\mathbf x}</m> to <m>{\mathbf y}</m>. Therefore, if <m>d_{\min} = 2</m>, we
+have the ability to detect single errors. However, suppose that
+<m>d({\mathbf x}, {\mathbf y}) = 2</m>, <m>{\mathbf y}</m> is sent, and a noncodeword
+<m>{\mathbf z}</m> is received such that
+<me>
+d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1.
+</me>
+Then the decoder cannot decide between <m>{\mathbf x}</m> and <m>{\mathbf y}</m>. Even
+though we are aware that an error has occurred, we do not know what
+the error is.
+ 
+ 
+Suppose <m>d_{\min} \geq 3</m>. Then the maximum-likelihood decoding scheme
+corrects all single errors. Starting with a codeword <m>{\mathbf x}</m>, an
+error in the transmission of a single bit gives <m>{\mathbf y}</m> with
+<m>d({\mathbf x}, {\mathbf y}) = 1</m>, but <m>d({\mathbf z}, {\mathbf y}) \geq 2</m>
+for any other codeword <m>{\mathbf z} \neq {\mathbf x}</m>. If we do not
+require the correction of errors, then we can detect multiple errors
+when a code has a minimum distance that is greater than 3.  
+ 
+ 
+<theorem xml:id="algecodes:min_distance_theorem">
+<statement>
+<p>
+Let <m>C</m> be a code with <m>d_{\min} = 2n + 1</m>. Then <m>C</m> can correct any
+<m>n</m> or fewer errors.  Furthermore, any <m>2n</m> or fewer errors can be
+detected in~<m>C</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Suppose that a codeword <m>{\mathbf x}</m> is sent and the word <m>{\mathbf y}</m>
+is received with at most <m>n</m> errors. Then $d( {\mathbf x}, {\mathbf y})
+\leq n<m>. If </m>{\mathbf z}<m> is any codeword other than </m>{\mathbf x}$, then
+<me>
+2n+1
+\leq
+d( {\mathbf x}, {\mathbf z})
+\leq
+d( {\mathbf x}, {\mathbf y}) + d( {\mathbf y}, {\mathbf z})
+\leq
+n + d( {\mathbf y}, {\mathbf z}).
+</me>
+Hence, <m>d({\mathbf y}, {\mathbf z} ) \geq n+1</m> and <m>{\mathbf y}</m> will be
+correctly decoded as <m>{\mathbf x}</m>. Now suppose that <m>{\mathbf x}</m> is
+transmitted and <m>{\mathbf y}</m> is received and that at least one error 
+has occurred, but not more than <m>2n</m> errors. Then $1 \leq d( {\mathbf x},
+{\mathbf y} ) \leq 2n$.  Since the minimum distance between codewords is
+<m>2n +1</m>, <m>{\mathbf y}</m> cannot be a codeword.  Consequently, the code can
+detect between 1 and <m>2n</m> errors. 
+</p></proof>
+ 
+ 
+<example xml:id="single_correct">
+<p>
+In Table<nbsp /><xref ref="Hamming_dist" />, the codewords <m>{\mathbf c}_1 = (00000)</m>, <m>{\mathbf c}_2 = (00111)</m>,
+<m>{\mathbf c}_3 = (11100)</m>, and <m>{\mathbf c}_4 = (11011)</m> determine a
+single error-correcting code.  
+</p>
+</example>
+ 
+ 
+\begin{table}[htb]
+
+
+{\small
+\begin{tabular}{|c|cccc|}
+\hline
+      &amp; 00000 &amp; 00111 &amp; 11100 &amp; 11011 \\ \hline
+00000 &amp; 0     &amp; 3     &amp; 3     &amp; 4 \\
+00111 &amp; 3     &amp; 0     &amp; 4     &amp; 3 \\
+11100 &amp; 3     &amp; 4     &amp; 0     &amp; 3 \\
+11011 &amp; 4     &amp; 3     &amp; 3     &amp; 0 \\
+\hline
+\end{tabular}
+}
+<caption> Hamming distances for an error-correcting code</caption>\label{Hamming_dist}
+
+\end{table}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<historical>
+<p>
+Modern coding theory began in 1948 with C. Shannon's\index{Shannon,
+C.} paper, <q>A Mathematical Theory of Information</q> [7]. This paper offered
+an example of an algebraic code, and Shannon's Theorem proclaimed
+exactly how good codes could be expected to be. Richard
+Hamming<index><main>Hamming, R.</main></index> began working with linear codes at Bell
+Labs in the late 1940s and early 1950s after becoming frustrated
+because the programs that he was running could not recover from simple
+errors generated by noise. Coding theory has grown tremendously in the
+past several years. <title>The Theory of Error-Correcting Codes</title>, by 
+MacWilliams and Sloane [5], published in 1977, already
+contained over 1500 references. Linear codes (Reed-Muller $(32,
+6)$-block codes) were used on NASA's Mariner space probes.  More recent
+space probes such as Voyager have used what are called convolution
+codes.  Currently, very active research is being done with Goppa
+codes, which are heavily dependent on algebraic geometry.
+</p>
+</historical>  <!-- FIXME: stray closing brace on next line -->
+} 
+ 
+ 
+
+</section>
+<section xml:id="">
+<title>Linear Codes</title>
+ 
+ 
+To gain more knowledge of a particular code and develop more efficient
+techniques of encoding, decoding, and error detection, we need to add
+additional structure to our codes. One way to accomplish this is to
+require that the code also be a group. A <term>group code</term><index><main>Code</main><sub>group</sub></index> is a code that is also a subgroup of ${\mathbb
+Z}_2^n$.  
+ 
+ 
+To check that a code is a group code, we need only verify one thing.
+If we add any two elements in the code, the result must be an <m>n</m>-tuple
+that is again in the code. It is not necessary to check that the
+inverse of the <m>n</m>-tuple is in the code, since every codeword is its own
+inverse, nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword.
+For instance,
+<me>
+(11000101) + (11000101) = (00000000).
+</me>
+ 
+ 
+<example xml:id="weights">
+<p>
+Suppose that we have a code that consists of the following 7-tuples: 
+<me>
+\begin{array}{cccc}
+(0000000) &amp; (0001111) &amp; (0010101) &amp; (0011010) \\
+(0100110) &amp; (0101001) &amp; (0110011) &amp; (0111100) \\
+(1000011) &amp; (1001100) &amp; (1010110) &amp; (1011001) \\
+(1100101) &amp; (1101010) &amp; (1110000) &amp; (1111111).
+\end{array}
+</me>
+It is a straightforward though tedious task to verify that this code
+is also a subgroup of <m>{\mathbb Z}_2^7</m> and, therefore, a group code.
+This code is a single error-detecting and single error-correcting 
+code, but
+it is a long and tedious process to compute all of the distances
+between  pairs of codewords to determine that <m>d_{\min} = 3</m>. It is
+much easier to see that the minimum weight of all the nonzero
+codewords is 3. As we will soon see, this is no coincidence.
+However, the relationship between weights and distances in a
+particular code is heavily dependent on the fact that the code is a
+group. 
+</p>
+</example>
+ 
+ 
+<lemma>
+<statement>
+<p>
+Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be  binary <m>n</m>-tuples. Then $w({\mathbf
+x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})$. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</lemma>
+ 
+ 
+<proof><p>
+Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are binary <m>n</m>-tuples. Then
+the distance between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is exactly the number
+of places in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. But <m>{\mathbf x}</m>
+and <m>{\mathbf y}</m> differ in a particular coordinate exactly when the sum
+in the coordinate is 1, since
+<md><mrow>
+1 + 1 &amp; = 0</mrow><mrow>
+0 + 0 &amp; = 0</mrow><mrow>
+1 + 0 &amp; = 1</mrow><mrow>
+0 + 1 &amp; = 1.
+</mrow></md>
+Consequently, the weight of the sum must be the distance between the two
+codewords.
+</p></proof>
+ 
+ 
+<theorem>
+<statement>
+<p>
+Let <m>d_{\min}</m> be the minimum distance for a group code <m>C</m>. Then
+<m>d_{\min}</m> is the minimum of all the nonzero weights of the nonzero
+codewords in <m>C</m>. That is, 
+<me>
+d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}.
+</me>
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Observe that
+<md><mrow>
+d_{\min} &amp; =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}
+\neq
+{\mathbf y} \}</mrow><mrow>
+&amp;=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y}
+\neq {\mathbf 0} \}</mrow><mrow>
+&amp;= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}
+\neq {\mathbf 0} \}</mrow><mrow>
+&amp; =  \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.
+</mrow></md>
+</p></proof>
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Linear Codes</title>
+ 
+ 
+From Example<nbsp /><xref ref="example:algcodes:weights" />, it is now easy to check that the minimum nonzero
+weight is 3; hence, the code does indeed detect and correct all
+single errors. We have now reduced the problem of finding <q>good</q>
+codes to that of generating group codes. One easy way to generate
+group codes is to employ a bit of matrix theory. 
+ 
+ 
+Define the <term>inner product</term><index><main>Inner product</main></index> of two binary
+<m>n</m>-tuples to be 
+<me>
+{\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,
+</me>
+where <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> and ${\mathbf y} =
+(y_1, y_2, \ldots, y_n)^{\rm t}$ are column vectors.<footnote>FIXME: Move content in here</footnote>{Since we
+will be working with matrices, we will write binary <m>n</m>-tuples as
+column vectors for the remainder of this chapter.} For example, if
+<m>{\mathbf x} = (011001)^{\rm t}</m> and <m>{\mathbf y} = (110101)^{\rm t}</m>,
+then <m>{\mathbf x} \cdot {\mathbf y} = 0</m>. We can also look at an inner
+product as the product of a row matrix with a column matrix; that is, 
+<md><mrow>
+{\mathbf x} \cdot {\mathbf y} &amp; = {\mathbf x}^{\rm t}  {\mathbf y}
+\\
+&amp; =
+\begin{pmatrix}<![CDATA[
+x_1 & x_2 & \cdots & x_n
+]]>\end{pmatrix}
+\begin{pmatrix}<![CDATA[
+y_1</mrow><mrow>
+y_2</mrow><mrow>
+\vdots</mrow><mrow>
+y_n
+]]>\end{pmatrix}</mrow><mrow>
+&amp; =
+x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.
+</mrow></md>
+ 
+ 
+<example xml:id="matrix_codes">
+<p>
+Suppose that the words to be encoded consist of all binary
+\mbox{3-tuples}
+and that our encoding scheme is even-parity. To encode an arbitrary
+3-tuple, we add a fourth bit to obtain an even number of 1's. Notice
+that an arbitrary <m>n</m>-tuple ${\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm
+t}<m> has an even number of 1's exactly when </m>x_1 + x_2 + \cdots + x_n =
+0<m>; hence, a 4-tuple </m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}$ has an
+even number of 1's if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
+<me>
+{\mathbf x} \cdot {\mathbf 1} 
+= 
+{\mathbf x}^{\rm t} {\mathbf 1} 
+=
+\begin{pmatrix}<![CDATA[
+x_1 & x_2 & x_3 & x_4
+]]>\end{pmatrix}
+\begin{pmatrix}<![CDATA[
+1 \\ 1 \\ 1 \\ 1
+]]>\end{pmatrix} = 0.
+</me>
+This example leads us to hope that there is a connection between
+matrices and coding theory. 
+</p>
+</example>
+ 
+ 
+Let <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>\label{notembyn} denote the set
+of all <m>m \times n</m> matrices with entries in <m>{\mathbb Z}_2</m>. We do
+matrix operations as usual except that all our addition and multiplication
+operations occur in <m>{\mathbb Z}_2</m>. Define the <term>null space</term><index><main>Matrix</main><sub>null space of</sub></index><index><main>Null space</main><sub>of a matrix</sub></index> of 
+a matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> to be the set of
+all binary <m>n</m>-tuples <m>{\mathbf x}</m> such that <m>H{\mathbf x} = {\mathbf 0}</m>.
+We denote the null space of a matrix <m>H</m> by <m>{\rm Null}(H)</m>\label{notenull}.  
+ 
+ 
+<example xml:id="group_code">
+<p>
+Suppose that
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 & 0 \\
+0 & 0 & 1 & 1 & 1
+]]>\end{pmatrix}.
+</me>
+For a 5-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}</m> to be in
+the null space of <m>H</m>, <m>H{\mathbf x} = {\mathbf 0}</m>. Equivalently, the
+following system of equations must be satisfied:   
+<md><mrow>
+  x_2 +  x_4  &amp; =  0</mrow><mrow>
+x_1 +  x_2 + x_3  + x_4   &amp; =  0</mrow><mrow>
+  x_3  + x_4  +  x_5 &amp; =  0.
+</mrow></md>
+The set of binary 5-tuples satisfying these equations is
+<me>
+(00000) \qquad (11110) \qquad (10101) \qquad (01011).
+</me>
+This code is easily determined to be a group code.
+</p>
+</example>
+ 
+ 
+<theorem>
+<statement>
+<p>
+Let <m>H</m> be in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Then the null space of
+<m>H</m> is a group~code. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Since each element of <m>{\mathbb Z}_2^n</m> is its own inverse, the only
+thing that really needs to be checked here is closure. Let ${\mathbf x},
+{\mathbf y} \in {\rm Null}(H)<m> for some matrix </m>H<m> in </m>{\mathbb M}_{m \times
+n}({\mathbb Z}_2)<m>. Then </m>H{\mathbf x} = {\mathbf 0}<m> and </m>H{\mathbf y} =
+{\mathbf 0}$. So 
+<me>
+H({\mathbf x}+{\mathbf y}) 
+=
+H{\mathbf x} + H{\mathbf y} = {\mathbf 0}
++
+{\mathbf 0}
+= {\mathbf 0}.
+</me>
+Hence, <m>{\mathbf x}+{\mathbf y}</m> is in the null space of <m>H</m> and
+therefore must be a codeword. 
+
+</p></proof>
+ 
+<!-- typo correction.  Suggested by J. Buller. -->
+<!-- TWJ - 12/20/2011 -->
+
+
+ 
+ 
+A code is a <term>linear code</term><index><main>Code</main><sub>linear</sub></index> if it is
+determined by the null space of some matrix $H \in {\mathbb M}_{m \times
+n}({\mathbb Z}_2)$.  
+ 
+ 
+ 
+<example xml:id="linear_code">
+<p>
+Let <m>C</m> be the code given by the matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}.
+</me>
+Suppose that the 6-tuple <m>{\mathbf x} = (010011)^{\rm t}</m> is received.
+It is a simple matter of matrix multiplication to determine whether or
+not <m>{\mathbf x}</m> is a codeword. Since 
+<me>
+H{\mathbf x} =
+\begin{pmatrix}<![CDATA[ 
+0 \\ 1 \\ 1
+]]>\end{pmatrix},
+</me>
+the received word is not a codeword.  We must either attempt to
+correct the word or request that it be transmitted again.
+</p>
+</example>
+
+<!-- typo correction.  Suggested by J. Buller. -->
+<!-- TWJ - 12/20/2011 -->
+ 
+ 
+ 
+
+</section>
+<section xml:id="">
+<title>Parity-Check and Generator Matrices</title>
+ 
+ 
+We need to find a systematic way of generating linear codes as well as
+fast methods of decoding. By examining the properties of a matrix <m>H</m>
+and by carefully choosing <m>H</m>, it is possible to develop very
+efficient methods of encoding and decoding messages. To this end, we 
+will introduce standard generator and canonical parity-check
+matrices.
+ 
+ 
+Suppose that <m>H</m> is an <m>m \times n</m> matrix with entries in
+<m>{\mathbb Z}_2</m> and <m>n \gt m</m>. If the last <m>m</m> columns of the
+matrix form the <m>m \times m</m> identity matrix, <m>I_m</m>, then
+the matrix is a <term>canonical parity-check matrix</term><index><main>Matrix</main><sub>parity-check</sub></index>. More specifically, $H= (A \mid I_m
+)<m>, where </m>A<m> is the </m>m \times (n-m)$ matrix
+<me>
+\begin{pmatrix}<![CDATA[
+a_{11} & a_{12} & \cdots & a_{1,n-m} \\
+a_{21} & a_{22} & \cdots & a_{2,n-m} \\
+\vdots & \vdots \ddots & \vdots    \\
+a_{m1} & a_{m2} & \cdots & a_{m,n-m}
+]]>\end{pmatrix}
+</me>
+and <m>I_m</m> is the <m>m \times m</m> identity matrix
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots \ddots & \vdots \\
+0 & 0 & \cdots & 1
+]]>\end{pmatrix}.
+</me>
+With each canonical parity-check matrix we can associate an $n \times
+(n-m)$ <term>standard generator matrix</term><index><main>Matrix</main><sub>generator</sub></index> 
+<me>
+G =
+\left(
+\frac{I_{n-m}}{A}
+\right).
+</me>
+Our goal will be to show that <m>G {\mathbf x} = {\mathbf y}</m> if and only if
+<m>H{\mathbf y} = {\mathbf 0}</m>.  Given a message block <m>{\mathbf x}</m> to be
+encoded, <m>G</m> will allow us to quickly encode it into a linear
+codeword <m>{\mathbf y}</m>. 
+ 
+ 
+<example xml:id="ParityCheck">
+<p>
+Suppose that we have the following eight words to be
+encoded:
+<me>
+(000), (001), (010), \ldots, (111).
+</me>
+For
+<me>
+A =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+1 & 0 & 1
+]]>\end{pmatrix},
+</me>
+the associated standard generator and canonical parity-check matrices
+are 
+<me>
+G=
+\begin{pmatrix}<![CDATA[
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0 \\
+1 & 0 & 1
+]]>\end{pmatrix}
+</me>
+and
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 1 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 0 & 0 & 1
+]]>\end{pmatrix},
+</me>
+respectively.
+ 
+ 
+Observe that the rows in <m>H</m>  represent the parity checks on certain
+bit positions in a 6-tuple. The 1's in the identity matrix serve as
+parity checks for the 1's in the same row. If ${\mathbf x} = (x_1, x_2,
+x_3, x_4, x_5, x_6)$, then 
+<me>
+{\mathbf 0}
+=
+H{\mathbf x}
+=
+\begin{pmatrix}<![CDATA[
+x_2 + x_3 + x_4 \\
+x_1 + x_2 + x_5\\
+x_1 + x_3 + x_6
+]]>\end{pmatrix},
+</me>
+which yields a system of equations:
+<md><mrow>
+x_2 + x_3 + x_4 &amp; = 0</mrow><mrow>
+x_1 + x_2 + x_5 &amp; = 0</mrow><mrow>
+x_1 + x_3 + x_6 &amp; = 0.
+</mrow></md>
+Here <m>x_4</m> serves as a check bit for <m>x_2</m> and <m>x_3</m>; <m>x_5</m> is a check
+bit for <m>x_1</m> and <m>x_2</m>; and <m>x_6</m> is a check bit for <m>x_1</m> and <m>x_3</m>.
+The identity matrix keeps <m>x_4</m>, <m>x_5</m>, and <m>x_6</m> from having to check
+on each other. Hence, <m>x_1</m>, <m>x_2</m>, and <m>x_3</m> can be arbitrary but
+<m>x_4</m>, <m>x_5</m>, and <m>x_6</m> must be chosen to ensure parity. The null
+space of <m>H</m> is easily computed to be
+<me>
+\begin{array}{cccc}
+ (000000) &amp; (001101) &amp; (010110) &amp; (011011) \\
+ (100011) &amp; (101110) &amp; (110101) &amp; (111000).
+\end{array}
+</me>
+An even easier way to compute the null space is with the generator
+matrix <m>G</m> (Table<nbsp /><xref ref="matrix_gen_code" />). 
+</p>
+</example>
+ 
+ 
+\begin{table}[htb]
+{\small
+
+\begin{tabular}{|c|c|}
+\hline
+Message Word  &amp; Codeword \\
+<m>{\mathbf x}</m> &amp; <m>G {\mathbf x}</m> \\ \hline
+000 &amp; 000000 \\
+001 &amp; 001101 \\
+010 &amp; 010110 \\
+011 &amp; 011011 \\
+100 &amp; 100011 \\
+101 &amp; 101110 \\
+110 &amp; 110101 \\
+111 &amp; 111000 \\
+\hline
+\end{tabular}
+
+}
+<caption>A matrix-generated code</caption>\label{matrix_gen_code}
+\end{table}
+ 
+ 
+<theorem>
+<statement>
+<p>
+If <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> is a canonical
+parity-check matrix, then <m>{\rm Null}(H)</m> consists of all 
+<m>{\mathbf x} \in {\mathbb Z}_2^n</m> whose first <m>n-m</m> bits are arbitrary but whose last <m>m</m> bits
+are determined by <m>H{\mathbf x} = {\mathbf 0}</m>. Each of
+the last <m>m</m> bits serves as an even parity check bit for some of the
+first <m>n-m</m> bits. Hence, <m>H</m> gives rise to an <m>(n, n-m)</m>-block code. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+
+
+ 
+ 
+We leave the proof of this theorem as an exercise. In light of the
+theorem, the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called <term> information bits</term> and the last <m>m</m> bits are called <term>check bits</term>.
+In Example<nbsp /><xref ref="example:algcodes:ParityCheck" />,  the first three bits are the information bits
+and the last three are the check bits.
+ 
+ 
+<theorem>
+<statement>
+<p>
+Suppose that <m>G</m> is an <m>n \times k</m>  standard generator matrix.  Then
+$C = \left\{{\mathbf y} : G{\mathbf x} ={\mathbf y}\text{ for }{\mathbf x}\in
+{\mathbb  Z}_2^k\right\}<m> is an  </m>(n,k)<m>-block code. More specifically, </m>C$
+is a group code.  
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Let <m>G {\mathbf x}_1 = {\mathbf y}_1</m> and $G {\mathbf
+x}_2 ={\mathbf y}_2<m> be two codewords. Then </m>{\mathbf y}_1
++ {\mathbf y}_2<m> is in </m>C$ since 
+<me>
+G( {\mathbf x}_1 + {\mathbf x}_2)
+=
+G {\mathbf x}_1 + G {\mathbf x}_2
+=
+{\mathbf y}_1 + {\mathbf y}_2.
+</me>
+We must also show that two message blocks cannot be encoded into the
+same codeword. That is, we must show that if $G {\mathbf x} = G
+{\mathbf y}<m>, then </m>{\mathbf x} = {\mathbf y}<m>.  Suppose that </m>G
+{\mathbf x} = G {\mathbf y}$. Then
+<me>
+G {\mathbf x} - G {\mathbf y}
+=
+G( {\mathbf x} - {\mathbf y})
+=
+{\mathbf 0}.
+</me>
+However, the first <m>k</m> coordinates in $G( {\mathbf x} - {\mathbf
+y})<m> are exactly </m>x_1 -y_1, \ldots, x_k - y_k$, since they are
+determined by the identity matrix, <m>I_k</m>, part of <m>G</m>. Hence, $G(
+{\mathbf x} - {\mathbf y}) = {\mathbf 0}$ exactly when
+<m>{\mathbf x} = {\mathbf y}</m>.
+</p></proof>
+ 
+ 
+ 
+ 
+Before we can prove the relationship between canonical parity-check
+matrices and standard generating matrices, we need to prove a lemma.
+ 
+ 
+<lemma xml:id="ParityCheckLemma">
+<statement>
+<p>
+Let <m>H = (A \mid I_m )</m> be an <m>m \times n</m> canonical parity-check
+matrix and <m>G = \left( \frac{I_{n-m} }{A} \right)</m> be the
+corresponding <m>n \times (n-m)</m> standard generator matrix. Then $HG =
+{\mathbf 0}$. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</lemma>
+ 
+ 
+<proof><p>
+Let <m>C = HG</m>.  The <m>ij</m>th entry in <m>C</m> is
+<md><mrow>
+c_{ij}
+&amp; = 
+\sum_{k=1}^n h_{ik} g_{kj}</mrow><mrow>
+&amp; =  \sum_{k=1}^{n-m} h_{ik} g_{kj} + \sum_{k=n-m+1}^n h_{ik} g_{kj}</mrow><mrow>
+&amp; = \sum_{k=1}^{n-m} a_{ik} \delta_{kj} + \sum_{k=n-m+1}^n \delta_{i-(m-n),k} a_{kj}</mrow><mrow>
+&amp; =  a_{ij} + a_{ij}</mrow><mrow>
+&amp; = 0,
+</mrow></md>
+where
+<me>
+\delta_{ij}\label{notekron}
+=
+\begin{cases}
+1, &amp; i = j \\
+0, &amp; i \neq j
+\end{cases}
+</me>
+is the Kronecker delta<index><main>Kronecker delta</main></index>.
+</p></proof>
+ 
+ 
+<theorem>
+<statement>
+<p>
+Let <m>H = (A \mid I_m )</m> be an <m>m \times n</m> canonical parity-check
+matrix and let <m>G = \left( \frac{I_{n-m} }{A} \right) </m> be the $n
+\times (n-m)<m> standard generator matrix associated with </m>H<m>. Let </m>C$
+be the code generated by <m>G</m>. Then <m>{\mathbf y}</m> is in <m>C</m> if and only
+if <m>H {\mathbf y} = {\mathbf 0}</m>. In particular, <m>C</m> is a linear code with
+canonical parity-check matrix <m>H</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+First suppose that <m>{\mathbf y} \in C</m>. Then <m>G {\mathbf x} = {\mathbf y}</m>
+for some <m>{\mathbf x} \in {\mathbb Z}_2^m</m>. By Lemma<nbsp /><xref ref="ParityCheckLemma" />, $H {\mathbf y} = HG
+{\mathbf x} = {\mathbf 0}$. 
+ 
+ 
+Conversely, suppose that <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> is
+in the null space of <m>H</m>.  We need to find an <m>{\mathbf x}</m> in ${\mathbb
+Z}_2^{n-m}<m> such that </m>G {\mathbf x}^{\rm t} = {\mathbf y}<m>. Since </m>H
+{\mathbf y} = {\mathbf 0}$, the following set of equations must be
+satisfied:  
+<md><mrow>
+a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1}
+&amp; = 0</mrow><mrow>
+a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+1}
+&amp; = 0</mrow><mrow>
+&amp; \vdots  </mrow><mrow>
+a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} + y_{n-m+1}
+&amp; = 0.
+</mrow></md>
+Equivalently, <m>y_{n-m+1}, \ldots, y_n</m> are determined by $y_1, \ldots,
+y_{n-m}$: 
+<md><mrow>
+y_{n-m+1}
+&amp; = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m}</mrow><mrow>
+y_{n-m+1}
+&amp; = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m}</mrow><mrow>
+&amp; \vdots</mrow><mrow>
+y_{n-m+1}
+&amp; = a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}.
+</mrow></md>
+Consequently, we can let <m>x_i = y_i</m> for <m>i= 1, \ldots, n - m</m>.
+</p></proof>
+ 
+ 
+
+ 
+ 
+It would be helpful if we could compute the minimum distance of a
+linear code directly from its matrix <m>H</m> in order to determine the
+error-detecting and error-correcting capabilities of the code. Suppose
+that  
+<md><mrow>
+{\mathbf e}_1 &amp; = (100 \cdots 00)^{\rm t}</mrow><mrow>
+{\mathbf e}_2 &amp; = (010 \cdots 00)^{\rm t}</mrow><mrow>
+ &amp; \vdots</mrow><mrow>
+{\mathbf e}_n &amp; = (000 \cdots 01)^{\rm t}
+</mrow></md>
+are the <m>n</m>-tuples in <m>{\mathbb Z}_2^n</m> of weight 1. For an $m \times
+n<m> binary matrix </m>H<m>, </m>H{\mathbf e}_i<m> is exactly the </m>i$th column of
+the matrix <m>H</m>. 
+ 
+ 
+<example xml:id="ith_column">
+<p>
+Observe that
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}
+\begin{pmatrix}<![CDATA[
+ 0 \\ 1 \\ 0 \\ 0 \\ 0
+]]>\end{pmatrix}
+=
+\begin{pmatrix}<![CDATA[
+1 \\ 0 \\ 1
+]]>\end{pmatrix}.
+</me>
+</p>
+</example>
+ 
+ 
+We state this result in the following proposition and leave the proof
+as an exercise. 
+ 
+<proposition xml:id="ColumnProp">
+<statement>
+<p>
+Let <m>{\mathbf e}_i</m> be the binary <m>n</m>-tuple with a <m>1</m> in the <m>i</m>th
+coordinate and <m>0</m>'s elsewhere and suppose that $H \in {\mathbb M}_{m
+\times n}({\mathbb Z}_2)<m>. Then </m>H{\mathbf e}_i<m> is the </m>i$th column of
+the matrix <m>H</m>.  
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<theorem xml:id="SingleErrorTheorem">
+<statement>
+<p>
+Let <m>H</m> be an <m>m \times n</m> binary matrix. Then the null space of <m>H</m>
+is a single error-detecting code if and only if no column of <m>H</m>
+consists entirely of zeros. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+Suppose that <m>{\rm Null}(H)</m> is a single error-detecting code. Then the minimum
+distance of the code must be at least 2. Since the null space is a
+group code, it is sufficient to require that the code contain no
+codewords of less than weight 2 other than the zero codeword. That
+is, <m>{\mathbf e}_i</m> must not be a codeword for <m>i = 1, \ldots, n</m>. Since
+<m>H{\mathbf e}_i</m> is the <m>i</m>th column of <m>H</m>, the only way in which
+<m>{\mathbf e}_i</m> could be in the null space of <m>H</m> would be if the <m>i</m>th
+column were all zeros, which is impossible; hence, the code must have
+the capability to detect at least single errors.
+ 
+ 
+Conversely, suppose that no column of <m>H</m> is the zero column. By 
+Proposition<nbsp /><xref ref="ColumnProp" />, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>.
+</p></proof>
+ 
+ 
+<example xml:id="null_space">
+<p>
+If we consider the matrices
+<me>
+H_1 =
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+and
+<me>
+H_2 =
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix},
+</me>
+then the null space of <m>H_1</m> is a single error-detecting code and the
+null space of <m>H_2</m> is not. 
+</p>
+</example>
+ 
+ 
+We can even do better than Theorem<nbsp /><xref ref="SingleErrorTheorem" />. This theorem gives us
+conditions on a matrix <m>H</m> that tell us when the minimum weight of
+the code formed by the null space of <m>H</m> is 2.  We can also
+determine when the minimum distance of a linear code is 3 by
+examining the corresponding matrix.
+ 
+ 
+<example xml:id="check_matrix">
+<p>
+If we let
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1 \\
+1 & 1 & 0 & 0
+]]>\end{pmatrix}
+</me>
+and  want to determine whether or not <m>H</m> is the canonical
+parity-check matrix for an error-correcting code, it is necessary to
+make certain that <m>{\rm Null}(H)</m> does not contain any 4-tuples of weight
+2. That is, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, and
+<m>(0011)</m> must not be in <m>{\rm Null}(H)</m>.  The next theorem states that 
+we can
+indeed determine that the code generated by <m>H</m> is error-correcting by
+examining the columns of <m>H</m>. Notice in this example that not only
+does <m>H</m> have no zero columns, but also that no two columns are the
+same. 
+</p>
+</example>
+ 
+ 
+<theorem>
+<statement>
+<p>
+Let <m>H</m> be a binary matrix. The null space of <m>H</m> is a single
+error-correcting code if and only if <m>H</m> does not contain any zero
+columns and no two columns of <m>H</m> are identical.
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has 1's in the <m>i</m>th and
+<m>j</m>th entries and 0's elsewhere, and $w( {\mathbf e}_{i} +{\mathbf
+e}_{j}) = 2<m> for </m>i \neq j$. Since
+<me>
+{\mathbf 0}
+= H({\mathbf e}_{i} +{\mathbf e}_{j})
+= H{\mathbf e}_{i} + H{\mathbf e}_{j}
+</me>
+can only occur if the <m>i</m>th and <m>j</m>th columns are identical, the
+null space of <m>H</m> is a single error-correcting code.
+</p></proof>
+ 
+ 
+
+ 
+ 
+Suppose now that we have a canonical parity-check matrix <m>H</m> with
+three rows. Then we might ask how many more columns we can add to
+the matrix and still have a null space that is a single
+error-detecting and single error-correcting code. Since each column
+has three entries, there are <m>2^3 = 8</m> possible distinct columns. We
+cannot add the columns 
+<me>
+\begin{pmatrix}<![CDATA[
+ 0 \\ 0 \\ 0 
+]]>\end{pmatrix},
+\begin{pmatrix}<![CDATA[
+ 1 \\ 0 \\ 0 
+]]>\end{pmatrix},
+\begin{pmatrix}<![CDATA[
+ 0 \\ 1 \\ 0 
+ ]]>\end{pmatrix},
+\begin{pmatrix}<![CDATA[
+ 0 \\ 0 \\ 1 
+ ]]>\end{pmatrix}.
+</me>
+So we can add as many as four columns and still maintain a minimum
+distance of 3. 
+ 
+ 
+In general, if <m>H</m> is an <m>m \times n</m> canonical parity-check matrix,
+then there are <m>n-m</m> information positions in each codeword. Each
+column has <m>m</m> bits, so there are <m>2^m</m> possible distinct columns.
+It is necessary that the columns ${\mathbf 0}, {\mathbf e}_1, \ldots,
+{\mathbf e}_m<m> be excluded, leaving </m>2^m - (1 + m)$ remaining columns for
+information if we are still to maintain the ability not only to detect
+but also to correct single errors. 
+ 
+<!-- typo correction.  Suggested by G. Cheng. -->
+<!-- TWJ - 10/1/2014 -->
+ 
+ 
+
+</section>
+<section xml:id="">
+<title>Efficient Decoding</title>
+ 
+ 
+We are now at the stage where we are able to generate linear codes
+that detect and correct errors fairly easily, but it is still a 
+time-consuming process to decode a received <m>n</m>-tuple and determine which
+is the closest codeword, because the received <m>n</m>-tuple must be compared 
+to each possible codeword to determine the proper decoding.
+This can be a serious impediment if the code is very large.
+ 
+<example xml:id="syndrome">
+<p>
+Given the binary matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+1 & 0 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+and the 5-tuples <m>{\mathbf x} = (11011)^{\rm t}</m> and ${\mathbf y} =
+(01011)^{\rm t}$, we can compute
+<me>
+H{\mathbf x} =
+\begin{pmatrix}<![CDATA[
+0 \\ 0 \\ 0 
+]]>\end{pmatrix}
+\qquad
+\text{and}
+\qquad
+H{\mathbf y} =
+\begin{pmatrix}<![CDATA[
+1 \\ 0 \\ 1 
+]]>\end{pmatrix}.
+</me>
+Hence, <m>{\mathbf x}</m> is a codeword and <m>{\mathbf y}</m> is not, since
+<m>{\mathbf x}</m> is in the null space and <m>{\mathbf y}</m> is not. Notice that
+<m>H{\mathbf y}</m> is identical to the first column of <m>H</m>. In fact, this is
+where the error occurred. If we flip the first bit in <m>{\mathbf y}</m> from
+0 to 1, then we obtain <m>{\mathbf x}</m>.  
+
+</p>
+</example>
+
+
+<!-- typo correction.  Suggested by E. Martin. -->
+<!-- TWJ - 1/2/2013 -->
+ 
+ 
+If <m>H</m> is an <m>m \times n</m> matrix and <m>{\mathbf x} \in {\mathbb Z}_2^n</m>,
+then we say that the <term>syndrome</term><index><main>Syndrome of a code</main></index> of
+<m>{\mathbf x}</m> is <m>H{\mathbf x}</m>. The following proposition allows
+the quick detection and correction of errors.
+ 
+ 
+<proposition xml:id="SyndromeProp">
+<statement>
+<p>
+Let the <m>m \times n</m> binary matrix <m>H</m> determine a linear code and let
+<m>{\mathbf x}</m> be the received <m>n</m>-tuple. Write <m>{\mathbf x}</m> as ${\mathbf x}
+=  {\mathbf c} +{\mathbf e}<m>, where </m>{\mathbf c}$ is the transmitted codeword
+and <m>{\mathbf e}</m> is the transmission error. Then the syndrome  $H{\mathbf
+x}<m> of the received codeword </m>{\mathbf x}$ is also the syndrome
+of the error <m>{\mathbf e}</m>.
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<proof><p>
+$H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} =
+{\mathbf 0} + H{\mathbf e} = H{\mathbf e}$.  
+</p></proof>
+ 
+ 
+
+ 
+ 
+This proposition tells us that the syndrome of a received word depends
+solely on the error and not on the transmitted codeword. The proof of the
+following theorem follows immediately from Proposition<nbsp /><xref ref="SyndromeProp" /> and from
+the fact that <m>H{\mathbf e}</m> is the <m>i</m>th column of the matrix <m>H</m>.
+ 
+ 
+<theorem>
+<statement>
+<p>
+Let <m>H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)</m> and suppose that the
+linear code corresponding to <m>H</m> is single error-correcting. Let
+<m>{\mathbf r}</m> be a received <m>n</m>-tuple that was transmitted with at most
+one error. If the syndrome of <m>{\mathbf r}</m> is <m>{\mathbf 0}</m>, then no
+error has occurred; otherwise, if the syndrome of <m>{\mathbf r}</m> is equal
+to some column of <m>H</m>, say the <m>i</m>th column, then the error has
+occurred in the <m>i</m>th bit.  
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<example xml:id="detecting_errors">
+<p>
+Consider the matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+1 & 0 & 1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 & 0 \\
+1 & 1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+and suppose that the  6-tuples <m>{\mathbf x} = (111110)^{\rm t}</m>,
+<m>{\mathbf y} = (111111)^{\rm t}</m>, and <m>{\mathbf z} = (010111)^{\rm t}</m>
+have been received. Then  
+<me>
+H{\mathbf x} =
+\begin{pmatrix}<![CDATA[
+1 \\ 1 \\ 1 
+]]>\end{pmatrix},
+H{\mathbf y} =
+\begin{pmatrix}<![CDATA[
+1 \\ 1 \\ 0 
+]]>\end{pmatrix},
+H{\mathbf z} =
+\begin{pmatrix}<![CDATA[
+1 \\ 0 \\ 0
+]]>\end{pmatrix}.
+</me>
+Hence, <m>{\mathbf x}</m> has an error in the third bit and <m>{\mathbf z}</m> has
+an error in the fourth bit. The transmitted codewords for <m>{\mathbf x}</m>
+and <m>{\mathbf z}</m> must have been <m>(110110)</m> and <m>(010011)</m>,
+respectively. The syndrome of <m>{\mathbf y}</m> does not occur in any of the
+columns of the matrix <m>H</m>, so multiple
+errors must have occurred to produce~<m>{\mathbf y}</m>.
+</p>
+</example>
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Coset Decoding</title>
+ 
+ 
+We can use group theory to obtain another way of decoding messages.  A
+linear code <m>C</m> is a subgroup of <m>{\mathbb Z}_2^n</m>. <term> Coset</term><index><main>Coset decoding</main></index> or \boldemph{standard
+decoding}<index><main>Standard decoding</main></index> uses the cosets of <m>C</m> in ${\mathbb
+Z}_2^n<m> to implement maximum-likelihood decoding. Suppose that </m>C$ is
+an <m>(n,m)</m>-linear code. A coset of <m>C</m> in <m>{\mathbb Z}_2^n</m> is written in
+the form <m>{\mathbf x} + C</m>, where <m>{\mathbf x} \in {\mathbb Z}_2^n</m>. By
+Lagrange's Theorem (Theorem<nbsp /><xref ref="LagrangeTheorem" />), there are <m>2^{n-m}</m> distinct cosets of <m>C</m> in 
+<m>{\mathbb Z}_2^n</m>.
+ 
+ 
+<example xml:id="CosetDecoding">
+<p>
+Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}.
+</me>
+The code consists of the codewords
+<me>
+(00000) \quad (01101) \quad (10011) \quad (11110).
+</me>
+There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>, each with
+order <m>2^2 =4</m>.  These cosets are listed in Table<nbsp /><xref ref="CosetsofC" />. 
+</p>
+</example>
+
+
+\begin{table}
+{\small
+
+
+\begin{tabular}{|c|c|}
+\hline
+ &amp; Cosets \\
+\hline
+          <m>C</m> &amp; (00000)  (01101)  (10011)  (11110) \\
+(10000) + <m>C</m> &amp; (10000)  (11101)  (00011)  (01110) \\
+(01000) + <m>C</m> &amp; (01000)  (00101)  (11011)  (10110) \\
+(00100) + <m>C</m> &amp; (00100)  (01001)  (10111)  (11010) \\
+(00010) + <m>C</m> &amp; (00010)  (01111)  (10001)  (11100) \\
+(00001) + <m>C</m> &amp; (00001)  (01100)  (10010)  (11111) \\
+(10100) + <m>C</m> &amp; (00111)  (01010)  (10100)  (11001) \\
+(00110) + <m>C</m> &amp; (00110)  (01011)  (10101)  (11000) \\
+\hline
+\end{tabular}
+
+}
+<caption>Cosets of <m>C</m></caption>\label{CosetsofC}
+\end{table}
+ 
+ 
+
+ 
+ 
+Our task is to find out how knowing the cosets might help us to 
+decode a
+message. Suppose that <m>{\mathbf x}</m> was the original codeword sent and
+that <m>{\mathbf r}</m> is the \mbox{<m>n</m>-tuple received}. If <m>{\mathbf e}</m> is the
+transmission error, then <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> or,
+equivalently, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. However, this is
+exactly the statement that <m>{\mathbf r}</m> is an element in the coset 
+<m>{\mathbf e} + C</m>. In maximum-likelihood decoding we expect the error
+<m>{\mathbf e}</m> to be as small as possible; that is, <m>{\mathbf e}</m> will have
+the least weight. An <m>n</m>-tuple of least weight in a coset is called a
+<term>coset leader</term><index><main>Coset</main><sub>leader</sub></index>. Once we have determined a
+coset leader for each coset, the decoding process becomes a task
+of calculating <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.
+ 
+<example xml:id="representative">
+<p>
+In Table<nbsp /><xref ref="CosetsofC" />, notice that we have chosen a representative of the least
+possible weight for each coset.  These representatives are coset
+leaders. Now suppose that <m>{\mathbf r} = (01111)</m> is the received word.
+To decode <m>{\mathbf r}</m>, we find that it is in the coset <m>(00010) + C</m>;
+hence, the originally transmitted codeword must have been $(01101) =
+(01111) + (00010)$. 
+</p>
+</example>
+ 
+ 
+A potential problem with this method of decoding is that we might have
+to examine every coset for the received codeword. The following
+proposition gives a method of implementing coset decoding. It states
+that we can associate a syndrome with each coset; hence, we can make a
+table that designates a coset leader corresponding to each syndrome. Such
+a list is called a <term>decoding table</term><index><main>Decoding table</main></index>.
+ 
+ 
+ \begin{table}[htb]
+{\small
+
+\begin{tabular}{|c|c|}
+\hline
+Syndrome &amp; Coset Leader \\
+\hline
+(000) &amp; (00000) \\
+(001) &amp; (00001) \\
+(010) &amp; (00010) \\
+(011) &amp; (10000) \\
+(100) &amp; (00100) \\
+(101) &amp; (01000) \\
+(110) &amp; (00110) \\
+(111) &amp; (10100) \\
+\hline
+\end{tabular}
+
+}
+<caption>Syndromes for each coset</caption>\label{SyndromeTable}
+\end{table}
+ 
+<proposition>
+<statement>
+<p>
+Let <m>C</m> be an <m>(n,k)</m>-linear code given by the matrix <m>H</m> and suppose
+that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in <m>{\mathbb Z}_2^n</m>. Then ${\mathbf
+x}<m> and </m>{\mathbf y}<m> are in the same coset of </m>C$ if and only if
+<m>H{\mathbf x} = H{\mathbf y}</m>. That is, two <m>n</m>-tuples are in the same
+coset if and only if their syndromes are the same.
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<proof><p>
+Two <m>n</m>-tuples <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in the same coset of
+<m>C</m> exactly when <m>{\mathbf x} - {\mathbf y} \in C</m>; however, this is
+equivalent to <m>H({\mathbf x} - {\mathbf y}) = 0</m> or $H {\mathbf x} = H
+{\mathbf y}$. 
+</p></proof>
+ 
+ 
+<example xml:id="decoding_table">
+<p>
+Table<nbsp /><xref ref="SyndromeTable" /> is a decoding table for the code <m>C</m> given in Example<nbsp /><xref ref="example:algcodes:CosetDecoding" />. 
+If <m>{\mathbf x} = (01111)</m> is received, then its syndrome can be computed to be
+<me>
+H {\mathbf x} =
+\begin{pmatrix}<![CDATA[
+0 \\ 1 \\ 1
+]]>\end{pmatrix}.
+</me>
+Examining the decoding table, we determine that the coset leader is
+<m>(00010)</m>. It is now easy to decode the received codeword. 
+</p>
+</example>
+ 
+ 
+Given an <m>(n,k)</m>-block code, the question arises of whether or not
+coset decoding is a manageable scheme.  A decoding table requires a
+list of cosets and syndromes, one for each of the <m>2^{n-k}</m> cosets of
+<m>C</m>.  Suppose that we have a <m>(32, 24)</m>-block code.  We have a huge
+number of codewords, <m>2^{24}</m>, yet there are only $2^{32-24} = 2^{8} =
+256$ cosets.  
+ 
+
+ 
+ 
+ 
+ 
+\markright{EXERCISES}
+\section*{Exercises}
+\exrule
+ 
+ 
+ 
+{\small
+\begin{enumerate}
+ 
+ 
+\</li><li>
+Why is the following encoding scheme not acceptable?
+
+\begin{tabular}{lcccccccccc}
+\hline
+Information: &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp;
+\\ \hline
+Codeword: &amp; 000 &amp; 001 &amp; 010 &amp; 011 &amp; 101 &amp; 110
+&amp; 111 &amp; 000 &amp; 001 \\ \hline
+\end{tabular}
+
+ 
+ 
+\</li><li>
+Without doing any addition, explain why the following set of 4-tuples in
+<m>{\mathbb Z}_2^4</m> cannot be a group code. 
+<me>
+(0110) \quad (1001) \quad (1010) \quad (1100)
+</me>
+ 
+ 
+\</li><li>    <!-- %%%%%%%%%%%%%%% -->
+Compute the Hamming distances between the following pairs of
+<m>n</m>-tuples. 
+\begin{multicols}{2}
+\begin{enumerate}
+
+\</li><li>
+<m>(011010), (011100)</m>
+
+\</li><li>
+<m>(11110101), (01010100)</m>
+
+\</li><li>
+<m>(00110), (01111)</m>
+
+\</li><li>
+<m>(1001), (0111)</m>
+
+\end{enumerate}
+\end{multicols}
+
+
+ 
+\</li><li>
+Compute the weights of the following <m>n</m>-tuples.
+\begin{multicols}{2}
+\begin{enumerate}
+
+\</li><li>
+<m>(011010)</m>
+
+\</li><li>
+<m>(11110101)</m>
+
+\</li><li>
+<m>(01111)</m>
+
+\</li><li>
+<m>(1011)</m>
+
+\end{enumerate}
+\end{multicols}
+
+ 
+ 
+ 
+\</li><li>  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%% -->
+Suppose that a linear code <m>C</m> has a minimum weight of 7. What are the
+error-detection and error-correction capabilities of <m>C</m>?
+ 
+ 
+\</li><li>
+In each of the following codes, what is the minimum distance for the
+code? What is the best situation we might hope for in connection with
+error detection and error correction? 
+\begin{enumerate}
+ 
+ \</li><li>
+<m>(011010) \; (011100) \; (110111) \; (110000)</m>
+ 
+ \</li><li>
+<m>(011100) \; (011011) \; (111011) \; (100011)</m> \\
+<m>(000000) \; (010101) \; (110100) \; (110011)</m>
+ 
+ \</li><li>
+<m>(000000) \; (011100) \; (110101) \; (110001)</m>
+ 
+ \</li><li>
+<m>(0110110) \; (0111100) \; (1110000) \; (1111111)</m> \\
+<m>(1001001) \; (1000011) \; (0001111) \; (0000000)</m>
+ 
+\end{enumerate}
+ 
+
+ 
+\</li><li>
+Compute the null space of each of the following matrices.  What type
+of <m>(n,k)</m>-block codes are the null spaces? Can you find a matrix (not
+necessarily a standard generator matrix) that generates each code?
+Are your generator matrices unique?
+\begin{multicols}{2}
+\begin{enumerate}
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 0 & 1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 0 & 0 & 1 & 1
+]]>\end{pmatrix}
+</me>
+
+
+\end{enumerate}
+\end{multicols}
+
+ 
+\</li><li> <!-- %%%%%%%%%%%%%%%%%%%%%%%%%% -->
+Construct a <m>(5,2)</m>-block code. Discuss both the error-detection and
+error-correction capabilities of your code.
+ 
+ 
+\</li><li>
+Let <m>C</m> be the code obtained from the null space of the matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1 & 1
+]]>\end{pmatrix}.
+</me>
+Decode the message
+<me>
+01111 \quad 10101 \quad 01110 \quad 00011  \\
+</me>
+if possible.
+ 
+ 
+\</li><li>
+Suppose that a 1000-bit binary message is transmitted. Assume that the
+probability of a single error is <m>p</m> and that the errors occurring in
+different bits are independent of one another. If <m>p = 0.01</m>, what is
+the probability of more than one error occurring? What is the
+probability of exactly two errors occurring?  Repeat this problem for
+<m>p = 0.0001</m>.
+ 
+ 
+ \</li><li>
+Which matrices are canonical parity-check matrices? For those matrices
+that are canonical parity-check matrices, what are the corresponding
+standard generator matrices? What are the error-detection and
+error-correction capabilities of the code generated by each of these
+matrices? 
+\begin{multicols}{2}
+\begin{enumerate}
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 1 & 1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\end{enumerate}
+\end{multicols}
+ 
+
+\</li><li> <!-- %%%%%%%%%%%%%%%%%%%%%%%% -->
+List all possible syndromes for the codes generated by each of the
+matrices in the previous exercise. 
+ 
+ 
+\</li><li>
+Let
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 1
+]]>\end{pmatrix}.
+</me>
+Compute the syndrome caused by each of the following transmission
+errors. 
+\begin{enumerate}
+ 
+ \</li><li> 
+An error in the first bit
+ 
+ \</li><li> 
+An error in the third bit
+ 
+ \</li><li> 
+An error in the last bit
+ 
+ \</li><li> 
+Errors in the third and fourth bits
+ 
+\end{enumerate}
+ 
+ 
+\</li><li>
+Let <m>C</m> be the group code in <m>{\mathbb Z}_2^3</m> defined by the codewords
+<m>(000)</m> and <m>(111)</m>. Compute the cosets of <m>H</m> in <m>{\mathbb Z}_2^3</m>. Why
+was there no need to specify right or left cosets? Give the
+single transmission error, if any, to which each coset corresponds.
+ 
+
+ 
+\</li><li>
+For each of the following matrices, find the cosets of the
+corresponding code <m>C</m>. Give a decoding table for each code if
+possible. 
+\begin{multicols}{2}
+\begin{enumerate}
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+0 & 0 & 1 & 0 & 0  \\
+1 & 1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 & 1
+]]>\end{pmatrix}
+</me>
+
+\</li><li>
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 0 & 0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0 & 0 & 1 & 0
+]]>\end{pmatrix}
+</me>
+
+\end{enumerate}
+\end{multicols}
+ 
+ 
+
+ 
+<!-- **********************Theory -->
+ 
+ 
+\</li><li>
+Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, and <m>{\mathbf z}</m> be binary <m>n</m>-tuples.
+Prove each of the following statements. 
+\begin{enumerate}
+ 
+ \</li><li>
+<m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m>
+ 
+ \</li><li>
+$d( {\mathbf x}, {\mathbf y}) = d( {\mathbf x} + {\mathbf z}, {\mathbf
+y} + {\mathbf z} )$
+ 
+ \</li><li>
+<m>d({\mathbf x}, {\mathbf y}) = w({\mathbf x}- {\mathbf y})</m>
+ 
+\end{enumerate}
+ 
+ 
+\</li><li>
+A <term>metric</term><index><main>Metric</main></index> on a set <m>X</m> is a map $d: X \times X
+\rightarrow {\mathbb R}$ satisfying the following conditions. 
+\begin{enumerate}
+ 
+ \</li><li>
+<m>d( {\mathbf x}, {\mathbf y}) \geq 0</m> for all ${\mathbf x}, {\mathbf y} \in
+X$; 
+ 
+ \</li><li>
+<m>d( {\mathbf x}, {\mathbf y}) = 0</m> exactly when <m>{\mathbf x} = {\mathbf y}</m>; 
+ 
+ \</li><li>
+<m>d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})</m>;
+ 
+ \</li><li>
+$d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf
+z}, {\mathbf y})$. 
+ 
+\end{enumerate}
+In other words, a metric is simply a generalization of the notion of
+distance. Prove that Hamming distance is a metric on <m>{\mathbb Z}_2^n</m>.
+Decoding a message actually reduces to deciding which is the closest
+codeword in terms of distance.
+ 
+ 
+\</li><li>
+Let <m>C</m> be a linear code. Show that either the <m>i</m>th coordinates in the
+codewords of <m>C</m> are all zeros or exactly half of them are zeros. 
+ 
+ 
+\</li><li>
+Let <m>C</m> be a linear code. Show that either every codeword has even
+weight or exactly half of the codewords have even weight.
+ 
+ 
+\</li><li>
+Show that the codewords of even weight in a linear code <m>C</m> are also a
+linear code. 
+ 
+ 
+<!-- ***************Calculations<ndash />parity-check matrices -->
+ 
+ 
+\</li><li>
+If we are to use an error-correcting linear code to transmit the 128
+ASCII characters, what size matrix must be used? What size matrix must
+be used to transmit the extended ASCII character set of 256
+characters?  What if we require only error detection in both cases?
+ 
+ 
+\</li><li>
+Find the canonical parity-check matrix that gives the even
+parity check bit code with three information positions. What is the
+matrix for seven information positions?  What are the corresponding
+standard generator matrices? 
+ 
+ 
+\</li><li>
+How many check positions are needed for a single error-correcting code
+with 20 information positions? With 32 information positions?
+ 
+ 
+<!-- ***************Theory -->
+ 
+\</li><li>
+Let <m>{\mathbf e}_i</m> be the binary <m>n</m>-tuple with a 1 in the <m>i</m>th
+coordinate and <m>0</m>'s elsewhere and suppose that $H \in {\mathbb M}_{m
+\times n}({\mathbb Z}_2)<m>. Show that </m>H{\mathbf e}_i<m> is the </m>i$th
+column of the matrix <m>H</m>. 
+ 
+ 
+\</li><li>
+Let <m>C</m> be an <m>(n,k)</m>-linear code. Define the <term> dual</term><index><main>Code</main><sub>dual</sub></index> or <term>orthogonal code</term> of <m>C</m>  to be 
+<me>
+C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} =
+0 \mbox{ for all } {\mathbf y} \in C \}. 
+</me>
+\begin{enumerate}
+ 
+ \</li><li>
+Find the dual code of the linear code <m>C</m> where <m>C</m> is given by the
+matrix 
+<me>
+\begin{pmatrix}<![CDATA[
+1 & 1 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 & 0
+]]>\end{pmatrix}.
+</me>
+ 
+ \</li><li>
+Show that <m>C^\perp</m> is an <m>(n, n-k)</m>-linear code.
+ 
+ \</li><li>
+Find the standard generator and parity-check matrices of <m>C</m> and
+<m>C^\perp</m>. What happens in general? Prove your conjecture. 
+ 
+\end{enumerate}
+ 
+ 
+\</li><li>
+Let <m>H</m> be an <m>m \times n</m> matrix over <m>{\mathbb Z}_2</m>, where the <m>i</m>th
+column is the number <m>i</m> written in binary with <m>m</m> bits. The null
+space of such a matrix is called a <term>Hamming code</term><index><main>Code</main><sub>Hamming!definition of</sub></index>. 
+\begin{enumerate}
+ 
+ \</li><li>
+Show  that the matrix
+<me>
+H =
+\begin{pmatrix}<![CDATA[
+0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 & 1 & 0
+]]>\end{pmatrix}
+</me>
+generates a Hamming code. What are the error-correcting properties of
+a Hamming code? 
+ 
+ \</li><li>
+The column corresponding to the syndrome also marks the bit that was
+in error; that is, the <m>i</m>th column of the matrix is <m>i</m> written as a
+binary number, and the syndrome 
+immediately tells us which bit is in error. If the received word is 
+<m>(101011)</m>, compute the syndrome.  In
+which bit did the error occur in this case, and what codeword was
+originally transmitted?
+ 
+ \</li><li>
+Give a binary matrix <m>H</m> for the Hamming code with six information
+positions and four check positions. What are the check positions and
+what are the information positions? Encode the messages <m>(101101)</m> and
+<m>(001001)</m>. Decode the received words <m>(0010000101)</m> and
+<m>(0000101100)</m>.  What are the possible syndromes for this code?
+ 
+ \</li><li>
+What is the number of check bits and the number of information bits in an
+<m>(m,n)</m>-block Hamming code? Give both an upper and a lower bound on the
+number of information bits in terms of the number of check bits.
+Hamming codes having the maximum possible number of information bits
+with <m>k</m> check bits are called <term> perfect</term><index><main>Code</main><sub>Hamming!perfect</sub></index>. Every possible syndrome except
+<m>{\mathbf 0}</m> occurs as a column. If the number of information bits is
+less than the maximum, then the code is called <term> shortened</term><index><main>Code</main><sub>Hamming!shortened</sub></index>. In this case, give an example
+showing that some syndromes can represent multiple errors.  
+ 
+\end{enumerate}
+ 
+ 
+\end{enumerate}
+}
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Programming Exercises</title>
+ 
+ 
+{\small
+Write a program to implement a <m>(16, 12)</m>-linear code.  Your program
+should be able to encode and decode messages using coset decoding.
+Once your program is written, write a program to simulate a binary
+symmetric channel with transmission noise.  Compare the results of
+your simulation with the theoretically predicted error probability. 
+}
+ 
+ 
+<references>
+<title>References and Suggested Readings</title>
+FIXME: move references in here, reorder one wrapping biblio
+FIXME: move editing comments upward
+</references>
+ 
+{\small
+<ul>
+ 
+</biblio>
+<biblio type="raw"> <!-- was [1] -->
+
+Blake, I. F. <q>Codes and Designs,</q> <title>Mathematics Magazine</title> \textbf{
+52} (1979), 81<ndash />95. 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [2] -->
+ <!-- Reference updated - TWJ 6/1/2010 -->
+Hill, R. <title>A First Course in Coding Theory</title>. Oxford University
+Press, Oxford, 1990. 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [3] -->
+
+Levinson, N. <q>Coding Theory: A Counterexample to G. H. Hardy's
+Conception of Applied Mathematics,</q> \textit{American Mathematical
+Monthly} \textbf{77} (1970), 249<ndash />58. 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [4] -->
+  <!-- Reference updated - TWJ 6/1/2010 -->
+Lidl, R. and Pilz, G. 
+<title>Applied Abstract Algebra</title>. 2nd ed. Springer,
+New York, 1998. 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [5] -->
+ <!-- Reference updated - TWJ 6/1/2010 -->
+MacWilliams, F. J. and Sloane, N. J. A. 
+<title>The Theory of Error-Correcting Codes</title>. 
+North-Holland Mathematical Library, 16,
+Elsevier, Amsterdam, 1983. 
+ 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [6] -->
+
+Roman, S. <title>Coding and Information Theory</title>. Springer-Verlag,
+New York, 1992. 
+ 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [7] -->
+
+Shannon, C. E. <q>A Mathematical Theory of Communication,</q> \textit{Bell
+System Technical Journal} \textbf{27} (1948), 379<ndash />423, 623<ndash />56.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [8] -->
+
+Thompson, T. M. \textit{From Error-Correcting Codes through Sphere
+Packing to Simple Groups}. Carus Monograph Series, No. 21. Mathematical
+Association of America, Washington, DC, 1983. 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [9] -->
+ <!-- Reference updated - TWJ 6/1/2010 -->
+van Lint, J. H. <title>Introduction to Coding Theory</title>. Springer,
+New York, 1999. 
+ 
+</ul>
+}
+ 
+ 
+ 
+ 
+ 
+ 
