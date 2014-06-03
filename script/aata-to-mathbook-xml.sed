@@ -286,7 +286,7 @@ s/\\begin{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<ol>/g
 s/\\end{enumerate}\nFIXME-BALANCE-LIST-ITEMS/<\/ol>/g
 s/\\begin{itemize}/<ul>/g
 s/\\end{itemize}/<\/ul>/g
-s/\item/<\/li><li>/g
+s/\\item/<\/li><li>/g
 
 
 
@@ -302,7 +302,8 @@ s/\item/<\/li><li>/g
 #
 # Chapter
 # eg, \chap{Cyclic Groups}{cyclic}
-s/\\chap{\([^}]*\)}{\([^}]*\)}/\n<\/chapter>\n<chapter xml:id="\2">\n<title>\1<\/title>\n\n<introduction>\n<p>FIXME: Move content in here<\/p>\n<\/introduction>/g
+# End tag automatically from \sagesection replacement
+s/\\chap{\([^}]*\)}{\([^}]*\)}/\n<chapter xml:id="\2" xmlns:xi="http:\/\/www.w3.org\/2001\/XInclude">\n<title>\1<\/title>\n\n<introduction>\n<p>FIXME: Move content in here<\/p>\n<\/introduction>/g
 
 # Section
 # eg, \section{Cyclic Subgroups}
@@ -344,7 +345,7 @@ s/\\medskip//g
 # Integrate Sage sections into each chapter
 # Also absorb exercises stored in another directory
 # (**) There will be a chapter or two without Sage exercises
-s/\\sagesection/<xi:include href=".\/exercises\/FIXME:section-name.xml" \/>\n\n<xi:include href=".\/sage\/FIXME:section-name.xml" \/>\n\n<\/chapter>/g
+s/\\sagesection/<xi:include href=".\/exercises\/FIXME:section-name.xml" \/>\n<xi:include href=".\/sage\/FIXME:section-name.xml" \/>\n\n<\/chapter>/g
 
 # Kill purposeful horizontal space
 # Should do this with styling
