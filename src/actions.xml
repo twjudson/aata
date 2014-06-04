@@ -1,0 +1,1355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+
+<chapter xml:id="actions" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Group Actions</title>
+
+<introduction>
+<p>FIXME: Move content in here</p>
+</introduction>
+
+Group actions generalize group multiplication.  If <m>G</m> is a group and <m>X</m> is an arbitrary set, a group action of an element <m>g \in G</m> and <m>x \in X</m> is a product, <m>gx</m>,  living in <m>X</m>.  Many problems in algebra may best be attacked via group actions.  For example, the proofs of the Sylow theorems and of Burnside's Counting Theorem are most easily understood when they are formulated in terms of group actions. 
+
+
+
+</section>
+<section xml:id="">
+<title>Groups Acting on Sets</title>
+
+Let <m>X</m> be a set and <m>G</m> be a group.  A  <term>(left) action</term><index><main>Group</main><sub>action</sub></index> of <m>G</m> on <m>X</m> is a map <m>G \times X \rightarrow X</m> given by <m>(g,x) \mapsto gx</m>, where 
+\begin{enumerate}
+ 
+</li><li> 
+<m>ex = x</m> for all <m>x \in X</m>;
+ 
+</li><li> 
+<m>(g_1 g_2)x = g_1(g_2 x)</m> for all <m>x \in X</m> and all <m>g_1, g_2 \in G</m>. 
+ 
+\end{enumerate}
+Under these considerations <m>X</m> is called a <term><m>G</m>-set</term><index><main><m>G</m>-set</main></index>.  Notice that we are not requiring <m>X</m> to be related to <m>G</m> in any way.  It is true that every group <m>G</m> acts on every set <m>X</m> by the trivial action <m>(g,x) \mapsto x</m>; however, group actions are more interesting if the set <m>X</m> is somehow related to the group <m>G</m>. 
+
+<example xml:id="GL2_action">
+<p>
+Let <m>G = GL_2( {\mathbb R} )</m> and <m>X = {\mathbb R}^2</m>. Then <m>G</m> acts on <m>X</m> by left multiplication.  If <m>v \in {\mathbb R}^2</m> and <m>I</m> is the identity matrix, then <m>Iv = v</m>.  If <m>A</m> and <m>B</m> are <m>2 \times 2</m> invertible matrices, then <m>(AB)v = A(Bv)</m> since matrix multiplication is
+associative. 
+</p>
+</example>
+
+<example xml:id="D4_action">
+<p>
+Let <m>G = D_4</m> be the symmetry group of a square.  If <m>X = \{ 1, 2, 3, 4 \}</m> is the set of vertices of the square, then we can consider <m>D_4</m>
+to consist of the following permutations: 
+<me>
+\{ (1), (13), (24), (1432), (1234), (12)(34), (14)(23), (13)(24) \}.
+</me>
+The elements of <m>D_4</m> act on <m>X</m> as functions.  The permutation <m>(13)(24)</m> acts on vertex 1 by sending it to vertex 3, on vertex 2 by
+sending it to vertex 4, and so on.  It is easy to see that the  axioms of a group action are satisfied.
+
+</p>
+</example>
+
+
+
+In general, if <m>X</m> is any set and <m>G</m> is a subgroup of <m>S_X</m>, the
+group of all permutations acting on <m>X</m>, then <m>X</m> is a <m>G</m>-set under
+the group action 
+<me>
+(\sigma, x) \mapsto \sigma(x)
+</me>
+for <m>\sigma \in G</m> and <m>x \in X</m>.
+ 
+ 
+<example xml:id="left_action">
+<p>
+If we let <m>X = G</m>, then every group <m>G</m> acts on itself by the left
+regular representation; that is, <m>(g,x) \mapsto \lambda_g(x) = gx</m>, 
+where  <m>\lambda_g</m> is left multiplication:
+<md><mrow>
+e \cdot x = \lambda_e x = ex = x</mrow><mrow>
+(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x =
+\lambda_g(hx) = g \cdot ( h \cdot x).
+</mrow></md>
+If <m>H</m> is a subgroup of <m>G</m>, then <m>G</m> is an <m>H</m>-set under left
+multiplication by elements of <m>H</m>. 
+</p>
+</example>
+ 
+ 
+<example xml:id="conj_action">
+<p>
+Let <m>G</m> be a group and suppose that <m>X=G</m>. If <m>H</m> is a subgroup of
+<m>G</m>, then <m>G</m> is an <m>H</m>-set under <term> conjugation</term><index><main>Conjugation</main></index>; that is, we can define an action of
+<m>H</m> on <m>G</m>, 
+<me>
+H \times G \rightarrow G,
+</me>
+via
+<me>
+(h,g) \mapsto hgh^{-1}
+</me>
+for <m>h \in H</m> and <m>g \in G</m>.  Clearly, the first axiom for a group
+action holds.  Observing that 
+<md><mrow>
+(h_1 h_2, g) 
+&amp; = h_1 h_2 g (h_1 h_2 )^{-1}</mrow><mrow>
+&amp; = h_1( h_2 g h_2^{-1}) h_1^{-1}</mrow><mrow>
+&amp; =  (h_1, (h_2, g) ),
+</mrow></md>
+we see that the second condition is also satisfied.
+</p>
+</example>
+ 
+ 
+<example xml:id="left_coset_action">
+<p>
+Let <m>H</m> be a subgroup of <m>G</m> and <m>{\mathcal L}_H</m> the set of left cosets
+of <m>H</m>.  The set <m>{\mathcal L}_H</m> is a <m>G</m>-set under the action
+<me>
+(g, xH) \mapsto gxH.
+</me>
+Again, it is easy to see that the first axiom is true. Since $(g g')xH
+= g( g'x H)$, the second axiom is  also true.
+</p>
+</example>
+ 
+ 
+ 
+If <m>G</m> acts on a set <m>X</m> and <m>x, y \in X</m>, then <m>x</m> is said to be
+<term><m>G</m>-equivalent</term><index><main><m>G</m>-equivalent</main></index> to <m>y</m> if there exists a
+<m>g \in G</m> such that <m>gx =y</m>. We  write <m>x \sim_G y</m> or <m>x \sim y</m> if
+two elements are <m>G</m>-equivalent. 
+ 
+ 
+<proposition>
+<statement>
+<p>
+Let  <m>X</m> be a <m>G</m>-set. Then <m>G</m>-equivalence is an equivalence relation
+on <m>X</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<proof><p>
+The relation <m>\sim</m> is reflexive since <m>ex = x</m>. Suppose that $x \sim
+y<m> for </m>x, y \in X<m>. Then there exists a </m>g<m> such that </m>gx = y$. In
+this case <m>g^{-1}y=x</m>; hence, <m>y \sim x</m>. To show that the relation is
+transitive, suppose that <m>x \sim y</m> and <m>y \sim z</m>. Then there must
+exist group elements <m>g</m> and <m>h</m> such that <m>gx = y</m> and <m>hy= z</m>. So $z
+= hy = (hg)x<m>, and  </m>x<m> is equivalent to </m>z$.
+</p></proof>
+ 
+ 
+
+ 
+ 
+If <m>X</m> is a <m>G</m>-set, then each partition of <m>X</m> associated with
+<m>G</m>-equivalence is called an <term>orbit</term><index><main>Orbit</main></index> of <m>X</m> under
+<m>G</m>.  We will denote the orbit that contains an element <m>x</m>  of <m>X</m> by
+<m>{\mathcal O}_x</m>\label{noteorbit}. 
+ 
+ 
+<example xml:id="permute_action">
+<p>
+Let <m>G</m> be the permutation group defined by
+<me>
+G =\{(1), (1 2
+3), (1 3 2), (4 5), (1 2 3)(4 5), (1 3 2)(4 5) \}
+</me>
+and <m>X = \{ 1, 2, 3, 4, 5\}</m>. Then <m>X</m> is a <m>G</m>-set. The orbits are
+<m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}</m> and $ {\mathcal O}_4=
+{\mathcal O}_5 = \{4, 5\}$. 
+</p>
+</example>
+ 
+ 
+
+ 
+ 
+Now suppose that <m>G</m> is a group acting on a set <m>X</m> and let <m>g</m> be
+an element of <m>G</m>. The <term>fixed point set</term>\index{Fixed point
+set} of <m>g</m> in <m>X</m>, denoted by <m>X_g</m>\label{notefixed}, is the set of 
+all <m>x \in X</m> such
+that <m>gx = x</m>.  We can also study the group elements <m>g</m> that fix a
+given <m>x \in X</m>. This set is more than a subset of  <m>G</m>, it is a
+subgroup.  This subgroup is called the <term>stabilizer  subgroup</term><index><main>Subgroup</main><sub>stabilizer</sub></index> or \boldemph{isotropy 
+subgroup}<index><main>Subgroup</main><sub>isotropy</sub></index> of <m>x</m>. We will denote the 
+stabilizer subgroup of <m>x</m> by <m>G_x</m>\label{noteisotropy}. 
+ 
+ 
+
+ 
+ 
+<remark>
+<p>FIXME-MOVE-IN-REMARK</p>
+</remark>  
+It is important to remember that <m>X_g \subset X</m> and <m>G_x \subset G</m>. 
+ 
+ 
+<example xml:id="stabilizer_action">
+<p>
+Let <m>X = \{1, 2, 3, 4, 5, 6\}</m> and suppose that <m>G</m> is the permutation
+group given by the permutations 
+<me>
+\{
+(1), (1 2)(3 4 5 6), (3 5)(4 6), (1 2)( 3 6 5 4)
+\}.
+</me>
+Then the fixed point sets  of <m>X</m> under the action of <m>G</m> are
+<md><mrow>
+X_{(1)}  =  X,</mrow><mrow>
+X_{(3 5)(4 6)}  =  \{1,2\},</mrow><mrow>
+X_{(1 2)(3 4 5 6)}  = X_{(1 2)(3 6 5 4)}  =  \emptyset,
+</mrow></md>
+and the stabilizer subgroups are
+<md><mrow>
+G_1 =  G_2  =  \{(1), (3 5)(4 6) \},</mrow><mrow>
+G_3  = G_4  = G_5  = G_6 =  \{(1)\}.
+</mrow></md>
+It is easily  seen that  <m>G_x</m> is a subgroup of <m>G</m> for each $x \in
+X$. 
+</p>
+</example>
+ 
+ 
+<proposition>
+<statement>
+<p>
+Let <m>G</m> be a  group acting on a set <m>X</m> and <m>x \in X</m>. The stabilizer
+group, <m>G_x</m>, of <m>x</m> is a subgroup of <m>G</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<proof><p>
+Clearly,  <m>e \in G_x</m> since the identity fixes every element in the
+set <m>X</m>. Let <m>g, h \in G_x</m>. Then <m>gx = x</m> and <m>hx = x</m>. So $(gh)x =
+g(hx) = gx = x<m>; hence, the product of two elements in </m>G_x$ is also
+in <m>G_x</m>. Finally, if <m>g \in G_x</m>, then $x = ex = (g^{-1}g)x =
+(g^{-1})gx = g^{-1} x<m>. So </m>g^{-1}<m> is in </m>G_x$. 
+</p></proof>
+ 
+ 
+
+ 
+ 
+We will denote the number of elements in the fixed point set of an
+element <m>g \in G</m> by <m>|X_g|</m> and denote the number of elements in the
+orbit of <m>x \in X</m> by <m>|{\mathcal O}_x|</m>. The next theorem
+demonstrates the relationship between orbits of an element <m>x \in X</m>
+and the left cosets of <m>G_x</m> in <m>G</m>.
+
+<!-- typo corrected.  Suggested by L. Franklin. -->
+<!-- TWJ - 12/19/2011 -->
+ 
+ 
+<theorem xml:id="orbit_theorem">
+<statement>
+<p>
+Let <m>G</m> be a finite group and <m>X</m> a finite <m>G</m>-set. If <m>x \in X</m>,
+then <m>|{\mathcal O}_x| = [G:G_x]</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+We know that  <m>|G|/|G_x|</m> is the number of left cosets of <m>G_x</m> in <m>G</m>
+by Lagrange's Theorem (Theorem<nbsp /><xref ref="LagrangeTheorem" />). We will define a bijective  map <m>\phi</m>
+between the orbit <m>{\mathcal O}_x</m> of <m>X</m> and the set of left cosets 
+<m>{\mathcal L}_{G_x}</m> of <m>G_x</m> in <m>G</m>. Let <m>y \in {\mathcal O}_x</m>. Then there 
+exists a <m>g</m> in <m>G</m> such that <m>g x = y</m>. Define <m>\phi</m> by $\phi( y ) 
+= g G_x$. First we must show that this map is well-defined and does 
+not depend on our selection of <m>g</m>. Suppose that <m>h</m> is another 
+element in <m>G</m> such that <m>hx = y</m>. Then <m>g x = h x</m> or <m>x= g^{-1} h x</m>; 
+hence, <m>g^{-1}h</m> is in the stabilizer subgroup of <m>x</m>. Therefore, 
+<m>h \in g G_x</m> or <m>g G_x = h G_x</m>.  Thus, <m>y</m> gets mapped to the same 
+coset regardless of the choice of the representative from that coset.
+ 
+ 
+To show that <m>\phi</m> is one-to-one, assume that $\phi(x_1) =
+\phi(x_2)<m>. Then there exist </m>g_1, g_2 \in G<m> such that </m>x_1 = g_1 x$
+and <m>x_2 = g_2 x</m>. Since there exists a <m>g \in G_x</m> such that $g_2=g_1
+g$, 
+<me>
+x_2 = g_2 x = g_1 g x = g_1 x = x_1;
+</me>
+consequently, the map <m>\phi</m> is  one-to-one. Finally, we must show
+that the map <m>\phi</m> is onto. Let <m>g G_x</m> be a left coset. If $g x =
+y<m>, then </m>\phi(y) = g G_x$. 
+</p></proof>
+ 
+ 
+ 
+ 
+
+</section>
+<section xml:id="">
+<title>The Class Equation</title>
+ 
+ 
+ 
+Let <m>X</m> be a finite <m>G</m>-set and <m>X_G</m>\label{noteXG} be the set of fixed 
+points in <m>X</m>; that is, 
+<me>
+X_G = \{ x \in X : gx = x \mbox{ for all <m>g \in G</m>} \}.
+</me>
+Since the orbits of the action partition <m>X</m>,
+<me>
+|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,
+</me>
+where <m>x_k, \ldots, x_n</m> are representatives from the distinct
+nontrivial orbits of <m>X</m>. 
+ 
+ 
+Now consider the special case in which <m>G</m> acts on itself by conjugation,
+<m>(g,x) \mapsto gxg^{-1}</m>. The <term>center</term><index><main>Group</main><sub>center of</sub></index> of
+<m>G</m>, 
+<me>
+Z(G) = \{x : xg = gx \mbox{ for all <m>g \in G</m>} \},
+</me>
+is the set of points that are fixed by conjugation. The nontrivial
+orbits of the action are called the <term>conjugacy classes</term><index><main>Conjugacy classes</main></index> of <m>G</m>. If <m>x_1, \ldots, x_k</m> are
+representatives from each of the nontrivial conjugacy classes of <m>G</m>
+and <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, then 
+<me>
+|G| = |Z(G)| + n_1 + \cdots + n_k.
+</me>
+The stabilizer subgroups of each of the <m>x_i</m>'s, $C(x_i) = \{ g \in G
+: g x_i = x_i g \}$, are called the <term>centralizer subgroups</term><index><main>Subgroup</main><sub>centralizer</sub></index>\index{Centralizer!of a
+subgroup} of the <m>x_i</m>'s. From Theorem<nbsp /><xref ref="orbit_theorem" />, we obtain the <term>class equation</term><index><main>Class equation</main></index>: 
+<me>
+|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].
+</me>
+One of the consequences of the class equation is that the order of
+each conjugacy class must divide the order of <m>G</m>.
+<!-- Reference repaired. TWJ 12/19/2011 -->
+<!-- Typo corrected. Suggested by A. Vance. TWJ 11/13/2011 -->
+ 
+<example xml:id="conjugacy_class_S3">
+<p>
+It is easy to check that  the conjugacy classes in <m>S_3</m> are the
+following: 
+<me>
+\{ (1) \},  \quad \{ (123), (132) \}, \quad \{(12), (13), (23) \}.
+</me>
+The class equation is <m>6 = 1+2+3</m>.
+</p>
+</example>
+ 
+ 
+<example xml:id="conjugacy_class_D4">
+<p> 
+The center of <m>D_4</m> is <m>\{ (1), (13)(24) \}</m>, and the conjugacy classes are
+<me>
+\{ (13), (24) \}, \quad
+\{ (1432), (1234) \}, \quad
+\{ (12)(34), (14)(23) \}.
+</me>
+Thus, the class equation for <m>D_4</m> is <m>8 = 2 + 2 + 2 + 2</m>.
+</p>
+</example>
+<!-- %Example corrected.  There are 5 classes. TWJ 9/7/2010 -->
+<!-- %Example clarified.  Suggested by B. Whetter.  TWJ 11/17/2012 -->
+ 
+ 
+<example xml:id="Conjugacy_Class_Sn">
+<p>
+For <m>S_n</m> it takes a bit of work to find the conjugacy classes.  We
+begin with cycles.  Suppose that <m>\sigma = ( a_1, \ldots, a_k)</m> is a
+cycle and let <m>\tau \in S_n</m>. By Theorem<nbsp /><xref ref="cosets:cycle_length_theorem" />,
+<me>
+\tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k)).
+</me>
+Consequently, any two cycles of the same length are conjugate. Now let
+<m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m> be a cycle decomposition,
+where the length of each cycle <m>\sigma_i</m> is <m>r_i</m>. Then <m>\sigma</m> is
+conjugate to every other <m>\tau \in S_n</m> whose cycle decomposition has
+the same lengths. 
+ 
+ 
+The number of conjugate classes in <m>S_n</m> is the number of ways in
+which <m>n</m> can be partitioned into sums of positive integers. For
+example, we can partition the integer 3 into the following three sums: 
+<md><mrow>
+3 &amp; =  1 + 1 + 1</mrow><mrow>
+3 &amp; =  1 + 2</mrow><mrow>
+3 &amp; =  3;
+</mrow></md>
+therefore, there are three conjugacy classes. The problem of finding
+the number of such partitions for any positive integer <m>n</m> is what
+computer scientists call <term>NP-complete</term>.  This effectively means
+that the problem cannot be solved for a large <m>n</m> because the
+computations would be too time-consuming for even the largest computer. 
+</p>
+</example>
+ 
+ 
+
+ 
+ 
+<theorem xml:id="pn_theorem">
+<statement>
+<p>
+Let <m>G</m> be a group of order <m>p^n</m> where <m>p</m> is prime. Then <m>G</m> has a
+nontrivial center. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+We apply the class equation
+<me>
+|G| = |Z(G)|  + n_1 + \cdots + n_k.
+</me>
+Since each <m>n_i \gt 1</m> and <m>n_i \mid |G|</m>, <m>p</m>  must divide each <m>n_i</m>.
+Also, <m>p \mid |G|</m>; hence, <m>p</m> must divide <m>|Z(G)|</m>. Since the
+identity is always in the center of <m>G</m>, <m>|Z(G)| \geq 1</m>. Therefore,
+<m>|Z(G)|  \geq p</m> and there exists some <m>g \in Z(G)</m> such that $g \neq
+1$. 
+ 
+</p></proof>
+<!-- Typo fixed.  Suggested by A. Vance.  TWJ 11/17/2012 -->
+ 
+ 
+<corollary xml:id="actions:p2abelian">
+<statement>
+<p>
+Let <m>G</m> be a group of order <m>p^2</m> where <m>p</m> is prime. Then <m>G</m> is
+abelian. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</corollary>
+ 
+ 
+<proof><p>
+By Theorem<nbsp /><xref ref="pn_theorem" />, <m>|Z(G)| = p</m> or <m>p^2</m>.  If <m>|Z(G)| = p^2</m>, then
+we are done.  Suppose that <m>|Z(G)| = p</m>. Then <m>Z(G)</m> and <m>G / Z(G)</m>
+both have order <m>p</m> and must both be cyclic groups.  Choosing  a
+generator <m>aZ(G)</m> for <m>G / Z(G)</m>, we can write any element <m>gZ(G)</m> in
+the quotient group as <m>a^m Z(G)</m> for some integer <m>m</m>; hence, $g = a^m
+x<m> for some </m>x<m> in the center of </m>G<m>.  Similarly, if </m>hZ(G) \in G /
+Z(G)<m>, there exists a </m>y<m> in </m>Z(G)<m> such that </m>h = a^n y$ for some
+integer <m>n</m>.  Since <m>x</m> and <m>y</m> are in the center of <m>G</m>, they commute
+with all other elements of <m>G</m>; therefore, 
+<me>
+gh  =  a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg,
+</me>
+and <m>G</m> must be abelian.
+</p></proof>
+ 
+ 
+ 
+
+</section>
+<section xml:id="">
+<title>Burnside's Counting Theorem</title>
+ 
+ 
+ 
+Suppose that we are to color the vertices of a square with two
+different colors, say black and white.  We might suspect that there
+would be <m>2^4=16</m> different colorings. However, some of these
+colorings are equivalent.  If we color the first vertex black and the
+remaining vertices white, it is the same as coloring the second vertex
+black and the remaining ones white since we could obtain the second
+coloring simply by rotating the square <m>90^\circ</m>
+(Figure<nbsp /><xref ref="colorings" />). 
+ 
+<figure xml:id="">
+
+
+
+<tikz filebase="actions_colorings_square"><![CDATA[
+\begin{tikzpicture}[scale=0.85] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+
+\draw (0,0) rectangle (2,2);
+\node at (-0.2,0) [below] {$B$};
+\node at (2.2,0) [below] {$W$};
+\node at (-0.2,2) [above] {$W$};
+\node at (2.2,2) [above] {$W$};
+
+\draw (3.5,0) rectangle (5.5,2);
+\node at (3.3,0) [below] {$W$};
+\node at (5.7,0) [below] {$B$};
+\node at (3.3,2) [above] {$W$};
+\node at (5.7,2) [above] {$W$};
+
+\draw (0,3.5) rectangle (2,5.5);
+\node at (-0.2,3.5) [below] {$W$};
+\node at (2.2,3.5) [below] {$W$};
+\node at (-0.2,5.5) [above] {$B$};
+\node at (2.2,5.5) [above] {$W$};
+
+
+\draw (3.5,3.5) rectangle (5.5,5.5);
+\node at (3.3,3.5) [below] {$W$};
+\node at (5.7,3.5) [below] {$W$};
+\node at (3.3,5.5) [above] {$W$};
+\node at (5.7,5.5) [above] {$B$};
+
+\end{tikzpicture}]]>
+</tikz>
+
+<caption>Equivalent colorings of square</caption>
+\label{colorings}
+</figure>
+
+ 
+ 
+Burnside's Counting Theorem offers a method of computing the number of
+distinguishable ways in which something can be done. In addition to
+its geometric applications, the theorem has interesting applications
+to areas in switching theory and chemistry. The proof of Burnside's
+Counting Theorem depends on the following lemma.
+ 
+ 
+<lemma xml:id="Gset_lemma">
+<statement>
+<p>
+Let <m>X</m> be a <m>G</m>-set and suppose that <m>x \sim y</m>. Then <m>G_x</m> is
+isomorphic to <m>G_y</m>.  In particular, <m>|G_x| = |G_y|</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</lemma>
+ 
+ 
+ <!-- % Notation error pointed out by S. Engle corrected. -->
+ <!-- % TWJ 11/20/2011 -->
+
+<proof><p>
+Let <m>G</m> act on <m>X</m> by <m>(g,x) \mapsto g \cdot x</m>. Since <m>x \sim y</m>,
+there exists a <m>g \in G</m> such that <m>g \cdot x=y</m>. Let <m>a \in G_x</m>.
+Since 
+<me>
+gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot
+x = y,
+</me>
+we can define a map <m>\phi: G_x \rightarrow G_y</m> by $\phi(a) =
+gag^{-1}<m>. The map </m>\phi$ is a homomorphism since 
+<me>
+\phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(b).
+</me>
+Suppose that <m>\phi(a) = \phi(b)</m>. Then <m>gag^{-1}= gbg^{-1}</m> or <m>a=b</m>;
+hence, the map is injective.  To show that <m>\phi</m> is onto, let <m>b</m> be
+in <m>G_y</m>; then <m>g^{-1}bg</m> is in <m>G_x</m> since
+<me>
+g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y
+= x; 
+</me>
+and <m>\phi(g^{-1}bg ) = b</m>.
+</p></proof>
+ 
+ 
+<theorem>
+<title>Burnside</title>
+<statement>
+<p><index><main>Burnside's Counting Theorem</main></index>
+Let <m>G</m> be a  finite group acting on a set <m>X</m> and let <m>k</m> denote the
+number of orbits of <m>X</m>. Then
+<me>
+k = \frac{1}{|G|} \sum_{g \in G} |X_g|.
+</me>
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</theorem>
+ 
+ 
+<proof><p>
+We look at all the fixed points <m>x</m> of all the elements in <m>g \in G</m>;
+that is, we look at all <m>g</m>'s and all <m>x</m>'s such that <m>gx =x</m>.
+If viewed in terms of fixed point sets, the number of all <m>g</m>'s fixing
+<m>x</m>'s is 
+<me>
+\sum_{g \in G} |X_g|.
+</me>
+However, if viewed in terms of the stabilizer subgroups, this number
+is 
+<me>
+\sum_{x \in X} |G_x|;
+</me>
+hence, <m>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|</m>. By Lemma<nbsp /><xref ref="Gset_lemma" />, 
+<me>
+\sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|.
+</me>
+By Theorem<nbsp /><xref ref="orbit_theorem" /> and Lagrange's Theorem, this expression is equal 
+to <m>|G|</m>. Summing over all of the <m>k</m> distinct orbits, we conclude that
+<me>
+\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|.
+</me>
+</p></proof>
+ 
+ 
+<example xml:id="Burnside_example">
+<p>
+Let <m>X = \{1, 2, 3, 4, 5 \}</m> and suppose that <m>G</m> is the permutation
+group <m>G= \{(1), (1 3), (1 3)(2 5), (2 5) \}</m>. The orbits of <m>X</m> are
+<m>\{1, 3\}</m>, <m>\{2, 5\}</m>, and <m>\{4\}</m>. The fixed point sets are 
+<md><mrow>
+X_{(1)} &amp; =  X</mrow><mrow>
+X_{(1 3)} &amp; =  \{2, 4, 5 \}</mrow><mrow>
+X_{(1 3)(2 5)} &amp; =  \{4\}</mrow><mrow>
+X_{(2 5)} &amp; =  \{1, 3, 4 \} .
+</mrow></md>
+Burnside's Theorem says that
+<me>
+k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5+
+3+1+3) = 3.
+</me>
+</p>
+</example>
+ 
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>A Geometric Example</title>
+ 
+ 
+ 
+Before we apply Burnside's Theorem to switching-theory problems, let
+us examine the number of ways in which the vertices of a square can be
+colored black or white. Notice that we can sometimes obtain equivalent
+colorings by simply applying a rigid motion to the square. For
+instance, as we have pointed out, if we color one of the vertices
+black and the remaining three white, it does not matter which vertex
+was colored black since a rotation will give an equivalent coloring.  
+ 
+ 
+The  symmetry group of a square, <m>D_4</m>, is given by the following
+permutations: 
+<me>
+\begin{array}{cccc}
+(1)    &amp; (13)     &amp; (24)     &amp; (1432) \\
+(1234) &amp; (12)(34) &amp; (14)(23) &amp; (13)(24)
+\end{array}
+</me>
+The group <m>G</m> acts on the set of vertices <m>\{ 1, 2, 3, 4\}</m> in the
+usual manner. We can describe the different colorings by mappings from
+<m>X</m> into <m>Y = \{ B, W \}</m> where <m>B</m> and <m>W</m> represent the colors black
+and white, respectively. Each map <m>f : X \rightarrow Y</m> describes a
+way to color the corners of the square. Every <m>\sigma \in D_4</m> induces
+a permutation <m>\widetilde{ \sigma }</m> of the possible colorings given
+by <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>f : X \rightarrow Y</m>.
+For example, suppose that <m>f</m> is defined by 
+<md><mrow>
+f(1) &amp; =  B</mrow><mrow>
+f(2) &amp; =  W</mrow><mrow>
+f(3) &amp; =  W</mrow><mrow>
+f(4) &amp; =  W
+</mrow></md>
+and <m>\sigma = (1 2)(3 4)</m>. Then $\widetilde{\sigma}(f) = f \circ
+\sigma<m> sends vertex 2 to </m>B<m> and the remaining vertices to </m>W$. The
+set of all such <m>\widetilde{\sigma}</m> is a permutation group
+<m>\widetilde{G}</m> on the set of possible colorings. Let <m>\widetilde{X}</m>
+denote the set of all possible colorings; that is, <m>\widetilde{X}</m> is
+the set of all possible maps from <m>X</m> to <m>Y</m>.  Now we must compute the
+number of <m>\widetilde{G}</m>-equivalence classes. 
+\begin{enumerate}
+ 
+</li><li>
+<m>\widetilde{X}_{(1)} = \widetilde{X}</m> since the identity fixes every
+possible coloring. <m>|\widetilde{X}| = 2^4 =~16</m>.
+ 
+</li><li>
+<m>\widetilde{X}_{(1 2 3 4)}</m> consists of all <m>f \in \widetilde{X}</m> such
+that <m>f</m> is unchanged by the permutation <m>(1 23 4)</m>. In this case
+<m>f(1) = f(2) = f(3) = f(4)</m>, so that all values of <m>f</m> must be the 
+same; that is, either <m>f(x)= B</m> or <m>f(x)= W</m> for every vertex <m>x</m> of 
+the square. So <m>|\widetilde{X}_{(1 2 3 4)}| = 2</m>.
+ 
+</li><li> 
+<m>|\widetilde{X}_{(1 4 3 2)}| = 2</m>.
+ 
+</li><li> 
+For <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> and $f(2) =
+f(4)<m>. Thus, </m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4$.
+ 
+</li><li> 
+<m>|\widetilde{X}_{(1 2)(3 4)}| = 4</m>.
+ 
+</li><li> 
+<m>|\widetilde{X}_{(1 4)(2 3)}| = 4</m>.
+ 
+</li><li> 
+For <m>\widetilde{X}_{(1  3 )}</m>, <m>f(1) = f(3)</m> and the other corners can
+be of any color; hence, <m>|\widetilde{X}_{(1 3)}| = 2^3 = 8</m>.
+ 
+</li><li> 
+<m>|\widetilde{X}_{(2 4)}| = 8</m>.
+ 
+\end{enumerate}
+By Burnside's Theorem, we can conclude that there are exactly
+<me>
+\frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3)
+= 6
+</me>
+ways to color the vertices of the square.
+ 
+ 
+<proposition xml:id="actions:ActionFunctionProp">
+<statement>
+<p>
+Let <m>G</m> be a permutation group of <m>X</m> and <m>\widetilde{X}</m> the set of
+functions from <m>X</m> to <m>Y</m>. Then there exists a permutation group 
+<m>\widetilde{G}</m> acting on <m>\widetilde{X}</m>, where $\widetilde{\sigma} 
+\in \widetilde{G}<m> is defined by </m>\widetilde{\sigma}(f) = f \circ 
+\sigma<m> for </m>\sigma \in G<m> and </m>f \in \widetilde{X}$. Furthermore, 
+if <m>n</m> is the number of cycles in the cycle decomposition 
+of <m>\sigma</m>, then <m>|\widetilde{X}_{\sigma}| = |Y|^n</m>. 
+</p>
+FIXME-MOVE-IN-PROOF</statement>
+</proposition>
+ 
+ 
+<proof><p>
+Let <m>\sigma \in G</m> and <m>f \in  \widetilde{X}</m>. Clearly, $f \circ
+\sigma<m> is also in </m>\widetilde{X}<m>. Suppose that </m>g$ is another
+function from <m>X</m> to <m>Y</m> such that $\widetilde{\sigma}(f) =
+\widetilde{\sigma}(g)<m>. Then for each </m>x \in X$,
+<me>
+f( \sigma(x ))
+= \widetilde{\sigma}(f)(x)
+= \widetilde{\sigma}(g)(x)
+= g( \sigma(x )).
+</me>
+Since <m>\sigma</m> is a permutation of <m>X</m>, every element <m>x'</m> in <m>X</m> is
+the image of some <m>x</m> in <m>X</m> under <m>\sigma</m>; hence, <m>f</m> and <m>g</m> agree
+on all elements of <m>X</m>. Therefore, <m>f=g</m> and <m>\widetilde{\sigma}</m> is
+injective.  The map <m>\sigma \mapsto \widetilde{\sigma}</m> is onto, since
+the two sets are the same size.
+ 
+ 
+Suppose that <m>\sigma</m> is a permutation of <m>X</m> with cycle decomposition
+<m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_n</m>. Any <m>f</m> in
+<m>{\widetilde{X}}_{\sigma}</m> must have the same value on each cycle of
+<m>\sigma</m>. Since there are <m>n</m> cycles and <m>|Y|</m> possible values for
+each cycle, <m>|{\widetilde{X}}_{\sigma}| = |Y|^n</m>.
+
+</p></proof>
+ 
+ 
+<example xml:id="burnside_X7">
+<p>
+Let <m>X = \{1, 2, \ldots, 7\}</m> and suppose that <m>Y = \{ A, B, C \}</m>. If
+<m>g</m> is the permutation of <m>X</m> given by $(1 3)(2 4 5) = (1 3)(2 4
+5)(6)(7)<m>, then </m>n = 4<m>. Any </m>f \in {\mathcal F}_g$ must have the same
+value on each cycle in <m>g</m>. There are <m>|Y|=3</m> such choices for any
+value, so <m>|{\mathcal F}_g|  = 3^4 = 81</m>.
+</p>
+</example>
+ 
+ 
+ <!-- Label problem fixed.  Suggested by L. Franklin.  TWJ 12/8/2011 -->
+<example xml:id="color_square">
+<p>
+Suppose that we wish to color the vertices of a square using four
+different colors. By Proposition<nbsp /><xref ref="actions:ActionFunctionProp" />, we can immediately
+decide that there are 
+<me>
+\frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3)
+=55
+</me>
+possible ways.
+</p>
+</example>
+ 
+ 
+<figure xml:id="">
+
+
+
+
+<tikz filebase="actions_switching_function"><![CDATA[
+\begin{tikzpicture}[scale=1.25] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+
+\draw (1,0) rectangle (2.7,2);
+\node at (1.85,1)  {$f$};
+\draw [->] (2.7,1) -- (3.2,1) node [right] {$f(x_1, x_2, \ldots, x_n)$};
+\draw [->] (0.5,0.4) node [left] {$x_n$} -- (1,0.4);
+\draw [->] (0.5,1.2) node [left] {$x_2$} -- (1,1.2);
+\draw [->] (0.5,1.6) node [left] {$x_1$} -- (1,1.6);
+\node at (0.5,0.85)  [left] {$\vdots$};
+
+\end{tikzpicture}]]>
+</tikz>
+
+
+<caption>A switching function of <m>n</m> variables</caption>
+\label{nvariables}
+</figure>
+
+ 
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Switching Functions</title>
+ 
+ 
+ 
+In switching theory we are concerned with the design of electronic
+circuits with binary inputs and outputs. The simplest of these
+circuits is a switching function that has <m>n</m> inputs and a single output
+(Figure<nbsp /><xref ref="nvariables" />). Large electronic circuits can often be 
+constructed by combining smaller modules of this kind. The inherent
+problem here is that even for a simple circuit a large number of
+different switching functions can be constructed.  With only four
+inputs and a single output, we can construct <m>65,536</m> different
+switching functions. However, we can often replace one switching
+function with another merely by permuting the input leads to the
+circuit (Figure<nbsp /><xref ref="twovar" />). 
+ 
+ 
+<figure xml:id="">
+
+
+
+<tikz filebase="actions_switching_two_variables"><![CDATA[
+\begin{tikzpicture}[scale=0.8] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+
+\draw (1,0) rectangle (3,2);
+\node at (2,1)  {$f$};
+\draw [->] (3,1) -- (3.5,1) node [right] {$f(a,b)$};
+\draw [->] (0.5,1.5) node [left] {$a$} -- (1,1.5);
+\draw [->] (0.5,0.5) node [left] {$b$} -- (1,0.5);
+
+\draw (7,0) rectangle (9,2);
+\node at (8,1)  {$f$};
+\draw [->] (9,1) -- (9.5,1) node [right] {$f(b,a) = g(a,b)$};
+\draw [->] (6.3,1.5) node [left] {$a$} -- (6.5,1.5) -- (7,0.5);
+\draw [->] (6.3,0.5) node [left] {$b$} -- (6.5,0.5) -- (7,1.5);
+
+\end{tikzpicture}]]>
+</tikz>
+
+
+<caption>A switching function of two variables</caption>
+\label{twovar}
+</figure>
+
+ 
+ 
+We define a <term> switching</term><index><main>Function</main><sub>switching</sub></index><index><main>Switching function</main></index> or
+<term>Boolean function</term><index><main>Boolean function</main></index><index><main>Function</main><sub>Boolean</sub></index> of <m>n</m>
+variables to be a function from <m>{\mathbb Z}_2^n</m> to <m>{\mathbb Z}_2</m>. Since 
+any switching function can have two possible values for each binary
+<m>n</m>-tuple and there are <m>2^n</m> binary <m>n</m>-tuples, <m>2^{2^n}</m> switching
+functions are possible for <m>n</m> variables. In general, allowing
+permutations of the inputs greatly reduces the number of different
+kinds of modules that are needed to build a large circuit.
+ 
+ 
+The possible switching functions  with two input variables <m>a</m> and
+<m>b</m> are listed in Table<nbsp /><xref ref="switching_2variable" />. Two switching functions <m>f</m> and <m>g</m>
+are equivalent if <m>g</m> can be obtained from <m>f</m> by a permutation of the
+input variables. For example, <m>g(a, b, c) = f(b, c, a)</m>. In this 
+case <m>g \sim f</m> via the permutation <m>(acb)</m>. In the case of switching
+functions of two variables, the permutation <m>(ab)</m> reduces 16
+possible switching functions to 12 equivalent functions since
+<md><mrow>
+f_2 &amp; \sim  f_4</mrow><mrow>
+f_3 &amp; \sim  f_5</mrow><mrow>
+f_{10} &amp; \sim  f_{12}</mrow><mrow>
+f_{11} &amp; \sim  f_{13}.
+</mrow></md>
+ 
+ 
+\begin{table}[htb]
+<caption>Switching functions in two variables</caption>{\small
+
+
+\begin{tabular}{|cc|cccccccc|}
+\hline
+\multicolumn{2}{|c|}{Inputs}
+ &amp; \multicolumn{8}{|c|}{Outputs}    \\
+\hline
+         &amp;     &amp; <m>f_0</m> &amp; <m>f_1</m> &amp; <m>f_2</m> &amp; <m>f_3</m> &amp; <m>f_4</m> &amp;
+<m>f_5</m> &amp; <m>f_6</m> &amp; <m>f_7</m>  \\ \hline
+0 &amp; 0   &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1   &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 0   &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+1 &amp; 1   &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\ \hline\hline
+\multicolumn{2}{|c|}{Inputs}
+ &amp; \multicolumn{8}{|c|}{Outputs}    \\
+\hline
+         &amp;     &amp; <m>f_8</m> &amp; <m>f_9</m> &amp; <m>f_{10}</m> &amp; <m>f_{11}</m>
+&amp; <m>f_{12}</m> &amp; <m>f_{13}</m> &amp; <m>f_{14}</m> &amp; <m>f_{15}</m> \\ \hline
+0 &amp; 0   &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+0 &amp; 1   &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 0   &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+1 &amp; 1   &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\ \hline
+\end{tabular}
+\label{switching_2variable}
+}
+\end{table}
+ 
+ 
+For three input variables there are <m>2^{2^3}=256</m> possible switching
+functions; in the case of four variables there are $2^{2^4} =
+\mbox{65,536}$. The number of equivalence classes is too large to reasonably
+calculate directly. It is necessary to employ  Burnside's Theorem.
+ 
+ 
+Consider a  switching function with three possible inputs, <m>a</m>, <m>b</m>,
+and <m>c</m>. As we have mentioned, two switching functions <m>f</m> and <m>g</m> are
+equivalent if a permutation of the input variables of <m>f</m> gives <m>g</m>.
+It is important to notice that a permutation of the switching
+functions is not simply a permutation of the input values $\{a, b,
+c\}$. A switching function is a set of output values for the inputs
+<m>a</m>, <m>b</m>, and <m>c</m>, so when we consider equivalent switching functions, we
+are permuting <m>2^3</m> possible outputs, not just three input values. For
+example, each binary triple <m>(a, b, c)</m> has a specific output
+associated with it. The  permutation <m>(acb)</m> changes outputs as follows: 
+<md><mrow>
+(0, 0, 0) &amp; \mapsto  (0, 0, 0)</mrow><mrow>
+(0, 0, 1) &amp; \mapsto  (0, 1, 0)</mrow><mrow>
+(0, 1, 0) &amp; \mapsto  (1, 0, 0)</mrow><mrow>
+&amp; \vdots </mrow><mrow>
+(1, 1, 0) &amp; \mapsto  (1, 0, 1)</mrow><mrow>
+(1, 1, 1) &amp; \mapsto  (1, 1, 1).
+</mrow></md>
+
+Let <m>X</m> be the set of output values for a switching function in <m>n</m>
+variables. Then <m>|X|=2^n</m>. We can enumerate these values as follows: 
+<md><mrow>
+(0, \ldots, 0, 1) &amp; \mapsto  0</mrow><mrow>
+(0, \ldots, 1, 0) &amp; \mapsto  1</mrow><mrow>
+(0, \ldots, 1, 1) &amp; \mapsto  2</mrow><mrow>
+&amp; \vdots </mrow><mrow>
+(1, \ldots, 1, 1) &amp; \mapsto  2^n-1.
+</mrow></md>
+Now let us consider a circuit with four input variables and a single
+output. Suppose that we can permute the leads  of any circuit
+according to the following permutation group: 
+<md><mrow>
+(a)    \quad (ac)     \quad (bd)     \quad (adcb)</mrow><mrow>
+(abcd) \quad (ab)(cd) \quad (ad)(bc) \quad (ac)(bd).
+</mrow></md>
+The permutations of the four possible input variables induce the
+permutations of the output values in Table<nbsp /><xref ref="switching_permute" />. 
+ 
+ 
+
+ 
+ 
+Hence, there are
+<me>
+\frac{1}{8} (2^{16} + 2 \cdot 2^{12} + 2 \cdot 2^6 + 3 \cdot
+2^{10}) = 9616
+</me>
+possible switching functions of four variables under this group of
+permutations. This number will be even smaller if we consider the full
+symmetric group on four letters. 
+ 
+ 
+ \begin{table}[htb]
+<caption>Permutations of switching functions in four variables</caption>{\small 
+
+
+\begin{tabular}{|l|l|l|}
+\hline
+Group       &amp;                                 &amp;  Number  \\
+Permutation &amp;  Switching Function Permutation &amp;  of Cycles  \\
+\hline
+<m>(a)</m>        &amp; <m>(0)</m> &amp; 16 \\
+<m>(a c)</m>      &amp; <m>(2,8)(3,9)(6,12)(7,13)</m> &amp; 12 \\
+<m>(b d)</m>      &amp; <m>(1,4)(3,6)(9,12)(11,14)</m> &amp; 12 \\
+<m>(a d c b)</m>  &amp; <m>(1,2,4,8)(3,6.12,9)(5,10)(7,14,13,11)</m> &amp; 6\\
+<m>(a b c d)</m>  &amp; <m>(1,8,4,2)(3,9,12,6)(5,10)(7,11,13,14)</m> &amp; 6\\
+<m>(a b)(c d)</m> &amp; <m>(1,2)(4,8)(5,10)(6,9)(7,11)(13,14)</m> &amp; 10\\
+<m>(a d)(b c)</m> &amp; <m>(1,8)(2,4)(3,12)(5,10)(7,14)(11,13)</m> &amp; 10\\
+<m>(a c)(b d)</m> &amp; <m>(1,4)(2,8)(3,12)(6,9)(7,13)(11,14)</m> &amp; 10 \\
+\hline
+\end{tabular}
+\label{switching_permute}
+}
+\end{table}
+ 
+ 
+ 
+<historical>
+<p>
+William Burnside<index><main>Burnside, William</main></index> was born in London in 1852.
+He attended Cambridge University from 1871 to 1875 and won the Smith's
+Prize in his last year.  After his graduation he lectured at
+Cambridge.  He was made a member of the Royal Society in 1893.
+Burnside wrote approximately 150 papers on topics in applied
+mathematics, differential geometry, and probability, but his most
+famous contributions were in group theory.  Several of Burnside's
+conjectures have stimulated research to this day.  One such conjecture
+was that every group of odd order is solvable; that is, for a group
+<m>G</m> of odd order, there exists a sequence of subgroups 
+<me>
+G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset
+H_0 = \{ e \}
+</me>
+such that <m>H_i</m> is normal in <m>H_{i+1}</m> and <m>H_{i+1} / H_i</m> is abelian.
+This conjecture was finally proven by W. Feit<index><main>Feit, W.</main></index>
+and J. Thompson<index><main>Thompson, J.</main></index> in 1963. 
+Burnside's  <title>The Theory of Groups of Finite Order</title>,
+published in 1897, was one of the first books to treat groups in a
+modern context as 
+opposed to permutation groups. The second edition, published in 1911,
+is still a classic. 
+</p>
+</historical>  <!-- FIXME: stray closing brace on next line -->
+}
+ 
+ 
+ 
+\markright{EXERCISES}
+\section*{Exercises}
+\exrule
+ 
+ 
+ 
+ 
+{\small
+\begin{enumerate}
+ 
+<!-- ***************Calculations************************ -->
+
+<!--  2010/05/10 R Beezer: made it clearer what the G-equivalence classes are -->
+</li><li>
+Examples<nbsp /><xref ref="example:actions:GL2_action" /><ndash />\ref{example:actions:left_coset_action}  in the first section each describe an action of a group <m>G</m> on a set <m>X</m>, which will give rise to the equivalence relation defined by <m>G</m>-equivalence.  For each example, compute the equivalence classes of the equivalence relation,  the <term><m>G</m>-equivalence classes</term><index><main><m>G</m>-equivalence classes</main></index>.
+ 
+ 
+</li><li> \label{actions:computation:exercise}
+Compute all <m>X_g</m> and all <m>G_x</m> for each of the following permutation
+groups. 
+\begin{enumerate}
+ 
+ </li><li>
+<m>X= \{1, 2, 3\}</m>, \\
+<m>G=S_3=\{(1), (12), (13), (23), (123), (132)  \}</m>
+ 
+ </li><li>
+<m>X = \{1, 2, 3, 4, 5, 6\}</m>, \\
+<m>G = \{(1), (12), (345), (354), (12)(345), (12)(354)  \}</m>
+ 
+\end{enumerate}
+ 
+ 
+</li><li>
+Compute the <m>G</m>-equivalence classes of <m>X</m> for each of the <m>G</m>-sets in
+Exercise<nbsp /><xref ref="actions:computation:exercise" />. For each <m>x \in X</m> verify that $|G|=|{\mathcal O}_x| \cdot
+|G_x|$.  
+ 
+ 
+</li><li>
+Let <m>G</m> be the additive group of real numbers. Let the action of
+<m>\theta \in G</m> on the real plane <m>{\mathbb R}^2</m> be given by rotating the
+plane counterclockwise about the origin through <m>\theta</m> radians. Let
+<m>P</m> be a point on the plane other than the origin.
+\begin{enumerate}
+ 
+ </li><li>
+Show that <m>{\mathbb R}^2</m> is a <m>G</m>-set.
+ 
+ </li><li>
+Describe geometrically the orbit containing <m>P</m>.
+ 
+ </li><li>
+Find the group <m>G_P</m>.
+ 
+\end{enumerate}
+ 
+ 
+</li><li>
+Let <m>G =  A_4</m> and suppose that <m>G</m> acts on itself by conjugation;
+that is, <m>(g,h)~\mapsto~ghg^{-1}</m>. 
+\begin{enumerate}
+ 
+ </li><li>
+Determine the conjugacy classes (orbits) of each element of <m>G</m>.
+ 
+ </li><li>
+Determine all of the isotropy subgroups for each element of <m>G</m>.
+ 
+\end{enumerate}
+ 
+ 
+</li><li>
+Find the conjugacy classes and the class equation for each of the
+following groups. 
+\begin{multicols}{4}
+\begin{enumerate}
+
+</li><li>
+<m>S_4</m>
+
+</li><li>
+<m>D_5</m>
+
+</li><li>
+<m>{\mathbb Z}_9</m>
+
+</li><li>
+<m>Q_8</m>
+
+
+\end{enumerate}
+\end{multicols}
+ 
+
+ 
+ 
+</li><li>  <!-- %%%%%%%%%%%%%%% -->
+Write the class equation for <m>S_5</m> and for <m>A_5</m>.
+ 
+ 
+</li><li>
+If a square remains fixed in the plane, how many different ways can
+the corners of the square be colored if three colors are used?
+ 
+ 
+</li><li>
+How many ways can the vertices of an equilateral triangle be colored
+using three different colors? 
+ 
+ 
+</li><li>
+Find the number of ways a six-sided die can be constructed if each
+side is  marked differently with <m>1, \ldots, 6</m> 
+dots.
+ 
+</li><li>
+Up to a rotation, how many ways can the faces of a cube be colored
+with three different colors? 
+ 
+ 
+ 
+</li><li>
+Consider 12 straight wires of equal lengths with their ends soldered
+together to form the edges of a cube. Either silver or copper wire can be
+used for each edge.  How many different ways can the cube be
+constructed? 
+ 
+ 
+ 
+</li><li>
+Suppose that we color each of the eight corners of a cube. Using three
+different colors, how many ways can the corners be colored up to a
+rotation of the cube? 
+ 
+ 
+</li><li>
+Each of the faces of a regular tetrahedron can be painted either red
+or white.  Up to a rotation, how many different ways can the
+tetrahedron be painted? 
+ 
+ 
+</li><li>
+Suppose that the vertices of a regular hexagon are to be colored either
+red or white.  How many ways can this be done up to a symmetry  of the
+hexagon? 
+ 
+ 
+</li><li>
+A molecule of benzene is made up of six carbon atoms and six hydrogen
+atoms, linked together in a hexagonal shape as in Figure<nbsp /><xref ref="benzene" />.
+\begin{enumerate}
+ 
+ </li><li>
+How many different compounds can be formed by replacing one or more of
+the hydrogen atoms with a chlorine atom? 
+ 
+ </li><li>
+Find the number of different chemical compounds that can be formed by
+replacing three of the six hydrogen atoms in a benzene ring with a
+<m>CH_3</m> radical.
+ 
+\end{enumerate}
+ 
+ 
+<figure xml:id="">
+
+
+<tikz filebase="actions_benzene"><![CDATA[
+\begin{tikzpicture}[scale=1.0] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+
+\draw (40:1.2) -- (90:1.7) -- (140:1.2) -- (220:1.2) -- (270:1.7) -- (320:1.2) -- cycle;
+\draw (90:1.7) -- (90:2.1) node [above] {$H$};
+\draw (270:1.7) -- (270:2.1) node [below] {$H$};
+\draw (40:1.2) -- (40:1.6);
+\node at (40:1.9) {$H$};
+\draw (140:1.2) -- (140:1.6);
+\node at (140:1.9) {$H$};
+\draw (220:1.2) -- (220:1.6);
+\node at (220:1.9) {$H$};
+\draw (320:1.2) -- (320:1.6);
+\node at (320:1.9) {$H$};
+
+\end{tikzpicture}]]>
+</tikz>
+
+<caption>A benzene ring</caption>
+\label{benzene}
+</figure>
+
+ 
+ 
+</li><li>
+How many equivalence classes of switching functions are there if the
+input variables <m>x_1</m>, <m>x_2</m>, and <m>x_3</m> can be permuted by any
+permutation in <m>S_3</m>? What if the input variables <m>x_1</m>, <m>x_2</m>, <m>x_3</m>,
+and <m>x_4</m> can be permuted by any permutation in <m>S_4</m>?
+ 
+ 
+</li><li>
+How many equivalence classes of switching functions are there if the
+input variables <m>x_1</m>, <m>x_2</m>, <m>x_3</m>, and <m>x_4</m> can be permuted by any
+permutation in the subgroup of <m>S_4</m> generated by the permutation
+<m>(x_1 x_2 x_3 x_4)</m>?  
+ 
+ 
+</li><li>
+A striped necktie has 12 bands of color. Each band can be colored
+by one of four possible colors.  How many possible different-colored
+neckties are there? 
+ 
+ 
+<!-- ***************Theory****************************** -->
+ 
+ 
+</li><li>
+A group acts <term>faithfully</term> on a <m>G</m>-set <m>X</m> if the identity is the
+only element of <m>G</m> that leaves every element of <m>X</m> fixed. Show that
+<m>G</m> acts faithfully  on <m>X</m> if and only if no two distinct elements of
+<m>G</m> have the same action on each element of <m>X</m>.
+ 
+ 
+</li><li>
+Let <m>p</m> be prime. Show that the number of different abelian groups of
+order <m>p^n</m> (up to isomorphism)  is the same as the number of
+conjugacy classes in <m>S_n</m>. 
+ 
+ 
+</li><li>
+Let <m>a \in G</m>. Show that for any <m>g \in G</m>, $gC(a) g^{-1} =
+C(gag^{-1})$. 
+ 
+ 
+</li><li>
+Let <m>|G| = p^n</m> and suppose that <m>|Z(G)| = p^{n-1}</m> for  <m>p</m> prime.
+Prove that <m>G</m> is abelian. 
+ 
+ 
+</li><li>
+Let <m>G</m> be a group with order <m>p^n</m> where <m>p</m> is prime and <m>X</m> a
+finite <m>G</m>-set.  If $X_G = \{ x \in X : gx = x \text{ for all }g \in
+G \}<m> is the set of elements in </m>X$ fixed by the group action, then
+prove that <m>|X| \equiv |X_G| \pmod{ p}</m>.
+
+</li><li>
+If <m>G</m> is a group of order <m>p^n</m>, where <m>p</m> is prime and <m>n \geq 2</m>, show that <m>G</m> must have a proper subgroup of order <m>p</m>.  If <m>n \geq 3</m>, is it true that <m>G</m> will have a proper subgroup of order <m>p^2</m>?
+<!-- Moved problem from cosets.tex TWJ 12/19/2011 -->
+ 
+ 
+\end{enumerate}
+}
+ 
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>Programming Exercise</title>
+ 
+ 
+ 
+{\small
+Write a program to compute the number of conjugacy classes in <m>S_n</m>.
+What is the largest <m>n</m> for which your program will work?
+}
+ 
+ 
+ 
+
+</subsection>
+<subsection number="no">
+<title>References and Suggested Reading</title> <!-- %TWJ 6/28/2010 - References checked. -->
+ 
+ 
+ 
+{\small
+<ul>
+ 
+</biblio>
+<biblio type="raw"> <!-- was [1] -->
+
+De Bruijin, N. G. <q>P\'{o}lya's Theory of Counting,</q> in {\it
+Applied Combinatorial Mathematics}, Beckenbach, E. F., ed.
+Wiley, New York, 1964.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [2] -->
+
+Eidswick, J. A. <q>Cubelike Puzzles<mdash />What Are They and How
+Do You Solve Them?</q> \textit{American Mathematical
+Monthly} \textbf{93} (1986), 157<ndash />76.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [3] -->
+
+Harary, F., Palmer, E. M., and Robinson, R. W. <q>P\'{o}lya's
+Contributions to Chemical Enumeration,</q> in \textit{Chemical
+Applications of Graph Theory}, Balaban, A. T., ed. Academic
+Press, London, 1976.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [4] -->
+ <!-- %TWJ 6/28/2010 - This is out of print -->
+G{\aa}ding, L. and Tambour, T. \textit{Algebra for Computer
+Science}. Springer-Verlag, New York, 1988.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [5] -->
+ <!-- %TWJ 6/28/2010 - This is out of print -->
+Laufer, H. B. \textit{Discrete Mathematics and Applied Modern
+Algebra}. PWS-Kent, Boston, 1984.
+ 
+ 
+</biblio>
+<biblio type="raw"> <!-- was [6] -->
+ <!-- %TWJ 6/28/2010 - This is out of print -->
+P\'{o}lya, G. and Read, R. C. \textit{Combinatorial Enumeration
+of Groups, Graphs, and Chemical Compounds}. Springer-Verlag,
+New York, 1985.
+ 
+</biblio>
+<biblio type="raw"> <!-- was [7] -->
+
+Shapiro, L. W. <q>Finite Groups Acting on Sets with
+Applications,</q> <title>Mathematics Magazine</title>, May<ndash />June 1973,
+136<ndash />47.
+ 
+</ul>
+}
+ 
+<xi:include href="./exercises/FIXME:SECTIONHERE.xml" />
+<xi:include href="./sage/FIXME:SECTIONHERE-sage.xml" />
+<xi:include href="./sage/FIXME:SECTIONHERE-sage-exercises.xml" />
+
+</chapter>
+ 
