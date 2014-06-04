@@ -182,10 +182,11 @@ s/\\histbox/<\/p>\n<\/historical>  <!-- FIXME: stray closing brace on next line 
 # Sage Exercises
 # Do this before  sageverbatim  replacements below
 # And prior to general comment lines
-# eg, \sageexercise{1}%  to start
+# eg, \sageexercise{1}%  to start (w, w/o %)
 # eg, \begin{sageverbatim}\end{sageverbatim}  to end
-s/\\sageexercise{\([^}]*\)}%/<exercise number="\1">\n<p>/g
-s/\\begin{sageverbatim}\\end{sageverbatim}/<\/p>\n<sage \/>\n<\/exercise>/g
+s/\\sageexercise{\([^}]*\)}%/<exercise number="\1">\n<statement>\n<p>/g
+s/\\sageexercise{\([^}]*\)}/<exercise number="\1">\n<statement>\n<p>/g
+s/\\begin{sageverbatim}\\end{sageverbatim}/<\/p>\n<\/statement>\n<sage \/>\n<\/exercise>/g
 
 
 # Sage Code
@@ -260,19 +261,27 @@ s/\\emph{\([^}]*\)}/<em>\1<\/em>/g
 
 # File header
 # Replace all of line 1 w/ XML stuff and license info
-1 s/^.*$/<?xml version="1.0" encoding="UTF-8" ?>\n\n<!-- This file is part of the book                 -->\n<!--                                               -->\n<!--   Abstract Algebra: Theory and Applications   -->\n<!--                                               -->\n<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->\n<!-- See the file COPYING for copying conditions.  -->/g
+# Judson book header, Beezer Sage header
+1 s/^.*$/<?xml version="1.0" encoding="UTF-8" ?>\n\n<!-- This file is part of the book                 -->\n<!--                                               -->\n<!--   Abstract Algebra: Theory and Applications   -->\n<!--                                               -->\n<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->\n<!-- See the file COPYING for copying conditions.  -->\n\n<!-- This file is part of the book                 -->\n<!--                                               -->\n<!--   Abstract Algebra: Theory and Applications   -->\n<!--                                               -->\n<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->\n<!-- See the file COPYING for copying conditions.  -->\n\n/g
 
 # Kill remainder of TeX license header
 /^%%%%(c)/d
 
 # Remaining comments
 # No \% as percent sign seem to be present
+# Empty comments to blank lines
 #
+s/^%$//g
 s/%\(.*\)$/<!-- \1 -->/g
 
 # \textit for titles
 # (**)  Bibliography only, for cut/paste
 s/\\textit{\([^}]*\)}/<title>\1<\/title>/g
+
+# Paragraphs
+# Only in Sage exercises?
+#
+s/\\par/<\/p><p>/g
 
 ####
 #
@@ -345,7 +354,7 @@ s/\\medskip//g
 # Integrate Sage sections into each chapter
 # Also absorb exercises stored in another directory
 # (**) There will be a chapter or two without Sage exercises
-s/\\sagesection/<xi:include href=".\/exercises\/FIXME:section-name.xml" \/>\n<xi:include href=".\/sage\/FIXME:section-name.xml" \/>\n\n<\/chapter>/g
+s/\\sagesection/<xi:include href=".\/exercises\/FIXME:SECTIONHERE.xml" \/>\n<xi:include href=".\/sage\/FIXME:SECTIONHERE-sage.xml" \/>\n<xi:include href=".\/sage\/FIXME:SECTIONHERE-sage-exercises.xml" \/>\n\n<\/chapter>/g
 
 # Kill purposeful horizontal space
 # Should do this with styling
