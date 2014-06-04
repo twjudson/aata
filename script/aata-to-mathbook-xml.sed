@@ -279,9 +279,10 @@ s/%\(.*\)$/<!-- \1 -->/g
 s/\\textit{\([^}]*\)}/<title>\1<\/title>/g
 
 # Paragraphs
-# Only in Sage exercises?
+# Only in Sage exercises (?)
+# Mostly an annoyance to do <\p><p>
 #
-s/\\par/<\/p><p>/g
+s/\\par//g
 
 ####
 #
