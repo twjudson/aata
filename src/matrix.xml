@@ -17,287 +17,166 @@
 
 
 <chapter xml:id="matrix" xmlns:xi="http://www.w3.org/2001/XInclude">
-<title>Matrix Groups and Symmetry</title>
+	<title>Matrix Groups and Symmetry</title>
 
-<introduction>
-<p>FIXME: Move content in here</p>
-</introduction>
+	<introduction>
+		<p>When Felix Klein<index><main>Klein, Felix</main></index> (1849<ndash />1925) accepted a chair at the University of Erlangen, he outlined in his inaugural address a program to classify different geometries. Central to Klein's program was the theory of groups: he considered geometry to be the study of properties that are left invariant under transformation groups. Groups, especially matrix groups, have now become important in the study of symmetry and have found applications in such disciplines as chemistry and physics. In the first part of this chapter, we will examine some of the classical matrix groups, such as the general linear group, the special linear group, and the orthogonal group. We will then use these matrix groups to investigate some of the ideas behind geometric symmetry.</p>
+	</introduction>
 
-When Felix Klein<index><main>Klein, Felix</main></index> (1849<ndash />1925) accepted a chair at
-the University of Erlangen, he outlined in his inaugural address a
-program to classify different geometries. Central to Klein's
-program was the theory of groups: he considered geometry to be the
-study of properties that are left invariant under transformation
-groups. Groups, especially matrix groups, have now become important in
-the study of symmetry and have found applications in such disciplines
-as chemistry and physics. In the first part of this chapter, we will
-examine some of the classical matrix groups, such as the general linear
-group, the special linear group, and the orthogonal group. We will
-then use these matrix groups to investigate some of the ideas behind
-geometric symmetry.  
+	<section xml:id="section-matrix-groups">
+	<title>Matrix Groups</title>
 
+		<subsection number="no">
+			<title>Some Facts from Linear Algebra</title>
 
-
-</section>
-<section xml:id="">
-<title>Matrix Groups</title>
-
-
-</subsection>
-<subsection number="no">
-<title>Some Facts from Linear Algebra</title>
- 
-Before we study matrix groups, we must recall some basic facts from
-linear algebra.  One of the most fundamental ideas of linear algebra
-is that of a linear transformation. A <term>linear transformation</term><index><main>Linear transformation</main><sub>definition of</sub></index> or \boldemph{
-linear map}<index><main>Linear map</main></index> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m>
-is a map that preserves vector addition and scalar multiplication;
-that is, for vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> in <m>{\mathbb R}^n</m> and a
-scalar <m>\alpha \in {\mathbb R}</m>, 
-<md><mrow>
-T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow><mrow>
-T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y}).
-</mrow></md>
-An <m>m \times n</m> matrix with entries in <m>{\mathbb R}</m> represents a linear
-transformation from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^m</m>. If we write vectors
-<m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> and ${\mathbf y} = (y_1,
-\ldots, y_n)^{\rm t}<m> in </m>{\mathbb R}^n<m> as column matrices, then an </m>m
-\times n$ matrix 
-<me>
-A
+			<p>Before we study matrix groups, we must recall some basic facts from linear algebra.  One of the most fundamental ideas of linear algebra is that of a linear transformation. A <term>linear transformation</term><index><main>Linear transformation</main><sub>definition of</sub></index> or <term>linear map</term><index><main>Linear map</main></index> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a map that preserves vector addition and scalar multiplication; that is, for vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> in <m>{\mathbb R}^n</m> and a scalar <m>\alpha \in {\mathbb R}</m>, 
+<md>
+<mrow>T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow>
+<mrow>T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y}).</mrow>
+</md>
+An <m>m \times n</m> matrix with entries in <m>{\mathbb R}</m> represents a linear transformation from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^m</m>. If we write vectors <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> in <m>{\mathbb R}^n</m> as column matrices, then an <m>m \times n</m> matrix 
+<me>A
 =
 \begin{pmatrix}<![CDATA[
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{m1} & a_{m2} & \cdots & a_{mn}
-]]>\end{pmatrix}
-</me>
-maps the vectors to <m>{\mathbb R}^m</m> linearly by matrix
-multiplication.  Observe that if <m>\alpha</m> is a real number,
-<me>
-A({\mathbf x} + {\mathbf y} ) 
+]]>\end{pmatrix}</me>
+maps the vectors to <m>{\mathbb R}^m</m> linearly by matrix multiplication.  Observe that if <m>\alpha</m> is a real number,
+<me>A({\mathbf x} + {\mathbf y} ) 
  = 
 A {\mathbf x }+ A {\mathbf y} 
 \qquad \text{and} \qquad
 \alpha A {\mathbf x} 
  = 
-A ( \alpha {\mathbf x}),
-</me>
+A ( \alpha {\mathbf x}),</me>
 where
-<me>
-{\mathbf x}
+<me>{\mathbf x}
 =
 \begin{pmatrix}<![CDATA[
 x_1 \\
 x_2 \\
 \vdots \\
 x_n
-]]>\end{pmatrix}.
-</me>
-We will often abbreviate the matrix <m>A</m> by writing
-<m>(a_{ij})</m>\label{matrixnote}.  
+]]>\end{pmatrix}.</me>
+We will often abbreviate the matrix <m>A</m> by writing <m>(a_{ij})</m><!--NOTATION TABLE\label{matrixnote}-->.</p> 
  
- 
-Conversely, if <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a linear
-map, we can associate a matrix <m>A</m> with <m>T</m> by considering what <m>T</m>
-does to the vectors 
-<md><mrow>
-{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^{\rm t}</mrow><mrow>
-{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^{\rm t}</mrow><mrow>
-            &amp;  \vdots &amp; </mrow><mrow>
-{\mathbf e}_n &amp; = (0, 0, \ldots, 1)^{\rm t}.
-</mrow></md>
+			<p>Conversely, if <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a linear map, we can associate a matrix <m>A</m> with <m>T</m> by considering what <m>T</m> does to the vectors 
+<md>
+<mrow>{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^{\rm t}</mrow>
+<mrow>{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^{\rm t}</mrow>
+<mrow>&amp;  \vdots &amp; </mrow>
+<mrow>{\mathbf e}_n &amp; = (0, 0, \ldots, 1)^{\rm t}.</mrow>
+</md>
 We can write any vector <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> as
-<me>
-x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n.
-</me>
+<me>x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n.</me>
 Consequently, if
-<md><mrow>
-T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t},</mrow><mrow>
-T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t},</mrow><mrow>
-            &amp;  \vdots &amp; </mrow><mrow>
-T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},
-</mrow></md>
+<md>
+<mrow>T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t},</mrow>
+<mrow>T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t},</mrow>
+<mrow>&amp;  \vdots &amp; </mrow>
+<mrow>T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},</mrow>
+</md>
 then
-<md><mrow>
-T({\mathbf x} )
-&amp; =
-T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow><mrow>
-&amp; =
-x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)
-\\ 
-&amp; =
-\left(
-\sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k
-\right)^{\rm t}</mrow><mrow> 
-&amp; = 
-A {\mathbf x}.
-</mrow></md>
+<md>
+<mrow>T({\mathbf x} ) &amp; = T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow>
+<mrow>&amp; = x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)</mrow>
+<mrow>&amp; = \left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k \right)^{\rm t}</mrow>
+<mrow>&amp; = A {\mathbf x}.</mrow>
+</md></p>
  
- 
-<example xml:id="linear_transform">
-<p>
-If we let <m>T : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> be the map given by 
-<me>
-T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),
-</me>
-the axioms that <m>T</m> must satisfy to be a linear transformation are
-easily verified. The column vectors <m>T {\mathbf e}_1 = (2, -4)^{\rm t}</m>
-and <m>T {\mathbf e}_2 = (5,3)^{\rm t}</m>  tell us that <m>T</m> is given by the
-matrix 
-<me>
-A =
+		<example xml:id="example-linear-transform">
+			<p>If we let <m>T : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> be the map given by 
+<me>T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),</me>
+the axioms that <m>T</m> must satisfy to be a linear transformation are easily verified. The column vectors <m>T {\mathbf e}_1 = (2, -4)^{\rm t}</m> and <m>T {\mathbf e}_2 = (5,3)^{\rm t}</m>  tell us that <m>T</m> is given by the matrix 
+<me>A =
 \begin{pmatrix}<![CDATA[
 2 & 5 \\
 -4 & 3
-]]>\end{pmatrix}.
-</me>
-</p>
-</example>
+]]>\end{pmatrix}.</me></p>
+		</example>
  
- 
-Since we are interested in groups of matrices, we need to know
-which matrices have multiplicative inverses. Recall that an $n \times
-n<m> matrix </m>A$ is <term>invertible</term><index><main>Matrix</main><sub>invertible</sub></index> exactly
-when there exists another matrix <m>A^{-1}</m> such that $A A^{-1} = A^{-1}
-A = I$, where 
-<me>
-I =
+		<p>Since we are interested in groups of matrices, we need to know which matrices have multiplicative inverses. Recall that an <m>n \times n</m> matrix <m>A</m> is <term>invertible</term><index><main>Matrix</main><sub>invertible</sub></index> exactly when there exists another matrix <m>A^{-1}</m> such that <m>A A^{-1} = A^{-1} A = I</m>, where 
+<me>I =
 \begin{pmatrix}<![CDATA[
 1 & 0 & \cdots & 0 \\
 0 & 1 & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & 1
-]]>\end{pmatrix}
-</me>
-is the <m>n \times n</m> identity matrix. From linear algebra we know that
-<m>A</m> is invertible if and only if the determinant of <m>A</m> is nonzero.
-Sometimes an invertible matrix is said to be <term> nonsingular</term><index><main>Matrix</main><sub>nonsingular</sub></index>. 
+]]>\end{pmatrix}</me>
+is the <m>n \times n</m> identity matrix. From linear algebra we know that <m>A</m> is invertible if and only if the determinant of <m>A</m> is nonzero. Sometimes an invertible matrix is said to be <term> nonsingular</term><index><main>Matrix</main><sub>nonsingular</sub></index>.</p> 
  
- 
-<example xml:id="inverse_matrix">
-<p>
-If <m>A</m> is the matrix
-<me>
-\begin{pmatrix}<![CDATA[
+		<example xml:id="inverse_matrix">
+			<p>If <m>A</m> is the matrix
+<me>\begin{pmatrix}<![CDATA[
 2 & 1 \\
 5 & 3
-]]>\end{pmatrix},
-</me>
+]]>\end{pmatrix},</me>
 then the inverse of <m>A</m> is
-<me>
-A^{-1} =
+<me>A^{-1} =
 \begin{pmatrix}<![CDATA[
 3 & -1 \\
 -5 & 2
-]]>\end{pmatrix}.
-</me>
-We are guaranteed  that <m>A^{-1}</m> exists, since $\det(A) = 2 \cdot 3 - 5
-\cdot 1 = 1$ is nonzero. 
-</p>
-</example>
+]]>\end{pmatrix}.</me>
+We are guaranteed  that <m>A^{-1}</m> exists, since <m>\det(A) = 2 \cdot 3 - 5 \cdot 1 = 1</m> is nonzero.</p>
+		</example>
  
+		<p>Some other facts about determinants will also prove useful in the course of this chapter.   Let <m>A</m> and <m>B</m> be <m>n \times n</m> matrices. From linear algebra we have the following properties of determinants.
+			<ul>
  
-Some other facts about determinants will also prove useful in the
-course of this chapter.   Let <m>A</m> and <m>B</m> be <m>n \times n</m> matrices.
-From linear algebra we have the following properties of determinants.
-<ul>
+				<li>The determinant is a homomorphism into the multiplicative group of real numbers; that is, <m>\det( A B) = (\det A )(\det B)</m>.</li>
  
-</li><li>
-The determinant is a homomorphism into the multiplicative group of
-real numbers; that is, <m>\det( A B) = (\det A )(\det B)</m>. 
+				<li>If <m>A</m> is an invertible matrix, then <m>\det(A^{-1}) = 1 / \det A</m>.</li>
  
-</li><li>
-If <m>A</m> is an invertible matrix, then <m>\det(A^{-1}) = 1 / \det A</m>.
+				<li>If we define the transpose  of a matrix <m>A = (a_{ij})</m> to be <m>A^{\rm t} = (a_{ji})</m>, then <m>\det(A^{\rm t}) = \det A</m>.</li>
  
-</li><li>
-If we define the transpose  of a matrix <m>A = (a_{ij})</m> to be $A^{\rm
-t} = (a_{ji})<m>, then </m>\det(A^{\rm t}) = \det A$. 
+				<li>Let <m>T</m> be the linear transformation associated with an <m>n \times n</m> matrix <m>A</m>. Then <m>T</m> multiplies volumes by a factor of <m>|\det A|</m>. In the case of <m>{\mathbb R}^2</m>, this means that <m>T</m> multiplies areas by <m>|\det A|</m>.</li>
  
-</li><li>
-Let <m>T</m> be the linear transformation associated with an <m>n \times n</m>
-matrix <m>A</m>. Then <m>T</m> multiplies volumes by a factor of <m>|\det A|</m>. In
-the case of <m>{\mathbb R}^2</m>, this means that <m>T</m> multiplies areas by
-<m>|\det A|</m>.
+			</ul></p>
+
  
-</ul>
+			<p>Linear maps, matrices, and determinants are covered in any elementary linear algebra text; however, if you have not had a course in linear algebra, it is a straightforward process to verify these properties directly for <m>2 \times 2</m> matrices, the case with which we are most concerned.</p>
+
+		</subsection>
+		
+		<subsection number="no">
+			<title>The General and Special Linear Groups</title>
  
- 
-Linear maps, matrices, and determinants are covered in any elementary
-linear algebra text; however, if you have not had a course in linear
-algebra, it is a straightforward process to verify these properties
-directly for <m>2 \times 2</m> matrices, the case with which we are most
-concerned. 
- 
- 
+			<p>The set of all <m>n \times n</m>  invertible matrices forms a group called the <term>general linear group</term><index><main>Group</main><sub>general linear</sub></index>.  We will denote this group by <m>GL_n({\mathbb R})</m>.  The general linear group has several important subgroups. The multiplicative properties of the determinant imply that the set of matrices with determinant one is a subgroup of the general linear group.  Stated another way, suppose that <m>\det(A) =1</m> and <m>\det(B) = 1</m>. Then <m>\det(AB) = \det(A) \det (B) = 1</m> and <m>\det(A^{-1}) = 1 / \det A = 1</m>. This subgroup is called the <term>special linear group</term><index><main>Group</main><sub>special linear</sub></index> and is denoted by <m>SL_n({\mathbb R})</m>.</p>
  
 
-</subsection>
-<subsection number="no">
-<title>The General and Special Linear Groups</title>
- 
-The set of all <m>n \times n</m>  invertible matrices forms a group called
-the <term>general linear group</term><index><main>Group</main><sub>general linear</sub></index>.  We will
-denote this group by <m>GL_n({\mathbb R})</m>.  The general linear group has
-several important subgroups. The multiplicative properties of the
-determinant imply that the set of matrices with determinant one is a
-subgroup of the general linear group.  Stated another way, suppose
-that <m>\det(A) =1</m> and <m>\det(B) = 1</m>. Then $\det(AB) = \det(A) \det (B)
-= 1<m> and </m>\det(A^{-1}) = 1 / \det A = 1$. This subgroup is called the
-<term>special linear group</term><index><main>Group</main><sub>special linear</sub></index> and is
-denoted by <m>SL_n({\mathbb R})</m>. 
- 
- 
-<example xml:id="determinant">
-<p>
-Given a <m>2 \times 2</m> matrix
-<me>
-A =
+			<example xml:id="determinant">
+				<p>Given a <m>2 \times 2</m> matrix
+<me>A =
 \begin{pmatrix}<![CDATA[
 a & b \\
 c & d
-]]>\end{pmatrix},
-</me>
-the determinant of <m>A</m> is \mbox{<m>ad-bc</m>}. The group <m>GL_2({\mathbb R})</m>
-consists of those matrices in which <m>ad-bc \neq 0</m>. The inverse of <m>A</m>
-is 
-<me>
-A^{-1} =
+]]>\end{pmatrix},</me>
+the determinant of <m>A</m> is \mbox{<m>ad-bc</m>}. The group <m>GL_2({\mathbb R})</m> consists of those matrices in which <m>ad-bc \neq 0</m>. The inverse of <m>A</m> is 
+<me>A^{-1} =
 \frac{1}{ad-bc}
 \begin{pmatrix}<![CDATA[
 d & -b \\
 -c & a
-]]>\end{pmatrix}.
-</me>
+]]>\end{pmatrix}.</me>
 If <m>A</m> is in <m>SL_2({\mathbb R})</m>, then
-<me>
-A^{-1} =
+<me>A^{-1} =
 \begin{pmatrix}<![CDATA[
 d & -b \\
 -c & a
-]]>\end{pmatrix}.
-</me>
-Geometrically, <m>SL_2({\mathbb R})</m> is the group that preserves the areas
-of parallelograms.  Let 
-<me>
-A =
+]]>\end{pmatrix}.</me>
+Geometrically, <m>SL_2({\mathbb R})</m> is the group that preserves the areas of parallelograms.  Let 
+<me>A =
 \begin{pmatrix}<![CDATA[
 1 & 1 \\
 0 & 1
-]]>\end{pmatrix}
-</me>
-be in <m>SL_2({\mathbb R})</m>. In Figure<nbsp /><xref ref="SL2" />, the unit square
-corresponding to the vectors <m>{\mathbf x} = (1,0)^{\rm t}</m> and ${\mathbf
-y} =  (0,1)^{\rm t}<m> is taken  by </m>A$ to the parallelogram with sides
-<m>(1,0)^{\rm t}</m> and <m>(1, 1)^{\rm t}</m>; that is, $A {\mathbf x} =
-(1,0)^{\rm t}<m> and </m>A {\mathbf y} = (1, 1)^{\rm t}$. Notice that these
-two parallelograms have the same area.   
-</p>
-</example>
+]]>\end{pmatrix}</me>
+be in <m>SL_2({\mathbb R})</m>. In Figure<nbsp /><xref ref="SL2" />, the unit square corresponding to the vectors <m>{\mathbf x} = (1,0)^{\rm t}</m> and <m>{\mathbf y} =  (0,1)^{\rm t}</m> is taken  by <m>A</m> to the parallelogram with sides <m>(1,0)^{\rm t}</m> and <m>(1, 1)^{\rm t}</m>; that is, <m>A {\mathbf x} = (1,0)^{\rm t}</m> and <m>A {\mathbf y} = (1, 1)^{\rm t}</m>. Notice that these two parallelograms have the same area.</p>
+			</example>
+
  
- 
-<figure xml:id="">
+<figure xml:id="figure-sl2">
  <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
 
 
@@ -324,34 +203,20 @@ two parallelograms have the same area.
 </tikz>
 
 
-<caption><m>SL_2({\mathbb R</caption>)</m> acting on the unit square}
-\label{SL2}
+<caption><m>SL_2(\mathbb R)</m> acting on the unit square</caption>
+
 </figure>
 
-
-
+		</subsection>
+		
+		<subsection number="no">
+			<title>The Orthogonal Group <m>O(n)</m></title>
  
-
-</subsection>
-<subsection number="no">
-<title>The Orthogonal Group <m>O(n)</m></title>
+			<p>Another subgroup of <m>GL_n({\mathbb R})</m> is the orthogonal group. A matrix <m>A</m> is <term> orthogonal</term><index><main>Orthogonal matrix</main></index><index><main>Matrix</main><sub>orthogonal</sub></index> if <m>A^{-1} = A^{\rm t}</m>. The <term>orthogonal group</term><index><main>Group</main><sub>orthogonal</sub></index><index><main>Orthogonal group</main></index> consists of the set of all orthogonal matrices. We write <m>O(n)</m>\label{noteorthogonal} for the <m>n \times n</m> orthogonal group. We leave as an exercise the proof that <m>O(n)</m> is a subgroup of <m>GL_n( {\mathbb R})</m>.</p>
  
- 
- 
-Another subgroup of <m>GL_n({\mathbb R})</m> is the orthogonal group. A matrix
-<m>A</m> is <term> orthogonal</term><index><main>Orthogonal matrix</main></index><index><main>Matrix</main><sub>orthogonal</sub></index> if
-<m>A^{-1} = A^{\rm t}</m>. The <term>orthogonal group</term><index><main>Group</main><sub>orthogonal</sub></index><index><main>Orthogonal group</main></index> consists of
-the set of all orthogonal matrices. We write
-<m>O(n)</m>\label{noteorthogonal} for the <m>n \times n</m> orthogonal group. We
-leave as an exercise the proof that <m>O(n)</m> is a subgroup of $GL_n(
-{\mathbb R})$.
- 
- 
-<example xml:id="orthogonal">
-<p>
-The following matrices are orthogonal:
-<me>
-\begin{pmatrix}<![CDATA[
+			<example xml:id="orthogonal">
+				<p>The following matrices are orthogonal:
+<me>\begin{pmatrix}<![CDATA[
 3/5 & -4/5 \\
 4/5 & 3/5
 ]]>\end{pmatrix}, 
@@ -365,21 +230,11 @@ The following matrices are orthogonal:
 -1/\sqrt{2} & 0 & 1/ \sqrt{2} \\
 1/\sqrt{6} & -2/\sqrt{6} & 1/\sqrt{6} \\
 1/ \sqrt{3} & 1/ \sqrt{3} & 1/ \sqrt{3} 
-]]>\end{pmatrix}.
-</me>
-</p>
-</example>
+]]>\end{pmatrix}.</me></p>
+			</example>
 
- 
-There is a more geometric way of viewing the group <m>O(n)</m>. The
-orthogonal matrices are exactly those matrices that preserve the
-length of vectors. We can define the length of a vector using the
-<term>Euclidean inner product</term>,<index><main>Euclidean inner product</main></index> or
-<term>dot product</term>, of two vectors. The Euclidean inner product of
-two vectors <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> and ${\mathbf
-y}=(y_1, \ldots, y_n)^{\rm t}$ is
-<me>
-\langle  {\mathbf x}, {\mathbf y} \rangle
+			<p>There is a more geometric way of viewing the group <m>O(n)</m>. The orthogonal matrices are exactly those matrices that preserve the length of vectors. We can define the length of a vector using the <term>Euclidean inner product</term>,<index><main>Euclidean inner product</main></index> or <term>dot product</term>, of two vectors. The Euclidean inner product of two vectors <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> and <m>{\mathbf y}=(y_1, \ldots, y_n)^{\rm t}</m> is
+<me>\langle  {\mathbf x}, {\mathbf y} \rangle
 =
 {\mathbf x}^{\rm t}  {\mathbf y}
 =
@@ -388,253 +243,127 @@ y}=(y_1, \ldots, y_n)^{\rm t}$ is
 y_1 \\ y_2 \\ \vdots \\ y_n
 ]]>\end{pmatrix}
 =
-x_1 y_1 + \cdots + x_n y_n.
-</me>
-We define the length of a vector ${\mathbf x}=(x_1, \ldots, x_n)^{\rm
-t}$ to be 
-<me>
-\| {\mathbf x} \|\label{notelengthvect} 
+x_1 y_1 + \cdots + x_n y_n.</me>
+We define the length of a vector <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> to be 
+<me>\| {\mathbf x} \| <!--NOTATION TABLE \label{notelengthvect} -->
 = \sqrt{\langle  {\mathbf x}, {\mathbf x} \rangle} 
-= \sqrt{x_1^2 + \cdots + x_n^2}.
-</me>
-Associated with the notion of the length of a vector is the idea of
-the distance between two vectors. We define the <term>distance</term>
-between two vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> to be $\| {\mathbf
-x}-{\mathbf y} \|$. We leave as an exercise the proof of the following
-proposition about the properties of Euclidean inner products.  
+= \sqrt{x_1^2 + \cdots + x_n^2}.</me>
+Associated with the notion of the length of a vector is the idea of the distance between two vectors. We define the <term>distance</term> between two vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> to be <m>\| {\mathbf x}-{\mathbf y} \|</m>. We leave as an exercise the proof of the following proposition about the properties of Euclidean inner products.</p>  
  
+			<proposition>
+				<statement>
+					<p>Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, and <m>{\mathbf w}</m> be vectors in <m>{\mathbb R}^n</m> and <m>\alpha \in {\mathbb R}</m>. Then 
+						<ol>
  
-<proposition>
-<statement>
-<p>
-Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, and <m>{\mathbf w}</m> be vectors in ${\mathbb
-R}^n<m> and </m>\alpha \in {\mathbb R}$. Then 
-\begin{enumerate}
+							<li><m>\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x} \rangle</m>.</li>
  
-\rm </li><li> \it
-$\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x}
-\rangle$. 
+							<li><m>\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle</m>.</li>
  
-\rm </li><li> \it
-$\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x},
-{\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle$.
+							<li><m>\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</li>
+
+							<li><m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> with equality exactly when <m>{\mathbf x} = 0</m>.</li>
  
-\rm </li><li> \it
-$\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x},
-\alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf x}, {\mathbf y}
-\rangle$. 
+							<li>If <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  for all <m>{\mathbf x}</m> in <m>{\mathbb R}^n</m>, then <m>{\mathbf y} = 0</m>.</li>
  
-\rm </li><li> \it
-<m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> with equality exactly
-when <m>{\mathbf x} = 0</m>. 
+						</ol></p>
+				</statement>
+			</proposition>
  
-\rm </li><li> \it
-If <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  for all <m>{\mathbf x}</m> in
-<m>{\mathbb R}^n</m>, then <m>{\mathbf y} = 0</m>. 
- 
-\end{enumerate}
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</proposition>
- 
- 
-<example xml:id="">
-<p>
-The vector <m>{\mathbf x} =(3,4)^{\rm t}</m> has length <m>\sqrt{3^2 + 4^2} = 5</m>.  We
-can also see that the orthogonal matrix 
-<me>
-A=
+			<example xml:id="example-on-preserves-length">
+				<p>The vector <m>{\mathbf x} =(3,4)^{\rm t}</m> has length <m>\sqrt{3^2 + 4^2} = 5</m>.  We can also see that the orthogonal matrix 
+<me>A=
 \begin{pmatrix}<![CDATA[
 3/5 & -4/5 \\
 4/5 & 3/5
-]]>\end{pmatrix}
-</me>
-preserves the length of this vector. The vector $A{\mathbf x} =
-(-7/5,24/5)^{\rm t}$ also has length 5. 
-</p>
-</example>
- 
- 
-Since <m>\det(A A^{\rm t}) = \det(I) = 1</m> and $\det(A) = \det( A^{\rm t}
-)<m>, the determinant of any orthogonal matrix is either 1 or </m>-1$.
-Consider the column vectors 
-<me>
-{\mathbf a}_j
+]]>\end{pmatrix}</me>
+preserves the length of this vector. The vector <m>A{\mathbf x} = (-7/5,24/5)^{\rm t}</m> also has length 5.</p>
+			</example>
+
+			<p>Since <m>\det(A A^{\rm t}) = \det(I) = 1</m> and <m>\det(A) = \det( A^{\rm t} )</m>, the determinant of any orthogonal matrix is either 1 or <m>-1</m>. Consider the column vectors 
+<me>{\mathbf a}_j
 =
 \begin{pmatrix}<![CDATA[
 a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
-]]>\end{pmatrix}
-</me>
-of the orthogonal matrix
-<m>A= (a_{ij})</m>. Since
-<m>AA^{\rm t} = I</m>,
-<m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>,
+]]>\end{pmatrix}</me>
+of the orthogonal matrix <m>A= (a_{ij})</m>. Since <m>AA^{\rm t} = I</m>, <m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>,
 where
-<me>
-\delta_{rs}
+<me>\delta_{rs}
 =
 \left\{
 \begin{array}{cc}
 1 &amp; r = s \\
 0 &amp; r \neq s
 \end{array}
-\right.
-</me>
-is the Kronecker delta<index><main>Kronecker delta</main></index>. Accordingly, column
-vectors of an orthogonal matrix all have length 1; and the Euclidean
-inner product of distinct column vectors is zero. Any set of vectors
-satisfying these properties is called an <term>orthonormal set</term><index><main>Orthonormal set</main></index>. Conversely, given an <m>n \times n</m> matrix
-<m>A</m> whose columns form an orthonormal set, <m>A^{-1} = A^{\rm t}</m>.
- 
- 
-We say that a matrix <m>A</m> is <term> distance-preserving</term><index><main>Matrix</main><sub>distance-preserving</sub></index>, \boldemph{
-length-preserving}<index><main>Matrix</main><sub>length-preserving</sub></index>, or <term>inner product-preserving</term><index><main>Matrix</main><sub>inner product-preserving</sub></index> when $\|
-T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|<m>, </m>\| T{\mathbf x}
-\| =\| {\mathbf x} \|<m>, or </m>\langle  T{\mathbf x}, T{\mathbf y} \rangle =
-\langle {\mathbf x},{\mathbf y} \rangle$, respectively. The following
-theorem, which characterizes the orthogonal group, says that these
-notions are the same.
- 
- 
-<theorem xml:id="matrix:orthnormal_theorem">
-<statement>
-<p>
-Let <m>A</m> be an <m>n \times n</m> matrix.  The following statements are
+\right.</me>
+is the Kronecker delta<index><main>Kronecker delta</main></index>. Accordingly, column vectors of an orthogonal matrix all have length 1; and the Euclidean inner product of distinct column vectors is zero. Any set of vectors satisfying these properties is called an <term>orthonormal set</term><index><main>Orthonormal set</main></index>. Conversely, given an <m>n \times n</m> matrix <m>A</m> whose columns form an orthonormal set, <m>A^{-1} = A^{\rm t}</m>.</p>
+
+			<p>We say that a matrix <m>A</m> is <term>distance-preserving</term><index><main>Matrix</main><sub>distance-preserving</sub></index>, <term>length-preserving</term><index><main>Matrix</main><sub>length-preserving</sub></index>, or <term>inner product-preserving</term><index><main>Matrix</main><sub>inner product-preserving</sub></index> when <m>\| T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|<m>, </m>\| T{\mathbf x} \| =\| {\mathbf x} \|</m>, or <m>\langle  T{\mathbf x}, T{\mathbf y} \rangle = \langle {\mathbf x},{\mathbf y} \rangle</m>, respectively. The following theorem, which characterizes the orthogonal group, says that these notions are the same.</p>
+
+			<theorem xml:id="theorem-orthnormal-matrix">
+				<statement>
+					<p>Let <m>A</m> be an <m>n \times n</m> matrix.  The following statements are
 equivalent. 
-\begin{enumerate}
+						<ol>
+
+							<li>The columns of the matrix <m>A</m> form an orthonormal set.</li>
+
+							<li><m>A^{-1} = A^{\rm t}</m>.</li>
+
+							<li>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\langle  A{\mathbf x}, A {\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</li>
+
+							<li>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \|</m>.</li>
+
+							<li>For any vector <m>{\mathbf x}</m>, <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.</li>
  
-\rm </li><li> \it
-The columns of the matrix <m>A</m> form an orthonormal set.
+						</ol></p>
+				</statement>
+				<proof>
+					<p>We have already shown (1) and (2) to be equivalent.</p>
  
-\rm </li><li> \it
-<m>A^{-1} = A^{\rm t}</m>.
+					<p><m>(2) \Rightarrow (3)</m>.
+<md>
+<mrow>\langle A{\mathbf x}, A{\mathbf y} \rangle &amp; = (A {\mathbf x})^{\rm t} A {\mathbf y}</mrow>
+<mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y}</mrow>
+<mrow>&amp; = {\mathbf x}^{\rm t} {\mathbf y}</mrow>
+<mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow>
+</md></p>
  
-\rm </li><li> \it
-For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, $\langle  A{\mathbf x}, A
-{\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle$.
- 
-\rm </li><li> \it
-For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, $\| A{\mathbf x}- A{\mathbf y} \|
-=\| {\mathbf x}- {\mathbf y} \|$. 
- 
-\rm </li><li> \it
-For any vector <m>{\mathbf x}</m>, <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.
- 
-\end{enumerate}
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-We have already shown (1) and (2) to be equivalent.
- 
-<m>(2) \Rightarrow (3)</m>.
-<md><mrow>
-\langle A{\mathbf x}, A{\mathbf y} \rangle
-&amp; =
-(A {\mathbf x})^{\rm t} A {\mathbf y}</mrow><mrow>
-&amp; =
-{\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y}</mrow><mrow>
-&amp; =
-{\mathbf x}^{\rm t} {\mathbf y}</mrow><mrow>
-&amp; =
-\langle {\mathbf x}, {\mathbf y} \rangle.
-</mrow></md>
- 
-<m>(3) \Rightarrow (2)</m>.
-Since
-<md><mrow>
-\langle {\mathbf x}, {\mathbf x} \rangle
-&amp; =
-\langle A{\mathbf x}, A{\mathbf x} \rangle</mrow><mrow>
-&amp; =
-{\mathbf x}^{\rm t} A^{\rm t} A {\mathbf x}</mrow><mrow>
-&amp; =
-\langle {\mathbf x}, A^{\rm t} A{\mathbf x} \rangle,
-</mrow></md>
-we know that $\langle {\mathbf x}, (A^{\rm t} A - I){\mathbf x} \rangle =
-0<m> for all </m>{\mathbf x}<m>.  Therefore, </m>A^{\rm t} A -I = 0<m> or </m>A^{-1} =
-A^{\rm t}$.
+					<p><m>(3) \Rightarrow (2)</m>. Since
+<md>
+<mrow>\langle {\mathbf x}, {\mathbf x} \rangle &amp; = \langle A{\mathbf x}, A{\mathbf x} \rangle</mrow>
+<mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf x}</mrow>
+<mrow>&amp; = \langle {\mathbf x}, A^{\rm t} A{\mathbf x} \rangle,</mrow>
+</md>
+we know that <m>\langle {\mathbf x}, (A^{\rm t} A - I){\mathbf x} \rangle = 0</m> for all <m>{\mathbf x}</m>.  Therefore, <m>A^{\rm t} A -I = 0</m> or <m>A^{-1} = A^{\rm t}</m>.</p>
 
 <!-- Replaced y with x in <m>(2) \Rightarrow (3)</m>. -->
 <!-- Suggested by M. Huggins -->
 <!-- TWJ 24/4/2013 -->
- 
- 
-<m>(3) \Rightarrow (4)</m>.
-If <m>A</m> is inner product-preserving, then <m>A</m> is distance-preserving,
-since 
-<md><mrow>
-\| A{\mathbf x} - A{\mathbf y} \|^2
-&amp; =
-\| A({\mathbf x} - {\mathbf y}) \|^2</mrow><mrow>
-&amp; =
-\langle
-A({\mathbf x} - {\mathbf y}), A({\mathbf x} - {\mathbf y})
-\rangle</mrow><mrow>
-&amp; =
-\langle
-{\mathbf x} - {\mathbf y}, {\mathbf x} - {\mathbf y}
-\rangle</mrow><mrow>
-&amp; =
-\| {\mathbf x} - {\mathbf y} \|^2.
-</mrow></md>
- 
- 
-<m>(4) \Rightarrow (5)</m>.
-If <m>A</m> is distance-preserving, then <m>A</m> is length-preserving. Letting
-<m>{\mathbf y} = 0</m>, we have
-<me>
-\| A{\mathbf x}\|
-= \| A{\mathbf x}- A{\mathbf y} \|
-= \| {\mathbf x}- {\mathbf y} \|
-= \| {\mathbf x} \|.
-</me>
- 
- 
-<m>(5) \Rightarrow (3)</m>.
-We use the following identity to show that length-preserving implies
-inner product-preserving: 
-<me>
-\langle {\mathbf x}, {\mathbf y} \rangle
-=
-\frac{1}{2}
-\left[
-\|{\mathbf x} +{\mathbf y}\|^2 -
- \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2
-\right].
-</me>
-Observe that
-<md><mrow>
-\langle A {\mathbf x}, A {\mathbf y} \rangle
-&amp; =
-\frac{1}{2}
-\left[
-\|A {\mathbf x} + A {\mathbf y} \|^2
-- \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2
-\right]</mrow><mrow>
-&amp; =
-\frac{1}{2}
-\left[
-\|A ( {\mathbf x} + {\mathbf y} ) \|^2
-- \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2
-\right]</mrow><mrow>
-&amp; =
-\frac{1}{2}
-\left[
-\|{\mathbf x} + {\mathbf y}\|^2
-- \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2
-\right]</mrow><mrow>
-&amp; =
-\langle {\mathbf x}, {\mathbf y} \rangle.
-</mrow></md>
-</p></proof>
- 
 
+					<p><m>(3) \Rightarrow (4)</m>. If <m>A</m> is inner product-preserving, then <m>A</m> is distance-preserving, since 
+<md>
+<mrow>\| A{\mathbf x} - A{\mathbf y} \|^2 &amp; = \| A({\mathbf x} - {\mathbf y}) \|^2</mrow>
+<mrow>&amp; = \langle A({\mathbf x} - {\mathbf y}), A({\mathbf x} - {\mathbf y}) \rangle</mrow>
+<mrow>&amp; = \langle {\mathbf x} - {\mathbf y}, {\mathbf x} - {\mathbf y} \rangle</mrow>
+<mrow>&amp; = \| {\mathbf x} - {\mathbf y} \|^2.</mrow>
+</md></p>
  
+					<p><m>(4) \Rightarrow (5)</m>. If <m>A</m> is distance-preserving, then <m>A</m> is length-preserving. Letting <m>{\mathbf y} = 0</m>, we have
+<me>\| A{\mathbf x}\| = \| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \| = \| {\mathbf x} \|.</me></p>
+
+					<p><m>(5) \Rightarrow (3)</m>. We use the following identity to show that length-preserving implies inner product-preserving: 
+<me>\langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2} \left[ \|{\mathbf x} +{\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right].</me>
+Observe that
+<md>
+<mrow>\langle A {\mathbf x}, A {\mathbf y} \rangle &amp; = \frac{1}{2} \left[ \|A {\mathbf x} + A {\mathbf y} \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
+<mrow>&amp; = \frac{1}{2} \left[ \|A ( {\mathbf x} + {\mathbf y} ) \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
+<mrow>&amp; = \frac{1}{2} \left[ \|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right]</mrow>
+<mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow>
+</md></p>
+				</proof>
+			</theorem>
  
-<figure xml:id="">
+<figure xml:id="figure-o2">
 
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
@@ -667,23 +396,15 @@ Observe that
 </tikz>
 
 
-<caption><m>O(2)</m> acting on <m>{\mathbb R</caption>^2</m>}
-\label{O2}
+<caption><m>O(2)</m> acting on <m>\mathbb R^2</m></caption>
 </figure>
-
- 
  
 <!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
  
-<example xml:id="O2">
-<p>
-Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more
-closely.  An element <m>T \in O(2)</m> is determined by its action on
-<m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> and <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. If
-<m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, then <m>a^2 + b^2 = 1</m> and $T({\mathbf
-e}_2) = (-b, a)^{\rm t}<m>. Hence, </m>T$ can be represented by 
-<me>
-A
+
+			<example xml:id="example-o2">
+				<p>Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more closely.  An element <m>T \in O(2)</m> is determined by its action on <m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> and <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. If <m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, then <m>a^2 + b^2 = 1</m> and <m>T({\mathbf e}_2) = (-b, a)^{\rm t}</m>. Hence, <m>T</m> can be represented by 
+<me>A
 =
 \begin{pmatrix}<![CDATA[
 a & -b \\
@@ -693,53 +414,26 @@ b & a
 \begin{pmatrix}<![CDATA[
 \cos \theta & - \sin \theta \\
 \sin \theta & \cos \theta
-]]>\end{pmatrix},
-</me>
-where <m>0 \leq \theta \lt 2 \pi</m>. A matrix <m>T</m> in <m>O(2)</m> either reflects
-or rotates a vector in <m>{\mathbb R}^2</m> (Figure<nbsp /><xref ref="O2" />). A reflection about the horizontal axis is
-given by the matrix 
-<me>
-\begin{pmatrix}<![CDATA[
+]]>\end{pmatrix},</me>
+where <m>0 \leq \theta \lt 2 \pi</m>. A matrix <m>T</m> in <m>O(2)</m> either reflects or rotates a vector in <m>{\mathbb R}^2</m> (Figure<nbsp /><xref ref="figure-o2" />). A reflection about the horizontal axis is given by the matrix 
+<me>\begin{pmatrix}<![CDATA[
 1 & 0 \\
 0 & -1
-]]>\end{pmatrix},
-</me>
-whereas a rotation by an angle <m>\theta</m> in a counterclockwise direction
-must come from a matrix of the form 
-<me>
-\begin{pmatrix}<![CDATA[
+]]>\end{pmatrix},</me>
+whereas a rotation by an angle <m>\theta</m> in a counterclockwise direction must come from a matrix of the form 
+<me>\begin{pmatrix}<![CDATA[
 \cos \theta & \sin \theta \\
 \sin \theta & -\cos \theta
-]]>\end{pmatrix}.
-</me>
-A reflection about a line <m>\ell</m> is simply a reflection about the horizontal axis followed by a rotation.  If <m>\det A =-1</m>, then <m>A</m> gives a reflection.
-</p>
-</example>
+]]>\end{pmatrix}.</me>
+A reflection about a line <m>\ell</m> is simply a reflection about the horizontal axis followed by a rotation.  If <m>\det A =-1</m>, then <m>A</m> gives a reflection.</p>
+			</example>
+ 
+			<p>Two of the other matrix or matrix-related groups that we will consider are the special orthogonal group  and the group of Euclidean motions. The <term>special orthogonal group</term><index><main>Group</main><sub>special orthogonal</sub></index>, <m>SO(n)</m><!--NOTATION TABLE\label{notespecialorthog}-->, is just the intersection of <m>O(n)</m> and <m>SL_n({\mathbb R})</m>; that is, those elements in <m>O(n)</m> with determinant one. The <term>Euclidean group</term><index><main>Euclidean group</main></index><index><main>Group</main><sub>Euclidean</sub></index>, <m>E(n)</m><!--NOTATION TABLE\label{noteeuclidgroup}-->, can be written as ordered pairs <m>(A, {\mathbf x})</m>, where <m>A</m> is in <m>O(n)</m> and <m>{\mathbf x}</m> is in <m>{\mathbb R}^n</m>. We define multiplication by
+<me>(A, {\mathbf x}) (B, {\mathbf y}) = (AB, A {\mathbf y} +{\mathbf x}).</me>
+The identity of the group is <m>(I,{\mathbf 0})</m>; the inverse of <m>(A, {\mathbf x})</m> is <m>(A^{-1}, -A^{-1} {\mathbf x})</m>. In Exercise<nbsp /><xref ref="matrix-En_group_exercise" />, you are asked to check that <m>E(n)</m> is indeed a group under this operation.</p>
  
  
- 
-Two of the other matrix or matrix-related groups that we will consider
-are the special orthogonal group  and the group of Euclidean motions.
-The <term>special orthogonal group</term><index><main>Group</main><sub>special orthogonal</sub></index>,
-<m>SO(n)</m>\label{notespecialorthog}, is just the intersection of <m>O(n)</m>
-and <m>SL_n({\mathbb R})</m>; that is, those elements in <m>O(n)</m> with determinant
-one. The <term>Euclidean group</term><index><main>Euclidean group</main></index><index><main>Group</main><sub>Euclidean</sub></index>,
-<m>E(n)</m>\label{noteeuclidgroup}, can be written as ordered pairs $(A,
-{\mathbf x})<m>, where </m>A<m> is in </m>O(n)<m> and </m>{\mathbf x}<m> is in </m>{\mathbb
-R}^n$. We define multiplication by
-<me>
-(A, {\mathbf x}) (B, {\mathbf y})
-=
-(AB, A {\mathbf y} +{\mathbf x}).
-</me>
-The identity of the group is <m>(I,{\mathbf 0})</m>; the inverse of $(A,
-{\mathbf x})<m> is </m>(A^{-1}, -A^{-1} {\mathbf x})$. In Exercise<nbsp /><xref ref="matrix:En_group_exercise" />, you 
-are asked to check that <m>E(n)</m> is indeed a group under this operation.
- 
- 
- 
- 
-<figure xml:id="">
+<figure xml:id="figure-isometries">
 
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
@@ -762,50 +456,23 @@ are asked to check that <m>E(n)</m> is indeed a group under this operation.
 \end{tikzpicture}]]>
 </tikz>
 
-<caption>Translations in <m>{\mathbb R</caption>^2</m>}
-\label{Isometries}
+<caption>Translations in <m>\mathbb R^2</m></caption>
 </figure>
 
- 
- 
- 
- 
- 
+		</subsection>
 
-</section>
-<section xml:id="">
-<title>Symmetry</title>
+	</section>
+	
+	<section xml:id="section-symmetry">
+		<title>Symmetry</title>
  
+		<p>An <term>isometry</term><index><main>Isometry</main></index> or <term>rigid motion</term><index><main>Rigid motion</main></index> in <m>{\mathbb R}^n</m> is a distance-preserving function <m>f</m> from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^n</m>. This means that <m>f</m> must satisfy 
+<me>\| f({\mathbf x}) - f({\mathbf y}) \| =\|{\mathbf x} - {\mathbf y} \|</me>
+for all <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>. It is not difficult to show that <m>f</m> must be a one-to-one map. By Theorem<nbsp /><xref ref="matrix-orthnormal_theorem" />, any element in <m>O(n)</m> is an isometry on <m>{\mathbb R}^n</m>; however, <m>O(n)</m> does not include all possible isometries on <m>{\mathbb R}^n</m>. Translation by a vector <m>{\mathbf x}</m>, <m>T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}</m> is also an isometry (Figure<nbsp /><xref ref="figure-isometries" />); however, <m>T</m> cannot be in <m>O(n)</m> since it is not a linear map. </p>
+
+		<p>We are mostly interested in isometries in <m>{\mathbb R}^2</m>. In fact, the only isometries in <m>{\mathbb R}^2</m> are rotations and reflections  about the origin, translations, and combinations of the two. For example, a <term>glide reflection</term><index><main>Glide reflection</main></index> is a translation followed by a reflection (Figure<nbsp /><xref ref="figure-glide" />).   In <m>{\mathbb R}^n</m> all isometries are given in the same manner. The proof is very easy to generalize.</p>
  
- 
- 
-An <term>isometry</term><index><main>Isometry</main></index> or <term>rigid motion</term><index><main>Rigid motion</main></index> in <m>{\mathbb R}^n</m>  is a
-distance-preserving function <m>f</m> from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^n</m>.
-This means that <m>f</m> must satisfy 
-<me>
-\| f({\mathbf x}) - f({\mathbf y}) \| =
-\|{\mathbf x} - {\mathbf y} \|
-</me>
-for all <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>. It is not difficult to
-show that <m>f</m> must be a one-to-one map. By Theorem<nbsp /><xref ref="matrix:orthnormal_theorem" />, any element in
-<m>O(n)</m> is an isometry on <m>{\mathbb R}^n</m>; however, <m>O(n)</m> does not
-include all possible isometries on <m>{\mathbb R}^n</m>. Translation by a
-vector <m>{\mathbf x}</m>, <m>T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}</m>
-is also an isometry (Figure<nbsp /><xref ref="Isometries" />); however, <m>T</m> cannot be
-in <m>O(n)</m> since it is not a linear map. 
- 
- 
- 
-We are mostly interested in isometries in <m>{\mathbb R}^2</m>. In fact, the
-only isometries in <m>{\mathbb R}^2</m> are rotations and reflections  about
-the origin, translations, and combinations of the two. For example, a
-<term>glide reflection</term><index><main>Glide reflection</main></index> is a translation
-followed by a reflection (Figure<nbsp /><xref ref="Glide" />).   In <m>{\mathbb R}^n</m> all
-isometries are given in the same manner. The proof is very easy to
-generalize. 
- 
- 
-<figure xml:id="">
+<figure xml:id="figure-glide">
 
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
@@ -829,140 +496,63 @@ generalize.
 </tikz>
 
 <caption>Glide reflections</caption>
-\label{Glide}
+
 </figure>
 
- 
- 
-<lemma>
-<statement>
-<p>
-An isometry <m>f</m> that fixes the origin in <m>{\mathbb R}^2</m> is a linear
-transformation.  In particular, <m>f</m> is given by an element in <m>O(2)</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</lemma>
- 
- 
-<proof><p>
-Let <m>f</m> be an isometry in <m>{\mathbb R}^2</m> fixing the origin. We will
-first show that <m>f</m> preserves inner products. Since <m>f(0) = 0</m>, $\|
-f({\mathbf x})\| = \| {\mathbf x} \|$; therefore,
-<md><mrow>
-\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \|
-{\mathbf y} \|^2 
-&amp; =
-\| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle +
-\| f({\mathbf y}) \|^2</mrow><mrow> 
-&amp; =
-\langle
-f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) -  f({\mathbf y})
-\rangle</mrow><mrow>
-&amp; =
-\| f({\mathbf x}) -  f({\mathbf y}) \|^2</mrow><mrow>
-&amp; =
-\| {\mathbf x} -  {\mathbf y} \|^2</mrow><mrow>
-&amp; =
-\langle
-{\mathbf x} -  {\mathbf y}, {\mathbf x} -  {\mathbf y} \rangle</mrow><mrow>
-&amp; =
-\| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf
-y} \|^2. 
-</mrow></md>
-Consequently,
-<me>
-\langle f({\mathbf x}), f({\mathbf y}) \rangle
-=
-\langle {\mathbf x}, {\mathbf y} \rangle.
-</me>
-Now let <m>{\mathbf e}_1</m> and <m>{\mathbf e_2}</m> be <m>(1, 0)^{\rm t}</m> and $(0,
-1)^{\rm t}$, respectively. If 
-<me>
-{\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2,
-</me>
-then
-<me>
-f({\mathbf x})
-=
-\langle
-f({\mathbf x}), f({\mathbf e}_1)
-\rangle
-f({\mathbf e}_1)
-+\langle
-f({\mathbf x}), f({\mathbf e}_2)
-\rangle
-f({\mathbf e}_2)
-=
-x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2).
-</me>
-The linearity of <m>f</m> easily follows.
-</p></proof>
- 
- 
 
+			<lemma>
+				<statement>
+					<p>An isometry <m>f</m> that fixes the origin in <m>{\mathbb R}^2</m> is a linear transformation.  In particular, <m>f</m> is given by an element in <m>O(2)</m>.</p>
+				</statement>
+				<proof>
+					<p>Let <m>f</m> be an isometry in <m>{\mathbb R}^2</m> fixing the origin. We will first show that <m>f</m> preserves inner products. Since <m>f(0) = 0</m>, <m>\| f({\mathbf x})\| = \| {\mathbf x} \|</m>; therefore,
+<md>
+<mrow>\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| {\mathbf y} \|^2  &amp; = \| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| f({\mathbf y}) \|^2</mrow>
+<mrow> &amp; = \langle f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) -  f({\mathbf y}) \rangle</mrow>
+<mrow>&amp; = \| f({\mathbf x}) -  f({\mathbf y}) \|^2</mrow>
+<mrow>&amp; = \| {\mathbf x} -  {\mathbf y} \|^2</mrow>
+<mrow>&amp; = \langle {\mathbf x} -  {\mathbf y}, {\mathbf x} -  {\mathbf y} \rangle</mrow>
+<mrow>&amp; = \| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf y} \|^2.</mrow>
+</md>
+Consequently,
+<me>\langle f({\mathbf x}), f({\mathbf y}) \rangle = \langle {\mathbf x}, {\mathbf y} \rangle.</me>
+Now let <m>{\mathbf e}_1</m> and <m>{\mathbf e_2}</m> be <m>(1, 0)^{\rm t}</m> and <m>(0, 1)^{\rm t}</m>, respectively. If 
+<me>{\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2,</me>
+then
+<me>f({\mathbf x}) = \langle f({\mathbf x}), f({\mathbf e}_1) \rangle f({\mathbf e}_1) + \langle f({\mathbf x}), f({\mathbf e}_2) \rangle f({\mathbf e}_2) = x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2).</me>
+The linearity of <m>f</m> easily follows.</p>
+				</proof>
+			</lemma>
  
- 
-For any arbitrary isometry, <m>f</m>,  <m>T_{\mathbf x} f</m> will fix the origin
-for some vector <m>{\mathbf x}</m> in <m>{\mathbb R}^2</m>; hence, $T_{\mathbf x}
-f({\mathbf y}) = A {\mathbf y}<m> for some matrix </m>A \in O(2)$.
-Consequently, <m>f({\mathbf y}) = A {\mathbf y} + {\mathbf x}</m>.  Given the
-isometries 
-<md><mrow>
-f({\mathbf y}) &amp; = A {\mathbf y} + {\mathbf x}_1</mrow><mrow>
-g({\mathbf y}) &amp; = B {\mathbf y} + {\mathbf x}_2,
-</mrow></md>
+			<p>For any arbitrary isometry, <m>f</m>,  <m>T_{\mathbf x} f</m> will fix the origin for some vector <m>{\mathbf x}</m> in <m>{\mathbb R}^2</m>; hence, <m>T_{\mathbf x} f({\mathbf y}) = A {\mathbf y}</m> for some matrix <m>A \in O(2)</m>. Consequently, <m>f({\mathbf y}) = A {\mathbf y} + {\mathbf x}</m>.  Given the isometries 
+<md>
+<mrow>f({\mathbf y}) &amp; = A {\mathbf y} + {\mathbf x}_1</mrow>
+<mrow>g({\mathbf y}) &amp; = B {\mathbf y} + {\mathbf x}_2,</mrow>
+</md>
 their composition is
-<me>
-f(g({\mathbf y})) =
-f(B {\mathbf y} + {\mathbf x}_2) =
-AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1.
-</me>
-This last computation allows us to identify the group of isometries on
-<m>{\mathbb R}^2</m> with~<m>E(2)</m>. 
+<me>f(g({\mathbf y})) = f(B {\mathbf y} + {\mathbf x}_2) = AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1.</me>
+This last computation allows us to identify the group of isometries on <m>{\mathbb R}^2</m> with <m>E(2)</m>.</p>
  
+			<theorem>
+				<statement>
+					<p>The group of isometries on <m>{\mathbb R}^2</m> is the Euclidean group, <m>E(2)</m>.</p>
+				</statement>
+			</theorem>
  
-<theorem>
-<statement>
-<p>
-The group of isometries on <m>{\mathbb R}^2</m> is the Euclidean group,
-<m>E(2)</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-A <term>symmetry group</term><index><main>Group</main><sub>symmetry</sub></index> in <m>{\mathbb R}^n</m> is a
-subgroup of the group of isometries on <m>{\mathbb R}^n</m> that fixes a set
-of points <m>X \subset {\mathbb R}^2</m>.  It is important to realize that the
-symmetry group of <m>X</m> depends <em>both</em> on <m>{\mathbb R}^n</m> and on
-<m>X</m>. For example, the symmetry group of the origin in <m>{\mathbb R}^1</m> is
-<m>{\mathbb Z}_2</m>, but the symmetry group of the origin in <m>{\mathbb R}^2</m> is
-<m>O(2)</m>. 
- 
- 
-<theorem>
-<statement>
-<p>
-The only finite symmetry groups in <m>{\mathbb R}^2</m> are <m>{\mathbb Z}_n</m> and
-<m>D_n</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-Any finite symmetry group <m>G</m> in <m>{\mathbb R}^2</m> must be a finite
-subgroup of <m>O(2)</m>; otherwise, <m>G</m> would have an element in <m>E(2)</m> of
-the form <m>(A, {\mathbf x})</m>, where <m>{\mathbf x} \neq 0</m>.  Such an element
-must have infinite order. 
- 
- 
+			<p>A <term>symmetry group</term><index><main>Group</main><sub>symmetry</sub></index> in <m>{\mathbb R}^n</m> is a
+subgroup of the group of isometries on <m>{\mathbb R}^n</m> that fixes a set of points <m>X \subset {\mathbb R}^2</m>.  It is important to realize that the symmetry group of <m>X</m> depends <em>both</em> on <m>{\mathbb R}^n</m> and on <m>X</m>. For example, the symmetry group of the origin in <m>{\mathbb R}^1</m> is <m>{\mathbb Z}_2</m>, but the symmetry group of the origin in <m>{\mathbb R}^2</m> is <m>O(2)</m>.</p> 
+
+			<theorem>
+				<statement>
+					<p>The only finite symmetry groups in <m>{\mathbb R}^2</m> are <m>{\mathbb Z}_n</m> and <m>D_n</m>.</p>
+				</statement>
+				<proof>
+					<p>Any finite symmetry group <m>G</m> in <m>{\mathbb R}^2</m> must be a finite subgroup of <m>O(2)</m>; otherwise, <m>G</m> would have an element in <m>E(2)</m> of the form <m>(A, {\mathbf x})</m>, where <m>{\mathbf x} \neq 0</m>.  Such an element must have infinite order.</p>
+
 <!-- Fixed proof.  Suggested by S. Engle, - TWJ 6/11/2010 -->
- 
- 
-By Example<nbsp /><xref ref="example:matrix:O2" />, elements in <m>O(2)</m> are either rotations of the form
-<me>
-R_{\theta}
+
+					<p>By Example<nbsp /><xref ref="example-matrix-o2" />, elements in <m>O(2)</m> are either rotations of the form
+<me>R_{\theta}
 =
 \begin{pmatrix}<![CDATA[
 \cos \theta & - \sin \theta \\
@@ -970,6 +560,7 @@ R_{\theta}
 ]]>\end{pmatrix}
 </me>
 or reflections of the form
+<me>
 \[T_{\phi}
 =
 \begin{pmatrix}<![CDATA[
@@ -984,50 +575,20 @@ or reflections of the form
 \begin{pmatrix}<![CDATA[
 \cos \phi &  \sin \phi \\
 \sin \phi & - \cos \phi
-]]>\end{pmatrix}.
-</me>
-Notice that <m>\det(R_{\theta})=1</m>,  <m>\det(T_{\phi})=-1</m>,
-and <m>T_{\phi}^2=I</m>. We can divide the proof up into two cases.  In
-the first case, all of the elements in <m>G</m> have determinant one. In the
-second case, there exists at least one element in <m>G</m> with 
-determinant~<m>-1</m>.  
- 
- 
-<em>Case 1.</em>  
-The determinant of every element in <m>G</m> is one. In this case every
-element in <m>G</m> must be a rotation. Since <m>G</m> is finite, there is a
-smallest angle, say <m>\theta_0</m>, such that the corresponding element
-<m>R_{\theta_0}</m> is the smallest rotation in the positive direction.  We
-claim that <m>R_{\theta_0}</m> generates <m>G</m>.  If not, then for some
-positive integer <m>n</m> there is an angle <m>\theta_1</m> between <m>n \theta_0</m>
-and <m>(n+1) \theta_0</m>. If so, then <m>(n+1) \theta_0 - \theta_1</m>
-corresponds to a rotation smaller than <m>\theta_0</m>, which contradicts
-the minimality of <m>\theta_0</m>.   
- 
- 
- 
-<em>Case 2.</em>  
-The group <m>G</m> contains a reflection <m>T</m>.  The kernel of the
-homomorphism <m>\phi : G \rightarrow \{-1, 1\}</m> given by $A \mapsto
-\det(A)<m> consists of elements whose determinant is 1.  Therefore, </m>|G/
-\ker \phi|=2$.  We know that the kernel is cyclic by the first case
-and is a subgroup of <m>G</m> of, say, order <m>n</m>. Hence, <m>|G| = 2n</m>. The
-elements of <m>G</m> are
-<me>
-R_{\theta}, \ldots, R_{\theta}^{n-1},  TR_{\theta}, \ldots,
-TR_{\theta}^{n-1}.
-</me>
+]]>\end{pmatrix}.</me>
+Notice that <m>\det(R_{\theta})=1</m>,  <m>\det(T_{\phi})=-1</m>, and <m>T_{\phi}^2=I</m>. We can divide the proof up into two cases. In the first case, all of the elements in <m>G</m> have determinant one. In the second case, there exists at least one element in <m>G</m> with determinant <m>-1</m>.</p>
+
+					<p><em>Case 1.</em>   The determinant of every element in <m>G</m> is one. In this case every element in <m>G</m> must be a rotation. Since <m>G</m> is finite, there is a smallest angle, say <m>\theta_0</m>, such that the corresponding element <m>R_{\theta_0}</m> is the smallest rotation in the positive direction.  We claim that <m>R_{\theta_0}</m> generates <m>G</m>.  If not, then for some positive integer <m>n</m> there is an angle <m>\theta_1</m> between <m>n \theta_0</m> and <m>(n+1) \theta_0</m>. If so, then <m>(n+1) \theta_0 - \theta_1</m> corresponds to a rotation smaller than <m>\theta_0</m>, which contradicts the minimality of <m>\theta_0</m>.</p>
+
+					<p><em>Case 2.</em> The group <m>G</m> contains a reflection <m>T</m>.  The kernel of the homomorphism <m>\phi : G \rightarrow \{-1, 1\}</m> given by <m>A \mapsto \det(A)</m> consists of elements whose determinant is 1.  Therefore, <m>|G/ \ker \phi|=2</m>.  We know that the kernel is cyclic by the first case and is a subgroup of <m>G</m> of, say, order <m>n</m>. Hence, <m>|G| = 2n</m>. The elements of <m>G</m> are
+<me>R_{\theta}, \ldots, R_{\theta}^{n-1},  TR_{\theta}, \ldots, TR_{\theta}^{n-1}.</me>
 These elements satisfy the relation
-<me>
-TR_{\theta}T = R_{\theta}^{-1}.
-</me>
-Consequently, <m>G</m> must be isomorphic to <m>D_n</m> in this case.
-</p></proof>
- 
- 
- 
- 
-<figure xml:id="">
+<me>TR_{\theta}T = R_{\theta}^{-1}.</me>
+Consequently, <m>G</m> must be isomorphic to <m>D_n</m> in this case.</p>
+				</proof>
+			</theorem>
+
+<figure xml:id="figure-wallpaper">
 
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
@@ -1066,33 +627,15 @@ Consequently, <m>G</m> must be isomorphic to <m>D_n</m> in this case.
 \end{tikzpicture}]]>
 </tikz>
 
-<caption>A wallpaper pattern in <m>{\mathbb R</caption>^2</m>}
-\label{Wallpaper}
+<caption>A wallpaper pattern in <m>\mathbb R^2</m></caption>
 </figure>
 
+		<subsection number="no">
+			<title>The Wallpaper Groups</title>
+			
+			<p>Suppose that we wish to study wallpaper patterns in the plane or crystals in three dimensions. Wallpaper patterns are simply repeating patterns in the plane (Figure<nbsp /><xref ref="figure-wallpaper" />). The analogs of wallpaper patterns in <m>{\mathbb R}^3</m> are crystals, which we can think of as repeating patterns of molecules in three dimensions (Figure<nbsp /><xref ref="figure-crystals" />). The mathematical equivalent of a wallpaper or crystal pattern is called a  lattice.</p>
  
- 
- 
-
-</subsection>
-<subsection number="no">
-<title>The Wallpaper Groups</title>
- 
- 
- 
-Suppose that we wish to study wallpaper patterns in the plane or
-crystals in three dimensions. Wallpaper patterns are simply repeating
-patterns in the plane (Figure<nbsp /><xref ref="Wallpaper" />). The analogs of
-wallpaper patterns in <m>{\mathbb R}^3</m> are crystals, which we can think of
-as repeating patterns of molecules in three dimensions
-(Figure<nbsp /><xref ref="Crystals" />). The mathematical equivalent of a wallpaper or
-crystal pattern is called a  lattice. 
- 
- 
- 
-<figure xml:id="">
-
-
+<figure xml:id="figure-crystals">
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
 
@@ -1132,25 +675,13 @@ crystal pattern is called a  lattice.
 \end{tikzpicture}]]>
 </tikz>
 
-<caption>A crystal structure in <m>{\mathbb R</caption>^3</m>}
-\label{Crystals}
+<caption>A crystal structure in <m>\mathbb R^3</m></caption>
 </figure>
 
+			<p>Let us examine wallpaper patterns in the plane a little more closely. Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are linearly independent vectors in <m>{\mathbb R}^2</m>; that is, one vector cannot be a scalar multiple of the other. A <term> lattice</term><index><main>Lattice of points</main></index> of <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the set of all linear combinations <m>m {\mathbf x} + n {\mathbf y}</m>, where <m>m</m> and <m>n</m> are integers. The vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are said to be a <term>basis</term><index><main>Basis of a lattice</main></index> for the lattice.</p>
  
  
-
-Let us examine wallpaper patterns in the plane a
-little more closely. Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are
-linearly independent vectors in <m>{\mathbb R}^2</m>; that is, one vector
-cannot be a scalar multiple of the other. A <term> lattice</term><index><main>Lattice of points</main></index> of <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is
-the set of all linear combinations <m>m {\mathbf x} + n {\mathbf y}</m>, where
-<m>m</m> and <m>n</m> are integers. The vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are
-said to be a <term>basis</term><index><main>Basis of a lattice</main></index> for the lattice.
- 
- 
-<figure xml:id="">
-
-
+<figure xml:id="figure-lattice">
 
 <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
 
@@ -1182,98 +713,52 @@ said to be a <term>basis</term><index><main>Basis of a lattice</main></index> fo
 \end{tikzpicture}]]>
 </tikz>
 
-<caption>A lattice in  <m>{\mathbb R</caption>^2</m>}
-\label{lattice}
+<caption>A lattice in  <m>\mathbb R^2</m></caption>
+
 </figure>
 
- 
- 
-Notice that a lattice can have several bases. For example, the vectors
-<m>(1,1)^{\rm t}</m> and <m>(2,0)^{\rm t}</m> have the  same lattice as the
-vectors <m>(-1, 1)^{\rm t}</m> and <m>(-1, -1)^{\rm t}</m>
-(Figure<nbsp /><xref ref="lattice" />). However, any lattice is completely determined
-by a basis. Given two bases for the same lattice, say $\{ {\mathbf x}_1,
-{\mathbf x}_2 \}<m> and </m>\{ {\mathbf y}_1, {\mathbf y}_2 \}$, we can write 
-<md><mrow>
-{\mathbf y}_1 &amp; = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2</mrow><mrow>
-{\mathbf y}_2 &amp; = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2,
-</mrow></md>
-where <m>\alpha_1</m>, <m>\alpha_2</m>, <m>\beta_1</m>, and <m>\beta_2</m> are integers.
-The matrix corresponding to this transformation is 
-<me>
-U
+			<p>Notice that a lattice can have several bases. For example, the vectors <m>(1,1)^{\rm t}</m> and <m>(2,0)^{\rm t}</m> have the  same lattice as the vectors <m>(-1, 1)^{\rm t}</m> and <m>(-1, -1)^{\rm t}</m> (Figure<nbsp /><xref ref="figure-lattice" />). However, any lattice is completely determined by a basis. Given two bases for the same lattice, say <m>\{ {\mathbf x}_1, {\mathbf x}_2 \}</m> and <m>\{ {\mathbf y}_1, {\mathbf y}_2 \}</m>, we can write 
+<md>
+<mrow>{\mathbf y}_1 &amp; = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2</mrow>
+<mrow>{\mathbf y}_2 &amp; = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2,</mrow>
+</md>
+where <m>\alpha_1</m>, <m>\alpha_2</m>, <m>\beta_1</m>, and <m>\beta_2</m> are integers. The matrix corresponding to this transformation is 
+<me>U
 =
 \begin{pmatrix}<![CDATA[
 \alpha_1 & \alpha_2 \\
 \beta_1 & \beta_2
-]]>\end{pmatrix}.
-</me>
-If we wish to give <m>{\mathbf x}_1</m> and <m>{\mathbf x}_2</m> in terms of ${\mathbf
-y}_1<m> and </m>{\mathbf y}_2<m>, we need only calculate </m>U^{-1}$; that is, 
-<me>
-U^{-1}
+]]>\end{pmatrix}.</me>
+If we wish to give <m>{\mathbf x}_1</m> and <m>{\mathbf x}_2</m> in terms of <m>{\mathbf y}_1</m> and <m>{\mathbf y}_2</m>, we need only calculate <m>U^{-1}</m>; that is, 
+<me>U^{-1}
 \begin{pmatrix}<![CDATA[
 {\mathbf y}_1 \\ {\mathbf y}_2
 ]]>\end{pmatrix}
 =
 \begin{pmatrix}<![CDATA[
 {\mathbf x}_1 \\ {\mathbf x}_2
-]]>\end{pmatrix}.
-</me>
-Since <m>U</m> has integer entries, <m>U^{-1}</m> must also have integer
-entries; hence the determinants of both <m>U</m> and <m>U^{-1}</m> must be
-integers. Because <m>U U^{-1} = I</m>,  
-<me>
-\det(U U^{-1}) =\det(U) \det( U^{-1}) = 1;
-</me>
-consequently, <m>\det(U) = \pm 1</m>. A matrix with determinant <m>\pm 1</m> and
-integer entries is called <term>unimodular</term><index><main>Matrix</main><sub>unimodular</sub></index>.
-For example, the matrix 
-<me>
-\begin{pmatrix}<![CDATA[
+]]>\end{pmatrix}.</me>
+Since <m>U</m> has integer entries, <m>U^{-1}</m> must also have integer entries; hence the determinants of both <m>U</m> and <m>U^{-1}</m> must be integers. Because <m>U U^{-1} = I</m>,  
+<me>\det(U U^{-1}) =\det(U) \det( U^{-1}) = 1;</me>
+consequently, <m>\det(U) = \pm 1</m>. A matrix with determinant <m>\pm 1</m> and integer entries is called <term>unimodular</term><index><main>Matrix</main><sub>unimodular</sub></index>. For example, the matrix 
+<me>\begin{pmatrix}<![CDATA[
 3 & 1 \\
 5 & 2
-]]>\end{pmatrix}
-</me>
-is unimodular. It should be clear that there is a minimum length for
-vectors in a lattice.  
+]]>\end{pmatrix}</me>
+is unimodular. It should be clear that there is a minimum length for vectors in a lattice.</p>
+
+			<p>We can classify lattices by studying their symmetry groups. The symmetry group of a lattice is the subgroup of <m>E(2)</m> that maps the lattice to itself. We consider two lattices in <m>{\mathbb R}^2</m> to be equivalent if they have the same symmetry group.  Similarly, classification of crystals in <m>{\mathbb R}^3</m> is accomplished by associating a symmetry group, called a <term>space group</term>, with each type of crystal<index><main>Group</main><sub>space</sub></index>. Two lattices are considered different if their space groups are not the same.  The natural question that now arises is how many space groups exist.</p>
  
+			<p>A space group is composed of two parts: a <term>translation subgroup</term><index><main>Subgroup</main><sub>translation</sub></index> and a <term>point</term><index><main>Group</main><sub>point</sub></index>.  The translation subgroup is an infinite abelian subgroup of the space group made up of the translational symmetries of the crystal; the point group is a finite group  consisting  of rotations and reflections of the crystal about a point. More specifically, a space group is a subgroup of <m>G \subset E(2)</m> whose translations are a set of the form <m>\{ (I, t) : t \in L \}</m>, where <m>L</m> is a lattice. Space groups are, of course, infinite. Using geometric arguments, we can prove the following theorem (see [5] or [6]).</p>
+
+			<theorem>
+				<statement>
+					<p>Every translation group in <m>{\mathbb R}^2</m> is isomorphic to <m>{\mathbb Z} \times {\mathbb Z}</m>.</p>
+				</statement>
+			</theorem>
+
  
-We can classify lattices by studying their symmetry groups. The
-symmetry group of a lattice is the subgroup of <m>E(2)</m> that maps the
-lattice to itself. We consider two lattices in <m>{\mathbb R}^2</m> to be
-equivalent if they have the same symmetry group.  Similarly,
-classification of crystals in <m>{\mathbb R}^3</m> is accomplished by
-associating a symmetry group, called a <term>space group</term>, with each
-type of crystal<index><main>Group</main><sub>space</sub></index>. Two lattices are considered
-different if their space groups are not the same.  The natural
-question that now arises is how many space groups exist. 
- 
- 
-A space group is composed of two parts: a <term>translation subgroup</term><index><main>Subgroup</main><sub>translation</sub></index> and a \boldemph{point
-group}<index><main>Group</main><sub>point</sub></index>.  The translation subgroup is an infinite
-abelian subgroup of the space group made up of the translational
-symmetries of the crystal; the point group is a finite group 
-consisting  of rotations and reflections of the crystal about a point.
-More specifically, a space group is a subgroup of <m>G \subset E(2)</m>
-whose translations are a set of the form <m>\{ (I, t) : t \in L \}</m>,
-where <m>L</m> is a lattice. Space groups are, of course, infinite. Using
-geometric arguments, we can prove the following theorem (see [5] or [6]).
- 
- 
- 
- 
-<theorem>
-<statement>
-<p>
-Every translation group in <m>{\mathbb R}^2</m> is isomorphic to ${\mathbb Z}
-\times {\mathbb Z}$.
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<figure xml:id="">
+<figure xml:id="figure-lattice-types">
 
 
 
@@ -1337,99 +822,61 @@ FIXME-MOVE-IN-PROOF</statement>
 \end{tikzpicture}]]>
 </tikz>
 
-<caption>Types of lattices in  <m>{\mathbb R</caption>^2</m>}
-\label{Types}
+<caption>Types of lattices in  <m>\mathbb R^2</m></caption>
 </figure>
 
+			<p>The point group of <m>G</m> is <m>G_0 = \{A : (A,b) \in G \text{ for some } b \}</m>. In particular, <m>G_0</m> must be a subgroup of <m>O(2)</m>. Suppose that <m>{\mathbf x}</m> is a vector in a lattice <m>L</m> with space group <m>G</m>, translation group <m>H</m>, and point group <m>G_0</m>. For any element <m>(A, {\mathbf y})</m> in <m>G</m>,   
+<md>
+<mrow>(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1} &amp; = (A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y})</mrow>
+<mrow>&amp; = (A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y})</mrow>
+<mrow>&amp; = (I, A {\mathbf x});</mrow>
+</md>
+hence, <m>(I, A {\mathbf x})</m> is in the translation group of <m>G</m>. More specifically, <m>A {\mathbf x}</m> must be in the lattice <m>L</m>. It is important to note that <m>G_0</m> is not usually a subgroup of the space group <m>G</m>; however, if <m>T</m> is the translation subgroup of <m>G</m>, then <m>G/T \cong G_0</m>. The proof of the following theorem can be found in [2], [5], or [6].</p>
  
+			<theorem>
+				<statement>
+					<p>The point group in the wallpaper groups is isomorphic to <m>{\mathbb Z}_n</m> or <m>D_n</m>, where <m>n = 1, 2, 3, 4, 6</m>.</p>
+				</statement>
+			</theorem>
  
-The point group of <m>G</m> is $G_0 = \{A : (A,b) \in G \text{ for some }
-b \}<m>. In particular, </m>G_0<m> must be a subgroup of </m>O(2)$. Suppose
-that <m>{\mathbf x}</m> is a vector in a lattice <m>L</m> with space group <m>G</m>,
-translation group <m>H</m>, and point group <m>G_0</m>. For any element $(A,
-{\mathbf y})<m> in </m>G$,   
-<md><mrow>
-(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1}
-&amp; =
-(A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y})</mrow><mrow>
-&amp; =
-(A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y})</mrow><mrow>
-&amp; =
-(I, A {\mathbf x});
-</mrow></md>
-hence, <m>(I, A {\mathbf x})</m> is in the translation group of <m>G</m>. More
-specifically, <m>A {\mathbf x}</m> must be in the lattice <m>L</m>. It is
-important to note that <m>G_0</m> is not usually a subgroup of the space
-group <m>G</m>; however, if <m>T</m> is the translation subgroup of <m>G</m>, then
-<m>G/T \cong G_0</m>. The proof of the following theorem can be found in
-[2], [5], or~[6].
- 
- 
- 
-<theorem>
-<statement>
-<p>
-The point group in the wallpaper groups is isomorphic to <m>{\mathbb Z}_n</m>
-or <m>D_n</m>, where <m>n = 1, 2, 3, 4, 6</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-To answer the question of how the point groups and the translation
-groups can be combined, we must look at the different types of
-lattices. Lattices can be classified by the structure of a single
-lattice cell. The possible cell shapes are parallelogram, rectangular,
-square, rhombic, and hexagonal (Figure<nbsp /><xref ref="Types" />). The wallpaper
-groups can now be classified according to the types of reflections
-that occur in each group: these are ordinarily reflections, glide
-reflections, both, or none.
- 
- 
- 
-\begin{table}[htb]
-<caption>The 17 wallpaper groups</caption>{\small
+			<p>To answer the question of how the point groups and the translation groups can be combined, we must look at the different types of lattices. Lattices can be classified by the structure of a single lattice cell. The possible cell shapes are parallelogram, rectangular, square, rhombic, and hexagonal (Figure<nbsp /><xref ref="figure-lattice-types" />). The wallpaper groups can now be classified according to the types of reflections that occur in each group: these are ordinarily reflections, glide reflections, both, or none.</p>
 
-\begin{tabular}{|l|l|l|l|}
-\hline
-Notation and &amp;             &amp;              &amp; Reflections  \\
-Space Groups &amp; Point Group &amp; Lattice Type &amp; or Glide Reflections? \\
-\hline
-p1 &amp; <m>{\mathbb Z}_1</m> &amp; parallelogram &amp; none \\
-p2 &amp; <m>{\mathbb Z}_2</m> &amp; parallelogram &amp; none \\
-p3 &amp; <m>{\mathbb Z}_3</m> &amp; hexagonal &amp; none \\
-p4 &amp; <m>{\mathbb Z}_4</m> &amp; square &amp; none \\
-p6 &amp; <m>{\mathbb Z}_6</m> &amp; hexagonal &amp; none \\
-pm &amp; <m>D_1</m> &amp; rectangular &amp; reflections \\
-pg &amp; <m>D_1</m> &amp; rectangular &amp; glide reflections\\
-cm &amp; <m>D_1</m> &amp; rhombic &amp; both \\
-pmm &amp; <m>D_2</m> &amp; rectangular &amp; reflections \\
-pmg &amp; <m>D_2</m> &amp; rectangular &amp; glide reflections \\
-pgg &amp; <m>D_2</m> &amp; rectangular &amp; both \\
-c2mm &amp; <m>D_2</m> &amp; rhombic &amp; both \\
-p3m1, p31m &amp; <m>D_3</m> &amp; hexagonal &amp; both \\
-p4m, p4g &amp; <m>D_4</m> &amp; square &amp; both \\
-p6m &amp; <m>D_6</m> &amp; hexagonal &amp; both \\
-\hline
-\end{tabular} \label{table:wallpaper}
+<table xml:id="table-wallpaper">
+   <tgroup cols="4" align="center">
+       <thead>
+           <row><entry>Notation and</entry><entry></entry><entry></entry><entry>Reflections</entry></row>
+			<row><entry>Space Groups</entry><entry>Point Group</entry><entry>Lattice Type</entry><entry>or Glide Reflections?</entry></row>
+       </thead>
+       <tbody>
+       		<row><entry>p1</entry><entry><m>{\mathbb Z}_1</m></entry><entry>parallelogram</entry><entry>none</entry></row>
+			<row><entry>p2</entry><entry><m>{\mathbb Z}_2</m></entry><entry>parallelogram</entry><entry>none</entry></row>
+			<row><entry>p3</entry><entry><m>{\mathbb Z}_3</m></entry><entry>hexagonal</entry><entry>none</entry></row>
+			<row><entry>p4</entry><entry><m>{\mathbb Z}_4</m></entry><entry>square</entry><entry>none</entry></row>
+			<row><entry>p6</entry><entry><m>{\mathbb Z}_6</m></entry><entry>hexagonal</entry><entry>none</entry></row>
+			<row><entry>pm</entry><entry><m>D_1</m></entry><entry>rectangular</entry><entry>reflections</entry></row>
+			<row><entry>pg</entry><entry><m>D_1</m></entry><entry>rectangular</entry><entry>glide reflections</entry></row>
+			<row><entry>cm</entry><entry><m>D_1</m></entry><entry>rhombic</entry><entry>both</entry></row>
+			<row><entry>pmm</entry><entry><m>D_2</m></entry><entry>rectangular</entry><entry>reflections</entry></row>
+			<row><entry>pmg</entry><entry><m>D_2</m></entry><entry>rectangular</entry><entry>glide reflections</entry></row>
+			<row><entry>pgg</entry><entry><m>D_2</m></entry><entry>rectangular</entry><entry>both</entry></row>
+			<row><entry>c2mm</entry><entry><m>D_2</m></entry><entry>rhombic</entry><entry>both</entry></row>
+			<row><entry>p3m1, p31m</entry><entry><m>D_3</m></entry><entry>hexagonal </entry><entry>both</entry></row>
+			<row><entry>p4m, p4g</entry><entry><m>D_4</m></entry><entry>square</entry><entry>both</entry></row>
+			<row><entry>p6m</entry><entry><m>D_6</m></entry><entry>hexagonal</entry><entry>both</entry></row>
+       </tbody>
+   </tgroup>
+<caption>The 17 wallpaper groups</caption>
+</table>
 
-}
-\end{table}
  
+			<theorem>
+				<statement>
+					<p>There are exactly 17 wallpaper groups.</p>
+				</statement>
+			</theorem>
  
-<theorem>
-<statement>
-<p>
-There are exactly 17 wallpaper groups.
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<figure xml:id="">
 
-
-
+<figure xml:id="figure-p4m">
 
 <tikz filebase="matrix_p4m_p4g"><![CDATA[
 \begin{tikzpicture}[scale=1] <!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
@@ -1455,434 +902,78 @@ FIXME-MOVE-IN-PROOF</statement>
 </tikz>
 
 <caption>The wallpaper groups p4m and  p4g</caption>
-\label{p4m}
 </figure>
+ 
+			<p>The 17 wallpaper groups are listed in Table<nbsp /><xref ref="table-wallpaper" />. The groups p3m1 and p31m can be distinguished by whether or not all of their threefold centers lie on the reflection axes: those of p3m1 must, whereas those of p31m may not. Similarly, the fourfold centers of p4m must lie on the reflection axes whereas those of p4g need not (Figure<nbsp /><xref ref="figure-p4m" />). The complete proof of this theorem can be found in several of the references at the end of this chapter, including [5], [6], [10], and [11].</p>
+ 
+ 		</subsection>
+ 
+		<subsection number="no">
+			<title>Historical Note</title>
+				<p>Symmetry groups have intrigued mathematicians for a long time. Leonardo da Vinci was probably the first person to know all of the point groups.  At the International Congress of Mathematicians in 1900, David Hilbert<index><main>Hilbert, David</main></index> gave a now-famous address outlining 23 problems to guide mathematics in the twentieth century.  Hilbert's eighteenth problem asked whether or not crystallographic groups in <m>n</m> dimensions were always finite.  In 1910, L. Bieberbach<index><main>Bieberbach, L.</main></index> proved that crystallographic groups are finite in every dimension.  Finding out how many of these groups there are in each dimension is another matter. In <m>{\mathbb R}^3</m> there are 230 different space groups; in <m>{\mathbb R}^4</m> there are 4783. No one has been able to compute the number of space groups for <m>{\mathbb R}^5</m> and beyond. It is interesting to note that the crystallographic groups were found mathematically for <m>{\mathbb R}^3</m> before the 230 different types of crystals were actually discovered in nature.</p>
+		</subsection>
+	</section>
+ 
+	<references>
+		<title>References and Suggested Readings</title>
 
+<!-- %References checked <ndash /> TWJ 6/14/2010 -->
  
+		<biblio type="raw"> <!-- was [1] -->
+Coxeter, H. M. and Moser, W. O. J. <title>Generators and
+Relations for Discrete Groups</title>, 3rd ed. Springer-Verlag, New
+York, 1972.</biblio>
  
+		<biblio type="raw"> <!-- was [2] -->
+Grove, L. C. and Benson, C. T. <title>Finite Reflection
+Groups</title>. 2nd ed. Springer-Verlag, New York, 1985.</biblio>
  
-The 17 wallpaper groups are listed in Table<nbsp /><xref ref="table:wallpaper" />. The groups p3m1 and
-p31m can be distinguished by whether or not all of their threefold
-centers lie on the reflection axes: those of p3m1 must, whereas those
-of p31m may not. Similarly, the fourfold centers of p4m must lie on
-the reflection axes whereas those of p4g need not (Figure<nbsp /><xref ref="p4m" />).
-The complete proof of this theorem can be found in several of the
-references at the end of this chapter, including [5], [6], [10],
-and~[11]. 
- 
- 
- 
- 
- 
-<historical>
-<p>
-Symmetry groups have intrigued mathematicians for a long time.
-Leonardo da Vinci was probably the first person to know all of the
-point groups.  At the International Congress of Mathematicians in
-1900, David Hilbert<index><main>Hilbert, David</main></index> gave a now-famous address
-outlining 23 problems to guide mathematics in the twentieth
-century.  Hilbert's eighteenth problem asked whether or not
-crystallographic groups in <m>n</m> dimensions were always finite.  In
-1910, L.~Bieberbach<index><main>Bieberbach, L.</main></index> proved that crystallographic
-groups are finite in every dimension.  Finding out how many of these
-groups there are in each dimension is another matter. In <m>{\mathbb R}^3</m>
-there are 230 different space groups; in <m>{\mathbb R}^4</m> there are 4783.
-No one has been able to compute the number of space groups for ${\mathbb
-R}^5$ and beyond. It is interesting to note that the crystallographic
-groups were found mathematically for <m>{\mathbb R}^3</m> before the 230
-different types of crystals were actually discovered in nature.
-</p>
-</historical>  <!-- FIXME: stray closing brace on next line -->
-}
- 
- 
- 
-\markright{EXERCISES}
-\section*{Exercises}
-\exrule
- 
- 
-{\small
-\begin{enumerate}
- 
- 
- 
-</li><li>
-Prove the identity
-<me>
-\langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2}
-\left[
-\|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2
-\right].
-</me>
- 
- 
-</li><li>
-Show that <m>O(n)</m> is a group.
- 
- 
-</li><li>
-Prove that the following matrices are orthogonal. Are any of
-these matrices in <m>SO(n)</m>?
-\begin{multicols}{2}
-\begin{enumerate}
-
-</li><li>
-<me>
-\begin{pmatrix}<![CDATA[
-1/\sqrt{2} & -1/\sqrt{2} \\
-1/\sqrt{2} & 1/\sqrt{2}
-]]>\end{pmatrix}
-</me>
-
-</li><li>
-<me>
-\begin{pmatrix}<![CDATA[
-1 / \sqrt{5} & 2 / \sqrt{5} \\
-- 2 /\sqrt{5} & 1/ \sqrt{5}
-]]>\end{pmatrix}
-</me>
-
-</li><li>
-<me>
-\begin{pmatrix}<![CDATA[
-4/ \sqrt{5} & 0 & 3 / \sqrt{5} \\
--3 / \sqrt{5} & 0 & 4 / \sqrt{5} \\
-0 & -1 & 0
-]]>\end{pmatrix}
-</me>
-
-</li><li>
-<me>
-\begin{pmatrix}<![CDATA[
-1/3 & 2/3 & - 2/3 \\
-- 2/3 & 2/3 & 1/3 \\
--2/3 & 1/3 & 2/3
-]]>\end{pmatrix}
-</me>
-
-
-\end{enumerate}
-\end{multicols}
- 
-
- 
-</li><li> <!-- %%%%%%%%%%%%%%%%%%%%% -->
-Determine the symmetry group of each of the figures in
-Figure<nbsp /><xref ref="Determine" />. 
-<figure xml:id="">
-
-
-
-<tikz filebase="matrix_group_exercise"><![CDATA[
-\begin{tikzpicture}[scale=0.7] <!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
-
-\draw (-2,0) -- (2,0) -- (2,4) -- (-2,4) -- cycle;
-\draw (0,0) -- (2,2) -- (0,4) -- (-2,2) -- cycle;
-\draw (-2,0) -- (2,4) (2,0) -- (-2,4);
-\node [below] at (0,0) {(b)};
-
-\draw (-3,3) -- (-8,3) -- (-8,6) -- (-3,6) -- cycle;
-\draw (-6,4) ellipse (1.55 and 0.65);
-\filldraw[fill=black, draw=black] (-4,5.2) circle (0.3);
-\node [below] at (-5.5,3) {(a)};
-
-
-
-\draw (5.5,4.5)  +(270:1) circle (1.25);
-\draw (5.5,4.5)  +(30:1) circle (1.25);
-\draw (5.5,4.5)  +(150:1) circle (1.25);
-\node [below] at (5.5,2.35) {(c)};
-
-
-\end{tikzpicture}]]>
-</tikz>
-
-<caption></caption>
-\label{Determine}
-</figure>
-
- 
- 
-</li><li>
-Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>, and <m>{\mathbf w}</m> be vectors in ${\mathbb
-R}^n<m> and </m>\alpha \in {\mathbb R}$.  Prove each of the following
-properties of inner products.
-\begin{enumerate}
- 
- </li><li>
-$\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x}
-\rangle$. 
- 
- </li><li>
-$\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle
-{\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w}
-\rangle$.
- 
- </li><li>
-$\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle
-{\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle  {\mathbf
-x}, {\mathbf y} \rangle$.
- 
- </li><li>
-<m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> with equality exactly
-when <m>{\mathbf x} = 0</m>. 
- 
- </li><li>
-If <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m>  for all <m>{\mathbf x}</m> in
-<m>{\mathbb R}^n</m>, then <m>{\mathbf y} = 0</m>. 
- 
-\end{enumerate}
- 
- 
-</li><li> \label{matrix:En_group_exercise}
-Verify that
-<me>
-E(n)
-=
-\{(A, {\mathbf x}) : A \in O(n) \mbox{ and } {\mathbf x} \in
-{\mathbb R}^n \}
-</me>
-is a group.
- 
- 
-</li><li>
-Prove that <m>\{ (2,1), (1,1) \}</m>  and <m>\{ ( 12, 5), ( 7, 3) \}</m> are bases
-for the same lattice. 
- 
- 
-</li><li>
-Let <m>G</m> be a subgroup of <m>E(2)</m> and suppose that <m>T</m> is the
-translation subgroup of <m>G</m>.  Prove that the point group of <m>G</m> is
-isomorphic to <m>G/T</m>. 
- 
- 
-</li><li>
-Let <m>A \in SL_2({\mathbb R})</m> and suppose that the vectors <m>{\mathbf x}</m>
-and <m>{\mathbf y}</m> form two sides of a parallelogram in <m>{\mathbb R}^2</m>.
-Prove that the area of this parallelogram is the same as the area of
-the parallelogram with sides <m>A{\mathbf x}</m> and <m>A{\mathbf y}</m>. 
- 
- 
-</li><li>
-Prove that <m>SO(n)</m> is a normal subgroup of <m>O(n)</m>.
- 
- 
-</li><li>
-Show that any isometry <m>f</m> in <m>{\mathbb R}^n</m> is a one-to-one map.
- 
- 
-</li><li>
-Show that an element in <m>E(2)</m> of the form <m>(A, {\mathbf x})</m>,
-where <m>{\mathbf x} \neq 0</m>, has infinite order.
- 
- 
-</li><li>
-Prove or disprove: There exists an infinite abelian subgroup of 
-<m>O(n)</m>.
- 
- 
-</li><li>
-Let <m>{\mathbf x} = (x_1, x_2)</m> be a point on the unit circle in ${\mathbb
-R}^2<m>; that is, </m>x_1^2 + x_2^2 = 1<m>. If </m>A \in O(2)<m>, show that </m>A
-{\mathbf x}$ is also a point on the unit circle. 
- 
- 
- 
-</li><li>
-Let <m>G</m> be a group with a subgroup <m>H</m> (not necessarily normal) and a
-normal subgroup <m>N</m>. Then <m>G</m> is a <term>semidirect product</term><index><main>Semidirect product</main></index> of <m>N</m> by <m>H</m> if  
-<ul>
- 
- </li><li>
-<m>H \cap N = \{ id \}</m>;
- 
- </li><li>
-<m>HN=G</m>.
- 
-</ul>
-Show that each of the following is true.
-\begin{enumerate}
- 
- </li><li>
-<m>S_3</m> is the semidirect product of <m>A_3</m> by <m>H = \{(1), (12) \}</m>.
- 
- </li><li>
-The quaternion group, <m>Q_8</m>, cannot be written as a semidirect product. 
- 
- </li><li>
-<m>E(2)</m> is the semidirect product of <m>O(2)</m> by <m>H</m>, where <m>H</m> consists
-of all translations in <m>{\mathbb R}^2</m>. 
- 
-\end{enumerate}
- 
- 
- 
-</li><li>
-Determine which of the 17 wallpaper groups preserves the symmetry of
-the pattern in Figure<nbsp /><xref ref="Wallpaper" />.  
- 
-<figure xml:id="">
-
-
-
-<tikz filebase="matrix_wallpaper_exercise"><![CDATA[
-\begin{tikzpicture}[scale=0.7] <!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
-
-\draw (0.5,0) -- (1.5,0)  (3.5,0) -- (4.5,0) (6.5,0) -- (7.5,0) (9.5,0) -- (10.5,0);
-\draw (1,0.886) -- (3,0.886) (4,0.886) -- (6,0.886) (7,0.886) -- (9,0.886) (10,0.886) -- (12,0.886);
-\draw (0.5,1.732) -- (1.5,1.732)  (2.5,1.732) -- (4.5,1.732) (5.5,1.732) -- (7.5,1.732) (8.5,1.732) -- (10.5,1.732) (11.5,1.732) -- (12.5,1.732);
-\draw (1,2.598) -- (3,2.598) (4,2.598) -- (6,2.598) (7,2.598) -- (9,2.598) (10,2.598) -- (12,2.598);
-\draw (0.5,3.464) -- (1.5,3.464)  (2.5,3.464) -- (4.5,3.464) (5.5,3.464) -- (7.5,3.464) (8.5,3.464) -- (10.5,3.464) (11.5,3.464) -- (12.5,3.464);
-\draw (1,4.33) -- (3,4.33) (4,4.33) -- (6,4.33) (7,4.33) -- (9,4.33) (10,4.33) -- (12,4.33);
-\draw (0.5,5.196) -- (1.5,5.196)  (3.5,5.196) -- (4.5,5.196) (6.5,5.196) -- (7.5,5.196) (9.5,5.196) -- (10.5,5.196);
-
-\draw (0.5,0) -- (0,0.886) -- (0.5,1.732) -- (0,2.598) -- (0.5,3.464) -- (0,4.33) -- (0.5,5.196);
-\draw (0.5,0) -- (1,0.886) -- (0.5,1.732) -- (1,2.598) -- (0.5,3.464) -- (1,4.33) -- (0.5,5.196);
-\draw (1.5,0) -- (2,0.886) -- (1.5,1.732) -- (2,2.598) -- (1.5,3.464) -- (2,4.33) -- (1.5,5.196);
-\draw (2,0.886) -- (2.5,1.732) -- (2,2.598) -- (2.5,3.464) -- (2,4.33);
-\draw (3,0.886) -- (3.5,1.732) -- (3,2.598) -- (3.5,3.464) -- (3,4.33);
-\draw (3.5,0) -- (3,0.886) (3,4.33) -- (3.5,5.196);
-\draw (3.5,0) -- (4,0.886) -- (3.5,1.732) -- (4,2.598) -- (3.5,3.464) -- (4,4.33) -- (3.5,5.196);
-\draw (4.5,0) -- (5,0.886) -- (4.5,1.732) -- (5,2.598) -- (4.5,3.464) -- (5,4.33) -- (4.5,5.196);
-\draw (5,0.886) -- (5.5,1.732) -- (5,2.598) -- (5.5,3.464) -- (5,4.33);
-\draw (6.5,0) -- (6,0.886) -- (6.5,1.732) -- (6,2.598) -- (6.5,3.464) -- (6,4.33) -- (6.5,5.196);
-\draw (6.5,0) -- (7,0.886) -- (6.5,1.732) -- (7,2.598) -- (6.5,3.464) -- (7,4.33) -- (6.5,5.196);
-\draw (7.5,0) -- (8,0.886) -- (7.5,1.732) -- (8,2.598) -- (7.5,3.464) -- (8,4.33) -- (7.5,5.196);
-\draw (8,0.886) -- (8.5,1.732) -- (8,2.598) -- (8.5,3.464) -- (8,4.33);
-\draw (9.5,0) -- (9,0.886) -- (9.5,1.732) -- (9,2.598) -- (9.5,3.464) -- (9,4.33) -- (9.5,5.196);
-\draw (9.5,0) -- (10,0.886) -- (9.5,1.732) -- (10,2.598) -- (9.5,3.464) -- (10,4.33) -- (9.5,5.196);
-\draw (10.5,0) -- (11,0.886) -- (10.5,1.732) -- (11,2.598) -- (10.5,3.464) -- (11,4.33) -- (10.5,5.196);
-\draw (11,0.886) -- (11.5,1.732) -- (11,2.598) -- (11.5,3.464) -- (11,4.33);
-\draw (12,0.886) -- (12.5,1.732) -- (12,2.598) -- (12.5,3.464) -- (12,4.33);
-
-
-
-\end{tikzpicture}]]>
-</tikz>
-
-<caption></caption>
-\label{For17}
-</figure>
-
- 
-</li><li>
-Determine which of the 17 wallpaper groups preserves the symmetry of
-the pattern in Figure<nbsp /><xref ref="For17" />.  
- 
- 
- 
-</li><li>
-Find the rotation group of a dodecahedron.
- 
-  
- 
-</li><li>
-For each of the 17 wallpaper groups, draw a wallpaper pattern having
-that group as a symmetry group.  
- 
-\end{enumerate}
-}
- 
- 
- 
-<references>
-<title>References and Suggested Readings</title>
-FIXME: move references in here, reorder one wrapping biblio
-FIXME: move editing comments upward
-</references>
- 
- 
- 
-{\small
-<ul> <!-- %References checked <ndash /> TWJ 6/14/2010 -->
- 
-</biblio>
-<biblio type="raw"> <!-- was [1] -->
-
-Coxeter, H. M. and Moser, W. O. J. \textit{Generators and
-Relations for Discrete Groups}, 3rd ed. Springer-Verlag, New
-York, 1972.
- 
-</biblio>
-<biblio type="raw"> <!-- was [2] -->
-
-Grove, L. C. and Benson, C. T. \textit{Finite Reflection
-Groups}. 2nd ed. Springer-Verlag, New York, 1985.
- 
-</biblio>
-<biblio type="raw"> <!-- was [3] -->
-
+		<biblio type="raw"> <!-- was [3] -->
 Hiller, H. <q>Crystallography and Cohomology of Groups,</q>
-<title>American Mathematical Monthly</title> \textbf{93} (1986), 765<ndash />79.
+<title>American Mathematical Monthly</title> <volume>93</volume> (1986), 765<ndash />79.</biblio>
  
-</biblio>
-<biblio type="raw"> <!-- was [4] -->
-
-Lockwood, E. H. and Macmillan, R. H. \textit{Geometric
-Symmetry}. Cambridge University Press, Cambridge, 1978.
+		<biblio type="raw"> <!-- was [4] -->
+Lockwood, E. H. and Macmillan, R. H. <title>Geometric
+Symmetry</title>. Cambridge University Press, Cambridge, 1978.</biblio>
  
-</biblio>
-<biblio type="raw"> <!-- was [5] -->
 
+		<biblio type="raw"> <!-- was [5] -->
 Mackiw, G. <title>Applications of Abstract Algebra</title>. Wiley,
-New York, 1985.
+New York, 1985.</biblio>
  
- 
-</biblio>
-<biblio type="raw"> <!-- was [6] -->
+		<biblio type="raw"> <!-- was [6] -->
+Martin,  G.  <title>Transformation  Groups:  An Introduction to
+Symmetry</title>.  Springer-Verlag, New York, 1982.</biblio> 
 
-Martin,  G.  \textit{Transformation  Groups:  An Introduction to
-Symmetry}.  Springer-Verlag, New York, 1982.
- 
-  
-</biblio>
-<biblio type="raw"> <!-- was [7] -->
-
+		<biblio type="raw"> <!-- was [7] -->
 Milnor, J. <q>Hilbert's Problem 18: On Crystallographic
-Groups, Fundamental Domains, and Sphere Packing,</q> {\it
-Proceedings of Symposia in Pure Mathematics} \textbf{18},
-American Mathematical Society, 1976.
- 
-</biblio>
-<biblio type="raw"> <!-- was [8] -->
+Groups, Fundamental Domains, and Sphere Packing,</q> <title>t
+Proceedings of Symposia in Pure Mathematics</title> <volume>18</volume>,
+American Mathematical Society, 1976.</biblio>
 
+		<biblio type="raw"> <!-- was [8] -->
 Phillips, F. C. <title>An Introduction to Crystallography</title>.
-4th ed. Wiley, New York, 1971.
- 
-</biblio>
-<biblio type="raw"> <!-- was [9] -->
+4th ed. Wiley, New York, 1971.</biblio>
 
+		<biblio type="raw"> <!-- was [9] -->
 Rose, B. I. and Stafford, R. D. <q>An Elementary Course in
-Mathematical Symmetry,</q> <title>American Mathematical Monthly</title> \textbf{
-88} (1980), 54<ndash />64.
- 
- 
-</biblio>
-<biblio type="raw"> <!-- was [10] -->
+Mathematical Symmetry,</q> <title>American Mathematical Monthly</title> <volume>88</volume> (1980), 54<ndash />64.</biblio> 
 
+		<biblio type="raw"> <!-- was [10] -->
 Schattschneider, D. <q>The Plane Symmetry Groups: Their
-Recognition and Their Notation,</q> \textit{American Mathematical 
-Monthly} \textbf{85} (1978), 439<ndash />50.
- 
- 
-</biblio>
-<biblio type="raw"> <!-- was [11] -->
+Recognition and Their Notation,</q> <title>American Mathematical 
+Monthly</title> <volume>85</volume>(1978), 439<ndash />50.</biblio>
 
-Schwarzenberger, R. L. <q>The 17 Plane Symmetry Groups,</q> {\it
-Mathematical  Gazette} \textbf{58} (1974), 123<ndash />31. 
- 
- 
-</biblio>
-<biblio type="raw"> <!-- was [12] -->
+		<biblio type="raw"> <!-- was [11] -->
+Schwarzenberger, R. L. <q>The 17 Plane Symmetry Groups,</q> <title>Mathematical Gazette</title> <volume>58</volume>(1974), 123<ndash />31.</biblio>
 
+		<biblio type="raw"> <!-- was [12] -->
 Weyl, H. <title>Symmetry</title>. Princeton University Press, Princeton, NJ,
-1952. 
+1952.</biblio>
+ 
+	</references>
+
  
  
-</ul>
-}
- 
- 
- 
+</chapter>
  
