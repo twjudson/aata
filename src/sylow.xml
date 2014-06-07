@@ -17,886 +17,317 @@
 
 
 <chapter xml:id="sylow" xmlns:xi="http://www.w3.org/2001/XInclude">
-<title>The Sylow Theorems</title>
+	<title>The Sylow Theorems</title>
 
-<introduction>
-<p>FIXME: Move content in here</p>
-</introduction>
+	<introduction>
+		<p>We already know that the converse of Lagrange's Theorem is false.  If <m>G</m> is a group of order <m>m</m> and <m>n</m> divides <m>m</m>, then <m>G</m> does not necessarily possess a subgroup of order <m>n</m>.  For example, <m>A_4</m> has order 12 but does not possess a subgroup of order 6.  However, the Sylow Theorems do provide a partial converse for Lagrange's Theorem: in certain cases they guarantee us subgroups of specific orders.  These theorems yield a powerful set of tools for the classification of all finite nonabelian groups.  </p>
+	</introduction>
  
-We already know that the converse of Lagrange's Theorem is false.  If <m>G</m> is a group of order <m>m</m> and <m>n</m> divides <m>m</m>, then <m>G</m> does not necessarily possess a subgroup of order~<m>n</m>.  For example, <m>A_4</m> has order 12 but does not possess a subgroup of order 6.  However, the Sylow Theorems do provide a partial converse for Lagrange's Theorem: in certain cases they guarantee us subgroups of specific orders.  These theorems yield a powerful set of tools for the classification of all finite nonabelian groups.  
+	<section xml:id="section-sylow-theorems">
+		<title>The Sylow Theorems</title>
 
+		<p>We will use the idea of  group actions to prove the Sylow Theorems.  Recall for a moment what it means for <m>G</m> to act on itself by conjugation and how conjugacy classes are distributed in the group according to the class equation, discussed in Chapter<nbsp /><xref ref="actions" />.   A group  <m>G</m> acts on itself by conjugation via the map <m>(g,x) \mapsto gxg^{-1}</m>. Let <m>x_1, \ldots, x_k</m> be representatives from each  of the distinct conjugacy classes of <m>G</m> that consist of more than one element. Then the class equation can be written as 
+			<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)],</me>
+		where <m>Z(G) = \{g \in G : gx = xg \text{ for all } x \in G\}</m> is the center of <m>G</m> and  <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> is the centralizer subgroup of <m>x_i</m>.</p>
  
+		<p>We now begin our investigation of the Sylow Theorems by examining subgroups of order <m>p</m>, where <m>p</m> is prime.  A group <m>G</m> is a <term><m>p</m>-group</term><index><main>Group!<m>p</m>-group</main></index> if every element in <m>G</m> has as its order a power of <m>p</m>, where <m>p</m> is a prime number. A subgroup of a group <m>G</m> is a <term><m>p</m>-subgroup</term><index><main>Subgroup!<m>p</m>-subgroup</main></index> if it is a  <m>p</m>-group.</p>
 
-</section>
-<section xml:id="">
-<title>The Sylow Theorems</title>
-
-We will use the idea of  group actions to prove the Sylow Theorems.  Recall for a moment what it means for <m>G</m> to act on itself by conjugation and how conjugacy classes are distributed in the group according to the class equation, discussed in Chapter<nbsp /><xref ref="actions" />.   A group  <m>G</m> acts on itself by conjugation via the map <m>(g,x) \mapsto gxg^{-1}</m>. Let <m>x_1, \ldots, x_k</m> be representatives from each  of the distinct conjugacy classes of <m>G</m> that consist of more than one element. Then the class equation can be written as 
-<me>
-|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)],
-</me>
-where <m>Z(G) = \{g \in G : gx = xg \text{ for all } x \in G\}</m> is the center of <m>G</m> and  <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> is the centralizer subgroup of <m>x_i</m>.
+		<theorem>
+			<title>Cauchy</title>
+			<statement>
+				<p><index><main>Cauchy's Theorem</main></index> Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p</m> divides the order of <m>G</m>. Then <m>G</m> contains a subgroup of order <m>p</m>.</p>
+			</statement>
+			<proof>
+				<p>We will use induction on the order of <m>G</m>.  If <m>|G|=p</m>, then clearly order <m>k</m>, where <m>p \leq k \lt n</m> and <m>p</m> divides <m>k</m>, has an element of order <m>p</m>. Assume that <m>|G|= n</m> and <m>p \mid n</m> and consider the class equation of <m>G</m>: 
+					<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].</me>
+				We have two cases.</p>
  
-We now begin our investigation of the Sylow Theorems by examining subgroups of order <m>p</m>, where <m>p</m> is prime.  A group <m>G</m> is a <term><m>p</m>-group</term><index><main>Group!<m>p</m>-group</main></index> if every element in <m>G</m> has as
-its order a power of <m>p</m>, where <m>p</m> is a prime number. A subgroup of a group <m>G</m> is a <term><m>p</m>-subgroup</term><index><main>Subgroup!<m>p</m>-subgroup</main></index> if it is a  <m>p</m>-group.  
+ 				<p><em>Case 1.</em>  <em>The order of one of the centralizer subgroups, <m>C(x_i)</m>, is divisible by <m>p</m> for some <m>i</m>, <m>i = 1, \ldots, k</m></em>. In this case,  by our induction hypothesis, we are done. Since <m>C(x_i)</m> is a proper subgroup of <m>G</m> and <m>p</m> divides <m>|C(x_i)|</m>, <m>C(x_i)</m> must contain an element of order <m>p</m>. Hence, <m>G</m> must contain an element of order <m>p</m>.</p> 
  
-<theorem>
-<title>Cauchy</title>
-<statement>
-<p><index><main>Cauchy's Theorem</main></index>
-Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p</m> divides the
-order of <m>G</m>. Then <m>G</m> contains a subgroup of order <m>p</m>.
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
+ 				<p><em>Case 2.</em> <em>The order of no centralizer subgroup is divisible by <m>p</m></em>. Then <m>p</m> divides <m>[G:C(x_i)]</m>, the order of each conjugacy class in the class equation; hence, <m>p</m> must divide the center of <m>G</m>, <m>Z(G)</m>. Since <m>Z(G)</m> is abelian, it must have a subgroup of order <m>p</m> by the Fundamental Theorem of Finite Abelian Groups. Therefore, the center of <m>G</m> contains an element of order <m>p</m>.</p>
+ 			</proof>
+		</theorem>
  
-<proof><p>
-We will use induction on the order of <m>G</m>.  If <m>|G|=p</m>, then clearly
-<m>G</m> must have an element of order <m>p</m>. Now assume that every group of
-order <m>k</m>, where <m>p \leq k \lt n</m> and <m>p</m> divides <m>k</m>, has an element of
-order <m>p</m>. Assume that <m>|G|= n</m> and <m>p \mid n</m> and consider the class
-equation of <m>G</m>: 
-<me>
-|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].
-</me>
-We have two cases.
+		<corollary>
+			<statement>
+				<p>Let <m>G</m> be a finite group. Then <m>G</m> is a <m>p</m>-group if and only if <m>|G| = p^n</m>.</p>
+			</statement>
+		</corollary>
  
  
-<em>Case 1.</em>
-\emph{The order of one of the centralizer subgroups, <m>C(x_i)</m>, is
-divisible by <m>p</m> for some <m>i</m>, <m>i = 1, \ldots, k</m>}. 
-In this case,  by our induction hypothesis, we are done. Since <m>C(x_i)</m>
-is a proper subgroup of <m>G</m> and <m>p</m> divides <m>|C(x_i)|</m>, <m>C(x_i)</m> must
-contain an element of order <m>p</m>. Hence, <m>G</m> must contain an element of
-order <m>p</m>.  
+		<example xml:id="example-a5-subgroups">
+			<p>Let us consider the group <m>A_5</m>.  We know that <m>|A_5| = 60 = 2^2 \cdot 3 \cdot 5</m>.  By Cauchy's Theorem, we are guaranteed that <m>A_5</m> has subgroups of orders <m>2</m>, <m>3</m> and <m>5</m>. The Sylow Theorems give us even more information about the possible subgroups of <m>A_5</m>.</p>
+		</example>
  
+		<p>We are now ready to state and prove the first of the Sylow Theorems. The proof is very similar to the proof of Cauchy's Theorem.</p>
  
-<em>Case 2.</em>
-\emph{The order of no centralizer subgroup is divisible by
-<m>p</m>}. 
-Then <m>p</m> divides <m>[G:C(x_i)]</m>, the order of each conjugacy class in
-the class equation; hence, <m>p</m> must divide the center of <m>G</m>, <m>Z(G)</m>.
-Since <m>Z(G)</m> is abelian, it must have a subgroup of order <m>p</m> by the
-Fundamental Theorem of Finite Abelian Groups. Therefore, the center of
-<m>G</m> contains an element of order <m>p</m>. 
-</p></proof>
+		<theorem>
+			<title>First Sylow Theorem</title>
+			<statement>
+				<p>Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p^r</m> divides <m>|G|</m>. Then <m>G</m> contains a subgroup of order <m>p^r</m>.</p>
+			</statement>
+			<proof>
+				<p>We induct on the order of <m>G</m> once again.  If <m>|G| = p</m>, then we are done. Now suppose that the order of <m>G</m> is <m>n</m> with <m>n \gt p</m> and that the theorem is true for all groups of order less than <m>n</m>. We shall apply the class equation once again: 
+					<me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].</me>
+				First suppose that <m>p</m> does not divide <m>[G:C(x_i)]</m> for some <m>i</m>. Then <m>p^r \mid |C(x_i)|</m>, since <m>p^r</m> divides <m>|G| = |C(x_i)| \cdot [G:C(x_i)]</m>. Now we can apply the induction hypothesis to <m>C(x_i)</m>.</p>
  
+				<p>Hence, we may assume that <m>p</m> divides <m>[G:C(x_i)]</m> for all <m>i</m>. Since <m>p</m> divides <m>|G|</m>, the class equation says that <m>p</m> must divide <m>|Z(G)|</m>; hence, by Cauchy's Theorem, <m>Z(G)</m> has an element of order <m>p</m>, say <m>g</m>. Let <m>N</m> be the group generated by <m>g</m>. Clearly, <m>N</m> is a normal subgroup of <m>Z(G)</m> since <m>Z(G)</m> is abelian; therefore, <m>N</m> is normal in <m>G</m> since every element in <m>Z(G)</m> commutes with every element in <m>G</m>. Now consider the factor group <m>G/N</m> of order <m>|G|/p</m>. By the induction hypothesis, <m>G/N</m> contains a subgroup <m>H</m> of order <m>p^{r- 1}</m>. The inverse image of <m>H</m> under the canonical homomorphism <m>\phi : G \rightarrow G/N</m> is a subgroup of order <m>p^r</m> in <m>G</m>.</p>
+			</proof>
+		</theorem>
  
-<corollary>
-<statement>
-<p>
-Let <m>G</m> be a finite group. Then <m>G</m> is a <m>p</m>-group if and only if $|G|
-= p^n$. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</corollary>
+		<p>A <term>Sylow <m>p</m>-subgroup</term><index><main>Subgroup</main><sub>Sylow<m>p</m>-subgroup</sub></index> <index><main>Sylow <m>p</m>-subgroup</main></index> <m>P</m> of a group <m>G</m> is a maximal <m>p</m>-subgroup of <m>G</m>. To prove the other two Sylow Theorems, we need to consider conjugate subgroups as opposed to conjugate elements in a group. For a group <m>G</m>, let <m>{\mathcal S}</m> be the collection of all subgroups of <m>G</m>. For any subgroup <m>H</m>, <m>{\mathcal S}</m> is a <m>H</m>-set, where  <m>H</m> acts on <m>{\mathcal S}</m> by conjugation. That is, we have an action 
+			<me>H \times  {\mathcal S}  \rightarrow  {\mathcal S}</me>
+		defined by
+			<me>h \cdot K \mapsto hKh^{-1}</me>
+		for <m>K</m> in <m>{\mathcal S}</m>.</p>
  
+ 		<p>The set
+			<me>N(H) = \{  g \in G : g H g^{-1} = H\}<!--NOTATION TABLE\label{notenormalizer}--></me>
+		is a subgroup of <m>G</m>. Notice that <m>H</m> is a normal subgroup of <m>N(H)</m>. In fact, <m>N(H)</m> is the largest subgroup of <m>G</m> in which <m>H</m> is normal. We call <m>N(H)</m> the <term>normalizer</term><index><main>Subgroup</main><sub>normalizer of</sub></index><index><main>Normalizer</main></index> of <m>H</m> in <m>G</m>.</p>
  
-<example xml:id="A5_subgroups">
-<p>
-Let us consider the group <m>A_5</m>.  We know that $|A_5| = 60 = 2^2 \cdot
-3 \cdot 5<m>.  By Cauchy's Theorem, we are guaranteed that </m>A_5$ has
-subgroups of orders <m>2</m>, <m>3</m> and <m>5</m>. The Sylow Theorems give us even
-more information about the possible subgroups of <m>A_5</m>.
-</p>
-</example>
- 
- 
-
- 
- 
-We are now ready to state and prove the first of the Sylow Theorems.
-The proof is very similar to the proof of Cauchy's Theorem.
- 
- 
-<theorem>
-<title>First Sylow Theorem</title>
-<statement>
-<p>
-Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p^r</m> divides
-<m>|G|</m>. Then <m>G</m> contains a subgroup of order <m>p^r</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-We induct on the order of <m>G</m> once again.  If <m>|G|=p</m>, then we are
-done. Now suppose that the order of <m>G</m> is <m>n</m> with <m>n \gt p</m> and that the
-theorem is true for all groups of order less than <m>n</m>. We shall apply
-the class equation once again: 
-<me>
-|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].
-</me>
- 
- 
-First suppose that <m>p</m> does not divide <m>[G:C(x_i)]</m> for some <m>i</m>. Then
-\mbox{<m>p^r \mid |C(x_i)|</m>}, since <m>p^r</m> divides $|G| = |C(x_i)| \cdot
-[G:C(x_i)]<m>. Now we can apply the induction hypothesis to </m>C(x_i)$.  
- 
- 
-Hence, we may assume that <m>p</m> divides <m>[G:C(x_i)]</m> for all <m>i</m>.
-Since <m>p</m> divides <m>|G|</m>, the class equation says that <m>p</m> must
-divide <m>|Z(G)|</m>; hence, by Cauchy's Theorem, <m>Z(G)</m> has an element of
-order <m>p</m>, say <m>g</m>. Let <m>N</m> be the group generated by <m>g</m>. Clearly,
-<m>N</m> is a normal subgroup of <m>Z(G)</m> since <m>Z(G)</m> is abelian; therefore,
-<m>N</m> is normal in <m>G</m> since every element in <m>Z(G)</m> commutes with every
-element in <m>G</m>. Now consider the factor group <m>G/N</m> of order <m>|G|/p</m>.
-By the induction hypothesis, <m>G/N</m> contains a subgroup <m>H</m> of order
-<m>p^{r- 1}</m>. The inverse image of <m>H</m> under the canonical homomorphism
-<m>\phi : G \rightarrow G/N</m> is a subgroup of order <m>p^r</m> in <m>G</m>. 
-</p></proof>
- 
- 
-
- 
- 
-A <term>Sylow <m>p</m>-subgroup</term>\index{Subgroup!Sylow
-<m>p</m>-subgroup}<index><main>Sylow <m>p</m>-subgroup</main></index>  <m>P</m> of a group <m>G</m> is a
-maximal <m>p</m>-subgroup of <m>G</m>. To prove the other two Sylow Theorems, we
-need to consider conjugate subgroups as opposed to conjugate elements
-in a group. For a group <m>G</m>, let <m>{\mathcal S}</m> be the collection of all
-subgroups of <m>G</m>. For any subgroup <m>H</m>, <m>{\mathcal S}</m> is a <m>H</m>-set, where 
-<m>H</m> acts on <m>{\mathcal S}</m> by conjugation. That is, we have an action 
-<me>
-H \times  {\mathcal S}  \rightarrow  {\mathcal S}
-</me>
-defined by
-<me>
-h \cdot K \mapsto hKh^{-1}
-</me>
-for <m>K</m> in <m>{\mathcal S}</m>.
- 
- 
-The set
-<me>
-N(H) = \{  g \in G : g H g^{-1} = H\}\label{notenormalizer}
-</me>
-is a subgroup of <m>G</m>. Notice that <m>H</m> is a normal subgroup of <m>N(H)</m>.
-In fact, <m>N(H)</m> is the largest subgroup of <m>G</m> in which <m>H</m> is normal.
-We call <m>N(H)</m> the <term>normalizer</term>\index{Subgroup!normalizer
-of}<index><main>Normalizer</main></index> of <m>H</m> in <m>G</m>.
- 
- 
-<lemma xml:id="p_order_lemma">
-<statement>
-<p>
-Let <m>P</m> be a Sylow <m>p</m>-subgroup of a finite group <m>G</m> and let <m>x</m> have
-as its order a power of <m>p</m>. If <m>x^{-1} P x = P</m>, then <m>x \in P</m>.
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</lemma>
- 
+		<lemma xml:id="lemma-p-order">
+			<statement>
+				<p>Let <m>P</m> be a Sylow <m>p</m>-subgroup of a finite group <m>G</m> and let <m>x</m> have as its order a power of <m>p</m>. If <m>x^{-1} P x = P</m>, then <m>x \in P</m>.</p>
+			</statement>
 <!-- typo corrected.  Suggested by L. Franklin. -->
 <!-- TWJ - 12/19/2011 -->
+			<proof>
+				<p>Certainly <m>x \in N(P)</m>, and the cyclic subgroup, <m>\langle xP \rangle \subset N(P)/P</m>, has as its order a power of <m>p</m>. By the Correspondence Theorem there exists a subgroup <m>H</m> of <m>N(P)</m> such that <m>H/P = \langle xP \rangle</m>. Since <m>|H| = |P| \cdot |\langle xP \rangle|</m>, the order of <m>H</m> must be a power of <m>p</m>. However, <m>P</m> is a Sylow <m>p</m>-subgroup contained in <m>H</m>. Since the order of <m>P</m> is the largest power of <m>p</m> dividing <m>|G|</m>, <m>H=P</m>.  Therefore,  <m>H/P</m> is the trivial subgroup and <m>xP = P</m>, or <m>x \in P</m>.</p>
+			</proof>
+		</lemma>
  
-<proof><p>
-Certainly <m>x \in N(P)</m>, and the cyclic subgroup, $\langle xP \rangle
-\subset N(P)/P<m>, has as its order a power of </m>p$. By the Correspondence
-Theorem there exists a subgroup <m>H</m> of <m>N(P)</m> such that $H/P = \langle
-xP \rangle<m>. Since </m>|H| = |P| \cdot |\langle xP \rangle|$, the order
-of <m>H</m> must be a power of <m>p</m>. However, <m>P</m> is a Sylow <m>p</m>-subgroup
-contained in <m>H</m>. Since the order of <m>P</m> is the largest power of <m>p</m>
-dividing <m>|G|</m>, <m>H=P</m>.  Therefore,  <m>H/P</m> is the trivial subgroup and
-<m>xP = P</m>, or <m>x \in P</m>. 
-</p></proof>
+		<lemma xml:id="lemma-distinct-conjugates">
+			<statement>
+				<p>Let <m>H</m> and <m>K</m> be subgroups of <m>G</m>. The number of distinct  <m>H</m>-conjugates of <m>K</m> is <m>[H:N(K) \cap H]</m>.</p>
+			</statement>
+			<proof><p>We define a bijection between the conjugacy classes of <m>K</m> and the right cosets of <m>N(K) \cap H</m> by <m>h^{-1}Kh \mapsto (N(K) \cap H)h</m>. To show that this map is a bijection, let <m>h_1, h_2 \in H</m> and suppose that <m>(N(K) \cap H)h_1 = (N(K) \cap H)h_2</m>. Then <m>h_2 h_1^{-1} \in N(K)</m>. Therefore, <m>K = h_2 h_1^{-1} K h_1 h_2^{-1}</m> or <m>h_1^{-1} K h_1 = h_2^{-1} K h_2</m>, and the map is an injection.  It is easy to see that this map is surjective; hence, we have a one-to-one and onto map between the <m>H</m>-conjugates of <m>K</m> and the right cosets of <m>N(K) \cap H</m> in <m>H</m>.</p>
+		</proof>
+		</lemma>
  
+		<theorem xml:id="theorem-second-sylow">
+			<title>Second Sylow Theorem</title>
+			<statement>
+				<p>Let <m>G</m> be a finite group and <m>p</m> a prime dividing <m>|G|</m>. Then all Sylow <m>p</m>-subgroups of <m>G</m> are conjugate. That is, if <m>P_1</m> and <m>P_2</m> are two Sylow <m>p</m>-subgroups, there exists a <m>g \in G</m> such that <m>g P_1 g^{-1} = P_2</m>.</p>
+			</statement>
+			<proof>
+				<p>Let <m>P</m> be a Sylow <m>p</m>-subgroup of <m>G</m> and suppose that <m>|G|=p^r m</m> and <m>|P|=p^r</m>. Let 
+					<me>{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \}</me>
+				consist of the distinct conjugates of <m>P</m> in <m>G</m>.  By Lemma<nbsp /><xref ref="lemma-distinct-conjugates" />, <m>k = [G: N(P)]</m>. Notice that 
+					<me>|G|= p^r m = |N(P)| \cdot [G: N(P)]= |N(P)| \cdot k.</me>
+				Since <m>p^r</m> divides <m>|N(P)|</m>, <m>p</m> cannot divide <m>k</m>. Given any other Sylow <m>p</m>-subgroup <m>Q</m>, we must show that <m>Q \in {\mathcal P}</m>. Consider the <m>Q</m>-conjugacy classes of each <m>P_i</m>. Clearly, these conjugacy classes partition <m>{\mathcal P}</m>. The size of the partition containing <m>P_i</m> is <m>[Q :N(P_i) \cap Q]</m>. Lagrange's Theorem tells us that this number is a divisor of <m>|Q|= p^r</m>. Hence, the number of conjugates in every equivalence class of the partition is a power of <m>p</m>. However, since <m>p</m> does not divide <m>k</m>, one of these equivalence classes must contain only a single Sylow <m>p</m>-subgroup, say <m>P_j</m>. Therefore, for some <m>P_j</m>, <m>x^{-1} P_j x = P_j</m> for all <m>x \in Q</m>. By Lemma<nbsp /><xref ref="lemma-p-order" />, <m>P_j = Q</m>.</p>
+			</proof>
+		</theorem>
  
-<lemma xml:id="distinct_conj_lemma">
-<statement>
-<p>
-Let <m>H</m> and <m>K</m> be subgroups of <m>G</m>. The number of distinct
-<m>H</m>-conjugates of <m>K</m> is <m>[H:N(K) \cap H]</m>. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</lemma>
+ 		<theorem>
+			<title>Third Sylow Theorem</title>
+			<statement>
+				<p>Let <m>G</m> be a finite group and let <m>p</m> be a prime dividing the order of <m>G</m>.  Then the number of Sylow <m>p</m>-subgroups is congruent to <m>1 \pmod{p}</m> and divides <m>|G|</m>.</p>
+			</statement>
+			<proof>
+				<p>Let <m>P</m> be a Sylow <m>p</m>-subgroup acting on the set of Sylow <m>p</m>-subgroups, 
+					<me>{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \},</me>
+				by conjugation. From the proof of the Second Sylow Theorem, the only <m>P</m>-conjugate of <m>P</m> is itself and the order of the other <m>P</m>-conjugacy classes is a power of <m>p</m>. Each <m>P</m>-conjugacy class contributes a positive power of <m>p</m> toward <m>|{\mathcal P}|</m> except the equivalence class  <m>\{ P \}</m>. Since <m>|{\mathcal P}|</m> is the sum of positive powers of <m>p</m> and 1, <m>|{\mathcal P}| \equiv 1 \pmod{p}</m>.</p>
  
- 
-<proof><p>
-We define a bijection between the conjugacy classes of <m>K</m> and the
-right cosets of <m>N(K) \cap H</m> by <m>h^{-1}Kh \mapsto (N(K) \cap H)h</m>.
-To show that this map is a bijection, let <m>h_1, h_2 \in H</m> and suppose
-that <m>(N(K) \cap H)h_1 = (N(K) \cap H)h_2</m>. Then $h_2 h_1^{-1} \in
-N(K)<m>. Therefore, </m>K = h_2 h_1^{-1} K h_1 h_2^{-1}<m> or </m>h_1^{-1} K h_1
-= h_2^{-1} K h_2$, and the map is an injection.  It is easy to see
-that this map is surjective; hence, we have a one-to-one and onto map
-between the <m>H</m>-conjugates of <m>K</m> and the right cosets of $N(K) \cap
-H<m> in </m>H$.
-</p></proof>
- 
- 
-<theorem xml:id="sylow:Sylow_two_theorem">
-<title>Second Sylow Theorem</title>
-<statement>
-<p>
-Let <m>G</m> be a finite group and <m>p</m> a prime dividing <m>|G|</m>. Then all
-Sylow <m>p</m>-subgroups of <m>G</m> are conjugate. That is, if <m>P_1</m> and <m>P_2</m>
-are two Sylow <m>p</m>-subgroups, there exists a <m>g \in G</m> such that $g P_1
-g^{-1} = P_2$. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-Let <m>P</m> be a Sylow <m>p</m>-subgroup of <m>G</m> and suppose that <m>|G|=p^r m</m>
-and <m>|P|=p^r</m>. Let 
-<me>
-{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \}
-</me>
-consist of the distinct conjugates of <m>P</m> in <m>G</m>.  By Lemma<nbsp /><xref ref="distinct_conj_lemma" />, $k =
-[G: N(P)]$. Notice that 
-<me>
-|G|= p^r m = |N(P)| \cdot [G: N(P)]= |N(P)| \cdot k.
-</me>
-Since <m>p^r</m> divides <m>|N(P)|</m>, <m>p</m> cannot divide <m>k</m>. Given any other
-Sylow <m>p</m>-subgroup <m>Q</m>, we must show that <m>Q \in {\mathcal P}</m>. Consider
-the <m>Q</m>-conjugacy classes of each <m>P_i</m>. Clearly, these conjugacy
-classes partition <m>{\mathcal P}</m>. The size of the partition containing
-<m>P_i</m> is <m>[Q :N(P_i) \cap Q]</m>. Lagrange's Theorem tells us that this
-number is a divisor of <m>|Q|= p^r</m>. Hence, the number of conjugates in
-every equivalence class of the partition is a power of <m>p</m>. However,
-since <m>p</m> does not divide <m>k</m>, one of these equivalence classes must
-contain only a single Sylow <m>p</m>-subgroup, say <m>P_j</m>. Therefore, for
-some <m>P_j</m>, <m>x^{-1} P_j x = P_j</m> for all <m>x \in Q</m>. By Lemma<nbsp /><xref ref="p_order_lemma" />,
-<m>P_j = Q</m>. 
-</p></proof>
- 
- 
-<theorem>
-<title>Third Sylow Theorem</title>
-<statement>
-<p>
-Let <m>G</m> be a finite group and let <m>p</m> be a prime dividing the order of
-<m>G</m>.  Then the number of Sylow <m>p</m>-subgroups is congruent to $1
-\pmod{p}<m> and divides </m>|G|$. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-Let <m>P</m> be a Sylow <m>p</m>-subgroup acting on the set of Sylow
-<m>p</m>-subgroups, 
-<me>
-{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \},
-</me>
-by conjugation. From the proof of the Second Sylow Theorem, the only
-<m>P</m>-conjugate of <m>P</m> is itself and the order of the other
-<m>P</m>-conjugacy classes is a power of <m>p</m>. Each <m>P</m>-conjugacy class
-contributes a positive power of <m>p</m> toward <m>|{\mathcal P}|</m> except the
-equivalence class  <m>\{ P \}</m>. Since <m>|{\mathcal P}|</m> is the sum of
-positive powers of <m>p</m> and 1, <m>|{\mathcal P}| \equiv 1 \pmod{p}</m>.
- 
- 
-Now suppose that <m>G</m> acts on <m>{\mathcal P}</m> by conjugation. Since all
-Sylow <m>p</m>-subgroups are conjugate, there can be only one orbit under
-this action. For <m>P \in {\mathcal P}</m>, 
-<me>
-|{\mathcal P}| = |\mbox{orbit of P}| = [G : N(P)].
-</me>
-But <m>[G : N(P)]</m> is a divisor of <m>|G|</m>; consequently, the number of
-Sylow \mbox{<m>p</m>-subgroups} of a finite group must divide the order of the
-group. 
-</p></proof>
- 
- 
- 
- 
- 
-\noindent {<historical>
-<p>
-Peter Ludvig Mejdell Sylow<index><main>Sylow, Ludvig</main></index> was born in 1832 in
-Christiania, Norway (now Oslo). After attending Christiania
-University, Sylow taught high school. In 1862 he obtained a temporary
-appointment at Christiania University. Even though his appointment was
-relatively brief, he influenced students such as Sophus
-Lie<index><main>Lie, Sophus</main></index> (1842<ndash />1899).   Sylow had a chance at a
-permanent chair in 1869, but failed to obtain the appointment. In 1872,
-he published a 10-page paper presenting the theorems that now bear his
-name.  Later Lie and Sylow collaborated on a new edition of Abel's
-works.  In 1898, a chair at Christiania University was finally created
-for Sylow through the efforts of his student and colleague Lie. Sylow
-died in 1918.
-</p>
-</historical>  <!-- FIXME: stray closing brace on next line -->
-} 
- 
- 
- 
+				<p>Now suppose that <m>G</m> acts on <m>{\mathcal P}</m> by conjugation. Since all Sylow <m>p</m>-subgroups are conjugate, there can be only one orbit under this action. For <m>P \in {\mathcal P}</m>, 
+					<me>|{\mathcal P}| = |\mbox{orbit of }P| = [G : N(P)].</me>
+				But <m>[G : N(P)]</m> is a divisor of <m>|G|</m>; consequently, the number of Sylow <m>p</m>-subgroups of a finite group must divide the order of the group.</p>
+			</proof>
+		</theorem>
+  
+		<subsection number="no">
+			<title>Historical Note</title>
 
-</section>
-<section xml:id="">
-<title>Examples and Applications</title>
- 
- 
-<example xml:id="5sylow_subgroups">
-<p>
-Using the Sylow Theorems, we can determine that <m>A_5</m> has subgroups of
-orders <m>2</m>, <m>3</m>, <m>4</m>, and <m>5</m>. The Sylow <m>p</m>-subgroups of <m>A_5</m> have
-orders <m>3</m>, <m>4</m>, and <m>5</m>. The Third Sylow Theorem tells us exactly how
-many Sylow <m>p</m>-subgroups <m>A_5</m> has. Since the number of Sylow 
-5-subgroups must divide 60 and also be congruent to <m>1 \pmod{5}</m>,
-there are either one or six Sylow 5-subgroups in <m>A_5</m>. All Sylow
-5-subgroups are conjugate.  If there were only a single Sylow 
-5-subgroup, it would be conjugate to itself; that is, it would be a
-normal subgroup of <m>A_5</m>. Since <m>A_5</m> has no normal subgroups, this is 
-impossible; hence, we have determined that there are exactly six
-distinct Sylow 5-subgroups of <m>A_5</m>. 
-</p>
-</example>
- 
- 
-The Sylow Theorems allow us to prove many useful results about finite
-groups. By using them, we can often conclude a great deal about groups 
-of a particular order if certain hypotheses are satisfied.
- 
- 
-<theorem xml:id="sylow:pq_cyclic_theorem">
-<statement>
-<p>
-If <m>p</m> and <m>q</m> are distinct primes with <m>p <q </m>, then every group <m>G</m> of
-order <m>pq</m> has a single subgroup of order <m>q</m> and this subgroup is
-normal in <m>G</m>.  Hence, <m>G</m> cannot be simple.  Furthermore, if $q
-\not\equiv 1 \pmod{p}<m>, then </m>G$ is cyclic.
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-<proof><p>
-We know that <m>G</m> contains a subgroup <m>H</m> of order <m>q</m>. The number of
-conjugates of <m>H</m>  divides <m>pq</m> and is equal to <m>1 +kq</m> for $k = 0, 1,
-\ldots<m>. However, </m>1+q$ is already too large to divide the order of
-the group; hence, <m>H</m> can only be conjugate to itself.  That is, <m>H</m>
-must be normal in <m>G</m>. 
- 
- 
-The group <m>G</m> also has a Sylow <m>p</m>-subgroup, say <m>K</m>. The number of
-conjugates of <m>K</m> must divide <m>q</m> and be equal to <m>1 + kp</m> for $k = 0,
-1, \ldots<m>. Since </m>q<m> is prime, either </m>1 +kp=q<m> or </m>1+kp =1<m>. If </m>1
-+kp=1<m>, then </m>K<m> is normal in </m>G$. In this case, we can easily show
-that <m>G</m> satisfies the criteria, given in Chapter~8, for the
-internal direct product of <m>H</m> and <m>K</m>.  Since <m>H</m> is isomorphic to
-<m>{\mathbb Z}_q</m> and <m>K</m> is isomorphic to <m>{\mathbb Z}_p</m>, $G \cong {\mathbb
-Z}_p \times {\mathbb Z}_q  \cong {\mathbb Z}_{pq}$ by Theorem<nbsp /><xref ref="Z_pq_theorem" />. 
+			<p>Peter Ludvig Mejdell Sylow<index><main>Sylow, Ludvig</main></index> was born in 1832 in Christiania, Norway (now Oslo). After attending Christiania University, Sylow taught high school. In 1862 he obtained a temporary appointment at Christiania University. Even though his appointment was relatively brief, he influenced students such as Sophus Lie<index><main>Lie, Sophus</main></index> (1842<ndash />1899).   Sylow had a chance at a permanent chair in 1869, but failed to obtain the appointment. In 1872, he published a 10-page paper presenting the theorems that now bear his name.  Later Lie and Sylow collaborated on a new edition of Abel's works.  In 1898, a chair at Christiania University was finally created for Sylow through the efforts of his student and colleague Lie. Sylow died in 1918.</p>
+		</subsection> 
 
-</p></proof>
- 
- 
-<example xml:id="Z15">
-<p>
-Every group of order 15 is cyclic.  This is true because $15 = 5 \cdot
-3<m> and </m>5 \not\equiv 1 \pmod{3}$. 
-</p>
-</example>
- 
- 
-<example xml:id="G99_subgroups">
-<p>
-Let us classify all of the groups of order <m>99 = 3^2 \cdot 11</m> up to
-isomorphism. First we will show that every group <m>G</m> of order 99 is
-abelian.  By the Third Sylow Theorem, there are <m>1 + 3k</m> Sylow
-3-subgroups, each of order <m>9</m>, for some <m>k = 0, 1, 2, \ldots</m>.  Also,
-<m>1 + 3k</m> must divide 11; hence, there can only be a single normal
-Sylow 3-subgroup <m>H</m> in <m>G</m>.  Similarly, there are <m>1 +11k</m> Sylow
-11-subgroups and <m>1 +11k</m> must divide <m>9</m>.  Consequently, there is
-only one Sylow 11-subgroup <m>K</m> in <m>G</m>.  By Corollary<nbsp /><xref ref="actions:p2abelian" />, any group
-of order <m>p^2</m> is abelian for <m>p</m> prime; hence, <m>H</m> is isomorphic either 
-to <m>{\mathbb Z}_3 \times {\mathbb Z}_3</m> or to <m>{\mathbb Z}_9</m>.  Since <m>K</m> has 
-order 11, it must be isomorphic to <m>{\mathbb Z}_{11}</m>.  Therefore, the only
-possible groups of order 99 are ${\mathbb Z}_3 \times {\mathbb Z}_3 \times
-{\mathbb Z}_{11}<m> or </m>{\mathbb Z}_9 \times {\mathbb Z}_{11}$ up to isomorphism.
-</p>
-</example>
- 
+	</section>
 
+	<section xml:id="section-sylow-applications">
+		<title>Examples and Applications</title>
+ 
+ 		<example xml:id="example-5sylow-subgroups">
+			<p>Using the Sylow Theorems, we can determine that <m>A_5</m> has subgroups of orders <m>2</m>, <m>3</m>, <m>4</m>, and <m>5</m>. The Sylow <m>p</m>-subgroups of <m>A_5</m> have orders <m>3</m>, <m>4</m>, and <m>5</m>. The Third Sylow Theorem tells us exactly how many Sylow <m>p</m>-subgroups <m>A_5</m> has. Since the number of Sylow  5-subgroups must divide 60 and also be congruent to <m>1 \pmod{5}</m>, there are either one or six Sylow 5-subgroups in <m>A_5</m>. All Sylow 5-subgroups are conjugate.  If there were only a single Sylow  5-subgroup, it would be conjugate to itself; that is, it would be a normal subgroup of <m>A_5</m>. Since <m>A_5</m> has no normal subgroups, this is  impossible; hence, we have determined that there are exactly six distinct Sylow 5-subgroups of <m>A_5</m>.</p>
+		</example>
+ 
+		<p>The Sylow Theorems allow us to prove many useful results about finite groups. By using them, we can often conclude a great deal about groups  of a particular order if certain hypotheses are satisfied.</p>
+  
+		<theorem xml:id="theorem-pq-cyclic">
+			<statement>
+				<p>If <m>p</m> and <m>q</m> are distinct primes with <m>p \lt q </m>, then every group <m>G</m> of order <m>pq</m> has a single subgroup of order <m>q</m> and this subgroup is normal in <m>G</m>.  Hence, <m>G</m> cannot be simple.  Furthermore, if <m>q \not\equiv 1 \pmod{p}</m>, then <m>G</m> is cyclic.</p>
+			</statement>
+			<proof>
+				<p>We know that <m>G</m> contains a subgroup <m>H</m> of order <m>q</m>. The number of conjugates of <m>H</m>  divides <m>pq</m> and is equal to <m>1 + kq</m> for <m>k = 0, 1, \ldots</m>. However, <m>1 + q</m> is already too large to divide the order of the group; hence, <m>H</m> can only be conjugate to itself.  That is, <m>H</m> must be normal in <m>G</m>.</p> 
+ 
+				<p>The group <m>G</m> also has a Sylow <m>p</m>-subgroup, say <m>K</m>. The number of conjugates of <m>K</m> must divide <m>q</m> and be equal to <m>1 + kp</m> for <m>k = 0, 1, \ldots</m>. Since <m>q</m> is prime, either <m>1 + kp = q</m> or <m>1 + kp = 1</m>. If <m>1 + kp = 1</m>, then <m>K</m> is normal in <m>G</m>. In this case, we can easily show that <m>G</m> satisfies the criteria, given in Chapter 8, for the internal direct product of <m>H</m> and <m>K</m>.  Since <m>H</m> is isomorphic to <m>{\mathbb Z}_q</m> and <m>K</m> is isomorphic to <m>{\mathbb Z}_p</m>, <m>G \cong {\mathbb Z}_p \times {\mathbb Z}_q  \cong {\mathbb Z}_{pq}</m> by Theorem<nbsp /><xref ref="Z_pq_theorem" />.</p>
+			</proof>
+		</theorem>
+ 
+ 		<example xml:id="example-z15">
+			<p>Every group of order 15 is cyclic.  This is true because <m>15 = 5 \cdot 3</m> and <m>5 \not\equiv 1 \pmod{3}</m>.</p>
+		</example>
+ 
+		<example xml:id="example-group-99-subgroups">
+			<p>Let us classify all of the groups of order <m>99 = 3^2 \cdot 11</m> up to isomorphism. First we will show that every group <m>G</m> of order 99 is abelian.  By the Third Sylow Theorem, there are <m>1 + 3k</m> Sylow 3-subgroups, each of order <m>9</m>, for some <m>k = 0, 1, 2, \ldots</m>.  Also, <m>1 + 3k</m> must divide 11; hence, there can only be a single normal Sylow 3-subgroup <m>H</m> in <m>G</m>.  Similarly, there are <m>1 +11k</m> Sylow 11-subgroups and <m>1 +11k</m> must divide <m>9</m>.  Consequently, there is only one Sylow 11-subgroup <m>K</m> in <m>G</m>.  By Corollary<nbsp /><xref ref="actions-p2abelian" />, any group of order <m>p^2</m> is abelian for <m>p</m> prime; hence, <m>H</m> is isomorphic either to <m>{\mathbb Z}_3 \times {\mathbb Z}_3</m> or to <m>{\mathbb Z}_9</m>.  Since <m>K</m> has order 11, it must be isomorphic to <m>{\mathbb Z}_{11}</m>.  Therefore, the only possible groups of order 99 are <m>{\mathbb Z}_3 \times {\mathbb Z}_3 \times {\mathbb Z}_{11}</m> or <m>{\mathbb Z}_9 \times {\mathbb Z}_{11}</m> up to isomorphism.</p>
+		</example>
+ 
+		<p>To determine all of the groups of order <m>5 \cdot 7 \cdot 47 = 1645</m>, we need the following theorem.</p>
+ 
+		<theorem xml:id="theorem-commutator-subgroup-theorem">
+			<statement>
+				<p>Let <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> be the subgroup  consisting of all finite products of elements of the form <m>aba^{-1}b^{-1}</m> in a group <m>G</m>. Then <m>G'</m> is a normal subgroup of <m>G</m> and <m>G/G'</m> is abelian.</p>
+			</statement>
+		</theorem>
+ 
+		<p>The subgroup <m>G'</m> of <m>G</m> is called the <term>commutator subgroup</term><index><main>Subgroup</main><sub>commutator</sub></index> of <m>G</m>. We leave the proof of this theorem as an exercise.</p>
+ 
+ 		<example xml:id="example-group-1645-subgroups">
+			<p>We will now show that every group of order <m>5 \cdot 7 \cdot 47 = 1645</m> is abelian, and cyclic by Corollary<nbsp /><xref ref="RelativelyPrime" />. By the Third Sylow Theorem, <m>G</m> has only one subgroup <m>H_1</m> of order <m>47</m>.  So <m>G/H_1</m> has order 35 and must be abelian by Theorem<nbsp /><xref ref="theorem-pq-cyclic" />. Hence, the commutator subgroup of <m>G</m> is contained in <m>H</m> which tells us that <m>|G'|</m> is either 1 or 47. If <m>|G'|=1</m>, we are done. Suppose that <m>|G'|=47</m>. The Third Sylow Theorem tells us that <m>G</m> has only one subgroup of order 5 and one subgroup of order 7.  So there exist normal subgroups <m>H_2</m>  and <m>H_3</m> in <m>G</m>, where <m>|H_2| = 5</m> and <m>|H_3| = 7</m>. In either case the quotient group is abelian; hence, <m>G'</m> must be a subgroup of <m>H_i</m>, <m>i= 1, 2</m>. Therefore, the order of <m>G'</m> is 1, 5, or 7. However, we already have determined that <m>|G'| =1</m> or 47. So the commutator subgroup of <m>G</m> is trivial, and consequently <m>G</m> is abelian.</p>
+		</example>
+ 
+		<subsection number="no">
+			<title>Finite Simple Groups</title>
+ 
+			<p>Given a finite group, one can ask whether or not that group has any normal subgroups. Recall that a simple group is one with no proper nontrivial normal subgroups. As in the case of <m>A_5</m>, proving a group to be simple can be a very difficult task; however, the Sylow Theorems are useful tools for proving that a group is not simple. Usually some sort of counting argument is involved.</p>
+ 
+			<example xml:id="example-group-20-not-simple">
+				<p>Let us show that no group <m>G</m> of order 20 can be simple. By the Third Sylow Theorem, <m>G</m> contains one or more Sylow <m>5</m>-subgroups. The number of such subgroups is congruent to <m>1 \pmod{5}</m> and must also divide 20. The only possible such number is 1. Since there is only a single Sylow 5-subgroup and all Sylow 5-subgroups are conjugate, this subgroup must be normal.</p>
+			</example>
+ 
+ 			<example xml:id="example-group-pn">
+				<p>Let <m>G</m> be a finite group of order <m>p^n</m>, <m>n \gt 1</m> and <m>p</m> prime. By Theorem<nbsp /><xref ref="pn_theorem" />, <m>G</m> has a nontrivial center. Since the center of any group <m>G</m> is a normal subgroup, <m>G</m> cannot be a simple group. Therefore, groups of orders 4, 8, 9, 16, 25, 27, 32, 49, 64, and 81 are not simple.  In fact, the groups of order 4, 9, 25, and 49 are  abelian by Corollary<nbsp /><xref ref="actions-p2abelian" />.</p>
+			</example>
+ 
+			<example xml:id="example-group-56">
+				<p>No group of order <m>56= 2^3 \cdot 7</m> is simple.  We have seen that if we can show that there is only one Sylow <m>p</m>-subgroup for some prime <m>p</m> dividing 56, then this must be a normal subgroup and we are done. By the Third Sylow Theorem, there are either one or eight Sylow 7-subgroups.  If there is only a single Sylow 7-subgroup, then it must be normal.</p>
  
  
-To determine all of the groups of order <m>5 \cdot 7 \cdot 47 = 1645</m>,
-we need the following theorem. 
+				<p>On the other hand, suppose that there are eight Sylow 7-subgroups. Then each of these subgroups must be cyclic; hence, the intersection of any two of these subgroups contains only the identity of the group. This leaves <m>8 \cdot 6 = 48</m> distinct elements in the group, each of order 7. Now let us count Sylow 2-subgroups. There are either one or seven Sylow 2-subgroups.  Any element of a Sylow 2-subgroup other than the identity must have as its order a  power of 2; and therefore cannot be one of the 48 elements of order 7 in the Sylow 7-subgroups. Since a Sylow 2-subgroup has order 8, there is only enough room for a single Sylow 2-subgroup in a group of order 56.  If there is only one Sylow 2-subgroup, it must be normal.</p>
+			</example>
  
+ 			<p>For other groups <m>G</m> it is more difficult to prove that <m>G</m> is not simple. Suppose <m>G</m> has order 48. In this case the technique that we employed in the last example will not work. We need the following lemma to prove that no group of order 48 is simple.</p>
  
-<theorem xml:id="sylow:commutator_subgroup_theorem">
-<statement>
-<p>
-Let <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> be the
-subgroup  consisting of all finite products of elements of the form
-<m>aba^{-1}b^{-1}</m> in a group <m>G</m>. Then <m>G'</m> is a normal subgroup of <m>G</m>
-and <m>G/G'</m> is abelian. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
+			<lemma xml:id="lemma-hk-subgroup">
+				<statement>
+					<p>Let <m>H</m> and <m>K</m> be finite subgroups of a group <m>G</m>. Then
+						<me>|HK| = \frac{|H| \cdot |K|}{|H \cap K|}.</me></p>
+				</statement>
+				<proof>
+					<p>Recall that
+						<me>HK = \{ hk : h \in H, k \in K \}.</me>
+					Certainly, <m>|HK| \leq |H| \cdot |K|</m> since some element in <m>HK</m> could be written as the product of different elements in <m>H</m> and <m>K</m>. It is quite possible that <m>h_1 k_1 = h_2 k_2</m> for <m>h_1, h_2 \in H</m> and <m>k_1, k_2 \in K</m>.  If this is the case, let
+						<me>a = (h_1)^{-1} h_2 = k_1 (k_2)^{-1}.</me>
+					Notice that <m>a \in H \cap K</m>, since <m>(h_1)^{-1} h_2</m> is in <m>H</m> and <m>k_2 (k_1)^{-1}</m> is in <m>K</m>; consequently, 
+						<md>
+							<mrow>h_2 &amp; =  h_1 a^{-1}</mrow>
+							<mrow>k_2 &amp; =  a k_1.</mrow>
+						</md></p>
  
- 
-The subgroup <m>G'</m> of <m>G</m> is called the <term>commutator subgroup</term><index><main>Subgroup</main><sub>commutator</sub></index> of <m>G</m>. We leave the proof of
-this theorem as an exercise. 
- 
- 
-<example xml:id="G1645_subgroups">
-<p>
-We will now show that every group of order $5 \cdot 7 \cdot 47 =
-1645$ is abelian, and cyclic by Corollary<nbsp /><xref ref="RelativelyPrime" />. By the Third Sylow
-Theorem, <m>G</m> has only one subgroup <m>H_1</m> of order <m>47</m>.  So <m>G/H_1</m>
-has order 35 and must be abelian by Theorem<nbsp /><xref ref="sylow:pq_cyclic_theorem" />. Hence, the
-commutator subgroup of <m>G</m> is contained in <m>H</m> which tells us that
-<m>|G'|</m> is either 1 or 47. If <m>|G'|=1</m>, we are done. Suppose that
-<m>|G'|=47</m>. The Third Sylow Theorem tells us that <m>G</m> has only one
-subgroup of order 5 and one subgroup of order 7.  So there exist
-normal subgroups <m>H_2</m>  and <m>H_3</m> in <m>G</m>, where <m>|H_2| = 5</m> and $|H_3|
-= 7<m>. In either case the quotient group is abelian; hence, </m>G'$ must
-be a subgroup of <m>H_i</m>, <m>i= 1, 2</m>. Therefore, the order of <m>G'</m> is 1,
-5, or 7. However, we already have determined that <m>|G'| =1</m> or 47. So
-the commutator subgroup of <m>G</m> is trivial, and consequently <m>G</m> is
-abelian.
-</p>
-</example>
- 
- 
- 
-
-</subsection>
-<subsection number="no">
-<title>Finite Simple Groups</title>
- 
- 
-Given a finite group, one can ask whether or not that group has any
-normal subgroups. Recall that a simple group is one with no proper
-nontrivial normal subgroups. As in the case of <m>A_5</m>, proving a group
-to be simple can be a very difficult task; however, the Sylow Theorems
-are useful tools for proving that a group is not simple. Usually
-some sort of counting argument is involved.
- 
- 
-<example xml:id="G20_not_simple">
-<p>
-Let us show that no group <m>G</m> of order 20 can be simple.  By the Third
-Sylow Theorem, <m>G</m> contains one or more Sylow <m>5</m>-subgroups. The number
-of such subgroups is congruent to <m>1 \pmod{5}</m> and must also divide
-20.  The only possible such number is 1.  Since there is only a
-single Sylow 5-subgroup and all Sylow 5-subgroups are conjugate, this
-subgroup must be normal. 
-</p>
-</example>
- 
- 
- 
-<example xml:id="G_pn">
-<p>
-Let <m>G</m> be a finite group of order <m>p^n</m>, <m>n \gt 1</m> and <m>p</m> prime.  By 
-Theorem<nbsp /><xref ref="pn_theorem" />, <m>G</m> has a nontrivial center. Since the center of any
-group <m>G</m> is a normal subgroup, <m>G</m> cannot be a simple group.
-Therefore, groups of orders 4, 8, 9, 16, 25, 27, 32, 49, 64, and 81
-are not simple.  In fact, the groups of order 4, 9, 25, and 49 are 
-abelian by Corollary<nbsp /><xref ref="actions:p2abelian" />.
-</p>
-</example>
- 
- 
- 
-<example xml:id="G56">
-<p>
-No group of order <m>56= 2^3 \cdot 7</m> is simple.  We have seen that if
-we can show that there is only one Sylow <m>p</m>-subgroup for some prime
-<m>p</m> dividing 56, then this must be a normal subgroup and we are done.
-By the Third Sylow Theorem, there are either one or eight Sylow
-7-subgroups.  If there is only a single Sylow 7-subgroup, then it must
-be normal.  
- 
- 
-On the other hand, suppose that there are eight Sylow 7-subgroups.
-Then each of these subgroups must be cyclic; hence, the intersection
-of any two of these subgroups contains only the identity of the group.
-This leaves <m>8 \cdot 6 = 48</m> distinct elements in the group, each of
-order 7. Now let us count Sylow 2-subgroups. There are either one or
-seven Sylow 2-subgroups.  Any element of a Sylow 2-subgroup other than
-the identity must have as its order a  power of 2; and therefore
-cannot be
-one of the 48 elements of order 7 in the Sylow 7-subgroups. Since a
-Sylow 2-subgroup has order 8, there is only enough room for a single
-Sylow 2-subgroup in a group of order 56.  If there is only one Sylow
-2-subgroup, it must be normal. 
-</p>
-</example>
- 
- 
-
- 
- 
-For other groups <m>G</m> it is more difficult to prove that <m>G</m> is not
-simple. Suppose <m>G</m> has order 48. In this case the technique that we
-employed in the last example will not work.  We need the following
-lemma to prove that no group of order 48 is simple.  
- 
- 
-<lemma xml:id="sylow:hk_subgroup_lemma">
-<statement>
-<p>
-Let <m>H</m> and <m>K</m> be finite subgroups of a group <m>G</m>. Then
-<me>
-|HK| = \frac{|H| \cdot |K|}{|H \cap K|}.
-</me>
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</lemma>
- 
- 
-<proof><p>
-Recall that
-<me>
-HK = \{ hk : h \in H, k \in K \}.
-</me>
-Certainly, <m>|HK| \leq |H| \cdot |K|</m> since some element in <m>HK</m>
-could be written as the product of different elements in <m>H</m> and <m>K</m>.
-It is quite possible that <m>h_1 k_1 = h_2 k_2</m> for <m>h_1, h_2 \in H</m> and
-<m>k_1, k_2 \in K</m>.  If this is the case, let
-<me>
-a = (h_1)^{-1} h_2 = k_1 (k_2)^{-1}.
-</me>
-Notice that <m>a \in H \cap K</m>, since <m>(h_1)^{-1} h_2</m> is in <m>H</m> and
-<m>k_2 (k_1)^{-1}</m> is in <m>K</m>; consequently, 
-<md><mrow>
-h_2 &amp; =  h_1 a^{-1}</mrow><mrow>
-k_2 &amp; =  a k_1.
-</mrow></md>
- 
- 
-Conversely, let <m>h = h_1 b^{-1}</m> and <m>k = b k_1</m> for $b \in  H
-\cap K<m>. Then </m>h k = h_1 k_1<m>, where </m>h \in H<m> and </m>k \in K$. Hence,
-any element <m>hk \in HK</m> can be written in the form <m>h_i k_i</m> for $h_i
-\in H<m> and </m>k_i \in K<m>, as many times as there are elements in </m>H
-\cap K<m>; that is, </m>|H \cap K|<m> times. Therefore, </m>|HK| = (|H| \cdot
-|K|)/|H \cap K|$. 
-
-</p></proof>
- 
- 
- 
-<example xml:id="G48">
-<p>
-To demonstrate that a group <m>G</m> of order 48 is not simple, we will
-show that <m>G</m> contains either a normal subgroup of order 8 or a normal
-subgroup of order 16.  By the Third Sylow Theorem, <m>G</m> has either one
-or three Sylow 2-subgroups of order 16.  If there is only one
-subgroup, then it must be a normal subgroup. 
+					<p>Conversely, let <m>h = h_1 b^{-1}</m> and <m>k = b k_1</m> for <m>b \in  H \cap K</m>. Then <m>h k = h_1 k_1</m>, where <m>h \in H</m> and <m>k \in K</m>. Hence, any element <m>hk \in HK</m> can be written in the form <m>h_i k_i</m> for <m>h_i \in H</m> and <m>k_i \in K</m>, as many times as there are elements in <m>H \cap K</m>; that is, <m>|H \cap K|</m> times. Therefore, <m>|HK| = (|H| \cdot |K|)/|H \cap K|</m>.</p>
+				</proof>
+			</lemma>
+  
+			<example xml:id="example-group-48">
+				<p>To demonstrate that a group <m>G</m> of order 48 is not simple, we will show that <m>G</m> contains either a normal subgroup of order 8 or a normal subgroup of order 16.  By the Third Sylow Theorem, <m>G</m> has either one or three Sylow 2-subgroups of order 16.  If there is only one subgroup, then it must be a normal subgroup.</p>
 
 <!-- %TWJ 11/30/2011 - Reference to the Lemma fixed.  Suggested by L. Franklin. -->
 
- 
- 
-Suppose that the other case is true, and two of the three Sylow
-2-subgroups are <m>H</m> and <m>K</m>. We claim that  <m>|H \cap K| = 8</m>.  If $|H
-\cap K| \leq 4$, then by Lemma<nbsp /><xref ref="sylow:hk_subgroup_lemma" />, 
-<me>
-|HK| = \frac{16 \cdot 16}{4} =64,
-</me>
-which is impossible.  
-Notice that <m>H \cap K</m> has index two in both of <m>H</m> and <m>K</m>, so is normal in both, and thus <m>H</m> and <m>K</m> are each in the normalizer of  <m>H \cap K</m>.  Because <m>H</m> is a subgroup of <m>N(H \cap K)</m> and because <m>N(H \cap K)</m> has strictly more than 16 elements, <m>|N(H \cap K)|</m> must be a multiple of 16 greater than
-1, as well as dividing 48.   The only possibility is that <m>|N(H \cap K)|= 48</m>.
-Hence, <m>N(H \cap K) = G</m>.
+				<p>Suppose that the other case is true, and two of the three Sylow 2-subgroups are <m>H</m> and <m>K</m>. We claim that  <m>|H \cap K| = 8</m>.  If <m>|H \cap K| \leq 4</m>, then by Lemma<nbsp /><xref ref="lemma-hk-subgroup" />, 
+					<me>|HK| = \frac{16 \cdot 16}{4} =64,</me>
+				which is impossible. Notice that <m>H \cap K</m> has index two in both of <m>H</m> and <m>K</m>, so is normal in both, and thus <m>H</m> and <m>K</m> are each in the normalizer of  <m>H \cap K</m>.  Because <m>H</m> is a subgroup of <m>N(H \cap K)</m> and because <m>N(H \cap K)</m> has strictly more than 16 elements, <m>|N(H \cap K)|</m> must be a multiple of 16 greater than 1, as well as dividing 48.   The only possibility is that <m>|N(H \cap K)|= 48</m>. Hence, <m>N(H \cap K) = G</m>.</p>
 
 <!-- Proof revised.  Suggested by R. Beezer and C. Wall. -->
 <!-- TWJ - 12/19/2011 -->
 
+			</example>
 
-</p>
-</example>
+			<p>The following famous conjecture of Burnside was proved in a long and difficult paper by Feit and Thompson [2]. </p> 
+ 
+ 			<theorem>
+ 				<title>Odd Order Theorem</title>
+ 				<index><main>Odd Order Theorem</main></index>
+				<statement>
+					<p>Every finite simple group of nonprime order must be of even order.</p>
+				</statement>
+			</theorem>
+ 
+			<p>The proof of this theorem laid the groundwork for a program in the  1960s and 1970s that classified all finite simple groups. The success of this program is one of the outstanding achievements of modern mathematics.</p>
+ 
+		</subsection>
+	</section>
 
- 
- 
+	<exercises>
+		<title>A Project</title>
 
- 
- 
-The following famous conjecture of Burnside was proved in a long and
-difficult paper by Feit and Thompson [2].   
- 
- 
-<theorem>
-<statement>
-<p> 
-\textbf{(Odd Order Theorem) }<index><main>Odd Order Theorem</main></index>
-Every finite simple group of nonprime order must be of even order. 
-</p>
-FIXME-MOVE-IN-PROOF</statement>
-</theorem>
- 
- 
-The proof of this theorem laid the groundwork for a program in the 
-1960s and 1970s that classified all finite simple groups.
-The success of this program is one of the outstanding achievements of
-modern mathematics. 
- 
- 
- 
-\markright{EXERCISES}
-\section*{Exercises}
-\exrule
- 
- 
-{\small
-\begin{enumerate}
+		<p>The main objective of finite group theory is to classify all possible finite groups up to isomorphism.  This problem is very difficult even if we try to classify the groups of order less than or equal to 60. However, we can break the problem down into several intermediate problems.  This is a challenging project that requires a working knowledge of the group theory you have learned up to this point. Even if you do not complete it, it will teach you a great deal about finite groups. You can use Table<nbsp /><xref ref="table-sylow-project" /> as a guide.</p>
 
-</li><li>
-What are the orders of all Sylow <m>p</m>-subgroups where <m>G</m> has order 18, 24, 54, 72, and 80? 
- 
-</li><li>
-Find all the Sylow 3-subgroups of <m>S_4</m> and show that they are all conjugate. 
- 
-</li><li>
-Show that every group of order 45 has a normal subgroup of order 9.
- 
-</li><li>
-Let <m>H</m> be a Sylow <m>p</m>-subgroup of <m>G</m>.  Prove that <m>H</m> is the only Sylow <m>p</m>-subgroup of <m>G</m> contained in <m>N(H)</m>. 
- 
-</li><li>
-Prove that no group of order 96 is simple.
+		<table xml:id="table-sylow-project">
+   			<tgroup cols="8" align="center">
+       			<thead>
+           			<row><entry>Order</entry><entry>Number</entry><entry>Order</entry><entry>Number</entry><entry>Order</entry><entry>Number</entry><entry>Order</entry><entry>Number</entry></row>
+       			</thead>
+       			<tbody>
+       				<row><entry>1</entry><entry>?</entry><entry>16</entry><entry>14</entry><entry>31</entry><entry>1</entry><entry>46</entry><entry>2</entry></row>
+					<row><entry>2</entry><entry>?</entry><entry>17</entry><entry>1</entry><entry>32</entry><entry>51</entry><entry>47</entry><entry>1</entry></row>
+					<row><entry>3</entry><entry>?</entry><entry>18</entry><entry>?</entry><entry>33</entry><entry>1</entry><entry>48</entry><entry>52</entry></row>
+					<row><entry>4</entry><entry>?</entry><entry>19</entry><entry>?</entry><entry>34</entry><entry>?</entry><entry>49</entry><entry>?</entry></row>
+					<row><entry>5</entry><entry>?</entry><entry>20</entry><entry>5</entry><entry>35</entry><entry>1</entry><entry>50</entry><entry>5</entry></row>
+					<row><entry>6</entry><entry>?</entry><entry>21</entry><entry>?</entry><entry>36</entry><entry>14</entry><entry>51</entry><entry>? </entry></row>
+					<row><entry>7</entry><entry>?</entry><entry>22</entry><entry>2</entry><entry>37</entry><entry>1</entry><entry>52</entry><entry>?</entry></row>
+					<row><entry>8</entry><entry>?</entry><entry>23</entry><entry>1</entry><entry>38</entry><entry>?</entry><entry>53</entry><entry>?</entry></row>
+					<row><entry>9</entry><entry>?</entry><entry>24</entry><entry>?</entry><entry>39</entry><entry>2</entry><entry>54</entry><entry>15</entry></row>
+					<row><entry>10</entry><entry>?</entry><entry>25</entry><entry>2</entry><entry>40</entry><entry>14</entry><entry>55</entry><entry>2</entry></row>
+					<row><entry>11</entry><entry>?</entry><entry>26</entry><entry>2</entry><entry>41</entry><entry>1</entry><entry>56</entry><entry>?</entry></row>
+					<row><entry>12</entry><entry>5</entry><entry>27</entry><entry>5</entry><entry>42</entry><entry>?</entry><entry>57</entry><entry>2</entry></row>
+					<row><entry>13</entry><entry>?</entry><entry>28</entry><entry>?</entry><entry>43</entry><entry>1</entry><entry>58</entry><entry>?</entry></row>
+					<row><entry>14</entry><entry>?</entry><entry>29</entry><entry>1</entry><entry>44</entry><entry>4</entry><entry>59</entry><entry>1 </entry></row>
+					<row><entry>15</entry><entry>1</entry><entry>30</entry><entry>4</entry><entry>45</entry><entry>?</entry><entry>60</entry><entry>13</entry></row>
+       			</tbody>
+       		</tgroup>
+       		<caption>Numbers of distinct groups <m>G</m>, <m>|G| \leq 60</m> </caption>
+       	</table>
 
-</li><li>
-Prove that no group of order 160 is simple.
+		<exercise>
+			<statement>
+				<p>Find all simple groups <m>G</m> ( <m>|G| \leq 60</m>). <em>Do not use the Odd Order Theorem unless you are prepared to prove it.</em></p>
+			</statement>
+		</exercise>
 
-</li><li>
-If <m>H</m> is a normal subgroup of a finite group <m>G</m> and <m>|H| = p^k</m> for some prime <m>p</m>, show that <m>H</m> is contained in every Sylow <m>p</m>-subgroup of <m>G</m>. 
+		<exercise>
+			<statement>
+				<p>Find the number of distinct groups <m>G</m>, where the order of <m>G</m> is <m>n</m> for <m>n = 1, \ldots, 60</m>.</p>
+			</statement>
+		</exercise>
 
-</li><li>
-Let <m>G</m> be a group of order <m>p^2 q^2</m>, where <m>p</m> and <m>q</m> are distinct primes such that <m>q \notdivide p^2 - 1</m> and <m>p \notdivide q^2 - 1</m>. Prove that <m>G</m> must be abelian.  List three pairs of primes satisfying these  conditions. 
+		<exercise>
+			<statement>
+				<p>Find the  actual groups (up to isomorphism) for each <m>n</m></p>
+			</statement>
+		</exercise>
 
-</li><li>
-Show directly that a group of order 33 has only one Sylow 3-subgroup. 
+	</exercises>
+ 
+	<references>  <!-- %TWJ 8/13/2010 - References checked and updated -->
+		<title>References and Suggested Readings</title>
 
-</li><li>
-Let <m>H</m> be a subgroup of a group <m>G</m>.  Prove or disprove that the normalizer of <m>H</m> is normal in <m>G</m>. 
+		<biblio type="raw"> <!-- was [1] -->
+		Edwards, H. <q>A Short History of the Fields Medal,</q> <title>Mathematical Intelligencer</title> <volume>1</volume>(1978), 127<ndash />29.</biblio>
  
+		<biblio type="raw"> <!-- was [2] -->
+		Feit, W. and Thompson, J. G. <q>Solvability of Groups of Odd Order,</q> <title>Pacific Journal of Mathematics</title> <volume>13</volume>(1963), 775<ndash />1029.</biblio>
  
-</li><li>
-Let <m>G</m> be a finite group divisible by a prime <m>p</m>.  Prove that if there is only one Sylow <m>p</m>-subgroup in <m>G</m>, it must be a normal subgroup of <m>G</m>. 
+		<biblio type="raw"> <!-- was [3] -->
+		Gallian, J. A. <q>The Search for Finite Simple Groups,</q> <title>Mathematics Magazine</title> <volume>49</volume>(1976), 163<ndash />79.</biblio>
  
-</li><li>
-Let <m>G</m> be a group of order <m>p^r</m>, <m>p</m> prime. Prove that <m>G</m> contains
-a normal subgroup of order <m>p^{r-1}</m>. 
+		<biblio type="raw"> <!-- was [4] -->
+		Gorenstein, D. <q>Classifying the Finite Simple Groups,</q> <title>Bulletin of the American Mathematical Society</title> <volume>14</volume>(1986), 1<ndash />98.</biblio>
  
-</li><li>
-Suppose that <m>G</m> is a finite group of order <m>p^n k</m>, where <m>k \lt p</m>.
-Show that <m>G</m> must contain a normal subgroup.  
- 
-</li><li>
-Let <m>H</m> be a subgroup of a finite group <m>G</m>. Prove that $g N(H) g^{-1}
-= N(gHg^{-1})<m> for any </m>g \in G$. 
+		<biblio type="raw"> <!-- was [5] -->
+		Gorenstein, D. <title>Finite Groups</title>. AMS Chelsea Publishing, Providence RI, 1968.</biblio>
 
-</li><li>
-Prove that a group of order 108 must have a normal subgroup.
-
-</li><li>
-Classify all the groups of order 175 up to isomorphism.
-
-</li><li>
-Show that every group of order <m>255</m> is cyclic.
-
-</li><li>
-Let <m>G</m> have order <m>p_1^{e_1} \cdots p_n^{e_n}</m> and suppose that <m>G</m>
-has <m>n</m> Sylow \mbox{<m>p</m>-subgroups} <m>P_1, \ldots, P_n</m> where 
-<m>|P_i| = p_i^{e_i}</m>.  Prove that <m>G</m> is isomorphic to 
-<m>P_1~\times~\cdots~\times~P_n</m>. 
+		<biblio type="raw"> <!-- was [6] -->
+		Gorenstein, D., Lyons, R., and Solomon, R. <title>The Classification of Finite Simple Groups</title>. American Mathematical Society, Providence RI, 1994.</biblio>
  
-</li><li>
-Let <m>P</m> be a normal Sylow <m>p</m>-subgroup of <m>G</m>.  Prove that every inner
-automorphism of <m>G</m> fixes <m>P</m>.  
- 
- 
-</li><li>
-What is the smallest possible order of a group <m>G</m> such that <m>G</m> is
-nonabelian and <m>|G|</m> is odd?  Can you find such a group?
- 
- 
-</li><li>
-\textbf{The Frattini Lemma.}  
-If <m>H</m> is a normal subgroup of a finite group <m>G</m> and <m>P</m> is a Sylow
-<m>p</m>-subgroup of <m>H</m>, for each <m>g \in G</m> show that there is an <m>h</m> in
-<m>H</m> such that <m>gPg^{-1} = hPh^{-1}</m>.  Also, show that if <m>N</m> is the
-normalizer of <m>P</m>, then <m>G= HN</m>. 
- 
- 
-</li><li>
-Show that if the order of <m>G</m> is <m>p^nq</m>, where <m>p</m> and <m>q</m> are primes
-and <m>p \gt q</m>, then <m>G</m> contains a normal subgroup. 
- 
- 
-</li><li>
-Prove that the number of distinct conjugates of a subgroup <m>H</m> of a 
-finite group <m>G</m> is <m>[G : N(H) ]</m>. 
- 
- 
-</li><li>
-Prove that a Sylow 2-subgroup of <m>S_5</m> is isomorphic to <m>D_4</m>.
- 
- 
-</li><li>
-\textbf{Another Proof of the Sylow Theorems.}
-\begin{enumerate}
- 
-</li><li>
-Suppose <m>p</m> is prime and <m>p</m> does not divide <m>m</m>.  Show that
-<me>
-p \notdivide
-\binom{p^k m}{p^k}.
-</me>
- 
-</li><li>
-Let <m>{\mathcal S}</m> denote the set of all <m>p^k</m> element subsets of <m>G</m>.
-Show that <m>p</m> does not divide <m>|{\mathcal S}|</m>. 
- 
-</li><li>
-Define an action of <m>G</m> on <m>{\mathcal S}</m> by left multiplication, $aT = \{
-at : t \in T \}<m> for </m>a \in G<m> and </m>T \in {\mathcal S}$.  Prove that this
-is a group action. 
- 
-</li><li>
-Prove <m>p \notdivide | {\mathcal O}_T|</m> for some <m>T \in {\mathcal S}</m>.
- 
-</li><li>
-Let <m>\{ T_1, \ldots, T_u \}</m> be an orbit such that <m>p \notdivide u</m> and
-<m>H = \{ g \in G : gT_1 = T_1 \}</m>.  Prove that <m>H</m> is a subgroup of <m>G</m> 
-and show that <m>|G| = u |H|</m>. 
- 
-</li><li>
-Show that <m>p^k</m> divides <m>|H|</m> and <m>p^k \leq |H|</m>.
- 
-</li><li>
-Show that <m>|H| = |G|/|{\mathcal O}_T| \leq p^k</m>; conclude that therefore 
-<m>p^k = |H|</m>. 
-
-<!-- Typo in part (g) corrected.  Suggested by B. Balof.  TWJ 16/8/2013 -->
- 
-\end{enumerate}
- 
- 
-</li><li>
-Let  <m>G</m> be a group.  Prove that $G' = \langle a b a^{-1} b^{-1} : 
-a, b \in G \rangle<m> is a normal subgroup of </m>G<m> and </m>G/G'$ is abelian.
-Find an example to show that $\{ a b a^{-1} b^{-1} : 
-a, b \in G \}$ is not necessarily a group.
- 
- 
-\end{enumerate}
-}
- 
- 
- 
-
-</subsection>
-<subsection number="no">
-<title>A Project</title>
- 
- 
-\begin{table}[htb]
-{\small
-
-\begin{tabular}{|cc|cc|cc|cc|}
-\hline
-Order &amp; Number &amp; Order &amp; Number &amp; Order &amp; Number &amp; Order &amp;
-Number \\
-\hline
-1  &amp; ?  &amp; 16 &amp; 14 &amp; 31 &amp; 1  &amp; 46 &amp; 2  \\
-2  &amp; ?  &amp; 17 &amp; 1  &amp; 32 &amp; 51 &amp; 47 &amp; 1  \\
-3  &amp; ?  &amp; 18 &amp; ?  &amp; 33 &amp; 1  &amp; 48 &amp; 52 \\
-4  &amp; ?  &amp; 19 &amp; ?  &amp; 34 &amp; ?  &amp; 49 &amp; ?  \\
-5  &amp; ?  &amp; 20 &amp; 5  &amp; 35 &amp; 1  &amp; 50 &amp; 5  \\
-6  &amp; ?  &amp; 21 &amp; ?  &amp; 36 &amp; 14 &amp; 51 &amp; ?  \\
-7  &amp; ?  &amp; 22 &amp; 2  &amp; 37 &amp; 1  &amp; 52 &amp; ?  \\
-8  &amp; ?  &amp; 23 &amp; 1  &amp; 38 &amp; ?  &amp; 53 &amp; ?  \\
-9  &amp; ?  &amp; 24 &amp; ?  &amp; 39 &amp; 2  &amp; 54 &amp; 15 \\
-10 &amp; ?  &amp; 25 &amp; 2  &amp; 40 &amp; 14 &amp; 55 &amp; 2  \\
-11 &amp; ?  &amp; 26 &amp; 2  &amp; 41 &amp; 1  &amp; 56 &amp; ?  \\
-12 &amp; 5  &amp; 27 &amp; 5  &amp; 42 &amp; ?  &amp; 57 &amp; 2  \\
-13 &amp; ?  &amp; 28 &amp; ?  &amp; 43 &amp; 1  &amp; 58 &amp; ?  \\
-14 &amp; ?  &amp; 29 &amp; 1  &amp; 44 &amp; 4  &amp; 59 &amp; 1  \\
-15 &amp; 1  &amp; 30 &amp; 4  &amp; 45 &amp; *  &amp; 60 &amp; 13 \\
-\hline
-\end{tabular}
-<caption>Numbers of distinct groups <m>G</m>, <m>|G| \leq 60</m> </caption>
-}\label{sylow:project}
-\end{table}
- 
- 
-{\small
- 
-\noindent 
-The main objective of finite group theory is to classify all possible
-finite groups up to isomorphism.  This problem is very difficult even
-if we try to classify the groups of order less than or equal to 60.
-However, we can break the problem down into several intermediate
-problems. 
-\begin{enumerate}
- 
-</li><li>
-Find all simple groups <m>G</m> ( <m>|G| \leq 60</m>). \emph{Do not use the Odd
-Order Theorem unless you are prepared to prove it.}
- 
-</li><li>
-Find the number of distinct groups <m>G</m>, where the order of <m>G</m> is <m>n</m>
-for <m>n = 1, \ldots, 60</m>. 
- 
-</li><li>
-Find the  actual groups (up to isomorphism) for each <m>n</m>.
- 
-\end{enumerate}
-This is a challenging project that requires a working knowledge of the
-group theory you have learned up to this point. Even if you do
-not complete it, it will teach you a great deal about finite groups. You
-can use Table<nbsp /><xref ref="sylow:project" /> as a guide. 
-}
- 
- 
- 
-<references>
-<title>References and Suggested Readings</title>
-FIXME: move references in here, reorder one wrapping biblio
-FIXME: move editing comments upward
-</references>  <!-- %TWJ 8/13/2010 - References checked and updated -->
- 
- 
-{\small
-<ul>
- 
-</biblio>
-<biblio type="raw"> <!-- was [1] -->
-
-Edwards, H. <q>A Short History of the Fields Medal,</q> {\it
-Mathematical Intelligencer} \textbf{1} (1978), 127<ndash />29.
- 
-</biblio>
-<biblio type="raw"> <!-- was [2] -->
-
-Feit, W. and Thompson, J. G. <q>Solvability of Groups of Odd
-Order,</q> <title>Pacific Journal of Mathematics</title> \textbf{
-13} (1963), 775<ndash />1029.
- 
-</biblio>
-<biblio type="raw"> <!-- was [3] -->
-
-Gallian, J. A. <q>The Search for Finite Simple Groups,</q>
-<title>Mathematics Magazine</title> \textbf{49}(1976), 163<ndash />79.
- 
-</biblio>
-<biblio type="raw"> <!-- was [4] -->
-
-Gorenstein, D. <q>Classifying the Finite Simple Groups,</q>
-<title>Bulletin of the American Mathematical Society</title> \textbf{
-14} (1986), 1<ndash />98.
- 
-</biblio>
-<biblio type="raw"> <!-- was [5] -->
-
-Gorenstein, D. <title>Finite Groups</title>. AMS Chelsea Publishing, Providence RI, 1968.
-
-</biblio>
-<biblio type="raw"> <!-- was [6] -->
-
-Gorenstein, D., Lyons, R., and Solomon, R. \textit{The Classification of Finite Simple
-Groups}.
-American Mathematical Society, Providence RI, 1994.
- 
-</ul>
-}
+	</references>
  
 <xi:include href="./exercises/FIXME:SECTIONHERE.xml" />
 <xi:include href="./sage/FIXME:SECTIONHERE-sage.xml" />
