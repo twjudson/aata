@@ -18,30 +18,30 @@
 	<section xml:id="section-math-induction">
 		<title>Mathematical Induction</title>
 
-			<p>Suppose we wish to show that
-				<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
-			for any natural number <m>n</m>. This formula is easily  verified for small numbers such as <m>n = 1</m>, 2, 3, or 4, but it is impossible to verify for all natural numbers on a case-by-case basis.  To prove the formula true in general, a more generic method is required.</p>
+		<p>Suppose we wish to show that
+			<me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
+		for any natural number <m>n</m>. This formula is easily  verified for small numbers such as <m>n = 1</m>, 2, 3, or 4, but it is impossible to verify for all natural numbers on a case-by-case basis.  To prove the formula true in general, a more generic method is required.</p>
 
-			<p>Suppose we have verified the equation for the first <m>n</m> cases.  We will attempt to show that we can generate the formula for the <m>(n + 1)</m>th case from this knowledge.  The formula is true for <m>n = 1</m> since 
-				<me>1 = \frac{1(1 + 1)}{2}.</me>
-			If we have verified the first <m>n</m> cases, then
-				<md>
-					<mrow>1 + 2 + \cdots + n + (n + 1) &amp; = \frac{n(n + 1)}{2} + n + 1</mrow>
-					<mrow>&amp; = \frac{n^2 + 3n + 2}{2}</mrow>
-					<mrow>&amp; = \frac{(n + 1)[(n + 1) + 1]}{2}.</mrow>
-				</md>
-			This is exactly the formula for the <m>(n + 1)</m>th case.</p>
-			 
-			<p>This method of proof is known as <term>mathematical induction</term>.  Instead of attempting to verify a statement about some subset <m>S</m> of the positive integers <m>{\mathbb N}</m> on a case-by-case basis, an impossible task if <m>S</m> is an infinite set, we give a specific proof for the smallest integer being considered, followed by a generic argument showing that if the statement holds for a given case, then it must also hold for the next  case in the sequence.  We summarize mathematical induction in the following axiom. </p>
+		<p>Suppose we have verified the equation for the first <m>n</m> cases.  We will attempt to show that we can generate the formula for the <m>(n + 1)</m>th case from this knowledge.  The formula is true for <m>n = 1</m> since 
+			<me>1 = \frac{1(1 + 1)}{2}.</me>
+		If we have verified the first <m>n</m> cases, then
+			<md>
+				<mrow>1 + 2 + \cdots + n + (n + 1) &amp; = \frac{n(n + 1)}{2} + n + 1</mrow>
+				<mrow>&amp; = \frac{n^2 + 3n + 2}{2}</mrow>
+				<mrow>&amp; = \frac{(n + 1)[(n + 1) + 1]}{2}.</mrow>
+			</md>
+		This is exactly the formula for the <m>(n + 1)</m>th case.</p>
+		 
+		<p>This method of proof is known as <term>mathematical induction</term>.  Instead of attempting to verify a statement about some subset <m>S</m> of the positive integers <m>{\mathbb N}</m> on a case-by-case basis, an impossible task if <m>S</m> is an infinite set, we give a specific proof for the smallest integer being considered, followed by a generic argument showing that if the statement holds for a given case, then it must also hold for the next  case in the sequence.  We summarize mathematical induction in the following axiom. </p>
 
-	<axiom number="no">
-		<title>First Principle of Mathematical Induction</title>
-		<index><main>Induction</main><sub>first principle of</sub></index>
-		<statement>
-			<p>Let <m>S(n)</m> be a statement about integers for  <m>n \in {\mathbb N}</m> and suppose <m>S(n_0)</m> is true for some integer <m>n_0</m>.  If for all integers <m>k</m> with <m>k \geq n_0</m> <m>S(k)</m> implies that <m>S(k+1)</m> is true, then <m>S(n)</m> is true for all integers <m>n</m> greater than or equal to <m>n_0</m>.</p>
-		</statement>
-	</axiom>		
-			
+		<axiom number="no">
+			<title>First Principle of Mathematical Induction</title>
+			<index><main>Induction</main><sub>first principle of</sub></index>
+			<statement>
+				<p>Let <m>S(n)</m> be a statement about integers for  <m>n \in {\mathbb N}</m> and suppose <m>S(n_0)</m> is true for some integer <m>n_0</m>.  If for all integers <m>k</m> with <m>k \geq n_0</m> <m>S(k)</m> implies that <m>S(k+1)</m> is true, then <m>S(n)</m> is true for all integers <m>n</m> greater than or equal to <m>n_0</m>.</p>
+			</statement>
+		</axiom>		
+				
 <!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
 
 		<example xml:id="example-induction-greater-than">
@@ -113,7 +113,7 @@
 		<p>The Principle of Well-Ordering is equivalent to the Principle of Mathematical Induction.</p> 
  
 
-		<lemma xml:id="integers-smallest-number-lemma">
+		<lemma xml:id="lemma-integers-smallest-number">
 			<statement>
 				<p>The Principle of Mathematical Induction implies that <m>1</m> is the least positive natural number.</p>
 			</statement>
@@ -125,12 +125,12 @@
 <!--  Theorem reworded for clarity.  TWJ 12/17/2011 -->
 <!--  Suggested by K. Halasz and R. Beezer. -->
 
-		<theorem xml:id="integers-PMI-implies-PWO">
+		<theorem xml:id="theorem-integers-pmi-implies-pwo">
 			<statement>
 				<p>The Principle of Mathematical Induction implies the Principle of Well-Ordering.  That is, every nonempty subset of <m>\mathbb N</m> contains a least element.</p>
 			</statement>
 			<proof>
-				<p>We must show that if <m>S</m> is a nonempty subset of the natural numbers, then <m>S</m> contains a least element.  If <m>S</m> contains 1, then the theorem is true by Lemma<nbsp /><xref ref="integers-smallest-number-lemma" />.  Assume that if <m>S</m> contains an integer <m>k</m> such that <m>1 \leq k \leq n</m>, then <m>S</m> contains a least element.  We will show that if a set <m>S</m> contains an integer less than or equal to <m>n + 1</m>, then <m>S</m> has a least element.  If <m>S</m> does not contain an integer less than <m>n+1</m>, then <m>n+1</m> is the smallest integer in <m>S</m>.  Otherwise, since <m>S</m> is nonempty, <m>S</m> must contain an integer less than or equal to <m>n</m>. In this case, by induction, <m>S</m> contains a least element.</p>
+				<p>We must show that if <m>S</m> is a nonempty subset of the natural numbers, then <m>S</m> contains a least element.  If <m>S</m> contains 1, then the theorem is true by Lemma<nbsp /><xref ref="lemma-integers-smallest-number" />.  Assume that if <m>S</m> contains an integer <m>k</m> such that <m>1 \leq k \leq n</m>, then <m>S</m> contains a least element.  We will show that if a set <m>S</m> contains an integer less than or equal to <m>n + 1</m>, then <m>S</m> has a least element.  If <m>S</m> does not contain an integer less than <m>n+1</m>, then <m>n+1</m> is the smallest integer in <m>S</m>.  Otherwise, since <m>S</m> is nonempty, <m>S</m> must contain an integer less than or equal to <m>n</m>. In this case, by induction, <m>S</m> contains a least element.</p>
 			</proof>
 		</theorem>
 
@@ -151,69 +151,72 @@
 	<section xml:id="section-division-algorithm">
 		<title>The Division Algorithm</title>
 
-		<p>An application of the Principle of Well-Ordering that we will use often is the division algorithm.</p> 
+		<introduction>
 
-		<theorem xml:id="integers-division_algorithm">
-			<title>Division Algorithm</title>
-			<index><main>Division algorithm</main><sub>for integers</sub></index>
-			<statement>
-				<p>Let <m>a</m> and <m>b</m> be integers, with <m>b \gt 0</m>.  Then there exist unique integers <m>q</m> and <m>r</m> such that 
-					<me>a = bq + r</me>
-				where <m>0 \leq r \lt b</m>.</p>
-			</statement>
-			<proof>
-				<p>This is a perfect example of the existence-and-uniqueness type of proof.  We must first prove that the numbers <m>q</m> and <m>r</m> actually  exist. Then we must show that if  <m>q'</m> and <m>r'</m> are two other such numbers, then <m>q = q'</m> and <m>r = r'</m>.</p>
- 
-				<p><em>Existence of <m>q</m> and <m>r</m>.</em> Let
-					<me>S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}.</me>
-				If <m>0 \in S</m>, then <m>b</m> divides <m>a</m>, and  we can let <m>q = a/b</m> and <m>r = 0</m>.  If <m>0 \notin S</m>, we can use the Well-Ordering Principle.  We must first show that <m>S</m> is nonempty.  If <m>a \gt 0</m>, then <m>a - b \cdot 0 \in S</m>. If <m>a \lt 0</m>, then <m>a - b(2a) = a(1 - 2b) \in S</m>.  In either case <m>S \neq \emptyset</m>.  By the Well-Ordering Principle, <m>S</m> must have a smallest member, say <m>r = a - bq</m>. Therefore, <m>a = bq + r</m>, <m>r \geq 0</m>. We now show that <m>r \lt b</m>. Suppose that <m>r \gt b</m>. Then   
-					<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
-				In this case we would have <m>a - b(q + 1)</m> in the set <m>S</m>. But then <m>a - b(q + 1) \lt a - bq</m>, which would contradict the fact that <m>r = a - bq</m> is the smallest member  of <m>S</m>. So <m>r \leq b</m>.  Since <m>0 \notin S</m>, <m>r \neq b</m> and so <m>r \lt b</m>.</p>
- 
-				<p><em>Uniqueness of <m>q</m> and <m>r</m>.</em> Suppose there exist integers <m>r</m>, <m>r'</m>, <m>q</m>, and <m>q'</m> such that
-					<me>a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b.</me>
-				Then <m> bq + r =  bq' + r'</m>.  Assume that <m>r' \geq r</m>.  From the last equation we have <m>b(q - q') = r' - r</m>; therefore, <m>b</m> must divide <m>r' - r</m> and <m>0 \leq r'- r \leq r' \lt b</m>.  This is possible only if <m>r' - r = 0</m>.  Hence, <m>r = r'</m> and  <m>q = q'</m>.</p>
-			</proof>
-		</theorem>
+			<p>An application of the Principle of Well-Ordering that we will use often is the division algorithm.</p> 
 
-		<p>Let <m>a</m> and <m>b</m> be integers.  If <m>b = ak</m> for some integer <m>k</m>, we write <m>a \mid b</m><!--NOTATION TABLE\label{divides}-->.  An integer <m>d</m> is called a <term>common divisor</term> of <m>a</m> and <m>b</m> if <m>d \mid a</m> and <m>d \mid b</m>.  The <term>greatest common divisor</term><index><main>Greatest common divisor</main><sub>of two integers</sub></index> of integers <m>a</m> and <m>b</m> is a positive integer <m>d</m> such that <m>d</m> is a common divisor  of <m>a</m> and <m>b</m> and if <m>d'</m> is any other common divisor of <m>a</m> and <m>b</m>, then <m>d' \mid d</m>.  We write <m>d = \gcd(a, b)</m><!--NOTATION TABLE\label{greatestcd}-->; for example, <m>\gcd( 24, 36) = 12</m> and <m>\gcd(120, 102) = 6</m>.  We say that two integers <m>a</m> and <m>b</m> are <term>relatively prime</term> if <m>\gcd( a, b ) = 1</m>.</p>
+			<theorem xml:id="theorem-integers-division_algorithm">
+				<title>Division Algorithm</title>
+				<index><main>Division algorithm</main><sub>for integers</sub></index>
+				<statement>
+					<p>Let <m>a</m> and <m>b</m> be integers, with <m>b \gt 0</m>.  Then there exist unique integers <m>q</m> and <m>r</m> such that 
+						<me>a = bq + r</me>
+					where <m>0 \leq r \lt b</m>.</p>
+				</statement>
+				<proof>
+					<p>This is a perfect example of the existence-and-uniqueness type of proof.  We must first prove that the numbers <m>q</m> and <m>r</m> actually  exist. Then we must show that if  <m>q'</m> and <m>r'</m> are two other such numbers, then <m>q = q'</m> and <m>r = r'</m>.</p>
+	 
+					<p><em>Existence of <m>q</m> and <m>r</m>.</em> Let
+						<me>S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}.</me>
+					If <m>0 \in S</m>, then <m>b</m> divides <m>a</m>, and  we can let <m>q = a/b</m> and <m>r = 0</m>.  If <m>0 \notin S</m>, we can use the Well-Ordering Principle.  We must first show that <m>S</m> is nonempty.  If <m>a \gt 0</m>, then <m>a - b \cdot 0 \in S</m>. If <m>a \lt 0</m>, then <m>a - b(2a) = a(1 - 2b) \in S</m>.  In either case <m>S \neq \emptyset</m>.  By the Well-Ordering Principle, <m>S</m> must have a smallest member, say <m>r = a - bq</m>. Therefore, <m>a = bq + r</m>, <m>r \geq 0</m>. We now show that <m>r \lt b</m>. Suppose that <m>r \gt b</m>. Then   
+						<me>a - b(q + 1)= a - bq - b = r - b \gt 0.</me>
+					In this case we would have <m>a - b(q + 1)</m> in the set <m>S</m>. But then <m>a - b(q + 1) \lt a - bq</m>, which would contradict the fact that <m>r = a - bq</m> is the smallest member  of <m>S</m>. So <m>r \leq b</m>.  Since <m>0 \notin S</m>, <m>r \neq b</m> and so <m>r \lt b</m>.</p>
+	 
+					<p><em>Uniqueness of <m>q</m> and <m>r</m>.</em> Suppose there exist integers <m>r</m>, <m>r'</m>, <m>q</m>, and <m>q'</m> such that
+						<me>a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b.</me>
+					Then <m> bq + r =  bq' + r'</m>.  Assume that <m>r' \geq r</m>.  From the last equation we have <m>b(q - q') = r' - r</m>; therefore, <m>b</m> must divide <m>r' - r</m> and <m>0 \leq r'- r \leq r' \lt b</m>.  This is possible only if <m>r' - r = 0</m>.  Hence, <m>r = r'</m> and  <m>q = q'</m>.</p>
+				</proof>
+			</theorem>
 
-		<theorem xml:id="integers-gcd-theorem">
-			<statement>
-				<p>Let <m>a</m> and <m>b</m> be nonzero integers. Then there exist integers <m>r</m> and <m>s</m> such that
-					<me>\gcd( a, b) = ar + bs.</me>
-				Furthermore, the greatest common divisor of <m>a</m> and <m>b</m> is unique.</p>
-			</statement>
-			<proof>
-				<p>Let
-					<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ and } am + bn \gt 0 \}.</me>
-				Clearly, the set <m>S</m> is nonempty; hence, by the Well-Ordering Principle <m>S</m> must have a smallest member, say <m>d = ar + bs</m>.  We claim that <m>d = \gcd( a, b)</m>.  Write <m>a = dq + r'</m> where <m>0 \leq r' \lt d</m> . If <m>r' \gt 0</m>, then <!-- r changed to r' - TWJ 1/31/2011 -->
-					<md>
-						<mrow>r'&amp; = a - dq</mrow>
-						<mrow>&amp; = a - (ar + bs)q</mrow>
-						<mrow>&amp; = a - arq - bsq</mrow>
-						<mrow>&amp; = a( 1 - rq ) + b( -sq ),</mrow>
-					</md>
-				which is in <m>S</m>.  But this would contradict the fact that <m>d</m> is the smallest member of <m>S</m>.  Hence, <m>r' = 0</m> and <m>d</m> divides <m>a</m>.  A similar argument shows that <m>d</m> divides <m>b</m>.  Therefore, <m>d</m> is a common divisor of <m>a</m> and <m>b</m>.</p>
+			<p>Let <m>a</m> and <m>b</m> be integers.  If <m>b = ak</m> for some integer <m>k</m>, we write <m>a \mid b</m><!--NOTATION TABLE\label{divides}-->.  An integer <m>d</m> is called a <term>common divisor</term> of <m>a</m> and <m>b</m> if <m>d \mid a</m> and <m>d \mid b</m>.  The <term>greatest common divisor</term><index><main>Greatest common divisor</main><sub>of two integers</sub></index> of integers <m>a</m> and <m>b</m> is a positive integer <m>d</m> such that <m>d</m> is a common divisor  of <m>a</m> and <m>b</m> and if <m>d'</m> is any other common divisor of <m>a</m> and <m>b</m>, then <m>d' \mid d</m>.  We write <m>d = \gcd(a, b)</m><!--NOTATION TABLE\label{greatestcd}-->; for example, <m>\gcd( 24, 36) = 12</m> and <m>\gcd(120, 102) = 6</m>.  We say that two integers <m>a</m> and <m>b</m> are <term>relatively prime</term> if <m>\gcd( a, b ) = 1</m>.</p>
 
-				<p>Suppose that <m>d'</m> is another common divisor of <m>a</m> and <m>b</m>, and we want to show that <m>d' \mid d</m>. If we let <m>a = d'h</m> and <m>b = d'k</m>, then
-					<me>d = ar + bs = d'hr + d'ks = d'(hr + ks).</me>
-				So <m>d'</m> must divide <m>d</m>. Hence, <m>d</m> must be the unique greatest common divisor of <m>a</m> and <m>b</m>.</p>
-			</proof>
-			<!-- Notation error in proof fixed (pointed out by Rocco Rossi) - TWJ 9/13/2010 -->
-		</theorem>
+			<theorem xml:id="theorem-integers-gcd">
+				<statement>
+					<p>Let <m>a</m> and <m>b</m> be nonzero integers. Then there exist integers <m>r</m> and <m>s</m> such that
+						<me>\gcd( a, b) = ar + bs.</me>
+					Furthermore, the greatest common divisor of <m>a</m> and <m>b</m> is unique.</p>
+				</statement>
+				<proof>
+					<p>Let
+						<me>S = \{ am + bn : m, n \in {\mathbb Z} \text{ and } am + bn \gt 0 \}.</me>
+					Clearly, the set <m>S</m> is nonempty; hence, by the Well-Ordering Principle <m>S</m> must have a smallest member, say <m>d = ar + bs</m>.  We claim that <m>d = \gcd( a, b)</m>.  Write <m>a = dq + r'</m> where <m>0 \leq r' \lt d</m> . If <m>r' \gt 0</m>, then <!-- r changed to r' - TWJ 1/31/2011 -->
+						<md>
+							<mrow>r'&amp; = a - dq</mrow>
+							<mrow>&amp; = a - (ar + bs)q</mrow>
+							<mrow>&amp; = a - arq - bsq</mrow>
+							<mrow>&amp; = a( 1 - rq ) + b( -sq ),</mrow>
+						</md>
+					which is in <m>S</m>.  But this would contradict the fact that <m>d</m> is the smallest member of <m>S</m>.  Hence, <m>r' = 0</m> and <m>d</m> divides <m>a</m>.  A similar argument shows that <m>d</m> divides <m>b</m>.  Therefore, <m>d</m> is a common divisor of <m>a</m> and <m>b</m>.</p>
 
-		<corollary xml:id="integers-coprime-corollary">
-			<statement>
-				<p>Let <m>a</m> and <m>b</m> be two integers that are relatively prime. Then there exist  integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1</m>.</p>
-			</statement>
-		</corollary>
- 
+					<p>Suppose that <m>d'</m> is another common divisor of <m>a</m> and <m>b</m>, and we want to show that <m>d' \mid d</m>. If we let <m>a = d'h</m> and <m>b = d'k</m>, then
+						<me>d = ar + bs = d'hr + d'ks = d'(hr + ks).</me>
+					So <m>d'</m> must divide <m>d</m>. Hence, <m>d</m> must be the unique greatest common divisor of <m>a</m> and <m>b</m>.</p>
+				</proof>
+				<!-- Notation error in proof fixed (pointed out by Rocco Rossi) - TWJ 9/13/2010 -->
+			</theorem>
+
+			<corollary xml:id="corollary-integers-coprime">
+				<statement>
+					<p>Let <m>a</m> and <m>b</m> be two integers that are relatively prime. Then there exist  integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1</m>.</p>
+				</statement>
+			</corollary>
+
+		</introduction>
 
 		<subsection number="no">
 			<title>The Euclidean Algorithm</title>
 
-			<p>Among other things, Theorem<nbsp /><xref ref="integers-gcd-theorem" /> allows us to compute the greatest common divisor of two integers.</p>
+			<p>Among other things, Theorem<nbsp /><xref ref="theorem-integers-gcd" /> allows us to compute the greatest common divisor of two integers.</p>
 
 
 			<example xml:id="example-gcd">
@@ -263,7 +266,7 @@
 
 			<p>Let <m>p</m> be an integer such that <m>p \gt 1</m>.  We say that <m>p</m> is a <term>prime number</term><index><main>Prime integer</main></index>, or simply <m>p</m> is <term>prime</term>, if the only positive numbers that divide <m>p</m> are 1 and <m>p</m> itself.  An integer <m>n \gt 1</m> that is not prime is said to be <term>composite</term><index><main>Composite integer</main></index>.</p>
 
-			<lemma xml:id="integers-prime-divisor-theorem">
+			<lemma xml:id="theorem-integers-prime-divisor">
 				<title>Euclid</title>
 				
 				<statement>
@@ -276,7 +279,7 @@
 				</proof>
 			</lemma>
 
-			<theorem xml:id="integers-inifinite-primes">
+			<theorem xml:id="theorem-integers-infinite-primes">
 				<title>Euclid</title>
 				<statement>
 					<p>There exist an infinite number of primes.</p>
@@ -288,7 +291,7 @@
 
 <!-- Error in proof fixed.  Suggested by R. Rossi.  TWJ 12/19/2011 -->
 
-			<theorem xml:id="integers-theorem-FTA">
+			<theorem xml:id="theorem-fund-theorem-arithmetic">
 				<title>Fundamental Theorem of Arithmetic</title>
 				<index><main>Fundamental Theorem</main><sub>of Arithmetic</sub></index>
 				<statement>
@@ -301,9 +304,9 @@
 				<proof>
 					<p><em>Uniqueness.</em>  To show uniqueness we will use induction on <m>n</m>. The theorem is certainly true for <m>n = 2</m> since in this case <m>n</m> is prime.  Now assume that the result holds for all integers <m>m</m> such that <m>1 \leq m \lt n</m>, and 
 						<me>n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l,</me>
-					where <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> and <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>. By Lemma<nbsp /><xref ref="integers-prime-divisor-theorem" />, <m>p_1  \mid  q_i</m> for some <m>i = 1, \ldots, l</m> and <m>q_1  \mid  p_j</m> for some <m>j = 1, \ldots, k</m>.  Since all of the <m>p_i</m>'s and <m>q_i</m>'s are prime, <m>p_1 = q_i</m> and  <m>q_1 = p_j</m>. Hence, <m>p_1 = q_1</m> since <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.  By the induction hypothesis, 
+					where <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> and <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>. By Lemma<nbsp /><xref ref="theorem-integers-prime-divisor" />, <m>p_1  \mid  q_i</m> for some <m>i = 1, \ldots, l</m> and <m>q_1  \mid  p_j</m> for some <m>j = 1, \ldots, k</m>.  Since all of the <m>p_i</m>'s and <m>q_i</m>'s are prime, <m>p_1 = q_i</m> and  <m>q_1 = p_j</m>. Hence, <m>p_1 = q_1</m> since <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.  By the induction hypothesis, 
 						<me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
-					has a unique factorization.  Hence, <m>k=l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.</p>
+					has a unique factorization.  Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.</p>
 
 					<p><em>Existence.</em> To show existence, suppose that there is some integer that cannot be written as the product of primes.  Let <m>S</m> be the set of all such numbers.  By the Principle of Well-Ordering, <m>S</m> has a smallest number, say <m>a</m>.  If the only positive factors of <m>a</m> are <m>a</m> and 1, then <m>a</m> is prime, which is a contradiction.  Hence, <m>a = a_1 a_2</m> where <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.  Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>, since <m>a</m> is the smallest element in <m>S</m>.  So 
 						<md>
@@ -365,8 +368,10 @@
 			<title>References and Suggested Readings</title>
 <!-- References updated - TWJ 5/4/2010 -->
 
-			<p>References [2], [3], and [4] are good sources for elementary number
-theory.</p>
+<!--			<p>References [2], [3], and [4] are good sources for elementary number
+theory.</p> -->
+
+<todo>Fix intro to references</todo>
 
 		<biblio type="raw"> <!-- was [1] -->
 		Brookshear, J. G. <title>Theory of Computation: Formal Languages, Automata, and Complexity</title>.  Benjamin/Cummings, Redwood City, CA, 1989. Shows the relationships of the theoretical aspects of computer science to set theory and the integers.</biblio>

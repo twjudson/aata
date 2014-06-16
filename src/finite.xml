@@ -56,7 +56,7 @@
 				for all positive integers <m>n</m>.</p>
 			</statement>
 			<proof>
-				<p>We will prove this lemma using mathematical induction on <m>n</m>.  We can use the binomial formula (see Chapter<nbsp /><xref ref="integers" />, Example<nbsp /><xref ref="example-integers-binomial_theorem" />) to verify the case for <m>n = 1</m>; that is,
+				<p>We will prove this lemma using mathematical induction on <m>n</m>.  We can use the binomial formula (see Chapter<nbsp /><xref ref="integers" />, Example<nbsp /><xref ref="example-binomial-theorem" />) to verify the case for <m>n = 1</m>; that is,
 					<me>(a + b)^p = \sum_{k = 0}^{p} \binom{p}{k} a^k b^{p - k}.</me>
 				If <m>0 \lt k \lt p</m>, then
 					<me>\binom{p}{k} = \frac{p!}{k!(p - k)!}</me>
@@ -75,7 +75,7 @@
 		<example>
 			<p>The polynomial <m>x^2 - 2</m> is separable over <m>{\mathbb Q}</m> since it factors as <m>(x - \sqrt{2}\, )(x + \sqrt{2}\, )</m>. In fact, <m>{\mathbb Q}(\sqrt{2}\, )</m> is a separable extension of <m>{\mathbb Q}</m>.  Let <m>\alpha =  a + b \sqrt{2}</m> be any element in <m>{\mathbb Q}(\sqrt{2}\, )</m>. If <m>b = 0</m>, then <m>\alpha</m> is a root of <m>x - a</m>.  If <m>b \neq 0</m>, then <m>\alpha</m> is the root  of the separable polynomial 
 				<me>x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, )).</me></p>
-	</example>
+		</example>
 
 <!-- Notation error corrected.  Suggested by C. Wall.  TWJ 5/15/2012 -->
  
@@ -113,7 +113,7 @@
 			<proof>
 				<p>Let <m>f(x) = x^{p^n} - x</m> and let <m>F</m> be the splitting field of <m>f(x)</m>.  Then by Lemma<nbsp /><xref ref="lemma-separable-derivative" />, <m>f(x)</m> has <m>p^n</m> distinct zeros in <m>F</m>, since <m>f'(x) = p^n x^{p^n - 1} - 1 = -1</m> is relatively prime to <m>f(x)</m>.  We claim that the roots of <m>f(x)</m> form a subfield of <m>F</m>.  Certainly 0 and 1 are zeros of <m>f(x)</m>.  If <m>\alpha</m> and <m>\beta</m> are zeros of <m>f(x)</m>, then <m>\alpha + \beta</m> and <m>\alpha \beta</m> are also zeros of <m>f(x)</m>, since <m>\alpha^{p^n} + \beta^{p^n} =  (\alpha + \beta)^{p^n}</m> and <m>\alpha^{p^n} \beta^{p^n} = (\alpha \beta)^{p^n}</m>. We also need to show that the additive inverse and the multiplicative inverse of each root of <m>f(x)</m> are roots of <m>f(x)</m>.  For any zero <m>\alpha</m> of <m>f(x)</m>, <m>-\alpha = (p - 1)\alpha</m> is also a zero of <m>f(x)</m>. If <m>\alpha \neq 0</m>, then <m>(\alpha^{-1})^{p^n} = (\alpha^{p^n})^{-1} = \alpha^{-1}</m>. Since the zeros of <m>f(x)</m> form a subfield of <m>F</m> and <m>f(x)</m> splits in this subfield, the subfield must be all of <m>F</m>.</p>
 
-				<p>Let <m>E</m> be any other field of order <m>p^n</m>.  To show that <m>E</m> is isomorphic to <m>F</m>, we must show that every element in <m>E</m> is a root of <m>f(x)</m>.  Certainly 0 is a root of <m>f(x)</m>.  Let <m>\alpha</m> be a nonzero element of <m>E</m>.  The order of the multiplicative group of nonzero elements of <m>E</m> is <m>p^n-1</m>; hence, <m>\alpha^{p^n-1} =1</m> or <m>\alpha^{p^n} -\alpha = 0</m>.  Since <m>E</m> contains <m>p^n</m> elements, <m>E</m> must be a splitting field of <m>f(x)</m>; however, by Corollary<nbsp /><xref ref="cor-poly-splitting-field" />, the splitting field of any polynomial is unique up to isomorphism.</p>
+				<p>Let <m>E</m> be any other field of order <m>p^n</m>.  To show that <m>E</m> is isomorphic to <m>F</m>, we must show that every element in <m>E</m> is a root of <m>f(x)</m>.  Certainly 0 is a root of <m>f(x)</m>.  Let <m>\alpha</m> be a nonzero element of <m>E</m>.  The order of the multiplicative group of nonzero elements of <m>E</m> is <m>p^n-1</m>; hence, <m>\alpha^{p^n-1} =1</m> or <m>\alpha^{p^n} -\alpha = 0</m>.  Since <m>E</m> contains <m>p^n</m> elements, <m>E</m> must be a splitting field of <m>f(x)</m>; however, by Corollary<nbsp /><xref ref="corollary-poly-splitting-field" />, the splitting field of any polynomial is unique up to isomorphism.</p>
 			</proof>
 		</theorem>
 
@@ -135,44 +135,42 @@
 			<p>The lattice of subfields of <m>\gf(p^{24})</m> is given in Figure<nbsp /><xref ref="figure-field-lattice" />.</p>
 		</example>
 
-<figure xml:id="figure-field-lattice">
+		<figure xml:id="figure-field-lattice">
 
+			<tikz filebase="finite_subfield_lattice"><![CDATA[
+			\begin{tikzpicture}[scale=0.7] <!-- Replaced figure with tikz figure - TWJ 8/20/2010 -->
 
-<tikz filebase="finite_subfield_lattice"><![CDATA[
-\begin{tikzpicture}[scale=0.7] <!-- Replaced figure with tikz figure - TWJ 8/20/2010 -->
+			\draw  (1.7,2.4) -- (0.7,3);
+			\draw  (-1.7,2.4) -- (-0.7,3);
+			\draw  (1.7,-2.4) -- (0.7,-3);
+			\draw  (-1.7,-2.4) -- (-0.7,-3);
 
+			\draw (3,1.5) -- (3,0.5);
+			\draw (-3,1.5) -- (-3,0.5);
+			\draw (3,-1.5) -- (3,-0.5);
+			\draw (-3,-1.5) -- (-3,-0.5);
 
-\draw  (1.7,2.4) -- (0.7,3);
-\draw  (-1.7,2.4) -- (-0.7,3);
-\draw  (1.7,-2.4) -- (0.7,-3);
-\draw  (-1.7,-2.4) -- (-0.7,-3);
+			\draw (-1.7,0.2) -- (1.7,1.8);
+			\draw (-1.7,-1.8) -- (1.7,-0.2);
 
-\draw (3,1.5) -- (3,0.5);
-\draw (-3,1.5) -- (-3,0.5);
-\draw (3,-1.5) -- (3,-0.5);
-\draw (-3,-1.5) -- (-3,-0.5);
+			\node at (0, 3.5) {$\gf(p^{24})$};
 
-\draw (-1.7,0.2) -- (1.7,1.8);
-\draw (-1.7,-1.8) -- (1.7,-0.2);
+			\node at (3, 2) {$\gf(p^{12})$};
+			\node at (3, 0) {$\gf(p^{6})$};
+			\node at (3, -2) {$\gf(p^{3})$};
 
-\node at (0, 3.5) {$\gf(p^{24})$};
+			\node at (-3, 2) {$\gf(p^{8})$};
+			\node at (-3, 0) {$\gf(p^{4})$};
+			\node at (-3, -2) {$\gf(p^{2})$};
 
-\node at (3, 2) {$\gf(p^{12})$};
-\node at (3, 0) {$\gf(p^{6})$};
-\node at (3, -2) {$\gf(p^{3})$};
+			\node at (0, -3.5) {$\gf(p)$};
 
-\node at (-3, 2) {$\gf(p^{8})$};
-\node at (-3, 0) {$\gf(p^{4})$};
-\node at (-3, -2) {$\gf(p^{2})$};
+			\end{tikzpicture}]]>
+			</tikz>
 
-\node at (0, -3.5) {$\gf(p)$};
+			<caption>Subfields of <m>\gf(p^{24})</m></caption>
 
-\end{tikzpicture}]]>
-</tikz>
-
-<caption>Subfields of <m>\gf(p^{24})</m></caption>
-
-</figure>
+		</figure>
 
 		<p>With each field <m>F</m> we have a multiplicative group of nonzero elements of <m>F</m> which we will denote by <m>F^*</m><!--NOTATION TABLE \label{ntmultgrp}-->.   The multiplicative group of any finite field is cyclic.  This result follows from the more general result that we will prove in the next theorem.</p> 
 
@@ -181,7 +179,7 @@
 				<p>If <m>G</m> is a finite  subgroup of <m>F^\ast</m>, the multiplicative group of nonzero elements of a field <m>F</m>, then <m>G</m> is cyclic.</p>
 			</statement>
 			<proof>
-				<p>Let <m>G</m> be a finite subgroup of <m>F^\ast</m> of order <m>n</m>.  By the Fundamental Theorem of Finite Abelian Groups (Theorem<nbsp /><xref ref="theorem-finite-abelian_groups" />),  
+				<p>Let <m>G</m> be a finite subgroup of <m>F^\ast</m> of order <m>n</m>.  By the Fundamental Theorem of Finite Abelian Groups (Theorem<nbsp /><xref ref="theorem-finite-abelian-groups" />),  
 					<me>G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}},</me>
 				where <m>n = p_1^{e_1} \cdots p_k^{e_k}</m> and the  <m>p_1, \ldots, p_k</m> are (not necessarily distinct) primes. Let <m>m</m> be the least common multiple of <m>p_1^{e_1}, \ldots, p_k^{e_k}</m>.  Then <m>G</m> contains an element of order <m>m</m>.  Since every <m>\alpha</m> in <m>G</m> satisfies <m>x^r - 1</m> for some <m>r</m> dividing <m>m</m>, <m>\alpha</m> must also be a root of <m>x^m - 1</m>.  Since <m>x^m -1</m> has at most <m>m</m> roots in <m>F</m>, <m>n \leq m</m>.  On the other hand, we know that <m>m \leq |G|</m>; therefore, <m>m = n</m>. Thus, <m>G</m> contains an element of order <m>n</m> and must be cyclic.</p>
 			</proof>
@@ -190,13 +188,13 @@
 <!-- Rewrote the first part of the proof.  Suggested by R. Beezer. -->
 <!-- TWJ - 24/4/2013 -->
 
-		<corollary xml:id="cor-cyclic-group-finite-field">
+		<corollary xml:id="corollary-cyclic-group-finite-field">
 			<statement>
 				<p>The multiplicative group of all nonzero elements of a finite field is cyclic.</p>
 			</statement>
 		</corollary>
 
-		<corollary xml:id="cor-finite-extension-finite-field">
+		<corollary xml:id="corollary-finite-extension-finite-field">
 			<statement>
 				<p>Every finite extension <m>E</m> of a finite field <m>F</m> is a simple extension of <m>F</m>.</p>
 			</statement>
@@ -205,7 +203,7 @@
 			</proof>
 		</corollary>
 
-		<example xml:id="examplw-gf-2-4">
+		<example xml:id="example-gf-2-4">
 			<p>The finite field <m>\gf(2^4)</m> is isomorphic to the field <m>{\mathbb Z}_2/ \langle 1 + x + x^4 \rangle</m>. Therefore, the elements of  <m>\gf(2^4)</m> can be taken to be
 				<me>\{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \alpha + \alpha^4 = 0 \}.</me>
 			Remembering that <m>1 + \alpha +\alpha^4 = 0</m>, we add and multiply elements of <m>\gf(2^4)</m> exactly as we add and multiply polynomials.  The multiplicative group of <m>\gf(2^4)</m> is isomorphic to <m>{\mathbb  Z}_{15}</m> with generator <m>\alpha</m>: 
@@ -285,7 +283,7 @@
 
 			<example xml:id="example-generator-63-code">
 <!-- Changed minimal polynomial from  (1 + x^3)x^3 &amp; = x^2 + x^5 to (1 + x^3)x^2 &amp; = x^2 + x^5.  Discovered by Jon Buller - TWJ 3/25/2011 -->
-				<p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a 3-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  It is easy to check that this map is a group homomorphism.  In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp /><xref ref="vect-linear_transformation" />, Chapter<nbsp /><xref ref="vect" />).  Let us compute the kernel of <m>\phi</m>.  Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
+				<p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a 3-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  It is easy to check that this map is a group homomorphism.  In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp /><xref ref="exercise-vect-linear-transformation" />, Chapter<nbsp /><xref ref="vect" />).  Let us compute the kernel of <m>\phi</m>.  Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
 					<md>
 						<mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
 						<mrow> &amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.</mrow>
@@ -350,7 +348,6 @@
 					0 & 0 & 0 & 1
 					]]>\end{pmatrix}.</me></p>
 			</example>
-
  
 			<p>In general, we can determine a generator matrix for an <m>(n, k)</m>-code <m>C</m> by the manner in which the elements <m>t^k</m> are encoded. Let <m>x^n - 1 = g(x) h(x)</m> in <m>{\mathbb Z}_2[x]</m>. If <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>, then the <m>n \times k</m> matrix
 				<me>G = 
@@ -492,7 +489,7 @@
 
 			<p>The idea behind BCH codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities. Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>.  Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>, and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>. If  
 				<me>g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],</me>
-			then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the <term>BCH code of length</term><index><main>Code</main><sub>BCH</sub></index> <m>n</m> <term>and distance</term> <m>d</m>. By Theorem<nbsp /><xref ref="finite-min_dist_theorem" />, the minimum distance of <m>C</m> is at least <m>d</m>.</p>
+			then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the <term>BCH code of length</term><index><main>Code</main><sub>BCH</sub></index> <m>n</m> <term>and distance</term> <m>d</m>. By Theorem<nbsp /><xref ref="theorem-min-dist-cyclic-code" />, the minimum distance of <m>C</m> is at least <m>d</m>.</p>
 
 			<theorem>
 				<statement>
@@ -549,8 +546,7 @@
 				By Example<nbsp /><xref ref="example-gf-p24" />, <m>\omega</m> is a primitive 15th root of unity. The minimal polynomial of <m>\omega</m> is <m>m_1(x) = 1 + x + x^4</m>. It is easy to see that <m>\omega^2</m> and <m>\omega^4</m> are also roots of <m>m_1(x)</m>. The minimal polynomial of <m>\omega^3</m> is <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Therefore, 
 					<me>g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8</me>
 				has roots <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Since both <m>m_1(x)</m> and <m>m_2(x)</m> divide <m>x^{15} - 1</m>, the BCH code is a <m>(15, 7)</m>-code. If <m>x^{15} -1 = g(x)h(x)</m>, then <m>h(x) = 1 + x^4 + x^6 + x^7</m>; therefore, a parity-check matrix for this code is
-					<me>\left( 
-					<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
+					<me>\left( 	<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
 					\begin{array}{ccccccccccccccc}
 					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
 					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
@@ -570,8 +566,10 @@
 	<exercises>
 		<title>Additional Exercises: Error Correction for BCH Codes</title>
 
-		<p>BCH codes have very attractive error correction algorithms. Let <m>C</m> be a BCH code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received.  If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><index><main>Polynomial</main><sub>error</sub></index>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term> syndrome</term><index><main>Syndrome of a code</main></index> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
+<!--FIX INTRO
 
+		<p>BCH codes have very attractive error correction algorithms. Let <m>C</m> be a BCH code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received.  If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><index><main>Polynomial</main><sub>error</sub></index>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term> syndrome</term><index><main>Syndrome of a code</main></index> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
+-->
 		<exercise>
 			<statement>
 				<p>Show that <m>w(t)</m> is a code polynomial if and only if <m>s_i = 0</m> for all <m>i</m>.</p>
@@ -589,7 +587,7 @@
 
 		<exercise>
 			<statement>
-				<p>Recall the <m>(15,7)</m>-block BCH code in Example<nbsp /><xref ref="example-finite-parity-check" />.  By Theorem<nbsp /><xref ref="algecodes-min_distance_theorem" />, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
+				<p>Recall the <m>(15,7)</m>-block BCH code in Example<nbsp /><xref ref="example-parity-check-x7-1" />.  By Theorem<nbsp /><xref ref="theorem-min-distance" />, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
 					<me>s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right).</me></p>
 			</statement>
 		</exercise>

@@ -7,55 +7,58 @@
 <!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 
-<chapter xml:id="chapter-permute" xmlns:xi="http://www.w3.org/2001/XInclude">
+<chapter xml:id="permute" xmlns:xi="http://www.w3.org/2001/XInclude">
 	<title>Permutation Groups</title>
 
 	<introduction>
 		<p>Permutation groups are central to the study of geometric symmetries and to Galois theory, the study of finding solutions of polynomial equations.  They also provide abundant examples of nonabelian groups.</p>
 
-		<p>Let us recall for a moment the symmetries of the equilateral triangle <m>\bigtriangleup ABC</m> from Chapter<nbsp /><xref ref="chapter-groups" />. The symmetries actually consist of permutations of the three vertices, where a <term> permutation</term><index><main>Permutation</main><sub>definition of</sub></index> of the set <m>S = \{ A, B, C \}</m> is a one-to-one and onto map <m>\pi :S \rightarrow S</m>. The three vertices have the following six permutations. <md>
-			<mrow>\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			A & B & C
-			]]>\end{pmatrix}
-			\qquad
-			\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			C & A & B
-			]]>\end{pmatrix}
-			\qquad
-			\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			B & C & A
-			]]>\end{pmatrix}
-			\\
-			\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			A & C & B
-			]]>\end{pmatrix}
-			\qquad
-			\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			C & B & A
-			]]>\end{pmatrix}
-			\qquad
-			\begin{pmatrix}<![CDATA[
-			A & B & C \\
-			B & A & C
-			]]>\end{pmatrix}
-			</mrow>
-		</md></p>
+		<p>Let us recall for a moment the symmetries of the equilateral triangle <m>\bigtriangleup ABC</m> from Chapter<nbsp /><xref ref="groups" />. The symmetries actually consist of permutations of the three vertices, where a <term> permutation</term><index><main>Permutation</main><sub>definition of</sub></index> of the set <m>S = \{ A, B, C \}</m> is a one-to-one and onto map <m>\pi :S \rightarrow S</m>. The three vertices have the following six permutations.
+			<md>
+				<mrow>\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				A & B & C
+				]]>\end{pmatrix}
+				\qquad
+				\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				C & A & B
+				]]>\end{pmatrix}
+				\qquad
+				\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				B & C & A
+				]]>\end{pmatrix}
+				\\
+				\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				A & C & B
+				]]>\end{pmatrix}
+				\qquad
+				\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				C & B & A
+				]]>\end{pmatrix}
+				\qquad
+				\begin{pmatrix}<![CDATA[
+				A & B & C \\
+				B & A & C
+				]]>\end{pmatrix}
+				</mrow>
+			</md></p>
 
 		<p>We have used the array
-		<me>\begin{pmatrix}<![CDATA[
-		A & B & C \\
-		B & C & A
-		]]>\end{pmatrix}</me>
-		to denote the permutation that sends <m>A</m> to <m>B</m>, <m>B</m> to <m>C</m>, and <m>C</m> to <m>A</m>. That is, <md>
-			<mrow> A &amp; \mapsto  B</mrow>
-			<mrow> B &amp; \mapsto  C</mrow>
-			<mrow> C &amp; \mapsto  A.</mrow>
-		</md> The symmetries of a triangle form a group. In this chapter we will study groups of this type.</p>
+			<me>\begin{pmatrix}<![CDATA[
+			A & B & C \\
+			B & C & A
+			]]>\end{pmatrix}</me>
+		to denote the permutation that sends <m>A</m> to <m>B</m>, <m>B</m> to <m>C</m>, and <m>C</m> to <m>A</m>. That is,
+			<md>
+				<mrow> A &amp; \mapsto  B</mrow>
+				<mrow> B &amp; \mapsto  C</mrow>
+				<mrow> C &amp; \mapsto  A.</mrow>
+			</md>
+		The symmetries of a triangle form a group. In this chapter we will study groups of this type.</p>
 	</introduction>
  
 	<section xml:id="section-permutation-definitions">
@@ -77,40 +80,42 @@
 			<p>A subgroup of <m>S_n</m> is called a <term>permutation group</term><index><main>Group</main><sub>permutation</sub></index><index><main>Permutation group</main></index>.</p>
 
 			<example xml:id="example-permute-s5">
-				<p>Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>id</m> and the permutations <md>
-					<mrow>\sigma
-					&amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 & 5 \\
-					1 & 2 & 3 & 5 & 4
-					]]>\end{pmatrix}</mrow>
-					<mrow>\tau
-					&amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 & 5 \\
-					3 & 2 & 1 & 4 & 5
-					]]>\end{pmatrix}</mrow>
-					<mrow>\mu
-					&amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 & 5 \\
-					3 & 2 & 1 & 5 & 4
-					]]>\end{pmatrix}.</mrow>
-				</md> The following table tells us how to multiply elements in the permutation group <m>G</m>.</p>
+				<p>Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>id</m> and the permutations 
+					<md>
+						<mrow>\sigma
+						&amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 & 5 \\
+						1 & 2 & 3 & 5 & 4
+						]]>\end{pmatrix}</mrow>
+						<mrow>\tau
+						&amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 & 5 \\
+						3 & 2 & 1 & 4 & 5
+						]]>\end{pmatrix}</mrow>
+						<mrow>\mu
+						&amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 & 5 \\
+						3 & 2 & 1 & 5 & 4
+						]]>\end{pmatrix}.</mrow>
+					</md>
+				The following table tells us how to multiply elements in the permutation group <m>G</m>.</p>
 
-				<table xml:id="table-permutation-cayley">
-				    <tgroup cols="5" align="center">
-				        <thead>
-				            <row><entry><m>\circ</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry></row>
-				        </thead>
-				        <tbody>
-							<row><entry><m>id</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry></row>
-							<row><entry><m>\sigma</m></entry><entry><m>\sigma</m></entry><entry><m>id</m></entry><entry><m>\mu</m></entry><entry><m>\tau</m></entry></row>
-							<row><entry><m>\tau</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry></row>
-							<row><entry><m>\mu</m></entry><entry><m>\mu</m></entry><entry><m>\tau</m></entry><entry><m>\sigma</m></entry><entry><m>id</m></entry></row>
-				        </tbody>
-				    </tgroup>
-				</table>
+			<table xml:id="table-permutation-cayley">
+			    <tgroup cols="5" align="center">
+			        <thead>
+			            <row><entry><m>\circ</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry></row>
+			        </thead>
+			        <tbody>
+						<row><entry><m>id</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry></row>
+						<row><entry><m>\sigma</m></entry><entry><m>\sigma</m></entry><entry><m>id</m></entry><entry><m>\mu</m></entry><entry><m>\tau</m></entry></row>
+						<row><entry><m>\tau</m></entry><entry><m>\tau</m></entry><entry><m>\mu</m></entry><entry><m>id</m></entry><entry><m>\sigma</m></entry></row>
+						<row><entry><m>\mu</m></entry><entry><m>\mu</m></entry><entry><m>\tau</m></entry><entry><m>\sigma</m></entry><entry><m>id</m></entry></row>
+			        </tbody>
+			    </tgroup>
+			</table>
 
 			</example>
 	 
@@ -119,42 +124,43 @@
 			</remark>
 	 
 			<example xml:id="example-s4-nonabelian">
-				<p>Permutation multiplication is not usually commutative. Let<md>
-					<mrow>\sigma
-					&amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 \\
-					4 & 1 & 2 & 3
-					]]>\end{pmatrix}</mrow>
-					<mrow>\tau
-					&amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 \\
-					2 & 1 & 4 & 3
-					]]>\end{pmatrix}.</mrow>
-				</md>
+				<p>Permutation multiplication is not usually commutative. Let
+					<md>
+						<mrow>\sigma
+						&amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 \\
+						4 & 1 & 2 & 3
+						]]>\end{pmatrix}</mrow>
+						<mrow>\tau
+						&amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 \\
+						2 & 1 & 4 & 3
+						]]>\end{pmatrix}.</mrow>
+					</md>
 				Then
-				<me>\sigma \tau
-				=
-				\begin{pmatrix}<![CDATA[
-				1 & 2 & 3 & 4 \\
-				1 & 4 & 3 & 2
-				]]>\end{pmatrix},</me>
+					<me>\sigma \tau
+					=
+					\begin{pmatrix}<![CDATA[
+					1 & 2 & 3 & 4 \\
+					1 & 4 & 3 & 2
+					]]>\end{pmatrix},</me>
 				but
-				<me>\tau \sigma
-				=
-				\begin{pmatrix}<![CDATA[
-				1 & 2 & 3 & 4 \\
-				3 & 2 & 1 & 4
-				]]>\end{pmatrix}.
-				</me></p>
+					<me>\tau \sigma
+					=
+					\begin{pmatrix}<![CDATA[
+					1 & 2 & 3 & 4 \\
+					3 & 2 & 1 & 4
+					]]>\end{pmatrix}.
+					</me></p>
 			</example>
  		</introduction>
 
 		<subsection number="no">
 			<title>Cycle Notation</title>
  
-			<p>The notation that we have used to represent permutations up to this point is cumbersome, to say the least.  To work effectively with permutation groups, we need a more streamlined method of writing down and manipulating permutations.</p>
+			<p>The notation that we have used to represent permutations up to this point is cumbersome, to say the least. To work effectively with permutation groups, we need a more streamlined method of writing down and manipulating permutations.</p>
  
 			<p>A permutation <m>\sigma \in S_X</m> is a <term>cycle of length</term><index><main>Cycle</main><sub>definition of</sub></index> <m>k</m> if there exist elements <m>a_1, a_2, \ldots, a_k \in X</m> such that <md>
 				<mrow>\sigma( a_1 ) &amp; = a_2</mrow>
@@ -165,30 +171,29 @@
  
 			<example xml:id="example-cycle-notation">
 				<p>The permutation
-				<me>\sigma =
-				\begin{pmatrix}<![CDATA[
-				1 & 2 & 3 & 4 & 5 & 6 & 7\\
-				6 & 3 & 5 & 1 & 4 & 2 & 7
-				]]>\end{pmatrix}
-				=
-				(1 6 2 3 5 4 )</me>
+					<me>\sigma =
+					\begin{pmatrix}<![CDATA[
+					1 & 2 & 3 & 4 & 5 & 6 & 7\\
+					6 & 3 & 5 & 1 & 4 & 2 & 7
+					]]>\end{pmatrix}
+					=
+					(1 6 2 3 5 4 )</me>
 				is a cycle of length 6, whereas
-				<me>\tau =
-				\begin{pmatrix}<![CDATA[
-				1 & 2 & 3 & 4 & 5 & 6 \\
-				1 & 4 & 2 & 3 & 5 & 6
-				]]>\end{pmatrix}
-				=
-				(2 4 3)</me>
+					<me>\tau =
+					\begin{pmatrix}<![CDATA[
+					1 & 2 & 3 & 4 & 5 & 6 \\
+					1 & 4 & 2 & 3 & 5 & 6
+					]]>\end{pmatrix}
+					=
+					(2 4 3)</me>
 				is a cycle of length 3.</p>
 			 
-			 
 				<p>Not every permutation is a cycle. Consider the permutation
-				<me>\begin{pmatrix}<![CDATA[
-				1 & 2 & 3 & 4 & 5 & 6 \\
-				2 & 4 & 1 & 3 & 6 & 5
-				]]>\end{pmatrix}
-				 = (1 2 4 3)(5 6).</me>
+					<me>\begin{pmatrix}<![CDATA[
+					1 & 2 & 3 & 4 & 5 & 6 \\
+					2 & 4 & 1 & 3 & 6 & 5
+					]]>\end{pmatrix}
+					 = (1 2 4 3)(5 6).</me>
 				This permutation actually contains a cycle of length 2 and a cycle
 				of length 4.</p>
 			</example>
@@ -198,8 +203,7 @@
 
 			<example xml:id="example-cycle-mult">
 				<p>It is very easy to compute products of cycles. Suppose that
-				<me>\sigma  = (1 3 5 2 ) \quad \text{and} \quad
-				    \tau    = (2 5 6).</me>
+					<me>\sigma  = (1 3 5 2 ) \quad \text{and} \quad \tau = (2 5 6).</me>
 				If we think of <m>\sigma</m> as
 				<me>1  \mapsto  3, \qquad
 				    3  \mapsto  5, \qquad
@@ -226,7 +230,6 @@
 				</md> The product of two cycles that are not disjoint may reduce to something less complicated; the product of disjoint cycles cannot be simplified.</p>
 			</example>
  
- 
 			<!-- TWJ, 2011/11/20 -->
 			<!-- Wording in the first sentence of the proof changed for clarification as suggested by R. Beezer and N. Lander. -->
 
@@ -238,20 +241,24 @@
 				<proof>
 					<p>Let <m>\sigma = (a_1, a_2, \ldots, a_k )</m> and <m>\tau = (b_1, b_2, \ldots, b_l )</m>. We must show that <m>\sigma \tau(x) = \tau \sigma(x)</m> for all <m>x \in X</m>. If <m>x</m> is neither in <m>\{ a_1, a_2, \ldots, a_k \}</m> nor <m>\{b_1, b_2, \ldots, b_l  \}</m>, then both <m>\sigma</m> and <m>\tau</m> fix <m>x</m>. That is, <m>\sigma(x)=x</m> and <m>\tau(x)=x</m>. Hence, 
 					<me>\sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x) = \tau( \sigma(x)) =  \tau \sigma(x).</me> 
-					<em>Do not forget that we are multiplying permutations right to left, which is the opposite of the order in which we usually multiply group elements.</em>  Now suppose that <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Then <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; that is, <md>
-						<mrow>a_1 &amp; \mapsto  a_2</mrow>
-						<mrow>a_2 &amp; \mapsto  a_3</mrow>
-						<mrow>    &amp; \vdots</mrow>
-						<mrow>a_{k-1} &amp; \mapsto  a_k</mrow>
-						<mrow>a_k &amp; \mapsto  a_1. </mrow>
-					</md> However, <m>\tau(a_i) = a_i</m> since <m>\sigma</m> and <m>\tau</m> are disjoint. Therefore, <md>
-						<mrow> \sigma \tau(a_i) &amp; = \sigma( \tau(a_i))</mrow>
-						<mrow>&amp; = \sigma(a_i)</mrow>
-						<mrow>&amp; = a_{(i \bmod k)+1}</mrow>
-						<mrow>&amp; = \tau( a_{(i \bmod k)+1} )</mrow>
-						<mrow>&amp; = \tau( \sigma(a_i) )</mrow>
-						<mrow>&amp; = \tau \sigma(a_i).</mrow>
-					</md> Similarly, if <m>x \in \{b_1, b_2, \ldots, b_l  \}</m>, then <m>\sigma</m> and <m>\tau</m> also commute. </p>
+					<em>Do not forget that we are multiplying permutations right to left, which is the opposite of the order in which we usually multiply group elements.</em>  Now suppose that <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Then <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; that is,
+						<md>
+							<mrow>a_1 &amp; \mapsto  a_2</mrow>
+							<mrow>a_2 &amp; \mapsto  a_3</mrow>
+							<mrow>    &amp; \vdots</mrow>
+							<mrow>a_{k-1} &amp; \mapsto  a_k</mrow>
+							<mrow>a_k &amp; \mapsto  a_1. </mrow>
+						</md>
+					However, <m>\tau(a_i) = a_i</m> since <m>\sigma</m> and <m>\tau</m> are disjoint. Therefore,
+						<md>
+							<mrow> \sigma \tau(a_i) &amp; = \sigma( \tau(a_i))</mrow>
+							<mrow>&amp; = \sigma(a_i)</mrow>
+							<mrow>&amp; = a_{(i \bmod k)+1}</mrow>
+							<mrow>&amp; = \tau( a_{(i \bmod k)+1} )</mrow>
+							<mrow>&amp; = \tau( \sigma(a_i) )</mrow>
+							<mrow>&amp; = \tau \sigma(a_i).</mrow>
+						</md>
+					Similarly, if <m>x \in \{b_1, b_2, \ldots, b_l  \}</m>, then <m>\sigma</m> and <m>\tau</m> also commute. </p>
 				</proof>
 			</proposition>
  
@@ -272,19 +279,21 @@
 			</theorem>
  
 			<example xml:id="example-cycle-products">
-				<p>Let <md>
-					<mrow>\sigma &amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 & 5 & 6 \\
-					6 & 4 & 3 & 1 & 5 & 2
-					]]>\end{pmatrix}</mrow>
-					<mrow>\tau &amp; =
-					\begin{pmatrix}<![CDATA[
-					1 & 2 & 3 & 4 & 5 & 6 \\
-					3 & 2 & 1 & 5 & 6 & 4
-					]]>\end{pmatrix}.
-					</mrow>
-				</md> Using cycle notation, we can write <md>
+				<p>Let
+					<md>
+						<mrow>\sigma &amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 & 5 & 6 \\
+						6 & 4 & 3 & 1 & 5 & 2
+						]]>\end{pmatrix}</mrow>
+						<mrow>\tau &amp; =
+						\begin{pmatrix}<![CDATA[
+						1 & 2 & 3 & 4 & 5 & 6 \\
+						3 & 2 & 1 & 5 & 6 & 4
+						]]>\end{pmatrix}.
+						</mrow>
+					</md>
+				Using cycle notation, we can write <md>
 					<mrow>\sigma      &amp; = (1624)</mrow>
 					<mrow>\tau        &amp; = (13)(456)</mrow>
 					<mrow>\sigma \tau &amp; = (1 3 6) ( 2 4 5)</mrow>
@@ -293,8 +302,9 @@
 			</example>
  
 			<remark>
-			<p>From this point forward we will find it convenient to use cycle notation to represent permutations. When using cycle notation, we often denote the identity permutation by <m>(1)</m>.</p>
-			</remark> 
+				<p>From this point forward we will find it convenient to use cycle notation to represent permutations. When using cycle notation, we often denote the identity permutation by <m>(1)</m>.</p>
+			</remark>
+
 		</subsection>
 
 		<subsection number="no">
@@ -310,10 +320,9 @@
 
 			<example xml:id="example-transpositions">
 				<p>Consider the permutation
-				<me> ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 ).</me>
+					<me> ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 ).</me>
 				As we can see, there is no unique way to represent permutation as the product of transpositions. For instance, we can write the identity permutation as <m>(1 2 )(1 2 )</m>, as <m>(1 3 )(2 4 )(1 3 )( 2 4 )</m>, and in many other ways. However, as it turns out, no permutation can be written as the product of both an even number of transpositions and an odd number of transpositions. For instance, we could represent the permutation <m>(1 6)</m> by <me>(2 3 )(1 6)( 2 3)</me> or by <me>(3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6),</me> but <m>(1 6)</m> will always be the product of an odd number of transpositions. </p>
 			</example>
-
 
 			<!-- TWJ, 2010/03/31 -->
 			<!-- Fixed the error in the equations below so that <m>a</m> gets moved out of the last transposition -->
@@ -321,7 +330,7 @@
 			<lemma xml:id="lemma-identity-even-trans">
 				<statement>
 					<p>If the identity is written as the product of <m>r</m> transpositions,
-					<me>id = \tau_1 \tau_2 \cdots \tau_r, </me>
+						<me>id = \tau_1 \tau_2 \cdots \tau_r, </me>
 					then <m>r</m> is an even number.</p>
 				</statement>
 
@@ -334,10 +343,10 @@
 					</md> where <m>a</m>, <m>b</m>, <m>c</m>, and <m>d</m> are distinct.</p>
 
 					<p>The first equation simply says that a transposition is its own inverse. If this case occurs, delete <m>\tau_{r-1} \tau_r</m> from the product to obtain
-					<me> id = \tau_1 \tau_2 \cdots \tau_{r-3} \tau_{r-2}.</me>
+						<me> id = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
 					By induction <m>r - 2</m> is even; hence, <m>r</m> must be even.</p>
 				 
-					<p>In each of the other three cases, we can replace <m>\tau_{r - 1} \tau_r</m> with the right-hand side of the corresponding equation to obtain a new product of <m>r</m> transpositions for the identity. In this new product the last occurrence of <m>a</m> will be in the next-to-the-last transposition. We can continue this process with <m>\tau_{r - 2} \tau_{r-1}</m> to obtain either a product of <m>r-2</m> transpositions or a new product of <m>r</m> transpositions where the last occurrence of <m>a</m> is in <m>\tau_{r-2}</m>. If the identity is the product of <m>r-2</m> transpositions, then again we are done, by our induction hypothesis; otherwise, we will repeat the procedure with <m>\tau_{r-3} \tau_{r-2}</m>.</p>
+					<p>In each of the other three cases, we can replace <m>\tau_{r - 1} \tau_r</m> with the right-hand side of the corresponding equation to obtain a new product of <m>r</m> transpositions for the identity. In this new product the last occurrence of <m>a</m> will be in the next-to-the-last transposition. We can continue this process with <m>\tau_{r - 2} \tau_{r - 1}</m> to obtain either a product of <m>r - 2</m> transpositions or a new product of <m>r</m> transpositions where the last occurrence of <m>a</m> is in <m>\tau_{r - 2}</m>. If the identity is the product of <m>r - 2</m> transpositions, then again we are done, by our induction hypothesis; otherwise, we will repeat the procedure with <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
 
 					<p>At some point either we will have two adjacent, identical transpositions canceling each other out or <m>a</m> will be shuffled so that it will appear only in the first transposition. However, the latter case cannot occur, because the identity would not fix <m>a</m> in this instance. Therefore, the identity permutation must be the product of <m>r-2</m> transpositions and, again by our induction hypothesis, we are done.</p>
 				</proof>
@@ -349,7 +358,7 @@
 				</statement> 
 
 				<proof>
-					<p>Suppose that <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> where <m>m</m> is even. We must show that <m>n</m> is also an even number.  The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>. Since <me> id = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> must be even by Lemma<nbsp /><xref ref="lemma-identity-even-trans" />.  The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.</p>
+					<p>Suppose that <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> where <m>m</m> is even. We must show that <m>n</m> is also an even number.  The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>. Since <me> id = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> must be even by Lemma<nbsp /><xref ref="lemma-identity-even-trans" />. The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.</p>
 				</proof>
 			</theorem>
 
@@ -357,8 +366,8 @@
 			<!-- TWJ 0212/10/21 -->
  
 			<p>In light of Theorem<nbsp /><xref ref="theorem-even-and-odd" />, we define a permutation to be <term> even</term><index><main>Permutation</main><sub>even</sub></index> if it can be expressed as an even number of transpositions and <term> odd</term><index><main>Permutation</main><sub>odd</sub></index> if it can be expressed as an odd number of transpositions.</p>
+		
 		</subsection>
-
 
 		<subsection number="no">
 			<title>The Alternating Groups</title>
@@ -372,9 +381,9 @@
 
 				<proof>
 					<p>Since the product of two even permutations must also be an even permutation, <m>A_n</m> is closed.  The identity is an even permutation and therefore is in <m>A_n</m>. If <m>\sigma</m> is an even permutation, then 
-					<me>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r,</me>
+						<me>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r,</me>
 					where <m>\sigma_i</m> is a transposition and <m>r</m> is even. Since the inverse of any transposition is itself, 
-					<me>\sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1</me>
+						<me>\sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1</me>
 					is also in <m>A_n</m>.</p>
 				</proof>
 			</theorem>
@@ -386,42 +395,31 @@
 				
 				 <proof>
 				 	<p>Let <m>A_n</m> be the set of even permutations in <m>S_n</m> and <m>B_n</m> be the set of odd permutations.  If we can show that there is a bijection between these sets, they must contain the same number of elements. Fix a transposition <m>\sigma</m> in <m>S_n</m>.  Since <m>n \geq 2</m>, such a <m>\sigma</m> exists.  Define 
-				 	<me>\lambda_{\sigma} : A_n \rightarrow B_n</me> by 
-				 	<me>\lambda_{\sigma} ( \tau ) = \sigma  \tau .</me>
-				 	Suppose that <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>. Then <m>\sigma  \tau = \sigma  \mu</m> and so <me> \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu = \mu. </me> Therefore, <m>\lambda_{\sigma}</m> is one-to-one.  We will leave the proof that <m>\lambda_{\sigma}</m> is surjective to the reader.</p>
+				 		<me>\lambda_{\sigma} : A_n \rightarrow B_n</me>
+				 	by 
+				 		<me>\lambda_{\sigma} ( \tau ) = \sigma  \tau .</me>
+				 	Suppose that <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>. Then <m>\sigma  \tau = \sigma  \mu</m> and so 
+				 		<me> \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu = \mu. </me>
+				 	Therefore, <m>\lambda_{\sigma}</m> is one-to-one.  We will leave the proof that <m>\lambda_{\sigma}</m> is surjective to the reader.</p>
 				</proof>
 			</proposition>
  
 			<example xml:id="example-s4">
-				<p>The group <m>A_4</m> is the subgroup of <m>S_4</m> consisting of even permutations.  There are twelve elements in  <m>A_4</m>: <md>
-					<mrow>&amp; (1)    &amp;&amp; (12)(34) &amp;&amp; (13)(24) &amp;&amp; (14)(23) </mrow>
-					<mrow>&amp; (123)  &amp;&amp; (132)    &amp;&amp; (124)    &amp;&amp; (142)    </mrow>
-					<mrow>&amp; (134)  &amp;&amp; (143)    &amp;&amp; (234)    &amp;&amp; (243).   </mrow>
-				</md> One of the end-of-chapter exercises will be to write down all the subgroups of <m>A_4</m>. You will find that there is no subgroup of order 6.  Does this surprise you?</p>
+				<p>The group <m>A_4</m> is the subgroup of <m>S_4</m> consisting of even permutations.  There are twelve elements in  <m>A_4</m>: 
+					<md>
+						<mrow>&amp; (1)    &amp;&amp; (12)(34) &amp;&amp; (13)(24) &amp;&amp; (14)(23) </mrow>
+						<mrow>&amp; (123)  &amp;&amp; (132)    &amp;&amp; (124)    &amp;&amp; (142)    </mrow>
+						<mrow>&amp; (134)  &amp;&amp; (143)    &amp;&amp; (234)    &amp;&amp; (243).   </mrow>
+					</md>
+				One of the end-of-chapter exercises will be to write down all the subgroups of <m>A_4</m>. You will find that there is no subgroup of order 6.  Does this surprise you?</p>
 			</example>
+
+		</subsection>
  
- 
- 
-			<historical>
-			<p>
-			Lagrange<index><main>Lagrange, Joseph-Louis</main></index> first thought of permutations
-			as functions from a set to itself, but it was Cauchy who developed the
-			basic theorems and notation for permutations.  He was the first to use
-			cycle notation. Augustin-Louis Cauchy<index><main>Cauchy, Augustin-Louis</main></index>
-			(1789<ndash />1857) was born in Paris at the height of the French Revolution.
-			His family soon left Paris for the village of Arcueil to escape the
-			Reign of Terror. One of the family's neighbors there was Pierre-Simon
-			Laplace<index><main>Laplace, Pierre-Simon</main></index> (1749<ndash />1827), who encouraged him
-			to seek a career in mathematics. Cauchy began his career as a
-			mathematician by solving a problem in geometry given to him by
-			Lagrange. Over 800 papers were written by Cauchy on such diverse
-			topics as differential equations, finite groups, applied mathematics,
-			and complex analysis. He was one of the mathematicians  responsible
-			for making calculus rigorous. Perhaps more theorems and concepts in
-			mathematics have the name Cauchy attached to them than that of any
-			other mathematician.
-			</p>
-			</historical> 
+		<subsection number="no">
+			<title>Historical Note</title>
+			
+			<p>Lagrange<index><main>Lagrange, Joseph-Louis</main></index> first thought of permutations as functions from a set to itself, but it was Cauchy who developed the basic theorems and notation for permutations. He was the first to use cycle notation. Augustin-Louis Cauchy<index><main>Cauchy, Augustin-Louis</main></index> (1789<ndash />1857) was born in Paris at the height of the French Revolution. His family soon left Paris for the village of Arcueil to escape the Reign of Terror. One of the family's neighbors there was Pierre-Simon Laplace<index><main>Laplace, Pierre-Simon</main></index> (1749<ndash />1827), who encouraged him to seek a career in mathematics. Cauchy began his career as a mathematician by solving a problem in geometry given to him by Lagrange. Over 800 papers were written by Cauchy on such diverse topics as differential equations, finite groups, applied mathematics, and complex analysis. He was one of the mathematicians  responsible for making calculus rigorous. Perhaps more theorems and concepts in mathematics have the name Cauchy attached to them than that of any other mathematician.</p>
 
 			<!-- Replaced figure with tikz figure - TWJ 5/7/2010 -->
 			<figure xml:id="figure-regular">
@@ -442,14 +440,17 @@
 				</tikz>
 				<caption>A regular <m>n</m>-gon</caption>
 			</figure>
+
 		</subsection>
+		
 	</section>
 
 	<section xml:id="section-dihedral-groups">
 		<title>Dihedral Groups</title>
  
 		<introduction>
-			<p>Another special type of permutation group is the dihedral group. Recall the symmetry group of an equilateral triangle in Chapter<nbsp /><xref ref="chapter-groups" />. Such groups consist of the  rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon. For <m>n = 3, 4, \ldots</m>, we define the <term> nth dihedral group</term><index><main>Group</main><sub>dihedral</sub></index> to be the group of rigid motions of a regular <m>n</m>-gon.  We will denote this group by <m>D_n</m><!-- NOTATION TABLE \label{dihedralgroup}-->.  We can number the vertices of a regular <m>n</m>-gon by <m>1, 2, \ldots, n</m> (Figure<nbsp /><xref ref="figure-regular" />).  Notice that there are exactly <m>n</m> choices to replace the first vertex.  If we replace the first vertex by <m>k</m>, then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>; hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.  We summarize these results in the following theorem.</p>
+
+			<p>Another special type of permutation group is the dihedral group. Recall the symmetry group of an equilateral triangle in Chapter<nbsp /><xref ref="groups" />. Such groups consist of the  rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon. For <m>n = 3, 4, \ldots</m>, we define the <term> nth dihedral group</term><index><main>Group</main><sub>dihedral</sub></index> to be the group of rigid motions of a regular <m>n</m>-gon.  We will denote this group by <m>D_n</m><!-- NOTATION TABLE \label{dihedralgroup}-->.  We can number the vertices of a regular <m>n</m>-gon by <m>1, 2, \ldots, n</m> (Figure<nbsp /><xref ref="figure-regular" />).  Notice that there are exactly <m>n</m> choices to replace the first vertex.  If we replace the first vertex by <m>k</m>, then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>; hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.  We summarize these results in the following theorem.</p>
 	 
 			<theorem>
 				<statement> 
@@ -577,11 +578,11 @@
 				</tikz>
 				<caption>The motion group of a cube</caption>
 			</figure>
+
 		</introduction>
 
 		<subsection number="no">
 			<title>The Motion Group of a Cube</title>
- 
  
 			<p>We can investigate the groups of rigid motions of  geometric objects other than a regular <m>n</m>-sided polygon to obtain interesting examples of permutation groups. Let us consider the group of rigid motions of a cube. One of the first questions that we can ask about this group is <q>what is its order?</q>  A cube has 6 sides. If a particular side is facing upward, then there are four possible rotations of the cube that will preserve the upward-facing side. Hence, the order of the group is <m>6 \cdot 4 = 24</m>. We have just proved the following proposition.</p>
  
@@ -631,7 +632,6 @@
 	</section>
 
 	<xi:include href="./exercises/permute.xml" />
-
 	<xi:include href="./sage/permute-sage.xml" />
 	<xi:include href="./sage/permute-sage-exercises.xml" />
 

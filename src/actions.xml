@@ -44,12 +44,9 @@
 			The elements of <m>D_4</m> act on <m>X</m> as functions.  The permutation <m>(13)(24)</m> acts on vertex 1 by sending it to vertex 3, on vertex 2 by sending it to vertex 4, and so on.  It is easy to see that the  axioms of a group action are satisfied.</p>
 		</example>
 
-
-
 		<p>In general, if <m>X</m> is any set and <m>G</m> is a subgroup of <m>S_X</m>, the group of all permutations acting on <m>X</m>, then <m>X</m> is a <m>G</m>-set under the group action 
 		<me>(\sigma, x) \mapsto \sigma(x)</me>
 		for <m>\sigma \in G</m> and <m>x \in X</m>.</p>
- 
  
 		<example xml:id="example-left-action">
 			<p>If we let <m>X = G</m>, then every group <m>G</m> acts on itself by the left regular representation; that is, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,  where  <m>\lambda_g</m> is left multiplication:
@@ -59,7 +56,6 @@
 				</md>
 			If <m>H</m> is a subgroup of <m>G</m>, then <m>G</m> is an <m>H</m>-set under left multiplication by elements of <m>H</m>.</p>
 		</example>
- 
  
 		<example xml:id="example-conj-action">
 			<p>Let <m>G</m> be a group and suppose that <m>X=G</m>. If <m>H</m> is a subgroup of <m>G</m>, then <m>G</m> is an <m>H</m>-set under <term> conjugation</term><index><main>Conjugation</main></index>; that is, we can define an action of <m>H</m> on <m>G</m>, 
@@ -82,7 +78,6 @@
 		</example>
  
 		<p>If <m>G</m> acts on a set <m>X</m> and <m>x, y \in X</m>, then <m>x</m> is said to be <term><m>G</m>-equivalent</term><index><main><m>G</m>-equivalent</main></index> to <m>y</m> if there exists a <m>g \in G</m> such that <m>gx =y</m>. We  write <m>x \sim_G y</m> or <m>x \sim y</m> if two elements are <m>G</m>-equivalent.</p>
- 
 
 		<proposition>
 			<statement>
@@ -157,14 +152,13 @@
 		<title>The Class Equation</title>
  
 		<p>Let <m>X</m> be a finite <m>G</m>-set and <m>X_G</m><!--NOTATION TABLE\label{noteXG}--> be the set of fixed points in <m>X</m>; that is, 
-			<me>X_G = \{ x \in X : gx = x \mbox{ for all } <m>g \in G</m>} \}.</me>
+			<me>X_G = \{ x \in X : gx = x \text{ for all } g \in G \}.</me>
 		Since the orbits of the action partition <m>X</m>,
 			<me>|X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|,</me>
 		where <m>x_k, \ldots, x_n</m> are representatives from the distinct nontrivial orbits of <m>X</m>.</p> 
  
- 
 		<p>Now consider the special case in which <m>G</m> acts on itself by conjugation, <m>(g,x) \mapsto gxg^{-1}</m>. The <term>center</term><index><main>Group</main><sub>center of</sub></index> of <m>G</m>, 
-			<me>Z(G) = \{x : xg = gx \mbox{ for all <m>g \in G</m>} \},</me>
+			<me>Z(G) = \{x : xg = gx \text{ for all } g \in G \},</me>
 		is the set of points that are fixed by conjugation. The nontrivial orbits of the action are called the <term>conjugacy classes</term><index><main>Conjugacy classes</main></index> of <m>G</m>. If <m>x_1, \ldots, x_k</m> are representatives from each of the nontrivial conjugacy classes of <m>G</m> and <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, then 
 			<me>|G| = |Z(G)| + n_1 + \cdots + n_k.</me>
 		The stabilizer subgroups of each of the <m>x_i</m>'s, <m>C(x_i) = \{ g \in G: g x_i = x_i g \}</m>, are called the <term>centralizer subgroups</term><index><main>Subgroup</main><sub>centralizer</sub></index><index><main>Centralizer</main><sub>of a subgroup</sub></index> of the <m>x_i</m>'s. From Theorem<nbsp /><xref ref="theorem-orbit" />, we obtain the <term>class equation</term><index><main>Class equation</main></index>: 
@@ -190,7 +184,7 @@
 <!-- %Example clarified.  Suggested by B. Whetter.  TWJ 11/17/2012 -->
  
 		<example xml:id="example-conjugacy-class-sn">
-			<p>For <m>S_n</m> it takes a bit of work to find the conjugacy classes.  We begin with cycles.  Suppose that <m>\sigma = ( a_1, \ldots, a_k)</m> is a cycle and let <m>\tau \in S_n</m>. By Theorem<nbsp /><xref ref="cosets:cycle_length_theorem" />,
+			<p>For <m>S_n</m> it takes a bit of work to find the conjugacy classes.  We begin with cycles.  Suppose that <m>\sigma = ( a_1, \ldots, a_k)</m> is a cycle and let <m>\tau \in S_n</m>. By Theorem<nbsp /><xref ref="theorem-cycle-length-theorem" />,
 				<me>\tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k)).</me>
 			Consequently, any two cycles of the same length are conjugate. Now let <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m> be a cycle decomposition, where the length of each cycle <m>\sigma_i</m> is <m>r_i</m>. Then <m>\sigma</m> is conjugate to every other <m>\tau \in S_n</m> whose cycle decomposition has the same lengths.</p>
  
@@ -216,7 +210,7 @@
 
 <!-- Typo fixed.  Suggested by A. Vance.  TWJ 11/17/2012 -->
 
-		<corollary xml:id="cor-p2abelian">
+		<corollary xml:id="corollary-p2abelian">
 			<statement>
 				<p>Let <m>G</m> be a group of order <m>p^2</m> where <m>p</m> is prime. Then <m>G</m> is abelian.</p>
 			</statement>
@@ -232,101 +226,100 @@
 	<section xml:id="section-burnsides-counting-theorem">
 		<title>Burnside's Counting Theorem</title>
  
+ 		<introduction>
+
 			<p>Suppose that we are to color the vertices of a square with two different colors, say black and white.  We might suspect that there would be <m>2^4=16</m> different colorings. However, some of these colorings are equivalent.  If we color the first vertex black and the remaining vertices white, it is the same as coloring the second vertex black and the remaining ones white since we could obtain the second coloring simply by rotating the square <m>90^\circ</m> (Figure<nbsp /><xref ref="figure-actions-coloring" />).</p>
 
+			<figure xml:id="figure-actions-coloring">
+				<tikz filebase="actions_colorings_square"><![CDATA[
+				\begin{tikzpicture}[scale=0.85] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+
+				\draw (0,0) rectangle (2,2);
+				\node at (-0.2,0) [below] {$B$};
+				\node at (2.2,0) [below] {$W$};
+				\node at (-0.2,2) [above] {$W$};
+				\node at (2.2,2) [above] {$W$};
+
+				\draw (3.5,0) rectangle (5.5,2);
+				\node at (3.3,0) [below] {$W$};
+				\node at (5.7,0) [below] {$B$};
+				\node at (3.3,2) [above] {$W$};
+				\node at (5.7,2) [above] {$W$};
+
+				\draw (0,3.5) rectangle (2,5.5);
+				\node at (-0.2,3.5) [below] {$W$};
+				\node at (2.2,3.5) [below] {$W$};
+				\node at (-0.2,5.5) [above] {$B$};
+				\node at (2.2,5.5) [above] {$W$};
+
+				\draw (3.5,3.5) rectangle (5.5,5.5);
+				\node at (3.3,3.5) [below] {$W$};
+				\node at (5.7,3.5) [below] {$W$};
+				\node at (3.3,5.5) [above] {$W$};
+				\node at (5.7,5.5) [above] {$B$};
+
+				\end{tikzpicture}]]>
+				</tikz>
+				<caption>Equivalent colorings of square</caption>
+			</figure>
  
-		<figure xml:id="figure-actions-coloring">
-			<tikz filebase="actions_colorings_square"><![CDATA[
-\begin{tikzpicture}[scale=0.85] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
-
-\draw (0,0) rectangle (2,2);
-\node at (-0.2,0) [below] {$B$};
-\node at (2.2,0) [below] {$W$};
-\node at (-0.2,2) [above] {$W$};
-\node at (2.2,2) [above] {$W$};
-
-\draw (3.5,0) rectangle (5.5,2);
-\node at (3.3,0) [below] {$W$};
-\node at (5.7,0) [below] {$B$};
-\node at (3.3,2) [above] {$W$};
-\node at (5.7,2) [above] {$W$};
-
-\draw (0,3.5) rectangle (2,5.5);
-\node at (-0.2,3.5) [below] {$W$};
-\node at (2.2,3.5) [below] {$W$};
-\node at (-0.2,5.5) [above] {$B$};
-\node at (2.2,5.5) [above] {$W$};
-
-
-\draw (3.5,3.5) rectangle (5.5,5.5);
-\node at (3.3,3.5) [below] {$W$};
-\node at (5.7,3.5) [below] {$W$};
-\node at (3.3,5.5) [above] {$W$};
-\node at (5.7,5.5) [above] {$B$};
-
-\end{tikzpicture}]]>
-			</tikz>
-			<caption>Equivalent colorings of square</caption>
-		</figure>
+			<p>Burnside's Counting Theorem offers a method of computing the number of distinguishable ways in which something can be done. In addition to its geometric applications, the theorem has interesting applications to areas in switching theory and chemistry. The proof of Burnside's Counting Theorem depends on the following lemma.</p>
  
-		<p>Burnside's Counting Theorem offers a method of computing the number of distinguishable ways in which something can be done. In addition to its geometric applications, the theorem has interesting applications to areas in switching theory and chemistry. The proof of Burnside's Counting Theorem depends on the following lemma.</p>
- 
-		<lemma xml:id="lemma-gset">
-			<statement>
-				<p>Let <m>X</m> be a <m>G</m>-set and suppose that <m>x \sim y</m>. Then <m>G_x</m> is isomorphic to <m>G_y</m>.  In particular, <m>|G_x| = |G_y|</m>.</p>
-			</statement>
-			<proof>
-				<p>Let <m>G</m> act on <m>X</m> by <m>(g,x) \mapsto g \cdot x</m>. Since <m>x \sim y</m>, there exists a <m>g \in G</m> such that <m>g \cdot x=y</m>. Let <m>a \in G_x</m>. Since 
-					<me>gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot x = y,</me>
-				we can define a map <m>\phi: G_x \rightarrow G_y</m> by <m>\phi(a) = gag^{-1}</m>. The map <m>\phi</m> is a homomorphism since 
-					<me>\phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(b).</me>
-				Suppose that <m>\phi(a) = \phi(b)</m>. Then <m>gag^{-1}= gbg^{-1}</m> or <m>a=b</m>; hence, the map is injective.  To show that <m>\phi</m> is onto, let <m>b</m> be in <m>G_y</m>; then <m>g^{-1}bg</m> is in <m>G_x</m> since
-					<me>g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y = x; </me>
-				and <m>\phi(g^{-1}bg ) = b</m>.</p>
-			</proof>
-		</lemma>
+			<lemma xml:id="lemma-gset">
+				<statement>
+					<p>Let <m>X</m> be a <m>G</m>-set and suppose that <m>x \sim y</m>. Then <m>G_x</m> is isomorphic to <m>G_y</m>.  In particular, <m>|G_x| = |G_y|</m>.</p>
+				</statement>
+				<proof>
+					<p>Let <m>G</m> act on <m>X</m> by <m>(g,x) \mapsto g \cdot x</m>. Since <m>x \sim y</m>, there exists a <m>g \in G</m> such that <m>g \cdot x=y</m>. Let <m>a \in G_x</m>. Since 
+						<me>gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot x = y,</me>
+					we can define a map <m>\phi: G_x \rightarrow G_y</m> by <m>\phi(a) = gag^{-1}</m>. The map <m>\phi</m> is a homomorphism since 
+						<me>\phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(b).</me>
+					Suppose that <m>\phi(a) = \phi(b)</m>. Then <m>gag^{-1}= gbg^{-1}</m> or <m>a=b</m>; hence, the map is injective.  To show that <m>\phi</m> is onto, let <m>b</m> be in <m>G_y</m>; then <m>g^{-1}bg</m> is in <m>G_x</m> since
+						<me>g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y = x; </me>
+					and <m>\phi(g^{-1}bg ) = b</m>.</p>
+				</proof>
+			</lemma>
 
  <!-- % Notation error pointed out by S. Engle corrected. -->
  <!-- % TWJ 11/20/2011 -->
 
-		<theorem>
-			<title>Burnside</title>
-			<index><main>Burnside's Counting Theorem</main></index>
-			<statement>
-			<p>Let <m>G</m> be a  finite group acting on a set <m>X</m> and let <m>k</m> denote the number of orbits of <m>X</m>. Then
-				<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g|.</me></p>
-			</statement>
-			<proof>
-				<p>We look at all the fixed points <m>x</m> of all the elements in <m>g \in G</m>; that is, we look at all <m>g</m>'s and all <m>x</m>'s such that <m>gx =x</m>. If viewed in terms of fixed point sets, the number of all <m>g</m>'s fixing <m>x</m>'s is 
-					<me>\sum_{g \in G} |X_g|.</me>
-				However, if viewed in terms of the stabilizer subgroups, this number is 
-					<me>\sum_{x \in X} |G_x|;</me>
-				hence, <m>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|</m>. By Lemma<nbsp /><xref ref="lemma-gset" />, 
-					<me>\sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|.</me>
-				By Theorem<nbsp /><xref ref="theorem-orbit" /> and Lagrange's Theorem, this expression is equal  to <m>|G|</m>. Summing over all of the <m>k</m> distinct orbits, we conclude that
-					<me>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|.</me></p>
-			</proof>
-		</theorem>
+			<theorem>
+				<title>Burnside</title>
+				<index><main>Burnside's Counting Theorem</main></index>
+				<statement>
+				<p>Let <m>G</m> be a  finite group acting on a set <m>X</m> and let <m>k</m> denote the number of orbits of <m>X</m>. Then
+					<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g|.</me></p>
+				</statement>
+				<proof>
+					<p>We look at all the fixed points <m>x</m> of all the elements in <m>g \in G</m>; that is, we look at all <m>g</m>'s and all <m>x</m>'s such that <m>gx =x</m>. If viewed in terms of fixed point sets, the number of all <m>g</m>'s fixing <m>x</m>'s is 
+						<me>\sum_{g \in G} |X_g|.</me>
+					However, if viewed in terms of the stabilizer subgroups, this number is 
+						<me>\sum_{x \in X} |G_x|;</me>
+					hence, <m>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|</m>. By Lemma<nbsp /><xref ref="lemma-gset" />, 
+						<me>\sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|.</me>
+					By Theorem<nbsp /><xref ref="theorem-orbit" /> and Lagrange's Theorem, this expression is equal  to <m>|G|</m>. Summing over all of the <m>k</m> distinct orbits, we conclude that
+						<me>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|.</me></p>
+				</proof>
+			</theorem>
  
- 		<example xml:id="example-burnside">
-			<p>Let <m>X = \{1, 2, 3, 4, 5 \}</m> and suppose that <m>G</m> is the permutation group <m>G= \{(1), (1 3), (1 3)(2 5), (2 5) \}</m>. The orbits of <m>X</m> are <m>\{1, 3\}</m>, <m>\{2, 5\}</m>, and <m>\{4\}</m>. The fixed point sets are 
-				<md>
-					<mrow>X_{(1)} &amp; =  X</mrow>
-					<mrow>X_{(1 3)} &amp; =  \{2, 4, 5 \}</mrow>
-					<mrow>X_{(1 3)(2 5)} &amp; =  \{4\}</mrow>
-					<mrow>X_{(2 5)} &amp; =  \{1, 3, 4 \}.</mrow>
-				</md>
-			Burnside's Theorem says that
-				<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5 + 3 + 1 + 3) = 3.</me></p>
+ 			<example xml:id="example-burnside">
+				<p>Let <m>X = \{1, 2, 3, 4, 5 \}</m> and suppose that <m>G</m> is the permutation group <m>G= \{(1), (1 3), (1 3)(2 5), (2 5) \}</m>. The orbits of <m>X</m> are <m>\{1, 3\}</m>, <m>\{2, 5\}</m>, and <m>\{4\}</m>. The fixed point sets are 
+					<md>
+						<mrow>X_{(1)} &amp; =  X</mrow>
+						<mrow>X_{(1 3)} &amp; =  \{2, 4, 5 \}</mrow>
+						<mrow>X_{(1 3)(2 5)} &amp; =  \{4\}</mrow>
+						<mrow>X_{(2 5)} &amp; =  \{1, 3, 4 \}.</mrow>
+					</md>
+				Burnside's Theorem says that
+					<me>k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5 + 3 + 1 + 3) = 3.</me></p>
 			</example>
- 
- 
+
+		</introduction>
 
 		<subsection number="no">
 			<title>A Geometric Example</title>
  
 			<p>Before we apply Burnside's Theorem to switching-theory problems, let us examine the number of ways in which the vertices of a square can be colored black or white. Notice that we can sometimes obtain equivalent colorings by simply applying a rigid motion to the square. For instance, as we have pointed out, if we color one of the vertices black and the remaining three white, it does not matter which vertex was colored black since a rotation will give an equivalent coloring.</p>
- 
  
 			<p>The  symmetry group of a square, <m>D_4</m>, is given by the following permutations: 
 				<md>
@@ -363,8 +356,7 @@
 				<me>\frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3) = 6</me>
 			ways to color the vertices of the square.</p>
  
- 
-			<proposition xml:id="prop-action-function">
+			<proposition xml:id="proposition-action-function">
 				<statement>
 					<p>Let <m>G</m> be a permutation group of <m>X</m> and <m>\widetilde{X}</m> the set of functions from <m>X</m> to <m>Y</m>. Then there exists a permutation group  <m>\widetilde{G}</m> acting on <m>\widetilde{X}</m>, where <m>\widetilde{\sigma}  \in \widetilde{G}</m> is defined by <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>\sigma \in G</m> and <m>f \in \widetilde{X}</m>. Furthermore, if <m>n</m> is the number of cycles in the cycle decomposition of <m>\sigma</m>, then <m>|\widetilde{X}_{\sigma}| = |Y|^n</m>.</p>
 				</statement>
@@ -384,29 +376,29 @@
  <!-- Label problem fixed.  Suggested by L. Franklin.  TWJ 12/8/2011 -->
 
 			<example xml:id="example-color-square">
-				<p>Suppose that we wish to color the vertices of a square using four different colors. By Proposition<nbsp /><xref ref="prop-action-function" />, we can immediately decide that there are 
+				<p>Suppose that we wish to color the vertices of a square using four different colors. By Proposition<nbsp /><xref ref="proposition-action-function" />, we can immediately decide that there are 
 					<me>\frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3) = 55</me>
 				possible ways.</p>
 			</example>
  
-<figure xml:id="figure-switching-n-variables">
+			<figure xml:id="figure-switching-n-variables">
 
-<tikz filebase="actions_switching_function"><![CDATA[
-\begin{tikzpicture}[scale=1.25] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+				<tikz filebase="actions_switching_function"><![CDATA[
+				\begin{tikzpicture}[scale=1.25] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
 
-\draw (1,0) rectangle (2.7,2);
-\node at (1.85,1)  {$f$};
-\draw [->] (2.7,1) -- (3.2,1) node [right] {$f(x_1, x_2, \ldots, x_n)$};
-\draw [->] (0.5,0.4) node [left] {$x_n$} -- (1,0.4);
-\draw [->] (0.5,1.2) node [left] {$x_2$} -- (1,1.2);
-\draw [->] (0.5,1.6) node [left] {$x_1$} -- (1,1.6);
-\node at (0.5,0.85)  [left] {$\vdots$};
+				\draw (1,0) rectangle (2.7,2);
+				\node at (1.85,1)  {$f$};
+				\draw [->] (2.7,1) -- (3.2,1) node [right] {$f(x_1, x_2, \ldots, x_n)$};
+				\draw [->] (0.5,0.4) node [left] {$x_n$} -- (1,0.4);
+				\draw [->] (0.5,1.2) node [left] {$x_2$} -- (1,1.2);
+				\draw [->] (0.5,1.6) node [left] {$x_1$} -- (1,1.6);
+				\node at (0.5,0.85)  [left] {$\vdots$};
 
-\end{tikzpicture}]]>
-</tikz>
+				\end{tikzpicture}]]>
+				</tikz>
 
-<caption>A switching function of <m>n</m> variables</caption>
-</figure>
+				<caption>A switching function of <m>n</m> variables</caption>
+			</figure>
 
 		</subsection>
 
@@ -415,28 +407,28 @@
  
 			<p>In switching theory we are concerned with the design of electronic circuits with binary inputs and outputs. The simplest of these circuits is a switching function that has <m>n</m> inputs and a single output (Figure<nbsp /><xref ref="figure-switching-n-variables" />). Large electronic circuits can often be  constructed by combining smaller modules of this kind. The inherent problem here is that even for a simple circuit a large number of different switching functions can be constructed.  With only four inputs and a single output, we can construct 65,536 different switching functions. However, we can often replace one switching function with another merely by permuting the input leads to the circuit (Figure<nbsp /><xref ref="figure-switching-two-variables" />).</p>
  
-<figure xml:id="figure-switching-two-variables">
+			<figure xml:id="figure-switching-two-variables">
 
-<tikz filebase="actions_switching_two_variables"><![CDATA[
-\begin{tikzpicture}[scale=0.8] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
+				<tikz filebase="actions_switching_two_variables"><![CDATA[
+				\begin{tikzpicture}[scale=0.8] <!-- %Replaced figure with tikz figure - TWJ 6/28/2010 -->
 
-\draw (1,0) rectangle (3,2);
-\node at (2,1)  {$f$};
-\draw [->] (3,1) -- (3.5,1) node [right] {$f(a,b)$};
-\draw [->] (0.5,1.5) node [left] {$a$} -- (1,1.5);
-\draw [->] (0.5,0.5) node [left] {$b$} -- (1,0.5);
+				\draw (1,0) rectangle (3,2);
+				\node at (2,1)  {$f$};
+				\draw [->] (3,1) -- (3.5,1) node [right] {$f(a,b)$};
+				\draw [->] (0.5,1.5) node [left] {$a$} -- (1,1.5);
+				\draw [->] (0.5,0.5) node [left] {$b$} -- (1,0.5);
 
-\draw (7,0) rectangle (9,2);
-\node at (8,1)  {$f$};
-\draw [->] (9,1) -- (9.5,1) node [right] {$f(b,a) = g(a,b)$};
-\draw [->] (6.3,1.5) node [left] {$a$} -- (6.5,1.5) -- (7,0.5);
-\draw [->] (6.3,0.5) node [left] {$b$} -- (6.5,0.5) -- (7,1.5);
+				\draw (7,0) rectangle (9,2);
+				\node at (8,1)  {$f$};
+				\draw [->] (9,1) -- (9.5,1) node [right] {$f(b,a) = g(a,b)$};
+				\draw [->] (6.3,1.5) node [left] {$a$} -- (6.5,1.5) -- (7,0.5);
+				\draw [->] (6.3,0.5) node [left] {$b$} -- (6.5,0.5) -- (7,1.5);
 
-\end{tikzpicture}]]>
-</tikz>
+				\end{tikzpicture}]]>
+				</tikz>
 
-<caption>A switching function of two variables</caption>
-</figure>
+				<caption>A switching function of two variables</caption>
+			</figure>
  
 			<p>We define a <term> switching</term><index><main>Function</main><sub>switching</sub></index><index><main>Switching function</main></index> or <term>Boolean function</term><index><main>Boolean function</main></index><index><main>Function</main><sub>Boolean</sub></index> of <m>n</m> variables to be a function from <m>{\mathbb Z}_2^n</m> to <m>{\mathbb Z}_2</m>. Since  any switching function can have two possible values for each binary <m>n</m>-tuple and there are <m>2^n</m> binary <m>n</m>-tuples, <m>2^{2^n}</m> switching functions are possible for <m>n</m> variables. In general, allowing permutations of the inputs greatly reduces the number of different kinds of modules that are needed to build a large circuit.</p>
  
@@ -446,7 +438,6 @@
 					<mrow>&amp;f_{10} \sim f_{12} &amp; &amp; f_{11} \sim f_{13}.&amp;</mrow>
 				</md></p>
  
-
  			<table xml:id="table-switching-2-variables">
    				<tgroup cols="10" align="center">
        				<thead>
@@ -581,41 +572,28 @@ such that <m>H_i</m> is normal in <m>H_{i+1}</m> and <m>H_{i+1} / H_i</m> is abe
 		<title>References and Suggested Reading</title> <!-- %TWJ 6/28/2010 - References checked. -->
 
 		<biblio type="raw"> <!-- was [1] -->
-De Bruijin, N. G. <q>Pólya's Theory of Counting,</q> in <title>Applied Combinatorial Mathematics</title>, Beckenbach, E. F., ed.
-Wiley, New York, 1964.</biblio>
+		De Bruijin, N. G. <q>Pólya's Theory of Counting,</q> in <title>Applied Combinatorial Mathematics</title>, Beckenbach, E. F., ed. Wiley, New York, 1964.</biblio>
  
 
 		<biblio type="raw"> <!-- was [2] -->
-Eidswick, J. A. <q>Cubelike Puzzles<mdash />What Are They and How
-Do You Solve Them?</q> <title>American Mathematical
-Monthly</title> <volume>93</volume>(1986), 157<ndash />76.</biblio>
+		Eidswick, J. A. <q>Cubelike Puzzles<mdash />What Are They and How Do You Solve Them?</q> <title>American Mathematical Monthly</title> <volume>93</volume>(1986), 157<ndash />76.</biblio>
  
 		<biblio type="raw"> <!-- was [3] -->
-Harary, F., Palmer, E. M., and Robinson, R. W. <q>Pólya's
-Contributions to Chemical Enumeration,</q> in <title>Chemical
-Applications of Graph Theory</title>, Balaban, A. T., ed. Academic
-Press, London, 1976.</biblio>
+		Harary, F., Palmer, E. M., and Robinson, R. W. <q>Pólya's Contributions to Chemical Enumeration,</q> in <title>Chemical Applications of Graph Theory</title>, Balaban, A. T., ed. Academic Press, London, 1976.</biblio>
 
 		<biblio type="raw"> <!-- was [4] -->
-Gårding, L. and Tambour, T. <title>Algebra for Computer
-Science</title>. Springer-Verlag, New York, 1988.</biblio>
- <!-- %TWJ 6/28/2010 - This is out of print -->
+		Gårding, L. and Tambour, T. <title>Algebra for Computer Science</title>. Springer-Verlag, New York, 1988.</biblio>
+ 		<!-- %TWJ 6/28/2010 - This is out of print -->
 
 		<biblio type="raw"> <!-- was [5] -->
-Laufer, H. B. <title>Discrete Mathematics and Applied Modern
-Algebra</title>. PWS-Kent, Boston, 1984.</biblio>
+		Laufer, H. B. <title>Discrete Mathematics and Applied Modern Algebra</title>. PWS-Kent, Boston, 1984.</biblio>
  <!-- %TWJ 6/28/2010 - This is out of print -->
 
-		<biblio type="raw"> <!-- was [6] -->
-Pólya, G. and Read, R. C. <title>Combinatorial Enumeration
-of Groups, Graphs, and Chemical Compounds</title>. Springer-Verlag,
-New York, 1985.</biblio>
+		<biblio type="raw"> <!-- was [6] --> Pólya, G. and Read, R. C. <title>Combinatorial Enumeration of Groups, Graphs, and Chemical Compounds</title>. Springer-Verlag, New York, 1985.</biblio>
  <!-- %TWJ 6/28/2010 - This is out of print -->
  
 		<biblio type="raw"> <!-- was [7] -->
-Shapiro, L. W. <q>Finite Groups Acting on Sets with
-Applications,</q> <title>Mathematics Magazine</title>, May<ndash />June 1973,
-136<ndash />47.</biblio>
+		Shapiro, L. W. <q>Finite Groups Acting on Sets with Applications,</q> <title>Mathematics Magazine</title>, May<ndash />June 1973, 136<ndash />47.</biblio>
  
 </references>
  

@@ -17,202 +17,205 @@
 	<section xml:id="section-isomorph-definitions">
 		<title>Definition and Examples</title>
 
-		<p>Two groups <m>(G, \cdot)</m> and <m>(H, \circ)</m> are <term>isomorphic</term><index><main>Group</main><sub>isomorphic</sub></index> if there exists a one-to-one and onto map <m>\phi : G \rightarrow H</m> such that the group operation is preserved;  that is, 
-<me>
-\phi( a \cdot b) = \phi( a) \circ \phi( b)
-</me>
-for all <m>a</m> and <m>b</m> in <m>G</m>. If <m>G</m> is isomorphic to <m>H</m>, we write <m>G \cong H</m><!--NOTATION TABLE \label{noteisomorph}-->. The map <m>\phi</m> is called an <term>isomorphism</term><index><main>Group</main><sub>isomorphism of</sub></index><index><main>Isomorphism</main><sub>of groups</sub></index>.</p>
+		<introduction>
 
-		<example xml:id="example-z4-isomorph">
-			<p>To show that <m>{\mathbb Z}_4 \cong \langle i \rangle</m>, define a map <m>\phi: {\mathbb Z}_4 \rightarrow \langle i \rangle</m> by <m>\phi(n) = i^n</m>.  We must show that <m>\phi</m> is bijective and preserves the group operation.  The map <m>\phi</m> is one-to-one and onto because
-<md>
-<mrow>\phi(0) &amp; = 1</mrow>
-<mrow>\phi(1) &amp; = i</mrow>
-<mrow>\phi(2) &amp; = -1</mrow>
-<mrow>\phi(3) &amp; = -i.</mrow>
-</md>
-Since
-<me>\phi(m + n) = i^{m+n} = i^m i^n = \phi(m) \phi( n),</me>
-the group operation is preserved.</p>
-		</example>
+			<p>Two groups <m>(G, \cdot)</m> and <m>(H, \circ)</m> are <term>isomorphic</term><index><main>Group</main><sub>isomorphic</sub></index> if there exists a one-to-one and onto map <m>\phi : G \rightarrow H</m> such that the group operation is preserved;  that is, 
+				<me>\phi( a \cdot b) = \phi( a) \circ \phi( b)</me>
+			for all <m>a</m> and <m>b</m> in <m>G</m>. If <m>G</m> is isomorphic to <m>H</m>, we write <m>G \cong H</m><!--NOTATION TABLE \label{noteisomorph}-->. The map <m>\phi</m> is called an <term>isomorphism</term><index><main>Group</main><sub>isomorphism of</sub></index><index><main>Isomorphism</main><sub>of groups</sub></index>.</p>
 
-		<example xml:id="example-real-isomorph">
-			<p>We can define an isomorphism <m>\phi</m> from the additive group of real numbers <m>( {\mathbb R}, + )</m> to the multiplicative group of positive real numbers  <m>( {\mathbb R^+}, \cdot )</m>  with the exponential map; that is,
-<me>\phi( x + y) = e^{x + y} = e^x e^y = \phi( x ) \phi( y).</me>
-Of course, we must still show that <m>\phi</m> is one-to-one and onto, but this can be determined using calculus.</p>
-		</example>
+			<example xml:id="example-z4-isomorph">
+				<p>To show that <m>{\mathbb Z}_4 \cong \langle i \rangle</m>, define a map <m>\phi: {\mathbb Z}_4 \rightarrow \langle i \rangle</m> by <m>\phi(n) = i^n</m>.  We must show that <m>\phi</m> is bijective and preserves the group operation.  The map <m>\phi</m> is one-to-one and onto because
+					<md>
+						<mrow>\phi(0) &amp; = 1</mrow>
+						<mrow>\phi(1) &amp; = i</mrow>
+						<mrow>\phi(2) &amp; = -1</mrow>
+						<mrow>\phi(3) &amp; = -i.</mrow>
+					</md>
+				Since
+					<me>\phi(m + n) = i^{m+n} = i^m i^n = \phi(m) \phi( n),</me>
+				the group operation is preserved.</p>
+			</example>
 
-		<example xml:id="example-rational-isomorph">
-			<p>The integers are isomorphic to the subgroup of <m>{\mathbb Q}^\ast</m> consisting of elements of the form <m>2^n</m>.  Define a map <m>\phi: {\mathbb Z} \rightarrow {\mathbb Q}^\ast</m> by <m>\phi( n ) = 2^n</m>. Then
-<me>\phi( m + n ) = 2^{m + n} = 2^m 2^n = \phi( m ) \phi( n ).</me>
-By definition the map <m>\phi</m> is onto the subset <m>\{2^n :n \in {\mathbb Z} \}</m> of  <m>{\mathbb Q}^\ast</m>.  To show that the map is injective, assume that <m>m \neq n</m>.  If we can show that <m>\phi(m) \neq \phi(n)</m>, then we are done.  Suppose that <m>m \gt n</m> and assume that <m>\phi(m) = \phi(n)</m>.  Then <m>2^m = 2^n</m> or <m>2^{m-n} = 1</m>, which is impossible since <m>m-n \gt 0</m>.</p>
-		</example>
+			<example xml:id="example-real-isomorph">
+				<p>We can define an isomorphism <m>\phi</m> from the additive group of real numbers <m>( {\mathbb R}, + )</m> to the multiplicative group of positive real numbers  <m>( {\mathbb R^+}, \cdot )</m>  with the exponential map; that is,
+					<me>\phi( x + y) = e^{x + y} = e^x e^y = \phi( x ) \phi( y).</me>
+				Of course, we must still show that <m>\phi</m> is one-to-one and onto, but this can be determined using calculus.</p>
+			</example>
 
-		<example xml:id="example-units">
-			<p>The groups <m>{\mathbb Z}_8</m> and <m>{\mathbb Z}_{12}</m>  cannot be isomorphic since they have different orders; however, it is true that <m>U(8) \cong U(12)</m>.  We know that
-<md>
-<mrow>U(8) &amp; = \{1, 3, 5, 7 \}</mrow>
-<mrow>U(12) &amp; = \{1, 5, 7, 11 \}.</mrow>
-</md>
-An isomorphism <m>\phi : U(8) \rightarrow U(12)</m> is then given by
-<md>
-<mrow>1 &amp; \mapsto  1</mrow>
-<mrow>3 &amp; \mapsto  5</mrow>
-<mrow>5 &amp; \mapsto  7</mrow>
-<mrow>7 &amp; \mapsto  11.</mrow>
-</md>
-The map <m>\phi</m> is not the only possible isomorphism between these two groups.  We could define another isomorphism <m>\psi</m> by <m>\psi(1) = 1</m>, <m>\psi(3) = 11</m>, <m>\psi(5) = 5</m>, <m>\psi(7) = 7</m>. In fact, both of these groups are isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> (see Example<nbsp /><xref ref="example-groups-z2xz2" /> in Chapter<nbsp /><xref ref="groups" />).</p>
-		</example>
+			<example xml:id="example-rational-isomorph">
+				<p>The integers are isomorphic to the subgroup of <m>{\mathbb Q}^\ast</m> consisting of elements of the form <m>2^n</m>.  Define a map <m>\phi: {\mathbb Z} \rightarrow {\mathbb Q}^\ast</m> by <m>\phi( n ) = 2^n</m>. Then
+					<me>\phi( m + n ) = 2^{m + n} = 2^m 2^n = \phi( m ) \phi( n ).</me>
+				By definition the map <m>\phi</m> is onto the subset <m>\{2^n :n \in {\mathbb Z} \}</m> of  <m>{\mathbb Q}^\ast</m>. To show that the map is injective, assume that <m>m \neq n</m>.  If we can show that <m>\phi(m) \neq \phi(n)</m>, then we are done.  Suppose that <m>m \gt n</m> and assume that <m>\phi(m) = \phi(n)</m>.  Then <m>2^m = 2^n</m> or <m>2^{m-n} = 1</m>, which is impossible since <m>m-n \gt 0</m>.</p>
+			</example>
 
-		<example xml:id="example-not-isomorph">
-			<p>Even though <m>S_3</m> and <m>{\mathbb Z}_6</m> possess the same number of elements, we would suspect that they are not isomorphic, because <m>{\mathbb Z}_6</m> is abelian and <m>S_3</m> is nonabelian.  To demonstrate that this is indeed the case, suppose that <m>\phi : {\mathbb Z}_6 \rightarrow  S_3</m> is an isomorphism.  Let <m>a , b \in S_3</m> be two elements such that <m>ab \neq ba</m>.  Since <m>\phi</m> is an isomorphism, there exist elements <m>m</m> and <m>n</m> in <m>{\mathbb Z}_6</m> such that 
-<me>\phi( m )  = a \quad \text{and} \quad \phi( n )  = b.</me>
-However,
-<me>ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n ) \phi(m) = ba,</me>
-which contradicts the fact that <m>a</m> and <m>b</m> do not commute.</p>
-		</example>
+			<example xml:id="example-units">
+				<p>The groups <m>{\mathbb Z}_8</m> and <m>{\mathbb Z}_{12}</m>  cannot be isomorphic since they have different orders; however, it is true that <m>U(8) \cong U(12)</m>.  We know that
+					<md>
+					<mrow>U(8) &amp; = \{1, 3, 5, 7 \}</mrow>
+					<mrow>U(12) &amp; = \{1, 5, 7, 11 \}.</mrow>
+					</md>
+				An isomorphism <m>\phi : U(8) \rightarrow U(12)</m> is then given by
+					<md>
+					<mrow>1 &amp; \mapsto  1</mrow>
+					<mrow>3 &amp; \mapsto  5</mrow>
+					<mrow>5 &amp; \mapsto  7</mrow>
+					<mrow>7 &amp; \mapsto  11.</mrow>
+					</md>
+				The map <m>\phi</m> is not the only possible isomorphism between these two groups.  We could define another isomorphism <m>\psi</m> by <m>\psi(1) = 1</m>, <m>\psi(3) = 11</m>, <m>\psi(5) = 5</m>, <m>\psi(7) = 7</m>. In fact, both of these groups are isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> (see Example<nbsp /><xref ref="example-z2xz2" /> in Chapter<nbsp /><xref ref="groups" />).</p>
+			</example>
 
-		<theorem xml:id="theorem-isomorph-1">
-			<statement>
-				<p>Let <m>\phi : G \rightarrow H</m> be an isomorphism of two groups.  Then the following statements are true.<ol>
+			<example xml:id="example-not-isomorph">
+				<p>Even though <m>S_3</m> and <m>{\mathbb Z}_6</m> possess the same number of elements, we would suspect that they are not isomorphic, because <m>{\mathbb Z}_6</m> is abelian and <m>S_3</m> is nonabelian.  To demonstrate that this is indeed the case, suppose that <m>\phi : {\mathbb Z}_6 \rightarrow  S_3</m> is an isomorphism.  Let <m>a , b \in S_3</m> be two elements such that <m>ab \neq ba</m>.  Since <m>\phi</m> is an isomorphism, there exist elements <m>m</m> and <m>n</m> in <m>{\mathbb Z}_6</m> such that 
+					<me>\phi( m )  = a \quad \text{and} \quad \phi( n )  = b.</me>
+				However,
+					<me>ab = \phi(m ) \phi(n) = \phi(m + n) = \phi(n + m) = \phi(n ) \phi(m) = ba,</me>
+				which contradicts the fact that <m>a</m> and <m>b</m> do not commute.</p>
+			</example>
 
-					<li><m>\phi^{-1} : H \rightarrow G</m> is an isomorphism.</li>
+			<theorem xml:id="theorem-isomorph-1">
+				<statement>
+					<p>Let <m>\phi : G \rightarrow H</m> be an isomorphism of two groups.  Then the following statements are true.<ol>
 
-					<li><m>|G| = |H|</m>.</li>
+						<li><m>\phi^{-1} : H \rightarrow G</m> is an isomorphism.</li>
 
-					<li>If <m>G</m> is abelian, then <m>H</m> is abelian.</li>
+						<li><m>|G| = |H|</m>.</li>
 
-					<li>If <m>G</m> is cyclic, then <m>H</m> is cyclic.</li>
+						<li>If <m>G</m> is abelian, then <m>H</m> is abelian.</li>
 
-					<li>If <m>G</m> has a subgroup of order <m>n</m>, then <m>H</m> has a subgroup of order <m>n</m>.</li>
+						<li>If <m>G</m> is cyclic, then <m>H</m> is cyclic.</li>
 
-				</ol></p>
-			</statement>
-			<proof>
-				<p>Assertions (1) and (2) follow from the fact that <m>\phi</m> is a bijection.  We will prove (3) here and leave the remainder of the theorem to be proved in the exercises.</p>
- 
-				<p>(3) Suppose that <m>h_1</m> and <m>h_2</m> are elements of <m>H</m>.  Since <m>\phi</m> is onto, there exist elements <m>g_1, g_2 \in G</m> such that <m>\phi(g_1) = h_1</m> and <m>\phi(g_2) = h_2</m>.  Therefore, 
-<me>h_1 h_2 = \phi(g_1) \phi(g_2) =  \phi(g_1 g_2) = \phi(g_2 g_1) = \phi(g_2) \phi(g_1) = h_2 h_1.</me></p>
-			</proof>
-		</theorem>
+						<li>If <m>G</m> has a subgroup of order <m>n</m>, then <m>H</m> has a subgroup of order <m>n</m>.</li>
 
-		<p>We are now in a position to characterize all cyclic groups.</p>
+					</ol></p>
+				</statement>
+				<proof>
+					<p>Assertions (1) and (2) follow from the fact that <m>\phi</m> is a bijection.  We will prove (3) here and leave the remainder of the theorem to be proved in the exercises.</p>
+	 
+					<p>(3) Suppose that <m>h_1</m> and <m>h_2</m> are elements of <m>H</m>.  Since <m>\phi</m> is onto, there exist elements <m>g_1, g_2 \in G</m> such that <m>\phi(g_1) = h_1</m> and <m>\phi(g_2) = h_2</m>.  Therefore, 
+						<me>h_1 h_2 = \phi(g_1) \phi(g_2) =  \phi(g_1 g_2) = \phi(g_2 g_1) = \phi(g_2) \phi(g_1) = h_2 h_1.</me></p>
+				</proof>
+			</theorem>
 
-		<theorem xml:id="theorem-isomorph-2">
-			<statement>
-				<p>All cyclic groups of infinite order are isomorphic to <m>{\mathbb Z}</m>.</p>
-			</statement>
-			<proof>
-				<p>Let <m>G</m> be a cyclic group with infinite order and suppose that <m>a</m> is a generator of <m>G</m>.  Define a map <m>\phi : {\mathbb Z} \rightarrow  G</m> by <m>\phi : n \mapsto a^n</m>. Then 
-<me>\phi( m+n ) = a^{m+n} = a^m a^n = \phi( m ) \phi( n ).</me>
-To show that <m>\phi</m> is injective, suppose that <m>m</m> and <m>n</m> are two elements in <m>{\mathbb Z}</m>, where <m>m \neq n</m>.  We can assume that <m>m \gt n</m>.  We must show that <m>a^m \neq a^n</m>. Let us suppose the contrary; that is, <m>a^m = a^n</m>. In this case <m>a^{m - n} = e</m>, where <m>m - n \gt 0</m>, which contradicts the fact that <m>a</m> has infinite order.  Our map is onto since any element in <m>G</m> can be written as <m>a^n</m> for some integer <m>n</m> and <m>\phi(n) = a^n</m>.</p>
-			</proof>
-		</theorem>
+			<p>We are now in a position to characterize all cyclic groups.</p>
 
-		<theorem xml:id="theorem-isomorph-3">
-			<statement>
-				<p>If <m>G</m> is a cyclic group of order <m>n</m>, then <m>G</m> is isomorphic to <m>{\mathbb Z}_n</m>.  
-</p>
-			</statement>
-			<proof>
-				<p>Let <m>G</m> be a cyclic group of order <m>n</m> generated by <m>a</m> and define a map <m>\phi : {\mathbb Z}_n \rightarrow  G</m> by <m>\phi : k \mapsto a^k</m>, where <m>0 \leq k \lt n</m>. The proof that <m>\phi</m> is an isomorphism is one of the end-of-chapter exercises. </p>
-			</proof>
-		</theorem>
- 
-		<corollary xml:id="theorem-isomorph-4">
-			<statement>
-				<p>If <m>G</m> is a  group of order <m>p</m>, where <m>p</m> is a prime number, then <m>G</m> is isomorphic to <m>{\mathbb Z}_p</m>.</p>
-			</statement>
-			<proof>
-				<p>The proof is a direct result of Corollary<nbsp /><xref ref="cosets_theorem_7" />.</p>
-			</proof>
-		</corollary>
- 
-		<p>The main goal in group theory is to classify all groups; however, it makes sense to consider two groups to be the same if they are isomorphic.  We state this result in the following theorem, whose proof is left as an exercise.</p> 
+			<theorem xml:id="theorem-isomorph-2">
+				<statement>
+					<p>All cyclic groups of infinite order are isomorphic to <m>{\mathbb Z}</m>.</p>
+				</statement>
+				<proof>
+					<p>Let <m>G</m> be a cyclic group with infinite order and suppose that <m>a</m> is a generator of <m>G</m>.  Define a map <m>\phi : {\mathbb Z} \rightarrow  G</m> by <m>\phi : n \mapsto a^n</m>. Then 
+						<me>\phi( m+n ) = a^{m+n} = a^m a^n = \phi( m ) \phi( n ).</me>
+					To show that <m>\phi</m> is injective, suppose that <m>m</m> and <m>n</m> are two elements in <m>{\mathbb Z}</m>, where <m>m \neq n</m>.  We can assume that <m>m \gt n</m>.  We must show that <m>a^m \neq a^n</m>. Let us suppose the contrary; that is, <m>a^m = a^n</m>. In this case <m>a^{m - n} = e</m>, where <m>m - n \gt 0</m>, which contradicts the fact that <m>a</m> has infinite order.  Our map is onto since any element in <m>G</m> can be written as <m>a^n</m> for some integer <m>n</m> and <m>\phi(n) = a^n</m>.</p>
+				</proof>
+			</theorem>
 
-		<theorem xml:id="theorem-isomorph-5">
-			<statement>
-				<p>The isomorphism of groups determines an equivalence relation on the class of all groups.</p>
-			</statement>
-		</theorem>
- 
-		<p>Hence, we can modify our goal of classifying all groups to classifying all groups <term>up to isomorphism</term>; that is, we will consider two groups to be the same if they are isomorphic.</p>
+			<theorem xml:id="theorem-isomorph-3">
+				<statement>
+					<p>If <m>G</m> is a cyclic group of order <m>n</m>, then <m>G</m> is isomorphic to <m>{\mathbb Z}_n</m>.</p>
+				</statement>
+				<proof>
+					<p>Let <m>G</m> be a cyclic group of order <m>n</m> generated by <m>a</m> and define a map <m>\phi : {\mathbb Z}_n \rightarrow  G</m> by <m>\phi : k \mapsto a^k</m>, where <m>0 \leq k \lt n</m>. The proof that <m>\phi</m> is an isomorphism is one of the end-of-chapter exercises. </p>
+				</proof>
+			</theorem>
+	 
+			<corollary xml:id="theorem-isomorph-4">
+				<statement>
+					<p>If <m>G</m> is a  group of order <m>p</m>, where <m>p</m> is a prime number, then <m>G</m> is isomorphic to <m>{\mathbb Z}_p</m>.</p>
+				</statement>
+				<proof>
+					<p>The proof is a direct result of Corollary<nbsp /><xref ref="corollary-cosets-theorem-7" />.</p>
+				</proof>
+			</corollary>
+	 
+			<p>The main goal in group theory is to classify all groups; however, it makes sense to consider two groups to be the same if they are isomorphic.  We state this result in the following theorem, whose proof is left as an exercise.</p> 
+
+			<theorem xml:id="theorem-isomorph-5">
+				<statement>
+					<p>The isomorphism of groups determines an equivalence relation on the class of all groups.</p>
+				</statement>
+			</theorem>
+	 
+			<p>Hence, we can modify our goal of classifying all groups to classifying all groups <term>up to isomorphism</term>; that is, we will consider two groups to be the same if they are isomorphic.</p>
+
+		</introduction>
 
 		<subsection number="no">
 			<title>Cayley's Theorem</title>
 
 			<p>Cayley proved that if <m>G</m> is a group, it is isomorphic to a group of permutations on some set; hence, every group is a permutation group.  Cayley's Theorem is what  we call a representation theorem.  The aim of representation theory is to find an isomorphism of some group <m>G</m> that we wish to study into a group that we know a great deal about, such as a group of permutations or matrices.</p>
 
-		<example xml:id="example-cayley-isomorph">
-			<p>Consider the group <m>{\mathbb Z}_3</m>.  The Cayley table for <m>{\mathbb Z}_3</m> is as follows.</p> 
+			<example xml:id="example-cayley-isomorph">
+				<p>Consider the group <m>{\mathbb Z}_3</m>.  The Cayley table for <m>{\mathbb Z}_3</m> is as follows.</p> 
 
-<table xml:id="table-cayley-isomorph">
-   <tgroup cols="4" align="center">
-       <thead>
-           <row><entry><m>+</m></entry><entry>0</entry><entry>1</entry><entry>2</entry></row>
-       </thead>
-       <tbody>
-       		<row><entry>0</entry><entry>0</entry><entry>1</entry><entry>2</entry></row>
-			<row><entry>1</entry><entry>1</entry><entry>2</entry><entry> 0</entry></row>
-			<row><entry>2</entry><entry>2</entry><entry>0</entry><entry> 1</entry></row>
-       </tbody>
-   </tgroup>
-</table>
+			<table xml:id="table-cayley-isomorph">
+			   <tgroup cols="4" align="center">
+			       <thead>
+			           <row><entry><m>+</m></entry><entry>0</entry><entry>1</entry><entry>2</entry></row>
+			       </thead>
+			       <tbody>
+			       		<row><entry>0</entry><entry>0</entry><entry>1</entry><entry>2</entry></row>
+						<row><entry>1</entry><entry>1</entry><entry>2</entry><entry> 0</entry></row>
+						<row><entry>2</entry><entry>2</entry><entry>0</entry><entry> 1</entry></row>
+			       </tbody>
+			   </tgroup>
+			</table>
 
 			<p>The addition table of <m>{\mathbb Z}_3</m> suggests that it is the same as the permutation group <m>G = \{ (0), (0 1 2), (0 2 1) \}</m>.  The isomorphism here is 
-<md>
-<mrow>0 &amp; \mapsto
-\begin{pmatrix}<![CDATA[
-0 & 1 & 2 \\ 0 & 1 & 2
-]]>\end{pmatrix}
-= (0)</mrow>
-<mrow>1 &amp; \mapsto
-\begin{pmatrix}<![CDATA[
-0 & 1 & 2 \\ 1 & 2 & 0
-]]>\end{pmatrix}
-= (0 1 2)</mrow>
-<mrow>2 &amp; \mapsto
-\begin{pmatrix}<![CDATA[
-0 & 1 & 2 \\ 2 & 0 & 1
-]]>\end{pmatrix}
-= (0 2 1).</mrow>
-</md></p>
-		</example>
+				<md>
+					<mrow>0 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 0 & 1 & 2
+					]]>\end{pmatrix}
+					= (0)</mrow>
+					<mrow>1 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 1 & 2 & 0
+					]]>\end{pmatrix}
+					= (0 1 2)</mrow>
+					<mrow>2 &amp; \mapsto
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 2 \\ 2 & 0 & 1
+					]]>\end{pmatrix}
+					= (0 2 1).</mrow>
+				</md></p>
+			</example>
 
-		<theorem xml:id="theorem-cayleys">
-			<title>Cayley</title>
-			<index><main>Cayley's Theorem</main></index>
-			<statement>
-				<p>Every group is isomorphic to a group of permutations.</p>
-			</statement>
-			<proof><p>Let <m>G</m> be a group.  We must find a group of permutations <m>\overline{G}</m> that is isomorphic to <m>G</m>.  For any <m>g \in G</m>, define a  function <m>\lambda_g : G \rightarrow G</m> by <m>\lambda_g(a) = ga</m>.  We claim that <m>\lambda_g</m> is a permutation of <m>G</m>.  To show that <m>\lambda_g</m> is one-to-one, suppose that <m>\lambda_g(a) = \lambda_g(b)</m>.  Then  
-<me>ga =\lambda_g(a) = \lambda_g(b) = gb.</me>
-Hence, <m>a = b</m>.  To show that <m>\lambda_g</m> is onto, we must prove that for each <m>a \in G</m>, there is a <m>b</m> such that <m>\lambda_g (b) = a</m>.  Let <m>b = g^{-1} a</m>.</p>
+			<theorem xml:id="theorem-cayleys">
+				<title>Cayley</title>
+				<index><main>Cayley's Theorem</main></index>
+				<statement>
+					<p>Every group is isomorphic to a group of permutations.</p>
+				</statement>
+				<proof>
+					<p>Let <m>G</m> be a group.  We must find a group of permutations <m>\overline{G}</m> that is isomorphic to <m>G</m>.  For any <m>g \in G</m>, define a  function <m>\lambda_g : G \rightarrow G</m> by <m>\lambda_g(a) = ga</m>.  We claim that <m>\lambda_g</m> is a permutation of <m>G</m>.  To show that <m>\lambda_g</m> is one-to-one, suppose that <m>\lambda_g(a) = \lambda_g(b)</m>.  Then  
+						<me>ga =\lambda_g(a) = \lambda_g(b) = gb.</me>
+					Hence, <m>a = b</m>.  To show that <m>\lambda_g</m> is onto, we must prove that for each <m>a \in G</m>, there is a <m>b</m> such that <m>\lambda_g (b) = a</m>.  Let <m>b = g^{-1} a</m>.</p>
 
-				<p>Now we are ready to define our group <m>\overline{G}</m>. Let
-<me>\overline{G} = \{ \lambda_g : g \in G \}.</me>
-We must show that <m>\overline{G}</m> is a group under composition of functions and find an isomorphism between <m>G</m> and <m>\overline{G}</m>.  We have closure under composition of functions since 
-<me>(\lambda_g \circ \lambda_h )(a) = \lambda_g(ha) = gha = \lambda_{gh} (a).</me>
-Also,
-<me>\lambda_e (a) = ea = a</me>
-and
-<me>(\lambda_{g^{-1}} \circ \lambda_g) (a) = \lambda_{g^{-1}} (ga) = g^{-1} g a = a = \lambda_e (a).</me></p>
+					<p>Now we are ready to define our group <m>\overline{G}</m>. Let
+						<me>\overline{G} = \{ \lambda_g : g \in G \}.</me>
+					We must show that <m>\overline{G}</m> is a group under composition of functions and find an isomorphism between <m>G</m> and <m>\overline{G}</m>.  We have closure under composition of functions since 
+						<me>(\lambda_g \circ \lambda_h )(a) = \lambda_g(ha) = gha = \lambda_{gh} (a).</me>
+					Also,
+						<me>\lambda_e (a) = ea = a</me>
+					and
+						<me>(\lambda_{g^{-1}} \circ \lambda_g) (a) = \lambda_{g^{-1}} (ga) = g^{-1} g a = a = \lambda_e (a).</me></p>
 
-				<p>We can define an isomorphism from <m>G</m> to <m>\overline{G}</m> by <m>\phi : g \mapsto \lambda_g</m>. The group operation is preserved since
-<me>\phi(gh) = \lambda_{gh} = \lambda_g \lambda_h = \phi(g) \phi(h).</me>
-It is also one-to-one, because if <m>\phi(g)(a) = \phi(h)(a)</m>, then
-<me>ga = \lambda_g a = \lambda_h a=  ha.</me>
-Hence, <m>g = h</m>.  That <m>\phi</m> is onto follows from the fact that <m>\phi( g ) = \lambda_g</m> for any <m>\lambda_g \in \overline{G}</m>.</p>
-			</proof>
-		</theorem>
+					<p>We can define an isomorphism from <m>G</m> to <m>\overline{G}</m> by <m>\phi : g \mapsto \lambda_g</m>. The group operation is preserved since
+						<me>\phi(gh) = \lambda_{gh} = \lambda_g \lambda_h = \phi(g) \phi(h).</me>
+					It is also one-to-one, because if <m>\phi(g)(a) = \phi(h)(a)</m>, then
+						<me>ga = \lambda_g a = \lambda_h a=  ha.</me>
+					Hence, <m>g = h</m>.  That <m>\phi</m> is onto follows from the fact that <m>\phi( g ) = \lambda_g</m> for any <m>\lambda_g \in \overline{G}</m>.</p>
+				</proof>
+			</theorem>
 
-		<p>The isomorphism <m>g \mapsto \lambda_g</m> is known as the <term>left regular representation</term><index><main>Left regular representation</main></index> of <m>G</m>.</p> 
+			<p>The isomorphism <m>g \mapsto \lambda_g</m> is known as the <term>left regular representation</term><index><main>Left regular representation</main></index> of <m>G</m>.</p> 
 
 		</subsection>
 
 		<subsection number="no">
 			<title>Historical Note</title>
-				<p>Arthur Cayley<index><main>Cayley, Arthur</main></index> was born in England in 1821, though he spent much of the first part of his life in Russia, where his father was a merchant.  Cayley was educated at Cambridge, where he took the first Smith's Prize in mathematics.  A lawyer for much of his adult life, he wrote several papers in his early twenties before entering the legal profession at the age of 25.  While practicing law he continued his mathematical research, writing more than 300 papers during this period of his life.  These included some of his best work.  In 1863 he left law to become a professor at Cambridge.  Cayley wrote more than 900 papers in fields such as group theory, geometry, and linear algebra. His legal knowledge was very valuable to Cambridge; he participated in the writing of many of the university's statutes.  Cayley was also one of the people responsible for the admission of women to Cambridge.</p>
+			
+			<p>Arthur Cayley<index><main>Cayley, Arthur</main></index> was born in England in 1821, though he spent much of the first part of his life in Russia, where his father was a merchant.  Cayley was educated at Cambridge, where he took the first Smith's Prize in mathematics.  A lawyer for much of his adult life, he wrote several papers in his early twenties before entering the legal profession at the age of 25.  While practicing law he continued his mathematical research, writing more than 300 papers during this period of his life.  These included some of his best work.  In 1863 he left law to become a professor at Cambridge.  Cayley wrote more than 900 papers in fields such as group theory, geometry, and linear algebra. His legal knowledge was very valuable to Cambridge; he participated in the writing of many of the university's statutes.  Cayley was also one of the people responsible for the admission of women to Cambridge.</p>
 		</subsection>
 
 	</section> 
@@ -220,14 +223,18 @@ Hence, <m>g = h</m>.  That <m>\phi</m> is onto follows from the fact that <m>\ph
 	<section xml:id="section-direct-products">
 		<title>Direct Products</title>
 
-		<p>Given two groups <m>G</m> and <m>H</m>, it is possible to construct a new group from the Cartesian product of <m>G</m> and <m>H</m>, <m>G \times H</m>.  Conversely, given a large group, it is sometimes possible to decompose the group; that is, a group is sometimes isomorphic to the direct product of two smaller groups.  Rather than studying a large group <m>G</m>, it is often easier to study the component groups of <m>G</m>.</p>
+		<introduction>
+
+			<p>Given two groups <m>G</m> and <m>H</m>, it is possible to construct a new group from the Cartesian product of <m>G</m> and <m>H</m>, <m>G \times H</m>.  Conversely, given a large group, it is sometimes possible to decompose the group; that is, a group is sometimes isomorphic to the direct product of two smaller groups.  Rather than studying a large group <m>G</m>, it is often easier to study the component groups of <m>G</m>.</p>
+
+		</introduction>
  
 		<subsection number="no">
 			<title>External Direct Products</title>
 
 			<p>If <m>(G,\cdot)</m> and <m>(H, \circ)</m> are groups, then we can make the Cartesian product of <m>G</m> and <m>H</m> into a new group.  As a set, our group is just the ordered pairs <m>(g, h) \in G \times H</m> where <m>g \in G</m> and <m>h \in H</m>. We can define a binary operation on <m>G \times H</m> by 
-<me>(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2);</me>
-that is, we just multiply elements in the first coordinate as we do in <m>G</m> and elements in the second coordinate as we do in <m>H</m>.  We have specified the particular operations <m>\cdot</m> and <m>\circ</m> in each group here for the sake of clarity; we usually just write <m>(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)</m>.</p> 
+				<me>(g_1, h_1)(g_2, h_2) = (g_1 \cdot g_2, h_1 \circ h_2);</me>
+			that is, we just multiply elements in the first coordinate as we do in <m>G</m> and elements in the second coordinate as we do in <m>H</m>.  We have specified the particular operations <m>\cdot</m> and <m>\circ</m> in each group here for the sake of clarity; we usually just write <m>(g_1, h_1)(g_2, h_2) = (g_1  g_2, h_1 h_2)</m>.</p> 
 
 			<proposition xml:id="theorem-isomorph-7">
 				<statement>
@@ -238,24 +245,24 @@ that is, we just multiply elements in the first coordinate as we do in <m>G</m> 
 				</proof>
 			</proposition>
 
-			<example xml:id="example-r2-prodiuct">
+			<example xml:id="example-r2-product">
 				<p>Let <m>{\mathbb R}</m> be the group of real numbers under addition.  The Cartesian product of <m>{\mathbb R}</m> with itself, <m>{\mathbb R} \times {\mathbb R} = {\mathbb R}^2</m>, is also a group, in which the group operation is just addition in each coordinate; that is, <m>(a, b) + (c, d) = (a + c, b + d)</m>.  The identity is <m>(0,0)</m> and the inverse of <m>(a, b)</m> is <m>(-a, -b)</m>.</p>
 			</example>
 
 			<example xml:id="example-z2xz2">
 				<p>Consider
-<me>{\mathbb Z}_2 \times {\mathbb Z}_2 = \{ (0, 0), (0, 1), (1, 0),(1, 1) \}.</me>
-Although <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and <m>{\mathbb Z}_4</m> both contain four elements, it is easy to see that they are not isomorphic since for every element <m>(a,b)</m> in <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>(a,b) + (a,b) = (0,0)</m>, but <m>{\mathbb Z}_4</m> is cyclic.</p>
+					<me>{\mathbb Z}_2 \times {\mathbb Z}_2 = \{ (0, 0), (0, 1), (1, 0),(1, 1) \}.</me>
+				Although <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and <m>{\mathbb Z}_4</m> both contain four elements, it is easy to see that they are not isomorphic since for every element <m>(a,b)</m> in <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>, <m>(a,b) + (a,b) = (0,0)</m>, but <m>{\mathbb Z}_4</m> is cyclic.</p>
 			</example>
 
 			<p>The group <m>G \times H</m> is called the <term>external direct product</term><index><main>Direct product of groups</main><sub>external</sub></index><index><main>External direct product</main></index> of  <m>G</m> and <m>H</m>. Notice that there is nothing special about the fact that we have used only two groups to build a new group. The direct product
-<me>\prod_{i = 1}^n G_i = G_1 \times G_2 \times \cdots \times G_n</me>
-of the groups <m>G_1, G_2, \ldots, G_n</m> is defined in exactly the same manner. If <m>G = G_1 = G_2 = \cdots = G_n</m>, we often write <m>G^n</m> instead of <m>G_1 \times G_2 \times \cdots \times G_n</m>.</p>
+				<me>\prod_{i = 1}^n G_i = G_1 \times G_2 \times \cdots \times G_n</me>
+			of the groups <m>G_1, G_2, \ldots, G_n</m> is defined in exactly the same manner. If <m>G = G_1 = G_2 = \cdots = G_n</m>, we often write <m>G^n</m> instead of <m>G_1 \times G_2 \times \cdots \times G_n</m>.</p>
  
 			<example xml:id="example-z2n">
 				<p>The group <m>{\mathbb Z}_2^n</m>, considered as a set, is just the set of all binary <m>n</m>-tuples. The group operation is the <q>exclusive or</q> of two binary <m>n</m>-tuples. For example, 
-<me>(01011101) + (01001011) = (00010110).</me>
-This group is important in coding theory, in cryptography, and in many areas of computer science.</p>
+					<me>(01011101) + (01001011) = (00010110).</me>
+				This group is important in coding theory, in cryptography, and in many areas of computer science.</p>
 			</example>
 
 			<theorem xml:id="theorem-isomorph-lcm">
@@ -264,11 +271,11 @@ This group is important in coding theory, in cryptography, and in many areas of 
 				</statement>
 				<proof>
 					<p>Suppose that <m>m</m> is the least common multiple of <m>r</m> and <m>s</m> and let <m>n = |(g,h)|</m>. Then 
-<md>
-<mrow>(g,h)^m  = (g^m, h^m) = (e_G,e_H)</mrow>
-<mrow>(g^n, h^n)  = (g, h)^n = (e_G,e_H).</mrow>
-</md>
-Hence, <m>n</m> must divide <m>m</m>, and <m>n \leq m</m>.  However, by the second equation, both <m>r</m> and <m>s</m> must divide <m>n</m>; therefore, <m>n</m> is a common multiple of <m>r</m> and <m>s</m>. Since <m>m</m> is the <em>least common multiple</em> of <m>r</m> and <m>s</m>, <m>m \leq n</m>.  Consequently, <m>m</m> must be equal to <m>n</m>.</p>
+						<md>
+							<mrow>(g,h)^m  = (g^m, h^m) = (e_G,e_H)</mrow>
+							<mrow>(g^n, h^n)  = (g, h)^n = (e_G,e_H).</mrow>
+						</md>
+					Hence, <m>n</m> must divide <m>m</m>, and <m>n \leq m</m>.  However, by the second equation, both <m>r</m> and <m>s</m> must divide <m>n</m>; therefore, <m>n</m> is a common multiple of <m>r</m> and <m>s</m>. Since <m>m</m> is the <em>least common multiple</em> of <m>r</m> and <m>s</m>, <m>m \leq n</m>.  Consequently, <m>m</m> must be equal to <m>n</m>.</p>
 				</proof>
 			</theorem>
 
@@ -279,25 +286,15 @@ Hence, <m>n</m> must divide <m>m</m>, and <m>n \leq m</m>.  However, by the seco
 			</corollary>
  
 			<example xml:id="example-z12xz60">
-				<p>Let <m>(8, 56) \in {\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>. Since
-<m>\gcd(8,12) = 4</m>, the order of 8 is <m>12/4 = 3</m> in <m>{\mathbb Z}_{12}</m>.
-Similarly, the order of <m>56</m> in <m>{\mathbb Z}_{60}</m> is <m>15</m>. The least
-common multiple of 3 and 15 is 15; hence, <m>(8, 56)</m> has order 15 in
-<m>{\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>.</p>
+				<p>Let <m>(8, 56) \in {\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>. Since <m>\gcd(8,12) = 4</m>, the order of 8 is <m>12/4 = 3</m> in <m>{\mathbb Z}_{12}</m>. Similarly, the order of <m>56</m> in <m>{\mathbb Z}_{60}</m> is <m>15</m>. The least common multiple of 3 and 15 is 15; hence, <m>(8, 56)</m> has order 15 in <m>{\mathbb Z}_{12} \times  {\mathbb Z}_{60}</m>.</p>
 			</example>
 
- 
 			<example xml:id="example-z2xz3">
 				<p>The group <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> consists of the pairs
-<md>
-<mrow>&amp; (0,0), &amp; &amp; (0, 1), &amp; &amp; (0, 2), &amp; &amp; (1,0), &amp; &amp; (1, 1), &amp; &amp; (1, 2).</mrow>
-</md>
-In this case, unlike that of <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and
-<m>{\mathbb Z}_4</m>, it 
-is true that <m>{\mathbb Z}_2  \times {\mathbb Z}_3 \cong {\mathbb Z}_6</m>. We need
-only show that <m>{\mathbb Z}_2  \times {\mathbb Z}_3</m> is cyclic.  It is
-easy to see that <m>(1,1)</m> is a generator for <m>{\mathbb Z}_2  \times {\mathbb
-Z}_3</m>.</p>
+					<md>
+					<mrow>&amp; (0,0), &amp; &amp; (0, 1), &amp; &amp; (0, 2), &amp; &amp; (1,0), &amp; &amp; (1, 1), &amp; &amp; (1, 2).</mrow>
+					</md>
+				In this case, unlike that of <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m> and <m>{\mathbb Z}_4</m>, it is true that <m>{\mathbb Z}_2 \times {\mathbb Z}_3 \cong {\mathbb Z}_6</m>. We need only show that <m>{\mathbb Z}_2 \times {\mathbb Z}_3</m> is cyclic.  It is easy to see that <m>(1,1)</m> is a generator for <m>{\mathbb Z}_2  \times {\mathbb Z}_3</m>.</p>
 			</example>
 
 			<p>The next theorem tells us exactly when the direct product of two	cyclic groups is cyclic.</p>
@@ -308,39 +305,36 @@ Z}_3</m>.</p>
 				</statement>
 				<proof>
 					<p>Assume first that if <m>{\mathbb Z}_m \times {\mathbb Z}_n \cong {\mathbb Z}_{mn}</m>, then <m>\gcd(m, n) = 1</m>. To show this, we will prove the contrapositive; that is, we will show that if <m>\gcd(m, n) = d \gt 1</m>, then <m>{\mathbb Z}_m \times {\mathbb Z}_n</m> cannot be cyclic. Notice that <m>mn/d</m> is divisible by both <m>m</m> and <m>n</m>; hence, for any element <m>(a,b) \in {\mathbb Z}_m \times {\mathbb Z}_n</m>,  
-<me>\underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; \text{times}} = (0, 0).</me>
-Therefore, no <m>(a, b)</m> can generate all of <m>{\mathbb Z}_m \times {\mathbb Z}_n</m>.</p>
+						<me>\underbrace{(a,b) + (a,b)+ \cdots + (a,b)}_{mn/d \; \text{times}} = (0, 0).</me>
+					Therefore, no <m>(a, b)</m> can generate all of <m>{\mathbb Z}_m \times {\mathbb Z}_n</m>.</p>
  
-					<p>The converse follows directly from Theorem<nbsp /><xref ref="theorem-isomorph-lcm" /> since
-<m>\lcm(m,n) = mn</m> if and only if <m>\gcd(m,n)=1</m>.</p>
+					<p>The converse follows directly from Theorem<nbsp /><xref ref="theorem-isomorph-lcm" /> since <m>\lcm(m,n) = mn</m> if and only if <m>\gcd(m,n)=1</m>.</p>
 				</proof>
 			</theorem>
 
-			<corollary xml:id="cor-relatively-prime">
+			<corollary xml:id="corollary-relatively-prime">
 				<statement>
-					<p>Let <m>n_1, \ldots, n_k</m> be positive integers. Then
-<me>\prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}</me>
-if and only if <m>\gcd( n_i, n_j) =1</m> for <m>i \neq j</m>.</p>
+					<p>Let <m>n_1, \ldots, n_k</m> be positive integers. Then <me>\prod_{i=1}^k {\mathbb Z}_{n_i} \cong {\mathbb Z}_{n_1 \cdots n_k}</me> if and only if <m>\gcd( n_i, n_j) =1</m> for <m>i \neq j</m>.</p>
 				</statement>
 			</corollary>
 
 			<corollary>
 				<statement>
 					<p>If
-<me>m = p_1^{e_1} \cdots  p_k^{e_k},</me>
-where the <m>p_i</m>s are distinct primes, then
-<me>{\mathbb Z}_m \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}.</me></p>
+						<me>m = p_1^{e_1} \cdots  p_k^{e_k},</me>
+					where the <m>p_i</m>s are distinct primes, then
+						<me>{\mathbb Z}_m \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}.</me></p>
 				</statement>
 				<proof>
-					<p>Since the greatest common divisor of <m>p_i^{e_i}</m> and <m>p_j^{e_j}</m> is 1 for <m>i \neq j</m>, the proof follows from Corollary<nbsp /><xref ref="cor-relatively-prime" />.</p>
+					<p>Since the greatest common divisor of <m>p_i^{e_i}</m> and <m>p_j^{e_j}</m> is 1 for <m>i \neq j</m>, the proof follows from Corollary<nbsp /><xref ref="corollary-relatively-prime" />.</p>
 				</proof>
 			</corollary>
 
 <!-- This reference needs to be fixed - TWJ 6/2/2010 -->
 
 			<p>In Chapter<nbsp /><xref ref="struct" />, we will prove that all finite abelian groups are  isomorphic to direct products of the form
-<me>{\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}</me>
-where <m>p_1, \ldots, p_k</m> are (not necessarily distinct) primes.</p>
+				<me>{\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}</me>
+			where <m>p_1, \ldots, p_k</m> are (not necessarily distinct) primes.</p>
 
 		</subsection>
 
@@ -359,49 +353,46 @@ where <m>p_1, \ldots, p_k</m> are (not necessarily distinct) primes.</p>
 					<li><m>hk = kh</m> for all <m>k \in K</m> and <m>h \in H</m>.</li>
  
 				</ul>
-Then <m>G</m> is the <term>internal direct product</term><index><main>Direct product of groups</main><sub>internal</sub></index><index><main>Internal direct product</main></index> of <m>H</m> and <m>K</m>.</p>
+			Then <m>G</m> is the <term>internal direct product</term><index><main>Direct product of groups</main><sub>internal</sub></index><index><main>Internal direct product</main></index> of <m>H</m> and <m>K</m>.</p>
  
-			<example xml:id="U8">
+			<example xml:id="example-u8">
 				<p>The group <m>U(8)</m> is the internal direct product of
-<me>H  = \{1, 3 \} \quad \text{and} \quad K  = \{1, 5 \}.</me></p>
+					<me>H  = \{1, 3 \} \quad \text{and} \quad K  = \{1, 5 \}.</me></p>
 			</example>
 
 			<example xml:id="example-d6-product">
 				<p>The dihedral group <m>D_6</m> is an internal direct product of its two subgroups 
-<me>H  = \{id, r^3  \} \quad \text{and} \quad K  = \{id, r^2, r^4, s, r^2s, r^4 s   \}.</me>
-It can easily be shown that <m>K \cong S_3</m>; consequently, <m>D_6 \cong {\mathbb Z}_2 \times S_3</m>.</p>
+					<me>H  = \{id, r^3  \} \quad \text{and} \quad K  = \{id, r^2, r^4, s, r^2s, r^4 s   \}.</me>
+				It can easily be shown that <m>K \cong S_3</m>; consequently, <m>D_6 \cong {\mathbb Z}_2 \times S_3</m>.</p>
 			</example>
  
 			<example xml:id="example-s3-not-a-product">
-				<p>Not every group can be written as the internal direct product of two of its proper subgroups.  If the group <m>S_3</m> were an internal direct product of its proper subgroups <m>H</m> and <m>K</m>, then one of the  subgroups,
-say <m>H</m>, would have to have order 3. In this case <m>H</m> is the subgroup <m>\{ (1), (123), (132) \}</m>. The subgroup <m>K$</m>must have order 2, but no matter which subgroup we choose for <m>K</m>, the condition that <m>hk = kh</m> will never be satisfied for <m>h \in H</m> and <m>k \in K</m>.</p>
+				<p>Not every group can be written as the internal direct product of two of its proper subgroups.  If the group <m>S_3</m> were an internal direct product of its proper subgroups <m>H</m> and <m>K</m>, then one of the  subgroups, say <m>H</m>, would have to have order 3. In this case <m>H</m> is the subgroup <m>\{ (1), (123), (132) \}</m>. The subgroup <m>K</m>must have order 2, but no matter which subgroup we choose for <m>K</m>, the condition that <m>hk = kh</m> will never be satisfied for <m>h \in H</m> and <m>k \in K</m>.</p>
 			</example>
 
 			<theorem xml:id="theorem-isomorph-directproducts">
 				<statement>
 					<p>Let <m>G</m> be the internal direct product of  subgroups <m>H</m> and <m>K</m>. Then <m>G</m> is isomorphic to <m>H \times K</m>.</p>
 				</statement>
-				<proof><p>Since <m>G</m> is an internal direct product, we can write any element <m>g \in G</m> as <m>g =hk</m> for some <m>h \in H</m> and some <m>k \in K</m>. Define a map <m>\phi : G \rightarrow H \times K</m> by <m>\phi(g) = (h,k)</m>.</p>
+				<proof>
+					<p>Since <m>G</m> is an internal direct product, we can write any element <m>g \in G</m> as <m>g =hk</m> for some <m>h \in H</m> and some <m>k \in K</m>. Define a map <m>\phi : G \rightarrow H \times K</m> by <m>\phi(g) = (h,k)</m>.</p>
  
 					<p>The first problem that we must face is to show that <m>\phi</m> is a well-defined map; that is, we must show that <m>h</m> and <m>k</m> are uniquely determined by <m>g</m>. Suppose that <m>g =  hk=h'k'</m>. Then <m>h^{-1} h'= k (k')^{-1}</m> is in both <m>H</m> and <m>K</m>, so it must be the identity. Therefore, <m>h = h'</m> and <m>k = k'</m>, which proves that <m>\phi</m> is, indeed, well-defined.</p>
  
-					<p>To show that <m>\phi</m> preserves the group operation, let <m>g_1 = h_1 k_1</m>
-and <m>g_2 = h_2 k_2</m> and observe that 
-<md>
-<mrow>\phi( g_1 g_2 ) &amp; = \phi( h_1 k_1 h_2 k_2 )</mrow>
-<mrow>&amp; = \phi(h_1  h_2 k_1 k_2)</mrow>
-<mrow>&amp; = (h_1  h_2, k_1 k_2)</mrow>
-<mrow>&amp; = (h_1, k_1)( h_2, k_2)</mrow>
-<mrow>&amp; = \phi( g_1 ) \phi(  g_2 ).</mrow>
-</md>
-We will leave the proof that <m>\phi</m> is one-to-one and onto
-as an exercise.</p>
+					<p>To show that <m>\phi</m> preserves the group operation, let <m>g_1 = h_1 k_1</m> and <m>g_2 = h_2 k_2</m> and observe that 
+						<md>
+							<mrow>\phi( g_1 g_2 ) &amp; = \phi( h_1 k_1 h_2 k_2 )</mrow>
+							<mrow>&amp; = \phi(h_1  h_2 k_1 k_2)</mrow>
+							<mrow>&amp; = (h_1  h_2, k_1 k_2)</mrow>
+							<mrow>&amp; = (h_1, k_1)( h_2, k_2)</mrow>
+							<mrow>&amp; = \phi( g_1 ) \phi(  g_2 ).</mrow>
+						</md>
+					We will leave the proof that <m>\phi</m> is one-to-one and onto as an exercise.</p>
 				</proof>
 			</theorem>
 			
 			<example xml:id="example-z6-product">
-				<p>The group <m>{\mathbb Z}_6</m> is an internal direct product isomorphic to <m>\{
-0, 2, 4\} \times \{ 0, 3 \}</m>.</p>
+				<p>The group <m>{\mathbb Z}_6</m> is an internal direct product isomorphic to <m>\{ 0, 2, 4\} \times \{ 0, 3 \}</m>.</p>
 			</example>
 
 			<p>We can extend the definition of an internal direct product of <m>G</m> to a collection of subgroups <m>H_1, H_2, \ldots, H_n</m> of <m>G</m>, by requiring that 
@@ -414,12 +405,11 @@ as an exercise.</p>
 					<li><m>h_i h_j = h_j h_i</m> for all <m>h_i \in H_i</m> and <m>h_j \in H_j</m>.</li>
  
 				</ul>
-We will leave the proof of the following theorem as an exercise.</p>
+			We will leave the proof of the following theorem as an exercise.</p>
  
 			<theorem>
 				<statement>
-					<p>Let <m>G</m> be the internal direct product of subgroups <m>H_i</m>, where <m>i =
-1, 2, \ldots, n</m>. Then <m>G</m> is isomorphic to <m>\prod_i H_i</m>.</p>
+					<p>Let <m>G</m> be the internal direct product of subgroups <m>H_i</m>, where <m>i = 1, 2, \ldots, n</m>. Then <m>G</m> is isomorphic to <m>\prod_i H_i</m>.</p>
 				</statement>
 			</theorem>
 
