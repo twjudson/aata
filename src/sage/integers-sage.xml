@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+Many properties of the algebraic objects we will study can be determined from properties of associated integers.  And Sage has many powerful functions for analyzing integers.
+
+
+
+</subsection>
+<subsection>
+<title>Division Algorithm</title>
+
+<c>a <!--  b</c> will return the remainder upon division of <m>a</m> by <m>b</m>.  In other words, the result is the unique integer <m>r</m> such that (1) <m>0\leq r< b</m>, and (2) <m>a=bq+r</m> for some integer <m>q</m> (the quotient), as guaranteed by the Division Algorithm (Theorem \ref{integers:division_algorithm}).  Then <m>(a-r)/b</m> will equal <m>q</m>.  For example, -->
+
+<sage>
+<input>
+sage: r = 14 <!--  3 -->
+sage: r
+2
+sage: q = (14 - r)/3
+sage: q
+4
+</input>
+<output>
+</output>
+</sage>
+
+It is also possible to get both the quotient and remainder at the same time with the <c>.quo_rem()</c> method (quotient and remainder).
+
+<sage>
+<input>
+sage: a = 14
+sage: b = 3
+sage: a.quo_rem(b)
+(4, 2)
+</input>
+<output>
+</output>
+</sage>
+
+A remainder of zero indicates divisibility.  So <c>(a <!--  b) == 0</c> -->
+will return <c>True</c> if <m>b</m> divides <m>a</m>, and will otherwise return <c>False</c>.
+
+<sage>
+<input>
+sage: (20 <!--  5) == 0 -->
+True
+sage: (17 <!--  4) == 0 -->
+False
+</input>
+<output>
+</output>
+</sage>
+
+The <c>.divides()</c> method is another option.
+
+<sage>
+<input>
+sage: c = 5
+sage: c.divides(20)
+True
+sage: d = 4
+sage: d.divides(17)
+False
+</input>
+<output>
+</output>
+</sage>
+
+
+</subsection>
+<subsection>
+<title>Greatest Common Divisor</title>
+
+The greatest common divisor of <m>a</m> and <m>b</m> is obtained with the command <c>gcd(a, b)</c>, where in our first uses, <m>a</m> and <m>b</m> are integers.  Later, <m>a</m> and <m>b</m> can be other objects with a notion of divisibility and <q>greatness,</q> such as polynomials.  For example,
+
+<sage>
+<input>
+sage: gcd(2776, 2452)
+4
+</input>
+<output>
+</output>
+</sage>
+
+We can use the <c>gcd</c> command to determine if a pair of integers are relatively prime.
+
+<sage>
+<input>
+sage: a = 31049
+sage: b = 2105
+sage: gcd(a, b) == 1
+True
+sage: a = 3563
+sage: b = 2947
+sage: gcd(a, b) == 1
+False
+</input>
+<output>
+</output>
+</sage>
+
+The command <c>xgcd(a,b)</c> (<q>eXtended GCD</q>) returns a triple where the first element is the greatest common divisor of <m>a</m> and <m>b</m> (as with the <c>gcd(a,b)</c> command above), but the next two elements are the values of <m>r</m> and <m>s</m> such that <m>ra+sb=\gcd(a,b)</m>.
+
+<sage>
+<input>
+sage: xgcd(633,331)
+(1, -137, 262)
+</input>
+<output>
+</output>
+</sage>
+
+Portions of the triple can be extracted using <c>[ ]</c> to access the entries of the triple, starting with the first as number <c>0</c>.  For example, the following should return the result <c>True</c>, even if you change the values of <c>a</c> and <c>b</c>.  Try changing the values of <c>a</c> and <c>b</c> below, to see that the result is always <c>True</c>.
+
+<sage>
+<input>
+sage: a = 633
+sage: b = 331
+sage: extended = xgcd(a, b)
+sage: g = extended[0]
+sage: r = extended[1]
+sage: s = extended[2]
+sage: g == r*a + s*b
+True
+</input>
+<output>
+</output>
+</sage>
+
+Studying this block of code will go a long way towards helping you get the most out of Sage's output.  (Note that <c>=</c> is how a value is assigned to a variable, while as in the last line, <c>==</c> is how we compare two items for equality.)
+
+
+
+</subsection>
+<subsection>
+<title>Primes and Factoring</title>
+
+The method <c>.is_prime()</c> will determine if an integer is prime or not.
+
+<sage>
+<input>
+sage: a = 117371
+sage: a.is_prime()
+True
+sage: b = 14547073
+sage: b.is_prime()
+False
+sage: b == 1597 * 9109
+True
+</input>
+<output>
+</output>
+</sage>
+
+The command <c>random_prime(a, proof=True)</c> will generate a random prime number between <m>2</m> and <m>a</m>.
+Experiment by executing the following two compute cells several times.  (Replacing <c>proof=True</c> by <c>proof=False</c> will speed up the search, but there will be a very, very small probability the result will not be prime.)  The \verb!# random! comment is a signal to the automated testing of our examples that the output will be random <mdash /> you do not need to include that in your own work.
+
+<sage>
+<input>
+sage: a = random_prime(10^21, proof=True)
+sage: a                          # random
+424729101793542195193
+sage: a.is_prime()
+True
+</input>
+<output>
+</output>
+</sage>
+
+The command <c>prime_range(a, b)</c> returns an ordered list of all the primes from <m>a</m> to <m>b-1</m>, inclusive.  For example,
+
+<sage>
+<input>
+sage: prime_range(500, 550)
+[503, 509, 521, 523, 541, 547]
+</input>
+<output>
+</output>
+</sage>
+
+The commands <c>next_prime(a)</c> and <c>previous_prime(a)</c> are other ways to get a single prime number of a desired size.  Give them a try in the empty compute cell below.
+
+<sage>
+<input>
+
+</input>
+<output>
+</output>
+</sage>
+
+In addition to checking if integers are prime or not, or generating prime numbers, Sage can also decompose any integer into its prime factors, as described by the Fundamental Theorem of Arithmetic (Theorem \ref{integers_theorem_FTA}).
+
+<sage>
+<input>
+sage: a = 2600
+sage: a.factor()
+2^3 * 5^2 * 13
+</input>
+<output>
+</output>
+</sage>
+
+So <m>2600 = 2^3\times 5^2\times 13</m> and this is the unique way to write <m>2600</m> as a product of prime numbers (other than rearranging the order of the primes themselves in the product).
+
+While Sage will print a factorization nicely, it is carried internally as a list of pairs of integers, with each pair being a base (a prime number) and an exponent (a positive integer).  Study the following carefully, as it is another good exercise in working with Sage output in the form of lists.
+
+<sage>
+<input>
+sage: a = 2600
+sage: factored = a.factor()
+sage: first_term = factored[0]
+sage: first_term
+(2, 3)
+sage: second_term = factored[1]
+sage: second_term
+(5, 2)
+sage: third_term = factored[2]
+sage: third_term
+(13, 1)
+sage: first_prime = first_term[0]
+sage: first_prime
+2
+sage: first_exponent = first_term[1]
+sage: first_exponent
+3
+</input>
+<output>
+</output>
+</sage>
+
+The next compute cell reveals the internal version of the factorization by asking for the actual list.  And we show how you could determine exactly how many terms the factorization has by using the length command, <c>len()</c>.
+
+<sage>
+<input>
+sage: list(factored)
+[(2, 3), (5, 2), (13, 1)]
+sage: len(factored)
+3
+</input>
+<output>
+</output>
+</sage>
+
+Can you extract the next two primes and their exponents?
+
+<sage>
+<input>
+</input>
+<output>
+</output>
+</sage>
+
+
+
+
+
+
+
+
+
+
+
+
