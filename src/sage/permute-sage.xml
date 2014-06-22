@@ -4,13 +4,13 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 <section>
 	<title>Sage</title>
 
 	<introduction>
-		<p>A good portion of Sage's support for group theory is based on routines from GAP (Groups, Algorithms, and Programming) at \url{http://www.gap-system.org/}, which is included in every copy of Sage.  This is a mature open source package, dating back to 1986. (Forward reference here to GAP console, etc.)</p>
+		<p>A good portion of Sage's support for group theory is based on routines from GAP (Groups, Algorithms, and Programming) at <url href="http://www.gap-system.org/">www.gap-system.org</url>, which is included in every copy of Sage.  This is a mature open source package, dating back to 1986. (Forward reference here to GAP console, etc.)</p>
 
 		<p>As we have seen, groups can be described in many different ways, such as sets of matrices, sets of complex numbers, or sets of symbols subject to defining relations.  A very concrete way to represent groups is via permutations (one-to-one and onto functions of the integers <m>1</m> through <m>n</m>), using function composition as the operation in the group, as described in this chapter.  Sage has many routines designed to work with groups of this type and they are also a good way for those learning group theory to gain experience with the basic ideas of group theory.  For both these reasons, we will concentrate on these types of groups.</p>
 	</introduction>
@@ -21,119 +21,81 @@
 		<p>The easiest way to work with permutation group elements in Sage is to write them in cycle notation.  Since these are products of disjoint cycles (which commute), we do not need to concern ourselves with the actual order of the cycles.  If we write <c>(1,3)(2,4)</c> we probably understand it to be a permutation (the topic of this chapter!) and we know that it could be an element of <m>S_4</m>, or perhaps a symmetric group on more symbols than just 4.  Sage cannot get started that easily and needs a bit of context, so we coerce a string of characters written with cycle notation into a symmetric group to make group elements.  Here are some examples and some sample computations.  Remember that Sage and your text differ on the interpretation of the product of two permutations.</p>
 
 		<sage>
-		<input>
-		sage: G = SymmetricGroup(5)
-		sage: sigma = G("(1,3)(2,5,4)")
-		sage: sigma*sigma
-		</input>
-		<output>
-		(2,4,5)
-		</output>
+			<input>
+			G = SymmetricGroup(5)
+			sigma = G("(1,3)(2,5,4)")
+			sigma*sigma
+			</input>
+			<output>(2,4,5)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rho = G("(2,4)(1,5)")
-		sage: rho^3
-		</input>
-		<output>
-		(1,5)(2,4)
-		</output>
+			<input>
+			rho = G("(2,4)(1,5)")
+			rho^3
+			</input>
+			<output>(1,5)(2,4)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma*rho
-		</input>
-		<output>
-		(1,3,5,2)
-		</output>
+			<input>sigma*rho</input>
+			<output>(1,3,5,2)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rho*sigma
-		</input>
-		<output>
-		(1,4,5,3)
-		</output>
+			<input>rho*sigma</input>
+			<output>(1,4,5,3)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rho^-1*sigma*rho
-		</input>
-		<output>
-		(1,2,4)(3,5)
-		</output>
+			<input>rho^-1*sigma*rho</input>
+			<output>(1,2,4)(3,5)</output>
 		</sage>
 
 		<p>There are alternate ways to create permutation group elements, which can be useful in some situations, but they are not quite as useful in everday use.</p>
 
 		<sage>
-		<input>
-		sage: sigma1 = G("(1,3)(2,5,4)")
-		sage: sigma1
-		</input>
-		<output>
-		(1,3)(2,5,4)
-		</output>
+			<input>
+			sigma1 = G("(1,3)(2,5,4)")
+			sigma1
+			</input>
+			<output>(1,3)(2,5,4)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma2 = G([(1,3),(2,5,4)])
-		sage: sigma2
-		</input>
-		<output>
-		(1,3)(2,5,4)
-		</output>
+			<input>
+			sigma2 = G([(1,3),(2,5,4)])
+			sigma2
+			</input>
+			<output>(1,3)(2,5,4)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma3 = G([3,5,1,2,4])
-		sage: sigma3
-		</input>
-		<output>
-		(1,3)(2,5,4)
-		</output>
+			<input>
+			sigma3 = G([3,5,1,2,4])
+			sigma3
+			</input>
+			<output>(1,3)(2,5,4)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma1 == sigma2
-		</input>
-		<output>
-		True
-		</output>
+			<input>sigma1 == sigma2</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma2 == sigma3
-		</input>
-		<output>
-		True
-		</output>
+			<input>sigma2 == sigma3</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma2.cycle_tuples()
-		</input>
-		<output>
-		[(1, 3), (2, 5, 4)]
-		</output>
+			<input>sigma2.cycle_tuples()</input>
+			<output>[(1, 3), (2, 5, 4)]</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: [sigma3(x) for x in G.domain()]
-		</input>
-		<output>
-		[3, 5, 1, 2, 4]
-		</output>
+			<input>[sigma3(x) for x in G.domain()]</input>
+			<output>[3, 5, 1, 2, 4]</output>
 		</sage>
 
 		<p>The second version of <m>\sigma</m> is a list of <q>tuples</q>, which requires a lot of commas and these must be enclosed in a list.  (A tuple of length one must be written like <c>(4,)</c> to distinguish it from using parentheses for grouping, as in <c>5*(4)</c>.)  The third version uses the <q>bottom-row</q> of the more cumbersome two-row notation introduced at the beginning of the chapter <mdash /> it is an ordered list of the <em>output values</em> of the permutation when considered as a function.</p>
@@ -143,76 +105,54 @@
 		<p>We can be even more careful about the nature of our elements.  Notice that once we get Sage started, it can promote the product <m>\tau\sigma</m> into the larger permutation group.  We can <q>promote</q> elements into larger permutation groups, but it is an error to try to shoe-horn an element into a too-small symmetric group.</p>
 
 		<sage>
-		<input>
-		sage: H = SymmetricGroup(4)
-		sage: sigma = H("(1,2,3,4)")
-		sage: G = SymmetricGroup(6)
-		sage: tau = G("(1,2,3,4,5,6)")
-		sage: rho = tau * sigma
-		sage: rho
-		</input>
-		<output>
-		(1,3)(2,4,5,6)
-		</output>
+			<input>
+			H = SymmetricGroup(4)
+			sigma = H("(1,2,3,4)")
+			G = SymmetricGroup(6)
+			tau = G("(1,2,3,4,5,6)")
+			rho = tau * sigma
+			rho
+			</input>
+			<output>(1,3)(2,4,5,6)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma.parent()
-		</input>
-		<output>
-		Symmetric group of order 4! as a permutation group
-		</output>
+			<input>sigma.parent()</input>
+			<output>Symmetric group of order 4! as a permutation group</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: tau.parent()
-		</input>
-		<output>
-		Symmetric group of order 6! as a permutation group
-		</output>
+			<input>tau.parent()</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rho.parent()
-		</input>
-		<output>
-		Symmetric group of order 6! as a permutation group
-		</output>
+			<input>rho.parent()</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: tau.parent() == rho.parent()
-		</input>
-		<output>
-		True
-		</output>
+			<input>tau.parent() == rho.parent()</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigmaG = G(sigma)
-		sage: sigmaG.parent()
-		</input>
-		<output>
-		Symmetric group of order 6! as a permutation group
-		</output>
+			<input>
+			sigmaG = G(sigma)
+			sigmaG.parent()
+			</input>
+			<output>Symmetric group of order 6! as a permutation group</output>
 		</sage>
 
 		<p>It is an error to try to coerce a permutation with too many symbols into a permutation group employing too few symbols.</p>
 
 		<sage>
-		<input>
-		sage: tauH = H(tau)
-		</input>
-		<output>
-		Traceback (most recent call last):
-		...
-		ValueError: Invalid permutation vector: (1,2,3,4,5,6)
-		</output>
+			<input>tauH = H(tau)</input>
+			<output>
+			Traceback (most recent call last):
+			...
+			ValueError: Invalid permutation vector: (1,2,3,4,5,6)
+			</output>
 		</sage>
 
 		<p>Better than working with just elements of the symmetric group, we can create a variety of permutation groups in Sage.  Here is a sampling for starters:</p>
@@ -245,6 +185,8 @@
 		<caption>Some Sage permutation groups</caption>
 		</table>
 
+		<sage type="practice" />
+
 	</subsection>
 
 	<subsection>
@@ -253,37 +195,33 @@
 		<p>Sometimes it is easier to grab an element out of a list of elements of a permutation group, and then it is already attached to a parent and there is no need for any coercion.  In the following, <c>rotate</c> and <c>flip</c> are automatically elements of <c>G</c> because of the way we procured them.</p>
 
 		<sage>
-		<input>
-		sage: D = DihedralGroup(5)
-		sage: elements = D.list(); elements
-		</input>
-		<output>
-		[(), (2,5)(3,4), (1,2)(3,5), (1,2,3,4,5), (1,3)(4,5),
-		(1,3,5,2,4), (1,4)(2,3), (1,4,2,5,3), (1,5,4,3,2), (1,5)(2,4)]
-		</output>
+			<input>
+			D = DihedralGroup(5)
+			elements = D.list(); elements
+			</input>
+			<output>
+			[(), (2,5)(3,4), (1,2)(3,5), (1,2,3,4,5), (1,3)(4,5),
+			(1,3,5,2,4), (1,4)(2,3), (1,4,2,5,3), (1,5,4,3,2), (1,5)(2,4)]
+			</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rotate = elements[3]
-		sage: flip = elements[1]
-		sage: flip*rotate == rotate* flip
-		</input>
-		<output>
-		False
-		</output>
+			<input>
+			rotate = elements[3]
+			flip = elements[1]
+			flip*rotate == rotate* flip
+			</input>
+			<output>False</output>
 		</sage>
 
 		<p>So we see from this final statement that the group of symmetries of a pentagon is not abelian.  But there is an easier way.</p>
 
 		<sage>
-		<input>
-		sage: D = DihedralGroup(5)
-		sage: D.is_abelian()
-		</input>
-		<output>
-		False
-		</output>
+			<input>
+			D = DihedralGroup(5)
+			D.is_abelian()
+			</input>
+			<output>False</output>
 		</sage>
 
 		<p>There are many more methods you can use for both permutation groups and their individual elements.  Use the blank compute cell below to create a permutation group (any one you like) and an element of a permutation group (any one you like).  Then use tab-completion to see all the methods available for an element, or for a group (name, period, tab-key).  Some names you may recognize, some we will learn about in the coming chapters, some are highly-specialized research tools you can use when you write your Ph.D.\ thesis in group theory.  For any of these methods, remember that you can type the name, followed by a question mark, to see documentation and examples.  <em>Experiment and explore</em> <mdash /> it is really hard to break anything.</p>
@@ -293,83 +231,57 @@
 		<p>Here are some selected examples of various methods available.</p>
 
 		<sage>
-		<input>
-		sage: A4 = AlternatingGroup(4)
-		sage: A4.order()
-		</input>
-		<output>
-		12
-		</output>
+			<input>
+			A4 = AlternatingGroup(4)
+			A4.order()
+			</input>
+			<output>12</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: A4.is_finite()
-		</input>
-		<output>
-		True
-		</output>
+			<input>A4.is_finite()</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: A4.is_abelian()
-		</input>
-		<output>
-		False
-		</output>
+			<input>A4.is_abelian()</input>
+			<output>False</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: A4.is_cyclic()
-		</input>
-		<output>
-		False
-		</output>
+			<input>A4.is_cyclic()</input>
+			<output>False</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma = A4("(1,2,4)")
-		sage: sigma^-1
-		</input>
-		<output>
-		(1,4,2)
-		</output>
+			<input>
+			sigma = A4("(1,2,4)")
+			sigma^-1
+			</input>
+			<output>(1,4,2)</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sigma.order()
-		</input>
-		<output>
-		3
-		</output>
+			<input>sigma.order()</input>
+			<output>3</output>
 		</sage>
 
 		<p>A very useful method when studying the alternating group is the permutation group element method <c>.sign()</c>.  It will return <c>1</c> if a permutation is even and <c>-1</c> if a permutation is odd.</p>
 
 		<sage>
-		<input>
-		sage: G = SymmetricGroup(3)
-		sage: sigma = G("(1,2)")
-		sage: tau = G("(1,3)")
-		sage: rho = sigma*tau
-		sage: sigma.sign()
-		</input>
-		<output>
-		-1
-		</output>
+			<input>
+			G = SymmetricGroup(3)
+			sigma = G("(1,2)")
+			tau = G("(1,3)")
+			rho = sigma*tau
+			sigma.sign()
+			</input>
+			<output>-1</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: rho.sign()
-		</input>
-		<output>
-		1
-		</output>
+			<input>rho.sign()</input>
+			<output>1</output>
 		</sage>
 
 		<p>We can create subgroups by giving the main group a list of <q>generators.</q>  These elements serve to <q>generate</q> a subgroup <mdash /> imagine multiplying these elements (and their inverses) together over and over, creating new elements that must also be in the subgroup and also become involved in new products, until you see no new elements.  Now that definition ends with a horribly imprecise statement, but it should suffice for now.  A better definition is that the subgroup generated by the elements is the smallest subgroup of the main group that contains all the generators <mdash /> which is fine if you know what all the subgroups might be.</p>
@@ -377,92 +289,73 @@
 		<p>With a single generator, the repeated products just become powers of the lone generator.  The subgroup generated then is cyclic.  With two (or more) generators, especially in a non-abelian group, the situation can be much, much more complicated.  So let's begin with just a single generator.  But don't forget to put it in a list anyway.</p>
 
 		<sage>
-		<input>
-		sage: A4 = AlternatingGroup(4)
-		sage: sigma = A4("(1,2,4)")
-		sage: sg = A4.subgroup([sigma])
-		sage: sg
-		</input>
-		<output>
-		Subgroup of (Alternating group of order 4!/2 as a permutation group) 
-		generated by [(1,2,4)]
-		</output>
+			<input>
+			A4 = AlternatingGroup(4)
+			sigma = A4("(1,2,4)")
+			sg = A4.subgroup([sigma])
+			sg
+			</input>
+			<output>
+			Subgroup of (Alternating group of order 4!/2 as a permutation group) 
+			generated by [(1,2,4)]
+			</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sg.order()
-		</input>
-		<output>
-		3
-		</output>
+			<input>sg.order()</input>
+			<output>3</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sg.list()
-		</input>
-		<output>
-		[(), (1,2,4), (1,4,2)]
-		</output>
+			<input>sg.list()</input>
+			<output>[(), (1,2,4), (1,4,2)]</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sg.is_abelian()
-		</input>
-		<output>
-		True
-		</output>
+			<input>sg.is_abelian()</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sg.is_cyclic()
-		</input>
-		<output>
-		True
-		</output>
+			<input>sg.is_cyclic()</input>
+			<output>True</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: sg.is_subgroup(A4)
-		</input>
-		<output>
-		True
-		</output>
+			<input>sg.is_subgroup(A4)</input>
+			<output>True</output>
 		</sage>
 
 		<p>We can now redo the example from the very beginning of this chapter.  We translate to elements to cycle notation, construct the subgroup from two generators (the subgroup is not cyclic), and since the subgroup is abelian, we do not have to view Sage's Cayley table as a diagonal reflection of the table in the example.</p>
 
 		<sage>
-		<input>
-		sage: G = SymmetricGroup(5)
-		sage: sigma = G("(4,5)")
-		sage: tau = G("(1,3)")
-		sage: H = G.subgroup([sigma, tau])
-		sage: H.list()
-		</input>
-		<output>
-		[(), (4,5), (1,3), (1,3)(4,5)]
-		</output>
+			<input>
+			G = SymmetricGroup(5)
+			sigma = G("(4,5)")
+			tau = G("(1,3)")
+			H = G.subgroup([sigma, tau])
+			H.list()
+			</input>
+			<output>[(), (4,5), (1,3), (1,3)(4,5)]</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: text_names = ['id', 'sigma', 'tau', 'mu']
-		sage: H.cayley_table(names=text_names)
-		</input>
-		<output>
-		    *     id sigma   tau    mu
-		     +------------------------
-		   id|    id sigma   tau    mu
-		sigma| sigma    id    mu   tau
-		  tau|   tau    mu    id sigma
-		   mu|    mu   tau sigma    id
-		</output>
+			<input>
+			text_names = ['id', 'sigma', 'tau', 'mu']
+			H.cayley_table(names=text_names)
+			</input>
+			<output>
+			    *     id sigma   tau    mu
+			     +------------------------
+			   id|    id sigma   tau    mu
+			sigma| sigma    id    mu   tau
+			  tau|   tau    mu    id sigma
+			   mu|    mu   tau sigma    id
+			</output>
 		</sage>
+
+		<sage type="practice" />
+
 	</subsection>
 
 	<subsection>
@@ -473,47 +366,53 @@
 		<p>Label the four corners of the square top with <m>1</m> through <m>4</m> with <m>1</m> in the left-front corner, arranged clockwise when viewed from above.  Use <m>5</m> through <m>8</m> for the bottom square's corner, so that <m>5</m> is below <m>1</m>, <m>6</m> below <m>2</m>, etc.  We will use quarter-turns, clockwise, around each axis, when viewed from above, the front, and the right.</p>
 
 		<sage>
-		<input>
-		sage: G = SymmetricGroup(8)
-		sage: above = G("(1,2,3,4)(5,6,7,8)")
-		sage: front = G("(1,4,8,5)(2,3,7,6)")
-		sage: right = G("(1,2,6,5)(3,7,8,4)")
-		sage: cube = G.subgroup([above, front, right])
-		sage: cube.order()
-		</input>
-		<output>
-		24
-		</output>
+			<input>
+			G = SymmetricGroup(8)
+			above = G("(1,2,3,4)(5,6,7,8)")
+			front = G("(1,4,8,5)(2,3,7,6)")
+			right = G("(1,2,6,5)(3,7,8,4)")
+			cube = G.subgroup([above, front, right])
+			cube.order()
+			</input>
+			<output>24</output>
 		</sage>
 
 		<sage>
-		<input>
-		sage: cube.list()
-		</input>
-		<output>
-		[(), (2,4,5)(3,8,6), (2,5,4)(3,6,8), (1,2)(3,5)(4,6)(7,8),
-		(1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4), (1,3,6)(4,7,5),
-		(1,3)(2,4)(5,7)(6,8), (1,3,8)(2,7,5), (1,4,3,2)(5,8,7,6),
-		(1,4,8,5)(2,3,7,6), (1,4)(2,8)(3,5)(6,7), (1,5,6,2)(3,4,8,7),
-		(1,5,8,4)(2,6,7,3), (1,5)(2,8)(3,7)(4,6), (1,6,3)(4,5,7),
-		(1,6)(2,5)(3,8)(4,7), (1,6,8)(2,7,4), (1,7)(2,3)(4,6)(5,8),
-		(1,7)(2,6)(3,5)(4,8), (1,7)(2,8)(3,4)(5,6), (1,8,6)(2,4,7),
-		(1,8,3)(2,5,7), (1,8)(2,7)(3,6)(4,5)]
-		</output>
+			<input>cube.list()</input>
+			<output>
+			[(), (2,4,5)(3,8,6), (2,5,4)(3,6,8), (1,2)(3,5)(4,6)(7,8),
+			(1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4), (1,3,6)(4,7,5),
+			(1,3)(2,4)(5,7)(6,8), (1,3,8)(2,7,5), (1,4,3,2)(5,8,7,6),
+			(1,4,8,5)(2,3,7,6), (1,4)(2,8)(3,5)(6,7), (1,5,6,2)(3,4,8,7),
+			(1,5,8,4)(2,6,7,3), (1,5)(2,8)(3,7)(4,6), (1,6,3)(4,5,7),
+			(1,6)(2,5)(3,8)(4,7), (1,6,8)(2,7,4), (1,7)(2,3)(4,6)(5,8),
+			(1,7)(2,6)(3,5)(4,8), (1,7)(2,8)(3,4)(5,6), (1,8,6)(2,4,7),
+			(1,8,3)(2,5,7), (1,8)(2,7)(3,6)(4,5)]
+			</output>
 		</sage>
 
 		<p>Since we know from the discussion in the text that the symmetry group has 24 elements, we see that our three quarter-turns are sufficient to create every symmetry.  This prompts several questions:</p>
 
 		<ol> 
-			<li>Can you locate the ten rotations about axes?  (Hint: the identity is easy, the other 9 never send any symbol to itself.)</li>
+			<li>
+				<p>Can you locate the ten rotations about axes?  (Hint: the identity is easy, the other 9 never send any symbol to itself.)</p>
+			</li>
 
-			<li>Can you identify the six symmetries that are a transposition of diagonals?  (Hint: <c>[g for g in cube if g.order() == 2]</c> is a good preliminary filter.)</li>
+			<li>
+				<p>Can you identify the six symmetries that are a transposition of diagonals?  (Hint: <c>[g for g in cube if g.order() == 2]</c> is a good preliminary filter.)</p>
+			</li>
 
-			<li>Verify that any two of our quarter-turns are sufficient to generate the whole group.  How do you know they generate the whole group?</li>
+			<li>
+				<p>Verify that any two of our quarter-turns are sufficient to generate the whole group.  How do you know they generate the whole group?</p>
+			</li>
 
-			<li>Can you express one of the diagonal transpositions as a product of quarter-turns?  This can be a notoriously difficult problem, especially for software.  It is known as the <q>word problem.</q></li>
+			<li>
+				<p>Can you express one of the diagonal transpositions as a product of quarter-turns?  This can be a notoriously difficult problem, especially for software.  It is known as the <q>word problem.</q></p>
+			</li>
 
-			<li>Number the six faces of the cube with the numbers <m>1</m> through <m>6</m> (any way you like).  Now consider the same three symmetries we used before (quarter-turns about face-to-face axes) and express them as elements of <m>S_6</m>.  Verify that the subgroup generated by these symmetries is the whole group.  Again, rather than using three generators, try using just two.</li> 
+			<li>
+				<p>Number the six faces of the cube with the numbers <m>1</m> through <m>6</m> (any way you like).  Now consider the same three symmetries we used before (quarter-turns about face-to-face axes) and express them as elements of <m>S_6</m>.  Verify that the subgroup generated by these symmetries is the whole group.  Again, rather than using three generators, try using just two.</p>
+			</li>
 		</ol>
 
 		<sage type="practice" />
