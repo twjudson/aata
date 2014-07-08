@@ -19,6 +19,13 @@
 				<me>1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}</me>
 			for <m>n \in {\mathbb N}</m>.</p>
 		</statement>
+		<hint>
+			<p><m>S(1): [1(1 + 1)(2(1) + 1)]/6 = 1 = 1^2</m> is true. Assume <m>S(k): 1^2 + 2^2 + \cdots + k^2 = [k(k + 1)(2k + 1)]/6</m> is true. Then 
+				<md>
+					<mrow>1^2 + 2^2 + \cdots + k^2 + (k + 1)^2 &amp; = [k(k + 1)(2k + 1)]/6 + (k + 1)^2</mrow>
+					<mrow>&amp; = [(k + 1)((k + 1) + 1)(2(k + 1) + 1)]/6</mrow>
+				</md>, so <m>S(k + 1)</m> is true. Thus, <m>S(n)</m> is true for all positive integers <m>n</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -35,13 +42,16 @@
 		<statement>
 			<p>Prove that <m>n! \gt 2^n</m> for <m>n \geq 4</m>.</p>
 		</statement>
+		<hint>
+			<p><m>S(4): 4! = 24 \gt 16 =2^4</m> is true. Assume <m>S(k): k! \gt 2^k</m> is true. Then <m>(k + 1)! = k! (k + 1) \gt 2^k \cdot 2 = 2^{k + 1}</m>, so <m>S(k + 1)</m> is true. Thus, <m>S(n)</m> is true for all positive integers <m>n</m>.</p>
+		</hint>
 		
 	</exercise>
 
 	<exercise number="4">
 	<statement>
 		<p>Prove that
-			<me>x + 4x + 7x + \cdots + (3n-2)x = \frac{n(3n - 1)x}{2}</me>
+			<me>x + 4x + 7x + \cdots + (3n - 2)x = \frac{n(3n - 1)x}{2}</me>
 		for <m>n \in {\mathbb N}</m>.</p>
 	</statement>
 	
@@ -74,6 +84,9 @@
 			<p>Prove the Leibniz rule for <m>f^{(n)} (x)</m>, where <m>f^{(n)}</m> is the <m>n</m>th derivative of <m>f</m>; that is, show that 
 				<me>(fg)^{(n)}(x) = \sum_{k = 0}^{n} \binom{n}{k} f^{(k)}(x) g^{(n - k)}(x).</me></p>
 		</statement>
+		<hint>
+			<p>Follow the proof in Example<nbsp/><xref ref="example-binomial-theorem"/>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -97,6 +110,16 @@
 		<statement>
 			<p>If <m>x</m> is a nonnegative real number, then show that <m>(1 + x)^n - 1 \geq nx</m> for <m>n = 0, 1, 2, \ldots</m>.</p>
 		</statement>
+		<hint>
+			<p><m>S(0): (1 + x)^0 - 1 = 0 \geq 0 = 0 \cdot x</m> is true. Assume <m>S(k): (1 + x)^k -1 \geq kx</m> is true. Then 
+				<md>
+					<mrow>(1 + x)^{k + 1} - 1 &amp; = (1 + x)(1 + x)^k -1</mrow>
+					<mrow>&amp; = (1 + x)^k + x(1 + x)^k - 1</mrow>
+					<mrow>&amp; \geq kx + x(1 + x)^k</mrow>
+					<mrow>&amp; \geq kx + x</mrow>
+					<mrow>&amp; = (k + 1)x,</mrow>
+				</md> so <m>S(k + 1)</m> is true. Therefore, <m>S(n)</m> is true for all positive integers <m>n</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -155,6 +178,8 @@
 		
 	</exercise>
 
+<todo>Check references to the Fibonacci numbers</todo>
+
 	<exercise number="17">
 		<title>Fibonacci Numbers</title>
 		<statement>
@@ -175,6 +200,9 @@
 			 
 				</ol></p>
 		</statement>
+		<hint>
+			<p>For (a) and (b) use mathematical induction. (c) Show that <m>f_1 = 1</m>, <m>f_2 = 1</m>, and <m>f_{n + 2} = f_{n + 1} + f_n</m>. (d)  Use part (c). (e) Use part (b) and Exercise<nbsp/><xref ref="exercise-integers-gcd-1"/>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -190,6 +218,9 @@
 		<statement>
 			<p>Let <m>x, y \in {\mathbb N}</m> be relatively prime.  If <m>xy</m> is a perfect square, prove that <m>x</m> and <m>y</m> must both be perfect squares.</p>
 		</statement>
+		<hint>
+			<p>Use the Fundamental Theorem of Arithmetic.</p>
+		</hint>
 		
 	</exercise>
 
@@ -223,8 +254,11 @@
 
 	<exercise number="23">
 		<statement>
-			<p>Define the <term>least common multiple</term> of two nonzero integers <m>a</m> and <m>b</m>, denoted by <m>\lcm(a,b)</m>, to be the nonnegative integer <m>m</m> such that both <m>a</m> and <m>b</m> divide <m>m</m>, and if <m>a</m> and <m>b</m>  divide any other integer <m>n</m>, then <m>m</m> also divides <m>n</m>. Prove that any two integers <m>a</m> and <m>b</m> have a unique least common multiple. </p>
+			<p>Define the <term>least common multiple</term> of two nonzero integers <m>a</m> and <m>b</m>, denoted by <m>\lcm(a,b)</m>, to be the nonnegative integer <m>m</m> such that both <m>a</m> and <m>b</m> divide <m>m</m>, and if <m>a</m> and <m>b</m>  divide any other integer <m>n</m>, then <m>m</m> also divides <m>n</m>. Prove that any two integers <m>a</m> and <m>b</m> have a unique least common multiple.</p>
 		</statement>
+		<hint>
+			<p>Let <m>S = \{s \in {\mathbb N} : a \mid s</m>, <m>b \mid s \}</m>. Then <m>S \neq \emptyset</m>, since <m>|ab| \in S</m>. By the Principle of Well-Ordering, <m>S</m> contains a least element <m>m</m>. To show uniqueness, suppose that <m>a \mid n</m> and <m>b \mid n</m> for some <m>n \in {\mathbb N}</m>. By the division algorithm, there exist unique integers <m>q</m> and <m>r</m> such that <m>n = mq + r</m>, where <m>0 \leq r \lt m</m>. <m>a \mid m</m>, <m>b \mid m</m>, <m>a \mid n</m>, <m>b \mid n \Rightarrow a \mid r</m>, <m>b \mid r \Rightarrow r = 0</m> by the minimality of <m>m</m>. Therefore, <m>m \mid n</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -253,6 +287,9 @@
 		<statement>
 			<p>Let <m>a, b, c \in {\mathbb Z}</m>.  Prove that if <m>\gcd(a,b) = 1</m> and <m>a  \mid bc</m>, then <m>a  \mid  c</m>. </p>
 		</statement>
+		<hint>
+			<p>Since <m>\gcd(a,b) = 1</m>, there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1 \Rightarrow acr + bcs = c</m>. Since <m>a \mid a</m> and <m>a \mid bc</m>, <m>a \mid c</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -267,6 +304,11 @@
 		<statement>
 			<p>Prove that there are an infinite number of primes of the form <m>6n + 1</m>. </p>
 		</statement>
+		<hint>
+			<p>Every prime number greater than 3, must be of the form <m>6 n \pm 1</m> for some <m>n \in \mathbb N</m>. Suppose that there are only a finite number of primes of  the form <m>6n + 1</m>,
+				<me>p_1 = 6n_1 + 1, p_2 = 6 n_2 + 1, \ldots, p_k = 6n_k + 1.</me>
+			Let <m>p = p_1 p_2 \cdots p_k + 1</m>.  Then <m>p</m> must be of the form <m>6m + 1</m> for some <m>m \in \mathbb N</m>.  Since <m>p</m> is not divisible by any prime of the form <m>6 n - 1</m> or <m>p_1, p_2, \ldots, p_k</m>, it must be prime which contradicts the fact that the only primes of the form <m>6n + 1</m> are <m>p_1, p_2, \ldots, p_k</m>.</p>
+		</hint>
 		
 	</exercise>
 
