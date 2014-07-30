@@ -15,12 +15,15 @@
 
 	<exercise number="1">
 		<statement>
-			<p>Examples 1<ndash/>5 in the first section each describe an action of a group <m>G</m> on a set <m>X</m>, which will give rise to the equivalence relation defined by <m>G</m>-equivalence. For each example, compute the equivalence classes of the equivalence relation, the <m>G</m>-<term>equivalence classes</term>.</p>
+			<p>Examples<nbsp/><xref ref="example-gl2-action"/><ndash/><xref ref="left_coset_action"/> in the first section each describe an action of a group <m>G</m> on a set <m>X</m>, which will give rise to the equivalence relation defined by <m>G</m>-equivalence. For each example, compute the equivalence classes of the equivalence relation, the <m>G</m>-<term>equivalence classes</term>.</p>
 		</statement>
+		<hint>
+			<p>Example<nbsp/><xref ref="example-gl2-action"/>: <m>0</m>, <m>{\mathbb R}^2 \setminus \{ 0 \}</m>. Example<nbsp/><xref ref="example-gl2-action"/>: <m>X = \{ 1, 2, 3, 4 \}</m>.</p>
+		</hint>
 		
 	</exercise>
 
-	<exercise number="2">
+	<exercise number="2" xml:id="exercise-struct-permutation">
 		<statement>
 			<p>Compute all <m>X_g</m> and all <m>G_x</m> for each of the following permutation groups. 
 				<ol enum="(a)">
@@ -31,13 +34,19 @@
 				 
 				</ol></p>
 		</statement>
+		<hint>
+			<p><m>X_{(1)} = \{1, 2, 3  \}</m>, <m>X_{(12)} = \{3 \}</m>, <m>X_{(13)} = \{ 2 \}</m>, <m>X_{(23)} = \{1 \}</m>, <m>X_{(123)} = X_{(132)} = \emptyset</m>. <m>G_1 = \{ (1), (23) \}</m>, <m>G_2 = \{(1), (13) \}</m>, <m>G_3 = \{ (1), (12)\}</m>.</p>
+		</hint>
 		
 	</exercise>
 
 	<exercise number="3">
 		<statement>
-			<p>Compute the <m>G</m>-equivalence classes of <m>X</m> for each of the <m>G</m>-sets in Exercise 2. For each <m>x \in X</m> verify that <m>|G|=|{\mathcal O}_x| \cdot |G_x|</m>.</p>
+			<p>Compute the <m>G</m>-equivalence classes of <m>X</m> for each of the <m>G</m>-sets in Exercise<nbsp/><xref ref="exercise-struct-permutation"/>. For each <m>x \in X</m> verify that <m>|G|=|{\mathcal O}_x| \cdot |G_x|</m>.</p>
 		</statement>
+		<hint>
+			<p>(a) <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 = \{ 1, 2, 3\}</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -85,6 +94,18 @@
 					<li><m>Q_8</m></li>
 				</ol></p>
 		</statement>
+		<hint>
+			<p>The conjugacy classes for <m>S_4</m> are
+				<md>
+					<mrow>{\mathcal O}_{(1)} = \{ (1) \},</mrow>
+					<mrow>{\mathcal O}_{(12)} = \{ (12), (13), (14), (23), (24), (34) \},</mrow>
+					<mrow>{\mathcal O}_{(12)(34)} = \{ (12)(34), (13)(24), (14)(23) \},</mrow>
+					<mrow>{\mathcal O}_{(123)} = \{ (123), (132), (124), (142), (134), (143),
+					(234), (243) \},</mrow>
+					<mrow>{\mathcal O}_{(1234)} = \{ (1234), (1243), (1324), (1342), (1423), (1432) \}.</mrow>
+				</md>
+			The class equation is <m>1 + 3 + 6 + 6 + 8 = 24</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -99,6 +120,9 @@
 		<statement>
 			<p>If a square remains fixed in the plane, how many different ways can the corners of the square be colored if three colors are used?</p>
 		</statement>
+		<hint>
+			<p><m>(3^4 + 3^1 + 3^2 + 3^1 + 3^2 + 3^2 + 3^3 + 3^3)/8 = 21</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -121,6 +145,10 @@
 		<statement>
 			<p>Up to a rotation, how many ways can the faces of a cube be coloredwith three different colors?</p>
 		</statement>
+		<hint>
+			<p>The group of rigid motions of the cube can be described by the allowable permutations of the six faces and is isomorphic to <m>S_4</m>.  There are the identity cycle, 6 permutations with the structure <m>(abcd)</m> that correspond to the quarter turns, 3 permutations with the structure <m>(ab)(cd)</m> that correspond to the half turns,  6 permutations with the structure <m>(ab)(cd)(ef)</m> that correspond to rotating the cube about the centers of opposite edges, and 8 permutations with the structure <m>(abc)(def)</m> that correspond to rotating the cube about opposite vertices.  Thus, there are
+				<me>\frac{1}{24}(1 \cdot 3^6 + 6 \cdot 3^3 + 3 \cdot 3^4 + 6  \cdot  3^3 + 8 \cdot 3^2)/24 = 57.</me></p>
+		</hint>
 		
 	</exercise>
 
@@ -149,12 +177,15 @@
 		<statement>
 			<p>Suppose that the vertices of a regular hexagon are to be colored either red or white. How many ways can this be done up to a symmetry of the hexagon? </p>
 		</statement>
+		<hint>
+			<p><m>(1 \cdot 2^6 + 3 \cdot 2^4 + 4 \cdot 2^3 + 2 \cdot 2^2 + 2 \cdot 2^1)/12 = 13</m>.</p>
+		</hint>
 		
 	</exercise>
 
 	<exercise number="16">
 		<statement>
-			<p>A molecule of benzene is made up of six carbon atoms and six hydrogen atoms, linked together in a hexagonal shape as in Figure~14.4.
+			<p>A molecule of benzene is made up of six carbon atoms and six hydrogen atoms, linked together in a hexagonal shape as in Figure<nbsp/><xref ref="figure-exercise-benzene"/>.
 				<ol enum="(a)">
 		 
 					<li>How many different compounds can be formed by replacing one or more of the hydrogen atoms with a chlorine atom?</li> 
@@ -162,6 +193,33 @@
 					<li>Find the number of different chemical compounds that can be formed by replacing three of the six hydrogen atoms in a benzene ring with a <m>CH_3</m> radical.</li>
 		 
 				</ol></p>
+
+				<figure xml:id="figure-exercise-benzene">
+				 <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+
+				<tikz>
+<![CDATA[
+				\begin{tikzpicture}[scale=1]
+				
+				\draw (40:1.2) -- (90:1.7) -- (140:1.2) -- (220:1.2) -- (270:1.7) -- (320:1.2) -- cycle;
+				\draw (90:1.7) -- (90:2.1) node [above] {$H$};
+				\draw (270:1.7) -- (270:2.1) node [below] {$H$};
+				\draw (40:1.2) -- (40:1.6);
+				\node at (40:1.9) {$H$};
+				\draw (140:1.2) -- (140:1.6);
+				\node at (140:1.9) {$H$};
+				\draw (220:1.2) -- (220:1.6);
+				\node at (220:1.9) {$H$};
+				\draw (320:1.2) -- (320:1.6);
+				\node at (320:1.9) {$H$};
+
+				\end{tikzpicture}
+				]]>
+</tikz>
+
+				<caption>A benzene ring</caption>
+
+			</figure>
 		</statement>
 		
 	</exercise>
@@ -170,6 +228,9 @@
 		<statement>
 			<p>How many equivalence classes of switching functions are there if the input variables <m>x_1</m>, <m>x_2</m>, and <m>x_3</m> can be permuted by any permutation in <m>S_3</m>? What if the input variables <m>x_1</m>, <m>x_2</m>, <m>x_3</m>, and <m>x_4</m> can be permuted by any permutation in <m>S_4</m>?</p>
 		</statement>
+		<hint>
+			<p><m>(1 \cdot 2^8 + 3 \cdot 2^6 + 2 \cdot 2^4)/6 = 80</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -205,6 +266,9 @@
 		<statement>
 			<p>Let <m>a \in G</m>. Show that for any <m>g \in G</m>, <m>gC(a) g^{-1} = C(gag^{-1})</m>. </p>
 		</statement>
+		<hint>
+			<p><m>x \in g C(a) g^{-1} \Leftrightarrow g^{-1}x g \in C(a) \Leftrightarrow a g^{-1} x g = g^{-1} x g a \Leftrightarrow g a g^{-1} x = x g a g^{-1} \Leftrightarrow x \in C(gag^{-1})</m>.</p>
+		</hint>
 		
 	</exercise>
 
