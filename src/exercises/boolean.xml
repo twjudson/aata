@@ -24,6 +24,39 @@
 		<statement>
 			<p>Draw the diagram for the set of positive integers that are divisors of 30. Is this poset a Boolean algebra?</p>
 		</statement>
+		<hint>
+			 <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+			<figure>
+				<tikz>
+<![CDATA[
+				\begin{tikzpicture}[scale=0.7]
+
+				\node at (0,0) {1};
+				\node at (0,2) {5};
+				\node at (0,4) {10};
+				\node at (0,6) {30};
+
+				\node at (-2,2) {2};
+				\node at (2,2) {3};
+				\node at (2,4) {15};
+
+				\draw (0,0.25) -- (0,1.75);
+				\draw (0,2.25) -- (0,3.75);
+				\draw (0,4.25) -- (0,5.75);
+				\draw (2,2.25) -- (2,3.75);
+
+				\draw (0.2,0.25) -- (2,1.75);
+				\draw (-0.2,0.25) -- (-2,1.75);
+				\draw (0.2,2.25) -- (1.8,3.75);
+				\draw (-1.8,2.25) -- (-0.2,3.75);
+				\draw (-2,2.25) -- (-0.2,5.75);
+				\draw (2,4.25) -- (0.2,5.75);
+				
+				\end{tikzpicture}
+				]]>
+</tikz>
+			</figure>
+		</hint>
 		
 	</exercise>
 
@@ -45,6 +78,9 @@
 		<statement>
 			<p>Prove or disprove: <m>{\mathbb Z}</m> is a poset under the relation <m>a \preceq b</m> if <m>a \mid b</m>.</p>
 		</statement>
+		<hint>
+			<p>False.</p>
+		</hint>
 		
 	</exercise>
 
@@ -63,6 +99,63 @@
 
 				</ol></p>
 		</statement>
+		<hint>
+			<p>(a) <m>(a \vee b \vee a') \wedge a</m></p>
+			<figure>
+				<tikz>
+<![CDATA[
+				\begin{tikzpicture}[scale=0.7]
+
+				\node at (0,0) {$a'$};
+				\node at (0,1) {$b$};
+				\node at (0,2) {$a$};
+				\node at (4,1) {$a$};
+				
+				\draw (-3,1) -- (-0.2,1);
+				\draw (0.2,1) -- (3.8,1);
+				\draw (4.2,1) -- (5,1);
+
+				\draw (-2,1) -- (-2,2) -- (-0.2,2);
+				\draw (-2,1) -- (-2,0) -- (-0.2,0);
+
+				\draw (0.2,2) -- (2,2) -- (2,1);
+				\draw (0.2,0) -- (2,0) -- (2,1);
+
+				
+				\end{tikzpicture}
+				]]>
+</tikz>
+			</figure>
+
+			<p>(c) <m>a \vee (a \wedge b)</m></p>
+			<figure>
+				<tikz>
+<![CDATA[
+				\begin{tikzpicture}[scale=0.7]
+
+				\node at (0,0) {$a$};
+				\node at (-1,2) {$a$};
+				\node at (1,2) {$b$};
+			
+				
+				\draw (-3,1) -- (-2,1);
+				\draw (2,1) -- (3,1);
+				
+
+				\draw (-2,1) -- (-2,2) -- (-1.2,2);
+				\draw (-2,1) -- (-2,0) -- (-0.2,0);
+
+				\draw (1.2,2) -- (2,2) -- (2,1);
+				\draw (0.2,0) -- (2,0) -- (2,1);
+
+				\draw (-0.8,2) -- (0.8,2);
+
+				
+				\end{tikzpicture}
+				]]>
+</tikz>
+			</figure>
+		</hint>
 		
 	</exercise>
 
@@ -109,6 +202,9 @@
 			</figure>
 
 		</statement>
+		<hint>
+			<p>Not equivalent.</p>
+		</hint>
 		
 	</exercise>
 
@@ -171,6 +267,9 @@
 </tikz>
 			</figure>
 		</statement>
+		<hint>
+			<p>(a) <m>a' \wedge [(a \wedge b') \vee b] = a \wedge (a \vee b) </m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -206,6 +305,9 @@
 		<statement>
 			<p>Let <m>R</m> be a ring and suppose that <m>X</m> is the set of ideals of <m>R</m>. Show that <m>X</m> is a poset ordered by set-theoretic inclusion, <m>\subseteq</m>. Define the meet of two ideals <m>I</m> and <m>J</m> in <m>X</m> by <m>I \cap J</m> and the join of <m>I</m> and <m>J</m> by <m>I + J</m>. Prove that the set of ideals of <m>R</m> is a lattice under these operations.</p>
 		</statement>
+		<hint>
+			<p>Let <m>I, J</m> be ideals in <m>R</m>. We need to show that <m>I + J = \{ r + s : r \in I \text{ and } s \in J  \}</m> is the smallest ideal in <m>R</m> containing both <m>I</m> and <m>J</m>. If <m>r_1, r_2 \in I</m> and <m>s_1, s_2 \in J</m>, then <m>(r_1 + s_1) + (r_2 + s_2) = (r_1 + r_2) +(s_1 + s_2)</m> is in <m>I + J</m>. For <m>a \in R</m>, <m>a(r_1 + s_1) = ar_1 + as_1 \in I + J</m>; hence, <m>I + J</m> is an ideal in <m>R</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -259,6 +361,9 @@
 			 
 			</ol></p>
 		</statement>
+		<hint>
+			<p>(a) No.</p>
+		</hint>
 		
 	</exercise>
 
@@ -273,6 +378,9 @@
 		<statement>
 			<p>Let <m>B</m> be a Boolean algebra. Prove that <m>a = b</m> if and only if <m>(a \wedge b') \vee ( a' \wedge b) = O</m> for <m>a, b \in B</m>.</p>
 		</statement>
+		<hint>
+			<p><m>( \Rightarrow)</m>. <m>a = b \Rightarrow (a \wedge b') \vee (a' \wedge b) = (a \wedge a') \vee (a' \wedge a) = O \vee O = O</m>. <m>( \Leftarrow)</m>. <m>( a \wedge b') \vee (a' \wedge b) = O \Rightarrow a \vee b = (a \vee a) \vee b = a \vee (a \vee b) = a \vee [I \wedge (a \vee b)] = a \vee [(a \vee a') \wedge (a \vee b)] = [a \vee (a \wedge b')] \vee [a \vee (a' \wedge b)] = a \vee [(a \wedge b') \vee (a' \wedge b)] = a \vee 0 = a</m>.  A symmetric argument shows that <m>a \vee b = b</m>.</p>
+		</hint>
 		
 	</exercise>
 
