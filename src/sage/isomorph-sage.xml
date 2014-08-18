@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+Sage has limited support for actually creating isomorphisms, though it is possible.  However, there is excellent support for determining if two permutation groups are isomorphic.  This will allow us to begin a little project to locate <em>all</em> of the groups of order less than 16 in Sage s permutation groups.
+
+
+</subsection>
+<subsection>
+<title>Isomorphism Testing</title>
+
+If <c>G</c> and <c>H</c> are two permutation groups, then the command <c>G.is_isomorphic(H)</c> will return <c>True</c> or <c>False</c> as the two groups are, or are not, isomorphic.  Since <q>isomorpic to</q> is an equivalence relation by Theorem<nbsp /><xref ref="isomorph_theorem_5" />, it does not matter which group plays the role of <c>G</c> and which plays the role of <c>H</c>.
+
+So we have a few more examples to work with, let's introduce the Sage command that creates an external direct product.  If <c>G</c> and <c>H</c> are two permutation groups, then the command <c>direct_product_permgroups([G,H])</c> will  return the external direct product as a new permutation group.  Notice that this is a function (not a method) and the input is a list.  Rather than just combining two groups in the list, any number of groups can be supplied.  We illustrate isomorphism tesing and direct products in the context of Theorem<nbsp /><xref ref="Z_pq_theorem" />, which is an equivalence, so tells us <em>exactly</em> when we have isomorphic groups.  We use cyclic permutation groups as stand-ins for <m>{\mathbb Z}_n</m> by Theorem<nbsp /><xref ref="isomorph_theorem_3" />.
+
+First, two isomorphic groups.
+
+<sage>
+<input>
+sage: m = 12
+sage: n = 7
+sage: gcd(m, n)
+1
+sage: G = CyclicPermutationGroup(m)
+sage: H = CyclicPermutationGroup(n)
+sage: dp = direct_product_permgroups([G, H])
+sage: K = CyclicPermutationGroup(m*n)
+sage: K.is_isomorphic(dp)
+True
+</input>
+<output>
+</output>
+</sage>
+
+Now, two non-isomorphic groups.
+
+<sage>
+<input>
+sage: m = 15
+sage: n = 21
+sage: gcd(m, n)
+3
+sage: G = CyclicPermutationGroup(m)
+sage: H = CyclicPermutationGroup(n)
+sage: dp = direct_product_permgroups([G, H])
+sage: K = CyclicPermutationGroup(m*n)
+sage: K.is_isomorphic(dp)
+False
+</input>
+<output>
+</output>
+</sage>
+
+Notice how the simple computation of a greatest common divisor predicts the incredibly complicated computation of determining if two groups are isomorphic.  This is a nice illustration of the power of mathematics, replacing a difficult problem (group isomorphism) by a simple one (factoring and divisibility of integers).  Lets build one more direct product of cyclic groups, but with three groups, each with orders that are pairwise relatively prime.
+
+If you try the following with larger parameters you may get an error (<c>database_gap</c>).
+
+<sage>
+<input>
+sage: m = 6
+sage: n = 5
+sage: r = 7
+sage: G = CyclicPermutationGroup(m)
+sage: H = CyclicPermutationGroup(n)
+sage: L = CyclicPermutationGroup(r)
+sage: dp = direct_product_permgroups([G, H, L])
+sage: K = CyclicPermutationGroup(m*n*r)
+sage: K.is_isomorphic(dp)
+True
+</input>
+<output>
+</output>
+</sage>
+
+\subsection{Classifying Finite Groups}
+
+Once we understand isomorphic groups as being the <q>same</q>, or <q>fundamentally no different,</q> or <q>structurally identical,</q> then it is natural to ask how many <q>really different</q> finite groups there are.  Corollary<nbsp /><xref ref="isomorph_theorem_4" /> gives a partial answer: for each prime there is just one finite group, with <m>{\mathbb Z}_p</m> as a concrete manifestation.
+
+Let's embark on a quest to find all the groups of order less than <m>16</m> in Sage as permutation groups.  For prime orders <m>1,2,3,5,7,11</m> and <m>13</m> we know there is really just one group each, and we can realize them all:
+
+<sage>
+<input>
+sage: [CyclicPermutationGroup(p) for p in [1, 2, 3, 5, 7, 11, 13]]
+[Cyclic group of order 1 as a permutation group,
+ Cyclic group of order 2 as a permutation group,
+ Cyclic group of order 3 as a permutation group,
+ Cyclic group of order 5 as a permutation group,
+ Cyclic group of order 7 as a permutation group,
+ Cyclic group of order 11 as a permutation group,
+ Cyclic group of order 13 as a permutation group]
+</input>
+<output>
+</output>
+</sage>
+
+So now our smallest unknown case is order <m>4</m>.  Sage knows at least three such groups, and we can use Sage to check if any pair is isomorphic.  Notice that since <q>isomorphic to</q> is an equivalence relation, and hence a transitive relation, the two tests below are sufficient.
+
+<sage>
+<input>
+sage: G = CyclicPermutationGroup(4)
+sage: H = KleinFourGroup()
+sage: T1 = CyclicPermutationGroup(2)
+sage: T2 = CyclicPermutationGroup(2)
+sage: K = direct_product_permgroups([T1, T2])
+sage: G.is_isomorphic(H)
+False
+sage: H.is_isomorphic(K)
+True
+</input>
+<output>
+</output>
+</sage>
+
+So we have at least two different groups: <m>{\mathbb Z}_4</m> and <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>, with the latter also known as the Klein 4-group.  Sage will not be able to tell us if we have a <em>complete</em> list <mdash /> this will always require theoretical results like Theorem<nbsp /><xref ref="isomorph_theorem_5" />.  We will shortly have a more general result that handles the case of order <m>4</m>, but right now, a careful analysis (by hand) of the possibilities for the Cayley table of a group of order 4 should lead you to the two possibilities above as the only possibilities.  Try to deduce waht the Cayley table of an order 4 group should look like, since you know about identity elements, inverses and cancellation.
+
+We have seen at least two groups of order <m>6</m> (next on our list of non-prime orders).  One is abelian and one is not, so we do not need Sage to tell us they are structurally different.  But let's do it anyway.
+
+<sage>
+<input>
+sage: G = CyclicPermutationGroup(6)
+sage: H = SymmetricGroup(3)
+sage: G.is_isomorphic(H)
+False
+</input>
+<output>
+</output>
+</sage>
+
+Is that all?  There is <m>{\mathbb Z}_3\times{\mathbb Z}_2</m>, but that is just <m>{\mathbb Z}_6</m> since <m>2</m> and <m>3</m> are relatively prime.  The dihedral group, <m>D_3</m>, all symmetries of a triangle, is just <m>S_3</m>, the symmetric group on <m>3</m> symbols.
+
+<sage>
+<input>
+sage: G = DihedralGroup(3)
+sage: H = SymmetricGroup(3)
+sage: G.is_isomorphic(H)
+True
+</input>
+<output>
+</output>
+</sage>
+
+It turns out that the two different groups that we know already do form a complete list of all groups of order <m>6</m>.  Again, a future result will make this easy.  Also, at order <m>6</m> a case-by-case analysis with Cayley tables might test your patience.  To Be Continued.
+
+
+</subsection>
+<subsection>
+<title>Internal Direct Products</title>
+
+An internal direct product is a statement about subgroups of a single group, together with a theorem that links them to an external direct product.  We will work an example here that will illustrate the nature of an internal direct product.
+
+Given an integer <m>n</m>, the set of positive integers less than <m>n</m>, and relatively prime to <m>n</m> forms a group under multiplication mod <m>n</m>.  We will work in the set <c>Integers(n)</c> where we can add <em>and</em> multiply, but we want to stay strictly with multiplication only.
+
+First we build the subgroup itself.  Notice how we must convert <c>x</c> into an integer (an element of <c>ZZ</c>) so that the greatest common divisor computation performs correctly.
+
+<sage>
+<input>
+sage: Z36 = Integers(36)
+sage: U = [x for x in Z36 if gcd(ZZ(x), 36) == 1]
+sage: U
+[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
+</input>
+<output>
+</output>
+</sage>
+
+So we have a group of order 12.  We are going to try to find a subgroup of order 6 and a subgroup of order 2 to form the internal direct product, and we will restrict our search initially to cyclic subgroups of order 6.  Sage has a method that will give the order of each of these elements, relative to multiplication, so let's examine those next.
+
+<sage>
+<input>
+sage: [x.multiplicative_order() for x in U]
+[1, 6, 6, 6, 3, 2, 2, 6, 3, 6, 6, 2]
+</input>
+<output>
+</output>
+</sage>
+
+We have many choices for generators of a cyclic subgroup of order 6 and for a cyclic subgroup of order 2.  Of course, some of the choices for a generator of the subgroup of order 6 will generate the same subgroup.  Can you tell, just by counting, how many subgroups of order 6 there are?  We are going to pick the first element of order 6, and the last element of order 2, for no particular reason.  After your work through this once, we encourage you to try other choices to understand why some choices lead to an internal direct product and some do not.  Notice that we choose the elements from the list <c>U</c> so that they are sure to be elements of <c>Z36</c> and behave properly when multiplied.
+
+<sage>
+<input>
+sage: a = U[1]
+sage: b = U[11]
+sage: A = [a^i for i in range(6)]
+sage: A
+[1, 5, 25, 17, 13, 29]
+sage: B = [b^i for i in range(2)]
+sage: B
+[1, 35]
+</input>
+<output>
+</output>
+</sage>
+
+So <c>A</c> and <c>B</c> are two cyclic subgroups.  Notice that their intersection is the identity element, one of our requirements for an internal direct product.  So this is a good start.  <c>Z36</c> is an abelian group, so <c>A</c> and <c>B</c> are also abelian, thus the condition on all products commuting will hold, but we illustrate the Sage commands that will check this in a non-abelian situation.
+
+<sage>
+<input>
+sage: all([x*y == y*x for x in A for y in B])
+True
+</input>
+<output>
+</output>
+</sage>
+
+Finally, we need to check that by forming products with elements from <c>A</c> and <c>B</c> we create the entire group.  Sorting the resulting list will make a check easier for us visually, and is required if we want Sage to do the check.
+
+<sage>
+<input>
+sage: T = sorted([x*y for x in A for y in B])
+sage: T
+[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
+sage: T == U
+True
+</input>
+<output>
+</output>
+</sage>
+
+That's it.  We now condense all this information into the statement that <q><c>U</c> is the internal direct product of <c>A</c> and <c>B</c>.</q>  By Theorem<nbsp /><xref ref="isomorph:directproducts" />, we see that <c>U</c> is isomorphic to a product of a cyclic group of order 6 and a cyclic group of oder 2.  So in a very real sense, <c>U</c> is no more or less complicated than <m>{\mathbb Z}_6\times{\mathbb Z}_2</m>, which is in turn isomorphic to  <m>{\mathbb Z}_3\times{\mathbb Z}_2\times{\mathbb Z}_2</m>.  So we totally understand the <q>structure</q> of <c>U</c>.  For example, we can see that <c>U</c> is not cyclic, since when written as a product of cyclic groups, the two orders are not relatively prime.  The final expression of <c>U</c> suggests you could find three cyclic subgroups of <c>U</c>, with orders <m>3</m>, <m>2</m> and <m>2</m>, so that <c>U</c> is an internal direct product of the three subgroups.
+
+
+
+
+
+
+
+
+
