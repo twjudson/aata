@@ -4,225 +4,209 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+	<title>Sage</title>
 
-Sage has several convenient functions that will allow us to investigate quickly if a subgroup is normal, and if so, the nature of the resulting quotient group.  But for an initial understanding, we can also work with the raw cosets.  Let's get our hands dirty first, then learn about the easy way.
+	<introduction>
+		<p>Sage has several convenient functions that will allow us to investigate quickly if a subgroup is normal, and if so, the nature of the resulting quotient group.  But for an initial understanding, we can also work with the raw cosets.  Let us get our hands dirty first, then learn about the easy way.</p>
+	</introduction>
 
+	<subsection>
+		<title>Multiplying Cosets</title>
 
-</subsection>
-<subsection>
-<title>Multiplying Cosets</title>
+		<p>The definiton of a factor group requires a normal subgroup, and then we <em>define</em> a way to <q>multiply</q> two cosets of the subgroup to produce another coset.  It is important to realize that we can interpret the definition of a normal subgroup to be <em>exactly</em> the condition we need for our new multiplication to be workable.  We will do two examples <mdash /> first with a normal subgroup, then with a subgroup that is not normal.</p>
 
-The definiton of a factor group requires a normal subgroup, and then we <em>define</em> a way to <q>multiply</q> two cosets of the subgroup to produce another coset.  It is important to realize that we can interpret the definition of a normal subgroup to be <em>exactly</em> the condition we need for our new multiplication to be workable.  We will do two examples <mdash /> first with a normal subgroup, then with a subgroup that is not normal.
+		<p>Consider the dihedral group <m>D_{8}</m> that is the symmetry group of an <m>8</m>-gon.  If we take the element that creates a quarter-turn, we can use it generate a cyclic subgroup of order 4.  This will be a normal subgroup (trust us for the moment on this).  First, build the (right) cosets (notice there is no output):</p>
 
-Consider the dihedral group <m>D_{8}</m> that is the symmetry group of an <m>8</m>-gon.  If we take the element that creates a quarter-turn, we can use it generate a cyclic subgroup of order 4.  This will be a normal subgroup (trust us for the moment on this).  First, build the (right) cosets (notice there is no output):
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		C = G.cosets(S)
+		</input>
+		</sage>
 
-<sage>
-<input>
-sage: G = DihedralGroup(8)
-sage: quarter_turn = G('(1,3,5,7)(2,4,6,8)')
-sage: S = G.subgroup([quarter_turn])
-sage: C = G.cosets(S)
-</input>
-<output>
-</output>
-</sage>
+		<p>So <c>C</c> is a list of lists, with every element of the group <c>G</c> occuring exactly once somewhere.  You could ask Sage to print out <c>C</c> for you if you like, but we will try not to here.  We want to multiply two cosets (lists) together.  How do we do this?  Take <em>any</em> element out of the first list, and <em>any</em> element out of the second list and multiply them together (which we know how to do since they are elements of <c>G</c>).  Now we have an element of <c>G</c>.  What do we do with this element, since we really want a coset as the result of the product of two cosets?  Simple <mdash /> we see which coset the product is in.  Let us give it a try.  We will multiply coset <m>1</m> with coset <m>3</m> (there are <m>4</m> cosets by Lagrange's theorem).  Study the following code carefully to see if you can understand what it is doing, and <em>then</em> read the explanation that follows.</p>
 
-So <c>C</c> is a list of lists, with every element of the group <c>G</c> occuring exactly once somewhere.  You could ask Sage to print out <c>C</c> for you if you like, but we will try not to here.  We want to multiply two cosets (lists) together.  How do we do this?  Take <em>any</em> element out of the first list, and <em>any</em> element out of the second list and multiply them together (which we know how to do since they are elements of <c>G</c>).  Now we have an element of <c>G</c>.  What do we do with this element, since we really want a coset as the result of the product of two cosets?  Simple <mdash /> we see which coset the product is in.  Let's give it a try.  We will multiply coset 1 with coset 3 (there are 4 cosets by Lagrange's theorem).  Study the following code carefully to see if you can understand what it is doing, and <em>then</em> read the explanation that follows.
+		<sage>
+		<input>
+		p = C[1][0]*C[3][0]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: p = C[1][0]*C[3][0]
-sage: [i for i in range(len(C)) if p in C[i]]
-[2]
-</input>
-<output>
-</output>
-</sage>
+		<p>What have we accomplished?  In the first line we create <c>p</c> as the product of two group elements, one from coset <m>1</m> and one from coset <m>3</m> (<c>C[1]</c>, <c>C[3]</c>).  Since we can choose <em>any</em> element from each coset, we choose the first element of each (<c>C[ ][0]</c>).  Then we count our way through all the cosets, selecting only cosets that contain <c>p</c>.  Since <c>p</c> will only be in one coset, we expect a list with just one element.  Here, our one-element list contains only <c>2</c>.  So we say the product of coset <m>1</m> and coset <m>3</m> is coset <m>2</m>.</p>
 
-What have we accomplished?  In the first line we create <c>p</c> as the product of two group elements, one from coset 1 and one from coset 3 (<c>C[1]</c>, <c>C[3]</c>).  Since we can choose <em>any</em> element from each coset, we choose the first element of each (<c>C[ ][0]</c>).  Then we count our way through all the cosets, selecting only cosets that contain <c>p</c>.  Since <c>p</c> will only be in one coset, we expect a list with just one element.  Here, our one-element list contains only <c>2</c>.  So we say the product of coset 1 and coset 3 is coset 2.
+		<p>The point here is that this result (coset <m>1</m> times coset <m>3</m> is coset <m>2</m>) should always be the same, <em>no matter which elements we pick from the two cosets to form</em> <c>p</c>.  So let us do it again, but this time we will not simply choose the first element from each of coset <m>1</m> and coset <m>3</m>, instead we will choose the third element of coset <m>1</m> and the second element of coset <m>3</m> (remember, we are counting from zero!).</p>
 
-The point here is that this result (coset 1 times coset 3 is coset 2) should always be the same, <em>no matter which elements we pick from the two cosets to form</em> <c>p</c>.  So let's do it again, but this time we will not simply choose the first element from each of coset 1 and coset 3, instead we will choose the third element of coset 1 and the second element of coset 3 (we are counting from zero!).
+		<sage>
+		<input>
+		p = C[1][2]*C[3][1]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: p = C[1][2]*C[3][1]
-sage: [i for i in range(len(C)) if p in C[i]]
-[2]
-</input>
-<output>
-</output>
-</sage>
+		<p>Good.  We have the same result.  If you are still trusting us on <c>S</c> being a normal subgroup of <c>G</c>, then this is the result that the theory predicts.  Make a copy of the above compute cell and try other choices for the representatives of each coset.  Then try the product of other cosets, with varying representatives.</p>
 
-Good.  We have the same result.  If you are still trusting us on <c>S</c> being a normal subgroup of <c>G</c>, then this is the result that the theory predicts.  Make a copy of the above compute cell and try other choices for the representatives of each coset.  Then try the product of other cosets, with varying representatives.
+		<sage type='practice' />
 
-<sage>
-<input>
+		<p>Now is a good time to introduce a way to extend Sage and add new functions.  We will design a coset-multiplication function.  Read the following carefully and then see the subsequent explanation.</p>
 
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		def coset_product(i, j, C):
+		   p = C[i][0]*C[j][0]
+		   c = [k for k in srange(len(C)) if p in C[k]]
+		   return c[0]
+		</input>
+		</sage>
 
-Now is a good time to introduce a way to extend Sage and add new functions.  We will design a coset-multiplication function.  Read the following carefully and then see the subsequent explanation.
+		<p>The first line creates a new Sage function named <c>coset_product</c>.  This is accomplished with the word <c>def</c>, and note the colon ending the line.  The inputs to the function are the numbers of the cosets we want to multiply and the complete list of the cosets.  The middle two lines should look familiar from above.  We know <c>c</c> is a one-element list, so <c>c[0]</c> will extract this one coset number, and <c>return</c> is what determines that this is the output of the function.  Notice that the indentation above must be exactly as shown.  We could have written all this computation on a single line without making a new function, but that begins to get unwieldly.  You need to execute the code block above to actually <em>define</em> the function, and there will be no output if successful.  Now we can use our new function to repeat our work above:</p>
 
-<sage>
-<input>
-sage: def coset_product(i, j, C):
-...     p = C[i][0]*C[j][0]
-...     c = [k for k in range(len(C)) if p in C[k]]
-...     return c[0]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		coset_product(1, 3, C)
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
 
-The first line creates a new Sage function named <c>coset_product</c>.  This is accomplished with the word <c>def</c>, and note the colon ending the line.  The inputs to the function are the numbers of the cosets we want to multiply and the complete list of the cosets.  The middle two lines should look familiar from above.  We know <c>c</c> is a one-element list, so <c>c[0]</c> will extract this one coset number, and <c>return</c> is what determines that this is the output of the function.  Notice that the indentation above must be exactly as shown.  We could have written all this computation on a single line without making a new function, but that begins to get unwieldly.  You need to execute the code block above to actually <em>define</em> the function, and there will be no output if successful.  Now we can use our new function to repeat our work above:
+		<p>Now you know the basics of how to add onto Sage and do much more than it was designed for.  And with some practice, you could suggest and contribute new functions to Sage, since it is an open source project.  Nice.</p>
 
-<sage>
-<input>
-sage: coset_product(1, 3, C)
-2
-</input>
-<output>
-</output>
-</sage>
+		<p>Now let us examine a situation where the subgroup is not normal.  So we will see that our definition of coset multiplication is insufficient in this case.  And realize that our new <c>coset_product</c> function is also useless since it assumes the cosets come from a normal subgroup.</p>
 
-Now you know the basics of how to add onto Sage and do much more than it was designed for.  And with some practice, you could suggest and contribute new functions to Sage, since it is an open source project.  Nice.
+		<p>Consider the alternating group <m>A_4</m> which we can interpet as the symmetry group of a tetrahedron.  For a subgroup, take an element that fixes one vertex and rotates the opposite face <mdash /> this will generate a cyclic subgroup of order 3, and by Lagrange's Theorem we will get four cosets.  We compute them here (again, no output is requested):</p>
 
-Now let's examine a situation where the subgroup is not normal.  So we will see that our definition of coset multiplication is insufficient in this case.  And realize that our new <c>coset_product</c> function is also useless since it assumes the cosets come from a normal subgroup.
+		<sage>
+		<input>
+		G = AlternatingGroup(4)
+		face_turn = G("(1,2,3)")
+		S = G.subgroup([face_turn])
+		C = G.cosets(S)
+		</input>
+		</sage>
 
-Consider the alternating group <m>A_4</m> which we can interpet as the symmetry group of a tetrahedron.  For a subgroup, take an element that fixes one vertex and rotates the opposite face <mdash /> this will generate a cyclic subgroup of order 3, and by Lagrange's Theorem we will get four cosets.  Here they are (again, no output is requested here):
+		<p>Again, let's consider the product of coset <m>1</m> and coset <m>3</m>:</p>
 
-<sage>
-<input>
-sage: G = AlternatingGroup(4)
-sage: face_turn = G("(1,2,3)")
-sage: S = G.subgroup([face_turn])
-sage: C = G.cosets(S)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		p = C[1][0]*C[3][0]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[0]
+		</output>
+		</sage>
 
-Again, let's consider the product of coset 1 and coset 3:
+		<p>Again, but now for coset <m>3</m>, choose the second element of the coset to produce the product <c>p</c>:</p>
 
-<sage>
-<input>
-sage: p = C[1][0]*C[3][0]
-sage: [i for i in range(len(C)) if p in C[i]]
-[0]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		p = C[1][0]*C[3][1]
+		[i for i in srange(len(C)) if p in C[i]]
+		</input>
+		<output>
+		[2]
+		</output>
+		</sage>
 
-Again, but now for coset 3, choose the second element of the coset to produce the product <c>p</c>:
+		<p>So: is the product of coset <m>1</m> and coset <m>3</m> equal to coset <m>0</m> or coset <m>2</m>?  We cannot say!  So there is <em>no way</em> to construct a quotient group for this subgroup.  You can experiment some more with this subgroup, but in some sense, we are done with this example <mdash /> there is nothing left to say.</p>
+	</subsection>
 
-<sage>
-<input>
-sage: p = C[1][0]*C[3][1]
-sage: [i for i in range(len(C)) if p in C[i]]
-[2]
-</input>
-<output>
-</output>
-</sage>
+	<subsection>
+		<title>Sage Methods for Normal Subgroups</title>
 
-So: is the product of coset 1 and coset 3 equal to coset 0 or coset 2?  We cannot say!  So there is <em>no way</em> to construct a quotient group for this subgroup.  You can experiment some more with this subgroup, but in some sense, we are done with this example <mdash /> there is nothing left to say.
+		<p>You can easily ask Sage if a subgroup is normal or not.  This is viewed as a property of the subgroup, but you must tell Sage what the <q>supergroup</q> is, since the answer can change depending on this value.  (For example <c>H.is_normal(H)</c> will always be <c>True</c>.)  Here are our two examples from above.</p>
 
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		S.is_normal(G)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-</subsection>
-<subsection>
-<title>Sage Methods for Normal Subgroups</title>
+		<sage>
+		<input>
+		G = AlternatingGroup(4)
+		face_turn = G("(1,2,3)")
+		S = G.subgroup([face_turn])
+		S.is_normal(G)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-You can easily ask Sage if a subgroup is normal or not.  This is viewed as a property of the subgroup, but you must tell Sage what the <q>supergroup</q> is, since the answer can change depending on this value.  (For example <c>H.is_normal(H)</c> will always be <c>True</c>.)  Here are our two examples from above.
+		<p>The text proves in Section<nbsp /><xref ref="section-simplicity-of-an" /> that <m>A_5</m> is simple, <ie /> <m>A_5</m> has no normal subgroups.  We could build every subgroup of <m>A_5</m> and ask if it is normal in <m>A_5</m> using the <c>.is_normal()</c> method.  But Sage has this covered for us already.</p>
 
-<sage>
-<input>
-sage: G = DihedralGroup(8)
-sage: quarter_turn = G('(1,3,5,7)(2,4,6,8)')
-sage: S = G.subgroup([quarter_turn])
-sage: S.is_normal(G)
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		G = AlternatingGroup(5)
+		G.is_simple()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: G = AlternatingGroup(4)
-sage: face_turn = G("(1,2,3)")
-sage: S = G.subgroup([face_turn])
-sage: S.is_normal(G)
-False
-</input>
-<output>
-</output>
-</sage>
+		<p>We can also build a quotient group when we have a normal subgroup.</p>
 
-The text proves in Section<nbsp /><xref ref="normal:section:simplealternating" /> that <m>A_5</m> is simple, i.e.\ <m>A_5</m> has no normal subgroups.  We could build every subgroup of <m>A_5</m> and ask if it is normal in <m>A_5</m> using the <c>.is_normal()</c> method.  But Sage has this covered for us already.
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		quarter_turn = G('(1,3,5,7)(2,4,6,8)')
+		S = G.subgroup([quarter_turn])
+		Q = G.quotient(S)
+		Q
+		</input>
+		<output>
+		Permutation Group with generators [(1,2)(3,4), (1,3)(2,4)]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: G = AlternatingGroup(5)
-sage: G.is_simple()
-True
-</input>
-<output>
-</output>
-</sage>
+		<p>This is useful, but also a bit unsettling.  We have the quotient group, but any notion of cosets has been lost, since <c>Q</c> is returned as a new permutation group on a different set of symbols.  We cannot presume that the numbers used for the new permutation group <c>Q</c> bear any resemblance to the cosets we get from the <c>.cosets()</c> method.  But we can see that the quotient group is described as a group generated by two elements of order two.  We could ask for the order of the group, or by Lagrange's Theorem we know the quotient has order <m>4</m>.  We can say now that there are only two groups of order four, the cyclic group of order <m>4</m> and a non-cyclic group of order <m>4</m>, known to us as the Klein <m>4</m>-group or <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  This quotient group looks like the non-cyclic one since the cyclic group of order 4 has just one element of order 2.  Let us see what Sage says.</p>
 
-We can also build a quotient group when we have a normal subgroup.
+		<sage>
+		<input>
+		Q.is_isomorphic(KleinFourGroup())
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: G = DihedralGroup(8)
-sage: quarter_turn = G('(1,3,5,7)(2,4,6,8)')
-sage: S = G.subgroup([quarter_turn])
-sage: Q = G.quotient(S)
-sage: Q
-Permutation Group with generators [(1,2)(3,4), (1,3)(2,4)]
-</input>
-<output>
-</output>
-</sage>
+		<p>Yes, that's it.</p>
 
-This is useful, but also a bit unsettling.  We have the quotient group, but any notion of cosets has been lost, since <c>Q</c> is returned as a new permutation group on a different set of symbols.  We cannot presume that the numbers used for the new permutation group <c>Q</c> bear any resemblance to the cosets we get from the <c>.cosets()</c> method.  But we can see that the quotient group is described as a group generated by two elements of order two.  We could ask for the order of the group, or by Lagrange's Theorem we know the quotient has order <m>4</m>.  We can say now that there are only two groups of order four, the cyclic group of order <m>4</m> and a non-cyclic group of order <m>4</m>, known to us as the Klein <m>4</m>-group or <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.  This quotient group looks like the non-cyclic one since the cyclic group of order 4 has just one element of order 2.  Let's see what Sage says.
+		<p>Finally, Sage can build us a list of all of the normal subgroups of a group.  The list of groups themselves, as we have seen before, is sometimes an overwhelming amount of information.  We will demonstrate by just listing the orders of the normal subgroups produced.</p>
 
-<sage>
-<input>
-sage: Q.is_isomorphic(KleinFourGroup())
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		G = DihedralGroup(8)
+		N = G.normal_subgroups()
+		[H.order() for H in N]
+		</input>
+		<output>
+		[1, 2, 4, 8, 8, 8, 16]
+		</output>
+		</sage>
 
-Yes, that's it.
+		<p>So, in particular, we see that our <q>quarter-turn</q> subgroup is the <em>only</em> normal subgroup of order <m>4</m> in this group.</p>
+	</subsection>
 
-Finally, Sage can build us a list of all of the normal subgroups of a group.  The list of groups themselves, as we have seen before, is sometimes an overwhelming amount of information.  We will demonstrate by just listing the orders of the normal subgroups produced.
-
-<sage>
-<input>
-sage: G = DihedralGroup(8)
-sage: N = G.normal_subgroups()
-sage: [H.order() for H in N]
-[1, 2, 4, 8, 8, 8, 16]
-</input>
-<output>
-</output>
-</sage>
-
-So, in particular, we see that our <q>quarter turn</q> subgroup is the <em>only</em> subgroup of order <m>4</m> in this group.
-
+</section>
