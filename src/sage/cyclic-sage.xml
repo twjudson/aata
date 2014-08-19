@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section>
+	<title>Sage</title>
+
+	<introduction>
+		<p>Cyclic groups are very important, so it is no surprise that they appear in many different forms in Sage.  Each is slightly different, and no one implementation is ideal for an introduction, but together they can illustrate most of the important ideas.  Here is a guide to the various ways to construct, and study, a cyclic group in Sage.</p>
+	</introduction>
+
+	<subsection>
+		<title>Infinite Cyclic Groups</title>
+
+		<p>In Sage, the integers <m>\mathbb Z</m> are constructed with <c>ZZ</c>.  To build the infinite cyclic group such as <m>3\mathbb Z</m> from Example<nbsp /><xref ref="example-cyclic-z3" />, simply use <c>3*ZZ</c>.  As an infinite set, there is not a whole lot you can do with this.  You can test if integers are in this set, or not.  You can also recall the generator with the <c>.gen()</c> command.</p>
+
+		<sage>
+			<input>
+			G = 3*ZZ
+			-12 in G
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			37 in G
+			</input>
+			<output>False</output>
+		</sage>
+
+		<sage>
+			<input>
+			G.gen()
+			</input>
+			<output>3</output>
+		</sage>
+
+		</subsection>
+
+		<subsection>
+		<title>Additive Cyclic Groups</title>
+
+		<p>The additive cyclic group <m>\mathbb Z_n</m> can be built as a special case of a more general Sage construction.  First we build <m>\mathbb Z_{14}</m> and capture its generator.  Throughout, pay close attention to the use of parentheses and square brackets for when you experiment on your own.</p>
+
+		<sage>
+			<input>
+			G = AdditiveAbelianGroup([14])
+			G.order()
+			</input>
+			<output>14</output>
+		</sage>
+
+		<sage>
+			<input>G.list()</input>
+			<output>
+			[(0), (1), (2), (3), (4), (5), (6), (7),
+			 (8), (9), (10), (11), (12), (13)]
+			</output>
+		</sage>
+
+		<sage>
+			<input>
+			a = G.gen(0)
+			a
+			</input>
+			<output>(1)</output>
+		</sage>
+
+		<p>You can compute in this group, by using the generator, or by using new elements formed by coercing integers into the group, or by taking the result of operations on other elements.  And we can compute the order of elements in this group.  Notice that we can perform repeated additions with the shortcut of taking integer multiples of an element.</p>
+
+		<sage>
+			<input>
+			a + a
+			</input>
+			<output>(2)</output>
+		</sage>
+
+		<sage>
+			<input>
+			a + a + a + a
+			</input>
+			<output>(4)</output>
+		</sage>
+
+		<sage>
+			<input>
+			4*a
+			</input>
+			<output>(4)</output>
+		</sage>
+
+		<sage>
+			<input>
+			37*a
+			</input>
+			<output>(9)</output>
+		</sage>
+
+		<sage>
+			<input>
+			b = G([2]); b
+			</input>
+			<output>(2)</output>
+		</sage>
+
+		<sage>
+			<input>
+			b + b
+			</input>
+			<output>(4)</output>
+		</sage>
+
+		<sage>
+			<input>
+			2*b == 4*a
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>
+			7*b
+			</input>
+			<output>(0)</output>
+		</sage>
+
+		<sage>
+			<input>
+			b.order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>
+			c = a - 6*b; c
+			</input>
+			<output>(3)</output>
+		</sage>
+
+		<sage>
+			<input>
+			c + c + c + c
+			</input>
+			<output>(12)</output>
+		</sage>
+
+		<sage>
+			<input>
+			c.order()
+			</input>
+			<output>14</output>
+		</sage>
+
+		<p>It is possible to create cyclic subgroups, from an element designated to be the new generator.  Unfortunately, to do this requires the <c>.submodule()</c> method (which should be renamed in Sage).</p>
+
+		<sage>
+			<input>H = G.submodule([b]); H</input>
+			<output>Additive abelian group isomorphic to Z/7</output>
+		</sage>
+
+		<sage>
+			<input>H.list()</input>
+			<output>[(0), (2), (4), (6), (8), (10), (12)]</output>
+		</sage>
+
+		<sage>
+			<input>H.order()</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>e = H.gen(0); e</input>
+			<output>(2)</output>
+		</sage>
+
+		<sage>
+			<input>3*e</input>
+			<output>(6)</output>
+		</sage>
+
+		<sage>
+			<input>e.order()</input>
+			<output>7</output>
+		</sage>
+
+		<p>The cyclic subgroup <c>H</c> just created has more than one generator.  We can test this by building a new subgroup and comparing the two subgroups.</p>
+
+		<sage>
+			<input>f = 12*a; f</input>
+			<output>(12)</output>
+		</sage>
+
+		<sage>
+			<input>f.order()</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>K = G.submodule([f]); K</input>
+			<output>Additive abelian group isomorphic to Z/7</output>
+		</sage>
+
+		<sage>
+			<input>K.order()</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>K.list()</input>
+			<output>[(0), (2), (4), (6), (8), (10), (12)]</output>
+		</sage>
+
+		<sage>
+			<input>K.gen(0)</input>
+			<output>(2)</output>
+		</sage>
+
+		<sage>
+			<input>H == K</input>
+			<output>True</output>
+		</sage>
+
+		<p>Certainly the list of elements, and the common generator of <c>(2)</c> lead us to belive that <c>H</c> and <c>K</c> are the same, but the comparison in the last line leaves no doubt.</p>
+
+		<p>Results in this section, especially Theorem<nbsp /><xref ref="theorem-cyclic-orders" /> and Corollary<nbsp /><xref ref="corollary-cyclic-modngenerators" />, can be investigated by creating generators of subgroups from a generator of one additive cyclic group, creating the subgroups, and computing the orders of both elements and orders of groups.</p>
+	</subsection>
+
+	<subsection>
+		<title>Abstract Multiplicative Cyclic Groups</title>
+
+		<p>We can create an abstract cyclic group in the style of Theorems<nbsp /><xref ref="theorem-cyclic-subgroup" />, <xref ref="theorem-cyclic-abelian" />, <xref ref="theorem-cyclic-subgroups" />.  In the syntax below <c>a</c> is a name for the generator, and <c>14</c> is the order of the element.  Notice that the notation is now multiplicative, so we multiply elements, and repeated products can be written as powers.</p>
+
+		<sage>
+			<input>
+			G.&lt;a&gt; = AbelianGroup([14])
+			G.order()
+			</input>
+			<output>14</output>
+		</sage>
+
+		<sage>
+			<input>G.list()</input>
+			<output>(1, a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9, a^10, a^11, a^12, a^13)</output>
+		</sage>
+
+		<sage>
+			<input>a.order()</input>
+			<output>14</output>
+		</sage>
+
+		<p>Computations in the group are similar to before, only with different notation.  Now products, with repeated products written as exponentiation.</p>
+
+		<sage>
+			<input>
+			b = a^2
+			b.order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>b*b*b</input>
+			<output>a^6</output>
+		</sage>
+
+		<sage>
+			<input>
+			c = a^7
+			c.order()
+			</input>
+			<output>2</output>
+		</sage>
+
+		<sage>
+			<input>c^2</input>
+			<output>1</output>
+		</sage>
+
+		<sage>
+			<input>b*c</input>
+			<output>a^9</output>
+		</sage>
+
+		<sage>
+			<input>b^37*c^42</input>
+			<output>a^4</output>
+		</sage>
+
+		<p>Subgroups can be formed with a <c>.subgroup()</c> command.  But do not try to list the contents of a subgroup, it'll look strangely unfamiliar.  Also, comparison of subgroups is not implemented.</p>
+
+		<sage>
+			<input>
+			H = G.subgroup([a^2])
+			H.order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>
+			K = G.subgroup([a^12])
+			K.order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<p>One advantage of this implementation is the possibility to create all possible subgroups.  Here we create the list of subgroups, extract one in particular (the third), and check its order.</p>
+
+		<sage>
+			<input>
+			allsg = G.subgroups(); allsg
+			</input>
+			<output>
+			[Multiplicative Abelian subgroup isomorphic to C2 x C7 generated by {a},
+			 Multiplicative Abelian subgroup isomorphic to C7 generated by {a^2},
+			 Multiplicative Abelian subgroup isomorphic to C2 generated by {a^7},
+			 Trivial Abelian subgroup]
+			</output>
+		</sage>
+
+		<sage>
+			<input>
+			sub = allsg[2]
+			sub.order()
+			</input>
+			<output>2</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Cyclic Permutation Groups</title>
+
+		<p>We will learn more about permutation groups in the next chapter.  But we will mention here that it is easy to create cyclic groups as permutation groups, and a variety of methods are available for working with them, even if the actual elements get a bit cumbersome to work with.  As before, notice that the notation and syntax is multiplicative.</p>
+
+		<sage>
+			<input>
+			G=CyclicPermutationGroup(14)
+			a = G.gen(0); a
+			</input>
+			<output>(1,2,3,4,5,6,7,8,9,10,11,12,13,14)</output>
+		</sage>
+
+		<sage>
+			<input>
+			b = a^2
+			b = a^2; b
+			</input>
+			<output>(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)</output>
+		</sage>
+
+		<sage>
+			<input>b.order()</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>a*a*b*b*b</input>
+			<output>(1,9,3,11,5,13,7)(2,10,4,12,6,14,8)</output>
+		</sage>
+
+		<sage>
+			<input>c = a^37*b^26; c</input>
+			<output>(1,6,11,2,7,12,3,8,13,4,9,14,5,10)</output>
+		</sage>
+
+		<sage>
+			<input>c.order()</input>
+			<output>14</output>
+		</sage>
+
+		<p>We can create subgroups, check their orders, and list their elements.</p>
+
+		<sage>
+			<input>
+			H = G.subgroup([a^2])
+			H.order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>H.gen(0)</input>
+			<output>(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)</output>
+		</sage>
+
+		<sage>
+			<input>H.list()</input>
+			<output>
+			[(),
+			 (1,3,5,7,9,11,13)(2,4,6,8,10,12,14),
+			 (1,5,9,13,3,7,11)(2,6,10,14,4,8,12),
+			 (1,7,13,5,11,3,9)(2,8,14,6,12,4,10),
+			 (1,9,3,11,5,13,7)(2,10,4,12,6,14,8),
+			 (1,11,7,3,13,9,5)(2,12,8,4,14,10,6),
+			 (1,13,11,9,7,5,3)(2,14,12,10,8,6,4)]
+			</output>
+		</sage>
+
+		<p>It could help to visualize this group, and the subgroup, as rotations of a regular <m>12</m>-gon with the vertices labeled with the integers <m>1</m> through <m>12</m>.  This is not the full group of symmetries, since it does not include reflections, just the <m>12</m> rotations.</p>
+
+		</subsection>
+
+		<subsection>
+		<title>Cayley Tables</title>
+
+		<p>As groups, each of the examples above (groups and subgroups) have Cayley tables implemented.  Since the groups are cyclic, and their subgroups are therefore cyclic, the Cayley tables should have a similar <q>cyclic</q> pattern.  Note that the letters used in the default table are generic, and are not related to the letters used above for specific elements <mdash /> they just match up with the group elements in the order given by <c>.list()</c>.</p>
+
+		<sage>
+			<input>
+			G.&lt;a&gt; = AbelianGroup([14])
+			G.cayley_table()
+			</input>
+			<output>
+			*  a b c d e f g h i j k l m n
+			 +----------------------------
+			a| a b c d e f g h i j k l m n
+			b| b c d e f g h i j k l m n a
+			c| c d e f g h i j k l m n a b
+			d| d e f g h i j k l m n a b c
+			e| e f g h i j k l m n a b c d
+			f| f g h i j k l m n a b c d e
+			g| g h i j k l m n a b c d e f
+			h| h i j k l m n a b c d e f g
+			i| i j k l m n a b c d e f g h
+			j| j k l m n a b c d e f g h i
+			k| k l m n a b c d e f g h i j
+			l| l m n a b c d e f g h i j k
+			m| m n a b c d e f g h i j k l
+			n| n a b c d e f g h i j k l m
+			</output>
+		</sage>
+
+		<p>If the real names of the elements are not too complicated, the table could be more informative using these names.</p>
+
+		<sage>
+			<input>
+			K.&lt;b&gt; = AbelianGroup([10])
+			K.cayley_table(names='elements')
+			</input>
+			<output>
+			  *    1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9
+			   +----------------------------------------
+			  1|   1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9
+			  b|   b b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9   1
+			b^2| b^2 b^3 b^4 b^5 b^6 b^7 b^8 b^9   1   b
+			b^3| b^3 b^4 b^5 b^6 b^7 b^8 b^9   1   b b^2
+			b^4| b^4 b^5 b^6 b^7 b^8 b^9   1   b b^2 b^3
+			b^5| b^5 b^6 b^7 b^8 b^9   1   b b^2 b^3 b^4
+			b^6| b^6 b^7 b^8 b^9   1   b b^2 b^3 b^4 b^5
+			b^7| b^7 b^8 b^9   1   b b^2 b^3 b^4 b^5 b^6
+			b^8| b^8 b^9   1   b b^2 b^3 b^4 b^5 b^6 b^7
+			b^9| b^9   1   b b^2 b^3 b^4 b^5 b^6 b^7 b^8
+			</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Complex Roots of Unity</title>
+
+		<p>The finite cyclic subgroups of <m>{\mathbb T}</m>, generated by a primitive <m>n</m>th root of unity are implemented as a more general construction in Sage, known as a cyclotomic field.  If you concentrate on just the multiplication of powers of a generator (and ignore the infinitely many other elements) then this is a finite cyclic group.  Since this is not implemented directly in Sage as a group, <foreign>per se</foreign>, it is a bit harder to construct things like subgroups, but it is an excellent exercise to try.  It is a nice example since the complex numbers are a concrete and familiar construction.  Here are a few sample calculations to provide you with some exploratory tools.  See the notes following the computations.</p>
+
+		<sage>
+			<input>
+			G = CyclotomicField(14)
+			w = G.gen(0); w
+			</input>
+			<output>zeta14</output>
+		</sage>
+
+		<sage>
+			<input>
+			wc = CDF(w)
+			wc.abs()
+			</input>
+			<output>1.0</output>
+		</sage>
+
+		<sage>
+			<input>wc.arg()/N(2*pi/14)</input>
+			<output>1.0</output>
+		</sage>
+
+		<sage>
+			<input>
+			b = w^2
+			b.multiplicative_order()
+			</input>
+			<output>7</output>
+		</sage>
+
+		<sage>
+			<input>bc = CDF(b); bc</input>
+			<output>0.623489801859 + 0.781831482468*I</output>
+		</sage>
+
+		<sage>
+			<input>bc.abs()</input>
+			<output>1.0</output>
+		</sage>
+
+		<sage>
+			<input>bc.arg()/N(2*pi/14)</input>
+			<output>2.0</output>
+		</sage>
+
+		<sage>
+			<input>sg = [b^i for i in range(7)]; sg</input>
+			<output>
+			[1, zeta14^2, zeta14^4,
+			zeta14^5 - zeta14^4 + zeta14^3 - zeta14^2 + zeta14 - 1,
+			-zeta14, -zeta14^3, -zeta14^5]
+			</output>
+		</sage>
+
+		<sage>
+			<input>
+			c = sg[3]; d = sg[5]
+			c*d
+			</input>
+			<output>zeta14^2</output>
+		</sage>
+
+		<sage>
+			<input>
+			c = sg[3]; d = sg[6]
+			c*d in sg
+			</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>c*d == sg[2]</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>sg[5]*sg[6] == sg[4]</input>
+			<output>True</output>
+		</sage>
+
+		<sage>
+			<input>G.multiplication_table(elements=sg)</input>
+			<output>
+			*  a b c d e f g
+			 +--------------
+			a| a b c d e f g
+			b| b c d e f g a
+			c| c d e f g a b
+			d| d e f g a b c
+			e| e f g a b c d
+			f| f g a b c d e
+			g| g a b c d e f
+			</output>
+		</sage>
+
+		<p>Notes:<ol>
+			<li>
+				<p><c>zeta14</c> is the name of the generator used for the cyclotomic field, it is a primitive root of unity (a <m>14</m>th root of unity in this case).  We have captured it as <c>w</c>.</p>
+			</li>
+
+			<li>
+				<p>The syntax <c>CDF(w)</c> will convert the complex number <c>w</c> into the more familiar form with real and imaginary parts.</p>
+			</li>
+
+			<li>
+				<p>The method <c>.abs()</c> will return the modulus of a complex number, <m>r</m> as described in the text.  For elements of <m>{\mathbb C}^\ast</m> this should always equal <m>1</m>.</p>
+			</li>
+
+			<li>
+				<p>The method <c>.arg()</c> will return the argument of a complex number, <m>\theta</m> as described in the text.  Every element of the cyclic group in this example should have an argument that is an integer multiple of <m>\frac{2\pi}{14}</m>.  The <c>N()</c> syntax converts the symbolic value of <c>pi</c> to a numerical approximation.</p>
+			</li>
+
+			<li>
+				<p><c>sg</c> is a list of elements that form a cyclic subgroup of order 7, composed of the first 7 powers of <c>b = w^2</c>.  So, for example, the last comparison multiplies the fifth power of <c>b</c> with the sixth power of <c>b</c>, which would be the eleventh power of <c>b</c>.  But since <c>b</c> has order 7, this reduces to the fourth power.</p>
+			</li>
+
+			<li>
+				<p>If you know a subset of an infinite group forms a subgroup, then you can produce its Cayley table by specifying the list of elements you want to use.  Here we ask for a multiplication table, since that is the relevant operation.</p>
+			</li>
+		</ol></p>
+
+	</subsection>
+</section>

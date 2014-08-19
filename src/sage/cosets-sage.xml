@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<section>
+	<title>Sage</title>
+
+	<introduction>
+		<p>Sage can create all of the cosets of a subgroup, and all of the subgroups of a group.  While these methods can be somewhat slow, they are in many, many ways much better than experimenting with pencil and paper, and can greatly assist us in understanding the structure of finite groups.</p>
+	</introduction>
+
+	<subsection>
+		<title>Cosets</title>
+
+		<p>Sage will create all the right (or left) cosets of a subgroup.  Written mathematically, cosets are sets, and the order of the elements within the set is irrelevant.  With Sage, lists are more natural, and here it is to our advantage.</p>
+
+		<p>Sage creates the cosets of a subgroup as a list of lists.  Each inner list is a single coset.  The first coset is always the coset that is the subgroup itself, and the first element of this coset is the identity.  Each of the other cosets can be construed to have their first element as their representative, and if you use this element as the representative, the elements of the coset are in the same order they would be created by multiplying this representative by the elements of the first coset (the subgroup).</p>
+
+		<p>The keyword <c>side</c> can be <c>'right'</c> or <c>'left'</c>, and if not given, then the default is right cosets.  The options refer to which side of the product has the representative.  Notice that now Sage's results will be <q>backwards</q> compared with the text.  Here is Example<nbsp /><xref ref="example-s3-cosets" /> reprised, but in a slightly different order.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			a = G("(1,2)")
+			H = G.subgroup([a])
+			rc = G.cosets(H, side='right'); rc
+			</input>
+			<output>[[(), (1,2)], [(2,3), (1,3,2)], [(1,2,3), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>lc = G.cosets(H, side='left'); lc</input>
+			<output>[[(), (1,2)], [(2,3), (1,2,3)], [(1,3,2), (1,3)]]</output>
+		</sage>
+
+		<p>So if we work our way through the brackets carefully we can see the difference between the right cosets and the left cosets.  Compare these cosets with the ones in the text and see that left and right are reversed.  Shouldn't be a problem <mdash /> just keep it in mind.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			b = G("(1,2,3)")
+			H = G.subgroup([b])
+			rc = G.cosets(H, side='right'); rc
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,3), (1,2)]]</output>
+		</sage>
+
+		<sage>
+			<input>lc = G.cosets(H, side='left'); lc</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<p>If we study the backeting, we can see that the left and right cosets are equal.  Let's see what Sage thinks:</p>
+
+		<sage>
+			<input>rc == lc</input>
+			<output>False</output>
+		</sage>
+
+		<p>Mathematically, we need sets, but Sage is working with ordered lists, and the order matters.  However, if we know our lists do not have duplicates (the <c>.cosets()</c> method will never produce duplicates) then we can sort the lists and a test for equality will perform as expected.  The elements of a permutation group have an ordering defined for them <mdash /> it is not so important <em>what</em> this is, just that <em>some</em> ordering is defined.  The <c>sorted()</c> function will take any list and return a sorted version.  So for each list of cosets, we will sort the individual cosets and then sort the list of sorted cosets.  This is a typical maneuver, though a bit complicated with the nested lists.</p>
+
+		<sage>
+			<input>
+			rc_sorted = sorted([sorted(coset) for coset in rc])
+			rc_sorted
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>
+			lc_sorted = sorted([sorted(coset) for coset in lc])
+			lc_sorted
+			</input>
+			<output>[[(), (1,2,3), (1,3,2)], [(2,3), (1,2), (1,3)]]</output>
+		</sage>
+
+		<sage>
+			<input>rc_sorted == lc_sorted</input>
+			<output>True</output>
+		</sage>
+
+		<p>The list of all cosets can be quite long (it will include every element of the group) and can take a few seconds to complete, even for small groups.  There are more sophisticated, and faster, ways to study cosets (such as just using their representatives), but to understand these techniques you also need to understand more theory.</p>
+
+		<sage type="practice"/>
+	</subsection>
+
+	<subsection>
+		<title>Subgroups</title>
+
+		<p>Sage can compute all of the subgroups of a group.  This can produce even more output than the coset method and can sometimes take much longer, depending on the structure of the group.  The list is in order of the size of the subgroups, with smallest first.  As a demonstration we will first compute and list all of the subgroups of a small group, and then extract just one of these subgroups from the list for some futher study.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(3)
+			sg = G.subgroups(); sg
+			</input>
+			<output>
+			[Subgroup of (Symmetric group of order 3! as a permutation group) generated by [()],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(2,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2,3)],
+			 Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(2,3), (1,2,3)]]
+			</output>
+		</sage>
+
+		<sage>
+			<input>H = sg[4]; H</input>
+			<output>Subgroup of (Symmetric group of order 3! as a permutation group) generated by [(1,2,3)]</output>
+		</sage>
+
+		<sage>
+			<input>H.order()</input>
+			<output>3</output>
+		</sage>
+
+		<sage>
+			<input>H.list()</input>
+			<output>[(), (1,2,3), (1,3,2)]</output>
+		</sage>
+
+		<sage>
+			<input>H.is_cyclic()</input>
+			<output>True</output>
+		</sage>
+
+		<!-- RAB 2014/08/18 ref is to a proposition, not a Corollary? -->
+		<p>The output of the <c>.subgroups()</c> method can be voluminous, so sometimes we are interested in properties of specific subgroups (as in the previous example) or broader questions of the group's <q>subgroup structure.</q>  Here we expand on Corollary<nbsp /><xref ref="proposition-cosets-theorem-10" />.  Notice that just because Sage does not <em>compute</em> a subgroup of order 6 in <m>A_4</m>, this is no substitute whatsoever for a <em>proof</em> such as given for the corollary.  But the computational result emboldens us to search for the theoretical result with confidence.</p>
+
+		<sage>
+			<input>
+			G = AlternatingGroup(4)
+			sg = G.subgroups()
+			[H.order() for H in sg]
+			</input>
+			<output>[1, 2, 2, 2, 3, 3, 3, 3, 4, 12]</output>
+		</sage>
+
+		<p>So we see no subgroup of oder 6 in the list of subgroups of <m>A_4</m>.  Notice how Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />) is in evidence <mdash /> all the subgroup orders divide <m>12</m>, the order of <m>A_4</m>.  Be patient, the next subgroup computation may take a while.</p>
+
+		<sage>
+			<input>
+			G = SymmetricGroup(4)
+			sg = G.subgroups()
+			[H.order() for H in sg]
+			</input>
+			<output>
+			[1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4,
+			 6, 6, 6, 6, 8, 8, 8, 12, 24]
+			</output>
+		</sage>
+
+		<p>Again, note Lagrange's Theorem in action.  But more interestingly, <m>S_4</m> has a subgroup of order 6.  Four of them, to be precise.  these four subgroups of order 6 are similar to each other, can you describe them simply (<em>before</em> digging into the <c>sg</c> list for more information)?  If you were curious how many subgroups <m>S_4</m> has, you could simply count the number of subgroups in the <c>sg</c> list.  The <c>len()</c> function does this for <em>any</em> list and is often an easy way to count things.</p>
+
+		<sage>
+		<input>len(sg)</input>
+		<output>30</output>
+		</sage>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+	<subsection>
+		<title>Subgroups of Cyclic Groups</title>
+
+		<p>Now that we are more familiar with permutation groups, and know about the <c>.subgroups()</c> method, we can revisit an idea from Chapter<nbsp /><xref ref="cyclic" />.  The subgroups of a cyclic group are always cyclic, but how many are there and what are their orders?</p>
+
+		<sage>
+			<input>
+			G = CyclicPermutationGroup(20)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 2, 4, 5, 10, 20]</output>
+		</sage>
+
+		<sage>
+			<input>
+			G = CyclicPermutationGroup(19)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 19]</output>
+		</sage>
+
+		<p>We could do this all day, but you have Sage at your disposal, so vary the order of <c>G</c> by changing <c>n</c> and study the output across many runs.  Maybe try a cyclic group of order 24 and compare with the symmetric group <m>S_4</m> (above) which also has order 24.  Do you feel a conjecture coming on?</p>
+
+		<sage>
+			<input>
+			n = 8
+			G = CyclicPermutationGroup(n)
+			[H.order() for H in G.subgroups()]
+			</input>
+			<output>[1, 2, 4, 8]</output>
+		</sage>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+	<subsection>
+		<title>Euler Phi Function</title>
+
+		<p>To add to our number-theoretic functions from Chapter<nbsp /><xref ref="integers" />, we note that Sage makes the Euler <m>\phi</m>-function available as the function <c>euler_phi()</c>.</p>
+
+		<sage>
+			<input>euler_phi(345)</input>
+			<output>176</output>
+		</sage>
+
+		<p>Here's an interesting experiment that you can try running several times.</p>
+
+		<sage doctest="random">
+			<input>
+			m = random_prime(10000)
+			n = random_prime(10000)
+			m, n, euler_phi(m*n) == euler_phi(m)*euler_phi(n)
+			</input>
+			<output>(5881, 1277, True)</output>
+		</sage>
+
+		<p>Feel another conjecture coming on?  Can you generalize this result?</p>
+
+		<sage type="practice"/>
+
+	</subsection>
+
+</section>

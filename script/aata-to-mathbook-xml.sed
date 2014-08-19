@@ -184,9 +184,9 @@ s/\\histbox/<\/p>\n<\/historical>  <!-- FIXME: stray closing brace on next line 
 # And prior to general comment lines
 # eg, \sageexercise{1}%  to start (w, w/o %)
 # eg, \begin{sageverbatim}\end{sageverbatim}  to end
-s/\\sageexercise{\([^}]*\)}%/<exercise number="\1">\n<statement>\n<p>/g
-s/\\sageexercise{\([^}]*\)}/<exercise number="\1">\n<statement>\n<p>/g
-s/\\begin{sageverbatim}\\end{sageverbatim}/<\/p>\n<\/statement>\n<sage \/>\n<\/exercise>/g
+s/\\sageexercise{\([^}]*\)}%/<exercise number="\1">\n<statement>\n/g
+s/\\sageexercise{\([^}]*\)}/<exercise number="\1">\n<statement>\n/g
+s/\\begin{sageverbatim}\\end{sageverbatim}/\n<\/statement>\n<sage \/>\n<\/exercise>/g
 
 
 # Sage Code
