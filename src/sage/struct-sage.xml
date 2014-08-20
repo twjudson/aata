@@ -14,98 +14,128 @@
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+    <title>Sage</title>
 
-Cyclic groups, and direct products of cyclic groups, are implemented in Sage as permutation groups.  However, these groups quickly become very unwieldly representations and it should be easier to work with finite abelian groups in Sage.  So we will postpone any specifics for this chapter until that happens.  However, now that we understand the notion of isomorphic groups and the structure of finite abelian groups, we can return to our quest to classify all of the groups with order less than 16.
-
-
-</subsection>
-<subsection>
-<title>Classification of Finite Groups</title>
-
-It does not take any sophisticated tools to understand groups of order <m>2p</m>, where <m>p</m> is an odd prime.  There are two possibilities <mdash /> a cyclic group of order <m>2p</m> and the dihedral group of order <m>2p</m> that is the set of symmetries of a regular <m>p</m>-gon.  The proof requires some close, tight reasoning, but the required theorems are generally just concern orders of elements, Lagrange's Theorem and cosets.  This takes care of orders <m>n=6,\,10,\,14</m>.
-
-For <m>n=9</m>, the upcoming Corollary<nbsp /><xref ref="actions:p2abelian" /> will tell us that any group of order <m>p^2</m> (where <m>p</m> is a prime) is abelian.  So we know from this section that the only two possibilities are <m>{\mathbb Z}_9</m> and <m>{\mathbb Z}_3\times{\mathbb Z}_3</m>.  Similarly, the upcoming Theorem<nbsp /><xref ref="sylow:pq_cyclic_theorem" /> will tell us that every group of order <m>n=15</m> is abelian.  Now this leaves just one possibility for this order: <m>{\mathbb Z}_3\times{\mathbb Z}_5</m>.
-
-We have just two orders left to analyze:  <m>n=8</m> and <m>n=12</m>.  The possibilities are groups we already know, with one exception.  However, the analysis that these are the <em>only</em> possibilities is more complicated, and will not be pursued now, nor in the next few sections.  Notice that <m>n=16</m> is more complicated still, with 14 different possibilities (which explains why we stopped here).
-
-For <m>n=8</m> there are 3 abelian groups, and the two non-abelian groups are the dihedral group (symmetries of a square) and the quaternions.
-
-For <m>n=12</m> there are 2 abelian groups, and 3 non-abelian groups.  We know two of the non-abelian groups as a dihedral group, and the alternating group on 4 symbols (which is also the symmetries of a tetrahedron).  The third non-abelian group is an example of a <q>dicyclic</q> group, which is an infinite family of groups with order divisible by 4.  The order 12 dicyclic group can also be constructed as a <q>semi-direct product</q> of two cyclic groups <mdash /> this is a construction worth knowing as you pursue further study of group theory.  The order 8 dicyclic group is also the quaternions and more generally, the dicyclic groups of order <m>2^k</m>, <m>k>2</m> are known as <q>generalized quaternion groups.</q>
-
-The following examples will show you how to construct some of these groups and allows us to make sure the following table is accurate.
-
-<sage>
-<input>
-sage: S = SymmetricGroup(3)
-sage: D = DihedralGroup(3)
-sage: S.is_isomorphic(D)
-True
-sage: D1 = CyclicPermutationGroup(3)
-sage: D2 = CyclicPermutationGroup(5)
-sage: DP = direct_product_permgroups([D1,D2])
-sage: C  = CyclicPermutationGroup(15)
-sage: DP.is_isomorphic(C)
-True
-sage: Q  = QuaternionGroup()
-sage: DI = DiCyclicGroup(2)
-sage: Q.is_isomorphic(DI)
-True
-</input>
-<output>
-</output>
-</sage>
+    <introduction>
+        <p>Cyclic groups, and direct products of cyclic groups, are implemented in Sage as permutation groups.  However, these groups quickly become very unwieldly representations and it should be easier to work with finite abelian groups in Sage.  So we will postpone any specifics for this chapter until that happens.  However, now that we understand the notion of isomorphic groups and the structure of finite abelian groups, we can return to our quest to classify all of the groups with order less than <m>16</m>.</p>
+    </introduction>
 
 
-</subsection>
-<subsection>
-<title>Groups of Small Order as Permutation Groups</title>
+    <subsection>
+        <title>Classification of Finite Groups</title>
 
-We list here constructions, as permutation groups in Sage, for all of the groups of order less than <m>16</m>.\\
+        <p>It does not take any sophisticated tools to understand groups of order <m>2p</m>, where <m>p</m> is an odd prime.  There are two possibilities <mdash /> a cyclic group of order <m>2p</m> and the dihedral group of order <m>2p</m> that is the set of symmetries of a regular <m>p</m>-gon.  The proof requires some close, tight reasoning, but the required theorems are generally just concern orders of elements, Lagrange's Theorem and cosets.  This takes care of orders <m>n=6,\,10,\,14</m>.</p>
 
-{\fontsize{10pt}{12pt}\selectfont
-\begin{tabular}{l|l|l}
-<m>n</m> &amp;    Construction                              &amp; Notes, Alternatives\\\hline\hline
-1 &amp; \verb!CyclicPermutationGroup(1)!               &amp; Trivial \\\hline\hline
-2 &amp; \verb!CyclicPermutationGroup(2)!               &amp; \verb!SymmetricGroup(2)!\\\hline\hline
-3 &amp; \verb!CyclicPermutationGroup(3)!               &amp; Prime order \\\hline\hline
-4 &amp; \verb!CyclicPermutationGroup(4)!               &amp; Cyclic \\\hline
-4 &amp; \verb!KleinFourGroup()!                        &amp; Abelian, non-cyclic\\\hline\hline
-5 &amp; \verb!CyclicPermutationGroup(5)!               &amp; Prime order \\\hline\hline
-6 &amp; \verb!CyclicPermutationGroup(6)!               &amp; Cyclic \\\hline
-6 &amp; \verb!SymmetricGroup(3)!                       &amp; Non-abelian\\
-  &amp;                                                &amp; \verb!DihedralGroup(3)!\\\hline\hline
-7 &amp; \verb!CyclicPermutationGroup(7)!               &amp; Prime order \\\hline\hline
-8 &amp; \verb!CyclicPermutationGroup(8)!               &amp; Cyclic \\\hline
-8 &amp; \verb!D1=CyclicPermutationGroup(4)!            &amp; \\
-  &amp; \verb!D2=CyclicPermutationGroup(2)!            &amp; \\
-  &amp; \verb!G=direct_product_permgroups([D1,D2])!    &amp; Abelian, non-cyclic\\\hline
-8 &amp; \verb!D1=CyclicPermutationGroup(2)!            &amp; \\
-  &amp; \verb!D2=CyclicPermutationGroup(2)!            &amp; \\
-  &amp; \verb!D3=CyclicPermutationGroup(2)!            &amp; \\
-  &amp; \verb!G=direct_product_permgroups([D1,D2,D3])! &amp; Abelian, non-cyclic\\\hline
-8 &amp; \verb!DihedralGroup(4)!                        &amp; Non-abelian\\\hline
-8 &amp; \verb!QuaternionGroup()!                       &amp; Quaternions\\
-  &amp;                                                &amp; \verb!DiCyclicGroup(2)!\\\hline\hline
-9 &amp; \verb!CyclicPermutationGroup(9)!               &amp; Cyclic \\\hline
-9 &amp; \verb!D1=CyclicPermutationGroup(3)!            &amp; \\
-  &amp; \verb!D2=CyclicPermutationGroup(3)!            &amp; \\
-  &amp; \verb!G=direct_product_permgroups([D1,D2])!    &amp; Abelian, non-cyclic\\\hline\hline
-10&amp; \verb!CyclicPermutationGroup(10)!              &amp; Cyclic \\\hline
-10&amp; \verb!DihedralGroup(5)!                        &amp; Non-abelian\\\hline\hline
-11&amp; \verb!CyclicPermutationGroup(11)!              &amp; Prime order \\\hline\hline
-12&amp; \verb!CyclicPermutationGroup(12)!              &amp; Cyclic \\\hline
-12&amp; \verb!D1=CyclicPermutationGroup(6)!            &amp; \\
-  &amp; \verb!D2=CyclicPermutationGroup(2)!            &amp; \\
-  &amp; \verb!G=direct_product_permgroups([D1,D2])!    &amp; Abelian, non-cyclic\\\hline
-12&amp; \verb!DihedralGroup(6)!                        &amp; Non-abelian\\\hline
-12&amp; \verb!AlternatingGroup(4)!                     &amp; Non-abelian\\
-  &amp;                                                &amp; Symmetries of tetrahedron\\\hline
-12&amp; \verb!DiCyclicGroup(3)!                        &amp; Non-abelian\\
-  &amp;                                                &amp; Semi-direct product <m>Z_3\rtimes Z_4</m>\\\hline\hline
-13&amp; \verb!CyclicPermutationGroup(13)!              &amp; Prime order \\\hline\hline
-14&amp; \verb!CyclicPermutationGroup(14)!              &amp; Cyclic \\\hline
-14&amp; \verb!DihedralGroup(7)!                        &amp; Non-abelian\\\hline\hline
-15&amp; \verb!CyclicPermutationGroup(15)!              &amp; Cyclic\\\hline\hline
-\end{tabular}
-}
-<!-- % -->
+        <p>For <m>n=9</m>, the upcoming Corollary<nbsp /><xref ref="corollary-p2abelian" /> will tell us that any group of order <m>p^2</m> (where <m>p</m> is a prime) is abelian.  So we know from this section that the only two possibilities are <m>{\mathbb Z}_9</m> and <m>{\mathbb Z}_3\times{\mathbb Z}_3</m>.  Similarly, the upcoming Theorem<nbsp /><xref ref="theorem-pq-cyclic" /> will tell us that every group of order <m>n=15</m> is abelian.  Now this leaves just one possibility for this order: <m>{\mathbb Z}_3\times{\mathbb Z}_5</m>.</p>
+
+        <p>We have just two orders left to analyze:  <m>n=8</m> and <m>n=12</m>.  The possibilities are groups we already know, with one exception.  However, the analysis that these are the <em>only</em> possibilities is more complicated, and will not be pursued now, nor in the next few chapters.  Notice that <m>n=16</m> is more complicated still, with <m>14</m> different possibilities (which explains why we stopped here).</p>
+
+        <p>For <m>n=8</m> there are <m>3</m> abelian groups, and the two non-abelian groups are the dihedral group (symmetries of a square) and the quaternions.</p>
+
+        <p>For <m>n=12</m> there are <m>2</m> abelian groups, and <m>3</m> non-abelian groups.  We know two of the non-abelian groups as a dihedral group, and the alternating group on <m>4</m> symbols (which is also the symmetries of a tetrahedron).  The third non-abelian group is an example of a <q>dicyclic</q> group, which is an infinite family of groups, each with order divisible by <m>4</m>.  The order <m>12</m> dicyclic group can also be constructed as a <q>semi-direct product</q> of two cyclic groups <mdash /> this is a construction worth knowing as you pursue further study of group theory.  The order <m>8</m> dicyclic group is also the quaternions and more generally, the dicyclic groups of order <m>2^k</m>, <m>k>2</m> are known as <q>generalized quaternion groups.</q></p>
+
+        <m>The following examples will show you how to construct some of these groups and allows us to make sure the following table is accurate.</m>
+
+        <sage>
+        <input>
+        S = SymmetricGroup(3)
+        D = DihedralGroup(3)
+        S.is_isomorphic(D)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        D1 = CyclicPermutationGroup(3)
+        D2 = CyclicPermutationGroup(5)
+        DP = direct_product_permgroups([D1,D2])
+        C  = CyclicPermutationGroup(15)
+        DP.is_isomorphic(C)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        Q  = QuaternionGroup()
+        DI = DiCyclicGroup(2)
+        Q.is_isomorphic(DI)
+        </input>
+        <output>
+        True
+        </output>
+        </sage>
+
+    </subsection>
+
+    <subsection>
+        <title>Groups of Small Order as Permutation Groups</title>
+
+        <p>We list here constructions, as permutation groups in Sage, for all of the groups of order less than <m>16</m>.</p>
+
+        <!-- comments are the number of dividing rules following the row in LaTeX original -->
+       <table>
+            <tgroup  cols="3" align="left">
+                <thead>
+                    <row>
+                        <entry><m>n</m></entry>
+                        <entry>Construction</entry>
+                        <entry>Notes, Alternatives</entry>
+                    </row>
+                </thead>
+                <tbody>
+     <row><entry> 1</entry><entry><c>CyclicPermutationGroup(1)</c>              </entry><entry>Trivial </entry></row><!--double-->
+     <row><entry> 2</entry><entry><c>CyclicPermutationGroup(2)</c>              </entry><entry><c>SymmetricGroup(2)</c></entry></row><!--double-->
+     <row><entry> 3</entry><entry><c>CyclicPermutationGroup(3)</c>              </entry><entry>Prime order </entry></row><!--double-->
+     <row><entry> 4</entry><entry><c>CyclicPermutationGroup(4)</c>              </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry> 4</entry><entry><c>KleinFourGroup()</c>                       </entry><entry>Abelian, non-cyclic</entry></row><!--double-->
+     <row><entry> 5</entry><entry><c>CyclicPermutationGroup(5)</c>              </entry><entry>Prime order </entry></row><!--double-->
+     <row><entry> 6</entry><entry><c>CyclicPermutationGroup(6)</c>              </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry> 6</entry><entry><c>SymmetricGroup(3)</c>                      </entry><entry>Non-abelian</entry></row><!--none-->
+     <row><entry>  </entry><entry>                                              </entry><entry><c>DihedralGroup(3)</c></entry></row><!--double-->
+     <row><entry> 7</entry><entry><c>CyclicPermutationGroup(7)</c>              </entry><entry>Prime order </entry></row><!--double-->
+     <row><entry> 8</entry><entry><c>CyclicPermutationGroup(8)</c>              </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry> 8</entry><entry><c>D1=CyclicPermutationGroup(4)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>D2=CyclicPermutationGroup(2)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>G=direct_product_permgroups([D1,D2])</c>   </entry><entry>Abelian, non-cyclic</entry></row><!--single-->
+     <row><entry> 8</entry><entry><c>D1=CyclicPermutationGroup(2)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>D2=CyclicPermutationGroup(2)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>D3=CyclicPermutationGroup(2)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>G=direct_product_permgroups([D1,D2,D3])</c></entry><entry>Abelian, non-cyclic</entry></row><!--single-->
+     <row><entry> 8</entry><entry><c>DihedralGroup(4)</c>                       </entry><entry>Non-abelian</entry></row><!--single-->
+     <row><entry> 8</entry><entry><c>QuaternionGroup()</c>                      </entry><entry>Quaternions</entry></row><!--none-->
+     <row><entry>  </entry><entry>                                              </entry><entry><c>DiCyclicGroup(2)</c></entry></row><!--double-->
+     <row><entry> 9</entry><entry><c>CyclicPermutationGroup(9)</c>              </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry> 9</entry><entry><c>D1=CyclicPermutationGroup(3)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>D2=CyclicPermutationGroup(3)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>G=direct_product_permgroups([D1,D2])</c>   </entry><entry>Abelian, non-cyclic</entry></row><!--double-->
+     <row><entry>10</entry><entry><c>CyclicPermutationGroup(10)</c>             </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry>10</entry><entry><c>DihedralGroup(5)</c>                       </entry><entry>Non-abelian</entry></row><!--double-->
+     <row><entry>11</entry><entry><c>CyclicPermutationGroup(11)</c>             </entry><entry>Prime order </entry></row><!--double-->
+     <row><entry>12</entry><entry><c>CyclicPermutationGroup(12)</c>             </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry>12</entry><entry><c>D1=CyclicPermutationGroup(6)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>D2=CyclicPermutationGroup(2)</c>           </entry><entry></entry></row><!--none-->
+     <row><entry>  </entry><entry><c>G=direct_product_permgroups([D1,D2])</c>   </entry><entry>Abelian, non-cyclic</entry></row><!--single-->
+     <row><entry>12</entry><entry><c>DihedralGroup(6)</c>                       </entry><entry>Non-abelian</entry></row><!--single-->
+     <row><entry>12</entry><entry><c>AlternatingGroup(4)</c>                    </entry><entry>Non-abelian</entry></row><!--none-->
+     <row><entry>  </entry><entry>                                              </entry><entry>Symmetries of tetrahedron</entry></row><!--single-->
+     <row><entry>12</entry><entry><c>DiCyclicGroup(3)</c>                       </entry><entry>Non-abelian</entry></row><!--none-->
+     <row><entry>  </entry><entry>                                              </entry><entry>Semi-direct product <m>Z_3\rtimes Z_4</m></entry></row><!--double-->
+     <row><entry>13</entry><entry><c>CyclicPermutationGroup(13)</c>             </entry><entry>Prime order </entry></row><!--double-->
+     <row><entry>14</entry><entry><c>CyclicPermutationGroup(14)</c>             </entry><entry>Cyclic </entry></row><!--single-->
+     <row><entry>14</entry><entry><c>DihedralGroup(7)</c>                       </entry><entry>Non-abelian</entry></row><!--double-->
+     <row><entry>15</entry><entry><c>CyclicPermutationGroup(15)</c>             </entry><entry>Cyclic</entry></row><!--double-->
+                </tbody>
+            </tgroup>
+            <caption>The Groups of Order <m>\mathbf{16}</m> or Less in Sage</caption>
+        </table>
+
+    </subsection>
+
+</section>
