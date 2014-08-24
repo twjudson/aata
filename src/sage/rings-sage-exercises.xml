@@ -4,64 +4,58 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<exercises>
+	<title>Sage Exercises</title>
 
+	<exercise number="1">
+		<statement>
+			<p>Define the two rings <m>{\mathbb Z}_{11}</m> and <m>{\mathbb Z}_{12}</m> with the commands <c>R = Integers(11)</c> and <c>S = Integers(12)</c>.  For each ring, use the relevant command to determine:  if the ring is finite, if it is commutative, if it is an integral domain and if it is a field.  Then use single Sage commands to find the order of the ring, list the elements, and output the multiplicative identity (<ie /> <m>1</m>, if it exists).</p>
+		</statement>
+	</exercise>
 
-</statement>
-<sage />
-</exercise>
+	<exercise number="2">
+		<statement>
+			<p>Define <c>R</c> to be the ring of integers, <m>{\mathbb Z}</m>, by executing <c>R = ZZ</c> or <c>R = Integers()</c>.  A command like <c>R.ideal(4)</c> will create the principal ideal <m>\langle 4\rangle</m>.  The same command can accept more than one generator, so for example, <c>R.ideal(3, 5)</c> will create the ideal <m>\{a\cdot 3+ b\cdot 5\mid a,b\in{\mathbb Z}\}</m>.  Create several ideals of <m>{\mathbb Z}</m> with two generators and ask Sage to print each as you create it.  Explain what you observe and then create code that will test your observation for thousands of different examples.</p>
+		</statement>
+	</exercise>
 
-<exercise number="1">
-<statement>
+	<exercise number="3">
+		<statement>
+			<p>Create a finite field <m>F</m> of order 81 with <c>F.&lt;t&gt;=FiniteField(3^4)</c>.</p>
 
-Define the two rings <m>{\mathbb Z}_{11}</m> and <m>{\mathbb Z}_{12}</m> with the commands <c>R = Integers(11)</c> and <c>S = Integers(12)</c>.  For each ring, use the relevant command to determine:  if the ring is finite, if it is commutative, if it is an integral domain and if it is a field.  Then use single Sage commands to find the order of the ring, list the elements, and output the multiplicative identity (i.e.\ <m>1</m>, if it exists).
+			<ol>
+				<li><p>List the elements of <m>F</m>.</p></li>
 
-</statement>
-<sage />
-</exercise>
+				<li><p>Obtain the generators of <m>F</m> with <c>F.gens()</c>.</p></li>
 
-<exercise number="2">
-<statement>
+				<li><p>Obtain the first generator of <m>F</m> and save it as <c>u</c> with <c>u = F.0</c> (alternatively, <c>u = F.gen(0)</c>).</p></li>
 
-Define <c>R</c> to be the ring of integers, <m>{\mathbb Z}</m>, by executing <c>R = ZZ</c> or <c>R = Integers()</c>.  A command like <c>R.ideal(4)</c> will create the principal ideal <m>\langle 4\rangle</m>.  The same command can accept more than one generator, so for example, <c>R.ideal(3, 5)</c> will create the ideal <m>\{a\cdot 3+ b\cdot 5\mid a,b\in{\mathbb Z}\}</m>.  Create several ideals of <m>{\mathbb Z}</m> with two generators and ask Sage to print each as you create it.  Explain what you observe and then create code that will test your observation for thousands of different examples.
+				<li><p>Compute the first 80 powers of <c>u</c> and comment.</p></li>
 
-</statement>
-<sage />
-</exercise>
+				<li><p>The generator you have worked with above is a root of a polynomial over <m>{\mathbb Z}_3</m>.  Obtain this polynomial with <c>F.modulus()</c> and use this observation to explain the entry in your list of powers that is the fourth power of the generator.</p></li>
+			</ol>
+		</statement>
+	</exercise>
 
-<exercise number="3">
-<statement>
+	<exercise number="4">
+		<statement>
+			<p>Build and analyze a quotient ring as follows:</p>
 
-Create a finite field <m>F</m> of order 81 with <c>F.<t>=FiniteField(3^4)</c>.\\
-(a) List the elements of <m>F</m>. \\
-(b) Obtain the generators of <m>F</m> with <c>F.gens()</c>. \\
-(c) Obtain the first generator of <m>F</m> and save it as <c>u</c> with <c>u = F.0</c> (alternatively, <c>u = F.gen(0)</c>). \\
-(d) Compute the first 80 powers of <c>u</c> and comment. \\
-(e) The generator you have worked with above is a root of a polynomial over <m>{\mathbb Z}_3</m>.  Obtain this polynomial with <c>F.modulus()</c> and use this observation to explain the entry in your list of powers that is the fourth power of the generator.
+			<ol>
+				<li><p>Use <c>P.&lt;z&gt;=(Integers(7))[]</c> to construct a ring <m>P</m> of polynomials in <m>z</m> with coefficients from <m>{\mathbb Z}_7</m>.</p></li>
 
-</statement>
-<sage />
-</exercise>
+				<li><p>Use <c>K = P.ideal(z^2+z+3)</c> to build a principal ideal <m>K</m> generated by the polynomial <m>z^2+z+3</m>.</p></li>
 
-<exercise number="4">
-<statement>
+				<li><p>Use <c>H = P.quotient(K)</c> to build <m>H</m>, the quotient ring of <m>P</m> by <m>K</m>.</p></li>
 
-Build and analyze a quotient ring as follows:\\
-(a) Use <c>P.<z>=(Integers(7))[]</c> to construct a ring <m>P</m> of polynomials in <m>z</m> with coefficients from <m>{\mathbb Z}_7</m>.\\
-(b) Use <c>K = P.ideal(z^2+z+3)</c> to build a principal ideal <m>K</m> generated by the polynomial <m>z^2+z+3</m>.\\
-(c) Use <c>H = P.quotient(K)</c> to build <m>H</m>, the quotient ring of <m>P</m> by <m>K</m>.\\
-(d) Use Sage to verify that <m>H</m> is a field. \\
-(e) As in the previous exercise, obtain a generator and examine the proper collection of powers of that generator.
+				<li><p>Use Sage to verify that <m>H</m> is a field. </p></li>
 
-</statement>
-<sage />
-</exercise>
+				<li><p>As in the previous exercise, obtain a generator and examine the proper collection of powers of that generator.</p></li>
+			</ol>
+		</statement>
+	</exercise>
+
+</exercises>
