@@ -4,283 +4,511 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+	<title>Sage</title>
 
-Sage is particularly adept at building, analyzing and manipulating polynomial rings.  We have seen some of this in the previous chapter.  Let's begin by creating three polynomial rings and checking some of their basic properties.  There are several ways to construct polynomial rings, but the syntax used here is the most straightforward.
-
-
-</subsection>
-<subsection>
-<title>Polynomial Rings and their Elements</title>
-
-<sage>
-<input>
-sage: x, y, z = var('x y z')
-sage: R.<x> = Integers(8)[]; R
-Univariate Polynomial Ring in x over Ring of integers modulo 8
-sage: S.<y> = ZZ[]; S
-Univariate Polynomial Ring in y over Integer Ring
-sage: T.<z> = QQ[]; T
-Univariate Polynomial Ring in z over Rational Field
-</input>
-<output>
-</output>
-</sage>
-
-Basic properties of rings are availble for these examples.
-
-<sage>
-<input>
-sage: R.is_finite()
-False
-sage: R.is_integral_domain()
-False
-sage: S.is_integral_domain()
-True
-sage: T.is_field()
-False
-sage: R.characteristic()
-8
-sage: T.characteristic()
-0
-</input>
-<output>
-</output>
-</sage>
-
-With the construction syntax used above, the variables can be used to create elements of the polynomial ring without explicit coercion (though we need to be careful about constant polynomials).
-
-<sage>
-<input>
-sage: y in S
-True
-sage: x in S
-False
-sage: q = (3/2) + (5/4)*z^2
-sage: q in T
-True
-sage: 3 in S
-True
-sage: r = 3
-sage: r.parent()
-Integer Ring
-sage: s = 3*y^0
-sage: s.parent()
-Univariate Polynomial Ring in y over Integer Ring
-</input>
-<output>
-</output>
-</sage>
-
-Polynomials can be evaluated like they are functions, so we can mimic the evaluation homomorphism.
-
-<sage>
-<input>
-sage: p = 3 + 5*x + 2*x^2
-sage: p.parent()
-Univariate Polynomial Ring in x over Ring of integers modulo 8
-sage: p(1)
-2
-sage: [p(t) for t in Integers(8)]
-[3, 2, 5, 4, 7, 6, 1, 0]
-</input>
-<output>
-</output>
-</sage>
-
-Notice that <c>p</c> is a degree two polynomial, yet through a brute-force examination we see that the polynomial only has one root, contrary to our usual expectations.  It can be even more unusual.
-
-<sage>
-<input>
-sage: q = 4*x^2+4*x
-sage: [q(t) for t in Integers(8)]
-[0, 0, 0, 0, 0, 0, 0, 0]
-</input>
-<output>
-</output>
-</sage>
-
-Sage can create and manipulate rings of polynomials in more than one variable, though we will not have much occasion to use this functionality in this course.
-
-<sage>
-<input>
-sage: s, t = var('s t')
-sage: M.<s, t> = QQ[]; M
-Multivariate Polynomial Ring in s, t over Rational Field
-</input>
-<output>
-</output>
-</sage>
+	<p>Sage is particularly adept at building, analyzing and manipulating polynomial rings.  We have seen some of this in the previous chapter.  Let's begin by creating three polynomial rings and checking some of their basic properties.  There are several ways to construct polynomial rings, but the syntax used here is the most straightforward.</p>
 
 
-</subsection>
-<subsection>
-<title>Irreducible Polynomials</title>
+	<subsection>
+		<title>Polynomial Rings and their Elements</title>
 
-Whether or not a polynomial factors, taking into consideration the ring used for its coefficients, is an important topic in this chapter and many of the following chapters.  Sage can factor, and determine irreducibility, over the integers, the rationals, and finite fields.
+		<sage>
+		<input>
+		x, y, z = var('x y z')
+		R.&lt;x&gt; = Integers(8)[]; R
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Ring of integers modulo 8
+		</output>
+		</sage>
 
-First, over the rationals.
+		<sage>
+		<input>
+		S.&lt;y&gt; = ZZ[]; S
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Integer Ring
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: x = var('x')
-sage: R.<x> = QQ[]
-sage: p = 1/4*x^4 - x^3 + x^2 - x - 1/2
-sage: p.is_irreducible()
-True
-sage: p.factor()
-(1/4) * (x^4 - 4*x^3 + 4*x^2 - 4*x - 2)
-sage: q = 2*x^5 + 5/2*x^4 + 3/4*x^3 - 25/24*x^2 - x - 1/2
-sage: q.is_irreducible()
-False
-sage: q.factor()
-(2) * (x^2 + 3/2*x + 3/4) * (x^3 - 1/4*x^2 - 1/3)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		T.&lt;z&gt; = QQ[]; T
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Rational Field
+		</output>
+		</sage>
 
-Factoring over the integers is really no different than factoring over the rationals.  This is the content of Theorem<nbsp /><xref ref="poly:Gauss_lemma" /> <mdash /> finding a factorization over the integers can be converted to finding a factorization over the rationals.  So it is with Sage, there is little difference between working over the rationals and the integers.  It is a little different working over a finite field.  Commentary follows.
+		<p>Basic properties of rings are availble for these examples.</p>
 
-<sage>
-<input>
-sage: F.<a> = FiniteField(5^2)
-sage: S.<y> = F[]
-sage: p = 2*y^5 + 2*y^4 + 4*y^3 + 2*y^2 + 3*y + 1
-sage: p.is_irreducible()
-True
-sage: p.factor()
-(2) * (y^5 + y^4 + 2*y^3 + y^2 + 4*y + 3)
-sage: q = 3*y^4+2*y^3-y+4; q.factor()
-(3) * (y^2 + (a + 4)*y + 2*a + 3) * (y^2 + 4*a*y + 3*a)
-sage: r = y^4+2*y^3+3*y^2+4; r.factor()
-(y + 4) * (y^3 + 3*y^2 + y + 1)
-sage: s = 3*y^4+2*y^3-y+3; s.factor()
-(3) * (y + 1) * (y + 3) * (y + 2*a + 4) * (y + 3*a + 1)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		R.is_finite()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-To check these factorizations, we need to compute in the finite field, <c>F</c>, and so we need to know how the symbol <c>a</c> behaves.  This symbol is considered as a root of a degree two polynomial over the integers mod 5, which we can get with the <c>.modulus()</c> method.
+		<sage>
+		<input>
+		R.is_integral_domain()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: F.modulus()
-x^2 + 4*x + 2
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		S.is_integral_domain()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-So <m>a^2+4a+2=0</m>, or <m>a^2=-4a-3=a+2</m>.  So when checking the factorizations, anytime you see an <m>a^2</m> you can replace it by <m>a+2</m>.  Notice that by Corollary<nbsp /><xref ref="poly:factor_corollary" /> we could find the one linear factor of <c>r</c>, and the four linear factors of <c>s</c>, through a brute-force search for roots.  This is feasible because the field is finite.
+		<sage>
+		<input>
+		T.is_field()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: [t for t in F if r(t)==0]
-[1]
-sage: [t for t in F if s(t)==0]
-[2, 3*a + 1, 4, 2*a + 4]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		R.characteristic()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
 
-However, <c>q</c> factors into a pair of degree 2 polynomials, so no amount of testing for roots will discover a factor.
+		<sage>
+		<input>
+		T.characteristic()
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
 
-With Eisenstein's Criterion, we can create irreducible polynomials, such as in Example<nbsp /><xref ref="example:poly:poly_eisen" />.
+		<p>With the construction syntax used above, the variables can be used to create elements of the polynomial ring without explicit coercion (though we need to be careful about constant polynomials).</p>
 
-<sage>
-<input>
-sage: W.<w> = QQ[]
-sage: p = 16*w^5 - 9*w^4 +3*w^2 + 6*w -21
-sage: p.is_irreducible()
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		y in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-Over the field <m>{\mathbb Z}_p</m>, the field of integers mod a prime <m>p</m>, Conway polynomials are canonical choices of a polynomial of degree <m>n</m> that is irreducible over <m>{\mathbb Z}_p</m>.  See the exercise for more about these polynomials.
+		<sage>
+		<input>
+		x in S
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
+		<sage>
+		<input>
+		q = (3/2) + (5/4)*z^2
+		q in T
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-</subsection>
-<subsection>
-<title>Polynomials over Fields</title>
+		<sage>
+		<input>
+		3 in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-If <m>F</m> is a field, then every ideal of <m>F[x]</m> is principal (Theorem<nbsp /><xref ref="poly:PI_theorem" />).  Nothing stops you from giving Sage two (or more) generators to construct an ideal, but Sage will determine the element to use in a description of the ideal as a principal ideal.
+		<sage>
+		<input>
+		r = 3
+		r.parent()
+		</input>
+		<output>
+		Integer Ring
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: W.<w> = QQ[]
-sage: r = -w^5 + 5*w^4 - 4*w^3 + 14*w^2 - 67*w + 17
-sage: s = 3*w^5 - 14*w^4 + 12*w^3 - 6*w^2 + w
-sage: S = W.ideal(r, s)
-sage: S
-Principal ideal (w^2 - 4*w + 1) of
-Univariate Polynomial Ring in w over Rational Field
-sage: (w^2)*r + (3*w-6)*s in S
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		s = 3*y^0
+		s.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Integer Ring
+		</output>
+		</sage>
 
-Theorem<nbsp /><xref ref="poly:max_ideal_theorem" /> is the key fact that allows us to easily construct finite fields.  Here is a construction of a finite field of order <m>7^5=16\,807</m>.  All we need is a polynomial of degree 5 that is irreducible over <m>{\mathbb Z}_7</m>.
+		<p>Polynomials can be evaluated like they are functions, so we can mimic the evaluation homomorphism.</p>
 
-<sage>
-<input>
-sage: F = Integers(7)
-sage: R.<x> = F[]
-sage: p = x^5+ x + 4
-sage: p.is_irreducible()
-True
-sage: id = R.ideal(p)
-sage: Q = R.quotient(id); Q
-Univariate Quotient Polynomial Ring in xbar over
-Ring of integers modulo 7 with modulus x^5 + x + 4
-sage: Q.is_field()
-True
-sage: Q.order() == 7^5
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		p = 3 + 5*x + 2*x^2
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Ring of integers modulo 8
+		</output>
+		</sage>
 
-The symbol <c>xbar</c> is a generator of the field, but right now it is not accessible.  <c>xbar</c> is the coset <m>x + \langle x^5+ x + 4\rangle</m>.  A better construction would include specifying this generator.
+		<sage>
+		<input>
+		p(1)
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: Q.gen(0)
-xbar
-sage: Q.<t> = R.quotient(id); Q
-Univariate Quotient Polynomial Ring in t over
-Ring of integers modulo 7 with modulus x^5 + x + 4
-sage: t^5 + t + 4
-0
-sage: t^5 == -(t+4)
-True
-sage: t^5
-6*t + 3
-sage: (3*t^3 + t + 5)*(t^2 + 4*t + 2)
-5*t^4 + 2*t^2 + 5*t + 5
-sage: a = 3*t^4 - 6*t^3 + 3*t^2 + 5*t + 2
-sage: ainv = a^-1; ainv
-6*t^4 + 5*t^2 + 4
-sage: a*ainv
-1
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		[p(t) for t in Integers(8)]
+		</input>
+		<output>
+		[3, 2, 5, 4, 7, 6, 1, 0]
+		</output>
+		</sage>
 
+		<p>Notice that <c>p</c> is a degree two polynomial, yet through a brute-force examination we see that the polynomial only has one root, contrary to our usual expectations.  It can be even more unusual.</p>
+
+		<sage>
+		<input>
+		q = 4*x^2+4*x
+		[q(t) for t in Integers(8)]
+		</input>
+		<output>
+		[0, 0, 0, 0, 0, 0, 0, 0]
+		</output>
+		</sage>
+
+		<p>Sage can create and manipulate rings of polynomials in more than one variable, though we will not have much occasion to use this functionality in this course.</p>
+
+		<sage>
+		<input>
+		s, t = var('s t')
+		M.&lt;s, t&gt; = QQ[]; M
+		</input>
+		<output>
+		Multivariate Polynomial Ring in s, t over Rational Field
+		</output>
+		</sage>
+
+	</subsection>
+
+	<subsection>
+		<title>Irreducible Polynomials</title>
+
+		<p>Whether or not a polynomial factors, taking into consideration the ring used for its coefficients, is an important topic in this chapter and many of the following chapters.  Sage can factor, and determine irreducibility, over the integers, the rationals, and finite fields.</p>
+
+		<p>First, over the rationals.</p>
+
+		<sage>
+		<input>
+		x = var('x')
+		R.&lt;x&gt; = QQ[]
+		p = 1/4*x^4 - x^3 + x^2 - x - 1/2
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(1/4) * (x^4 - 4*x^3 + 4*x^2 - 4*x - 2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q = 2*x^5 + 5/2*x^4 + 3/4*x^3 - 25/24*x^2 - x - 1/2
+		q.is_irreducible()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q.factor()
+		</input>
+		<output>
+		(2) * (x^2 + 3/2*x + 3/4) * (x^3 - 1/4*x^2 - 1/3)
+		</output>
+		</sage>
+
+		<p>Factoring over the integers is really no different than factoring over the rationals.  This is the content of Theorem<nbsp /><xref ref="theorem-gauss-lemma" /> <mdash /> finding a factorization over the integers can be converted to finding a factorization over the rationals.  So it is with Sage, there is little difference between working over the rationals and the integers.  It is a little different working over a finite field.  Commentary follows.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(5^2)
+		S.&lt;y&gt; = F[]
+		p = 2*y^5 + 2*y^4 + 4*y^3 + 2*y^2 + 3*y + 1
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(2) * (y^5 + y^4 + 2*y^3 + y^2 + 4*y + 3)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		q = 3*y^4+2*y^3-y+4; q.factor()
+		</input>
+		<output>
+		(3) * (y^2 + (a + 4)*y + 2*a + 3) * (y^2 + 4*a*y + 3*a)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r = y^4+2*y^3+3*y^2+4; r.factor()
+		</input>
+		<output>
+		(y + 4) * (y^3 + 3*y^2 + y + 1)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		s = 3*y^4+2*y^3-y+3; s.factor()
+		</input>
+		<output>
+		(3) * (y + 1) * (y + 3) * (y + 2*a + 4) * (y + 3*a + 1)
+		</output>
+		</sage>
+
+		<p>To check these factorizations, we need to compute in the finite field, <c>F</c>, and so we need to know how the symbol <c>a</c> behaves.  This symbol is considered as a root of a degree two polynomial over the integers mod 5, which we can get with the <c>.modulus()</c> method.</p>
+
+		<sage>
+		<input>
+		F.modulus()
+		</input>
+		<output>
+		x^2 + 4*x + 2
+		</output>
+		</sage>
+
+		<p>So <m>a^2+4a+2=0</m>, or <m>a^2=-4a-3=a+2</m>.  So when checking the factorizations, anytime you see an <m>a^2</m> you can replace it by <m>a+2</m>.  Notice that by Corollary<nbsp /><xref ref="corollary-poly-factor" /> we could find the one linear factor of <c>r</c>, and the four linear factors of <c>s</c>, through a brute-force search for roots.  This is feasible because the field is finite.</p>
+
+		<sage>
+		<input>
+		[t for t in F if r(t)==0]
+		</input>
+		<output>
+		[1]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		[t for t in F if s(t)==0]
+		</input>
+		<output>
+		[2, 3*a + 1, 4, 2*a + 4]
+		</output>
+		</sage>
+
+		<p>However, <c>q</c> factors into a pair of degree 2 polynomials, so no amount of testing for roots will discover a factor.</p>
+
+		<p>With Eisenstein's Criterion, we can create irreducible polynomials, such as in Example<nbsp /><xref ref="example-eisenstein" />.</p>
+
+		<sage>
+		<input>
+		W.&lt;w&gt; = QQ[]
+		p = 16*w^5 - 9*w^4 +3*w^2 + 6*w -21
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Over the field <m>{\mathbb Z}_p</m>, the field of integers mod a prime <m>p</m>, Conway polynomials are canonical choices of a polynomial of degree <m>n</m> that is irreducible over <m>{\mathbb Z}_p</m>.  See the exercises for more about these polynomials.</p>
+
+	</subsection>
+
+	<subsection>
+		<title>Polynomials over Fields</title>
+
+		<p>If <m>F</m> is a field, then every ideal of <m>F[x]</m> is principal (Theorem<nbsp /><xref ref="theorem-poly-principal-ideal" />).  Nothing stops you from giving Sage two (or more) generators to construct an ideal, but Sage will determine the element to use in a description of the ideal as a principal ideal.</p>
+
+		<sage>
+		<input>
+		W.&lt;w&gt; = QQ[]
+		r = -w^5 + 5*w^4 - 4*w^3 + 14*w^2 - 67*w + 17
+		s = 3*w^5 - 14*w^4 + 12*w^3 - 6*w^2 + w
+		S = W.ideal(r, s)
+		S
+		</input>
+		<output>
+		Principal ideal (w^2 - 4*w + 1) of
+		Univariate Polynomial Ring in w over Rational Field
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(w^2)*r + (3*w-6)*s in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>Theorem<nbsp /><xref ref="theorem-max-ideal-poly" /> is the key fact that allows us to easily construct finite fields.  Here is a construction of a finite field of order <m>7^5=16\,807</m>.  All we need is a polynomial of degree <m>5</m> that is irreducible over <m>{\mathbb Z}_7</m>.</p>
+
+		<sage>
+		<input>
+		F = Integers(7)
+		R.&lt;x&gt; = F[]
+		p = x^5+ x + 4
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		id = R.ideal(p)
+		Q = R.quotient(id); Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in xbar over
+		Ring of integers modulo 7 with modulus x^5 + x + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.is_field()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.order() == 7^5
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>The symbol <c>xbar</c> is a generator of the field, but right now it is not accessible.  <c>xbar</c> is the coset <m>x + \langle x^5+ x + 4\rangle</m>.  A better construction would include specifying this generator.</p>
+
+		<sage>
+		<input>
+		Q.gen(0)
+		</input>
+		<output>
+		xbar
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		Q.&lt;t&gt; = R.quotient(id); Q
+		</input>
+		<output>
+		Univariate Quotient Polynomial Ring in t over
+		Ring of integers modulo 7 with modulus x^5 + x + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5 + t + 4
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5 == -(t+4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		t^5
+		</input>
+		<output>
+		6*t + 3
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		(3*t^3 + t + 5)*(t^2 + 4*t + 2)
+		</input>
+		<output>
+		5*t^4 + 2*t^2 + 5*t + 5
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a = 3*t^4 - 6*t^3 + 3*t^2 + 5*t + 2
+		ainv = a^-1; ainv
+		</input>
+		<output>
+		6*t^4 + 5*t^2 + 4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		a*ainv
+		</input>
+		<output>
+		1
+		</output>
+		</sage>
+
+	</subsection>
+
+</section>
