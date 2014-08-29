@@ -4,325 +4,398 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+	<title>Sage</title>
 
-Sage has support for both partially ordered sets (<q>posets</q>) and lattices, and does an excellent job of providing visual depictions of both.
+	<introduction>
+		<p>Sage has support for both partially ordered sets (<q>posets</q>) and lattices, and does an excellent job of providing visual depictions of both.</p>
+	</introduction>
 
+	<subsection>
+		<title>Creating Partially Ordered Sets</title>
 
-</subsection>
-<subsection>
-<title>Creating Partially Ordered Sets</title>
+		<p>Example<nbsp /><xref ref="example-poset-divisors-24" /> in the text is a good example to replicate as a demonstration of Sage commands.  We first define the elements of the set <m>X</m>.</p>
 
-Example<nbsp /><xref ref="example:boolean:poset_div" /> in the text is a good example to replicate as a demonstration of Sage commands.  We first define the elements of the set <m>X</m>.
+		<sage>
+		<input>
+		X = (24).divisors()
+		X
+		</input>
+		<output>
+		[1, 2, 3, 4, 6, 8, 12, 24]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: X = [1, 2, 3, 4, 6, 8, 12, 24]
-</input>
-<output>
-</output>
-</sage>
+		<p>One approach to creating the relation is to specify <em>every</em> instance where one element is comparable to the another.  So we build a list of pairs, where each pair contains comparable elements, with the lesser one first.  This is the set of relations.</p>
 
-One approach to creating the relation is to specify <em>every</em> instance where one element is comparable to the another.  So we build a list of pairs, where each pair contains comparable elements, with the lesser one first.  This is the set of relations.
+		<sage>
+		<input>
+		R = [(a,b) for a in X for b in X if a.divides(b)]; R
+		</input>
+		<output>
+		[(1, 1), (1, 2), (1, 3), (1, 4), (1, 6), (1, 8), (1, 12), (1, 24),
+		 (2, 2), (2, 4), (2, 6), (2, 8), (2, 12), (2, 24), (3, 3), (3, 6),
+		 (3, 12), (3, 24), (4, 4), (4, 8), (4, 12), (4, 24), (6, 6),
+		 (6, 12), (6, 24), (8, 8), (8, 24), (12, 12), (12, 24), (24, 24)]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: R = [(a,b) for a in X for b in X if a.divides(b)]; R
-[(1, 1), (1, 2), (1, 3), (1, 4), (1, 6), (1, 8), (1, 12), (1, 24),
- (2, 2), (2, 4), (2, 6), (2, 8), (2, 12), (2, 24), (3, 3), (3, 6),
- (3, 12), (3, 24), (4, 4), (4, 8), (4, 12), (4, 24), (6, 6),
- (6, 12), (6, 24), (8, 8), (8, 24), (12, 12), (12, 24), (24, 24)]
-</input>
-<output>
-</output>
-</sage>
+		<p>We construct the poset by giving the the <c>Poset</c> constructor a list containing the elements and the relations.  We can then easily get a <q>plot</q> of the poset.  Notice the plot just shows the <q>cover relations</q> <mdash /> a minimal set of comparisons which the assumption of transitivity would expand into the set of all the relations.</p>
 
-We construct the poset by giving the the <c>Poset</c> constructor a list containing the elements and the relations.  We can then easily get a <q>plot</q> of the poset.  Notice the plot just shows the <q>cover relations</q> <mdash /> a minimal set of comparisons which the assumption of transitivity would expand into all the relations.
+		<sage doctest="not tested">
+		<input>
+		D = Poset([X, R])
+		D.plot()
+		</input>
+		<output>
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: D = Poset([X, R])
-sage: D.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<p>Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements, and all we do is give the constructor a way to test if two elements are comparable.  Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.  A <q>lambda</q> function is one way to quickly build such a function.  This may be a new idea for you, but mastering lambda functions can be a great convenience.  Notice that <q>lambda</q> is a word reserved for just this purpose.  There are other ways to make functions in Sage, but a lambda function is quickest when the function is simple.</p>
 
-Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements, and all we do is give the constructor a way to test if two elements are comparable.  Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.  A <q>lambda</q> function is one way to quickly build such a function.  This may be a new idea for you, but mastering lambda functions can be a great convenience.  Notice that <q>lambda</q> is a word reserved for just this purpose.  There are other ways to make functions in Sage, but a lambda function is quickest when the function is simple.
+		<sage>
+		<input>
+		divisible = lambda x, y: x.divides(y)
+		L = Poset([X, divisible])
+		L == D
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: divisible = lambda x, y: x.divides(y)
-sage: L = Poset([X, divisible])
-sage: L == D
-True
-sage: L.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage doctest="not tested">
+		<input>
+		L.plot()
+		</input>
+		</sage>
 
-Sage also has a collection of stock posets.  Some are one-shot constructions, while others are members of parameterized families.  Use tab-completion on <c>Posets.</c> to see the full list.  Here are some examples.
+		<p>Sage also has a collection of stock posets.  Some are one-shot constructions, while others are members of parameterized families.  Use tab-completion on <c>Posets.</c> to see the full list.  Here are some examples.</p>
 
-A one-shot construction.  Perhaps what you would expect, though there might be other, equally plausible, alternatives.
+		<p>A one-shot construction.  Perhaps what you would expect, though there might be other, equally plausible, alternatives.</p>
 
-<sage>
-<input>
-sage: Q = Posets.PentagonPoset()
-sage: Q.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage doctest="not tested">
+		<input>
+		Q = Posets.PentagonPoset()
+		Q.plot()
+		</input>
+		<output>
+		</output>
+		</sage>
 
-A parameterized family.  This is the classic example where the elements are subsets of a set with <m>n</m> elements and the relation is <q>subset of.</q>
+		<p>A parameterized family.  This is the classic example where the elements are subsets of a set with <m>n</m> elements and the relation is <q>subset of.</q></p>
 
-<sage>
-<input>
-sage: S = Posets.BooleanLattice(4)
-sage: S.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage doctest="not tested">
+		<input>
+		S = Posets.BooleanLattice(4)
+		S.plot()
+		</input>
+		</sage>
 
-And random posets.  These can be useful for testing and experimenting, but are unlikely to exhibit special cases that may be important.  You might run the following command many times and vary the second argument, which is a rough upper bound on the probability any two elements are comparable. Remember that the plot only shows the cover relations.  The more elements that are comparable, the more <q>vertically stretched</q> the plot will be.
+		<p>And random posets.  These can be useful for testing and experimenting, but are unlikely to exhibit special cases that may be important.  You might run the following command many times and vary the second argument, which is a rough upper bound on the probability any two elements are comparable. Remember that the plot only shows the cover relations.  The more elements that are comparable, the more <q>vertically stretched</q> the plot will be.</p>
 
-<sage>
-<input>
-sage: T = Posets.RandomPoset(20,0.05)
-sage: T.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage doctest="not tested">
+		<input>
+		T = Posets.RandomPoset(20,0.05)
+		T.plot()
+		</input>
+		</sage>
+	</subsection>
 
+	<subsection>
+		<title>Properties of a Poset</title>
 
-</subsection>
-<subsection>
-<title>Properties of a Poset</title>
+		<p>Once you have a poset, what can you do with it?  Let's return to our first example, <c>D</c>.  We can of course determine if one element is less than another, which is the fundamental structure of a poset.</p>
 
-Once you have a poset, what can you do with it?  Let's return to our first example, <c>D</c>.  We can of course determine if one element is less than another, which is the fundamental structure of a poset.
+		<sage>
+		<input>
+		D.is_lequal(4, 8)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: D.is_lequal(4, 8)
-True
-sage: D.is_lequal(4, 4)
-True
-sage: D.is_less_than(4, 8)
-True
-sage: D.is_less_than(4, 4)
-False
-sage: D.is_lequal(6, 8)
-False
-sage: D.is_lequal(8, 6)
-False
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		D.is_lequal(4, 4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-Notice that <c>6</c> and <c>8</c> are not comparable in this poset  (it is a <em>partial</em> order).  The methods <c>.is_gequal()</c>  and <c>.is_greater_than()</c> work similarly, but returns <c>True</c>  if the first element is greater (or equal).
+		<sage>
+		<input>
+		D.is_less_than(4, 8)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: D.is_gequal(8, 4)
-True
-sage: D.is_greater_than(4, 8)
-False
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		D.is_less_than(4, 4)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-We can find the largest and smallest elements of a poset.  This is a random poset built with a 10\<!--  probability, but copied here to be repeatable. -->
+		<sage>
+		<input>
+		D.is_lequal(6, 8)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: X = range(20)
-sage: C = [[18, 7],  [9, 11], [9, 10], [11, 8], [6, 10],
-...        [10, 2],   [0, 2],  [2, 1],  [1, 8], [8, 12],
-...         [8, 3],  [3, 15], [15, 7], [7, 16],  [7, 4],
-...       [16, 17], [16, 13], [4, 19], [4, 14], [14, 5]]
-sage: P = Poset([X, C])
-sage: P.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		D.is_lequal(8, 6)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: P.minimal_elements()
-[18, 9, 6, 0]
-sage: P.maximal_elements()
-[17, 13, 19, 5, 12]
-</input>
-<output>
-</output>
-</sage>
+		<p>Notice that <c>6</c> and <c>8</c> are not comparable in this poset  (it is a <em>partial</em> order).  The methods <c>.is_gequal()</c>  and <c>.is_greater_than()</c> work similarly, but returns <c>True</c>  if the first element is greater (or equal).</p>
 
-Elements of a poset can be partioned into level sets.  In plots of posets, elements at the same level are plotted vertically at the same height.  Each level set is obtained by removing all of the previous level sets and then taking the minimal elements of the result.
+		<sage>
+		<input>
+		D.is_gequal(8, 4)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: P.level_sets()
-[[18, 9, 6, 0], [11, 10], [2], [1], [8], [3, 12],
- [15], [7], [16, 4], [17, 13, 19, 14], [5]]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		D.is_greater_than(4, 8)
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-If we make two elements in <c>R</c> comparable when they had not previously been, this is an extension of <c>R</c>.  Consider all possible extensions of one poset <mdash /> we can make a poset from all of these, where set inclusion is the relation.  A linear extension is a maximal element in this poset of posets.  Informally, we are adding as many new relations as possible, consistent with the original poset and so that the result is a total order (there is an ordering of the elements  consistent with the order in the poset).  We can build such a thing, but the output is just a list of the elements in the linear order.  A computer scientist would be inclined to call this a <q>topological sort.</q>
+		<p>We can find the largest and smallest elements of a poset.  This is a random poset built with a 10<percent />probability, but copied here to be repeatable.</p>
 
-<sage>
-<input>
-sage: linear = P.linear_extension(); linear
-[18, 9, 11, 6, 10, 0, 2, 1, 8, 3, 15,
-  7, 16, 17, 13, 4, 19, 14, 5, 12]
-</input>
-<output>
-</output>
-</sage>
+		<sage doctest="not tested">
+		<input>
+		X = range(20)
+		C = [[18, 7],  [9, 11], [9, 10], [11, 8], [6, 10],
+		     [10, 2],   [0, 2],  [2, 1],  [1, 8], [8, 12],
+		     [8, 3],  [3, 15], [15, 7], [7, 16],  [7, 4],
+		     [16, 17], [16, 13], [4, 19], [4, 14], [14, 5]]
+		P = Poset([X, C])
+		P.plot()
+		</input>
+		</sage>
 
-We can construct subposets by giving a set of elements to induce the new poset.  Here we take roughly the <q>bottom half</q> of the random poset <c>P</c>  by inducing the subposet on a union of some of the level sets.
+		<sage>
+		<input>
+		P.minimal_elements()
+		</input>
+		<output>
+		[18, 9, 6, 0]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: level = P.level_sets()
-sage: bottomhalf = sum([level[i] for i in range(5)], [])
-sage: B = P.subposet(bottomhalf)
-sage: B.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		P.maximal_elements()
+		</input>
+		<output>
+		[17, 13, 19, 5, 12]
+		</output>
+		</sage>
 
-The dual of a poset retains the same set of elements, but reverses any comparisons.
+		<p>Elements of a poset can be partioned into level sets.  In plots of posets, elements at the same level are plotted vertically at the same height.  Each level set is obtained by removing all of the previous level sets and then taking the minimal elements of the result.</p>
 
-<sage>
-<input>
-sage: Pdual = P.dual()
-sage: Pdual.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		P.level_sets()
+		</input>
+		<output>
+		[[18, 9, 6, 0], [11, 10], [2], [1], [8], [3, 12],
+		 [15], [7], [16, 4], [17, 13, 19, 14], [5]]
+		</output>
+		</sage>
 
-Taking the dual of the divisibility poset from Example<nbsp /><xref ref="example:boolean:poset_div" /> would be like changing the relation to <q>is a multiple of.</q>
+		<p>If we make two elements in <c>R</c> comparable when they had not previously been, this is an extension of <c>R</c>.  Consider all possible extensions of one poset <mdash /> we can make a poset from all of these, where set inclusion is the relation.  A linear extension is a maximal element in this poset of posets.  Informally, we are adding as many new relations as possible, consistent with the original poset and so that the result is a total order (there is an ordering of the elements consistent with the order in the poset).  We can build such a thing, but the output is just a list of the elements in the linear order.  A computer scientist would be inclined to call this a <q>topological sort.</q></p>
 
-<sage>
-<input>
-sage: Ddual = D.dual()
-sage: Ddual.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		linear = P.linear_extension(); linear
+		</input>
+		<output>
+		[18, 9, 11, 6, 10, 0, 2, 1, 8, 3, 15,
+		  7, 16, 17, 13, 4, 19, 14, 5, 12]
+		</output>
+		</sage>
 
+		<p>We can construct subposets by giving a set of elements to induce the new poset.  Here we take roughly the <q>bottom half</q> of the random poset <c>P</c>  by inducing the subposet on a union of some of the level sets.</p>
 
-</subsection>
-<subsection>
-<title>Lattices</title>
+		<sage doctest="not tested">
+		<input>
+		level = P.level_sets()
+		bottomhalf = sum([level[i] for i in range(5)], [])
+		B = P.subposet(bottomhalf)
+		B.plot()
+		</input>
+		</sage>
 
-Every lattice is a poset, so all the commands above will work equally well for a lattice.  But how do you create a lattice?  Simple <mdash /> first create a poset and then feed it into the <c>LatticePoset()</c> constructor.  But realize that just because you give this constructor a poset, it does not mean a lattice will always come back out.  Only if the poset <em>is already</em> a lattice will it get upgraded from a poset to a lattice for Sage's purposes.
+		<p>The dual of a poset retains the same set of elements, but reverses any comparisons.</p>
 
-An integer composition of <m>n</m> is an ordered list of positive integers that sum to <m>n</m>.  One composition covers another if it can be formed by adding two consecutive parts of the larger composition, and possibly re-sorting.  For example, <m>[2, 1, 2] \gt [3, 2]</m>.  This forms a poset that is also a lattice.
+		<sage doctest="not tested">
+		<input>
+		Pdual = P.dual()
+		Pdual.plot()
+		</input>
+		</sage>
 
-<sage>
-<input>
-sage: CP = Posets.IntegerCompositions(5)
-sage: C = LatticePoset(CP)
-sage: C.plot()    # not tested
-</input>
-<output>
-</output>
-</sage>
+		<p>Taking the dual of the divisibility poset from Example<nbsp /><xref ref="example-poset-divisors-24" /> would be like changing the relation to <q>is a multiple of.</q></p>
 
-A meet or a join is a fundamental operation in a lattice.
+		<sage doctest="not tested">
+		<input>
+		Ddual = D.dual()
+		Ddual.plot()
+		</input>
+		</sage>
+	</subsection>
 
-<!-- % RAB 2012/08/11, Sage 5.2 -->
-<!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
+	<subsection>
+		<title>Lattices</title>
 
-<sage>
-<input>
-sage: elements = list(C)
-sage: a = elements[13]; b = elements[11]
-sage: a, b
-([1, 1, 1, 2], [2, 1, 1, 1])
-sage: C.meet(a, b)
-[2, 1, 2]
-sage: c = elements[1]; d = elements[8]
-sage: c, d
-([1, 4], [2, 3])
-sage: C.join(c, d)
-[1, 1, 3]
-</input>
-<output>
-</output>
-</sage>
+		<p>Every lattice is a poset, so all the commands above will perform equally well for a lattice.  But how do you create a lattice?  Simple <mdash /> first create a poset and then feed it into the <c>LatticePoset()</c> constructor.  But realize that just because you give this constructor a poset, it does not mean a lattice will always come back out.  Only if the poset <em>is already</em> a lattice will it get upgraded from a poset to a lattice for Sage's purposes.</p>
 
-Once a poset is upgraded to lattice status, then additional commands become available, or the character of their results changes.
+		An integer composition of <m>n</m> is an ordered list of positive integers that sum to <m>n</m>.  One composition covers another if it can be formed by adding two consecutive parts of the larger composition, and possibly re-sorting.  For example, <m>[2, 1, 2] \gt [3, 2]</m>.  This forms a poset that is also a lattice.
 
-An example of the former is the <c>.is_distributive()</c>  method.
+		<sage doctest="not tested">
+		<input>
+		CP = Posets.IntegerCompositions(5)
+		C = LatticePoset(CP)
+		C.plot()
+		</input>
+		</sage>
 
-<sage>
-<input>
-sage: C.is_distributive()
-True
-</input>
-<output>
-</output>
-</sage>
+		<p>A meet or a join is a fundamental operation in a lattice.</p>
 
-An example of the latter is the <c>.top()</c>  method.  What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.  For a poset, <c>.top()</c> and <c>.bottom()</c> may return an element or may not (returning <c>None</c>), but for a lattice it is guaranteed to return an element.
+		<!-- % RAB 2012/08/11, Sage 5.2 -->
+		<!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
 
-<sage>
-<input>
-sage: C.top()
-[1, 1, 1, 1, 1]
-sage: C.bottom()
-[5]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		elements = list(C)
+		a = elements[13]; b = elements[11]
+		a, b
+		</input>
+		<output>
+		([1, 1, 1, 2], [2, 1, 1, 1])
+		</output>
+		</sage>
 
-Notice that the returned values are elements of the lattice, in this case ordered lists of integers summing to <m>5</m>.
+		<sage>
+		<input>
+		C.meet(a, b)
+		</input>
+		<output>
+		[2, 1, 2]
+		</output>
+		</sage>
 
-Complements now make sense in a lattice, and the lattice of integer compositions is a complemented lattice.
+		<sage>
+		<input>
+		c = elements[1]; d = elements[8]
+		c, d
+		</input>
+		<output>
+		([1, 4], [2, 3])
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: comp = C.complements()
-sage: C[comp[2]]
-[1, 1, 1, 2]
-sage: C[2]
-[4, 1]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		C.join(c, d)
+		</input>
+		<output>
+		[1, 1, 3]
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: C.is_complemented()
-True
-</input>
-<output>
-</output>
-</sage>
+		<p>Once a poset is upgraded to lattice status, then additional commands become available, or the character of their results changes.</p>
 
-There are many more commands which apply to posets and lattices, so build a few and use tab-completion liberally to explore.  There is more to discover than we can cover in just a single chapter, but you now have the basic tools to profitably study posets and lattices in Sage.
+		<p>An example of the former is the <c>.is_distributive()</c>  method.</p>
+
+		<sage>
+		<input>
+		C.is_distributive()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>An example of the latter is the <c>.top()</c>  method.  What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.  For a poset, <c>.top()</c> and <c>.bottom()</c> may return an element or may not (returning <c>None</c>), but for a lattice it is guaranteed to return an element.</p>
+
+		<sage>
+		<input>
+		C.top()
+		</input>
+		<output>
+		[1, 1, 1, 1, 1]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C.bottom()
+		</input>
+		<output>
+		[5]
+		</output>
+		</sage>
+
+		<p>Notice that the returned values are elements of the lattice, in this case ordered lists of integers summing to <m>5</m>.</p>
+
+		<p>Complements now make sense in a lattice, and the lattice of integer compositions is a complemented lattice.</p>
+
+		<sage>
+		<input>
+		comp = C.complements()
+		C[comp[2]]
+		</input>
+		<output>
+		[1, 1, 1, 2]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C[2]
+		</input>
+		<output>
+		[4, 1]
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		C.is_complemented()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<p>There are many more commands which apply to posets and lattices, so build a few and use tab-completion liberally to explore.  There is more to discover than we can cover in just a single chapter, but you now have the basic tools to profitably study posets and lattices in Sage.</p>
+	</subsection>
+
+</section>
 
