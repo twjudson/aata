@@ -4,267 +4,368 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+	<title>Sage</title>
 
-Many computations, in seemingly very different areas of mathematics, can be translated into questions about linear combinations, or other areas of linear algebra.  So Sage has extensive and thorough support for topics such as vector spaces.
+	<introduction>
+		<p>Many computations, in seemingly very different areas of mathematics, can be translated into questions about linear combinations, or other areas of linear algebra.  So Sage has extensive and thorough support for topics such as vector spaces.</p>
+	</introduction>
 
+	<subsection>
+		<title>Vector Spaces</title>
 
-</subsection>
-<subsection>
-<title>Vector Spaces</title>
+		<p>The simplest way to create a vector space is to begin with a field and write a <q>power</q> to indicate the number of entries in the vectors of the space.</p>
 
-The simplest way to create a vector space is to begin with a field and write a <q>power</q> to indicate the number of entries in the vectors of the space.
+		<sage>
+		<input>
+		V = QQ^4; V
+		</input>
+		<output>
+		Vector space of dimension 4 over Rational Field
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: V = QQ^4; V
-Vector space of dimension 4 over Rational Field
-sage: F.<a> = FiniteField(3^4)
-sage: W = F^5; W
-Vector space of dimension 5 over Finite Field in a of size 3^4                                                                                                            </input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(3^4)
+		W = F^5; W
+		</input>
+		<output>
+		Vector space of dimension 5 over Finite Field in a of size 3^4
+		</output>
+		</sage>
 
-Elements can be built with the vector constructor.
+		<p>Elements can be built with the vector constructor.</p>
 
-<sage>
-<input>
-sage: v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
-(1, 1/2, 1/3, 1/4)
-sage: v in V
-True
-sage: w = vector(F, [1, a^2, a^4, a^6, a^8]); w
-(1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
-sage: w in W
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
+		</input>
+		<output>
+		(1, 1/2, 1/3, 1/4)
+		</output>
+		</sage>
 
-Notice that vectors are printed with parentheses, which helps distinguish them from lists.  Vectors print horizontally, but in Sage there is no such thing as a <q>row vector</q> or a <q>column vector,</q> though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.
+		<sage>
+		<input>
+		v in V
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-Once we have vector spaces full of vectors, we can perform computations with them.  Ultimately, all the action in a vector space comes back to vector addition and scalar multiplication, which together create linear combinations.
+		<sage>
+		<input>
+		w = vector(F, [1, a^2, a^4, a^6, a^8]); w
+		</input>
+		<output>
+		(1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
-sage: v = vector(QQ, [-1, 2, -4, 8, -16, 32])
-sage: 3*u - 2*v
-(5, 2, 17, -4, 47, -46)                                                                                                                                                   </input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		w in W
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: w = vector(F, [1, a^2, a^4, a^6,  a^8])
-sage: x = vector(F, [1,   a, 2*a,   a,    1])
-sage: y = vector(F, [1, a^3, a^6, a^9, a^12])
-sage: a^25*w + a^43*x + a^66*y
-(a^3 + a^2 + a + 2, a^2 + 2*a, 2*a^3 + a^2 + 2, 2*a^3 + a^2 + a,
- a^3 + 2*a^2 + a + 2)
-</input>
-<output>
-</output>
-</sage>
+		<p>Notice that vectors are printed with parentheses, which helps distinguish them from lists.  Vectors print horizontally, but in Sage there is no such thing as a <q>row vector</q> or a <q>column vector,</q> though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.</p>
 
+		<p>Once we have vector spaces full of vectors, we can perform computations with them.  Ultimately, all the action in a vector space comes back to vector addition and scalar multiplication, which together create linear combinations.</p>
 
-</subsection>
-<subsection>
-<title>Subspaces</title>
+		<sage>
+		<input>
+		u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
+		v = vector(QQ, [-1, 2, -4, 8, -16, 32])
+		3*u - 2*v
+		</input>
+		<output>
+		(5, 2, 17, -4, 47, -46)
+		</output>
+		</sage>
 
-Sage can create subspaces in a variety of ways, such as in the creation of row or column spaces of matrices.  However, the most direct way is to begin with a set of vectors to use as a spanning set.
+		<sage>
+		<input>
+		w = vector(F, [1, a^2, a^4, a^6,  a^8])
+		x = vector(F, [1,   a, 2*a,   a,    1])
+		y = vector(F, [1, a^3, a^6, a^9, a^12])
+		a^25*w + a^43*x + a^66*y
+		</input>
+		<output>
+		(a^3 + a^2 + a + 2, a^2 + 2*a, 2*a^3 + a^2 + 2, 2*a^3 + a^2 + a,
+		 a^3 + 2*a^2 + a + 2)
+		</output>
+		</sage>
+	</subsection>
 
-<sage>
-<input>
-sage: u = vector(QQ, [1, -1, 3])
-sage: v = vector(QQ, [2, 1, -1])
-sage: w = vector(QQ, [3, 0, 2])
-sage: S = (QQ^3).subspace([u, v, w]); S
-Vector space of degree 3 and dimension 2 over Rational Field
-Basis matrix:
-[   1    0  2/3]
-[   0    1 -7/3]
-sage: 3*u - 6*v + (1/2)*w in S
-True
-sage: vector(QQ, [4, -1, -2]) in S
-False
-</input>
-<output>
-</output>
-</sage>
+	<subsection>
+		<title>Subspaces</title>
 
-Notice that the information printed about <c>S</c> includes a <q>basis matrix.</q>  The rows of this matrix are a basis for the vector space.  We can get the basis, as a list of vectors (not rows of a matrix), with the <c>.basis()</c> method.
+		<p>Sage can create subspaces in a variety of ways, such as in the creation of row or column spaces of matrices.  However, the most direct way is to begin with a set of vectors to use as a spanning set.</p>
 
-<sage>
-<input>
-sage: S.basis()
-[
-(1, 0, 2/3),
-(0, 1, -7/3)
-]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1, 3])
+		v = vector(QQ, [2, 1, -1])
+		w = vector(QQ, [3, 0, 2])
+		S = (QQ^3).subspace([u, v, w]); S
+		</input>
+		<output>
+		Vector space of degree 3 and dimension 2 over Rational Field
+		Basis matrix:
+		[   1    0  2/3]
+		[   0    1 -7/3]
+		</output>
+		</sage>
 
-Notice that Sage has converted the spanning set of three vectors into a basis with two vectors.  This is partially due to the fact that the original set of three vectors is linearly dependent, but a more substantial change has occurred.
+		<sage>
+		<input>
+		3*u - 6*v + (1/2)*w in S
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-This is a good place to discuss some of the mathematics behind what makes Sage work.  A vector space over an infinite field, like the rationals or the reals, is an infinite set.  No matter how expansive computer memory may seem, it is still finite.  How does Sage fit an infinite set into our finite machines?  The main idea is that a finite-dimensional vector space has a finite set of generators, which we know as a basis.  So Sage really only needs the elements of a basis (two vectors in the previous example) to be able to work with the infinitely many possibilities for elements of the subspace.
+		<sage>
+		<input>
+		vector(QQ, [4, -1, -2]) in S
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given into another <q>standard</q> basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.
+		<p>Notice that the information printed about <c>S</c> includes a <q>basis matrix.</q>  The rows of this matrix are a basis for the vector space.  We can get the basis, as a list of vectors (not rows of a matrix), with the <c>.basis()</c> method.</p>
 
-<sage>
-<input>
-sage: u = vector(QQ, [1, -1,  3])
-sage: v = vector(QQ, [2,  1, -1])
-sage: w = vector(QQ, [3,  0,  2])
-sage: u + v == w
-True
-sage: S1 = (QQ^3).subspace([u, v, w])
-sage: S2 = (QQ^3).subspace([u-v, v-w, w-u])
-sage: S1 == S2
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		S.basis()
+		</input>
+		<output>
+		[
+		(1, 0, 2/3),
+		(0, 1, -7/3)
+		]
+		</output>
+		</sage>
 
-As you might expect, it is easy to determine the dimension of a vector space.
+		<p>Notice that Sage has converted the spanning set of three vectors into a basis with two vectors.  This is partially due to the fact that the original set of three vectors is linearly dependent, but a more substantial change has occurred.</p>
 
-<sage>
-<input>
-sage: u = vector(QQ, [1, -1,  3,  4])
-sage: v = vector(QQ, [2,  1, -1, -2])
-sage: S = (QQ^4).subspace([u, v, 2*u+3*v, -u+2*v])
-sage: S.dimension()
-2
-</input>
-<output>
-</output>
-</sage>
+		<p>This is a good place to discuss some of the mathematics behind what makes Sage work.  A vector space over an infinite field, like the rationals or the reals, is an infinite set.  No matter how expansive computer memory may seem, it is still finite.  How does Sage fit an infinite set into our finite machines?  The main idea is that a finite-dimensional vector space has a finite set of generators, which we know as a basis.  So Sage really only needs the elements of a basis (two vectors in the previous example) to be able to work with the infinitely many possibilities for elements of the subspace.</p>
 
+		<p>Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given into another <q>standard</q> basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.</p>
 
-</subsection>
-<subsection>
-<title>Linear Independence</title>
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1,  3])
+		v = vector(QQ, [2,  1, -1])
+		w = vector(QQ, [3,  0,  2])
+		u + v == w
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-There are a variety of ways in Sage to determine if a set of vectors is linearly independent or not, and to find relations of linear dependence if they exist.  The technique we will show here is a simple test to see if a set of vectors is linearly independent or not.  Simply use the vectors as a spanning set for a subspace, and check the dimension of the subspace.  The dimension equals the number of vectors in the spanning set if and only if the spanning set is linearly independent.
+		<sage>
+		<input>
+		S1 = (QQ^3).subspace([u, v, w])
+		S2 = (QQ^3).subspace([u-v, v-w, w-u])
+		S1 == S2
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: F.<a> = FiniteField(3^4)
-sage: u = vector(F, [a^i for i in range(0,  7, 1)])
-sage: v = vector(F, [a^i for i in range(0, 14, 2)])
-sage: w = vector(F, [a^i for i in range(0, 21, 3)])
-sage: S = (F^7).subspace([u, v, w])
-sage: S.dimension()
-3
-sage: S = (F^7).subspace([u, v, a^3*u + a^11*v])
-sage: S.dimension()
-2
-</input>
-<output>
-</output>
-</sage>
+		<p>As you might expect, it is easy to determine the dimension of a vector space.</p>
 
-So the first set of vectors, <c>[u, v, w]</c>, is linearly independent, while the second set, <c>[u, v, a^3*u + a^11*v]</c>, is not.
+		<sage>
+		<input>
+		u = vector(QQ, [1, -1,  3,  4])
+		v = vector(QQ, [2,  1, -1, -2])
+		S = (QQ^4).subspace([u, v, 2*u+3*v, -u+2*v])
+		S.dimension()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+	</subsection>
 
+	<subsection>
+		<title>Linear Independence</title>
 
-</subsection>
-<subsection>
-<title>Abstract Vector Spaces</title>
+		<p>There are a variety of ways in Sage to determine if a set of vectors is linearly independent or not, and to find relations of linear dependence if they exist.  The technique we will show here is a simple test to see if a set of vectors is linearly independent or not.  Simply use the vectors as a spanning set for a subspace, and check the dimension of the subspace.  The dimension equals the number of vectors in the spanning set if and only if the spanning set is linearly independent.</p>
 
-Sage does not implement many abstract vector spaces directly, such as <m>P_n</m>, the vector space of polynomials of degree <m>n</m> or less.  This is due in part to the fact that a finite-dimensional vector space over a field <m>F</m> is isomorphic to the vector space <m>F^n</m>.  So Sage captures all the functionality of finite-dimensional vector spaces, and it is left to the user to perform the conversions according to the isomorphism (which is often trivial with the choice of an obvious basis).
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(3^4)
+		u = vector(F, [a^i for i in range(0,  7, 1)])
+		v = vector(F, [a^i for i in range(0, 14, 2)])
+		w = vector(F, [a^i for i in range(0, 21, 3)])
+		S = (F^7).subspace([u, v, w])
+		S.dimension()
+		</input>
+		<output>
+		3
+		</output>
+		</sage>
 
-However, there are instances where rings behave naturally as vector spaces and we can exploit this extra structure.  We will see much more of this in the chapters on fields and Galois theory.  As an example, finite fields have a single generator, and the first few powers of the generator form a basis.  Consider creating a vector space from the elements of a finite field of order <m>7^6=117\,649</m>.  As elements of a field we know they can be added, so we will <em>define</em> this to be the addition in our vector space.  For any element of the integers mod 7, we can multiply an element of the field by the integer, so we <em>define</em> this to be our scalar multiplication.  Later, we will be certain that these two definitions lead to a vector space, but take that for granted now.  So here are some operations in our new vector space.
+		<sage>
+		<input>
+		S = (F^7).subspace([u, v, a^3*u + a^11*v])
+		S.dimension()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: F.<a> = FiniteField(7^6)
-sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
-sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
-sage: u + v
-6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
-sage: 4*u
-a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
-sage: 2*u + 5*v
-3*a^5 + 4*a^4 + 3*a^3 + a^2 + a + 1
-</input>
-<output>
-</output>
-</sage>
+		<p>So the first set of vectors, <c>[u, v, w]</c>, is linearly independent, while the second set, <c>[u, v, a^3*u + a^11*v]</c>, is not.</p>
 
-You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from <m>{\mathbb Z}_7</m>, a basis is the first six powers of the generator, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations <mdash /> now you know why.
+		</subsection>
 
-Here is what Sage knows about a finite field as a vector space.  First, it knows that the finite field <em>is</em> a vector space, and what the field of scalars is.
+		<subsection>
+		<title>Abstract Vector Spaces</title>
 
-<sage>
-<input>
-sage: V = F.vector_space(); V
-Vector space of dimension 6 over Finite Field of size 7
-sage: R = V.base_ring(); R
-Finite Field of size 7
-sage: R == FiniteField(7)
-True
-sage: V.dimension()
-6
-</input>
-<output>
-</output>
-</sage>
+		<p>Sage does not implement many abstract vector spaces directly, such as <m>P_n</m>, the vector space of polynomials of degree <m>n</m> or less.  This is due in part to the fact that a finite-dimensional vector space over a field <m>F</m> is isomorphic to the vector space <m>F^n</m>.  So Sage captures all the functionality of finite-dimensional vector spaces, and it is left to the user to perform the conversions according to the isomorphism (which is often trivial with the choice of an obvious basis).</p>
 
-So the finite field (as a vector space) is isomorphic to the vector space <m>({\mathbb Z}_7)^6</m>.  Notice this is not a ring or field isomorphism, as it does not fully address multiplication of elements, even though that is possible in the field.
+		<p>However, there are instances where rings behave naturally as vector spaces and we can exploit this extra structure.  We will see much more of this in the chapters on fields and Galois theory.  As an example, finite fields have a single generator, and the first few powers of the generator form a basis.  Consider creating a vector space from the elements of a finite field of order <m>7^6=117\,649</m>.  As elements of a field we know they can be added, so we will <em>define</em> this to be the addition in our vector space.  For any element of the integers mod 7, we can multiply an element of the field by the integer, so we <em>define</em> this to be our scalar multiplication.  Later, we will be certain that these two definitions lead to a vector space, but take that for granted now.  So here are some operations in our new vector space.</p>
 
-Second, elements of the field can be converted to elements of the vector space easily.
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(7^6)
+		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+		u + v
+		</input>
+		<output>
+		6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
-sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
-sage: x = V(u); x
-(3, 2, 3, 2, 6, 2)
-sage: y = V(v); y
-(6, 5, 6, 4, 4, 4)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		4*u
+		</input>
+		<output>
+		a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
+		</output>
+		</sage>
 
-Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism between the finite field and <m>({\mathbb Z}_7)^6</m>.
+		<sage>
+		<input>
+		2*u + 5*v
+		</input>
+		<output>
+		3*a^5 + 4*a^4 + 3*a^3 + a^2 + a + 1
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: F.<a> = FiniteField(7^6)
-sage: V = F.vector_space()
-sage: R = V.base_ring()
-sage: u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
-sage: v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
-sage: V(u + v) == V(u) + V(v)
-True
-sage: two = R(2)
-sage: V(two*u) == two*V(u)
-True
-</input>
-<output>
-</output>
-</sage>
+		<p>You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from <m>{\mathbb Z}_7</m>, a basis is the first six powers of the generator, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations <mdash /> now you have a good reason to explain why.</p>
 
+		<p>Here is what Sage knows about a finite field as a vector space.  First, it knows that the finite field <em>is</em> a vector space, and what the field of scalars is.</p>
 
-</subsection>
-<subsection>
-<title>Linear Algebra</title>
+		<sage>
+		<input>
+		V = F.vector_space(); V
+		</input>
+		<output>
+		Vector space of dimension 6 over Finite Field of size 7
+		</output>
+		</sage>
 
-Sage has extensive support for linear algebra, well beyond what we have described here, or what we will need for the remaining chapters.  Create vector spaces and vectors (with different fields of scalars), and then use tab-completion on these objects to explore the large sets of available commands.
+		<sage>
+		<input>
+		R = V.base_ring(); R
+		</input>
+		<output>
+		Finite Field of size 7
+		</output>
+		</sage>
 
+		<sage>
+		<input>
+		R == FiniteField(7)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		V.dimension()
+		</input>
+		<output>
+		6
+		</output>
+		</sage>
+
+		<p>So the finite field (as a vector space) is isomorphic to the vector space <m>({\mathbb Z}_7)^6</m>.  Notice this is not a ring or field isomorphism, as it does not fully address multiplication of elements, even though that is possible in the field.</p>
+
+		<p>Second, elements of the field can be converted to elements of the vector space easily.</p>
+
+		<sage>
+		<input>
+		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+		x = V(u); x
+		</input>
+		<output>
+		(3, 2, 3, 2, 6, 2)
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		y = V(v); y
+		</input>
+		<output>
+		(6, 5, 6, 4, 4, 4)
+		</output>
+		</sage>
+
+		<p>Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism between the finite field and <m>({\mathbb Z}_7)^6</m>.</p>
+
+		<sage>
+		<input>
+		F.&lt;a&gt; = FiniteField(7^6)
+		V = F.vector_space()
+		R = V.base_ring()
+		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+		V(u + v) == V(u) + V(v)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		two = R(2)
+		V(two*u) == two*V(u)
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+	<title>Linear Algebra</title>
+
+		<p>Sage has extensive support for linear algebra, well beyond what we have described here, or what we will need for the remaining chapters.  Create vector spaces and vectors (with different fields of scalars), and then use tab-completion on these objects to explore the large sets of available commands.</p>
+	</subsection>
+
+</section>

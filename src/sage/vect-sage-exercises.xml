@@ -4,97 +4,82 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<exercises>
+	<title>Sage Exercises</title>
 
+	<exercise number="1">
+		<statement>
 
-</statement>
-<sage />
-</exercise>
+			<p>Given two subspaces <m>U</m> and <m>W</m> of a vector space <m>V</m>, their sum <m>U+W</m> can be defined as the <em>set</em> <m>U+W=\{u+w\mid u\in U,\ w\in W\}</m>, in other words, the set of all possible sums of an element from <m>U</m> and an element from <m>W</m>.</p>
 
-<exercise number="1">
-<statement>
+			<p>Notice this is not the direct sum of your text, nor the <c>direct_sum()</c> method in Sage.  However, you can build this subspace in Sage as follows.  Grab the bases of <m>U</m> and <m>W</m> individually, as lists of vectors.  Join the two lists together by just using a plus sign between them.  Now build the sum subspace by creating a subspace of <m>V</m> spanned by this set, by using the <c>.subspace()</c> method.</p>
 
-Given two subspaces <m>U</m> and <m>W</m> of a vector space <m>V</m>, their sum <m>U+W</m> can be defined as
-<m>U+W=\{u+w\mid u\in U,\ w\in W\}</m>, in other words, the set of all possible sums of an element from <m>U</m> and an element from <m>W</m>.
+			<p>Build a largish vector space over the rationals (<c>QQ</c>), where <q>largish</q> means perhaps dimension <m>7</m> or <m>8</m> or so.  Construct a few subspaces and compare their individual dimensions with the dimensions of the intersection of <m>U</m> and <m>W</m> (<m>U\cap W</m>, <c>.intersection()</c> in Sage) and the sum <m>U+V</m>.  Form a conjecture relating these dimensions based on your (nontrivial) experiments.</p>
 
-Notice this is not the direct sum of your text, nor the <c>direct_sum()</c> method in Sage.  However, you can build this subspace in Sage as follows.  Grab the bases of <m>U</m> and <m>W</m> individually, as lists of vectors.  Join the two lists together by just using a plus sign between them.  Now build the sum subspace by creating a subspace of <m>V</m> spanned by this set, by using the <c>.subspace()</c> method.
+		</statement>
+	</exercise>
 
-Build a largish vector space over the rationals (<c>QQ</c>), where <q>largish</q> means perhaps dimension <m>7</m> or <m>8</m> or so.  Construct a few subspaces and compare their individual dimensions with the dimensions of the intersection of <m>U</m> and <m>W</m> (<m>U\cap W</m>, <c>.intersection()</c> in Sage) and the sum <m>U+V</m>.  Form a conjecture relating these dimensions based on your (nontrivial) experiments.
+	<exercise number="2">
+		<statement>
 
-</statement>
-<sage />
-</exercise>
+			<p>We can construct a field that extends the rationals by adding in a fourth-root of two, <m>{\mathbb Q}[\sqrt[4]{2}]</m>, in Sage with the command <c>F.&lt;c&gt; = QQ[2^(1/4)]</c>.  This is a vector space of dimension 4 over the rationals, with a basis that is the first four powers of <m>c = \sqrt[4]{2}</m> (starting with the zero power).</p>
 
-<exercise number="2">
-<statement>
+			<p>The command <c>F.vector_space()</c> will return three items.  The first is a vector space over the rationals that is isomorphic to <c>F</c>.  The next two are isomorphisms between the two vector spaces (one in each direction).  These two isomorphisms can then be used like functions.  Notice that this is different behavior than for the same command applied to finite fields.  Create non-trivial examples that show that these vector space isomorphisms behave as an isomorphism should.  (You will have at least four such examples in a complete solution.)</p>
 
-We can construct a field that extends the rationals by adding in a fourth-root of two, <m>{\mathbb Q}[\sqrt[4]{2}]</m>, in Sage with the command <c>F.<c> = QQ[2^(1/4)]</c>.  This is a vector space of dimension 4 over the rationals, with a basis that is the first four powers of <m>c = \sqrt[4]{2}</m> (starting with the zero power).
+		</statement>
+	</exercise>
 
-The command <c>F.vector_space()</c> will return three items.  The first is a vector space over the rationals that is isomorphic to <c>F</c>.  The next two are isomorphisms between the two vector spaces (one in each direction).  These two isomorphisms can then be used like functions.  Notice that this is different behavior than for the same command applied to finite fields.  Create non-trivial examples that show that these vector space isomorphisms behave as an isomorphism should.  (You will have at least four such examples in a complete solution.)
+	<exercise number="3">
+		<statement>
 
-</statement>
-<sage />
-</exercise>
+			<p>Build a finite field <m>F</m> of order <m>p^n</m> in the usual way.  Then construct the (multiplicative) group of all invertible (nonsingular) <m>m\times m</m> matrices over this field with the command <c>G = GL(m, F)</c> (<q>the general linear group</q>).  What is the order of this group?  In other words, what is a general expression for the order of this group?  So your answer should be a function of <m>m</m>, <m>p</m> and <m>n</m> and should include an explanation of how you come by your formula (i.e.\ something resembling a proof).</p>
 
-<exercise number="3">
-<statement>
+			<p>Hints:  <c>G.order()</c> will help you test and verify your hypotheses.  Small examples in Sage (listing all the elements of the group) might aid your intuition<mdash />which is why this is a Sage exercise.  Small means <m>2\times 2</m> and <m>3\times 3</m> matrices and finite fields with <m>2,3,4,5</m> elements, at most.  Results do not really depend on each of <m>p</m> and <m>n</m>, but rather just on <m>p^n</m>.</p>
 
-Build a finite field <m>F</m> of order <m>p^n</m> in the usual way.  Then construct the (multiplicative) group of all invertible (nonsingular) <m>m\times m</m> matrices over this field with the command <c>G = GL(m, F)</c> (<q>the general linear group</q>).  What is the order of this group?  In other words, what is a general expression for the order of this group?  So your answer should be a function of <m>m</m>, <m>p</m> and <m>n</m> and should include an explanation of how you come by your formula (i.e.\ something resembling a proof).
+			<p>Realize this group is interesting because it contains representations of all the invertible (<ie /> 1-1 and onto) linear transformations from the (finite) vector space <m>F^m</m> to itself.</p>
 
-Hints:  <c>G.order()</c> will help you test and verify your hypotheses.  Small examples in Sage (listing all the elements of the group) might aid your intuition<mdash />which is why this is a Sage exercise.  Small means <m>2\times 2</m> and <m>3\times 3</m> matrices and finite fields with <m>2,3,4,5</m> elements, at most.  Results don't really depend on each of <m>p</m> and <m>n</m>, but rather just on <m>p^n</m>.
+		</statement>
+	</exercise>
 
-Realize this group is interesting because it contains representations of all the invertible (i.e.\ 1-1 and onto) linear transformations from the (finite) vector space <m>F^m</m> to itself.
+	<exercise number="4">
+		<statement>
 
-</statement>
-<sage />
-</exercise>
+			<p>What happens if we try to do linear algebra over a <em>ring</em> that is not also a <em>field</em>?  The object that resembles a vector space, but with this one distinction, is known as a <q>module.</q>  You can build one easily with a construction like <c>ZZ^3</c>.  Evaluate the following to create a module and a submodule.</p>
 
-<exercise number="4">
-<statement>
+			<sage>
+			<input>
+			M = ZZ^3
+			u = M([1, 0, 0])
+			v = M([2, 2, 0])
+			w = M([0, 0, 4])
+			N = M.submodule([u, v, w])
+			</input>
+			</sage>
 
-What happens if we try to do linear algebra over a <em>ring</em> that is not also a <em>field</em>?  The object that resembles a vector space, but with this one distinction, is known as a <q>module.</q>  You can build one easily with a construction like <c>ZZ^3</c>.  Evaluate the following to create a module and a submodule.
+			<p>Examine the bases and dimensions (aka <q>rank</q>) of the module and submodule, and check the equality of the module and submodule.  How is this different than the situation for vector spaces?  Can you create a third module, <c>P</c>, that is a proper subset of <c>M</c> and properly contains <c>N</c>?</p>
 
-<sage>
-<input>
-sage: M = ZZ^3
-sage: u = M([1, 0, 0])
-sage: v = M([2, 2, 0])
-sage: w = M([0, 0, 4])
-sage: N = M.submodule([u, v, w])
-</input>
-<output>
-</output>
-</sage>
+		</statement>
+	</exercise>
 
-Examine the bases and dimensions (aka <q>rank</q>) of the module and submodule, and check the equality of the module and submodule.  How is this different than the situation for vector spaces?  Can you create a third module, <c>P</c>, that is a proper subset of <c>M</c> and properly contains <c>N</c>?
+	<exercise number="5">
+		<statement>
 
-</statement>
-<sage />
-</exercise>
+			<p>A finite field, <m>F</m>, of order <m>5^3</m> is a vector space of dimension 3 over <m>{\mathbb Z}_5</m>.  Suppose <m>a</m> is a generator of <m>F</m>.  Let <m>M</m> be any <m>3\times 3</m> matrix with entries from <m>{\mathbb Z}_5</m>.  If we convert an element <m>x\in F</m> to a vector (relative to the basis <m>\{1,a,a^2\}</m>), then we can multiply it by <m>M</m> (with <m>M</m> on the left) to create another vector, which we can interpret as a linear combination of the basis elements, and hence another element of <m>F</m>.  This function is a vector space homomorphism, better known as a linear transformation.  Read each of the three parts below and give an example in each part that does not qualify as an example in the subsequent parts.</p>
 
-<exercise number="5">
-<statement>
+			<ol>
+				<li><p>Create a <q>random</q> matrix <m>M</m> and give examples to show that the mapping described is a vector space homomorphism of <m>F</m> into <m>F</m>.</p></li>
 
-A finite field, <m>F</m>, of order <m>5^3</m> is a vector space of dimension 3 over <m>{\mathbb Z}_5</m>.  Suppose <m>a</m> is a generator of <m>F</m>.  Let <m>M</m> be any <m>3\times 3</m> matrix with entries from <m>{\mathbb Z}_5</m>.  If we convert an element <m>x\in F</m> to a vector (relative to the basis <m>\{1,a,a^2\}</m>), then we can multiply it by <m>M</m> (with <m>M</m> on the left) to create another vector, which we can interpret as a linear combination of the basis elements, and hence another element of <m>F</m>.  This function is a vector space homomorphism, better known as a linear transformation.  Read each of the three parts below and give an example in each part that does not qualify as an example in the subsequent parts.\\
+				<li><p>Create an invertible matrix <m>M</m>.  The mapping will now be an invertible homomorphism.  Determine the inverse function and give examples to verify its properties.</p></li>
 
-(a) Create a <q>random</q> matrix <m>M</m> and give examples to show that the mapping described is a vector space homomorphism of <m>F</m> into <m>F</m>.\\
+				<li><p>Since <m>a</m> is a generator of the field, the mapping <m>a\mapsto a^5</m> can be extended to a vector space homomorphism (i.e.\ a linear transformation). Find a matrix <m>M</m> which effects this linear transformation, and from this, determine that the homomorphism is invertible.</p></li>
 
-(b) Create an invertible matrix <m>M</m>.  The mapping will now be an invertible homomorphism.  Determine the inverse function and give examples to verify its properties.\\
+				<li><p>None of the previous three parts applies to properties of multiplication in the field.  However, the mapping from the third part also preserves multiplication in the field, though a proof of this may not be obvious right now.  So we are saying this mapping is a field automorphism, preserving both addition and multiplication.  Give a nontrivial example of the multiplication-preserving properties of this mapping.</p></li>
+			</ol>
 
-(c)   Since <m>a</m> is a generator of the field, the mapping <m>a\mapsto a^5</m> can be extended to a vector space homomorphism (i.e.\ a linear transformation). Find a matrix <m>M</m> which effects this linear transformation, and from this, determine that the homomorphism is invertible.\\
+		</statement>
+	</exercise>
 
-(d)  None of the previous three parts applies to properties of multiplication in the field.  However, the mapping from part (c) also preserves multiplication in the field, though a proof of this may not be obvious right now.  So we are saying this mapping is a field automorphism, preserving both addition and multiplication.  Give a nontrivial example of the multiplication-preserving properties of this mapping.
-
-</statement>
-<sage />
-</exercise>
-
+</exercises>
