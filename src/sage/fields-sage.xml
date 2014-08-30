@@ -4,337 +4,524 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<section>
+	<title>Sage</title>
 
-In Sage, and other places, an extension of the rationals is called a <q>number field.</q>  They are one of Sage's most mature features.
+	<introduction>
+		<p>In Sage, and other places, an extension of the rationals is called a <q>number field.</q>  They are one of Sage's most mature features.</p>
+	</introduction>
 
+	<subsection>
+		<title>Number Fields</title>
 
-</subsection>
-<subsection>
-<title>Number Fields</title>
+		<p>There are several ways to create a number field.  We are familiar with the syntax where we adjoin an irrational number that we can write with traditional combinations of arithmetic and roots.</p>
 
-There are several ways to create a number field.  We are familiar with the syntax where we adjoin an irrational number that we can write with traditional combinations of arithmetic and roots.
+		<sage>
+		<input>
+		M.&lt;a&gt; = QQ[sqrt(2)+sqrt(3)]; M
+		</input>
+		<output>
+		Number Field in a with defining polynomial x^4 - 10*x^2 + 1
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: M.<a> = QQ[sqrt(2)+sqrt(3)]; M
-Number Field in a with defining polynomial x^4 - 10*x^2 + 1
-</input>
-<output>
-</output>
-</sage>
+		<p>We can also specify the element we want to adjoin as the root of a monic irreducible polynomial.  One approach is to construct the polynomial ring first so that the polynomial has the location of its coefficients specified properly.</p>
 
-We can also specify the element we want to adjoin as the root of a monic irreducible polynomial.  One approach is to construct the polynomial ring first so that the polynomial has the location of its coefficients specified properly.
+		<sage>
+		<input>
+		F.&lt;y&gt; = QQ[]
+		p = y^3 - 1/4*y^2 - 1/16*y + 1/4
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: F.<y> = QQ[]
-sage: p = y^3 - 1/4*y^2 - 1/16*y + 1/4
-sage: p.is_irreducible()
-True
-sage: N.<b> = NumberField(p, 'b'); N
-Number Field in b with
-defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		N.&lt;b&gt; = NumberField(p, 'b'); N
+		</input>
+		<output>
+		Number Field in b with
+		defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
 
-Rather than building the whole polynomial ring, we can simply introduce a variable as the generator of a polynomial ring and then create polynomials from this variable.  This spares us naming the polynomial ring.  Notice in the example that both instances of <c>z</c> are necessary.
+		<p>Rather than building the whole polynomial ring, we can simply introduce a variable as the generator of a polynomial ring and then create polynomials from this variable.  This spares us naming the polynomial ring.  Notice in the example that both instances of <c>z</c> are necessary.</p>
 
-<sage>
-<input>
-sage: z = polygen(QQ, 'z')
-sage: q = z^3 - 1/4*z^2 - 1/16*z + 1/4
-sage: q.parent()
-Univariate Polynomial Ring in z over Rational Field
-sage: P.<c> = NumberField(q, 'c'); P
-Number Field in c with
-defining polynomial z^3 - 1/4*z^2 - 1/16*z + 1/4
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		z = polygen(QQ, 'z')
+		q = z^3 - 1/4*z^2 - 1/16*z + 1/4
+		q.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Rational Field
+		</output>
+		</sage>
 
-We can recover the polynomial used to create a number field, even if we constructed it by giving an expression for an irrational element.  In this case, the polynomial is the minimal polynomial of the element.
+		<sage>
+		<input>
+		P.&lt;c&gt; = NumberField(q, 'c'); P
+		</input>
+		<output>
+		Number Field in c with
+		defining polynomial z^3 - 1/4*z^2 - 1/16*z + 1/4
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: M.polynomial()
-x^4 - 10*x^2 + 1
-sage: N.polynomial()
-y^3 - 1/4*y^2 - 1/16*y + 1/4
-</input>
-<output>
-</output>
-</sage>
+		<p>We can recover the polynomial used to create a number field, even if we constructed it by giving an expression for an irrational element.  In this case, the polynomial is the minimal polynomial of the element.</p>
 
-For any element of a number field, Sage will obligingly compute its minimal polynomial.
+		<sage>
+		<input>
+		M.polynomial()
+		</input>
+		<output>
+		x^4 - 10*x^2 + 1
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: element = -b^2 + 1/3*b + 4
-sage: element.parent()
-Number Field in b with
-defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
-sage: r = element.minpoly('t'); r
-t^3 - 571/48*t^2 + 108389/2304*t - 13345/216
-sage: r.parent()
-Univariate Polynomial Ring in t over Rational Field
-sage: r.subs(t=element)
-0
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		N.polynomial()
+		</input>
+		<output>
+		y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
 
-Substituting <c>element</c> back into the alleged minimal polynomial and getting back zero is not convincing eveidence that it is the <em>minimal</em> polynomial, but it is heartening.
+		<p>For any element of a number field, Sage will obligingly compute its minimal polynomial.</p>
 
+		<sage>
+		<input>
+		element = -b^2 + 1/3*b + 4
+		element.parent()
+		</input>
+		<output>
+		Number Field in b with
+		defining polynomial y^3 - 1/4*y^2 - 1/16*y + 1/4
+		</output>
+		</sage>
 
-</subsection>
-<subsection>
-<title>Relative and Absolute Number Fields</title>
+		<sage>
+		<input>
+		r = element.minpoly('t'); r
+		</input>
+		<output>
+		t^3 - 571/48*t^2 + 108389/2304*t - 13345/216
+		</output>
+		</sage>
 
-With Sage we can adjoin several elements at once and we can build nested towers of number fields.  Sage uses the term <q>absolute</q> to refer to a number field viewed as an extension of the rationals themselves, and the term <q>relative</q> to refer to a number field constructed, or viewed, as an extension of another (nontrivial) number field.
+		<sage>
+		<input>
+		r.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in t over Rational Field
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: A.<a,b> = QQ[sqrt(2), sqrt(3)]
-sage: A
-Number Field in sqrt2 with defining polynomial x^2 - 2 over
-its base field
-sage: B = A.base_field(); B
-Number Field in sqrt3 with defining polynomial x^2 - 3
-sage: A.is_relative()
-True
-sage: B.is_relative()
-False
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		r.subs(t=element)
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
 
-The number field <c>A</c> has been constructed mathematically as what we would write as <m>{\mathbb Q}\subset{\mathbb Q}[\sqrt{3}]\subset{\mathbb Q}[\sqrt{3},\sqrt{2}]</m>.  Notice the slight difference in ordering of the elements we are adjoining, and notice how the number fields use slightly fancier internal names (<c>sqrt2</c>, <c>sqrt3</c>) for the new elements.
+		<p>Substituting <c>element</c> back into the alleged minimal polynomial and getting back zero is not convincing evidence that it is the <em>minimal</em> polynomial, but it is heartening.</p>
+	</subsection>
 
-We can <q>flatten</q> a relative field to view it as an absolute field, which may have been our intention from the start.  Here we create a new number field from <c>A</c> that makes it a pure absolute number field.
+	<subsection>
+		<title>Relative and Absolute Number Fields</title>
 
-<sage>
-<input>
-sage: C.<c> = A.absolute_field()
-sage: C
-Number Field in c with defining polynomial x^4 - 10*x^2 + 1
-</input>
-<output>
-</output>
-</sage>
+		<p>With Sage we can adjoin several elements at once and we can build nested towers of number fields.  Sage uses the term <q>absolute</q> to refer to a number field viewed as an extension of the rationals themselves, and the term <q>relative</q> to refer to a number field constructed, or viewed, as an extension of another (nontrivial) number field.</p>
 
-Once we construct an absolute number field this way, we can recover isomorphisms to and from the absolute field.  Recall that our tower was built with generators <c>a</c> and <c>b</c>, while the flattened tower is generated by <c>c</c>.  The <c>.structure()</c> method returns a pair of functions, with the absolute number field as the domain and codomain (in that order).
+		<sage>
+		<input>
+		A.&lt;a,b&gt; = QQ[sqrt(2), sqrt(3)]
+		A
+		</input>
+		<output>
+		Number Field in sqrt2 with defining polynomial x^2 - 2 over
+		its base field
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: fromC, toC = C.structure()
-sage: fromC(c)
-sqrt2 - sqrt3
-sage: toC(a)
-1/2*c^3 - 9/2*c
-sage: toC(b)
-1/2*c^3 - 11/2*c
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		B = A.base_field(); B
+		</input>
+		<output>
+		Number Field in sqrt3 with defining polynomial x^2 - 3
+		</output>
+		</sage>
 
-This tells us that the single generator of the flattened tower, <c>c</c>, is equal to <m>\sqrt{2}-\sqrt{3}</m>, and further, each of <m>\sqrt{2}</m> and <m>\sqrt{3}</m> can be expressed as polynomial functions of <c>c</c>.  With these connections, you might want to compute the final two expressions in <c>c</c> by hand, and appreciate the work Sage does to determine these for us.  This computation is an example of the conclusion of the upcoming Theorem<nbsp /><xref ref="galois:primitive_element_theorem" />.
+		<sage>
+		<input>
+		A.is_relative()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
-Many number field methods have both relative and absolute versions, and we will also find it more convenient to work in a tower or a flattened version, thus the isomorphisms between the two can be invaluable for translating both questions and answers.
+		<sage>
+		<input>
+		B.is_relative()
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-As a vector space over <m>{\mathbb Q}</m>, or over another number field, number fields that are finite extensions have a dimension, called the degree.  These are easy to get from Sage, though for a relative field, we need to be more precise about which degree we desire.
+		<p>The number field <c>A</c> has been constructed mathematically as what we would write as <m>{\mathbb Q}\subset{\mathbb Q}[\sqrt{3}]\subset{\mathbb Q}[\sqrt{3},\sqrt{2}]</m>.  Notice the slight difference in ordering of the elements we are adjoining, and notice how the number fields use slightly fancier internal names (<c>sqrt2</c>, <c>sqrt3</c>) for the new elements.</p>
 
+		<p>We can <q>flatten</q> a relative field to view it as an absolute field, which may have been our intention from the start.  Here we create a new number field from <c>A</c> that makes it a pure absolute number field.</p>
 
-<sage>
-<input>
-sage: B.degree()
-2
-sage: A.absolute_degree()
-4
-sage: A.relative_degree()
-2
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		C.&lt;c&gt; = A.absolute_field()
+		C
+		</input>
+		<output>
+		Number Field in c with defining polynomial x^4 - 10*x^2 + 1
+		</output>
+		</sage>
 
+		<p>Once we construct an absolute number field this way, we can recover isomorphisms to and from the absolute field.  Recall that our tower was built with generators <c>a</c> and <c>b</c>, while the flattened tower is generated by <c>c</c>.  The <c>.structure()</c> method returns a pair of functions, with the absolute number field as the domain and codomain (in that order).</p>
 
-</subsection>
-<subsection>
-<title>Splitting Fields</title>
+		<sage>
+		<input>
+		fromC, toC = C.structure()
+		fromC(c)
+		</input>
+		<output>
+		sqrt2 - sqrt3
+		</output>
+		</sage>
 
-Here is a concrete example of how to use Sage to construct a splitting field of a polynomial.  Consider <m>p(x)=x^4+x^2-1</m>.  We first build a number field with a single root, and then factor the polynomial over this new, larger, field.
+		<sage>
+		<input>
+		toC(a)
+		</input>
+		<output>
+		1/2*c^3 - 9/2*c
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: x = polygen(QQ, 'x')
-sage: p = x^4 + x^2 - 1
-sage: p.parent()
-Univariate Polynomial Ring in x over Rational Field
-sage: p.is_irreducible()
-True
-sage: M.<a> = NumberField(p, 'a')
-sage: y = polygen(M, 'y')
-sage: p = p.subs(x = y); p
-y^4 + y^2 - 1
-sage: p.parent()
-Univariate Polynomial Ring in y over Number Field in a with
-defining polynomial x^4 + x^2 - 1
-sage: p.factor()
-(y - a) * (y + a) * (y^2 + a^2 + 1)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		toC(b)
+		</input>
+		<output>
+		1/2*c^3 - 11/2*c
+		</output>
+		</sage>
 
-So our polynomial factors partially into two linear factors and a quadratic factor.  But notice that the quadratic factor has a coefficient that is irrational, <m>a^2+1</m>, so the quadratic factor properly belongs in the polynomial ring over <c>M</c>.
+		<p>This tells us that the single generator of the flattened tower, <c>c</c>, is equal to <m>\sqrt{2}-\sqrt{3}</m>, and further, each of <m>\sqrt{2}</m> and <m>\sqrt{3}</m> can be expressed as polynomial functions of <c>c</c>.  With these connections, you might want to compute the final two expressions in <c>c</c> by hand, and appreciate the work Sage does to determine these for us.  This computation is an example of the conclusion of the upcoming Theorem<nbsp /><xref ref="theorem-primitive-element" />.</p>
 
-<sage>
-<input>
-sage: q = y^2 + a^2 + 1
-sage: N.<b> = NumberField(q, 'b')
-sage: z = polygen(N, 'z')
-sage: p = p.subs(y = z); p
-z^4 + z^2 - 1
-sage: p.parent()
-Univariate Polynomial Ring in z over Number Field in b with
-defining polynomial y^2 + a^2 + 1 over its base field
-sage: p.factor()
-(z + b) * (z + a) * (z - a) * (z - b)
-</input>
-<output>
-</output>
-</sage>
+		<p>Many number field methods have both relative and absolute versions, and we will also find it more convenient to work in a tower or a flattened version, thus the isomorphisms between the two can be invaluable for translating both questions and answers.</p>
 
-This factorization is a bit unsettling, since <c>p</c> is clearly a polynomial in <c>z</c>, but is being factored as a polynomial in <c>x</c>.  However, it clearly shows <c>p</c> factored into four linear factors with the roots of the polynomial in terms of the generators <c>a</c> and <c>b</c>.  We can get another factorization by converting <c>N</c> to an absolute number field and factoring there.  We need to recreate the polynomial over <c>N</c>, since a substitution will carry coefficients from the wrong ring.
+		<p>As a vector space over <m>{\mathbb Q}</m>, or over another number field, number fields that are finite extensions have a dimension, called the degree.  These are easy to get from Sage, though for a relative field, we need to be more precise about which degree we desire.</p>
 
-<sage>
-<input>
-sage: P.<c> = N.absolute_field()
-sage: w = polygen(P, 'w')
-sage: p = w^4 + w^2- 1
-sage: p.factor()
-(w - 7/18966*c^7 + 110/9483*c^5 +  923/9483*c^3 +  3001/6322*c) *
-(w - 7/37932*c^7 +  55/9483*c^5 + 923/18966*c^3 - 3321/12644*c) *
-(w + 7/37932*c^7 -  55/9483*c^5 - 923/18966*c^3 + 3321/12644*c) *
-(w + 7/18966*c^7 - 110/9483*c^5 -  923/9483*c^3 -  3001/6322*c)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		B.degree()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
 
-This is an improvement, in that the variable is <c>w</c> and the roots of the polynomial are expressions in terms of the single generator <c>c</c>.  Thus <c>P</c> (or <c>N</c>) is a splitting field for <m>p(x)=x^4+x^2-1</m>.  The roots are not really as bad as they appear <mdash /> lets convert them back to the relative number field.
+		<sage>
+		<input>
+		A.absolute_degree()
+		</input>
+		<output>
+		4
+		</output>
+		</sage>
 
-First we want to rewrite a single factor (the first) in the form <m>(w-r)</m> to identify the root with the correct signs.\noindent
-<c>(w -  7/18966*c^7 + 110/9483*c^5 + 923/9483*c^3 + 3001/6322*c) =</c>\\
-<c>(w - (7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c))</c>
+		<sage>
+		<input>
+		A.relative_degree()
+		</input>
+		<output>
+		2
+		</output>
+			</sage>
+		</subsection>
 
-With the converting isomorphisms, we can recognize the roots for what they are.
+		<subsection>
+		<title>Splitting Fields</title>
 
-<sage>
-<input>
-sage: fromP, toP = P.structure()
-sage: fromP(7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c)
--b
-</input>
-<output>
-</output>
-</sage>
+		<p>Here is a concrete example of how to use Sage to construct a splitting field of a polynomial.  Consider <m>p(x)=x^4+x^2-1</m>.  We first build a number field with a single root, and then factor the polynomial over this new, larger, field.</p>
 
-So the rather complicated expression in <c>c</c> is just the negative of the root we adjoined in the second step of constructing the tower of number fields.  It would be a good exercise to see what happens to the other three roots (being careful to get the signs right on each root).  This is a good opportunity to illustrate Theorem<nbsp /><xref ref="fields:tower_indices_theorem" />.
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		p = x^4 + x^2 - 1
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in x over Rational Field
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: M.degree()
-4
-sage: N.relative_degree()
-2
-sage: P.degree()
-8
-sage: M.degree()*N.relative_degree() == P.degree()
-True
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		p.is_irreducible()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
 
+		<sage>
+		<input>
+		M.&lt;a&gt; = NumberField(p, 'a')
+		y = polygen(M, 'y')
+		p = p.subs(x = y); p
+		</input>
+		<output>
+		y^4 + y^2 - 1
+		</output>
+		</sage>
 
-</subsection>
-<subsection>
-<title>Algebraic Numbers</title>
+		<sage>
+		<input>
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in y over Number Field in a with
+		defining polynomial x^4 + x^2 - 1
+		</output>
+		</sage>
 
-Corollary<nbsp /><xref ref="fields:algebraics_field_corollary" /> says that the set of <em>all</em> algebraic numbers forms a field.  This field is implemented in Sage as <c>QQbar</c>.  This allows for finding roots of polynomials as exact quantities which display as inexact numbers.
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(y - a) * (y + a) * (y^2 + a^2 + 1)
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: x = polygen(QQ, 'x')
-sage: p = x^4 + x^2 - 1
-sage: r = p.roots(ring=QQbar); r
-[(-0.7861513777574233?,  1), (0.7861513777574233?,  1),
- (-1.272019649514069?*I, 1), (1.272019649514069?*I, 1)]
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		a^2 + 1 in QQ
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
 
-So we asked for the roots of a polynomial over the rationals, but requested any root that may lie outside the rationals and within the field of algebraic numbers.  Since the field of algebraic numbers contains all such roots, we get a full four roots of the fourth-degree polynomial.  These roots are computed to lie within an interval and the question mark indicates that the preceding digits are accurate.  (The integers paired with each root are the multiplicities of that root. Use the keyword <c>multiplicities=False</c> to turn them off.)  Lets take a look under the hood and see how Sage manages the field of algebraic numbers.
+		<p>So our polynomial factors partially into two linear factors and a quadratic factor.  But notice that the quadratic factor has a coefficient that is irrational, <m>a^2+1</m>, so the quadratic factor properly belongs in the polynomial ring over <c>M</c> and not over <c>QQ</c>.</p>
 
-<sage>
-<input>
-sage: r1 = r[0][0]; r1
--0.7861513777574233?
-sage: r1.as_number_field_element()
-(Number Field in a with defining polynomial y^4 + y^2 - 1, a, Ring morphism:
-    From: Number Field in a with defining polynomial y^4 + y^2 - 1
-    To:   Algebraic Real Field
-    Defn: a |<ndash />> -0.7861513777574233?)
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		q = y^2 + a^2 + 1
+		N.&lt;b&gt; = NumberField(q, 'b')
+		z = polygen(N, 'z')
+		p = p.subs(y = z); p
+		</input>
+		<output>
+		z^4 + z^2 - 1
+		</output>
+		</sage>
 
-Three items are associated with this initial root.  First is a number field, with generator <c>a</c> and a defining polynomial similar to the polynomial we the finding roots of, but not identical.  Second is an expression in the generator <c>a</c>, which is the actual root.  In this example, the expression is simple, but it could be more complex in other examples.  Finally, there is a ring homomorphism from the number field to the <q>Algebraic Real Field</q>, <c>AA</c>, the subfield of <c>QQbar</c> with just real elements, which associates the generator <c>a</c> with the number \verb!-0.7861513777574233?!.  Let's verify that the root given is really a root, in two ways.
+		<sage>
+		<input>
+		p.parent()
+		</input>
+		<output>
+		Univariate Polynomial Ring in z over Number Field in b with
+		defining polynomial y^2 + a^2 + 1 over its base field
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: r1^4 + r1^2 - 1
-0
-sage: N, rexact, homomorphism = r1.as_number_field_element()
-sage: (rexact)^4 + rexact^2 - 1
-0
-</input>
-<output>
-</output>
-</sage>
+		<sage>
+		<input>
+		p.factor()
+		</input>
+		<output>
+		(z + b) * (z + a) * (z - a) * (z - b)
+		</output>
+		</sage>
 
+		<sage>
+		<input>
+		a in N, b in N
+		</input>
+		<output>
+		(True, True)
+		</output>
+		</sage>
 
-</subsection>
-<subsection>
-<title>Geometric Constructions</title>
+		<p>So we have a field, <c>N</c>, where our polynomial factors into linear factors with coefficients from the field.  We can get another factorization by converting <c>N</c> to an absolute number field and factoring there.  We need to recreate the polynomial over <c>N</c>, since a substitution will carry coefficients from the wrong ring.</p>
 
-Sage can do a lot of things, but it is not yet able to lay out lines with a straightedge and compass.  However, we can very quickly determine that trisecting a 60 degree angle is impossible.  We adjoin the cosine of a 20 degree angle (in radians) to the rationals, determine the degree of the extension, and check that it is not an integer power of 2.  In one line.  Sweet.
+		<sage>
+		<input>
+		P.&lt;c&gt; = N.absolute_field()
+		w = polygen(P, 'w')
+		p = w^4 + w^2- 1
+		p.factor()
+		</input>
+		<output>
+		(w - 7/18966*c^7 + 110/9483*c^5 +  923/9483*c^3 +  3001/6322*c) *
+		(w - 7/37932*c^7 +  55/9483*c^5 + 923/18966*c^3 - 3321/12644*c) *
+		(w + 7/37932*c^7 -  55/9483*c^5 - 923/18966*c^3 + 3321/12644*c) *
+		(w + 7/18966*c^7 - 110/9483*c^5 -  923/9483*c^3 -  3001/6322*c)
+		</output>
+		</sage>
 
-<sage>
-<input>
-sage: log(QQ[cos(pi/9)].degree(), 2) in ZZ
-False
-</input>
-<output>
-</output>
-</sage>
+		<p>This is an interesting alternative, in that the roots of the polynomial are expressions in terms of the <em>single</em> generator <c>c</c>.  Since the roots involve a seventh power of <c>c</c>, we might suspect (but not be certain) that the minimal polynomial of <c>c</c> has degree <m>8</m> and that <c>P</c> is a degree <m>8</m> extension of the rationals. Indeed <c>P</c> (or <c>N</c>) is a splitting field for <m>p(x)=x^4+x^2-1</m>.  The roots are not really as bad as they appear <mdash /> lets convert them back to the relative number field.</p>
 
+		<p>First we want to rewrite a single factor (the first) in the form <m>(w-r)</m> to identify the root with the correct signs.</p>
+
+		<sage type="display">
+		<input>
+		(w -  7/18966*c^7 + 110/9483*c^5 + 923/9483*c^3 + 3001/6322*c) =
+		(w - (7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c))
+		</input>
+		</sage>
+
+		<p>With the conversion isomorphisms, we can recognize the roots for what they are.</p>
+
+		<sage>
+		<input>
+		fromP, toP = P.structure()
+		fromP(7/18966*c^7 - 110/9483*c^5 - 923/9483*c^3 - 3001/6322*c)
+		</input>
+		<output>
+		-b
+		</output>
+		</sage>
+
+		<p>So the rather complicated expression in <c>c</c> is just the negative of the root we adjoined in the second step of constructing the tower of number fields.  It would be a good exercise to see what happens to the other three roots (being careful to get the signs right on each root). </p>
+
+		<p>This is a good opportunity to illustrate Theorem<nbsp /><xref ref="theorem-tower-indices" />.</p>
+
+		<sage>
+		<input>
+		M.degree()
+		</input>
+		<output>
+		4
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N.relative_degree()
+		</input>
+		<output>
+		2
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		P.degree()
+		</input>
+		<output>
+		8
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		M.degree()*N.relative_degree() == P.degree()
+		</input>
+		<output>
+		True
+		</output>
+		</sage>
+	</subsection>
+
+	<subsection>
+		<title>Algebraic Numbers</title>
+
+		<p>Corollary<nbsp /><xref ref="corollary-algebraic-numbers-field" /> says that the set of <em>all</em> algebraic numbers forms a field.  This field is implemented in Sage as <c>QQbar</c>.  This allows for finding roots of polynomials as exact quantities which display as inexact numbers.</p>
+
+		<sage>
+		<input>
+		x = polygen(QQ, 'x')
+		p = x^4 + x^2 - 1
+		r = p.roots(ring=QQbar); r
+		</input>
+		<output>
+		[(-0.7861513777574233?,  1), (0.7861513777574233?,  1),
+		 (-1.272019649514069?*I, 1), (1.272019649514069?*I, 1)]
+		</output>
+		</sage>
+
+		<p>So we asked for the roots of a polynomial over the rationals, but requested any root that may lie outside the rationals and within the field of algebraic numbers.  Since the field of algebraic numbers contains all such roots, we get a full four roots of the fourth-degree polynomial.  These roots are computed to lie within an interval and the question mark indicates that the preceding digits are accurate.  (The integers paired with each root are the multiplicities of that root. Use the keyword <c>multiplicities=False</c> to turn them off.)  Let us take a look under the hood and see how Sage manages the field of algebraic numbers.</p>
+
+		<sage>
+		<input>
+		r1 = r[0][0]; r1
+		</input>
+		<output>
+		-0.7861513777574233?
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		r1.as_number_field_element()
+		</input>
+		<output>
+		(Number Field in a with defining polynomial y^4 + y^2 - 1, a, Ring morphism:
+		    From: Number Field in a with defining polynomial y^4 + y^2 - 1
+		    To:   Algebraic Real Field
+		    Defn: a |--> -0.7861513777574233?)
+		</output>
+		</sage>
+
+		<p>Three items are associated with this initial root.  First is a number field, with generator <c>a</c> and a defining polynomial similar to the polynomial we are finding the roots of, but not identical.  Second is an expression in the generator <c>a</c>, which is the actual root.  In this example, the expression is simple, but it could be more complex in other examples.  Finally, there is a ring homomorphism from the number field to the <q>Algebraic Real Field</q>, <c>AA</c>, the subfield of <c>QQbar</c> with just real elements, which associates the generator <c>a</c> with the number <c>-0.7861513777574233?</c>.  Let us verify, in two ways, that the root given is really a root.</p>
+
+		<sage>
+		<input>
+		r1^4 + r1^2 - 1
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<sage>
+		<input>
+		N, rexact, homomorphism = r1.as_number_field_element()
+		(rexact)^4 + rexact^2 - 1
+		</input>
+		<output>
+		0
+		</output>
+		</sage>
+
+		<p>Now that we have enough theory to understand the field of algebraic numbers, and a natural way to represent them exactly, you might consider the operations in the field.   If we take two algebraic numbers and add them together, we get another algebraic number (Corollary<nbsp /><xref ref="corollary-algebraic-numbers-field" />).  So what is the resulting minimal polynomial?  How is it computed in Sage?  You could read the source code if you wanted the answer.</p>
+	</subsection>
+
+	<subsection>
+		<title>Geometric Constructions</title>
+
+		<p>Sage can do a lot of things, but it is not yet able to lay out lines with a straightedge and compass.  However, we can very quickly determine that trisecting a <m>60</m> degree angle is impossible.  We adjoin the cosine of a <m>20</m> degree angle (in radians) to the rationals, determine the degree of the extension, and check that it is not an integer power of <m>2</m>.  In one line.  Sweet.</p>
+
+		<sage>
+		<input>
+		log(QQ[cos(pi/9)].degree(), 2) in ZZ
+		</input>
+		<output>
+		False
+		</output>
+		</sage>
+	</subsection>
+
+</section>

@@ -126,7 +126,7 @@
 
 		</introduction>
 
-		<subsection number="no">
+		<subsection xml:id="subsection-algebraic-elements" number="no">
 			<title>Algebraic Elements</title>
  
 			<p>An element <m>\alpha</m> in an extension field <m>E</m> over <m>F</m> is <term> algebraic</term> over <m>F</m> if <m>f(\alpha)=0</m> for some nonzero polynomial <m>f(x) \in F[x]</m>. An element in <m>E</m> that is not algebraic over <m>F</m> is <term> transcendental</term><index><main>Element</main><sub>transcendental</sub></index><index><main>Transcendental element</main></index> over <m>F</m>. An extension field <m>E</m> of a field <m>F</m> is an <term>algebraic  extension</term><index><main>Algebraic extension</main></index><index><main>Extension</main><sub>algebraic</sub></index> of <m>F</m> if every element in <m>E</m> is algebraic over <m>F</m>. If <m>E</m> is a field extension of <m>F</m> and <m>\alpha_1, \ldots, \alpha_n</m> are contained in <m>E</m>, we denote the smallest field containing <m>F</m> and <m>\alpha_1, \ldots, \alpha_n</m> by <m>F( \alpha_1, \ldots, \alpha_n)</m><!--NOTATION TABLE\label{notefieldcont}-->. If <m>E = F( \alpha )</m> for some <m>\alpha \in E</m>, then <m>E</m> is a <term>simple extension</term><index><main>Simple extension</main></index><index><main>Extension</main><sub>simple</sub></index> of <m>F</m>. </p>
@@ -465,7 +465,7 @@
 
 				<p>We can extend <m>\phi</m> to be an isomorphism from <m>E[x]</m> to <m>F[x]</m>, which we will also denote by <m>\phi</m>, by letting
 					<me>\phi( a_0 + a_1 x + \cdots + a_n x^n ) =  \phi( a_0 ) + \phi(a_1) x + \cdots + \phi(a_n) x^n.</me>
-				This extension agrees with the original isomorphism <m>\phi : E \rightarrow F</m>, since constant polynomials get mapped to constant polynomials.  By assumption, <m>\phi(p(x)) = q(x)</m>; hence, <m>\phi</m> maps <m>\langle p(x) \rangle</m> onto <m>\langle q(x) \rangle</m>. Consequently, we have an isomorphism <m>\overline{\phi} : E[x] / \langle p(x) \rangle \rightarrow F[x]/\langle q(x) \rangle</m>. By Theorem<nbsp /><xref ref="proposition-minimal-poly" />, we have isomorphisms <m>\sigma: E[x]/\langle p(x) \rangle \rightarrow F(\alpha)</m> and <m>\tau : F[x]/\langle q(x) \rangle \rightarrow F( \beta )</m>, defined by evaluation at <m>\alpha</m> and <m>\beta</m>, respectively. Therefore, <m>\psi = \tau^{-1} \overline{\phi} \sigma</m> is the required isomorphism.</p>
+				This extension agrees with the original isomorphism <m>\phi : E \rightarrow F</m>, since constant polynomials get mapped to constant polynomials.  By assumption, <m>\phi(p(x)) = q(x)</m>; hence, <m>\phi</m> maps <m>\langle p(x) \rangle</m> onto <m>\langle q(x) \rangle</m>. Consequently, we have an isomorphism <m>\overline{\phi} : E[x] / \langle p(x) \rangle \rightarrow F[x]/\langle q(x) \rangle</m>. By Proposition<nbsp /><xref ref="proposition-minimal-poly" />, we have isomorphisms <m>\sigma: E[x]/\langle p(x) \rangle \rightarrow F(\alpha)</m> and <m>\tau : F[x]/\langle q(x) \rangle \rightarrow F( \beta )</m>, defined by evaluation at <m>\alpha</m> and <m>\beta</m>, respectively. Therefore, <m>\psi = \tau^{-1} \overline{\phi} \sigma</m> is the required isomorphism.</p>
 
 				<tikz filebase="fields_extension_isomorph"><![CDATA[
 					\begin{tikzpicture}[scale=0.8] <!-- Replaced figure with tikz figure - TWJ 8/29/2010 -->
@@ -773,7 +773,9 @@
 			The angle <m>\theta</m> can be constructed if and only if <m>\alpha = \cos \theta</m> is constructible. Let <m>\theta = 20^{\circ}</m>. Then <m>\cos 3 \theta =  \cos 60^\circ = 1/2</m>. By the triple-angle formula for the cosine,
 				<me>4 \alpha^3 - 3 \alpha = \frac{1}{2}.</me>
 			Therefore, <m>\alpha</m> is a zero of <m>8 x^3 - 6 x -1</m>. This polynomial has no factors in <m>{\mathbb Z}[x]</m>, and hence is irreducible over <m>{\mathbb Q}[x]</m>. Thus, <m>[{\mathbb Q}( \alpha ) : {\mathbb Q }] = 3</m>. Consequently, <m>\alpha</m> cannot be a constructible number.</p>
- 
+
+			<xi:include href="./sage/fields-info.xml" />
+
 		</subsection>
 		
 		<subsection number="no">
@@ -830,7 +832,7 @@
 	</references>
  
 
-<!--<xi:include href="./sage/FIXME:SECTIONHERE-sage.xml" />-->
-<!--<xi:include href="./sage/FIXME:SECTIONHERE-sage-exercises.xml" />-->
+	<xi:include href="./sage/fields-sage.xml" />
+	<xi:include href="./sage/fields-sage-exercises.xml" />
 
 </chapter>
