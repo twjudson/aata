@@ -4,86 +4,61 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
-<!-- See the file COPYING for copying conditions.  -->
-
-<!-- This file is part of the book                 -->
-<!--                                               -->
-<!--   Abstract Algebra: Theory and Applications   -->
-<!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 
+<exercises>
+	<title>Sage Exercises</title>
 
+	<exercise number="1">
+		<statement>
+			<p>Create a finite field of order <m>5^2</m> and then factor <m>p(x)=x^{25}-x</m> over this field.  Comment on what is interesting about this result and why it is not a surprise.</p>
+		</statement>
+	</exercise>
 
-</statement>
-<sage />
-</exercise>
+	<exercise number="2">
+		<statement>
+			<p>Corollary<nbsp /><xref ref="corollary-cyclic-group-finite-field" /> says that the nonzero elements of a finite field are a cyclic group under multiplication.  The generator used in Sage is also a generator of this multiplicative group.  To see this, create a finite field of order <m>2^7</m>.  Create two lists of the elements of the field: first, use the <c>.list()</c> method, then use a list comprehension to generate the proper powers of the generator you specified when you created the field.</p>
 
-<exercise number="1">
-<statement>
+			<p>The second list should be the whole field, but will be missing zero.  Create the zero element of the field (perhaps by coercing <m>0</m> into the field) and <c>.append()</c> it to the list of powers.  Apply the <c>sorted()</c> command to each list and then test the lists for equality.</p>
+		</statement>
+	</exercise>
 
-Create a finite field of order <m>5^2</m> and then factor <m>p(x)=x^{25}-x</m> over this field.  Comment on what is interesting about this result and why it is not a surprise.
+	<exercise number="3">
+		<statement>
+			<p>While subfields of a finite field are completely classified by Theorem<nbsp /><xref ref="theorem-finite-subfields" />, unfortunately they are not easily created in Sage.  In this exercise we will create a subfield of a finite field.  Since the group of nonzero elements in a finite field is cyclic, the nonzero elements of a subfield will form a subgroup of the cyclic group, and necessarily will be cyclic.</p>
 
-</statement>
-<sage />
-</exercise>
+			<p>Create a finite field of order <m>3^6</m>.  Theory says there is a subfield of order <m>3^2</m>.  Determine a generator of multiplicative order <m>8</m> for the nonzero elements of this subfield, and construct these <m>8</m> elements.  Add in the field's zero element to this set.  It is fairly obvious that this set of <m>9</m> elements is closed under multiplication.  Write a single statement that checks if this set is also closed under addition by considering all possible sums of elements from the set.</p>
+		</statement>
+	</exercise>
 
-<exercise number="2">
-<statement>
+	<exercise number="4">
+		<statement>
+			<p>This problem investigates the <q>separableness</q> of <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m>.  You can create this number field quickly with the <c>NumberFieldTower</c> constructor, along with the polynomials <m>x^2-3</m> and <m>x^2-7</m>.  Flatten the tower with the <c>.absolute_field()</c> method and use the <c>.structure()</c> method to retrieve mappings between the tower and the flattened version.  Name the tower <c>N</c> and use <c>a</c> and <c>b</c> as generators.  Name the flattened version <c>L</c> with <c>c</c> as a generator.</p>
 
-Corollary~\extref{finite:cyclic_corollary}{22.8}{finite fields are cyclic} says that the nonzero elements of a finite field are a cyclic group under multiplication.  The generator used in Sage is also a generator of this multiplicative group.  To see this, create a finite field of order <m>2^7</m>.  Create two lists of the elements of the field: first, use the <c>.list()</c> method, then use a list comprehension to generate the proper powers of the generator you specified when you created the field.
+			<p>Create a nontrivial (<q>random</q>) element of <c>L</c> using as many powers of <c>c</c> as possible (check the degree of <c>L</c> to see how many linearly independent powers there are).  Request from Sage the minimum polynomial of your random element, thus ensuring the element is a root.  Construct the minimum polynomial as a polynomial over <c>N</c>, the field tower, and find its factorization.  Your factorization should have only linear factors.  Each root should be an expression in <c>a</c> and <c>b</c>, so convert each root into an expression with mathematical notation involving <m>\sqrt{3}</m> and <m>\sqrt{7}</m>.  Use one of the mappings to verify that one of the roots is indeed the original random element.</p>
 
-The second list should be the whole field, but will be missing zero.  Create the zero element of the field (perhaps by coercing 0 into the field) and <c>.append()</c> it to the list of powers.  Apply the <c>sorted()</c> command to each list and then test the lists for equality.
+			<p>Create a few more random elements, and find a factorization (in N or in L).  For a field to be separable, every element of the field should be a root of <em>some</em> separable polynomial.  The minimal polynomial is a good polynomial to test.  (Why?)  Based on the evidence, does it appear that <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m> is a separable extension?</p>
+		</statement>
+	</exercise>
 
-</statement>
-<sage />
-</exercise>
+	<exercise number="5">
+		<statement>
+			<p>Exercise<nbsp /><xref ref="exercise-frobenius-map" /> describes the Frobenius Map, an automorphism of a finite field.  If <c>F</c> is a finite field in Sage, then <c>End(F)</c> will create the automorphism group of F, the set of all bijective mappings betwwen the field and itself.</p>
 
-<exercise number="3">
-<statement>
+			<ol>
+				<li><p>Work Exercise<nbsp /><xref ref="exercise-frobenius-map" /> to gain an understanding of how and why the Frobenius mapping is a field automorphism.  (Do not include any of this in your answer to this question, but understand that the following will be much easier if you do this problem first.)</p></li>
 
-While subfields of a finite field are completely classified by Theorem~\extref{finite:subfields_theorem}{22.6}{subfields of finite fields}, unfortunately they are not easily created in Sage.  In this exercise we will create a subfield of a finite field.  Since the group of nonzero elements in a finite field is cyclic, the nonzero elements of a subfield will form a subgroup of the cyclic group, and necessarily will be cyclic.
+				<li><p>For some small, but not trivial, finite fields locate the Frobenius map in the automorphism group.  Small might mean <m>p=2,3,5,7</m> and <m>3\leq n\leq 10</m>, with <m>n</m> prime versus composite.</p></li>
 
-Create a finite field of order <m>3^6</m>.  Theory says there is a subfield of order <m>3^2</m>.  Determine a generator of multiplicative order 8 for the nonzero elements of this subfield, and construct these 8 elements.  Add in the field's zero element to this set.  It is fairly obvious that this set of 9 elements is closed under multiplication.  Write a single statement that checks if this set is also closed under addition by considering all possible sums of elements from the set.
+				<li><p>Once you have located the Frobenius map, describe the other automorphisms.  In other words, with a bit of investigation, you should find a description of the automorphisms which will allow you to accurately predict the entire automorphism group for a finite field you have not already explored.  (Hint: the automorphism group is a group.  What if you <q>do the operation</q> between the Frobenius map and itself?  Just what is the operation?  Try using Sage's multiplicative notation with the elements of the automorphism group.)</p></li>
 
-</statement>
-<sage />
-</exercise>
+				<li><p>What is the <q>structure</q> of the automorphism group?  What special status does the Frobenius map have in this group?</p></li>
 
-<exercise number="4">
-<statement>
+				<li><p>For any field, the subfield known as the fixed field is an important construction, and will be especially important in the next chapter.  Given an automorphism <m>\tau</m> of a field <m>E</m>, the fixed field of <m>\tau</m> in <m>E</m> is <m>K=\{b\in E\mid\tau(b)=b\}</m>.  For each automorphism of <m>E=GF(3^6)</m> identify the fixed field of the automorphism.  Since we understand the structure of subfields of a finite field, it is enough to just determine the order of the fixed field to be able to identify the subfield precisely.</p></li>
+			</ol>
 
-This problem investigates the <q>separableness</q> of <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m>.  YOu can create this number field quickly with the <c>NumberFieldTower</c> constructor, along with the polynomials <m>x^2-3</m> and <m>x^2-7</m>.  Flatten the tower with the <c>.absolute_field()</c> method and use the <c>.structure()</c> method to retrieve mappings between the tower and the flattened version.  Name the tower <c>N</c> and use <c>a</c> and <c>b</c> as generators and name the flattened version <c>L</c> with <c>c</c> as a generator.
+		</statement>
+	</exercise>
 
-Create a nontrivial (<q>random</q>) element of <c>L</c> using as many powers of <c>c</c> as possible (check the degree of <c>L</c> to see how many linearly independent powers there are).  Request from Sage the minimum polynomial of your random element, thus ensuring the element is a root.  Construct the minimum polynomial as a polynomial over <c>N</c>, the field tower, and find its factorization.  Your factorization should have only linear factors.  Each root should be an expression in <c>a</c> and <c>b</c>, so convert each root into an expression with mathematical notation involving <m>\sqrt{3}</m> and <m>\sqrt{7}</m>.  Use one of the mappings to verify that one of the roots is indeed the original random element.
-
-Create a few more random elements, and find a factorization (in N or in L).  For a field to be separable, every element of the field should be a root of <em>some</em> separable polynomial.  The minimal polynomial is a good polynomial to test.  (Why?)  Based on the evidence, does it appear that <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m> is a separable extension?
-
-</statement>
-<sage />
-</exercise>
-
-<exercise number="5">
-<statement>
-
-Exercise~\extref{exercise:finite:frobeniusmap}{21}{frobenius map exercise} in this chapter describes the <q>Frobenius Map,</q> an automorphism of a finite field.  If \texttt{F} is a finite field in Sage, then \texttt{End(F)} will create the automorphism group of F, the set of all bijective mappings betwwen the field and itself.\\
-
-(a)  Work Exercise~\extref{exercise:finite:frobeniusmap}{21}{frobenius map exercise} to gain an understanding of how and why the Frobenius mapping is a field automorphism.  (Don't include any of this in yor answer to this question, but understand that the following will be much easier if you do this problem first.)\\
-
-(b)  For some small, but not trivial, finite fields locate the Frobenius map in the automorphism group.  Small might mean <m>p=2,3,5,7</m> and <m>3\leq n\leq 10</m>, with <m>n</m> prime vs.\ composite.\\
-
-(c)  Once you have located the Frobenius map, describe the other automorphisms.  In other words, with a bit of investigation, you should find a description of the automorphisms which will allow you to accurately predict the entire automorphism group for a finite field you have not already explored.  (Hint: the automorphism group is a group.  What if you <q>do the operation</q> between the Frobenius map and itself?  Just what is the operation?  Try using Sage's multiplicative notation with the elements of the automorphism group.)\\
-
-(d)  What is the <q>structure</q> of the automorphism group?  What special status does the Frobenius map have in this group?\\
-
-(e)  For any field, the subfield known as the fixed field is an important construction, and will be especially important in the next chapter.  Given an automorphism <m>\tau</m> of a field <m>E</m>, the fixed field of <m>\tau</m> in <m>E</m> is <m>K=\{b\in E\mid\tau(b)=b\}</m>.  For each automorphism of <m>E=GF(3^6)</m> identify the fixed field of the automorphism.  Since we understand the structure of subfields of a finite field, it is enough to just determine the order of the fixed field to be able to identify the subfield precisely.
-
-<sage>
-<input>
-</input>
-<output>
-</output>
-</sage>
-
-
+</exercises>
