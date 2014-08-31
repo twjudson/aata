@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+<!-- This file is part of the book                 -->
+<!--                                               -->
+<!--   Abstract Algebra: Theory and Applications   -->
+<!--                                               -->
+<!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+<!-- See the file COPYING for copying conditions.  -->
+
+
+You have noticed in this chapter that finite fields have a great deal of structure.  We have also seen finite fields in Sage regularly as examples of rings and fields.  Now we can combine the two, mostly using commands we already know, plus a few new ones.
+
+
+</subsection>
+<subsection>
+<title>Creating Finite Fields</title>
+
+By Theorem<nbsp /><xref ref="finite:splitting_field_theorem" /> we know that all finite fields of a given order are isomorphic and that possible orders are limited to powers of primes.  We can use the <c>FiniteField()</c> command, as before, or a shorter equivalent is <c>GF()</c>.  Optionally, we can specify an irreducible polynomial for the contruction of the field.  We can view this polynomial as the generator of the principal ideal of a polynomial ring, or we can view it as a <q>re-writing</q> rule for powers of the field's generator that allow us to multiply elements and reformulate them as linear combinations of lesser powers.
+
+Absent providing an irreducible polynomial, Sage will use a Conway polynomial.  You can determine these with the <c>conway_polynomial()</c> command, or just build a finite field and request the defining polynomial with the <c>.polynomial()</c> method.
+
+<sage>
+<input>
+sage: F.<a> = GF(7^15); F
+Finite Field in a of size 7^15
+sage: F.polynomial()
+a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+sage: a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
+0
+sage: conway_polynomial(7, 15)
+x^15 + 5*x^6 + 6*x^5 + 6*x^4 + 4*x^3 + x^2 + 2*x + 4
+sage: y = polygen(Integers(7), 'y')
+</input>
+<output>
+</output>
+</sage>
+
+Just to be more readable, we coerce a list of coefficients into the set of polynomials (obtained with the <c>.parent()</c> method on a simple polynomial) to define a polynomial.
+
+<sage>
+<input>
+sage: y = polygen(Integers(7), 'y')
+sage: P = y.parent()
+sage: p = P([4, 5, 2, 6, 3, 3, 6, 2, 1, 1, 2, 5, 6, 3, 5, 1]); p
+y^15 + 5*y^14 + 3*y^13 + 6*y^12 + 5*y^11 + 2*y^10 + y^9 +
+y^8 + 2*y^7 + 6*y^6 + 3*y^5 + 3*y^4 + 6*y^3 + 2*y^2 + 5*y + 4
+sage: p.is_irreducible()
+True
+sage: T.<b> = GF(7^15, modulus=p); T
+Finite Field in b of size 7^15
+</input>
+<output>
+</output>
+</sage>
+
+One useful command we have not described is the <c>.log()</c> method for elements of a finite field.  Since we now know that the multiplicative group of nonzero elements is cyclic, we can express every element as a power of the generator.  The <c>log</c> method will return that power.
+
+Usually we will want to use the generator as the base of a lograithm computation in a finite field.  However, other bases may be used, wih the understanding that if the base is not a generator, then the logarithm may note exist (i.e.\ there may not be a solution to the relevant equation).
+
+<sage>
+<input>
+sage: F.<a> = GF(5^4)
+sage: a^458
+3*a^3 + 2*a^2 + a + 3
+sage: (3*a^3 + 2*a^2 + a + 3).log(a)
+458
+sage: exponent = (3*a^3 + 2*a^2 + a + 3).log(2*a^3 + 4*a^2 + 4*a)
+sage: exponent
+211
+sage: (2*a^3 + 4*a^2 + 4*a)^exponent == 3*a^3 + 2*a^2 + a + 3
+True
+sage: (3*a^3 + 2*a^2 + a + 3).log(a^2 + 4*a + 4)
+Traceback (most recent call last):
+...
+ValueError: No discrete log of 3*a^3 + 2*a^2 + a + 3 found
+to base a^2 + 4*a + 4
+</input>
+<output>
+</output>
+</sage>
+
+Since we already know many Sage commands, there is nothing else to introduce before we can work profitably with finite fields.  The exercises explore the ways we can examine and exploit the structure of finite fields in Sage.
+
