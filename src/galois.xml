@@ -689,12 +689,21 @@
  
 			<figure xml:id="figure-galois-4">
 
+				<sageplot xml:id="galois-quintic">
+				f(x) = x^5 - 6*x^3 -27*x -3
+				grid=[srange(-3,4,1), srange(-70,80,10)]
+				curve = plot(f(x), (x, -3.1,3.1), xmax=4, ymin=-75, ymax=75, color='red', thickness=2, aspect_ratio=0.05, gridlines=grid, axes_labels=['$x$','$y$'], fontsize=18)
+				label = text('$f(x)= x^5-6x^3-27x-3$', (1.9, 45), color='red', fontsize=16)
+				curve+label
+				</sageplot>
+
+				<!--  Remove X's on double hyphens
 				<tikz xml:id="galois-quintic"><![CDATA[
 				\begin{tikzpicture}[xscale=0.8,yscale=0.05,domain=-3.2:3.2,samples=320]
 				\draw[very thin,color=gray] (-4,-75) grid [xstep=1,ystep=10] (4,75);
 
-				\draw[->] (-4.2,0) -- (4.2,0) node[right] {$x$}; 
-				\draw[->] (0,-80.2) -- (0,80.2) node[above] {$y$};
+				\draw[->] (-4.2,0) -X- (4.2,0) node[right] {$x$};
+				\draw[->] (0,-80.2) -X- (0,80.2) node[above] {$y$};
 
 				\draw[thick,color=red]	plot[smooth,id=quintic]	function{x**5 - 6 *x**3 - 27 *x - 3}	node[above] {$f(x) =x^5 - 6 x^3 - 27 x - 3$};
 
@@ -708,7 +717,7 @@
 
 				\end{tikzpicture}]]>
 				</tikz>
-
+				-->
 				<caption>The graph of <m>f(x) = x^5 - 6 x^3 - 27 x - 3</m></caption>
 
 			</figure>
