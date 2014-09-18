@@ -9,9 +9,15 @@
 
 <!-- USE XINCLUDE SWITCH ON XSLTPROC -->
 
+<!-- Master file for AATA                           -->
+<!-- Use XSL stylesheets to create subsets          -->
+<!--    Important: Always process all of the source -->
+<!--    to preserve numbering and cross-references! -->
+<!--    So it is never advisable to edit this file  -->
+
 <mathbook xmlns:xi="http://www.w3.org/2001/XInclude">
 
-    <xi:include href="./bookinfo.xml" />
+    <xi:include href="./bookinfo.xml" /> <!-- ISBN, website, other metadata -->
     
     <book xml:id="aata">
         <title>Abstract Algebra</title>
@@ -45,7 +51,8 @@
         <xi:include href="./fields.xml" />                      <!-- Extension Fields -->
         <xi:include href="./finite.xml" />                      <!-- Finite Fields -->
         <xi:include href="./galois.xml" />                      <!-- Galois Theory -->
-
-   </book>
+        <!-- Appendices would go here, if there were any -->
+        <xi:include href="./backmatter.xml" />                  <!-- Hints, Notation -->
+    </book>
 
 </mathbook>
