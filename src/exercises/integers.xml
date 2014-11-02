@@ -44,7 +44,7 @@
 			<p>Prove that <m>n! \gt 2^n</m> for <m>n \geq 4</m>.</p>
 		</statement>
 		<hint>
-			<p><m>S(4): 4! = 24 \gt 16 =2^4</m> is true. Assume <m>S(k): k! \gt 2^k</m> is true. Then <m>(k + 1)! = k! (k + 1) \gt 2^k \cdot 2 = 2^{k + 1}</m>, so <m>S(k + 1)</m> is true. Thus, <m>S(n)</m> is true for all positive integers <m>n</m>.</p>
+			<p>The base case, <m>S(4): 4! = 24 \gt 16 =2^4</m> is true. Assume <m>S(k): k! \gt 2^k</m> is true. Then <m>(k + 1)! = k! (k + 1) \gt 2^k \cdot 2 = 2^{k + 1}</m>, so <m>S(k + 1)</m> is true. Thus, <m>S(n)</m> is true for all positive integers <m>n</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -86,7 +86,7 @@
 				<me>(fg)^{(n)}(x) = \sum_{k = 0}^{n} \binom{n}{k} f^{(k)}(x) g^{(n - k)}(x).</me></p>
 		</statement>
 		<hint>
-			<p>Follow the proof in Example<nbsp/><xref ref="example-binomial-theorem"/>.</p>
+			<p>Follow the proof in Example<nbsp/><xref ref="example-integers-binomial-theorem"/>.</p>
 		</hint>
 		
 	</exercise>
@@ -112,7 +112,7 @@
 			<p>If <m>x</m> is a nonnegative real number, then show that <m>(1 + x)^n - 1 \geq nx</m> for <m>n = 0, 1, 2, \ldots</m>.</p>
 		</statement>
 		<hint>
-			<p><m>S(0): (1 + x)^0 - 1 = 0 \geq 0 = 0 \cdot x</m> is true. Assume <m>S(k): (1 + x)^k -1 \geq kx</m> is true. Then 
+			<p>The base case, <m>S(0): (1 + x)^0 - 1 = 0 \geq 0 = 0 \cdot x</m> is true. Assume <m>S(k): (1 + x)^k -1 \geq kx</m> is true. Then 
 				<md>
 					<mrow>(1 + x)^{k + 1} - 1 &amp; = (1 + x)(1 + x)^k -1</mrow>
 					<mrow>&amp; = (1 + x)^k + x(1 + x)^k - 1</mrow>
@@ -138,7 +138,7 @@
 
 	<exercise number="13">
 		<statement>
-			<p>Prove that the two principles of mathematical induction stated in Section~2.1 are equivalent.</p>
+			<p>Prove that the two principles of mathematical induction stated in Section <xref ref="section-math-induction"/> are equivalent.</p>
 		</statement>
 		
 	</exercise>
@@ -258,7 +258,7 @@
 			<p>Define the <term>least common multiple</term> of two nonzero integers <m>a</m> and <m>b</m>, denoted by <m>\lcm(a,b)</m>, to be the nonnegative integer <m>m</m> such that both <m>a</m> and <m>b</m> divide <m>m</m>, and if <m>a</m> and <m>b</m>  divide any other integer <m>n</m>, then <m>m</m> also divides <m>n</m>. Prove that any two integers <m>a</m> and <m>b</m> have a unique least common multiple.</p>
 		</statement>
 		<hint>
-			<p>Let <m>S = \{s \in {\mathbb N} : a \mid s</m>, <m>b \mid s \}</m>. Then <m>S \neq \emptyset</m>, since <m>|ab| \in S</m>. By the Principle of Well-Ordering, <m>S</m> contains a least element <m>m</m>. To show uniqueness, suppose that <m>a \mid n</m> and <m>b \mid n</m> for some <m>n \in {\mathbb N}</m>. By the division algorithm, there exist unique integers <m>q</m> and <m>r</m> such that <m>n = mq + r</m>, where <m>0 \leq r \lt m</m>. <m>a \mid m</m>, <m>b \mid m</m>, <m>a \mid n</m>, <m>b \mid n \Rightarrow a \mid r</m>, <m>b \mid r \Rightarrow r = 0</m> by the minimality of <m>m</m>. Therefore, <m>m \mid n</m>.</p>
+			<p>Let <m>S = \{s \in {\mathbb N} : a \mid s</m>, <m>b \mid s \}</m>. Then <m>S \neq \emptyset</m>, since <m>|ab| \in S</m>. By the Principle of Well-Ordering, <m>S</m> contains a least element <m>m</m>. To show uniqueness, suppose that <m>a \mid n</m> and <m>b \mid n</m> for some <m>n \in {\mathbb N}</m>. By the division algorithm, there exist unique integers <m>q</m> and <m>r</m> such that <m>n = mq + r</m>, where <m>0 \leq r \lt m</m>. Since <m>a</m> and <m>b</m> divide both <m>m</m>, and <m>n</m>, it must be the case that  <m>a</m> and <m>b</m> both divide <m>r</m>.  Thus, <m>r = 0</m> by the minimality of <m>m</m>. Therefore, <m>m \mid n</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -289,7 +289,7 @@
 			<p>Let <m>a, b, c \in {\mathbb Z}</m>.  Prove that if <m>\gcd(a,b) = 1</m> and <m>a  \mid bc</m>, then <m>a  \mid  c</m>. </p>
 		</statement>
 		<hint>
-			<p>Since <m>\gcd(a,b) = 1</m>, there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1 \Rightarrow acr + bcs = c</m>. Since <m>a \mid a</m> and <m>a \mid bc</m>, <m>a \mid c</m>.</p>
+			<p>Since <m>\gcd(a,b) = 1</m>, there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1</m>.   Thus, <m>acr + bcs = c</m>. Since <m>a</m> divides both <m>bc</m> and itself, <m>a</m> must divide <m>c</m>.</p>
 		</hint>
 		
 	</exercise>
