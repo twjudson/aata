@@ -28,7 +28,7 @@
 		<p>In <term>single</term><index><main>Key</main><sub>single</sub></index><index><main>Cryptosystem</main><sub>single key</sub></index> or <term>private key cryptosystems</term><index><main>Key</main><sub>private</sub></index><index><main>Cryptosystem</main><sub>private key</sub></index> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess at if only examples of coded messages are available.</p>
 
 
-		<example xml:id="example-caesar">
+		<example xml:id="example-crypt-caesar">
 			<p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\mbox{A}  = 00, \mbox{B}  = 01, \ldots, \mbox{Z} = 25</m>. The encoding function will be 
 				<me>f(p) = p + 3 \bmod 26;</me>
 			that is, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. The decoding function is then 
@@ -50,7 +50,7 @@
 			It is now easy to determine whether or not our guess is correct.</p>
 		</example>
 
-		<p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><index><main>Cryptosystem</main><sub>monoalphabetic</sub></index>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp /><xref ref="example-caesar" />, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p> 
+		<p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><index><main>Cryptosystem</main><sub>monoalphabetic</sub></index>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp /><xref ref="example-crypt-caesar" />, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p> 
 
 		<p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by  
 			<me>f(p) = ap + b \bmod 26.</me>
@@ -60,7 +60,7 @@
 			<me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
 		Such a cryptosystem is called an <term>affine cryptosystem</term><index><main>Cryptosystem</main><sub>affine</sub></index>.</p>
  
-		<example xml:id="example-affine-crypt">
+		<example xml:id="example-crypt-affine-crypt">
 			<p>Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>. For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible. This is only possible if <m>\gcd(a, 26) = 1</m>. Recognizing this fact, we will let <m>a = 5</m> since <m>\gcd(5, 26) = 1</m>. It is easy to see that <m>a^{-1} = 21</m>. Therefore, we can take our encryption function to be <m>f(p) = 5p + 3 \bmod 26</m>. Thus, ALGEBRA is encoded as <m>3, 6, 7, 23, 8, 10, 3</m>, or DGHXIKD. The decryption function will be   
 				<me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
 		</example> 
@@ -75,7 +75,7 @@
 		where <m>{\mathbf b}</m> is a fixed column vector and matrix operations are performed in <m>{\mathbb Z}_{26}</m>. The decoding function must be
 			<me>f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.</me></p>
  
-		<example xml:id="example-help">
+		<example xml:id="example-crypt-help">
 			<p>Suppose that we wish to encode the word HELP. The corresponding digit string is <m>7, 4, 11, 15</m>. If
 				<me>A =
 				\begin{pmatrix}<![CDATA[
@@ -92,7 +92,7 @@
 			If <m>{\mathbf b} = ( 2, 2)^{\rm t}</m>, then our message is encrypted as RRCR. The encrypted letter R represents more than one plaintext letter.</p>
 		</example>
  
-		<p>Frequency analysis can still be performed on a polyalphabetic cryptosystem, because we have a good understanding of how pairs of letters appear in the English language. The pair <em>th</em> appears quite often; the pair <em>qz</em> never appears.  To avoid decryption by a third party, we must use a larger matrix than the one we used in Example<nbsp /><xref ref="example-help" />.</p>
+		<p>Frequency analysis can still be performed on a polyalphabetic cryptosystem, because we have a good understanding of how pairs of letters appear in the English language. The pair <em>th</em> appears quite often; the pair <em>qz</em> never appears.  To avoid decryption by a third party, we must use a larger matrix than the one we used in Example<nbsp /><xref ref="example-crypt-help" />.</p>
 
 <!-- TWJ 4/7/2010 Need to resolve this reference -->
 

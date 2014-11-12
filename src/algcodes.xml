@@ -60,13 +60,13 @@
 			<p>Uncoded messages may be composed of letters or characters, but typically they consist of binary <m>m</m>-tuples. These messages are encoded into codewords, consisting of binary <m>n</m>-tuples, by a device called an <term>encoder</term>. The message is transmitted and then decoded. We will consider the occurrence of errors during transmission. An <term>error</term> occurs if there is a change in one or more bits in the codeword. A <term>decoding scheme</term> is a method that either converts an arbitrarily received <m>n</m>-tuple into a meaningful decoded message or gives an error message for that <m>n</m>-tuple. If the received message is a codeword (one of the special <m>n</m>-tuples allowed to be transmitted), then the decoded message must be the unique message that was encoded into the codeword. For received non-codewords, the decoding scheme will give an error indication, or, if we are more clever, will actually try to correct the error and reconstruct the original message. Our goal is to transmit error-free messages as cheaply and quickly as possible.</p>
  
  
-			<example xml:id="example-repeat">
+			<example xml:id="example-algcodes-repeat">
 				<p>One possible coding scheme would be to send a message several times and to compare the received copies with one another. Suppose that the message to be encoded is a binary <m>n</m>-tuple <m>(x_{1}, x_{2}, \ldots, x_{n})</m>. The message is encoded into a binary <m>3n</m>-tuple by simply repeating the message three times: 
 					<me>(x_{1}, x_{2}, \ldots, x_{n}) \mapsto (x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n}).</me>
 				To decode the message, we choose as the <m>i</m>th digit the one that appears in the <m>i</m>th place in at least two of the three transmissions. For example, if the original message is <m>(0110)</m>, then the transmitted message will be <m>(0110\;  0110\;  0110)</m>. If there is a transmission error in the fifth digit, then the received codeword will be <m>(0110\;  1110\;  0110)</m>, which will be correctly decoded as <m>(0110)</m>.<fn>We will adopt the convention that bits are numbered left to right in binary <m>n</m>-tuples.</fn>  This triple-repetition method will automatically detect and correct all single errors, but it is slow and inefficient: to send a message consisting of <m>n</m> bits, <m>2n</m> extra bits are required, and we can only detect and correct single errors. We will see that it is possible to find an encoding scheme that will encode a message of <m>n</m> bits into <m>m</m> bits with <m>m</m> much smaller than <m>3n</m>.</p>
 			</example>
  
- 			<example xml:id="example-even-parity">
+ 			<example xml:id="example-algcodes-even-parity">
 				<p><term>Even parity</term>, a  commonly  used coding scheme, is much more efficient than the simple repetition scheme. The ASCII (American Standard Code for Information Interchange) coding system uses binary 8-tuples, yielding <m>2^{8} = 256</m> possible 8-tuples. However, only seven bits are needed since there are only <m>2^7 = 128</m> ASCII characters. What can or should be done with the extra bit? Using the full eight bits, we can detect single transmission errors. For example, the ASCII codes for A, B, and C are 
 					<md>
 						<mrow>\mbox{A} &amp; = 65_{10} = 01000001_{2},</mrow>
@@ -110,7 +110,7 @@
 			<caption>A repetition code</caption>
 			</table>
 
-			<example xml:id="example-nearest">
+			<example xml:id="example-algcodes-nearest">
 				<p>Suppose that our original message is either a 0 or a 1, and that 0 encodes to (000) and 1 encodes to (111). If only a single error occurs during transmission, we can detect and correct the error. For example, if a 101 is received, then the second bit must have been changed from a 1 to a 0.  The originally transmitted codeword must have been (111). This method will detect and correct  all single errors.</p> 
 
 				<p>In Table<nbsp /><xref ref="table-repetition-code" />, we present all possible words that might be received for the transmitted codewords (000) and (111). Table<nbsp /><xref ref="table-repetition-code" /> also shows  the number of bits by which each received 3-tuple differs from each original codeword.</p>
@@ -124,7 +124,7 @@
 <!-- Label repaired.  Suggested by R. Beezer. -->
 <!-- TWJ - 12/19/2011 -->
 
-			<p>The coding scheme presented in Example<nbsp /><xref ref="example-nearest" /> is not a complete solution to the problem because it does not account for the possibility of multiple errors. For example, either a (000) or a (111) could be sent and a (001) received. We have no means of deciding from the received word whether there was a single error in the third bit or two errors, one in the first bit and one in the second.  No matter what coding  scheme is used, an incorrect message could be received: we could transmit a (000), have errors in all three bits, and receive the codeword (111). It is important to make explicit assumptions about the likelihood and distribution of transmission errors so that, in a particular application, it will be known whether a given error detection scheme is appropriate. We will assume that transmission errors are rare, and, that when they do occur, they occur independently in each bit; that is, if <m>p</m> is the probability of an error in one bit and <m>q</m> is the probability of an error in a different bit, then the probability of errors occurring in both of these bits at the same time is <m>pq</m>. We will also assume that a received <m>n</m>-tuple is decoded into a codeword that is closest to it; that is, we assume that the receiver uses <term>maximum-likelihood decoding</term><index><main>Maximum-likelihood decoding</main></index>.</p>
+			<p>The coding scheme presented in Example<nbsp /><xref ref="example-algcodes-nearest" /> is not a complete solution to the problem because it does not account for the possibility of multiple errors. For example, either a (000) or a (111) could be sent and a (001) received. We have no means of deciding from the received word whether there was a single error in the third bit or two errors, one in the first bit and one in the second.  No matter what coding  scheme is used, an incorrect message could be received: we could transmit a (000), have errors in all three bits, and receive the codeword (111). It is important to make explicit assumptions about the likelihood and distribution of transmission errors so that, in a particular application, it will be known whether a given error detection scheme is appropriate. We will assume that transmission errors are rare, and, that when they do occur, they occur independently in each bit; that is, if <m>p</m> is the probability of an error in one bit and <m>q</m> is the probability of an error in a different bit, then the probability of errors occurring in both of these bits at the same time is <m>pq</m>. We will also assume that a received <m>n</m>-tuple is decoded into a codeword that is closest to it; that is, we assume that the receiver uses <term>maximum-likelihood decoding</term><index><main>Maximum-likelihood decoding</main></index>.</p>
  
 			<figure xml:id="figure-channel">
 
@@ -163,7 +163,7 @@
 			</proof>
 		</theorem>
  
-		<example xml:id="example-probability">
+		<example xml:id="example-algcodes-probability">
 			<p>Suppose that <m>p = 0.995</m> and a 500-bit message is sent. The probability that the message was sent error-free is 
 				<me>p^{n} = (0.995)^{500} \approx 0.082.</me>
 			The probability of exactly one error occurring is
@@ -185,7 +185,7 @@
 				<me>D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}.</me>
 			A <term>codeword</term> is any element in the image of <m>E</m>. We also require that <m>E</m> be one-to-one so that two information blocks will not be encoded into the same codeword. If our code is to be error-correcting,then <m>D</m> must be onto.</p>
 
-		<example xml:id="example-block-code">
+		<example xml:id="example-algcodes-block-code">
 			<p>The even-parity coding system developed to detect single errors in ASCII characters is an <m>(8,7)</m>-block code. The encoding function is
 				<me>E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),</me>
 			where <m>x_8 = x_7 + x_6 + \cdots + x_1</m> with addition in <m>{\mathbb Z}_2</m>. </p>
@@ -193,7 +193,7 @@
  
 		<p>Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)</m> be binary <m>n</m>-tuples. The <term>Hamming distance</term>\index{Hamming distance} or <term>distance</term>, <m>d({\mathbf x}, {\mathbf y})</m><!--NOTATION TABLE\label{noteHammingdist}-->, between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The distance between two codewords is the minimum number of transmission errors required to change one codeword into the other. The <term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code, <m>d_{\min}</m><!--NOTATION TABLE\label{notemindist}-->, is the minimum of all distances <m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>, <m>w({\mathbf x})</m>\label{noteweight}, of a binary codeword <m>{\mathbf x}</m> is the number of 1's in <m>{\mathbf x}</m>. Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, where <m>{\mathbf 0} = (00 \cdots 0)</m>.</p>
  
-		<example xml:id="example-min-distance">
+		<example xml:id="example-algcodes-min-distance">
 			<p>Let <m>{\mathbf x} = (10101)</m>, <m>{\mathbf y} = (11010)</m>, and <m>{\mathbf z} = (00011)</m> be all of the codewords in some code <m>C</m>. Then we have the following Hamming distances: 
 				<me>d({\mathbf x},{\mathbf y}) = 4, \qquad d({\mathbf x},{\mathbf z}) = 3, \qquad d({\mathbf y},{\mathbf z}) = 3.</me>
 			The minimum distance  for this code is 3. We also have the following weights: 
@@ -259,7 +259,7 @@
 			</proof>
 		</theorem>
 
-		<example xml:id="example-single-correct">
+		<example xml:id="example-algcodes-single-correct">
 			<p>In Table<nbsp /><xref ref="table-hamming-distance" />, the codewords <m>{\mathbf c}_1 = (00000)</m>, <m>{\mathbf c}_2 = (00111)</m>, <m>{\mathbf c}_3 = (11100)</m>, and <m>{\mathbf c}_4 = (11011)</m> determine a single error-correcting code.</p>
 		</example>
 
@@ -297,7 +297,7 @@
 		<p>To check that a code is a group code, we need only verify one thing. If we add any two elements in the code, the result must be an <m>n</m>-tuple that is again in the code. It is not necessary to check that the inverse of the <m>n</m>-tuple is in the code, since every codeword is its own inverse, nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword. For instance, <me>(11000101) + (11000101) = (00000000).</me></p>
  
 
-		<example xml:id="example-weights">
+		<example xml:id="example-algcodes-weights">
 			<p>Suppose that we have a code that consists of the following 7-tuples: 
 				<md>
 					<mrow> &amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
@@ -343,7 +343,7 @@
 		<subsection number="no">
 			<title>Linear Codes</title>
  
- 			<p>From Example<nbsp /><xref ref="example-weights" />, it is now easy to check that the minimum nonzero weight is 3; hence, the code does indeed detect and correct all single errors. We have now reduced the problem of finding <q>good</q> codes to that of generating group codes. One easy way to generate group codes is to employ a bit of matrix theory.</p>
+ 			<p>From Example<nbsp /><xref ref="example-algcodes-weights" />, it is now easy to check that the minimum nonzero weight is 3; hence, the code does indeed detect and correct all single errors. We have now reduced the problem of finding <q>good</q> codes to that of generating group codes. One easy way to generate group codes is to employ a bit of matrix theory.</p>
  
 			<p>Define the <term>inner product</term><index><main>Inner product</main></index> of two binary <m>n</m>-tuples to be 
 				<me>{\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,</me>
@@ -360,7 +360,7 @@
 					<mrow>&amp; = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.</mrow>
 				</md></p>
  
-			<example xml:id="example-matrixcodes">
+			<example xml:id="example-algcodes-matrixcodes">
 				<p>Suppose that the words to be encoded consist of all binary 3-tuples and that our encoding scheme is even-parity. To encode an arbitrary 3-tuple, we add a fourth bit to obtain an even number of 1's. Notice that an arbitrary <m>n</m>-tuple <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> has an even number of 1's exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>; hence, a 4-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}</m> has an even number of 1's if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
 					<me>{\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^{\rm t} {\mathbf 1} =
 					\begin{pmatrix}<![CDATA[
@@ -374,7 +374,7 @@
  
 			<p>Let <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m><!--NOTATION TABLE\label{notembyn}--> denote the set of all <m>m \times n</m> matrices with entries in <m>{\mathbb Z}_2</m>. We do matrix operations as usual except that all our addition and multiplication operations occur in <m>{\mathbb Z}_2</m>. Define the <term>null space</term><index><main>Matrix</main><sub>null space of</sub></index><index><main>Null space</main><sub>of a matrix</sub></index> of  a matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> to be the set of all binary <m>n</m>-tuples <m>{\mathbf x}</m> such that <m>H{\mathbf x} = {\mathbf 0}</m>. We denote the null space of a matrix <m>H</m> by <m>{\rm Null}(H)</m><!--NOTATION TABLE\label{notenull}-->.</p> 
 
-			<example xml:id="example-group-code">
+			<example xml:id="example-algcodes-group-code">
 				<p>Suppose that
 					<me>H =
 					\begin{pmatrix}<![CDATA[
@@ -409,7 +409,7 @@
 
 			<p>A code is a <term>linear code</term><index><main>Code</main><sub>linear</sub></index> if it is determined by the null space of some matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.</p> 
  
-			<example xml:id="example-linear-code">
+			<example xml:id="example-algcodes-linear-code">
 				<p>Let <m>C</m> be the code given by the matrix
 					<me>H =
 					\begin{pmatrix}<![CDATA[
@@ -455,7 +455,7 @@
 			<me>G = \left( \frac{I_{n-m}}{A} \right).</me>
 		Our goal will be to show that <m>G {\mathbf x} = {\mathbf y}</m> if and only if <m>H{\mathbf y} = {\mathbf 0}</m>.  Given a message block <m>{\mathbf x}</m> to be encoded, <m>G</m> will allow us to quickly encode it into a linear codeword <m>{\mathbf y}</m>.</p>
 
-		<example xml:id="example-parity-check">
+		<example xml:id="example-algcodes-parity-check">
 			<p>Suppose that we have the following eight words to be encoded:
 				<me>(000), (001), (010), \ldots, (111).</me>
 			For
@@ -533,7 +533,7 @@
 			</statement>
 		</theorem>
  
-		<p>We leave the proof of this theorem as an exercise. In light of the theorem, the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called <term> information bits</term> and the last <m>m</m> bits are called <term>check bits</term>. In Example<nbsp /><xref ref="example-parity-check" />,  the first three bits are the information bits and the last three are the check bits.</p>
+		<p>We leave the proof of this theorem as an exercise. In light of the theorem, the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called <term> information bits</term> and the last <m>m</m> bits are called <term>check bits</term>. In Example<nbsp /><xref ref="example-algcodes-parity-check" />,  the first three bits are the information bits and the last three are the check bits.</p>
  
 		<theorem>
 			<statement>
@@ -607,7 +607,7 @@
 			</md>
 		are the <m>n</m>-tuples in <m>{\mathbb Z}_2^n</m> of weight 1. For an <m>m \times n</m> binary matrix <m>H</m>, <m>H{\mathbf e}_i</m> is exactly the <m>i</m>th column of the matrix <m>H</m>.</p> 
 
-		<example xml:id="example-ith-column">
+		<example xml:id="example-algcodes-ith-column">
 			<p>Observe that
 				<me>\begin{pmatrix}<![CDATA[
 				1 & 1 & 1 & 0 & 0 \\
@@ -642,7 +642,7 @@
 			</proof>
 		</theorem>
 
-		<example xml:id="example-null-space">
+		<example xml:id="example-algcodes-null-space">
 			<p>If we consider the matrices
 				<me>H_1 =
 				\begin{pmatrix}<![CDATA[
@@ -663,7 +663,7 @@
  
 		<p>We can even do better than Theorem<nbsp /><xref ref="theorem-single-error" />. This theorem gives us conditions on a matrix <m>H</m> that tell us when the minimum weight of the code formed by the null space of <m>H</m> is 2.  We can also determine when the minimum distance of a linear code is 3 by examining the corresponding matrix.</p>
  
-		<example xml:id="example-check-matrix">
+		<example xml:id="example-algcodes-check-matrix">
 			<p>If we let
 				<me>H =
 				\begin{pmatrix}<![CDATA[
@@ -711,7 +711,7 @@
  
 		<p>We are now at the stage where we are able to generate linear codes that detect and correct errors fairly easily, but it is still a  time-consuming process to decode a received <m>n</m>-tuple and determine which is the closest codeword, because the received <m>n</m>-tuple must be compared to each possible codeword to determine the proper decoding. This can be a serious impediment if the code is very large.</p>
 
-		<example xml:id="example-syndrome">
+		<example xml:id="example-algcodes-syndrome">
 			<p>Given the binary matrix
 				<me>H =
 				\begin{pmatrix}<![CDATA[
@@ -758,7 +758,7 @@
 			</statement>
 		</theorem>
  
-		<example xml:id="example-detecting-errors">
+		<example xml:id="example-algcodes-detecting-errors">
 			<p>Consider the matrix
 				<me>H =
 				\begin{pmatrix}<![CDATA[
@@ -787,7 +787,7 @@
  
 		<p>We can use group theory to obtain another way of decoding messages.  A linear code <m>C</m> is a subgroup of <m>{\mathbb Z}_2^n</m>. <term>Coset</term><index><main>Coset decoding</main></index> or <term>standard decoding</term><index><main>Standard decoding</main></index> uses the cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m> to implement maximum-likelihood decoding. Suppose that <m>C</m> is an <m>(n,m)</m>-linear code. A coset of <m>C</m> in <m>{\mathbb Z}_2^n</m> is written in the form <m>{\mathbf x} + C</m>, where <m>{\mathbf x} \in {\mathbb Z}_2^n</m>. By Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />), there are <m>2^{n-m}</m> distinct cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m>.</p>
 
-		<example xml:id="example-coset-decoding">
+		<example xml:id="example-algcodes-coset-decoding">
 			<p>Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
 				<me>H =
 				\begin{pmatrix}<![CDATA[
@@ -821,7 +821,7 @@
 
 		<p>Our task is to find out how knowing the cosets might help us to decode a message. Suppose that <m>{\mathbf x}</m> was the original codeword sent and that <m>{\mathbf r}</m> is the <m>n</m>-tuple received. If <m>{\mathbf e}</m> is the transmission error, then <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> or, equivalently, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. However, this is exactly the statement that <m>{\mathbf r}</m> is an element in the coset  <m>{\mathbf e} + C</m>. In maximum-likelihood decoding we expect the error <m>{\mathbf e}</m> to be as small as possible; that is, <m>{\mathbf e}</m> will have the least weight. An <m>n</m>-tuple of least weight in a coset is called a <term>coset leader</term><index><main>Coset</main><sub>leader</sub></index>. Once we have determined a coset leader for each coset, the decoding process becomes a task of calculating <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.</p>
 
-		<example xml:id="example-representative">
+		<example xml:id="example-algcodes-representative">
 			<p>In Table<nbsp /><xref ref="table-cosets-of-c" />, notice that we have chosen a representative of the least possible weight for each coset.  These representatives are coset leaders. Now suppose that <m>{\mathbf r} = (01111)</m> is the received word. To decode <m>{\mathbf r}</m>, we find that it is in the coset <m>(00010) + C</m>; hence, the originally transmitted codeword must have been <m>(01101) = (01111) + (00010)</m>.</p>
 		</example>
  
@@ -855,8 +855,8 @@
 			</proof>
 		</proposition>
  
-		<example xml:id="example-decoding-table">
-			<p>Table<nbsp /><xref ref="table-syndrome" /> is a decoding table for the code <m>C</m> given in Example<nbsp /><xref ref="example-coset-decoding" />. If <m>{\mathbf x} = (01111)</m> is received, then its syndrome can be computed to be
+		<example xml:id="example-algcodes-decoding-table">
+			<p>Table<nbsp /><xref ref="table-syndrome" /> is a decoding table for the code <m>C</m> given in Example<nbsp /><xref ref="example-algcodes-coset-decoding" />. If <m>{\mathbf x} = (01111)</m> is received, then its syndrome can be computed to be
 				<me>H {\mathbf x} =
 				\begin{pmatrix}<![CDATA[
 				0 \\ 1 \\ 1
