@@ -41,11 +41,11 @@
 				</ol>
 			We will usually write <m>a \preceq b</m><!--NOTATION TABLE\label{lessthan}--> to mean <m>(a, b) \in P</m>  unless some symbol is naturally associated with a particular partial order, such as <m>a \leq b</m> with integers <m>a</m> and <m>b</m>, or <m>X \subseteq Y</m> with sets <m>X</m> and <m>Y</m>. A set <m>X</m> together with a partial order <m>\preceq</m> is called a <term>partially ordered set</term>,<index><main>Partially ordered set</main></index> or <term>poset</term><index><main>Poset</main><sub>definition of</sub></index>.</p>
 
-			<example xml:id="example-z-less-equal">
+			<example xml:id="example-boolean-z-less-equal">
 				<p>The set of integers (or rationals  or reals) is a poset where <m>a \leq  b</m> has the usual meaning for two integers <m>a</m> and <m>b</m> in <m>{\mathbb Z}</m>.</p>
 			</example>
 
-			<example xml:id="example-power-set-subset">
+			<example xml:id="example-boolean-power-set-subset">
 				<p>Let <m>X</m> be any set.  We will define the <term>power set</term><index><main>Power set</main></index> of <m>X</m> to be the set of all subsets of <m>X</m>. We denote the power set of <m>X</m> by <m>{\mathcal P}(X)</m>. For example, let <m>X = \{ a, b, c \}</m>.  Then <m>{\mathcal P}(X)</m> is  the set of all subsets of the set  <m>\{ a, b, c \}</m>: 
 					<md>
 						<mrow>&amp; \emptyset &amp; &amp; \{ a \} &amp; &amp; \{ b \} &amp; &amp; \{ c \} &amp;</mrow>
@@ -92,16 +92,16 @@
 				<caption>Partial order on <m>\mathcal P( \{ a, b, c \})</m></caption>
 			</figure>
 
-			<example xml:id="example-subgroup-poset">
+			<example xml:id="example-boolean-subgroup-poset">
 				<p>Let <m>G</m> be a group. The set of subgroups of <m>G</m> is a poset, where the partial order is set inclusion.</p>
 			</example>
 
-			<example xml:id="example-p-order-not-unique">
+			<example xml:id="example-boolean-p-order-not-unique">
 				<p>There can be more than one partial order on a particular set.  We can form a partial order on <m>{\mathbb N}</m> by <m>a \preceq b</m> if <m>a \mid b</m>.  The relation is certainly reflexive since <m>a \mid a</m> for all <m>a \in {\mathbb N}</m>.  If <m>m \mid n</m> and <m>n \mid m</m>, then <m>m = n</m>; hence, the relation is also antisymmetric.  The relation is transitive, because if <m>m \mid n</m> and <m>n \mid p</m>, then <m>m \mid p</m>.</p>
 			</example>
 
-			<example xml:id="example-poset-divisors-24">
-				<p>Let <m>X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}</m> be the set of divisors of 24 with the partial order defined in Example<nbsp /><xref ref="example-p-order-not-unique" />. Figure<nbsp /><xref ref="figure-poset-divisors-24" /> shows the partial order on <m>X</m>.</p>
+			<example xml:id="example-boolean-poset-divisors-24">
+				<p>Let <m>X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}</m> be the set of divisors of 24 with the partial order defined in Example<nbsp /><xref ref="example-boolean-p-order-not-unique" />. Figure<nbsp /><xref ref="figure-poset-divisors-24" /> shows the partial order on <m>X</m>.</p>
 			</example>
 
 			<figure xml:id="figure-poset-divisors-24">
@@ -144,8 +144,8 @@
 
 			<p>Let <m>Y</m> be a subset of a poset <m>X</m>. An element <m>u</m> in <m>X</m> is an <term>upper bound</term><index><main>Upper bound</main></index> of <m>Y</m> if <m>a \preceq u</m> for every element <m>a \in Y</m>. If <m>u</m> is an upper bound of <m>Y</m> such that <m>u \preceq v</m> for every other upper bound <m>v</m> of <m>Y</m>, then <m>u</m> is called a <term>least upper bound</term><index><main>Least upper bound</main></index> or <term>supremum</term><index><main>Supremum</main></index> of <m>Y</m>. An element <m>l</m> in <m>X</m> is said to be a <term>lower bound</term><index><main>Lower bound</main></index> of <m>Y</m> if <m>l \preceq a</m> for all <m>a \in Y</m>. If <m>l</m> is a lower bound of <m>Y</m> such that <m>k \preceq l</m> for every other lower bound <m>k</m> of <m>Y</m>, then <m>l</m> is called a <term>greatest lower bound</term><index><main>Greatest lower bound</main></index> or <term>infimum</term><index><main>Infimum</main></index> of <m>Y</m>.</p>
 
-			<example xml:id="example-poset-gcd">
-				<p>Let <m>Y = \{  2, 3, 4, 6 \}</m> be contained in the set <m>X</m> of Example<nbsp /><xref ref="example-poset-divisors-24" />.  Then <m>Y</m> has upper bounds 12 and 24, with 12 as a least upper bound.  The only lower bound is 1; hence, it must be a greatest lower bound.</p>
+			<example xml:id="example-boolean-poset-gcd">
+				<p>Let <m>Y = \{  2, 3, 4, 6 \}</m> be contained in the set <m>X</m> of Example<nbsp /><xref ref="example-boolean-poset-divisors-24" />.  Then <m>Y</m> has upper bounds 12 and 24, with 12 as a least upper bound.  The only lower bound is 1; hence, it must be a greatest lower bound.</p>
 			</example>
 
 			<p>As it turns out, least upper bounds and greatest lower bounds are unique if they exist.</p>
@@ -161,11 +161,11 @@
  
 			<p>On many posets it is possible to define binary operations by using the greatest lower bound and the least upper bound of two elements. A <term>lattice</term><index><main>Lattice</main><sub>definition of</sub></index> is a poset <m>L</m> such that every pair of elements in <m>L</m> has a least upper bound and a greatest lower bound. The least upper bound of <m>a, b \in L</m> is called the <term>join</term><index><main>Join</main></index><!--NOTATION TABLE join --> of <m>a</m> and <m>b</m> and is denoted  by <m>a \vee b</m>.  The greatest lower bound of <m>a, b \in L</m> is called the <term>meet</term><index><main>Meet</main></index><!--NOTATION TABLE meet--> of <m>a</m> and <m>b</m> and is denoted by <m>a \wedge b</m>.</p>
 
-			<example xml:id="lub_glb">
+			<example xml:id="example-boolean-lub-glb">
 				<p>Let <m>X</m> be a set. Then the power set of <m>X</m>, <m>{\mathcal P}(X)</m>, is a lattice. For two sets <m>A</m> and <m>B</m> in <m>{\mathcal P}(X)</m>, the least upper bound of <m>A</m> and <m>B</m> is <m>A \cup B</m>. Certainly <m>A \cup B</m> is an upper bound of <m>A</m> and <m>B</m>, since <m>A \subseteq A \cup B</m> and <m>B \subseteq A \cup B</m>.  If <m>C</m> is some other set containing both <m>A</m> and <m>B</m>, then <m>C</m> must contain <m>A \cup B</m>; hence, <m>A \cup B</m> is the least upper bound of <m>A</m> and <m>B</m>. Similarly,  the greatest lower bound of <m>A</m> and <m>B</m> is <m>A \cap B</m>.</p>
 			</example>
 
-			<example xml:id="example-subgroup-lattice">
+			<example xml:id="example-boolean-subgroup-lattice">
 				<p>Let <m>G</m> be a group and suppose that <m>X</m> is the set of subgroups of <m>G</m>.  Then <m>X</m> is a poset ordered by set-theoretic inclusion, <m>\subseteq</m>.  The set of subgroups of <m>G</m> is also a lattice.  If <m>H</m> and <m>K</m> are subgroups of <m>G</m>, the greatest lower bound of <m>H</m> and <m>K</m> is <m>H \cap K</m>. The set <m>H \cup K</m> may not be a subgroup of <m>G</m>.  We leave it as an exercise to show that the least upper bound of <m>H</m> and <m>K</m> is the subgroup generated by <m>H \cup K</m>.</p>
 			</example>
  
@@ -605,7 +605,7 @@
 
 		</figure>
 
-		<example xml:id="example-switching-circuit">
+		<example xml:id="example-boolean-switching-circuit">
 			<p>Every Boolean expression represents a switching circuit. For example, given the expression <m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m>, we can construct the circuit in Figure<nbsp /><xref ref="figure-circuit-2" />.</p>
 		</example>
 

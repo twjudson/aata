@@ -44,22 +44,22 @@
 
 		<p>Let us examine several examples of vector spaces. Some of them will be quite familiar; others will seem less so.</p>
 
-		<example xml:id="example-vector-space0-rn">
+		<example xml:id="example-vect-space0-rn">
 			<p>The <m>n</m>-tuples of real numbers, denoted by <m>{\mathbb R}^n</m>, form a vector space over <m>{\mathbb R}</m>. Given vectors <m>u = (u_1, \ldots, u_n)</m> and <m>v = (v_1, \ldots, v_n)</m> in <m>{\mathbb R}^n</m> and <m>\alpha</m> in <m>{\mathbb R}</m>, we can define vector addition by
 				<me>u + v = (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n)</me>
 			and scalar multiplication by 
 				<me>\alpha u = \alpha(u_1, \ldots, u_n)= (\alpha u_1, \ldots, \alpha u_n).</me></p>
 		</example>
  
-		<example xml:id="example-vector-space-fx">
+		<example xml:id="example-vect-space-fx">
 			<p>If <m>F</m> is a field, then <m>F[x]</m> is a vector space over <m>F</m>. The vectors in <m>F[x]</m> are simply polynomials.  Vector addition is just polynomial addition. If <m>\alpha \in F</m> and <m>p(x) \in F[x]</m>, then scalar multiplication is defined by <m>\alpha p(x)</m>.</p>
 		</example>
  
-		<example xml:id="example-vector-space-cont-func">
+		<example xml:id="example-vect-space-cont-func">
 			<p>The set of all continuous real-valued functions on a closed interval <m>[a,b]</m> is a vector space over <m>{\mathbb R}</m>.  If <m>f(x)</m> and <m>g(x)</m> are continuous on <m>[a, b]</m>, then <m>(f+g)(x)</m> is defined to be <m>f(x) + g(x)</m>.  Scalar multiplication is defined by <m>(\alpha f)(x) = \alpha f(x)</m> for <m>\alpha \in  {\mathbb R}</m>. For example, if <m>f(x) = \sin x</m> and <m>g(x)= x^2</m>, then <m>(2f + 5g)(x) =2 \sin x + 5 x^2</m>.</p>
 		</example>
  
-		<example xml:id="example-vector-space-sqrt2">
+		<example xml:id="example-vect-space-sqrt2">
 			<p>Let <m>V = {\mathbb Q}(\sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in  {\mathbb Q } \}</m>. Then <m>V</m> is a vector space over <m>{\mathbb Q}</m>. If <m>u = a + b \sqrt{2}</m> and <m>v = c + d \sqrt{2}</m>, then <m>u + v = (a + c) + (b + d ) \sqrt{2}</m> is again in <m>V</m>. Also, for <m>\alpha \in {\mathbb Q}</m>, <m>\alpha v</m> is in <m>V</m>.  We will leave it as an exercise to verify that all of the vector space axioms hold for <m>V</m>.</p>
 		</example>
 
@@ -100,7 +100,7 @@
 
 		<p>Just as groups have subgroups and rings have subrings, vector spaces also have substructures. Let <m>V</m> be a vector space over a field <m>F</m>, and <m>W</m> a subset of <m>V</m>. Then <m>W</m> is a <term>subspace</term><index><main>Vector space</main><sub>subspace of</sub></index> of <m>V</m> if it is closed under vector addition and scalar multiplication; that is, if <m>u, v \in W</m> and <m>\alpha \in F</m>, it will always be the case that <m>u + v</m> and <m>\alpha v</m> are also in <m>W</m>.</p>   
  
-		<example xml:id="example-subspace-w">
+		<example xml:id="example-vect-subspace-w">
 			<p>Let <m>W</m> be the subspace of <m>{\mathbb R}^3</m> defined by <m>W = \{ (x_1, 2 x_1 + x_2, x_1 - x_2) : x_1, x_2 \in {\mathbb R} \}</m>. We claim that <m>W</m> is a  subspace of <m>{\mathbb R}^3</m>.  Since 
 				<md>
 					<mrow>\alpha (x_1, 2 x_1 + x_2, x_1 - x_2) &amp; =  (\alpha x_1, \alpha(2 x_1 + x_2), \alpha( x_1 - x_2))</mrow>
@@ -110,7 +110,7 @@
 				<me>u + v = (x_1 + y_1, 2( x_1 + y_1) +( x_2 + y_2), (x_1 + y_1) - (x_2+ y_2)).</me></p>
 		</example>
  
-		<example xml:id="example-subspace-poly">
+		<example xml:id="example-vect-subspace-poly">
 			<p>Let <m>W</m> be the subset of polynomials of <m>F[x]</m> with no odd-power terms. If <m>p(x)</m> and <m>q(x)</m> have no odd-power terms, then neither will  <m>p(x) + q(x)</m>.  Also, <m>\alpha p(x) \in W</m> for <m>\alpha \in F</m> and <m>p(x) \in W</m>.</p>
 		</example>
 
@@ -195,11 +195,11 @@
  
 		<p>A set <m>\{ e_1, e_2, \ldots, e_n \}</m> of vectors in a vector space <m>V</m> is called a <term>basis</term><index><main>Vector space</main><sub>basis of</sub></index> for <m>V</m> if <m>\{ e_1, e_2, \ldots, e_n \}</m> is a linearly independent set that spans<m>V</m>.</p>
  
-		<example xml:id="example-basis-r3">
+		<example xml:id="example-vect-basis-r3">
 			<p>The vectors <m>e_1 = (1, 0, 0)</m>, <m>e_2 = (0, 1, 0)</m>, and <m>e_3 =(0, 0, 1)</m> form a basis for <m>{\mathbb R}^3</m>.  The set certainly spans <m>{\mathbb R}^3</m>, since any arbitrary vector <m>(x_1, x_2, x_3)</m> in <m>{\mathbb R}^3</m> can be written as <m>x_1 e_1 + x_2 e_2 + x_3 e_3</m>. Also, none of the vectors <m>e_1, e_2, e_3</m> can be written as a linear combination of the other two; hence, they are linearly independent.  The vectors <m>e_1, e_2, e_3</m> are not the only basis of <m>{\mathbb R}^3</m>:  the set <m>\{ (3, 2, 1), (3, 2, 0), (1, 1, 1) \}</m> is also a basis for <m>{\mathbb R}^3</m>.</p>
 		</example>
 
-		<example xml:id="example-basis-sqrt2">
+		<example xml:id="example-vect-basis-sqrt2">
 			<p>Let <m>{\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</m>. The sets <m>\{1, \sqrt{2}\,  \}</m> and <m>\{1 + \sqrt{2}, 1 - \sqrt{2}\,  \}</m> are both bases of <m>{\mathbb Q}( \sqrt{2}\, )</m>.</p>
 		</example>
 
