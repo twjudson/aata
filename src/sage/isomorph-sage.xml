@@ -20,7 +20,7 @@
 
 	<p>If <c>G</c> and <c>H</c> are two permutation groups, then the command <c>G.is_isomorphic(H)</c> will return <c>True</c> or <c>False</c> as the two groups are, or are not, isomorphic.  Since <q>isomorpic to</q> is an equivalence relation by Theorem<nbsp /><xref ref="theorem-isomorph-5" />, it does not matter which group plays the role of <c>G</c> and which plays the role of <c>H</c>.</p>
 
-	<p>So we have a few more examples to work with, let us introduce the Sage command that creates an external direct product.  If <c>G</c> and <c>H</c> are two permutation groups, then the command <c>direct_product_permgroups([G,H])</c> will  return the external direct product as a new permutation group.  Notice that this is a function (not a method) and the input is a list.  Rather than just combining two groups in the list, any number of groups can be supplied.  We illustrate isomorphism tesing and direct products in the context of Theorem<nbsp /><xref ref="theorem-z-pq" />, which is an equivalence, so tells us <em>exactly</em> when we have isomorphic groups.  We use cyclic permutation groups as stand-ins for <m>{\mathbb Z}_n</m> by Theorem<nbsp /><xref ref="theorem-isomorph-3" />.</p>
+	<p>So we have a few more examples to work with, let us introduce the Sage command that creates an external direct product.  If <c>G</c> and <c>H</c> are two permutation groups, then the command <c>direct_product_permgroups([G,H])</c> will  return the external direct product as a new permutation group.  Notice that this is a function (not a method) and the input is a list.  Rather than just combining two groups in the list, any number of groups can be supplied.  We illustrate isomorphism testing and direct products in the context of Theorem<nbsp /><xref ref="theorem-z-pq" />, which is an equivalence, so tells us <em>exactly</em> when we have isomorphic groups.  We use cyclic permutation groups as stand-ins for <m>{\mathbb Z}_n</m> by Theorem<nbsp /><xref ref="theorem-isomorph-3" />.</p>
 
 	<p>First, two isomorphic groups.</p>
 
@@ -171,7 +171,9 @@
 	</output>
 	</sage>
 
-	<p>It turns out that the two different groups that we know already do form a complete list of all groups of order <m>6</m>.  Again, a future result will make this easy.  Also, at order <m>6</m> a case-by-case analysis with Cayley tables might test your patience.  To Be Continued.</p>
+	<p>Exercise<nbsp /><xref ref="exercise-classify-2p" /> from this section classifies all groups of order <m>2p</m>, where <m>p</m> is a prime.  Such a group is either cyclic or a dihedral group.  So the two groups above, <m>{\mathbb Z}_6</m> and <m>D_3</m>, are the complete list of groups of order <m>6</m>.</p>
+
+	<p>By this general result, in addition to order <m>6</m>, we also know the complete lists of groups of orders <m>10</m> and <m>14</m>.  To Be Continued.</p>
 
 </subsection>
 
@@ -230,7 +232,14 @@
 	</output>
 	</sage>
 
-	<p>So <c>A</c> and <c>B</c> are two cyclic subgroups.  Notice that their intersection is the identity element, one of our requirements for an internal direct product.  So this is a good start.  <c>Z36</c> is an abelian group, thus the condition on all products commuting will hold, but we illustrate the Sage commands that will check this in a non-abelian situation.</p>
+	<p>So <c>A</c> and <c>B</c> are two cyclic subgroups.  Notice that their intersection is the identity element, one of our requirements for an internal direct product.  So this is a good start.</p>
+
+	<sage>
+	<input>[x for x in A if x in B]</input>
+	<output>[1]</output>
+	</sage>
+
+	<p><c>Z36</c> is an abelian group, thus the condition on all products commuting will hold, but we illustrate the Sage commands that will check this in a non-abelian situation.</p>
 
 	<sage>
 	<input>
