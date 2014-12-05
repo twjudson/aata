@@ -85,7 +85,7 @@
 	 
 	 		<p>The set
 				<me>N(H) = \{  g \in G : g H g^{-1} = H\}<!--NOTATION TABLE\label{notenormalizer}--></me>
-			is a subgroup of <m>G</m>. Notice that <m>H</m> is a normal subgroup of <m>N(H)</m>. In fact, <m>N(H)</m> is the largest subgroup of <m>G</m> in which <m>H</m> is normal. We call <m>N(H)</m> the <term>normalizer</term><index><main>Subgroup</main><sub>normalizer of</sub></index><index><main>Normalizer</main></index> of <m>H</m> in <m>G</m>.</p>
+			is a subgroup of <m>G</m> called the the <term>normalizer</term><index><main>Subgroup</main><sub>normalizer of</sub></index><index><main>Normalizer</main></index> of <m>H</m> in <m>G</m>. Notice that <m>H</m> is a normal subgroup of <m>N(H)</m>. In fact, <m>N(H)</m> is the largest subgroup of <m>G</m> in which <m>H</m> is normal.</p>
 	 
 			<lemma xml:id="lemma-p-order">
 				<statement>
@@ -94,7 +94,7 @@
 	<!-- typo corrected.  Suggested by L. Franklin. -->
 	<!-- TWJ - 12/19/2011 -->
 				<proof>
-					<p>Certainly <m>x \in N(P)</m>, and the cyclic subgroup, <m>\langle xP \rangle \subset N(P)/P</m>, has as its order a power of <m>p</m>. By the Correspondence Theorem there exists a subgroup <m>H</m> of <m>N(P)</m> such that <m>H/P = \langle xP \rangle</m>. Since <m>|H| = |P| \cdot |\langle xP \rangle|</m>, the order of <m>H</m> must be a power of <m>p</m>. However, <m>P</m> is a Sylow <m>p</m>-subgroup contained in <m>H</m>. Since the order of <m>P</m> is the largest power of <m>p</m> dividing <m>|G|</m>, <m>H=P</m>.  Therefore,  <m>H/P</m> is the trivial subgroup and <m>xP = P</m>, or <m>x \in P</m>.</p>
+					<p>Certainly <m>x \in N(P)</m>, and the cyclic subgroup, <m>\langle xP \rangle \subset N(P)/P</m>, has as its order a power of <m>p</m>. By the Correspondence Theorem there exists a subgroup <m>H</m> of <m>N(P)</m> containing <m>P</m> such that <m>H/P = \langle xP \rangle</m>. Since <m>|H| = |P| \cdot |\langle xP \rangle|</m>, the order of <m>H</m> must be a power of <m>p</m>. However, <m>P</m> is a Sylow <m>p</m>-subgroup contained in <m>H</m>. Since the order of <m>P</m> is the largest power of <m>p</m> dividing <m>|G|</m>, <m>H=P</m>.  Therefore,  <m>H/P</m> is the trivial subgroup and <m>xP = P</m>, or <m>x \in P</m>.</p>
 				</proof>
 			</lemma>
 	 
@@ -113,10 +113,12 @@
 				</statement>
 				<proof>
 					<p>Let <m>P</m> be a Sylow <m>p</m>-subgroup of <m>G</m> and suppose that <m>|G|=p^r m</m> and <m>|P|=p^r</m>. Let 
-						<me>{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \}</me>
+						<me>{\mathcal S} = \{ P = P_1, P_2, \ldots, P_k \}</me>
 					consist of the distinct conjugates of <m>P</m> in <m>G</m>.  By Lemma<nbsp /><xref ref="lemma-distinct-conjugates" />, <m>k = [G: N(P)]</m>. Notice that 
 						<me>|G|= p^r m = |N(P)| \cdot [G: N(P)]= |N(P)| \cdot k.</me>
-					Since <m>p^r</m> divides <m>|N(P)|</m>, <m>p</m> cannot divide <m>k</m>. Given any other Sylow <m>p</m>-subgroup <m>Q</m>, we must show that <m>Q \in {\mathcal P}</m>. Consider the <m>Q</m>-conjugacy classes of each <m>P_i</m>. Clearly, these conjugacy classes partition <m>{\mathcal P}</m>. The size of the partition containing <m>P_i</m> is <m>[Q :N(P_i) \cap Q]</m>. Lagrange's Theorem tells us that this number is a divisor of <m>|Q|= p^r</m>. Hence, the number of conjugates in every equivalence class of the partition is a power of <m>p</m>. However, since <m>p</m> does not divide <m>k</m>, one of these equivalence classes must contain only a single Sylow <m>p</m>-subgroup, say <m>P_j</m>. Therefore, for some <m>P_j</m>, <m>x^{-1} P_j x = P_j</m> for all <m>x \in Q</m>. By Lemma<nbsp /><xref ref="lemma-p-order" />, <m>P_j = Q</m>.</p>
+					Since <m>p^r</m> divides <m>|N(P)|</m>, <m>p</m> cannot divide <m>k</m>.</p>
+
+					<p>Given any other Sylow <m>p</m>-subgroup <m>Q</m>, we must show that <m>Q \in {\mathcal S}</m>. Consider the <m>Q</m>-conjugacy classes of each <m>P_i</m>. Clearly, these conjugacy classes partition <m>{\mathcal S}</m>. The size of the partition containing <m>P_i</m> is <m>[Q :N(P_i) \cap Q]</m> by Lemma<nbsp /><xref ref="lemma-distinct-conjugates" />, and Lagrange's Theorem tells us that <m>|Q| = [Q :N(P_i) \cap Q] |N(P_i) \cap Q|</m>.  Thus, <m>[Q :N(P_i) \cap Q]</m> must be a divisor of <m>|Q|= p^r</m>.  Hence, the number of conjugates in every equivalence class of the partition is a power of <m>p</m>. However, since <m>p</m> does not divide <m>k</m>, one of these equivalence classes must contain only a single Sylow <m>p</m>-subgroup, say <m>P_j</m>.  In this case, <m>x^{-1} P_j x = P_j</m> for all <m>x \in Q</m>. By Lemma<nbsp /><xref ref="lemma-p-order" />, <m>P_j = Q</m>.</p>
 				</proof>
 			</theorem>
 	 
@@ -127,12 +129,12 @@
 				</statement>
 				<proof>
 					<p>Let <m>P</m> be a Sylow <m>p</m>-subgroup acting on the set of Sylow <m>p</m>-subgroups, 
-						<me>{\mathcal P} = \{ P = P_1, P_2, \ldots, P_k \},</me>
-					by conjugation. From the proof of the Second Sylow Theorem, the only <m>P</m>-conjugate of <m>P</m> is itself and the order of the other <m>P</m>-conjugacy classes is a power of <m>p</m>. Each <m>P</m>-conjugacy class contributes a positive power of <m>p</m> toward <m>|{\mathcal P}|</m> except the equivalence class  <m>\{ P \}</m>. Since <m>|{\mathcal P}|</m> is the sum of positive powers of <m>p</m> and 1, <m>|{\mathcal P}| \equiv 1 \pmod{p}</m>.</p>
+						<me>{\mathcal S} = \{ P = P_1, P_2, \ldots, P_k \},</me>
+					by conjugation. From the proof of the Second Sylow Theorem, the only <m>P</m>-conjugate of <m>P</m> is itself and the order of the other <m>P</m>-conjugacy classes is a power of <m>p</m>. Each <m>P</m>-conjugacy class contributes a positive power of <m>p</m> toward <m>|{\mathcal S}|</m> except the equivalence class  <m>\{ P \}</m>. Since <m>|{\mathcal S}|</m> is the sum of positive powers of <m>p</m> and 1, <m>|{\mathcal S}| \equiv 1 \pmod{p}</m>.</p>
 	 
-					<p>Now suppose that <m>G</m> acts on <m>{\mathcal P}</m> by conjugation. Since all Sylow <m>p</m>-subgroups are conjugate, there can be only one orbit under this action. For <m>P \in {\mathcal P}</m>, 
-						<me>|{\mathcal P}| = |\mbox{orbit of }P| = [G : N(P)].</me>
-					But <m>[G : N(P)]</m> is a divisor of <m>|G|</m>; consequently, the number of Sylow <m>p</m>-subgroups of a finite group must divide the order of the group.</p>
+					<p>Now suppose that <m>G</m> acts on <m>{\mathcal S}</m> by conjugation. Since all Sylow <m>p</m>-subgroups are conjugate, there can be only one orbit under this action. For <m>P \in {\mathcal S}</m>, 
+						<me>|{\mathcal S}| = |\mbox{orbit of }P| = [G : N(P)]</me>
+					by Lemma<nbsp /><xref ref="lemma-distinct-conjugates" />.  But <m>[G : N(P)]</m> is a divisor of <m>|G|</m>; consequently, the number of Sylow <m>p</m>-subgroups of a finite group must divide the order of the group.</p>
 				</proof>
 			</theorem>
 
