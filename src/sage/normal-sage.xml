@@ -30,7 +30,7 @@
 		</input>
 		</sage>
 
-		<p>So <c>C</c> is a list of lists, with every element of the group <c>G</c> occuring exactly once somewhere.  You could ask Sage to print out <c>C</c> for you if you like, but we will try not to here.  We want to multiply two cosets (lists) together.  How do we do this?  Take <em>any</em> element out of the first list, and <em>any</em> element out of the second list and multiply them together (which we know how to do since they are elements of <c>G</c>).  Now we have an element of <c>G</c>.  What do we do with this element, since we really want a coset as the result of the product of two cosets?  Simple <mdash /> we see which coset the product is in.  Let us give it a try.  We will multiply coset <m>1</m> with coset <m>3</m> (there are <m>4</m> cosets by Lagrange's theorem).  Study the following code carefully to see if you can understand what it is doing, and <em>then</em> read the explanation that follows.</p>
+		<p>So <c>C</c> is a list of lists, with every element of the group <c>G</c> occuring exactly once somewhere.  You could ask Sage to print out <c>C</c> for you if you like, but we will try to avoid that here.  We want to multiply two cosets (lists) together.  How do we do this?  Take <em>any</em> element out of the first list, and <em>any</em> element out of the second list and multiply them together (which we know how to do since they are elements of <c>G</c>).  Now we have an element of <c>G</c>.  What do we do with this element, since we really want a coset as the result of the product of two cosets?  Simple <mdash /> we see which coset the product is in.  Let us give it a try.  We will multiply coset <m>1</m> with coset <m>3</m> (there are <m>4</m> cosets by Lagrange's Theorem).  Study the following code carefully to see if you can understand what it is doing, and <em>then</em> read the explanation that follows.</p>
 
 		<sage>
 		<input>
@@ -86,7 +86,7 @@
 
 		<p>Now let us examine a situation where the subgroup is not normal.  So we will see that our definition of coset multiplication is insufficient in this case.  And realize that our new <c>coset_product</c> function is also useless since it assumes the cosets come from a normal subgroup.</p>
 
-		<p>Consider the alternating group <m>A_4</m> which we can interpet as the symmetry group of a tetrahedron.  For a subgroup, take an element that fixes one vertex and rotates the opposite face <mdash /> this will generate a cyclic subgroup of order 3, and by Lagrange's Theorem we will get four cosets.  We compute them here (again, no output is requested):</p>
+		<p>Consider the alternating group <m>A_4</m> which we can interpet as the symmetry group of a tetrahedron.  For a subgroup, take an element that fixes one vertex and rotates the opposite face <mdash /> this will generate a cyclic subgroup of order 3, and by Lagrange's Theorem we will get four cosets.  We compute them here.  (Again, no output is requested.)</p>
 
 		<sage>
 		<input>
@@ -121,7 +121,7 @@
 		</output>
 		</sage>
 
-		<p>So: is the product of coset <m>1</m> and coset <m>3</m> equal to coset <m>0</m> or coset <m>2</m>?  We cannot say!  So there is <em>no way</em> to construct a quotient group for this subgroup.  You can experiment some more with this subgroup, but in some sense, we are done with this example <mdash /> there is nothing left to say.</p>
+		<p>So, is the product of coset <m>1</m> and coset <m>3</m> equal to coset <m>0</m> or coset <m>2</m>?  We cannot say!  So there is <em>no way</em> to construct a quotient group for this subgroup.  You can experiment some more with this subgroup, but in some sense, we are done with this example <mdash /> there is nothing left to say.</p>
 	</subsection>
 
 	<subsection>
