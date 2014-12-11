@@ -22,7 +22,21 @@
 
 		<p>The Sage permutation group method <c>.sylow_subgroup(p)</c> will return a single Sylow <m>p</m>-subgroup.  If the prime is not a proper divisor of the group order it returns a subgroup of order <m>p^0</m>, in other words, a trivial subgroup.  So be careful about how you construct your primes.  Sometimes, you may only want <em>one</em> such Sylow subgroup, since any two Sylow <m>p</m>-subgroups are conjugate, and hence isomorphic (Theorem<nbsp /><xref ref="theorem-second-sylow" />).  This also means we can create other Sylow <m>p</m>-subgroups by conjugating the one we have.  The permutation group method <c>.conjugate(g)</c> will conjugate the group by <c>g</c>.</p>
 
-		<p>With repeated conjugations of a single Sylow <m>p</m>-subgroup, we will likely create duplicate subgroups.  So we need to use a slightly complicated construction to form a list of just the unique subgroups in the list of conjugates.  The list comprehension will modify the list of unique subgroups, but also create some output we do not care about, so we assign the unwanted output to the variable <c>junk</c>.</p>
+		<p>With repeated conjugations of a single Sylow <m>p</m>-subgroup, we will always create duplicate subgroups.  So we need to use a slightly complicated construction to form a list of just the unique subgroups as the list of conjugates.  This routine that computes all Sylow <m>p</m>-subgroups can be helpful throughout this section.  It could be made much more efficient by conjugating by just one element per coset of the normalizer, but it will be sufficient for our purposes here.  Be sure to execute the next cell if you are online, so the function is defined for use later.</p>
+
+        <sage>
+            <input>
+            def all_sylow(G, p):
+                '''Form the set of all distinct Sylow p-subgroups of G'''
+                scriptP = []
+                P = G.sylow_subgroup(p)
+                for x in G:
+                    H = P.conjugate(x)
+                    if not(H in scriptP):
+                        scriptP.append(H)
+                return scriptP
+            </input>
+        </sage>
 
 		<p>Lets investigate the Sylow subgroups of the dihedral group <m>D_{18}</m>.  As a group of order <m>36=2^2\cdot 3^2</m>, we know by the First Sylow Theorem that there is a Sylow <m>2</m>-subgroup of order <m>4</m> and a Sylow <m>3</m>-subgroup of order <m>9</m>.  First for <m>p=2</m>, we obtain one Sylow <m>2</m>-subgroup, form all the conjugates, and form a list of non-duplicate subgroups.  (These commands take a while to execute, so be patient.)</p>
 
@@ -40,53 +54,49 @@
 		</sage>
 
 		<sage>
-		<input>
-		allS2 = [S2.conjugate(g) for g in G]
-		uniqS2 = []
-		junk = [uniqS2.append(H) for H in allS2 if not H in uniqS2]
-		uniqS2
-		</input>
-		<output>
-		[Permutation Group with generators
-		[(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
-		(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-		Permutation Group with generators
-		[(1,3)(4,18)(5,17)(6,16)(7,15)(8,14)(9,13)(10,12),
-		(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-		Permutation Group with generators
-		[(1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
-		(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-		Permutation Group with generators
-		[(1,7)(2,6)(3,5)(8,18)(9,17)(10,16)(11,15)(12,14),
-		(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-		Permutation Group with generators
-		[(1,9)(2,8)(3,7)(4,6)(10,18)(11,17)(12,16)(13,15),
-		(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-		Permutation Group with generators
-		[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-		(1,11)(2,10)(3,9)(4,8)(5,7)(12,18)(13,17)(14,16)],
-		Permutation Group with generators
-		[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-		(1,13)(2,12)(3,11)(4,10)(5,9)(6,8)(14,18)(15,17)],
-		Permutation Group with generators
-		[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-		(1,15)(2,14)(3,13)(4,12)(5,11)(6,10)(7,9)(16,18)],
-		Permutation Group with generators
-		[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-		(1,17)(2,16)(3,15)(4,14)(5,13)(6,12)(7,11)(8,10)]]
-		</output>
+			<input>
+			uniqS2 = all_sylow(G, 2)
+			uniqS2
+			</input>
+			<output>
+			[Permutation Group with generators
+			[(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
+			(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+			Permutation Group with generators
+			[(1,3)(4,18)(5,17)(6,16)(7,15)(8,14)(9,13)(10,12),
+			(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+			Permutation Group with generators
+			[(1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
+			(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+			Permutation Group with generators
+			[(1,7)(2,6)(3,5)(8,18)(9,17)(10,16)(11,15)(12,14),
+			(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+			Permutation Group with generators
+			[(1,9)(2,8)(3,7)(4,6)(10,18)(11,17)(12,16)(13,15),
+			(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+			Permutation Group with generators
+			[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+			(1,11)(2,10)(3,9)(4,8)(5,7)(12,18)(13,17)(14,16)],
+			Permutation Group with generators
+			[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+			(1,13)(2,12)(3,11)(4,10)(5,9)(6,8)(14,18)(15,17)],
+			Permutation Group with generators
+			[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+			(1,15)(2,14)(3,13)(4,12)(5,11)(6,10)(7,9)(16,18)],
+			Permutation Group with generators
+			[(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+			(1,17)(2,16)(3,15)(4,14)(5,13)(6,12)(7,11)(8,10)]]
+			</output>
 		</sage>
 
 		<sage>
-		<input>
-		len(uniqS2)
-		</input>
-		<output>
-		9
-		</output>
+			<input>
+			len(uniqS2)
+			</input>
+			<output>9</output>
 		</sage>
 
-		<p>The Third Sylow Theorem tells us that for <m>p=2</m> we would expect <m>1, 3\text{ or }9</m> Sylow <m>2</m>-subgroups, so our computational result of <m>9</m> subgroups is consistent with what the theory predicts.  Can you visualize each of these subgroups as symmetries of an <m>18</m>-gon?  Notice that we also have many subgroups of order <m>2</m> inside of these subgroups of order <m>4</m>.</p>
+		<p>The Third Sylow Theorem tells us that for <m>p=2</m> we would expect <m>1, 3</m> or <m>9</m> Sylow <m>2</m>-subgroups, so our computational result of <m>9</m> subgroups is consistent with what the theory predicts.  Can you visualize each of these subgroups as symmetries of an <m>18</m>-gon?  Notice that we also have many subgroups of order <m>2</m> inside of these subgroups of order <m>4</m>.</p>
 
 		<p>Now for the case of <m>p=3</m>.</p>
 
@@ -104,26 +114,22 @@
 		</sage>
 
 		<sage>
-		<input>
-		allS3 = [S3.conjugate(g) for g in G]
-		uniqS3 = []
-		junk = [uniqS3.append(H) for H in allS3 if not H in uniqS3]
-		uniqS3
-		</input>
-		<output>
-		[Permutation Group with generators
-		[(1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18),
-		(1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]]
-		</output>
+			<input>
+			uniqS3 = all_sylow(G, 3)
+			uniqS3
+			</input>
+			<output>
+			[Permutation Group with generators
+			[(1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18),
+			(1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]]
+			</output>
 		</sage>
 
 		<sage>
-		<input>
-		len(uniqS3)
-		</input>
-		<output>
-		1
-		</output>
+			<input>
+			len(uniqS3)
+			</input>
+			<output>1</output>
 		</sage>
 
 		<p>What does the Third Sylow Theorem predict?  Just <m>1</m> or <m>4</m> Sylow <m>3</m>-subgroups.  Having found just one subgroup computationally, we know that all of the conjugates of the lone Sylow <m>3</m>-subgroup are equal.  In other words, the Sylow <m>3</m>-subgroup is normal in <m>D_{18}</m>.  Let us check anyway.</p>
@@ -204,7 +210,7 @@
 		</output>
 		</sage>
 
-		<p>The normalizer of a subgroup always contains the whole subgroup, so the normalizer of <c>S2</c> is as small as possible.  We already knew <c>S3</c> is normal in <c>G</c>, so it is no surprise that its normalizer is as big as possible <mdash /> every element of <c>G</c> normalizes <c>S3</c>.  Let's compute a normalizer in <m>D_{18}</m> that is more <q>interesting.</q></p>
+		<p>The normalizer of a subgroup always contains the whole subgroup, so the normalizer of <c>S2</c> is as small as possible.  We already knew <c>S3</c> is normal in <c>G</c>, so it is no surprise that its normalizer is as big as possible <mdash /> every element of <c>G</c> normalizes <c>S3</c>.  Let us compute a normalizer in <m>D_{18}</m> that is more <q>interesting.</q></p>
 
 		<sage>
 		<input>
