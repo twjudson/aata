@@ -194,8 +194,8 @@
 				<me>E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1),</me>
 			where <m>x_8 = x_7 + x_6 + \cdots + x_1</m> with addition in <m>{\mathbb Z}_2</m>. </p>
 		</example>
- 
-		<p>Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)</m> be binary <m>n</m>-tuples. The <term>Hamming distance</term>\index{Hamming distance} or <term>distance</term>, <m>d({\mathbf x}, {\mathbf y})</m><!--NOTATION TABLE\label{noteHammingdist}-->, between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The distance between two codewords is the minimum number of transmission errors required to change one codeword into the other. The <term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code, <m>d_{\min}</m><!--NOTATION TABLE\label{notemindist}-->, is the minimum of all distances <m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>, <m>w({\mathbf x})</m>\label{noteweight}, of a binary codeword <m>{\mathbf x}</m> is the number of 1's in <m>{\mathbf x}</m>. Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, where <m>{\mathbf 0} = (00 \cdots 0)</m>.</p>
+
+		<p>Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)</m> be binary <m>n</m>-tuples. The <term>Hamming distance</term>\index{Hamming distance} or <term>distance</term>, <m>d({\mathbf x}, {\mathbf y})</m>, between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The distance between two codewords is the minimum number of transmission errors required to change one codeword into the other. The <term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code, <m>d_{\min}</m>, is the minimum of all distances <m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>, <m>w({\mathbf x})</m>, of a binary codeword <m>{\mathbf x}</m> is the number of 1's in <m>{\mathbf x}</m>. Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, where <m>{\mathbf 0} = (00 \cdots 0)</m>. <notation><usage>d(\mathbf x, \mathbf y)</usage><description>Hamming distance between <m>\mathbf x</m> and <m>\mathbf y</m></description></notation> <notation><usage>d_{\min}</usage><description>the minimum distance of a code</description></notation> <notation><usage>w(\mathbf x)</usage><description>the weight of <m>\mathbf x</m></description></notation></p>
  
 		<example xml:id="example-algcodes-min-distance">
 			<p>Let <m>{\mathbf x} = (10101)</m>, <m>{\mathbf y} = (11010)</m>, and <m>{\mathbf z} = (00011)</m> be all of the codewords in some code <m>C</m>. Then we have the following Hamming distances: 
@@ -376,7 +376,7 @@
 				This example leads us to hope that there is a connection between matrices and coding theory.</p>
 			</example>
  
-			<p>Let <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m><!--NOTATION TABLE\label{notembyn}--> denote the set of all <m>m \times n</m> matrices with entries in <m>{\mathbb Z}_2</m>. We do matrix operations as usual except that all our addition and multiplication operations occur in <m>{\mathbb Z}_2</m>. Define the <term>null space</term><index><main>Matrix</main><sub>null space of</sub></index><index><main>Null space</main><sub>of a matrix</sub></index> of  a matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> to be the set of all binary <m>n</m>-tuples <m>{\mathbf x}</m> such that <m>H{\mathbf x} = {\mathbf 0}</m>. We denote the null space of a matrix <m>H</m> by <m>{\rm Null}(H)</m><!--NOTATION TABLE\label{notenull}-->.</p> 
+			<p>Let <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m> denote the set of all <m>m \times n</m> matrices with entries in <m>{\mathbb Z}_2</m>. We do matrix operations as usual except that all our addition and multiplication operations occur in <m>{\mathbb Z}_2</m>. Define the <term>null space</term><index><main>Matrix</main><sub>null space of</sub></index><index><main>Null space</main><sub>of a matrix</sub></index> of  a matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> to be the set of all binary <m>n</m>-tuples <m>{\mathbf x}</m> such that <m>H{\mathbf x} = {\mathbf 0}</m>. We denote the null space of a matrix <m>H</m> by <m>\Null(H)</m>. <notation><usage>\mathbb M_{m \times n}(\mathbf Z_2)</usage><description>the set of <m>m \times n</m> matrices with entries in <m>\mathbb Z_2</m></description></notation> <notation><usage>\Null(H)</usage><description>null space of a matrix <m>H</m></description></notation></p> 
 
 			<example xml:id="example-algcodes-group-code">
 				<p>Suppose that
@@ -568,12 +568,12 @@
 						<mrow>&amp; = 0,</mrow>
 					</md>
 				where
-					<me>\delta_{ij}<!--NOTATION TABLE\label{notekron}--> =
+					<me>\delta_{ij} =
 					\begin{cases}
 					1, &amp; i = j \\
 					0, &amp; i \neq j
 					\end{cases}</me>
-				is the Kronecker delta<index><main>Kronecker delta</main></index>.</p>
+				is the Kronecker delta<index><main>Kronecker delta</main></index>. <notation><usage>\delta_{ij}</usage><description>Kronecker delta</description></notation></p>
 			</proof>
 		</lemma>
 
