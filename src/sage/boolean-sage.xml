@@ -54,7 +54,7 @@
 		</output>
 		</sage>
 
-		<p>Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements, and all we do is give the constructor a way to test if two elements are comparable.  Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.  A <q>lambda</q> function is one way to quickly build such a function.  This may be a new idea for you, but mastering lambda functions can be a great convenience.  Notice that <q>lambda</q> is a word reserved for just this purpose.  There are other ways to make functions in Sage, but a lambda function is quickest when the function is simple.</p>
+		<p>Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements, and all we do is give the constructor a way to test if two elements are comparable.  Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.  A <q>lambda</q> function is one way to quickly build such a function.  This may be a new idea for you, but mastering lambda functions can be a great convenience.  Notice that <q>lambda</q> is a word reserved for just this purpose (so, for example, <c>lambda</c> is a bad choice for the name of an eigenvalue of a matrix).  There are other ways to make functions in Sage, but a lambda function is quickest when the function is simple.</p>
 
 		<sage>
 		<input>
@@ -228,7 +228,7 @@
 		</output>
 		</sage>
 
-		<p>If we make two elements in <c>R</c> comparable when they had not previously been, this is an extension of <c>R</c>.  Consider all possible extensions of one poset <mdash /> we can make a poset from all of these, where set inclusion is the relation.  A linear extension is a maximal element in this poset of posets.  Informally, we are adding as many new relations as possible, consistent with the original poset and so that the result is a total order (there is an ordering of the elements consistent with the order in the poset).  We can build such a thing, but the output is just a list of the elements in the linear order.  A computer scientist would be inclined to call this a <q>topological sort.</q></p>
+		<p>If we make two elements in <c>R</c> comparable when they had not previously been, this is an extension of <c>R</c>.  Consider all possible extensions of one poset <mdash /> we can make a poset from all of these, where set inclusion is the relation.  A linear extension is a maximal element in this poset of posets.  Informally, we are adding as many new relations as possible, consistent with the original poset and so that the result is a total order.  In other words, there is an ordering of the elements that is consistent with the order in the poset.  We can build such a thing, but the output is just a list of the elements in the linear order.  A computer scientist would be inclined to call this a <q>topological sort.</q></p>
 
 		<sage>
 		<input>
@@ -273,9 +273,28 @@
 	<subsection>
 		<title>Lattices</title>
 
-		<p>Every lattice is a poset, so all the commands above will perform equally well for a lattice.  But how do you create a lattice?  Simple <mdash /> first create a poset and then feed it into the <c>LatticePoset()</c> constructor.  But realize that just because you give this constructor a poset, it does not mean a lattice will always come back out.  Only if the poset <em>is already</em> a lattice will it get upgraded from a poset to a lattice for Sage's purposes.</p>
+		<p>Every lattice is a poset, so all the commands above will perform equally well for a lattice.  But how do you create a lattice?  Simple <mdash /> first create a poset and then feed it into the <c>LatticePoset()</c> constructor.  But realize that just because you give this constructor a poset, it does not mean a lattice will always come back out.  Only if the poset is <em>already</em> a lattice will it get upgraded from a poset to a lattice for Sage's purposes, and you will get a <c>ValueError</c> if the upgrade is not possible.  Finally, notice that some of the posets Sage constructs are already recognized as lattices, such as the prototypical <c>BooleanLattice</c>.</p>
 
-		An integer composition of <m>n</m> is an ordered list of positive integers that sum to <m>n</m>.  One composition covers another if it can be formed by adding two consecutive parts of the larger composition, and possibly re-sorting.  For example, <m>[2, 1, 2] \gt [3, 2]</m>.  This forms a poset that is also a lattice.
+		<sage>
+		<input>
+		P = Posets.AntichainPoset(8)
+		P.is_lattice()
+		</input>
+		<output>False</output>
+		</sage>
+
+		<sage>
+		<input>
+		LatticePoset(P)
+		</input>
+		<output>
+		Traceback (most recent call last):
+		...
+		ValueError: Not a lattice.
+		</output>
+		</sage>
+
+		<p>An integer composition of <m>n</m> is a list of positive integers that sum to <m>n</m>.  A composition <m>C_1</m> covers a composition <m>C_2</m> if <m>C_2</m> can be formed from <m>C_1</m> by adding consecutive parts.  For example, <m>C_1 = [2, 1, 2] \succeq [3, 2] = C_2</m>.  With this relation, the set of all integer compositions of a fixed integer <m>n</m> is a poset that is also a lattice.</p>
 
 		<sage doctest="not tested">
 		<input>
@@ -342,7 +361,7 @@
 		</output>
 		</sage>
 
-		<p>An example of the latter is the <c>.top()</c>  method.  What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.  For a poset, <c>.top()</c> and <c>.bottom()</c> may return an element or may not (returning <c>None</c>), but for a lattice it is guaranteed to return an element.</p>
+		<p>An example of the latter is the <c>.top()</c>  method.  What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.  For a poset, <c>.top()</c> and <c>.bottom()</c> may return an element or may not (returning <c>None</c>), but for a lattice it is guaranteed to return exactly one element.</p>
 
 		<sage>
 		<input>
