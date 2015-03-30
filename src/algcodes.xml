@@ -87,26 +87,43 @@
 						<mrow>\mbox{B} &amp; = 01000010_{2},</mrow>
 						<mrow>\mbox{C} &amp; = 11000011_{2}.</mrow>
 					</md>
-				Suppose an A is sent and a transmission error in the sixth bit is caused by noise over the communication channel so that  <m>(0100\; 0101)</m> is received. We know an error has occurred since the received word has an odd number of 1's, and we can now request that the codeword be transmitted again. When used for error checking, the leftmost bit is called a <term>parity check bit</term>.</p> 
+				Suppose an A is sent and a transmission error in the sixth bit is caused by noise over the communication channel so that  <m>(0100\; 0101)</m> is received. We know an error has occurred since the received word has an odd number of 1s, and we can now request that the codeword be transmitted again. When used for error checking, the leftmost bit is called a <term>parity check bit</term>.</p> 
  
  
-				<p>By far the most common error-detecting codes used in computers are based on the addition of a parity bit. Typically, a computer stores information in <m>m</m>-tuples called <term>words</term>. Common word lengths are 8, 16, and 32 bits. One bit in the  word is set aside as the parity check bit, and is not used to store information. This bit is set to either 0 or 1, depending on thenumber of 1's in the word.</p> 
+				<p>By far the most common error-detecting codes used in computers are based on the addition of a parity bit. Typically, a computer stores information in <m>m</m>-tuples called <term>words</term>. Common word lengths are 8, 16, and 32 bits. One bit in the  word is set aside as the parity check bit, and is not used to store information. This bit is set to either 0 or 1, depending on the number of 1s in the word.</p> 
  
-				<p>Adding a parity check bit allows the detection of all single errors because changing a single bit either increases or decreases the number of 1's by one, and in either case the parity has been changed from even to odd, so the new word is not a codeword. (We could also construct an error detection scheme based on <term>odd parity</term>; that is, we could set the parity check bit so that a codeword always has an odd number of 1's.)</p>
+				<p>Adding a parity check bit allows the detection of all single errors because changing a single bit either increases or decreases the number of 1s by one, and in either case the parity has been changed from even to odd, so the new word is not a codeword. (We could also construct an error detection scheme based on <term>odd parity</term>; that is, we could set the parity check bit so that a codeword always has an odd number of 1s.)</p>
 			</example>
 	 
 			<p>The even parity system is easy to implement, but has two drawbacks. First, multiple errors are not detectable. Suppose an A is sent and  the first and seventh bits are changed from 0 to 1. The received word is a codeword, but will be decoded into a C instead of an A. Second, we do not have the ability to correct errors.  If the 8-tuple <m>(1001\; 1000)</m> is received, we know that an error has occurred, but we have no idea which bit has been changed. We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.</p> 
-			
-			<todo>"Received Word" should be the top header row and spread across the last 8 columns.</todo>
-					
+
 			<table xml:id="table-repetition-code">
-			   <tabular halign="center">
-		           <row><cell></cell><cell></cell><cell>000</cell><cell>001</cell><cell>010</cell><cell>011</cell><cell>100 </cell><cell>101 </cell><cell>110</cell><cell> 111</cell></row>
-		       		<row><cell>Transmitted</cell><cell>000</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>2</cell><cell>3</cell></row>
-					<row><cell>Codeword</cell><cell>111</cell><cell>3</cell><cell>2</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>1</cell><cell>0</cell></row>
+			   <tabular halign="center" top="medium">
+			   	    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+			   		<row>
+			   			<cell>Transmitted</cell><cell colspan="8">Received Word</cell>
+			   		</row>
+		        	<row bottom="medium">
+		           		<cell>Codeword</cell><cell>000</cell><cell>001</cell><cell>010</cell><cell>011</cell><cell>100 </cell><cell>101 </cell><cell>110</cell><cell> 111</cell>
+		           	</row>
+		       		<row>
+		       			<cell>000</cell><cell>0</cell><cell>1</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>2</cell><cell>3</cell>
+		       		</row>
+					<row>
+						<cell>111</cell><cell>3</cell><cell>2</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>1</cell><cell>0</cell>
+					</row>
 			   </tabular>
 			<caption>A repetition code</caption>
 			</table>
+
 
 			<example xml:id="example-algcodes-nearest">
 				<p>Suppose that our original message is either a 0 or a 1, and that 0 encodes to (000) and 1 encodes to (111). If only a single error occurs during transmission, we can detect and correct the error. For example, if a 101 is received, then the second bit must have been changed from a 1 to a 0.  The originally transmitted codeword must have been (111). This method will detect and correct  all single errors.</p> 
@@ -191,7 +208,7 @@
 			where <m>x_8 = x_7 + x_6 + \cdots + x_1</m> with addition in <m>{\mathbb Z}_2</m>. </p>
 		</example>
 
-		<p>Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)</m> be binary <m>n</m>-tuples. The <term>Hamming distance</term>\index{Hamming distance} or <term>distance</term>, <m>d({\mathbf x}, {\mathbf y})</m>, between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The distance between two codewords is the minimum number of transmission errors required to change one codeword into the other. The <term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code, <m>d_{\min}</m>, is the minimum of all distances <m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>, <m>w({\mathbf x})</m>, of a binary codeword <m>{\mathbf x}</m> is the number of 1's in <m>{\mathbf x}</m>. Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, where <m>{\mathbf 0} = (00 \cdots 0)</m>. <notation><usage>d(\mathbf x, \mathbf y)</usage><description>Hamming distance between <m>\mathbf x</m> and <m>\mathbf y</m></description></notation> <notation><usage>d_{\min}</usage><description>the minimum distance of a code</description></notation> <notation><usage>w(\mathbf x)</usage><description>the weight of <m>\mathbf x</m></description></notation></p>
+		<p>Let <m>{\mathbf x} = (x_1, \ldots, x_n)</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)</m> be binary <m>n</m>-tuples. The <term>Hamming distance</term>\index{Hamming distance} or <term>distance</term>, <m>d({\mathbf x}, {\mathbf y})</m>, between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the number of bits in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. The distance between two codewords is the minimum number of transmission errors required to change one codeword into the other. The <term>minimum distance</term><index><main>Code</main><sub>minimum distance of</sub></index> for a code, <m>d_{\min}</m>, is the minimum of all distances <m>d({\mathbf x}, {\mathbf y})</m>, where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are distinct codewords. The <term>weight</term><index><main>Weight of a codeword</main></index>, <m>w({\mathbf x})</m>, of a binary codeword <m>{\mathbf x}</m> is the number of 1s in <m>{\mathbf x}</m>. Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>, where <m>{\mathbf 0} = (00 \cdots 0)</m>. <notation><usage>d(\mathbf x, \mathbf y)</usage><description>Hamming distance between <m>\mathbf x</m> and <m>\mathbf y</m></description></notation> <notation><usage>d_{\min}</usage><description>the minimum distance of a code</description></notation> <notation><usage>w(\mathbf x)</usage><description>the weight of <m>\mathbf x</m></description></notation></p>
  
 		<example xml:id="example-algcodes-min-distance">
 			<p>Let <m>{\mathbf x} = (10101)</m>, <m>{\mathbf y} = (11010)</m>, and <m>{\mathbf z} = (00011)</m> be all of the codewords in some code <m>C</m>. Then we have the following Hamming distances: 
@@ -226,16 +243,34 @@
 		<p>Suppose that <m>{\mathbf x} = (1101)</m> and <m>{\mathbf y} = (1100)</m> are codewords in some code. If we transmit (1101) and an error occurs in the rightmost bit, then (1100) will be received. Since (1100) is a codeword, the decoder will decode (1100) as the transmitted message. This code is clearly not very appropriate for error detection. The problem is that <m>d({\mathbf x}, {\mathbf y}) = 1</m>. If <m>{\mathbf x} = (1100)</m> and <m>{\mathbf y} = (1010)</m> are codewords, then <m>d({\mathbf x}, {\mathbf y}) = 2</m>. If <m>{\mathbf x}</m> is transmitted and a single error occurs, then <m>{\mathbf y}</m> can never be received. Table<nbsp /><xref ref="table-4-bit-words" /> gives the distances between all 4-bit codewords in which the first three bits carry information and the fourth is an even parity check bit. We can see that the minimum distance here is 2; hence, the code is suitable as a single error-correcting code. </p>
  
 		<table xml:id="table-4-bit-words">
-		   <tabular halign="center">
-	           <row><cell></cell><cell>0000</cell><cell>0011</cell><cell>0101</cell><cell>0110</cell><cell>1001</cell><cell>1010</cell><cell>1100</cell><cell>1111</cell></row>
-	       		<row><cell>0000</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell></row>
-				<row><cell>0011</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4 </cell><cell>2</cell></row>
-				<row><cell>0101</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell></row>
-				<row><cell>0110</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell></row>
-				<row><cell>1001</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell></row>
-				<row><cell>1010</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell></row>
-				<row><cell>1100</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell></row>
-				<row><cell>1111</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell></row>
+		   <tabular halign="center" top="medium" left="medium" right="medium">
+	           	<row bottom="medium">
+	           		<cell></cell><cell>0000</cell><cell>0011</cell><cell>0101</cell><cell>0110</cell><cell>1001</cell><cell>1010</cell><cell>1100</cell><cell>1111</cell>
+	           	</row>
+	       		<row>
+	       			<cell>0000</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell>
+	       		</row>
+				<row>
+					<cell>0011</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4 </cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>0101</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>0110</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1001</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>0</cell><cell>2</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1010</cell><cell>2</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell><cell>2</cell>
+				</row>
+				<row>
+					<cell>1100</cell><cell>2</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell><cell>2</cell>
+				</row>
+				<row bottom="medium">
+					<cell>1111</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell>
+				</row>
 		   </tabular>
 		<caption>Distances between 4-bit codewords</caption>
 		</table>
@@ -260,12 +295,22 @@
 		</example>
 
 		<table xml:id="table-hamming-distance">
-		   <tabular halign="center">
-	           	<row><cell></cell><cell>00000</cell><cell>00111</cell><cell>11100</cell><cell>11011</cell></row>
-	       		<row><cell>00000 </cell><cell>0</cell><cell>3</cell><cell>3</cell><cell>4</cell></row>
-				<row><cell>00111 </cell><cell>3</cell><cell>0</cell><cell>4</cell><cell>3</cell></row>
-				<row><cell>11100 </cell><cell>3</cell><cell>4</cell><cell>0</cell><cell>3</cell></row>
-				<row><cell>11011 </cell><cell>4</cell><cell>3</cell><cell>3</cell><cell>0</cell></row>
+		   <tabular halign="center" top="medium" left="medium" right="medium">
+	           	<row bottom="medium">
+	           		<cell></cell><cell>00000</cell><cell>00111</cell><cell>11100</cell><cell>11011</cell>
+	           	</row>
+	       		<row>
+	       			<cell>00000 </cell><cell>0</cell><cell>3</cell><cell>3</cell><cell>4</cell>
+	       		</row>
+				<row>
+					<cell>00111 </cell><cell>3</cell><cell>0</cell><cell>4</cell><cell>3</cell>
+				</row>
+				<row>
+					<cell>11100 </cell><cell>3</cell><cell>4</cell><cell>0</cell><cell>3</cell>
+				</row>
+				<row bottom="medium">
+					<cell>11011 </cell><cell>4</cell><cell>3</cell><cell>3</cell><cell>0</cell>
+				</row>
 		   </tabular>
 		<caption>Hamming distances for an error-correcting code</caption>
 		</table>
@@ -353,7 +398,7 @@
 				</md></p>
  
 			<example xml:id="example-algcodes-matrixcodes">
-				<p>Suppose that the words to be encoded consist of all binary 3-tuples and that our encoding scheme is even-parity. To encode an arbitrary 3-tuple, we add a fourth bit to obtain an even number of 1's. Notice that an arbitrary <m>n</m>-tuple <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> has an even number of 1's exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>; hence, a 4-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}</m> has an even number of 1's if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
+				<p>Suppose that the words to be encoded consist of all binary 3-tuples and that our encoding scheme is even-parity. To encode an arbitrary 3-tuple, we add a fourth bit to obtain an even number of 1s. Notice that an arbitrary <m>n</m>-tuple <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> has an even number of 1s exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>; hence, a 4-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}</m> has an even number of 1s if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
 					<me>{\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^{\rm t} {\mathbf 1} =
 					\begin{pmatrix}<![CDATA[
 					x_1 & x_2 & x_3 & x_4
@@ -476,7 +521,7 @@
 				]]>\end{pmatrix},</me>
 			respectively.</p>
  
-			<p>Observe that the rows in <m>H</m>  represent the parity checks on certain bit positions in a 6-tuple. The 1's in the identity matrix serve as parity checks for the 1's in the same row. If <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5, x_6)</m>, then 
+			<p>Observe that the rows in <m>H</m>  represent the parity checks on certain bit positions in a 6-tuple. The 1s in the identity matrix serve as parity checks for the 1s in the same row. If <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5, x_6)</m>, then 
 				<me>{\mathbf 0}
 				=
 				H{\mathbf x}
@@ -501,16 +546,34 @@
 		</example>
 		
 		<table xml:id="table-matrix-gen-code">
-		   <tabular halign="center">
-		           <row><cell>Message Word</cell><cell>Codeword</cell></row>
-		       		<row><cell>000</cell><cell>000000</cell></row>
-					<row><cell>001</cell><cell>001101</cell></row>
-					<row><cell>010</cell><cell>010110</cell></row>
-					<row><cell>011</cell><cell>011011</cell></row>
-					<row><cell>100</cell><cell>100011</cell></row>
-					<row><cell>101</cell><cell>101110</cell></row>
-					<row><cell>110</cell><cell>110101</cell></row>
-					<row><cell>111</cell><cell>111000</cell></row>
+		   <tabular halign="center" top="medium">
+		           	<row bottom="medium">
+		           		<cell>Message Word <m>\mathbf x</m></cell><cell>Codeword <m>G \mathbf x</m></cell>
+		           	</row>
+		       		<row>
+		       			<cell>000</cell><cell>000000</cell>
+		       		</row>
+					<row>
+						<cell>001</cell><cell>001101</cell>
+					</row>
+					<row>
+						<cell>010</cell><cell>010110</cell>
+					</row>
+					<row>
+						<cell>011</cell><cell>011011</cell>
+					</row>
+					<row>
+						<cell>100</cell><cell>100011</cell>
+					</row>
+					<row>
+						<cell>101</cell><cell>101110</cell>
+					</row>
+					<row>
+						<cell>110</cell><cell>110101</cell>
+					</row>
+					<row>
+						<cell>111</cell><cell>111000</cell>
+					</row>
 		   </tabular>
 		<caption>A matrix-generated code</caption>
 		</table>		
@@ -659,7 +722,7 @@
 				1 & 0 & 0 & 1 \\
 				1 & 1 & 0 & 0
 				]]>\end{pmatrix}</me>
-			and  want to determine whether or not <m>H</m> is the canonical parity-check matrix for an error-correcting code, it is necessary to make certain that <m>{\rm Null}(H)</m> does not contain any 4-tuples of weight 2. That is, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, and <m>(0011)</m> must not be in <m>{\rm Null}(H)</m>.  The next theorem states that  we can indeed determine that the code generated by <m>H</m> is error-correcting by examining the columns of <m>H</m>. Notice in this example that not only does <m>H</m> have no zero columns, but also that no two columns are the same.</p>
+			and  want to determine whether or not <m>H</m> is the canonical parity-check matrix for an error-correcting code, it is necessary to make certain that <m>{\rm Null}(H)</m> does not contain any 4-tuples of weight 2. That is, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, and <m>(0011)</m> must not be in <m>{\rm Null}(H)</m>.  The next theorem states that we can indeed determine that the code generated by <m>H</m> is error-correcting by examining the columns of <m>H</m>. Notice in this example that not only does <m>H</m> have no zero columns, but also that no two columns are the same.</p>
 		</example>
  
 		<theorem>
@@ -667,7 +730,7 @@
 				<p>Let <m>H</m> be a binary matrix. The null space of <m>H</m> is a single error-correcting code if and only if <m>H</m> does not contain any zero columns and no two columns of <m>H</m> are identical.</p>
 			</statement>
 			<proof>
-				<p>The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has 1's in the <m>i</m>th and <m>j</m>th entries and 0's elsewhere, and <m>w( {\mathbf e}_{i} +{\mathbf e}_{j}) = 2</m> for <m>i \neq j</m>. Since
+				<p>The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has 1s in the <m>i</m>th and <m>j</m>th entries and 0s elsewhere, and <m>w( {\mathbf e}_{i} +{\mathbf e}_{j}) = 2</m> for <m>i \neq j</m>. Since
 					<me>{\mathbf 0} = H({\mathbf e}_{i} +{\mathbf e}_{j}) = H{\mathbf e}_{i} + H{\mathbf e}_{j}</me>
 				can only occur if the <m>i</m>th and <m>j</m>th columns are identical, the null space of <m>H</m> is a single error-correcting code.</p>
 			</proof>
@@ -789,16 +852,37 @@
 		</example>
 		
 		<table xml:id="table-cosets-of-c">
-		   <tabular halign="center">
-	            <row><cell></cell><cell>Cosets</cell></row>
-	            <row><cell><m>C</m> </cell><cell>(00000)  (01101)  (10011)  (11110)</cell></row>
-				<row><cell><m>(10000) + C</m> </cell><cell>(10000)  (11101)  (00011)  (01110)</cell></row>
-				<row><cell><m>(01000) + C</m> </cell><cell>(01000)  (00101)  (11011)  (10110)</cell></row>
-				<row><cell><m>(00100) + C</m> </cell><cell>(00100)  (01001)  (10111)  (11010)</cell></row>
-				<row><cell><m>(00010) + C</m> </cell><cell>(00010)  (01111)  (10001)  (11100)</cell></row>
-				<row><cell><m>(00001) + C</m> </cell><cell>(00001)  (01100)  (10010)  (11111)</cell></row>
-				<row><cell><m>(10100) + C</m> </cell><cell>(00111)  (01010)  (10100)  (11001)</cell></row>
-				<row><cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell></row>
+		   <tabular halign="center" top="medium">
+	            <row>
+	            	<cell>Coset</cell><cell>Coset</cell>
+	            </row>
+	             <row bottom="medium">
+	            	<cell>Representative</cell><cell></cell>
+	            </row>
+	            <row>
+	            	<cell><m>C</m> </cell><cell>(00000)  (01101)  (10011)  (11110)</cell>
+	            </row>
+				<row>
+					<cell><m>(10000) + C</m> </cell><cell>(10000)  (11101)  (00011)  (01110)</cell>
+				</row>
+				<row>
+					<cell><m>(01000) + C</m> </cell><cell>(01000)  (00101)  (11011)  (10110)</cell>
+				</row>
+				<row>
+					<cell><m>(00100) + C</m> </cell><cell>(00100)  (01001)  (10111)  (11010)</cell>
+				</row>
+				<row>
+					<cell><m>(00010) + C</m> </cell><cell>(00010)  (01111)  (10001)  (11100)</cell>
+				</row>
+				<row>
+					<cell><m>(00001) + C</m> </cell><cell>(00001)  (01100)  (10010)  (11111)</cell>
+				</row>
+				<row>
+					<cell><m>(10100) + C</m> </cell><cell>(00111)  (01010)  (10100)  (11001)</cell>
+				</row>
+				<row>
+					<cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell>
+				</row>
 		   </tabular>
 		<caption>Cosets of <m>C</m></caption>
 		</table>
@@ -812,16 +896,34 @@
 		<p>A potential problem with this method of decoding is that we might have to examine every coset for the received codeword. The following proposition gives a method of implementing coset decoding. It states that we can associate a syndrome with each coset; hence, we can make a table that designates a coset leader corresponding to each syndrome. Such a list is called a <term>decoding table</term><index><main>Decoding table</main></index>.</p>
  
 		<table xml:id="table-syndrome">
-		   <tabular halign="center">
-	        	<row><cell>Syndrome</cell><cell>Coset Leader</cell></row>
-	       		<row><cell>(000)</cell><cell>(00000)</cell></row>
-				<row><cell>(001)</cell><cell>(00001)</cell></row>
-				<row><cell>(010)</cell><cell>(00010)</cell></row>
-				<row><cell>(011)</cell><cell>(10000)</cell></row>
-				<row><cell>(100)</cell><cell>(00100)</cell></row>
-				<row><cell>(101)</cell><cell>(01000)</cell></row>
-				<row><cell>(110)</cell><cell>(00110)</cell></row>
-				<row><cell>(111)</cell><cell>(10100)</cell></row>
+		   <tabular halign="center" top="medium">
+	        	<row bottom="medium">
+	        		<cell>Syndrome</cell><cell>Coset Leader</cell>
+	        	</row>
+	       		<row>
+	       			<cell>(000)</cell><cell>(00000)</cell>
+	       		</row>
+				<row>
+					<cell>(001)</cell><cell>(00001)</cell>
+				</row>
+				<row>
+					<cell>(010)</cell><cell>(00010)</cell>
+				</row>
+				<row>
+					<cell>(011)</cell><cell>(10000)</cell>
+				</row>
+				<row>
+					<cell>(100)</cell><cell>(00100)</cell>
+				</row>
+				<row>
+					<cell>(101)</cell><cell>(01000)</cell>
+				</row>
+				<row>
+					<cell>(110)</cell><cell>(00110)</cell>
+				</row>
+				<row>
+					<cell>(111)</cell><cell>(10100)</cell>
+				</row>
 		   </tabular>
 		<caption>Syndromes for each coset</caption>
 		</table>
