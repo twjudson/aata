@@ -359,7 +359,7 @@
 <!-- \beta<m>, and </m>\alpha / \beta<m> to </m>\alpha \pm \beta<m>, </m>\alpha  -->
 <!-- \beta<m>, and </m>\alpha / \beta$  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
 				<proof>
-					<p>Let <m>\alpha, \beta \in E</m> be algebraic over <m>F</m>. Then <m>F( \alpha, \beta )</m> is a finite extension of <m>F</m>.  Since every element of <m>F( \alpha, \beta )</m> is algebraic over <m>F</m>, <m>\alpha \pm \beta</m>, <m>\alpha  \beta</m>, and <m>\alpha / \beta</m> (<m>\beta \neq 0</m>) are all algebraic over <m>F</m>. Consequently, the set of elements in <m>E</m> that are algebraic over <m>F</m> forms a field.</p>
+					<p>Let <m>\alpha, \beta \in E</m> be algebraic over <m>F</m>. Then <m>F( \alpha, \beta )</m> is a finite extension of <m>F</m>.  Since every element of <m>F( \alpha, \beta )</m> is algebraic over <m>F</m>, <m>\alpha \pm \beta</m>, <m>\alpha  \beta</m>, and <m>\alpha / \beta</m> (<m>\beta \neq 0</m>) are all algebraic over <m>F</m>. Consequently, the set of elements in <m>E</m> that are algebraic over <m>F</m> form a field.</p>
 				</proof>
 			</theorem>
  
@@ -463,7 +463,7 @@
 
 				<p>We can extend <m>\phi</m> to be an isomorphism from <m>E[x]</m> to <m>F[x]</m>, which we will also denote by <m>\phi</m>, by letting
 					<me>\phi( a_0 + a_1 x + \cdots + a_n x^n ) =  \phi( a_0 ) + \phi(a_1) x + \cdots + \phi(a_n) x^n.</me>
-				This extension agrees with the original isomorphism <m>\phi : E \rightarrow F</m>, since constant polynomials get mapped to constant polynomials.  By assumption, <m>\phi(p(x)) = q(x)</m>; hence, <m>\phi</m> maps <m>\langle p(x) \rangle</m> onto <m>\langle q(x) \rangle</m>. Consequently, we have an isomorphism <m>\overline{\phi} : E[x] / \langle p(x) \rangle \rightarrow F[x]/\langle q(x) \rangle</m>. By Proposition<nbsp /><xref ref="proposition-minimal-poly" />, we have isomorphisms <m>\sigma: E[x]/\langle p(x) \rangle \rightarrow F(\alpha)</m> and <m>\tau : F[x]/\langle q(x) \rangle \rightarrow F( \beta )</m>, defined by evaluation at <m>\alpha</m> and <m>\beta</m>, respectively. Therefore, <m>\psi = \tau^{-1} \overline{\phi} \sigma</m> is the required isomorphism.</p>
+				This extension agrees with the original isomorphism <m>\phi : E \rightarrow F</m>, since constant polynomials get mapped to constant polynomials.  By assumption, <m>\phi(p(x)) = q(x)</m>; hence, <m>\phi</m> maps <m>\langle p(x) \rangle</m> onto <m>\langle q(x) \rangle</m>. Consequently, we have an isomorphism <m>\overline{\phi} : E[x] / \langle p(x) \rangle \rightarrow F[x]/\langle q(x) \rangle</m>. By Proposition<nbsp /><xref ref="proposition-minimal-poly" />, we have isomorphisms <m>\sigma: E[x]/\langle p(x) \rangle \rightarrow E(\alpha)</m> and <m>\tau : F[x]/\langle q(x) \rangle \rightarrow F( \beta )</m>, defined by evaluation at <m>\alpha</m> and <m>\beta</m>, respectively. Therefore, <m>\psi = \tau \overline{\phi} \sigma^{-1}</m> is the required isomorphism.</p>
 
 				<!-- Replaced figure with tikz figure - TWJ 8/29/2010 -->
 				<image xml:id="fields-extension-isomorph">
@@ -486,15 +486,15 @@
 				\node at (0,0)  {$E$};
 				\node at (4,0)  {$F$};
 
-				\node at (0,2)  {$E[x] / \langle p(x) \rangle$};
-				\node at (4,2)  {$F[x]/\langle q(x) \rangle$};
+				\node at (0,2)  {$E(\alpha)$};
+				\node at (4,2)  {$F(\beta)$};
 
-				\node at (0,4)  {$E(\alpha)$};
-				\node at (4,4)  {$F(\beta)$};
+				\node at (0,4)  {$E[x] / \langle p(x) \rangle$};
+				\node at (4,4)  {$F[x]/\langle q(x) \rangle$};
 
 				\node [above] at (2,0) {$\phi$};
-				\node [above] at (2,2) {$\overline{\phi}$};
-				\node [above] at (2,4) {$\psi$};
+				\node [above] at (2,2) {$\psi$};
+				\node [above] at (2,4) {$\overline{\phi}$};
 
 				\node [right] at (0,3) {$\sigma$};
 				\node [right] at (4,3) {$\tau$};
@@ -514,7 +514,7 @@
 			<proof>
 				<p>We will use mathematical induction on the degree of <m>p(x)</m>. We can assume that <m>p(x)</m> is irreducible over <m>E</m>. Therefore, <m>q(x)</m> is also irreducible over <m>F</m>. If <m>\deg p(x) = 1</m>, then by the definition of a splitting field, <m>K = E</m> and <m>L = F</m> and there is nothing to prove.</p>
 
-				<p>Assume that the theorem holds for all polynomials of degree less than <m>n</m>. Since <m>K</m> is a splitting field of <m>E</m>, all of the roots of <m>p(x)</m> are in <m>K</m>. Choose one of these roots, say <m>\alpha</m>, such that <m>E \subset E( \alpha ) \subset K</m>. Similarly, we can find a root <m>\beta</m> of <m>q(x)</m> in <m>L</m> such that <m>F \subset F( \beta) \subset L</m>. By Lemma<nbsp /><xref ref="lemma-field-isomorphism" />, there exists an isomorphism <m>\overline{\phi} : E(\alpha ) \rightarrow F( \beta)</m> such that <m>\overline{\phi}( \alpha ) = \beta</m> and <m>\overline{\phi}</m> agrees with <m>\phi</m> on <m>E</m>.</p>
+				<p>Assume that the theorem holds for all polynomials of degree less than <m>n</m>. Since <m>K</m> is a splitting field of <m>p(x)</m>, all of the roots of <m>p(x)</m> are in <m>K</m>. Choose one of these roots, say <m>\alpha</m>, such that <m>E \subset E( \alpha ) \subset K</m>. Similarly, we can find a root <m>\beta</m> of <m>q(x)</m> in <m>L</m> such that <m>F \subset F( \beta) \subset L</m>. By Lemma<nbsp /><xref ref="lemma-field-isomorphism" />, there exists an isomorphism <m>\overline{\phi} : E(\alpha ) \rightarrow F( \beta)</m> such that <m>\overline{\phi}( \alpha ) = \beta</m> and <m>\overline{\phi}</m> agrees with <m>\phi</m> on <m>E</m>.</p>
 
 				<!-- Replaced figure with tikz figure - TWJ 8/29/2010 -->
 				<image xml:id="fields-splitting-isomorph">
