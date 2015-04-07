@@ -287,7 +287,8 @@
 		<input>
 		M.&lt;a&gt; = NumberField(p, 'a')
 		y = polygen(M, 'y')
-		p = p.subs(x = y); p
+		p = p.subs(x = y)
+		p
 		</input>
 		<output>
 		y^4 + y^2 - 1
@@ -324,12 +325,15 @@
 
 		<p>So our polynomial factors partially into two linear factors and a quadratic factor.  But notice that the quadratic factor has a coefficient that is irrational, <m>a^2+1</m>, so the quadratic factor properly belongs in the polynomial ring over <c>M</c> and not over <c>QQ</c>.</p>
 
+		<p>We build an extension containing a root of the quadratic factor, called <c>q</c> here.  Then, rather than using the <c>polygen()</c> function, we build an entire polynomial ring <c>R</c> over <c>N</c> with the indeterminate <c>z</c>.  The reason for doing this is we can illustrate how we <q>upgrade</q> the polynomial <c>p</c> with the syntax <c>R(p)</c> to go from having coefficients in <c>M</c> to having coefficients in <c>N</c>.</p>
+
 		<sage>
 		<input>
 		q = y^2 + a^2 + 1
-		N.&lt;b&gt; = NumberField(q, 'b')
-		z = polygen(N, 'z')
-		p = p.subs(y = z); p
+		N.&lt;b> = NumberField(q, 'b')
+		R.&lt;z> = N[]
+		s = R(p)
+		s
 		</input>
 		<output>
 		z^4 + z^2 - 1
@@ -338,7 +342,7 @@
 
 		<sage>
 		<input>
-		p.parent()
+		s.parent()
 		</input>
 		<output>
 		Univariate Polynomial Ring in z over Number Field in b with
@@ -348,7 +352,7 @@
 
 		<sage>
 		<input>
-		p.factor()
+		s.factor()
 		</input>
 		<output>
 		(z + b) * (z + a) * (z - a) * (z - b)
