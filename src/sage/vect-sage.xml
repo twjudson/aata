@@ -17,7 +17,7 @@
 	<subsection>
 		<title>Vector Spaces</title>
 
-		<p>The simplest way to create a vector space is to begin with a field and write a <q>power</q> to indicate the number of entries in the vectors of the space.</p>
+		<p>The simplest way to create a vector space is to begin with a field and use an exponent to indicate the number of entries in the vectors of the space.</p>
 
 		<sage>
 		<input>
@@ -76,7 +76,7 @@
 		</output>
 		</sage>
 
-		<p>Notice that vectors are printed with parentheses, which helps distinguish them from lists.  Vectors print horizontally, but in Sage there is no such thing as a <q>row vector</q> or a <q>column vector,</q> though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.</p>
+		<p>Notice that vectors are printed with parentheses, which helps distinguish them from lists (though they alos look like tuples).  Vectors print horizontally, but in Sage there is no such thing as a <q>row vector</q> or a <q>column vector,</q> though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.</p>
 
 		<p>Once we have vector spaces full of vectors, we can perform computations with them.  Ultimately, all the action in a vector space comes back to vector addition and scalar multiplication, which together create linear combinations.</p>
 
@@ -161,7 +161,7 @@
 
 		<p>This is a good place to discuss some of the mathematics behind what makes Sage work.  A vector space over an infinite field, like the rationals or the reals, is an infinite set.  No matter how expansive computer memory may seem, it is still finite.  How does Sage fit an infinite set into our finite machines?  The main idea is that a finite-dimensional vector space has a finite set of generators, which we know as a basis.  So Sage really only needs the elements of a basis (two vectors in the previous example) to be able to work with the infinitely many possibilities for elements of the subspace.</p>
 
-		<p>Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given into another <q>standard</q> basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.</p>
+		<p>Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given basis into another <q>standard</q> basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.</p>
 
 		<sage>
 		<input>
@@ -192,7 +192,7 @@
 		<input>
 		u = vector(QQ, [1, -1,  3,  4])
 		v = vector(QQ, [2,  1, -1, -2])
-		S = (QQ^4).subspace([u, v, 2*u+3*v, -u+2*v])
+		S = (QQ^4).subspace([u, v, 2*u + 3*v, -u + 2*v])
 		S.dimension()
 		</input>
 		<output>
@@ -271,7 +271,7 @@
 		</output>
 		</sage>
 
-		<p>You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from <m>{\mathbb Z}_7</m>, a basis is the first six powers of the generator, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations <mdash /> now you have a good reason to explain why.</p>
+		<p>You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from <m>{\mathbb Z}_7</m>, a basis is the first six powers of the generator, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations <mdash /> now you have a good explanation.</p>
 
 		<p>Here is what Sage knows about a finite field as a vector space.  First, it knows that the finite field <em>is</em> a vector space, and what the field of scalars is.</p>
 
@@ -317,8 +317,6 @@
 
 		<sage>
 		<input>
-		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
-		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
 		x = V(u); x
 		</input>
 		<output>
@@ -335,15 +333,10 @@
 		</output>
 		</sage>
 
-		<p>Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism between the finite field and <m>({\mathbb Z}_7)^6</m>.</p>
+		<p>Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism preserving the structure between the finite field itself and its interpretation as a vector space, <m>({\mathbb Z}_7)^6</m>.</p>
 
 		<sage>
 		<input>
-		F.&lt;a&gt; = FiniteField(7^6)
-		V = F.vector_space()
-		R = V.base_ring()
-		u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
-		v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
 		V(u + v) == V(u) + V(v)
 		</input>
 		<output>
