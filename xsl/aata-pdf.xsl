@@ -8,6 +8,7 @@
 <!-- See the file COPYING for copying conditions.  -->
 
 <!-- For a PDF version of the book, everything electronic -->
+<!-- Includes Sage material, but not remarks about Sage   -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -25,16 +26,19 @@
 </xsl:param>
 
 <!-- Makes hyperlinks, program listings, etc. active and colored -->
-<xsl:param name="latex.print">
-	<xsl:text>no</xsl:text>
-</xsl:param>
+<!-- (This is the default, but set here just to be explicit)     -->
+<xsl:param name="latex.print" select="'no'" />
 
-<!-- Each Chapter has a <remark> about Sage,     -->
-<!-- which will be included by default           -->
-<!-- But print copies of AATA do not include     -->
-<!-- the two Sage sections, so we kill them here -->
+<!-- Each Chapter has a <remark> about Sage,       -->
+<!-- which will be included by default             -->
+<!-- The PDF version contains the two              -->
+<!-- Sage sections (discussions and exercises), so -->
+<!-- we kill the duplicative remarks here          -->
+<!-- Note: these come last in the numbering, so    -->
+<!-- their disappearance does not affect numbering -->
+<!-- Ideally they would be labeled as unnumbered   -->
+<!-- But print copies of AATA do not include       -->
+<!-- the two Sage sections, so we kill them here   -->
 <xsl:template match="remark[title='Sage']" />
-<!-- <xsl:template match="section[title='Sage']" /> -->
-<!-- <xsl:template match="exercises[title='Sage Exercises']" /> -->
 
 </xsl:stylesheet>

@@ -11,13 +11,13 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- Assumes this file is in mathbook/user, so it must be copied there -->
+<!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
+<!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
+<xsl:import href="aata-common.xsl" />
 
-<!-- List Chapters and Sections in Table of Contents -->
-<xsl:param name="toc.level">
-	<xsl:text>2</xsl:text>
-</xsl:param>
+<!-- List Chapters and Sections in printed Table of Contents -->
+<xsl:param name="toc.level" select="'2'" />
 
 <!-- Exercises have "hint" and "solution"s -->
 <!--   Hints: for a backmatter section     -->
