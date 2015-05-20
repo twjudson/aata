@@ -212,7 +212,7 @@
 		P.maximal_elements()
 		</input>
 		<output>
-		[17, 13, 19, 5, 12]
+		[5, 19, 13, 17, 12]
 		</output>
 		</sage>
 
@@ -223,8 +223,8 @@
 		P.level_sets()
 		</input>
 		<output>
-		[[18, 9, 6, 0], [11, 10], [2], [1], [8], [3, 12],
-		 [15], [7], [16, 4], [17, 13, 19, 14], [5]]
+        [[18, 9, 6, 0], [11, 10], [2], [1], [8], [3, 12],
+         [15], [7], [16, 4], [13, 17, 14, 19], [5]]
 		</output>
 		</sage>
 
@@ -235,8 +235,8 @@
 		linear = P.linear_extension(); linear
 		</input>
 		<output>
-		[18, 9, 11, 6, 10, 0, 2, 1, 8, 3, 15,
-		  7, 16, 17, 13, 4, 19, 14, 5, 12]
+        [18, 9, 11, 6, 10, 0, 2, 1, 8, 3, 15, 
+         7, 4, 14, 5, 19, 16, 13, 17, 12]
 		</output>
 		</sage>
 
@@ -308,12 +308,15 @@
 
 		<!-- % RAB 2012/08/11, Sage 5.2 -->
 		<!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
+        <!-- RAB 2015/05/20, 6.7 -->
+        <!-- Should try to fix this coercion -->
 
 		<sage>
 		<input>
-		elements = list(C)
-		a = elements[13]; b = elements[11]
-		a, b
+        par = C.an_element().parent()
+        a = par([1, 1, 1, 2])
+        b = par([2, 1, 1, 1])
+        a, b
 		</input>
 		<output>
 		([1, 1, 1, 2], [2, 1, 1, 1])
@@ -331,8 +334,9 @@
 
 		<sage>
 		<input>
-		c = elements[1]; d = elements[8]
-		c, d
+        c = par([1, 4])
+        d = par([2, 3])
+        c, d
 		</input>
 		<output>
 		([1, 4], [2, 3])
@@ -381,37 +385,59 @@
 		</output>
 		</sage>
 
-		<p>Notice that the returned values are elements of the lattice, in this case ordered lists of integers summing to <m>5</m>.</p>
+        <p>Notice that the returned values are all elements of the lattice, in this case ordered lists of integers summing to <m>5</m>.</p>
 
-		<p>Complements now make sense in a lattice, and the lattice of integer compositions is a complemented lattice.</p>
+        <p>Complements now make sense in a lattice.  The result of the <c>.complements()</c> method is a dictionary that uses elements of the lattice as the keys.  We say the dictionary is <q>indexed</q> by the elements of the lattice.  The result is a list of the complements of the element.  We call this the <q>value</q> of the key-value pair.  (You may know dictionaries as <q>associative arrays</q>, but they are really just fancy functions.)</p>
 
-		<sage>
-		<input>
-		comp = C.complements()
-		C[comp[2]]
-		</input>
-		<output>
-		[1, 1, 1, 2]
-		</output>
-		</sage>
+        <sage>
+        <input>
+        comp = C.complements()
+        comp[par([1, 1, 1, 2])]
+        </input>
+        <output>
+        [[4, 1]]
+        </output>
+        </sage>
 
-		<sage>
-		<input>
-		C[2]
-		</input>
-		<output>
-		[4, 1]
-		</output>
-		</sage>
+        <p>The lattice of integer compositions is a complemented lattice, as we can see by the result that each element has a single (unique) complement, evidenced by the lists of length <m>1</m> in the values of the dictionary.  Or we can just ask Sage via <c>.is_complemented()</c>.  Dictionaries have no inherent order, so you may get different output each time you inspect the dictionary.</p>
 
-		<sage>
-		<input>
-		C.is_complemented()
-		</input>
-		<output>
-		True
-		</output>
-		</sage>
+        <sage doctest="not tested">
+        <input>
+        comp
+        </input>
+        <output>
+        {[1, 1, 1, 1, 1]: [[5]],
+         [1, 1, 1, 2]: [[4, 1]],
+         [1, 1, 2, 1]: [[3, 2]],
+         [1, 1, 3]: [[3, 1, 1]],
+         [1, 2, 1, 1]: [[2, 3]],
+         [1, 2, 2]: [[2, 2, 1]],
+         [1, 3, 1]: [[2, 1, 2]],
+         [1, 4]: [[2, 1, 1, 1]],
+         [2, 1, 1, 1]: [[1, 4]],
+         [2, 1, 2]: [[1, 3, 1]],
+         [2, 2, 1]: [[1, 2, 2]],
+         [2, 3]: [[1, 2, 1, 1]],
+         [3, 1, 1]: [[1, 1, 3]],
+         [3, 2]: [[1, 1, 2, 1]],
+         [4, 1]: [[1, 1, 1, 2]],
+         [5]: [[1, 1, 1, 1, 1]]}
+        </output>
+        </sage>
+
+        <sage>
+        <input>
+        [len(e[1]) for e in comp.items()]
+        </input>
+        <output>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</output>
+        </sage>
+
+        <sage>
+        <input>
+        C.is_complemented()
+        </input>
+        <output>True</output>
+        </sage>
 
 		<p>There are many more commands which apply to posets and lattices, so build a few and use tab-completion liberally to explore.  There is more to discover than we can cover in just a single chapter, but you now have the basic tools to profitably study posets and lattices in Sage.</p>
 	</subsection>

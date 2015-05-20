@@ -102,6 +102,26 @@
 			<output>(9)</output>
 		</sage>
 
+		<p>We can create, and then compute with, new elements of the group by coercing an integer (in a list of length <m>1</m>) into the group.  You may get a <c>DeprecationWarning</c> the first time you use this syntax to create a new element.  The mysterious warning can be safely ignored.</p>
+
+		<!-- Only to doctesting, warning to disappear "a few months" after 2015/05/20      -->
+		<!-- This test evokes the warning, then next one tests fine, as it normally should -->
+		<!-- Adjust sentence above once it goes away -->
+		<!-- Used ... below to mark out a line number that doctesting complained about -->
+
+		<sage doctest="invisible">
+			<input>
+			G([2])
+			</input>
+			<output>
+			doctest:...: DeprecationWarning: The default behaviour changed! If you
+			*really* want a linear combination of smith generators, use
+			.linear_combination_of_smith_form_gens.
+			See http://trac.sagemath.org/16261 for details.
+			(2)
+			</output>
+		</sage>
+
 		<sage>
 			<input>
 			b = G([2]); b
@@ -506,7 +526,7 @@
 
 		<sage>
 			<input>bc = CDF(b); bc</input>
-			<output>0.623489801859 + 0.781831482468*I</output>
+			<output>0.62348980185... + 0.781831482468...*I</output>
 		</sage>
 
 		<sage>

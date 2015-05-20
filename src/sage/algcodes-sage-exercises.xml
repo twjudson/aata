@@ -48,6 +48,8 @@
 
     <exercise number="3">
         <statement>
+            <p><em>Note:</em> This problem is on holiday (as of Sage 6.7), while some buggy Sage code for the minimum distance of a Hamming code gets sorted out.  The <c>r = 2</c> case produces an error message and for <c>r &gt; 5</c> the computation of the minimum distance has become intolerably slow.  So it is a bit harder to make a reasonable conjecture from just <m>3</m> cases.</p>
+
             <p>The dual of an <m>(n,k)</m> block code is formed as all the set of all binary vectors which are orthogonal to every vector of the original code.  Exercise<nbsp/><xref ref="exercise-algcodes-dual-code"/> describes this construction and asks about some of its properties.</p>
 
             <p>You can construct the dual of a code in Sage with the <c>.dual_code()</c> method.  Construct the binary Hamming codes, and their duals, with the parameter <c>r</c> ranging from <c>2</c> to <c>10</c>, inclusive.  Build a table with six columns (perhaps employing the <c>html.table()</c> function) that lists <m>r</m>, the length of the codes, the dimensions of the original and the dual, and the minimum distances of the orginal and the dual.</p>
@@ -63,7 +65,7 @@
 
             <p>A consequence of a code of dimension <m>k</m> being perfect is that <me>2^k\left({n\choose 0} + {n\choose 1} + {n\choose 2} + \cdots + {n\choose \frac{d-1}{2}}\right) = 2^n</me>  Conversely, if a code has minimum distance <m>d</m> and the condition above is true, then the code is perfect.</p>
 
-            <p>Write a Python function, named <c>is_perfect()</c> which accepts a linear code as input and returns <c>True</c> or <c>False</c>.  Demonstrate your function by checking that the (binary) Golay code is perfect, and then use a loop to verify that the (binary) Hamming codes are perfect for all lengths below <m>1000</m>.</p>
+            <p>Write a Python function, named <c>is_perfect()</c> which accepts a linear code as input and returns <c>True</c> or <c>False</c>.  Demonstrate your function by checking that the (binary) Golay code is perfect, and then use a loop to verify that the (binary) Hamming codes are perfect for all lengths below <m>32</m>.</p>
         </statement>
         
     </exercise>

@@ -209,15 +209,15 @@
 			elements = D.list(); elements
 			</input>
 			<output>
-			[(), (2,5)(3,4), (1,2)(3,5), (1,2,3,4,5), (1,3)(4,5),
-			(1,3,5,2,4), (1,4)(2,3), (1,4,2,5,3), (1,5,4,3,2), (1,5)(2,4)]
+			[(), (1,5)(2,4), (1,2,3,4,5), (1,4)(2,3), (1,3,5,2,4), (2,5)(3,4),
+			 (1,3)(4,5), (1,5,4,3,2), (1,4,2,5,3), (1,2)(3,5)]
 			</output>
 		</sage>
 
 		<sage>
 			<input>
-			rotate = elements[3]
-			flip = elements[1]
+			rotate = elements[2]
+			flip = elements[3]
 			flip*rotate == rotate* flip
 			</input>
 			<output>False</output>
@@ -235,7 +235,7 @@
 
 		<p>There are many more methods you can use for both permutation groups and their individual elements.  Use the blank compute cell below to create a permutation group (any one you like) and an element of a permutation group (any one you like).  Then use tab-completion to see all the methods available for an element, or for a group (name, period, tab-key).  Some names you may recognize, some we will learn about in the coming chapters, some are highly-specialized research tools you can use when you write your Ph.D.\ thesis in group theory.  For any of these methods, remember that you can type the name, followed by a question mark, to see documentation and examples.  <em>Experiment and explore</em> <mdash /> it is really hard to break anything.</p>
 
-		<sage tpe="practice" />
+		<sage type="practice" />
 
 		<p>Here are some selected examples of various methods available.</p>
 
@@ -345,7 +345,7 @@
 			H = G.subgroup([sigma, tau])
 			H.list()
 			</input>
-			<output>[(), (4,5), (1,3), (1,3)(4,5)]</output>
+			<output>[(), (1,3), (4,5), (1,3)(4,5)]</output>
 		</sage>
 
 		<sage>
@@ -389,15 +389,15 @@
 		<sage>
 			<input>cube.list()</input>
 			<output>
-			[(), (2,4,5)(3,8,6), (2,5,4)(3,6,8), (1,2)(3,5)(4,6)(7,8),
-			(1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4), (1,3,6)(4,7,5),
-			(1,3)(2,4)(5,7)(6,8), (1,3,8)(2,7,5), (1,4,3,2)(5,8,7,6),
-			(1,4,8,5)(2,3,7,6), (1,4)(2,8)(3,5)(6,7), (1,5,6,2)(3,4,8,7),
-			(1,5,8,4)(2,6,7,3), (1,5)(2,8)(3,7)(4,6), (1,6,3)(4,5,7),
-			(1,6)(2,5)(3,8)(4,7), (1,6,8)(2,7,4), (1,7)(2,3)(4,6)(5,8),
-			(1,7)(2,6)(3,5)(4,8), (1,7)(2,8)(3,4)(5,6), (1,8,6)(2,4,7),
-			(1,8,3)(2,5,7), (1,8)(2,7)(3,6)(4,5)]
-			</output>
+            [(), (1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4),
+             (1,4,8,5)(2,3,7,6), (1,6,8)(2,7,4), (2,4,5)(3,8,6),
+             (1,3,8)(2,7,5), (1,6)(2,5)(3,8)(4,7), (1,3,6)(4,7,5),
+             (1,3)(2,4)(5,7)(6,8), (1,8)(2,7)(3,6)(4,5), (1,7)(2,3)(4,6)(5,8),
+             (1,4)(2,8)(3,5)(6,7), (1,5,6,2)(3,4,8,7), (1,5,8,4)(2,6,7,3),
+             (1,7)(2,6)(3,5)(4,8), (1,7)(2,8)(3,4)(5,6), (1,4,3,2)(5,8,7,6),
+             (1,5)(2,8)(3,7)(4,6), (1,2)(3,5)(4,6)(7,8), (1,8,6)(2,4,7),
+             (2,5,4)(3,6,8), (1,6,3)(4,5,7), (1,8,3)(2,5,7)]
+            </output>
 		</sage>
 
 		<p>Since we know from the discussion in the text that the symmetry group has <m>24</m> elements, we see that our three quarter-turns are sufficient to create every symmetry.  This prompts several questions which you can find in Exercise<nbsp /><xref ref="exercise-cube-symmetry" />.</p>

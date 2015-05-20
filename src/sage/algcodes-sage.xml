@@ -65,7 +65,7 @@
 		<p>We know that the parity-check matrix and the generator matrix are useful for the construction, description and analysis of linear codes.  The Sage method names are just a bit cryptic.  Sage has extensive routines for analyzing matrices with elements from different fields, so we perform much of the subsequent analysis of these matrices within Sage.</p>
 
 		<sage>
-			<input>C = H.check_mat(); C</input>
+			<input>C = H.parity_check_matrix(); C</input>
 			<output>
 			[1 0 1 0 1 0 1]
 			[0 1 1 0 0 1 1]
@@ -73,10 +73,10 @@
 			</output>
 		</sage>
 
-		<p>The generator matrix here in the text has <em>columns</em> that are codewords, and linear combinnations of the columns (the column space of the matrix) are codewords.  In Sage the generator matrix has <em>rows</em> that are codewords and the row space of the matrix is the code.  So here is another place where we need to mentally translate between a choice made in the text and a choice made by the Sage developers.</p>
+		<p>The generator matrix here in the text has <em>columns</em> that are codewords, and linear combinations of the columns (the column space of the matrix) are codewords.  In Sage the generator matrix has <em>rows</em> that are codewords and the row space of the matrix is the code.  So here is another place where we need to mentally translate between a choice made in the text and a choice made by the Sage developers.</p>
 
 		<sage>
-			<input>G = H.gen_mat(); G</input>
+			<input>G = H.generator_matrix(); G</input>
 			<output>
 			[1 0 0 0 0 1 1]
 			[0 1 0 0 1 0 1]
@@ -92,10 +92,10 @@
 			<output>True</output>
 		</sage>
 
-		<p>Note that the parity-check may not be canonical and the generator matrix may not be standard.  Sage can produce a generator matrix that has a set of columns that forms an identity matrix, though no guarantee is made that these columns are the first columns.  (Columns, not rows.)  Such a matrix is said to be <term>systematic</term>, and the Sage method is <c>.gen_mat_systematic()</c>.</p>
+		<p>Note that the parity-check may not be canonical and the generator matrix may not be standard.  Sage can produce a generator matrix that has a set of columns that forms an identity matrix, though no guarantee is made that these columns are the first columns.  (Columns, not rows.)  Such a matrix is said to be <term>systematic</term>, and the Sage method is <c>.generator_matrix_systematic()</c>.</p>
 
 		<sage>
-			<input>H.gen_mat_systematic()</input>
+			<input>H.generator_matrix_systematic()</input>
 			<output>
 			[1 0 0 0 0 1 1]
 			[0 1 0 0 1 0 1]
