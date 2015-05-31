@@ -118,7 +118,7 @@
 			</md>
 			<notation><usage>{\mathbb N}</usage><description>the natural numbers</description></notation><notation><usage>{\mathbb Z}</usage><description>the integers</description></notation><notation><usage>{\mathbb Q}</usage><description>the rational numbers</description></notation><notation><usage>{\mathbb R}</usage><description>the real numbers</description></notation><notation><usage>{\mathbb C}</usage><description>the complex numbers</description></notation></p>
 
-			<p>We find various relations between sets and can perform operations on sets.  A set <m>A</m> is a <term>subset</term> of <m>B</m>, written <m>A \subset B</m> or <m>B \supset A</m>, if every element of <m>A</m> is also an element of <m>B</m>.  <notation><usage>A \subset B</usage><description><m>A</m> is a subset of <m>B</m></description></notation> For example,  
+			<p>We can find various relations between sets as well as perform operations on sets.  A set <m>A</m> is a <term>subset</term> of <m>B</m>, written <m>A \subset B</m> or <m>B \supset A</m>, if every element of <m>A</m> is also an element of <m>B</m>.  <notation><usage>A \subset B</usage><description><m>A</m> is a subset of <m>B</m></description></notation> For example,  
 				<me>\{4,5,8\} \subset \{2, 3, 4, 5, 6, 7, 8, 9 \}</me>
 			and
 				<me>{\mathbb N} \subset {\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}.</me>
@@ -262,7 +262,7 @@
 
 
 
-		<p>Subsets of <m>A \times B</m> are called <term>relations</term>.  We will define a  <term>mapping</term><index><main>Mapping</main><see>Function</see></index> or <term>function</term><index><main>Function</main><sub>definition of</sub></index> <m>f \subset A \times B</m> from a set <m>A</m> to a set <m>B</m> to be the special type of  relation in which for each element <m>a \in A</m> there is a unique element <m>b \in B</m> such that <m>(a, b) \in f</m>; another way of saying this is that for every element in <m>A</m>, <m>f</m> assigns a unique element in <m>B</m>.  We usually write <m>f:A \rightarrow B</m> or <m>A \stackrel{f}{\rightarrow} B</m>.  Instead of writing down ordered pairs  <m>(a,b) \in A \times B</m>, we write <m>f(a) = b</m> or <m>f : a \mapsto b</m>.  The set  <m>A</m> is called the <term>domain</term><index><main>Function</main><sub>domain of</sub></index> of <m>f</m> and   
+		<p>Subsets of <m>A \times B</m> are called <term>relations</term>.  We will define a  <term>mapping</term><index><main>Mapping</main><see>Function</see></index> or <term>function</term><index><main>Function</main><sub>definition of</sub></index> <m>f \subset A \times B</m> from a set <m>A</m> to a set <m>B</m> to be the special type of relation where <m>(a, b) \in f</m> if for every element <m>a \in A</m> there exists a unique element <m>b \in B</m>. Another way of saying this is that for every element in <m>A</m>, <m>f</m> assigns a unique element in <m>B</m>.  We usually write <m>f:A \rightarrow B</m> or <m>A \stackrel{f}{\rightarrow} B</m>.  Instead of writing down ordered pairs  <m>(a,b) \in A \times B</m>, we write <m>f(a) = b</m> or <m>f : a \mapsto b</m>.  The set  <m>A</m> is called the <term>domain</term><index><main>Function</main><sub>domain of</sub></index> of <m>f</m> and   
 			<me>f(A) = \{ f(a) : a \in A \} \subset B</me>
 		is called the <term>range</term><index><main>Function</main><sub>range of</sub></index> or <term>image</term> of <m>f</m>.  We can think of the elements in the function's domain as input values and the elements in the function's range as output values.</p>
 
@@ -270,46 +270,43 @@
 
 			 <!-- Changed the figure to a tikz diagram - TWJ 5/4/2010 -->
 			<image xml:id="sets-mappings">
-<latex-image-code><![CDATA[
-			\begin{tikzpicture}[scale=0.5]
-			\draw (0,0) ellipse (2 and 3);
-			\draw (7,0) ellipse (2 and 3);
-			\draw (0,8) ellipse (2 and 3);
-			\draw (7,8) ellipse (2 and 3);
-			\draw [->] (0.5,9.5) -- (6.5,8);
-			\draw [->] (0.5,8) -- (6.5,6.7);
-			\draw [->] (0.5,6.5) -- (6.5,6.5);
-			\draw [->] (0.5,1.5) -- (6.5,1.5);
-			\draw [->] (0.5,1.3) -- (6.5,0);
-			\draw [->] (0.5,0) -- (6.5,-1.5);
-			\draw [->] (0.5,-1.5) -- (6.5,1.3);
-			\node at (0, 1.5) {1};
-			\node at (0, 0) {2};
-			\node at (0, -1.5) {3};
-			\node at (7, 1.5) {$a$};
-			\node at (7, 0) {$b$};
-			\node at (7, -1.5) {$c$};
-			\node at (0, 9.5) {1};
-			\node at (0, 8) {2};
-			\node at (0, 6.5) {3};
-			\node at (7, 9.5) {$a$};
-			\node at (7, 8) {$b$};
-			\node at (7, 6.5) {$c$};
-			\node at (-1.5,11) {$A$};
-			\node at (5.5,11) {$B$};
-			\node at (-1.5,3) {$A$};
-			\node at (5.5,3) {$B$};
-			\node at (3.5,3) {$g$};
-			\node at (3.5,10) {$f$};
-			\end{tikzpicture}]]>
-			</latex-image-code>
-</image>
-
+				<latex-image-code><![CDATA[
+					\begin{tikzpicture}[scale=0.5]
+					\draw (0,0) ellipse (2 and 3);
+					\draw (7,0) ellipse (2 and 3);
+					\draw (0,8) ellipse (2 and 3);
+					\draw (7,8) ellipse (2 and 3);
+					\draw [->] (0.5,9.5) -- (6.5,8);
+					\draw [->] (0.5,8) -- (6.5,6.7);
+					\draw [->] (0.5,6.5) -- (6.5,6.5);
+					\draw [->] (0.5,1.5) -- (6.5,1.5);
+					\draw [->] (0.5,1.3) -- (6.5,0);
+					\draw [->] (0.5,0) -- (6.5,-1.5);
+					\draw [->] (0.5,-1.5) -- (6.5,1.3);
+					\node at (0, 1.5) {1};
+					\node at (0, 0) {2};
+					\node at (0, -1.5) {3};
+					\node at (7, 1.5) {$a$};
+					\node at (7, 0) {$b$};
+					\node at (7, -1.5) {$c$};
+					\node at (0, 9.5) {1};
+					\node at (0, 8) {2};
+					\node at (0, 6.5) {3};
+					\node at (7, 9.5) {$a$};
+					\node at (7, 8) {$b$};
+					\node at (7, 6.5) {$c$};
+					\node at (-1.5,11) {$A$};
+					\node at (5.5,11) {$B$};
+					\node at (-1.5,3) {$A$};
+					\node at (5.5,3) {$B$};
+					\node at (3.5,3) {$g$};
+					\node at (3.5,10) {$f$};
+					\end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
 			<caption>Mappings and relations</caption> 
-
 		<!-- Changed the caption to avoid confusion -->
 		<!--  Suggested by B. Torrence.  TWJ 10/1/2014 -->
-
 		</figure>
 
 		<example xml:id="example-sets-mappings">
@@ -334,58 +331,56 @@
 
 			<!-- Changed the figure to a tikz diagram - TWJ 5/4/2010 -->
 			<image xml:id="sets-composition">
-<latex-image-code><![CDATA[
-			\begin{tikzpicture}[scale=0.5]
-			\draw (-6,8) ellipse (2 and 3);
-			\draw (0,8) ellipse (2 and 3);
-			\draw (6,8) ellipse (2 and 3);
+				<latex-image-code><![CDATA[
+					\begin{tikzpicture}[scale=0.5]
+					\draw (-6,8) ellipse (2 and 3);
+					\draw (0,8) ellipse (2 and 3);
+					\draw (6,8) ellipse (2 and 3);
 
-			\node at (-7.5,11) {$A$};
-			\node at (-1.5,11) {$B$};
-			\node at (4.5,11) {$C$};
-			\node at (-6, 9.5) {1};
-			\node at (-6, 8) {2};
-			\node at (-6, 6.5) {3};
-			\node at (0, 9.5) {$a$};
-			\node at (0, 8) {$b$};
-			\node at (0, 6.5) {$c$};
-			\node at (6, 9.5) {$X$};
-			\node at (6, 8) {$Y$};
-			\node at (6, 6.5) {$Z$};
-			\node at (-3,10) {$f$};
-			\node at (3,10) {$g$};
+					\node at (-7.5,11) {$A$};
+					\node at (-1.5,11) {$B$};
+					\node at (4.5,11) {$C$};
+					\node at (-6, 9.5) {1};
+					\node at (-6, 8) {2};
+					\node at (-6, 6.5) {3};
+					\node at (0, 9.5) {$a$};
+					\node at (0, 8) {$b$};
+					\node at (0, 6.5) {$c$};
+					\node at (6, 9.5) {$X$};
+					\node at (6, 8) {$Y$};
+					\node at (6, 6.5) {$Z$};
+					\node at (-3,10) {$f$};
+					\node at (3,10) {$g$};
 
-			\draw [->] (0.5,9.5) -- (5.5,6.7);
-			\draw [->] (0.5,8) -- (5.5,6.5);
-			\draw [->] (0.5,6.5) -- (5.5,9.5);
+					\draw [->] (0.5,9.5) -- (5.5,6.7);
+					\draw [->] (0.5,8) -- (5.5,6.5);
+					\draw [->] (0.5,6.5) -- (5.5,9.5);
 
-			\draw [->] (-5.5,9.5) -- (-0.5,8);
-			\draw [->] (-5.5,8) -- (-0.5,6.5);
-			\draw [->] (-5.5,6.5) -- (-0.5,9.5);
+					\draw [->] (-5.5,9.5) -- (-0.5,8);
+					\draw [->] (-5.5,8) -- (-0.5,6.5);
+					\draw [->] (-5.5,6.5) -- (-0.5,9.5);
 
-			\draw (-3,0) ellipse (2 and 3);
-			\draw (3,0) ellipse (2 and 3);
+					\draw (-3,0) ellipse (2 and 3);
+					\draw (3,0) ellipse (2 and 3);
 
-			\node at (-5,3) {$A$};
-			\node at (1.5,3) {$C$};
-			\node at (-3, 1.5) {1};
-			\node at (-3, 0) {2};
-			\node at (-3, -1.5) {3};
-			\node at (3, 1.5) {$X$};
-			\node at (3, 0) {$Y$};
-			\node at (3, -1.5) {$Z$};
-			\node at (0,2.5) {$g \circ f$};
+					\node at (-5,3) {$A$};
+					\node at (1.5,3) {$C$};
+					\node at (-3, 1.5) {1};
+					\node at (-3, 0) {2};
+					\node at (-3, -1.5) {3};
+					\node at (3, 1.5) {$X$};
+					\node at (3, 0) {$Y$};
+					\node at (3, -1.5) {$Z$};
+					\node at (0,2.5) {$g \circ f$};
 
-			\draw [->] (-2.5,1.5) -- (2.5,-1.3);
-			\draw [->] (-2.5,0) -- (2.5,1.5);
-			\draw [->] (-2.5,-1.5) -- (2.5,-1.5);
+					\draw [->] (-2.5,1.5) -- (2.5,-1.3);
+					\draw [->] (-2.5,0) -- (2.5,1.5);
+					\draw [->] (-2.5,-1.5) -- (2.5,-1.5);
 
-			\end{tikzpicture}]]>
-			</latex-image-code>
-</image>
-
-		<caption>Composition of maps</caption>
-
+					\end{tikzpicture}]]>
+				</latex-image-code>
+			</image>
+			<caption>Composition of maps</caption>
 		</figure>
 
 		<example xml:id="example-sets-composition">
@@ -478,7 +473,7 @@
 						<mrow>&amp; = ((h \circ g) \circ f)(a).</mrow>
 				</md></p>
  
-				<p>(3) Assume that <m>f</m> and <m>g</m> are both onto functions.  Given <m>c \in C</m>, we must show that there exists an <m>a \in A</m> such that <m>(g \circ f)(a) = g(f(a)) = c</m>.  However, since <m>g</m> is onto, there is a <m>b \in B</m> such that <m>g(b) = c</m>.  Similarly, there is an <m>a \in A</m> such that <m>f(a) = b</m>.  Accordingly, 
+				<p>(3) Assume that <m>f</m> and <m>g</m> are both onto functions. Given <m>c \in C</m>, we must show that there exists an <m>a \in A</m> such that <m>(g \circ f)(a) = g(f(a)) = c</m>. However, since <m>g</m> is onto, there is an element <m>b \in B</m> such that <m>g(b) = c</m>. Similarly, there is an <m>a \in A</m> such that <m>f(a) = b</m>. Accordingly, 
 					<me>(g \circ f)(a) = g(f(a)) = g(b) = c.</me></p>
 			</proof>
 		</theorem>
@@ -554,7 +549,7 @@
 			<proof>
 				<p>Suppose first that <m>f:A \rightarrow B</m> is invertible with inverse <m>g: B \rightarrow A</m>. Then <m>g \circ f = id_A</m> is the identity map; that is, <m>g(f(a)) = a</m>. If <m>a_1, a_2 \in A</m> with <m>f(a_1) = f(a_2)</m>, then <m>a_1 = g(f(a_1)) = g(f(a_2)) = a_2</m>.  Consequently, <m>f</m> is one-to-one.  Now suppose that <m>b \in B</m>. To show that <m>f</m> is onto, it is necessary to find an <m>a \in A</m> such that <m>f(a) = b</m>, but <m>f(g(b)) = b</m> with <m>g(b) \in A</m>. Let <m>a = g(b)</m>.</p>
 
-				<p>Now assume the converse; that is, let <m>f</m> be bijective.  Let <m>b \in B</m>.  Since <m>f</m> is onto, there exists an <m>a \in A</m> such that <m>f(a) = b</m>.  Because <m>f</m> is one-to-one, <m>a</m> must be unique. Define <m>g</m> by letting <m>g(b) = a</m>.  We have now constructed the inverse of <m>f</m>.</p>
+				<p>Conversely, let <m>f</m> be bijective and let <m>b \in B</m>.  Since <m>f</m> is onto, there exists an <m>a \in A</m> such that <m>f(a) = b</m>.  Because <m>f</m> is one-to-one, <m>a</m> must be unique. Define <m>g</m> by letting <m>g(b) = a</m>.  We have now constructed the inverse of <m>f</m>.</p>
 			</proof>
 		</theorem>
 
@@ -563,7 +558,7 @@
 		<subsection number="no">
 			<title>Equivalence Relations and Partitions</title>
 
-			<p>A fundamental notion in mathematics is that of equality.  We can generalize equality with the introduction of equivalence relations and equivalence classes.  An <term>equivalence relation</term><index><main>Equivalence relation</main></index> on a set <m>X</m> is a relation <m>R \subset X \times X</m> such that  
+			<p>A fundamental notion in mathematics is that of equality.  We can generalize equality with equivalence relations and equivalence classes.  An <term>equivalence relation</term><index><main>Equivalence relation</main></index> on a set <m>X</m> is a relation <m>R \subset X \times X</m> such that  
 				<ul>
  
 					<li><m>(x, x) \in R</m> for all <m>x \in X</m> (<term>reflexive property</term>);</li>
