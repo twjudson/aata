@@ -113,9 +113,9 @@
 
 					<p>(1) Addition and multiplication are commutative modulo <m>n</m> since the remainder of <m>a + b</m> divided by <m>n</m> is the same as the remainder of <m>b + a</m> divided by <m>n</m>.</p>
 				 
-					<p>(6) Suppose that <m>\gcd(a, n) = 1</m>.  Then there exist integers <m>r</m> and <m>s</m> such that <m>ar + ns = 1</m>.  Since <m>ns = 1 - ar</m>, <m>ra  \equiv 1 \pmod{n}</m>.  Letting <m>b</m> be the equivalence class of <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
+					<p>(6) Suppose that <m>\gcd(a, n) = 1</m>.  Then there exist integers <m>r</m> and <m>s</m> such that <m>ar + ns = 1</m>.  Since <m>ns = 1 - ar</m>, it must be the case that <m>ar \equiv 1 \pmod{n}</m>.  Letting <m>b</m> be the equivalence class of <m>r</m>, <m>a b \equiv 1\pmod{n}</m>.</p>
 				 
-					<p>Conversely, suppose that there exists a <m>b</m> such that <m>ab  \equiv 1 \pmod{ n}</m>.  Then <m>n</m> divides <m>ab -1</m>, so there is an integer <m>k</m> such that <m>ab - nk = 1</m>.  Let <m>d = \gcd(a,n)</m>.  Since <m>d</m> divides <m>ab - nk</m>, <m>d</m> must also divide 1; hence, <m>d = 1</m>.</p>
+					<p>Conversely, suppose that there exists an integer <m>b</m> such that <m>ab  \equiv 1 \pmod{ n}</m>.  Then <m>n</m> divides <m>ab -1</m>, so there is an integer <m>k</m> such that <m>ab - nk = 1</m>.  Let <m>d = \gcd(a,n)</m>.  Since <m>d</m> divides <m>ab - nk</m>, <m>d</m> must also divide 1; hence, <m>d = 1</m>.</p>
 				</proof>
 			</proposition>
 		</subsection>
@@ -302,7 +302,7 @@
 				</md> 
 				This is the same symmetry as <m>\mu_2</m>. Suppose we do these motions in the opposite order, <m>\rho_1</m> then <m>\mu_1</m>.  It is easy to determine that this is the same as the symmetry <m>\mu_3</m>; hence, <m>\rho_1 \mu_1 \neq \mu_1 \rho_1</m>.  A multiplication table for the symmetries of an equilateral triangle <m>\bigtriangleup ABC</m> is given in Table<nbsp /><xref ref="table-s3" />.</p>
 
-			<p>Notice that in the multiplication table for the symmetries of an equilateral triangle, for every motion of the triangle <m>\alpha</m> there is another motion <m>\alpha'</m> such that <m>\alpha \alpha' = id</m>;  that is, for every motion there is another  motion that takes the triangle back to its original orientation.</p>
+			<p>Notice that in the multiplication table for the symmetries of an equilateral triangle, for every motion of the triangle <m>\alpha</m> there is another motion <m>\beta</m> such that <m>\alpha \beta = id</m>; that is, for every motion there is another  motion that takes the triangle back to its original orientation.</p>
 
 	        <table xml:id="table-s3">
 
@@ -330,7 +330,7 @@
 		<!-- % Fixed the error  <m>(a,b) \in G \times G</m> -->
  
  		<introduction>
-			<p>The integers mod <m>n</m> and the symmetries of a triangle or a rectangle are both examples of groups.  A <term>binary operation</term><index><main>Binary operation</main></index> or <term>law of composition</term> on a set <m>G</m> is a function <m>G \times G \rightarrow G</m> that assigns to each pair <m>(a,b) \in G \times G</m> a unique element <m>a \circ b</m>, or <m>ab</m> in <m>G</m>, called the composition of <m>a</m> and <m>b</m>.  A <term>group</term><index><main>Group</main><sub>definition of</sub></index> <m>(G, \circ )</m> is a set <m>G</m> together with a law of composition <m>(a,b) \mapsto a \circ b</m> that satisfies the following axioms.
+			<p>The integers mod <m>n</m> and the symmetries of a triangle or a rectangle are examples of groups.  A <term>binary operation</term><index><main>Binary operation</main></index> or <term>law of composition</term> on a set <m>G</m> is a function <m>G \times G \rightarrow G</m> that assigns to each pair <m>(a,b) \in G \times G</m> a unique element <m>a \circ b</m>, or <m>ab</m> in <m>G</m>, called the composition of <m>a</m> and <m>b</m>.  A <term>group</term><index><main>Group</main><sub>definition of</sub></index> <m>(G, \circ )</m> is a set <m>G</m> together with a law of composition <m>(a,b) \mapsto a \circ b</m> that satisfies the following axioms.
 				<ul>
 					<li> The law of composition is <term>associative</term>. That is, <me> (a \circ b) \circ c = a \circ (b \circ c) </me> for <m>a, b, c \in G</m>.</li>
 
@@ -342,7 +342,7 @@
 			<p>A group <m>G</m> with the property that <m>a \circ b = b \circ a</m> for all <m>a, b \in G</m> is called <term>abelian</term><index><main>Abelian group</main></index><index><main>Group</main><sub>abelian</sub></index> or <term>commutative</term><index><main>Group</main><sub>commutative</sub></index>.  Groups not satisfying this property are said to be  <term>nonabelian</term><index><main>Group</main><sub>nonabelian</sub></index> or <term>noncommutative</term><index><main>Group</main><sub>noncommutative</sub></index>.</p>
 
 			<example xml:id="example-groups-integers">
-				<p>The integers <m>{\mathbb Z } = \{ \ldots , -1, 0, 1, 2, \ldots \}</m> form a group under the operation of addition.  The binary operation on two integers <m>m, n \in {\mathbb Z}</m> is just their sum.  Since the integers under addition already have a well-established notation, we will use the operator <m>+</m> instead of <m>\circ</m>; that is, we shall write <m>m + n</m> instead of <m>m \circ n</m>.  The identity is 0, and the inverse of <m>n \in {\mathbb Z}</m> is written as <m>-n</m> instead of <m>n^{-1}</m>.  Notice that the integers under addition have the additional property that <m>m + n = n + m</m> and are therefore an abelian group.</p>
+				<p>The integers <m>{\mathbb Z } = \{ \ldots , -1, 0, 1, 2, \ldots \}</m> form a group under the operation of addition.  The binary operation on two integers <m>m, n \in {\mathbb Z}</m> is just their sum.  Since the integers under addition already have a well-established notation, we will use the operator <m>+</m> instead of <m>\circ</m>; that is, we shall write <m>m + n</m> instead of <m>m \circ n</m>.  The identity is 0, and the inverse of <m>n \in {\mathbb Z}</m> is written as <m>-n</m> instead of <m>n^{-1}</m>.  Notice that the set of integers under addition have the additional property that <m>m + n = n + m</m> and therefore form an abelian group.</p>
 			</example>
 
 			<p>Most of the time we will write <m>ab</m> instead of <m>a \circ b</m>; however, if the group already has a natural operation such as addition in the integers, we will use that operation.  That is, if we are adding two integers, we still write <m>m + n</m>, <m>-n</m> for the inverse, and 0 for the identity as usual. We also write <m>m - n</m> instead of <m>m + (-n)</m>.</p>
@@ -478,7 +478,7 @@
 	 
 			<proposition>
 				<statement>
-					<p>If <m>g</m> is any element in a group <m>G</m>, then the inverse of <m>g</m>, <m>g^{-1}</m>, is unique.</p>
+					<p>If <m>g</m> is any element in a group <m>G</m>, then the inverse of <m>g</m>, denoted by <m>g^{-1}</m>, is unique.</p>
 				</statement>
 			</proposition>
 	 
