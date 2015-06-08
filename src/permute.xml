@@ -266,7 +266,7 @@
 				</statement> 
 
 				<proof>
-					<p>We can assume that <m>X = \{ 1, 2, \ldots, n \}</m>. Let <m>\sigma \in S_n</m>, and define <m>X_1</m> to be <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>. The set <m>X_1</m> is finite since <m>X</m> is finite. Now let <m>i</m> be the first integer in <m>X</m> that is not in <m>X_1</m> and define <m>X_2</m> by <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>. Again, <m>X_2</m> is a finite set.  Continuing in this manner, we can define finite disjoint sets <m>X_3, X_4, \ldots</m>. Since <m>X</m> is a finite set, we are guaranteed that this process will end and there will be only a finite number of these sets, say <m>r</m>. If <m>\sigma_i</m> is the cycle defined by 
+					<p>We can assume that <m>X = \{ 1, 2, \ldots, n \}</m>. If <m>\sigma \in S_n</m> and we define <m>X_1</m> to be <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>, then the set <m>X_1</m> is finite since <m>X</m> is finite. Now let <m>i</m> be the first integer in <m>X</m> that is not in <m>X_1</m> and define <m>X_2</m> by <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>. Again, <m>X_2</m> is a finite set.  Continuing in this manner, we can define finite disjoint sets <m>X_3, X_4, \ldots</m>. Since <m>X</m> is a finite set, we are guaranteed that this process will end and there will be only a finite number of these sets, say <m>r</m>. If <m>\sigma_i</m> is the cycle defined by 
 					<me>\sigma_i( x ) = 
 					\left\{\begin{array}{ll}
 					\sigma( x ) &amp; x \in X_i \\
@@ -418,9 +418,20 @@
 		<subsection number="no">
 			<title>Historical Note</title>
 			
-			<p>Lagrange<index><main>Lagrange, Joseph-Louis</main></index> first thought of permutations as functions from a set to itself, but it was Cauchy who developed the basic theorems and notation for permutations. He was the first to use cycle notation. Augustin-Louis Cauchy<index><main>Cauchy, Augustin-Louis</main></index> (1789<ndash />1857) was born in Paris at the height of the French Revolution. His family soon left Paris for the village of Arcueil to escape the Reign of Terror. One of the family's neighbors there was Pierre-Simon Laplace<index><main>Laplace, Pierre-Simon</main></index> (1749<ndash />1827), who encouraged him to seek a career in mathematics. Cauchy began his career as a mathematician by solving a problem in geometry given to him by Lagrange. Over 800 papers were written by Cauchy on such diverse topics as differential equations, finite groups, applied mathematics, and complex analysis. He was one of the mathematicians  responsible for making calculus rigorous. Perhaps more theorems and concepts in mathematics have the name Cauchy attached to them than that of any other mathematician.</p>
+			<p>Lagrange<index><main>Lagrange, Joseph-Louis</main></index> first thought of permutations as functions from a set to itself, but it was Cauchy who developed the basic theorems and notation for permutations. He was the first to use cycle notation. Augustin-Louis Cauchy<index><main>Cauchy, Augustin-Louis</main></index> (1789<ndash />1857) was born in Paris at the height of the French Revolution. His family soon left Paris for the village of Arcueil to escape the Reign of Terror. One of the family's neighbors there was Pierre-Simon Laplace<index><main>Laplace, Pierre-Simon</main></index> (1749<ndash />1827), who encouraged him to seek a career in mathematics. Cauchy began his career as a mathematician by solving a problem in geometry given to him by Lagrange. Cauchy wrote over 800 papers on such diverse topics as differential equations, finite groups, applied mathematics, and complex analysis. He was one of the mathematicians  responsible for making calculus rigorous. Perhaps more theorems and concepts in mathematics have the name Cauchy attached to them than that of any other mathematician.</p>
 
-			<!-- Replaced figure with tikz figure - TWJ 5/7/2010 -->
+		</subsection>
+		
+	</section>
+
+	<section xml:id="section-dihedral-groups">
+		<title>Dihedral Groups</title>
+ 
+		<introduction>
+
+			<p>Another special type of permutation group is the dihedral group. Recall the symmetry group of an equilateral triangle in Chapter<nbsp /><xref ref="groups" />. Such groups consist of the  rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon. For <m>n = 3, 4, \ldots</m>, we define the <term>nth dihedral group</term><index><main>Group</main><sub>dihedral</sub></index> to be the group of rigid motions of a regular <m>n</m>-gon.  We will denote this group by <m>D_n</m>.  <notation><usage>D_n</usage><description>the dihedral group</description></notation> We can number the vertices of a regular <m>n</m>-gon by <m>1, 2, \ldots, n</m> (Figure<nbsp /><xref ref="figure-regular" />).  Notice that there are exactly <m>n</m> choices to replace the first vertex.  If we replace the first vertex by <m>k</m>, then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>; hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.  We summarize these results in the following theorem.</p>
+
+						<!-- Replaced figure with tikz figure - TWJ 5/7/2010 -->
 			<figure xml:id="figure-regular">
 				<image xml:id="permute-ngon">
 					<latex-image-code><![CDATA[
@@ -441,17 +452,6 @@
 				</image>
 				<caption>A regular <m>n</m>-gon</caption>
 			</figure>
-
-		</subsection>
-		
-	</section>
-
-	<section xml:id="section-dihedral-groups">
-		<title>Dihedral Groups</title>
- 
-		<introduction>
-
-			<p>Another special type of permutation group is the dihedral group. Recall the symmetry group of an equilateral triangle in Chapter<nbsp /><xref ref="groups" />. Such groups consist of the  rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon. For <m>n = 3, 4, \ldots</m>, we define the <term>nth dihedral group</term><index><main>Group</main><sub>dihedral</sub></index> to be the group of rigid motions of a regular <m>n</m>-gon.  We will denote this group by <m>D_n</m>.  <notation><usage>D_n</usage><description>the dihedral group</description></notation> We can number the vertices of a regular <m>n</m>-gon by <m>1, 2, \ldots, n</m> (Figure<nbsp /><xref ref="figure-regular" />).  Notice that there are exactly <m>n</m> choices to replace the first vertex.  If we replace the first vertex by <m>k</m>, then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>; hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.  We summarize these results in the following theorem.</p>
 	 
 			<theorem>
 				<statement> 
@@ -532,7 +532,22 @@
 					In either case, the order of <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = id</m> and <m>r^n = id</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^{k - 1}</m>. If it is replaced by <m>k-1</m>, then <m>t = r^{k - 1} s</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>; that is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>. We will leave the proof that <m>srs = r^{-1}</m> as an exercise. </p>
 				</proof>
 			</theorem>
-			 
+
+			<example xml:id="example-permute-d4-group">
+				<p>The group of rigid motions of a square, <m>D_4</m>, consists of eight elements. With the vertices numbered 1, 2, 3, 4 (Figure<nbsp /><xref ref="figure-d4" />), the rotations are <md>
+					<mrow>r   &amp; = (1234)</mrow>
+					<mrow>r^2 &amp; = (13)(24)</mrow>
+					<mrow>r^3 &amp; = (1432)</mrow>
+					<mrow>r^4 &amp; = (1)</mrow>
+				</md> and the reflections are <md>
+					<mrow>s_1 &amp; = (24)</mrow>
+					<mrow>s_2 &amp; = (13).</mrow>
+				</md> The order of <m>D_4</m> is 8. The remaining two elements are <md>
+					<mrow>r s_1   &amp; = (12)(34)</mrow>
+					<mrow>r^3 s_1 &amp; = (14)(23).</mrow>
+				</md></p>
+			</example>
+
 			<figure xml:id="figure-d4">
 
 				<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
@@ -553,21 +568,13 @@
 				<caption>The group <m>D_4</m></caption>
 			</figure>
 
-			<example xml:id="example-permute-d4-group">
-				<p>The group of rigid motions of a square, <m>D_4</m>, consists of eight elements. With the vertices numbered 1, 2, 3, 4 (Figure<nbsp /><xref ref="figure-d4" />), the rotations are <md>
-					<mrow>r   &amp; = (1234)</mrow>
-					<mrow>r^2 &amp; = (13)(24)</mrow>
-					<mrow>r^3 &amp; = (1432)</mrow>
-					<mrow>r^4 &amp; = (1)</mrow>
-				</md> and the reflections are <md>
-					<mrow>s_1 &amp; = (24)</mrow>
-					<mrow>s_2 &amp; = (13).</mrow>
-				</md> The order of <m>D_4</m> is 8. The remaining two elements are <md>
-					<mrow>r s_1   &amp; = (12)(34)</mrow>
-					<mrow>r^3 s_1 &amp; = (14)(23).</mrow>
-				</md></p>
-			</example>
-	 
+		</introduction>
+
+		<subsection number="no">
+			<title>The Motion Group of a Cube</title>
+ 
+			<p>We can investigate the groups of rigid motions of  geometric objects other than a regular <m>n</m>-sided polygon to obtain interesting examples of permutation groups. Let us consider the group of rigid motions of a cube. One of the first questions that we can ask about this group is <q>what is its order?</q>  A cube has 6 sides. If a particular side is facing upward, then there are four possible rotations of the cube that will preserve the upward-facing side. Hence, the order of the group is <m>6 \cdot 4 = 24</m>. We have just proved the following proposition.</p>
+
 			<figure xml:id="figure-motions">
 
 				<!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
@@ -591,13 +598,6 @@
 				</image>
 				<caption>The motion group of a cube</caption>
 			</figure>
-
-		</introduction>
-
-		<subsection number="no">
-			<title>The Motion Group of a Cube</title>
- 
-			<p>We can investigate the groups of rigid motions of  geometric objects other than a regular <m>n</m>-sided polygon to obtain interesting examples of permutation groups. Let us consider the group of rigid motions of a cube. One of the first questions that we can ask about this group is <q>what is its order?</q>  A cube has 6 sides. If a particular side is facing upward, then there are four possible rotations of the cube that will preserve the upward-facing side. Hence, the order of the group is <m>6 \cdot 4 = 24</m>. We have just proved the following proposition.</p>
  
 			<proposition xml:id="proposition-motions-cube">
 				<statement>
