@@ -18,7 +18,7 @@
 			<p>Suppose that <m>G</m> is a finite group with an element <m>g</m> of order 5 and an element <m>h</m> of order 7. Why must <m>|G| \geq 35</m>?</p>
 		</statement>
 		<hint>
-			<p>The order of <m>g</m> and the order <m>h</m> must both divide the order of <m>G</m>. The smallest number that 5 and 7 both divide is  <m>\lcm( 5, 7 ) = 35</m>.</p>
+			<p>The order of <m>g</m> and the order <m>h</m> must both divide the order of <m>G</m>.</p>
 		</hint>
 		
 		</exercise>
@@ -28,7 +28,7 @@
 			<p>Suppose that <m>G</m> is a finite group with 60 elements.  What are the orders of possible subgroups of <m>G</m>?</p>
 		</statement>
 		<hint>
-			<p>The possible orders are <m>1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60</m>.</p>
+			<p>The possible orders must divide 60.</p>
 		</hint>
 		
 	</exercise>
@@ -145,7 +145,7 @@
 			<p>If <m>ghg^{-1} \in H</m> for all <m>g \in G</m> and <m>h \in H</m>, show that right cosets are identical to left cosets.  That is, show that <m>gH = Hg</m> for all <m>g \in G</m>.</p>
 		</statement>
 		<hint>
-			<p>Let <m>g_1 \in gH</m>. Then there exists an <m>h \in H</m> such that <m>g_1 = gh = ghg^{-1} g \Rightarrow g_1 \in Hg \Rightarrow gH \subset Hg</m>. Similarly, <m>Hg \subset gH</m>. Therefore, <m>gH = Hg</m>.</p>
+			<p>Let <m>g_1 \in gH</m>. Show that <m>g_1 \in Hg</m> and thus <m>gH \subset Hg</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -166,7 +166,7 @@
 
 	<exercise number="15">
 		<statement>
-			<p>Modify the proof of Theorem~6.10 to show that any two permutations <m>\alpha, \beta \in S_n</m> have the same cycle structure if and only if there exists a  permutation <m>\gamma</m> such that <m>\beta = \gamma \alpha \gamma^{-1}</m>.  If <m>\beta = \gamma \alpha \gamma^{-1}</m> for some <m>\gamma \in S_n</m>, then <m>\alpha</m> and <m>\beta</m> are {\bf\em conjugate}.</p>
+			<p>Show that any two permutations <m>\alpha, \beta \in S_n</m> have the same cycle structure if and only if there exists a permutation <m>\gamma</m> such that <m>\beta = \gamma \alpha \gamma^{-1}</m>.  If <m>\beta = \gamma \alpha \gamma^{-1}</m> for some <m>\gamma \in S_n</m>, then <m>\alpha</m> and <m>\beta</m> are <term>conjugate</term>.</p>
 		</statement>
 		
 	</exercise>
@@ -182,9 +182,6 @@
 		<statement>
 			<p>Suppose that <m>[G : H] = 2</m>. If <m>a</m> and <m>b</m> are not in <m>H</m>, show that <m>ab \in H</m>.</p>
 		</statement>
-		<hint>
-			<p>If <m>a \notin H</m>, then <m>a^{-1} \notin H \Rightarrow a^{-1} \in a H = a^{-1} H = bH \Rightarrow</m> there exist <m>h_1, h_2 \in H</m> such that <m>a^{-1} h_1 = b h_2 \Rightarrow ab = h_1 h_2^{-1} \in H</m>.</p>
-		</hint>
 		
 	</exercise>
 
@@ -199,6 +196,9 @@
 		<statement>
 			<p>Let <m>H</m> and <m>K</m> be subgroups of a group <m>G</m>.  Prove that <m>gH \cap gK</m> is a coset of <m>H \cap K</m> in <m>G</m>.</p>
 		</statement>
+		<hint>
+			<p>Show that <m>g(H \cap K) = gH \cap gK</m>.</p>
+		</hint>
 		
 	</exercise>
 
@@ -221,6 +221,9 @@
 			<p>Let <m>n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}</m>, where <m>p_1, p_2, \ldots, p_k</m> are distinct primes.  Prove that
 				<me>\phi(n) =  n \left( 1 - \frac{1}{p_1} \right) \left( 1 - \frac{1}{p_2} \right)\cdots \left( 1 - \frac{1}{p_k} \right).</me></p>
 		</statement>
+		<hint>
+			<p>If <m>\gcd(m,n) = 1</m>, then <m>\phi(mn) = \phi(m)\phi(n)</m> (Exercise<nbsp/><xref ref="exercise-integers-gcd-products"/> in Chapter<nbsp/><xref ref="integers"/>).</p>
+		</hint>
 		
 	</exercise>
 
