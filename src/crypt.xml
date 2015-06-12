@@ -201,6 +201,23 @@
 					
 						<li>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <m>\lceil \sqrt{n}\, \rceil</m> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</li>
 
+					</ol>
+				<m>x \leftarrow \lceil \sqrt{n}\, \rceil</m> <br />
+				<m>y \leftarrow 1</m> <br />
+				 <br />
+				1: while <m>x^2 - y^2 \gt n</m> do <br />
+				<m>y \leftarrow y + 1</m> <br />
+				 <br />
+				if <m>x^2 - y^2 \lt n</m> then <br />
+				<m>x \leftarrow x + 1</m> <br />
+				<m>y \leftarrow 1</m> <br />
+				goto 1 <br />
+				else if <m>x^2 - y^2 = 0</m> then <br />
+				<m>a \leftarrow x-y</m> <br />
+				<m>b \leftarrow x+y</m> <br />
+				write <m>n = a * b</m></p>
+
+
 <!--FIX THE PROGRAM LISTING-->
 <!--{\tt 
 \begin{tabbing}
@@ -225,7 +242,6 @@ xxxx\=xxxx\=xxxx\=xxxx \kill
 
  <todo>Fix program listing</todo>
 
-					</ol></p>
 			</statement>
 		</exercise>
 
