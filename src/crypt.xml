@@ -199,48 +199,28 @@
 							<me>n = x^2 - y^2 = (x - y)(x + y).</me>
 						Consequently, a positive odd integer can be factored exactly when we can find integers <m>x</m> and <m>y</m> such that <m>n = x^2 - y^2</m>.</li>
 					
-						<li>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <m>\lceil \sqrt{n}\, \rceil</m> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</li>
+						<li>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <c>ceiling(sqrt(n))</c> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</li>
 
-					</ol>
-				<m>x \leftarrow \lceil \sqrt{n}\, \rceil</m> <br />
-				<m>y \leftarrow 1</m> <br />
-				 <br />
-				1: while <m>x^2 - y^2 \gt n</m> do <br />
-				<m>y \leftarrow y + 1</m> <br />
-				 <br />
-				if <m>x^2 - y^2 \lt n</m> then <br />
-				<m>x \leftarrow x + 1</m> <br />
-				<m>y \leftarrow 1</m> <br />
-				goto 1 <br />
-				else if <m>x^2 - y^2 = 0</m> then <br />
-				<m>a \leftarrow x-y</m> <br />
-				<m>b \leftarrow x+y</m> <br />
-				write <m>n = a * b</m></p>
+					</ol></p>
 
+				<program>
+					<input>
+						x := ceiling(sqrt(n))
+						y := 1
 
-<!--FIX THE PROGRAM LISTING-->
-<!--{\tt 
-\begin{tabbing}
-xxxx\=xxxx\=xxxx\=xxxx \kill
-\> <m>x \leftarrow \lceil \sqrt{n}\, \rceil</m> \\
-\> <m>y \leftarrow 1</m> \\
- \\
-1: \> while <m>x^2 - y^2 \gt n</m> do \\
-\> \> <m>y \leftarrow y + 1</m> \\
- \\
-\> if <m>x^2 - y^2 \lt n</m> then \\
-\> \>  <m>x \leftarrow x + 1</m> \\
-\> \>  <m>y \leftarrow 1</m> \\
-\> \>  goto 1 \\
-\> else if <m>x^2 - y^2 = 0</m> then \\
-\>  \> <m>a \leftarrow x-y</m> \\
-\>  \> <m>b \leftarrow x+y</m> \\
-\>  \> write <m>n = a * b</m> 
-\end{tabbing}
- }-->
+						1 : while x^2 - y^2 <![CDATA[>]]> n do
+							y := y + 1
 
-
- <todo>Fix program listing</todo>
+							if x^2 - y^2 <![CDATA[<]]> n then
+								x := x + 1
+								y := 1
+								goto 1
+							else if x^2 - y^2 = 0 then
+								a := x - y
+								b := x + y
+								write n = a * b
+					</input>
+				</program>
 
 			</statement>
 		</exercise>
