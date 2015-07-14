@@ -23,6 +23,8 @@
 		
 	</exercise>
 
+	<todo>Fix solution to Exercise 1.</todo>
+
 	<exercise number="2" xml:id="exercise-struct-permutation">
 		<statement>
 			<p>Compute all <m>X_g</m> and all <m>G_x</m> for each of the following permutation groups. 
@@ -35,7 +37,7 @@
 				</ol></p>
 		</statement>
 		<hint>
-			<p><m>X_{(1)} = \{1, 2, 3  \}</m>, <m>X_{(12)} = \{3 \}</m>, <m>X_{(13)} = \{ 2 \}</m>, <m>X_{(23)} = \{1 \}</m>, <m>X_{(123)} = X_{(132)} = \emptyset</m>. <m>G_1 = \{ (1), (23) \}</m>, <m>G_2 = \{(1), (13) \}</m>, <m>G_3 = \{ (1), (12)\}</m>.</p>
+			<p>(a) <m>X_{(1)} = \{1, 2, 3  \}</m>, <m>X_{(12)} = \{3 \}</m>, <m>X_{(13)} = \{ 2 \}</m>, <m>X_{(23)} = \{1 \}</m>, <m>X_{(123)} = X_{(132)} = \emptyset</m>. <m>G_1 = \{ (1), (23) \}</m>, <m>G_2 = \{(1), (13) \}</m>, <m>G_3 = \{ (1), (12)\}</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -143,11 +145,10 @@
 
 	<exercise number="11">
 		<statement>
-			<p>Up to a rotation, how many ways can the faces of a cube be coloredwith three different colors?</p>
+			<p>Up to a rotation, how many ways can the faces of a cube be colored with three different colors?</p>
 		</statement>
 		<hint>
-			<p>The group of rigid motions of the cube can be described by the allowable permutations of the six faces and is isomorphic to <m>S_4</m>.  There are the identity cycle, 6 permutations with the structure <m>(abcd)</m> that correspond to the quarter turns, 3 permutations with the structure <m>(ab)(cd)</m> that correspond to the half turns,  6 permutations with the structure <m>(ab)(cd)(ef)</m> that correspond to rotating the cube about the centers of opposite edges, and 8 permutations with the structure <m>(abc)(def)</m> that correspond to rotating the cube about opposite vertices.  Thus, there are
-				<me>\frac{1}{24}(1 \cdot 3^6 + 6 \cdot 3^3 + 3 \cdot 3^4 + 6  \cdot  3^3 + 8 \cdot 3^2)/24 = 57.</me></p>
+			<p>The group of rigid motions of the cube can be described by the allowable permutations of the six faces and is isomorphic to <m>S_4</m>.  There are the identity cycle, 6 permutations with the structure <m>(abcd)</m> that correspond to the quarter turns, 3 permutations with the structure <m>(ab)(cd)</m> that correspond to the half turns,  6 permutations with the structure <m>(ab)(cd)(ef)</m> that correspond to rotating the cube about the centers of opposite edges, and 8 permutations with the structure <m>(abc)(def)</m> that correspond to rotating the cube about opposite vertices.</p>
 		</hint>
 		
 	</exercise>
@@ -194,30 +195,30 @@
 		 
 				</ol></p>
 
-				<figure xml:id="figure-exercise-benzene">
+			<figure xml:id="figure-exercise-benzene">
 
-					<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
-					<image xml:id="exercise-benzene">
-<latex-image-code>
+				<!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
+				<image xml:id="exercise-benzene">
+					<latex-image-code>
 <![CDATA[
-					\begin{tikzpicture}[scale=1]
+						\begin{tikzpicture}[scale=1]
 
-					\draw (40:1.2) -- (90:1.7) -- (140:1.2) -- (220:1.2) -- (270:1.7) -- (320:1.2) -- cycle;
-					\draw (90:1.7) -- (90:2.1) node [above] {$H$};
-					\draw (270:1.7) -- (270:2.1) node [below] {$H$};
-					\draw (40:1.2) -- (40:1.6);
-					\node at (40:1.9) {$H$};
-					\draw (140:1.2) -- (140:1.6);
-					\node at (140:1.9) {$H$};
-					\draw (220:1.2) -- (220:1.6);
-					\node at (220:1.9) {$H$};
-					\draw (320:1.2) -- (320:1.6);
-					\node at (320:1.9) {$H$};
+						\draw (40:1.2) -- (90:1.7) -- (140:1.2) -- (220:1.2) -- (270:1.7) -- (320:1.2) -- cycle;
+						\draw (90:1.7) -- (90:2.1) node [above] {$H$};
+						\draw (270:1.7) -- (270:2.1) node [below] {$H$};
+						\draw (40:1.2) -- (40:1.6);
+						\node at (40:1.9) {$H$};
+						\draw (140:1.2) -- (140:1.6);
+						\node at (140:1.9) {$H$};
+						\draw (220:1.2) -- (220:1.6);
+						\node at (220:1.9) {$H$};
+						\draw (320:1.2) -- (320:1.6);
+						\node at (320:1.9) {$H$};
 
-					\end{tikzpicture}
+						\end{tikzpicture}
 					]]>
 </latex-image-code>
-</image>
+				</image>
 
 				<caption>A benzene ring</caption>
 
@@ -264,12 +265,14 @@
 		
 	</exercise>
 
+	<todo>Finish this solution.</todo>
+
 	<exercise number="22">
 		<statement>
 			<p>Let <m>a \in G</m>. Show that for any <m>g \in G</m>, <m>gC(a) g^{-1} = C(gag^{-1})</m>. </p>
 		</statement>
 		<hint>
-			<p><m>x \in g C(a) g^{-1} \Leftrightarrow g^{-1}x g \in C(a) \Leftrightarrow a g^{-1} x g = g^{-1} x g a \Leftrightarrow g a g^{-1} x = x g a g^{-1} \Leftrightarrow x \in C(gag^{-1})</m>.</p>
+			<p>Use the fact that <m>x \in g C(a) g^{-1}</m> if and only if <m>g^{-1}x g \in C(a)</m>.</p>
 		</hint>
 		
 	</exercise>
@@ -281,6 +284,8 @@
 		
 	</exercise>
 
+	<todo>Complete this solution.</todo>
+
 	<exercise number="24">
 		<statement>
 			<p>Let <m>G</m> be a group with order <m>p^n</m> where <m>p</m> is prime and <m>X</m> a finite <m>G</m>-set.  If <m>X_G = \{ x \in X : gx = x \text{ for all }g \in G \}</m> is the set of elements in <m>X</m> fixed by the group action, then prove that <m>|X| \equiv |X_G| \pmod{ p}</m>.</p>
@@ -288,11 +293,14 @@
 		
 	</exercise>
 
+	<todo>Complete this solution.</todo>
+
 	<exercise number="25">
 		<statement>
 			<p>If <m>G</m> is a group of order <m>p^n</m>, where <m>p</m> is prime and <m>n \geq 2</m>, show that <m>G</m> must have a proper subgroup of order <m>p</m>.  If <m>n \geq 3</m>, is it true that <m>G</m> will have a proper subgroup of order <m>p^2</m>?</p>
 		</statement>
 		
 	</exercise>
+	<todo>Complete this solution.</todo>
 
 </exercises>

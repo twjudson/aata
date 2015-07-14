@@ -138,10 +138,10 @@
 				<p>Let <m>G</m> be a finite group and <m>X</m> a finite <m>G</m>-set. If <m>x \in X</m>, then <m>|{\mathcal O}_x| = [G:G_x]</m>.</p>
 			</statement>
 			<proof>
-				<p>We know that  <m>|G|/|G_x|</m> is the number of left cosets of <m>G_x</m> in <m>G</m> by Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />). We will define a bijective  map <m>\phi</m> between the orbit <m>{\mathcal O}_x</m> of <m>X</m> and the set of left cosets <m>{\mathcal L}_{G_x}</m> of <m>G_x</m> in <m>G</m>. Let <m>y \in {\mathcal O}_x</m>. Then there exists a <m>g</m> in <m>G</m> such that <m>g x = y</m>. Define <m>\phi</m> by <m>\phi( y ) = g G_x</m>. First we must show that this map is well-defined and does not depend on our selection of <m>g</m>. Suppose that <m>h</m> is another element in <m>G</m> such that <m>hx = y</m>. Then <m>g x = h x</m> or <m>x= g^{-1} h x</m>; hence, <m>g^{-1}h</m> is in the stabilizer subgroup of <m>x</m>. Therefore, <m>h \in g G_x</m> or <m>g G_x = h G_x</m>.  Thus, <m>y</m> gets mapped to the same coset regardless of the choice of the representative from that coset.</p>
+				<p>We know that  <m>|G|/|G_x|</m> is the number of left cosets of <m>G_x</m> in <m>G</m> by Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />). We will define a bijective  map <m>\phi</m> between the orbit <m>{\mathcal O}_x</m> of <m>X</m> and the set of left cosets <m>{\mathcal L}_{G_x}</m> of <m>G_x</m> in <m>G</m>. Let <m>y \in {\mathcal O}_x</m>. Then there exists a <m>g</m> in <m>G</m> such that <m>g x = y</m>. Define <m>\phi</m> by <m>\phi( y ) = g G_x</m>. First we must show that this map is well-defined and does not depend on our selection of <m>y</m>. Suppose that <m>y'</m> is another element in <m>{\mathcal O}_x</m> such that <m>hx = y'</m> for some <m>h \in G</m>. Then <m>g x = h x</m> or <m>x= g^{-1} h x</m>; hence, <m>g^{-1}h</m> is in the stabilizer subgroup of <m>x</m>. Therefore, <m>h \in g G_x</m> or <m>g G_x = h G_x</m>.  Thus, <m>y</m> gets mapped to the same coset regardless of the choice of the representative from that coset.</p>
  
-				<p>To show that <m>\phi</m> is one-to-one, assume that <m>\phi(x_1) = \phi(x_2)</m>. Then there exist <m>g_1, g_2 \in G</m> such that <m>x_1 = g_1 x</m> and <m>x_2 = g_2 x</m>. Since there exists a <m>g \in G_x</m> such that <m>g_2 = g_1 g</m>, 
-					<me>x_2 = g_2 x = g_1 g x = g_1 x = x_1;</me>
+				<p>To show that <m>\phi</m> is one-to-one, assume that <m>\phi(y_1) = \phi(y_2)</m>. Then there exist <m>g_1, g_2 \in G</m> such that <m>y_1 = g_1 x</m> and <m>y_2 = g_2 x</m>. Since there exists a <m>g \in G_x</m> such that <m>g_2 = g_1 g</m>, 
+					<me>y_2 = g_2 x = g_1 g x = g_1 x = y_1;</me>
 				consequently, the map <m>\phi</m> is  one-to-one. Finally, we must show that the map <m>\phi</m> is onto. Let <m>g G_x</m> be a left coset. If <m>g x = y</m>, then <m>\phi(y) = g G_x</m>.</p>
 			</proof>
 		</theorem>
@@ -188,7 +188,7 @@
 				<me>\tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k)).</me>
 			Consequently, any two cycles of the same length are conjugate. Now let <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m> be a cycle decomposition, where the length of each cycle <m>\sigma_i</m> is <m>r_i</m>. Then <m>\sigma</m> is conjugate to every other <m>\tau \in S_n</m> whose cycle decomposition has the same lengths.</p>
  
- 			<p>The number of conjugate classes in <m>S_n</m> is the number of ways in which <m>n</m> can be partitioned into sums of positive integers. For example, we can partition the integer 3 into the following three sums: 
+ 			<p>The number of conjugate classes in <m>S_n</m> is the number of ways in which <m>n</m> can be partitioned into sums of positive integers. In the case of <m>S_3</m> for example, we can partition the integer 3 into the following three sums: 
 				<md>
 					<mrow>3 &amp; =  1 + 1 + 1</mrow>
 					<mrow>3 &amp; =  1 + 2</mrow>
@@ -204,7 +204,7 @@
 			<proof>
 				<p>We apply the class equation
 					<me>|G| = |Z(G)|  + n_1 + \cdots + n_k.</me>
-				Since each <m>n_i \gt 1</m> and <m>n_i \mid |G|</m>, <m>p</m>  must divide each <m>n_i</m>. Also, <m>p \mid |G|</m>; hence, <m>p</m> must divide <m>|Z(G)|</m>. Since the identity is always in the center of <m>G</m>, <m>|Z(G)| \geq 1</m>. Therefore, <m>|Z(G)|  \geq p</m>, and there exists some <m>g \in Z(G)</m> such that <m>g \neq 1</m>.</p>
+				Since each <m>n_i \gt 1</m> and <m>n_i \mid |G|</m>, it follows that <m>p</m>  must divide each <m>n_i</m>. Also, <m>p \mid |G|</m>; hence, <m>p</m> must divide <m>|Z(G)|</m>. Since the identity is always in the center of <m>G</m>, <m>|Z(G)| \geq 1</m>. Therefore, <m>|Z(G)|  \geq p</m>, and there exists some <m>g \in Z(G)</m> such that <m>g \neq 1</m>.</p>
 			</proof>
 		</theorem>
 
@@ -228,7 +228,7 @@
  
  		<introduction>
 
-			<p>Suppose that we are to color the vertices of a square with two different colors, say black and white.  We might suspect that there would be <m>2^4=16</m> different colorings. However, some of these colorings are equivalent.  If we color the first vertex black and the remaining vertices white, it is the same as coloring the second vertex black and the remaining ones white since we could obtain the second coloring simply by rotating the square <m>90^\circ</m> (Figure<nbsp /><xref ref="figure-actions-coloring" />).</p>
+			<p>Suppose that we wish to color the vertices of a square with two different colors, say black and white.  We might suspect that there would be <m>2^4=16</m> different colorings. However, some of these colorings are equivalent.  If we color the first vertex black and the remaining vertices white, it is the same as coloring the second vertex black and the remaining ones white since we could obtain the second coloring simply by rotating the square <m>90^\circ</m> (Figure<nbsp /><xref ref="figure-actions-coloring" />).</p>
 
 			<figure xml:id="figure-actions-coloring">
 
@@ -346,9 +346,9 @@
 
 					<li><m>|\widetilde{X}_{(1 4 3 2)}| = 2</m>.</li>
 
-					<li> For <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> and <m>f(2) = f(4)</m>. Thus, <m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4</m>.</li>
+					<li>For <m>\widetilde{X}_{(1 3)(2 4)}</m>, <m>f(1) = f(3)</m> and <m>f(2) = f(4)</m>. Thus, <m>|\widetilde{X}_{(13)(24)}| = 2^2 = 4</m>.</li>
  
-					<li> <m>|\widetilde{X}_{(1 2)(3 4)}| = 4</m>.</li>
+					<li><m>|\widetilde{X}_{(1 2)(3 4)}| = 4</m>.</li>
 
 					<li> <m>|\widetilde{X}_{(1 4)(2 3)}| = 4</m>.</li>
  
@@ -374,7 +374,7 @@
 			</proposition>
  
  			<example xml:id="example-actions-burnside-x7">
-				<p>Let <m>X = \{1, 2, \ldots, 7\}</m> and suppose that <m>Y = \{ A, B, C \}</m>. If <m>g</m> is the permutation of <m>X</m> given by <m>(1 3)(2 4 5) = (1 3)(2 4 5)(6)(7)</m>, then <m>n = 4</m>. Any <m>f \in {\mathcal F}_g</m> must have the same value on each cycle in <m>g</m>. There are <m>|Y|=3</m> such choices for any value, so <m>|{\mathcal F}_g|  = 3^4 = 81</m>.</p>
+				<p>Let <m>X = \{1, 2, \ldots, 7\}</m> and suppose that <m>Y = \{ A, B, C \}</m>. If <m>g</m> is the permutation of <m>X</m> given by <m>(1 3)(2 4 5) = (1 3)(2 4 5)(6)(7)</m>, then <m>n = 4</m>. Any <m>f \in \widetilde{X}_g</m> must have the same value on each cycle in <m>g</m>. There are <m>|Y|=3</m> such choices for any value, so <m>|\widetilde{X}_g|  = 3^4 = 81</m>.</p>
 			</example>
  
  <!-- Label problem fixed.  Suggested by L. Franklin.  TWJ 12/8/2011 -->
@@ -384,6 +384,13 @@
 					<me>\frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3) = 55</me>
 				possible ways.</p>
 			</example>
+ 
+		</subsection>
+
+		<subsection number="no">
+			<title>Switching Functions</title>
+ 
+			<p>In switching theory we are concerned with the design of electronic circuits with binary inputs and outputs. The simplest of these circuits is a switching function that has <m>n</m> inputs and a single output (Figure<nbsp /><xref ref="figure-switching-n-variables" />). Large electronic circuits can often be  constructed by combining smaller modules of this kind. The inherent problem here is that even for a simple circuit a large number of different switching functions can be constructed.  With only four inputs and a single output, we can construct 65,536 different switching functions. However, we can often replace one switching function with another merely by permuting the input leads to the circuit (Figure<nbsp /><xref ref="figure-switching-two-variables" />).</p>
  
 			<figure xml:id="figure-switching-n-variables">
 
@@ -405,14 +412,9 @@
 				</image>
 				<caption>A switching function of <m>n</m> variables</caption>
 			</figure>
+			
+			<p>We define a <term>switching</term><index><main>Function</main><sub>switching</sub></index><index><main>Switching function</main></index> or <term>Boolean function</term><index><main>Boolean function</main></index><index><main>Function</main><sub>Boolean</sub></index> of <m>n</m> variables to be a function from <m>{\mathbb Z}_2^n</m> to <m>{\mathbb Z}_2</m>. Since  any switching function can have two possible values for each binary <m>n</m>-tuple and there are <m>2^n</m> binary <m>n</m>-tuples, <m>2^{2^n}</m> switching functions are possible for <m>n</m> variables. In general, allowing permutations of the inputs greatly reduces the number of different kinds of modules that are needed to build a large circuit.</p>
 
-		</subsection>
-
-		<subsection number="no">
-			<title>Switching Functions</title>
- 
-			<p>In switching theory we are concerned with the design of electronic circuits with binary inputs and outputs. The simplest of these circuits is a switching function that has <m>n</m> inputs and a single output (Figure<nbsp /><xref ref="figure-switching-n-variables" />). Large electronic circuits can often be  constructed by combining smaller modules of this kind. The inherent problem here is that even for a simple circuit a large number of different switching functions can be constructed.  With only four inputs and a single output, we can construct 65,536 different switching functions. However, we can often replace one switching function with another merely by permuting the input leads to the circuit (Figure<nbsp /><xref ref="figure-switching-two-variables" />).</p>
- 
 			<figure xml:id="figure-switching-two-variables">
 
 				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
@@ -437,8 +439,6 @@
 				</image>
 				<caption>A switching function of two variables</caption>
 			</figure>
- 
-			<p>We define a <term>switching</term><index><main>Function</main><sub>switching</sub></index><index><main>Switching function</main></index> or <term>Boolean function</term><index><main>Boolean function</main></index><index><main>Function</main><sub>Boolean</sub></index> of <m>n</m> variables to be a function from <m>{\mathbb Z}_2^n</m> to <m>{\mathbb Z}_2</m>. Since  any switching function can have two possible values for each binary <m>n</m>-tuple and there are <m>2^n</m> binary <m>n</m>-tuples, <m>2^{2^n}</m> switching functions are possible for <m>n</m> variables. In general, allowing permutations of the inputs greatly reduces the number of different kinds of modules that are needed to build a large circuit.</p>
  
 			<p>The possible switching functions  with two input variables <m>a</m> and <m>b</m> are listed in Table<nbsp /><xref ref="table-switching-2-variables" />. Two switching functions <m>f</m> and <m>g</m> are equivalent if <m>g</m> can be obtained from <m>f</m> by a permutation of the input variables. For example, <m>g(a, b, c) = f(b, c, a)</m>. In this  case <m>g \sim f</m> via the permutation <m>(acb)</m>. In the case of switching functions of two variables, the permutation <m>(ab)</m> reduces 16 possible switching functions to 12 equivalent functions since
 				<md>
