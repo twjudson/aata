@@ -31,7 +31,7 @@
 
 # This is mostly offered as an example of one approach
 # to managing a project with multiple output formats. and
-# is not meant claimed to be "best practice"
+# is not claimed to be "best practice"
 
 ######################
 # System Prerequisites
@@ -142,7 +142,7 @@ pdf:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-pdf.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude --stringparam chunk.level 0 $(MBUSR)/aata-pdf.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude $(MBUSR)/aata-pdf.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex
 
 # View PDF from correct directory
@@ -161,7 +161,7 @@ print:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-print.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude --stringparam chunk.level 0 $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex \
 	mv aata.pdf aata-print.pdf
 
@@ -186,7 +186,7 @@ solutions:
 	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
 	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
 	cd  $(PDFOUT); \
-	xsltproc --xinclude --stringparam chunk.level 0 $(MBUSR)/aata-solution-manual.xsl $(PDFOUT)/aata-solution-manual.xml; \
+	xsltproc --xinclude $(MBUSR)/aata-solution-manual.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(ENGINE) aata-solution-manual.tex; $(ENGINE) aata-solution-manual.tex
 
 viewsolutions:
@@ -204,7 +204,7 @@ draft:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-pdf.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude --stringparam chunk.level 0 --stringparam author-tools 'yes' \
+	xsltproc --xinclude --stringparam author-tools 'yes' \
 	--stringparam latex.draft 'yes' $(MBUSR)/aata-pdf.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-draft.pdf
