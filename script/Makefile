@@ -164,7 +164,7 @@ print:
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-print.xsl $(MBUSR)
 	cd $(PDFOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex \
+	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-print.pdf
 
 # View PDF from correct directory
@@ -258,7 +258,7 @@ doctest-exercises:
 # Check document source against the DTD
 #   Leaves "dtderrors.txt" in SCRATCH
 #   can then grep on, eg
-#     "element XXX:" 
+#     "element XXX:"
 #     "does not follow"
 #     "Element XXXX content does not follow"
 #     "No declaration for"
