@@ -494,184 +494,187 @@
 		
 	<section xml:id="section-algebra-of-circuits">
 		<title>The Algebra of Electrical Circuits</title>
+
+		<introduction>
  
-		<p>The usefulness of Boolean algebras has become increasingly apparent over the past several decades with the development of the modern computer. The circuit design of computer chips can be expressed in terms of Boolean algebras. In this section we will develop the Boolean algebra of electrical circuits and switches; however, these results can easily be generalized to the design of integrated computer circuitry.</p>
- 
-		<p>A <term>switch</term><index><main>Switch</main><sub>definition of</sub></index> is a device, located at some point in an electrical circuit, that controls the flow of current through the circuit. Each switch has two possible states: it can be <term>open</term>,<index><main>Switch</main><sub>open</sub></index> and not allow the passage of current through the circuit,  or a it can be <term>closed</term>,<index><main>Switch</main><sub>closed</sub></index> and allow the passage of current. These states are mutually exclusive. We require that every switch be in one state or the other: a switch cannot be open and closed at the same time.  Also, if one switch is always in the same state as another, we will denote both by the same letter; that is, two switches that are both labeled with the same letter <m>a</m> will always be open at the same time and closed at the same time.</p>
+			<p>The usefulness of Boolean algebras has become increasingly apparent over the past several decades with the development of the modern computer. The circuit design of computer chips can be expressed in terms of Boolean algebras. In this section we will develop the Boolean algebra of electrical circuits and switches; however, these results can easily be generalized to the design of integrated computer circuitry.</p>
+	 
+			<p>A <term>switch</term><index><main>Switch</main><sub>definition of</sub></index> is a device, located at some point in an electrical circuit, that controls the flow of current through the circuit. Each switch has two possible states: it can be <term>open</term>,<index><main>Switch</main><sub>open</sub></index> and not allow the passage of current through the circuit,  or a it can be <term>closed</term>,<index><main>Switch</main><sub>closed</sub></index> and allow the passage of current. These states are mutually exclusive. We require that every switch be in one state or the other: a switch cannot be open and closed at the same time.  Also, if one switch is always in the same state as another, we will denote both by the same letter; that is, two switches that are both labeled with the same letter <m>a</m> will always be open at the same time and closed at the same time.</p>
 
-		<p>Given two switches, we can construct two fundamental types of circuits. Two switches <m>a</m> and <m>b</m> are in <term>series</term><index><main>Circuit</main><sub>series</sub></index> if they make up a circuit of the type that is illustrated in Figure<nbsp /><xref ref="figure-a-wedge-b" />. Current can pass between the terminals <m>A</m> and <m>B</m> in a series circuit only if both of the switches <m>a</m> and <m>b</m> are closed. We will denote this combination of switches by <m>a \wedge b</m>. Two switches <m>a</m> and <m>b</m> are in <term>parallel</term><index><main>Circuit</main><sub>parallel</sub></index> if they form a circuit of the type that appears in Figure<nbsp /><xref ref="figure-a-vee-b" />.  In the case of a parallel circuit, current can pass between <m>A</m> and <m>B</m> if either one of the switches is closed.  We denote a parallel combination of circuits <m>a</m> and <m>b</m> by <m>a \vee b</m>.</p>
+			<p>Given two switches, we can construct two fundamental types of circuits. Two switches <m>a</m> and <m>b</m> are in <term>series</term><index><main>Circuit</main><sub>series</sub></index> if they make up a circuit of the type that is illustrated in Figure<nbsp /><xref ref="figure-a-wedge-b" />. Current can pass between the terminals <m>A</m> and <m>B</m> in a series circuit only if both of the switches <m>a</m> and <m>b</m> are closed. We will denote this combination of switches by <m>a \wedge b</m>. Two switches <m>a</m> and <m>b</m> are in <term>parallel</term><index><main>Circuit</main><sub>parallel</sub></index> if they form a circuit of the type that appears in Figure<nbsp /><xref ref="figure-a-vee-b" />.  In the case of a parallel circuit, current can pass between <m>A</m> and <m>B</m> if either one of the switches is closed.  We denote a parallel combination of circuits <m>a</m> and <m>b</m> by <m>a \vee b</m>.</p>
 
-		<figure xml:id="figure-a-wedge-b">
+			<figure xml:id="figure-a-wedge-b">
 
-			<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-			<image xml:id="boolean-wedge">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=0.8]
+				<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
+				<image xml:id="boolean-wedge">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8]
 
-					\draw  (0.3,0) -- (1.7,0);
-					\draw  (2.3,0) -- (3.7,0);
-					\draw  (4.3,0) -- (5.7,0);
+						\draw  (0.3,0) -- (1.7,0);
+						\draw  (2.3,0) -- (3.7,0);
+						\draw  (4.3,0) -- (5.7,0);
 
-					\node at (0,0) {$A$};
-					\node at (2,0) {$a$};
-					\node at (4,0) {$b$};
-					\node at (6,0) {$B$};
+						\node at (0,0) {$A$};
+						\node at (2,0) {$a$};
+						\node at (4,0) {$b$};
+						\node at (6,0) {$B$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
-			<caption><m>a \wedge b</m></caption>
-		</figure>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+				<caption><m>a \wedge b</m></caption>
+			</figure>
 
-		<figure xml:id="figure-a-vee-b">
+			<figure xml:id="figure-a-vee-b">
 
-			<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-			<image xml:id="boolean-parallel">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=0.8]
+				<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
+				<image xml:id="boolean-parallel">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8]
 
-					\draw  (0.3,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
-					\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
-					\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
-					\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
-					\draw  (4.3,0) -- (5.7,0);
+						\draw  (0.3,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
+						\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
+						\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
+						\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
+						\draw  (4.3,0) -- (5.7,0);
 
-					\node at (0,0) {$A$};
-					\node at (3,1) {$a$};
-					\node at (3,-1) {$b$};
-					\node at (6,0) {$B$};
+						\node at (0,0) {$A$};
+						\node at (3,1) {$a$};
+						\node at (3,-1) {$b$};
+						\node at (6,0) {$B$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
 
-			<caption><m>a \vee b</m></caption>
+				<caption><m>a \vee b</m></caption>
 
-		</figure>
+			</figure>
 
-		<p>We can build more complicated electrical circuits out of series and parallel circuits by replacing any switch in the circuit with one of these two fundamental types of circuits. Circuits constructed in this manner are called <term>series-parallel circuits</term><index><main>Circuit</main><sub>series-parallel</sub></index>.</p>
- 
-		<p>We will consider two circuits equivalent if they act the same. That is, if we set the switches in equivalent circuits exactly the same we will obtain the same result.  For example, in a series circuit <m>a \wedge b</m> is exactly the same as <m>b \wedge a</m>.  Notice that this is exactly the commutative law for Boolean algebras. In fact, the set of all series-parallel circuits forms a Boolean algebra under the operations of <m>\vee</m> and <m>\wedge</m>. We can use diagrams to verify the different axioms of a Boolean algebra. The distributive law, <m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m>, is illustrated in Figure<nbsp /><xref ref="figure-boolean-distributive" />.  If <m>a</m> is a switch, then <m>a'</m> is the switch that is always open when <m>a</m> is closed and always closed when <m>a</m> is open. A circuit that is always closed is <m>I</m> in our algebra; a circuit that is always open is <m>O</m>. The laws for <m>a \wedge a' = O</m> and <m>a \vee a' = I</m> are shown in Figure<nbsp /><xref ref="figure-boolean-i-and-o" />.</p>
+			<p>We can build more complicated electrical circuits out of series and parallel circuits by replacing any switch in the circuit with one of these two fundamental types of circuits. Circuits constructed in this manner are called <term>series-parallel circuits</term><index><main>Circuit</main><sub>series-parallel</sub></index>.</p>
+	 
+			<p>We will consider two circuits equivalent if they act the same. That is, if we set the switches in equivalent circuits exactly the same we will obtain the same result.  For example, in a series circuit <m>a \wedge b</m> is exactly the same as <m>b \wedge a</m>.  Notice that this is exactly the commutative law for Boolean algebras. In fact, the set of all series-parallel circuits forms a Boolean algebra under the operations of <m>\vee</m> and <m>\wedge</m>. We can use diagrams to verify the different axioms of a Boolean algebra. The distributive law, <m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m>, is illustrated in Figure<nbsp /><xref ref="figure-boolean-distributive" />.  If <m>a</m> is a switch, then <m>a'</m> is the switch that is always open when <m>a</m> is closed and always closed when <m>a</m> is open. A circuit that is always closed is <m>I</m> in our algebra; a circuit that is always open is <m>O</m>. The laws for <m>a \wedge a' = O</m> and <m>a \vee a' = I</m> are shown in Figure<nbsp /><xref ref="figure-boolean-i-and-o" />.</p>
 
-		<figure xml:id="figure-boolean-distributive">
+			<figure xml:id="figure-boolean-distributive">
 
-			<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-			<image xml:id="boolean-distributive">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
+				<!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
+				<image xml:id="boolean-distributive">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
 
-					\draw  (0,0) -- (0.65,0) (1.15,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
-					\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
-					\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
-					\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
-					\draw  (4.3,0) -- (5,0);
+						\draw  (0,0) -- (0.65,0) (1.15,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
+						\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
+						\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
+						\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
+						\draw  (4.3,0) -- (5,0);
 
-					\node at (0.9,0) {$a$};
-					\node at (3,1) {$b$};
-					\node at (3,-1) {$c$};
+						\node at (0.9,0) {$a$};
+						\node at (3,1) {$b$};
+						\node at (3,-1) {$c$};
 
-					\draw (6.3,0) -- (7,0);
-					\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1) -- (8.7,1) (9.3,1) -- (10,1) -- (10,0) -- (10.7,0);
-					\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1) -- (8.7,-1) (9.3,-1) -- (10,-1) -- (10,0);
+						\draw (6.3,0) -- (7,0);
+						\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1) -- (8.7,1) (9.3,1) -- (10,1) -- (10,0) -- (10.7,0);
+						\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1) -- (8.7,-1) (9.3,-1) -- (10,-1) -- (10,0);
 
-					\node at (8,1) {$a$};
-					\node at (9,1) {$b$};
-					\node at (8,-1) {$a$};
-					\node at (9,-1) {$c$};
+						\node at (8,1) {$a$};
+						\node at (9,1) {$b$};
+						\node at (8,-1) {$a$};
+						\node at (9,-1) {$c$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
-			<caption><m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m></caption> 
-		</figure>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+				<caption><m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m></caption> 
+			</figure>
 
-		<figure xml:id="figure-boolean-i-and-o">
+			<figure xml:id="figure-boolean-i-and-o">
 
-			<!-- Replaced figure with tikz figure - TWJ 8/18/2010 -->
-			<image xml:id="boolean-one-zero">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
+				<!-- Replaced figure with tikz figure - TWJ 8/18/2010 -->
+				<image xml:id="boolean-one-zero">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
 
-					\node at (1,0) {$a$};
-					\node at (2.5,0) {$a'$};
-					\draw (0,0) -- (0.7,0)  (1.3,0) -- (2.2,0)  (2.8,0) --(3.5,0);
+						\node at (1,0) {$a$};
+						\node at (2.5,0) {$a'$};
+						\draw (0,0) -- (0.7,0)  (1.3,0) -- (2.2,0)  (2.8,0) --(3.5,0);
 
-					\draw (5,0) -- (5.7,0);
-					\draw (5.7,0) -- (5.7,1) -- (6.4,1)  (7,1) -- (7.7,1) -- (7.7, 0);
-					\draw (5.7,0) -- (5.7,-1) -- (6.4,-1)  (7,-1) -- (7.7,-1) -- (7.7, 0);
-					\draw (7.7, 0) -- (8.1, 0);
+						\draw (5,0) -- (5.7,0);
+						\draw (5.7,0) -- (5.7,1) -- (6.4,1)  (7,1) -- (7.7,1) -- (7.7, 0);
+						\draw (5.7,0) -- (5.7,-1) -- (6.4,-1)  (7,-1) -- (7.7,-1) -- (7.7, 0);
+						\draw (7.7, 0) -- (8.1, 0);
 
-					\node at (6.7,1) {$a$};
-					\node at (6.7,-1) {$a'$};
+						\node at (6.7,1) {$a$};
+						\node at (6.7,-1) {$a'$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
-			<caption><m>a \wedge a' = O</m> and <m>a \vee a' = I</m></caption>
-		</figure>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+				<caption><m>a \wedge a' = O</m> and <m>a \vee a' = I</m></caption>
+			</figure>
 
-		<example xml:id="example-boolean-switching-circuit">
-			<p>Every Boolean expression represents a switching circuit. For example, given the expression <m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m>, we can construct the circuit in Figure<nbsp /><xref ref="figure-circuit-2" />.</p>
-		</example>
+			<example xml:id="example-boolean-switching-circuit">
+				<p>Every Boolean expression represents a switching circuit. For example, given the expression <m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m>, we can construct the circuit in Figure<nbsp /><xref ref="figure-circuit-2" />.</p>
+			</example>
 
-		<figure xml:id="figure-circuit-2">
+			<figure xml:id="figure-circuit-2">
 
-			<!-- Replaced figure with tikz figure - TWJ 8/19/2010 -->
-			<image xml:id="boolean_switching">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
+				<!-- Replaced figure with tikz figure - TWJ 8/19/2010 -->
+				<image xml:id="boolean_switching">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
 
-					\draw (0,0) -- (1,0) (3,0) -- (4,0) (6,0) -- (7,0) (9,0) -- (10,0);
+						\draw (0,0) -- (1,0) (3,0) -- (4,0) (6,0) -- (7,0) (9,0) -- (10,0);
 
-					\draw (1,0) -- (1,1) -- (1.7,1)  (2.3,1)-- (3,1) -- (3,0);
-					\draw (1,0) -- (1,-1) -- (1.7,-1)  (2.3,-1)-- (3,-1) -- (3,0);
+						\draw (1,0) -- (1,1) -- (1.7,1)  (2.3,1)-- (3,1) -- (3,0);
+						\draw (1,0) -- (1,-1) -- (1.7,-1)  (2.3,-1)-- (3,-1) -- (3,0);
 
-					\draw (4,0) -- (4,1) -- (4.7,1)  (5.3,1)-- (6,1) -- (6,0);
-					\draw (4,0) -- (4,-1) -- (4.7,-1)  (5.3,-1)-- (6,-1) -- (6,0);
+						\draw (4,0) -- (4,1) -- (4.7,1)  (5.3,1)-- (6,1) -- (6,0);
+						\draw (4,0) -- (4,-1) -- (4.7,-1)  (5.3,-1)-- (6,-1) -- (6,0);
 
-					\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1)-- (9,1) -- (9,0);
-					\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1)-- (9,-1) -- (9,0);
+						\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1)-- (9,1) -- (9,0);
+						\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1)-- (9,-1) -- (9,0);
 
 
-					\node at (2,1) {$a$};
-					\node at (2,-1) {$b$};
+						\node at (2,1) {$a$};
+						\node at (2,-1) {$b$};
 
-					\node at (5,1) {$a$};
-					\node at (5,-1) {$b'$};
+						\node at (5,1) {$a$};
+						\node at (5,-1) {$b'$};
 
-					\node at (8,1) {$a$};
-					\node at (8,-1) {$b$};
+						\node at (8,1) {$a$};
+						\node at (8,-1) {$b$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
-			<caption><m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m></caption> 
-		</figure>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+				<caption><m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m></caption> 
+			</figure>
 
-		<theorem xml:id="theorem-circuit">
-			<statement>
-				<p>The set of all circuits is a Boolean algebra.</p>
-			</statement>
-		</theorem>
- 
-		<p>We leave as an exercise the proof of this theorem for the Boolean algebra axioms not yet verified. We can now apply the techniques of Boolean algebras to switching theory.</p>
+			<theorem xml:id="theorem-circuit">
+				<statement>
+					<p>The set of all circuits is a Boolean algebra.</p>
+				</statement>
+			</theorem>
+	 
+			<p>We leave as an exercise the proof of this theorem for the Boolean algebra axioms not yet verified. We can now apply the techniques of Boolean algebras to switching theory.</p>
 
-<!--  2010/05/18 R Beezer, meet/join mixup at end, added one new step -->
-<!--  Identified by Ricky Roy, U of Puget Sound -->
+	<!--  2010/05/18 R Beezer, meet/join mixup at end, added one new step -->
+	<!--  Identified by Ricky Roy, U of Puget Sound -->
 
-		<example xml:id="example-boolean-circuit">
-			<p>Given a complex circuit, we can now apply the techniques of Boolean algebra to reduce it to a simpler one. Consider the circuit in  Figure<nbsp /><xref ref="figure-circuit-2" />. Since 
-				<md>
-					<mrow>(a \vee b) \wedge (a \vee b') \wedge (a \vee b) &amp; = (a \vee b) \wedge (a \vee b) \wedge (a \vee b')</mrow>
-					<mrow>&amp; = (a \vee b) \wedge (a \vee b')</mrow>
-					<mrow>&amp; = a \vee ( b \wedge b')</mrow>
-					<mrow>&amp; = a \vee O</mrow>
-					<mrow>&amp; = a,</mrow>
-				</md>
-			we can replace the more complicated circuit with a circuit containing the single switch <m>a</m> and achieve the same function.</p>
-		</example>
+			<example xml:id="example-boolean-circuit">
+				<p>Given a complex circuit, we can now apply the techniques of Boolean algebra to reduce it to a simpler one. Consider the circuit in  Figure<nbsp /><xref ref="figure-circuit-2" />. Since 
+					<md>
+						<mrow>(a \vee b) \wedge (a \vee b') \wedge (a \vee b) &amp; = (a \vee b) \wedge (a \vee b) \wedge (a \vee b')</mrow>
+						<mrow>&amp; = (a \vee b) \wedge (a \vee b')</mrow>
+						<mrow>&amp; = a \vee ( b \wedge b')</mrow>
+						<mrow>&amp; = a \vee O</mrow>
+						<mrow>&amp; = a,</mrow>
+					</md>
+				we can replace the more complicated circuit with a circuit containing the single switch <m>a</m> and achieve the same function.</p>
+			</example>
 
-		<xi:include href="./sage/boolean-info.xml" />
+			<xi:include href="./sage/boolean-info.xml" />
+		</introduction>
 
  		<subsection number="no">
 			<title>Historical Note</title>
