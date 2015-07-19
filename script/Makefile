@@ -39,7 +39,8 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
-#   <helpers>       (PDF viewer, web browser, Sage executable, etc)
+#   xmllint         (only to check source against DTD)
+#   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
 #####
 # Use
@@ -62,6 +63,7 @@ include Makefile.paths
 MBXSL = $(MB)/xsl
 MBSCRIPT = $(MB)/script
 MBUSR = $(MB)/user
+MBDTD = $(MB)/schema/dtd
 
 # These are source and custom XSL subdirectories
 # for the two AATA repositories
@@ -249,6 +251,26 @@ doctest-exercises:
 	xsltproc --xinclude  --stringparam chunk-level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(SAGE) -tp 0 .
 
+###########
+# Utilities
+###########
+
+# Check document source against the DTD
+#   Leaves "dtderrors.txt" in SCRATCH
+#   can then grep on, eg
+#     "element XXX:" 
+#     "does not follow"
+#     "Element XXXX content does not follow"
+#     "No declaration for"
+#   Automatically invokes the "less" pager, could configure as $(PAGER)
+check:
+	install -d $(SCRATCH)
+	-rm $(SCRATCH)/dtderrors.*
+	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/mathbook.dtd $(SRC)/aata.xml 2> $(SCRATCH)/dtderrors.txt
+	less $(SCRATCH)/dtderrors.txt
+
+viewcheck:
+	less $(SCRATCH)/dtderrors.txt
 
 ##############
 # Experimental
