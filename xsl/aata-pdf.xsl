@@ -37,8 +37,6 @@
 <!-- Note: these come last in the numbering, so    -->
 <!-- their disappearance does not affect numbering -->
 <!-- Ideally they would be labeled as unnumbered   -->
-<!-- But print copies of AATA do not include       -->
-<!-- the two Sage sections, so we kill them here   -->
 <xsl:template match="remark[title='Sage']" />
 
 </xsl:stylesheet>

@@ -12,11 +12,12 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- Assumes this file is in mathbook/user, so it must be copied there -->
-<xsl:import href="aata-latex.xsl" />
+<!-- Copy current file (aata-print.xsl) into mathbook/user -->
+<!-- Then other imports are all relative to that directory -->
 
-<!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
-<xsl:import href="aata-common.xsl" />
+<!-- Copy  aata-latex.xsl  into  mathbook/user                 -->
+<!-- aata-latex.xsl  will subsequently import  aata-common.xsl -->
+<xsl:import href="aata-latex.xsl" />
 
 <xsl:param name="latex.font.size" select="'11pt'" />
 
@@ -29,12 +30,16 @@
 <!-- Makes hyperlinks, program listings, etc. black & white -->
 <xsl:param name="latex.print" select="'yes'" />
 
-<!-- Each Chapter has a <remark> about Sage,         -->
-<!-- which will be included by default               -->
-<!-- But print copies of AATA will not include       -->
-<!-- the two Sage sections (discussion and exercise) -->
-<!-- This is where we kill these two sections        -->
-<xsl:template match="section[title='Sage']" />
-<xsl:template match="exercises[title='Sage Exercises']" />
+<!-- Each Chapter has a <remark> about Sage,          -->
+<!-- which will be included by default                -->
+<!-- But print copies of AATA will not include        -->
+<!-- the two Sage sections (discussion and exercise)  -->
+<!-- This is where we kill these two sections by      -->
+<!-- doing nothing with their content wrap templates  -->
+<!-- in the chunking scheme.  We presume we build one -->
+<!-- big TeX file, otherwise we might wish to also    -->
+<!-- kill a file wrap template as well.               -->
+<xsl:template match="section[title='Sage']" mode="content-wrap" />
+<xsl:template match="exercises[title='Sage Exercises']" mode="content-wrap" />
 
 </xsl:stylesheet>
