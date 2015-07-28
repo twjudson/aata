@@ -33,6 +33,20 @@
 <xsl:param name="exercise.backmatter.statement" select="'no'" />
 <xsl:param name="exercise.backmatter.hint" select="'yes'" />
 
+<!-- Each Chapter has a <paragraphs> about Sage, -->
+<!-- which will be included by default           -->
+<!-- The HTML version contains the two           -->
+<!-- Sage sections (discussions and exercises)   -->
+<!-- so we kill the duplicative remarks here     -->
+<!-- Note: since "paragraphs" are unnumbered,    -->
+<!-- their presence in the XML source has no     -->
+<!-- effect on numbering, whether included or    -->
+<!-- not. The situation is a bit more delicate   -->
+<!-- on the LaTeX side.                          -->
+<!-- These could be unnumbered "remark" once     -->
+<!-- that is implemented.                        -->
+<xsl:template match="paragraphs[title='Sage']" />
+
 <!-- Changes to mimic in HTML via CSS/other changes? -->
 <!-- LaTeX: Bold and italic for terminology macro -->
 <!-- LaTeX: Proof to small caps -->

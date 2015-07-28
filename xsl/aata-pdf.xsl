@@ -29,14 +29,16 @@
 <!-- (This is the default, but set here just to be explicit)     -->
 <xsl:param name="latex.print" select="'no'" />
 
-<!-- Each Chapter has a <remark> about Sage,       -->
-<!-- which will be included by default             -->
-<!-- The PDF version contains the two              -->
-<!-- Sage sections (discussions and exercises), so -->
-<!-- we kill the duplicative remarks here          -->
-<!-- Note: these come last in the numbering, so    -->
-<!-- their disappearance does not affect numbering -->
-<!-- Ideally they would be labeled as unnumbered   -->
-<xsl:template match="remark[title='Sage']" />
+<!-- Each Chapter has a <paragraphs> about Sage, -->
+<!-- which will be included by default           -->
+<!-- The PDF version contains the two            -->
+<!-- Sage sections (discussions and exercises)   -->
+<!-- so we kill the duplicative remarks here     -->
+<!-- Note: since "paragraphs" are unnumbered,    -->
+<!-- removing them from the LaTeX version has    -->
+<!-- no effect on the numbering.                 -->
+<!-- These could be unnumbered "remark" once     -->
+<!-- that is implemented.                        -->
+<xsl:template match="paragraphs[title='Sage']" />
 
 </xsl:stylesheet>

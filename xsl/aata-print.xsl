@@ -30,7 +30,7 @@
 <!-- Makes hyperlinks, program listings, etc. black & white -->
 <xsl:param name="latex.print" select="'yes'" />
 
-<!-- Each Chapter has a <remark> about Sage,          -->
+<!-- Each Chapter has a <paragraphs> about Sage,      -->
 <!-- which will be included by default                -->
 <!-- But print copies of AATA will not include        -->
 <!-- the two Sage sections (discussion and exercise)  -->
