@@ -95,11 +95,13 @@ SAGENBOUT  = $(SCRATCH)/sagenb
 #   these outputs are in source repo now, and
 #   are typically just copied out
 #   this should be run if diagram source changes
+#   NB: targets below copy versions out of repo and clobber these
 diagrams:
 	install -d $(HTMLOUT)/images
-	$(MBSCRIPT)/mbx -v -c tikz     -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/mbx -v -c sageplot -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/mbx -v -c sageplot -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
+	-rm $(HTMLOUT)/images/*
+	$(MBSCRIPT)/mbx -v -c latex-image -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/mbx -v -c sageplot    -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/mbx -v -c sageplot    -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
 
 # Update exercises
 #   Extract problems, with statements and hints only,
