@@ -108,15 +108,15 @@
 		</introduction>
 
 		<subsection number="no">
-			<title>The RSA Cryptosystem</title>
- 				<p>The RSA cryptosystem introduced by R. Rivest<index><main>Rivest, R.</main></index>, A.  Shamir<index><main>Shamir, A.</main></index>, and L. Adleman<index><main>Adleman, L.</main></index> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibative.</p>
+			<title>The <acro>RSA</acro> Cryptosystem</title>
+ 				<p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<index><main>Rivest, R.</main></index>, A.  Shamir<index><main>Shamir, A.</main></index>, and L. Adleman<index><main>Adleman, L.</main></index> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibative.</p>
 
-				<p>The RSA cryptosystem<index><main>RSA cryptosystem</main></index><index><main>Cryptosystem</main><sub>RSA</sub></index> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
+				<p>The <acro>RSA</acro> cryptosystem<index><main><acro>RSA</acro> cryptosystem</main></index><index><main>Cryptosystem</main><sub><acro>RSA</acro></sub></index> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
  
 				<p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\mbox{A}  = 00, \mbox{B}  = 02, \ldots, \mbox{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
  
 			<example xml:id="example-crypt-rsa">
-				<p>Before exploring the theory behind the RSA cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
+				<p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
 					<me>n = pq = 667</me>
 				and
 					<me>\phi(n) = m = (p - 1)(q - 1) = 616.</me>
@@ -129,7 +129,7 @@
 <!-- Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer. -->
 <!-- TWJ - 12/19/2011 -->
 
-			<p>Now let us examine why the RSA cryptosystem works.  We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
+			<p>Now let us examine why the <acro>RSA</acro> cryptosystem works.  We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
 				<me>DE = km + 1 = k \phi(n) + 1.</me>
 			There are two cases to consider.  In the first case assume that <m>\gcd(x, n) = 1</m>.  Then by Theorem<nbsp /><xref ref="theorem-eulers_theorem" />,
 				<me>y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n.</me>
@@ -144,7 +144,7 @@
 <!-- Demonstration expanded to two cases.  Suggested by Kevin Halasz. -->
 <!-- RAB - 12/30/2011 -->
 
-			<p>We can now ask how one would go about breaking the RSA cryptosystem. To find <m>D</m> given <m>n</m> and <m>E</m>, we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm. If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp /><xref ref="example-crypt-rsa" />, we could have recovered <m>D</m>.</p>    
+			<p>We can now ask how one would go about breaking the <acro>RSA</acro> cryptosystem. To find <m>D</m> given <m>n</m> and <m>E</m>, we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm. If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp /><xref ref="example-crypt-rsa" />, we could have recovered <m>D</m>.</p>    
 
 		</subsection>
 		
@@ -166,9 +166,9 @@
  
 			<p>The period after World War I saw the development of special-purpose machines for encrypting and decrypting messages, and  mathematicians were very active in cryptography during World War II. Efforts to penetrate the cryptosystems of the Axis nations were organized in England and in the United States by such notable mathematicians as Alan Turing and A. A. Albert.  The Allies gained a tremendous advantage in World War II by breaking the ciphers produced by the German Enigma machine and the Japanese Purple ciphers.</p>
 
-			<p>By the 1970s, interest in commercial cryptography had begun to take hold. There was a growing need to protect banking transactions, computer data, and electronic mail. In the early 1970s, IBM developed and implemented LUZIFER, the forerunner  of the National Bureau of Standards' Data Encryption Standard (DES).</p>
+			<p>By the 1970s, interest in commercial cryptography had begun to take hold. There was a growing need to protect banking transactions, computer data, and electronic mail. In the early 1970s, <acro>IBM</acro> developed and implemented <acro>LUZIFER</acro>, the forerunner  of the National Bureau of Standards' Data Encryption Standard (DES).</p>
 
-			<p>The concept of a public key cryptosystem, due to Diffie and Hellman, is very recent (1976). It was further developed by Rivest, Shamir, and Adleman with the RSA cryptosystem (1978). It is not known how secure any of these systems are. The trapdoor knapsack cryptosystem, developed by Merkle and Hellman, has been broken. It is still an open question whether or not the RSA system can be broken. In 1991, RSA Laboratories published a list of semiprimes (numbers with exactly two prime factors) with a cash prize for whoever was able to provide a factorization (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Although the challenge ended in 2007, many of these numbers have not yet been factored.</p>
+			<p>The concept of a public key cryptosystem, due to Diffie and Hellman, is very recent (1976). It was further developed by Rivest, Shamir, and Adleman with the <acro>RSA</acro> cryptosystem (1978). It is not known how secure any of these systems are. The trapdoor knapsack cryptosystem, developed by Merkle and Hellman, has been broken. It is still an open question whether or not the <acro>RSA</acro> system can be broken. In 1991, <acro>RSA</acro> Laboratories published a list of semiprimes (numbers with exactly two prime factors) with a cash prize for whoever was able to provide a factorization (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Although the challenge ended in 2007, many of these numbers have not yet been factored.</p>
 			
 			<p>There been a great deal of controversy about research in cryptography and cryptography itself. In 1929, when Henry Stimson, Secretary of State under Herbert Hoover, dismissed the Black Chamber (the State Department's cryptography division) on the ethical grounds that <q>gentlemen do not read each other's mail.</q>  During the last two decades of the twentieth century, the National Security Agency wanted to keep information about cryptography secret, whereas the academic community fought for the right to publish basic research.  Currently, research in mathematical cryptography and computational number theory is very active, and mathematicians are free to publish their results in these areas.</p> 
 
@@ -183,7 +183,7 @@
 	<exercises>
 		<title>Additional Exercises: Primality and Factoring</title>
 
-		<p>In the RSA cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
+		<p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
 
 		<exercise>
 			<statement>

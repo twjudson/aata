@@ -484,20 +484,20 @@
 		</subsection>
 
 		<subsection number="no">
-			<title>BCH Codes</title>
+			<title><acro>BCH</acro> Codes</title>
  
-			<p>Some of the most important codes, discovered independently by A. Hocquenghem in 1959 and by R. C. Bose and D. V. Ray-Chaudhuri in 1960, are BCH codes. The European and transatlantic communication systems both use BCH codes.  Information words to be encoded are of length 231, and a polynomial of degree 24 is used to generate the code.  Since <m>231 + 24 = 255 = 2^8-1</m>, we are dealing with a <m>(255, 231)</m>-block code. This BCH code will detect six errors and has a failure rate of 1 in 16 million. One advantage of BCH codes is that efficient error correction algorithms exist for them.</p>
+			<p>Some of the most important codes, discovered independently by A. Hocquenghem in 1959 and by R. C. Bose and D. V. Ray-Chaudhuri in 1960, are <acro>BCH</acro> codes. The European and transatlantic communication systems both use <acro>BCH</acro> codes.  Information words to be encoded are of length 231, and a polynomial of degree 24 is used to generate the code.  Since <m>231 + 24 = 255 = 2^8-1</m>, we are dealing with a <m>(255, 231)</m>-block code. This <acro>BCH</acro> code will detect six errors and has a failure rate of 1 in 16 million. One advantage of <acro>BCH</acro> codes is that efficient error correction algorithms exist for them.</p>
 
-			<p>The idea behind BCH codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities. Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>.  Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>, and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>. If  
+			<p>The idea behind <acro>BCH</acro> codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities. Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>.  Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>, and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>. If  
 				<me>g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],</me>
-			then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the <term>BCH code of length</term><index><main>Code</main><sub>BCH</sub></index> <m>n</m> <term>and distance</term> <m>d</m>. By Theorem<nbsp /><xref ref="theorem-min-dist-cyclic-code" />, the minimum distance of <m>C</m> is at least <m>d</m>.</p>
+			then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the <term><acro>BCH</acro> code of length</term><index><main>Code</main><sub><acro>BCH</acro></sub></index> <m>n</m> <term>and distance</term> <m>d</m>. By Theorem<nbsp /><xref ref="theorem-min-dist-cyclic-code" />, the minimum distance of <m>C</m> is at least <m>d</m>.</p>
 
 			<theorem>
 				<statement>
 					<p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m>. The following statements are equivalent.
 						<ol>
 
-							<li>The code <m>C</m> is a BCH code whose minimum distance is at least <m>d</m>.</li>
+							<li>The code <m>C</m> is a <acro>BCH</acro> code whose minimum distance is at least <m>d</m>.</li>
 
 							<li>A code polynomial <m>f(t)</m> is in <m>C</m> if and only if <m>f( \omega^i) = 0</m> for <m>1 \leq i \lt d</m>.</li>
 
@@ -546,7 +546,7 @@
 					<me>\{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \omega + \omega^4 = 0 \}.</me>
 				By Example<nbsp /><xref ref="example-finite-gf-p24" />, <m>\omega</m> is a primitive 15th root of unity. The minimal polynomial of <m>\omega</m> is <m>m_1(x) = 1 + x + x^4</m>. It is easy to see that <m>\omega^2</m> and <m>\omega^4</m> are also roots of <m>m_1(x)</m>. The minimal polynomial of <m>\omega^3</m> is <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Therefore, 
 					<me>g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8</me>
-				has roots <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Since both <m>m_1(x)</m> and <m>m_2(x)</m> divide <m>x^{15} - 1</m>, the BCH code is a <m>(15, 7)</m>-code. If <m>x^{15} -1 = g(x)h(x)</m>, then <m>h(x) = 1 + x^4 + x^6 + x^7</m>; therefore, a parity-check matrix for this code is
+				has roots <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Since both <m>m_1(x)</m> and <m>m_2(x)</m> divide <m>x^{15} - 1</m>, the <acro>BCH</acro> code is a <m>(15, 7)</m>-code. If <m>x^{15} -1 = g(x)h(x)</m>, then <m>h(x) = 1 + x^4 + x^6 + x^7</m>; therefore, a parity-check matrix for this code is
 					<me>\left( 	<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
 					\begin{array}{ccccccccccccccc}
 					0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
@@ -569,10 +569,10 @@
 <xi:include href="./exercises/finite.xml" />
 
 	<exercises>
-		<title>Additional Exercises: Error Correction for BCH Codes</title>
+		<title>Additional Exercises: Error Correction for <acro>BCH</acro> Codes</title>
 
 		<introduction>
-			<p>BCH codes have very attractive error correction algorithms. Let <m>C</m> be a BCH code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received.  If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><index><main>Polynomial</main><sub>error</sub></index>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term>syndrome</term><index><main>Syndrome of a code</main></index> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
+			<p><acro>BCH</acro> codes have very attractive error correction algorithms. Let <m>C</m> be a <acro>BCH</acro> code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received.  If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><index><main>Polynomial</main><sub>error</sub></index>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term>syndrome</term><index><main>Syndrome of a code</main></index> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
 		</introduction>
 
 		<exercise>
@@ -592,7 +592,7 @@
 
 		<exercise>
 			<statement>
-				<p>Recall the <m>(15,7)</m>-block BCH code in Example<nbsp /><xref ref="example-finite-parity-check-x7-1" />.  By Theorem<nbsp /><xref ref="theorem-min-distance" />, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
+				<p>Recall the <m>(15,7)</m>-block <acro>BCH</acro> code in Example<nbsp /><xref ref="example-finite-parity-check-x7-1" />.  By Theorem<nbsp /><xref ref="theorem-min-distance" />, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
 					<me>s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right).</me></p>
 			</statement>
 		</exercise>
