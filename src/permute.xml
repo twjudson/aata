@@ -78,7 +78,7 @@
 			<p>A subgroup of <m>S_n</m> is called a <term>permutation group</term><index><main>Group</main><sub>permutation</sub></index><index><main>Permutation group</main></index>.</p>
 
 			<example xml:id="example-permute-s5">
-				<p>Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>id</m> and the permutations 
+				<p>Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>\identity</m> and the permutations 
 					<md>
 						<mrow>\sigma
 						&amp; =
@@ -103,12 +103,12 @@
 
 			<table xml:id="table-permutation-cayley">
 				<p><me>\begin{array}{c|cccc}
-					<![CDATA[ \circ   & id     & \sigma & \tau   & \mu    \\
+					<![CDATA[ \circ   & \identity     & \sigma & \tau   & \mu    \\
 					\hline
-					id     & id     & \sigma & \tau   & \mu    \\
-					\sigma & \sigma & id     & \mu    & \tau   \\
-					\tau   & \tau   & \mu    & id     & \sigma \\
-					\mu    & \mu    & \tau   & \sigma & id]]>
+					\identity     & \identity     & \sigma & \tau   & \mu    \\
+					\sigma & \sigma & \identity     & \mu    & \tau   \\
+					\tau   & \tau   & \mu    & \identity     & \sigma \\
+					\mu    & \mu    & \tau   & \sigma & \identity]]>
 					\end{array}</me></p>
 	    
 			</table>
@@ -327,20 +327,20 @@
 			<lemma xml:id="lemma-identity-even-trans">
 				<statement>
 					<p>If the identity is written as the product of <m>r</m> transpositions,
-						<me>id = \tau_1 \tau_2 \cdots \tau_r, </me>
+						<me>\identity = \tau_1 \tau_2 \cdots \tau_r, </me>
 					then <m>r</m> is an even number.</p>
 				</statement>
 
 				<proof>
 					<p>We will employ  induction  on <m>r</m>.  A transposition cannot be the identity; hence,   <m>r \gt 1</m>. If <m>r=2</m>, then we are done. Suppose that <m>r \gt 2</m>. In this case the product of the last two transpositions, <m>\tau_{r-1} \tau_r</m>, must be one of the following cases: <md>
-						<mrow>(a b)(a b) &amp; = id</mrow>
+						<mrow>(a b)(a b) &amp; = \identity</mrow>
 						<mrow>(b c)(a b) &amp; = (a c)(b c)</mrow>
 						<mrow>(c d)(a b) &amp; = (a b)(c d)</mrow>
 						<mrow>(a c)(a b) &amp; = (a b)(b c),</mrow>
 					</md> where <m>a</m>, <m>b</m>, <m>c</m>, and <m>d</m> are distinct.</p>
 
 					<p>The first equation simply says that a transposition is its own inverse. If this case occurs, delete <m>\tau_{r-1} \tau_r</m> from the product to obtain
-						<me> id = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
+						<me> \identity = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
 					By induction <m>r - 2</m> is even; hence, <m>r</m> must be even.</p>
 				 
 					<p>In each of the other three cases, we can replace <m>\tau_{r - 1} \tau_r</m> with the right-hand side of the corresponding equation to obtain a new product of <m>r</m> transpositions for the identity. In this new product the last occurrence of <m>a</m> will be in the next-to-the-last transposition. We can continue this process with <m>\tau_{r - 2} \tau_{r - 1}</m> to obtain either a product of <m>r - 2</m> transpositions or a new product of <m>r</m> transpositions where the last occurrence of <m>a</m> is in <m>\tau_{r - 2}</m>. If the identity is the product of <m>r - 2</m> transpositions, then again we are done, by our induction hypothesis; otherwise, we will repeat the procedure with <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
@@ -355,7 +355,7 @@
 				</statement> 
 
 				<proof>
-					<p>Suppose that <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> where <m>m</m> is even. We must show that <m>n</m> is also an even number.  The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>. Since <me> id = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> must be even by Lemma<nbsp /><xref ref="lemma-identity-even-trans" />. The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.</p>
+					<p>Suppose that <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> where <m>m</m> is even. We must show that <m>n</m> is also an even number.  The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>. Since <me> \identity = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> must be even by Lemma<nbsp /><xref ref="lemma-identity-even-trans" />. The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.</p>
 				</proof>
 			</theorem>
 
@@ -526,10 +526,10 @@
 				<!-- I think that this is a correct proof and simplified, but the proof needs to be checked. -->
 				<proof>
 					<p>The possible motions of a regular <m>n</m>-gon are either reflections or rotations (Figure<nbsp /><xref ref="figure-rotations" />). There are exactly <m>n</m> possible rotations: 
-					<me>id, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
+					<me>\identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
 					We will denote the rotation <m>360^{\circ} /n</m> by <m>r</m>. The rotation <m>r</m> generates all  of the other rotations. That is, <me> r^k = k \cdot \frac{360^{\circ} }{n}. </me> Label the <m>n</m> reflections <m>s_1, s_2, \ldots, s_n</m>, where <m>s_k</m> is the reflection that leaves vertex <m>k</m> fixed. There are two cases of reflection, depending on whether <m>n</m> is even or odd. If there are an even number of vertices, then 2 vertices are left fixed by a reflection. If there are an odd number of vertices, then only a single vertex is left fixed by a reflection (Figure<nbsp /><xref ref="figure-types" />). 
 					<!-- Hence, if <m>n = 2m</m> for some integer <m>m</m>, then <m>s_i = s_{i+m}</m> for <m>1 \leq i \leq m</m>.  --> 
-					In either case, the order of <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = id</m> and <m>r^n = id</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^{k - 1}</m>. If it is replaced by <m>k-1</m>, then <m>t = r^{k - 1} s</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>; that is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>. We will leave the proof that <m>srs = r^{-1}</m> as an exercise. </p>
+					In either case, the order of <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = \identity</m> and <m>r^n = \identity</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^{k - 1}</m>. If it is replaced by <m>k-1</m>, then <m>t = r^{k - 1} s</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>; that is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>. We will leave the proof that <m>srs = r^{-1}</m> as an exercise. </p>
 				</proof>
 			</theorem>
 
