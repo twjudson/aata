@@ -11,7 +11,7 @@
 	<title>Sage</title>
 
 	<introduction>
-		<p>Since Sage began as software to support research in number theory, we can quickly and easily demonstrate the internal workings of the RSA algorithm.  Recognize that, in practice, many other details such as encoding between letters and integers, or protecting one's private key, are equally important for the security of communications.  So RSA itself is just the theoretical foundation.</p>
+		<p>Since Sage began as software to support research in number theory, we can quickly and easily demonstrate the internal workings of the <acro>RSA</acro> algorithm.  Recognize that, in practice, many other details such as encoding between letters and integers, or protecting one's private key, are equally important for the security of communications.  So <acro>RSA</acro> itself is just the theoretical foundation.</p>
 	</introduction>
 
 	<subsection>
@@ -73,7 +73,7 @@
 			<output>24384236482463054195</output>
 		</sage>
 
-		<p>At this stage, each individual would publish their values of <m>n</m> and <m>E</m>, while keeping <m>D</m> very private and secure.  In practice <m>D</m> should be protected on the user's hard disk by a password only the owner knows.  For even greater security a person might only have two copies of their private key, one on a USB memory stick they always carry with them, and a backup in their sage deposit box.  Every time the person uses <m>D</m> they would need to provide the password.  The value of <m>m</m> can be discarded.  For the record, here are all the keys:</p>
+		<p>At this stage, each individual would publish their values of <m>n</m> and <m>E</m>, while keeping <m>D</m> very private and secure.  In practice <m>D</m> should be protected on the user's hard disk by a password only the owner knows.  For even greater security a person might only have two copies of their private key, one on a <acro>USB</acro> memory stick they always carry with them, and a backup in their sage deposit box.  Every time the person uses <m>D</m> they would need to provide the password.  The value of <m>m</m> can be discarded.  For the record, here are all the keys:</p>
 
 		<sage>
 			<input>print "Alice's public key, n:", n_a, "E:", E_a</input>
@@ -102,7 +102,7 @@
 	<subsection>
 		<title>Signing and Encoding a Message</title>
 
-		<p>Alice is going to construct a message as an English word with four letters.  From these four letters we will construct a single number to represent the message in a form we can use in the RSA algorithm.  The function <c>ord()</c> will convert a single letter to its ASCII code value, a number between 0 and 127.  If we use these numbers as <q>digits</q> mod 128, we can be sure that Alice's four-letter word will encode to an integer less than <m>128^4=268,435,456</m>.  The particular maximum value is not important, so long as it is smaller than our value of <m>n</m> since all of our subsequent arithmetic is mod <m>n</m>.  We choose a popular four-letter word, convert to ASCII <q>digits</q> with a list comprehension, and then construct the integer from the digits with the right base.  Notice how we can treat the word as a list and that the first digit in the list is in the <q>ones</q> place (we say the list is  in <q>little-endian</q> order).</p>
+		<p>Alice is going to construct a message as an English word with four letters.  From these four letters we will construct a single number to represent the message in a form we can use in the <acro>RSA</acro> algorithm.  The function <c>ord()</c> will convert a single letter to its <acro>ASCII</acro> code value, a number between 0 and 127.  If we use these numbers as <q>digits</q> mod 128, we can be sure that Alice's four-letter word will encode to an integer less than <m>128^4=268,435,456</m>.  The particular maximum value is not important, so long as it is smaller than our value of <m>n</m> since all of our subsequent arithmetic is mod <m>n</m>.  We choose a popular four-letter word, convert to <acro>ASCII</acro> <q>digits</q> with a list comprehension, and then construct the integer from the digits with the right base.  Notice how we can treat the word as a list and that the first digit in the list is in the <q>ones</q> place (we say the list is  in <q>little-endian</q> order).</p>
 
 		<sage>
 			<input>
@@ -170,7 +170,7 @@
 			<output>213512403</output>
 		</sage>
 
-		<p>Bob needs to transform this integer representation back to a word with letters.  The <c>chr()</c> function converts ASCII code values to letters, and we use a list comprehension to do this repeatedly.</p>
+		<p>Bob needs to transform this integer representation back to a word with letters.  The <c>chr()</c> function converts <acro>ASCII</acro> code values to letters, and we use a list comprehension to do this repeatedly.</p>
 
 		<sage>
 			<input>
@@ -204,7 +204,7 @@
 
 		<p>Of course, without making new keys, you can reverse the roles of Alice and Bob.  And if Carol makes a key pair, she can communicate with both Alice and Bob in the same fashion.</p>
 
-		<p>If you want to use RSA public-key encryption seriously, investigate the open source software GNU Privacy Guard, aka <c>GPG</c>, which is freely available at <url href="https://www.gnupg.org/">www.gnupg.org/</url>.  Notice that it only makes sense to use encryption programs that allow you to look at the source code.</p>
+		<p>If you want to use <acro>RSA</acro> public-key encryption seriously, investigate the open source software GNU Privacy Guard, aka <c>GPG</c>, which is freely available at <url href="https://www.gnupg.org/">www.gnupg.org/</url>.  Notice that it only makes sense to use encryption programs that allow you to look at the source code.</p>
 
 		<sage type="practice" />
 

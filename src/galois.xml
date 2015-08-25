@@ -66,14 +66,14 @@
 					<me>\sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}</me>
 				is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{5}\, )</m> fixed.  Similarly,
 					<me>\tau( a + b \sqrt{5}\, ) = a - b \sqrt{5}</me>
-				is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{3}\, )</m> fixed. The automorphism <m>\mu = \sigma \tau</m> moves both <m>\sqrt{3}</m> and <m>\sqrt{5}</m>.  It will soon be clear that <m>\{ id, \sigma, \tau, \mu  \}</m> is the Galois group of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m>. The following table shows that this group is isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
+				is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{3}\, )</m> fixed. The automorphism <m>\mu = \sigma \tau</m> moves both <m>\sqrt{3}</m> and <m>\sqrt{5}</m>.  It will soon be clear that <m>\{ \identity, \sigma, \tau, \mu  \}</m> is the Galois group of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m>. The following table shows that this group is isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
 					<me>\begin{array}{c|cccc}
-					&amp; id &amp; \sigma &amp; \tau &amp; \mu \\
+					&amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
 					\hline
-					id  &amp; id &amp; \sigma &amp; \tau &amp; \mu \\
-					\sigma &amp; \sigma &amp; id &amp; \mu &amp; \tau \\
-					\tau &amp; \tau &amp; \mu &amp; id &amp; \sigma \\
-					\mu &amp; \mu &amp; \tau &amp; \sigma &amp; id
+					\identity  &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
+					\sigma &amp; \sigma &amp; \identity &amp; \mu &amp; \tau \\
+					\tau &amp; \tau &amp; \mu &amp; \identity &amp; \sigma \\
+					\mu &amp; \mu &amp; \tau &amp; \sigma &amp; \identity
 					\end{array}</me>
 				We may also regard the field <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> as a vector space over <m>{\mathbb Q}</m> that has basis <m>\{ 1, \sqrt{3}, \sqrt{5}, \sqrt{15}\, \}</m>.  It is no coincidence that <m>|G( {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) /{\mathbb Q})| = [{\mathbb Q}(\sqrt{3}, \sqrt{5}\, ):{\mathbb Q})] = 4</m>.</p>
 			</example> 
@@ -160,7 +160,7 @@
 			</corollary>
 
 			<example xml:id="example-galois-group-sqrt3-5">
-				<p>We can now confirm that the Galois group of <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m> in Example<nbsp /><xref ref="example-galois-q-sqrt5" /> is indeed isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.  Certainly the group <m>H = \{ id, \sigma, \tau, \mu \}</m> is a subgroup of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>; however,  <m>H</m> must be all of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>, since  
+				<p>We can now confirm that the Galois group of <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m> in Example<nbsp /><xref ref="example-galois-q-sqrt5" /> is indeed isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.  Certainly the group <m>H = \{ \identity, \sigma, \tau, \mu \}</m> is a subgroup of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>; however,  <m>H</m> must be all of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>, since  
 					<me>|H| = [{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ):{\mathbb Q}] = |G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})| = 4.</me></p>
 			</example>
 	 
@@ -276,7 +276,7 @@
 				<proof>
 					<p>Let <m>|G| = n</m>. We must show that any set of <m>n + 1</m> elements <m>\alpha_1, \ldots, \alpha_{n + 1}</m> in <m>E</m> is linearly dependent over <m>F</m>; that is, we need to find elements <m>a_i \in F</m>, not all zero, such that 
 						<me>a_1 \alpha_1 + a_2 \alpha_2 + \cdots + a_{n + 1} \alpha_{n + 1} = 0.</me>
-					Suppose that <m>\sigma_1 = id, \sigma_2, \ldots, \sigma_n</m> are the automorphisms in <m>G</m>. The homogeneous system of linear equations 
+					Suppose that <m>\sigma_1 = \identity, \sigma_2, \ldots, \sigma_n</m> are the automorphisms in <m>G</m>. The homogeneous system of linear equations 
 						<md>
 							<mrow>\sigma_1( \alpha_1 ) x_1 + \sigma_1(\alpha_2) x_2 + \cdots + \sigma_1(\alpha_{n + 1} ) x_{n + 1} &amp; = 0</mrow>
 							<mrow>\sigma_2( \alpha_1 ) x_1 + \sigma_2(\alpha_2) x_2 + \cdots + \sigma_2(\alpha_{n + 1} ) x_{n + 1} &amp; = 0</mrow>
@@ -363,11 +363,11 @@
 						\draw  (10.75,0.5) -- (9.5,1.5);
 						\draw  (10.75,-0.5) -- (9.5,-1.5);
 
-						\node at (0,0)  {$\{  id, \sigma \}$};
-						\node at (2,0)  {$\{  id, \tau \}$};
-						\node at (4,0)  {$\{  id, \mu \}$};
-						\node at (2,2)  {$\{  id, \sigma, \tau, \mu \}$};
-						\node at (2,-2)  {$\{  id \}$};
+						\node at (0,0)  {$\{  \identity, \sigma \}$};
+						\node at (2,0)  {$\{  \identity, \tau \}$};
+						\node at (4,0)  {$\{  \identity, \mu \}$};
+						\node at (2,2)  {$\{  \identity, \sigma, \tau, \mu \}$};
+						\node at (2,-2)  {$\{  \identity \}$};
 
 						\node at (7,0)  {${\mathbb Q}(\sqrt{3}\, )$};
 						\node at (9,0)  {${\mathbb Q}(\sqrt{5}\, )$};
@@ -395,7 +395,7 @@
 							<li>If <m>F \subset K \subset E</m>, then 
 								<me>[E:K] = |G(E/K)| \text{ and } [K:F] = [G(E/F):G(E/K)].</me></li>
 
-							<li><m>F \subset K \subset L \subset E</m> if and only if <m>\{ id \} \subset G(E/L) \subset G(E/K) \subset G(E/F)</m>.</li>
+							<li><m>F \subset K \subset L \subset E</m> if and only if <m>\{ \identity \} \subset G(E/L) \subset G(E/K) \subset G(E/F)</m>.</li>
 
 							<li><m>K</m> is a normal extension of <m>F</m> if and only if <m>G(E/K)</m> is a normal subgroup of <m>G( E/F)</m>. In this case
 								<me>G(K/F) \cong G(E/F) / G( E/K ).</me></li>
@@ -461,7 +461,7 @@
 						\node at (3,4)  {$G(E/L)$};
 
 						\node at (0,6)  {$E$};
-						\node at (3,6)  {$\{  id \}$};
+						\node at (3,6)  {$\{  \identity \}$};
 
 						\end{tikzpicture}]]>
 					</latex-image-code>
@@ -478,7 +478,7 @@
  
 <!-- Corrected the automorphism sigma.  Suggested by R. Beezer. - TWJ 4/14/2011 -->
 
-				<p>The Galois group <m>G</m> of <m>f(x)</m> must be of order 8. Let <m>\sigma</m> be the automorphism defined by <m>\sigma( \sqrt[4]{2}\, ) = i \sqrt[4]{2}</m> and <m>\sigma( i ) = i</m>, and <m>\tau</m> be the automorphism defined by complex conjugation; that is, <m>\tau(i ) = -i</m>. Then <m>G</m> has an element of order 4 and an element of order 2. It is easy to verify by direct computation that the elements of <m>G</m> are <m>\{ id, \sigma, \sigma^2,  \sigma^3, \tau, \sigma \tau, \sigma^2 \tau, \sigma^3 \tau \}</m> and that the relations <m>\tau^2 = id</m>, <m>\sigma^4 = id</m>, and <m>\tau \sigma \tau = \sigma^{-1}</m> are satisfied; hence, <m>G</m> must be isomorphic to <m>D_4</m>. The lattice of subgroups of <m>G</m> is illustrated in Figure<nbsp /><xref ref="figure-galois-3" />(b).</p>
+				<p>The Galois group <m>G</m> of <m>f(x)</m> must be of order 8. Let <m>\sigma</m> be the automorphism defined by <m>\sigma( \sqrt[4]{2}\, ) = i \sqrt[4]{2}</m> and <m>\sigma( i ) = i</m>, and <m>\tau</m> be the automorphism defined by complex conjugation; that is, <m>\tau(i ) = -i</m>. Then <m>G</m> has an element of order 4 and an element of order 2. It is easy to verify by direct computation that the elements of <m>G</m> are <m>\{ \identity, \sigma, \sigma^2,  \sigma^3, \tau, \sigma \tau, \sigma^2 \tau, \sigma^3 \tau \}</m> and that the relations <m>\tau^2 = \identity</m>, <m>\sigma^4 = \identity</m>, and <m>\tau \sigma \tau = \sigma^{-1}</m> are satisfied; hence, <m>G</m> must be isomorphic to <m>D_4</m>. The lattice of subgroups of <m>G</m> is illustrated in Figure<nbsp /><xref ref="figure-galois-3" />(b).</p>
 			</example>
 
 			<figure xml:id="figure-galois-3">
@@ -507,15 +507,15 @@
 						\draw  (0,4.5) -- (0,5.5);
 						\draw  (3,4.5) -- (0.5,5.5);
 
-						\node at (0,0)  {$\{  id \}$};
-						\node at (-6,2)  {$\{  id, \tau \}$};
-						\node at (-3,2)  {$\{  id, \sigma^2 \tau \}$};
-						\node at (0,2)  {$\{  id, \sigma^2 \}$};
-						\node at (3,2)  {$\{  id, \sigma \tau \}$};
-						\node at (6,2)  {$\{  id, \sigma^3 \tau \}$};
-						\node at (-3,4)  {$\{  id, \sigma^2, \tau, \sigma^2 \tau \}$};
-						\node at (0,4)  {$\{  id, \sigma, \sigma^2, \sigma^3 \}$};
-						\node at (3,4)  {$\{  id, \sigma^2, \sigma \tau, \sigma^3 \tau \}$};
+						\node at (0,0)  {$\{  \identity \}$};
+						\node at (-6,2)  {$\{  \identity, \tau \}$};
+						\node at (-3,2)  {$\{  \identity, \sigma^2 \tau \}$};
+						\node at (0,2)  {$\{  \identity, \sigma^2 \}$};
+						\node at (3,2)  {$\{  \identity, \sigma \tau \}$};
+						\node at (6,2)  {$\{  \identity, \sigma^3 \tau \}$};
+						\node at (-3,4)  {$\{  \identity, \sigma^2, \tau, \sigma^2 \tau \}$};
+						\node at (0,4)  {$\{  \identity, \sigma, \sigma^2, \sigma^3 \}$};
+						\node at (3,4)  {$\{  \identity, \sigma^2, \sigma \tau, \sigma^3 \tau \}$};
 						\node at (0,6)  {$D_4$};
 						\node at (6,0) {(b)};
 
@@ -601,7 +601,7 @@
  
 			<p>We shall prove that a polynomial is solvable by radicals if its Galois group is solvable. Recall that a subnormal series of a group <m>G</m> is a finite sequence of subgroups
 				<me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
-			where <m>H_i</m> is normal in <m>H_{i+1}</m>.  A group <m>G</m> is solvable  if it has a subnormal series <m>\{ H_i \}</m> such that all of the factor  groups <m>H_{i+1} /H_i</m> are abelian.  For example, if we examine the series <m>\{ id \} \subset A_3 \subset S_3</m>, we see that <m>S_3</m> is solvable.  On the other hand, <m>S_5</m> is not solvable, by Theorem<nbsp /><xref ref="theorem-an-simple" />.</p>
+			where <m>H_i</m> is normal in <m>H_{i+1}</m>.  A group <m>G</m> is solvable  if it has a subnormal series <m>\{ H_i \}</m> such that all of the factor  groups <m>H_{i+1} /H_i</m> are abelian.  For example, if we examine the series <m>\{ \identity \} \subset A_3 \subset S_3</m>, we see that <m>S_3</m> is solvable.  On the other hand, <m>S_5</m> is not solvable, by Theorem<nbsp /><xref ref="theorem-an-simple" />.</p>
  
 <!-- Corrected the definition of a solvable group.  Suggested by K. Halasz. -->
 <!-- TWJ 1/10/2014  -->
@@ -622,7 +622,7 @@
 					<p>Now suppose that <m>F</m> does not contain a primitive <m>n</m>th root of unity. Let <m>\omega</m> be a generator of the cyclic group of the <m>n</m>th roots of unity.  Let <m>\alpha</m> be a zero of <m>x^n - a</m>. Since <m>\alpha</m> and <m>\omega \alpha</m> are both in the splitting field of <m>x^n - a</m>, <m>\omega = (\omega \alpha)/ \alpha</m> is also in <m>E</m>. Let <m>K = F( \omega)</m>. Then <m>F \subset K \subset E</m>. Since <m>K</m> is the splitting field of <m>x^n - 1</m>, <m>K</m> is a normal extension of <m>F</m>.  Therefore, any automorphism <m>\sigma</m> in <m>G(F( \omega)/ F)</m> is determined by <m>\sigma( \omega)</m>.  It must be the case that <m>\sigma( \omega ) = \omega^i</m> for some integer <m>i</m> since all of the zeros of <m>x^n - 1</m> are powers of <m>\omega</m>. If <m>\tau( \omega ) = \omega^j</m> is in <m>G(F(\omega)/F)</m>, then
 						<me>\sigma \tau( \omega ) = \sigma( \omega^j ) = [ \sigma( \omega )]^j = \omega^{ij} = [\tau( \omega ) ]^i = \tau( \omega^i )  = \tau \sigma( \omega ).</me>
 					Therefore, <m>G(F( \omega ) / F)</m> is abelian.  By the Fundamental Theorem of Galois Theory the series 
-						<me>\{ id \} \subset G(E/ F(\omega)) \subset G(E/F)</me>
+						<me>\{ \identity \} \subset G(E/ F(\omega)) \subset G(E/F)</me>
 					is a normal series. By our previous argument, <m>G(E/F(\omega))</m> is abelian.  Since
 						<me>G(E/F) /G(E/F( \omega)) \cong G(F(\omega)/F)</me>
 					is also abelian, <m>G(E/F)</m> is solvable.</p>
@@ -661,7 +661,7 @@
 				</statement>
 				<proof>
 					<p>Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n = E</m>. By  Lemma<nbsp /><xref ref="lemma-radical-extension" />, we can assume that <m>E</m> is a splitting field <m>f(x)</m> and   <m>F_i</m> is normal over <m>F_{i - 1}</m>. By the Fundamental Theorem of Galois Theory, <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.  Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:  
-						<me>\{ id \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F).</me>
+						<me>\{ \identity \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F).</me>
 					Again by the Fundamental Theorem of Galois Theory, we know that
 						<me>G(E/F_{i - 1})/G(E/F_i) \cong G(F_i/F_{i - 1}).</me>
 					By Lemma<nbsp /><xref ref="lemma-xn-a-solvable" />, <m>G(F_i/F_{i - 1})</m> is solvable; hence, <m>G(E/F)</m> is also solvable.</p>

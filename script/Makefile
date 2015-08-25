@@ -39,6 +39,7 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
+#   tar             (to package SageMathCloud worksheets for upload)
 #   xmllint         (only to check source against DTD)
 #   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
@@ -76,6 +77,7 @@ SOLNXSL = $(AATASOLNS)/xsl
 # a scratch directory
 HTMLOUT    = $(SCRATCH)/html
 PDFOUT     = $(SCRATCH)/pdf
+SMCOUT     = $(SCRATCH)/aata-smc
 DOCTEST    = $(SCRATCH)/doctest
 EPUBOUT    = $(SCRATCH)/epub
 SAGENBOUT  = $(SCRATCH)/sagenb
@@ -252,6 +254,21 @@ doctest-exercises:
 	cd $(DOCTEST); \
 	xsltproc --xinclude  --stringparam chunk-level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(SAGE) -tp 0 .
+
+# SageMathCloud worksheets
+#   can upload, extract tarball
+#   that has "aata-smc" as root directory
+#     $ tar -xvf aata-smc.tgz
+smc:
+	install -d $(SMCOUT) $(MBUSR)
+	cp -a $(SRC)/images $(SMCOUT)
+	cp -a $(MB)/css/mathbook-content.css $(MB)/css/mathbook-add-on.css $(SMCOUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-smc.xsl $(MBUSR)
+	cd $(SMCOUT); \
+	xsltproc --xinclude $(MBUSR)/aata-smc.xsl $(SRC)/aata.xml
+	# wrap up into a tarball in SCRATCH
+	# NB: subdir must match with SMCOUT
+	tar -c -z -f $(SCRATCH)/aata-smc.tgz -C $(SCRATCH) aata-smc
 
 ###########
 # Utilities
