@@ -135,30 +135,58 @@ html:
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
 
-# Electronic PDF version
+# Full PDF version with Sage
 #   copies in all image files, which is overkill (SVG's)
-#   produces  aata.tex  in scratch directory
+#   produces  aata-sage.tex  in scratch directory
 #   which becomes PDF, along with index entries
-#   Electronic - live URL's, shaded Sage boxes, etc
-pdf:
+#   Includes *all* material, and is fully electronic
+#   This is the AATA/Sage downloadable Annual Edition
+sage:
 	# delete old  xsltproc  output
 	# dash prevents error if not found
 	-rm $(PDFOUT)/aata.tex
 	install -d $(PDFOUT) $(MBUSR)
 	cp -a $(SRC)/images $(PDFOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-pdf.xsl $(MBUSR)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-sage.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-pdf.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex
+	xsltproc --xinclude $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
+	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	mv aata.pdf aata-sage.pdf
 
 # View PDF from correct directory
-viewpdf:
-	$(PDFVIEWER) $(PDFOUT)/aata.pdf &
+viewsage:
+	$(PDFVIEWER) $(PDFOUT)/aata-sage.pdf &
+
+# Electronic PDF version
+#   copies in all image files, which is overkill (SVG's)
+#   produces  aata-electronic.tex  in scratch directory
+#   which becomes PDF, along with index entries
+#   Similar to "print" but with links, etc.
+#   No Sage material
+#   This is default downloadable Annual Edition
+#   ie, aata-YYYYMMDD.pdf in repository download section
+electronic:
+	# delete old  xsltproc  output
+	# dash prevents error if not found
+	-rm $(PDFOUT)/aata.tex
+	install -d $(PDFOUT) $(MBUSR)
+	cp -a $(SRC)/images $(PDFOUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
+	cd $(PDFOUT); \
+	xsltproc --xinclude $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
+	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	mv aata.pdf aata-electronic.pdf
+
+# View PDF from correct directory
+viewelectronic:
+	$(PDFVIEWER) $(PDFOUT)/aata-electronic.pdf &
 
 # Print PDF version
 #   A print version for print-on-demand
-#   This will also be the Annual Edition
+#   This will be source for the Annual Edition,
+#     as sent to Orthogonal Publishing for modification
 #   Black on white, no live URLs, etc
+#   This is the "printable" downloadable Annual Edition
 print:
 	# delete old  xsltproc  output
 	# dash prevents error if not found
