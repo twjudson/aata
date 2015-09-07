@@ -19,12 +19,14 @@
 <!-- aata-latex.xsl  will subsequently import  aata-common.xsl -->
 <xsl:import href="aata-latex.xsl" />
 
-<xsl:param name="latex.font.size" select="'11pt'" />
+<!-- print edition is 10pt Adobe Minion Pro -->
+<xsl:param name="latex.font.size" select="'10pt'" />
 
-<!-- Print edition is 4 3/8 inches wide for body, using 4 1/2 inch now -->
-<!-- Default is "letterpaper", we could fine-tune margins if desired   -->
+<!-- MBX default is "letterpaper", but A4 should work fine  -->
+<!-- Print edition text body is 4 3/8 x 6 5/8 inches        -->
+<!-- Updated empirically from 2015 Annual Edition           -->
 <xsl:param name="latex.geometry">
-	<xsl:text>textwidth=4.375in,textheight=9in</xsl:text>
+    <xsl:text>textwidth=4.375in,textheight=9in</xsl:text>
 </xsl:param>
 
 <!-- Makes hyperlinks, program listings, etc. black & white -->
