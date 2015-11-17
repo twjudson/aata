@@ -81,6 +81,7 @@ SMCOUT     = $(SCRATCH)/aata-smc
 DOCTEST    = $(SCRATCH)/doctest
 EPUBOUT    = $(SCRATCH)/epub
 SAGENBOUT  = $(SCRATCH)/sagenb
+JUPYTEROUT = $(SCRATCH)/jupyter
 
 
 # Following regularly presumes  xml:id="aata" on
@@ -324,6 +325,15 @@ viewcheck:
 ##############
 
 # These are in-progress and/or totally broken
+
+# Jupyter Notebooks - experimental
+jupyter:
+	install -d $(JUPYTEROUT) $(MBUSR)
+	cp -a $(SRC)/images $(JUPYTEROUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-jupyter.xsl $(MBUSR)
+	cd $(JUPYTEROUT); \
+	xsltproc --xinclude $(MBUSR)/aata-jupyter.xsl $(SRC)/aata.xml
+
 
 # Sage Notebooks
 #   Need to  make diagrams first (not a true makefile)
