@@ -2,7 +2,7 @@
 ##                                               ##
 ##   Abstract Algebra: Theory and Applications   ##
 ##                                               ##
-## Copyright (C) 2015-2015  Robert A. Beezer     ##
+## Copyright (C) 2015-2016  Robert A. Beezer     ##
 ## See the file COPYING for copying conditions.  ##
 
 #######################
@@ -81,6 +81,7 @@ SMCOUT     = $(SCRATCH)/aata-smc
 DOCTEST    = $(SCRATCH)/doctest
 EPUBOUT    = $(SCRATCH)/epub
 SAGENBOUT  = $(SCRATCH)/sagenb
+JUPYTEROUT = $(SCRATCH)/jupyter
 
 
 # Following regularly presumes  xml:id="aata" on
@@ -236,10 +237,10 @@ draft:
 	-rm $(PDFOUT)/aata.tex
 	install -d $(PDFOUT) $(MBUSR)
 	cp -a $(SRC)/images $(PDFOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-pdf.xsl $(MBUSR)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
 	cd $(PDFOUT); \
 	xsltproc --xinclude --stringparam author-tools 'yes' \
-	--stringparam latex.draft 'yes' $(MBUSR)/aata-pdf.xsl $(SRC)/aata.xml; \
+	--stringparam latex.draft 'yes' $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-draft.pdf
 
@@ -324,6 +325,15 @@ viewcheck:
 ##############
 
 # These are in-progress and/or totally broken
+
+# Jupyter Notebooks - experimental
+jupyter:
+	install -d $(JUPYTEROUT) $(MBUSR)
+	cp -a $(SRC)/images $(JUPYTEROUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-jupyter.xsl $(MBUSR)
+	cd $(JUPYTEROUT); \
+	xsltproc --xinclude $(MBUSR)/aata-jupyter.xsl $(SRC)/aata.xml
+
 
 # Sage Notebooks
 #   Need to  make diagrams first (not a true makefile)
