@@ -472,29 +472,29 @@
  
  		<theorem>
  			<statement>
- 				<p>Let <m>I</m> be an ideal of <m>R</m>. The map <m>\psi : R \rightarrow R/I</m> defined by <m>\psi( r ) = r + I</m> is a ring homomorphism of <m>R</m> onto <m>R/I</m> with kernel <m>I</m>.</p>
+ 				<p>Let <m>I</m> be an ideal of <m>R</m>. The map <m>\phi : R \rightarrow R/I</m> defined by <m>\phi( r ) = r + I</m> is a ring homomorphism of <m>R</m> onto <m>R/I</m> with kernel <m>I</m>.</p>
 			</statement>
 			<proof>
-				<p>Certainly <m>\psi : R \rightarrow R/I</m> is a surjective abelian group homomorphism. It remains to show that <m>\psi</m> works correctly under ring multiplication.  Let <m>r</m> and <m>s</m> be in <m>R</m>. Then
-					<me>\psi(r) \psi(s) = (r + I)(s+I) = rs + I = \psi(rs),</me>
+				<p>Certainly <m>\phi : R \rightarrow R/I</m> is a surjective abelian group homomorphism. It remains to show that <m>\phi</m> works correctly under ring multiplication.  Let <m>r</m> and <m>s</m> be in <m>R</m>. Then
+					<me>\phi(r) \phi(s) = (r + I)(s+I) = rs + I = \phi(rs),</me>
 				which completes the proof of the theorem.</p>
 			</proof>
 		</theorem>
 
-		<p>The map <m>\psi : R \rightarrow R/I</m> is often called the <term>natural</term><index><main>Homomorphism</main><sub>natural</sub></index> or <term>canonical homomorphism</term><index><main>Homomorphism</main><sub>canonical</sub></index>. In ring theory we have isomorphism  theorems relating ideals and ring homomorphisms similar to the isomorphism theorems for groups that relate normal subgroups and homomorphisms in Chapter<nbsp /><xref ref="homomorph" />. We will prove only the First Isomorphism Theorem for rings in this chapter and  leave the proofs of the other two theorems as exercises. All of the proofs are similar to the proofs of the isomorphism theorems for groups.</p>
+		<p>The map <m>\phi : R \rightarrow R/I</m> is often called the <term>natural</term><index><main>Homomorphism</main><sub>natural</sub></index> or <term>canonical homomorphism</term><index><main>Homomorphism</main><sub>canonical</sub></index>. In ring theory we have isomorphism  theorems relating ideals and ring homomorphisms similar to the isomorphism theorems for groups that relate normal subgroups and homomorphisms in Chapter<nbsp /><xref ref="homomorph" />. We will prove only the First Isomorphism Theorem for rings in this chapter and  leave the proofs of the other two theorems as exercises. All of the proofs are similar to the proofs of the isomorphism theorems for groups.</p>
  
 		<theorem>
 			<title>First Isomorphism Theorem</title>
 			<index><main>First Isomorphism Theorem</main><sub>for rings</sub></index>
 			<statement>
-				<p>Let <m>\phi : R \rightarrow S</m> be a ring homomorphism. Then <m>\ker \phi</m> is an ideal of <m>R</m>. If <m>\psi : R \rightarrow R/\ker \phi</m> is the canonical homomorphism, then there exists a unique isomorphism <m>\eta: R/\ker \phi \rightarrow \phi(R)</m> such that <m>\phi = \eta \psi</m>.</p>
+				<p>Let <m>\psi : R \rightarrow S</m> be a ring homomorphism. Then <m>\ker \psi</m> is an ideal of <m>R</m>. If <m>\phi : R \rightarrow R/\ker \psi</m> is the canonical homomorphism, then there exists a unique isomorphism <m>\eta: R/\ker \psi \rightarrow \psi(R)</m> such that <m>\psi = \eta \phi</m>.</p>
 			</statement>
 			<proof>
-				<p>Let <m>K = \ker \phi</m>. By the First Isomorphism Theorem for groups, there exists a well-defined group homomorphism <m>\eta: R/K \rightarrow \phi(R)</m> defined by <m>\eta(r + K) = \phi(r)</m> for the additive abelian groups <m>R</m> and <m>R/K</m>.  To show that this is a ring homomorphism, we need only show that <m>\eta( (r + K)(s + K) ) = \eta(r + K) \eta( s + K)</m>; but
+				<p>Let <m>K = \ker \psi</m>. By the First Isomorphism Theorem for groups, there exists a well-defined group homomorphism <m>\eta: R/K \rightarrow \psi(R)</m> defined by <m>\eta(r + K) = \psi(r)</m> for the additive abelian groups <m>R</m> and <m>R/K</m>.  To show that this is a ring homomorphism, we need only show that <m>\eta( (r + K)(s + K) ) = \eta(r + K) \eta( s + K)</m>; but
 					<md>
 						<mrow>\eta( (r + K)( s +K )) &amp; = \eta(r s +K )</mrow>
-						<mrow>&amp; = \phi(r s)</mrow>
-						<mrow>&amp; = \phi(r) \phi(s)</mrow>
+						<mrow>&amp; = \psi(r s)</mrow>
+						<mrow>&amp; = \psi(r) \psi(s)</mrow>
 						<mrow>&amp; = \eta( r + K ) \eta( s + K ).</mrow>
 					</md></p>
 			</proof>
