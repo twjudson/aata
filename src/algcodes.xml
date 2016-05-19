@@ -276,7 +276,7 @@
 
 		<p>To determine exactly what the error-detecting and error-correcting capabilities for a code are, we need to analyze the minimum distance for the code. Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be codewords. If <m>d({\mathbf x}, {\mathbf y}) = 1</m> and an error occurs where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ, then <m>{\mathbf x}</m> is changed to <m>{\mathbf y}</m>. The received codeword is <m>{\mathbf y}</m> and no error message is given. Now suppose <m>d({\mathbf x}, {\mathbf y}) = 2</m>. Then a single error cannot change <m>{\mathbf x}</m> to <m>{\mathbf y}</m>. Therefore, if <m>d_{\min} = 2</m>, we have the ability to detect single errors. However, suppose that <m>d({\mathbf x}, {\mathbf y}) = 2</m>, <m>{\mathbf y}</m> is sent, and a noncodeword <m>{\mathbf z}</m> is received such that <me>d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1.</me> Then the decoder cannot decide between <m>{\mathbf x}</m> and <m>{\mathbf y}</m>. Even though we are aware that an error has occurred, we do not know what the error is.</p>
  
-		<p>Suppose <m>d_{\min} \geq 3</m>. Then the maximum-likelihood decoding scheme corrects all single errors. Starting with a codeword <m>{\mathbf x}</m>, an error in the transmission of a single bit gives <m>{\mathbf y}</m> with <m>d({\mathbf x}, {\mathbf y}) = 1</m>, but <m>d({\mathbf z}, {\mathbf y}) \geq 2</m> for any other codeword <m>{\mathbf z} \neq {\mathbf x}</m>. If we do not require the correction of errors, then we can detect multiple errors when a code has a minimum distance that is greater than 3.</p>  
+		<p>Suppose <m>d_{\min} \geq 3</m>. Then the maximum-likelihood decoding scheme corrects all single errors. Starting with a codeword <m>{\mathbf x}</m>, an error in the transmission of a single bit gives <m>{\mathbf y}</m> with <m>d({\mathbf x}, {\mathbf y}) = 1</m>, but <m>d({\mathbf z}, {\mathbf y}) \geq 2</m> for any other codeword <m>{\mathbf z} \neq {\mathbf x}</m>. If we do not require the correction of errors, then we can detect multiple errors when a code has a minimum distance that is greater than or equal to 3.</p>  
  
 		<theorem xml:id="theorem-min-distance">
 			<statement>
@@ -477,19 +477,19 @@
 			<me>\begin{pmatrix}<![CDATA[
 			a_{11} & a_{12} & \cdots & a_{1,n-m} \\
 			a_{21} & a_{22} & \cdots & a_{2,n-m} \\
-			\vdots & \vdots \ddots & \vdots    \\
+			\vdots & \vdots & \ddots & \vdots    \\
 			a_{m1} & a_{m2} & \cdots & a_{m,n-m}
 			]]>\end{pmatrix}</me>
 		and <m>I_m</m> is the <m>m \times m</m> identity matrix
 			<me>\begin{pmatrix}<![CDATA[
 			1 & 0 & \cdots & 0 \\
 			0 & 1 & \cdots & 0 \\
-			\vdots & \vdots \ddots & \vdots \\
+			\vdots & \vdots & \ddots & \vdots \\
 			0 & 0 & \cdots & 1
 			]]>\end{pmatrix}.</me>
 		With each canonical parity-check matrix we can associate an <m>n \times (n-m)</m> <term>standard generator matrix</term><index><main>Matrix</main><sub>generator</sub></index> 
 			<me>G = \left( \frac{I_{n-m}}{A} \right).</me>
-		Our goal will be to show that <m>G {\mathbf x} = {\mathbf y}</m> if and only if <m>H{\mathbf y} = {\mathbf 0}</m>.  Given a message block <m>{\mathbf x}</m> to be encoded, <m>G</m> will allow us to quickly encode it into a linear codeword <m>{\mathbf y}</m>.</p>
+		Our goal will be to show that an <m>\mathbf x</m> satisfying <m>G {\mathbf x} = {\mathbf y}</m> exists if and only if <m>H{\mathbf y} = {\mathbf 0}</m>.  Given a message block <m>{\mathbf x}</m> to be encoded, the matrix <m>G</m> will allow us to quickly encode it into a linear codeword <m>{\mathbf y}</m>.</p>
 
 		<example xml:id="example-algcodes-parity-check">
 			<p>Suppose that we have the following eight words to be encoded:
