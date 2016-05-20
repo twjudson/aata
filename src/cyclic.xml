@@ -426,11 +426,13 @@
  	</section>
 
 	<section xml:id="section-method-of-repeated-squares">
-		<title>The Method of Repeated Squares<fn>The results in this section are needed only in Chapter<nbsp /><xref ref="crypt" /></fn></title>
+		<title>The Method of Repeated Squares</title>
  
 		<p>Computing large powers can be very time-consuming. Just as anyone can compute <m>2^2</m> or <m>2^8</m>, everyone knows how to compute
 			<me>2^{2^{1000000} }.</me>
-		However, such numbers are so large that we do not want to attempt the calculations; moreover, past a certain point the computations would not be feasible even if we had every computer in the world at our disposal. Even writing down the decimal representation of a very large number may not be reasonable. It could be thousands or even millions of digits long. However, if we could compute something like <m>2^{37398332 } \pmod{ 46389}</m>, we could very easily write the result down since it would be a number between 0 and 46,388. If we want to compute powers modulo <m>n</m> quickly and efficiently, we will have to be clever.</p>
+		However, such numbers are so large that we do not want to attempt the calculations; moreover, past a certain point the computations would not be feasible even if we had every computer in the world at our disposal. Even writing down the decimal representation of a very large number may not be reasonable. It could be thousands or even millions of digits long. However, if we could compute something like
+			<me>2^{37398332 } \pmod{ 46389},</me>
+		we could very easily write the result down since it would be a number between 0 and 46,388. If we want to compute powers modulo <m>n</m> quickly and efficiently, we will have to be clever.<fn>The results in this section are needed only in Chapter<nbsp /><xref ref="crypt" /></fn></p>
  
 		<p>The first thing to notice is that any number <m>a</m> can be written as the sum of distinct powers of 2; that is, we can write
 			<me>a = 2^{k_1} + 2^{k_2} + \cdots + 2^{k_n},</me>
