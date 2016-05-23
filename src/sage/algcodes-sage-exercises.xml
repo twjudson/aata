@@ -18,10 +18,10 @@
             <p>Create the (binary) Golay code with the <c>codes.BinaryGolayCode()</c> constructor.</p>
 
             <ol>
-                <li>Use Sage methods to compute the length, dimension and minimum distance of the code.</li>
-                <li>How many errors can this code detect?  How many can it correct?</li>
-                <li>Find a nonzero codeword and introduce three errors by adding a vector with three 1's (your choice) to create a received message.  Show that the message is decoded properly.</li>
-                <li>Recycle your choices from the previous part, but now add one more error.  Does the new received message get decoded properly?</li>
+                <li><p>Use Sage methods to compute the length, dimension and minimum distance of the code.</p></li>
+                <li><p>How many errors can this code detect?  How many can it correct?</p></li>
+                <li><p>Find a nonzero codeword and introduce three errors by adding a vector with three 1's (your choice) to create a received message.  Show that the message is decoded properly.</p></li>
+                <li><p>Recycle your choices from the previous part, but now add one more error.  Does the new received message get decoded properly?</p></li>
             </ol>
         </statement>
         
@@ -32,15 +32,13 @@
             <p>One technique for improving the characteristics of a code is to add an overall parity-check bit, much like the lone parity-check bit of the <acro>ASCII</acro> code described in Example<nbsp/><xref ref="example-algcodes-even-parity"/>.  Such codes are referred to as the <term>extended</term> version of the original.</p>
 
             <ol>
-                <li>
-                    <p>Construct the (binary) Golay code and obtain the parity-check matrix.  Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.  You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful, as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c> (remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)</p>
+                <li><p>Construct the (binary) Golay code and obtain the parity-check matrix.  Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.  You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful, as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c> (remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)</p>
 
-                    <p>Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.LinearCodeFromCheckMatrix()</c> constructor and compute the length, dimension and minimum distance of the extended code.</p>
-                </li>
+                <p>Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.LinearCodeFromCheckMatrix()</c> constructor and compute the length, dimension and minimum distance of the extended code.</p></li>
 
-                <li>How are the properties of this new code better?  At what cost?</li>
+                <li><p>How are the properties of this new code better?  At what cost?</p></li>
 
-                <li>Now create the extended (binary) Golay code with the Sage constructor <c>codes.ExtendedBinaryGolayCode()</c>.  With luck, the sorted lists of your codewords and Sage's codewords will be equal.  If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.</li>
+                <li><p>Now create the extended (binary) Golay code with the Sage constructor <c>codes.ExtendedBinaryGolayCode()</c>.  With luck, the sorted lists of your codewords and Sage's codewords will be equal.  If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.</p></li>
             </ol>
         </statement>
         
