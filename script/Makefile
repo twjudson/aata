@@ -320,6 +320,20 @@ check:
 viewcheck:
 	less $(SCRATCH)/dtderrors.txt
 
+check-solutions:
+	# Assemble pieces in $PDFOUT as above
+	install -d $(SCRATCH) $(PDFOUT) $(PDFOUT)/exercises
+	cp -a $(SRC)/* $(PDFOUT)
+	cp -a $(EXR)/*.xml $(PDFOUT)/exercises
+	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
+	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
+	-rm $(SCRATCH)/dtderrors.*
+	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/mathbook.dtd $(PDFOUT)/aata-solution-manual.xml 2> $(SCRATCH)/dtderrors.txt
+	less $(SCRATCH)/dtderrors.txt
+
+viewchecksolutions:
+	less $(SCRATCH)/dtderrors.txt
+
 ##############
 # Experimental
 ##############
