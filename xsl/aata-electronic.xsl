@@ -38,12 +38,8 @@
 <!-- which will be included by default                -->
 <!-- But print copies of AATA will not include        -->
 <!-- the two Sage sections (discussion and exercise)  -->
-<!-- This is where we kill these two sections by      -->
-<!-- doing nothing with their content wrap templates  -->
-<!-- in the chunking scheme.  We presume we build one -->
-<!-- big TeX file, otherwise we might wish to also    -->
-<!-- kill a file wrap template as well.               -->
-<xsl:template match="section[title='Sage']" mode="content-wrap" />
-<xsl:template match="exercises[title='Sage Exercises']" mode="content-wrap" />
+<!-- This is where we kill these two sections         -->
+<xsl:template match="section[title='Sage']" />
+<xsl:template match="exercises[title='Sage Exercises']" />
 
 </xsl:stylesheet>

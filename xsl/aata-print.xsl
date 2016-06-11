@@ -41,7 +41,7 @@
 <!-- in the chunking scheme.  We presume we build one -->
 <!-- big TeX file, otherwise we might wish to also    -->
 <!-- kill a file wrap template as well.               -->
-<xsl:template match="section[title='Sage']" mode="content-wrap" />
-<xsl:template match="exercises[title='Sage Exercises']" mode="content-wrap" />
+<xsl:template match="section[title='Sage']" />
+<xsl:template match="exercises[title='Sage Exercises']" />
 
 </xsl:stylesheet>

@@ -104,11 +104,10 @@
 <!-- These MUST be subsections and they must be the last     -->
 <!-- subsection of a section, or else the numbering of other -->
 <!-- subsections will be different when LaTeX auto-numbers   -->
-<!-- NB: a call to "console-typeout" might be welcome here -->
-<xsl:template match="subsection[title='Historical Note']" mode="content-wrap">
-	<xsl:param name="content" />
+<xsl:template match="subsection[title='Historical Note']">
+	<xsl:apply-templates select="." mode="console-typeout" />
 	<xsl:text>\begin{historicalnote}&#xa;</xsl:text>
-	<xsl:copy-of select="$content" />
+	<xsl:apply-templates />
 	<xsl:text>\end{historicalnote}&#xa;</xsl:text>
 </xsl:template>
 
