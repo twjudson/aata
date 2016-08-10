@@ -26,8 +26,8 @@
 		<p>We will use the classic binary Hamming <m>(7,4)</m> code as an illustration.  <q>Binary</q> means we have vectors with just 0's and 1's, the <m>7</m> is the length and means the vectors have <m>7</m> coordinates, and the <m>4</m> is the dimension, meaning this code has <m>2^4=16</m> vectors comprising the code.   The documentation assumes we know a few things from later in the course.  We use <c>GF(2)</c> to specify that our code is binary <mdash /> this will make more sense at the end of the course.  A second parameter is <c>r</c> and we can see from the formulas in the documenation that setting <c>r=3</c> will give length <m>7</m>.</p>
 
 		<sage>
-			<input>H = codes.HammingCode(3, GF(2)); H</input>
-			<output>Linear code of length 7, dimension 4 over Finite Field of size 2</output>
+			<input>H = codes.HammingCode(GF(2), 3); H</input>
+			<output>[7, 4] Hamming Code over Finite Field of size 2</output>
 		</sage>
 	</subsection>
 
@@ -126,7 +126,7 @@
 		<p>A linear code has a <c>.decode</c> method.  You may choose from several different algorithms, while the Hamming codes have their own custom algorithm.  The default algorithm is syndrome decoding.</p>
 
 		<sage>
-			<input>H.decode(r)</input>
+			<input>H.decode_to_code(r)</input>
 			<output>(1, 1, 0, 1, 0, 0, 1)</output>
 		</sage>
 
@@ -147,12 +147,12 @@
 		<p>It then appears that we have received a codeword, so we assume no errors at all, and decode incorrectly.</p>
 
 		<sage>
-			<input>H.decode(received) == message</input>
+			<input>H.decode_to_code(received) == message</input>
 			<output>False</output>
 		</sage>
 
 		<sage>
-			<input>H.decode(received) == received</input>
+			<input>H.decode_to_code(received) == received</input>
 			<output>True</output>
 		</sage>
 	</subsection>

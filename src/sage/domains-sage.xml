@@ -135,11 +135,9 @@
 
 		<p>Sage can determine if some rings are integral domains and we can test products in them.  However, notions of units, irreducibles or prime elements are not generally supported (outside of what we have seen for polynomials in the previous chapter).  Worse, the construction below creates a ring within a larger field and so some functions (such as <c>.is_unit()</c>) pass through and give misleading results.  This is because the construction below creates a ring known as an <q>order in a number field.</q></p>
 
-		<p>Note also in the following example that <m>{\mathbb Z}[\sqrt{3}i]</m> is built with <em>two</em> generators, and there is no easy way to get the internal and external names of the generators to synchronize.</p>
-
 		<sage>
 		<input>
-		K.&lt;x,y&gt; = ZZ[sqrt(-3)]; K
+		K.&lt;x&gt; = ZZ[sqrt(-3)]; K
 		</input>
 		<output>
 		Order in Number Field in a with defining polynomial x^2 + 3
@@ -157,7 +155,7 @@
 
 		<sage>
 		<input>
-		K.gens()
+		K.basis()
 		</input>
 		<output>
 		[1, a]
@@ -165,17 +163,13 @@
 		</sage>
 
 		<sage>
-		<input>
-		(x, y)
-		</input>
-		<output>
-		(1, a)
-		</output>
+		<input>x</input>
+		<output>a</output>
 		</sage>
 
 		<sage>
 		<input>
-		(1+y)*(1-y) == 2*2
+		(1+x)*(1-x) == 2*2
 		</input>
 		<output>
 		True
