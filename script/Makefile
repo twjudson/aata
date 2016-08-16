@@ -151,7 +151,7 @@ sage:
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-sage.xsl $(MBUSR)
 	cd $(PDFOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-sage.pdf
 
 # View PDF from correct directory
@@ -175,7 +175,7 @@ electronic:
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
 	cd $(PDFOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-electronic.pdf
 
 # View PDF from correct directory
@@ -197,7 +197,7 @@ print:
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-print.xsl $(MBUSR)
 	cd $(PDFOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-print.pdf
 
 # View PDF from correct directory
@@ -241,7 +241,7 @@ draft:
 	cd $(PDFOUT); \
 	xsltproc --xinclude --stringparam author-tools 'yes' \
 	--stringparam latex.draft 'yes' $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; makeindex aata; $(ENGINE) aata.tex; \
+	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-draft.pdf
 
 viewdraft:
