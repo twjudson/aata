@@ -5,9 +5,9 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash =  '<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2016 Annual Edition</a> now available in electronic formats.  Hardcover version to be widely available soon.  ISBN will be <tt>9781944325022</tt>.</p>'
+    flash =  '<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2016 Annual Edition</a> now available in electronic formats.  Hardcover version now available from Amazon for about $26, see the <a href="purchase.html">Purchase</a> page for details.</p>'
+    //'<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2016 Annual Edition</a> now available in electronic formats.  Hardcover version to be widely available soon.  ISBN will be <tt>9781944325022</tt>.</p>'
     //'<p><img alt="New" src="graphics/rednew.gif">  New <a href="aata">online edition</a> available.</p> <p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2015 Annual Edition</a> now available.  Hardcover version now available for about $25, see the <a href="purchase.html">Purchase</a> page for details.</p>'
-    //'<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2014 Annual Edition</a> now available.  Hardcover version now available for about $25, see the <a href="purchase.html">Purchase</a> page for details.</p>'
     //<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">Snapshot</a> edition now available (2013/02/19)</p>'
     // Comment/uncomment next line to turn off/on
     document.write(flash)
