@@ -107,8 +107,9 @@
 
 		</introduction>
 
-		<subsection>
+		<subsection xml:id="crypt-subsection-rsa">
 			<title>The <acro>RSA</acro> Cryptosystem</title>
+
  				<p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<index><main>Rivest, R.</main></index>, A.  Shamir<index><main>Shamir, A.</main></index>, and L. Adleman<index><main>Adleman, L.</main></index> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibative.</p>
 
 				<p>The <acro>RSA</acro> cryptosystem<index><main><acro>RSA</acro> cryptosystem</main></index><index><main>Cryptosystem</main><sub><acro>RSA</acro></sub></index> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
@@ -148,7 +149,7 @@
 
 		</subsection>
 		
-		<subsection>
+		<subsection xml:id="crypt-subsection-message-verification">
 			<title>Message Verification</title>
  				
  			<p>There is a problem of message verification in public key cryptosystems. Since the encoding key is public knowledge, anyone has the ability to send an encoded message.  If Alice receives a message from Bob, she would like to be able to verify that it was Bob who actually sent the message. Suppose that Bob's encrypting key is <m>(n', E')</m> and his decrypting key is <m>(n', D')</m>.  Also, suppose that Alice's encrypting key is <m>(n, E)</m> and her decrypting key is <m>(n, D)</m>.  Since encryption keys are public information, they can exchange coded messages at their convenience.  Bob wishes to assure Alice that the message he is sending is authentic. Before Bob sends the message <m>x</m> to Alice, he decrypts  <m>x</m> with his own key:
@@ -159,7 +160,7 @@
 
 		</subsection>
  
-		<subsection>
+		<subsection xml:id="crypt-subsection-historical-note">
 			<title>Historical Note</title>
 			
 			<p>Encrypting secret messages goes as far back as ancient Greece and Rome. As we know, Julius Caesar used a simple shift code to send and receive messages. However, the formal study of  encoding and decoding messages probably began with the Arabs in the 1400s. In the fifteenth and sixteenth centuries mathematicians such as Alberti and Viete discovered  that monoalphabetic cryptosystems offered no real security. In the 1800s, F. W. Kasiski established methods for breaking ciphers in which a ciphertext letter can represent more than one plaintext letter, if the same key was used several times. This discovery led to the use of cryptosystems with keys that were used only a single time. Cryptography was placed on firm mathematical foundations by such people as W. Friedman and L. Hill in the early part of the twentieth century.</p>
@@ -180,7 +181,7 @@
  
  <xi:include href="./exercises/crypt.xml" />
 
-	<exercises>
+	<exercises xml:id="crypt-exercises-additional">
 		<title>Additional Exercises: Primality and Factoring</title>
 
 		<p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
@@ -261,7 +262,7 @@
 		</exercise>
 	</exercises>
  
-	<references>
+	<references xml:id="crypt-references">
 		<title>References and Suggested Readings</title>
 
 		<biblio type="raw"> <!-- was [1] -->
