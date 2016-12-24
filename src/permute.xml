@@ -526,10 +526,15 @@
 				<!-- I think that this is a correct proof and simplified, but the proof needs to be checked. -->
 				<proof>
 					<p>The possible motions of a regular <m>n</m>-gon are either reflections or rotations (Figure<nbsp /><xref ref="figure-rotations" />). There are exactly <m>n</m> possible rotations: 
-					<me>\identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
-					We will denote the rotation <m>360^{\circ} /n</m> by <m>r</m>. The rotation <m>r</m> generates all  of the other rotations. That is, <me> r^k = k \cdot \frac{360^{\circ} }{n}. </me> Label the <m>n</m> reflections <m>s_1, s_2, \ldots, s_n</m>, where <m>s_k</m> is the reflection that leaves vertex <m>k</m> fixed. There are two cases of reflection, depending on whether <m>n</m> is even or odd. If there are an even number of vertices, then 2 vertices are left fixed by a reflection. If there are an odd number of vertices, then only a single vertex is left fixed by a reflection (Figure<nbsp /><xref ref="figure-types" />). 
+						<me>\identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
+					We will denote the rotation <m>360^{\circ} /n</m> by <m>r</m>. The rotation <m>r</m> generates all  of the other rotations. That is, 
+						<me> r^k = k \cdot \frac{360^{\circ} }{n}.</me></p>
+
+					<p> Label the <m>n</m> reflections <m>s_1, s_2, \ldots, s_n</m>, where <m>s_k</m> is the reflection that leaves vertex <m>k</m> fixed. There are two cases of reflections, depending on whether <m>n</m> is even or odd. If there are an even number of vertices, then 2 vertices are left fixed by a reflection, and <m>s_1 = s_{n/2 + 1}, s_2 = s_{n/2 + 2}, \ldots, s_{n/2}  = s_n</m>. If there are an odd number of vertices, then only a single vertex is left fixed by a reflection and <m>s_1, s_2, \ldots, s_n</m> are distinct (Figure<nbsp /><xref ref="figure-types" />). 
 					<!-- Hence, if <m>n = 2m</m> for some integer <m>m</m>, then <m>s_i = s_{i+m}</m> for <m>1 \leq i \leq m</m>.  --> 
-					In either case, the order of <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = \identity</m> and <m>r^n = \identity</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^{k - 1}</m>. If it is replaced by <m>k-1</m>, then <m>t = r^{k - 1} s</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>; that is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>. We will leave the proof that <m>srs = r^{-1}</m> as an exercise. </p>
+					In either case, the order of each <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = 1</m> and <m>r^n = 1</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^k</m>. If the second vertex is replaced by <m>k-1</m>, then <m>t = s r^k</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>. That is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>,
+						<me>D_n = \{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\}.</me>
+					We will leave the proof that <m>srs = r^{-1}</m> as an exercise. </p>
 				</proof>
 			</theorem>
 
