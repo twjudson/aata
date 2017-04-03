@@ -71,9 +71,9 @@
  			<example xml:id="example-algcodes-even-parity">
 				<p><term>Even parity</term>, a  commonly  used coding scheme, is much more efficient than the simple repetition scheme. The <acro>ASCII</acro> (American Standard Code for Information Interchange) coding system uses binary 8-tuples, yielding <m>2^{8} = 256</m> possible 8-tuples. However, only seven bits are needed since there are only <m>2^7 = 128</m> <acro>ASCII</acro> characters. What can or should be done with the extra bit? Using the full eight bits, we can detect single transmission errors. For example, the <acro>ASCII</acro> codes for A, B, and C are 
 					<md>
-						<mrow>\mbox{A} &amp; = 65_{10} = 01000001_{2},</mrow>
-						<mrow>\mbox{B} &amp; = 66_{10} = 01000010_{2},</mrow>
-						<mrow>\mbox{C} &amp; = 67_{10} = 01000011_{2}.</mrow>
+						<mrow>\text{A} &amp; = 65_{10} = 01000001_{2},</mrow>
+						<mrow>\text{B} &amp; = 66_{10} = 01000010_{2},</mrow>
+						<mrow>\text{C} &amp; = 67_{10} = 01000011_{2}.</mrow>
 					</md>
 				Notice that the leftmost bit is always set to 0; that is, the 128 <acro>ASCII</acro> characters have codes 
 					<md>
@@ -83,9 +83,9 @@
 					</md>
 				The bit can be used for error checking on the other seven bits. It is set to either 0 or 1 so that the total number of 1 bits in the representation of a character is even. Using even parity, the codes for A, B, and C now become 
 					<md>
-						<mrow>\mbox{A} &amp; = 01000001_{2},</mrow>
-						<mrow>\mbox{B} &amp; = 01000010_{2},</mrow>
-						<mrow>\mbox{C} &amp; = 11000011_{2}.</mrow>
+						<mrow>\text{A} &amp; = 01000001_{2},</mrow>
+						<mrow>\text{B} &amp; = 01000010_{2},</mrow>
+						<mrow>\text{C} &amp; = 11000011_{2}.</mrow>
 					</md>
 				Suppose an A is sent and a transmission error in the sixth bit is caused by noise over the communication channel so that  <m>(0100\; 0101)</m> is received. We know an error has occurred since the received word has an odd number of 1s, and we can now request that the codeword be transmitted again. When used for error checking, the leftmost bit is called a <term>parity check bit</term>.</p> 
  

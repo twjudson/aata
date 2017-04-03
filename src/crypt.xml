@@ -29,7 +29,7 @@
 
 
 		<example xml:id="example-crypt-caesar">
-			<p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\mbox{A}  = 00, \mbox{B}  = 01, \ldots, \mbox{Z} = 25</m>. The encoding function will be 
+			<p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. The encoding function will be 
 				<me>f(p) = p + 3 \bmod 26;</me>
 			that is, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. The decoding function is then 
 				<me>f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.</me>
@@ -43,7 +43,7 @@
 		<p><term>Cryptanalysis</term><index><main>Cryptanalysis</main></index> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
 
 		<example xml:id="example-crypt-analysis">
-			<p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\mbox{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\mbox{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
+			<p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
 				<me>f(p) = p + 14 \bmod 26.</me>
 			The corresponding decrypting function is
 				<me>f^{-1}(p) = p + 12 \bmod 26.</me>
@@ -114,7 +114,7 @@
 
 				<p>The <acro>RSA</acro> cryptosystem<index><main><acro>RSA</acro> cryptosystem</main></index><index><main>Cryptosystem</main><sub><acro>RSA</acro></sub></index> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
  
-				<p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\mbox{A}  = 00, \mbox{B}  = 02, \ldots, \mbox{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
+				<p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
  
 			<example xml:id="example-crypt-rsa">
 				<p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
