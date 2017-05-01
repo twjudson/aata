@@ -222,16 +222,16 @@
         </sage>
 
         <sage>
-            <input>triangle.cayley_table(names=['id','u1','u3','r1','r2','u2'])</input>
+            <input>triangle.cayley_table(names=['id','u3','r1','r2','u1','u2'])</input>
             <output>
-             *  id u1 u3 r1 r2 u2
+             *  id u3 r1 r2 u1 u2
               +------------------
-            id| id u1 u3 r1 r2 u2
-            u1| u1 id u2 r2 r1 u3
-            u3| u3 r2 r1 id u2 u1
-            r1| r1 u2 id u3 u1 r2
-            r2| r2 u3 u1 u2 id r1
-            u2| u2 r1 r2 u1 u3 id
+            id| id u3 r1 r2 u1 u2
+            u3| u3 id u2 u1 r2 r1
+            r1| r1 u1 r2 id u2 u3
+            r2| r2 u2 id r1 u3 u1
+            u1| u1 r1 u3 u2 id r2
+            u2| u2 r2 u1 u3 r1 id
             </output>
         </sage>
 
@@ -275,7 +275,7 @@
 			</output>
 		</sage>
 
-		<p>It should be fairly obvious that <c>a</c> is the identity element of the group (<m>1</m>), either from its behavior in the table, or from its <q>bottom row</q> representation in the list above.  And if you prefer, you can ask Sage.</p>
+		<p>It should be fairly obvious that <c>a</c> is the identity element of the group (<m>1</m>), either from its behavior in the table, or from its <q>bottom row</q> representation as the first element of the list above.  And if you prefer, you can ask Sage for a list of its outputs when viewed as a function.</p>
 
 		<sage>
 			<input>
@@ -285,7 +285,7 @@
 			<output>[1, 2, 3, 4, 5, 6, 7, 8]</output>
 		</sage>
 
-		<p>Now <m>-1</m> should have the property that <m>-1\cdot -1= 1</m>.  We see that the identity element <c>a</c> is on the diagonal of the Cayley table only when we compute <c>c*c</c>.  We can verify this easily, borrowing the third <q>bottom row</q> element from the list above.  With this information, once we locate <m>I</m>, we can easily compute <m>-I</m>, and so on.</p>
+		<p>Now <m>-1</m> should have the property that <m>-1\cdot -1= 1</m>.  We see that the identity element <c>a</c> is on the diagonal of the Cayley table only when we compute <c>d*d</c>.  We can verify this easily, borrowing the fourth <q>bottom row</q> element from the list above.  With this information, once we locate <m>I</m>, we can easily compute <m>-I</m>, and so on.</p>
 
 		<sage>
 			<input>
@@ -295,7 +295,7 @@
 			<output>True</output>
 		</sage>
 
-		<p>See if you can pair up the letters with all eight elements of the quaternions.  Be a bit careful with your names, the symbol <c>I</c> is used by Sage for the imaginary number <m>i</m> (which we will use below), but Sage will silently let you redefine it to be anything you like.  Same goes for lower-case <c>i</c>.  So call your elements of the quaternions something like <c>QI, QJ, QK</c> to avoid confusion.</p>
+		<p>See if you can pair up the letters with all eight elements of the quaternions.  Be a bit careful with your names, the symbol <c>I</c> is used by Sage for the imaginary number <m>i=\sqrt{-1}</m> (which we will use below), but Sage will silently let you redefine it to be anything you like.  Same goes for using lower-case <c>i</c> in Sage.  So call your elements of the quaternions something like <c>QI, QJ, QK</c> to avoid confusion.</p>
 
 		<p>As we begin to work with groups it is instructive to work with the actual elements.  But many properties of groups are totally independent of the order we use for multiplication, or the names or representations we use for the elements.  Here are facts about the quaternions we can compute without any knowledge of just how the elements are written or multiplied.</p>
 

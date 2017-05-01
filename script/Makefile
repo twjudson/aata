@@ -264,7 +264,7 @@ doctest:
 	-rm $(DOCTEST)/*.py; \
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
-	xsltproc --xinclude --stringparam chunk-level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(SRC)/aata.xml; \
 	$(SAGE) -tp 0 .
 
 # Doctest Sage Solutions
@@ -281,7 +281,7 @@ doctest-exercises:
 	-rm $(DOCTEST)/*.py; \
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
-	xsltproc --xinclude  --stringparam chunk-level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
+	xsltproc --xinclude  --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(SAGE) -tp 0 .
 
 # SageMathCloud worksheets
