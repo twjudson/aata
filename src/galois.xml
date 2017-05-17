@@ -588,7 +588,7 @@
 			The only one of these operations that might demand a larger field is the taking of <m>n</m>th roots.  We are led to the following definition.</p>
  
 			<p>An extension field <m>E</m> of a field <m>F</m> is an <term>extension by radicals</term><index><main>Extension</main><sub>radical</sub></index> if there exists a chain of subfields
-				<me>F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E</me>
+				<me>F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E</me>
 			such for <m>i = 1, 2, \ldots, r</m>, we have  <m>F_i = F_{i - 1}(\alpha_i)</m> and <m>\alpha_i^{n_i} \in F_{i-1}</m> for some positive integer <m>n_i</m>. A polynomial <m>f(x)</m> is <term>solvable by radicals</term><index><main>Solvability by radicals</main></index> over <m>F</m> if the splitting field <m>K</m> of <m>f(x)</m> over <m>F</m> is contained in an extension of <m>F</m> by radicals. Our goal is to arrive at criteria that will tell us whether or not a polynomial <m>f(x)</m> is solvable by radicals by examining the Galois group <m>f(x)</m>.</p>
  
 			<p>The easiest polynomial to solve by radicals is one of the form <m>x^n - a</m>. As we discussed in Chapter<nbsp /><xref ref="cyclic" />, the roots of <m>x^n - 1</m> are called the <term>nth roots of unity</term><index><main><m>n</m>th root of unity</main></index>.  These roots are a finite subgroup of the splitting field of <m>x^n -1</m>. By Corollary<nbsp /><xref ref="corollary-cyclic-group-finite-field" />, the <m>n</m>th roots of unity form a cyclic group.  Any generator of this group is called a <term>primitive nth root of unity</term><index><main>Primitive <m>n</m>th root of unity</main></index>.</p>
@@ -632,9 +632,9 @@
 			<lemma xml:id="lemma-radical-extension">
 				<statement>
 					<p>Let <m>F</m> be a field of characteristic zero and let
-						<me>F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E</me>
+						<me>F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E</me>
 					a radical extension of <m>F</m>. Then there exists a normal radical extension 
-						<me>F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K</me>
+						<me>F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K</me>
 					such that <m>K</m> that contains <m>E</m> and <m>K_i</m> is a normal extension of <m>K_{i-1}</m>.</p>
 				</statement>
 <!-- Major rewrite of the proof. -->
@@ -644,11 +644,11 @@
 <!-- TWJ - 6/5/2013 -->				
 				<proof>
 					<p>Since <m>E</m> is a radical extension of <m>F</m>,  there exists a chain of subfields
-						<me>F = F_0 \subseteq F_1 \subseteq F_2 \subseteq \cdots \subseteq F_r = E</me>
+						<me>F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E</me>
 					such for <m>i = 1, 2, \ldots, r</m>, we have  <m>F_i = F_{i - 1}(\alpha_i)</m> and <m>\alpha_i^{n_i} \in F_{i-1}</m> for some positive integer <m>n_i</m>.  We will build a normal radical extension of <m>F</m>,
-						<me>F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K</me>
+						<me>F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K</me>
 					such that <m>K \supseteq E</m>.  Define <m>K_1</m> for be the splitting field of <m>x^{n_1} - \alpha_1^{n_1}</m>.  The roots of this polynomial are <m>\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}</m>, where <m>\omega</m> is a primitive  <m>n_1</m>th root of unity.  If <m>F</m> contains all of its <m>n_1</m> roots of unity, then  <m>K_1 = F(\alpha_!)</m>.   On the other hand, suppose that <m>F</m> does not contain a primitive <m>n_1</m>th root of unity.  If <m>\beta</m> is a root of  <m>x^{n_1} - \alpha_1^{n_1}</m>, then all of the roots of  <m>x^{n_1} - \alpha_1^{n_1}</m> must be <m>\beta, \omega \beta, \ldots, \omega^{n_1-1}</m>, where  <m>\omega</m> is a primitive  <m>n_1</m>th root of unity. In this case, <m>K_1 = F(\omega \beta)</m>.  Thus, <m>K_1</m> is a normal radical extension of <m>F</m> containing <m>F_1</m>. Continuing in this manner, we obtain
-						<me>F = K_0 \subseteq K_1 \subseteq K_2 \subseteq \cdots \subseteq K_r = K</me>
+						<me>F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K</me>
 					such that <m>K_i</m> is a normal extension of <m>K_{i-1}</m> and <m>K_i \supseteq F_i</m> for <m>i = 1, 2, \ldots, r</m>.</p>
 				</proof>
 			</lemma>
@@ -660,7 +660,7 @@
 					<p>Let <m>f(x)</m> be in <m>F[x]</m>, where <m>\chr F = 0</m>. If <m>f(x)</m> is solvable by radicals, then the Galois group of <m>f(x)</m> over <m>F</m> is solvable.</p>
 				</statement>
 				<proof>
-					<p>Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n = E</m>. By  Lemma<nbsp /><xref ref="lemma-radical-extension" />, we can assume that <m>E</m> is a splitting field <m>f(x)</m> and   <m>F_i</m> is normal over <m>F_{i - 1}</m>. By the Fundamental Theorem of Galois Theory, <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.  Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:  
+					<p>Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>. By  Lemma<nbsp /><xref ref="lemma-radical-extension" />, we can assume that <m>E</m> is a splitting field <m>f(x)</m> and   <m>F_i</m> is normal over <m>F_{i - 1}</m>. By the Fundamental Theorem of Galois Theory, <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.  Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:  
 						<me>\{ \identity \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F).</me>
 					Again by the Fundamental Theorem of Galois Theory, we know that
 						<me>G(E/F_{i - 1})/G(E/F_i) \cong G(F_i/F_{i - 1}).</me>
