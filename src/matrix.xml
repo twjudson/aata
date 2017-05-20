@@ -449,37 +449,39 @@
 	
 	<section xml:id="section-symmetry">
 		<title>Symmetry</title>
+
+		<introduction>
  
-		<p>An <term>isometry</term><index><main>Isometry</main></index> or <term>rigid motion</term><index><main>Rigid motion</main></index> in <m>{\mathbb R}^n</m> is a distance-preserving function <m>f</m> from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^n</m>. This means that <m>f</m> must satisfy 
-			<me>\| f({\mathbf x}) - f({\mathbf y}) \| =\|{\mathbf x} - {\mathbf y} \|</me>
-		for all <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>. It is not difficult to show that <m>f</m> must be a one-to-one map. By Theorem<nbsp /><xref ref="theorem-orthnormal-matrix" />, any element in <m>O(n)</m> is an isometry on <m>{\mathbb R}^n</m>; however, <m>O(n)</m> does not include all possible isometries on <m>{\mathbb R}^n</m>. Translation by a vector <m>{\mathbf x}</m>, <m>T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}</m> is also an isometry (Figure<nbsp /><xref ref="figure-isometries" />); however, <m>T</m> cannot be in <m>O(n)</m> since it is not a linear map. </p>
+			<p>An <term>isometry</term><index><main>Isometry</main></index> or <term>rigid motion</term><index><main>Rigid motion</main></index> in <m>{\mathbb R}^n</m> is a distance-preserving function <m>f</m> from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^n</m>. This means that <m>f</m> must satisfy 
+				<me>\| f({\mathbf x}) - f({\mathbf y}) \| =\|{\mathbf x} - {\mathbf y} \|</me>
+			for all <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>. It is not difficult to show that <m>f</m> must be a one-to-one map. By Theorem<nbsp /><xref ref="theorem-orthnormal-matrix" />, any element in <m>O(n)</m> is an isometry on <m>{\mathbb R}^n</m>; however, <m>O(n)</m> does not include all possible isometries on <m>{\mathbb R}^n</m>. Translation by a vector <m>{\mathbf x}</m>, <m>T_{\mathbf y}({\mathbf x}) = {\mathbf x} + {\mathbf y}</m> is also an isometry (Figure<nbsp /><xref ref="figure-isometries" />); however, <m>T</m> cannot be in <m>O(n)</m> since it is not a linear map. </p>
 
-		<p>We are mostly interested in isometries in <m>{\mathbb R}^2</m>. In fact, the only isometries in <m>{\mathbb R}^2</m> are rotations and reflections  about the origin, translations, and combinations of the two. For example, a <term>glide reflection</term><index><main>Glide reflection</main></index> is a translation followed by a reflection (Figure<nbsp /><xref ref="figure-glide" />).   In <m>{\mathbb R}^n</m> all isometries are given in the same manner. The proof is very easy to generalize.</p>
- 
-		<figure xml:id="figure-glide">
+			<p>We are mostly interested in isometries in <m>{\mathbb R}^2</m>. In fact, the only isometries in <m>{\mathbb R}^2</m> are rotations and reflections  about the origin, translations, and combinations of the two. For example, a <term>glide reflection</term><index><main>Glide reflection</main></index> is a translation followed by a reflection (Figure<nbsp /><xref ref="figure-glide" />). In <m>{\mathbb R}^n</m> all isometries are given in the same manner. The proof is very easy to generalize.</p>
+	 
+			<figure xml:id="figure-glide">
 
-			<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-			<image xml:id="matrix-glide-reflections">
-				<latex-image-code><![CDATA[
-					\begin{tikzpicture}[scale=1.5]
+				<!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
+				<image xml:id="matrix-glide-reflections">
+					<latex-image-code><![CDATA[
+						\begin{tikzpicture}[scale=1.5]
 
-					\draw [->]  (0,-1.5) -- (0,1.5);
-					\draw  [->] (-1,0) -- (1.75,0);
-					\node [right] at (0,2) {$y$};
-					\node [below] at (2,0) {$x$};
-					\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+						\draw [->]  (0,-1.5) -- (0,1.5);
+						\draw  [->] (-1,0) -- (1.75,0);
+						\node [right] at (0,2) {$y$};
+						\node [below] at (2,0) {$x$};
+						\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
 
-					\draw [->]  (4,-1.5) -- (4,1.5);
-					\draw  [->] (3,0) -- (5.75,0);
-					\node [right] at (4,2) {$y$};
-					\node [below] at (6,0) {$x$};
-					\draw [->, very thick, black]  (4.5,0) -- +(330:1.25) node [right] {$T({\mathbf x})$};
+						\draw [->]  (4,-1.5) -- (4,1.5);
+						\draw  [->] (3,0) -- (5.75,0);
+						\node [right] at (4,2) {$y$};
+						\node [below] at (6,0) {$x$};
+						\draw [->, very thick, black]  (4.5,0) -- +(330:1.25) node [right] {$T({\mathbf x})$};
 
-					\end{tikzpicture}]]>
-				</latex-image-code>
-			</image>
-			<caption>Glide reflections</caption>
-		</figure>
+						\end{tikzpicture}]]>
+					</latex-image-code>
+				</image>
+				<caption>Glide reflections</caption>
+			</figure>
 
 			<lemma>
 				<statement>
@@ -566,6 +568,8 @@
 					Consequently, <m>G</m> must be isomorphic to <m>D_n</m> in this case.</p>
 				</proof>
 			</theorem>
+
+		</introduction>
 
 		<subsection xml:id="matrix-subsection-wallpaper">
 			<title>The Wallpaper Groups</title>

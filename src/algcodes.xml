@@ -327,54 +327,57 @@
 
 	<section xml:id="section-linear-codes">
 		<title>Linear Codes</title>
- 
-		<p>To gain more knowledge of a particular code and develop more efficient techniques of encoding, decoding, and error detection, we need to add additional structure to our codes. One way to accomplish this is to require that the code also be a group. A <term>group code</term><index><main>Code</main><sub>group</sub></index> is a code that is also a subgroup of <m>{\mathbb Z}_2^n</m>.</p> 
- 
-		<p>To check that a code is a group code, we need only verify one thing. If we add any two elements in the code, the result must be an <m>n</m>-tuple that is again in the code. It is not necessary to check that the inverse of the <m>n</m>-tuple is in the code, since every codeword is its own inverse, nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword. For instance, <me>(11000101) + (11000101) = (00000000).</me></p>
- 
 
-		<example xml:id="example-algcodes-weights">
-			<p>Suppose that we have a code that consists of the following 7-tuples: 
-				<md>
-					<mrow> &amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
-					<mrow> &amp;(0100110) &amp; &amp; (0101001) &amp; &amp; (0110011) &amp; &amp; (0111100)</mrow>
-					<mrow> &amp;(1000011) &amp; &amp; (1001100) &amp; &amp; (1010110) &amp; &amp; (1011001)</mrow>
-					<mrow> &amp;(1100101) &amp; &amp; (1101010) &amp; &amp; (1110000) &amp; &amp; (1111111).</mrow>
-				</md>
-			It is a straightforward though tedious task to verify that this code is also a subgroup of <m>{\mathbb Z}_2^7</m> and, therefore, a group code. This code is a single error-detecting and single error-correcting  code, but it is a long and tedious process to compute all of the distances between  pairs of codewords to determine that <m>d_{\min} = 3</m>. It is much easier to see that the minimum weight of all the nonzero codewords is 3. As we will soon see, this is no coincidence. However, the relationship between weights and distances in a particular code is heavily dependent on the fact that the code is a group.</p>
-		</example>
+		<introduction>
  
-		<lemma>
-			<statement>
-				<p>Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be  binary <m>n</m>-tuples. Then <m>w({\mathbf x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})</m>.</p>
-			</statement>
-			<proof>
-				<p>Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are binary <m>n</m>-tuples. Then the distance between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is exactly the number of places in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. But <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ in a particular coordinate exactly when the sum in the coordinate is 1, since
+			<p>To gain more knowledge of a particular code and develop more efficient techniques of encoding, decoding, and error detection, we need to add additional structure to our codes. One way to accomplish this is to require that the code also be a group. A <term>group code</term><index><main>Code</main><sub>group</sub></index> is a code that is also a subgroup of <m>{\mathbb Z}_2^n</m>.</p> 
+	 
+			<p>To check that a code is a group code, we need only verify one thing. If we add any two elements in the code, the result must be an <m>n</m>-tuple that is again in the code. It is not necessary to check that the inverse of the <m>n</m>-tuple is in the code, since every codeword is its own inverse, nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword. For instance, <me>(11000101) + (11000101) = (00000000).</me></p>
+	 
+
+			<example xml:id="example-algcodes-weights">
+				<p>Suppose that we have a code that consists of the following 7-tuples: 
 					<md>
-						<mrow>1 + 1 &amp; = 0</mrow>
-						<mrow>0 + 0 &amp; = 0</mrow>
-						<mrow>1 + 0 &amp; = 1</mrow>
-						<mrow>0 + 1 &amp; = 1.</mrow>
+						<mrow> &amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
+						<mrow> &amp;(0100110) &amp; &amp; (0101001) &amp; &amp; (0110011) &amp; &amp; (0111100)</mrow>
+						<mrow> &amp;(1000011) &amp; &amp; (1001100) &amp; &amp; (1010110) &amp; &amp; (1011001)</mrow>
+						<mrow> &amp;(1100101) &amp; &amp; (1101010) &amp; &amp; (1110000) &amp; &amp; (1111111).</mrow>
 					</md>
-				Consequently, the weight of the sum must be the distance between the two codewords.</p>
-			</proof>
-		</lemma>
- 
-		<theorem>
-			<statement>
-				<p>Let <m>d_{\min}</m> be the minimum distance for a group code <m>C</m>. Then <m>d_{\min}</m> is the minimum of all the nonzero weights of the nonzero codewords in <m>C</m>. That is, 
-					<me>d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}.</me></p>
-			</statement>
-			<proof>
-			<p>Observe that
-				<md>
-					<mrow>d_{\min} &amp; =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}\neq{\mathbf y} \}</mrow>
-					<mrow>&amp;=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y} \neq {\mathbf 0} \}</mrow>
-					<mrow>&amp;= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}\neq {\mathbf 0} \}</mrow>
-					<mrow>&amp; =  \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.</mrow>
-				</md></p>
-			</proof>
-		</theorem>
+				It is a straightforward though tedious task to verify that this code is also a subgroup of <m>{\mathbb Z}_2^7</m> and, therefore, a group code. This code is a single error-detecting and single error-correcting  code, but it is a long and tedious process to compute all of the distances between  pairs of codewords to determine that <m>d_{\min} = 3</m>. It is much easier to see that the minimum weight of all the nonzero codewords is 3. As we will soon see, this is no coincidence. However, the relationship between weights and distances in a particular code is heavily dependent on the fact that the code is a group.</p>
+			</example>
+	 
+			<lemma>
+				<statement>
+					<p>Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be  binary <m>n</m>-tuples. Then <m>w({\mathbf x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})</m>.</p>
+				</statement>
+				<proof>
+					<p>Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are binary <m>n</m>-tuples. Then the distance between <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is exactly the number of places in which <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ. But <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ in a particular coordinate exactly when the sum in the coordinate is 1, since
+						<md>
+							<mrow>1 + 1 &amp; = 0</mrow>
+							<mrow>0 + 0 &amp; = 0</mrow>
+							<mrow>1 + 0 &amp; = 1</mrow>
+							<mrow>0 + 1 &amp; = 1.</mrow>
+						</md>
+					Consequently, the weight of the sum must be the distance between the two codewords.</p>
+				</proof>
+			</lemma>
+	 
+			<theorem>
+				<statement>
+					<p>Let <m>d_{\min}</m> be the minimum distance for a group code <m>C</m>. Then <m>d_{\min}</m> is the minimum of all the nonzero weights of the nonzero codewords in <m>C</m>. That is, 
+						<me>d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}.</me></p>
+				</statement>
+				<proof>
+				<p>Observe that
+					<md>
+						<mrow>d_{\min} &amp; =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}\neq{\mathbf y} \}</mrow>
+						<mrow>&amp;=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y} \neq {\mathbf 0} \}</mrow>
+						<mrow>&amp;= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}\neq {\mathbf 0} \}</mrow>
+						<mrow>&amp; =  \min\{ w({\mathbf z}) : {\mathbf z} \neq {\mathbf 0} \}.</mrow>
+					</md></p>
+				</proof>
+			</theorem>
+		</introduction>
 
 		<subsection  xml:id="algcodes-subsection-linear-codes">
 			<title>Linear Codes</title>
@@ -758,196 +761,200 @@
 
 	<section xml:id="section-efficient-decoding">
 		<title>Efficient Decoding</title>
- 
-		<p>We are now at the stage where we are able to generate linear codes that detect and correct errors fairly easily, but it is still a  time-consuming process to decode a received <m>n</m>-tuple and determine which is the closest codeword, because the received <m>n</m>-tuple must be compared to each possible codeword to determine the proper decoding. This can be a serious impediment if the code is very large.</p>
 
-		<example xml:id="example-algcodes-syndrome">
-			<p>Given the binary matrix
-				<me>H =
-				\begin{pmatrix}<![CDATA[
-				1 & 1 & 1 & 0 & 0 \\
-				0 & 1 & 0 & 1 & 0 \\
-				1 & 0 & 0 & 0 & 1
-				]]>\end{pmatrix}</me>
-			and the 5-tuples <m>{\mathbf x} = (11011)^{\rm t}</m> and <m>{\mathbf y} = (01011)^{\rm t}</m>, we can compute
-				<me>H{\mathbf x} =
-				\begin{pmatrix}<![CDATA[
-				0 \\ 0 \\ 0 
-				]]>\end{pmatrix}
-				\qquad
-				\text{and}
-				\qquad
-				H{\mathbf y} =
-				\begin{pmatrix}<![CDATA[
-				1 \\ 0 \\ 1 
-				]]>\end{pmatrix}.</me>
-			Hence, <m>{\mathbf x}</m> is a codeword and <m>{\mathbf y}</m> is not, since <m>{\mathbf x}</m> is in the null space and <m>{\mathbf y}</m> is not. Notice that <m>H{\mathbf y}</m> is identical to the first column of <m>H</m>. In fact, this is where the error occurred. If we flip the first bit in <m>{\mathbf y}</m> from 0 to 1, then we obtain <m>{\mathbf x}</m>.</p>
-		</example>
+		<introduction>
+ 
+			<p>We are now at the stage where we are able to generate linear codes that detect and correct errors fairly easily, but it is still a  time-consuming process to decode a received <m>n</m>-tuple and determine which is the closest codeword, because the received <m>n</m>-tuple must be compared to each possible codeword to determine the proper decoding. This can be a serious impediment if the code is very large.</p>
+
+			<example xml:id="example-algcodes-syndrome">
+				<p>Given the binary matrix
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					1 & 1 & 1 & 0 & 0 \\
+					0 & 1 & 0 & 1 & 0 \\
+					1 & 0 & 0 & 0 & 1
+					]]>\end{pmatrix}</me>
+				and the 5-tuples <m>{\mathbf x} = (11011)^{\rm t}</m> and <m>{\mathbf y} = (01011)^{\rm t}</m>, we can compute
+					<me>H{\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					0 \\ 0 \\ 0 
+					]]>\end{pmatrix}
+					\qquad
+					\text{and}
+					\qquad
+					H{\mathbf y} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 0 \\ 1 
+					]]>\end{pmatrix}.</me>
+				Hence, <m>{\mathbf x}</m> is a codeword and <m>{\mathbf y}</m> is not, since <m>{\mathbf x}</m> is in the null space and <m>{\mathbf y}</m> is not. Notice that <m>H{\mathbf y}</m> is identical to the first column of <m>H</m>. In fact, this is where the error occurred. If we flip the first bit in <m>{\mathbf y}</m> from 0 to 1, then we obtain <m>{\mathbf x}</m>.</p>
+			</example>
 
 <!-- typo correction.  Suggested by E. Martin. -->
 <!-- TWJ - 1/2/2013 -->
  
-		<p>If <m>H</m> is an <m>m \times n</m> matrix and <m>{\mathbf x} \in {\mathbb Z}_2^n</m>, then we say that the <term>syndrome</term><index><main>Syndrome of a code</main></index> of <m>{\mathbf x}</m> is <m>H{\mathbf x}</m>. The following proposition allows the quick detection and correction of errors.</p>
- 
-		<proposition xml:id="proposition-syndrome">
-			<statement>
-				<p>Let the <m>m \times n</m> binary matrix <m>H</m> determine a linear code and let <m>{\mathbf x}</m> be the received <m>n</m>-tuple. Write <m>{\mathbf x}</m> as <m>{\mathbf x} =  {\mathbf c} +{\mathbf e}</m>, where <m>{\mathbf c}</m> is the transmitted codeword and <m>{\mathbf e}</m> is the transmission error. Then the syndrome  <m>H{\mathbf x}</m> of the received codeword <m>{\mathbf x}</m> is also the syndrome of the error <m>{\mathbf e}</m>.</p>
-			</statement>
-			<proof>
-				<p>The proof follows from the fact that 
-					<me>H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} = {\mathbf 0} + H{\mathbf e} = H{\mathbf e}.</me></p>
-			</proof>
-		</proposition>
+			<p>If <m>H</m> is an <m>m \times n</m> matrix and <m>{\mathbf x} \in {\mathbb Z}_2^n</m>, then we say that the <term>syndrome</term><index><main>Syndrome of a code</main></index> of <m>{\mathbf x}</m> is <m>H{\mathbf x}</m>. The following proposition allows the quick detection and correction of errors.</p>
+	 
+			<proposition xml:id="proposition-syndrome">
+				<statement>
+					<p>Let the <m>m \times n</m> binary matrix <m>H</m> determine a linear code and let <m>{\mathbf x}</m> be the received <m>n</m>-tuple. Write <m>{\mathbf x}</m> as <m>{\mathbf x} =  {\mathbf c} +{\mathbf e}</m>, where <m>{\mathbf c}</m> is the transmitted codeword and <m>{\mathbf e}</m> is the transmission error. Then the syndrome  <m>H{\mathbf x}</m> of the received codeword <m>{\mathbf x}</m> is also the syndrome of the error <m>{\mathbf e}</m>.</p>
+				</statement>
+				<proof>
+					<p>The proof follows from the fact that 
+						<me>H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} = {\mathbf 0} + H{\mathbf e} = H{\mathbf e}.</me></p>
+				</proof>
+			</proposition>
 <!--Made the proof into a complete sentence.  TWJ 3/6/2014-->
  
 			<p>This proposition tells us that the syndrome of a received word depends solely on the error and not on the transmitted codeword. The proof of the following theorem follows immediately from Proposition<nbsp /><xref ref="proposition-syndrome" /> and from the fact that <m>H{\mathbf e}</m> is the <m>i</m>th column of the matrix <m>H</m>.</p>
  
-		<theorem>
-			<statement>
-				<p>Let <m>H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)</m> and suppose that the linear code corresponding to <m>H</m> is single error-correcting. Let <m>{\mathbf r}</m> be a received <m>n</m>-tuple that was transmitted with at most one error. If the syndrome of <m>{\mathbf r}</m> is <m>{\mathbf 0}</m>, then no error has occurred; otherwise, if the syndrome of <m>{\mathbf r}</m> is equal to some column of <m>H</m>, say the <m>i</m>th column, then the error has occurred in the <m>i</m>th bit.</p>
-			</statement>
-		</theorem>
- 
-		<example xml:id="example-algcodes-detecting-errors">
-			<p>Consider the matrix
-				<me>H =
-				\begin{pmatrix}<![CDATA[
-				1 & 0 & 1 & 1 & 0 & 0 \\
-				0 & 1 & 1 & 0 & 1 & 0 \\
-				1 & 1 & 1 & 0 & 0 & 1
-				]]>\end{pmatrix}</me>
-			and suppose that the  6-tuples <m>{\mathbf x} = (111110)^{\rm t}</m>, <m>{\mathbf y} = (111111)^{\rm t}</m>, and <m>{\mathbf z} = (010111)^{\rm t}</m> have been received. Then  
-				<me>H{\mathbf x} =
-				\begin{pmatrix}<![CDATA[
-				1 \\ 1 \\ 1 
-				]]>\end{pmatrix},
-				H{\mathbf y} =
-				\begin{pmatrix}<![CDATA[
-				1 \\ 1 \\ 0 
-				]]>\end{pmatrix},
-				H{\mathbf z} =
-				\begin{pmatrix}<![CDATA[
-				1 \\ 0 \\ 0
-				]]>\end{pmatrix}.</me>
-			Hence, <m>{\mathbf x}</m> has an error in the third bit and <m>{\mathbf z}</m> has an error in the fourth bit. The transmitted codewords for <m>{\mathbf x}</m> and <m>{\mathbf z}</m> must have been <m>(110110)</m> and <m>(010011)</m>, respectively. The syndrome of <m>{\mathbf y}</m> does not occur in any of the columns of the matrix <m>H</m>, so multiple errors must have occurred to produce <m>{\mathbf y}</m>.</p>
-		</example>
+			<theorem>
+				<statement>
+					<p>Let <m>H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)</m> and suppose that the linear code corresponding to <m>H</m> is single error-correcting. Let <m>{\mathbf r}</m> be a received <m>n</m>-tuple that was transmitted with at most one error. If the syndrome of <m>{\mathbf r}</m> is <m>{\mathbf 0}</m>, then no error has occurred; otherwise, if the syndrome of <m>{\mathbf r}</m> is equal to some column of <m>H</m>, say the <m>i</m>th column, then the error has occurred in the <m>i</m>th bit.</p>
+				</statement>
+			</theorem>
+	 
+			<example xml:id="example-algcodes-detecting-errors">
+				<p>Consider the matrix
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					1 & 0 & 1 & 1 & 0 & 0 \\
+					0 & 1 & 1 & 0 & 1 & 0 \\
+					1 & 1 & 1 & 0 & 0 & 1
+					]]>\end{pmatrix}</me>
+				and suppose that the  6-tuples <m>{\mathbf x} = (111110)^{\rm t}</m>, <m>{\mathbf y} = (111111)^{\rm t}</m>, and <m>{\mathbf z} = (010111)^{\rm t}</m> have been received. Then  
+					<me>H{\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 1 \\ 1 
+					]]>\end{pmatrix},
+					H{\mathbf y} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 1 \\ 0 
+					]]>\end{pmatrix},
+					H{\mathbf z} =
+					\begin{pmatrix}<![CDATA[
+					1 \\ 0 \\ 0
+					]]>\end{pmatrix}.</me>
+				Hence, <m>{\mathbf x}</m> has an error in the third bit and <m>{\mathbf z}</m> has an error in the fourth bit. The transmitted codewords for <m>{\mathbf x}</m> and <m>{\mathbf z}</m> must have been <m>(110110)</m> and <m>(010011)</m>, respectively. The syndrome of <m>{\mathbf y}</m> does not occur in any of the columns of the matrix <m>H</m>, so multiple errors must have occurred to produce <m>{\mathbf y}</m>.</p>
+			</example>
 
-	<subsection  xml:id="algcodes-subsection-coset-decoding">
-		<title>Coset Decoding</title>
- 
-		<p>We can use group theory to obtain another way of decoding messages.  A linear code <m>C</m> is a subgroup of <m>{\mathbb Z}_2^n</m>. <term>Coset</term><index><main>Coset decoding</main></index> or <term>standard decoding</term><index><main>Standard decoding</main></index> uses the cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m> to implement maximum-likelihood decoding. Suppose that <m>C</m> is an <m>(n,m)</m>-linear code. A coset of <m>C</m> in <m>{\mathbb Z}_2^n</m> is written in the form <m>{\mathbf x} + C</m>, where <m>{\mathbf x} \in {\mathbb Z}_2^n</m>. By Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />), there are <m>2^{n-m}</m> distinct cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m>.</p>
+		</introduction>
 
-		<example xml:id="example-algcodes-coset-decoding">
-			<p>Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
-				<me>H =
-				\begin{pmatrix}<![CDATA[
-				0 & 1 & 1 & 0 & 0 \\
-				1 & 0 & 0 & 1 & 0 \\
-				1 & 1 & 0 & 0 & 1
-				]]>\end{pmatrix}.</me>
-			The code consists of the codewords
-				<me>(00000) \quad (01101) \quad (10011) \quad (11110).</me>
-			There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>, each with order <m>2^2 =4</m>.  These cosets are listed in Table<nbsp /><xref ref="table-cosets-of-c" />.</p>
-		</example>
-		
-		<table xml:id="table-cosets-of-c">
-		   <tabular halign="center" top="medium">
-	            <row>
-	            	<cell>Coset</cell><cell>Coset</cell>
-	            </row>
-	            <row bottom="medium">
-	            	<cell>Representative</cell><cell></cell>
-	            </row>
-	            <row>
-	            	<cell><m>C</m> </cell><cell>(00000)  (01101)  (10011)  (11110)</cell>
-	            </row>
-				<row>
-					<cell><m>(10000) + C</m> </cell><cell>(10000)  (11101)  (00011)  (01110)</cell>
-				</row>
-				<row>
-					<cell><m>(01000) + C</m> </cell><cell>(01000)  (00101)  (11011)  (10110)</cell>
-				</row>
-				<row>
-					<cell><m>(00100) + C</m> </cell><cell>(00100)  (01001)  (10111)  (11010)</cell>
-				</row>
-				<row>
-					<cell><m>(00010) + C</m> </cell><cell>(00010)  (01111)  (10001)  (11100)</cell>
-				</row>
-				<row>
-					<cell><m>(00001) + C</m> </cell><cell>(00001)  (01100)  (10010)  (11111)</cell>
-				</row>
-				<row>
-					<cell><m>(10100) + C</m> </cell><cell>(00111)  (01010)  (10100)  (11001)</cell>
-				</row>
-				<row bottom="medium">
-					<cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell>
-				</row>
-		   </tabular>
-		<caption>Cosets of <m>C</m></caption>
-		</table>
+		<subsection  xml:id="algcodes-subsection-coset-decoding">
+			<title>Coset Decoding</title>
+	 
+			<p>We can use group theory to obtain another way of decoding messages.  A linear code <m>C</m> is a subgroup of <m>{\mathbb Z}_2^n</m>. <term>Coset</term><index><main>Coset decoding</main></index> or <term>standard decoding</term><index><main>Standard decoding</main></index> uses the cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m> to implement maximum-likelihood decoding. Suppose that <m>C</m> is an <m>(n,m)</m>-linear code. A coset of <m>C</m> in <m>{\mathbb Z}_2^n</m> is written in the form <m>{\mathbf x} + C</m>, where <m>{\mathbf x} \in {\mathbb Z}_2^n</m>. By Lagrange's Theorem (Theorem<nbsp /><xref ref="theorem-lagrange" />), there are <m>2^{n-m}</m> distinct cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m>.</p>
 
-		<p>Our task is to find out how knowing the cosets might help us to decode a message. Suppose that <m>{\mathbf x}</m> was the original codeword sent and that <m>{\mathbf r}</m> is the <m>n</m>-tuple received. If <m>{\mathbf e}</m> is the transmission error, then <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> or, equivalently, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. However, this is exactly the statement that <m>{\mathbf r}</m> is an element in the coset  <m>{\mathbf e} + C</m>. In maximum-likelihood decoding we expect the error <m>{\mathbf e}</m> to be as small as possible; that is, <m>{\mathbf e}</m> will have the least weight. An <m>n</m>-tuple of least weight in a coset is called a <term>coset leader</term><index><main>Coset</main><sub>leader</sub></index>. Once we have determined a coset leader for each coset, the decoding process becomes a task of calculating <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.</p>
+			<example xml:id="example-algcodes-coset-decoding">
+				<p>Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
+					<me>H =
+					\begin{pmatrix}<![CDATA[
+					0 & 1 & 1 & 0 & 0 \\
+					1 & 0 & 0 & 1 & 0 \\
+					1 & 1 & 0 & 0 & 1
+					]]>\end{pmatrix}.</me>
+				The code consists of the codewords
+					<me>(00000) \quad (01101) \quad (10011) \quad (11110).</me>
+				There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>, each with order <m>2^2 =4</m>.  These cosets are listed in Table<nbsp /><xref ref="table-cosets-of-c" />.</p>
+			</example>
+			
+			<table xml:id="table-cosets-of-c">
+			   <tabular halign="center" top="medium">
+		            <row>
+		            	<cell>Coset</cell><cell>Coset</cell>
+		            </row>
+		            <row bottom="medium">
+		            	<cell>Representative</cell><cell></cell>
+		            </row>
+		            <row>
+		            	<cell><m>C</m> </cell><cell>(00000)  (01101)  (10011)  (11110)</cell>
+		            </row>
+					<row>
+						<cell><m>(10000) + C</m> </cell><cell>(10000)  (11101)  (00011)  (01110)</cell>
+					</row>
+					<row>
+						<cell><m>(01000) + C</m> </cell><cell>(01000)  (00101)  (11011)  (10110)</cell>
+					</row>
+					<row>
+						<cell><m>(00100) + C</m> </cell><cell>(00100)  (01001)  (10111)  (11010)</cell>
+					</row>
+					<row>
+						<cell><m>(00010) + C</m> </cell><cell>(00010)  (01111)  (10001)  (11100)</cell>
+					</row>
+					<row>
+						<cell><m>(00001) + C</m> </cell><cell>(00001)  (01100)  (10010)  (11111)</cell>
+					</row>
+					<row>
+						<cell><m>(10100) + C</m> </cell><cell>(00111)  (01010)  (10100)  (11001)</cell>
+					</row>
+					<row bottom="medium">
+						<cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell>
+					</row>
+			   </tabular>
+			<caption>Cosets of <m>C</m></caption>
+			</table>
 
-		<example xml:id="example-algcodes-representative">
-			<p>In Table<nbsp /><xref ref="table-cosets-of-c" />, notice that we have chosen a representative of the least possible weight for each coset.  These representatives are coset leaders. Now suppose that <m>{\mathbf r} = (01111)</m> is the received word. To decode <m>{\mathbf r}</m>, we find that it is in the coset <m>(00010) + C</m>; hence, the originally transmitted codeword must have been <m>(01101) = (01111) + (00010)</m>.</p>
-		</example>
- 
-		<p>A potential problem with this method of decoding is that we might have to examine every coset for the received codeword. The following proposition gives a method of implementing coset decoding. It states that we can associate a syndrome with each coset; hence, we can make a table that designates a coset leader corresponding to each syndrome. Such a list is called a <term>decoding table</term><index><main>Decoding table</main></index>.</p>
- 
-		<table xml:id="table-syndrome">
-		   <tabular halign="center" top="medium">
-	        	<row bottom="medium">
-	        		<cell>Syndrome</cell><cell>Coset Leader</cell>
-	        	</row>
-	       		<row>
-	       			<cell>(000)</cell><cell>(00000)</cell>
-	       		</row>
-				<row>
-					<cell>(001)</cell><cell>(00001)</cell>
-				</row>
-				<row>
-					<cell>(010)</cell><cell>(00010)</cell>
-				</row>
-				<row>
-					<cell>(011)</cell><cell>(10000)</cell>
-				</row>
-				<row>
-					<cell>(100)</cell><cell>(00100)</cell>
-				</row>
-				<row>
-					<cell>(101)</cell><cell>(01000)</cell>
-				</row>
-				<row>
-					<cell>(110)</cell><cell>(00110)</cell>
-				</row>
-				<row bottom="medium">
-					<cell>(111)</cell><cell>(10100)</cell>
-				</row>
-		   </tabular>
-		<caption>Syndromes for each coset</caption>
-		</table>
-		 
-		<proposition>
-			<statement>
-				<p>Let <m>C</m> be an <m>(n,k)</m>-linear code given by the matrix <m>H</m> and suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in <m>{\mathbb Z}_2^n</m>. Then <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in the same coset of <m>C</m> if and only if <m>H{\mathbf x} = H{\mathbf y}</m>. That is, two <m>n</m>-tuples are in the same coset if and only if their syndromes are the same.</p>
-			</statement>
-			<proof>
-				<p>Two <m>n</m>-tuples <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in the same coset of <m>C</m> exactly when <m>{\mathbf x} - {\mathbf y} \in C</m>; however, this is equivalent to <m>H({\mathbf x} - {\mathbf y}) = 0</m> or <m>H {\mathbf x} = H{\mathbf y}</m>.</p>
-			</proof>
-		</proposition>
- 
-		<example xml:id="example-algcodes-decoding-table">
-			<p>Table<nbsp /><xref ref="table-syndrome" /> is a decoding table for the code <m>C</m> given in Example<nbsp /><xref ref="example-algcodes-coset-decoding" />. If <m>{\mathbf x} = (01111)</m> is received, then its syndrome can be computed to be
-				<me>H {\mathbf x} =
-				\begin{pmatrix}<![CDATA[
-				0 \\ 1 \\ 1
-				]]>\end{pmatrix}.</me>
-			Examining the decoding table, we determine that the coset leader is <m>(00010)</m>. It is now easy to decode the received codeword.</p>
-		</example>
- 
-		<p>Given an <m>(n,k)</m>-block code, the question arises of whether or not coset decoding is a manageable scheme.  A decoding table requires a list of cosets and syndromes, one for each of the <m>2^{n - k}</m> cosets of <m>C</m>.  Suppose that we have a <m>(32, 24)</m>-block code.  We have a huge number of codewords, <m>2^{24}</m>, yet there are only <m>2^{32 - 24} = 2^{8} = 256</m> cosets.</p>
+			<p>Our task is to find out how knowing the cosets might help us to decode a message. Suppose that <m>{\mathbf x}</m> was the original codeword sent and that <m>{\mathbf r}</m> is the <m>n</m>-tuple received. If <m>{\mathbf e}</m> is the transmission error, then <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> or, equivalently, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. However, this is exactly the statement that <m>{\mathbf r}</m> is an element in the coset  <m>{\mathbf e} + C</m>. In maximum-likelihood decoding we expect the error <m>{\mathbf e}</m> to be as small as possible; that is, <m>{\mathbf e}</m> will have the least weight. An <m>n</m>-tuple of least weight in a coset is called a <term>coset leader</term><index><main>Coset</main><sub>leader</sub></index>. Once we have determined a coset leader for each coset, the decoding process becomes a task of calculating <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.</p>
 
-		<xi:include href="./sage/algcodes-info.xml" />
+			<example xml:id="example-algcodes-representative">
+				<p>In Table<nbsp /><xref ref="table-cosets-of-c" />, notice that we have chosen a representative of the least possible weight for each coset.  These representatives are coset leaders. Now suppose that <m>{\mathbf r} = (01111)</m> is the received word. To decode <m>{\mathbf r}</m>, we find that it is in the coset <m>(00010) + C</m>; hence, the originally transmitted codeword must have been <m>(01101) = (01111) + (00010)</m>.</p>
+			</example>
+	 
+			<p>A potential problem with this method of decoding is that we might have to examine every coset for the received codeword. The following proposition gives a method of implementing coset decoding. It states that we can associate a syndrome with each coset; hence, we can make a table that designates a coset leader corresponding to each syndrome. Such a list is called a <term>decoding table</term><index><main>Decoding table</main></index>.</p>
+	 
+			<table xml:id="table-syndrome">
+			   <tabular halign="center" top="medium">
+		        	<row bottom="medium">
+		        		<cell>Syndrome</cell><cell>Coset Leader</cell>
+		        	</row>
+		       		<row>
+		       			<cell>(000)</cell><cell>(00000)</cell>
+		       		</row>
+					<row>
+						<cell>(001)</cell><cell>(00001)</cell>
+					</row>
+					<row>
+						<cell>(010)</cell><cell>(00010)</cell>
+					</row>
+					<row>
+						<cell>(011)</cell><cell>(10000)</cell>
+					</row>
+					<row>
+						<cell>(100)</cell><cell>(00100)</cell>
+					</row>
+					<row>
+						<cell>(101)</cell><cell>(01000)</cell>
+					</row>
+					<row>
+						<cell>(110)</cell><cell>(00110)</cell>
+					</row>
+					<row bottom="medium">
+						<cell>(111)</cell><cell>(10100)</cell>
+					</row>
+			   </tabular>
+			<caption>Syndromes for each coset</caption>
+			</table>
+			 
+			<proposition>
+				<statement>
+					<p>Let <m>C</m> be an <m>(n,k)</m>-linear code given by the matrix <m>H</m> and suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in <m>{\mathbb Z}_2^n</m>. Then <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in the same coset of <m>C</m> if and only if <m>H{\mathbf x} = H{\mathbf y}</m>. That is, two <m>n</m>-tuples are in the same coset if and only if their syndromes are the same.</p>
+				</statement>
+				<proof>
+					<p>Two <m>n</m>-tuples <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are in the same coset of <m>C</m> exactly when <m>{\mathbf x} - {\mathbf y} \in C</m>; however, this is equivalent to <m>H({\mathbf x} - {\mathbf y}) = 0</m> or <m>H {\mathbf x} = H{\mathbf y}</m>.</p>
+				</proof>
+			</proposition>
+	 
+			<example xml:id="example-algcodes-decoding-table">
+				<p>Table<nbsp /><xref ref="table-syndrome" /> is a decoding table for the code <m>C</m> given in Example<nbsp /><xref ref="example-algcodes-coset-decoding" />. If <m>{\mathbf x} = (01111)</m> is received, then its syndrome can be computed to be
+					<me>H {\mathbf x} =
+					\begin{pmatrix}<![CDATA[
+					0 \\ 1 \\ 1
+					]]>\end{pmatrix}.</me>
+				Examining the decoding table, we determine that the coset leader is <m>(00010)</m>. It is now easy to decode the received codeword.</p>
+			</example>
+	 
+			<p>Given an <m>(n,k)</m>-block code, the question arises of whether or not coset decoding is a manageable scheme.  A decoding table requires a list of cosets and syndromes, one for each of the <m>2^{n - k}</m> cosets of <m>C</m>.  Suppose that we have a <m>(32, 24)</m>-block code.  We have a huge number of codewords, <m>2^{24}</m>, yet there are only <m>2^{32 - 24} = 2^{8} = 256</m> cosets.</p>
+
+			<xi:include href="./sage/algcodes-info.xml" />
 
 		</subsection>
  	</section>
