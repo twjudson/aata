@@ -27,7 +27,7 @@
 
 		<sage>
 			<input>H = codes.HammingCode(GF(2), 3); H</input>
-			<output>[7, 4] Hamming Code over Finite Field of size 2</output>
+			<output>[7, 4] Hamming Code over GF(2)</output>
 		</sage>
 	</subsection>
 
@@ -92,10 +92,10 @@
 			<output>True</output>
 		</sage>
 
-		<p>Note that the parity-check may not be canonical and the generator matrix may not be standard.  Sage can produce a generator matrix that has a set of columns that forms an identity matrix, though no guarantee is made that these columns are the first columns.  (Columns, not rows.)  Such a matrix is said to be <term>systematic</term>, and the Sage method is <c>.generator_matrix_systematic()</c>.</p>
+		<p>Note that the parity-check may not be canonical and the generator matrix may not be standard.  Sage can produce a generator matrix that has a set of columns that forms an identity matrix, though no guarantee is made that these columns are the first columns.  (Columns, not rows.)  Such a matrix is said to be <term>systematic</term>, and the Sage method is <c>.systematic_generator_matrix()</c>.</p>
 
 		<sage>
-			<input>H.generator_matrix_systematic()</input>
+			<input>H.systematic_generator_matrix()</input>
 			<output>
 			[1 0 0 0 0 1 1]
 			[0 1 0 0 1 0 1]

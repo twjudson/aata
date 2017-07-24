@@ -15,7 +15,7 @@
 
     <exercise number="1">
         <statement>
-            <p>Create the (binary) Golay code with the <c>codes.BinaryGolayCode()</c> constructor.</p>
+            <p>Create the (binary) Golay code with the <c>codes.GolayCode()</c> constructor.  Read the documentation to be sure you build the binary version (not ternary), and do not build the extended version (which is the default).</p>
 
             <ol>
                 <li><p>Use Sage methods to compute the length, dimension and minimum distance of the code.</p></li>
@@ -34,11 +34,11 @@
             <ol>
                 <li><p>Construct the (binary) Golay code and obtain the parity-check matrix.  Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.  You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful, as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c> (remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)</p>
 
-                <p>Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.LinearCodeFromCheckMatrix()</c> constructor and compute the length, dimension and minimum distance of the extended code.</p></li>
+                <p>Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c> constructor and compute the length, dimension and minimum distance of the extended code.</p></li>
 
                 <li><p>How are the properties of this new code better?  At what cost?</p></li>
 
-                <li><p>Now create the extended (binary) Golay code with the Sage constructor <c>codes.ExtendedBinaryGolayCode()</c>.  With luck, the sorted lists of your codewords and Sage's codewords will be equal.  If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.</p></li>
+                <li><p>Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c> and the correct keyword to obtain the extended version.  With luck, the sorted lists of your codewords and Sage's codewords will be equal.  If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.</p></li>
             </ol>
         </statement>
         
