@@ -14,18 +14,18 @@
 
 		<p>Cryptography is the study of sending and receiving secret messages. The aim of cryptography is to send messages across a channel so that only the intended recipient of the message can read it. In addition, when a message is received, the recipient usually requires some assurance that the message is authentic; that is, that it has not been sent by someone who is trying to deceive the recipient. Modern cryptography is heavily dependent on abstract algebra and number theory.</p> 
 
-		<p>The message to be sent is called the <term>plaintext</term><index><main>Plaintext</main></index> message. The disguised message is called the <term>ciphertext</term><index><main>Ciphertext</main></index>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<index><main>Cryptosystem</main><sub>definition of</sub></index> or <term>cipher</term>,<index><main>Cipher</main></index>  has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
+		<p>The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx> message. The disguised message is called the <term>ciphertext</term><idx><h>Ciphertext</h></idx>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,<idx><h>Cipher</h></idx>  has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
  
-		<p>There are many different families of cryptosystems, each distinguished by a particular encryption algorithm. Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term><index><main>Key</main><sub>definition of</sub></index>. A classical cryptosystem has a single key, which must be kept secret,  known only to the sender and the receiver of the message. If person <m>A</m> wishes to send secret messages to two different people <m>B</m> and <m>C</m>, and does not wish to have <m>B</m> understand <m>C</m>'s messages or vice versa, <m>A</m> must use two separate keys, so one cryptosystem is used for exchanging messages with <m>B</m>, and another is used for exchanging messages with <m>C</m>.</p>
+		<p>There are many different families of cryptosystems, each distinguished by a particular encryption algorithm. Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term><idx><h>Key</h><h>definition of</h></idx>. A classical cryptosystem has a single key, which must be kept secret,  known only to the sender and the receiver of the message. If person <m>A</m> wishes to send secret messages to two different people <m>B</m> and <m>C</m>, and does not wish to have <m>B</m> understand <m>C</m>'s messages or vice versa, <m>A</m> must use two separate keys, so one cryptosystem is used for exchanging messages with <m>B</m>, and another is used for exchanging messages with <m>C</m>.</p>
 
-		<p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><index><main>Key</main><sub>public</sub></index><index><main>Cryptosystem</main><sub>public key</sub></index>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.  Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
+		<p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.  Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
 
 	</introduction>
 
 	<section xml:id="section-private-key-crypt">
 		<title>Private Key Cryptography</title>
 		
-		<p>In <term>single</term><index><main>Key</main><sub>single</sub></index><index><main>Cryptosystem</main><sub>single key</sub></index> or <term>private key cryptosystems</term><index><main>Key</main><sub>private</sub></index><index><main>Cryptosystem</main><sub>private key</sub></index> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.</p>
+		<p>In <term>single</term><idx><h>Key</h><h>single</h></idx><idx><h>Cryptosystem</h><h>single key</h></idx> or <term>private key cryptosystems</term><idx><h>Key</h><h>private</h></idx><idx><h>Cryptosystem</h><h>private key</h></idx> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.</p>
 
 
 		<example xml:id="example-crypt-caesar">
@@ -40,7 +40,7 @@
 			or ALGEBRA. Notice here that there is nothing special about either of the numbers 3 or 26. We could have used a larger alphabet or a different shift.</p>
 		</example>
  
-		<p><term>Cryptanalysis</term><index><main>Cryptanalysis</main></index> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
+		<p><term>Cryptanalysis</term><idx><h>Cryptanalysis</h></idx> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
 
 		<example xml:id="example-crypt-analysis">
 			<p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
@@ -50,7 +50,7 @@
 			It is now easy to determine whether or not our guess is correct.</p>
 		</example>
 
-		<p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><index><main>Cryptosystem</main><sub>monoalphabetic</sub></index>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp /><xref ref="example-crypt-caesar" />, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p> 
+		<p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp /><xref ref="example-crypt-caesar" />, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p> 
 
 		<p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by  
 			<me>f(p) = ap + b \bmod 26.</me>
@@ -58,14 +58,14 @@
 			<me>c = ap + b \bmod 26</me>
 		for <m>p</m>. By Proposition<nbsp /><xref ref="proposition-zn-equiv-classes" />, this is possible exactly when <m>a</m> has an inverse or, equivalently, when <m>\gcd( a, 26) =1</m>. In this case 
 			<me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
-		Such a cryptosystem is called an <term>affine cryptosystem</term><index><main>Cryptosystem</main><sub>affine</sub></index>.</p>
+		Such a cryptosystem is called an <term>affine cryptosystem</term><idx><h>Cryptosystem</h><h>affine</h></idx>.</p>
  
 		<example xml:id="example-crypt-affine-crypt">
 			<p>Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>. For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible. This is only possible if <m>\gcd(a, 26) = 1</m>. Recognizing this fact, we will let <m>a = 5</m> since <m>\gcd(5, 26) = 1</m>. It is easy to see that <m>a^{-1} = 21</m>. Therefore, we can take our encryption function to be <m>f(p) = 5p + 3 \bmod 26</m>. Thus, ALGEBRA is encoded as <m>3, 6, 7, 23, 8, 10, 3</m>, or DGHXIKD. The decryption function will be   
 				<me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
 		</example> 
  
-		<p>A cryptosystem would be more secure if a ciphertext letter could represent more than one plaintext letter.  To give an example of this type of cryptosystem, called a <term>polyalphabetic cryptosystem</term>,<index><main>Cryptosystem</main><sub>polyalphabetic</sub></index> we will generalize affine codes by using matrices. The idea works roughly the same as before; however, instead of encrypting one letter at a time we will encrypt pairs of letters.  We can store a pair of letters <m>p_1</m> and <m>p_2</m> in a vector  
+		<p>A cryptosystem would be more secure if a ciphertext letter could represent more than one plaintext letter.  To give an example of this type of cryptosystem, called a <term>polyalphabetic cryptosystem</term>,<idx><h>Cryptosystem</h><h>polyalphabetic</h></idx> we will generalize affine codes by using matrices. The idea works roughly the same as before; however, instead of encrypting one letter at a time we will encrypt pairs of letters.  We can store a pair of letters <m>p_1</m> and <m>p_2</m> in a vector  
 			<me>{\mathbf p} = 
 			\begin{pmatrix}<![CDATA[
 			p_1 \\ p_2
@@ -103,16 +103,16 @@
 
 		<introduction>
  
-			<p>If traditional cryptosystems are used, anyone who knows enough to encode a message will also know enough to decode an intercepted message. In 1976, W. Diffie<index><main>Diffie, W.</main></index> and M. Hellman<index><main>Hellman, M.</main></index> proposed public key cryptography, which is based on the observation that the encryption and decryption procedures need not have the same key. This removes the requirement that the encoding key be kept secret. The encoding function <m>f</m> must be relatively easy to compute, but <m>f^{-1}</m> must be extremely difficult to compute without some additional information, so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation. It is interesting to note that to date, no system has been proposed that has been proven to be <q>one-way;</q> that is, for any existing public key cryptosystem, it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.</p>
+			<p>If traditional cryptosystems are used, anyone who knows enough to encode a message will also know enough to decode an intercepted message. In 1976, W. Diffie<idx><h>Diffie, W.</h></idx> and M. Hellman<idx><h>Hellman, M.</h></idx> proposed public key cryptography, which is based on the observation that the encryption and decryption procedures need not have the same key. This removes the requirement that the encoding key be kept secret. The encoding function <m>f</m> must be relatively easy to compute, but <m>f^{-1}</m> must be extremely difficult to compute without some additional information, so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation. It is interesting to note that to date, no system has been proposed that has been proven to be <q>one-way;</q> that is, for any existing public key cryptosystem, it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.</p>
 
 		</introduction>
 
 		<subsection xml:id="crypt-subsection-rsa">
 			<title>The <acro>RSA</acro> Cryptosystem</title>
 
- 				<p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<index><main>Rivest, R.</main></index>, A.  Shamir<index><main>Shamir, A.</main></index>, and L. Adleman<index><main>Adleman, L.</main></index> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibative.</p>
+ 				<p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, and L. Adleman<idx><h>Adleman, L.</h></idx> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibative.</p>
 
-				<p>The <acro>RSA</acro> cryptosystem<index><main><acro>RSA</acro> cryptosystem</main></index><index><main>Cryptosystem</main><sub><acro>RSA</acro></sub></index> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
+				<p>The <acro>RSA</acro> cryptosystem<idx><h><acro>RSA</acro> cryptosystem</h></idx><idx><h>Cryptosystem</h><h><acro>RSA</acro></h></idx> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
  
 				<p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
  
@@ -188,7 +188,7 @@
 
 		<exercise>
 			<statement>
-				<p>A better algorithm for factoring odd positive integers is <term>Fermat's factorization algorithm</term><index><main>Fermat's factorizationalgorithm</main></index>.
+				<p>A better algorithm for factoring odd positive integers is <term>Fermat's factorization algorithm</term><idx><h>Fermat's factorizationalgorithm</h></idx>.
 					<ol>
 					
 						<li><p>Let <m>n= ab</m> be an odd composite number. Prove that <m>n</m> can be written as the difference of two perfect squares:
@@ -226,7 +226,7 @@
 			<statement>
 				<p>Recall Fermat's Little Theorem from Chapter<nbsp /><xref ref="cosets" />. Let <m>p</m> be prime with <m>\gcd(a, p) = 1</m>. Then <m>a^{p-1} \equiv 1 \pmod{p}</m>.  We can use Fermat's Little Theorem as a screening test for primes. For example, 15 cannot be prime since <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> However, 17 is a potential prime since
 					<me>2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.</me>
-				We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><index><main>Pseudoprime</main></index> if 
+				We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><idx><h>Pseudoprime</h></idx> if 
 					<me>2^{n-1} \equiv 1 \pmod{n}.</me>
 				Which of the following numbers are primes and which are pseudoprimes?
 					<ol cols="3">
@@ -257,7 +257,7 @@
 			<statement>
 				<p>Write a program to determine all primes less than 2000 using trial division. Write a second program that will determine all numbers less than 2000 that are either primes or pseudoprimes. Compare the speed of the two programs.  How many pseudoprimes are there below 2000?</p>
  
-				<p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.  These numbers are called <term>Carmichael numbers</term><index><main>Carmichael numbers</main></index>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare.  There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
+				<p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.  These numbers are called <term>Carmichael numbers</term><idx><h>Carmichael numbers</h></idx>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare.  There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
 			</statement>
 		</exercise>
 	</exercises>
