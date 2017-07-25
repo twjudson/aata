@@ -23,6 +23,7 @@
 			<p>Let us examine a simple model of a communications system for transmitting and receiving coded messages (Figure<nbsp /><xref ref="figure-encoding" />).</p>  
 
 			<figure xml:id="figure-encoding">
+				<caption>Encoding and decoding messages</caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
 				<image width="60%" xml:id="algcodes-encode-decode">
@@ -56,7 +57,6 @@
 						\end{tikzpicture}]]>
 					</latex-image-code>
 				</image>
-				<caption>Encoding and decoding messages</caption>
 			</figure>
 
 			<p>Uncoded messages may be composed of letters or characters, but typically they consist of binary <m>m</m>-tuples. These messages are encoded into codewords, consisting of binary <m>n</m>-tuples, by a device called an <term>encoder</term>. The message is transmitted and then decoded. We will consider the occurrence of errors during transmission. An <term>error</term> occurs if there is a change in one or more bits in the codeword. A <term>decoding scheme</term> is a method that either converts an arbitrarily received <m>n</m>-tuple into a meaningful decoded message or gives an error message for that <m>n</m>-tuple. If the received message is a codeword (one of the special <m>n</m>-tuples allowed to be transmitted), then the decoded message must be the unique message that was encoded into the codeword. For received non-codewords, the decoding scheme will give an error indication, or, if we are more clever, will actually try to correct the error and reconstruct the original message. Our goal is to transmit error-free messages as cheaply and quickly as possible.</p>
@@ -98,7 +98,8 @@
 			<p>The even parity system is easy to implement, but has two drawbacks. First, multiple errors are not detectable. Suppose an A is sent and  the first and seventh bits are changed from 0 to 1. The received word is a codeword, but will be decoded into a C instead of an A. Second, we do not have the ability to correct errors.  If the 8-tuple <m>(1001\; 1000)</m> is received, we know that an error has occurred, but we have no idea which bit has been changed. We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.</p> 
 
 			<table xml:id="table-repetition-code">
-			   <tabular halign="center" top="medium">
+				<caption>A repetition code</caption>
+			    <tabular halign="center" top="medium">
 			   	    <col />
                     <col />
                     <col />
@@ -120,8 +121,7 @@
 					<row bottom="medium">
 						<cell>111</cell><cell>3</cell><cell>2</cell><cell>2</cell><cell>1</cell><cell>2</cell><cell>1</cell><cell>1</cell><cell>0</cell>
 					</row>
-			   </tabular>
-			<caption>A repetition code</caption>
+			    </tabular>
 			</table>
 
 
@@ -142,6 +142,7 @@
 			<p>The coding scheme presented in Example<nbsp /><xref ref="example-algcodes-nearest" /> is not a complete solution to the problem because it does not account for the possibility of multiple errors. For example, either a (000) or a (111) could be sent and a (001) received. We have no means of deciding from the received word whether there was a single error in the third bit or two errors, one in the first bit and one in the second.  No matter what coding  scheme is used, an incorrect message could be received. We could transmit a (000), have errors in all three bits, and receive the codeword (111). It is important to make explicit assumptions about the likelihood and distribution of transmission errors so that, in a particular application, it will be known whether a given error detection scheme is appropriate. We will assume that transmission errors are rare, and, that when they do occur, they occur independently in each bit; that is, if <m>p</m> is the probability of an error in one bit and <m>q</m> is the probability of an error in a different bit, then the probability of errors occurring in both of these bits at the same time is <m>pq</m>. We will also assume that a received <m>n</m>-tuple is decoded into a codeword that is closest to it; that is, we assume that the receiver uses <term>maximum-likelihood decoding</term><idx><h>Maximum-likelihood decoding</h></idx>.<fn>This section requires a knowledge of probability, but can be skipped without loss of continuity.</fn></p>
  
 			<figure xml:id="figure-channel">
+				<caption>Binary symmetric channel</caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
 				<image width="40%" xml:id="algcodes-binary-channel">
@@ -162,7 +163,6 @@
 						\end{tikzpicture}]]>
 					</latex-image-code>
 				</image>
-				<caption>Binary symmetric channel</caption>
 			</figure>
 
 			<p>A <term>binary symmetric channel</term><idx><h>Binary symmetric channel</h></idx> is a model that consists of a transmitter capable of sending a binary  signal, either a 0 or a 1, together with a receiver. Let <m>p</m> be the probability that the signal is correctly received. Then <m>q = 1 - p</m> is the probability of an incorrect reception. If a 1 is sent, then the probability that a 1 is received is <m>p</m> and the probability that a 0 is received is <m>q</m> (Figure<nbsp /><xref ref="figure-channel" />). The probability that no errors occur during the transmission of a binary codeword of length <m>n</m> is <m>p^{n}</m>. For example, if <m>p=0.999</m> and a message consisting of 10,000 bits is sent, then the probability of a perfect transmission is  <me>(0.999)^{10,000} \approx 0.00005.</me></p>
@@ -242,6 +242,7 @@
 		<p>Suppose that <m>{\mathbf x} = (1101)</m> and <m>{\mathbf y} = (1100)</m> are codewords in some code. If we transmit (1101) and an error occurs in the rightmost bit, then (1100) will be received. Since (1100) is a codeword, the decoder will decode (1100) as the transmitted message. This code is clearly not very appropriate for error detection. The problem is that <m>d({\mathbf x}, {\mathbf y}) = 1</m>. If <m>{\mathbf x} = (1100)</m> and <m>{\mathbf y} = (1010)</m> are codewords, then <m>d({\mathbf x}, {\mathbf y}) = 2</m>. If <m>{\mathbf x}</m> is transmitted and a single error occurs, then <m>{\mathbf y}</m> can never be received. Table<nbsp /><xref ref="table-4-bit-words" /> gives the distances between all 4-bit codewords in which the first three bits carry information and the fourth is an even parity check bit. We can see that the minimum distance here is 2; hence, the code is suitable as a single error-correcting code. </p>
  
 		<table xml:id="table-4-bit-words">
+			<caption>Distances between 4-bit codewords</caption>
 		   <tabular halign="center" top="medium" left="medium" right="medium">
 	           	<row bottom="medium">
 	           		<cell></cell><cell>0000</cell><cell>0011</cell><cell>0101</cell><cell>0110</cell><cell>1001</cell><cell>1010</cell><cell>1100</cell><cell>1111</cell>
@@ -271,7 +272,6 @@
 					<cell>1111</cell><cell>4</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>2</cell><cell>0</cell>
 				</row>
 		   </tabular>
-		<caption>Distances between 4-bit codewords</caption>
 		</table>
 
 		<p>To determine exactly what the error-detecting and error-correcting capabilities for a code are, we need to analyze the minimum distance for the code. Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be codewords. If <m>d({\mathbf x}, {\mathbf y}) = 1</m> and an error occurs where <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ, then <m>{\mathbf x}</m> is changed to <m>{\mathbf y}</m>. The received codeword is <m>{\mathbf y}</m> and no error message is given. Now suppose <m>d({\mathbf x}, {\mathbf y}) = 2</m>. Then a single error cannot change <m>{\mathbf x}</m> to <m>{\mathbf y}</m>. Therefore, if <m>d_{\min} = 2</m>, we have the ability to detect single errors. However, suppose that <m>d({\mathbf x}, {\mathbf y}) = 2</m>, <m>{\mathbf y}</m> is sent, and a noncodeword <m>{\mathbf z}</m> is received such that <me>d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1.</me> Then the decoder cannot decide between <m>{\mathbf x}</m> and <m>{\mathbf y}</m>. Even though we are aware that an error has occurred, we do not know what the error is.</p>
@@ -294,6 +294,7 @@
 		</example>
 
 		<table xml:id="table-hamming-distance">
+			<caption>Hamming distances for an error-correcting code</caption>
 		   <tabular halign="center" top="medium" left="medium" right="medium">
 	           	<row bottom="medium">
 	           		<cell></cell><cell>00000</cell><cell>00111</cell><cell>11100</cell><cell>11011</cell>
@@ -311,7 +312,6 @@
 					<cell>11011 </cell><cell>4</cell><cell>3</cell><cell>3</cell><cell>0</cell>
 				</row>
 		   </tabular>
-		<caption>Hamming distances for an error-correcting code</caption>
 		</table>
  
 		</subsection> 
@@ -548,6 +548,7 @@
 		</example>
 		
 		<table xml:id="table-matrix-gen-code">
+			<caption>A matrix-generated code</caption>
 		   <tabular halign="center" top="medium">
 		           	<row bottom="medium">
 		           		<cell>Message Word <m>\mathbf x</m></cell><cell>Codeword <m>G \mathbf x</m></cell>
@@ -577,7 +578,6 @@
 						<cell>111</cell><cell>111000</cell>
 					</row>
 		   </tabular>
-		<caption>A matrix-generated code</caption>
 		</table>		
 
 		<theorem>
@@ -858,6 +858,7 @@
 			</example>
 			
 			<table xml:id="table-cosets-of-c">
+				<caption>Cosets of <m>C</m></caption>
 			   <tabular halign="center" top="medium">
 		            <row>
 		            	<cell>Coset</cell><cell>Coset</cell>
@@ -890,7 +891,6 @@
 						<cell><m>(00110) + C</m> </cell><cell>(00110)  (01011)  (10101)  (11000)</cell>
 					</row>
 			   </tabular>
-			<caption>Cosets of <m>C</m></caption>
 			</table>
 
 			<p>Our task is to find out how knowing the cosets might help us to decode a message. Suppose that <m>{\mathbf x}</m> was the original codeword sent and that <m>{\mathbf r}</m> is the <m>n</m>-tuple received. If <m>{\mathbf e}</m> is the transmission error, then <m>{\mathbf r} = {\mathbf e} + {\mathbf x}</m> or, equivalently, <m>{\mathbf x} = {\mathbf e} + {\mathbf r}</m>. However, this is exactly the statement that <m>{\mathbf r}</m> is an element in the coset  <m>{\mathbf e} + C</m>. In maximum-likelihood decoding we expect the error <m>{\mathbf e}</m> to be as small as possible; that is, <m>{\mathbf e}</m> will have the least weight. An <m>n</m>-tuple of least weight in a coset is called a <term>coset leader</term><idx><h>Coset</h><h>leader</h></idx>. Once we have determined a coset leader for each coset, the decoding process becomes a task of calculating <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.</p>
@@ -902,6 +902,7 @@
 			<p>A potential problem with this method of decoding is that we might have to examine every coset for the received codeword. The following proposition gives a method of implementing coset decoding. It states that we can associate a syndrome with each coset; hence, we can make a table that designates a coset leader corresponding to each syndrome. Such a list is called a <term>decoding table</term><idx><h>Decoding table</h></idx>.</p>
 	 
 			<table xml:id="table-syndrome">
+				<caption>Syndromes for each coset</caption>
 			   <tabular halign="center" top="medium">
 		        	<row bottom="medium">
 		        		<cell>Syndrome</cell><cell>Coset Leader</cell>
@@ -931,7 +932,6 @@
 						<cell>(111)</cell><cell>(10100)</cell>
 					</row>
 			   </tabular>
-			<caption>Syndromes for each coset</caption>
 			</table>
 			 
 			<proposition>

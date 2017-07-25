@@ -231,6 +231,7 @@
 			<p>Suppose that we wish to color the vertices of a square with two different colors, say black and white.  We might suspect that there would be <m>2^4=16</m> different colorings. However, some of these colorings are equivalent.  If we color the first vertex black and the remaining vertices white, it is the same as coloring the second vertex black and the remaining ones white since we could obtain the second coloring simply by rotating the square <m>90^\circ</m> (Figure<nbsp /><xref ref="figure-actions-coloring" />).</p>
 
 			<figure xml:id="figure-actions-coloring">
+				<caption>Equivalent colorings of square</caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
 				<image width="60%" xml:id="actions-colorings-square">
@@ -264,7 +265,6 @@
 						\end{tikzpicture}]]>
 					</latex-image-code>
 				</image>
-				<caption>Equivalent colorings of square</caption>
 			</figure>
  
 			<p>Burnside's Counting Theorem offers a method of computing the number of distinguishable ways in which something can be done. In addition to its geometric applications, the theorem has interesting applications to areas in switching theory and chemistry. The proof of Burnside's Counting Theorem depends on the following lemma.</p>
@@ -393,6 +393,7 @@
 			<p>In switching theory we are concerned with the design of electronic circuits with binary inputs and outputs. The simplest of these circuits is a switching function that has <m>n</m> inputs and a single output (Figure<nbsp /><xref ref="figure-switching-n-variables" />). Large electronic circuits can often be  constructed by combining smaller modules of this kind. The inherent problem here is that even for a simple circuit a large number of different switching functions can be constructed.  With only four inputs and a single output, we can construct 65,536 different switching functions. However, we can often replace one switching function with another merely by permuting the input leads to the circuit (Figure<nbsp /><xref ref="figure-switching-two-variables" />).</p>
  
 			<figure xml:id="figure-switching-n-variables">
+				<caption>A switching function of <m>n</m> variables</caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
 				<image width="80%" xml:id="actions-switching-function">
@@ -410,12 +411,12 @@
 						\end{tikzpicture}]]>
 					</latex-image-code>
 				</image>
-				<caption>A switching function of <m>n</m> variables</caption>
 			</figure>
 			
 			<p>We define a <term>switching</term><idx><h>Function</h><h>switching</h></idx><idx><h>Switching function</h></idx> or <term>Boolean function</term><idx><h>Boolean function</h></idx><idx><h>Function</h><h>Boolean</h></idx> of <m>n</m> variables to be a function from <m>{\mathbb Z}_2^n</m> to <m>{\mathbb Z}_2</m>. Since  any switching function can have two possible values for each binary <m>n</m>-tuple and there are <m>2^n</m> binary <m>n</m>-tuples, <m>2^{2^n}</m> switching functions are possible for <m>n</m> variables. In general, allowing permutations of the inputs greatly reduces the number of different kinds of modules that are needed to build a large circuit.</p>
 
 			<figure xml:id="figure-switching-two-variables">
+				<caption>A switching function of two variables</caption>
 
 				<!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
 				<image xml:id="actions-switching-two-variables">
@@ -437,7 +438,6 @@
 						\end{tikzpicture}]]>
 					</latex-image-code>
 				</image>
-				<caption>A switching function of two variables</caption>
 			</figure>
  
 			<p>The possible switching functions  with two input variables <m>a</m> and <m>b</m> are listed in Table<nbsp /><xref ref="table-switching-2-variables" />. Two switching functions <m>f</m> and <m>g</m> are equivalent if <m>g</m> can be obtained from <m>f</m> by a permutation of the input variables. For example, <m>g(a, b, c) = f(b, c, a)</m>. In this  case <m>g \sim f</m> via the permutation <m>(acb)</m>. In the case of switching functions of two variables, the permutation <m>(ab)</m> reduces 16 possible switching functions to 12 equivalent functions since
@@ -449,6 +449,7 @@
 				</md></p>
  
  			<table xml:id="table-switching-2-variables">
+				<caption>Switching functions in two variables</caption>
    				<tabular halign="center" top="medium" left="medium">
    					<col />
                     <col right="medium"/>
@@ -488,7 +489,6 @@
    					<row bottom="medium">
    						<cell>1</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell><cell>0</cell><cell>1</cell></row>
 				</tabular>
-				<caption>Switching functions in two variables</caption>
 			</table>
 
  
@@ -524,6 +524,7 @@
 			possible switching functions of four variables under this group of permutations. This number will be even smaller if we consider the full symmetric group on four letters.</p>
 
 			<table xml:id="table-switching-permutation">
+				<caption>Permutations of switching functions in four variables</caption>
    				<tabular halign="left" top="medium">
        				<row>
        					<cell>Group</cell><cell></cell><cell> Number</cell>
@@ -556,7 +557,6 @@
 						<cell><m>(a c)(b d)</m></cell><cell><m>(1,4)(2,8)(3,12)(6,9)(7,13)(11,14)</m></cell><cell>10</cell>
 					</row>
    				</tabular>
-				<caption>Permutations of switching functions in four variables</caption>
 			</table>
 
 		<xi:include href="./sage/actions-info.xml" />
