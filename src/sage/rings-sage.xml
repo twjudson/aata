@@ -17,9 +17,7 @@
 	<subsection>
 		<title>Creating Rings</title>
 
-		<p>Here is a list of various rings, domains and fields you can construct simply.</p>
-
-		<ol>
+		<p>Here is a list of various rings, domains and fields you can construct simply.<ol>
 			<li><p><c>Integers()</c>, <c>ZZ</c>: the integral domain of positive and negative integers, <m>{\mathbb Z}</m>.</p></li>
 
 			<li><p><c>Integers(n)</c>: the integers mod <m>n</m>, <m>{\mathbb Z_n}</m>.  A field when <m>n</m> is prime, but just a ring for composite <m>n</m>.</p></li>
@@ -35,7 +33,7 @@
 			<li><p><c>QQbar</c>: the field formed by combining the rationals with the solutions to <em>every</em> polynomial equation with integer coefficients.  This is known as a the field of algebraic numbers, denoted as <m>\overline{{\mathbb Q}}</m>.</p></li>
 
 			<li><p><c>FiniteField(p)</c>: for a prime <m>p</m>, the field of integers <m>{\mathbb Z_p}</m>.</p></li>
-		</ol>
+		</ol></p>
 
 		<p>If you print a description of some of the above rings, you will sometimes see a new symbol introduced.  Consider the following example:</p>
 
@@ -113,15 +111,13 @@
 
 		<p>With the syntax <c>F.&lt;b></c> we can create the field <c>F</c> along with specifying a generator <c>b</c> using a name of our choosing.  Then computations can use <c>b</c> in both input and output as a root of <m>x^2-7</m>.</p>
 
-		<p>Here are three new rings that are best created using this new syntax.</p>
-
-		<ol>
+		<p>Here are three new rings that are best created using this new syntax.<ol>
 			<li><p><c>F.&lt;a> = FiniteField(p^n)</c>: We will later have a theorem that tells us that finite fields only exist with orders equal to to a power of a prime.  When the power is larger than 1, then we need a generator, here given as <c>a</c>.</p></li>
 
 			<li><p><c>P.&lt;x>=R[]</c>: the ring of all polynomials in the variable <c>x</c>, with coefficients from the ring <c>R</c>.  Notice that <c>R</c> can be <em>any</em> ring, so this is a very general construction that uses one ring to form another.  See an example below.</p></li>
 
 			<li><p><c>Q.&lt;r,s,t> = QuaternionAlgebra(n, m)</c>: the rationals combined with indeterminates <c>r</c>, <c>s</c> and <c>t</c> such that <m>r^2=n</m>, <m>s^2=m</m> and <m>t = rs = -sr</m>.  This is a generalization of the quaternions described in this chapter, though over the rationals rather than the reals, so it is an exact ring.  Notice that this is one of the few noncommutative rings in Sage.  The <q>usual</q> quaternions would be constructed with <c>Q.&lt;I,J,K> = QuaternionAlgebra(-1, -1)</c>.  (Notice that using <c>I</c> here is not a good choice, because it will then clobber the symbol <c>I</c> used for complex numbers.)</p></li>
-		</ol>
+		</ol></p>
 
 		<p>Syntax specifying names for generators can be used for many of the above rings as well, such as demonstrated above for quadratic fields and below for cyclotomic fields.</p>
 
