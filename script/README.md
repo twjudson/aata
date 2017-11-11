@@ -1,12 +1,12 @@
 # Makefile for Project Management
 
-Read instructions in the `Makefile` which explains that `Makefile.original` needs to be copied to `Makefile.paths` before this is useful.
+Read instructions in the `Makefile` which explains that `Makefile.paths.original` needs to be copied to `Makefile.paths` before this is useful.
 
 In particular,  DO NOT EDIT
 
 * `Makefile`
-* `Makefile.original`
-* `Makefile.example`
+* `Makefile.paths.original`
+* `Makefile.paths.example`
 
 as their changes are managed by revision control and *will* be overwritten.
 
