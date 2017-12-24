@@ -197,24 +197,26 @@
 					<li><p>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <c>ceiling(sqrt(n))</c> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</p></li>
 				</ol>
 
-				<program>
-					<input>
-						x := ceiling(sqrt(n))
-						y := 1
-
-						1 : while x^2 - y^2 <![CDATA[>]]> n do
-							y := y + 1
-
-						if x^2 - y^2 <![CDATA[<]]> n then
-							x := x + 1
+				<sidebyside>
+					<program>
+						<input>
+							x := ceiling(sqrt(n))
 							y := 1
-							goto 1
-						else if x^2 - y^2 = 0 then
-							a := x - y
-							b := x + y
-							write n = a * b
-					</input>
-				</program>
+
+							1 : while x^2 - y^2 <![CDATA[>]]> n do
+								y := y + 1
+
+							if x^2 - y^2 <![CDATA[<]]> n then
+								x := x + 1
+								y := 1
+								goto 1
+							else if x^2 - y^2 = 0 then
+								a := x - y
+								b := x + y
+								write n = a * b
+						</input>
+					</program>
+				</sidebyside>
 
 			</statement>
 		</exercise>
