@@ -167,13 +167,23 @@
 
 		<p>We can use this group to illustrate the relevant Sage commands for group actions.</p>
 
-		<sage>
+		<!-- Order of inner list may be "random" when other packages are in use.   -->
+		<!-- So we show this as an example, and test its cardinality, which will   -->
+		<!-- verify correctness as a set.  Names of the vertices should be flagged -->
+		<!-- elsewhere if it changes.                                              -->
+
+		<sage doctest="not tested">
 		<input>
 		A.orbits()
 		</input>
 		<output>
 		[['000', '001', '010', '100', '011', '101', '110', '111']]
 		</output>
+		</sage>
+
+		<sage doctest="invisible">
+		<input>len(A.orbits()[0])</input>
+		<output>8</output>
 		</sage>
 
 		<p>So this action has only one (big) orbit.  This implies that every vertex is <q>like</q> any other.  When a permutation group behaves this way, we say the group is <term>transitive</term>.</p>
