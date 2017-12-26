@@ -5,7 +5,8 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash ='<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2017 Annual Edition</a> now available in electronic formats.  Hardcover version also available from online bookstores for less than $26, see the <a href="purchase.html">Purchase</a> page for details.</p>'
+    flash ='<p><img alt="New" src="graphics/rednew.gif">  <a href="aata-es">Spanish Edition 2017</a> now available.</p>'
+    // '<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2017 Annual Edition</a> now available in electronic formats.  Hardcover version also available from online bookstores for less than $26, see the <a href="purchase.html">Purchase</a> page for details.</p>'
     //'<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2017 Annual Edition</a> now available in electronic formats.  Hardcover version to be widely available soon.  ISBN will be <tt>9781944325053</tt>.</p>'
     //<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">Snapshot</a> edition now available (2013/02/19)</p>'
     // Comment/uncomment next line to turn off/on
@@ -17,7 +18,8 @@ function nav_links( thispage ){
     // key, href, text for visible link, boolean to open in new page
     pages = [
         ['index', 'index.html', 'Home', false],
-        ['online', 'aata', 'Online', true],
+        ['online', 'aata', 'Online - English', true],
+        ['online', 'aata-es', 'Online - Spanish', true],
         ['reviews', 'reviews.html', 'Reviews', false],
         ['download', 'download.html', 'Download', false],
         ['purchase', 'purchase.html', 'Purchase', false],
