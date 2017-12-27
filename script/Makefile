@@ -25,10 +25,6 @@
 # operate on dependencies.  It is more of a shell
 # script, sharing common configurations
 
-# The manufacture of the solutions manual is somewhat
-# complicated due to the public nature of the problem
-# statements, but the private nature of the solutions
-
 # This is mostly offered as an example of one approach
 # to managing a project with multiple output formats. and
 # is not claimed to be "best practice"
@@ -70,8 +66,6 @@ MBDTD = $(MB)/schema/dtd
 # for the two AATA repositories
 SRC = $(AATA)/src
 XSL = $(AATA)/xsl
-EXR = $(AATASOLNS)/src
-SOLNXSL = $(AATASOLNS)/xsl
 
 # These paths are subdirectories of
 # a scratch directory
@@ -105,17 +99,6 @@ diagrams:
 	$(MBSCRIPT)/mbx -v -c latex-image -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
 	$(MBSCRIPT)/mbx -v -c sageplot    -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
 	$(MBSCRIPT)/mbx -v -c sageplot    -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
-
-# Update exercises
-#   Extract problems, with statements and hints only,
-#   from private solutions project to main AATA repository
-#   Will require a subsequent commit in the AATA repo if
-#   there have been edits to statements or hints
-update-exercises:
-	# XSL file writes into exercises subdirectory,
-	# so do not change to that subdirectory
-	cd $(SRC); \
-	xsltproc --xinclude  $(SOLNXSL)/statements-only.xsl  $(EXR)/aata-solutions.xml
 
 
 ##########
@@ -204,29 +187,6 @@ print:
 viewprint:
 	$(PDFVIEWER) $(PDFOUT)/aata-print.pdf &
 
-# Solution manual
-#   setup directories, clean out old *.tex
-#   copy XSL files to user directory
-#   copy in main source files
-#   copy full exercise/solution files into scratch directory
-#   these will land on top of exercise files with just problem statements
-solutions:
-	install -d $(PDFOUT) $(MBUSR) $(PDFOUT)/exercises
-	# delete old  xsltproc  output
-	# dash prevents error if not found
-	-rm $(PDFOUT)/aata-solution-manual.tex
-	cp $(XSL)/aata-common.xsl $(SOLNXSL)/aata-solution-manual.xsl $(MBUSR)
-	cp -a $(SRC)/* $(PDFOUT)
-	cp -a $(EXR)/*.xml $(PDFOUT)/exercises
-	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
-	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
-	cd  $(PDFOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-solution-manual.xsl $(PDFOUT)/aata-solution-manual.xml; \
-	$(ENGINE) aata-solution-manual.tex; $(ENGINE) aata-solution-manual.tex
-
-viewsolutions:
-	$(PDFVIEWER) $(PDFOUT)/aata-solution-manual.pdf &
-
 # Author's Draft
 #   Like electronic PDF version, but for:
 #   No index created, since showidx is used
@@ -256,7 +216,7 @@ viewdraft:
 # These targets are all related to that
 
 # Doctest
-#   All Sage exercises across entire source
+#   All Sage material, but not solutions to exercises
 #   Prepare location, remove *.py from previous runs
 #   XSL dumps into current directory, Sage processes whole directory
 #   chunk level 2 gives sections (commentaries, exercises)
@@ -265,23 +225,6 @@ doctest:
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
 	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(SRC)/aata.xml; \
-	$(SAGE) -tp 0 .
-
-# Doctest Sage Solutions
-#   All Sage code in solutions
-#   Remove *.py from previous runs
-#   chunk level 2 gives sections (commentaries, exercises/solutions)
-doctest-exercises:
-	install -d $(PDFOUT)
-	cp -a $(SRC)/* $(PDFOUT)
-	install -d $(PDFOUT)/exercises
-	cp -a $(EXR)/*.xml $(PDFOUT)/exercises
-	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
-	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
-	-rm $(DOCTEST)/*.py; \
-	install -d $(DOCTEST)
-	cd $(DOCTEST); \
-	xsltproc --xinclude  --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(PDFOUT)/aata-solution-manual.xml; \
 	$(SAGE) -tp 0 .
 
 # SageMathCloud worksheets
@@ -303,6 +246,8 @@ smc:
 # Utilities
 ###########
 
+## THESE NEED WORK ##
+
 # Check document source against the DTD
 #   Leaves "dtderrors.txt" in SCRATCH
 #   can then grep on, eg
@@ -318,20 +263,6 @@ check:
 	less $(SCRATCH)/dtderrors.txt
 
 viewcheck:
-	less $(SCRATCH)/dtderrors.txt
-
-check-solutions:
-	# Assemble pieces in $PDFOUT as above
-	install -d $(SCRATCH) $(PDFOUT) $(PDFOUT)/exercises
-	cp -a $(SRC)/* $(PDFOUT)
-	cp -a $(EXR)/*.xml $(PDFOUT)/exercises
-	mv $(PDFOUT)/exercises/*-sage-exercises.xml $(PDFOUT)/sage
-	mv $(PDFOUT)/exercises/aata-solution-manual.xml $(PDFOUT)
-	-rm $(SCRATCH)/dtderrors.*
-	-xmllint --xinclude --noout --dtdvalid $(MBDTD)/mathbook.dtd $(PDFOUT)/aata-solution-manual.xml 2> $(SCRATCH)/dtderrors.txt
-	less $(SCRATCH)/dtderrors.txt
-
-viewchecksolutions:
 	less $(SCRATCH)/dtderrors.txt
 
 ##############
