@@ -1,277 +1,704 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- This file is part of the book                 -->
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
 <!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
-
 <!-- This file is part of the book                 -->
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
-
-<chapter xml:id="vect" xmlns:xi="http://www.w3.org/2001/XInclude">
-<title>Vector Spaces</title>
-
-	<introduction>
-		<p>In a physical system a quantity can often be described with a single number. For example, we need to know only a single number to describe temperature, mass, or volume.  However, for some quantities, such as location, we need several numbers. To give the location of a point in space, we need <m>x</m>, <m>y</m>, and <m>z</m> coordinates. Temperature distribution over a solid object requires four numbers: three to identify each point within the object and a fourth to describe the temperature at that point.  Often <m>n</m>-tuples of numbers, or vectors, also have certain algebraic properties, such as addition or scalar multiplication.</p>
-
-		<p>In this chapter we will examine mathematical structures called vector spaces. As with groups and rings, it is desirable to give a simple list of axioms that must be satisfied to make a set of vectors a structure worth studying.</p>
-	</introduction>
-
-	<section xml:id="section-vect-definitions-and-examples">
-		<title>Definitions and Examples</title>
- 
-		<p>A <term>vector space</term><idx><h>Vector space</h><h>definition of</h></idx> <m>V</m> over a field <m>F</m> is an abelian group with a <term>scalar product</term><idx><h>Scalar product</h></idx> <m>\alpha \cdot v</m> or <m>\alpha v</m> defined for all <m>\alpha \in F</m> and all <m>v \in V</m> satisfying the following axioms.
-			<ul>
-
-				<li><p><m>\alpha(\beta v) =(\alpha \beta)v</m>;</p></li>
-
-				<li><p><m>(\alpha + \beta)v =\alpha v + \beta v</m>;</p></li>
-
-				<li><p><m>\alpha(u + v) = \alpha u + \alpha v</m>;</p></li>
-
-				<li><p><m>1v=v</m>;</p></li>
-
-			</ul>
-		where <m>\alpha, \beta \in F</m> and <m>u, v \in V</m>.</p>
-
-		<p>The elements of <m>V</m> are called <term>vectors</term>; the elements of <m>F</m> are called <term>scalars</term>.  It is important to notice that in most cases two vectors cannot be multiplied.  In general, it is only possible to multiply a vector with a scalar. To differentiate between the scalar zero and the vector zero, we will write them as 0 and <m>{\mathbf 0}</m>, respectively.</p>
-
-		<p>Let us examine several examples of vector spaces. Some of them will be quite familiar; others will seem less so.</p>
-
-		<example xml:id="example-vect-space0-rn">
-			<p>The <m>n</m>-tuples of real numbers, denoted by <m>{\mathbb R}^n</m>, form a vector space over <m>{\mathbb R}</m>. Given vectors <m>u = (u_1, \ldots, u_n)</m> and <m>v = (v_1, \ldots, v_n)</m> in <m>{\mathbb R}^n</m> and <m>\alpha</m> in <m>{\mathbb R}</m>, we can define vector addition by
-				<me>u + v = (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n)</me>
-			and scalar multiplication by 
-				<me>\alpha u = \alpha(u_1, \ldots, u_n)= (\alpha u_1, \ldots, \alpha u_n).</me></p>
-		</example>
- 
-		<example xml:id="example-vect-space-fx">
-			<p>If <m>F</m> is a field, then <m>F[x]</m> is a vector space over <m>F</m>. The vectors in <m>F[x]</m> are simply polynomials, and vector addition is just polynomial addition. If <m>\alpha \in F</m> and <m>p(x) \in F[x]</m>, then scalar multiplication is defined by <m>\alpha p(x)</m>.</p>
-		</example>
- 
-		<example xml:id="example-vect-space-cont-func">
-			<p>The set of all continuous real-valued functions on a closed interval <m>[a,b]</m> is a vector space over <m>{\mathbb R}</m>.  If <m>f(x)</m> and <m>g(x)</m> are continuous on <m>[a, b]</m>, then <m>(f+g)(x)</m> is defined to be <m>f(x) + g(x)</m>.  Scalar multiplication is defined by <m>(\alpha f)(x) = \alpha f(x)</m> for <m>\alpha \in  {\mathbb R}</m>. For example, if <m>f(x) = \sin x</m> and <m>g(x)= x^2</m>, then <m>(2f + 5g)(x) =2 \sin x + 5 x^2</m>.</p>
-		</example>
- 
-		<example xml:id="example-vect-space-sqrt2">
-			<p>Let <m>V = {\mathbb Q}(\sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in  {\mathbb Q } \}</m>. Then <m>V</m> is a vector space over <m>{\mathbb Q}</m>. If <m>u = a + b \sqrt{2}</m> and <m>v = c + d \sqrt{2}</m>, then <m>u + v = (a + c) + (b + d ) \sqrt{2}</m> is again in <m>V</m>. Also, for <m>\alpha \in {\mathbb Q}</m>, <m>\alpha v</m> is in <m>V</m>.  We will leave it as an exercise to verify that all of the vector space axioms hold for <m>V</m>.</p>
-		</example>
-
-		<proposition>
-			<statement>
-				<p>Let <m>V</m> be a vector space over <m>F</m>. Then each of the following statements is true.
-					<ol>
-
-						<li><p><m>0v ={\mathbf 0}</m> for all <m>v \in V</m>.</p></li>
-
-						<li><p><m>\alpha {\mathbf 0} = {\mathbf 0}</m> for all <m>\alpha \in F</m>.</p></li>
-
-						<li><p>If <m>\alpha v = {\mathbf 0}</m>, then either <m>\alpha = 0</m> or <m>v = {\mathbf 0}</m>.</p></li>
-
-						<li><p><m>(-1) v = -v</m> for all <m>v \in V</m>.</p></li>
-
-						<li><p><m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> for all <m>\alpha \in F</m> and all <m>v \in V</m>.</p></li>
-
-					</ol></p>
-			</statement>
-			<proof>
-				<p>To prove (1), observe that 
-					<me>0 v = (0 + 0)v = 0v + 0v;</me>
-				consequently, <m>{\mathbf 0} + 0 v = 0v + 0v</m>. Since <m>V</m> is an abelian group, <m>{\mathbf 0} = 0v</m>.</p>
-
-				<p>The proof of (2) is almost identical to the proof of (1). For (3), we are done if <m>\alpha = 0</m>.  Suppose that <m>\alpha \neq 0</m>. Multiplying both sides of <m>\alpha v = {\mathbf 0}</m> by <m>1/ \alpha</m>, we have <m>v = {\mathbf 0}</m>.</p>
-
-				<p>To show (4), observe that
-					<me>v + (-1)v = 1v + (-1)v = (1-1)v = 0v = {\mathbf 0},</me>
-				and so <m>-v = (-1)v</m>. We will leave the proof of (5) as an exercise.</p>
-			</proof>
-		</proposition>
-
-	</section>
-	
-	<section xml:id="section-subspaces">
-		<title>Subspaces</title>
-
-		<p>Just as groups have subgroups and rings have subrings, vector spaces also have substructures. Let <m>V</m> be a vector space over a field <m>F</m>, and <m>W</m> a subset of <m>V</m>. Then <m>W</m> is a <term>subspace</term><idx><h>Vector space</h><h>subspace of</h></idx> of <m>V</m> if it is closed under vector addition and scalar multiplication; that is, if <m>u, v \in W</m> and <m>\alpha \in F</m>, it will always be the case that <m>u + v</m> and <m>\alpha v</m> are also in <m>W</m>.</p>   
- 
-		<example xml:id="example-vect-subspace-w">
-			<p>Let <m>W</m> be the subspace of <m>{\mathbb R}^3</m> defined by <m>W = \{ (x_1, 2 x_1 + x_2, x_1 - x_2) : x_1, x_2 \in {\mathbb R} \}</m>. We claim that <m>W</m> is a  subspace of <m>{\mathbb R}^3</m>.  Since 
-				<md>
-					<mrow>\alpha (x_1, 2 x_1 + x_2, x_1 - x_2) &amp; =  (\alpha x_1, \alpha(2 x_1 + x_2), \alpha( x_1 - x_2))</mrow>
-					<mrow>&amp; =  (\alpha x_1, 2(\alpha x_1) + \alpha x_2, \alpha x_1 -\alpha x_2),</mrow>
-				</md>
-			<m>W</m> is closed under scalar multiplication. To show that <m>W</m> is closed under vector addition, let <m>u = (x_1, 2 x_1 + x_2, x_1 - x_2)</m> and <m>v = (y_1, 2 y_1 + y_2, y_1 - y_2)</m> be vectors in <m>W</m>. Then
-				<me>u + v = (x_1 + y_1, 2( x_1 + y_1) +( x_2 + y_2), (x_1 + y_1) - (x_2+ y_2)).</me></p>
-		</example>
- 
-		<example xml:id="example-vect-subspace-poly">
-			<p>Let <m>W</m> be the subset of polynomials of <m>F[x]</m> with no odd-power terms. If <m>p(x)</m> and <m>q(x)</m> have no odd-power terms, then neither will  <m>p(x) + q(x)</m>.  Also, <m>\alpha p(x) \in W</m> for <m>\alpha \in F</m> and <m>p(x) \in W</m>.</p>
-		</example>
-
-<!--  2010/05/18 R Beezer, "vector field" to "vector space" -->
-
-		<p>Let <m>V</m> be any vector space over a field <m>F</m> and suppose that <m>v_1, v_2, \ldots, v_n</m> are vectors in <m>V</m> and <m>\alpha_1, \alpha_2, \ldots, \alpha_n</m> are scalars in <m>F</m>. Any vector <m>w</m> in <m>V</m> of the form
-			<me>w = \sum_{i=1}^n \alpha_i v_i = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</me>
-		is called a <term>linear combination</term><idx><h>Linear combination</h></idx> of the vectors <m>v_1, v_2, \ldots, v_n</m>. The <term>spanning set</term><idx><h>Spanning set</h></idx> of vectors <m>v_1, v_2, \ldots, v_n</m> is the set of vectors obtained from all possible linear combinations of <m>v_1, v_2, \ldots, v_n</m>. If <m>W</m> is the spanning set of <m>v_1, v_2, \ldots, v_n</m>, then we say that <m>W</m> is <term>spanned</term> by <m>v_1, v_2, \ldots, v_n</m>.</p>
- 
-		<proposition>
-			<statement>
-				<p>Let <m>S= \{v_1, v_2, \ldots, v_n \}</m> be vectors in a vector space <m>V</m>. Then the span of <m>S</m> is a subspace of <m>V</m>.</p>
-			</statement>
-			<proof>
-				<p>Let <m>u</m> and <m>v</m> be in <m>S</m>. We can write both of these vectors as  linear combinations of the <m>v_i</m>'s:
-					<md>
-						<mrow>u &amp; =  \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</mrow>
-						<mrow>v &amp; =  \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</mrow>
-					</md>
-				Then
-					<me>u + v =( \alpha_1 + \beta_1) v_1 + (\alpha_2+ \beta_2) v_2 + \cdots + (\alpha_n + \beta_n) v_n </me>
-				is a linear combination of the <m>v_i</m>'s. For <m>\alpha \in F</m>,
-					<me>\alpha u = (\alpha \alpha_1) v_1 + ( \alpha \alpha_2) v_2 + \cdots + (\alpha \alpha_n ) v_n </me>
-				is in the span of <m>S</m>.</p>
-			</proof>
-		</proposition>
-
-	</section>
-
-	<section xml:id="section-linear-independence">
-		<title>Linear Independence</title>
-
-		<p>Let <m>S = \{v_1, v_2, \ldots, v_n\}</m> be a set of vectors in a vector space <m>V</m>. If there exist scalars <m>\alpha_1, \alpha_2 \ldots \alpha_n \in F</m> such that not all of the <m>\alpha_i</m>'s are zero and 
-			<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
-		then <m>S</m> is said to be <term>linearly dependent</term><idx><h>Linear dependence</h></idx>. If the set <m>S</m> is not linearly dependent, then it is said to be <term>linearly independent</term><idx><h>Linear independence</h></idx>. More specifically, <m>S</m> is a linearly independent set if
-			<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 }</me>
-		implies that
-			<me>\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0</me>
-		for any set of scalars <m>\{ \alpha_1, \alpha_2 \ldots \alpha_n \}</m>.</p>
-
-		<proposition>
-			<statement>
-				<p>Let <m>\{ v_1, v_2, \ldots, v_n \}</m> be a set of linearly independent vectors in a vector space. Suppose that 
-					<me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</me>
-				Then <m>\alpha_1 = \beta_1, \alpha_2 = \beta_2, \ldots, \alpha_n = \beta_n</m>.</p>
-			</statement>
-			<proof>
-				<p>If 
-					<me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n,</me>
-				then
-					<me>(\alpha_1 - \beta_1) v_1 + (\alpha_2 - \beta_2) v_2 + \cdots + (\alpha_n - \beta_n) v_n = {\mathbf 0}.</me>
-				Since <m>v_1, \ldots, v_n</m> are linearly independent, <m>\alpha_i - \beta_i = 0</m> for <m>i = 1, \ldots, n</m>.</p>
-			</proof>
-		</proposition>
-
-		<p>The definition of linear dependence makes more sense if we consider the following proposition.</p>
-
-		<proposition>
-			<statement>
-				<p>A set <m>\{ v_1, v_2, \dots, v_n \}</m> of vectors in a vector space <m>V</m> is linearly dependent if and only if one of the <m>v_i</m>'s is a linear combination of the rest. </p>
-			</statement>
-			<proof>
-				<p>Suppose that <m>\{ v_1, v_2, \dots, v_n \}</m> is a set of linearly dependent vectors.  Then there exist scalars <m>\alpha_1, \ldots, \alpha_n</m> such that
-					<me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
-				with at least one of the <m>\alpha_i</m>'s not equal to zero.  Suppose that <m>\alpha_k \neq 0</m>. Then 
-					<me>v_k = - \frac{\alpha_1}{\alpha_k} v_1 - \cdots - \frac{\alpha_{k - 1}}{\alpha_k} v_{k-1} - \frac{\alpha_{k + 1}}{\alpha_k} v_{k + 1} - \cdots  - \frac{\alpha_n}{\alpha_k} v_n.</me></p>
-
-				<p>Conversely, suppose that 
-					<me>v_k = \beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n.</me>
-				Then
-					<me>\beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} - v_k + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n = {\mathbf 0}.</me></p>
-			</proof>
-		</proposition>
-
-		<p>The following proposition is a consequence of the fact that any system of homogeneous linear equations with more unknowns than equations will have a nontrivial solution.  We leave the details of the proof for the end-of-chapter exercises.</p>
- 
-		<proposition xml:id="proposition-linearly-independent">
-			<statement>
-				<p>Suppose that a vector space <m>V</m> is spanned by <m>n</m> vectors. If <m>m \gt n</m>, then any set of <m>m</m> vectors in <m>V</m> must be linearly dependent.</p>
-			</statement>
-		</proposition>
- 
-		<p>A set <m>\{ e_1, e_2, \ldots, e_n \}</m> of vectors in a vector space <m>V</m> is called a <term>basis</term><idx><h>Vector space</h><h>basis of</h></idx> for <m>V</m> if <m>\{ e_1, e_2, \ldots, e_n \}</m> is a linearly independent set that spans <m>V</m>.</p>
- 
-		<example xml:id="example-vect-basis-r3">
-			<p>The vectors <m>e_1 = (1, 0, 0)</m>, <m>e_2 = (0, 1, 0)</m>, and <m>e_3 =(0, 0, 1)</m> form a basis for <m>{\mathbb R}^3</m>.  The set certainly spans <m>{\mathbb R}^3</m>, since any arbitrary vector <m>(x_1, x_2, x_3)</m> in <m>{\mathbb R}^3</m> can be written as <m>x_1 e_1 + x_2 e_2 + x_3 e_3</m>. Also, none of the vectors <m>e_1, e_2, e_3</m> can be written as a linear combination of the other two; hence, they are linearly independent.  The vectors <m>e_1, e_2, e_3</m> are not the only basis of <m>{\mathbb R}^3</m>:  the set <m>\{ (3, 2, 1), (3, 2, 0), (1, 1, 1) \}</m> is also a basis for <m>{\mathbb R}^3</m>.</p>
-		</example>
-
-		<example xml:id="example-vect-basis-sqrt2">
-			<p>Let <m>{\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</m>. The sets <m>\{1, \sqrt{2}\,  \}</m> and <m>\{1 + \sqrt{2}, 1 - \sqrt{2}\,  \}</m> are both bases of <m>{\mathbb Q}( \sqrt{2}\, )</m>.</p>
-		</example>
-
-		<p>From the last two examples it should be clear that a given vector space has several bases. In fact, there are an infinite number of bases for both of these examples. <em>In general, there is no unique basis for a vector space.</em>  However, every basis of <m>{\mathbb R}^3</m> consists of exactly three vectors, and every  basis of <m>{\mathbb Q}(\sqrt{2}\, )</m> consists of exactly two vectors. This is a consequence of the next proposition.</p>
-
-		<proposition>
-			<statement>
-				<p>Let <m>\{ e_1, e_2, \ldots, e_m \}</m> and <m>\{ f_1, f_2, \ldots, f_n \}</m> be two bases for a vector space <m>V</m>. Then <m>m = n</m>.</p>
-			</statement>
-			<proof>
-				<p>Since <m>\{ e_1, e_2, \ldots, e_m \}</m> is a basis, it is a linearly independent set. By Proposition<nbsp /><xref ref="proposition-linearly-independent" />, <m>n \leq m</m>. Similarly, <m>\{ f_1, f_2, \ldots, f_n \}</m> is a linearly independent set, and the last proposition implies that <m>m \leq n</m>. Consequently, <m>m = n</m>.</p>
-			</proof>
-		</proposition>
-
-<!-- Label repaired.  Suggested by R. Beezer. -->
-<!-- TWJ - 12/19/2011 -->
-
-		<p>If <m>\{ e_1, e_2, \ldots, e_n \}</m> is a basis for a vector space <m>V</m>, then we say that the <term>dimension</term><idx><h>Vector space</h><h>dimension of</h></idx> of <m>V</m> is <m>n</m> and we write <m>\dim V =n</m>. <notation><usage>\dim V</usage><description>dimension of a vector space <m>V</m></description></notation> We will leave the proof of the following theorem as an exercise.</p>
-
-		<theorem>
-			<statement>
-				<p>Let <m>V</m> be a vector space of dimension <m>n</m>.
-					<ol>
-
-						<li><p>If <m>S = \{v_1, \ldots, v_n \}</m> is a set of linearly independent vectors for <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li> 
-
-						<li><p>If <m>S = \{v_1, \ldots, v_n \}</m> spans <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li>
-
-						<li><p>If <m>S = \{v_1, \ldots, v_k \}</m> is a set of linearly independent vectors for <m>V</m> with <m>k \lt n</m>, then there exist vectors <m>v_{k + 1}, \ldots, v_n</m> such that  
-							<me>\{v_1, \ldots, v_k, v_{k + 1}, \ldots, v_n \}</me>
-						is a basis for <m>V</m>.</p></li>
-
-					</ol></p>
-			</statement>
-		</theorem>
-
-		<xi:include href="./sage/vect-info.xml" />
-
-	</section>
-
-	<xi:include href="./exercises/vect.xml" />
-
-	<references xml:id="vect-references">  <!-- References updated - TWJ 8/19/2010 -->
-		<title>References and Suggested Readings</title>
-
-		<biblio type="raw"> <!-- was [1] -->
-<!-- Reference added - TWJ 8/19/2010 -->
-		Beezer, R. <title>A First Course in Linear Algebra</title>. Available online at <url href="http://linear.ups.edu/"/>.  2004<ndash />2014.</biblio>
-
-		<biblio type="raw"> <!-- was [2] -->
-<!-- Reference added - TWJ 8/19/2010 -->
-		Bretscher, O. <title>Linear Algebra with Applications</title>. 4th ed. Pearson, Upper Saddle River, NJ, 2009.</biblio>
-
-		<biblio type="raw"> <!-- was [3] -->
-		Curtis, C. W. <title>Linear Algebra: An Introductory Approach</title>. 4th ed. Springer, New York, 1984.</biblio>
-
-		<biblio type="raw"> <!-- was [4] -->
-		Hoffman, K. and Kunze, R. <title>Linear Algebra</title>. 2nd ed. Prentice-Hall, Englewood Cliffs, NJ, 1971.</biblio>
-
-		<biblio type="raw"> <!-- was [5] -->
-<!-- Reference updated.  Not yet published. - TWJ 8/19/2010 -->
-		Johnson, L. W., Riess, R. D., and Arnold, J. T. <title>Introduction to Linear Algebra</title>. 6th ed. Pearson, Upper Saddle River, NJ, 2011.</biblio>
-
-		<biblio type="raw"> <!-- was [6] -->
-<!-- Reference updated - TWJ 8/19/2010 -->
-		Leon, S. J. <title>Linear Algebra with Applications</title>. 8th ed. Pearson, Upper Saddle River, NJ, 2010.</biblio>
-
-	</references> 
-
-	<xi:include href="./sage/vect-sage.xml" />
-	<xi:include href="./sage/vect-sage-exercises.xml" />
-
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="vect">
+    <title>Vector Spaces</title>
+    <introduction>
+        <p>In a physical system a quantity can often be described with a single number. For example, we need to know only a single number to describe temperature, mass, or volume.  However, for some quantities, such as location, we need several numbers. To give the location of a point in space, we need <m>x</m>, <m>y</m>, and <m>z</m> coordinates. Temperature distribution over a solid object requires four numbers: three to identify each point within the object and a fourth to describe the temperature at that point.  Often <m>n</m>-tuples of numbers, or vectors, also have certain algebraic properties, such as addition or scalar multiplication.</p>
+        <p>In this chapter we will examine mathematical structures called vector spaces. As with groups and rings, it is desirable to give a simple list of axioms that must be satisfied to make a set of vectors a structure worth studying.</p>
+    </introduction>
+    <section xml:id="section-vect-definitions-and-examples">
+        <title>Definitions and Examples</title>
+        <p>A <term>vector space</term><idx><h>Vector space</h><h>definition of</h></idx> <m>V</m> over a field <m>F</m> is an abelian group with a <term>scalar product</term><idx><h>Scalar product</h></idx> <m>\alpha \cdot v</m> or <m>\alpha v</m> defined for all <m>\alpha \in F</m> and all <m>v \in V</m> satisfying the following axioms.
+            <ul><li><p><m>\alpha(\beta v) =(\alpha \beta)v</m>;</p></li><li><p><m>(\alpha + \beta)v =\alpha v + \beta v</m>;</p></li><li><p><m>\alpha(u + v) = \alpha u + \alpha v</m>;</p></li><li><p><m>1v=v</m>;</p></li></ul>
+        where <m>\alpha, \beta \in F</m> and <m>u, v \in V</m>.</p>
+        <p>The elements of <m>V</m> are called <term>vectors</term>; the elements of <m>F</m> are called <term>scalars</term>.  It is important to notice that in most cases two vectors cannot be multiplied.  In general, it is only possible to multiply a vector with a scalar. To differentiate between the scalar zero and the vector zero, we will write them as 0 and <m>{\mathbf 0}</m>, respectively.</p>
+        <p>Let us examine several examples of vector spaces. Some of them will be quite familiar; others will seem less so.</p>
+        <example xml:id="example-vect-space0-rn">
+            <p>The <m>n</m>-tuples of real numbers, denoted by <m>{\mathbb R}^n</m>, form a vector space over <m>{\mathbb R}</m>. Given vectors <m>u = (u_1, \ldots, u_n)</m> and <m>v = (v_1, \ldots, v_n)</m> in <m>{\mathbb R}^n</m> and <m>\alpha</m> in <m>{\mathbb R}</m>, we can define vector addition by
+                <me>u + v = (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n)</me>
+            and scalar multiplication by 
+                <me>\alpha u = \alpha(u_1, \ldots, u_n)= (\alpha u_1, \ldots, \alpha u_n).</me></p>
+        </example>
+        <example xml:id="example-vect-space-fx">
+            <p>If <m>F</m> is a field, then <m>F[x]</m> is a vector space over <m>F</m>. The vectors in <m>F[x]</m> are simply polynomials, and vector addition is just polynomial addition. If <m>\alpha \in F</m> and <m>p(x) \in F[x]</m>, then scalar multiplication is defined by <m>\alpha p(x)</m>.</p>
+        </example>
+        <example xml:id="example-vect-space-cont-func">
+            <p>The set of all continuous real-valued functions on a closed interval <m>[a,b]</m> is a vector space over <m>{\mathbb R}</m>.  If <m>f(x)</m> and <m>g(x)</m> are continuous on <m>[a, b]</m>, then <m>(f+g)(x)</m> is defined to be <m>f(x) + g(x)</m>.  Scalar multiplication is defined by <m>(\alpha f)(x) = \alpha f(x)</m> for <m>\alpha \in  {\mathbb R}</m>. For example, if <m>f(x) = \sin x</m> and <m>g(x)= x^2</m>, then <m>(2f + 5g)(x) =2 \sin x + 5 x^2</m>.</p>
+        </example>
+        <example xml:id="example-vect-space-sqrt2">
+            <p>Let <m>V = {\mathbb Q}(\sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in  {\mathbb Q } \}</m>. Then <m>V</m> is a vector space over <m>{\mathbb Q}</m>. If <m>u = a + b \sqrt{2}</m> and <m>v = c + d \sqrt{2}</m>, then <m>u + v = (a + c) + (b + d ) \sqrt{2}</m> is again in <m>V</m>. Also, for <m>\alpha \in {\mathbb Q}</m>, <m>\alpha v</m> is in <m>V</m>.  We will leave it as an exercise to verify that all of the vector space axioms hold for <m>V</m>.</p>
+        </example>
+        <proposition>
+            <statement>
+                <p>Let <m>V</m> be a vector space over <m>F</m>. Then each of the following statements is true.
+                    <ol><li><p><m>0v ={\mathbf 0}</m> for all <m>v \in V</m>.</p></li><li><p><m>\alpha {\mathbf 0} = {\mathbf 0}</m> for all <m>\alpha \in F</m>.</p></li><li><p>If <m>\alpha v = {\mathbf 0}</m>, then either <m>\alpha = 0</m> or <m>v = {\mathbf 0}</m>.</p></li><li><p><m>(-1) v = -v</m> for all <m>v \in V</m>.</p></li><li><p><m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> for all <m>\alpha \in F</m> and all <m>v \in V</m>.</p></li></ol></p>
+            </statement>
+            <proof>
+                <p>To prove (1), observe that 
+                    <me>0 v = (0 + 0)v = 0v + 0v;</me>
+                consequently, <m>{\mathbf 0} + 0 v = 0v + 0v</m>. Since <m>V</m> is an abelian group, <m>{\mathbf 0} = 0v</m>.</p>
+                <p>The proof of (2) is almost identical to the proof of (1). For (3), we are done if <m>\alpha = 0</m>.  Suppose that <m>\alpha \neq 0</m>. Multiplying both sides of <m>\alpha v = {\mathbf 0}</m> by <m>1/ \alpha</m>, we have <m>v = {\mathbf 0}</m>.</p>
+                <p>To show (4), observe that
+                    <me>v + (-1)v = 1v + (-1)v = (1-1)v = 0v = {\mathbf 0},</me>
+                and so <m>-v = (-1)v</m>. We will leave the proof of (5) as an exercise.</p>
+            </proof>
+        </proposition>
+    </section>
+    <section xml:id="section-subspaces">
+        <title>Subspaces</title>
+        <p>Just as groups have subgroups and rings have subrings, vector spaces also have substructures. Let <m>V</m> be a vector space over a field <m>F</m>, and <m>W</m> a subset of <m>V</m>. Then <m>W</m> is a <term>subspace</term><idx><h>Vector space</h><h>subspace of</h></idx> of <m>V</m> if it is closed under vector addition and scalar multiplication; that is, if <m>u, v \in W</m> and <m>\alpha \in F</m>, it will always be the case that <m>u + v</m> and <m>\alpha v</m> are also in <m>W</m>.</p>
+        <example xml:id="example-vect-subspace-w">
+            <p>Let <m>W</m> be the subspace of <m>{\mathbb R}^3</m> defined by <m>W = \{ (x_1, 2 x_1 + x_2, x_1 - x_2) : x_1, x_2 \in {\mathbb R} \}</m>. We claim that <m>W</m> is a  subspace of <m>{\mathbb R}^3</m>.  Since 
+                <md><mrow>\alpha (x_1, 2 x_1 + x_2, x_1 - x_2) &amp; =  (\alpha x_1, \alpha(2 x_1 + x_2), \alpha( x_1 - x_2))</mrow><mrow>&amp; =  (\alpha x_1, 2(\alpha x_1) + \alpha x_2, \alpha x_1 -\alpha x_2),</mrow></md>
+            <m>W</m> is closed under scalar multiplication. To show that <m>W</m> is closed under vector addition, let <m>u = (x_1, 2 x_1 + x_2, x_1 - x_2)</m> and <m>v = (y_1, 2 y_1 + y_2, y_1 - y_2)</m> be vectors in <m>W</m>. Then
+                <me>u + v = (x_1 + y_1, 2( x_1 + y_1) +( x_2 + y_2), (x_1 + y_1) - (x_2+ y_2)).</me></p>
+        </example>
+        <example xml:id="example-vect-subspace-poly">
+            <p>Let <m>W</m> be the subset of polynomials of <m>F[x]</m> with no odd-power terms. If <m>p(x)</m> and <m>q(x)</m> have no odd-power terms, then neither will  <m>p(x) + q(x)</m>.  Also, <m>\alpha p(x) \in W</m> for <m>\alpha \in F</m> and <m>p(x) \in W</m>.</p>
+        </example>
+        <!--  2010/05/18 R Beezer, "vector field" to "vector space" -->
+        <p>Let <m>V</m> be any vector space over a field <m>F</m> and suppose that <m>v_1, v_2, \ldots, v_n</m> are vectors in <m>V</m> and <m>\alpha_1, \alpha_2, \ldots, \alpha_n</m> are scalars in <m>F</m>. Any vector <m>w</m> in <m>V</m> of the form
+            <me>w = \sum_{i=1}^n \alpha_i v_i = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</me>
+        is called a <term>linear combination</term><idx><h>Linear combination</h></idx> of the vectors <m>v_1, v_2, \ldots, v_n</m>. The <term>spanning set</term><idx><h>Spanning set</h></idx> of vectors <m>v_1, v_2, \ldots, v_n</m> is the set of vectors obtained from all possible linear combinations of <m>v_1, v_2, \ldots, v_n</m>. If <m>W</m> is the spanning set of <m>v_1, v_2, \ldots, v_n</m>, then we say that <m>W</m> is <term>spanned</term> by <m>v_1, v_2, \ldots, v_n</m>.</p>
+        <proposition>
+            <statement>
+                <p>Let <m>S= \{v_1, v_2, \ldots, v_n \}</m> be vectors in a vector space <m>V</m>. Then the span of <m>S</m> is a subspace of <m>V</m>.</p>
+            </statement>
+            <proof>
+                <p>Let <m>u</m> and <m>v</m> be in <m>S</m>. We can write both of these vectors as  linear combinations of the <m>v_i</m>'s:
+                    <md><mrow>u &amp; =  \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n</mrow><mrow>v &amp; =  \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</mrow></md>
+                Then
+                    <me>u + v =( \alpha_1 + \beta_1) v_1 + (\alpha_2+ \beta_2) v_2 + \cdots + (\alpha_n + \beta_n) v_n </me>
+                is a linear combination of the <m>v_i</m>'s. For <m>\alpha \in F</m>,
+                    <me>\alpha u = (\alpha \alpha_1) v_1 + ( \alpha \alpha_2) v_2 + \cdots + (\alpha \alpha_n ) v_n </me>
+                is in the span of <m>S</m>.</p>
+            </proof>
+        </proposition>
+    </section>
+    <section xml:id="section-linear-independence">
+        <title>Linear Independence</title>
+        <p>Let <m>S = \{v_1, v_2, \ldots, v_n\}</m> be a set of vectors in a vector space <m>V</m>. If there exist scalars <m>\alpha_1, \alpha_2 \ldots \alpha_n \in F</m> such that not all of the <m>\alpha_i</m>'s are zero and 
+            <me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
+        then <m>S</m> is said to be <term>linearly dependent</term><idx><h>Linear dependence</h></idx>. If the set <m>S</m> is not linearly dependent, then it is said to be <term>linearly independent</term><idx><h>Linear independence</h></idx>. More specifically, <m>S</m> is a linearly independent set if
+            <me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 }</me>
+        implies that
+            <me>\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0</me>
+        for any set of scalars <m>\{ \alpha_1, \alpha_2 \ldots \alpha_n \}</m>.</p>
+        <proposition>
+            <statement>
+                <p>Let <m>\{ v_1, v_2, \ldots, v_n \}</m> be a set of linearly independent vectors in a vector space. Suppose that 
+                    <me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n.</me>
+                Then <m>\alpha_1 = \beta_1, \alpha_2 = \beta_2, \ldots, \alpha_n = \beta_n</m>.</p>
+            </statement>
+            <proof>
+                <p>If 
+                    <me>v = \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = \beta_1 v_1 + \beta_2 v_2 + \cdots + \beta_n v_n,</me>
+                then
+                    <me>(\alpha_1 - \beta_1) v_1 + (\alpha_2 - \beta_2) v_2 + \cdots + (\alpha_n - \beta_n) v_n = {\mathbf 0}.</me>
+                Since <m>v_1, \ldots, v_n</m> are linearly independent, <m>\alpha_i - \beta_i = 0</m> for <m>i = 1, \ldots, n</m>.</p>
+            </proof>
+        </proposition>
+        <p>The definition of linear dependence makes more sense if we consider the following proposition.</p>
+        <proposition>
+            <statement>
+                <p>A set <m>\{ v_1, v_2, \dots, v_n \}</m> of vectors in a vector space <m>V</m> is linearly dependent if and only if one of the <m>v_i</m>'s is a linear combination of the rest. </p>
+            </statement>
+            <proof>
+                <p>Suppose that <m>\{ v_1, v_2, \dots, v_n \}</m> is a set of linearly dependent vectors.  Then there exist scalars <m>\alpha_1, \ldots, \alpha_n</m> such that
+                    <me>\alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_n v_n = {\mathbf 0 },</me>
+                with at least one of the <m>\alpha_i</m>'s not equal to zero.  Suppose that <m>\alpha_k \neq 0</m>. Then 
+                    <me>v_k = - \frac{\alpha_1}{\alpha_k} v_1 - \cdots - \frac{\alpha_{k - 1}}{\alpha_k} v_{k-1} - \frac{\alpha_{k + 1}}{\alpha_k} v_{k + 1} - \cdots  - \frac{\alpha_n}{\alpha_k} v_n.</me></p>
+                <p>Conversely, suppose that 
+                    <me>v_k = \beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n.</me>
+                Then
+                    <me>\beta_1 v_1 + \cdots + \beta_{k - 1} v_{k - 1} - v_k + \beta_{k + 1} v_{k + 1} + \cdots + \beta_n v_n = {\mathbf 0}.</me></p>
+            </proof>
+        </proposition>
+        <p>The following proposition is a consequence of the fact that any system of homogeneous linear equations with more unknowns than equations will have a nontrivial solution.  We leave the details of the proof for the end-of-chapter exercises.</p>
+        <proposition xml:id="proposition-linearly-independent">
+            <statement>
+                <p>Suppose that a vector space <m>V</m> is spanned by <m>n</m> vectors. If <m>m \gt n</m>, then any set of <m>m</m> vectors in <m>V</m> must be linearly dependent.</p>
+            </statement>
+        </proposition>
+        <p>A set <m>\{ e_1, e_2, \ldots, e_n \}</m> of vectors in a vector space <m>V</m> is called a <term>basis</term><idx><h>Vector space</h><h>basis of</h></idx> for <m>V</m> if <m>\{ e_1, e_2, \ldots, e_n \}</m> is a linearly independent set that spans <m>V</m>.</p>
+        <example xml:id="example-vect-basis-r3">
+            <p>The vectors <m>e_1 = (1, 0, 0)</m>, <m>e_2 = (0, 1, 0)</m>, and <m>e_3 =(0, 0, 1)</m> form a basis for <m>{\mathbb R}^3</m>.  The set certainly spans <m>{\mathbb R}^3</m>, since any arbitrary vector <m>(x_1, x_2, x_3)</m> in <m>{\mathbb R}^3</m> can be written as <m>x_1 e_1 + x_2 e_2 + x_3 e_3</m>. Also, none of the vectors <m>e_1, e_2, e_3</m> can be written as a linear combination of the other two; hence, they are linearly independent.  The vectors <m>e_1, e_2, e_3</m> are not the only basis of <m>{\mathbb R}^3</m>:  the set <m>\{ (3, 2, 1), (3, 2, 0), (1, 1, 1) \}</m> is also a basis for <m>{\mathbb R}^3</m>.</p>
+        </example>
+        <example xml:id="example-vect-basis-sqrt2">
+            <p>Let <m>{\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</m>. The sets <m>\{1, \sqrt{2}\,  \}</m> and <m>\{1 + \sqrt{2}, 1 - \sqrt{2}\,  \}</m> are both bases of <m>{\mathbb Q}( \sqrt{2}\, )</m>.</p>
+        </example>
+        <p>From the last two examples it should be clear that a given vector space has several bases. In fact, there are an infinite number of bases for both of these examples. <em>In general, there is no unique basis for a vector space.</em>  However, every basis of <m>{\mathbb R}^3</m> consists of exactly three vectors, and every  basis of <m>{\mathbb Q}(\sqrt{2}\, )</m> consists of exactly two vectors. This is a consequence of the next proposition.</p>
+        <proposition>
+            <statement>
+                <p>Let <m>\{ e_1, e_2, \ldots, e_m \}</m> and <m>\{ f_1, f_2, \ldots, f_n \}</m> be two bases for a vector space <m>V</m>. Then <m>m = n</m>.</p>
+            </statement>
+            <proof>
+                <p>Since <m>\{ e_1, e_2, \ldots, e_m \}</m> is a basis, it is a linearly independent set. By Proposition<nbsp/><xref ref="proposition-linearly-independent"/>, <m>n \leq m</m>. Similarly, <m>\{ f_1, f_2, \ldots, f_n \}</m> is a linearly independent set, and the last proposition implies that <m>m \leq n</m>. Consequently, <m>m = n</m>.</p>
+            </proof>
+        </proposition>
+        <!-- Label repaired.  Suggested by R. Beezer. -->
+        <!-- TWJ - 12/19/2011 -->
+        <p>If <m>\{ e_1, e_2, \ldots, e_n \}</m> is a basis for a vector space <m>V</m>, then we say that the <term>dimension</term><idx><h>Vector space</h><h>dimension of</h></idx> of <m>V</m> is <m>n</m> and we write <m>\dim V =n</m>. <notation><usage>\dim V</usage><description>dimension of a vector space <m>V</m></description></notation> We will leave the proof of the following theorem as an exercise.</p>
+        <theorem>
+            <statement>
+                <p>Let <m>V</m> be a vector space of dimension <m>n</m>.
+                    <ol><li><p>If <m>S = \{v_1, \ldots, v_n \}</m> is a set of linearly independent vectors for <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li><li><p>If <m>S = \{v_1, \ldots, v_n \}</m> spans <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li><li><p>If <m>S = \{v_1, \ldots, v_k \}</m> is a set of linearly independent vectors for <m>V</m> with <m>k \lt n</m>, then there exist vectors <m>v_{k + 1}, \ldots, v_n</m> such that  
+                            <me>\{v_1, \ldots, v_k, v_{k + 1}, \ldots, v_n \}</me>
+                        is a basis for <m>V</m>.</p></li></ol></p>
+            </statement>
+        </theorem>
+        <!-- This file is part of the book                 -->
+        <!--                                               -->
+        <!--   Abstract Algebra: Theory and Applications   -->
+        <!--                                               -->
+        <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+        <!-- See the file COPYING for copying conditions.  -->
+        <paragraphs>
+            <title>Sage</title>
+            <p>Many of Sage's computations, in a wide variety of algebraic settings, come from solving problems in linear algebra.  So you will find a wealth of linear algebra functionality.  Further, you can use structures such as finite fields to find vector spaces in new settings.</p>
+        </paragraphs>
+    </section>
+    <!-- Exercises with Solutions  -->
+    <!-- File: vect.xml  -->
+    <!-- Title: Vector Spaces -->
+    <exercises xml:id="exercises-vect" filenamebase="vect">
+        <title>Exercises</title>
+        <exercise number="1">
+            <statement>
+                <p>If <m>F</m> is a field, show that <m>F[x]</m> is a vector space over <m>F</m>, where the vectors in <m>F[x]</m> are polynomials. Vector addition is polynomial addition, and scalar multiplication is defined by <m>\alpha p(x)</m> for <m>\alpha \in F</m>.</p>
+            </statement>
+        </exercise>
+        <todo>Finish solution.</todo>
+        <exercise number="2">
+            <statement>
+                <p>Prove that <m>{\mathbb Q }( \sqrt{2}\, )</m> is a vector space.</p>
+            </statement>
+        </exercise>
+        <exercise number="3">
+            <statement>
+                <p>Let <m>{\mathbb Q }( \sqrt{2}, \sqrt{3}\, )</m> be the field generated by elements of the form <m>a + b \sqrt{2}  + c \sqrt{3} + d \sqrt{6}</m>, where <m>a, b, c, d</m> are in <m>{\mathbb Q}</m>. Prove that <m>{\mathbb Q }( \sqrt{2}, \sqrt{3}\, )</m> is a vector space of dimension 4 over <m>{\mathbb Q}</m>.  Find a basis for <m>{\mathbb Q }( \sqrt{2}, \sqrt{3}\, )</m>.</p>
+            </statement>
+            <hint>
+                <p><m>{\mathbb Q}(\sqrt{2}, \sqrt{3}\, )</m> has basis <m>\{ 1, \sqrt{2}, \sqrt{3}, \sqrt{6}\, \}</m>  over <m>{\mathbb Q}</m>.</p>
+            </hint>
+        </exercise>
+        <todo>Finish solution.</todo>
+        <exercise number="4">
+            <statement>
+                <p>Prove that the complex numbers are a vector space of dimension 2 over <m>{\mathbb R}</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="5">
+            <statement>
+                <p>Prove that the set <m>P_n</m> of all polynomials of degree less than <m>n</m> form a subspace of the vector space <m>F[x]</m>. Find a basis for <m>P_n</m> and compute the dimension of <m>P_n</m>.</p>
+            </statement>
+            <hint>
+                <p>The set <m>\{ 1, x, x^2, \ldots, x^{n-1} \}</m> is a basis for <m>P_n</m>.</p>
+            </hint>
+        </exercise>
+        <todo>Finish solution.</todo>
+        <exercise number="6">
+            <statement>
+                <p>Let <m>F</m> be a field and denote the set of <m>n</m>-tuples of <m>F</m> by <m>F^n</m>. Given vectors <m>u = (u_1, \ldots, u_n)</m> and <m>v = (v_1, \ldots, v_n)</m> in <m>F^n</m> and <m>\alpha</m> in <m>F</m>, define vector addition by
+                <me>u + v = (u_1, \ldots, u_n) + (v_1, \ldots, v_n) = (u_1 + v_1, \ldots, u_n + v_n)</me>
+            and scalar multiplication by 
+                <me>\alpha u = \alpha(u_1, \ldots, u_n)= (\alpha u_1, \ldots, \alpha u_n).</me>
+            Prove that <m>F^n</m> is a vector space of dimension <m>n</m> under these operations.</p>
+            </statement>
+        </exercise>
+        <todo>Finish solution.</todo>
+        <exercise number="7">
+            <statement>
+                <p>Which of the following sets are subspaces of <m>{\mathbb R}^3</m>? If the set is indeed a subspace, find a basis for the subspace and compute its dimension.
+                <ol><li><p><m>\{ (x_1, x_2, x_3) : 3 x_1 - 2 x_2 + x_3 = 0 \}</m></p></li><li><p><m>\{ (x_1, x_2, x_3) : 3 x_1 + 4 x_3 = 0, 2 x_1 - x_2 + x_3 = 0 \}</m></p></li><li><p><m>\{ (x_1, x_2, x_3) : x_1 - 2 x_2 + 2 x_3 = 2 \}</m></p></li><li><p><m>\{ (x_1, x_2, x_3) : 3 x_1 - 2 x_2^2 = 0 \}</m></p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) Subspace of dimension 2 with basis <m>\{(1, 0, -3), (0, 1, 2) \}</m>; (d) not a subspace</p>
+            </hint>
+        </exercise>
+        <exercise number="8">
+            <statement>
+                <p>Show that the set of all possible solutions <m>(x, y, z) \in {\mathbb R}^3</m> of the equations
+                <md><mrow>Ax + B y + C z &amp; =  0</mrow><mrow>D x + E y + C z &amp; =  0</mrow></md>
+            form a subspace of <m>{\mathbb R}^3</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="9">
+            <statement>
+                <p>Let <m>W</m> be the subset of continuous functions on <m>[0, 1]</m> such that <m>f(0) = 0</m>.  Prove that <m>W</m> is a subspace of <m>C[0, 1]</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="10">
+            <statement>
+                <p>Let <m>V</m> be a vector space over <m>F</m>. Prove that <m>-(\alpha v) = (-\alpha)v = \alpha(-v)</m> for all <m>\alpha \in F</m> and all <m>v \in V</m>.</p>
+            </statement>
+            <hint>
+                <p>Since <m>0 =  \alpha 0 = \alpha(-v + v) = \alpha(-v) + \alpha v</m>, it follows that <m>- \alpha v = \alpha(-v)</m>.</p>
+            </hint>
+        </exercise>
+        <exercise number="11">
+            <statement>
+                <p>Let <m>V</m> be a vector space of dimension <m>n</m>. Prove each of the following statements. 
+                <ol><li><p>If <m>S = \{v_1, \ldots, v_n \}</m> is a set of linearly independent vectors for <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li><li><p>If <m>S = \{v_1, \ldots, v_n \}</m> spans <m>V</m>, then <m>S</m> is a basis for <m>V</m>.</p></li><li><p>If <m>S = \{v_1, \ldots, v_k \}</m> is a set of linearly independent vectors for <m>V</m> with <m>k \lt n</m>, then there exist vectors <m>v_{k + 1}, \ldots, v_n</m> such that 
+                        <me>\{v_1, \ldots, v_k, v_{k + 1}, \ldots, v_n \}</me> 
+                    is a basis for <m>V</m>.</p></li></ol></p>
+            </statement>
+        </exercise>
+        <exercise number="12">
+            <statement>
+                <p>Prove that any set of vectors containing <m>{\mathbf 0}</m> is linearly dependent.</p>
+            </statement>
+            <hint>
+                <p>Let <m>v_0 = 0, v_1, \ldots, v_n \in V</m> and <m>\alpha_0 \neq 0, \alpha_1, \ldots, \alpha_n \in F</m>. Then <m>\alpha_0 v_0 + \cdots + \alpha_n v_n = 0</m>.</p>
+            </hint>
+        </exercise>
+        <exercise number="13">
+            <statement>
+                <p>Let <m>V</m> be a vector space. Show that <m>\{ {\mathbf 0} \}</m> is a subspace of <m>V</m> of dimension zero.</p>
+            </statement>
+        </exercise>
+        <exercise number="14">
+            <statement>
+                <p>If a vector space <m>V</m> is spanned by <m>n</m> vectors, show that any set of <m>m</m> vectors in <m>V</m> must be linearly dependent for <m>m \gt n</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="15" xml:id="exercise-vect-linear-transformation">
+            <title>Linear Transformations</title>
+            <statement>
+                <p>Let <m>V</m> and <m>W</m> be vector spaces over a field <m>F</m>, of dimensions <m>m</m> and <m>n</m>, respectively. If <m>T: V \rightarrow W</m> is a map satisfying
+                <md><mrow>T( u+ v ) &amp; =  T(u ) + T(v)</mrow><mrow>T( \alpha v ) &amp; =  \alpha T(v)</mrow></md>
+            for all <m>\alpha \in F</m> and all <m>u, v \in V</m>, then <m>T</m> is called a <term>linear transformation</term> from <m>V</m> into <m>W</m>. 
+                <ol><li><p>Prove that the <term>kernel</term> of <m>T</m>, <m>\ker(T) = \{ v \in V : T(v) = {\mathbf 0} \}</m>, is a subspace of <m>V</m>. The kernel of <m>T</m> is sometimes called the <term>null space</term> of <m>T</m>.</p></li><li><p>Prove that the <term>range</term> or <term>range space</term> of <m>T</m>, <m>R(V) = \{ w \in W : T(v) = w \text{ for some } v \in V \}</m>, is a subspace of <m>W</m>.</p></li><li><p>Show that <m>T : V \rightarrow W</m> is injective if and only if <m>\ker(T) = \{ \mathbf 0 \}</m>.</p></li><li><p>Let <m>\{ v_1, \ldots, v_k \}</m> be a basis for the null space of <m>T</m>. We can extend this basis to be a basis <m>\{ v_1, \ldots, v_k, v_{k + 1}, \ldots, v_m\}</m> of <m>V</m>. Why?  Prove that <m>\{ T(v_{k + 1}), \ldots, T(v_m) \}</m> is a basis for the range of <m>T</m>. Conclude that the range of <m>T</m> has dimension <m>m-k</m>.</p></li><li><p>Let <m>\dim V = \dim W</m>.  Show that a linear transformation <m>T : V \rightarrow W</m> is injective if and only if it is surjective.</p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) Let <m>u, v \in \ker(T)</m> and <m>\alpha \in F</m>.  Then
+                    <md><mrow>T(u +v) = T(u) + T(v) = 0</mrow><mrow>T(\alpha v) = \alpha T(v) = \alpha 0 = 0.</mrow></md>
+                Hence, <m>u + v, \alpha v \in \ker(T)</m>, and <m>\ker(T)</m> is a subspace of <m>V</m>.</p>
+                <p>(c) The statement that <m>T(u) = T(v)</m> is equivalent to <m>T(u-v) = T(u) - T(v) = 0</m>, which is true if and only if <m>u-v = 0</m> or  <m>u = v</m>.</p>
+            </hint>
+        </exercise>
+        <exercise number="16">
+            <statement>
+                <p>Let <m>V</m> and <m>W</m> be finite dimensional vector spaces of dimension <m>n</m> over a field <m>F</m>. Suppose that  <m>T: V \rightarrow W</m> is a vector space isomorphism.  If <m>\{ v_1, \ldots, v_n \}</m> is a basis of <m>V</m>, show that <m>\{ T(v_1), \ldots, T(v_n) \}</m> is a basis of <m>W</m>. Conclude that any vector space over a field <m>F</m> of dimension <m>n</m> is isomorphic to <m>F^n</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="17">
+            <title>Direct Sums</title>
+            <statement>
+                <p>Let <m>U</m> and <m>V</m> be subspaces of a vector space <m>W</m>. The sum of <m>U</m> and <m>V</m>, denoted <m>U + V</m>, is defined to be the set of all vectors of the form <m>u + v</m>, where <m>u \in U</m> and <m>v \in V</m>. 
+                <ol><li><p>Prove that <m>U + V</m> and <m>U \cap V</m> are subspaces of <m>W</m>.</p></li><li><p>If <m>U + V = W</m> and <m>U \cap V = {\mathbf 0}</m>, then <m>W</m> is said to be the <term>direct sum.</term>  In this case, we write <m>W = U \oplus V</m>. <notation><usage>U \oplus V</usage><description>direct sum of vector spaces <m>U</m> and <m>V</m></description></notation> Show that every element <m>w \in W</m> can be written uniquely as <m>w = u + v</m>, where <m>u \in U</m> and <m>v \in V</m>.</p></li><li><p>Let <m>U</m> be a subspace of dimension <m>k</m> of a vector space <m>W</m> of dimension <m>n</m>. Prove that there exists a subspace <m>V</m> of dimension <m>n-k</m> such that <m>W = U \oplus V</m>.  Is the subspace <m>V</m> unique?</p></li><li><p>If <m>U</m> and <m>V</m> are arbitrary subspaces of a vector space <m>W</m>, show that 
+                    <me>\dim( U + V) = \dim U + \dim V - \dim( U \cap V).</me></p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) Let <m>u, u' \in U</m> and <m>v, v' \in V</m>. Then
+                <md><mrow>(u + v) + (u' + v') &amp; = (u + u') + (v + v') \in U + V</mrow><mrow>\alpha(u + v) &amp; = \alpha u + \alpha v \in U + V.</mrow></md></p>
+            </hint>
+        </exercise>
+        <exercise number="18">
+            <title>Dual Spaces</title>
+            <statement>
+                <p>Let <m>V</m> and <m>W</m> be finite dimensional vector spaces over a field <m>F</m>. 
+                <ol><li><p>Show that the set of all linear transformations from <m>V</m> into <m>W</m>, denoted by <m>\Hom(V, W)</m>, is a vector space over <m>F</m>, where we define vector addition as follows: <notation><usage>\Hom(V, W)</usage><description>set of all linear transformations from <m>U</m> into <m>V</m></description></notation>
+                        <md><mrow>(S + T)(v) &amp; =  S(v) +T(v)</mrow><mrow>(\alpha S)(v) &amp; =  \alpha S(v),</mrow></md>
+                    where <m>S, T \in \Hom(V, W)</m>, <m>\alpha \in F</m>, and <m>v \in V</m>.</p></li><li><p>Let <m>V</m> be an <m>F</m>-vector space. Define the <term>dual space</term> of <m>V</m> to be <m>V^* = \Hom(V, F)</m>. <notation><usage>V^*</usage><description>dual of a vector space <m>V</m></description></notation> Elements in the dual space of <m>V</m> are called <term>linear functionals.</term>  Let <m>v_1, \ldots, v_n</m> be an ordered basis for <m>V</m>. If <m>v = \alpha_1 v_1 + \cdots + \alpha_n v_n</m> is any vector in <m>V</m>, define a linear functional  <m>\phi_i : V \rightarrow F</m> by <m>\phi_i (v) = \alpha_i</m>. Show that the <m>\phi_i</m>'s form a basis for <m>V^*</m>. This basis is called the <term>dual basis</term> of <m>v_1, \ldots, v_n</m> (or simply the dual basis if the context makes the meaning clear).</p></li><li><p>Consider the basis <m>\{ (3, 1), (2, -2) \}</m> for <m>{\mathbb R}^2</m>. What is the dual basis for <m>({\mathbb R}^2)^*</m>?</p></li><li><p>Let <m>V</m> be a vector space of dimension <m>n</m> over a field <m>F</m> and let <m>V^{* *}</m> be the dual space of <m>V^*</m>. Show that each element <m>v \in V</m> gives rise to an element <m>\lambda_v</m> in <m>V^{**}</m> and that the map <m>v \mapsto \lambda_v</m> is an isomorphism of <m>V</m> with <m>V^{**}</m>.</p></li></ol></p>
+            </statement>
+        </exercise>
+    </exercises>
+    <references xml:id="vect-references">
+        <!-- References updated - TWJ 8/19/2010 -->
+        <title>References and Suggested Readings</title>
+        <biblio type="raw"><!-- was [1] --><!-- Reference added - TWJ 8/19/2010 -->
+        Beezer, R. <title>A First Course in Linear Algebra</title>. Available online at <url href="http://linear.ups.edu/"/>.  2004<ndash/>2014.</biblio>
+        <biblio type="raw"><!-- was [2] --><!-- Reference added - TWJ 8/19/2010 -->
+        Bretscher, O. <title>Linear Algebra with Applications</title>. 4th ed. Pearson, Upper Saddle River, NJ, 2009.</biblio>
+        <biblio type="raw"><!-- was [3] -->
+        Curtis, C. W. <title>Linear Algebra: An Introductory Approach</title>. 4th ed. Springer, New York, 1984.</biblio>
+        <biblio type="raw"><!-- was [4] -->
+        Hoffman, K. and Kunze, R. <title>Linear Algebra</title>. 2nd ed. Prentice-Hall, Englewood Cliffs, NJ, 1971.</biblio>
+        <biblio type="raw"><!-- was [5] --><!-- Reference updated.  Not yet published. - TWJ 8/19/2010 -->
+        Johnson, L. W., Riess, R. D., and Arnold, J. T. <title>Introduction to Linear Algebra</title>. 6th ed. Pearson, Upper Saddle River, NJ, 2011.</biblio>
+        <biblio type="raw"><!-- was [6] --><!-- Reference updated - TWJ 8/19/2010 -->
+        Leon, S. J. <title>Linear Algebra with Applications</title>. 8th ed. Pearson, Upper Saddle River, NJ, 2010.</biblio>
+    </references>
+    <!-- This file is part of the book                 -->
+    <!--                                               -->
+    <!--   Abstract Algebra: Theory and Applications   -->
+    <!--                                               -->
+    <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+    <!-- See the file COPYING for copying conditions.  -->
+    <section xml:id="vect-sage">
+        <title>Sage</title>
+        <introduction>
+            <p>Many computations, in seemingly very different areas of mathematics, can be translated into questions about linear combinations, or other areas of linear algebra.  So Sage has extensive and thorough support for topics such as vector spaces.</p>
+        </introduction>
+        <subsection>
+            <title>Vector Spaces</title>
+            <p>The simplest way to create a vector space is to begin with a field and use an exponent to indicate the number of entries in the vectors of the space.</p>
+            <sage>
+                <input>
+        V = QQ^4; V
+        </input>
+                <output>
+        Vector space of dimension 4 over Rational Field
+        </output>
+            </sage>
+            <sage>
+                <input>
+        F.&lt;a&gt; = FiniteField(3^4)
+        W = F^5; W
+        </input>
+                <output>
+        Vector space of dimension 5 over Finite Field in a of size 3^4
+        </output>
+            </sage>
+            <p>Elements can be built with the vector constructor.</p>
+            <sage>
+                <input>
+        v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
+        </input>
+                <output>
+        (1, 1/2, 1/3, 1/4)
+        </output>
+            </sage>
+            <sage>
+                <input>
+        v in V
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <sage>
+                <input>
+        w = vector(F, [1, a^2, a^4, a^6, a^8]); w
+        </input>
+                <output>
+        (1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
+        </output>
+            </sage>
+            <sage>
+                <input>
+        w in W
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <p>Notice that vectors are printed with parentheses, which helps distinguish them from lists (though they alos look like tuples).  Vectors print horizontally, but in Sage there is no such thing as a <q>row vector</q> or a <q>column vector,</q> though once matrices get involved we need to address this distinction.  Finally, notice how the elements of the finite field have been converted to an alternate representation.</p>
+            <p>Once we have vector spaces full of vectors, we can perform computations with them.  Ultimately, all the action in a vector space comes back to vector addition and scalar multiplication, which together create linear combinations.</p>
+            <sage>
+                <input>
+        u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
+        v = vector(QQ, [-1, 2, -4, 8, -16, 32])
+        3*u - 2*v
+        </input>
+                <output>
+        (5, 2, 17, -4, 47, -46)
+        </output>
+            </sage>
+            <sage>
+                <input>
+        w = vector(F, [1, a^2, a^4, a^6,  a^8])
+        x = vector(F, [1,   a, 2*a,   a,    1])
+        y = vector(F, [1, a^3, a^6, a^9, a^12])
+        a^25*w + a^43*x + a^66*y
+        </input>
+                <output>
+        (a^3 + a^2 + a + 2, a^2 + 2*a, 2*a^3 + a^2 + 2, 2*a^3 + a^2 + a,
+         a^3 + 2*a^2 + a + 2)
+        </output>
+            </sage>
+        </subsection>
+        <subsection>
+            <title>Subspaces</title>
+            <p>Sage can create subspaces in a variety of ways, such as in the creation of row or column spaces of matrices.  However, the most direct way is to begin with a set of vectors to use as a spanning set.</p>
+            <sage>
+                <input>
+        u = vector(QQ, [1, -1, 3])
+        v = vector(QQ, [2, 1, -1])
+        w = vector(QQ, [3, 0, 2])
+        S = (QQ^3).subspace([u, v, w]); S
+        </input>
+                <output>
+        Vector space of degree 3 and dimension 2 over Rational Field
+        Basis matrix:
+        [   1    0  2/3]
+        [   0    1 -7/3]
+        </output>
+            </sage>
+            <sage>
+                <input>
+        3*u - 6*v + (1/2)*w in S
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <sage>
+                <input>
+        vector(QQ, [4, -1, -2]) in S
+        </input>
+                <output>
+        False
+        </output>
+            </sage>
+            <p>Notice that the information printed about <c>S</c> includes a <q>basis matrix.</q>  The rows of this matrix are a basis for the vector space.  We can get the basis, as a list of vectors (not rows of a matrix), with the <c>.basis()</c> method.</p>
+            <sage>
+                <input>
+        S.basis()
+        </input>
+                <output>
+        [
+        (1, 0, 2/3),
+        (0, 1, -7/3)
+        ]
+        </output>
+            </sage>
+            <p>Notice that Sage has converted the spanning set of three vectors into a basis with two vectors.  This is partially due to the fact that the original set of three vectors is linearly dependent, but a more substantial change has occurred.</p>
+            <p>This is a good place to discuss some of the mathematics behind what makes Sage work.  A vector space over an infinite field, like the rationals or the reals, is an infinite set.  No matter how expansive computer memory may seem, it is still finite.  How does Sage fit an infinite set into our finite machines?  The main idea is that a finite-dimensional vector space has a finite set of generators, which we know as a basis.  So Sage really only needs the elements of a basis (two vectors in the previous example) to be able to work with the infinitely many possibilities for elements of the subspace.</p>
+            <p>Furthermore, for every basis associated with a vector space, Sage performs linear combinations to convert the given basis into another <q>standard</q> basis.  This new basis has the property that as the rows of a matrix, the matrix is in reduced row-echelon form.  You can see this in the basis matrix above.  The reduced row-echelon form of a matrix is unique, so this standard basis allows Sage to recognize when two vector spaces are equal.  Here is an example.</p>
+            <sage>
+                <input>
+        u = vector(QQ, [1, -1,  3])
+        v = vector(QQ, [2,  1, -1])
+        w = vector(QQ, [3,  0,  2])
+        u + v == w
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <sage>
+                <input>
+        S1 = (QQ^3).subspace([u, v, w])
+        S2 = (QQ^3).subspace([u-v, v-w, w-u])
+        S1 == S2
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <p>As you might expect, it is easy to determine the dimension of a vector space.</p>
+            <sage>
+                <input>
+        u = vector(QQ, [1, -1,  3,  4])
+        v = vector(QQ, [2,  1, -1, -2])
+        S = (QQ^4).subspace([u, v, 2*u + 3*v, -u + 2*v])
+        S.dimension()
+        </input>
+                <output>
+        2
+        </output>
+            </sage>
+        </subsection>
+        <subsection>
+            <title>Linear Independence</title>
+            <p>There are a variety of ways in Sage to determine if a set of vectors is linearly independent or not, and to find relations of linear dependence if they exist.  The technique we will show here is a simple test to see if a set of vectors is linearly independent or not.  Simply use the vectors as a spanning set for a subspace, and check the dimension of the subspace.  The dimension equals the number of vectors in the spanning set if and only if the spanning set is linearly independent.</p>
+            <sage>
+                <input>
+        F.&lt;a&gt; = FiniteField(3^4)
+        u = vector(F, [a^i for i in range(0,  7, 1)])
+        v = vector(F, [a^i for i in range(0, 14, 2)])
+        w = vector(F, [a^i for i in range(0, 21, 3)])
+        S = (F^7).subspace([u, v, w])
+        S.dimension()
+        </input>
+                <output>
+        3
+        </output>
+            </sage>
+            <sage>
+                <input>
+        S = (F^7).subspace([u, v, a^3*u + a^11*v])
+        S.dimension()
+        </input>
+                <output>
+        2
+        </output>
+            </sage>
+            <p>So the first set of vectors, <c>[u, v, w]</c>, is linearly independent, while the second set, <c>[u, v, a^3*u + a^11*v]</c>, is not.</p>
+        </subsection>
+        <subsection>
+            <title>Abstract Vector Spaces</title>
+            <p>Sage does not implement many abstract vector spaces directly, such as <m>P_n</m>, the vector space of polynomials of degree <m>n</m> or less.  This is due in part to the fact that a finite-dimensional vector space over a field <m>F</m> is isomorphic to the vector space <m>F^n</m>.  So Sage captures all the functionality of finite-dimensional vector spaces, and it is left to the user to perform the conversions according to the isomorphism (which is often trivial with the choice of an obvious basis).</p>
+            <p>However, there are instances where rings behave naturally as vector spaces and we can exploit this extra structure.  We will see much more of this in the chapters on fields and Galois theory.  As an example, finite fields have a single generator, and the first few powers of the generator form a basis.  Consider creating a vector space from the elements of a finite field of order <m>7^6=117\,649</m>.  As elements of a field we know they can be added, so we will <em>define</em> this to be the addition in our vector space.  For any element of the integers mod 7, we can multiply an element of the field by the integer, so we <em>define</em> this to be our scalar multiplication.  Later, we will be certain that these two definitions lead to a vector space, but take that for granted now.  So here are some operations in our new vector space.</p>
+            <sage>
+                <input>
+        F.&lt;a&gt; = FiniteField(7^6)
+        u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
+        v = 4*a^5 + 4*a^4 + 4*a^3 + 6*a^2 + 5*a + 6
+        u + v
+        </input>
+                <output>
+        6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
+        </output>
+            </sage>
+            <sage>
+                <input>
+        4*u
+        </input>
+                <output>
+        a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
+        </output>
+            </sage>
+            <sage>
+                <input>
+        2*u + 5*v
+        </input>
+                <output>
+        3*a^5 + 4*a^4 + 3*a^3 + a^2 + a + 1
+        </output>
+            </sage>
+            <p>You might recognize that this looks very familiar to how we add polynomials, and multiply polynomials by scalars.  You would be correct.  However, notice that in this vector space construction, we are totally ignoring the possibility of multiplying two field elements together.  As a vector space with scalars from <m>{\mathbb Z}_7</m>, a basis is the first six powers of the generator, <m>\{1,\,a,\,a^2,\,a^3,\,a^4,\,a^5\}</m>.  (Notice how counting from zero is natural here.)  You may have noticed how Sage consistently rewrites elements of fields as linear combinations <mdash/> now you have a good explanation.</p>
+            <p>Here is what Sage knows about a finite field as a vector space.  First, it knows that the finite field <em>is</em> a vector space, and what the field of scalars is.</p>
+            <sage>
+                <input>
+        V = F.vector_space(); V
+        </input>
+                <output>
+        Vector space of dimension 6 over Finite Field of size 7
+        </output>
+            </sage>
+            <sage>
+                <input>
+        R = V.base_ring(); R
+        </input>
+                <output>
+        Finite Field of size 7
+        </output>
+            </sage>
+            <sage>
+                <input>
+        R == FiniteField(7)
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <sage>
+                <input>
+        V.dimension()
+        </input>
+                <output>
+        6
+        </output>
+            </sage>
+            <p>So the finite field (as a vector space) is isomorphic to the vector space <m>({\mathbb Z}_7)^6</m>.  Notice this is not a ring or field isomorphism, as it does not fully address multiplication of elements, even though that is possible in the field.</p>
+            <p>Second, elements of the field can be converted to elements of the vector space easily.</p>
+            <sage>
+                <input>
+        x = V(u); x
+        </input>
+                <output>
+        (3, 2, 3, 2, 6, 2)
+        </output>
+            </sage>
+            <sage>
+                <input>
+        y = V(v); y
+        </input>
+                <output>
+        (6, 5, 6, 4, 4, 4)
+        </output>
+            </sage>
+            <p>Notice that Sage writes field elements with high powers of the generator first, while the basis in use is ordered with low powers first.  The computations below illustrate the isomorphism preserving the structure between the finite field itself and its interpretation as a vector space, <m>({\mathbb Z}_7)^6</m>.</p>
+            <sage>
+                <input>
+        V(u + v) == V(u) + V(v)
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+            <sage>
+                <input>
+        two = R(2)
+        V(two*u) == two*V(u)
+        </input>
+                <output>
+        True
+        </output>
+            </sage>
+        </subsection>
+        <subsection>
+            <title>Linear Algebra</title>
+            <p>Sage has extensive support for linear algebra, well beyond what we have described here, or what we will need for the remaining chapters.  Create vector spaces and vectors (with different fields of scalars), and then use tab-completion on these objects to explore the large sets of available commands.</p>
+        </subsection>
+    </section>
+    <!-- This file is part of the book                 -->
+    <!--                                               -->
+    <!--   Abstract Algebra: Theory and Applications   -->
+    <!--                                               -->
+    <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+    <!-- See the file COPYING for copying conditions.  -->
+    <exercises xml:id="vect-sage-exercises">
+        <title>Sage Exercises</title>
+        <exercise number="1">
+            <statement>
+                <p>Given two subspaces <m>U</m> and <m>W</m> of a vector space <m>V</m>, their sum <m>U+W</m> can be defined as the <em>set</em> <m>U+W=\{u+w\mid u\in U,\ w\in W\}</m>, in other words, the set of all possible sums of an element from <m>U</m> and an element from <m>W</m>.</p>
+                <p>Notice this is not the direct sum of your text, nor the <c>direct_sum()</c> method in Sage.  However, you can build this subspace in Sage as follows.  Grab the bases of <m>U</m> and <m>W</m> individually, as lists of vectors.  Join the two lists together by just using a plus sign between them.  Now build the sum subspace by creating a subspace of <m>V</m> spanned by this set, by using the <c>.subspace()</c> method.</p>
+                <p>In the vector space (<c>QQ^10</c>) construct two subspaces that you expect to (a) have dimension <m>5</m> or <m>6</m> or so, and (b) have an intersection that is a vector space of dimension <m>2</m> or so.  Compare their individual dimensions with the dimensions of the intersection of <m>U</m> and <m>W</m> (<m>U\cap W</m>, <c>.intersection()</c> in Sage) and the sum <m>U+W</m>.</p>
+                <p>Repeat the experiment with the two original vector spaces having dimension <m>8</m> or so, and with the intersection as small as possible.  Form a general conjecture relating these four dimensions based on the results of your two (or more)experiments.</p>
+            </statement>
+        </exercise>
+        <exercise number="2">
+            <statement>
+                <p>We can construct a field in Sage that extends the rationals by adding in a fourth root of two, <m>{\mathbb Q}[\sqrt[4]{2}]</m>, with the command <c>F.&lt;c&gt; = QQ[2^(1/4)]</c>.  This is a vector space of dimension <m>4</m> over the rationals, with a basis that is the first four powers of <m>c = \sqrt[4]{2}</m> (starting with the zero power).</p>
+                <p>The command <c>F.vector_space()</c> will return three items in a triple (so be careful how you handle this output to extract what you need).  The first part of the output is a vector space over the rationals that is isomorphic to <c>F</c>.  The next is a vector space isomorphism (invertible linear transformation) from the provided vector space to the field, while the third is an isomorphism in the opposite direction.  These two isomorphisms can then be used like functions.  Notice that this is different behavior than for <c>.vector_space()</c> applied to finite fields.  Create non-trivial examples that show that these vector space isomorphisms behave as an isomorphism should.  (You will have at least four such examples in a complete solution.)</p>
+            </statement>
+        </exercise>
+        <exercise number="3">
+            <statement>
+                <p>Build a finite field <m>F</m> of order <m>p^n</m> in the usual way.  Then construct the (multiplicative) group of all invertible (nonsingular) <m>m\times m</m> matrices over this field with the command <c>G = GL(m, F)</c> (<q>the general linear group</q>).  What is the order of this group?  In other words, find a general expression for the order of this group.</p>
+                <p>Your answer should be a function of <m>m</m>, <m>p</m> and <m>n</m>.  Provide a complete explanation of the logic behind your solution (<ie/> something resembling a proof).  Also provide tests in Sage that your answer is correct.</p>
+                <p>Hints:  <c>G.order()</c> will help you test and verify your hypotheses.  Small examples in Sage (listing all the elements of the group) might aid your intuition<mdash/>which is why this is a Sage exercise.  Small means <m>2\times 2</m> and <m>3\times 3</m> matrices and finite fields with <m>2,3,4,5</m> elements, at most.  Results do not really depend on each of <m>p</m> and <m>n</m>, but rather just on <m>p^n</m>.</p>
+                <p>Realize this group is interesting because it contains representations of all the invertible (<ie/> 1-1 and onto) linear transformations from the (finite) vector space <m>F^m</m> to itself.</p>
+            </statement>
+        </exercise>
+        <exercise number="4">
+            <statement>
+                <p>What happens if we try to do linear algebra over a <em>ring</em> that is not also a <em>field</em>?  The object that resembles a vector space, but with this one distinction, is known as a <term>module</term>.  You can build one easily with a construction like <c>ZZ^3</c>.  Evaluate the following to create a module and a submodule.</p>
+                <sage>
+                    <input>
+            M = ZZ^3
+            u = M([1, 0, 0])
+            v = M([2, 2, 0])
+            w = M([0, 0, 4])
+            N = M.submodule([u, v, w])
+            </input>
+                </sage>
+                <p>Examine the bases and dimensions (aka <q>rank</q>) of the module and submodule, and check the equality of the module and submodule.  How is this different than the situation for vector spaces?  Can you create a third module, <c>P</c>, that is a proper subset of <c>M</c> and properly contains <c>N</c>?</p>
+            </statement>
+        </exercise>
+        <exercise number="5">
+            <statement>
+                <p>A finite field, <m>F</m>, of order <m>5^3</m> is a vector space of dimension 3 over <m>{\mathbb Z}_5</m>.  Suppose <m>a</m> is a generator of <m>F</m>.  Let <m>M</m> be any <m>3\times 3</m> matrix with entries from <m>{\mathbb Z}_5</m> (carefule here, the elements are from th field of scalars, not from the vector space).  If we convert an element <m>x\in F</m> to a vector (relative to the basis <m>\{1,a,a^2\}</m>), then we can multiply it by <m>M</m> (with <m>M</m> on the left) to create another vector, which we can translate to a linear combination of the basis elements, and hence another element of <m>F</m>.  This function is a vector space homomorphism, better known as a linear transformation (implemented with a matrix representation relative to the basis <m>\{1,a,a^2\}</m>.  Notice that each part below becomes less general and more specific.</p>
+                <ol>
+                    <li>
+                        <p>Create a non-invertible matrix <m>R</m> and give examples to show that the mapping described by <m>R</m> is a vector space homomorphism of <m>F</m> into <m>F</m>.</p>
+                    </li>
+                    <li>
+                        <p>Create an invertible matrix <m>M</m>.  The mapping will now be an invertible homomorphism.  Determine the inverse function and give examples to verify its properties.</p>
+                    </li>
+                    <li>
+                        <p>Since <m>a</m> is a generator of the field, the mapping <m>a\mapsto a^5</m> can be extended to a vector space homomorphism (<ie/> a linear transformation). Find a matrix <m>M</m> which effects this linear transformation, and from this, determine that the homomorphism is invertible.</p>
+                    </li>
+                    <li>
+                        <p>None of the previous three parts applies to properties of multiplication in the field.  However, the mapping from the third part also preserves multiplication in the field, though a proof of this may not be obvious right now.  So we are saying this mapping is a field automorphism, preserving both addition and multiplication.  Give a nontrivial example of the multiplication-preserving properties of this mapping.  (This is the <term>Frobenius map</term> which will be discussed further in Chapter<nbsp/><xref ref="fields"/>.)</p>
+                    </li>
+                </ol>
+            </statement>
+        </exercise>
+    </exercises>
 </chapter>
-
-

@@ -1,299 +1,538 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- This file is part of the book                 -->
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
 <!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="crypt">
+    <title>Introduction to Cryptography</title>
+    <introduction>
+        <p>Cryptography is the study of sending and receiving secret messages. The aim of cryptography is to send messages across a channel so that only the intended recipient of the message can read it. In addition, when a message is received, the recipient usually requires some assurance that the message is authentic; that is, that it has not been sent by someone who is trying to deceive the recipient. Modern cryptography is heavily dependent on abstract algebra and number theory.</p>
+        <p>The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx> message. The disguised message is called the <term>ciphertext</term><idx><h>Ciphertext</h></idx>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,<idx><h>Cipher</h></idx>  has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
+        <p>There are many different families of cryptosystems, each distinguished by a particular encryption algorithm. Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term><idx><h>Key</h><h>definition of</h></idx>. A classical cryptosystem has a single key, which must be kept secret,  known only to the sender and the receiver of the message. If person <m>A</m> wishes to send secret messages to two different people <m>B</m> and <m>C</m>, and does not wish to have <m>B</m> understand <m>C</m>'s messages or vice versa, <m>A</m> must use two separate keys, so one cryptosystem is used for exchanging messages with <m>B</m>, and another is used for exchanging messages with <m>C</m>.</p>
+        <p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.  Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
+    </introduction>
+    <section xml:id="section-private-key-crypt">
+        <title>Private Key Cryptography</title>
+        <p>In <term>single</term><idx><h>Key</h><h>single</h></idx><idx><h>Cryptosystem</h><h>single key</h></idx> or <term>private key cryptosystems</term><idx><h>Key</h><h>private</h></idx><idx><h>Cryptosystem</h><h>private key</h></idx> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.</p>
+        <example xml:id="example-crypt-caesar">
+            <p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. The encoding function will be 
+                <me>f(p) = p + 3 \bmod 26;</me>
+            that is, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. The decoding function is then 
+                <me>f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.</me>
+            Suppose we receive the encoded message DOJHEUD. To decode this message, we first digitize it:  
+                <me>3, 14, 9, 7, 4, 20, 3.</me>
+            Next we apply the inverse transformation to get
+                <me>0, 11, 6, 4, 1, 17, 0,</me>
+            or ALGEBRA. Notice here that there is nothing special about either of the numbers 3 or 26. We could have used a larger alphabet or a different shift.</p>
+        </example>
+        <p><term>Cryptanalysis</term><idx><h>Cryptanalysis</h></idx> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
+        <example xml:id="example-crypt-analysis">
+            <p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
+                <me>f(p) = p + 14 \bmod 26.</me>
+            The corresponding decrypting function is
+                <me>f^{-1}(p) = p + 12 \bmod 26.</me>
+            It is now easy to determine whether or not our guess is correct.</p>
+        </example>
+        <p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp/><xref ref="example-crypt-caesar"/>, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p>
+        <p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by  
+            <me>f(p) = ap + b \bmod 26.</me>
+        We first need to find out when a decoding function <m>f^{-1}</m> exists. Such a decoding function exists when we can solve the equation
+            <me>c = ap + b \bmod 26</me>
+        for <m>p</m>. By Proposition<nbsp/><xref ref="proposition-zn-equiv-classes"/>, this is possible exactly when <m>a</m> has an inverse or, equivalently, when <m>\gcd( a, 26) =1</m>. In this case 
+            <me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
+        Such a cryptosystem is called an <term>affine cryptosystem</term><idx><h>Cryptosystem</h><h>affine</h></idx>.</p>
+        <example xml:id="example-crypt-affine-crypt">
+            <p>Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>. For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible. This is only possible if <m>\gcd(a, 26) = 1</m>. Recognizing this fact, we will let <m>a = 5</m> since <m>\gcd(5, 26) = 1</m>. It is easy to see that <m>a^{-1} = 21</m>. Therefore, we can take our encryption function to be <m>f(p) = 5p + 3 \bmod 26</m>. Thus, ALGEBRA is encoded as <m>3, 6, 7, 23, 8, 10, 3</m>, or DGHXIKD. The decryption function will be   
+                <me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
+        </example>
+        <p>A cryptosystem would be more secure if a ciphertext letter could represent more than one plaintext letter.  To give an example of this type of cryptosystem, called a <term>polyalphabetic cryptosystem</term>,<idx><h>Cryptosystem</h><h>polyalphabetic</h></idx> we will generalize affine codes by using matrices. The idea works roughly the same as before; however, instead of encrypting one letter at a time we will encrypt pairs of letters.  We can store a pair of letters <m>p_1</m> and <m>p_2</m> in a vector  
+            <me>{\mathbf p} = 
+            \begin{pmatrix}
+            p_1 \\ p_2
+            \end{pmatrix}.</me>
+        Let <m>A</m> be a <m>2 \times 2</m> invertible matrix with entries in <m>{\mathbb Z}_{26}</m>. We can define an encoding function by
+            <me>f({\mathbf p}) = A {\mathbf p} + {\mathbf b},</me>
+        where <m>{\mathbf b}</m> is a fixed column vector and matrix operations are performed in <m>{\mathbb Z}_{26}</m>. The decoding function must be
+            <me>f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.</me></p>
+        <example xml:id="example-crypt-help">
+            <p>Suppose that we wish to encode the word HELP. The corresponding digit string is <m>7, 4, 11, 15</m>. If
+                <me>A =
+                \begin{pmatrix}
+                3 &amp; 5 \\
+                1 &amp; 2
+                \end{pmatrix},</me>
+            then
+                <me>A^{-1} 
+                =
+                \begin{pmatrix}
+                2 &amp; 21 \\
+                25 &amp; 3
+                \end{pmatrix}.</me>
+            If <m>{\mathbf b} = ( 2, 2)^{\rm t}</m>, then our message is encrypted as RRGR. The encrypted letter R represents more than one plaintext letter.</p>
+        </example>
+        <p>Frequency analysis can still be performed on a polyalphabetic cryptosystem, because we have a good understanding of how pairs of letters appear in the English language. The pair <em>th</em> appears quite often; the pair <em>qz</em> never appears.  To avoid decryption by a third party, we must use a larger matrix than the one we used in Example<nbsp/><xref ref="example-crypt-help"/>.</p>
+        <!-- TWJ 4/7/2010 Need to resolve this reference -->
+    </section>
+    <section xml:id="section-public-key-crypt">
+        <title>Public Key Cryptography</title>
+        <introduction>
+            <p>If traditional cryptosystems are used, anyone who knows enough to encode a message will also know enough to decode an intercepted message. In 1976, W. Diffie<idx><h>Diffie, W.</h></idx> and M. Hellman<idx><h>Hellman, M.</h></idx> proposed public key cryptography, which is based on the observation that the encryption and decryption procedures need not have the same key. This removes the requirement that the encoding key be kept secret. The encoding function <m>f</m> must be relatively easy to compute, but <m>f^{-1}</m> must be extremely difficult to compute without some additional information, so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation. It is interesting to note that to date, no system has been proposed that has been proven to be <q>one-way;</q> that is, for any existing public key cryptosystem, it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.</p>
+        </introduction>
+        <subsection xml:id="crypt-subsection-rsa">
+            <title>The <acro>RSA</acro> Cryptosystem</title>
+            <p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, and L. Adleman<idx><h>Adleman, L.</h></idx> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibitive.</p>
+            <p>The <acro>RSA</acro> cryptosystem<idx><h><acro>RSA</acro> cryptosystem</h></idx><idx><h>Cryptosystem</h><h><acro>RSA</acro></h></idx> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
+            <p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
+            <example xml:id="example-crypt-rsa">
+                <p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
+                    <me>n = pq = 667</me>
+                and
+                    <me>\phi(n) = m = (p - 1)(q - 1) = 616.</me>
+                We can let <m>E = 487</m>, since <m>\gcd(616, 487) = 1</m>. The encoded message is computed to be  
+                    <me>25^{487} \bmod 667 = 169.</me>
+                This computation can be reasonably done by using the method of repeated squares as described in Chapter<nbsp/><xref ref="cyclic"/>. Using the Euclidean algorithm, we determine that <m>191 E = 1 + 151 m</m>; therefore, the decrypting key is <m>(n, D) = ( 667, 191)</m>. We can recover the original message by calculating  
+                    <me>169^{191} \bmod 667 = 25.</me></p>
+            </example>
+            <!-- Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer. -->
+            <!-- TWJ - 12/19/2011 -->
+            <p>Now let us examine why the <acro>RSA</acro> cryptosystem works.  We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
+                <me>DE = km + 1 = k \phi(n) + 1.</me>
+            There are two cases to consider.  In the first case assume that <m>\gcd(x, n) = 1</m>.  Then by Theorem<nbsp/><xref ref="theorem-eulers_theorem"/>,
+                <me>y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n.</me>
+            So we see that Alice recovers the original message <m>x</m> when she computes <m>y^D \bmod n</m>.</p>
+            <p>For the other case, assume that <m>\gcd(x, n) \neq 1</m>.  Since <m>n = pq</m> and <m>x \lt n</m>, we know <m>x</m> is a multiple of <m>p</m> or a multiple of <m>q</m>, but not both.  We will describe the first possibility only, since the second is entirely similar.  There is then an integer <m>r</m>, with <m>r \lt q</m> and <m>x = rp</m>.  Note that we have <m>\gcd(x, q) = 1</m> and that <m>m=\phi(n)=(p - 1)(q - 1)=\phi(p)\phi(q)</m>.  Then, using Theorem<nbsp/><xref ref="theorem-eulers_theorem"/>, but now mod <m>q</m>,
+                <me>x^{km} = x^{k\phi(p)\phi(q)} = (x^{\phi(q)})^{k\phi(p)} = (1)^{k\phi(p)} = 1 \bmod q.</me>
+            So there is an integer <m>t</m> such that <m>x^{km}=1 + tq</m>. Thus, Alice also recovers the message in this case,
+                <me>y^D = x^{km + 1} = x^{km} x = (1 + tq) x = x + tq(rp) = x + trn = x \bmod n.</me></p>
+            <!-- Demonstration expanded to two cases.  Suggested by Kevin Halasz. -->
+            <!-- RAB - 12/30/2011 -->
+            <p>We can now ask how one would go about breaking the <acro>RSA</acro> cryptosystem. To find <m>D</m> given <m>n</m> and <m>E</m>, we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm. If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp/><xref ref="example-crypt-rsa"/>, we could have recovered <m>D</m>.</p>
+        </subsection>
+        <subsection xml:id="crypt-subsection-message-verification">
+            <title>Message Verification</title>
+            <p>There is a problem of message verification in public key cryptosystems. Since the encoding key is public knowledge, anyone has the ability to send an encoded message.  If Alice receives a message from Bob, she would like to be able to verify that it was Bob who actually sent the message. Suppose that Bob's encrypting key is <m>(n', E')</m> and his decrypting key is <m>(n', D')</m>.  Also, suppose that Alice's encrypting key is <m>(n, E)</m> and her decrypting key is <m>(n, D)</m>.  Since encryption keys are public information, they can exchange coded messages at their convenience.  Bob wishes to assure Alice that the message he is sending is authentic. Before Bob sends the message <m>x</m> to Alice, he decrypts  <m>x</m> with his own key:
+                <me>x' = x ^{D'} \bmod n'.</me>
+            Anyone can change <m>x'</m> back to <m>x</m> just by encryption, but only Bob has the ability to form <m>x'</m>. Now Bob encrypts <m>x'</m> with Alice's encryption key to form 
+                <me>y' = {x'}^E  \bmod n,</me>
+            a message that only Alice can decode.  Alice decodes the message and then encodes the result with Bob's key to read the original message, a message that could have only been sent by Bob.</p>
+        </subsection>
+        <subsection xml:id="crypt-subsection-historical-note">
+            <title>Historical Note</title>
+            <p>Encrypting secret messages goes as far back as ancient Greece and Rome. As we know, Julius Caesar used a simple shift code to send and receive messages. However, the formal study of  encoding and decoding messages probably began with the Arabs in the 1400s. In the fifteenth and sixteenth centuries mathematicians such as Alberti and Viete discovered  that monoalphabetic cryptosystems offered no real security. In the 1800s, F. W. Kasiski established methods for breaking ciphers in which a ciphertext letter can represent more than one plaintext letter, if the same key was used several times. This discovery led to the use of cryptosystems with keys that were used only a single time. Cryptography was placed on firm mathematical foundations by such people as W. Friedman and L. Hill in the early part of the twentieth century.</p>
+            <p>The period after World War I saw the development of special-purpose machines for encrypting and decrypting messages, and  mathematicians were very active in cryptography during World War II. Efforts to penetrate the cryptosystems of the Axis nations were organized in England and in the United States by such notable mathematicians as Alan Turing and A. A. Albert.  The Allies gained a tremendous advantage in World War II by breaking the ciphers produced by the German Enigma machine and the Japanese Purple ciphers.</p>
+            <p>By the 1970s, interest in commercial cryptography had begun to take hold. There was a growing need to protect banking transactions, computer data, and electronic mail. In the early 1970s, <acro>IBM</acro> developed and implemented <acro>LUZIFER</acro>, the forerunner  of the National Bureau of Standards' Data Encryption Standard (DES).</p>
+            <p>The concept of a public key cryptosystem, due to Diffie and Hellman, is very recent (1976). It was further developed by Rivest, Shamir, and Adleman with the <acro>RSA</acro> cryptosystem (1978). It is not known how secure any of these systems are. The trapdoor knapsack cryptosystem, developed by Merkle and Hellman, has been broken. It is still an open question whether or not the <acro>RSA</acro> system can be broken. In 1991, <acro>RSA</acro> Laboratories published a list of semiprimes (numbers with exactly two prime factors) with a cash prize for whoever was able to provide a factorization (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Although the challenge ended in 2007, many of these numbers have not yet been factored.</p>
+            <p>There been a great deal of controversy about research in cryptography and cryptography itself. In 1929, when Henry Stimson, Secretary of State under Herbert Hoover, dismissed the Black Chamber (the State Department's cryptography division) on the ethical grounds that <q>gentlemen do not read each other's mail.</q>  During the last two decades of the twentieth century, the National Security Agency wanted to keep information about cryptography secret, whereas the academic community fought for the right to publish basic research.  Currently, research in mathematical cryptography and computational number theory is very active, and mathematicians are free to publish their results in these areas.</p>
+        </subsection>
+        <!-- This file is part of the book                 -->
+        <!--                                               -->
+        <!--   Abstract Algebra: Theory and Applications   -->
+        <!--                                               -->
+        <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+        <!-- See the file COPYING for copying conditions.  -->
+        <paragraphs>
+            <title>Sage</title>
+            <p>Sage's early development featured powerful routines for number theory, and later included significant support for algebraic structures and other areas of discrete mathematics.  So it is a natural tool for the study of cryptology, including topics like RSA, elliptic curve cryptography, and AES (Advanced Encryption Standard).</p>
+        </paragraphs>
+    </section>
+    <!-- Exercises with Solutions  -->
+    <!-- File: crypt.xml  -->
+    <!-- Title: Introduction to Cryptography -->
+    <exercises xml:id="exercises-crypt" filenamebase="crypt">
+        <title>Exercises</title>
+        <exercise number="1">
+            <statement>
+                <p>Encode <c>IXLOVEXMATH</c> using the cryptosystem in Example 1.</p>
+            </statement>
+            <hint>
+                <p>
+                    <c>LAORYHAPDWK</c>
+                </p>
+            </hint>
+        </exercise>
+        <exercise number="2">
+            <statement>
+                <p>Decode <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>, which was encoded using the cryptosystem in Example 1.</p>
+            </statement>
+        </exercise>
+        <exercise number="3">
+            <statement>
+                <p>Assuming that monoalphabetic code was used to encode the following secret message, what was the original message?</p>
+                <pre>
+            APHUO EGEHP PEXOV FKEUH CKVUE CHKVE APHUO
+            EGEHU EXOVL EXDKT VGEFT EHFKE UHCKF TZEXO
+            VEZDT TVKUE XOVKV ENOHK ZFTEH TEHKQ LEROF
+            PVEHP PEXOV ERYKP GERYT GVKEG XDRTE RGAGA
+            </pre>
+                <p>What is the significance of this message in the history of cryptography?</p>
+            </statement>
+            <hint>
+                <p>Hint: <c>V = E</c>, <c>E = X</c> (also used for spaces and punctuation), <c>K = R</c>.</p>
+            </hint>
+        </exercise>
+        <exercise number="4">
+            <statement>
+                <p>What is the total number of possible monoalphabetic cryptosystems? How secure are such cryptosystems?</p>
+            </statement>
+            <hint>
+                <p>
+                    <m>26! - 1</m>
+                </p>
+            </hint>
+        </exercise>
+        <exercise number="5">
+            <statement>
+                <p>Prove that a <m>2 \times 2</m> matrix <m>A</m> with entries in <m>{\mathbb Z}_{26}</m> is invertible if and only if <m>\gcd( \det(A), 26 ) = 1</m>.</p>
+            </statement>
+        </exercise>
+        <exercise number="6">
+            <statement>
+                <p>Given the matrix 
+                <me>A =
+                \begin{pmatrix}
+                3 &amp; 4 \\
+                2 &amp; 3
+                \end{pmatrix},</me>
+            use the encryption function <m>f({\mathbf p}) = A {\mathbf p} + {\mathbf b}</m> to encode the message <c>CRYPTOLOGY</c>, where <m>{\mathbf b} = ( 2, 5)^{\rm t}</m>.  What is the decoding function?</p>
+            </statement>
+        </exercise>
+        <exercise number="7">
+            <statement>
+                <p>Encrypt each of the following <acro>RSA</acro> messages <m>x</m> so that <m>x</m> is divided into blocks of integers of length 2;  that is, if <m>x = 142528</m>, encode 14, 25, and 28 separately.
+                <ol><li><p><m>n = 3551, E = 629, x = 31</m></p></li><li><p><m>n = 2257, E = 47, x = 23</m></p></li><li><p><m>n = 120979, E = 13251, x = 142371</m></p></li><li><p><m>n = 45629, E = 781, x = 231561</m></p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) 2791; (c) 112135 25032 442.</p>
+            </hint>
+        </exercise>
+        <exercise number="8">
+            <statement>
+                <p>Compute the decoding key <m>D</m> for each of the encoding keys in Exercise 7. </p>
+            </statement>
+        </exercise>
+        <exercise number="9">
+            <statement>
+                <p>Decrypt each of the following <acro>RSA</acro> messages <m>y</m>.
+                <ol><li><p><m>n = 3551, D = 1997, y = 2791</m></p></li><li><p><m>n = 5893, D = 81, y = 34</m></p></li><li><p><m>n = 120979, D = 27331, y = 112135</m></p></li><li><p><m>n = 79403, D = 671, y = 129381</m></p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) 31; (c) 14.</p>
+            </hint>
+        </exercise>
+        <exercise number="10">
+            <statement>
+                <p>For each of the following encryption keys <m>(n, E)</m> in the <acro>RSA</acro> cryptosystem, compute <m>D</m>.
+                <ol><li><p><m>(n, E) = (451, 231)</m></p></li><li><p><m>(n, E) = (3053, 1921)</m></p></li><li><p><m>(n, E) = (37986733, 12371)</m></p></li><li><p><m>(n, E) = (16394854313, 34578451)</m></p></li></ol></p>
+            </statement>
+            <hint>
+                <p>(a) <m>n = 11 \cdot 41</m>; (c) <m>n = 8779 \cdot 4327</m>.</p>
+            </hint>
+        </exercise>
+        <exercise number="11">
+            <statement>
+                <p>Encrypted messages are often divided into blocks of <m>n</m> letters. A message such as <c>THE WORLD WONDERS WHY</c> might be encrypted as <c>JIW OCFRJ LPOEVYQ IOC</c> but sent as <c>JIW OCF RJL POE VYQ IOC</c>.  What are the advantages of using blocks of <m>n</m> letters?</p>
+            </statement>
+        </exercise>
+        <exercise number="12">
+            <statement>
+                <p>Find integers <m>n</m>, <m>E</m>, and <m>X</m> such that
+                <me>X^E \equiv X \pmod{n}.</me>
+            Is this a potential problem in the <acro>RSA</acro> cryptosystem?</p>
+            </statement>
+        </exercise>
+        <exercise number="13">
+            <statement>
+                <p>Every person in the class should construct an <acro>RSA</acro> cryptosystem using primes that are 10 to 15 digits long.  Hand in <m>(n, E)</m> and an encoded message. Keep <m>D</m> secret. See if you can break one another's codes.</p>
+            </statement>
+        </exercise>
+    </exercises>
+    <exercises xml:id="crypt-exercises-additional">
+        <title>Additional Exercises: Primality and Factoring</title>
+        <p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
+        <exercise>
+            <statement>
+                <p>A better algorithm for factoring odd positive integers is <term>Fermat's factorization algorithm</term><idx><h>Fermat's factorizationalgorithm</h></idx>.</p>
+                <ol>
+                    <li>
+                        <p>Let <m>n= ab</m> be an odd composite number. Prove that <m>n</m> can be written as the difference of two perfect squares:
+                        <me>n = x^2 - y^2 = (x - y)(x + y).</me>
+                    Consequently, a positive odd integer can be factored exactly when we can find integers <m>x</m> and <m>y</m> such that <m>n = x^2 - y^2</m>.</p>
+                    </li>
+                    <li>
+                        <p>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <c>ceiling(sqrt(n))</c> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</p>
+                    </li>
+                </ol>
+                <sidebyside>
+                    <program>
+                        <input>
+                            x := ceiling(sqrt(n))
+                            y := 1
 
-<chapter xml:id="crypt" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Introduction to Cryptography</title>
+                            1 : while x^2 - y^2 &gt; n do
+                                y := y + 1
 
-	<introduction>
-
-		<p>Cryptography is the study of sending and receiving secret messages. The aim of cryptography is to send messages across a channel so that only the intended recipient of the message can read it. In addition, when a message is received, the recipient usually requires some assurance that the message is authentic; that is, that it has not been sent by someone who is trying to deceive the recipient. Modern cryptography is heavily dependent on abstract algebra and number theory.</p> 
-
-		<p>The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx> message. The disguised message is called the <term>ciphertext</term><idx><h>Ciphertext</h></idx>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,<idx><h>Cipher</h></idx>  has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
- 
-		<p>There are many different families of cryptosystems, each distinguished by a particular encryption algorithm. Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term><idx><h>Key</h><h>definition of</h></idx>. A classical cryptosystem has a single key, which must be kept secret,  known only to the sender and the receiver of the message. If person <m>A</m> wishes to send secret messages to two different people <m>B</m> and <m>C</m>, and does not wish to have <m>B</m> understand <m>C</m>'s messages or vice versa, <m>A</m> must use two separate keys, so one cryptosystem is used for exchanging messages with <m>B</m>, and another is used for exchanging messages with <m>C</m>.</p>
-
-		<p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.  Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
-
-	</introduction>
-
-	<section xml:id="section-private-key-crypt">
-		<title>Private Key Cryptography</title>
-		
-		<p>In <term>single</term><idx><h>Key</h><h>single</h></idx><idx><h>Cryptosystem</h><h>single key</h></idx> or <term>private key cryptosystems</term><idx><h>Key</h><h>private</h></idx><idx><h>Cryptosystem</h><h>private key</h></idx> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.</p>
-
-
-		<example xml:id="example-crypt-caesar">
-			<p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. The encoding function will be 
-				<me>f(p) = p + 3 \bmod 26;</me>
-			that is, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. The decoding function is then 
-				<me>f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.</me>
-			Suppose we receive the encoded message DOJHEUD. To decode this message, we first digitize it:  
-				<me>3, 14, 9, 7, 4, 20, 3.</me>
-			Next we apply the inverse transformation to get
-				<me>0, 11, 6, 4, 1, 17, 0,</me>
-			or ALGEBRA. Notice here that there is nothing special about either of the numbers 3 or 26. We could have used a larger alphabet or a different shift.</p>
-		</example>
- 
-		<p><term>Cryptanalysis</term><idx><h>Cryptanalysis</h></idx> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
-
-		<example xml:id="example-crypt-analysis">
-			<p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
-				<me>f(p) = p + 14 \bmod 26.</me>
-			The corresponding decrypting function is
-				<me>f^{-1}(p) = p + 12 \bmod 26.</me>
-			It is now easy to determine whether or not our guess is correct.</p>
-		</example>
-
-		<p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp /><xref ref="example-crypt-caesar" />, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p> 
-
-		<p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by  
-			<me>f(p) = ap + b \bmod 26.</me>
-		We first need to find out when a decoding function <m>f^{-1}</m> exists. Such a decoding function exists when we can solve the equation
-			<me>c = ap + b \bmod 26</me>
-		for <m>p</m>. By Proposition<nbsp /><xref ref="proposition-zn-equiv-classes" />, this is possible exactly when <m>a</m> has an inverse or, equivalently, when <m>\gcd( a, 26) =1</m>. In this case 
-			<me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
-		Such a cryptosystem is called an <term>affine cryptosystem</term><idx><h>Cryptosystem</h><h>affine</h></idx>.</p>
- 
-		<example xml:id="example-crypt-affine-crypt">
-			<p>Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>. For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible. This is only possible if <m>\gcd(a, 26) = 1</m>. Recognizing this fact, we will let <m>a = 5</m> since <m>\gcd(5, 26) = 1</m>. It is easy to see that <m>a^{-1} = 21</m>. Therefore, we can take our encryption function to be <m>f(p) = 5p + 3 \bmod 26</m>. Thus, ALGEBRA is encoded as <m>3, 6, 7, 23, 8, 10, 3</m>, or DGHXIKD. The decryption function will be   
-				<me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
-		</example> 
- 
-		<p>A cryptosystem would be more secure if a ciphertext letter could represent more than one plaintext letter.  To give an example of this type of cryptosystem, called a <term>polyalphabetic cryptosystem</term>,<idx><h>Cryptosystem</h><h>polyalphabetic</h></idx> we will generalize affine codes by using matrices. The idea works roughly the same as before; however, instead of encrypting one letter at a time we will encrypt pairs of letters.  We can store a pair of letters <m>p_1</m> and <m>p_2</m> in a vector  
-			<me>{\mathbf p} = 
-			\begin{pmatrix}<![CDATA[
-			p_1 \\ p_2
-			]]>\end{pmatrix}.</me>
-		Let <m>A</m> be a <m>2 \times 2</m> invertible matrix with entries in <m>{\mathbb Z}_{26}</m>. We can define an encoding function by
-			<me>f({\mathbf p}) = A {\mathbf p} + {\mathbf b},</me>
-		where <m>{\mathbf b}</m> is a fixed column vector and matrix operations are performed in <m>{\mathbb Z}_{26}</m>. The decoding function must be
-			<me>f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.</me></p>
- 
-		<example xml:id="example-crypt-help">
-			<p>Suppose that we wish to encode the word HELP. The corresponding digit string is <m>7, 4, 11, 15</m>. If
-				<me>A =
-				\begin{pmatrix}<![CDATA[
-				3 & 5 \\
-				1 & 2
-				]]>\end{pmatrix},</me>
-			then
-				<me>A^{-1} 
-				=
-				\begin{pmatrix}<![CDATA[
-				2 & 21 \\
-				25 & 3
-				]]>\end{pmatrix}.</me>
-			If <m>{\mathbf b} = ( 2, 2)^{\rm t}</m>, then our message is encrypted as RRGR. The encrypted letter R represents more than one plaintext letter.</p>
-		</example>
- 
-		<p>Frequency analysis can still be performed on a polyalphabetic cryptosystem, because we have a good understanding of how pairs of letters appear in the English language. The pair <em>th</em> appears quite often; the pair <em>qz</em> never appears.  To avoid decryption by a third party, we must use a larger matrix than the one we used in Example<nbsp /><xref ref="example-crypt-help" />.</p>
-
-<!-- TWJ 4/7/2010 Need to resolve this reference -->
-
-	</section>
-
-	<section xml:id="section-public-key-crypt">
-		<title>Public Key Cryptography</title>
-
-		<introduction>
- 
-			<p>If traditional cryptosystems are used, anyone who knows enough to encode a message will also know enough to decode an intercepted message. In 1976, W. Diffie<idx><h>Diffie, W.</h></idx> and M. Hellman<idx><h>Hellman, M.</h></idx> proposed public key cryptography, which is based on the observation that the encryption and decryption procedures need not have the same key. This removes the requirement that the encoding key be kept secret. The encoding function <m>f</m> must be relatively easy to compute, but <m>f^{-1}</m> must be extremely difficult to compute without some additional information, so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation. It is interesting to note that to date, no system has been proposed that has been proven to be <q>one-way;</q> that is, for any existing public key cryptosystem, it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.</p>
-
-		</introduction>
-
-		<subsection xml:id="crypt-subsection-rsa">
-			<title>The <acro>RSA</acro> Cryptosystem</title>
-
- 				<p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, and L. Adleman<idx><h>Adleman, L.</h></idx> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibitive.</p>
-
-				<p>The <acro>RSA</acro> cryptosystem<idx><h><acro>RSA</acro> cryptosystem</h></idx><idx><h>Cryptosystem</h><h><acro>RSA</acro></h></idx> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
- 
-				<p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
- 
-			<example xml:id="example-crypt-rsa">
-				<p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
-					<me>n = pq = 667</me>
-				and
-					<me>\phi(n) = m = (p - 1)(q - 1) = 616.</me>
-				We can let <m>E = 487</m>, since <m>\gcd(616, 487) = 1</m>. The encoded message is computed to be  
-					<me>25^{487} \bmod 667 = 169.</me>
-				This computation can be reasonably done by using the method of repeated squares as described in Chapter<nbsp /><xref ref="cyclic" />. Using the Euclidean algorithm, we determine that <m>191 E = 1 + 151 m</m>; therefore, the decrypting key is <m>(n, D) = ( 667, 191)</m>. We can recover the original message by calculating  
-					<me>169^{191} \bmod 667 = 25.</me></p>
-			</example>
-
-<!-- Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer. -->
-<!-- TWJ - 12/19/2011 -->
-
-			<p>Now let us examine why the <acro>RSA</acro> cryptosystem works.  We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
-				<me>DE = km + 1 = k \phi(n) + 1.</me>
-			There are two cases to consider.  In the first case assume that <m>\gcd(x, n) = 1</m>.  Then by Theorem<nbsp /><xref ref="theorem-eulers_theorem" />,
-				<me>y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n.</me>
-			So we see that Alice recovers the original message <m>x</m> when she computes <m>y^D \bmod n</m>.</p>
-
-			<p>For the other case, assume that <m>\gcd(x, n) \neq 1</m>.  Since <m>n = pq</m> and <m>x \lt n</m>, we know <m>x</m> is a multiple of <m>p</m> or a multiple of <m>q</m>, but not both.  We will describe the first possibility only, since the second is entirely similar.  There is then an integer <m>r</m>, with <m>r \lt q</m> and <m>x = rp</m>.  Note that we have <m>\gcd(x, q) = 1</m> and that <m>m=\phi(n)=(p - 1)(q - 1)=\phi(p)\phi(q)</m>.  Then, using Theorem<nbsp /><xref ref="theorem-eulers_theorem" />, but now mod <m>q</m>,
-				<me>x^{km} = x^{k\phi(p)\phi(q)} = (x^{\phi(q)})^{k\phi(p)} = (1)^{k\phi(p)} = 1 \bmod q.</me>
-			So there is an integer <m>t</m> such that <m>x^{km}=1 + tq</m>. Thus, Alice also recovers the message in this case,
-				<me>y^D = x^{km + 1} = x^{km} x = (1 + tq) x = x + tq(rp) = x + trn = x \bmod n.</me></p>
-
-
-<!-- Demonstration expanded to two cases.  Suggested by Kevin Halasz. -->
-<!-- RAB - 12/30/2011 -->
-
-			<p>We can now ask how one would go about breaking the <acro>RSA</acro> cryptosystem. To find <m>D</m> given <m>n</m> and <m>E</m>, we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm. If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp /><xref ref="example-crypt-rsa" />, we could have recovered <m>D</m>.</p>    
-
-		</subsection>
-		
-		<subsection xml:id="crypt-subsection-message-verification">
-			<title>Message Verification</title>
- 				
- 			<p>There is a problem of message verification in public key cryptosystems. Since the encoding key is public knowledge, anyone has the ability to send an encoded message.  If Alice receives a message from Bob, she would like to be able to verify that it was Bob who actually sent the message. Suppose that Bob's encrypting key is <m>(n', E')</m> and his decrypting key is <m>(n', D')</m>.  Also, suppose that Alice's encrypting key is <m>(n, E)</m> and her decrypting key is <m>(n, D)</m>.  Since encryption keys are public information, they can exchange coded messages at their convenience.  Bob wishes to assure Alice that the message he is sending is authentic. Before Bob sends the message <m>x</m> to Alice, he decrypts  <m>x</m> with his own key:
-				<me>x' = x ^{D'} \bmod n'.</me>
-			Anyone can change <m>x'</m> back to <m>x</m> just by encryption, but only Bob has the ability to form <m>x'</m>. Now Bob encrypts <m>x'</m> with Alice's encryption key to form 
-				<me>y' = {x'}^E  \bmod n,</me>
-			a message that only Alice can decode.  Alice decodes the message and then encodes the result with Bob's key to read the original message, a message that could have only been sent by Bob.</p>
-
-		</subsection>
- 
-		<subsection xml:id="crypt-subsection-historical-note">
-			<title>Historical Note</title>
-			
-			<p>Encrypting secret messages goes as far back as ancient Greece and Rome. As we know, Julius Caesar used a simple shift code to send and receive messages. However, the formal study of  encoding and decoding messages probably began with the Arabs in the 1400s. In the fifteenth and sixteenth centuries mathematicians such as Alberti and Viete discovered  that monoalphabetic cryptosystems offered no real security. In the 1800s, F. W. Kasiski established methods for breaking ciphers in which a ciphertext letter can represent more than one plaintext letter, if the same key was used several times. This discovery led to the use of cryptosystems with keys that were used only a single time. Cryptography was placed on firm mathematical foundations by such people as W. Friedman and L. Hill in the early part of the twentieth century.</p>
- 
-			<p>The period after World War I saw the development of special-purpose machines for encrypting and decrypting messages, and  mathematicians were very active in cryptography during World War II. Efforts to penetrate the cryptosystems of the Axis nations were organized in England and in the United States by such notable mathematicians as Alan Turing and A. A. Albert.  The Allies gained a tremendous advantage in World War II by breaking the ciphers produced by the German Enigma machine and the Japanese Purple ciphers.</p>
-
-			<p>By the 1970s, interest in commercial cryptography had begun to take hold. There was a growing need to protect banking transactions, computer data, and electronic mail. In the early 1970s, <acro>IBM</acro> developed and implemented <acro>LUZIFER</acro>, the forerunner  of the National Bureau of Standards' Data Encryption Standard (DES).</p>
-
-			<p>The concept of a public key cryptosystem, due to Diffie and Hellman, is very recent (1976). It was further developed by Rivest, Shamir, and Adleman with the <acro>RSA</acro> cryptosystem (1978). It is not known how secure any of these systems are. The trapdoor knapsack cryptosystem, developed by Merkle and Hellman, has been broken. It is still an open question whether or not the <acro>RSA</acro> system can be broken. In 1991, <acro>RSA</acro> Laboratories published a list of semiprimes (numbers with exactly two prime factors) with a cash prize for whoever was able to provide a factorization (<url href="http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm">http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-challenge-numbers.htm</url>).  Although the challenge ended in 2007, many of these numbers have not yet been factored.</p>
-			
-			<p>There been a great deal of controversy about research in cryptography and cryptography itself. In 1929, when Henry Stimson, Secretary of State under Herbert Hoover, dismissed the Black Chamber (the State Department's cryptography division) on the ethical grounds that <q>gentlemen do not read each other's mail.</q>  During the last two decades of the twentieth century, the National Security Agency wanted to keep information about cryptography secret, whereas the academic community fought for the right to publish basic research.  Currently, research in mathematical cryptography and computational number theory is very active, and mathematicians are free to publish their results in these areas.</p> 
-
-		</subsection>
-
-		<xi:include href="./sage/crypt-info.xml" />
-
-	</section>
- 
- <xi:include href="./exercises/crypt.xml" />
-
-	<exercises xml:id="crypt-exercises-additional">
-		<title>Additional Exercises: Primality and Factoring</title>
-
-		<p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
-
-		<exercise>
-			<statement>
-				<p>A better algorithm for factoring odd positive integers is <term>Fermat's factorization algorithm</term><idx><h>Fermat's factorizationalgorithm</h></idx>.</p>
-
-				<ol>
-					<li><p>Let <m>n= ab</m> be an odd composite number. Prove that <m>n</m> can be written as the difference of two perfect squares:
-						<me>n = x^2 - y^2 = (x - y)(x + y).</me>
-					Consequently, a positive odd integer can be factored exactly when we can find integers <m>x</m> and <m>y</m> such that <m>n = x^2 - y^2</m>.</p></li>
-					<li><p>Write a program to implement the following factorization algorithm based on the observation in part (a).  The expression  <c>ceiling(sqrt(n))</c> means the smallest integer greater than or equal to the square root of <m>n</m>. Write another program to do factorization using trial division and compare the speed of the two algorithms. Which algorithm is faster and why?</p></li>
-				</ol>
-
-				<sidebyside>
-					<program>
-						<input>
-							x := ceiling(sqrt(n))
-							y := 1
-
-							1 : while x^2 - y^2 <![CDATA[>]]> n do
-								y := y + 1
-
-							if x^2 - y^2 <![CDATA[<]]> n then
-								x := x + 1
-								y := 1
-								goto 1
-							else if x^2 - y^2 = 0 then
-								a := x - y
-								b := x + y
-								write n = a * b
-						</input>
-					</program>
-				</sidebyside>
-
-			</statement>
-		</exercise>
-
-		<exercise>
-			<title>Primality Testing</title>
-			<statement>
-				<p>Recall Fermat's Little Theorem from Chapter<nbsp /><xref ref="cosets" />. Let <m>p</m> be prime with <m>\gcd(a, p) = 1</m>. Then <m>a^{p-1} \equiv 1 \pmod{p}</m>.  We can use Fermat's Little Theorem as a screening test for primes. For example, 15 cannot be prime since <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> However, 17 is a potential prime since
-					<me>2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.</me>
-				We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><idx><h>Pseudoprime</h></idx> if 
-					<me>2^{n-1} \equiv 1 \pmod{n}.</me>
-				Which of the following numbers are primes and which are pseudoprimes?
-					<ol cols="3">
-					
-						<li><p>342</p></li>
-					
-						<li><p>811</p></li>
-					
-						<li><p>601</p></li>
-					
-						<li><p>561</p></li>
-					
-						<li><p>771</p></li>
-					
-						<li><p>631</p></li>
-					
-					</ol></p>
-			</statement>
-		</exercise>
-
-		<exercise>
-			<statement>
-				<p>Let <m>n</m> be an odd composite number and <m>b</m> be a positive integer such that <m>\gcd(b, n) = 1</m>. If <m>b^{n-1} \equiv 1 \pmod{n}</m>, then <m>n</m> is a <term>pseudoprime base</term> <m>b</m>. Show that 341 is a pseudoprime base 2 but not a pseudoprime base 3.</p>
-			</statement>
-		</exercise>
-
-		<exercise>
-			<statement>
-				<p>Write a program to determine all primes less than 2000 using trial division. Write a second program that will determine all numbers less than 2000 that are either primes or pseudoprimes. Compare the speed of the two programs.  How many pseudoprimes are there below 2000?</p>
- 
-				<p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.  These numbers are called <term>Carmichael numbers</term><idx><h>Carmichael numbers</h></idx>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare.  There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
-			</statement>
-		</exercise>
-	</exercises>
- 
-	<references xml:id="crypt-references">
-		<title>References and Suggested Readings</title>
-
-		<biblio type="raw"> <!-- was [1] -->
-		Bressoud, D. M. <title>Factorization and Primality Testing</title>. Springer-Verlag, New York, 1989.</biblio>
-
-		<biblio type="raw"> <!-- was [2] -->
-		Diffie, W. and Hellman, M. E. <q>New Directions in Cryptography,</q> <title>IEEE Trans. Inform. Theory</title> <volume> 22</volume> (1976), 644<ndash />54.</biblio>
-
-		<!-- Title corrected.  Suggested by R. Beezer.  TWJ - 12/20/2011 -->
-		<biblio type="raw"> <!-- was [3] -->
-		Gardner, M. <q>Mathematical games: A new kind of cipher that would take millions of years to break,</q> <title>Scientific American</title> <volume>237</volume> (1977), 120<ndash />24.</biblio>
-
-		<biblio type="raw"> <!-- was [4] -->
-		Granville, A. <q>Primality Testing and Carmichael Numbers,</q> <title>Notices of the American Mathematical Society</title> <volume>39</volume>(1992), 696<ndash />700.</biblio>
-
-		<biblio type="raw"> <!-- was [5] -->
-		Hellman, M. E. <q>The Mathematics of Public Key Cryptography,</q>  <title>Scientific American</title> <volume>241</volume>(1979), 130<ndash />39.</biblio>
-
-		<!-- reference updated - TWJ 5/10/2010 -->
-		<biblio type="raw"> <!-- was [6] -->
-		Koblitz, N. <title>A Course in Number Theory and Cryptography</title>. 2nd ed. Springer, New York, 1994.</biblio>
-
-		<biblio type="raw"> <!-- was [7] -->
-		Pomerance, C., ed. <q>Cryptology and Computational Number Theory</q>, <title>Proceedings of Symposia in Applied Mathematics</title> <volume>42</volume>(1990) American Mathematical Society, Providence, RI.</biblio>
-
-		<biblio type="raw"> <!-- was [8] -->
-		Rivest, R. L., Shamir, A., and Adleman, L., <q>A Method for Obtaining Signatures and Public-key Cryptosystems,</q> <title>Comm. ACM</title> <volume>21</volume>(1978), 120<ndash />26.</biblio>
-
-	</references>
-
-	<xi:include href="./sage/crypt-sage.xml" />
-	<xi:include href="./sage/crypt-sage-exercises.xml" />
-
+                            if x^2 - y^2 &lt; n then
+                                x := x + 1
+                                y := 1
+                                goto 1
+                            else if x^2 - y^2 = 0 then
+                                a := x - y
+                                b := x + y
+                                write n = a * b
+                        </input>
+                    </program>
+                </sidebyside>
+            </statement>
+        </exercise>
+        <exercise>
+            <title>Primality Testing</title>
+            <statement>
+                <p>Recall Fermat's Little Theorem from Chapter<nbsp/><xref ref="cosets"/>. Let <m>p</m> be prime with <m>\gcd(a, p) = 1</m>. Then <m>a^{p-1} \equiv 1 \pmod{p}</m>.  We can use Fermat's Little Theorem as a screening test for primes. For example, 15 cannot be prime since <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> However, 17 is a potential prime since
+                    <me>2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.</me>
+                We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><idx><h>Pseudoprime</h></idx> if 
+                    <me>2^{n-1} \equiv 1 \pmod{n}.</me>
+                Which of the following numbers are primes and which are pseudoprimes?
+                    <ol cols="3"><li><p>342</p></li><li><p>811</p></li><li><p>601</p></li><li><p>561</p></li><li><p>771</p></li><li><p>631</p></li></ol></p>
+            </statement>
+        </exercise>
+        <exercise>
+            <statement>
+                <p>Let <m>n</m> be an odd composite number and <m>b</m> be a positive integer such that <m>\gcd(b, n) = 1</m>. If <m>b^{n-1} \equiv 1 \pmod{n}</m>, then <m>n</m> is a <term>pseudoprime base</term> <m>b</m>. Show that 341 is a pseudoprime base 2 but not a pseudoprime base 3.</p>
+            </statement>
+        </exercise>
+        <exercise>
+            <statement>
+                <p>Write a program to determine all primes less than 2000 using trial division. Write a second program that will determine all numbers less than 2000 that are either primes or pseudoprimes. Compare the speed of the two programs.  How many pseudoprimes are there below 2000?</p>
+                <p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.  These numbers are called <term>Carmichael numbers</term><idx><h>Carmichael numbers</h></idx>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare.  There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
+            </statement>
+        </exercise>
+    </exercises>
+    <references xml:id="crypt-references">
+        <title>References and Suggested Readings</title>
+        <biblio type="raw"><!-- was [1] -->
+        Bressoud, D. M. <title>Factorization and Primality Testing</title>. Springer-Verlag, New York, 1989.</biblio>
+        <biblio type="raw"><!-- was [2] -->
+        Diffie, W. and Hellman, M. E. <q>New Directions in Cryptography,</q> <title>IEEE Trans. Inform. Theory</title> <volume> 22</volume> (1976), 644<ndash/>54.</biblio>
+        <!-- Title corrected.  Suggested by R. Beezer.  TWJ - 12/20/2011 -->
+        <biblio type="raw"><!-- was [3] -->
+        Gardner, M. <q>Mathematical games: A new kind of cipher that would take millions of years to break,</q> <title>Scientific American</title> <volume>237</volume> (1977), 120<ndash/>24.</biblio>
+        <biblio type="raw"><!-- was [4] -->
+        Granville, A. <q>Primality Testing and Carmichael Numbers,</q> <title>Notices of the American Mathematical Society</title> <volume>39</volume>(1992), 696<ndash/>700.</biblio>
+        <biblio type="raw"><!-- was [5] -->
+        Hellman, M. E. <q>The Mathematics of Public Key Cryptography,</q>  <title>Scientific American</title> <volume>241</volume>(1979), 130<ndash/>39.</biblio>
+        <!-- reference updated - TWJ 5/10/2010 -->
+        <biblio type="raw"><!-- was [6] -->
+        Koblitz, N. <title>A Course in Number Theory and Cryptography</title>. 2nd ed. Springer, New York, 1994.</biblio>
+        <biblio type="raw"><!-- was [7] -->
+        Pomerance, C., ed. <q>Cryptology and Computational Number Theory</q>, <title>Proceedings of Symposia in Applied Mathematics</title> <volume>42</volume>(1990) American Mathematical Society, Providence, RI.</biblio>
+        <biblio type="raw"><!-- was [8] -->
+        Rivest, R. L., Shamir, A., and Adleman, L., <q>A Method for Obtaining Signatures and Public-key Cryptosystems,</q> <title>Comm. ACM</title> <volume>21</volume>(1978), 120<ndash/>26.</biblio>
+    </references>
+    <!-- This file is part of the book                 -->
+    <!--                                               -->
+    <!--   Abstract Algebra: Theory and Applications   -->
+    <!--                                               -->
+    <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+    <!-- See the file COPYING for copying conditions.  -->
+    <section xml:id="crypt-sage">
+        <title>Sage</title>
+        <introduction>
+            <p>Since Sage began as software to support research in number theory, we can quickly and easily demonstrate the internal workings of the <acro>RSA</acro> algorithm.  Recognize that, in practice, many other details such as encoding between letters and integers, or protecting one's private key, are equally important for the security of communications.  So <acro>RSA</acro> itself is just the theoretical foundation.</p>
+        </introduction>
+        <subsection>
+            <title>Constructing Keys</title>
+            <p>We will suppose that Alice wants to send a secret message to Bob, along with message verification (also known as a message with a digital signature).  So we begin with the construction of key pairs (private and public) for both Alice and Bob.  We first need two large primes for both individuals, and their product.  In practice, values of <m>n</m> would have hundreds of digits, rather than just <m>21</m> as we have done here.</p>
+            <sage>
+                <input>
+            p_a = next_prime(10^10)
+            q_a = next_prime(p_a)
+            p_b = next_prime((3/2)*10^10)
+            q_b = next_prime(p_b)
+            n_a = p_a * q_a
+            n_b = p_b * q_b
+            n_a, n_b
+            </input>
+                <output>(100000000520000000627, 225000000300000000091)</output>
+            </sage>
+            <p>Computationally, the value of the Euler <m>\phi</m>-function for a product of primes <m>pq</m> can be obtained from <m>(p-1)(q-1)</m>, but we could use Sage's built-in function just as well.</p>
+            <sage>
+                <input>
+            m_a = euler_phi(n_a)
+            m_b = euler_phi(n_b)
+            m_a, m_b
+            </input>
+                <output>(100000000500000000576, 225000000270000000072)</output>
+            </sage>
+            <p>Now we can create the encryption and decryption exponents.  We choose the encryption exponent as a (small) number relatively prime to the value of <m>m</m>.  With Sage we can factor <m>m</m> quickly to help us choose this value.  In practice we would not want to do this computation for large values of <m>m</m>, so we might more easily choose <q>random</q> values and check for the first value which is relatively prime to <m>m</m>.  The decryption exponent is the multiplicative inverse, mod <m>m</m>, of the encryption exponent.  If you construct an improper encryption exponent (not relatively prime to <m>m</m>), the computation of the multiplicative inverse will fail (and Sage will tell you so).  We do this twice <mdash/>- for both Alice and Bob.</p>
+            <sage>
+                <input>factor(m_a)</input>
+                <output>2^6 * 3 * 11 * 17 * 131 * 521 * 73259 * 557041</output>
+            </sage>
+            <sage>
+                <input>
+        E_a = 5*23
+        D_a = inverse_mod(E_a, m_a)
+        D_a
+        </input>
+                <output>20869565321739130555</output>
+            </sage>
+            <sage>
+                <input>factor(m_b)</input>
+                <output>2^3 * 3^4 * 107 * 1298027 * 2500000001</output>
+            </sage>
+            <sage>
+                <input>
+            E_b = 7*29
+            D_b = inverse_mod(E_b, m_b)
+            D_b
+            </input>
+                <output>24384236482463054195</output>
+            </sage>
+            <p>At this stage, each individual would publish their values of <m>n</m> and <m>E</m>, while keeping <m>D</m> very private and secure.  In practice <m>D</m> should be protected on the user's hard disk by a password only the owner knows.  For even greater security a person might only have two copies of their private key, one on a <acro>USB</acro> memory stick they always carry with them, and a backup in their sage deposit box.  Every time the person uses <m>D</m> they would need to provide the password.  The value of <m>m</m> can be discarded.  For the record, here are all the keys:</p>
+            <sage>
+                <input>print("Alice's public key, n:", n_a, "E:", E_a)</input>
+                <output>Alice's public key, n: 100000000520000000627 E: 115</output>
+            </sage>
+            <sage>
+                <input>print("Alice's private key, D:", D_a)</input>
+                <output>Alice's private key, D: 20869565321739130555</output>
+            </sage>
+            <sage>
+                <input>print("Bob's public key, n:", n_b, "E:", E_b)</input>
+                <output>Bob's public key, n: 225000000300000000091 E: 203</output>
+            </sage>
+            <sage>
+                <input>print("Bob's private key, D:", D_b)</input>
+                <output>Bob's private key, D: 24384236482463054195</output>
+            </sage>
+            <sage type="practice"/>
+        </subsection>
+        <subsection>
+            <title>Signing and Encoding a Message</title>
+            <p>Alice is going to construct a message as an English word with four letters.  From these four letters we will construct a single number to represent the message in a form we can use in the <acro>RSA</acro> algorithm.  The function <c>ord()</c> will convert a single letter to its <acro>ASCII</acro> code value, a number between 0 and 127.  If we use these numbers as <q>digits</q> mod 128, we can be sure that Alice's four-letter word will encode to an integer less than <m>128^4=268,435,456</m>.  The particular maximum value is not important, so long as it is smaller than our value of <m>n</m> since all of our subsequent arithmetic is mod <m>n</m>.  We choose a popular four-letter word, convert to <acro>ASCII</acro> <q>digits</q> with a list comprehension, and then construct the integer from the digits with the right base.  Notice how we can treat the word as a list and that the first digit in the list is in the <q>ones</q> place (we say the list is  in <q>little-endian</q> order).</p>
+            <sage>
+                <input>
+            word = 'Sage'
+            digits = [ord(letter) for letter in word]
+            digits
+            </input>
+                <output>[83, 97, 103, 101]</output>
+            </sage>
+            <sage>
+                <input>
+            message = ZZ(digits, 128)
+            message
+            </input>
+                <output>213512403</output>
+            </sage>
+            <p>First, Alice will sign her message to provide message verification.  She uses her private key for this, since this is an act that only she should be able to perform.</p>
+            <sage>
+                <input>
+            signed = power_mod(message, D_a, n_a)
+            signed
+            </input>
+                <output>47838774644892618423</output>
+            </sage>
+            <p>Then Alice encrypts her message so that only Bob can read it.  To do this, she uses Bob's public key.  Notice how she does not have to even know Bob <mdash/> for example, she could have obtained Bob's public key off his web site or maybe Bob announced his public key in an advertisement in the <booktitle>New York Times</booktitle>.</p>
+            <sage>
+                <input>
+            encrypted = power_mod(signed, E_b, n_b)
+            encrypted
+            </input>
+                <output>111866209291209840488</output>
+            </sage>
+            <p>Alice's communication is now ready to travel on any communications network, no matter how insecure the network may be, and no matter how many snoops may be monitoring the network.</p>
+            <sage type="practice"/>
+        </subsection>
+        <subsection>
+            <title>Decoding and Verifying a Message</title>
+            <p>Now assume that the value of <c>encrypted</c> has reached Bob.  Realize that Bob may not know Alice, and realize that Bob does not even necessarily believe what he has received has genuinely originated from Alice.  An adversary could be trying to confuse Bob by sending messages that claim to be from Alice.  First, Bob must unwrap the encyption Alice has provided.  This is an act only Bob, as the intended recipient, should be able to do.  And he does it by using his private key, which only he knows, and which he has kept secure.</p>
+            <sage>
+                <input>
+            decrypted = power_mod(encrypted, D_b, n_b)
+            decrypted
+            </input>
+                <output>47838774644892618423</output>
+            </sage>
+            <p>Right now, this means very little to Bob.  Anybody could have sent him an encoded message.  However, this was a message Alice signed.  Lets unwrap the message signing.  Notice that this uses Alice's public key.  Bob does not need to know Alice <mdash/> for example, he could obtain Alice's key off her web site or maybe Alice announced her public key in an advertisement in the <booktitle>New York Times</booktitle>.</p>
+            <sage>
+                <input>
+            received = power_mod(decrypted, E_a, n_a)
+            received
+            </input>
+                <output>213512403</output>
+            </sage>
+            <p>Bob needs to transform this integer representation back to a word with letters.  The <c>chr()</c> function converts <acro>ASCII</acro> code values to letters, and we use a list comprehension to do this repeatedly.</p>
+            <sage>
+                <input>
+            digits = received.digits(base=128)
+            letters = [chr(ascii) for ascii in digits]
+            letters
+            </input>
+                <output>['S', 'a', 'g', 'e']</output>
+            </sage>
+            <p>If we would like a slightly more recognizable result, we can combine the letters into a string.</p>
+            <sage>
+                <input>''.join(letters)</input>
+                <output>'Sage'</output>
+            </sage>
+            <p>Bob is pleased to obtain such an informative message from Alice.  What would have happened if an imposter had sent a message ostensibly from Alice, or what if an adversary had intercepted Alice's original message and replaced it with a tampered message?  (The latter is known as a <q>man in the middle</q> attack.)</p>
+            <p>In either case, the rogue party would not be able to duplicate Alice's first action <mdash/> signing her message.  If an adversary somehow signs the message, or tampers with it, the step where Bob unwraps the signing will lead to total garbage.  (Try it!)  Because Bob received a legitimate word, properly capitalized, he has confidence that the message he unsigned is the same as the message Alice signed.  In practice, if Alice sent several hundred words as her message, the odds that it will unsign as cohrent text are astronomically small.</p>
+            <p>What have we demonstrated?</p>
+            <ol>
+                <li>
+                    <p>Alice can send messages that only Bob can read.</p>
+                </li>
+                <li>
+                    <p>Bob can receive secret messages from anybody.</p>
+                </li>
+                <li>
+                    <p>Alice can sign messages, so that then Bob (or anybody else)knows they are genuinely from Alice.</p>
+                </li>
+            </ol>
+            <p>Of course, without making new keys, you can reverse the roles of Alice and Bob.  And if Carol makes a key pair, she can communicate with both Alice and Bob in the same fashion.</p>
+            <p>If you want to use <acro>RSA</acro> public-key encryption seriously, investigate the open source software GNU Privacy Guard, aka <c>GPG</c>, which is freely available at <url href="https://www.gnupg.org/">www.gnupg.org/</url>.  Notice that it only makes sense to use encryption programs that allow you to look at the source code.</p>
+            <sage type="practice"/>
+        </subsection>
+    </section>
+    <!-- This file is part of the book                 -->
+    <!--                                               -->
+    <!--   Abstract Algebra: Theory and Applications   -->
+    <!--                                               -->
+    <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
+    <!-- See the file COPYING for copying conditions.  -->
+    <exercises xml:id="crypt-sage-exercises">
+        <title>Sage Exercises</title>
+        <exercise number="1">
+            <statement>
+                <p>Construct a keypair for Alice using the first two primes greater than <m>10^{12}</m>.  For your choice of <m>E</m>, use a single prime number and use the smallest possible choice.</p>
+                <p>Output the values of <m>n</m>, <m>E</m>, and <m>D</m> for Alice.  Then use Sage commands to verify that Alice's encryption and decryption keys are multiplicative inverses.</p>
+            </statement>
+        </exercise>
+        <exercise number="2">
+            <statement>
+                <p>Construct a keypair for Bob using the first two primes greater than <m>2\cdot 10^{12}</m>.  For your choice of <m>E</m>, use a single prime number and use the smallest possible choice.  Output the values of <m>n</m>, <m>E</m>, and <m>D</m> for Alice.</p>
+                <p>Encode the word <c>Math</c> using <acro>ASCII</acro> values in the same manner as described in this section (keep the capitalization as shown).  Create a signed message of this word for communication from Alice to Bob.  Output the three integers: the message, the signed message and the signed, encrypted message.</p>
+            </statement>
+        </exercise>
+        <exercise number="3">
+            <statement>
+                <p>Demonstrate how Bob converts the message received from Alice back into the word <c>Math</c>.  Output the value of the intermediate computations and the final human-readable message.</p>
+            </statement>
+        </exercise>
+        <exercise number="4">
+            <statement>
+                <p>Create a new signed message from Alice to Bob.  Simulate the message being tampered with by adding <m>1</m> to the integer Bob receives, before he decrypts it.  What result does Bob get for the letters of the message when he decrypts and unsigns the tampered message?</p>
+            </statement>
+        </exercise>
+        <exercise number="5">
+            <title>Classroom Exercise</title>
+            <statement>
+                <p>Organize a class into several small groups.  Have each group construct key pairs with some minimum size (digits in <m>n</m>).  Each group should keep their private key to themselves, but make their public key available to everybody in the room.  It could be written on the board (error-prone) or maybe pasted in a public site like <url href="http://pastebin.com/"><c>pastebin.com</c></url>.  Then each group can send a signed message to another group, where the groups could be arranged logically in a circular fashion for this purpose.  Of course, messages should be posted publicly as well.  Expect a success rate somewhere between 50<percent/> and 100<percent/>.</p>
+                <p>If you do not do this in class, grab a study buddy and send each other messages in the same manner.  Expect a success rate of 0<percent/>, 50<percent/> or 100<percent/>.</p>
+            </statement>
+        </exercise>
+    </exercises>
 </chapter>
