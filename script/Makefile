@@ -291,6 +291,24 @@ sagenb:
 	cp -a $(HTMLOUT)/images $(SCRATCH)
 	$(MBSCRIPT)/mbx -v -c all -f sagenb -o $(SAGENBOUT)/aata.zip $(SCRATCH)/aata.xml
 
+# This makes a zip file of a version for use at AIM Books
+# Clean out directories first by hand
+# Date and upload
+# HTML version
+#   Copies in image files from source directory
+aimhtml:
+	install -d $(HTMLOUT) $(MBUSR)
+	cp -a $(SRC)/images $(HTMLOUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
+	sed -i -e 's/002637997310187229905:qj2oy0jlpyu/008832104071767086392:pxbnbrlbfwa/' $(SRC)/bookinfo.xml
+	cd $(HTMLOUT); \
+	xsltproc --xinclude --stringparam html.annotation hypothesis $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	sed -i -e 's/008832104071767086392:pxbnbrlbfwa/002637997310187229905:qj2oy0jlpyu/' $(SRC)/bookinfo.xml
+	mv $(SCRATCH)/html $(SCRATCH)/aata-html
+	cd $(SCRATCH); \
+	zip -r $(SCRATCH)/aata-html-2018-datehere.zip aata-html/
+
+
 # EPUB 3.0 assembly
 #	TODO: fix retrieval of CSS (via wget?)
 epub:
