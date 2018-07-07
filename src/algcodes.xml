@@ -363,8 +363,8 @@
             <p>From Example<nbsp/><xref ref="example-algcodes-weights"/>, it is now easy to check that the minimum nonzero weight is 3; hence, the code does indeed detect and correct all single errors. We have now reduced the problem of finding <q>good</q> codes to that of generating group codes. One easy way to generate group codes is to employ a bit of matrix theory.</p>
             <p>Define the <term>inner product</term><idx><h>Inner product</h></idx> of two binary <m>n</m>-tuples to be 
                 <me>{\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n,</me>
-            where <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> and <m>{\mathbf y} = (y_1, y_2, \ldots, y_n)^{\rm t}</m> are column vectors.<fn>Since we will be working with matrices, we will write binary <m>n</m>-tuples as column vectors for the remainder of this chapter.</fn> For example, if <m>{\mathbf x} = (011001)^{\rm t}</m> and <m>{\mathbf y} = (110101)^{\rm t}</m>, then <m>{\mathbf x} \cdot {\mathbf y} = 0</m>. We can also look at an inner product as the product of a row matrix with a column matrix; that is, 
-                <md><mrow>{\mathbf x} \cdot {\mathbf y} &amp; = {\mathbf x}^{\rm t}  {\mathbf y}</mrow><mrow>&amp; =
+            where <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^\transpose</m> and <m>{\mathbf y} = (y_1, y_2, \ldots, y_n)^\transpose</m> are column vectors.<fn>Since we will be working with matrices, we will write binary <m>n</m>-tuples as column vectors for the remainder of this chapter.</fn> For example, if <m>{\mathbf x} = (011001)^\transpose</m> and <m>{\mathbf y} = (110101)^\transpose</m>, then <m>{\mathbf x} \cdot {\mathbf y} = 0</m>. We can also look at an inner product as the product of a row matrix with a column matrix; that is, 
+                <md><mrow>{\mathbf x} \cdot {\mathbf y} &amp; = {\mathbf x}^\transpose  {\mathbf y}</mrow><mrow>&amp; =
                     \begin{pmatrix}
                     x_1 &amp; x_2 &amp; \cdots &amp; x_n
                     \end{pmatrix}
@@ -372,8 +372,8 @@
                     y_1 \\ y_2 \\ \vdots \\ y_n
                     \end{pmatrix}</mrow><mrow>&amp; = x_{1}y_{1} + x_{2}y_{2} + \cdots + x_{n}y_{n}.</mrow></md></p>
             <example xml:id="example-algcodes-matrixcodes">
-                <p>Suppose that the words to be encoded consist of all binary 3-tuples and that our encoding scheme is even-parity. To encode an arbitrary 3-tuple, we add a fourth bit to obtain an even number of 1s. Notice that an arbitrary <m>n</m>-tuple <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^{\rm t}</m> has an even number of 1s exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>; hence, a 4-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^{\rm t}</m> has an even number of 1s if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
-                    <me>{\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^{\rm t} {\mathbf 1} =
+                <p>Suppose that the words to be encoded consist of all binary 3-tuples and that our encoding scheme is even-parity. To encode an arbitrary 3-tuple, we add a fourth bit to obtain an even number of 1s. Notice that an arbitrary <m>n</m>-tuple <m>{\mathbf x} = (x_1, x_2, \ldots, x_n)^\transpose</m> has an even number of 1s exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>; hence, a 4-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^\transpose</m> has an even number of 1s if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or 
+                    <me>{\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^\transpose {\mathbf 1} =
                     \begin{pmatrix}
                     x_1 &amp; x_2 &amp; x_3 &amp; x_4
                     \end{pmatrix}
@@ -391,8 +391,8 @@
                     1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\
                     0 &amp; 0 &amp; 1 &amp; 1 &amp; 1
                     \end{pmatrix}.</me>
-                For a 5-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^{\rm t}</m> to be in the null space of <m>H</m>, <m>H{\mathbf x} = {\mathbf 0}</m>. Equivalently, the following system of equations must be satisfied:   
-                    <md><mrow>x_2 +  x_4  &amp; =  0</mrow><mrow>x_1 +  x_2 + x_3  + x_4   &amp; =  0</mrow><mrow>x_3  + x_4  +  x_5 &amp; =  0.</mrow></md>
+                For a 5-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5)^\transpose</m> to be in the null space of <m>H</m>, <m>H{\mathbf x} = {\mathbf 0}</m>. Equivalently, the following system of equations must be satisfied:   
+                    <md><mrow>x_2 +  x_4  &amp; =  0</mrow><mrow>x_1 + x_2 + x_3  + x_4 &amp; =  0</mrow><mrow>x_3  + x_4  +  x_5 &amp; =  0.</mrow></md>
                 The set of binary 5-tuples satisfying these equations is
                 <me>(00000) \qquad (11110) \qquad (10101) \qquad (01011).</me>
                 This code is easily determined to be a group code.</p>
@@ -402,7 +402,7 @@
                     <p>Let <m>H</m> be in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Then the null space of <m>H</m> is a group code.</p>
                 </statement>
                 <proof>
-                    <p>Since each element of <m>{\mathbb Z}_2^n</m> is its own inverse, the only thing that really needs to be checked here is closure. Let <m>{\mathbf x}, {\mathbf y} \in {\rm Null}(H)</m> for some matrix <m>H</m> in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Then <m>H{\mathbf x} = {\mathbf 0}</m> and <m>H{\mathbf y} = {\mathbf 0}</m>. So 
+                    <p>Since each element of <m>{\mathbb Z}_2^n</m> is its own inverse, the only thing that really needs to be checked here is closure. Let <m>{\mathbf x}, {\mathbf y} \in \Null(H)</m> for some matrix <m>H</m> in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>. Then <m>H{\mathbf x} = {\mathbf 0}</m> and <m>H{\mathbf y} = {\mathbf 0}</m>. So 
                         <me>H({\mathbf x}+{\mathbf y}) = H{\mathbf x} + H{\mathbf y} = {\mathbf 0} + {\mathbf 0} = {\mathbf 0}.</me>
                     Hence, <m>{\mathbf x} + {\mathbf y}</m> is in the null space of <m>H</m> and therefore must be a codeword.</p>
                 </proof>
@@ -418,7 +418,7 @@
                     0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\
                     1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1
                     \end{pmatrix}.</me>
-                Suppose that the 6-tuple <m>{\mathbf x} = (010011)^{\rm t}</m> is received. It is a simple matter of matrix multiplication to determine whether or not <m>{\mathbf x}</m> is a codeword. Since 
+                Suppose that the 6-tuple <m>{\mathbf x} = (010011)^\transpose</m> is received. It is a simple matter of matrix multiplication to determine whether or not <m>{\mathbf x}</m> is a codeword. Since 
                     <me>H{\mathbf x} =
                     \begin{pmatrix} 
                     0 \\ 1 \\ 1
@@ -539,7 +539,7 @@
         </table>
         <theorem>
             <statement>
-                <p>If <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> is a canonical parity-check matrix, then <m>{\rm Null}(H)</m> consists of all  <m>{\mathbf x} \in {\mathbb Z}_2^n</m> whose first <m>n-m</m> bits are arbitrary but whose last <m>m</m> bits are determined by <m>H{\mathbf x} = {\mathbf 0}</m>. Each of the last <m>m</m> bits serves as an even parity check bit for some of the first <m>n-m</m> bits. Hence, <m>H</m> gives rise to an <m>(n, n-m)</m>-block code.</p>
+                <p>If <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> is a canonical parity-check matrix, then <m>\Null(H)</m> consists of all  <m>{\mathbf x} \in {\mathbb Z}_2^n</m> whose first <m>n-m</m> bits are arbitrary but whose last <m>m</m> bits are determined by <m>H{\mathbf x} = {\mathbf 0}</m>. Each of the last <m>m</m> bits serves as an even parity check bit for some of the first <m>n-m</m> bits. Hence, <m>H</m> gives rise to an <m>(n, n-m)</m>-block code.</p>
             </statement>
         </theorem>
         <p>We leave the proof of this theorem as an exercise. In light of the theorem, the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called <term>information bits</term> and the last <m>m</m> bits are called <term>check bits</term>. In Example<nbsp/><xref ref="example-algcodes-parity-check"/>,  the first three bits are the information bits and the last three are the check bits.</p>
@@ -578,7 +578,7 @@
             </statement>
             <proof>
                 <p>First suppose that <m>{\mathbf y} \in C</m>. Then <m>G {\mathbf x} = {\mathbf y}</m> for some <m>{\mathbf x} \in {\mathbb Z}_2^m</m>. By Lemma<nbsp/><xref ref="lemma-parity-check"/>, <m>H {\mathbf y} = HG {\mathbf x} = {\mathbf 0}</m>.</p>
-                <p>Conversely, suppose that <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> is in the null space of <m>H</m>.  We need to find an <m>{\mathbf x}</m> in <m>{\mathbb Z}_2^{n-m}</m> such that <m>G {\mathbf x}^{\rm t} = {\mathbf y}</m>. Since <m>H {\mathbf y} = {\mathbf 0}</m>, the following set of equations must be satisfied:  
+                <p>Conversely, suppose that <m>{\mathbf y} = (y_1, \ldots, y_n)^\transpose</m> is in the null space of <m>H</m>.  We need to find an <m>{\mathbf x}</m> in <m>{\mathbb Z}_2^{n-m}</m> such that <m>G {\mathbf x}^\transpose = {\mathbf y}</m>. Since <m>H {\mathbf y} = {\mathbf 0}</m>, the following set of equations must be satisfied:  
                     <md><mrow>a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow><mrow>a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow><mrow>&amp; \vdots  </mrow><mrow>a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} + y_{n-m+1} &amp; = 0.</mrow></md>
                 Equivalently, <m>y_{n-m+1}, \ldots, y_n</m> are determined by <m>y_1, \ldots, y_{n-m}</m>: 
                     <md><mrow>y_{n-m+1} &amp; = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m}</mrow><mrow>y_{n-m+1} &amp; = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m}</mrow><mrow>&amp; \vdots</mrow><mrow>y_{n-m+1} &amp; = a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}.</mrow></md>
@@ -586,7 +586,7 @@
             </proof>
         </theorem>
         <p>It would be helpful if we could compute the minimum distance of a linear code directly from its matrix <m>H</m> in order to determine the error-detecting and error-correcting capabilities of the code. Suppose that  
-            <md><mrow>{\mathbf e}_1 &amp; = (100 \cdots 00)^{\rm t}</mrow><mrow>{\mathbf e}_2 &amp; = (010 \cdots 00)^{\rm t}</mrow><mrow>&amp; \vdots</mrow><mrow>{\mathbf e}_n &amp; = (000 \cdots 01)^{\rm t}</mrow></md>
+            <md><mrow>{\mathbf e}_1 &amp; = (100 \cdots 00)^\transpose</mrow><mrow>{\mathbf e}_2 &amp; = (010 \cdots 00)^\transpose</mrow><mrow>&amp; \vdots</mrow><mrow>{\mathbf e}_n &amp; = (000 \cdots 01)^\transpose</mrow></md>
         are the <m>n</m>-tuples in <m>{\mathbb Z}_2^n</m> of weight 1. For an <m>m \times n</m> binary matrix <m>H</m>, <m>H{\mathbf e}_i</m> is exactly the <m>i</m>th column of the matrix <m>H</m>.</p>
         <example xml:id="example-algcodes-ith-column">
             <p>Observe that
@@ -614,7 +614,7 @@
                 <p>Let <m>H</m> be an <m>m \times n</m> binary matrix. Then the null space of <m>H</m> is a single error-detecting code if and only if no column of <m>H</m> consists entirely of zeros.</p>
             </statement>
             <proof>
-                <p>Suppose that <m>{\rm Null}(H)</m> is a single error-detecting code. Then the minimum distance of the code must be at least 2. Since the null space is a group code, it is sufficient to require that the code contain no codewords of less than weight 2 other than the zero codeword. That is, <m>{\mathbf e}_i</m> must not be a codeword for <m>i = 1, \ldots, n</m>. Since <m>H{\mathbf e}_i</m> is the <m>i</m>th column of <m>H</m>, the only way in which <m>{\mathbf e}_i</m> could be in the null space of <m>H</m> would be if the <m>i</m>th column were all zeros, which is impossible; hence, the code must have the capability to detect at least single errors.</p>
+                <p>Suppose that <m>\Null(H)</m> is a single error-detecting code. Then the minimum distance of the code must be at least 2. Since the null space is a group code, it is sufficient to require that the code contain no codewords of less than weight 2 other than the zero codeword. That is, <m>{\mathbf e}_i</m> must not be a codeword for <m>i = 1, \ldots, n</m>. Since <m>H{\mathbf e}_i</m> is the <m>i</m>th column of <m>H</m>, the only way in which <m>{\mathbf e}_i</m> could be in the null space of <m>H</m> would be if the <m>i</m>th column were all zeros, which is impossible; hence, the code must have the capability to detect at least single errors.</p>
                 <p>Conversely, suppose that no column of <m>H</m> is the zero column. By Proposition<nbsp/><xref ref="proposition-column"/>, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>.</p>
             </proof>
         </theorem>
@@ -644,7 +644,7 @@
                 1 &amp; 0 &amp; 0 &amp; 1 \\
                 1 &amp; 1 &amp; 0 &amp; 0
                 \end{pmatrix}</me>
-            and  want to determine whether or not <m>H</m> is the canonical parity-check matrix for an error-correcting code, it is necessary to make certain that <m>{\rm Null}(H)</m> does not contain any 4-tuples of weight 2. That is, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, and <m>(0011)</m> must not be in <m>{\rm Null}(H)</m>.  The next theorem states that we can indeed determine that the code generated by <m>H</m> is error-correcting by examining the columns of <m>H</m>. Notice in this example that not only does <m>H</m> have no zero columns, but also that no two columns are the same.</p>
+            and  want to determine whether or not <m>H</m> is the canonical parity-check matrix for an error-correcting code, it is necessary to make certain that <m>\Null(H)</m> does not contain any 4-tuples of weight 2. That is, <m>(1100)</m>, <m>(1010)</m>, <m>(1001)</m>, <m>(0110)</m>, <m>(0101)</m>, and <m>(0011)</m> must not be in <m>\Null(H)</m>.  The next theorem states that we can indeed determine that the code generated by <m>H</m> is error-correcting by examining the columns of <m>H</m>. Notice in this example that not only does <m>H</m> have no zero columns, but also that no two columns are the same.</p>
         </example>
         <theorem>
             <statement>
@@ -686,7 +686,7 @@
                     0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
                     1 &amp; 0 &amp; 0 &amp; 0 &amp; 1
                     \end{pmatrix}</me>
-                and the 5-tuples <m>{\mathbf x} = (11011)^{\rm t}</m> and <m>{\mathbf y} = (01011)^{\rm t}</m>, we can compute
+                and the 5-tuples <m>{\mathbf x} = (11011)^\transpose</m> and <m>{\mathbf y} = (01011)^\transpose</m>, we can compute
                     <me>H{\mathbf x} =
                     \begin{pmatrix}
                     0 \\ 0 \\ 0 
@@ -727,7 +727,7 @@
                     0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
                     1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1
                     \end{pmatrix}</me>
-                and suppose that the  6-tuples <m>{\mathbf x} = (111110)^{\rm t}</m>, <m>{\mathbf y} = (111111)^{\rm t}</m>, and <m>{\mathbf z} = (010111)^{\rm t}</m> have been received. Then  
+                and suppose that the  6-tuples <m>{\mathbf x} = (111110)^\transpose</m>, <m>{\mathbf y} = (111111)^\transpose</m>, and <m>{\mathbf z} = (010111)^\transpose</m> have been received. Then  
                     <me>H{\mathbf x} =
                     \begin{pmatrix}
                     1 \\ 1 \\ 1 

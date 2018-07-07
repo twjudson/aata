@@ -22,7 +22,7 @@
             <title>Some Facts from Linear Algebra</title>
             <p>Before we study matrix groups, we must recall some basic facts from linear algebra.  One of the most fundamental ideas of linear algebra is that of a linear transformation. A <term>linear transformation</term><idx><h>Linear transformation</h><h>definition of</h></idx> or <term>linear map</term><idx><h>Linear map</h></idx> <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a map that preserves vector addition and scalar multiplication; that is, for vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> in <m>{\mathbb R}^n</m> and a scalar <m>\alpha \in {\mathbb R}</m>, 
                 <md><mrow>T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow><mrow>T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y}).</mrow></md>
-            An <m>m \times n</m> matrix with entries in <m>{\mathbb R}</m> represents a linear transformation from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^m</m>. If we write vectors <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)^{\rm t}</m> in <m>{\mathbb R}^n</m> as column matrices, then an <m>m \times n</m> matrix 
+            An <m>m \times n</m> matrix with entries in <m>{\mathbb R}</m> represents a linear transformation from <m>{\mathbb R}^n</m> to <m>{\mathbb R}^m</m>. If we write vectors <m>{\mathbf x} = (x_1, \ldots, x_n)^\transpose</m> and <m>{\mathbf y} = (y_1, \ldots, y_n)^\transpose</m> in <m>{\mathbb R}^n</m> as column matrices, then an <m>m \times n</m> matrix 
                 <me>A
                 =
                 \begin{pmatrix}
@@ -50,17 +50,17 @@
                 \end{pmatrix}.</me>
             We will often abbreviate the matrix <m>A</m> by writing <m>(a_{ij})</m>. <notation><usage>(a_{ij})</usage><description>matrix</description></notation></p>
             <p>Conversely, if <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a linear map, we can associate a matrix <m>A</m> with <m>T</m> by considering what <m>T</m> does to the vectors 
-                <md><mrow>{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^{\rm t}</mrow><mrow>{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^{\rm t}</mrow><mrow>&amp;  \vdots &amp; </mrow><mrow>{\mathbf e}_n &amp; = (0, 0, \ldots, 1)^{\rm t}.</mrow></md>
-            We can write any vector <m>{\mathbf x} = (x_1, \ldots, x_n)^{\rm t}</m> as
+                <md><mrow>{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^\transpose</mrow><mrow>{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^\transpose</mrow><mrow>&amp;  \vdots &amp; </mrow><mrow>{\mathbf e}_n &amp; = (0, 0, \ldots, 1)^\transpose.</mrow></md>
+            We can write any vector <m>{\mathbf x} = (x_1, \ldots, x_n)^\transpose</m> as
                 <me>x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n.</me>
             Consequently, if
-                <md><mrow>T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^{\rm t},</mrow><mrow>T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^{\rm t},</mrow><mrow>&amp;  \vdots &amp; </mrow><mrow>T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^{\rm t},</mrow></md>
+                <md><mrow>T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^\transpose,</mrow><mrow>T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^\transpose,</mrow><mrow>&amp;  \vdots &amp; </mrow><mrow>T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^\transpose,</mrow></md>
             then
-                <md><mrow>T({\mathbf x} ) &amp; = T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow><mrow>&amp; = x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)</mrow><mrow>&amp; = \left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k \right)^{\rm t}</mrow><mrow>&amp; = A {\mathbf x}.</mrow></md></p>
+                <md><mrow>T({\mathbf x} ) &amp; = T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow><mrow>&amp; = x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)</mrow><mrow>&amp; = \left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k \right)^\transpose</mrow><mrow>&amp; = A {\mathbf x}.</mrow></md></p>
             <example xml:id="example-linear-transform">
                 <p>If we let <m>T : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> be the map given by 
                     <me>T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2),</me>
-                the axioms that <m>T</m> must satisfy to be a linear transformation are easily verified. The column vectors <m>T {\mathbf e}_1 = (2, -4)^{\rm t}</m> and <m>T {\mathbf e}_2 = (5,3)^{\rm t}</m>  tell us that <m>T</m> is given by the matrix 
+                the axioms that <m>T</m> must satisfy to be a linear transformation are easily verified. The column vectors <m>T {\mathbf e}_1 = (2, -4)^\transpose</m> and <m>T {\mathbf e}_2 = (5,3)^\transpose</m>  tell us that <m>T</m> is given by the matrix 
                     <me>A =
                     \begin{pmatrix}
                     2 &amp; 5 \\
@@ -90,8 +90,8 @@
                     \end{pmatrix}.</me>
                 We are guaranteed  that <m>A^{-1}</m> exists, since <m>\det(A) = 2 \cdot 3 - 5 \cdot 1 = 1</m> is nonzero.</p>
             </example>
-            <p>Some other facts about determinants will also prove useful in the course of this chapter.   Let <m>A</m> and <m>B</m> be <m>n \times n</m> matrices. From linear algebra we have the following properties of determinants.
-                <ul><li><p>The determinant is a homomorphism into the multiplicative group of real numbers; that is, <m>\det( A B) = (\det A )(\det B)</m>.</p></li><li><p>If <m>A</m> is an invertible matrix, then <m>\det(A^{-1}) = 1 / \det A</m>.</p></li><li><p>If we define the transpose  of a matrix <m>A = (a_{ij})</m> to be <m>A^{\rm t} = (a_{ji})</m>, then <m>\det(A^{\rm t}) = \det A</m>.</p></li><li><p>Let <m>T</m> be the linear transformation associated with an <m>n \times n</m> matrix <m>A</m>. Then <m>T</m> multiplies volumes by a factor of <m>|\det A|</m>. In the case of <m>{\mathbb R}^2</m>, this means that <m>T</m> multiplies areas by <m>|\det A|</m>.</p></li></ul></p>
+            <p>Some other facts about determinants will also prove useful in the course of this chapter. Let <m>A</m> and <m>B</m> be <m>n \times n</m> matrices. From linear algebra we have the following properties of determinants.
+                <ul><li><p>The determinant is a homomorphism into the multiplicative group of real numbers; that is, <m>\det( A B) = (\det A )(\det B)</m>.</p></li><li><p>If <m>A</m> is an invertible matrix, then <m>\det(A^{-1}) = 1 / \det A</m>.</p></li><li><p>If we define the transpose  of a matrix <m>A = (a_{ij})</m> to be <m>A^\transpose = (a_{ji})</m>, then <m>\det(A^\transpose) = \det A</m>.</p></li><li><p>Let <m>T</m> be the linear transformation associated with an <m>n \times n</m> matrix <m>A</m>. Then <m>T</m> multiplies volumes by a factor of <m>|\det A|</m>. In the case of <m>{\mathbb R}^2</m>, this means that <m>T</m> multiplies areas by <m>|\det A|</m>.</p></li></ul></p>
             <p>Linear maps, matrices, and determinants are covered in any elementary linear algebra text; however, if you have not had a course in linear algebra, it is a straightforward process to verify these properties directly for <m>2 \times 2</m> matrices, the case with which we are most concerned.</p>
         </subsection>
         <subsection xml:id="matrix-subsection-general-linear-group">
@@ -123,7 +123,7 @@
                     1 &amp; 1 \\
                     0 &amp; 1
                     \end{pmatrix}</me>
-                be in <m>SL_2({\mathbb R})</m>. In Figure<nbsp/><xref ref="figure-sl2"/>, the unit square corresponding to the vectors <m>{\mathbf x} = (1,0)^{\rm t}</m> and <m>{\mathbf y} =  (0,1)^{\rm t}</m> is taken  by <m>A</m> to the parallelogram with sides <m>(1,0)^{\rm t}</m> and <m>(1, 1)^{\rm t}</m>; that is, <m>A {\mathbf x} = (1,0)^{\rm t}</m> and <m>A {\mathbf y} = (1, 1)^{\rm t}</m>. Notice that these two parallelograms have the same area.</p>
+                be in <m>SL_2({\mathbb R})</m>. In Figure<nbsp/><xref ref="figure-sl2"/>, the unit square corresponding to the vectors <m>{\mathbf x} = (1,0)^\transpose</m> and <m>{\mathbf y} =  (0,1)^\transpose</m> is taken  by <m>A</m> to the parallelogram with sides <m>(1,0)^\transpose</m> and <m>(1, 1)^\transpose</m>; that is, <m>A {\mathbf x} = (1,0)^\transpose</m> and <m>A {\mathbf y} = (1, 1)^\transpose</m>. Notice that these two parallelograms have the same area.</p>
             </example>
             <figure xml:id="figure-sl2">
                 <caption><m>SL_2(\mathbb R)</m> acting on the unit square</caption>
@@ -137,7 +137,7 @@
         </subsection>
         <subsection xml:id="matrix-subsection-orthogonal-group">
             <title>The Orthogonal Group <m>O(n)</m></title>
-            <p>Another subgroup of <m>GL_n({\mathbb R})</m> is the orthogonal group. A matrix <m>A</m> is <term>orthogonal</term><idx><h>Orthogonal matrix</h></idx><idx><h>Matrix</h><h>orthogonal</h></idx> if <m>A^{-1} = A^{\rm t}</m>. The <term>orthogonal group</term><idx><h>Group</h><h>orthogonal</h></idx><idx><h>Orthogonal group</h></idx> consists of the set of all orthogonal matrices. We write <m>O(n)</m> for the <m>n \times n</m> orthogonal group. <notation><usage>O(n)</usage><description>orthogonal group</description></notation> We leave as an exercise the proof that <m>O(n)</m> is a subgroup of <m>GL_n( {\mathbb R})</m>.</p>
+            <p>Another subgroup of <m>GL_n({\mathbb R})</m> is the orthogonal group. A matrix <m>A</m> is <term>orthogonal</term><idx><h>Orthogonal matrix</h></idx><idx><h>Matrix</h><h>orthogonal</h></idx> if <m>A^{-1} = A^\transpose</m>. The <term>orthogonal group</term><idx><h>Group</h><h>orthogonal</h></idx><idx><h>Orthogonal group</h></idx> consists of the set of all orthogonal matrices. We write <m>O(n)</m> for the <m>n \times n</m> orthogonal group. <notation><usage>O(n)</usage><description>orthogonal group</description></notation> We leave as an exercise the proof that <m>O(n)</m> is a subgroup of <m>GL_n( {\mathbb R})</m>.</p>
             <example xml:id="orthogonal">
                 <p>The following matrices are orthogonal:
                     <me>\begin{pmatrix}
@@ -156,10 +156,10 @@
                     1/ \sqrt{3} &amp; 1/ \sqrt{3} &amp; 1/ \sqrt{3} 
                     \end{pmatrix}.</me></p>
             </example>
-            <p>There is a more geometric way of viewing the group <m>O(n)</m>. The orthogonal matrices are exactly those matrices that preserve the length of vectors. We can define the length of a vector using the <term>Euclidean inner product</term>,<idx><h>Euclidean inner product</h></idx> or <term>dot product</term>, of two vectors. The Euclidean inner product of two vectors <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> and <m>{\mathbf y}=(y_1, \ldots, y_n)^{\rm t}</m> is
+            <p>There is a more geometric way of viewing the group <m>O(n)</m>. The orthogonal matrices are exactly those matrices that preserve the length of vectors. We can define the length of a vector using the <term>Euclidean inner product</term>,<idx><h>Euclidean inner product</h></idx> or <term>dot product</term>, of two vectors. The Euclidean inner product of two vectors <m>{\mathbf x}=(x_1, \ldots, x_n)^\transpose</m> and <m>{\mathbf y}=(y_1, \ldots, y_n)^\transpose</m> is
                 <me>\langle  {\mathbf x}, {\mathbf y} \rangle
                 =
-                {\mathbf x}^{\rm t}  {\mathbf y}
+                {\mathbf x}^\transpose  {\mathbf y}
                 =
                 (x_1, x_2, \ldots, x_n)
                 \begin{pmatrix}
@@ -167,7 +167,7 @@
                 \end{pmatrix}
                 =
                 x_1 y_1 + \cdots + x_n y_n.</me>
-            We define the length of a vector <m>{\mathbf x}=(x_1, \ldots, x_n)^{\rm t}</m> to be <notation><usage>\| {\mathbf x} \|</usage><description>length of a vector <m>\mathbf x</m></description></notation>
+            We define the length of a vector <m>{\mathbf x}=(x_1, \ldots, x_n)^\transpose</m> to be <notation><usage>\| {\mathbf x} \|</usage><description>length of a vector <m>\mathbf x</m></description></notation>
                 <me>\| {\mathbf x} \| = \sqrt{\langle  {\mathbf x}, {\mathbf x} \rangle}  = \sqrt{x_1^2 + \cdots + x_n^2}.</me>
             Associated with the notion of the length of a vector is the idea of the distance between two vectors. We define the <term>distance</term> between two vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> to be <m>\| {\mathbf x}-{\mathbf y} \|</m>. We leave as an exercise the proof of the following proposition about the properties of Euclidean inner products.</p>
             <proposition>
@@ -177,20 +177,20 @@
                 </statement>
             </proposition>
             <example xml:id="example-on-preserves-length">
-                <p>The vector <m>{\mathbf x} =(3,4)^{\rm t}</m> has length <m>\sqrt{3^2 + 4^2} = 5</m>.  We can also see that the orthogonal matrix 
+                <p>The vector <m>{\mathbf x} =(3,4)^\transpose</m> has length <m>\sqrt{3^2 + 4^2} = 5</m>.  We can also see that the orthogonal matrix 
                     <me>A=
                     \begin{pmatrix}
                     3/5 &amp; -4/5 \\
                     4/5 &amp; 3/5
                     \end{pmatrix}</me>
-                preserves the length of this vector. The vector <m>A{\mathbf x} = (-7/5,24/5)^{\rm t}</m> also has length 5.</p>
+                preserves the length of this vector. The vector <m>A{\mathbf x} = (-7/5,24/5)^\transpose</m> also has length 5.</p>
             </example>
-            <p>Since <m>\det(A A^{\rm t}) = \det(I) = 1</m> and <m>\det(A) = \det( A^{\rm t} )</m>, the determinant of any orthogonal matrix is either 1 or <m>-1</m>. Consider the column vectors 
+            <p>Since <m>\det(A A^\transpose) = \det(I) = 1</m> and <m>\det(A) = \det( A^\transpose )</m>, the determinant of any orthogonal matrix is either 1 or <m>-1</m>. Consider the column vectors 
                 <me>{\mathbf a}_j =
                 \begin{pmatrix}
                 a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
                 \end{pmatrix}</me>
-            of the orthogonal matrix <m>A= (a_{ij})</m>. Since <m>AA^{\rm t} = I</m>, <m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>, where
+            of the orthogonal matrix <m>A= (a_{ij})</m>. Since <m>AA^\transpose = I</m>, <m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>, where
                 <me>\delta_{rs}
                 =
                 \left\{
@@ -199,20 +199,20 @@
                 0 &amp; r \neq s
                 \end{array}
                 \right.</me>
-            is the Kronecker delta<idx><h>Kronecker delta</h></idx>. Accordingly, column vectors of an orthogonal matrix all have length 1; and the Euclidean inner product of distinct column vectors is zero. Any set of vectors satisfying these properties is called an <term>orthonormal set</term><idx><h>Orthonormal set</h></idx>. Conversely, given an <m>n \times n</m> matrix <m>A</m> whose columns form an orthonormal set, it follows that <m>A^{-1} = A^{\rm t}</m>.</p>
+            is the Kronecker delta<idx><h>Kronecker delta</h></idx>. Accordingly, column vectors of an orthogonal matrix all have length 1; and the Euclidean inner product of distinct column vectors is zero. Any set of vectors satisfying these properties is called an <term>orthonormal set</term><idx><h>Orthonormal set</h></idx>. Conversely, given an <m>n \times n</m> matrix <m>A</m> whose columns form an orthonormal set, it follows that <m>A^{-1} = A^\transpose</m>.</p>
             <p>We say that a matrix <m>A</m> is <term>distance-preserving</term><idx><h>Matrix</h><h>distance-preserving</h></idx>, <term>length-preserving</term><idx><h>Matrix</h><h>length-preserving</h></idx>, or <term>inner product-preserving</term><idx><h>Matrix</h><h>inner product-preserving</h></idx> when <m>\| T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|</m>, <m>\| T{\mathbf x} \| =\| {\mathbf x} \|</m>, or <m>\langle  T{\mathbf x}, T{\mathbf y} \rangle = \langle {\mathbf x},{\mathbf y} \rangle</m>, respectively. The following theorem, which characterizes the orthogonal group, says that these notions are the same.</p>
             <theorem xml:id="theorem-orthnormal-matrix">
                 <statement>
                     <p>Let <m>A</m> be an <m>n \times n</m> matrix.  The following statements are equivalent. 
-                        <ol><li><p>The columns of the matrix <m>A</m> form an orthonormal set.</p></li><li><p><m>A^{-1} = A^{\rm t}</m>.</p></li><li><p>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\langle  A{\mathbf x}, A {\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</p></li><li><p>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \|</m>.</p></li><li><p>For any vector <m>{\mathbf x}</m>, <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.</p></li></ol></p>
+                        <ol><li><p>The columns of the matrix <m>A</m> form an orthonormal set.</p></li><li><p><m>A^{-1} = A^\transpose</m>.</p></li><li><p>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\langle  A{\mathbf x}, A {\mathbf y} \rangle = \langle  {\mathbf x}, {\mathbf y} \rangle</m>.</p></li><li><p>For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>, <m>\| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \|</m>.</p></li><li><p>For any vector <m>{\mathbf x}</m>, <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.</p></li></ol></p>
                 </statement>
                 <proof>
                     <p>We have already shown (1) and (2) to be equivalent.</p>
                     <p><m>(2) \Rightarrow (3)</m>.
-                        <md><mrow>\langle A{\mathbf x}, A{\mathbf y} \rangle &amp; = (A {\mathbf x})^{\rm t} A {\mathbf y}</mrow><mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf y}</mrow><mrow>&amp; = {\mathbf x}^{\rm t} {\mathbf y}</mrow><mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow></md></p>
+                        <md><mrow>\langle A{\mathbf x}, A{\mathbf y} \rangle &amp; = (A {\mathbf x})^\transpose A {\mathbf y}</mrow><mrow>&amp; = {\mathbf x}^\transpose A^\transpose A {\mathbf y}</mrow><mrow>&amp; = {\mathbf x}^\transpose {\mathbf y}</mrow><mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle.</mrow></md></p>
                     <p><m>(3) \Rightarrow (2)</m>. Since
-                        <md><mrow>\langle {\mathbf x}, {\mathbf x} \rangle &amp; = \langle A{\mathbf x}, A{\mathbf x} \rangle</mrow><mrow>&amp; = {\mathbf x}^{\rm t} A^{\rm t} A {\mathbf x}</mrow><mrow>&amp; = \langle {\mathbf x}, A^{\rm t} A{\mathbf x} \rangle,</mrow></md>
-                    we know that <m>\langle {\mathbf x}, (A^{\rm t} A - I){\mathbf x} \rangle = 0</m> for all <m>{\mathbf x}</m>.  Therefore, <m>A^{\rm t} A -I = 0</m> or <m>A^{-1} = A^{\rm t}</m>.</p>
+                        <md><mrow>\langle {\mathbf x}, {\mathbf x} \rangle &amp; = \langle A{\mathbf x}, A{\mathbf x} \rangle</mrow><mrow>&amp; = {\mathbf x}^\transpose A^\transpose A {\mathbf x}</mrow><mrow>&amp; = \langle {\mathbf x}, A^\transpose A{\mathbf x} \rangle,</mrow></md>
+                    we know that <m>\langle {\mathbf x}, (A^\transpose A - I){\mathbf x} \rangle = 0</m> for all <m>{\mathbf x}</m>.  Therefore, <m>A^\transpose A -I = 0</m> or <m>A^{-1} = A^\transpose</m>.</p>
                     <!-- Replaced y with x in <m>(2) \Rightarrow (3)</m>. -->
                     <!-- Suggested by M. Huggins -->
                     <!-- TWJ 24/4/2013 -->
@@ -238,7 +238,7 @@
             </figure>
             <!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
             <example xml:id="example-o2">
-                <p>Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more closely.  An element <m>T \in O(2)</m> is determined by its action on <m>{\mathbf e}_1 = (1, 0)^{\rm t}</m> and <m>{\mathbf e}_2 = (0, 1)^{\rm t}</m>. If <m>T({\mathbf e}_1) = (a,b)^{\rm t}</m>, then <m>a^2 + b^2 = 1</m> and <m>T({\mathbf e}_2) = (-b, a)^{\rm t}</m>. Hence, <m>T</m> can be represented by 
+                <p>Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more closely.  An element <m>T \in O(2)</m> is determined by its action on <m>{\mathbf e}_1 = (1, 0)^\transpose</m> and <m>{\mathbf e}_2 = (0, 1)^\transpose</m>. If <m>T({\mathbf e}_1) = (a,b)^\transpose</m>, then <m>a^2 + b^2 = 1</m> and <m>T({\mathbf e}_2) = (-b, a)^\transpose</m>. Hence, <m>T</m> can be represented by 
                     <me>A
                     =
                     \begin{pmatrix}
@@ -301,7 +301,7 @@
                         <md><mrow>\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| {\mathbf y} \|^2  &amp; = \| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| f({\mathbf y}) \|^2</mrow><mrow> &amp; = \langle f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) -  f({\mathbf y}) \rangle</mrow><mrow>&amp; = \| f({\mathbf x}) -  f({\mathbf y}) \|^2</mrow><mrow>&amp; = \| {\mathbf x} -  {\mathbf y} \|^2</mrow><mrow>&amp; = \langle {\mathbf x} -  {\mathbf y}, {\mathbf x} -  {\mathbf y} \rangle</mrow><mrow>&amp; = \| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf y} \|^2.</mrow></md>
                     Consequently,
                         <me>\langle f({\mathbf x}), f({\mathbf y}) \rangle = \langle {\mathbf x}, {\mathbf y} \rangle.</me>
-                    Now let <m>{\mathbf e}_1</m> and <m>{\mathbf e_2}</m> be <m>(1, 0)^{\rm t}</m> and <m>(0, 1)^{\rm t}</m>, respectively. If 
+                    Now let <m>{\mathbf e}_1</m> and <m>{\mathbf e_2}</m> be <m>(1, 0)^\transpose</m> and <m>(0, 1)^\transpose</m>, respectively. If 
                         <me>{\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2,</me>
                     then
                         <me>f({\mathbf x}) = \langle f({\mathbf x}), f({\mathbf e}_1) \rangle f({\mathbf e}_1) + \langle f({\mathbf x}), f({\mathbf e}_2) \rangle f({\mathbf e}_2) = x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2).</me>
@@ -389,7 +389,7 @@
                 </image>
             </figure>
             <p>Let us examine wallpaper patterns in the plane a little more closely. Suppose that <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are linearly independent vectors in <m>{\mathbb R}^2</m>; that is, one vector cannot be a scalar multiple of the other. A <term>lattice</term><idx><h>Lattice of points</h></idx> of <m>{\mathbf x}</m> and <m>{\mathbf y}</m> is the set of all linear combinations <m>m {\mathbf x} + n {\mathbf y}</m>, where <m>m</m> and <m>n</m> are integers. The vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> are said to be a <term>basis</term><idx><h>Basis of a lattice</h></idx> for the lattice.</p>
-            <p>Notice that a lattice can have several bases. For example, the vectors <m>(1,1)^{\rm t}</m> and <m>(2,0)^{\rm t}</m> have the  same lattice as the vectors <m>(-1, 1)^{\rm t}</m> and <m>(-1, -1)^{\rm t}</m> (Figure<nbsp/><xref ref="figure-lattice"/>). However, any lattice is completely determined by a basis. Given two bases for the same lattice, say <m>\{ {\mathbf x}_1, {\mathbf x}_2 \}</m> and <m>\{ {\mathbf y}_1, {\mathbf y}_2 \}</m>, we can write 
+            <p>Notice that a lattice can have several bases. For example, the vectors <m>(1,1)^\transpose</m> and <m>(2,0)^\transpose</m> have the  same lattice as the vectors <m>(-1, 1)^\transpose</m> and <m>(-1, -1)^\transpose</m> (Figure<nbsp/><xref ref="figure-lattice"/>). However, any lattice is completely determined by a basis. Given two bases for the same lattice, say <m>\{ {\mathbf x}_1, {\mathbf x}_2 \}</m> and <m>\{ {\mathbf y}_1, {\mathbf y}_2 \}</m>, we can write 
                 <md><mrow>{\mathbf y}_1 &amp; = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2</mrow><mrow>{\mathbf y}_2 &amp; = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2,</mrow></md>
             where <m>\alpha_1</m>, <m>\alpha_2</m>, <m>\beta_1</m>, and <m>\beta_2</m> are integers. The matrix corresponding to this transformation is 
                 <me>U
