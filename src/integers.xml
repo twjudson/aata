@@ -14,7 +14,7 @@
         <title>Mathematical Induction</title>
         <p>Suppose we wish to show that
             <me>1 + 2 + \cdots + n = \frac{n(n + 1)}{2}</me>
-        for any natural number <m>n</m>. This formula is easily  verified for small numbers such as <m>n = 1</m>, 2, 3, or 4, but it is impossible to verify for all natural numbers on a case-by-case basis.  To prove the formula true in general, a more generic method is required.</p>
+        for any natural number <m>n</m>. This formula is easily  verified for small numbers such as <m>n = 1</m>, <m>2</m>, <m>3</m>, or <m>4</m>, but it is impossible to verify for all natural numbers on a case-by-case basis.  To prove the formula true in general, a more generic method is required.</p>
         <p>Suppose we have verified the equation for the first <m>n</m> cases.  We will attempt to show that we can generate the formula for the <m>(n + 1)</m>th case from this knowledge.  The formula is true for <m>n = 1</m> since 
             <me>1 = \frac{1(1 + 1)}{2}.</me>
         If we have verified the first <m>n</m> cases, then
@@ -40,11 +40,14 @@
             since <m>k</m> is positive.  Hence, by induction, the statement holds for all integers <m>n \geq 3</m>.</p>
         </example>
         <example xml:id="example-integers-induction-divisible">
-            <p>Every integer <m>10^{n + 1} + 3 \cdot 10^n + 5</m> is divisible by 9 for <m>n \in {\mathbb N}</m>.  For <m>n = 1</m>, 
+            <p>Every integer <m>10^{n + 1} + 3 \cdot 10^n + 5</m> is divisible by <m>9</m> for <m>n \in {\mathbb N}</m>.  For <m>n = 1</m>, 
                 <me>10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15</me>
-            is divisible by 9.  Suppose that <m>10^{k + 1} + 3 \cdot 10^k + 5</m> is divisible by 9 for <m>k \geq 1</m>.  Then 
-                <md><mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow><mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow></md>
-            is divisible by 9.</p>
+            is divisible by <m>9</m>.  Suppose that <m>10^{k + 1} + 3 \cdot 10^k + 5</m> is divisible by 9 for <m>k \geq 1</m>.  Then 
+                <md>
+                    <mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow>
+                    <mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow>
+                </md>
+            is divisible by <m>9</m>.</p>
         </example>
         <example xml:id="example-integers-binomial-theorem">
             <p>We will prove the binomial theorem using mathematical induction; that is, 
@@ -55,8 +58,14 @@
                 <me>\binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}.</me>
             This result follows from
                 <md><mrow>\binom{n}{k} + \binom{n}{k - 1} &amp; = \frac{n!}{k!(n - k)!} +\frac{n!}{(k-1)!(n - k + 1)!}</mrow><mrow>&amp; = \frac{(n + 1)!}{k!(n + 1 - k)!}</mrow><mrow>&amp; =\binom{n + 1}{k}.</mrow></md>
-            If <m>n = 1</m>, the binomial theorem is easy to verify. Now assume that the result is true for <m>n</m> greater than or equal to 1.  Then
-                <md><mrow>(a + b)^{n + 1} &amp; = (a + b)(a + b)^n</mrow><mrow>&amp; = (a + b) \left( \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}\right)</mrow><mrow>&amp; = \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k} + \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k}</mrow><mrow>&amp; = a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} + \sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}</mrow><mrow>&amp;  = a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1} + \binom{n}{k} \right]a^k b^{n + 1 - k} + b^{n + 1}</mrow><mrow>&amp;  = \sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.</mrow></md></p>
+            If <m>n = 1</m>, the binomial theorem is easy to verify. Now assume that the result is true for <m>n</m> greater than or equal to <m>1</m>.  Then
+                <md>
+                    <mrow>(a + b)^{n + 1} &amp; = (a + b)(a + b)^n</mrow>
+                    <mrow>&amp; = (a + b) \left( \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}\right)</mrow>
+                    <mrow>&amp; = \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k} + \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k}</mrow>
+                    <mrow>&amp; = a^{n + 1} + \sum_{k = 1}^{n} \binom{n}{k - 1} a^{k} b^{n + 1 - k} + \sum_{k = 1}^{n} \binom{n}{k}  a^k b^{n + 1 - k} + b^{n + 1}</mrow>
+                    <mrow>&amp;  = a^{n + 1} + \sum_{k = 1}^{n} \left[ \binom{n}{k - 1} + \binom{n}{k} \right]a^k b^{n + 1 - k} + b^{n + 1}</mrow><mrow>&amp;  = \sum_{k = 0}^{n + 1}   \binom{n + 1}{k} a^k b^{n + 1- k}.</mrow>
+                </md></p>
         </example>
         <p>We have an equivalent statement of the Principle of Mathematical Induction that is often very useful.</p>
         <principle xml:id="principle-integers-second-pmi">
@@ -157,8 +166,13 @@
             <p>Among other things, Theorem<nbsp/><xref ref="theorem-integers-gcd"/> allows us to compute the greatest common divisor of two integers.</p>
             <example xml:id="example-integers-gcd">
                 <p>Let us compute the greatest common divisor of <m>945</m> and <m>2415</m>.  First observe that 
-                    <md><mrow>2415 &amp; = 945 \cdot 2 + 525</mrow><mrow>945 &amp; = 525 \cdot 1 + 420</mrow><mrow>525 &amp; = 420 \cdot 1 + 105</mrow><mrow>420 &amp; = 105 \cdot 4 + 0.</mrow></md>
-                Reversing our steps, 105 divides 420, 105 divides 525, 105 divides 945, and 105 divides 2415.  Hence, 105 divides both 945 and 2415.  If <m>d</m> were another common divisor of 945 and 2415, then <m>d</m> would also have to divide 105.  Therefore, <m>\gcd( 945, 2415 ) = 105</m>.</p>
+                    <md>
+                        <mrow>2415 &amp; = 945 \cdot 2 + 525</mrow>
+                        <mrow>945 &amp; = 525 \cdot 1 + 420</mrow>
+                        <mrow>525 &amp; = 420 \cdot 1 + 105</mrow>
+                        <mrow>420 &amp; = 105 \cdot 4 + 0.</mrow>
+                    </md>
+                Reversing our steps, <m>105</m> divides <m>420</m>, <m>105</m> divides <m>525</m>, <m>105</m> divides <m>945</m>, and <m>105</m> divides <m>2415</m>.  Hence, <m>105</m> divides both <m>945</m> and <m>2415</m>.  If <m>d</m> were another common divisor of <m>945</m> and <m>2415</m>, then <m>d</m> would also have to divide <m>105</m>.  Therefore, <m>\gcd( 945, 2415 ) = 105</m>.</p>
                 <p>If we work backward through the above sequence of equations, we can also obtain numbers <m>r</m> and <m>s</m> such that <m>945 r + 2415 s = 105</m>.  Observe that 
                     <md><mrow>105 &amp; = 525 + (-1) \cdot 420</mrow><mrow>&amp; = 525 + (-1) \cdot [945 + (-1) \cdot 525]</mrow><mrow>&amp; = 2 \cdot 525 + (-1) \cdot 945</mrow><mrow>&amp; = 2 \cdot [2415 + (-2) \cdot 945] + (-1) \cdot 945</mrow><mrow>&amp; = 2 \cdot 2415 + (-5) \cdot 945.</mrow></md>
                 So <m>r = -5</m> and <m>s= 2</m>.  Notice that <m>r</m> and <m>s</m> are not unique, since <m>r = 41</m> and <m>s = -16</m> would also work.</p>
@@ -189,7 +203,7 @@
                     <p>There exist an infinite number of primes.</p>
                 </statement>
                 <proof>
-                    <p>We will prove this theorem by contradiction.  Suppose that there are only a finite number of primes, say <m>p_1, p_2, \ldots, p_n</m>.  Let <m>P = p_1  p_2  \cdots  p_n + 1</m>.    Then <m>P</m> must be divisible by some <m>p_i</m> for <m>1 \leq i \leq n</m>. In this  case, <m>p_i</m> must divide <m>P - p_1 p_2 \cdots p_n = 1</m>, which is a contradiction.  Hence, either <m>P</m> is prime or there exists an additional prime number <m>p \neq p_i</m> that divides <m>P</m>.</p>
+                    <p>We will prove this theorem by contradiction.  Suppose that there are only a finite number of primes, say <m>p_1, p_2, \ldots, p_n</m>. Let <m>P = p_1  p_2  \cdots  p_n + 1</m>.    Then <m>P</m> must be divisible by some <m>p_i</m> for <m>1 \leq i \leq n</m>. In this  case, <m>p_i</m> must divide <m>P - p_1 p_2 \cdots p_n = 1</m>, which is a contradiction.  Hence, either <m>P</m> is prime or there exists an additional prime number <m>p \neq p_i</m> that divides <m>P</m>.</p>
                 </proof>
             </theorem>
             <!-- Error in proof fixed.  Suggested by R. Rossi.  TWJ 12/19/2011 -->
@@ -213,7 +227,10 @@
                         <me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
                     has a unique factorization.  Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.</p>
                     <p><em>Existence.</em> To show existence, suppose that there is some integer that cannot be written as the product of primes.  Let <m>S</m> be the set of all such numbers.  By the Principle of Well-Ordering, <m>S</m> has a smallest number, say <m>a</m>.  If the only positive factors of <m>a</m> are <m>a</m> and 1, then <m>a</m> is prime, which is a contradiction.  Hence, <m>a = a_1 a_2</m> where <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.  Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>, since <m>a</m> is the smallest element in <m>S</m>.  So 
-                        <md><mrow>a_1 &amp; = p_1 \cdots p_r</mrow><mrow>a_2 &amp; = q_1 \cdots q_s.</mrow></md>
+                        <md>
+                            <mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
+                            <mrow>a_2 &amp; = q_1 \cdots q_s.</mrow>
+                        </md>
                     Therefore,
                         <me>a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s.</me>
                     So <m>a \notin S</m>, which is a contradiction.</p>
@@ -279,12 +296,12 @@
         </exercise>
         <exercise number="5">
             <statement>
-                <p>Prove that <m>10^{n + 1} + 10^n + 1</m> is divisible by 3 for <m>n \in {\mathbb N}</m>.</p>
+                <p>Prove that <m>10^{n + 1} + 10^n + 1</m> is divisible by <m>3</m> for <m>n \in {\mathbb N}</m>.</p>
             </statement>
         </exercise>
         <exercise number="6">
             <statement>
-                <p>Prove that <m>4 \cdot 10^{2n} + 9 \cdot 10^{2n - 1} + 5</m> is divisible by 99 for <m>n \in {\mathbb N}</m>.</p>
+                <p>Prove that <m>4 \cdot 10^{2n} + 9 \cdot 10^{2n - 1} + 5</m> is divisible by <m>99</m> for <m>n \in {\mathbb N}</m>.</p>
             </statement>
         </exercise>
         <exercise number="7">
@@ -344,7 +361,14 @@
         <exercise number="15">
             <statement>
                 <p>For each of the following pairs of numbers <m>a</m> and <m>b</m>, calculate <m>\gcd(a,b)</m> and find integers <m>r</m> and <m>s</m> such that  <m>\gcd(a,b) = ra + sb</m>.
-                <ol cols="2"><li><p>14 and 39</p></li><li><p>234 and 165</p></li><li><p>1739 and 9923</p></li><li><p>471 and 562</p></li><li><p>23,771 and 19,945</p></li><li><p><m>-4357</m> and 3754</p></li></ol></p>
+                <ol cols="2">
+                    <li><p><m>14</m> and <m>39</m></p></li>
+                    <li><p><m>234</m> and <m>165</m></p></li>
+                    <li><p><m>1739</m> and <m>9923</m></p></li>
+                    <li><p><m>471</m> and <m>562</m></p></li>
+                    <li><p><m>23771</m> and <m>19945</m></p></li>
+                    <li><p><m>-4357</m> and <m>3754</m></p>
+                </li></ol></p>
             </statement>
         </exercise>
         <exercise number="16" xml:id="exercise-integers-gcd-1">
@@ -357,9 +381,15 @@
             <title>Fibonacci Numbers</title>
             <statement>
                 <p>The Fibonacci numbers are
-                <me>1, 1, 2, 3, 5, 8, 13, 21, \ldots.</me>
-            We can define them inductively by <m>f_1 = 1</m>, <m>f_2 = 1</m>, and <m>f_{n + 2} = f_{n + 1} + f_n</m> for <m>n \in {\mathbb N}</m>. 
-                <ol><li><p>Prove that <m>f_n \lt 2^n</m>.</p></li><li><p>Prove that <m>f_{n + 1} f_{n - 1} = f^2_n + (-1)^n</m>, <m>n \geq 2</m>.</p></li><li><p>Prove that <m>f_n = [(1 + \sqrt{5}\, )^n - (1 - \sqrt{5}\, )^n]/ 2^n \sqrt{5}</m>.</p></li><li><p>Show that <m>\lim_{n \rightarrow \infty} f_n / f_{n + 1} = (\sqrt{5} - 1)/2</m>.</p></li><li><p>Prove that <m>f_n</m> and <m>f_{n + 1}</m> are relatively prime.</p></li></ol></p>
+                    <me>1, 1, 2, 3, 5, 8, 13, 21, \ldots.</me>
+                We can define them inductively by <m>f_1 = 1</m>, <m>f_2 = 1</m>, and <m>f_{n + 2} = f_{n + 1} + f_n</m> for <m>n \in {\mathbb N}</m>. 
+                    <ol>
+                        <li><p>Prove that <m>f_n \lt 2^n</m>.</p></li>
+                        <li><p>Prove that <m>f_{n + 1} f_{n - 1} = f^2_n + (-1)^n</m>, <m>n \geq 2</m>.</p></li>
+                        <li><p>Prove that <m>f_n = [(1 + \sqrt{5}\, )^n - (1 - \sqrt{5}\, )^n]/ 2^n \sqrt{5}</m>.</p></li>
+                        <li><p>Show that <m>\lim_{n \rightarrow \infty} f_n / f_{n + 1} = (\sqrt{5} - 1)/2</m>.</p></li>
+                        <li><p>Prove that <m>f_n</m> and <m>f_{n + 1}</m> are relatively prime.</p></li>
+                    </ol></p>
             </statement>
             <hint>
                 <p>For (a) and (b) use mathematical induction. (c) Show that <m>f_1 = 1</m>, <m>f_2 = 1</m>, and <m>f_{n + 2} = f_{n + 1} + f_n</m>. (d)  Use part (c). (e) Use part (b) and Exercise<nbsp/><xref ref="exercise-integers-gcd-1"/>.</p>
@@ -447,7 +477,7 @@
         </exercise>
         <exercise number="31">
             <statement>
-                <p>Using the fact that 2 is prime, show that there do not exist integers <m>p</m> and <m>q</m> such that <m>p^2 = 2 q^2</m>. Demonstrate that therefore <m>\sqrt{2}</m> cannot be a rational number.</p>
+                <p>Using the fact that <m>2</m> is prime, show that there do not exist integers <m>p</m> and <m>q</m> such that <m>p^2 = 2 q^2</m>. Demonstrate that therefore <m>\sqrt{2}</m> cannot be a rational number.</p>
             </statement>
         </exercise>
     </exercises>
@@ -459,7 +489,7 @@
                 <h>Sieve of Eratosthenes</h>
             </idx>
             <statement>
-                <p>One method of computing all of the prime numbers less than a certain fixed positive integer <m>N</m> is to list all of the numbers <m>n</m> such that <m>1 \lt n \lt N</m>.  Begin by eliminating all of the multiples of 2.  Next eliminate all of the multiples of 3. Now eliminate all of the  multiples of 5.  Notice that 4 has already been crossed out.  Continue in this manner, noticing that we do not have to go all the way to <m>N</m>; it suffices to stop at <m>\sqrt{N}</m>. Using this method, compute all of the prime numbers less than <m>N = 250</m>.  We can also use this method to find all of the integers that are relatively prime to an integer <m>N</m>.  Simply eliminate the prime factors of <m>N</m> and all of their multiples.  Using this method, find all of the numbers that are relatively prime to <m>N= 120</m>.  Using the Sieve of Eratosthenes, write a program that will compute all of the primes less than an integer <m>N</m>. </p>
+                <p>One method of computing all of the prime numbers less than a certain fixed positive integer <m>N</m> is to list all of the numbers <m>n</m> such that <m>1 \lt n \lt N</m>.  Begin by eliminating all of the multiples of <m>2</m>.  Next eliminate all of the multiples of 3. Now eliminate all of the  multiples of <m>5</m>.  Notice that 4 has already been crossed out.  Continue in this manner, noticing that we do not have to go all the way to <m>N</m>; it suffices to stop at <m>\sqrt{N}</m>. Using this method, compute all of the prime numbers less than <m>N = 250</m>.  We can also use this method to find all of the integers that are relatively prime to an integer <m>N</m>. Simply eliminate the prime factors of <m>N</m> and all of their multiples.  Using this method, find all of the numbers that are relatively prime to <m>N= 120</m>.  Using the Sieve of Eratosthenes, write a program that will compute all of the primes less than an integer <m>N</m>. </p>
             </statement>
         </exercise>
         <exercise>

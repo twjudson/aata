@@ -9,6 +9,7 @@
     <title>Groups</title>
     <introduction>
         <p>We begin our study of algebraic structures by investigating sets associated with single operations that satisfy certain reasonable axioms; that is, we want to define an operation on a set in a way that will generalize such familiar structures as the integers <m>{\mathbb Z}</m> together with the single operation of addition, or invertible <m>2 \times 2</m> matrices together with the single operation of matrix multiplication.  The integers and the <m>2 \times 2</m> matrices, together with their respective single operations, are examples of algebraic structures known as groups.</p>
+
         <p>The theory of groups occupies a central position in mathematics. Modern group theory arose from an attempt to find the roots of a polynomial in terms of its coefficients. Groups now play a central role in such areas as coding theory, counting, and the study of  symmetries; many areas of biology, chemistry, and physics have benefited from group theory.</p>
     </introduction>
     <section xml:id="section-mod-n-sym">
@@ -18,16 +19,23 @@
         </introduction>
         <subsection xml:id="groups-subsection-integers-mod-n">
             <title>The Integers mod <m>n</m></title>
-            <p>The integers mod <m>n</m> have become indispensable in the theory and applications of algebra.  In mathematics they are used in cryptography, coding theory, and the detection of errors in identification codes.</p>
-            <p>We have already seen that two integers <m>a</m> and <m>b</m> are equivalent mod <m>n</m> if <m>n</m> divides <m>a - b</m>.  The integers mod <m>n</m> also partition <m>{\mathbb Z}</m> into <m>n</m> different equivalence classes; we will denote the set of these equivalence classes by <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>the integers modulo <m>n</m></description></notation> Consider the integers modulo 12 and the corresponding partition of the integers:  
-                <md><mrow>{[0]} &amp; = \{ \ldots, -12, 0, 12, 24, \ldots \},</mrow><mrow> {[1]} &amp; = \{ \ldots, -11, 1, 13, 25, \ldots \},</mrow><mrow> &amp; \vdots</mrow><mrow> {[11]} &amp; = \{ \ldots, -1, 11, 23, 35, \ldots \}.</mrow></md>
+            <p>The integers mod <m>n</m> have become indispensable in the theory and applications of algebra. In mathematics they are used in cryptography, coding theory, and the detection of errors in identification codes.</p>
+
+            <p>We have already seen that two integers <m>a</m> and <m>b</m> are equivalent mod <m>n</m> if <m>n</m> divides <m>a - b</m>.  The integers mod <m>n</m> also partition <m>{\mathbb Z}</m> into <m>n</m> different equivalence classes; we will denote the set of these equivalence classes by <m>{\mathbb Z}_n</m>. <notation><usage>\mathbb Z_n</usage><description>the integers modulo <m>n</m></description></notation> Consider the integers modulo <m>12</m> and the corresponding partition of the integers:
+                <md>
+                    <mrow>{[0]} &amp; = \{ \ldots, -12, 0, 12, 24, \ldots \},</mrow>
+                    <mrow> {[1]} &amp; = \{ \ldots, -11, 1, 13, 25, \ldots \},</mrow>
+                    <mrow> &amp; \vdots</mrow><mrow> {[11]} &amp; = \{ \ldots, -1, 11, 23, 35, \ldots \}.</mrow>
+                </md>
             When no confusion can arise, we will use <m>0, 1, \ldots, 11</m> to indicate the equivalence classes  <m>{[0]}, {[1]}, \ldots, {[11]}</m> respectively.  We can do arithmetic on <m>{\mathbb Z}_n</m>.  For two integers <m>a</m> and <m>b</m>, define addition modulo <m>n</m> to be <m>(a + b) \pmod{n}</m>; that is, the remainder when <m>a + b</m> is divided by <m>n</m>.  Similarly, multiplication modulo <m>n</m> is defined as <m>(a  b) \pmod{ n}</m>, the remainder when <m>a  b</m> is divided by <m>n</m>.</p>
+
             <example xml:id="example-groups-zn-addition">
-                <p>The following examples illustrate integer arithmetic modulo <m>n</m>:<md><mrow>7 + 4  &amp; \equiv  1 \pmod{ 5}   &amp; 7 \cdot 3 &amp; \equiv 1 \pmod{ 5}</mrow><mrow>3 + 5  &amp; \equiv  0 \pmod{ 8}   &amp; 3 \cdot 5 &amp; \equiv 7 \pmod{ 8}</mrow><mrow>3 + 4  &amp; \equiv  7 \pmod{ 12}  &amp; 3 \cdot 4 &amp; \equiv 0 \pmod{ 12}</mrow></md>.  In particular, notice that it is possible that the product of two nonzero numbers modulo <m>n</m> can be equivalent to <m>0 </m> modulo <m>n</m>. 
+                <p>The following examples illustrate integer arithmetic modulo <m>n</m>:<md><mrow>7 + 4  &amp; \equiv  1 \pmod{ 5}   &amp; 7 \cdot 3 &amp; \equiv 1 \pmod{ 5}</mrow><mrow>3 + 5  &amp; \equiv  0 \pmod{ 8}   &amp; 3 \cdot 5 &amp; \equiv 7 \pmod{ 8}</mrow><mrow>3 + 4  &amp; \equiv 7 \pmod{ 12}  &amp; 3 \cdot 4 &amp; \equiv 0 \pmod{ 12}</mrow></md>.  In particular, notice that it is possible that the product of two nonzero numbers modulo <m>n</m> can be equivalent to <m>0</m> modulo <m>n</m>. 
                 </p>
             </example>
+
             <example xml:id="example-groups-zn-arithmetic-laws">
-                <p>Most, but not all, of the usual laws of arithmetic hold for addition and multiplication in <m>{\mathbb Z}_n</m>.  For instance, it is not necessarily true that there is a multiplicative inverse.  Consider the multiplication table for <m>{\mathbb Z}_8</m> in Table<nbsp/><xref ref="table-z8-mult"/>.  Notice that 2, 4, and 6 do not have multiplicative inverses; that is, for <m>n = 2</m>, 4, or 6, there is no integer <m>k</m> such that <m>k n \equiv 1 \pmod{ 8}</m>.</p>
+                <p>Most, but not all, of the usual laws of arithmetic hold for addition and multiplication in <m>{\mathbb Z}_n</m>.  For instance, it is not necessarily true that there is a multiplicative inverse.  Consider the multiplication table for <m>{\mathbb Z}_8</m> in Table<nbsp/><xref ref="table-z8-mult"/>.  Notice that <m>2</m>, <m>4</m>, and <m>6</m> do not have multiplicative inverses; that is, for <m>n = 2</m>, <m>4</m>, or <m>6</m>, there is no integer <m>k</m> such that <m>k n \equiv 1 \pmod{ 8}</m>.</p>
             </example>
             <table xml:id="table-z8-mult">
                 <!-- math table -->
@@ -50,12 +58,34 @@
             <proposition xml:id="proposition-zn-equiv-classes">
                 <statement>
                     <p>Let <m>{\mathbb Z}_n</m> be the set of equivalence classes of the integers mod <m>n</m> and <m>a, b, c \in {\mathbb Z}_n</m>.
-                        <ol><li><p>Addition and multiplication are commutative:
-                                <md><mrow> a + b  &amp; \equiv  b + a \pmod{ n}</mrow><mrow> a  b   &amp; \equiv  b  a \pmod{ n}. </mrow></md></p></li><li><p>Addition and multiplication are associative:
-                                <md><mrow> (a + b) + c  &amp; \equiv  a + (b + c)\pmod{ n}</mrow><mrow> (a  b)  c    &amp; \equiv  a   (b  c) \pmod{ n}.</mrow></md></p></li><li><p> There are both additive and multiplicative identities:
-                                <md><mrow> a + 0  &amp; \equiv  a \pmod{ n}</mrow><mrow> a \cdot  1  &amp; \equiv  a \pmod{ n}.</mrow></md></p></li><li><p>Multiplication distributes over addition: 
-                                <me>a  (b  + c)  \equiv a  b + a  c  \pmod{ n}.</me></p></li><li><p>For every integer <m>a</m> there is an additive inverse <m>-a</m>: 
-                                <me> a + (-a)  \equiv 0 \pmod{ n}. </me></p></li><li><p>Let <m>a</m> be a nonzero integer.  Then <m>\gcd(a,n) = 1</m> if and only if there exists a multiplicative inverse <m>b</m> for <m>a \pmod{n}</m>; that is, a nonzero integer <m>b</m> such that <me> a  b  \equiv 1 \pmod{ n}.</me></p></li></ol> </p>
+                        <ol>
+                            <li><p>Addition and multiplication are commutative:
+                                <md>
+                                    <mrow> a + b  &amp; \equiv  b + a \pmod{ n}</mrow>
+                                    <mrow> a  b   &amp; \equiv  b  a \pmod{ n}. </mrow>
+                                </md></p></li>
+
+                            <li><p>Addition and multiplication are associative:
+                                <md>
+                                    <mrow> (a + b) + c  &amp; \equiv  a + (b + c)\pmod{ n}</mrow>
+                                    <mrow> (a  b)  c    &amp; \equiv  a   (b  c) \pmod{ n}.</mrow>
+                                </md></p></li>
+
+                            <li><p> There are both additive and multiplicative identities:
+                                <md>
+                                    <mrow> a + 0  &amp; \equiv  a \pmod{ n}</mrow>
+                                    <mrow> a \cdot  1  &amp; \equiv  a \pmod{ n}.</mrow>
+                                </md></p></li>
+
+                            <li><p>Multiplication distributes over addition: 
+                                <me>a  (b  + c)  \equiv a  b + a  c  \pmod{ n}.</me></p></li>
+
+                            <li><p>For every integer <m>a</m> there is an additive inverse <m>-a</m>: 
+                                <me> a + (-a)  \equiv 0 \pmod{ n}. </me></p></li>
+
+                            <li><p>Let <m>a</m> be a nonzero integer.  Then <m>\gcd(a,n) = 1</m> if and only if there exists a multiplicative inverse <m>b</m> for <m>a \pmod{n}</m>; that is, a nonzero integer <m>b</m> such that <me> a  b  \equiv 1 \pmod{ n}.</me></p></li>
+
+                    </ol> </p>
                 </statement>
                 <todo>RAB: consider cases in proofs for mathBook XML</todo>
                 <todo>See if id/ref works on items in ordered lists</todo>
