@@ -45,7 +45,7 @@
         <example xml:id="example-integers-induction-divisible">
             <p>Every integer <m>10^{n + 1} + 3 \cdot 10^n + 5</m> is divisible by <m>9</m> for <m>n \in {\mathbb N}</m>.  For <m>n = 1</m>, 
                 <me>10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15</me>
-            is divisible by <m>9</m>.  Suppose that <m>10^{k + 1} + 3 \cdot 10^k + 5</m> is divisible by 9 for <m>k \geq 1</m>.  Then 
+            is divisible by <m>9</m>.  Suppose that <m>10^{k + 1} + 3 \cdot 10^k + 5</m> is divisible by <m>9</m> for <m>k \geq 1</m>.  Then 
                 <md>
                     <mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow>
                     <mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow>
@@ -226,7 +226,7 @@
 
         <subsection xml:id="integers-subsection-prime-numbers">
             <title>Prime Numbers</title>
-            <p>Let <m>p</m> be an integer such that <m>p \gt 1</m>. We say that <m>p</m> is a <term>prime number</term><idx><h>Prime integer</h></idx>, or simply <m>p</m> is <term>prime</term>, if the only positive numbers that divide <m>p</m> are 1 and <m>p</m> itself.  An integer <m>n \gt 1</m> that is not prime is said to be <term>composite</term><idx><h>Composite integer</h></idx>.</p>
+            <p>Let <m>p</m> be an integer such that <m>p \gt 1</m>. We say that <m>p</m> is a <term>prime number</term><idx><h>Prime integer</h></idx>, or simply <m>p</m> is <term>prime</term>, if the only positive numbers that divide <m>p</m> are <m>1</m> and <m>p</m> itself.  An integer <m>n \gt 1</m> that is not prime is said to be <term>composite</term><idx><h>Composite integer</h></idx>.</p>
             
             <lemma xml:id="theorem-integers-prime-divisor">
                 <title>Euclid</title>
@@ -270,7 +270,7 @@
                         <me>n' = p_2 \cdots p_k = q_2 \cdots q_l</me>
                     has a unique factorization.  Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.</p>
                     
-                    <p><em>Existence.</em> To show existence, suppose that there is some integer that cannot be written as the product of primes.  Let <m>S</m> be the set of all such numbers.  By the Principle of Well-Ordering, <m>S</m> has a smallest number, say <m>a</m>.  If the only positive factors of <m>a</m> are <m>a</m> and 1, then <m>a</m> is prime, which is a contradiction.  Hence, <m>a = a_1 a_2</m> where <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.  Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>, since <m>a</m> is the smallest element in <m>S</m>.  So 
+                    <p><em>Existence.</em> To show existence, suppose that there is some integer that cannot be written as the product of primes.  Let <m>S</m> be the set of all such numbers.  By the Principle of Well-Ordering, <m>S</m> has a smallest number, say <m>a</m>.  If the only positive factors of <m>a</m> are <m>a</m> and <m>1</m>, then <m>a</m> is prime, which is a contradiction.  Hence, <m>a = a_1 a_2</m> where <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.  Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>, since <m>a</m> is the smallest element in <m>S</m>.  So 
                         <md>
                             <mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
                             <mrow>a_2 &amp; = q_1 \cdots q_s.</mrow>
@@ -547,7 +547,7 @@
                 <h>Sieve of Eratosthenes</h>
             </idx>
             <statement>
-                <p>One method of computing all of the prime numbers less than a certain fixed positive integer <m>N</m> is to list all of the numbers <m>n</m> such that <m>1 \lt n \lt N</m>. Begin by eliminating all of the multiples of <m>2</m>. Next eliminate all of the multiples of 3. Now eliminate all of the  multiples of <m>5</m>. Notice that 4 has already been crossed out.  Continue in this manner, noticing that we do not have to go all the way to <m>N</m>; it suffices to stop at <m>\sqrt{N}</m>. Using this method, compute all of the prime numbers less than <m>N = 250</m>. We can also use this method to find all of the integers that are relatively prime to an integer <m>N</m>. Simply eliminate the prime factors of <m>N</m> and all of their multiples.  Using this method, find all of the numbers that are relatively prime to <m>N= 120</m>. Using the Sieve of Eratosthenes, write a program that will compute all of the primes less than an integer <m>N</m>. </p>
+                <p>One method of computing all of the prime numbers less than a certain fixed positive integer <m>N</m> is to list all of the numbers <m>n</m> such that <m>1 \lt n \lt N</m>. Begin by eliminating all of the multiples of <m>2</m>. Next eliminate all of the multiples of <m>3</m>. Now eliminate all of the  multiples of <m>5</m>. Notice that <m>4</m> has already been crossed out.  Continue in this manner, noticing that we do not have to go all the way to <m>N</m>; it suffices to stop at <m>\sqrt{N}</m>. Using this method, compute all of the prime numbers less than <m>N = 250</m>. We can also use this method to find all of the integers that are relatively prime to an integer <m>N</m>. Simply eliminate the prime factors of <m>N</m> and all of their multiples.  Using this method, find all of the numbers that are relatively prime to <m>N= 120</m>. Using the Sieve of Eratosthenes, write a program that will compute all of the primes less than an integer <m>N</m>. </p>
             </statement>
         </exercise>
         <exercise>
