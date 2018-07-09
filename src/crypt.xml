@@ -9,15 +9,21 @@
     <title>Introduction to Cryptography</title>
     <introduction>
         <p>Cryptography is the study of sending and receiving secret messages. The aim of cryptography is to send messages across a channel so that only the intended recipient of the message can read it. In addition, when a message is received, the recipient usually requires some assurance that the message is authentic; that is, that it has not been sent by someone who is trying to deceive the recipient. Modern cryptography is heavily dependent on abstract algebra and number theory.</p>
-        <p>The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx> message. The disguised message is called the <term>ciphertext</term><idx><h>Ciphertext</h></idx>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,<idx><h>Cipher</h></idx>  has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
+        
+        <p>The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx> message. The disguised message is called the <term>ciphertext</term><idx><h>Ciphertext</h></idx>. The plaintext and the ciphertext are both written in an <term>alphabet</term>, consisting of <term>letters</term> or <term>characters</term>. Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>, z but also digits, punctuation marks, and blanks. A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,<idx><h>Cipher</h></idx> has two parts: <term>encryption</term>, the process of transforming a plaintext message to a ciphertext message, and <term>decryption</term>, the reverse transformation of changing a ciphertext message into a plaintext message.</p>
+        
         <p>There are many different families of cryptosystems, each distinguished by a particular encryption algorithm. Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term><idx><h>Key</h><h>definition of</h></idx>. A classical cryptosystem has a single key, which must be kept secret,  known only to the sender and the receiver of the message. If person <m>A</m> wishes to send secret messages to two different people <m>B</m> and <m>C</m>, and does not wish to have <m>B</m> understand <m>C</m>'s messages or vice versa, <m>A</m> must use two separate keys, so one cryptosystem is used for exchanging messages with <m>B</m>, and another is used for exchanging messages with <m>C</m>.</p>
-        <p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.  Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
+        
+        <p>Systems that use two separate keys, one for encoding and another for decoding, are called <term>public key cryptosystems</term><idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx>. Since knowledge of the encoding key does not allow anyone to guess at the decoding key, the encoding key can be made public. A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key. Anyone is capable of encoding a message to be sent to <m>C</m>, but only <m>C</m> knows how to decode such a message.</p>
     </introduction>
+    
     <section xml:id="section-private-key-crypt">
         <title>Private Key Cryptography</title>
+        
         <p>In <term>single</term><idx><h>Key</h><h>single</h></idx><idx><h>Cryptosystem</h><h>single key</h></idx> or <term>private key cryptosystems</term><idx><h>Key</h><h>private</h></idx><idx><h>Cryptosystem</h><h>private key</h></idx> the same key is used for both encrypting and decrypting messages. To encrypt a  plaintext message, we apply to the message some function which is kept secret, say <m>f</m>. This function will yield an encrypted message.  Given the encrypted form of the message, we can recover the original message by applying the inverse transformation <m>f^{-1}</m>. The transformation <m>f</m> must be relatively easy to compute, as must <m>f^{-1}</m>; however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.</p>
+        
         <example xml:id="example-crypt-caesar">
-            <p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.  We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. The encoding function will be 
+            <p>One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar. We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>. The encoding function will be 
                 <me>f(p) = p + 3 \bmod 26;</me>
             that is, <m>A \mapsto D, B \mapsto E, \ldots, Z \mapsto C</m>. The decoding function is then 
                 <me>f^{-1}(p) = p - 3 \bmod 26 = p + 23 \bmod 26.</me>
@@ -25,28 +31,34 @@
                 <me>3, 14, 9, 7, 4, 20, 3.</me>
             Next we apply the inverse transformation to get
                 <me>0, 11, 6, 4, 1, 17, 0,</me>
-            or ALGEBRA. Notice here that there is nothing special about either of the numbers 3 or 26. We could have used a larger alphabet or a different shift.</p>
+            or ALGEBRA. Notice here that there is nothing special about either of the numbers <m>3</m> or <m>26</m>. We could have used a larger alphabet or a different shift.</p>
         </example>
+        
         <p><term>Cryptanalysis</term><idx><h>Cryptanalysis</h></idx> is concerned with deciphering a received or intercepted message. Methods from probability and statistics are great aids in deciphering an intercepted message; for example, the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.</p>
+        
         <example xml:id="example-crypt-analysis">
-            <p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the 26-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis.  The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext.  Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
+            <p>Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the <m>26</m>-letter alphabet. To find out exactly what the shift transformation was, we must compute <m>b</m> in the equation <m>f(p) = p + b \bmod 26</m>. We can do this using frequency analysis. The letter <m>\text{E} = 04</m> is the most commonly occurring letter in the English language. Suppose that <m>\text{S} = 18</m> is the most commonly occurring letter in the ciphertext. Then we have good reason to suspect that  <m>18 = 4 + b \bmod 26</m>, or <m>b= 14</m>. Therefore, the most likely encrypting function is
                 <me>f(p) = p + 14 \bmod 26.</me>
             The corresponding decrypting function is
                 <me>f^{-1}(p) = p + 12 \bmod 26.</me>
             It is now easy to determine whether or not our guess is correct.</p>
         </example>
-        <p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp/><xref ref="example-crypt-caesar"/>, there are only 26 possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p>
-        <p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by  
+
+        <p>Simple shift codes are examples of <term>monoalphabetic cryptosystems</term><idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>. In these ciphers a character in the enciphered message represents exactly one character in the original message. Such cryptosystems are not very sophisticated and are quite easy to break. In fact, in a simple shift as described in Example<nbsp/><xref ref="example-crypt-caesar"/>, there are only <m>26</m> possible keys. It would be quite easy to try them all rather than to use frequency analysis.</p>
+        
+        <p>Let us investigate a slightly more sophisticated cryptosystem. Suppose that the encoding function is given by
             <me>f(p) = ap + b \bmod 26.</me>
         We first need to find out when a decoding function <m>f^{-1}</m> exists. Such a decoding function exists when we can solve the equation
             <me>c = ap + b \bmod 26</me>
         for <m>p</m>. By Proposition<nbsp/><xref ref="proposition-zn-equiv-classes"/>, this is possible exactly when <m>a</m> has an inverse or, equivalently, when <m>\gcd( a, 26) =1</m>. In this case 
             <me>f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26.</me>
         Such a cryptosystem is called an <term>affine cryptosystem</term><idx><h>Cryptosystem</h><h>affine</h></idx>.</p>
+        
         <example xml:id="example-crypt-affine-crypt">
             <p>Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>. For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible. This is only possible if <m>\gcd(a, 26) = 1</m>. Recognizing this fact, we will let <m>a = 5</m> since <m>\gcd(5, 26) = 1</m>. It is easy to see that <m>a^{-1} = 21</m>. Therefore, we can take our encryption function to be <m>f(p) = 5p + 3 \bmod 26</m>. Thus, ALGEBRA is encoded as <m>3, 6, 7, 23, 8, 10, 3</m>, or DGHXIKD. The decryption function will be   
                 <me>f^{-1}(p) = 21 p - 21 \cdot 3 \bmod 26 = 21 p + 15 \bmod 26.</me></p>
         </example>
+        
         <p>A cryptosystem would be more secure if a ciphertext letter could represent more than one plaintext letter.  To give an example of this type of cryptosystem, called a <term>polyalphabetic cryptosystem</term>,<idx><h>Cryptosystem</h><h>polyalphabetic</h></idx> we will generalize affine codes by using matrices. The idea works roughly the same as before; however, instead of encrypting one letter at a time we will encrypt pairs of letters.  We can store a pair of letters <m>p_1</m> and <m>p_2</m> in a vector  
             <me>{\mathbf p} = 
             \begin{pmatrix}
@@ -56,6 +68,7 @@
             <me>f({\mathbf p}) = A {\mathbf p} + {\mathbf b},</me>
         where <m>{\mathbf b}</m> is a fixed column vector and matrix operations are performed in <m>{\mathbb Z}_{26}</m>. The decoding function must be
             <me>f^{-1}({\mathbf p}) = A^{-1} {\mathbf p} - A^{-1} {\mathbf b}.</me></p>
+        
         <example xml:id="example-crypt-help">
             <p>Suppose that we wish to encode the word HELP. The corresponding digit string is <m>7, 4, 11, 15</m>. If
                 <me>A =
@@ -72,21 +85,27 @@
                 \end{pmatrix}.</me>
             If <m>{\mathbf b} = ( 2, 2)^\transpose</m>, then our message is encrypted as RRGR. The encrypted letter R represents more than one plaintext letter.</p>
         </example>
+        
         <p>Frequency analysis can still be performed on a polyalphabetic cryptosystem, because we have a good understanding of how pairs of letters appear in the English language. The pair <em>th</em> appears quite often; the pair <em>qz</em> never appears.  To avoid decryption by a third party, we must use a larger matrix than the one we used in Example<nbsp/><xref ref="example-crypt-help"/>.</p>
         <!-- TWJ 4/7/2010 Need to resolve this reference -->
     </section>
+    
     <section xml:id="section-public-key-crypt">
         <title>Public Key Cryptography</title>
         <introduction>
             <p>If traditional cryptosystems are used, anyone who knows enough to encode a message will also know enough to decode an intercepted message. In 1976, W. Diffie<idx><h>Diffie, W.</h></idx> and M. Hellman<idx><h>Hellman, M.</h></idx> proposed public key cryptography, which is based on the observation that the encryption and decryption procedures need not have the same key. This removes the requirement that the encoding key be kept secret. The encoding function <m>f</m> must be relatively easy to compute, but <m>f^{-1}</m> must be extremely difficult to compute without some additional information, so that someone who knows only the encrypting key cannot find the decrypting key without prohibitive computation. It is interesting to note that to date, no system has been proposed that has been proven to be <q>one-way;</q> that is, for any existing public key cryptosystem, it has never been shown to be computationally prohibitive to decode messages with only knowledge of the encoding key.</p>
         </introduction>
+        
         <subsection xml:id="crypt-subsection-rsa">
             <title>The <acro>RSA</acro> Cryptosystem</title>
-            <p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<idx><h>Rivest, R.</h></idx>, A.  Shamir<idx><h>Shamir, A.</h></idx>, and L. Adleman<idx><h>Adleman, L.</h></idx> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.  Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibitive.</p>
+            <p>The <acro>RSA</acro> cryptosystem introduced by R. Rivest<idx><h>Rivest, R.</h></idx>, A. Shamir<idx><h>Shamir, A.</h></idx>, and L. Adleman<idx><h>Adleman, L.</h></idx> in 1978, is based on the difficulty of factoring large numbers. Though it is not a difficult task to find two large random primes and multiply them together, factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s. Although the algorithms have improved, factoring a number that is a product of two large primes is still computationally prohibitive.</p>
+
             <p>The <acro>RSA</acro> cryptosystem<idx><h><acro>RSA</acro> cryptosystem</h></idx><idx><h>Cryptosystem</h><h><acro>RSA</acro></h></idx> works as follows. Suppose that we choose two random 150-digit prime numbers <m>p</m> and <m>q</m>. Next, we compute the product <m>n= pq</m> and also compute <m>\phi(n) = m = (p - 1)(q-1)</m>, where <m>\phi</m> is the Euler <m>\phi</m>-function.  Now we start choosing random integers <m>E</m> until we find one that is relatively prime to <m>m</m>; that is, we choose <m>E</m> such that <m>\gcd(E, m) = 1</m>. Using the Euclidean algorithm, we can find a number <m>D</m> such that <m>DE \equiv 1 \pmod{m}</m>. The numbers <m>n</m> and <m>E</m> are now made public.</p>
-            <p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>.  Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
+
+            <p>Suppose now that person B (Bob) wishes to send person A (Alice) a message over a public line. Since <m>E</m> and <m>n</m> are known to everyone, anyone can encode messages. Bob first digitizes the message according to some scheme, say <m>\text{A}  = 00, \text{B}  = 02, \ldots, \text{Z}= 25</m>. If necessary, he will break the message into pieces such that each piece is a positive integer less than <m>n</m>. Suppose <m>x</m> is one of the pieces.  Bob forms the number <m>y = x^E \mod n</m> and sends <m>y</m> to Alice. For Alice to recover <m>x</m>, she need only compute <m>x = y^D \bmod n</m>. Only Alice knows <m>D</m>.</p>
+
             <example xml:id="example-crypt-rsa">
-                <p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is 25. Let <m>p = 23</m> and <m>q = 29</m>. Then 
+                <p>Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers, we will use some small integers just to see that the system does indeed work. Suppose that we wish to send some message, which when digitized is <m>25</m>. Let <m>p = 23</m> and <m>q = 29</m>. Then 
                     <me>n = pq = 667</me>
                 and
                     <me>\phi(n) = m = (p - 1)(q - 1) = 616.</me>
@@ -97,7 +116,7 @@
             </example>
             <!-- Message changed from 23 to 25 so that it does not match p.  Suggested by R. Beezer. -->
             <!-- TWJ - 12/19/2011 -->
-            <p>Now let us examine why the <acro>RSA</acro> cryptosystem works.  We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
+            <p>Now let us examine why the <acro>RSA</acro> cryptosystem works. We know that <m>DE \equiv 1 \pmod{ m}</m>; hence, there exists a <m>k</m> such that 
                 <me>DE = km + 1 = k \phi(n) + 1.</me>
             There are two cases to consider.  In the first case assume that <m>\gcd(x, n) = 1</m>.  Then by Theorem<nbsp/><xref ref="theorem-eulers_theorem"/>,
                 <me>y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n.</me>
@@ -110,6 +129,7 @@
             <!-- RAB - 12/30/2011 -->
             <p>We can now ask how one would go about breaking the <acro>RSA</acro> cryptosystem. To find <m>D</m> given <m>n</m> and <m>E</m>, we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm. If we had known that <m>667 = 23 \cdot 29</m> in Example<nbsp/><xref ref="example-crypt-rsa"/>, we could have recovered <m>D</m>.</p>
         </subsection>
+
         <subsection xml:id="crypt-subsection-message-verification">
             <title>Message Verification</title>
             <p>There is a problem of message verification in public key cryptosystems. Since the encoding key is public knowledge, anyone has the ability to send an encoded message.  If Alice receives a message from Bob, she would like to be able to verify that it was Bob who actually sent the message. Suppose that Bob's encrypting key is <m>(n', E')</m> and his decrypting key is <m>(n', D')</m>.  Also, suppose that Alice's encrypting key is <m>(n, E)</m> and her decrypting key is <m>(n, D)</m>.  Since encryption keys are public information, they can exchange coded messages at their convenience.  Bob wishes to assure Alice that the message he is sending is authentic. Before Bob sends the message <m>x</m> to Alice, he decrypts  <m>x</m> with his own key:
@@ -144,28 +164,25 @@
         <title>Exercises</title>
         <exercise number="1">
             <statement>
-                <p>Encode <c>IXLOVEXMATH</c> using the cryptosystem in Example 1.</p>
+                <p>Encode <c>IXLOVEXMATH</c> using the cryptosystem in Example<nbsp/><xref ref="example-crypt-caesar"/>.</p>
             </statement>
             <hint>
-                <p>
-                    <c>LAORYHAPDWK</c>
-                </p>
+                <p><c>LAORYHAPDWK</c></p>
             </hint>
         </exercise>
         <exercise number="2">
             <statement>
-                <p>Decode <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>, which was encoded using the cryptosystem in Example 1.</p>
+                <p>Decode <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>, which was encoded using the cryptosystem in Example<nbsp/><xref ref="example-crypt-caesar"/>.</p>
             </statement>
         </exercise>
         <exercise number="3">
             <statement>
                 <p>Assuming that monoalphabetic code was used to encode the following secret message, what was the original message?</p>
                 <pre>
-            APHUO EGEHP PEXOV FKEUH CKVUE CHKVE APHUO
-            EGEHU EXOVL EXDKT VGEFT EHFKE UHCKF TZEXO
-            VEZDT TVKUE XOVKV ENOHK ZFTEH TEHKQ LEROF
-            PVEHP PEXOV ERYKP GERYT GVKEG XDRTE RGAGA
-            </pre>
+                APHUO EGEHP PEXOV FKEUH CKVUE CHKVE APHUO
+                EGEHU EXOVL EXDKT VGEFT EHFKE UHCKF TZEXO
+                VEZDT TVKUE XOVKV ENOHK ZFTEH TEHKQ LEROF
+                PVEHP PEXOV ERYKP GERYT GVKEG XDRTE RGAGA</pre>
                 <p>What is the significance of this message in the history of cryptography?</p>
             </statement>
             <hint>
@@ -177,9 +194,7 @@
                 <p>What is the total number of possible monoalphabetic cryptosystems? How secure are such cryptosystems?</p>
             </statement>
             <hint>
-                <p>
-                    <m>26! - 1</m>
-                </p>
+                <p><m>26! - 1</m></p>
             </hint>
         </exercise>
         <exercise number="5">
@@ -190,41 +205,56 @@
         <exercise number="6">
             <statement>
                 <p>Given the matrix 
-                <me>A =
-                \begin{pmatrix}
-                3 &amp; 4 \\
-                2 &amp; 3
-                \end{pmatrix},</me>
+                    <me>A =
+                    \begin{pmatrix}
+                    3 &amp; 4 \\
+                    2 &amp; 3
+                    \end{pmatrix},</me>
             use the encryption function <m>f({\mathbf p}) = A {\mathbf p} + {\mathbf b}</m> to encode the message <c>CRYPTOLOGY</c>, where <m>{\mathbf b} = ( 2, 5)^\transpose</m>.  What is the decoding function?</p>
             </statement>
         </exercise>
-        <exercise number="7">
+        <exercise number="7" xml:id="exercise-crypt-rsa">
             <statement>
-                <p>Encrypt each of the following <acro>RSA</acro> messages <m>x</m> so that <m>x</m> is divided into blocks of integers of length 2;  that is, if <m>x = 142528</m>, encode 14, 25, and 28 separately.
-                <ol><li><p><m>n = 3551, E = 629, x = 31</m></p></li><li><p><m>n = 2257, E = 47, x = 23</m></p></li><li><p><m>n = 120979, E = 13251, x = 142371</m></p></li><li><p><m>n = 45629, E = 781, x = 231561</m></p></li></ol></p>
+                <p>Encrypt each of the following <acro>RSA</acro> messages <m>x</m> so that <m>x</m> is divided into blocks of integers of length <m>2</m>; that is, if <m>x = 142528</m>, encode <m>14</m>, <m>25</m>, and <m>28</m> separately.
+                    <ol>
+                        <li><p><m>n = 3551, E = 629, x = 31</m></p></li>
+                        <li><p><m>n = 2257, E = 47, x = 23</m></p></li>
+                        <li><p><m>n = 120979, E = 13251, x = 142371</m></p></li>
+                        <li><p><m>n = 45629, E = 781, x = 231561</m></p></li>
+                    </ol></p>
             </statement>
             <hint>
-                <p>(a) 2791; (c) 112135 25032 442.</p>
+                <p>(a) <m>2791</m>; (c) <m>112135 25032 442</m>.</p>
             </hint>
         </exercise>
         <exercise number="8">
             <statement>
-                <p>Compute the decoding key <m>D</m> for each of the encoding keys in Exercise 7. </p>
+                <p>Compute the decoding key <m>D</m> for each of the encoding keys in Exercise<nbsp/><xref ref="exercise-crypt-rsa"/>.</p>
             </statement>
         </exercise>
         <exercise number="9">
             <statement>
                 <p>Decrypt each of the following <acro>RSA</acro> messages <m>y</m>.
-                <ol><li><p><m>n = 3551, D = 1997, y = 2791</m></p></li><li><p><m>n = 5893, D = 81, y = 34</m></p></li><li><p><m>n = 120979, D = 27331, y = 112135</m></p></li><li><p><m>n = 79403, D = 671, y = 129381</m></p></li></ol></p>
+                    <ol>
+                        <li><p><m>n = 3551, D = 1997, y = 2791</m></p></li>
+                        <li><p><m>n = 5893, D = 81, y = 34</m></p></li>
+                        <li><p><m>n = 120979, D = 27331, y = 112135</m></p></li>
+                        <li><p><m>n = 79403, D = 671, y = 129381</m></p></li>
+                    </ol></p>
             </statement>
             <hint>
-                <p>(a) 31; (c) 14.</p>
+                <p>(a) <m>31</m> (c) <m>14</m>.</p>
             </hint>
         </exercise>
         <exercise number="10">
             <statement>
                 <p>For each of the following encryption keys <m>(n, E)</m> in the <acro>RSA</acro> cryptosystem, compute <m>D</m>.
-                <ol><li><p><m>(n, E) = (451, 231)</m></p></li><li><p><m>(n, E) = (3053, 1921)</m></p></li><li><p><m>(n, E) = (37986733, 12371)</m></p></li><li><p><m>(n, E) = (16394854313, 34578451)</m></p></li></ol></p>
+                    <ol>
+                        <li><p><m>(n, E) = (451, 231)</m></p></li>
+                        <li><p><m>(n, E) = (3053, 1921)</m></p></li>
+                        <li><p><m>(n, E) = (37986733, 12371)</m></p></li>
+                        <li><p><m>(n, E) = (16394854313, 34578451)</m></p></li>
+                    </ol></p>
             </statement>
             <hint>
                 <p>(a) <m>n = 11 \cdot 41</m>; (c) <m>n = 8779 \cdot 4327</m>.</p>
@@ -238,19 +268,19 @@
         <exercise number="12">
             <statement>
                 <p>Find integers <m>n</m>, <m>E</m>, and <m>X</m> such that
-                <me>X^E \equiv X \pmod{n}.</me>
-            Is this a potential problem in the <acro>RSA</acro> cryptosystem?</p>
+                    <me>X^E \equiv X \pmod{n}.</me>
+                Is this a potential problem in the <acro>RSA</acro> cryptosystem?</p>
             </statement>
         </exercise>
         <exercise number="13">
             <statement>
-                <p>Every person in the class should construct an <acro>RSA</acro> cryptosystem using primes that are 10 to 15 digits long.  Hand in <m>(n, E)</m> and an encoded message. Keep <m>D</m> secret. See if you can break one another's codes.</p>
+                <p>Every person in the class should construct an <acro>RSA</acro> cryptosystem using primes that are <m>10</m> to <m>15</m> digits long. Hand in <m>(n, E)</m> and an encoded message. Keep <m>D</m> secret. See if you can break one another's codes.</p>
             </statement>
         </exercise>
     </exercises>
     <exercises xml:id="crypt-exercises-additional">
         <title>Additional Exercises: Primality and Factoring</title>
-        <p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily.  Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy.  To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
+        <p>In the <acro>RSA</acro> cryptosystem it is important to be able to find large prime numbers easily. Also, this cryptosystem is not secure if we can factor a composite number that is the product of two large primes. The solutions to both of these problems are quite easy. To find out if a number <m>n</m> is prime or to factor <m>n</m>, we can use trial division. We simply divide <m>n</m> by <m>d = 2, 3, \ldots, \sqrt{n}</m>. Either a factorization will be obtained, or <m>n</m> is prime if no <m>d</m> divides <m>n</m>.  The problem is that such a computation is prohibitively time-consuming if <m>n</m> is very large.</p>
         <exercise>
             <statement>
                 <p>A better algorithm for factoring odd positive integers is <term>Fermat's factorization algorithm</term><idx><h>Fermat's factorizationalgorithm</h></idx>.</p>
@@ -289,23 +319,32 @@
         <exercise>
             <title>Primality Testing</title>
             <statement>
-                <p>Recall Fermat's Little Theorem from Chapter<nbsp/><xref ref="cosets"/>. Let <m>p</m> be prime with <m>\gcd(a, p) = 1</m>. Then <m>a^{p-1} \equiv 1 \pmod{p}</m>.  We can use Fermat's Little Theorem as a screening test for primes. For example, 15 cannot be prime since <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me> However, 17 is a potential prime since
+                <p>Recall Fermat's Little Theorem from Chapter<nbsp/><xref ref="cosets"/>. Let <m>p</m> be prime with <m>\gcd(a, p) = 1</m>. Then <m>a^{p-1} \equiv 1 \pmod{p}</m>. We can use Fermat's Little Theorem as a screening test for primes. For example, <m>15</m> cannot be prime since
+                    <me>2^{15-1} \equiv 2^{14} \equiv 4 \pmod{15}.</me>
+                However, <m>17</m> is a potential prime since
                     <me>2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}.</me>
                 We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><idx><h>Pseudoprime</h></idx> if 
                     <me>2^{n-1} \equiv 1 \pmod{n}.</me>
                 Which of the following numbers are primes and which are pseudoprimes?
-                    <ol cols="3"><li><p>342</p></li><li><p>811</p></li><li><p>601</p></li><li><p>561</p></li><li><p>771</p></li><li><p>631</p></li></ol></p>
+                    <ol cols="3">
+                        <li><p><m>342</m></p></li>
+                        <li><p><m>811</m></p></li><li><p>601</p></li>
+                        <li><p><m>561</m></p></li>
+                        <li><p><m>771</m></p></li>
+                        <li><p><m>631</m></p></li>
+                    </ol></p>
             </statement>
         </exercise>
         <exercise>
             <statement>
-                <p>Let <m>n</m> be an odd composite number and <m>b</m> be a positive integer such that <m>\gcd(b, n) = 1</m>. If <m>b^{n-1} \equiv 1 \pmod{n}</m>, then <m>n</m> is a <term>pseudoprime base</term> <m>b</m>. Show that 341 is a pseudoprime base 2 but not a pseudoprime base 3.</p>
+                <p>Let <m>n</m> be an odd composite number and <m>b</m> be a positive integer such that <m>\gcd(b, n) = 1</m>. If <m>b^{n-1} \equiv 1 \pmod{n}</m>, then <m>n</m> is a <term>pseudoprime base</term> <m>b</m>. Show that <m>341</m> is a pseudoprime base <m>2</m> but not a pseudoprime base <m>3</m>.</p>
             </statement>
         </exercise>
         <exercise>
             <statement>
-                <p>Write a program to determine all primes less than 2000 using trial division. Write a second program that will determine all numbers less than 2000 that are either primes or pseudoprimes. Compare the speed of the two programs.  How many pseudoprimes are there below 2000?</p>
-                <p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.  These numbers are called <term>Carmichael numbers</term><idx><h>Carmichael numbers</h></idx>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare.  There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
+                <p>Write a program to determine all primes less than <m>2000</m> using trial division. Write a second program that will determine all numbers less than <m>2000</m> that are either primes or pseudoprimes. Compare the speed of the two programs. How many pseudoprimes are there below <m>2000</m>?</p>
+                
+                <p>There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime. These numbers are called <term>Carmichael numbers</term><idx><h>Carmichael numbers</h></idx>. The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.  In 1992, Alford, Granville, and Pomerance proved that there are an infinite number of Carmichael numbers [4].  However, Carmichael numbers are very rare. There are only <m>2163</m> Carmichael numbers less than <m>25 \times 10^9</m>. For more sophisticated primality tests, see [1], [6], or [7].</p>
             </statement>
         </exercise>
     </exercises>
