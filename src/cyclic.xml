@@ -317,10 +317,10 @@
     <section xml:id="section-method-of-repeated-squares">
         <title>The Method of Repeated Squares</title>
         <p>Computing large powers can be very time-consuming. Just as anyone can compute <m>2^2</m> or <m>2^8</m>, everyone knows how to compute
-            <me>2^{2^{1000000} }.</me>
+            <me>2^{2^{1{,}000{,}000} }.</me>
         However, such numbers are so large that we do not want to attempt the calculations; moreover, past a certain point the computations would not be feasible even if we had every computer in the world at our disposal. Even writing down the decimal representation of a very large number may not be reasonable. It could be thousands or even millions of digits long. However, if we could compute something like
-            <me>2^{37398332 } \pmod{ 46389},</me>
-        we could very easily write the result down since it would be a number between <m>0</m> and <m>46388</m>. If we want to compute powers modulo <m>n</m> quickly and efficiently, we will have to be clever.<fn>The results in this section are needed only in Chapter<nbsp/><xref ref="crypt"/></fn></p>
+            <me>2^{37{,}398{,}332 } \pmod{ 46{,}389},</me>
+        we could very easily write the result down since it would be a number between <m>0</m> and <m>46{,}388</m>. If we want to compute powers modulo <m>n</m> quickly and efficiently, we will have to be clever.<fn>The results in this section are needed only in Chapter<nbsp/><xref ref="crypt"/></fn></p>
         
         <p>The first thing to notice is that any number <m>a</m> can be written as the sum of distinct powers of <m>2</m>; that is, we can write
             <me>a = 2^{k_1} + 2^{k_2} + \cdots + 2^{k_n},</me>
@@ -345,25 +345,25 @@
             We can square this result to obtain a value for <m>271^{ 2^2} \pmod{481}</m>: 
                 <md>
                     <mrow>271^{ 2^2}  &amp; \equiv (271^{ 2^1})^2 \pmod{ 481}</mrow>
-                    <mrow>&amp; \equiv (329)^2 \pmod{ 481}</mrow>
-                    <mrow>&amp; \equiv \text{108,241} \pmod{ 481}</mrow>
-                    <mrow>&amp; \equiv 16 \pmod{ 481}.</mrow>
+                    <mrow>&amp; \equiv (329)^2 \pmod{481}</mrow>
+                    <mrow>&amp; \equiv 108{,}241 \pmod{481}</mrow>
+                    <mrow>&amp; \equiv 16 \pmod{481}.</mrow>
                 </md>
             We are using the fact that <m>(a^{2^n})^2  \equiv a^{2 \cdot 2^n} \equiv a^{ 2^{n+1} } \pmod{ n}</m>. Continuing, we can calculate
-                <me>271^{ 2^6 } \equiv 419 \pmod{ 481}</me>
+                <me>271^{ 2^6 } \equiv 419 \pmod{481}</me>
             and
-                <me>271^{ 2^8 }  \equiv 16 \pmod{ 481}.</me>
+                <me>271^{ 2^8 }  \equiv 16 \pmod{481}.</me>
             Therefore,
                 <md>
-                    <mrow>271^{ 321} &amp; \equiv 271^{ 2^0 +2^6 + 2^8 } \pmod{ 481}</mrow>
-                    <mrow>&amp; \equiv 271^{ 2^0 } \cdot 271^{ 2^6 } \cdot 271^{ 2^8 } \pmod{ 481}</mrow>
+                    <mrow>271^{ 321} &amp; \equiv 271^{ 2^0 +2^6 + 2^8 } \pmod{481}</mrow>
+                    <mrow>&amp; \equiv 271^{ 2^0 } \cdot 271^{ 2^6 } \cdot 271^{ 2^8 } \pmod{481}</mrow>
                     <mrow>&amp; \equiv 271 \cdot 419 \cdot 16 \pmod{ 481}</mrow>
-                    <mrow>&amp; \equiv \text{1,816,784} \pmod{ 481}</mrow>
+                    <mrow>&amp; \equiv 1{,}816{,}784 \pmod{ 481}</mrow>
                     <mrow>&amp; \equiv 47 \pmod{ 481}.</mrow>
                 </md></p>
         </example>
         <!-- Reformatted example.  TWJ 2/5/2013 -->
-        <p> The method of repeated squares will prove to be a very useful tool when we explore <acro>RSA</acro> cryptography  in Chapter<nbsp/><xref ref="crypt"/>. To encode and decode messages in a reasonable manner under this scheme, it is necessary to be able to quickly compute large powers of integers mod <m>n</m>.</p>
+        <p> The method of repeated squares will prove to be a very useful tool when we explore <acro>RSA</acro> cryptography in Chapter<nbsp/><xref ref="crypt"/>. To encode and decode messages in a reasonable manner under this scheme, it is necessary to be able to quickly compute large powers of integers mod <m>n</m>.</p>
         <!-- This file is part of the book                 -->
         <!--                                               -->
         <!--   Abstract Algebra: Theory and Applications   -->
