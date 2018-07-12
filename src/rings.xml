@@ -3,7 +3,7 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- Copyright (C) 1997-2018  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 <!-- This file is part of the book                 -->
 <!--                                               -->
@@ -14,15 +14,28 @@
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="rings">
     <title>Rings</title>
     <introduction>
-        <p>Up to this point we have studied sets with a single binary operation satisfying certain axioms, but we are often more interested in working with sets that have two binary operations.  For example, one of the most natural algebraic structures to study is the integers with the operations of addition and multiplication. These operations are related to one another by the distributive property. If we consider a set with two such related binary operations satisfying certain axioms, we have an algebraic structure called a ring. In a ring we add and multiply elements such as real numbers, complex numbers, matrices, and functions.</p>
+        <p>Up to this point we have studied sets with a single binary operation satisfying certain axioms, but we are often more interested in working with sets that have two binary operations. For example, one of the most natural algebraic structures to study is the integers with the operations of addition and multiplication. These operations are related to one another by the distributive property. If we consider a set with two such related binary operations satisfying certain axioms, we have an algebraic structure called a ring. In a ring we add and multiply elements such as real numbers, complex numbers, matrices, and functions.</p>
     </introduction>
+
     <section xml:id="section-rings-definitions">
         <title>Rings</title>
         <p>A nonempty set <m>R</m> is a <term>ring</term><idx><h>Ring</h><h>definition of</h></idx> if it has two closed binary operations, addition and multiplication, satisfying the following conditions.
-            <ol><li><p><m>a + b = b + a</m> for <m>a, b \in R</m>.</p></li><li><p><m>(a + b) + c = a + ( b + c)</m> for <m>a, b, c  \in R</m>.</p></li><li><p>There is an element <m>0</m> in <m>R</m> such that <m>a + 0 = a</m> for all <m>a \in R</m>.</p></li><li><p>For every element <m>a \in R</m>, there exists an element <m>-a</m> in <m>R</m> such that <m>a + (-a) = 0</m>.</p></li><li><p><m>(ab)  c = a  ( b  c)</m> for <m>a, b, c  \in R</m>.</p></li><li><p>For <m>a, b, c \in R</m>,
-                    <md><mrow>a( b + c)&amp;= ab +ac</mrow><mrow>(a + b)c &amp; = ac + bc.</mrow></md></p></li></ol>
+            <ol>
+                <li><p><m>a + b = b + a</m> for <m>a, b \in R</m>.</p></li>
+                <li><p><m>(a + b) + c = a + ( b + c)</m> for <m>a, b, c  \in R</m>.</p></li>
+                <li><p>There is an element <m>0</m> in <m>R</m> such that <m>a + 0 = a</m> for all <m>a \in R</m>.</p></li>
+                <li><p>For every element <m>a \in R</m>, there exists an element <m>-a</m> in <m>R</m> such that <m>a + (-a) = 0</m>.</p></li>
+                <li><p><m>(ab)  c = a  ( b  c)</m> for <m>a, b, c  \in R</m>.</p></li>
+                <li><p>For <m>a, b, c \in R</m>,
+                    <md>
+                        <mrow>a( b + c)&amp;= ab +ac</mrow>
+                        <mrow>(a + b)c &amp; = ac + bc.</mrow>
+                    </md></p></li>
+            </ol>
         This last condition, the distributive axiom, relates the binary operations of addition and multiplication. Notice that the first four axioms simply require that a ring be an abelian group under addition, so we could also have defined a ring to be an abelian group <m>(R, +)</m> together with a second binary operation satisfying the fifth and sixth conditions given above.</p>
-        <p>If there is an element <m>1 \in R</m> such that <m>1 \neq 0</m> and  <m>1a = a1 = a</m> for each element <m>a \in R</m>, we say that <m>R</m> is a ring with <term>unity</term><idx><h>Ring</h><h>with unity</h></idx> or <term>identity</term><idx><h>Ring</h><h>with identity</h></idx>. A ring <m>R</m> for which <m>ab = ba</m> for all <m>a,  b</m> in <m>R</m> is called a <term>commutative ring</term><idx><h>Ring</h><h>commutative</h></idx><idx><h>Commutative rings</h></idx>. A commutative ring <m>R</m> with identity is called an <term>integral domain</term><idx><h>Integral domain</h></idx> if, for every <m>a, b  \in R</m> such that <m>ab = 0</m>, either <m>a = 0</m> or <m>b = 0</m>.  A <term>division ring</term><idx><h>Division ring</h></idx><idx><h>Ring</h><h>division</h></idx> is a ring <m>R</m>, with an identity, in which every nonzero element in <m>R</m> is a <term>unit</term><idx><h>Unit</h></idx>; that is, for each <m>a \in R</m> with <m>a \neq 0</m>, there exists a unique element <m>a^{-1}</m> such that <m>a^{-1} a = a a^{-1}  = 1</m>. A commutative division ring is called a <term>field</term><idx><h>Field</h></idx>.  The relationship among rings, integral domains, division rings, and fields is shown in Figure<nbsp/><xref ref="figure-ring-types"/>.</p>
+        
+        <p>If there is an element <m>1 \in R</m> such that <m>1 \neq 0</m> and  <m>1a = a1 = a</m> for each element <m>a \in R</m>, we say that <m>R</m> is a ring with <term>unity</term><idx><h>Ring</h><h>with unity</h></idx> or <term>identity</term><idx><h>Ring</h><h>with identity</h></idx>. A ring <m>R</m> for which <m>ab = ba</m> for all <m>a,  b</m> in <m>R</m> is called a <term>commutative ring</term><idx><h>Ring</h><h>commutative</h></idx><idx><h>Commutative rings</h></idx>. A commutative ring <m>R</m> with identity is called an <term>integral domain</term><idx><h>Integral domain</h></idx> if, for every <m>a, b \in R</m> such that <m>ab = 0</m>, either <m>a = 0</m> or <m>b = 0</m>.  A <term>division ring</term><idx><h>Division ring</h></idx><idx><h>Ring</h><h>division</h></idx> is a ring <m>R</m>, with an identity, in which every nonzero element in <m>R</m> is a <term>unit</term><idx><h>Unit</h></idx>; that is, for each <m>a \in R</m> with <m>a \neq 0</m>, there exists a unique element <m>a^{-1}</m> such that <m>a^{-1} a = a a^{-1}  = 1</m>. A commutative division ring is called a <term>field</term><idx><h>Field</h></idx>.  The relationship among rings, integral domains, division rings, and fields is shown in Figure<nbsp/><xref ref="figure-ring-types"/>.</p>
+        
         <figure xml:id="figure-ring-types">
             <caption>Types of rings</caption>
             <!-- Replaced figure with tikz figure - TWJ 8/13/2010 -->
@@ -32,22 +45,29 @@
                 </latex-image>
             </image>
         </figure>
+        
         <example xml:id="example-rings-integers">
-            <p>As we have mentioned previously, the integers form a ring. In fact, <m>{\mathbb Z}</m> is an integral domain.  Certainly if <m>a b = 0</m> for two integers <m>a</m> and <m>b</m>, either <m>a=0</m> or <m>b=0</m>. However, <m>{\mathbb Z}</m> is not a field. There is no integer that is the multiplicative inverse of 2, since <m>1/2</m> is not an integer.  The only integers with multiplicative inverses are 1 and <m>-1</m>.</p>
+            <p>As we have mentioned previously, the integers form a ring. In fact, <m>{\mathbb Z}</m> is an integral domain. Certainly if <m>a b = 0</m> for two integers <m>a</m> and <m>b</m>, either <m>a=0</m> or <m>b=0</m>. However, <m>{\mathbb Z}</m> is not a field. There is no integer that is the multiplicative inverse of <m>2</m>, since <m>1/2</m> is not an integer.  The only integers with multiplicative inverses are 1 and <m>-1</m>.</p>
         </example>
+        
         <example xml:id="example-rings-field">
             <p>Under the ordinary operations of addition and multiplication, all of the familiar number systems are rings: the rationals, <m>{\mathbb Q}</m>; the real numbers, <m>{\mathbb R}</m>; and the complex numbers, <m>{\mathbb C}</m>. Each of these rings is a field.</p>
         </example>
+        
         <example xml:id="example-rings-zn">
-            <p>We can define the product of two elements <m>a</m> and <m>b</m> in <m>{\mathbb Z}_n</m> by <m>ab \pmod{n}</m>. For instance, in <m>{\mathbb Z}_{12}</m>,  <m>5 \cdot 7 \equiv 11 \pmod{12}</m>.  This product makes the abelian group <m>{\mathbb Z}_n</m> into a ring. Certainly <m>{\mathbb Z}_n</m> is a commutative ring; however, it may fail to be an integral domain.  If we consider <m>3 \cdot 4 \equiv 0 \pmod{12}</m> in <m>{\mathbb Z}_{12}</m>, it is easy to see that a product of two  nonzero elements in the ring can be equal to zero.</p>
+            <p>We can define the product of two elements <m>a</m> and <m>b</m> in <m>{\mathbb Z}_n</m> by <m>ab \pmod{n}</m>. For instance, in <m>{\mathbb Z}_{12}</m>,  <m>5 \cdot 7 \equiv 11 \pmod{12}</m>. This product makes the abelian group <m>{\mathbb Z}_n</m> into a ring. Certainly <m>{\mathbb Z}_n</m> is a commutative ring; however, it may fail to be an integral domain. If we consider <m>3 \cdot 4 \equiv 0 \pmod{12}</m> in <m>{\mathbb Z}_{12}</m>, it is easy to see that a product of two  nonzero elements in the ring can be equal to zero.</p>
         </example>
-        <p>A nonzero element <m>a</m> in a ring <m>R</m> is called a <term>zero divisor</term><idx><h>Zero divisor</h></idx> if there is a nonzero element <m>b</m> in <m>R</m> such that <m>ab = 0</m>. In the previous example,  3 and 4 are zero divisors in <m>{\mathbb Z}_{12}</m>.</p>
+        
+        <p>A nonzero element <m>a</m> in a ring <m>R</m> is called a <term>zero divisor</term><idx><h>Zero divisor</h></idx> if there is a nonzero element <m>b</m> in <m>R</m> such that <m>ab = 0</m>. In the previous example, <m>3</m> and <m>4</m> are zero divisors in <m>{\mathbb Z}_{12}</m>.</p>
+        
         <example xml:id="example-rings-functions">
             <p>In calculus the continuous real-valued functions on an interval <m>[a,b]</m> form a commutative ring. We add or multiply two functions by  adding or multiplying the values of the functions.  If <m>f(x) = x^2</m> and <m>g(x) = \cos x</m>, then <m>(f+g)(x) = f(x) + g(x) = x^2 + \cos x</m> and <m>(fg)(x) = f(x) g(x) = x^2 \cos x</m>.</p>
         </example>
+        
         <example xml:id="example-rings-matrix">
             <p>The <m>2 \times 2</m> matrices  with entries in <m>{\mathbb R}</m> form a ring under the usual operations of matrix addition and multiplication. This ring is noncommutative, since it is usually the case that <m>AB \neq BA</m>. Also, notice that we can have <m>AB = 0</m> when neither <m>A</m> nor <m>B</m> is zero.</p>
         </example>
+        
         <example xml:id="example-rings-noncommutative">
             <p>For an example of a noncommutative division ring, let
                 <me>1 = 
@@ -75,18 +95,34 @@
                 0 &amp; -i
                 \end{pmatrix},</me>
             where <m>i^2 = -1</m>. These elements satisfy the following relations: 
-                <md><mrow>{\mathbf i}^2 = {\mathbf j}^2 &amp; =  {\mathbf k}^2 = -1</mrow><mrow>{\mathbf i}  {\mathbf j} &amp; =  {\mathbf k} </mrow><mrow>{\mathbf j}  {\mathbf k} &amp; =  {\mathbf i} </mrow><mrow>{\mathbf k}  {\mathbf i} &amp; =  {\mathbf j} </mrow><mrow>{\mathbf j}  {\mathbf i} &amp; =  - {\mathbf k} </mrow><mrow>{\mathbf k}  {\mathbf j} &amp; =  - {\mathbf i} </mrow><mrow>{\mathbf i}  {\mathbf k} &amp; =  - {\mathbf j}. </mrow></md> 
+                <md>
+                    <mrow>{\mathbf i}^2 = {\mathbf j}^2 &amp; =  {\mathbf k}^2 = -1</mrow>
+                    <mrow>{\mathbf i}  {\mathbf j} &amp; =  {\mathbf k} </mrow>
+                    <mrow>{\mathbf j}  {\mathbf k} &amp; =  {\mathbf i} </mrow>
+                    <mrow>{\mathbf k}  {\mathbf i} &amp; =  {\mathbf j} </mrow>
+                    <mrow>{\mathbf j}  {\mathbf i} &amp; =  - {\mathbf k} </mrow>
+                    <mrow>{\mathbf k}  {\mathbf j} &amp; =  - {\mathbf i} </mrow>
+                    <mrow>{\mathbf i}  {\mathbf k} &amp; =  - {\mathbf j}. </mrow>
+                </md> 
             Let <m>{\mathbb H}</m> consist of elements of the form <m>a + b {\mathbf i}  + c {\mathbf j} +d {\mathbf k}</m>, where <m>a, b , c, d</m> are real numbers. Equivalently, <m>{\mathbb H}</m> can be considered to be the set of all <m>2 \times 2</m> matrices of the form  <notation><usage>\mathbb H</usage><description>the ring of quaternions</description></notation>
                 <me>\begin{pmatrix}
                 \alpha &amp; \beta \\
                 -\overline{\beta} &amp; \overline{\alpha }
                 \end{pmatrix},</me>
-            where <m>\alpha = a + di</m> and <m>\beta = b+ci</m> are complex numbers. We can define addition and multiplication on <m>{\mathbb H}</m> either by the usual matrix operations or in terms of the generators 1, <m>{\mathbf i}</m>, <m>{\mathbf j}</m>, and <m>{\mathbf k}</m>: 
-                <md><mrow>(a_1 + b_1 {\mathbf i}  + c_1 {\mathbf j} +d_1 {\mathbf k} ) + ( a_2 + b_2 {\mathbf i}  + c_2 {\mathbf j} +d_2 {\mathbf k} )</mrow><mrow>= (a_1 + a_2) + ( b_1 + b_2) {\mathbf i}  + ( c_1 + c_2) \mathbf j + (d_1 + d_2) \mathbf k</mrow></md>
+            where <m>\alpha = a + di</m> and <m>\beta = b+ci</m> are complex numbers. We can define addition and multiplication on <m>{\mathbb H}</m> either by the usual matrix operations or in terms of the generators <m>1</m>, <m>{\mathbf i}</m>, <m>{\mathbf j}</m>, and <m>{\mathbf k}</m>: 
+                <md>
+                    <mrow>(a_1 + b_1 {\mathbf i} + c_1 {\mathbf j} +d_1 {\mathbf k} ) + ( a_2 + b_2 {\mathbf i} + c_2 {\mathbf j} +d_2 {\mathbf k} )</mrow>
+                    <mrow>= (a_1 + a_2) + ( b_1 + b_2) {\mathbf i}  + ( c_1 + c_2) \mathbf j + (d_1 + d_2) \mathbf k</mrow>
+                </md>
             and
                 <me> (a_1 + b_1 {\mathbf i}  + c_1 {\mathbf j} +d_1 {\mathbf k} ) ( a_2 + b_2 {\mathbf i}  + c_2 {\mathbf j} +d_2 {\mathbf k} ) = \alpha + \beta {\mathbf i}  + \gamma {\mathbf j} + \delta {\mathbf k},</me>
             where
-                <md><mrow>\alpha &amp; =  a_1 a_2 - b_1 b_2 - c_1 c_2 -d_1 d_2</mrow><mrow>\beta &amp; =  a_1 b_2 + a_2 b_1 + c_1 d_2 - d_1 c_2</mrow><mrow>\gamma &amp; =  a_1 c_2 - b_1 d_2 + c_1 a_2 + d_1 b_2</mrow><mrow>\delta &amp; =  a_1 d_2 + b_1 c_2 - c_1 b_2 + d_1 a_2.</mrow></md>
+                <md>
+                    <mrow>\alpha &amp; =  a_1 a_2 - b_1 b_2 - c_1 c_2 -d_1 d_2</mrow>
+                    <mrow>\beta &amp; =  a_1 b_2 + a_2 b_1 + c_1 d_2 - d_1 c_2</mrow>
+                    <mrow>\gamma &amp; =  a_1 c_2 - b_1 d_2 + c_1 a_2 + d_1 b_2</mrow>
+                    <mrow>\delta &amp; =  a_1 d_2 + b_1 c_2 - c_1 b_2 + d_1 a_2.</mrow>
+                </md>
             Though multiplication looks complicated, it is actually a straightforward computation if we remember that we just add and multiply elements in <m>{\mathbb H}</m> like polynomials and keep in mind the relationships between the generators <m>{\mathbf i}</m>, <m>{\mathbf j}</m>, and <m>{\mathbf k}</m>. The ring <m>{\mathbb H}</m> is called the ring of <term>quaternions</term><idx><h>Quaternions</h></idx>.</p>
             <!-- Subscript error corrected.  Suggested by K. Halasz. -->
             <!-- TWJ 2/6/2013  -->
@@ -96,6 +132,7 @@
                 <me>
                 ( a + b {\mathbf i}  + c {\mathbf j} +d {\mathbf k} )\left( \frac{a - b {\mathbf i} - c {\mathbf j} - d {\mathbf k} }{ a^2 + b^2 + c^2 + d^2 } \right) = 1.</me></p>
         </example>
+
         <proposition>
             <statement>
                 <p>Let <m>R</m> be a ring with <m>a, b \in R</m>. Then
@@ -107,12 +144,16 @@
                 hence, <m>a0=0</m>. Similarly, <m>0a = 0</m>. For (2), we have <m>ab + a(-b) = a(b-b) = a0 = 0</m>; consequently, <m>-ab = a(-b)</m>. Similarly, <m>-ab = (-a)b</m>. Part (3) follows directly from (2) since <m>(-a)(-b) = -(a(- b)) = -(-ab) = ab</m>.</p>
             </proof>
         </proposition>
+
         <p>Just as we have subgroups of groups, we have an analogous class of substructures for rings. A <term>subring</term><idx><h>Subring</h></idx> <m>S</m>  of a ring <m>R</m> is a subset <m>S</m> of <m>R</m> such that <m>S</m> is also a ring under the inherited operations from <m>R</m>.</p>
+        
         <example xml:id="example-rings-subring-chain">
             <p>The ring <m>n {\mathbb Z}</m> is a subring of <m>{\mathbb Z}</m>.  Notice that even though the original ring may have an identity, we do not require that its subring have an identity. We have the following chain of subrings: 
                 <me>{\mathbb Z} \subset {\mathbb Q} \subset {\mathbb R} \subset {\mathbb C}.</me></p>
         </example>
+
         <p>The following proposition gives us some easy criteria for determining whether or not a  subset of a ring is indeed a subring. (We will leave the proof of this proposition as an exercise.)</p>
+
         <proposition xml:id="prop-subring">
             <statement>
                 <p>Let <m>R</m> be a ring and <m>S</m> a subset of <m>R</m>.  Then <m>S</m> is a subring of <m>R</m> if and only if the following conditions are satisfied. 
@@ -150,14 +191,17 @@
             is in <m>T</m>.</p>
         </example>
     </section>
+
     <section xml:id="section-domains-and-fields">
         <title>Integral Domains and Fields</title>
-        <p>Let us briefly recall some definitions. If <m>R</m> is a ring and <m>r</m> is a nonzero element in <m>R</m>, then <m>r</m> is said to  be a <term>zero divisor</term> if there is some nonzero element <m>s \in R</m> such that <m>rs = 0</m>. A commutative ring with identity is said to be an <term>integral domain</term> if it has no zero divisors.  If an element <m>a</m> in a ring <m>R</m> with identity has a multiplicative inverse, we say that <m>a</m> is a <term>unit</term>. If every nonzero element in a ring <m>R</m> is a unit, then <m>R</m> is called a <term>division ring</term>.  A commutative division ring is called a <term>field</term>.</p>
+        <p>Let us briefly recall some definitions. If <m>R</m> is a ring and <m>r</m> is a nonzero element in <m>R</m>, then <m>r</m> is said to  be a <term>zero divisor</term> if there is some nonzero element <m>s \in R</m> such that <m>rs = 0</m>. A commutative ring with identity is said to be an <term>integral domain</term> if it has no zero divisors. If an element <m>a</m> in a ring <m>R</m> with identity has a multiplicative inverse, we say that <m>a</m> is a <term>unit</term>. If every nonzero element in a ring <m>R</m> is a unit, then <m>R</m> is called a <term>division ring</term>. A commutative division ring is called a <term>field</term>.</p>
+        
         <example xml:id="example-rings-gaussian-integers">
-            <p>If <m>i^2 = -1</m>, then the set <m>{\mathbb Z}[ i ] = \{ m + ni : m, n \in {\mathbb Z} \}</m> forms a ring known as the <term>Gaussian integers</term><idx><h>Gaussian integers</h></idx>. <notation><usage>\mathbb Z[i]</usage><description>the Gaussian integers</description></notation> It is easily seen that the Gaussian integers are a subring of the complex numbers since they are closed under addition and multiplication. Let <m>\alpha = a + bi</m> be a unit in <m>{\mathbb Z}[ i ]</m>. Then <m>\overline{\alpha} = a - bi</m> is also a unit since if <m>\alpha \beta = 1</m>, then <m>\overline{\alpha} \overline{\beta} = 1</m>. If <m>\beta = c + di</m>, then   
+            <p>If <m>i^2 = -1</m>, then the set <m>{\mathbb Z}[ i ] = \{ m + ni : m, n \in {\mathbb Z} \}</m> forms a ring known as the <term>Gaussian integers</term><idx><h>Gaussian integers</h></idx>. <notation><usage>\mathbb Z[i]</usage><description>the Gaussian integers</description></notation> It is easily seen that the Gaussian integers are a subring of the complex numbers since they are closed under addition and multiplication. Let <m>\alpha = a + bi</m> be a unit in <m>{\mathbb Z}[ i ]</m>. Then <m>\overline{\alpha} = a - bi</m> is also a unit since if <m>\alpha \beta = 1</m>, then <m>\overline{\alpha} \overline{\beta} = 1</m>. If <m>\beta = c + di</m>, then
                 <me>1 = \alpha \beta \overline{\alpha} \overline{\beta} = (a^2 + b^2 )(c^2 + d^2).</me>
-            Therefore, <m>a^2 + b^2</m> must either be 1 or <m>-1</m>; or, equivalently, <m>a + bi = \pm 1</m> or <m>a+ bi = \pm i</m>.  Therefore, units of this ring are <m>\pm 1</m> and <m>\pm i</m>; hence, the Gaussian integers are not a field. We will leave it as an exercise to prove that the Gaussian integers are an integral domain.</p>
+            Therefore, <m>a^2 + b^2</m> must either be 1 or <m>-1</m>; or, equivalently, <m>a + bi = \pm 1</m> or <m>a + bi = \pm i</m>. Therefore, units of this ring are <m>\pm 1</m> and <m>\pm i</m>; hence, the Gaussian integers are not a field. We will leave it as an exercise to prove that the Gaussian integers are an integral domain.</p>
         </example>
+        
         <example xml:id="example-rings-matrix-z2">
             <p>The set of matrices
                 <me>F =
@@ -181,11 +225,14 @@
                 \right\}</me>
             with entries in <m>{\mathbb Z}_2</m> forms a field.</p>
         </example>
+
         <example xml:id="example-rings-q-sqrt2">
             <p>The set <m>{\mathbb Q}( \sqrt{2}\, ) = \{ a + b \sqrt{2} : a, b \in {\mathbb Q} \}</m> is a field. The inverse of an element <m>a + b \sqrt{2}</m> in <m>{\mathbb Q}( \sqrt{2}\, )</m> is  
                 <me>\frac{a}{a^2 - 2 b^2} +\frac{- b}{ a^2 - 2 b^2} \sqrt{2}.</me></p>
         </example>
+
         <p>We have the following alternative characterization of integral domains.</p>
+
         <proposition>
             <title>Cancellation Law</title>
             <idx>
@@ -200,7 +247,9 @@
                 <p>Conversely, let us suppose that cancellation is possible in <m>D</m>. That is, suppose that <m>ab = ac</m> implies <m>b=c</m>. Let <m>ab = 0</m>.  If <m>a \neq 0</m>, then <m>ab = a 0</m> or <m>b=0</m>.  Therefore, <m>a</m> cannot be a zero divisor.</p>
             </proof>
         </proposition>
+
         <p>The following surprising theorem is due to Wedderburn.</p>
+
         <theorem>
             <statement>
                 <p>Every finite integral domain is a field.</p>
@@ -211,10 +260,13 @@
             implies <m>d_1 = d_2</m> by left cancellation. Since <m>D^\ast</m> is a finite set, the map <m>\lambda_a</m> must also be onto; hence, for some <m>d \in D^\ast</m>, <m>\lambda_a(d) = ad = 1</m>. Therefore, <m>a</m> has a left inverse. Since <m>D</m> is commutative, <m>d</m> must also be a right inverse for <m>a</m>. Consequently, <m>D</m> is a field.</p>
             </proof>
         </theorem>
-        <p>For any nonnegative integer <m>n</m> and any element <m>r</m> in a ring <m>R</m> we  write <m>r + \cdots + r</m> (<m>n</m> times) as <m>nr</m>. We  define the <term>characteristic</term><idx><h>Characteristic of a ring</h></idx><idx><h>Ring</h><h>characteristic of</h></idx> of a ring <m>R</m> to be the least positive integer <m>n</m> such that <m>nr=0</m> for all <m>r \in R</m>. If no such integer exists, then the characteristic of <m>R</m> is defined to be 0.  We will denote the characteristic of <m>R</m> by <m>\chr R</m>. <notation><usage>\chr R</usage><description>characteristic of a ring <m>R</m></description></notation></p>
+
+        <p>For any nonnegative integer <m>n</m> and any element <m>r</m> in a ring <m>R</m> we  write <m>r + \cdots + r</m> (<m>n</m> times) as <m>nr</m>. We  define the <term>characteristic</term><idx><h>Characteristic of a ring</h></idx><idx><h>Ring</h><h>characteristic of</h></idx> of a ring <m>R</m> to be the least positive integer <m>n</m> such that <m>nr = 0</m> for all <m>r \in R</m>. If no such integer exists, then the characteristic of <m>R</m> is defined to be <m>0</m>. We will denote the characteristic of <m>R</m> by <m>\chr R</m>. <notation><usage>\chr R</usage><description>characteristic of a ring <m>R</m></description></notation></p>
+
         <example xml:id="example-rings-zp-field">
             <p>For every prime <m>p</m>, <m>{\mathbb Z}_p</m> is a field of characteristic <m>p</m>. By Proposition<nbsp/><xref ref="proposition-zn-equiv-classes"/>, every nonzero element in <m>{\mathbb Z}_p</m> has an inverse; hence, <m>{\mathbb Z}_p</m> is a field. If <m>a</m> is any nonzero element in the field, then <m>pa =0</m>, since the order of any nonzero element in the abelian group <m>{\mathbb Z}_p</m> is <m>p</m>.</p>
         </example>
+        
         <lemma xml:id="lemma-ring-characteristic">
             <statement>
                 <p>Let <m>R</m> be a ring with identity.  If 1 has order <m>n</m>, then the characteristic of <m>R</m> is <m>n</m>.</p>
@@ -235,13 +287,19 @@
             </proof>
         </theorem>
     </section>
+    
     <section xml:id="section-ring-homomorphisms">
         <title>Ring Homomorphisms and Ideals</title>
-        <p>In the study of groups, a homomorphism is a map that preserves the operation of the group.  Similarly, a homomorphism between rings preserves the operations of addition and multiplication in the ring. More specifically, if <m>R</m> and <m>S</m> are rings, then a <term>ring homomorphism</term><idx><h>Homomorphism</h><h>ring</h></idx><idx><h>Ring</h><h>homomorphism</h></idx> is a map <m>\phi : R \rightarrow S</m> satisfying  
-            <md><mrow>\phi( a + b ) &amp; = \phi( a ) + \phi(b)</mrow><mrow>\phi( a b ) &amp; = \phi( a ) \phi(b)</mrow></md>
+        <p>In the study of groups, a homomorphism is a map that preserves the operation of the group. Similarly, a homomorphism between rings preserves the operations of addition and multiplication in the ring. More specifically, if <m>R</m> and <m>S</m> are rings, then a <term>ring homomorphism</term><idx><h>Homomorphism</h><h>ring</h></idx><idx><h>Ring</h><h>homomorphism</h></idx> is a map <m>\phi : R \rightarrow S</m> satisfying
+            <md>
+                <mrow>\phi( a + b ) &amp; = \phi( a ) + \phi(b)</mrow>
+                <mrow>\phi( a b ) &amp; = \phi( a ) \phi(b)</mrow>
+            </md>
         for all <m>a, b \in R</m>. If <m>\phi : R \rightarrow S</m> is a one-to-one and onto homomorphism, then <m>\phi</m> is called an <term>isomorphism</term><idx><h>Isomorphism</h><h>ring</h></idx><idx><h>Ring</h><h>isomorphism</h></idx> of rings.</p>
+        
         <p>The set of elements that a ring homomorphism maps to <m>0</m> plays a fundamental role in the theory of rings. For any ring homomorphism <m>\phi : R \rightarrow S</m>, we define the <term>kernel</term><idx><h>Homomorphism</h><h>kernel of a ring</h></idx><idx><h>Kernel</h><h>of a ring homomorphism</h></idx> of a ring homomorphism to be the set
             <me>\ker \phi = \{ r \in R : \phi( r ) = 0 \}.</me></p>
+        
         <example xml:id="example-rings-homo">
             <p>For any integer <m>n</m> we can define a ring homomorphism <m>\phi : {\mathbb Z} \rightarrow {\mathbb Z}_n</m> by <m>a \mapsto a \pmod{n}</m>. This is indeed a ring homomorphism, since 
                 <md><mrow>\phi( a + b )  &amp; = (a + b) \pmod{n}</mrow><mrow>&amp; =  a \pmod{n} + b \pmod{n}</mrow><mrow>&amp; = \phi( a ) + \phi(b)</mrow></md>
@@ -249,12 +307,15 @@
                 <md><mrow>\phi( a b )  &amp; =  ab \pmod{n}</mrow><mrow>&amp; = a \pmod{n}\cdot  b \pmod{n}</mrow><mrow>&amp; = \phi( a ) \phi(b).</mrow></md>
             The kernel of the homomorphism <m>\phi</m> is <m>n {\mathbb Z}</m>.</p>
         </example>
+        
         <example xml:id="example-rings-continuous-function-homomorph">
             <p>Let <m>C[a, b]</m> be the ring of continuous real-valued functions on an interval <m>[a,b]</m> as in Example<nbsp/><xref ref="example-rings-functions"/>. For a fixed  <m>\alpha \in [a, b]</m>, we can define a ring homomorphism <m>\phi_{\alpha} : C[a, b] \rightarrow {\mathbb R}</m> by <m>\phi_{\alpha} (f ) = f( \alpha)</m>. This  is a ring homomorphism since 
                 <md><mrow>\phi_{\alpha}( f + g )  = (f + g)( \alpha) = f(\alpha) + g(\alpha) = \phi_{\alpha}( f ) + \phi_{\alpha}(g )</mrow><mrow>\phi_{\alpha}( f  g )  = (f  g)( \alpha) = f(\alpha)  g(\alpha) = \phi_{\alpha}( f )  \phi_{\alpha}(g ).</mrow></md>
             Ring homomorphisms of the type <m>\phi_{\alpha}</m> are called <term>evaluation homomorphisms</term><idx><h>Homomorphism</h><h>evaluation</h></idx>.</p>
         </example>
+        
         <p>In the next proposition we will examine some fundamental properties of ring homomorphisms. The proof of the proposition is left as an exercise.</p>
+        
         <proposition>
             <statement>
                 <p>Let <m>\phi : R \rightarrow S</m> be a ring homomorphism.
@@ -264,18 +325,22 @@
         <!-- Last statement changed from 0 to \{ 0 \}.  Suggested by B. Cohen. -->
         <!-- TWJ 2012/10/21 -->
         <p>In group theory we found that normal subgroups play a special role. These subgroups have nice characteristics that make them more interesting to study than arbitrary subgroups.  In ring theory the objects corresponding to normal subgroups are a special class of subrings called ideals. An <term>ideal</term><idx><h>Ideal</h><h>definition of</h></idx> in a ring <m>R</m> is a subring <m>I</m> of <m>R</m> such that if <m>a</m> is in <m>I</m> and <m>r</m> is in <m>R</m>, then both <m>ar</m> and <m>ra</m> are in <m>I</m>; that is, <m>rI \subset I</m> and <m>Ir \subset I</m> for all <m>r \in R</m>.</p>
+        
         <example xml:id="example-rings-trivial-ideal">
             <p>Every ring <m>R</m> has at least two ideals, <m>\{ 0 \}</m> and <m>R</m>.  These ideals are called the <term>trivial ideals</term><idx><h>Ideal</h><h>trivial</h></idx>.</p>
         </example>
         <!-- % TWJ, 2010/12/13 -->
         <!-- % Fixed the error <m>1</m> is in <m>I</m>.  Thanks to Stuart McAlpine -->
         <p>Let <m>R</m> be a ring with identity and suppose that <m>I</m> is an ideal in <m>R</m> such that <m>1</m> is in <m>I</m>. Since for any <m>r \in R</m>, <m>r1 = r \in I</m> by the definition of an ideal, <m>I = R</m>.</p>
+        
         <example xml:id="example-rings-principal-ideal">
             <p>If <m>a</m> is any element in a commutative ring <m>R</m> with identity, then the set   
                 <me>\langle a \rangle = \{ ar : r \in R \}</me>
             is an ideal in <m>R</m>. Certainly, <m>\langle a \rangle</m> is nonempty since both <m>0 = a0</m> and <m>a = a1</m> are in <m>\langle a \rangle</m>. The sum of two elements in <m>\langle a \rangle</m> is again in <m>\langle a \rangle</m> since <m>ar + ar' =  a(r + r')</m>. The inverse of <m>ar</m> is <m>-ar = a (-r) \in \langle a \rangle</m>.  Finally, if we multiply an element <m>ar \in \langle a \rangle</m> by an arbitrary element <m>s \in R</m>, we have <m>s(ar) = a(sr)</m>.  Therefore, <m>\langle a \rangle</m> satisfies the definition of an ideal.</p>
         </example>
+        
         <p>If <m>R</m> is a commutative ring with identity, then an ideal of the form <m>\langle a \rangle  = \{ ar : r \in R \}</m>  is called a <term>principal ideal</term><idx><h>Ideal</h><h>principal</h></idx><idx><h>Principal ideal</h></idx>.</p>
+        
         <theorem xml:id="theorem-z-ideals">
             <statement>
                 <p>Every ideal in the ring of integers <m>{\mathbb Z}</m> is a principal ideal.</p>
@@ -291,6 +356,7 @@
         <example xml:id="example-rings-integer-ideal">
             <p>The set <m>n {\mathbb Z}</m> is ideal in the ring of integers. If <m>na</m> is in <m>n{\mathbb Z}</m> and <m>b</m> is in <m>{\mathbb Z}</m>, then <m>nab</m> is in  <m>n {\mathbb Z}</m> as required. In fact, by Theorem<nbsp/><xref ref="theorem-z-ideals"/>, these are the only ideals of <m>{\mathbb Z}</m>.</p>
         </example>
+        
         <proposition>
             <statement>
                 <p>The kernel of any ring homomorphism <m>\phi : R \rightarrow S</m> is an ideal in <m>R</m>.</p>
@@ -302,9 +368,11 @@
                     <me>\phi(ra) = \phi(r) \phi(a) =  \phi(r)0 = 0.</me></p>
             </proof>
         </proposition>
+        
         <remark>
             <p>In our definition of an ideal we have required that <m>rI \subset I</m> and <m>Ir \subset I</m> for all <m>r \in R</m>.  Such ideals are sometimes referred to as <term>two-sided ideals</term><idx><h>Ideal</h><h>two-sided</h></idx>.  We can also consider <term>one-sided ideals</term><idx><h>Ideal</h><h>one-sided</h></idx>; that is, we may require only that either <m>rI \subset I</m> or <m>Ir \subset I</m> for <m>r \in R</m> hold but not both. Such ideals are called <term>left ideals</term> and <term>right ideals</term>, respectively. Of course, in a commutative ring any ideal must be two-sided. In this text we will concentrate on two-sided ideals.</p>
         </remark>
+        
         <theorem xml:id="theorem-factor-ring">
             <statement>
                 <p>Let <m>I</m> be an ideal of <m>R</m>. The factor group <m>R/I</m> is a ring with multiplication defined by
@@ -316,7 +384,9 @@
                 and <m>as + rb + ab \in I</m> since <m>I</m> is an ideal; consequently, <m>r' s' \in rs + I</m>. We will leave as an exercise the verification of the  associative law for multiplication and the distributive laws.</p>
             </proof>
         </theorem>
+        
         <p>The ring <m>R/I</m> in Theorem<nbsp/><xref ref="theorem-factor-ring"/> is called the <term>factor</term><idx><h>Ring</h><h>factor</h></idx> or <term>quotient ring</term><idx><h>Ring</h><h>quotient</h></idx>. Just as with group homomorphisms and normal subgroups, there is a relationship between ring homomorphisms and ideals.</p>
+        
         <theorem>
             <statement>
                 <p>Let <m>I</m> be an ideal of <m>R</m>. The map <m>\phi : R \rightarrow R/I</m> defined by <m>\phi( r ) = r + I</m> is a ring homomorphism of <m>R</m> onto <m>R/I</m> with kernel <m>I</m>.</p>
@@ -327,7 +397,9 @@
                 which completes the proof of the theorem.</p>
             </proof>
         </theorem>
+       
         <p>The map <m>\phi : R \rightarrow R/I</m> is often called the <term>natural</term><idx><h>Homomorphism</h><h>natural</h></idx> or <term>canonical homomorphism</term><idx><h>Homomorphism</h><h>canonical</h></idx>. In ring theory we have isomorphism  theorems relating ideals and ring homomorphisms similar to the isomorphism theorems for groups that relate normal subgroups and homomorphisms in Chapter<nbsp/><xref ref="homomorph"/>. We will prove only the First Isomorphism Theorem for rings in this chapter and  leave the proofs of the other two theorems as exercises. All of the proofs are similar to the proofs of the isomorphism theorems for groups.</p>
+
         <theorem>
             <title>First Isomorphism Theorem</title>
             <idx>
@@ -355,6 +427,7 @@
                     <me>I / I \cap J \cong (I+ J) /J.</me></p>
             </statement>
         </theorem>
+
         <theorem>
             <title>Third Isomorphism Theorem</title>
             <idx>
@@ -366,6 +439,7 @@
                     <me>R/I \cong \frac{R/J}{I/J}.</me></p>
             </statement>
         </theorem>
+
         <theorem xml:id="theorem-correspondence-rings">
             <title>Correspondence Theorem</title>
             <idx>
@@ -377,11 +451,14 @@
             </statement>
         </theorem>
     </section>
+
     <section xml:id="section-maximal-prime-ideals">
         <title>Maximal and Prime Ideals</title>
         <introduction>
             <p>In this particular section we are especially interested in certain ideals of commutative rings. These ideals give us special types of factor rings. More specifically, we would like to characterize those ideals <m>I</m> of a commutative ring <m>R</m> such that <m>R/I</m> is an integral domain or a field.</p>
+            
             <p>A proper ideal <m>M</m> of a ring <m>R</m> is a <term>maximal ideal</term><idx><h>Ideal</h><h>maximal</h></idx><idx><h>Maximal ideal</h></idx> of <m>R</m> if the ideal <m>M</m> is not a proper subset of any ideal of <m>R</m> except <m>R</m> itself. That is, <m>M</m> is a  maximal ideal if for any ideal <m>I</m> properly containing <m>M</m>, <m>I = R</m>. The following theorem completely characterizes maximal ideals for commutative rings with identity in terms of their corresponding factor rings.</p>
+            
             <theorem xml:id="theorem-maximal-ideal-field">
                 <statement>
                     <p>Let <m>R</m> be a commutative ring with identity and <m>M</m> an ideal in <m>R</m>. Then <m>M</m> is a maximal ideal of <m>R</m> if and only if <m>R/M</m> is a field.</p>
@@ -396,9 +473,11 @@
                     <p>Conversely, suppose that <m>M</m> is an ideal and <m>R/M</m> is a field. Since <m>R/M</m> is a field, it must contain at least two elements: <m>0 + M = M</m> and <m>1 + M</m>. Hence, <m>M</m> is a proper ideal of <m>R</m>.  Let <m>I</m> be any ideal properly containing <m>M</m>. We need to show that <m>I = R</m>. Choose <m>a</m> in <m>I</m> but not in <m>M</m>. Since <m>a+ M</m> is a nonzero element in a field, there exists an element <m>b +M</m> in <m>R/M</m> such that <m>(a+M)(b+M) = ab + M = 1+M</m>.  Consequently, there exists an element <m>m \in M</m> such that <m>ab + m = 1</m> and <m>1</m> is in <m>I</m>. Therefore, <m>r1 =r \in I</m> for all <m>r \in R</m>. Consequently, <m>I = R</m>.</p>
                 </proof>
             </theorem>
+            
             <example xml:id="example-rings-prime-ideal">
                 <p>Let <m>p{\mathbb Z}</m> be an ideal in <m>{\mathbb Z}</m>, where <m>p</m> is prime. Then <m>p{\mathbb Z}</m>  is a maximal ideal since <m>{\mathbb Z}/ p {\mathbb Z} \cong {\mathbb Z}_p</m> is a field.</p>
             </example>
+            
             <p>A proper ideal <m>P</m> in a commutative ring <m>R</m> is called a <term>prime ideal</term><idx><h>Ideal</h><h>prime</h></idx><idx><h>Prime ideal</h></idx> if whenever <m>ab \in P</m>, then either <m>a \in P</m> or <m>b \in P</m>.<fn>It is possible to define prime ideals in a noncommutative ring. See [1] or [3].</fn></p>
             <!-- Required P to be a proper ideal.  Suggested by D. Keeler. -->
             <!--  TWJ 19/3/2013 -->
@@ -407,6 +486,7 @@
             <example xml:id="example-rings-z12-ideal">
                 <p>It is easy to check that the set <m>P = \{ 0, 2, 4, 6, 8, 10  \}</m> is an ideal in <m>{\mathbb Z}_{12}</m>. This ideal is prime. In fact, it is a maximal ideal.</p>
             </example>
+            
             <proposition>
                 <statement>
                     <p>Let <m>R</m> be a commutative ring with identity <m>1</m>, where <m>1 \neq 0</m>. Then <m>P</m> is a prime ideal in <m>R</m> if and only if <m>R/P</m> is an integral domain.</p>
@@ -423,7 +503,9 @@
             <example xml:id="example-rings-nz-ideal">
                 <p>Every ideal in <m>{\mathbb Z}</m> is of the form <m>n {\mathbb Z}</m>. The factor ring <m>{\mathbb Z} / n{\mathbb Z} \cong {\mathbb Z}_n</m> is an integral domain only when <m>n</m> is prime.  It is actually a field.  Hence, the nonzero prime ideals in <m>{\mathbb Z}</m> are the ideals <m>p{\mathbb Z}</m>, where <m>p</m> is prime. This example really justifies the use of the word <q>prime</q> in our definition of prime ideals.</p>
             </example>
+            
             <p>Since every field is an integral domain, we have the following corollary.</p>
+            
             <corollary xml:id="corollary-maximal-ideal">
                 <statement>
                     <p>Every maximal ideal in a commutative ring with identity is also a prime ideal.</p>
@@ -436,18 +518,26 @@
         <subsection xml:id="rings-subsection-historical-note">
             <title>Historical Note</title>
             <p>Amalie Emmy Noether<idx><h>Noether, A. Emmy</h></idx>, one of the  outstanding mathematicians of the twentieth century, was born in Erlangen, Germany in 1882. She was the daughter of Max Noether<idx><h>Noether, Max</h></idx> (1844<ndash/>1921), a distinguished mathematician at the University of Erlangen. Together with Paul Gordon (1837<ndash/>1912), Emmy Noether's father strongly influenced her early education. She entered the University of Erlangen at the age of 18. Although women had been admitted to universities in England, France, and Italy for decades, there was great resistance to their presence at universities in Germany. Noether was one of only two women among the university's 986 students. After completing her doctorate under Gordon in 1907, she continued to do research at Erlangen, occasionally lecturing when her father was ill.</p>
+            
             <p>Noether went to Göttingen to study in 1916. David Hilbert<idx><h>Hilbert, David</h></idx> and Felix Klein<idx><h>Klein, Felix</h></idx> tried unsuccessfully to secure her an appointment at Göttingen. Some of the faculty objected to women lecturers, saying, <q>What will our soldiers think when they return to the university and are expected to learn at the feet of a woman?</q>  Hilbert, annoyed at the question, responded, <q>Meine Herren, I do not see that the sex of a candidate is an argument against her admission as a Privatdozent. After all, the Senate is not a bathhouse.</q>  At the end of World War I, attitudes changed and conditions greatly improved for women.  After Noether passed her habilitation examination in 1919, she was given a title and was paid a small sum for her lectures.</p>
+            
             <p>In 1922, Noether became a Privatdozent at Göttingen. Over the next 11 years she used axiomatic methods to develop an abstract theory of rings and ideals. Though she was not good at lecturing, Noether was an inspiring teacher. One of her many students was B. L. van der Waerden, author of the first text treating abstract algebra from a modern point of view. Some of the other mathematicians  Noether influenced or closely worked with were Alexandroff, Artin, Brauer, Courant, Hasse, Hopf, Pontryagin, von Neumann, and Weyl. One of the high points of her career was an invitation to address the International Congress of Mathematicians in Zurich in 1932. In spite  of all the recognition she received from her colleagues, Noether's abilities were never recognized as they should have been during her lifetime. She was never promoted to full professor by the Prussian academic bureaucracy.</p>
+            
             <p>In 1933, Noether, a Jew, was banned from participation in all academic activities in Germany. She emigrated to the United States, took a position at Bryn Mawr College, and became a member of the Institute for Advanced Study at Princeton. Noether died suddenly on April 14, 1935. After her death she was eulogized by such notable scientists as Albert Einstein.</p>
         </subsection>
     </section>
+    
     <section xml:id="section-software-application">
         <title>An Application to Software Design</title>
         <p>The Chinese Remainder Theorem is a result from elementary number theory about the solution of systems of simultaneous congruences. The Chinese mathematician Sun-tsï wrote about the theorem in the first century A.D. This theorem has some interesting consequences in the design of software for parallel processors.</p>
+        
         <lemma xml:id="lemma-chinese-remainder">
             <statement>
                 <p>Let <m>m</m> and <m>n</m> be positive integers such that <m>\gcd( m, n) = 1</m>. Then for <m>a, b \in {\mathbb Z}</m> the system
-                    <md><mrow>x &amp; \equiv  a \pmod{m}</mrow><mrow>x &amp; \equiv  b \pmod{n} </mrow></md>
+                    <md>
+                        <mrow>x &amp; \equiv  a \pmod{m}</mrow>
+                        <mrow>x &amp; \equiv  b \pmod{n} </mrow>
+                    </md>
                 has a solution.  If <m>x_1</m> and <m>x_2</m> are two solutions of the system, then  <m>x_1 \equiv x_2 \pmod{mn}</m>.</p>
             </statement>
             <proof>
@@ -461,15 +551,25 @@
                     <me>[(b-a)s]m \equiv (b-a) \pmod{n}.</me>
                 Now let <m>k_1 = (b-a)s</m>.</p>
                 <p>To show that any two solutions are congruent modulo <m>mn</m>, let <m>c_1</m> and <m>c_2</m> be two solutions of  the system. That is,
-                    <md><mrow>c_i &amp; \equiv  a \pmod{m}</mrow><mrow>c_i &amp; \equiv  b \pmod{n}</mrow></md>
+                    <md>
+                        <mrow>c_i &amp; \equiv  a \pmod{m}</mrow>
+                        <mrow>c_i &amp; \equiv  b \pmod{n}</mrow>
+                    </md>
                 for <m>i = 1, 2</m>. Then
-                    <md><mrow>c_2 &amp; \equiv  c_1 \pmod{m}</mrow><mrow>c_2 &amp; \equiv  c_1 \pmod{n}.</mrow></md>
+                    <md>
+                        <mrow>c_2 &amp; \equiv  c_1 \pmod{m}</mrow>
+                        <mrow>c_2 &amp; \equiv  c_1 \pmod{n}.</mrow>
+                    </md>
                 Therefore, both <m>m</m> and <m>n</m> divide <m>c_1 - c_2</m>. Consequently, <m>c_2 \equiv c_1 \pmod{mn}</m>.</p>
             </proof>
         </lemma>
+        
         <example xml:id="example-rings-solve-system">
             <p>Let us solve the system
-                <md><mrow>x &amp; \equiv  3 \pmod{4}</mrow><mrow>x &amp; \equiv  4 \pmod{5}.</mrow></md>
+                <md>
+                    <mrow>x &amp; \equiv  3 \pmod{4}</mrow>
+                    <mrow>x &amp; \equiv  4 \pmod{5}.</mrow>
+                </md>
             Using the Euclidean algorithm, we can find integers <m>s</m> and <m>t</m> such that <m>4s + 5t = 1</m>. Two such integers are <m>s = 4</m> and <m>t = -3</m>. Consequently,
                 <me>x = a + k_1 m = 3 + 4k_1 = 3 + 4[(5 - 4)4] = 19.</me></p>
         </example>
@@ -483,8 +583,13 @@
             </idx>
             <statement>
                 <p>Let <m>n_1, n_2, \ldots, n_k</m> be positive integers such that <m>\gcd(n_i, n_j) = 1</m> for <m>i \neq j</m>. Then for any integers <m>a_1, \ldots, a_k</m>, the system
-                    <md><mrow>x &amp; \equiv  a_1 \pmod{n_1}</mrow><mrow>x &amp; \equiv  a_2 \pmod{n_2}</mrow><mrow>&amp;  \vdots </mrow><mrow>x &amp; \equiv  a_k \pmod{n_k}</mrow></md>
-                has a solution.  Furthermore, any two solutions of the system are congruent modulo <m>n_1 n_2 \cdots n_k</m>.</p>
+                    <md>
+                        <mrow>x &amp; \equiv  a_1 \pmod{n_1}</mrow>
+                        <mrow>x &amp; \equiv  a_2 \pmod{n_2}</mrow>
+                        <mrow>&amp;  \vdots </mrow>
+                        <mrow>x &amp; \equiv  a_k \pmod{n_k}</mrow>
+                    </md>
+                has a solution. Furthermore, any two solutions of the system are congruent modulo <m>n_1 n_2 \cdots n_k</m>.</p>
             </statement>
             <proof>
                 <p>We will use mathematical induction on the number of equations in the system. If there are <m>k= 2</m> equations, then the theorem is true by  Lemma<nbsp/><xref ref="lemma-chinese-remainder"/>. Now suppose that the result is true for a system of <m>k</m>  equations or less and that we wish to find a solution of 
@@ -494,20 +599,37 @@
                 has a solution that is unique modulo <m>n_1 \ldots n_{k+1}</m> by the lemma.</p>
             </proof>
         </theorem>
+        
         <example xml:id="example-rings-system-mod-4-5-9-7">
             <p>Let us solve the system
-                <md><mrow>x &amp; \equiv  3 \pmod{4}</mrow><mrow>x &amp; \equiv  4 \pmod{5}</mrow><mrow>x &amp; \equiv  1 \pmod{9}</mrow><mrow>x &amp; \equiv  5 \pmod{7}.</mrow></md>
-            From Example<nbsp/><xref ref="example-rings-solve-system"/> we know that 19 is a solution of the first two congruences and any other solution of the system is congruent to <m>19 \pmod{20}</m>. Hence, we can reduce the system to a system of three congruences:
-                <md><mrow>x &amp; \equiv  19 \pmod{20}</mrow><mrow>x &amp; \equiv  1 \pmod{9}</mrow><mrow>x &amp; \equiv  5 \pmod{7}.</mrow></md>
+                <md>
+                    <mrow>x &amp; \equiv  3 \pmod{4}</mrow>
+                    <mrow>x &amp; \equiv  4 \pmod{5}</mrow>
+                    <mrow>x &amp; \equiv  1 \pmod{9}</mrow>
+                    <mrow>x &amp; \equiv  5 \pmod{7}.</mrow>
+                </md>
+            From Example<nbsp/><xref ref="example-rings-solve-system"/> we know that <m>19</m> is a solution of the first two congruences and any other solution of the system is congruent to <m>19 \pmod{20}</m>. Hence, we can reduce the system to a system of three congruences:
+                <md>
+                    <mrow>x &amp; \equiv  19 \pmod{20}</mrow>
+                    <mrow>x &amp; \equiv  1 \pmod{9}</mrow>
+                    <mrow>x &amp; \equiv  5 \pmod{7}.</mrow>
+                </md>
             Solving the next two equations, we can reduce the system to
-                <md><mrow>x &amp; \equiv  19 \pmod{180}</mrow><mrow>x &amp; \equiv  5 \pmod{7}.</mrow></md>
-            Solving this last system, we find that 19 is a solution for the system that is unique up to modulo 1260.</p>
+                <md>
+                    <mrow>x &amp; \equiv  19 \pmod{180}</mrow>
+                    <mrow>x &amp; \equiv  5 \pmod{7}.</mrow>
+                </md>
+            Solving this last system, we find that <m>19</m> is a solution for the system that is unique up to modulo <m>1260</m>.</p>
         </example>
+        
         <p>One interesting application of the Chinese Remainder Theorem in the design of computer software is that the theorem allows us to break up a calculation involving large integers into several less formidable calculations. A computer will handle integer calculations only up to a certain size due to the size of its processor chip, which is usually a 32 or 64-bit processor chip. For example, the largest integer available on a computer with a 64-bit processor chip is
             <me>2^{63} - 1 = \text{9,223,372,036,854,775,807}.</me>
         Larger processors such as 128 or 256-bit have been proposed or are under development.  There is even talk of a 512-bit processor chip.  The largest integer that such a chip could store with be <m>2^{511} - 1</m>, which would be a 154 digit number.  However, we would need to deal with much larger numbers to break sophisticated encryption schemes.</p>
+        
         <p>Special software is required for calculations involving larger integers which cannot be added directly by the machine.  By using the Chinese Remainder Theorem we can break down large integer additions and multiplications into calculations that the computer can handle directly. This is especially useful on parallel processing computers which have the ability to run several programs concurrently.</p>
+        
         <p>Most computers have a single central processing unit (CPU) containing one processor chip and can only add two numbers at a time. To add  a list of ten numbers, the CPU must do nine additions in sequence. However, a parallel processing computer has more than one CPU. A computer with 10 CPUs, for example,  can perform 10 different additions at the same time. If we can take a large integer  and break it down into parts, sending each part to a different CPU, then by performing several additions or multiplications simultaneously on those parts, we can work with an integer that the computer would not be able to handle as a whole.</p>
+        
         <example xml:id="example-rings-2134x1531">
             <p>Suppose that we wish to multiply 2134 by 1531. We will use the integers 95, 97, 98, and 99 because they are relatively prime. We can break down each integer into four parts:
                 <md><mrow>2134 &amp; \equiv  44 \pmod{95}</mrow><mrow>2134 &amp; \equiv  0 \pmod{97}</mrow><mrow>2134 &amp; \equiv  76 \pmod{98}</mrow><mrow>2134 &amp; \equiv  55 \pmod{99}</mrow></md>
