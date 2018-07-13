@@ -14,34 +14,39 @@
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="finite">
     <title>Finite Fields</title>
     <introduction>
-        <p>Finite fields appear in many applications of algebra, including coding theory and cryptography.  We already know one finite field, <m>{\mathbb Z}_p</m>, where <m>p</m> is prime.  In this chapter we will show that a unique finite field of order <m>p^n</m> exists for every prime <m>p</m>, where <m>n</m> is a positive integer.  Finite fields are also called Galois fields in honor of Évariste Galois, who was one of the first mathematicians to investigate them.</p>
+        <p>Finite fields appear in many applications of algebra, including coding theory and cryptography.  We already know one finite field, <m>{\mathbb Z}_p</m>, where <m>p</m> is prime. In this chapter we will show that a unique finite field of order <m>p^n</m> exists for every prime <m>p</m>, where <m>n</m> is a positive integer. Finite fields are also called Galois fields in honor of Évariste Galois, who was one of the first mathematicians to investigate them.</p>
     </introduction>
+
     <section xml:id="section-finite-field">
         <title>Structure of a Finite Field</title>
-        <p>Recall that a field <m>F</m> has <term>characteristic</term> <m>p</m> if <m>p</m> is the smallest positive integer such that for every nonzero element <m>\alpha</m> in <m>F</m>, we have <m>p \alpha = 0</m>.  If no such integer exists, then <m>F</m> has characteristic 0.  From Theorem<nbsp/><xref ref="theorem-integral-domain-characteristic"/> we know that <m>p</m> must be prime.  Suppose that <m>F</m> is a finite field with <m>n</m> elements. Then <m>n \alpha = 0</m> for all <m>\alpha</m> in <m>F</m>.  Consequently, the characteristic of <m>F</m> must be <m>p</m>, where <m>p</m> is a prime dividing <m>n</m>.  This discussion is summarized in the following proposition.</p>
+        <p>Recall that a field <m>F</m> has <term>characteristic</term> <m>p</m> if <m>p</m> is the smallest positive integer such that for every nonzero element <m>\alpha</m> in <m>F</m>, we have <m>p \alpha = 0</m>. If no such integer exists, then <m>F</m> has characteristic <m>0</m>. From Theorem<nbsp/><xref ref="theorem-integral-domain-characteristic"/> we know that <m>p</m> must be prime. Suppose that <m>F</m> is a finite field with <m>n</m> elements. Then <m>n \alpha = 0</m> for all <m>\alpha</m> in <m>F</m>. Consequently, the characteristic of <m>F</m> must be <m>p</m>, where <m>p</m> is a prime dividing <m>n</m>. This discussion is summarized in the following proposition.</p>
+
         <proposition>
             <statement>
                 <p>If <m>F</m> is a finite field, then the characteristic of <m>F</m> is <m>p</m>, where <m>p</m> is prime.</p>
             </statement>
         </proposition>
+
         <p>Throughout this chapter we will assume that <m>p</m> is a prime number unless otherwise stated.</p>
+
         <proposition>
             <statement>
                 <p>If <m>F</m> is a finite field of characteristic <m>p</m>, then the order of <m>F</m> is <m>p^n</m> for some <m>n \in {\mathbb N}</m>.</p>
             </statement>
             <proof>
-                <p>Let <m>\phi : {\mathbb Z} \rightarrow F</m> be the ring homomorphism defined by <m>\phi(n) = n \cdot 1</m>.  Since the characteristic of <m>F</m> is <m>p</m>, the kernel of <m>\phi</m> must be <m>p {\mathbb Z}</m> and the image of <m>\phi</m> must be a subfield of <m>F</m> isomorphic to <m>{\mathbb Z}_p</m>.  We will denote this subfield by <m>K</m>.  Since <m>F</m> is a finite field, it must be a finite extension of <m>K</m> and, therefore, an algebraic extension of <m>K</m>. Suppose that <m>[F : K] = n</m> is the dimension of <m>F</m>, where <m>F</m> is a <m>K</m> vector space.  There must exist elements <m>\alpha_1, \ldots, \alpha_n \in F</m> such that any element <m>\alpha</m> in <m>F</m> can be written uniquely in the form   
+                <p>Let <m>\phi : {\mathbb Z} \rightarrow F</m> be the ring homomorphism defined by <m>\phi(n) = n \cdot 1</m>. Since the characteristic of <m>F</m> is <m>p</m>, the kernel of <m>\phi</m> must be <m>p {\mathbb Z}</m> and the image of <m>\phi</m> must be a subfield of <m>F</m> isomorphic to <m>{\mathbb Z}_p</m>. We will denote this subfield by <m>K</m>. Since <m>F</m> is a finite field, it must be a finite extension of <m>K</m> and, therefore, an algebraic extension of <m>K</m>. Suppose that <m>[F : K] = n</m> is the dimension of <m>F</m>, where <m>F</m> is a <m>K</m> vector space. There must exist elements <m>\alpha_1, \ldots, \alpha_n \in F</m> such that any element <m>\alpha</m> in <m>F</m> can be written uniquely in the form   
                     <me>\alpha = a_1 \alpha_1 + \cdots + a_n \alpha_n,</me>
-                where the <m>a_i</m>'s are in <m>K</m>.  Since there are <m>p</m> elements in <m>K</m>, there are <m>p^n</m> possible linear combinations of the <m>\alpha_i</m>'s.  Therefore, the order of <m>F</m> must be <m>p^n</m>.</p>
+                where the <m>a_i</m>'s are in <m>K</m>.  Since there are <m>p</m> elements in <m>K</m>, there are <m>p^n</m> possible linear combinations of the <m>\alpha_i</m>'s. Therefore, the order of <m>F</m> must be <m>p^n</m>.</p>
             </proof>
         </proposition>
+
         <lemma xml:id="lemma-freshmans-dream">
             <title>Freshman's Dream</title>
             <idx>
                 <h>Freshman's Dream</h>
             </idx>
             <statement>
-                <p>Let <m>p</m> be prime and <m>D</m> be an integral domain of characteristic <m>p</m>.  Then
+                <p>Let <m>p</m> be prime and <m>D</m> be an integral domain of characteristic <m>p</m>. Then
                     <me>a^{p^n} + b^{p^n} = (a + b)^{p^n}</me>
                 for all positive integers <m>n</m>.</p>
             </statement>
@@ -50,26 +55,28 @@
                     <me>(a + b)^p = \sum_{k = 0}^{p} \binom{p}{k} a^k b^{p - k}.</me>
                 If <m>0 \lt k \lt p</m>, then
                     <me>\binom{p}{k} = \frac{p!}{k!(p - k)!}</me>
-                must be divisible by <m>p</m>, since <m>p</m> cannot divide <m>k!(p - k)!</m>.  Note that <m>D</m> is an integral domain of characteristic <m>p</m>, so all but the first and last terms in the sum must be zero.  Therefore, <m>(a + b)^p = a^p + b^p</m>.</p>
-                <p>Now suppose that the result holds for all <m>k</m>, where <m>1 \leq k \leq n</m>.  By the induction hypothesis,
+                must be divisible by <m>p</m>, since <m>p</m> cannot divide <m>k!(p - k)!</m>.  Note that <m>D</m> is an integral domain of characteristic <m>p</m>, so all but the first and last terms in the sum must be zero. Therefore, <m>(a + b)^p = a^p + b^p</m>.</p>
+                <p>Now suppose that the result holds for all <m>k</m>, where <m>1 \leq k \leq n</m>. By the induction hypothesis,
                     <me>(a + b)^{p^{n + 1}} = ((a + b)^p)^{p^{n}} = (a^p + b^p)^{p^{n}} = (a^p)^{p^{n}} + (b^p)^{p^{n}} = a^{p^{n + 1}} + b^{p^{n + 1}}.</me>
                 Therefore, the lemma is true for <m>n + 1</m> and the proof is complete.</p>
             </proof>
         </lemma>
+
         <p>Let <m>F</m> be a field.  A polynomial <m>f(x) \in F[x]</m> of degree <m>n</m> is <term>separable</term><idx><h>Polynomial separable</h></idx> if it has <m>n</m> distinct roots in the splitting field of <m>f(x)</m>; that is, <m>f(x)</m> is separable when it factors into distinct linear factors over the splitting field of <m>f</m>.  An extension <m>E</m> of <m>F</m> is a <term>separable extension</term><idx><h>Extension</h><h>separable</h></idx> of <m>F</m> if every element in <m>E</m> is the root of a separable polynomial in <m>F[x]</m>.</p>
         <!-- Corrected typo.  Suggested by C. Wall. - TWJ 5/15/2012 -->
         <example>
-            <p>The polynomial <m>x^2 - 2</m> is separable over <m>{\mathbb Q}</m> since it factors as <m>(x - \sqrt{2}\, )(x + \sqrt{2}\, )</m>. In fact, <m>{\mathbb Q}(\sqrt{2}\, )</m> is a separable extension of <m>{\mathbb Q}</m>.  Let <m>\alpha =  a + b \sqrt{2}</m> be any element in <m>{\mathbb Q}(\sqrt{2}\, )</m>. If <m>b = 0</m>, then <m>\alpha</m> is a root of <m>x - a</m>.  If <m>b \neq 0</m>, then <m>\alpha</m> is the root  of the separable polynomial 
+            <p>The polynomial <m>x^2 - 2</m> is separable over <m>{\mathbb Q}</m> since it factors as <m>(x - \sqrt{2}\, )(x + \sqrt{2}\, )</m>. In fact, <m>{\mathbb Q}(\sqrt{2}\, )</m> is a separable extension of <m>{\mathbb Q}</m>.  Let <m>\alpha =  a + b \sqrt{2}</m> be any element in <m>{\mathbb Q}(\sqrt{2}\, )</m>. If <m>b = 0</m>, then <m>\alpha</m> is a root of <m>x - a</m>. If <m>b \neq 0</m>, then <m>\alpha</m> is the root  of the separable polynomial 
                 <me>x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, )).</me></p>
         </example>
         <!-- Notation error corrected.  Suggested by C. Wall.  TWJ 5/15/2012 -->
-        <p>Fortunately, we have an easy test to  determine the separability of any polynomial.  Let
+        <p>Fortunately, we have an easy test to  determine the separability of any polynomial. Let
             <me>f(x) = a_0 + a_1 x + \cdots + a_n x^n</me>
-        be any polynomial in  <m>F[x]</m>. Define the <term>derivative</term><idx><h>Derivative</h></idx> of <m>f(x)</m> to be 
-            <me>f'(x) = a_1  + 2 a_2 x + \cdots + n a_n x^{n - 1}.</me></p>
+        be any polynomial in <m>F[x]</m>. Define the <term>derivative</term><idx><h>Derivative</h></idx> of <m>f(x)</m> to be 
+            <me>f'(x) = a_1 + 2 a_2 x + \cdots + n a_n x^{n - 1}.</me></p>
+
         <lemma xml:id="lemma-separable-derivative">
             <statement>
-                <p>Let <m>F</m> be a field and <m>f(x) \in F[x]</m>.  Then <m>f(x)</m> is separable if and only if <m>f(x)</m> and <m>f'(x)</m> are relatively prime.</p>
+                <p>Let <m>F</m> be a field and <m>f(x) \in F[x]</m>. Then <m>f(x)</m> is separable if and only if <m>f(x)</m> and <m>f'(x)</m> are relatively prime.</p>
             </statement>
             <proof>
                 <p>Let <m>f(x)</m> be separable.  Then <m>f(x)</m> factors over some extension field of <m>F</m> as <m>f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)</m>, where <m>\alpha_i \neq \alpha_j</m> for <m>i \neq j</m>. Taking the derivative of <m>f(x)</m>, we see that
@@ -80,6 +87,7 @@
                 Therefore, <m>f(x)</m> and <m>f'(x)</m> have a common factor.</p>
             </proof>
         </lemma>
+
         <theorem xml:id="theorem-finite-splitting-field">
             <statement>
                 <p>For every  prime <m>p</m> and every positive integer <m>n</m>, there exists a finite field <m>F</m> with <m>p^n</m> elements. Furthermore, any field of order <m>p^n</m> is isomorphic to the splitting field of <m>x^{p^n} -x</m> over <m>{\mathbb Z}_p</m>.</p>
@@ -92,6 +100,7 @@
                 provided <m>p</m> is odd.  If <m>p = 2</m>, then 
                     <me>f(-\alpha) =  (-\alpha)^{2^n} - (-\alpha) = \alpha + \alpha = 0.</me>
                 If <m>\alpha \neq 0</m>, then <m>(\alpha^{-1})^{p^n} = (\alpha^{p^n})^{-1} = \alpha^{-1}</m>. Since the zeros of <m>f(x)</m> form a subfield of <m>F</m> and <m>f(x)</m> splits in this subfield, the subfield must be all of <m>F</m>.</p>
+                
                 <p>Let <m>E</m> be any other field of order <m>p^n</m>.  To show that <m>E</m> is isomorphic to <m>F</m>, we must show that every element in <m>E</m> is a root of <m>f(x)</m>.  Certainly 0 is a root of <m>f(x)</m>.  Let <m>\alpha</m> be a nonzero element of <m>E</m>.  The order of the multiplicative group of nonzero elements of <m>E</m> is <m>p^n-1</m>; hence, <m>\alpha^{p^n-1} =1</m> or <m>\alpha^{p^n} -\alpha = 0</m>.  Since <m>E</m> contains <m>p^n</m> elements, <m>E</m> must be a splitting field of <m>f(x)</m>; however, by Corollary<nbsp/><xref ref="corollary-poly-splitting-field"/>, the splitting field of any polynomial is unique up to isomorphism.</p>
             </proof>
         </theorem>
@@ -102,6 +111,7 @@
             </statement>
             <proof>
                 <p>Let <m>F</m> be a subfield of <m>E = \gf(p^n)</m>.  Then <m>F</m> must be a field extension of <m>K</m> that contains  <m>p^m</m> elements, where <m>K</m> is isomorphic to <m>{\mathbb Z}_p</m>.   Then <m>m \mid n</m>, since <m>[E:K] = [E:F][F:K]</m>.</p>
+                
                 <p>To prove the converse, suppose that <m>m \mid n</m> for some <m>m \gt 0</m>.  Then <m>p^m -1</m> divides <m>p^n -1</m>. Consequently, <m>x^{p^m -1} - 1</m> divides <m>x^{p^n -1} -1</m>. Therefore, <m>x^{p^m} - x</m> must divide <m>x^{p^n} - x</m>, and every zero of <m>x^{p^m} - x</m> is also a zero of <m>x^{p^n} - x</m>. Thus, <m>\gf(p^n)</m> contains, as a subfield, a splitting field of <m>x^{p^m} - x</m>, which must be isomorphic to <m>\gf(p^m)</m>.</p>
             </proof>
         </theorem>
@@ -109,6 +119,7 @@
         <example xml:id="example-finite-gf-p24">
             <p>The lattice of subfields of <m>\gf(p^{24})</m> is given in Figure<nbsp/><xref ref="figure-field-lattice"/>.</p>
         </example>
+        
         <figure xml:id="figure-field-lattice">
             <caption>Subfields of <m>\gf(p^{24})</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/20/2010 -->
@@ -118,7 +129,9 @@
                 </latex-image>
             </image>
         </figure>
+        
         <p>With each field <m>F</m> we have a multiplicative group of nonzero elements of <m>F</m> which we will denote by <m>F^*</m>. <notation><usage>F^*</usage><description>multiplicative group of a field <m>F</m></description></notation> The multiplicative group of any finite field is cyclic.  This result follows from the more general result that we will prove in the next theorem.</p>
+        
         <theorem xml:id="theorem-mult-group-finite-field">
             <statement>
                 <p>If <m>G</m> is a finite  subgroup of <m>F^\ast</m>, the multiplicative group of nonzero elements of a field <m>F</m>, then <m>G</m> is cyclic.</p>
@@ -136,6 +149,7 @@
                 <p>The multiplicative group of all nonzero elements of a finite field is cyclic.</p>
             </statement>
         </corollary>
+        
         <corollary xml:id="corollary-finite-extension-finite-field">
             <statement>
                 <p>Every finite extension <m>E</m> of a finite field <m>F</m> is a simple extension of <m>F</m>.</p>
@@ -144,11 +158,18 @@
                 <p>Let <m>\alpha</m> be a generator for the cyclic group <m>E^{\ast}</m> of nonzero elements of <m>E</m>. Then <m>E = F( \alpha )</m>.</p>
             </proof>
         </corollary>
+        
         <example xml:id="example-finite-gf-2-4">
             <p>The finite field <m>\gf(2^4)</m> is isomorphic to the field <m>{\mathbb Z}_2/ \langle 1 + x + x^4 \rangle</m>. Therefore, the elements of  <m>\gf(2^4)</m> can be taken to be
                 <me>\{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \alpha + \alpha^4 = 0 \}.</me>
             Remembering that <m>1 + \alpha +\alpha^4 = 0</m>, we add and multiply elements of <m>\gf(2^4)</m> exactly as we add and multiply polynomials.  The multiplicative group of <m>\gf(2^4)</m> is isomorphic to <m>{\mathbb  Z}_{15}</m> with generator <m>\alpha</m>: 
-                <md><mrow>&amp; \alpha^1 = \alpha &amp; &amp; \alpha^6 = \alpha^2 + \alpha^3 &amp; &amp; \alpha^{11} = \alpha + \alpha^2 + \alpha^3 &amp;</mrow><mrow>&amp; \alpha^2 = \alpha^2 &amp; &amp; \alpha^7 = 1 + \alpha + \alpha^3 &amp; &amp; \alpha^{12} = 1 + \alpha + \alpha^2 + \alpha^3 &amp;</mrow><mrow>&amp; \alpha^3 = \alpha^3 &amp; &amp; \alpha^8 = 1 + \alpha^2 &amp; &amp; \alpha^{13} = 1 + \alpha^2 + \alpha^3 &amp;</mrow><mrow>&amp; \alpha^4 = 1 + \alpha &amp; &amp; \alpha^9 = \alpha + \alpha^3 &amp; &amp; \alpha^{14} = 1 + \alpha^3 &amp;</mrow><mrow>&amp;\alpha^5 = \alpha + \alpha^2 &amp; &amp; \alpha^{10} = 1 + \alpha + \alpha^2 &amp; &amp; \alpha^{15} = 1. &amp;</mrow></md></p>
+                <md>
+                    <mrow>&amp; \alpha^1 = \alpha &amp; &amp; \alpha^6 = \alpha^2 + \alpha^3 &amp; &amp; \alpha^{11} = \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
+                    <mrow>&amp; \alpha^2 = \alpha^2 &amp; &amp; \alpha^7 = 1 + \alpha + \alpha^3 &amp; &amp; \alpha^{12} = 1 + \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
+                    <mrow>&amp; \alpha^3 = \alpha^3 &amp; &amp; \alpha^8 = 1 + \alpha^2 &amp; &amp; \alpha^{13} = 1 + \alpha^2 + \alpha^3 &amp;</mrow>
+                    <mrow>&amp; \alpha^4 = 1 + \alpha &amp; &amp; \alpha^9 = \alpha + \alpha^3 &amp; &amp; \alpha^{14} = 1 + \alpha^3 &amp;</mrow>
+                    <mrow>&amp;\alpha^5 = \alpha + \alpha^2 &amp; &amp; \alpha^{10} = 1 + \alpha + \alpha^2 &amp; &amp; \alpha^{15} = 1. &amp;</mrow>
+                </md></p>
         </example>
     </section>
     <section xml:id="section-poly-codes">
@@ -156,8 +177,10 @@
         <!-- TWJ 2012/11/21 -->
         <!-- Chapter reference updated.  Suggested by J. Buller. -->
         <introduction>
-            <p>With knowledge of polynomial rings and finite fields, it is now possible to derive more sophisticated codes than those of Chapter<nbsp/><xref ref="algcodes"/>.  First let us recall that an <m>(n, k)</m>-block code consists of a one-to-one encoding function <m>E:{\mathbb Z}^{k}_{2} \rightarrow {\mathbb Z}^{n}_{2}</m> and a decoding function <m>D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{k}_{2}</m>.  The code is error-correcting if <m>D</m> is onto.  A code is a linear code if it is the null space of a matrix <m>H \in {\mathbb M}_{k \times n}({\mathbb Z}_2)</m>. </p>
-            <p>We are interested in a class of codes known as cyclic codes<idx><h>Code</h><h>cyclic</h></idx>.  Let <m>\phi : {\mathbb Z}_2^k \rightarrow {\mathbb  Z}_2^n</m> be a binary <m>(n,k)</m>-block code.  Then <m>\phi</m> is a <term>cyclic code</term> if for every codeword <m>(a_1, a_2, \ldots, a_n )</m>, the cyclically shifted <m>n</m>-tuple <m>(a_n, a_1, a_2, \ldots, a_{n - 1} )</m> is also a codeword.  Cyclic codes are particularly easy to implement on a  computer using shift registers [2, 3].</p>
+            <p>With knowledge of polynomial rings and finite fields, it is now possible to derive more sophisticated codes than those of Chapter<nbsp/><xref ref="algcodes"/>. First let us recall that an <m>(n, k)</m>-block code consists of a one-to-one encoding function <m>E:{\mathbb Z}^{k}_{2} \rightarrow {\mathbb Z}^{n}_{2}</m> and a decoding function <m>D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{k}_{2}</m>. The code is error-correcting if <m>D</m> is onto. A code is a linear code if it is the null space of a matrix <m>H \in {\mathbb M}_{k \times n}({\mathbb Z}_2)</m>.</p>
+
+            <p>We are interested in a class of codes known as cyclic codes<idx><h>Code</h><h>cyclic</h></idx>. Let <m>\phi : {\mathbb Z}_2^k \rightarrow {\mathbb Z}_2^n</m> be a binary <m>(n,k)</m>-block code. Then <m>\phi</m> is a <term>cyclic code</term> if for every codeword <m>(a_1, a_2, \ldots, a_n )</m>, the cyclically shifted <m>n</m>-tuple <m>(a_n, a_1, a_2, \ldots, a_{n - 1} )</m> is also a codeword. Cyclic codes are particularly easy to implement on a computer using shift registers [2, 3].</p>
+            
             <example xml:id="example-finite-6-3-linear-code">
                 <p>Consider the <m>(6,3)</m>-linear codes generated by the two matrices
                     <me>G_1 
@@ -199,22 +222,32 @@
                 This code cannot be cyclic, since <m>(101101)</m> is a codeword but <m>(011011)</m> is not a codeword.</p>
             </example>
         </introduction>
+
         <subsection xml:id="finite-subsection-poly-codes">
             <title>Polynomial Codes</title>
-            <p>We would like to find an easy method of obtaining cyclic linear codes.  To accomplish this, we can use our knowledge of finite fields and  polynomial rings over <m>{\mathbb Z}_2</m>.  Any binary <m>n</m>-tuple can be interpreted as a polynomial in <m>{\mathbb Z}_2[x]</m>.  Stated another way, the <m>n</m>-tuple <m>(a_0, a_1, \ldots, a_{n - 1} )</m> corresponds to the polynomial
-                <me>f(x) = a_0 +  a_1 x +  \cdots + a_{n-1} x^{n - 1},</me>
-            where the degree of <m>f(x)</m> is at most <m>n - 1</m>.   For example, the polynomial corresponding to the 5-tuple <m>(10011)</m> is
+            <p>We would like to find an easy method of obtaining cyclic linear codes. To accomplish this, we can use our knowledge of finite fields and  polynomial rings over <m>{\mathbb Z}_2</m>.  Any binary <m>n</m>-tuple can be interpreted as a polynomial in <m>{\mathbb Z}_2[x]</m>. Stated another way, the <m>n</m>-tuple <m>(a_0, a_1, \ldots, a_{n - 1} )</m> corresponds to the polynomial
+                <me>f(x) = a_0 +  a_1 x + \cdots + a_{n-1} x^{n - 1},</me>
+            where the degree of <m>f(x)</m> is at most <m>n - 1</m>.   For example, the polynomial corresponding to the <m>5</m>-tuple <m>(10011)</m> is
                 <me>1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4.</me>
-            Conversely, with any polynomial <m>f(x) \in {\mathbb Z}_2[x]</m> with <m>\deg f(x) \lt n</m> we can associate a binary <m>n</m>-tuple. The polynomial <m>x + x^2 + x^4</m> corresponds to the 5-tuple <m>(01101)</m>.</p>
-            <p>Let us fix a nonconstant polynomial <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m> of degree <m>n - k</m>. We can define an <m>(n,k)</m>-code <m>C</m> in the following manner.  If <m>(a_0, \ldots, a_{k - 1})</m> is a <m>k</m>-tuple to be encoded, then <m>f(x) = a_0 + a_1 x +  \cdots + a_{k - 1} x^{k - 1}</m> is the corresponding polynomial in <m>{\mathbb Z}_2[x]</m>.  To encode <m>f(x)</m>, we multiply by <m>g(x)</m>.  The codewords in <m>C</m> are all those polynomials in <m>{\mathbb Z}_2[x]</m> of degree less than  <m>n</m> that are divisible by <m>g(x)</m>.  Codes obtained in this manner are called <term>polynomial codes</term><idx><h>Polynomial</h><h>code</h></idx><idx><h>Code</h><h>polynomial</h></idx>.</p>
+            Conversely, with any polynomial <m>f(x) \in {\mathbb Z}_2[x]</m> with <m>\deg f(x) \lt n</m> we can associate a binary <m>n</m>-tuple. The polynomial <m>x + x^2 + x^4</m> corresponds to the <m>5</m>-tuple <m>(01101)</m>.</p>
+
+            <p>Let us fix a nonconstant polynomial <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m> of degree <m>n - k</m>. We can define an <m>(n,k)</m>-code <m>C</m> in the following manner.  If <m>(a_0, \ldots, a_{k - 1})</m> is a <m>k</m>-tuple to be encoded, then <m>f(x) = a_0 + a_1 x + \cdots + a_{k - 1} x^{k - 1}</m> is the corresponding polynomial in <m>{\mathbb Z}_2[x]</m>.  To encode <m>f(x)</m>, we multiply by <m>g(x)</m>.  The codewords in <m>C</m> are all those polynomials in <m>{\mathbb Z}_2[x]</m> of degree less than  <m>n</m> that are divisible by <m>g(x)</m>. Codes obtained in this manner are called <term>polynomial codes</term><idx><h>Polynomial</h><h>code</h></idx><idx><h>Code</h><h>polynomial</h></idx>.</p>
+
             <example xml:id="example-finite-generator-63-code">
                 <!-- Changed minimal polynomial from  (1 + x^3)x^3 &amp; = x^2 + x^5 to (1 + x^3)x^2 &amp; = x^2 + x^5.  Discovered by Jon Buller - TWJ 3/25/2011 -->
-                <p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a 3-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  It is easy to check that this map is a group homomorphism.  In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp/><xref ref="exercise-vect-linear-transformation"/>, Chapter<nbsp/><xref ref="vect"/>).  Let us compute the kernel of <m>\phi</m>.  Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
-                    <md><mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow><mrow> &amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.</mrow></md>
+                <p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a <m>3</m>-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  It is easy to check that this map is a group homomorphism.  In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp/><xref ref="exercise-vect-linear-transformation"/>, Chapter<nbsp/><xref ref="vect"/>).  Let us compute the kernel of <m>\phi</m>. Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
+                    <md>
+                        <mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
+                        <mrow> &amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.</mrow>
+                    </md>
                 Since the polynomials over a field form an integral domain, <m>a_0 + a_1 x + a_2 x^2</m> must be the zero polynomial. Therefore, <m>\ker \phi = \{ (000) \}</m> and <m>\phi</m> is one-to-one.</p>
                 <p>To calculate a generator matrix for <m>C</m>, we merely need to examine the way the polynomials <m>1</m>, <m>x</m>, and <m>x^2</m> are encoded:
-                    <md><mrow>(1 + x^3) \cdot 1 &amp; = 1 + x^3</mrow><mrow>(1 + x^3)x &amp; = x + x^4</mrow><mrow>(1 + x^3)x^2 &amp; = x^2 + x^5. </mrow></md>
-                We obtain the code corresponding to the generator matrix <m>G_1</m> in Example<nbsp/><xref ref="example-finite-6-3-linear-code"/>.  The parity-check matrix for this code is
+                    <md>
+                        <mrow>(1 + x^3) \cdot 1 &amp; = 1 + x^3</mrow>
+                        <mrow>(1 + x^3)x &amp; = x + x^4</mrow>
+                        <mrow>(1 + x^3)x^2 &amp; = x^2 + x^5. </mrow>
+                    </md>
+                We obtain the code corresponding to the generator matrix <m>G_1</m> in Example<nbsp/><xref ref="example-finite-6-3-linear-code"/>. The parity-check matrix for this code is
                     <me>H
                     = 
                     \begin{pmatrix}
@@ -224,14 +257,17 @@
                     \end{pmatrix}.</me>
                 Since the smallest weight of any nonzero codeword is 2, this code has the ability to detect all single errors.</p>
             </example>
+
             <p>Rings of polynomials have a great deal of structure; therefore, our immediate goal is to establish a link between polynomial codes and ring theory. Recall that <m>x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)</m>.  The factor ring 
                 <me>R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle</me>
             can be considered to be the ring of polynomials of the form 
                 <me>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</me>
-            that satisfy the condition <m>t^n = 1</m>.  It is an easy exercise to show that <m>{\mathbb Z}_2^n</m> and <m>R_n</m> are isomorphic as vector spaces.  We will often identify elements in <m>{\mathbb Z}_2^n</m> with elements in <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.  In this manner we can interpret a linear code as a subset of <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
-            <p>The additional ring structure on polynomial codes is very powerful in describing cyclic codes. A cyclic shift of an <m>n</m>-tuple can be described by polynomial multiplication.  If <m>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</m> is a code polynomial in <m>R_n</m>, then
+            that satisfy the condition <m>t^n = 1</m>.  It is an easy exercise to show that <m>{\mathbb Z}_2^n</m> and <m>R_n</m> are isomorphic as vector spaces. We will often identify elements in <m>{\mathbb Z}_2^n</m> with elements in <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.  In this manner we can interpret a linear code as a subset of <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+            
+            <p>The additional ring structure on polynomial codes is very powerful in describing cyclic codes. A cyclic shift of an <m>n</m>-tuple can be described by polynomial multiplication. If <m>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</m> is a code polynomial in <m>R_n</m>, then
                 <me>tf(t) = a_{n-1} + a_0 t + \cdots + a_{n-2} t^{n-1}</me>
-            is the cyclically shifted word obtained from multiplying <m>f(t)</m> by <m>t</m>.  The following theorem gives a beautiful classification of cyclic codes in terms of the ideals of <m>R_n</m>.</p>
+            is the cyclically shifted word obtained from multiplying <m>f(t)</m> by <m>t</m>. The following theorem gives a beautiful classification of cyclic codes in terms of the ideals of <m>R_n</m>.</p>
+
             <theorem xml:id="theorem-cyclic-code">
                 <statement>
                     <p>A linear code <m>C</m> in <m>{\mathbb Z}_2^n</m> is cyclic if and only if it is an ideal in <m>R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
