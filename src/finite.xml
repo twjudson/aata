@@ -3,7 +3,7 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2017  Thomas W. Judson     -->
+<!-- Copyright (C) 1997-2018  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 <!-- This file is part of the book                 -->
 <!--                                               -->
@@ -225,22 +225,23 @@
 
         <subsection xml:id="finite-subsection-poly-codes">
             <title>Polynomial Codes</title>
-            <p>We would like to find an easy method of obtaining cyclic linear codes. To accomplish this, we can use our knowledge of finite fields and  polynomial rings over <m>{\mathbb Z}_2</m>.  Any binary <m>n</m>-tuple can be interpreted as a polynomial in <m>{\mathbb Z}_2[x]</m>. Stated another way, the <m>n</m>-tuple <m>(a_0, a_1, \ldots, a_{n - 1} )</m> corresponds to the polynomial
+            <p>We would like to find an easy method of obtaining cyclic linear codes. To accomplish this, we can use our knowledge of finite fields and  polynomial rings over <m>{\mathbb Z}_2</m>. Any binary <m>n</m>-tuple can be interpreted as a polynomial in <m>{\mathbb Z}_2[x]</m>. Stated another way, the <m>n</m>-tuple <m>(a_0, a_1, \ldots, a_{n - 1} )</m> corresponds to the polynomial
                 <me>f(x) = a_0 +  a_1 x + \cdots + a_{n-1} x^{n - 1},</me>
-            where the degree of <m>f(x)</m> is at most <m>n - 1</m>.   For example, the polynomial corresponding to the <m>5</m>-tuple <m>(10011)</m> is
+            where the degree of <m>f(x)</m> is at most <m>n - 1</m>. For example, the polynomial corresponding to the <m>5</m>-tuple <m>(10011)</m> is
                 <me>1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4.</me>
             Conversely, with any polynomial <m>f(x) \in {\mathbb Z}_2[x]</m> with <m>\deg f(x) \lt n</m> we can associate a binary <m>n</m>-tuple. The polynomial <m>x + x^2 + x^4</m> corresponds to the <m>5</m>-tuple <m>(01101)</m>.</p>
 
-            <p>Let us fix a nonconstant polynomial <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m> of degree <m>n - k</m>. We can define an <m>(n,k)</m>-code <m>C</m> in the following manner.  If <m>(a_0, \ldots, a_{k - 1})</m> is a <m>k</m>-tuple to be encoded, then <m>f(x) = a_0 + a_1 x + \cdots + a_{k - 1} x^{k - 1}</m> is the corresponding polynomial in <m>{\mathbb Z}_2[x]</m>.  To encode <m>f(x)</m>, we multiply by <m>g(x)</m>.  The codewords in <m>C</m> are all those polynomials in <m>{\mathbb Z}_2[x]</m> of degree less than  <m>n</m> that are divisible by <m>g(x)</m>. Codes obtained in this manner are called <term>polynomial codes</term><idx><h>Polynomial</h><h>code</h></idx><idx><h>Code</h><h>polynomial</h></idx>.</p>
+            <p>Let us fix a nonconstant polynomial <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m> of degree <m>n - k</m>. We can define an <m>(n,k)</m>-code <m>C</m> in the following manner. If <m>(a_0, \ldots, a_{k - 1})</m> is a <m>k</m>-tuple to be encoded, then <m>f(x) = a_0 + a_1 x + \cdots + a_{k - 1} x^{k - 1}</m> is the corresponding polynomial in <m>{\mathbb Z}_2[x]</m>. To encode <m>f(x)</m>, we multiply by <m>g(x)</m>. The codewords in <m>C</m> are all those polynomials in <m>{\mathbb Z}_2[x]</m> of degree less than <m>n</m> that are divisible by <m>g(x)</m>. Codes obtained in this manner are called <term>polynomial codes</term><idx><h>Polynomial</h><h>code</h></idx><idx><h>Code</h><h>polynomial</h></idx>.</p>
 
             <example xml:id="example-finite-generator-63-code">
                 <!-- Changed minimal polynomial from  (1 + x^3)x^3 &amp; = x^2 + x^5 to (1 + x^3)x^2 &amp; = x^2 + x^5.  Discovered by Jon Buller - TWJ 3/25/2011 -->
-                <p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a <m>3</m>-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>.  It is easy to check that this map is a group homomorphism.  In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp/><xref ref="exercise-vect-linear-transformation"/>, Chapter<nbsp/><xref ref="vect"/>).  Let us compute the kernel of <m>\phi</m>. Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
+                <p>If we let <m>g(x)= 1 + x^3</m>, we can define a <m>(6,3)</m>-code <m>C</m> as follows.  To encode a <m>3</m>-tuple <m>( a_0, a_1, a_2 )</m>, we multiply the corresponding polynomial <m>f(x) = a_0 + a_1 x + a_2 x^2</m> by <m>1 + x^3</m>.  We are defining a map <m>\phi : {\mathbb Z}_2^3 \rightarrow {\mathbb Z}_2^6</m> by <m>\phi  : f(x) \mapsto g(x) f(x)</m>. It is easy to check that this map is a group homomorphism. In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>, <m>\phi</m> is a linear transformation of vector spaces (see Exercise<nbsp/><xref ref="exercise-vect-linear-transformation"/>, Chapter<nbsp/><xref ref="vect"/>). Let us compute the kernel of <m>\phi</m>. Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when 
                     <md>
                         <mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
                         <mrow> &amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5.</mrow>
                     </md>
                 Since the polynomials over a field form an integral domain, <m>a_0 + a_1 x + a_2 x^2</m> must be the zero polynomial. Therefore, <m>\ker \phi = \{ (000) \}</m> and <m>\phi</m> is one-to-one.</p>
+
                 <p>To calculate a generator matrix for <m>C</m>, we merely need to examine the way the polynomials <m>1</m>, <m>x</m>, and <m>x^2</m> are encoded:
                     <md>
                         <mrow>(1 + x^3) \cdot 1 &amp; = 1 + x^3</mrow>
@@ -255,14 +256,14 @@
                     0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
                     0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 
                     \end{pmatrix}.</me>
-                Since the smallest weight of any nonzero codeword is 2, this code has the ability to detect all single errors.</p>
+                Since the smallest weight of any nonzero codeword is <m>2</m>, this code has the ability to detect all single errors.</p>
             </example>
 
-            <p>Rings of polynomials have a great deal of structure; therefore, our immediate goal is to establish a link between polynomial codes and ring theory. Recall that <m>x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)</m>.  The factor ring 
+            <p>Rings of polynomials have a great deal of structure; therefore, our immediate goal is to establish a link between polynomial codes and ring theory. Recall that <m>x^n - 1 = (x - 1)( x^{n-1} + \cdots + x + 1)</m>. The factor ring 
                 <me>R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle</me>
             can be considered to be the ring of polynomials of the form 
                 <me>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</me>
-            that satisfy the condition <m>t^n = 1</m>.  It is an easy exercise to show that <m>{\mathbb Z}_2^n</m> and <m>R_n</m> are isomorphic as vector spaces. We will often identify elements in <m>{\mathbb Z}_2^n</m> with elements in <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.  In this manner we can interpret a linear code as a subset of <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
+            that satisfy the condition <m>t^n = 1</m>.  It is an easy exercise to show that <m>{\mathbb Z}_2^n</m> and <m>R_n</m> are isomorphic as vector spaces. We will often identify elements in <m>{\mathbb Z}_2^n</m> with elements in <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>. In this manner we can interpret a linear code as a subset of <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
             
             <p>The additional ring structure on polynomial codes is very powerful in describing cyclic codes. A cyclic shift of an <m>n</m>-tuple can be described by polynomial multiplication. If <m>f(t) = a_0 + a_1 t + \cdots + a_{n-1} t^{n-1}</m> is a code polynomial in <m>R_n</m>, then
                 <me>tf(t) = a_{n-1} + a_0 t + \cdots + a_{n-2} t^{n-1}</me>
@@ -273,13 +274,15 @@
                     <p>A linear code <m>C</m> in <m>{\mathbb Z}_2^n</m> is cyclic if and only if it is an ideal in <m>R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.</p>
                 </statement>
                 <proof>
-                    <p>Let <m>C</m> be a linear cyclic code and suppose that <m>f(t)</m> is in <m>C</m>.  Then <m>t f(t)</m> must also be in <m>C</m>. Consequently, <m>t^k f(t)</m> is in <m>C</m> for all <m>k \in {\mathbb N}</m>.  Since <m>C</m> is a linear code, any linear combination of the codewords <m>f(t), tf(t), t^2f(t), \ldots, t^{n-1}f(t)</m> is also a codeword; therefore, for every polynomial <m>p(t)</m>, <m>p(t)f(t)</m> is in <m>C</m>.  Hence, <m>C</m> is an ideal.</p>
+                    <p>Let <m>C</m> be a linear cyclic code and suppose that <m>f(t)</m> is in <m>C</m>. Then <m>t f(t)</m> must also be in <m>C</m>. Consequently, <m>t^k f(t)</m> is in <m>C</m> for all <m>k \in {\mathbb N}</m>.  Since <m>C</m> is a linear code, any linear combination of the codewords <m>f(t), tf(t), t^2f(t), \ldots, t^{n-1}f(t)</m> is also a codeword; therefore, for every polynomial <m>p(t)</m>, <m>p(t)f(t)</m> is in <m>C</m>.  Hence, <m>C</m> is an ideal.</p>
                     <p>Conversely, let <m>C</m> be an ideal in <m>{\mathbb Z}_2[x]/\langle x^n + 1\rangle</m>. Suppose that <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is a codeword in <m>C</m>.  Then <m>t f(t)</m> is a codeword in <m>C</m>; that is, <m>(a_1, \ldots, a_{n-1}, a_0)</m> is in <m>C</m>.</p>
                 </proof>
             </theorem>
+            
             <p>Theorem<nbsp/><xref ref="theorem-cyclic-code"/> tells us that knowing the ideals of <m>R_n</m> is equivalent to knowing the linear cyclic codes in <m>{\mathbb Z}_2^n</m>.  Fortunately, the ideals in <m>R_n</m> are easy to describe.  The  natural ring homomorphism <m>\phi : {\mathbb Z}_2[x] \rightarrow R_n</m> defined by <m>\phi[f(x)] = f(t)</m> is a surjective homomorphism.  The kernel of <m>\phi</m> is the ideal generated by <m>x^n - 1</m>.  By Theorem<nbsp/><xref ref="theorem-correspondence-rings"/>, every ideal <m>C</m> in <m>R_n</m> is of the form <m>\phi(I)</m>, where <m>I</m> is an ideal in <m>{\mathbb Z}_2[x]</m> that contains <m>\langle x^n - 1 \rangle</m>.  By Theorem<nbsp/><xref ref="theorem-poly-principal-ideal"/>, we know that every ideal <m>I</m> in <m>{\mathbb Z}_2[x]</m> is a principal ideal, since <m>{\mathbb Z}_2</m> is a field. Therefore, <m>I = \langle g(x) \rangle</m> for some unique monic polynomial in <m>{\mathbb Z}_2[x]</m>. Since <m>\langle x^n - 1 \rangle</m> is contained in <m>I</m>, it must be the case that <m>g(x)</m> divides <m>x^n - 1</m>. Consequently, every ideal <m>C</m> in <m>R_n</m> is of the form 
                 <me>C = \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \text{ and } g(x) \mid (x^n - 1) \text{ in } {\mathbb Z}_2[x] \}.</me>
             The unique monic polynomial of the smallest degree that generates <m>C</m> is called the <term>minimal generator polynomial</term><idx><h>Minimal generator polynomial</h></idx><idx><h>Polynomial</h><h>minimal generator</h></idx> of <m>C</m>.</p>
+            
             <example xml:id="example-finite-factor-x7-1">
                 <p>If we factor <m>x^7 - 1</m> into irreducible components, we have
                     <me>x^7 - 1 = (1 + x)(1 + x + x^3)(1+ x^2 + x^3).</me>
@@ -295,7 +298,8 @@
                     0 &amp; 0 &amp; 0 &amp; 1
                     \end{pmatrix}.</me></p>
             </example>
-            <p>In general, we can determine a generator matrix for an <m>(n, k)</m>-code <m>C</m> by the manner in which the elements <m>t^k</m> are encoded. Let <m>x^n - 1 = g(x) h(x)</m> in <m>{\mathbb Z}_2[x]</m>. If <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>, then the <m>n \times k</m> matrix
+            
+            <p>In general, we can determine a generator matrix for an <m>(n, k)</m>-code <m>C</m> by the manner in which the elements <m>t^k</m> are encoded. Let <m>x^n - 1 = g(x) h(x)</m> in <m>{\mathbb Z}_2[x]</m>. If <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x + \cdots + h_k x^k</m>, then the <m>n \times k</m> matrix
                 <me>G = 
                 \begin{pmatrix}
                 g_0 &amp; 0   &amp; \cdots &amp; 0 \\
@@ -315,11 +319,13 @@
                 h_k &amp; \cdots &amp; h_0 &amp; 0      &amp; 0      &amp; \cdots &amp; 0 
                 \end{pmatrix}.</me>
             We will leave the details of the proof of the following proposition as an exercise.</p>
+            
             <proposition>
                 <statement>
-                    <p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>x^n - 1 = g(x) h(x)</m>.  Then <m>G</m> and <m>H</m> are generator and parity-check matrices  for <m>C</m>, respectively.  Furthermore, <m>HG = 0</m>.</p>
+                    <p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>x^n - 1 = g(x) h(x)</m>. Then <m>G</m> and <m>H</m> are generator and parity-check matrices for <m>C</m>, respectively. Furthermore, <m>HG = 0</m>.</p>
                 </statement>
             </proposition>
+            
             <example xml:id="example-finite-parity-check-x7-1">
                 <p>In Example<nbsp/><xref ref="example-finite-factor-x7-1"/>,
                     <me>x^7 - 1 = g(x) h(x) = (1 + x + x^3)(1 + x + x^2 + x^4).</me>
@@ -331,7 +337,8 @@
                     1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0
                     \end{pmatrix}.</me></p>
             </example>
-            <p>To determine the error-detecting and error-correcting capabilities of a cyclic code, we need to know something about determinants.  If <m>\alpha_1, \ldots, \alpha_n</m> are elements in a field <m>F</m>, then the <m>n \times n</m> matrix  
+            
+            <p>To determine the error-detecting and error-correcting capabilities of a cyclic code, we need to know something about determinants. If <m>\alpha_1, \ldots, \alpha_n</m> are elements in a field <m>F</m>, then the <m>n \times n</m> matrix  
                 <me>\begin{pmatrix}
                 1          &amp; 1          &amp; \cdots &amp; 1 \\
                 \alpha_1   &amp; \alpha_2   &amp; \cdots &amp; \alpha_n \\
@@ -339,7 +346,8 @@
                 \vdots     &amp; \vdots     &amp; \ddots &amp; \vdots \\
                 \alpha_1^{n-1} &amp; \alpha_2^{n-1} &amp; \cdots &amp; \alpha_n^{n-1} 
                 \end{pmatrix}</me>
-            is called the <term>Vandermonde matrix</term><idx><h>Vandermonde matrix</h></idx><idx><h>Matrix, Vandermonde</h></idx>. The determinant of this matrix is called the <term>Vandermonde determinant</term><idx><h>Vandermonde determinant</h></idx><idx><h>Determinant, Vandermonde</h></idx>.  We will need the following lemma in our investigation of cyclic codes.</p>
+            is called the <term>Vandermonde matrix</term><idx><h>Vandermonde matrix</h></idx><idx><h>Matrix, Vandermonde</h></idx>. The determinant of this matrix is called the <term>Vandermonde determinant</term><idx><h>Vandermonde determinant</h></idx><idx><h>Determinant, Vandermonde</h></idx>. We will need the following lemma in our investigation of cyclic codes.</p>
+            
             <lemma xml:id="lemma-vandermode-det">
                 <statement>
                     <p>Let <m>\alpha_1, \ldots, \alpha_n</m> be elements in a field <m>F</m> with <m>n \geq 2</m>.  Then
@@ -355,7 +363,7 @@
                     In particular, if the <m>\alpha_i</m>'s are distinct, then the determinant is nonzero.</p>
                 </statement>
                 <proof>
-                    <p>We will induct on <m>n</m>. If <m>n = 2</m>, then the determinant is <m>\alpha_2 - \alpha_1</m>.  Let us assume the result for <m>n  - 1</m> and consider the polynomial <m>p(x)</m> defined by
+                    <p>We will induct on <m>n</m>. If <m>n = 2</m>, then the determinant is <m>\alpha_2 - \alpha_1</m>. Let us assume the result for <m>n - 1</m> and consider the polynomial <m>p(x)</m> defined by
                         <me>p(x) = \det
                         \begin{pmatrix}
                         1              &amp; 1              &amp; \cdots &amp; 1              &amp; 1 \\
@@ -364,7 +372,7 @@
                         \vdots         &amp; \vdots         &amp; \ddots &amp; \vdots         &amp; \vdots \\
                         \alpha_1^{n-1} &amp; \alpha_2^{n-1} &amp; \cdots &amp; \alpha_{n-1}^{n-1} &amp; x^{n-1}
                         \end{pmatrix}.</me>
-                    Expanding this determinant by cofactors on the last column, we see that <m>p(x)</m> is a polynomial of at most degree <m>n-1</m>.  Moreover, the roots of <m>p(x)</m> are <m>\alpha_1, \ldots, \alpha_{n-1}</m>, since the substitution of any one of these elements in the last column will produce a column identical to the last column in the matrix.  Remember that the determinant of a matrix is zero if it has two identical columns. Therefore,     
+                    Expanding this determinant by cofactors on the last column, we see that <m>p(x)</m> is a polynomial of at most degree <m>n-1</m>. Moreover, the roots of <m>p(x)</m> are <m>\alpha_1, \ldots, \alpha_{n-1}</m>, since the substitution of any one of these elements in the last column will produce a column identical to the last column in the matrix. Remember that the determinant of a matrix is zero if it has two identical columns. Therefore,
                         <me>p(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_{n-1}) \beta,</me>
                     where
                         <me>\beta = (-1)^{n + n} \det
@@ -380,24 +388,36 @@
                     If we let <m>x = \alpha_n</m>, the result now follows immediately.</p>
                 </proof>
             </lemma>
+
             <p>The following theorem gives us an estimate on the error detection and correction capabilities for a particular generator polynomial.</p>
+
             <theorem xml:id="theorem-min-dist-cyclic-code">
                 <statement>
                     <p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>.  If <m>s</m> consecutive powers of <m>\omega</m> are roots of <m>g(x)</m>, then the minimum distance of <m>C</m> is at least <m>s + 1</m>.</p>
                 </statement>
                 <proof>
-                    <p>Suppose that 
+                    <p>Suppose that
                         <me>g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0.</me>
-                    Let <m>f(x)</m> be some polynomial in <m>C</m> with <m>s</m> or fewer nonzero coefficients.  We can assume that 
+                    Let <m>f(x)</m> be some polynomial in <m>C</m> with <m>s</m> or fewer nonzero coefficients. We can assume that
                         <me>f(x) = a_{i_0} x^{i_0} + a_{i_1} x^{i_1} + \cdots + a_{i_{s - 1}} x^{i_{s - 1}}</me>
-                    be some polynomial in <m>C</m>. It will suffice to show that all of the <m>a_i</m>'s must be 0.  Since 
+                    be some polynomial in <m>C</m>. It will suffice to show that all of the <m>a_i</m>'s must be 0. Since
                         <me>g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0</me>
                     and <m>g(x)</m> divides <m>f(x)</m>,
                         <me>f( \omega^r) = f(\omega^{r + 1}) = \cdots = f( \omega^{r + s - 1}) = 0.</me>
                     Equivalently, we have the following system of equations:
-                        <md><mrow>a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots + a_{i_{s - 1}} (\omega^r)^{i_{s - 1}} &amp; = 0</mrow><mrow> a_{i_0} (\omega^{r + 1})^{i_0} + a_{i_1} (\omega^{r + 1})^{i_2} + \cdots + a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} &amp; = 0</mrow><mrow>&amp; \vdots </mrow><mrow>a_{i_0} (\omega^{r + s - 1})^{i_0} + a_{i_1} (\omega^{r + s - 1})^{i_1} + \cdots + a_{i_{s - 1}} (\omega^{r + s - 1})^{i_{s - 1}} &amp; = 0.</mrow></md>
+                        <md>
+                            <mrow>a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots + a_{i_{s - 1}} (\omega^r)^{i_{s - 1}} &amp; = 0</mrow>
+                            <mrow> a_{i_0} (\omega^{r + 1})^{i_0} + a_{i_1} (\omega^{r + 1})^{i_2} + \cdots + a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} &amp; = 0</mrow>
+                            <mrow>&amp; \vdots </mrow>
+                            <mrow>a_{i_0} (\omega^{r + s - 1})^{i_0} + a_{i_1} (\omega^{r + s - 1})^{i_1} + \cdots + a_{i_{s - 1}} (\omega^{r + s - 1})^{i_{s - 1}} &amp; = 0.</mrow>
+                        </md>
                     Therefore, <m>(a_{i_0}, a_{i_1}, \ldots, a_{i_{s - 1}})</m> is a solution to the homogeneous system of linear equations
-                        <md><mrow>(\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots + (\omega^{i_{s - 1}})^r x_{n - 1} &amp; = 0</mrow><mrow>(\omega^{i_0})^{r + 1} x_0 + (\omega^{i_1})^{r + 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + 1} x_{n - 1} &amp; = 0</mrow><mrow>&amp; \vdots </mrow><mrow>(\omega^{i_0})^{r + s - 1} x_0 + (\omega^{i_1})^{r + s - 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + s - 1} x_{n - 1} &amp; = 0.</mrow></md>
+                        <md>
+                            <mrow>(\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots + (\omega^{i_{s - 1}})^r x_{n - 1} &amp; = 0</mrow>
+                            <mrow>(\omega^{i_0})^{r + 1} x_0 + (\omega^{i_1})^{r + 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + 1} x_{n - 1} &amp; = 0</mrow>
+                            <mrow>&amp; \vdots </mrow>
+                            <mrow>(\omega^{i_0})^{r + s - 1} x_0 + (\omega^{i_1})^{r + s - 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + s - 1} x_{n - 1} &amp; = 0.</mrow>
+                        </md>
                     However, this system has a unique solution, since the determinant of the matrix
                         <me>\begin{pmatrix}
                         (\omega^{i_0})^r &amp; (\omega^{i_1})^r &amp; \cdots &amp; (\omega^{i_{s-1}})^r \\
@@ -411,16 +431,22 @@
                 </proof>
             </theorem>
         </subsection>
+
         <subsection xml:id="finite-subsection-bch-codes">
             <title><acro>BCH</acro> Codes</title>
-            <p>Some of the most important codes, discovered independently by A. Hocquenghem in 1959 and by R. C. Bose and D. V. Ray-Chaudhuri in 1960, are <acro>BCH</acro> codes. The European and transatlantic communication systems both use <acro>BCH</acro> codes.  Information words to be encoded are of length 231, and a polynomial of degree 24 is used to generate the code.  Since <m>231 + 24 = 255 = 2^8-1</m>, we are dealing with a <m>(255, 231)</m>-block code. This <acro>BCH</acro> code will detect six errors and has a failure rate of 1 in 16 million. One advantage of <acro>BCH</acro> codes is that efficient error correction algorithms exist for them.</p>
-            <p>The idea behind <acro>BCH</acro> codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities. Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>.  Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>, and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>. If  
+            <p>Some of the most important codes, discovered independently by A. Hocquenghem in 1959 and by R. C. Bose and D. V. Ray-Chaudhuri in 1960, are <acro>BCH</acro> codes. The European and transatlantic communication systems both use <acro>BCH</acro> codes. Information words to be encoded are of length <m>231</m>, and a polynomial of degree <m>24</m> is used to generate the code. Since <m>231 + 24 = 255 = 2^8-1</m>, we are dealing with a <m>(255, 231)</m>-block code. This <acro>BCH</acro> code will detect six errors and has a failure rate of <m>1</m> in <m>16</m> million. One advantage of <acro>BCH</acro> codes is that efficient error correction algorithms exist for them.</p>
+
+            <p>The idea behind <acro>BCH</acro> codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities. Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>. Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>, and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>. If 
                 <me>g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)],</me>
             then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the <term><acro>BCH</acro> code of length</term><idx><h>Code</h><h><acro>BCH</acro></h></idx> <m>n</m> <term>and distance</term> <m>d</m>. By Theorem<nbsp/><xref ref="theorem-min-dist-cyclic-code"/>, the minimum distance of <m>C</m> is at least <m>d</m>.</p>
+
             <theorem>
                 <statement>
                     <p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m>. The following statements are equivalent.
-                        <ol><li><p>The code <m>C</m> is a <acro>BCH</acro> code whose minimum distance is at least <m>d</m>.</p></li><li><p>A code polynomial <m>f(t)</m> is in <m>C</m> if and only if <m>f( \omega^i) = 0</m> for <m>1 \leq i \lt d</m>.</p></li><li><p>The matrix 
+                        <ol>
+                            <li><p>The code <m>C</m> is a <acro>BCH</acro> code whose minimum distance is at least <m>d</m>.</p></li>
+                            <li><p>A code polynomial <m>f(t)</m> is in <m>C</m> if and only if <m>f( \omega^i) = 0</m> for <m>1 \leq i \lt d</m>.</p></li>
+                            <li><p>The matrix 
                                 <me>H =
                                 \begin{pmatrix}
                                 1      &amp; \omega      &amp; \omega^2    &amp; \cdots &amp; \omega^{n-1}\\
@@ -429,10 +455,12 @@
                                 \vdots &amp; \vdots      &amp; \vdots      &amp; \ddots &amp; \vdots \\
                                 1      &amp; \omega^{2r} &amp; \omega^{4r} &amp; \cdots &amp; \omega^{(n-1)(2r)} 
                                 \end{pmatrix}</me>
-                            is a parity-check matrix for <m>C</m>.</p></li></ol></p>
+                            is a parity-check matrix for <m>C</m>.</p></li>
+                        </ol></p>
                 </statement>
                 <proof>
                     <p>(1) <m>\Rightarrow</m> (2). If <m>f(t)</m> is in <m>C</m>, then <m>g(x) \mid f(x)</m> in <m>{\mathbb Z}_2[x]</m>. Hence, for <m>i = 1, \ldots, 2r</m>, <m>f( \omega^i) = 0</m> since <m>g( \omega^i ) = 0</m>. Conversely, suppose that <m>f( \omega^i) = 0</m> for <m>1 \leq i \leq d</m>. Then <m>f(x)</m> is divisible by each <m>m_i(x)</m>, since <m>m_i(x)</m> is the minimal polynomial of <m>\omega^i</m>. Therefore, <m>g(x) \mid f(x)</m> by the definition of <m>g(x)</m>. Consequently, <m>f(x)</m> is a codeword.</p>
+
                     <p>(2) <m>\Rightarrow</m> (3). Let <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1}v t^{n - 1}</m> be in <m>R_n</m>. The corresponding <m>n</m>-tuple in <m>{\mathbb Z}_2^n</m> is <m>{\mathbf x} = (a_0 a_1 \cdots a_{n - 1})^\transpose</m>. By (2),
                         <me>H {\mathbf x} =
                         \begin{pmatrix}
@@ -450,7 +478,8 @@
                         \end{pmatrix}
                         = 0</me>
                     exactly when <m>f(t)</m> is in <m>C</m>. Thus, <m>H</m> is a parity-check matrix for <m>C</m>.</p>
-                    <p>(3) <m>\Rightarrow</m> (1). By (3), a code polynomial <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is in <m>C</m> exactly when <m>f(\omega^i) = 0</m> for <m>i = 1, \ldots, 2r</m>. The smallest such polynomial is <m>g(t) = \lcm[ m_1(t),\ldots, m_{2r}(t)]</m>.  Therefore, <m>C = \langle g(t) \rangle</m>.</p>
+
+                    <p>(3) <m>\Rightarrow</m> (1). By (3), a code polynomial <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is in <m>C</m> exactly when <m>f(\omega^i) = 0</m> for <m>i = 1, \ldots, 2r</m>. The smallest such polynomial is <m>g(t) = \lcm[ m_1(t),\ldots, m_{2r}(t)]</m>. Therefore, <m>C = \langle g(t) \rangle</m>.</p>
                 </proof>
             </theorem>
             <example xml:id="example-finite-x15-1">
@@ -458,9 +487,9 @@
                     <me>x^{15} - 1 = (x + 1)(x^2 + x + 1)(x^4 + x + 1)(x^4 + x^3 + 1)(x^4 + x^3 + x^2 + x + 1),</me>
                 where each of the factors is an irreducible polynomial. Let <m>\omega</m> be a root of <m>1 + x + x^4</m>. The Galois field <m>\gf(2^4)</m> is
                     <me>\{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \omega + \omega^4 = 0 \}.</me>
-                By Example<nbsp/><xref ref="example-finite-gf-p24"/>, <m>\omega</m> is a primitive 15th root of unity. The minimal polynomial of <m>\omega</m> is <m>m_1(x) = 1 + x + x^4</m>. It is easy to see that <m>\omega^2</m> and <m>\omega^4</m> are also roots of <m>m_1(x)</m>. The minimal polynomial of <m>\omega^3</m> is <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Therefore, 
+                By Example<nbsp/><xref ref="example-finite-gf-p24"/>, <m>\omega</m> is a primitive <m>15</m>th root of unity. The minimal polynomial of <m>\omega</m> is <m>m_1(x) = 1 + x + x^4</m>. It is easy to see that <m>\omega^2</m> and <m>\omega^4</m> are also roots of <m>m_1(x)</m>. The minimal polynomial of <m>\omega^3</m> is <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>. Therefore, 
                     <me>g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8</me>
-                has roots <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>.  Since both <m>m_1(x)</m> and <m>m_2(x)</m> divide <m>x^{15} - 1</m>, the <acro>BCH</acro> code is a <m>(15, 7)</m>-code. If <m>x^{15} -1 = g(x)h(x)</m>, then <m>h(x) = 1 + x^4 + x^6 + x^7</m>; therefore, a parity-check matrix for this code is
+                has roots <m>\omega</m>, <m>\omega^2</m>, <m>\omega^3</m>, <m>\omega^4</m>. Since both <m>m_1(x)</m> and <m>m_2(x)</m> divide <m>x^{15} - 1</m>, the <acro>BCH</acro> code is a <m>(15, 7)</m>-code. If <m>x^{15} -1 = g(x)h(x)</m>, then <m>h(x) = 1 + x^4 + x^6 + x^7</m>; therefore, a parity-check matrix for this code is
                     <me>\left(<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
                     \begin{array}{ccccccccccccccc}
                     0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
@@ -495,26 +524,10 @@
             <statement>
                 <p>Calculate each of the following.</p>
                 <ol cols="2">
-                    <li>
-                        <p>
-                            <m>[\gf(3^6) : \gf(3^3)]</m>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <m>[\gf(128): \gf(16)]</m>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <m>[\gf(625) : \gf(25) ]</m>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <m>[\gf(p^{12}): \gf(p^2)]</m>
-                        </p>
-                    </li>
+                    <li><p><m>[\gf(3^6) : \gf(3^3)]</m></p></li>
+                    <li><p><m>[\gf(128): \gf(16)]</m></p></li>
+                    <li><p><m>[\gf(625) : \gf(25) ]</m></p></li>
+                    <li><p><m>[\gf(p^{12}): \gf(p^2)]</m></p></li>
                 </ol>
             </statement>
             <hint>
@@ -533,7 +546,7 @@
         </exercise>
         <exercise number="4">
             <statement>
-                <p>Let <m>\alpha</m> be a zero of <m>x^3 + x^2 + 1</m> over <m>{\mathbb Z}_2</m>. Construct a finite field of order 8. Show that <m>x^3 + x^2 + 1</m> splits in <m>{\mathbb Z}_2(\alpha)</m>.</p>
+                <p>Let <m>\alpha</m> be a zero of <m>x^3 + x^2 + 1</m> over <m>{\mathbb Z}_2</m>. Construct a finite field of order <m>8</m>. Show that <m>x^3 + x^2 + 1</m> splits in <m>{\mathbb Z}_2(\alpha)</m>.</p>
             </statement>
             <hint>
                 <p>There are eight elements in <m>{\mathbb Z}_2(\alpha)</m>. Exhibit two more zeros of <m>x^3 + x^2 + 1</m> other than <m>\alpha</m> in these eight elements.</p>
@@ -542,10 +555,10 @@
         <todo>Complete the solution.</todo>
         <exercise number="5">
             <statement>
-                <p>Construct a finite field of order 27.</p>
+                <p>Construct a finite field of order <m>27</m>.</p>
             </statement>
             <hint>
-                <p>Find an irreducible polynomial <m>p(x)</m> in <m>{\mathbb Z}_3[x]</m> of degree 3 and show that <m>{\mathbb Z}_3[x]/ \langle p(x) \rangle</m> has 27 elements.</p>
+                <p>Find an irreducible polynomial <m>p(x)</m> in <m>{\mathbb Z}_3[x]</m> of degree <m>3</m> and show that <m>{\mathbb Z}_3[x]/ \langle p(x) \rangle</m> has <m>27</m> elements.</p>
             </hint>
         </exercise>
         <todo>Complete the solution.</todo>
@@ -557,7 +570,12 @@
         <exercise number="7">
             <statement>
                 <p>Factor each of the following polynomials in <m>{\mathbb Z}_2[x]</m>.
-                <ol cols="2"><li><p><m>x^5- 1</m></p></li><li><p><m>x^6 + x^5 + x^4 + x^3 + x^2 + x + 1</m></p></li><li><p><m>x^9 - 1</m></p></li><li><p><m>x^4 +x^3 + x^2 + x + 1</m></p></li></ol></p>
+                    <ol cols="2">
+                        <li><p><m>x^5- 1</m></p></li>
+                        <li><p><m>x^6 + x^5 + x^4 + x^3 + x^2 + x + 1</m></p></li>
+                        <li><p><m>x^9 - 1</m></p></li>
+                        <li><p><m>x^4 +x^3 + x^2 + x + 1</m></p></li>
+                    </ol></p>
             </statement>
             <hint>
                 <p>(a) <m>x^5 -1 = (x+1)(x^4+x^3 + x^2 + x+ 1)</m>; (c) <m>x^9 -1 = (x+1)( x^2 + x+ 1)(x^6+x^3+1)</m>.</p>
@@ -574,7 +592,7 @@
         <todo>Complete the solution.</todo>
         <exercise number="9">
             <statement>
-                <p>Determine the number of cyclic codes of length <m>n</m> for <m>n = 6</m>, 7, 8, 10.</p>
+                <p>Determine the number of cyclic codes of length <m>n</m> for <m>n = 6, 7, 8, 10</m>.</p>
             </statement>
         </exercise>
         <todo>Complete the solution.</todo>
@@ -587,10 +605,13 @@
         <exercise number="11">
             <statement>
                 <p>Construct all <acro>BCH</acro> codes of
-                <ol cols="2"><li><p>length 7.</p></li><li><p>length 15.</p></li></ol></p>
+                    <ol cols="2">
+                        <li><p>length <m>7</m>.</p></li>
+                        <li><p>length <m>15</m>.</p></li>
+                    </ol></p>
             </statement>
             <hint>
-                <p>(a) Use the fact that <m>x^7 -1 = (x+1)( x^3 + x+ 1)(x^3+x^2+1)</m>.</p>
+                <p>(a) Use the fact that <m>x^7 - 1 = (x+1)( x^3 + x+ 1)(x^3+x^2+1)</m>.</p>
             </hint>
         </exercise>
         <todo>Complete the solution.</todo>
@@ -604,7 +625,7 @@
         </exercise>
         <exercise number="13">
             <statement>
-                <p>Let <m>p</m> be prime.  Prove that the field of rational functions <m>{\mathbb Z}_p(x)</m> is an infinite field of characteristic <m>p</m>.</p>
+                <p>Let <m>p</m> be prime. Prove that the field of rational functions <m>{\mathbb Z}_p(x)</m> is an infinite field of characteristic <m>p</m>.</p>
             </statement>
         </exercise>
         <todo>Finish proof.</todo>
@@ -622,7 +643,7 @@
         <todo>Finish proof.</todo>
         <exercise number="16">
             <statement>
-                <p>Let <m>E</m> and <m>F</m> be subfields of a finite field <m>K</m>. If <m>E</m> is isomorphic to <m>F</m>, show that <m>E=F</m>.</p>
+                <p>Let <m>E</m> and <m>F</m> be subfields of a finite field <m>K</m>. If <m>E</m> is isomorphic to <m>F</m>, show that <m>E = F</m>.</p>
             </statement>
         </exercise>
         <todo>Finish proof.</todo>
@@ -636,10 +657,10 @@
         </exercise>
         <exercise number="18">
             <statement>
-                <p>Let <m>E</m> be an extension of a finite field <m>F</m>, where <m>F</m> has <m>q</m> elements. Let <m>\alpha \in E</m> be algebraic over <m>F</m> of degree <m>n</m>. Prove that <m>F( \alpha )</m> has <m>q^n</m> elements. </p>
+                <p>Let <m>E</m> be an extension of a finite field <m>F</m>, where <m>F</m> has <m>q</m> elements. Let <m>\alpha \in E</m> be algebraic over <m>F</m> of degree <m>n</m>. Prove that <m>F( \alpha )</m> has <m>q^n</m> elements.</p>
             </statement>
             <hint>
-                <p>Since <m>\alpha</m> is algebraic over <m>F</m> of degree <m>n</m>, we can write any element <m>\beta \in F(\alpha)</m> uniquely as <m>\beta = a_0  + a_1 \alpha + \cdots + a_{n-1} \alpha^{n-1}</m> with <m>a_i \in F</m>. There are <m>q^n</m> possible <m>n</m>-tuples <m>(a_0, a_1, \ldots, a_{n-1})</m>.</p>
+                <p>Since <m>\alpha</m> is algebraic over <m>F</m> of degree <m>n</m>, we can write any element <m>\beta \in F(\alpha)</m> uniquely as <m>\beta = a_0 + a_1 \alpha + \cdots + a_{n - 1} \alpha^{n - 1}</m> with <m>a_i \in F</m>. There are <m>q^n</m> possible <m>n</m>-tuples <m>(a_0, a_1, \ldots, a_{n - 1})</m>.</p>
             </hint>
         </exercise>
         <exercise number="19">
@@ -688,8 +709,7 @@
         <todo>Finish proof.</todo>
         <exercise number="26">
             <statement>
-                <p>Often it is conceivable that a burst of errors might occur during transmission, as in the case of a power surge.  Such a momentary burst of interference might alter several consecutive bits in a codeword. Cyclic codes permit the detection of such error bursts. Let <m>C</m> be an
-        <m>(n,k)</m>-cyclic code. Prove that any error burst up to <m>n-k</m> digits can be detected.</p>
+                <p>Often it is conceivable that a burst of errors might occur during transmission, as in the case of a power surge. Such a momentary burst of interference might alter several consecutive bits in a codeword. Cyclic codes permit the detection of such error bursts. Let <m>C</m> be an <m>(n,k)</m>-cyclic code. Prove that any error burst up to <m>n-k</m> digits can be detected.</p>
             </statement>
         </exercise>
         <todo>Finish proof.</todo>
@@ -701,40 +721,43 @@
         <todo>Finish proof.</todo>
         <exercise number="28">
             <statement>
-                <p>Let <m>C</m> be a code in <m>R_n</m> that is generated by <m>g(t)</m>. If <m>\langle f(t) \rangle</m> is another code in <m>R_n</m>, show that <m>\langle g(t) \rangle \subset \langle f(t) \rangle</m> if and only if <m>f(x)</m> divides <m>g(x)</m> in
-        <m>{\mathbb Z}_2[x]</m>.</p>
+                <p>Let <m>C</m> be a code in <m>R_n</m> that is generated by <m>g(t)</m>. If <m>\langle f(t) \rangle</m> is another code in <m>R_n</m>, show that <m>\langle g(t) \rangle \subset \langle f(t) \rangle</m> if and only if <m>f(x)</m> divides <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m>.</p>
             </statement>
         </exercise>
         <todo>Finish proof.</todo>
         <exercise number="29">
             <statement>
                 <p>Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>x^n - 1 = g(x) h(x)</m>, where <m>g(x) = g_0 + g_1 x + \cdots + g_{n - k} x^{n - k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>. Define <m>G</m> to be the <m>n \times k</m> matrix
-                <me>G = 
-                \begin{pmatrix}
-                g_0 &amp; 0   &amp; \cdots &amp; 0 \\
-                g_1 &amp; g_0 &amp; \cdots &amp; 0 \\
-                \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
-                g_{n-k}   &amp; g_{n-k-1} &amp; \cdots &amp; g_0 \\
-                0   &amp; g_{n-k} &amp; \cdots &amp; g_{1} \\
-                \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-                0   &amp; 0 &amp; \cdots &amp; g_{n-k}
-                \end{pmatrix}</me>
-            and <m>H</m> to be the <m>(n-k) \times n</m> matrix 
-                <me>H =
-                \begin{pmatrix}
-                0   &amp; \cdots &amp; 0   &amp; 0      &amp; h_k    &amp; \cdots &amp; h_0 \\
-                0   &amp; \cdots &amp; 0   &amp; h_k    &amp; \cdots &amp; h_0    &amp; 0 \\
-                \cdots &amp; \cdots &amp; \cdots  &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots  \\
-                h_k &amp; \cdots &amp; h_0 &amp; 0      &amp; 0      &amp; \cdots &amp; 0 
-                \end{pmatrix}.</me>
-                <ol><li><p>Prove that <m>G</m> is a generator matrix for <m>C</m>.</p></li><li><p>Prove that <m>H</m> is a parity-check matrix for <m>C</m>.</p></li><li><p>Show that <m>HG = 0</m>.</p></li></ol></p>
+                    <me>G = 
+                    \begin{pmatrix}
+                    g_0 &amp; 0   &amp; \cdots &amp; 0 \\
+                    g_1 &amp; g_0 &amp; \cdots &amp; 0 \\
+                    \vdots &amp; \vdots &amp;\ddots &amp; \vdots \\
+                    g_{n-k}   &amp; g_{n-k-1} &amp; \cdots &amp; g_0 \\
+                    0   &amp; g_{n-k} &amp; \cdots &amp; g_{1} \\
+                    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+                    0   &amp; 0 &amp; \cdots &amp; g_{n-k}
+                    \end{pmatrix}</me>
+                and <m>H</m> to be the <m>(n-k) \times n</m> matrix 
+                    <me>H =
+                    \begin{pmatrix}
+                    0   &amp; \cdots &amp; 0   &amp; 0      &amp; h_k    &amp; \cdots &amp; h_0 \\
+                    0   &amp; \cdots &amp; 0   &amp; h_k    &amp; \cdots &amp; h_0    &amp; 0 \\
+                    \cdots &amp; \cdots &amp; \cdots  &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots  \\
+                    h_k &amp; \cdots &amp; h_0 &amp; 0      &amp; 0      &amp; \cdots &amp; 0 
+                    \end{pmatrix}.</me>
+                    <ol>
+                        <li><p>Prove that <m>G</m> is a generator matrix for <m>C</m>.</p></li>
+                        <li><p>Prove that <m>H</m> is a parity-check matrix for <m>C</m>.</p></li>
+                        <li><p>Show that <m>HG = 0</m>.</p></li>
+                    </ol></p>
             </statement>
         </exercise>
     </exercises>
     <exercises xml:id="finite-exercises-bch-codes">
         <title>Additional Exercises: Error Correction for <acro>BCH</acro> Codes</title>
         <introduction>
-            <p><acro>BCH</acro> codes have very attractive error correction algorithms. Let <m>C</m> be a <acro>BCH</acro> code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received.  If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><idx><h>Polynomial</h><h>error</h></idx>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term>syndrome</term><idx><h>Syndrome of a code</h></idx> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
+            <p><acro>BCH</acro> codes have very attractive error correction algorithms. Let <m>C</m> be a <acro>BCH</acro> code in <m>R_n</m>, and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted. Let <m>w(t) = w_0 + w_1 t + \cdots w_{n-1} t^{n-1}</m> be the polynomial in <m>R_n</m> that is received. If errors have occurred in bits <m>a_1, \ldots, a_k</m>, then <m>w(t) = c(t) + e(t)</m>, where <m>e(t) = t^{a_1} + t^{a_2} + \cdots + t^{a_k}</m> is the <term>error polynomial</term><idx><h>Polynomial</h><h>error</h></idx>. The decoder must determine the integers <m>a_i</m> and then recover <m>c(t)</m> from <m>w(t)</m> by flipping the <m>a_i</m>th bit. From <m>w(t)</m> we can compute <m>w( \omega^i ) = s_i</m> for <m>i = 1, \ldots, 2r</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>. We say the <term>syndrome</term><idx><h>Syndrome of a code</h></idx> of <m>w(t)</m> is <m>s_1, \ldots, s_{2r}</m>.</p>
         </introduction>
         <exercise>
             <statement>
@@ -751,7 +774,7 @@
         </exercise>
         <exercise>
             <statement>
-                <p>Recall the <m>(15,7)</m>-block <acro>BCH</acro> code in Example<nbsp/><xref ref="example-finite-parity-check-x7-1"/>.  By Theorem<nbsp/><xref ref="theorem-min-distance"/>, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
+                <p>Recall the <m>(15,7)</m>-block <acro>BCH</acro> code in Example<nbsp/><xref ref="example-finite-parity-check-x7-1"/>. By Theorem<nbsp/><xref ref="theorem-min-distance"/>, this code is capable of correcting two errors. Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>. The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>. Show that
                     <me>s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right).</me></p>
             </statement>
         </exercise>
