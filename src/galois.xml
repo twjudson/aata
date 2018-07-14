@@ -59,7 +59,7 @@
                     <me>\sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}</me>
                 is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{5}\, )</m> fixed. Similarly,
                     <me>\tau( a + b \sqrt{5}\, ) = a - b \sqrt{5}</me>
-                is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{3}\, )</m> fixed. The automorphism <m>\mu = \sigma \tau</m> moves both <m>\sqrt{3}</m> and <m>\sqrt{5}</m>.  It will soon be clear that <m>\{ \identity, \sigma, \tau, \mu  \}</m> is the Galois group of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m>. The following table shows that this group is isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
+                is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{3}\, )</m> fixed. The automorphism <m>\mu = \sigma \tau</m> moves both <m>\sqrt{3}</m> and <m>\sqrt{5}</m>.  It will soon be clear that <m>\{ \identity, \sigma, \tau, \mu \}</m> is the Galois group of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m>. The following table shows that this group is isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
                     <me>\begin{array}{c|cccc}
                     &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
                     \hline
@@ -107,7 +107,7 @@
                 <proof>
                     <p>We will use mathematical induction on the degree of <m>f(x)</m>. If the degree of <m>f(x)</m> is <m>0</m> or <m>1</m>, then <m>E = F</m> and there is nothing to show. Assume that the result holds for all polynomials of degree <m>k</m> with <m>0 \leq k \lt n</m>. Suppose that the degree of <m>f(x)</m> is <m>n</m>. Let <m>p(x)</m> be an irreducible factor of <m>f(x)</m> of degree <m>r</m>. Since all of the roots of <m>p(x)</m> are in <m>E</m>, we can choose one of these roots, say <m>\alpha</m>, so that <m>F \subset F( \alpha ) \subset E</m>. Then
                         <me>[E: F(\alpha)] = n/r \quad \text{and} \quad [F(\alpha): F] = r.</me>
-                    If <m>\beta</m> is any other root of <m>p(x)</m>, then <m>F \subset F( \beta ) \subset E</m>. By Lemma<nbsp/><xref ref="lemma-field-isomorphism"/>, there exists a unique isomorphism <m>\sigma: F( \alpha ) \rightarrow F( \beta )</m> for each such <m>\beta</m> that fixes <m>F</m> elementwise.  Since <m>E</m> is a splitting field of <m>p(x)</m>, there are exactly <m>r</m> such isomorphisms. For each of these automorphisms, we can use our induction hypothesis on <m>[E: F(\alpha)] = n/r \lt n</m> to conclude that
+                    If <m>\beta</m> is any other root of <m>p(x)</m>, then <m>F \subset F( \beta ) \subset E</m>. By Lemma<nbsp/><xref ref="lemma-field-isomorphism"/>, there exists a unique isomorphism <m>\sigma: F( \alpha ) \rightarrow F( \beta )</m> for each such <m>\beta</m> that fixes <m>F</m> elementwise. Since <m>E</m> is a splitting field of <m>p(x)</m>, there are exactly <m>r</m> such isomorphisms. For each of these automorphisms, we can use our induction hypothesis on <m>[E: F(\alpha)] = n/r \lt n</m> to conclude that
                         <me>|G(E/F(\alpha))| = [E:F(\alpha)].</me>
                     Consequently, there are
                         <me>[E:F] = [E:F(\alpha)] [F( \alpha):F] = n</me>
@@ -136,11 +136,12 @@
                 <!-- Corrected statement of the corollary.  Suggested by K. Wenholz. - TWJ 5/15/2012 -->
                 <proof>
                     <p>Let <m>p</m> be the characteristic of <m>E</m> and <m>F</m> and assume that the orders of <m>E</m> and <m>F</m> are <m>p^m</m> and <m>p^n</m>, respectively. Then <m>nk = m</m>. We can also assume that <m>E</m> is the splitting field of <m>x^{p^m} - x</m> over a subfield of order <m>p</m>. Therefore, <m>E</m> must also be the splitting field of <m>x^{p^m} - x</m> over <m>F</m>. Applying Theorem<nbsp/><xref ref="theorem-extension-order"/>, we find that <m>|G(E/F)| = k</m>.</p>
-                    <p>To prove that <m>G(E/F)</m> is cyclic, we must find a generator for <m>G(E/F)</m>.  Let <m>\sigma : E \rightarrow E</m> be defined by <m>\sigma(\alpha) = \alpha^{p^n}</m>. We claim that <m>\sigma</m> is the element in <m>G(E/F)</m> that we are seeking. We first need to show that <m>\sigma</m> is in <m>\aut(E)</m>. If <m>\alpha</m> and <m>\beta</m> are in <m>E</m>,
+                    
+                    <p>To prove that <m>G(E/F)</m> is cyclic, we must find a generator for <m>G(E/F)</m>. Let <m>\sigma : E \rightarrow E</m> be defined by <m>\sigma(\alpha) = \alpha^{p^n}</m>. We claim that <m>\sigma</m> is the element in <m>G(E/F)</m> that we are seeking. We first need to show that <m>\sigma</m> is in <m>\aut(E)</m>. If <m>\alpha</m> and <m>\beta</m> are in <m>E</m>,
                         <me>\sigma(\alpha + \beta) = (\alpha + \beta)^{p^n} = \alpha^{p^n} + \beta^{p^n} = \sigma(\alpha) + \sigma(\beta)</me>
-                    by Lemma<nbsp/><xref ref="lemma-freshmans-dream"/>. Also, it is easy to show that <m>\sigma(\alpha \beta) = \sigma( \alpha ) \sigma( \beta )</m>. Since <m>\sigma</m> is a nonzero homomorphism of fields, it must be injective. It must also be onto, since <m>E</m> is a finite field.  We know that <m>\sigma</m> must be in <m>G(E/F)</m>, since <m>F</m> is the splitting field of <m>x^{p^n} - x</m> over the base field of order <m>p</m>. This means that <m>\sigma</m> leaves every element in <m>F</m> fixed. Finally, we must show that the order of <m>\sigma</m> is <m>k</m>. By Theorem<nbsp/><xref ref="theorem-extension-order"/>, we know that
+                    by Lemma<nbsp/><xref ref="lemma-freshmans-dream"/>. Also, it is easy to show that <m>\sigma(\alpha \beta) = \sigma( \alpha ) \sigma( \beta )</m>. Since <m>\sigma</m> is a nonzero homomorphism of fields, it must be injective. It must also be onto, since <m>E</m> is a finite field. We know that <m>\sigma</m> must be in <m>G(E/F)</m>, since <m>F</m> is the splitting field of <m>x^{p^n} - x</m> over the base field of order <m>p</m>. This means that <m>\sigma</m> leaves every element in <m>F</m> fixed. Finally, we must show that the order of <m>\sigma</m> is <m>k</m>. By Theorem<nbsp/><xref ref="theorem-extension-order"/>, we know that
                         <me>\sigma^k( \alpha ) = \alpha^{p^{nk}} = \alpha^{p^m} = \alpha</me>
-                    is the identity of <m>G( E/F)</m>.  However, <m>\sigma^r</m> cannot be the identity for <m>1 \leq r \lt k</m>; otherwise, <m>x^{p^{nr}} - x</m> would have <m>p^m</m> roots, which is impossible.</p>
+                    is the identity of <m>G( E/F)</m>. However, <m>\sigma^r</m> cannot be the identity for <m>1 \leq r \lt k</m>; otherwise, <m>x^{p^{nr}} - x</m> would have <m>p^m</m> roots, which is impossible.</p>
                 </proof>
                 <!-- Corrected proof.  Suggested by M. Faucette. - TWJ 4/7/2014 -->
             </corollary>
@@ -153,9 +154,9 @@
             <example xml:id="example-galois-group-x4">
                 <p>Let us compute the Galois group of 
                     <me>f(x) = x^4 + x^3 + x^2 + x + 1</me>
-                over <m>{\mathbb Q}</m>. We know that <m>f(x)</m> is irreducible by Exercise<nbsp/><xref ref="exercise-poly-cyclotomic-polynomials"/> in Chapter<nbsp/><xref ref="poly"/>. Furthermore, since <m>(x -1)f(x) = x^5 -1</m>, we can use DeMoivre's Theorem to determine that the roots of <m>f(x)</m> are <m>\omega^i</m>, where  <m>i = 1, \ldots, 4</m> and 
+                over <m>{\mathbb Q}</m>. We know that <m>f(x)</m> is irreducible by Exercise<nbsp/><xref ref="exercise-poly-cyclotomic-polynomials"/> in Chapter<nbsp/><xref ref="poly"/>. Furthermore, since <m>(x -1)f(x) = x^5 - 1</m>, we can use DeMoivre's Theorem to determine that the roots of <m>f(x)</m> are <m>\omega^i</m>, where  <m>i = 1, \ldots, 4</m> and 
                     <me>\omega = \cos(2 \pi / 5 ) + i \sin(2 \pi / 5 ).</me>
-                Hence, the splitting field of <m>f(x)</m> must be <m>{\mathbb Q}(\omega)</m>.  We can define automorphisms <m>\sigma_i</m> of <m>{\mathbb Q}(\omega )</m> by <m>\sigma_i( \omega ) = \omega^i</m> for <m>i = 1, \ldots, 4</m>.  It is easy to check that these are indeed distinct automorphisms in <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>. Since 
+                Hence, the splitting field of <m>f(x)</m> must be <m>{\mathbb Q}(\omega)</m>. We can define automorphisms <m>\sigma_i</m> of <m>{\mathbb Q}(\omega )</m> by <m>\sigma_i( \omega ) = \omega^i</m> for <m>i = 1, \ldots, 4</m>. It is easy to check that these are indeed distinct automorphisms in <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>. Since 
                     <me>[{\mathbb Q}( \omega) : {\mathbb Q}] = | G( {\mathbb Q}( \omega) / {\mathbb Q})| = 4,</me>
                 the <m>\sigma_i</m>'s must be all of <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>. Therefore, <m>G({\mathbb Q}( \omega) / {\mathbb Q})\cong {\mathbb Z}_4</m> since <m>\omega</m> is a generator for the Galois group.</p>
             </example>
@@ -172,7 +173,7 @@
                     <p>Let <m>f(x)</m> be an irreducible polynomial over <m>F</m>. If the characteristic of <m>F</m> is <m>0</m>, then <m>f(x)</m> is separable. If the characteristic of <m>F</m> is <m>p</m> and <m>f(x) \neq g(x^p)</m> for some <m>g(x)</m> in <m>F[x]</m>, then <m>f(x)</m> is also separable.</p>
                 </statement>
                 <proof>
-                    <p>First assume that <m>\chr F = 0</m>. Since <m>\deg f'(x) \lt \deg f(x)</m> and <m>f(x)</m> is irreducible, the only way <m>\gcd( f(x), f'(x)) \neq 1</m> is if <m>f'(x)</m> is the zero polynomial; however, this is impossible in a field of characteristic zero. If <m>\chr F = p</m>, then <m>f'(x)</m> can be the zero polynomial if every coefficient of <m>f'(x)</m> is a multiple of <m>p</m>.  This can happen only if we have a polynomial of the form <m>f(x) = a_0 + a_1 x^p + a_2 x^{2p} + \cdots + a_n x^{np}</m>.</p>
+                    <p>First assume that <m>\chr F = 0</m>. Since <m>\deg f'(x) \lt \deg f(x)</m> and <m>f(x)</m> is irreducible, the only way <m>\gcd( f(x), f'(x)) \neq 1</m> is if <m>f'(x)</m> is the zero polynomial; however, this is impossible in a field of characteristic zero. If <m>\chr F = p</m>, then <m>f'(x)</m> can be the zero polynomial if every coefficient of <m>f'(x)</m> is a multiple of <m>p</m>. This can happen only if we have a polynomial of the form <m>f(x) = a_0 + a_1 x^p + a_2 x^{2p} + \cdots + a_n x^{np}</m>.</p>
                 </proof>
             </proposition>
 
@@ -263,7 +264,7 @@
                             <mrow>\sigma_n( \alpha_1 ) x_1 + \sigma_n(\alpha_2) x_2 + \cdots + \sigma_n(\alpha_{n + 1} ) x_{n + 1} &amp; = 0</mrow>
                         </md>
                     has more unknowns than equations. From linear algebra we know that this system has a nontrivial solution, say <m>x_i = a_i</m> for <m>i = 1, 2, \ldots, n + 1</m>. Since <m>\sigma_1</m> is the identity, the first equation translates to
-                        <me>a_1 \alpha_1 +  a_2 \alpha_2  + \cdots + a_{n + 1} \alpha_{n + 1} = 0.</me>
+                        <me>a_1 \alpha_1 +  a_2 \alpha_2 + \cdots + a_{n + 1} \alpha_{n + 1} = 0.</me>
                     The problem is that some of the <m>a_i</m>'s may be in <m>E</m> but not in <m>F</m>. We must show that this is impossible.</p>
                     <!-- Corrected typo.  Suggested by K. Brooks. - TWJ 6/15/2012 -->
                     <p>Suppose that at least one of the <m>a_i</m>'s is in <m>E</m> but not in <m>F</m>. By rearranging the <m>\alpha_i</m>'s we may assume that <m>a_1</m> is nonzero. Since any nonzero multiple of a solution is also a solution, we can also assume that <m>a_1 = 1</m>. Of all possible solutions fitting this description, we choose the one with the smallest number of nonzero terms. Again, by rearranging <m>\alpha_2, \ldots, \alpha_{n + 1}</m> if necessary, we can assume that <m>a_2</m> is in <m>E</m> but not in <m>F</m>. Since <m>F</m> is the subfield of <m>E</m> that is fixed elementwise by <m>G</m>, there exists a <m>\sigma_i</m> in <m>G</m> such that <m>\sigma_i( a_2 ) \neq a_2</m>. Applying <m>\sigma_i</m> to each equation in the system, we end up with the same homogeneous system, since <m>G</m> is a group. Therefore, <m>x_1 = \sigma_i(a_1) = 1</m>, <m>x_2 = \sigma_i(a_2)</m>, <m>\ldots</m>, <m>x_{n + 1} = \sigma_i(a_{n+1} )</m> is also a solution of the original system. We know that a linear combination of two solutions of a homogeneous system is also a solution; consequently,
@@ -289,7 +290,7 @@
                         </ol></p>
                 </statement>
                 <proof>
-                    <p>(1) <m>\Rightarrow</m> (2). Let <m>E</m> be a finite, normal, separable extension of <m>F</m>. By the Primitive Element Theorem, we can find an  <m>\alpha</m> in <m>E</m> such that <m>E = F(\alpha)</m>. Let <m>f(x)</m> be the minimal polynomial of <m>\alpha</m> over <m>F</m>. The field <m>E</m> must contain all of the roots of <m>f(x)</m> since it is a normal extension <m>F</m>; hence, <m>E</m> is a splitting field for <m>f(x)</m>.</p>
+                    <p>(1) <m>\Rightarrow</m> (2). Let <m>E</m> be a finite, normal, separable extension of <m>F</m>. By the Primitive Element Theorem, we can find an <m>\alpha</m> in <m>E</m> such that <m>E = F(\alpha)</m>. Let <m>f(x)</m> be the minimal polynomial of <m>\alpha</m> over <m>F</m>. The field <m>E</m> must contain all of the roots of <m>f(x)</m> since it is a normal extension <m>F</m>; hence, <m>E</m> is a splitting field for <m>f(x)</m>.</p>
                     
                     <p>(2) <m>\Rightarrow</m> (3). Let <m>E</m> be the splitting field over <m>F</m> of a separable polynomial. By Proposition<nbsp/><xref ref="proposition-fixed-field"/>, <m>E_{G(E/F)} = F</m>. Since <m>| G(E/F)| = [E:F]</m>, this is a finite group.</p>
                     
@@ -356,7 +357,7 @@
 
                     <p>Conversely, let <m>G(E/K)</m> be a normal subgroup of <m>G(E/F)</m>. We need to show that <m>F = K_{G(K/F)}</m>. Let <m>\tau \in G(E/K)</m>. For all <m>\sigma \in G(E/F)</m> there exists a <m>\overline{\tau} \in G(E/K)</m> such that <m>\tau \sigma = \sigma \overline{\tau}</m>. Consequently, for all <m>\alpha \in K</m>
                         <me>\tau( \sigma( \alpha ) ) = \sigma( \overline{\tau}( \alpha ) ) = \sigma( \alpha );</me>
-                    hence, <m>\sigma( \alpha )</m> must be in the fixed field of <m>G(E/K)</m>. Let <m>\overline{\sigma}</m> be the restriction of <m>\sigma</m> to <m>K</m>. Then <m>\overline{\sigma}</m> is an automorphism of <m>K</m> fixing <m>F</m>, since <m>\sigma( \alpha ) \in K</m> for all <m>\alpha \in K</m>; hence, <m>\overline{\sigma} \in G(K/F)</m>. Next, we will show that the fixed field of <m>G(K/F)</m> is <m>F</m>. Let <m>\beta</m> be an element in <m>K</m> that is fixed by all automorphisms in <m>G(K/F)</m>.  In particular, <m>\overline{\sigma}(\beta) = \beta</m> for all <m>\sigma \in G(E/F)</m>.  Therefore, <m>\beta</m> belongs to the fixed field <m>F</m> of <m>G(E/F)</m>.</p>
+                    hence, <m>\sigma( \alpha )</m> must be in the fixed field of <m>G(E/K)</m>. Let <m>\overline{\sigma}</m> be the restriction of <m>\sigma</m> to <m>K</m>. Then <m>\overline{\sigma}</m> is an automorphism of <m>K</m> fixing <m>F</m>, since <m>\sigma( \alpha ) \in K</m> for all <m>\alpha \in K</m>; hence, <m>\overline{\sigma} \in G(K/F)</m>. Next, we will show that the fixed field of <m>G(K/F)</m> is <m>F</m>. Let <m>\beta</m> be an element in <m>K</m> that is fixed by all automorphisms in <m>G(K/F)</m>. In particular, <m>\overline{\sigma}(\beta) = \beta</m> for all <m>\sigma \in G(E/F)</m>. Therefore, <m>\beta</m> belongs to the fixed field <m>F</m> of <m>G(E/F)</m>.</p>
 
                     <p>Finally, we must show that when <m>K</m> is a normal extension of <m>F</m>, 
                         <me>G(K/F) \cong G(E/F) / G(E/K).</me>
@@ -386,7 +387,7 @@
                     <me>\{ 1, \sqrt[4]{2}, (\sqrt[4]{2}\, )^2, (\sqrt[4]{2}\, )^3, i, i \sqrt[4]{2}, i (\sqrt[4]{2}\, )^2, i(\sqrt[4]{2}\, )^3 \}</me>
                 is a basis of <m>{\mathbb Q}( \sqrt[4]{2}, i )</m> over <m>{\mathbb Q}</m>. The lattice of field extensions of <m>{\mathbb Q}</m> contained in <m>{\mathbb Q}( \sqrt[4]{2}, i)</m> is illustrated in Figure<nbsp/><xref ref="figure-galois-3"/>(a).</p>
                 <!-- Corrected the automorphism sigma.  Suggested by R. Beezer. - TWJ 4/14/2011 -->
-                <p>The Galois group <m>G</m> of <m>f(x)</m> must be of order <m>8</m>. Let <m>\sigma</m> be the automorphism defined by <m>\sigma( \sqrt[4]{2}\, ) = i \sqrt[4]{2}</m> and <m>\sigma( i ) = i</m>, and <m>\tau</m> be the automorphism defined by complex conjugation; that is, <m>\tau(i ) = -i</m>. Then <m>G</m> has an element of order <m>4</m> and an element of order <m>2</m>. It is easy to verify by direct computation that the elements of <m>G</m> are <m>\{ \identity, \sigma, \sigma^2,  \sigma^3, \tau, \sigma \tau, \sigma^2 \tau, \sigma^3 \tau \}</m> and that the relations <m>\tau^2 = \identity</m>, <m>\sigma^4 = \identity</m>, and <m>\tau \sigma \tau = \sigma^{-1}</m> are satisfied; hence, <m>G</m> must be isomorphic to <m>D_4</m>. The lattice of subgroups of <m>G</m> is illustrated in Figure<nbsp/><xref ref="figure-galois-3"/>(b).</p>
+                <p>The Galois group <m>G</m> of <m>f(x)</m> must be of order <m>8</m>. Let <m>\sigma</m> be the automorphism defined by <m>\sigma( \sqrt[4]{2}\, ) = i \sqrt[4]{2}</m> and <m>\sigma( i ) = i</m>, and <m>\tau</m> be the automorphism defined by complex conjugation; that is, <m>\tau(i ) = -i</m>. Then <m>G</m> has an element of order <m>4</m> and an element of order <m>2</m>. It is easy to verify by direct computation that the elements of <m>G</m> are <m>\{ \identity, \sigma, \sigma^2, \sigma^3, \tau, \sigma \tau, \sigma^2 \tau, \sigma^3 \tau \}</m> and that the relations <m>\tau^2 = \identity</m>, <m>\sigma^4 = \identity</m>, and <m>\tau \sigma \tau = \sigma^{-1}</m> are satisfied; hence, <m>G</m> must be isomorphic to <m>D_4</m>. The lattice of subgroups of <m>G</m> is illustrated in Figure<nbsp/><xref ref="figure-galois-3"/>(b).</p>
             </example>
             
             <figure xml:id="figure-galois-3">
@@ -421,7 +422,7 @@
             <!-- TWJ 3/5/2013 -->
             <p>Throughout this section we shall assume that all fields have characteristic zero to ensure that irreducible polynomials do not have multiple roots. The immediate goal of this section is to determine when the roots of a polynomial <m>f(x)</m> can be computed with a finite number of operations on the coefficients of <m>f(x)</m>. The allowable operations are addition, subtraction, multiplication, division, and the extraction of <m>n</m>th roots. Certainly the solution to the quadratic equation, <m>a x^2 + b x +c = 0</m>, illustrates this process:
                 <me>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.</me>
-            The only one of these operations that might demand a larger field is the taking of <m>n</m>th roots.  We are led to the following definition.</p>
+            The only one of these operations that might demand a larger field is the taking of <m>n</m>th roots. We are led to the following definition.</p>
             
             <p>An extension field <m>E</m> of a field <m>F</m> is an <term>extension by radicals</term><idx><h>Extension</h><h>radical</h></idx> if there exists a chain of subfields
                 <me>F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E</me>
@@ -431,13 +432,13 @@
             
             <example xml:id="example-galois-group-xn-1">
                 <p>The polynomial <m>x^n - 1</m> is solvable by radicals over <m>{\mathbb Q}</m>. The roots of this polynomial are <m>1, \omega, \omega^2, \ldots, \omega^{n - 1}</m>, where
-                    <me>\omega = \cos\left( \frac{2 \pi}{n} \right) +  i \sin\left( \frac{2 \pi}{n} \right).</me>
+                    <me>\omega = \cos\left( \frac{2 \pi}{n} \right) + i \sin\left( \frac{2 \pi}{n} \right).</me>
                 The splitting field of <m>x^n - 1</m> over <m>{\mathbb Q}</m> is <m>{\mathbb Q}(\omega)</m>.</p>
             </example>
             
             <p>We shall prove that a polynomial is solvable by radicals if its Galois group is solvable. Recall that a subnormal series of a group <m>G</m> is a finite sequence of subgroups
                 <me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
-            where <m>H_i</m> is normal in <m>H_{i+1}</m>.  A group <m>G</m> is solvable  if it has a subnormal series <m>\{ H_i \}</m> such that all of the factor  groups <m>H_{i+1} /H_i</m> are abelian.  For example, if we examine the series <m>\{ \identity \} \subset A_3 \subset S_3</m>, we see that <m>S_3</m> is solvable. On the other hand, <m>S_5</m> is not solvable, by Theorem<nbsp/><xref ref="theorem-an-simple"/>.</p>
+            where <m>H_i</m> is normal in <m>H_{i+1}</m>. A group <m>G</m> is solvable  if it has a subnormal series <m>\{ H_i \}</m> such that all of the factor groups <m>H_{i+1} /H_i</m> are abelian.  For example, if we examine the series <m>\{ \identity \} \subset A_3 \subset S_3</m>, we see that <m>S_3</m> is solvable. On the other hand, <m>S_5</m> is not solvable, by Theorem<nbsp/><xref ref="theorem-an-simple"/>.</p>
             <!-- Corrected the definition of a solvable group.  Suggested by K. Halasz. -->
             <!-- TWJ 1/10/2014  -->
             <lemma xml:id="lemma-xn-a-solvable">
@@ -445,17 +446,17 @@
                     <p>Let <m>F</m> be a field of characteristic zero and <m>E</m> be the splitting field of <m>x^n - a</m> over <m>F</m> with <m>a \in F</m>. Then <m>G(E/F)</m> is a solvable group.</p>
                 </statement>
                 <proof>
-                    <p>The roots of <m>x^n - a</m> are <m>\sqrt[n]{a}, \omega \sqrt[n]{a}, \ldots, \omega^{n-1} \sqrt[n]{a}</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity.  Suppose that <m>F</m> contains all of its <m>n</m>th roots of unity.  If <m>\zeta</m> is one of the roots of  <m>x^n - a</m>, then distinct roots of <m>x^n - a</m> are <m>\zeta, \omega \zeta, \ldots, \omega^{n - 1} \zeta</m>, and <m>E = F(\zeta)</m>. Since <m>G(E/F)</m> permutes the roots <m>x^n - a</m>, the elements in  <m>G(E/F)</m> must be determined by their action on these roots. Let <m>\sigma</m>  and <m>\tau</m> be in <m>G(E/F)</m> and suppose that <m>\sigma( \zeta ) = \omega^i  \zeta</m> and <m>\tau( \zeta ) = \omega^j \zeta</m>. If <m>F</m> contains the roots of unity, then 
+                    <p>The roots of <m>x^n - a</m> are <m>\sqrt[n]{a}, \omega \sqrt[n]{a}, \ldots, \omega^{n-1} \sqrt[n]{a}</m>, where <m>\omega</m> is a primitive <m>n</m>th root of unity.  Suppose that <m>F</m> contains all of its <m>n</m>th roots of unity. If <m>\zeta</m> is one of the roots of  <m>x^n - a</m>, then distinct roots of <m>x^n - a</m> are <m>\zeta, \omega \zeta, \ldots, \omega^{n - 1} \zeta</m>, and <m>E = F(\zeta)</m>. Since <m>G(E/F)</m> permutes the roots <m>x^n - a</m>, the elements in  <m>G(E/F)</m> must be determined by their action on these roots. Let <m>\sigma</m>  and <m>\tau</m> be in <m>G(E/F)</m> and suppose that <m>\sigma( \zeta ) = \omega^i \zeta</m> and <m>\tau( \zeta ) = \omega^j \zeta</m>. If <m>F</m> contains the roots of unity, then 
                         <me>\sigma \tau( \zeta ) = \sigma( \omega^j \zeta) = \omega^j \sigma( \zeta ) = \omega^{i+j} \zeta = \omega^i \tau( \zeta ) = \tau( \omega^i \zeta ) = \tau \sigma( \zeta ).</me>
                     Therefore, <m>\sigma \tau = \tau \sigma</m> and <m>G(E/F)</m> is abelian, and
                     <m>G(E/F)</m> must be solvable.</p>
                     <!-- typo correction in proof.  Suggested by L.Handricks and K. Kelley. -->
                     <!-- TWJ - 5/3/2013 -->
-                    <p>Now suppose that <m>F</m> does not contain a primitive <m>n</m>th root of unity. Let <m>\omega</m> be a generator of the cyclic group of the <m>n</m>th roots of unity.  Let <m>\alpha</m> be a zero of <m>x^n - a</m>. Since <m>\alpha</m> and <m>\omega \alpha</m> are both in the splitting field of <m>x^n - a</m>, <m>\omega = (\omega \alpha)/ \alpha</m> is also in <m>E</m>. Let <m>K = F( \omega)</m>. Then <m>F \subset K \subset E</m>. Since <m>K</m> is the splitting field of <m>x^n - 1</m>, <m>K</m> is a normal extension of <m>F</m>.  Therefore, any automorphism <m>\sigma</m> in <m>G(F( \omega)/ F)</m> is determined by <m>\sigma( \omega)</m>.  It must be the case that <m>\sigma( \omega ) = \omega^i</m> for some integer <m>i</m> since all of the zeros of <m>x^n - 1</m> are powers of <m>\omega</m>. If <m>\tau( \omega ) = \omega^j</m> is in <m>G(F(\omega)/F)</m>, then
+                    <p>Now suppose that <m>F</m> does not contain a primitive <m>n</m>th root of unity. Let <m>\omega</m> be a generator of the cyclic group of the <m>n</m>th roots of unity.  Let <m>\alpha</m> be a zero of <m>x^n - a</m>. Since <m>\alpha</m> and <m>\omega \alpha</m> are both in the splitting field of <m>x^n - a</m>, <m>\omega = (\omega \alpha)/ \alpha</m> is also in <m>E</m>. Let <m>K = F( \omega)</m>. Then <m>F \subset K \subset E</m>. Since <m>K</m> is the splitting field of <m>x^n - 1</m>, <m>K</m> is a normal extension of <m>F</m>. Therefore, any automorphism <m>\sigma</m> in <m>G(F( \omega)/ F)</m> is determined by <m>\sigma( \omega)</m>.  It must be the case that <m>\sigma( \omega ) = \omega^i</m> for some integer <m>i</m> since all of the zeros of <m>x^n - 1</m> are powers of <m>\omega</m>. If <m>\tau( \omega ) = \omega^j</m> is in <m>G(F(\omega)/F)</m>, then
                         <me>\sigma \tau( \omega ) = \sigma( \omega^j ) = [ \sigma( \omega )]^j = \omega^{ij} = [\tau( \omega ) ]^i = \tau( \omega^i )  = \tau \sigma( \omega ).</me>
-                    Therefore, <m>G(F( \omega ) / F)</m> is abelian.  By the Fundamental Theorem of Galois Theory the series 
+                    Therefore, <m>G(F( \omega ) / F)</m> is abelian. By the Fundamental Theorem of Galois Theory the series 
                         <me>\{ \identity \} \subset G(E/ F(\omega)) \subset G(E/F)</me>
-                    is a normal series. By our previous argument, <m>G(E/F(\omega))</m> is abelian.  Since
+                    is a normal series. By our previous argument, <m>G(E/F(\omega))</m> is abelian. Since
                         <me>G(E/F) /G(E/F( \omega)) \cong G(F(\omega)/F)</me>
                     is also abelian, <m>G(E/F)</m> is solvable.</p>
                 </proof>
@@ -474,11 +475,11 @@
                 <!-- Proof should be correct now. -->
                 <!-- TWJ - 6/5/2013 -->
                 <proof>
-                    <p>Since <m>E</m> is a radical extension of <m>F</m>,  there exists a chain of subfields
+                    <p>Since <m>E</m> is a radical extension of <m>F</m>, there exists a chain of subfields
                         <me>F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E</me>
-                    such for <m>i = 1, 2, \ldots, r</m>, we have  <m>F_i = F_{i - 1}(\alpha_i)</m> and <m>\alpha_i^{n_i} \in F_{i-1}</m> for some positive integer <m>n_i</m>.  We will build a normal radical extension of <m>F</m>,
+                    such for <m>i = 1, 2, \ldots, r</m>, we have  <m>F_i = F_{i - 1}(\alpha_i)</m> and <m>\alpha_i^{n_i} \in F_{i-1}</m> for some positive integer <m>n_i</m>. We will build a normal radical extension of <m>F</m>,
                         <me>F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K</me>
-                    such that <m>K \supseteq E</m>.  Define <m>K_1</m> for be the splitting field of <m>x^{n_1} - \alpha_1^{n_1}</m>.  The roots of this polynomial are <m>\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}</m>, where <m>\omega</m> is a primitive  <m>n_1</m>th root of unity.  If <m>F</m> contains all of its <m>n_1</m> roots of unity, then  <m>K_1 = F(\alpha_!)</m>.   On the other hand, suppose that <m>F</m> does not contain a primitive <m>n_1</m>th root of unity.  If <m>\beta</m> is a root of  <m>x^{n_1} - \alpha_1^{n_1}</m>, then all of the roots of  <m>x^{n_1} - \alpha_1^{n_1}</m> must be <m>\beta, \omega \beta, \ldots, \omega^{n_1-1}</m>, where  <m>\omega</m> is a primitive  <m>n_1</m>th root of unity. In this case, <m>K_1 = F(\omega \beta)</m>.  Thus, <m>K_1</m> is a normal radical extension of <m>F</m> containing <m>F_1</m>. Continuing in this manner, we obtain
+                    such that <m>K \supseteq E</m>. Define <m>K_1</m> for be the splitting field of <m>x^{n_1} - \alpha_1^{n_1}</m>. The roots of this polynomial are <m>\alpha_1, \alpha_1 \omega, \alpha_1 \omega^2, \ldots, \alpha_1 \omega^{n_1 - 1}</m>, where <m>\omega</m> is a primitive <m>n_1</m>th root of unity. If <m>F</m> contains all of its <m>n_1</m> roots of unity, then <m>K_1 = F(\alpha_!)</m>. On the other hand, suppose that <m>F</m> does not contain a primitive <m>n_1</m>th root of unity. If <m>\beta</m> is a root of <m>x^{n_1} - \alpha_1^{n_1}</m>, then all of the roots of  <m>x^{n_1} - \alpha_1^{n_1}</m> must be <m>\beta, \omega \beta, \ldots, \omega^{n_1-1}</m>, where  <m>\omega</m> is a primitive  <m>n_1</m>th root of unity. In this case, <m>K_1 = F(\omega \beta)</m>. Thus, <m>K_1</m> is a normal radical extension of <m>F</m> containing <m>F_1</m>. Continuing in this manner, we obtain
                         <me>F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K</me>
                     such that <m>K_i</m> is a normal extension of <m>K_{i-1}</m> and <m>K_i \supseteq F_i</m> for <m>i = 1, 2, \ldots, r</m>.</p>
                 </proof>
@@ -489,14 +490,14 @@
                     <p>Let <m>f(x)</m> be in <m>F[x]</m>, where <m>\chr F = 0</m>. If <m>f(x)</m> is solvable by radicals, then the Galois group of <m>f(x)</m> over <m>F</m> is solvable.</p>
                 </statement>
                 <proof>
-                    <p>Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>. By  Lemma<nbsp/><xref ref="lemma-radical-extension"/>, we can assume that <m>E</m> is a splitting field <m>f(x)</m> and   <m>F_i</m> is normal over <m>F_{i - 1}</m>. By the Fundamental Theorem of Galois Theory, <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.  Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:  
+                    <p>Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>. By  Lemma<nbsp/><xref ref="lemma-radical-extension"/>, we can assume that <m>E</m> is a splitting field <m>f(x)</m> and <m>F_i</m> is normal over <m>F_{i - 1}</m>. By the Fundamental Theorem of Galois Theory, <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.  Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:
                         <me>\{ \identity \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F).</me>
                     Again by the Fundamental Theorem of Galois Theory, we know that
                         <me>G(E/F_{i - 1})/G(E/F_i) \cong G(F_i/F_{i - 1}).</me>
                     By Lemma<nbsp/><xref ref="lemma-xn-a-solvable"/>, <m>G(F_i/F_{i - 1})</m> is solvable; hence, <m>G(E/F)</m> is also solvable.</p>
                 </proof>
             </theorem>
-            <p>The converse of Theorem<nbsp/><xref ref="theorem-solvable-by-radicals"/> is also true.  For a proof, see any of the references at the end of this chapter.</p>
+            <p>The converse of Theorem<nbsp/><xref ref="theorem-solvable-by-radicals"/> is also true. For a proof, see any of the references at the end of this chapter.</p>
         </subsection>
 
         <subsection xml:id="galois-subsection-quintic">
@@ -550,7 +551,7 @@
             <example xml:id="example-galois-x5">
                 <p>We will show that <m>f(x) = x^5 - 6 x^3 - 27 x - 3 \in {\mathbb Q}[x]</m> is not solvable. We claim that the Galois group of <m>f(x)</m> over <m>{\mathbb Q}</m> is <m>S_5</m>. By Eisenstein's Criterion, <m>f(x)</m> is irreducible and, therefore, must be separable. The derivative of <m>f(x)</m> is <m>f'(x) = 5 x^4 - 18 x^2 - 27</m>; hence, setting <m>f'(x) = 0</m> and solving, we find that the only real roots of <m>f'(x)</m> are
                     <me>x = \pm \sqrt{ \frac{6 \sqrt{6} + 9 }{5} }.</me>
-                Therefore, <m>f(x)</m> can have at most one maximum and one minimum. It is easy to show that <m>f(x)</m> changes sign between <m>-3</m> and <m>-2</m>, between <m>-2</m> and <m>0</m>, and once again between <m>0</m> and <m>4</m> (Figure<nbsp/><xref ref="figure-galois-4"/>). Therefore, <m>f(x)</m> has exactly three distinct real roots. The remaining two roots of <m>f(x)</m> must be complex conjugates. Let <m>K</m> be the splitting field of <m>f(x)</m>. Since <m>f(x)</m> has five distinct roots in <m>K</m> and every automorphism of <m>K</m> fixing <m>{\mathbb Q}</m> is determined by the way it permutes the roots of <m>f(x)</m>, we know that <m>G(K/{\mathbb Q})</m> is a subgroup of <m>S_5</m>. Since <m>f</m> is irreducible, there is an element in <m>\sigma \in G(K/{\mathbb Q})</m> such that <m>\sigma(a) = b</m> for two roots <m>a</m> and <m>b</m> of <m>f(x)</m>. The automorphism of <m>{\mathbb C}</m> that takes <m>a + bi \mapsto a - bi</m> leaves the real roots fixed and interchanges the complex roots; consequently, <m>G(K/{\mathbb Q} )</m> contains a transpostion. If <m>\alpha</m> is one of the real roots of <m>f(x)</m>, then <m>[\mathbb Q(\alpha) : \mathbb Q] = 5</m> by Exercise<nbsp/><xref ref="exercise-fields-degree-irred-poly"/>.  Since <m>\mathbb Q(\alpha)</m> is a subfield of <m>K</m>, it must be the case the <m>[K : \mathbb Q]</m> is divisible by 5.  Since <m>[K : \mathbb Q] = |G(K/{\mathbb Q})|</m> and <m>G(K/{\mathbb Q}) \subset S_5</m>, we know that <m>G(K/{\mathbb Q})</m> contains a cycle of length <m>5</m>. By Lemma<nbsp/><xref ref="lemma-sn-generating"/>, <m>S_5</m> is generated by a transposition and an element of order <m>5</m>; therefore, <m>G(K/{\mathbb Q} )</m> must be all of <m>S_5</m>. By Theorem<nbsp/><xref ref="theorem-an-simple"/>, <m>S_5</m> is not solvable. Consequently, <m>f(x)</m> cannot be solved by radicals.</p>
+                Therefore, <m>f(x)</m> can have at most one maximum and one minimum. It is easy to show that <m>f(x)</m> changes sign between <m>-3</m> and <m>-2</m>, between <m>-2</m> and <m>0</m>, and once again between <m>0</m> and <m>4</m> (Figure<nbsp/><xref ref="figure-galois-4"/>). Therefore, <m>f(x)</m> has exactly three distinct real roots. The remaining two roots of <m>f(x)</m> must be complex conjugates. Let <m>K</m> be the splitting field of <m>f(x)</m>. Since <m>f(x)</m> has five distinct roots in <m>K</m> and every automorphism of <m>K</m> fixing <m>{\mathbb Q}</m> is determined by the way it permutes the roots of <m>f(x)</m>, we know that <m>G(K/{\mathbb Q})</m> is a subgroup of <m>S_5</m>. Since <m>f</m> is irreducible, there is an element in <m>\sigma \in G(K/{\mathbb Q})</m> such that <m>\sigma(a) = b</m> for two roots <m>a</m> and <m>b</m> of <m>f(x)</m>. The automorphism of <m>{\mathbb C}</m> that takes <m>a + bi \mapsto a - bi</m> leaves the real roots fixed and interchanges the complex roots; consequently, <m>G(K/{\mathbb Q} )</m> contains a transpostion. If <m>\alpha</m> is one of the real roots of <m>f(x)</m>, then <m>[\mathbb Q(\alpha) : \mathbb Q] = 5</m> by Exercise<nbsp/><xref ref="exercise-fields-degree-irred-poly"/>. Since <m>\mathbb Q(\alpha)</m> is a subfield of <m>K</m>, it must be the case the <m>[K : \mathbb Q]</m> is divisible by 5. Since <m>[K : \mathbb Q] = |G(K/{\mathbb Q})|</m> and <m>G(K/{\mathbb Q}) \subset S_5</m>, we know that <m>G(K/{\mathbb Q})</m> contains a cycle of length <m>5</m>. By Lemma<nbsp/><xref ref="lemma-sn-generating"/>, <m>S_5</m> is generated by a transposition and an element of order <m>5</m>; therefore, <m>G(K/{\mathbb Q} )</m> must be all of <m>S_5</m>. By Theorem<nbsp/><xref ref="theorem-an-simple"/>, <m>S_5</m> is not solvable. Consequently, <m>f(x)</m> cannot be solved by radicals.</p>
             </example>
             <!--  Changed <m>G(K/F )</m> to <m>G(K/{\mathbb Q} )</m>.  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
         </subsection>
@@ -573,9 +574,11 @@
                     <p>Suppose that <m>E</m> is a proper finite field extension of the complex  numbers. Since any finite extension of a field of characteristic zero is a simple extension, there exists an <m>\alpha \in E</m> such that <m>E = {\mathbb C}( \alpha )</m> with <m>\alpha</m> the root of an irreducible polynomial <m>f(x)</m> in <m>{\mathbb C}[x]</m>. The splitting field <m>L</m> of <m>f(x)</m> is a finite normal separable extension of <m>{\mathbb C}</m> that contains  <m>E</m>. We must show that it is impossible for <m>L</m> to be a proper extension of <m>{\mathbb C}</m>.</p>
 
                     <p>Suppose that <m>L</m> is a proper extension of <m>{\mathbb C}</m>. Since <m>L</m> is the splitting field of <m>f(x)(x^2 + 1)</m> over <m>{\mathbb R}</m>, <m>L</m> is a finite normal separable extension of <m>{\mathbb R}</m>. Let <m>K</m> be the fixed field of a Sylow 2-subgroup <m>G</m> of <m>G(L/{\mathbb R})</m>. Then <m>L \supset K \supset {\mathbb R}</m> and <m>|G( L / K )| =[L:K]</m>. Since <m>[L : {\mathbb R}] = [L:K][K:{\mathbb R}]</m>, we know that <m>[K:{\mathbb R}]</m> must be odd. Consequently, <m>K = {\mathbb R}(\beta)</m> with <m>\beta</m> having a minimal polynomial <m>f(x)</m> of odd degree. Therefore, <m>K = {\mathbb R}</m>.</p>
-                    <p>We now know that <m>G(L/{\mathbb R})</m> must be a 2-group. It follows that <m>G(L / {\mathbb C})</m> is a <m>2</m>-group. We have assumed that <m>L \neq {\mathbb C}</m>; therefore, <m>|G(L / {\mathbb C})| \geq 2</m>.  By the first Sylow Theorem and the Fundamental Theorem of Galois Theory, there exists a subgroup <m>G</m> of <m>G(L/{\mathbb C})</m> of index 2 and a field <m>E</m> fixed elementwise by <m>G</m>. Then <m>[E:{\mathbb C}] = 2</m> and there exists an element <m>\gamma \in E</m> with minimal polynomial <m>x^2 + b x + c</m> in <m>{\mathbb C}[x]</m>.  This polynomial has roots <m>( - b \pm \sqrt{b^2 - 4c}\, ) / 2</m> that are in <m>{\mathbb C}</m>, since <m>b^2 - 4 c</m> is in <m>{\mathbb C}</m>. This is impossible; hence, <m>L = {\mathbb C}</m>.</p>
+
+                    <p>We now know that <m>G(L/{\mathbb R})</m> must be a 2-group. It follows that <m>G(L / {\mathbb C})</m> is a <m>2</m>-group. We have assumed that <m>L \neq {\mathbb C}</m>; therefore, <m>|G(L / {\mathbb C})| \geq 2</m>.  By the first Sylow Theorem and the Fundamental Theorem of Galois Theory, there exists a subgroup <m>G</m> of <m>G(L/{\mathbb C})</m> of index 2 and a field <m>E</m> fixed elementwise by <m>G</m>. Then <m>[E:{\mathbb C}] = 2</m> and there exists an element <m>\gamma \in E</m> with minimal polynomial <m>x^2 + b x + c</m> in <m>{\mathbb C}[x]</m>. This polynomial has roots <m>( - b \pm \sqrt{b^2 - 4c}\, ) / 2</m> that are in <m>{\mathbb C}</m>, since <m>b^2 - 4 c</m> is in <m>{\mathbb C}</m>. This is impossible; hence, <m>L = {\mathbb C}</m>.</p>
                 </proof>
             </theorem>
+
             <p>Although our proof was strictly algebraic, we were forced to rely on results from calculus. It is necessary to assume the completeness axiom from analysis to show that every polynomial of odd degree has a real root and that every positive real number has a square root. It seems that there is no possible way to avoid this difficulty and formulate a purely algebraic argument. It is somewhat amazing that there are several elegant proofs of the Fundamental Theorem of Algebra that use complex analysis. It is also interesting to note that we can obtain a proof of such an important theorem from two very different fields of mathematics.</p>
             <!-- This file is part of the book                 -->
             <!--                                               -->
@@ -681,7 +684,7 @@
         </exercise>
         <exercise number="8">
             <statement>
-                <p>Let <m>F \subset K \subset E</m> be fields. If E is a normal extension of <m>F</m>, show that <m>E</m> must also be a normal extension of <m>K</m>.</p>
+                <p>Let <m>F \subset K \subset E</m> be fields. If <m>E</m> is a normal extension of <m>F</m>, show that <m>E</m> must also be a normal extension of <m>K</m>.</p>
             </statement>
         </exercise>
         <todo>Fix solution.</todo>
@@ -696,7 +699,7 @@
         <todo>Fix solution.</todo>
         <exercise number="10">
             <statement>
-                <p>Let <m>F \subset E</m>.  If <m>f(x)</m> is solvable over <m>F</m>, show that <m>f(x)</m> is also solvable over <m>E</m>.</p>
+                <p>Let <m>F \subset E</m>. If <m>f(x)</m> is solvable over <m>F</m>, show that <m>f(x)</m> is also solvable over <m>E</m>.</p>
             </statement>
         </exercise>
         <todo>Fix solution.</todo>
