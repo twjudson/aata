@@ -14,14 +14,14 @@
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="boolean">
     <title>Lattices and Boolean Algebras</title>
     <introduction>
-        <p>The axioms of a ring give structure to the operations of addition and multiplication on a set. However, we can construct algebraic structures, known as lattices and Boolean algebras, that generalize other types of operations. For example, the important operations on sets are inclusion, union, and intersection. Lattices are generalizations of order relations on algebraic spaces, such as set inclusion in set theory and inequality in the familiar number systems <m>{\mathbb N}</m>, <m>{\mathbb Z}</m>, <m>{\mathbb Q}</m>, and <m>{\mathbb R}</m>.  Boolean algebras generalize the operations of intersection and union. Lattices and Boolean algebras have found applications in logic, circuit theory, and probability.</p>
+        <p>The axioms of a ring give structure to the operations of addition and multiplication on a set. However, we can construct algebraic structures, known as lattices and Boolean algebras, that generalize other types of operations. For example, the important operations on sets are inclusion, union, and intersection. Lattices are generalizations of order relations on algebraic spaces, such as set inclusion in set theory and inequality in the familiar number systems <m>{\mathbb N}</m>, <m>{\mathbb Z}</m>, <m>{\mathbb Q}</m>, and <m>{\mathbb R}</m>. Boolean algebras generalize the operations of intersection and union. Lattices and Boolean algebras have found applications in logic, circuit theory, and probability.</p>
     </introduction>
 
     <section xml:id="section-boolean-lattices">
         <title>Lattices</title>
         <subsection xml:id="boolean-subsection-poset">
             <title>Partially Ordered Sets</title>
-            <p>We begin the study of lattices and Boolean algebras by generalizing the idea of inequality. Recall that a <term>relation</term> on a set <m>X</m> is a subset of <m>X \times X</m>.  A relation <m>P</m> on <m>X</m> is called a <term>partial order</term><idx><h>Partial order</h></idx> of <m>X</m> if it satisfies the following axioms.
+            <p>We begin the study of lattices and Boolean algebras by generalizing the idea of inequality. Recall that a <term>relation</term> on a set <m>X</m> is a subset of <m>X \times X</m>. A relation <m>P</m> on <m>X</m> is called a <term>partial order</term><idx><h>Partial order</h></idx> of <m>X</m> if it satisfies the following axioms.
                 <ol>
                     <li><p>The relation is <term>reflexive</term>: <m>(a, a) \in P</m> for all <m>a \in X</m>.</p></li>
                     <li><p>The relation is <term>antisymmetric</term>: if <m>(a,b) \in P</m> and <m>(b,a) \in P</m>, then <m>a = b</m>.</p></li>
@@ -34,7 +34,7 @@
             </example>
 
             <example xml:id="example-boolean-power-set-subset">
-                <p>Let <m>X</m> be any set.  We will define the <term>power set</term><idx><h>Power set</h></idx> of <m>X</m> to be the set of all subsets of <m>X</m>. We denote the power set of <m>X</m> by <m>{\mathcal P}(X)</m>. For example, let <m>X = \{ a, b, c \}</m>. Then <m>{\mathcal P}(X)</m> is  the set of all subsets of the set  <m>\{ a, b, c \}</m>: 
+                <p>Let <m>X</m> be any set. We will define the <term>power set</term><idx><h>Power set</h></idx> of <m>X</m> to be the set of all subsets of <m>X</m>. We denote the power set of <m>X</m> by <m>{\mathcal P}(X)</m>. For example, let <m>X = \{ a, b, c \}</m>. Then <m>{\mathcal P}(X)</m> is  the set of all subsets of the set  <m>\{ a, b, c \}</m>: 
                     <md>
                         <mrow>&amp; \emptyset &amp; &amp; \{ a \} &amp; &amp; \{ b \} &amp; &amp; \{ c \} &amp;</mrow>
                         <mrow>&amp; \{ a, b \} &amp; &amp; \{ a, c\} &amp; &amp;\{ b, c\} &amp; &amp; \{ a, b, c \}. &amp;</mrow>
@@ -94,11 +94,11 @@
             <p>On many posets it is possible to define binary operations by using the greatest lower bound and the least upper bound of two elements. A <term>lattice</term><idx><h>Lattice</h><h>definition of</h></idx> is a poset <m>L</m> such that every pair of elements in <m>L</m> has a least upper bound and a greatest lower bound. The least upper bound of <m>a, b \in L</m> is called the <term>join</term><idx><h>Join</h></idx> of <m>a</m> and <m>b</m> and is denoted  by <m>a \vee b</m>. <notation><usage>a \vee b</usage><description>join of <m>a</m> and <m>b</m></description></notation> The greatest lower bound of <m>a, b \in L</m> is called the <term>meet</term><idx><h>Meet</h></idx> of <m>a</m> and <m>b</m> and is denoted by <m>a \wedge b</m>.  <notation><usage>a \wedge b</usage><description>meet of <m>a</m> and <m>b</m></description></notation></p>
 
             <example xml:id="example-boolean-lub-glb">
-                <p>Let <m>X</m> be a set. Then the power set of <m>X</m>, <m>{\mathcal P}(X)</m>, is a lattice. For two sets <m>A</m> and <m>B</m> in <m>{\mathcal P}(X)</m>, the least upper bound of <m>A</m> and <m>B</m> is <m>A \cup B</m>. Certainly <m>A \cup B</m> is an upper bound of <m>A</m> and <m>B</m>, since <m>A \subset A \cup B</m> and <m>B \subset A \cup B</m>.  If <m>C</m> is some other set containing both <m>A</m> and <m>B</m>, then <m>C</m> must contain <m>A \cup B</m>; hence, <m>A \cup B</m> is the least upper bound of <m>A</m> and <m>B</m>. Similarly,  the greatest lower bound of <m>A</m> and <m>B</m> is <m>A \cap B</m>.</p>
+                <p>Let <m>X</m> be a set. Then the power set of <m>X</m>, <m>{\mathcal P}(X)</m>, is a lattice. For two sets <m>A</m> and <m>B</m> in <m>{\mathcal P}(X)</m>, the least upper bound of <m>A</m> and <m>B</m> is <m>A \cup B</m>. Certainly <m>A \cup B</m> is an upper bound of <m>A</m> and <m>B</m>, since <m>A \subset A \cup B</m> and <m>B \subset A \cup B</m>. If <m>C</m> is some other set containing both <m>A</m> and <m>B</m>, then <m>C</m> must contain <m>A \cup B</m>; hence, <m>A \cup B</m> is the least upper bound of <m>A</m> and <m>B</m>. Similarly, the greatest lower bound of <m>A</m> and <m>B</m> is <m>A \cap B</m>.</p>
             </example>
 
             <example xml:id="example-boolean-subgroup-lattice">
-                <p>Let <m>G</m> be a group and suppose that <m>X</m> is the set of subgroups of <m>G</m>. Then <m>X</m> is a poset ordered by set-theoretic inclusion, <m>\subset</m>.  The set of subgroups of <m>G</m> is also a lattice. If <m>H</m> and <m>K</m> are subgroups of <m>G</m>, the greatest lower bound of <m>H</m> and <m>K</m> is <m>H \cap K</m>. The set <m>H \cup K</m> may not be a subgroup of <m>G</m>. We leave it as an exercise to show that the least upper bound of <m>H</m> and <m>K</m> is the subgroup generated by <m>H \cup K</m>.</p>
+                <p>Let <m>G</m> be a group and suppose that <m>X</m> is the set of subgroups of <m>G</m>. Then <m>X</m> is a poset ordered by set-theoretic inclusion, <m>\subset</m>. The set of subgroups of <m>G</m> is also a lattice. If <m>H</m> and <m>K</m> are subgroups of <m>G</m>, the greatest lower bound of <m>H</m> and <m>K</m> is <m>H \cap K</m>. The set <m>H \cup K</m> may not be a subgroup of <m>G</m>. We leave it as an exercise to show that the least upper bound of <m>H</m> and <m>K</m> is the subgroup generated by <m>H \cup K</m>.</p>
             </example>
 
             <p>In set theory we have certain duality conditions. For example, by De Morgan's laws, any statement about sets that is true about <m>(A \cup B)'</m> must also be true about <m>A' \cap B'</m>. We also have a duality principle for lattices.</p>
@@ -128,11 +128,11 @@
                 <proof>
                     <p>By the Principle of Duality, we need only prove the first statement in each part.</p>
                     
-                    <p>(1)   By definition <m>a \vee b</m> is the least upper bound of <m>\{ a, b\}</m>, and <m>b \vee a</m> is the least upper bound of <m>\{ b, a \}</m>; however, <m>\{ a, b\} = \{ b, a \}</m>.</p>
+                    <p>(1) By definition <m>a \vee b</m> is the least upper bound of <m>\{ a, b\}</m>, and <m>b \vee a</m> is the least upper bound of <m>\{ b, a \}</m>; however, <m>\{ a, b\} = \{ b, a \}</m>.</p>
                     
                     <p>(2) We will show that <m>a \vee ( b \vee c)</m> and <m>(a \vee b) \vee c</m> are both least upper bounds of <m>\{ a, b, c \}</m>. Let <m>d =  a \vee b</m>. Then <m>c \preceq  d \vee c = (a \vee b) \vee c</m>. We also know that 
                         <me>a \preceq a \vee b =d \preceq d \vee c = (a \vee b) \vee c.</me>
-                    A similar argument demonstrates that <m>b \preceq (a \vee b) \vee c</m>. Therefore, <m>(a \vee b) \vee c</m> is an upper bound of <m>\{ a, b, c \}</m>. We now need to show that <m>(a \vee b) \vee c</m> is the least upper bound of <m>\{ a, b, c\}</m>. Let <m>u</m> be some other upper bound of <m>\{ a, b, c \}</m>.  Then <m>a \preceq u</m> and <m>b \preceq u</m>; hence, <m>d = a \vee b \preceq u</m>. Since <m>c \preceq u</m>, it follows that <m>(a \vee b) \vee c = d \vee c \preceq u</m>. Therefore, <m>(a \vee b) \vee c</m> must be the least upper  bound of <m>\{ a, b, c\}</m>. The argument that shows  <m>a \vee ( b \vee c)</m>  is the least upper bound of <m>\{ a, b, c \}</m> is the same.  Consequently, <m>a \vee ( b \vee c) = (a \vee b) \vee c</m>.</p>
+                    A similar argument demonstrates that <m>b \preceq (a \vee b) \vee c</m>. Therefore, <m>(a \vee b) \vee c</m> is an upper bound of <m>\{ a, b, c \}</m>. We now need to show that <m>(a \vee b) \vee c</m> is the least upper bound of <m>\{ a, b, c\}</m>. Let <m>u</m> be some other upper bound of <m>\{ a, b, c \}</m>. Then <m>a \preceq u</m> and <m>b \preceq u</m>; hence, <m>d = a \vee b \preceq u</m>. Since <m>c \preceq u</m>, it follows that <m>(a \vee b) \vee c = d \vee c \preceq u</m>. Therefore, <m>(a \vee b) \vee c</m> must be the least upper  bound of <m>\{ a, b, c\}</m>. The argument that shows  <m>a \vee ( b \vee c)</m> is the least upper bound of <m>\{ a, b, c \}</m> is the same. Consequently, <m>a \vee ( b \vee c) = (a \vee b) \vee c</m>.</p>
                     
                     <p>(3) The join of <m>a</m> and <m>a</m> is the least upper bound of <m>\{ a \}</m>; hence, <m>a \vee a = a</m>.</p>
                     
@@ -219,7 +219,7 @@
                             <mrow>&amp; = a \vee a.</mrow>
                         </md>
                     Observe that 
-                        <me>I \vee b = (b \vee b' ) \vee b = (b' \vee b ) \vee b = b' \vee (b \vee b) =  b' \vee b = I.</me>
+                        <me>I \vee b = (b \vee b' ) \vee b = (b' \vee b ) \vee b = b' \vee (b \vee b) = b' \vee b = I.</me>
                     Consequently, the first of the two absorption laws holds, since
                         <md>
                             <mrow>a \vee (a \wedge b) &amp; = (a \wedge I) \vee (a \wedge b)</mrow>
@@ -252,15 +252,15 @@
                         </ol></p>
                 </statement>
                 <proof>
-                    <p>We will prove only (2). The rest of the identities are left as exercises. For <m>a \vee b = a \vee c</m> and <m>a \wedge b = a \wedge c</m>, we have  
+                    <p>We will prove only (2). The rest of the identities are left as exercises. For <m>a \vee b = a \vee c</m> and <m>a \wedge b = a \wedge c</m>, we have
                         <md>
                             <mrow>b &amp; = b \vee (b \wedge a) </mrow>
-                            <mrow>&amp; =  b \vee (a \wedge b) </mrow>
-                            <mrow>&amp; =  b \vee (a \wedge c) </mrow>
-                            <mrow>&amp; =  ( b \vee a) \wedge ( b \vee c) </mrow>
-                            <mrow>&amp; =  ( a \vee b) \wedge ( b \vee c) </mrow>
-                            <mrow>&amp; =  ( a \vee c) \wedge ( b \vee c) </mrow>
-                            <mrow>&amp; =  ( c \vee a ) \wedge ( c\vee b ) </mrow>
+                            <mrow>&amp; = b \vee (a \wedge b) </mrow>
+                            <mrow>&amp; = b \vee (a \wedge c) </mrow>
+                            <mrow>&amp; = ( b \vee a) \wedge ( b \vee c) </mrow>
+                            <mrow>&amp; = ( a \vee b) \wedge ( b \vee c) </mrow>
+                            <mrow>&amp; = ( a \vee c) \wedge ( b \vee c) </mrow>
+                            <mrow>&amp; = ( c \vee a ) \wedge ( c\vee b ) </mrow>
                             <mrow>&amp; = c \vee (a \wedge b)</mrow>
                             <mrow>&amp; = c \vee ( a \wedge c )</mrow>
                             <mrow>&amp; = c \vee ( c \wedge a )</mrow>
@@ -276,8 +276,8 @@
             
             <p>Let <m>B</m> and <m>C</m> be Boolean algebras. A bijective map <m>\phi : B \rightarrow C</m> is an <term>isomorphism</term><idx><h>Boolean algebra</h><h>isomorphism</h></idx><idx><h>Isomorphism</h><h>of Boolean algebras</h></idx> of Boolean algebras  if 
                 <md>
-                    <mrow>\phi( a \vee b )  &amp; = \phi(a) \vee \phi(b)</mrow>
-                    <mrow>\phi( a \wedge b )  &amp; = \phi(a) \wedge \phi(b)</mrow>
+                    <mrow>\phi( a \vee b ) &amp; = \phi(a) \vee \phi(b)</mrow>
+                    <mrow>\phi( a \wedge b ) &amp; = \phi(a) \wedge \phi(b)</mrow>
                 </md>
             for all <m>a</m> and <m>b</m> in <m>B</m>.</p>
             <!--  2010/05/18 R Beezer, added a "nonzero" to  b  in definition of an atom -->
@@ -358,7 +358,7 @@
 
             <theorem xml:id="theorem-classification-boolean-algebra">
                 <statement>
-                    <p>Let <m>B</m> be a finite Boolean algebra.  Then there exists a set <m>X</m> such that <m>B</m> is isomorphic to <m>{\mathcal P}(X)</m>.</p>
+                    <p>Let <m>B</m> be a finite Boolean algebra. Then there exists a set <m>X</m> such that <m>B</m> is isomorphic to <m>{\mathcal P}(X)</m>.</p>
                 </statement>
                 <proof>
                     <p>We will show that <m>B</m> is isomorphic to <m>{\mathcal P}(X)</m>, where <m>X</m> is the set of atoms of <m>B</m>. Let <m>a \in B</m>. By Lemma<nbsp/><xref ref="lemma-atoms"/>, we can write <m>a</m> uniquely as <m>a = a_1 \vee \cdots \vee a_n</m> for <m>a_1, \ldots, a_n \in X</m>. Consequently, we can define a  map <m>\phi : B \rightarrow {\mathcal P}(X)</m> by  
@@ -394,9 +394,9 @@
         <introduction>
             <p>The usefulness of Boolean algebras has become increasingly apparent over the past several decades with the development of the modern computer. The circuit design of computer chips can be expressed in terms of Boolean algebras. In this section we will develop the Boolean algebra of electrical circuits and switches; however, these results can easily be generalized to the design of integrated computer circuitry.</p>
             
-            <p>A <term>switch</term><idx><h>Switch</h><h>definition of</h></idx> is a device, located at some point in an electrical circuit, that controls the flow of current through the circuit. Each switch has two possible states: it can be <term>open</term>,<idx><h>Switch</h><h>open</h></idx> and not allow the passage of current through the circuit,  or a it can be <term>closed</term>,<idx><h>Switch</h><h>closed</h></idx> and allow the passage of current. These states are mutually exclusive. We require that every switch be in one state or the other<mdash/>a switch cannot be open and closed at the same time.  Also, if one switch is always in the same state as another, we will denote both by the same letter; that is, two switches that are both labeled with the same letter <m>a</m> will always be open at the same time and closed at the same time.</p>
+            <p>A <term>switch</term><idx><h>Switch</h><h>definition of</h></idx> is a device, located at some point in an electrical circuit, that controls the flow of current through the circuit. Each switch has two possible states: it can be <term>open</term>,<idx><h>Switch</h><h>open</h></idx> and not allow the passage of current through the circuit, or a it can be <term>closed</term>,<idx><h>Switch</h><h>closed</h></idx> and allow the passage of current. These states are mutually exclusive. We require that every switch be in one state or the other<mdash/>a switch cannot be open and closed at the same time. Also, if one switch is always in the same state as another, we will denote both by the same letter; that is, two switches that are both labeled with the same letter <m>a</m> will always be open at the same time and closed at the same time.</p>
             
-            <p>Given two switches, we can construct two fundamental types of circuits. Two switches <m>a</m> and <m>b</m> are in <term>series</term><idx><h>Circuit</h><h>series</h></idx> if they make up a circuit of the type that is illustrated in Figure<nbsp/><xref ref="figure-a-wedge-b"/>. Current can pass between the terminals <m>A</m> and <m>B</m> in a series circuit only if both of the switches <m>a</m> and <m>b</m> are closed. We will denote this combination of switches by <m>a \wedge b</m>. Two switches <m>a</m> and <m>b</m> are in <term>parallel</term><idx><h>Circuit</h><h>parallel</h></idx> if they form a circuit of the type that appears in Figure<nbsp/><xref ref="figure-a-vee-b"/>.  In the case of a parallel circuit, current can pass between <m>A</m> and <m>B</m> if either one of the switches is closed.  We denote a parallel combination of circuits <m>a</m> and <m>b</m> by <m>a \vee b</m>.</p>
+            <p>Given two switches, we can construct two fundamental types of circuits. Two switches <m>a</m> and <m>b</m> are in <term>series</term><idx><h>Circuit</h><h>series</h></idx> if they make up a circuit of the type that is illustrated in Figure<nbsp/><xref ref="figure-a-wedge-b"/>. Current can pass between the terminals <m>A</m> and <m>B</m> in a series circuit only if both of the switches <m>a</m> and <m>b</m> are closed. We will denote this combination of switches by <m>a \wedge b</m>. Two switches <m>a</m> and <m>b</m> are in <term>parallel</term><idx><h>Circuit</h><h>parallel</h></idx> if they form a circuit of the type that appears in Figure<nbsp/><xref ref="figure-a-vee-b"/>. In the case of a parallel circuit, current can pass between <m>A</m> and <m>B</m> if either one of the switches is closed. We denote a parallel combination of circuits <m>a</m> and <m>b</m> by <m>a \vee b</m>.</p>
             
             <figure xml:id="figure-a-wedge-b">
                 <caption>

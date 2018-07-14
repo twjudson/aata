@@ -3,7 +3,7 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-201  Thomas W. Judson     -->
+<!-- Copyright (C) 1997-2018  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 <!-- This file is part of the book                 -->
 <!--                                               -->
@@ -14,7 +14,7 @@
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sylow">
     <title>The Sylow Theorems</title>
     <introduction>
-        <p>We already know that the converse of Lagrange's Theorem is false. If <m>G</m> is a group of order <m>m</m> and <m>n</m> divides <m>m</m>, then <m>G</m> does not necessarily possess a subgroup of order <m>n</m>.  For example, <m>A_4</m> has order <m>12</m> but does not possess a subgroup of order <m>6</m>.  However, the Sylow Theorems do provide a partial converse for Lagrange's Theorem<mdash/>in certain cases they guarantee us subgroups of specific orders.  These theorems yield a powerful set of tools for the classification of all finite nonabelian groups.  </p>
+        <p>We already know that the converse of Lagrange's Theorem is false. If <m>G</m> is a group of order <m>m</m> and <m>n</m> divides <m>m</m>, then <m>G</m> does not necessarily possess a subgroup of order <m>n</m>. For example, <m>A_4</m> has order <m>12</m> but does not possess a subgroup of order <m>6</m>. However, the Sylow Theorems do provide a partial converse for Lagrange's Theorem<mdash/>in certain cases they guarantee us subgroups of specific orders. These theorems yield a powerful set of tools for the classification of all finite nonabelian groups.</p>
     </introduction>
 
     <section xml:id="section-sylow-theorems">
@@ -24,7 +24,7 @@
                 <me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)],</me>
             where <m>Z(G) = \{g \in G : gx = xg \text{ for all } x \in G\}</m> is the center of <m>G</m> and  <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> is the centralizer subgroup of <m>x_i</m>.</p>
             
-            <p>We begin our investigation of the Sylow Theorems by examining subgroups of order <m>p</m>, where <m>p</m> is prime.  A group <m>G</m> is a <term><m>p</m>-group</term><idx><h>Group!<m>p</m>-group</h></idx> if every element in <m>G</m> has as its order a power of <m>p</m>, where <m>p</m> is a prime number. A subgroup of a group <m>G</m> is a <term><m>p</m>-subgroup</term><idx><h>Subgroup!<m>p</m>-subgroup</h></idx> if it is a <m>p</m>-group.</p>
+            <p>We begin our investigation of the Sylow Theorems by examining subgroups of order <m>p</m>, where <m>p</m> is prime. A group <m>G</m> is a <term><m>p</m>-group</term><idx><h>Group!<m>p</m>-group</h></idx> if every element in <m>G</m> has as its order a power of <m>p</m>, where <m>p</m> is a prime number. A subgroup of a group <m>G</m> is a <term><m>p</m>-subgroup</term><idx><h>Subgroup!<m>p</m>-subgroup</h></idx> if it is a <m>p</m>-group.</p>
             
             <theorem xml:id="theorem-cauchy">
                 <title>Cauchy</title>
@@ -53,7 +53,7 @@
             </corollary>
 
             <example xml:id="example-a5-subgroups">
-                <p>Let us consider the group <m>A_5</m>.  We know that <m>|A_5| = 60 = 2^2 \cdot 3 \cdot 5</m>.  By Cauchy's Theorem, we are guaranteed that <m>A_5</m> has subgroups of orders <m>2</m>, <m>3</m> and <m>5</m>. The Sylow Theorems will give us even more information about the possible subgroups of <m>A_5</m>.</p>
+                <p>Let us consider the group <m>A_5</m>. We know that <m>|A_5| = 60 = 2^2 \cdot 3 \cdot 5</m>. By Cauchy's Theorem, we are guaranteed that <m>A_5</m> has subgroups of orders <m>2</m>, <m>3</m> and <m>5</m>. The Sylow Theorems will give us even more information about the possible subgroups of <m>A_5</m>.</p>
             </example>
 
             <p>We are now ready to state and prove the first of the Sylow Theorems. The proof is very similar to the proof of Cauchy's Theorem.</p>
@@ -64,7 +64,7 @@
                     <p>Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p^r</m> divides <m>|G|</m>. Then <m>G</m> contains a subgroup of order <m>p^r</m>.</p>
                 </statement>
                 <proof>
-                    <p>We induct on the order of <m>G</m> once again. If <m>|G| = p</m>, then we are done. Now suppose that the order of <m>G</m> is <m>n</m> with <m>n \gt p</m> and that the theorem is true for all groups of order less than <m>n</m>, where <m>p</m> divides <m>n</m>. We shall apply the class equation once again: 
+                    <p>We induct on the order of <m>G</m> once again. If <m>|G| = p</m>, then we are done. Now suppose that the order of <m>G</m> is <m>n</m> with <m>n \gt p</m> and that the theorem is true for all groups of order less than <m>n</m>, where <m>p</m> divides <m>n</m>. We shall apply the class equation once again:
                         <me>|G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)].</me>
                     First suppose that <m>p</m> does not divide <m>[G:C(x_i)]</m> for some <m>i</m>. Then <m>p^r \mid |C(x_i)|</m>, since <m>p^r</m> divides <m>|G| = |C(x_i)| \cdot [G:C(x_i)]</m>. Now we can apply the induction hypothesis to <m>C(x_i)</m>.</p>
                     
@@ -148,7 +148,7 @@
                 <p>Using the Sylow Theorems, we can determine that <m>A_5</m> has subgroups of orders <m>2</m>, <m>3</m>, <m>4</m>, and <m>5</m>. The Sylow <m>p</m>-subgroups of <m>A_5</m> have orders <m>3</m>, <m>4</m>, and <m>5</m>. The Third Sylow Theorem tells us exactly how many Sylow <m>p</m>-subgroups <m>A_5</m> has. Since the number of Sylow  <m>5</m>-subgroups must divide <m>60</m> and also be congruent to <m>1 \pmod{5}</m>, there are either one or six Sylow <m>5</m>-subgroups in <m>A_5</m>. All Sylow <m>5</m>-subgroups are conjugate. If there were only a single Sylow <m>5</m>-subgroup, it would be conjugate to itself; that is, it would be a normal subgroup of <m>A_5</m>. Since <m>A_5</m> has no normal subgroups, this is  impossible; hence, we have determined that there are exactly six distinct Sylow <m>5</m>-subgroups of <m>A_5</m>.</p>
             </example>
             
-            <p>The Sylow Theorems allow us to prove many useful results about finite groups. By using them, we can often conclude a great deal about groups  of a particular order if certain hypotheses are satisfied.</p>
+            <p>The Sylow Theorems allow us to prove many useful results about finite groups. By using them, we can often conclude a great deal about groups of a particular order if certain hypotheses are satisfied.</p>
             
             <theorem xml:id="theorem-pq-cyclic">
                 <statement>
@@ -229,7 +229,7 @@
                 <!-- %TWJ 11/30/2011 - Reference to the Lemma fixed.  Suggested by L. Franklin. -->
                 <p>Suppose that the other case is true, and two of the three Sylow <m>2</m>-subgroups are <m>H</m> and <m>K</m>. We claim that  <m>|H \cap K| = 8</m>. If <m>|H \cap K| \leq 4</m>, then by Lemma<nbsp/><xref ref="lemma-hk-subgroup"/>, 
                     <me>|HK| = \frac{16 \cdot 16}{4} =64,</me>
-                which is impossible. Notice that <m>H \cap K</m> has index two in both of <m>H</m> and <m>K</m>, so is normal in both, and thus <m>H</m> and <m>K</m> are each in the normalizer of <m>H \cap K</m>.  Because <m>H</m> is a subgroup of <m>N(H \cap K)</m> and because <m>N(H \cap K)</m> has strictly more than <m>16</m> elements, <m>|N(H \cap K)|</m> must be a multiple of <m>16</m> greater than <m>1</m>, as well as dividing <m>48</m>. The only possibility is that <m>|N(H \cap K)|= 48</m>. Hence, <m>N(H \cap K) = G</m>.</p>
+                which is impossible. Notice that <m>H \cap K</m> has index two in both of <m>H</m> and <m>K</m>, so is normal in both, and thus <m>H</m> and <m>K</m> are each in the normalizer of <m>H \cap K</m>. Because <m>H</m> is a subgroup of <m>N(H \cap K)</m> and because <m>N(H \cap K)</m> has strictly more than <m>16</m> elements, <m>|N(H \cap K)|</m> must be a multiple of <m>16</m> greater than <m>1</m>, as well as dividing <m>48</m>. The only possibility is that <m>|N(H \cap K)|= 48</m>. Hence, <m>N(H \cap K) = G</m>.</p>
                 <!-- Proof revised.  Suggested by R. Beezer and C. Wall. -->
                 <!-- TWJ - 12/19/2011 -->
             </example>
@@ -285,7 +285,7 @@
         </exercise>
         <exercise number="4">
             <statement>
-                <p>Let <m>H</m> be a Sylow <m>p</m>-subgroup of <m>G</m>.  Prove that <m>H</m> is the only Sylow <m>p</m>-subgroup of <m>G</m> contained in <m>N(H)</m>. </p>
+                <p>Let <m>H</m> be a Sylow <m>p</m>-subgroup of <m>G</m>. Prove that <m>H</m> is the only Sylow <m>p</m>-subgroup of <m>G</m> contained in <m>N(H)</m>. </p>
             </statement>
         </exercise>
         <exercise number="5" xml:id="exercise-sylow-order-96">
@@ -293,7 +293,7 @@
                 <p>Prove that no group of order <m>96</m> is simple.</p>
             </statement>
             <hint>
-                <p>Since <m>|G| = 96 = 2^5 \cdot 3</m>, <m>G</m> has either one or three Sylow <m>2</m>-subgroups by the Third Sylow Theorem. If there is only one subgroup, we are done. If there are three Sylow <m>2</m>-subgroups, let <m>H</m> and <m>K</m> be two of them. Therefore, <m>|H \cap K| \geq 16</m>; otherwise, <m>HK</m> would have <m>(32 \cdot 32)/8 = 128</m> elements, which is impossible. Thus, <m>H \cap K</m> is normal in both <m>H</m> and <m>K</m> since it has index 2 in both groups.</p>
+                <p>Since <m>|G| = 96 = 2^5 \cdot 3</m>, <m>G</m> has either one or three Sylow <m>2</m>-subgroups by the Third Sylow Theorem. If there is only one subgroup, we are done. If there are three Sylow <m>2</m>-subgroups, let <m>H</m> and <m>K</m> be two of them. Therefore, <m>|H \cap K| \geq 16</m>; otherwise, <m>HK</m> would have <m>(32 \cdot 32)/8 = 128</m> elements, which is impossible. Thus, <m>H \cap K</m> is normal in both <m>H</m> and <m>K</m> since it has index <m>2</m> in both groups.</p>
             </hint>
         </exercise>
         <exercise number="6">
@@ -377,12 +377,12 @@
         <todo>Complete the solution.</todo>
         <exercise number="19">
             <statement>
-                <p>Let <m>P</m> be a normal Sylow <m>p</m>-subgroup of <m>G</m>.  Prove that every inner automorphism of <m>G</m> fixes <m>P</m>.</p>
+                <p>Let <m>P</m> be a normal Sylow <m>p</m>-subgroup of <m>G</m>. Prove that every inner automorphism of <m>G</m> fixes <m>P</m>.</p>
             </statement>
         </exercise>
         <exercise number="20">
             <statement>
-                <p>What is the smallest possible order of a group <m>G</m> such that <m>G</m> is nonabelian and <m>|G|</m> is odd?  Can you find such a group?</p>
+                <p>What is the smallest possible order of a group <m>G</m> such that <m>G</m> is nonabelian and <m>|G|</m> is odd? Can you find such a group?</p>
             </statement>
         </exercise>
         <todo>Complete the solution.</todo>
@@ -431,10 +431,10 @@
         </exercise>
         <exercise number="26">
             <statement>
-                <p>Let  <m>G</m> be a group.  Prove that <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> is a normal subgroup of <m>G</m> and <m>G/G'</m> is abelian. Find an example to show that <m>\{ a b a^{-1} b^{-1} : a, b \in G \}</m> is not necessarily a group.</p>
+                <p>Let  <m>G</m> be a group. Prove that <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> is a normal subgroup of <m>G</m> and <m>G/G'</m> is abelian. Find an example to show that <m>\{ a b a^{-1} b^{-1} : a, b \in G \}</m> is not necessarily a group.</p>
             </statement>
             <hint>
-                <p>Let <m>a G', b G' \in G/G'</m>. Then <m>(a G')( b G') = ab G' = ab(b^{-1}a^{-1}ba) G' =  (abb^{-1}a^{-1})ba G' = ba G'</m>.</p>
+                <p>Let <m>a G', b G' \in G/G'</m>. Then <m>(a G')( b G') = ab G' = ab(b^{-1}a^{-1}ba) G' = (abb^{-1}a^{-1})ba G' = ba G'</m>.</p>
             </hint>
         </exercise>
     </exercises>
