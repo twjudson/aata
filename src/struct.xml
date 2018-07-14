@@ -16,7 +16,7 @@
     <introduction>
         <p>The ultimate goal of group theory is to classify all groups up to isomorphism; that is, given a particular group, we should be able to match it up with a known group via an isomorphism. For example, we have already proved that any finite cyclic group of order <m>n</m> is isomorphic to <m>{\mathbb Z}_n</m>; hence, we <q>know</q> all finite cyclic groups. It is probably not reasonable to expect that we will ever know all groups; however, we can often classify certain types of groups or distinguish between groups in special cases.</p>
         
-        <p>In this chapter we will characterize all finite abelian groups. We shall also investigate groups with sequences of subgroups.  If a group has a sequence of subgroups, say 
+        <p>In this chapter we will characterize all finite abelian groups. We shall also investigate groups with sequences of subgroups. If a group has a sequence of subgroups, say 
             <me>G = H_n \supset H_{n - 1} \supset \cdots \supset H_1 \supset H_0 = \{ e \},</me>
         where each subgroup <m>H_i</m> is normal in <m>H_{i+1}</m> and each of the factor groups <m>H_{i+1}/H_i</m> is abelian, then <m>G</m> is a solvable group. In addition to allowing us to distinguish between certain classes of groups, solvable groups turn out to be central to the study of solutions to polynomial equations.</p>
     </introduction>
@@ -87,17 +87,23 @@
                 <p>Let <m>G</m> be a finite abelian group of order <m>n</m>. If <m>p</m> is a prime that divides <m>n</m>, then <m>G</m> contains an element of order <m>p</m>.</p>
             </statement>
             <proof>
-                <p>We will prove this lemma by induction.  If <m>n = 1</m>, then there is nothing to show.  Now suppose that the order of <m>G</m> is <m>n</m> the lemma is true for all groups of order <m>k</m>, where <m>k \lt n</m>.  Furthermore, let <m>p</m> be a prime that divides <m>n</m>.</p>
+                <p>We will prove this lemma by induction. If <m>n = 1</m>, then there is nothing to show.  Now suppose that the order of <m>G</m> is <m>n</m> the lemma is true for all groups of order <m>k</m>, where <m>k \lt n</m>. Furthermore, let <m>p</m> be a prime that divides <m>n</m>.</p>
                 
-                <p>If <m>G</m> has no proper nontrivial subgroups, then <m>G = \langle a \rangle</m>, where <m>a</m> is any element other than the identity.  By Exercise<nbsp/><xref ref="cyclic-exercise-subgroups-exist"/>, the order of <m>G</m> must be prime.  Since <m>p</m> divides <m>n</m>, we know that <m>p = n</m>, and <m>G</m> contains <m>p - 1</m> elements of order <m>p</m>.</p>
+                <p>If <m>G</m> has no proper nontrivial subgroups, then <m>G = \langle a \rangle</m>, where <m>a</m> is any element other than the identity. By Exercise<nbsp/><xref ref="cyclic-exercise-subgroups-exist"/>, the order of <m>G</m> must be prime. Since <m>p</m> divides <m>n</m>, we know that <m>p = n</m>, and <m>G</m> contains <m>p - 1</m> elements of order <m>p</m>.</p>
                 
-                <p>Now suppose that <m>G</m> contains a nontrivial proper subgroup <m>H</m>.  Then <m>1 \lt |H| \lt n</m>.  If <m>p \mid |H|</m>, then <m>H</m> contains an element of order <m>p</m> by  induction and the lemma is true.  Suppose that <m>p</m> does not divide the order of <m>H</m>.  Since <m>G</m> is abelian, it must be the case that <m>H</m> is a normal subgroup of <m>G</m>, and <m>|G| = |H| \cdot |G/H|</m>.  Consequently, <m>p</m> must divide <m>|G/H|</m>.  Since <m>|G/H| \lt |G| = n</m>, we know that <m>G/H</m> contains an element <m>aH</m> of order <m>p</m> by the induction hypothesis.  Thus,
+                <p>Now suppose that <m>G</m> contains a nontrivial proper subgroup <m>H</m>. Then <m>1 \lt |H| \lt n</m>. If <m>p \mid |H|</m>, then <m>H</m> contains an element of order <m>p</m> by induction and the lemma is true. Suppose that <m>p</m> does not divide the order of <m>H</m>. Since <m>G</m> is abelian, it must be the case that <m>H</m> is a normal subgroup of <m>G</m>, and <m>|G| = |H| \cdot |G/H|</m>. Consequently, <m>p</m> must divide <m>|G/H|</m>.  Since <m>|G/H| \lt |G| = n</m>, we know that <m>G/H</m> contains an element <m>aH</m> of order <m>p</m> by the induction hypothesis. Thus,
                     <me>H = (aH)^p = a^pH,</me>
-                and <m>a^p \in H</m> but <m>a \notin H</m>.  If <m>|H| = r</m>, then <m>p</m> and <m>r</m> are relatively prime, and there exist integers <m>s</m> and <m>t</m> such that <m>sp + tr = 1</m>.  Furthermore, the order of <m>a^p</m> must divide <m>r</m>, and <m>(a^p)^r = (a^r)^p = 1</m>.</p>
+                and <m>a^p \in H</m> but <m>a \notin H</m>.  If <m>|H| = r</m>, then <m>p</m> and <m>r</m> are relatively prime, and there exist integers <m>s</m> and <m>t</m> such that <m>sp + tr = 1</m>. Furthermore, the order of <m>a^p</m> must divide <m>r</m>, and <m>(a^p)^r = (a^r)^p = 1</m>.</p>
                 
                 <p>We claim that <m>a^r</m> has order <m>p</m>.  We must show that <m>a^r \neq 1</m>.  Suppose <m>a^r = 1</m>.  Then
-                    <md><mrow>a &amp; = a^{sp + tr}</mrow><mrow>&amp; = a^{sp} a^{tr}</mrow><mrow>&amp; = (a^p)^s (a^r)^t</mrow><mrow>&amp; = (a^p)^s 1</mrow><mrow>&amp; = (a^p)^s.</mrow></md>
-                Since <m>a^p \in H</m>, it must be the case that <m>a= (a^p)^s \in H</m>, which is a contradiction.  Therefore, <m>a^r \neq 1</m> is an element of order <m>p</m> in <m>G</m>.</p>
+                    <md>
+                        <mrow>a &amp; = a^{sp + tr}</mrow>
+                        <mrow>&amp; = a^{sp} a^{tr}</mrow>
+                        <mrow>&amp; = (a^p)^s (a^r)^t</mrow>
+                        <mrow>&amp; = (a^p)^s 1</mrow>
+                        <mrow>&amp; = (a^p)^s.</mrow>
+                    </md>
+                Since <m>a^p \in H</m>, it must be the case that <m>a= (a^p)^s \in H</m>, which is a contradiction. Therefore, <m>a^r \neq 1</m> is an element of order <m>p</m> in <m>G</m>.</p>
             </proof>
         </lemma>
         
@@ -122,7 +128,7 @@
                 
                 <p>We must show that
                     <me>G = G_1 G_2 \cdots  G_k</me>
-                and <m>G_i \cap G_j = \{1 \}</m> for <m>i \neq j</m>.  Suppose that <m>g_1 \in G_1</m> is in the subgroup generated by <m>G_2, G_3, \ldots, G_k</m>.  Then <m>g_1 = g_2 g_3 \cdots g_k</m> for <m>g_i \in G_i</m>.  Since <m>g_i</m> has order <m>p^{\alpha_i}</m>, we know that <m>g_i^{p^{\alpha_i}} = 1</m> for <m>i = 2, 3, \ldots, k</m>, and <m>g_1^{p_2^{\alpha_2} \cdots p_k^{\alpha_k}} = 1</m>.  Since the order of <m>g_1</m> is a power of <m>p_1</m> and <m>\gcd(p_1, p_2^{\alpha_2} \cdots p_k^{\alpha_k}) = 1</m>, it must be the case that <m>g_1 = 1</m> and the intersection of <m>G_1</m> with any of the subgroups <m>G_2, G_3, \ldots, G_k</m> is the identity.  A similar argument shows that <m>G_i \cap G_j = \{1 \}</m> for <m>i \neq j</m>.</p>
+                and <m>G_i \cap G_j = \{1 \}</m> for <m>i \neq j</m>. Suppose that <m>g_1 \in G_1</m> is in the subgroup generated by <m>G_2, G_3, \ldots, G_k</m>.  Then <m>g_1 = g_2 g_3 \cdots g_k</m> for <m>g_i \in G_i</m>. Since <m>g_i</m> has order <m>p^{\alpha_i}</m>, we know that <m>g_i^{p^{\alpha_i}} = 1</m> for <m>i = 2, 3, \ldots, k</m>, and <m>g_1^{p_2^{\alpha_2} \cdots p_k^{\alpha_k}} = 1</m>. Since the order of <m>g_1</m> is a power of <m>p_1</m> and <m>\gcd(p_1, p_2^{\alpha_2} \cdots p_k^{\alpha_k}) = 1</m>, it must be the case that <m>g_1 = 1</m> and the intersection of <m>G_1</m> with any of the subgroups <m>G_2, G_3, \ldots, G_k</m> is the identity. A similar argument shows that <m>G_i \cap G_j = \{1 \}</m> for <m>i \neq j</m>.</p>
                 
                 <p>Next, we must show that it possible to write every <m>g \in G</m> as a product <m>g_1 \cdots g_k</m>, where <m>g_i \in G_i</m>. Since the order of <m>g</m> divides the order of <m>G</m>, we know that 
                     <me>|g| = p_1^{\beta_1}  p_2^{\beta_2} \cdots p_k^{\beta_k}</me>
@@ -182,7 +188,7 @@
                 <p>Let <m>G</m> be a finite abelian <m>p</m>-group and suppose that <m>g \in G</m> has maximal order. Then <m>G</m> is isomorphic to <m>\langle g \rangle \times H</m> for some subgroup <m>H</m> of <m>G</m>.</p>
             </statement>
             <proof>
-                <p>By Lemma<nbsp/><xref ref="lemma-p-group-order"/>, we may assume that the order of <m>G</m> is <m>p^n</m>.  We shall induct on <m>n</m>. If <m>n= 1</m>, then <m>G</m> is cyclic of order <m>p</m> and must be generated by <m>g</m>. Suppose now that the statement of the lemma holds for all integers <m>k</m> with <m>1 \leq k \lt n</m> and let <m>g</m> be of maximal order in <m>G</m>, say <m>|g| = p^{m}</m>.  Then <m>a^{p^m} = e</m> for all <m>a \in G</m>. Now choose <m>h</m> in <m>G</m> such that <m>h \notin \langle g \rangle</m>, where <m>h</m> has the smallest possible order.  Certainly such an <m>h</m> exists; otherwise, <m>G = \langle g \rangle</m> and we are done.  Let <m>H = \langle h \rangle</m>.</p>
+                <p>By Lemma<nbsp/><xref ref="lemma-p-group-order"/>, we may assume that the order of <m>G</m> is <m>p^n</m>. We shall induct on <m>n</m>. If <m>n= 1</m>, then <m>G</m> is cyclic of order <m>p</m> and must be generated by <m>g</m>. Suppose now that the statement of the lemma holds for all integers <m>k</m> with <m>1 \leq k \lt n</m> and let <m>g</m> be of maximal order in <m>G</m>, say <m>|g| = p^{m}</m>. Then <m>a^{p^m} = e</m> for all <m>a \in G</m>. Now choose <m>h</m> in <m>G</m> such that <m>h \notin \langle g \rangle</m>, where <m>h</m> has the smallest possible order. Certainly such an <m>h</m> exists; otherwise, <m>G = \langle g \rangle</m> and we are done.  Let <m>H = \langle h \rangle</m>.</p>
                 <p>We claim that <m>\langle g \rangle \cap H = \{ e \}</m>. It suffices to show that <m>|H|=p</m>.  Since <m>|h^p| = |h| / p</m>, the order of <m>h^p</m> is smaller than the order of <m>h</m> and must be in <m>\langle g \rangle</m> by the minimality of <m>h</m>; that is, <m>h^p = g^r</m> for some number <m>r</m>. Hence, 
                     <me>(g^r)^{p^{m - 1}} = (h^p)^{p^{m - 1}} = h^{p^{m}} = e,</me>
                 and the order of <m>g^r</m> must be less than or equal to <m>p^{m-1}</m>. Therefore, <m>g^r</m> cannot generate <m>\langle g \rangle</m>.  Notice that <m>p</m> must occur as a factor of <m>r</m>, say <m>r = ps</m>, and <m>h^p = g^r = g^{ps}</m>. Define <m>a</m> to be <m>g^{-s}h</m>. Then <m>a</m> cannot be in <m>\langle g \rangle</m>; otherwise, <m>h</m> would also have to be in <m>\langle g \rangle</m>. Also, 
@@ -191,9 +197,9 @@
                 
                 <p>Now we will show that the order of <m>gH</m> in the factor group <m>G/H</m> must be the same as the order of <m>g</m> in <m>G</m>.  If <m>|gH| \lt |g| =  p^m</m>, then
                     <me>H = (gH)^{p^{m-1}} =  g^{p^{m-1}} H;</me>
-                hence, <m>g^{p^{m-1}}</m> must be in <m>\langle g \rangle \cap H = \{ e \}</m>, which contradicts the fact that the order of <m>g</m> is <m>p^m</m>.  Therefore, <m>gH</m> must have maximal order in <m>G/H</m>.  By the Correspondence Theorem and our induction hypothesis,
+                hence, <m>g^{p^{m-1}}</m> must be in <m>\langle g \rangle \cap H = \{ e \}</m>, which contradicts the fact that the order of <m>g</m> is <m>p^m</m>.  Therefore, <m>gH</m> must have maximal order in <m>G/H</m>. By the Correspondence Theorem and our induction hypothesis,
                     <me>G/H \cong \langle gH \rangle \times K/H</me>
-                for some subgroup <m>K</m> of <m>G</m> containing <m>H</m>.  We claim that <m>\langle g \rangle \cap K = \{ e \}</m>. If <m>b \in \langle g \rangle \cap K</m>, then <m>bH \in \langle gH \rangle \cap K/H =  \{ H \}</m> and <m>b \in \langle g \rangle \cap H = \{ e \}</m>. It follows that <m>G = \langle g \rangle K</m> implies that <m>G \cong \langle g \rangle \times K</m>.</p>
+                for some subgroup <m>K</m> of <m>G</m> containing <m>H</m>. We claim that <m>\langle g \rangle \cap K = \{ e \}</m>. If <m>b \in \langle g \rangle \cap K</m>, then <m>bH \in \langle gH \rangle \cap K/H = \{ H \}</m> and <m>b \in \langle g \rangle \cap H = \{ e \}</m>. It follows that <m>G = \langle g \rangle K</m> implies that <m>G \cong \langle g \rangle \times K</m>.</p>
             </proof>
         </lemma>
         <!-- Changed the statement and proof of the theorem to -->
@@ -201,7 +207,7 @@
         <!-- TWJ 4/24/2013 -->
         <p>The proof of the Fundamental Theorem of Finite Abelian Groups follows very quickly from Lemma<nbsp/><xref ref="lemma-struct-finite-abelian"/>. Suppose that <m>G</m> is a finite abelian group and let <m>g</m> be an element of maximal order in <m>G</m>. If <m>\langle g \rangle = G</m>, then we are done; otherwise, <m>G \cong {\mathbb Z}_{|g|} \times H</m> for some subgroup <m>H</m> contained in <m>G</m> by the lemma. Since <m>|H| \lt |G|</m>, we can apply mathematical induction.</p>
         
-        <p>We now state the more general theorem for all finitely generated abelian groups.  The proof of this theorem can be found in any of the references at the end of this chapter.</p>
+        <p>We now state the more general theorem for all finitely generated abelian groups. The proof of this theorem can be found in any of the references at the end of this chapter.</p>
         
         <theorem>
             <title>The Fundamental Theorem of Finitely Generated Abelian Groups</title>
@@ -300,7 +306,8 @@
                 <p>Any two composition series of <m>G</m> are isomorphic.</p>
             </statement>
             <proof>
-                <p>We shall employ mathematical induction on the length of the composition series.  If the length of a composition series is 1, then <m>G</m> must be a simple group.  In this case any two composition series are isomorphic.</p>
+                <p>We shall employ mathematical induction on the length of the composition series. If the length of a composition series is 1, then <m>G</m> must be a simple group.  In this case any two composition series are isomorphic.</p>
+
                 <p>Suppose now that the theorem is true for all groups having a composition series of length <m>k</m>, where <m>1 \leq k \lt n</m>. Let 
                     <md>
                         <mrow>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</mrow>
@@ -316,7 +323,7 @@
                         <mrow>(H_{i+1} \cap K_{m-1}) / (H_i \cap K_{m-1}) &amp; =  (H_{i+1} \cap K_{m-1}) / (H_i \cap ( H_{i+1} \cap K_{m-1} ))</mrow>
                         <mrow>&amp; \cong  H_i (H_{i+1} \cap K_{m-1})/ H_i,</mrow>
                     </md>
-                where <m>H_i</m> is normal in <m>H_i (H_{i+1} \cap K_{m-1})</m>. Since <m>\{ H_i \}</m>  is a composition series, <m>H_{i+1} / H_i</m> must be simple; consequently, <m>H_i (H_{i+1} \cap K_{m-1})/ H_i</m> is either <m>H_{i+1}/H_i</m> or <m>H_i/H_i</m>.  That is, <m>H_i (H_{i+1} \cap K_{m-1})</m> must be either <m>H_i</m> or <m>H_{i+1}</m>. Removing any nonproper inclusions from the series 
+                where <m>H_i</m> is normal in <m>H_i (H_{i+1} \cap K_{m-1})</m>. Since <m>\{ H_i \}</m> is a composition series, <m>H_{i+1} / H_i</m> must be simple; consequently, <m>H_i (H_{i+1} \cap K_{m-1})/ H_i</m> is either <m>H_{i+1}/H_i</m> or <m>H_i/H_i</m>. That is, <m>H_i (H_{i+1} \cap K_{m-1})</m> must be either <m>H_i</m> or <m>H_{i+1}</m>. Removing any nonproper inclusions from the series
                     <me>H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}, </me>
                 we have a composition series for <m>H_{n-1}</m>. Our induction hypothesis says that this series must be equivalent to the composition series
                     <me>H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}.</me>
@@ -324,7 +331,7 @@
                     <me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</me>
                 and 
                     <me>G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}</me>
-                are equivalent. If <m>H_{n-1} = K_{m-1}</m>, then the composition series <m>\{H_i \}</m> and <m>\{ K_j \}</m> are equivalent and we are done; otherwise, <m>H_{n-1} K_{m-1}</m>  is a normal subgroup of <m>G</m> properly containing <m>H_{n-1}</m>.  In this case <m>H_{n-1} K_{m-1} = G</m> and we can apply the Second Isomorphism Theorem once again; that is,
+                are equivalent. If <m>H_{n-1} = K_{m-1}</m>, then the composition series <m>\{H_i \}</m> and <m>\{ K_j \}</m> are equivalent and we are done; otherwise, <m>H_{n-1} K_{m-1}</m>  is a normal subgroup of <m>G</m> properly containing <m>H_{n-1}</m>. In this case <m>H_{n-1} K_{m-1} = G</m> and we can apply the Second Isomorphism Theorem once again; that is,
                     <me>K_{m-1} / (K_{m-1} \cap H_{n-1}) \cong (H_{n-1} K_{m-1}) / H_{n-1} = G/H_{n-1}.</me>
                 Therefore,
                     <me>G = H_n \supset H_{n-1} \supset H_{n-1} \cap K_{m-1} \supset \cdots \supset H_0 \cap K_{m-1} = \{ e \}</me>
@@ -352,7 +359,7 @@
         <!-- See the file COPYING for copying conditions.  -->
         <paragraphs>
             <title>Sage</title>
-            <p>Sage is able to create direct products of cyclic groups, though they are realized as permutation groups.  This is a situation that should improve.  However, with a classification of finite abelian groups, we can describe how to construct in Sage every group of order less than <m>16</m>.</p>
+            <p>Sage is able to create direct products of cyclic groups, though they are realized as permutation groups. This is a situation that should improve.  However, with a classification of finite abelian groups, we can describe how to construct in Sage every group of order less than <m>16</m>.</p>
         </paragraphs>
     </section>
     <!-- Exercises with Solutions  -->
@@ -434,7 +441,7 @@
         <todo>Expand this solution.</todo>
         <exercise number="11">
             <statement>
-                <p>Prove or disprove: Let <m>N</m> be a normal subgroup of <m>G</m>.  If <m>N</m> and <m>G/N</m> have composition series, then <m>G</m> must also have a composition series.</p>
+                <p>Prove or disprove: Let <m>N</m> be a normal subgroup of <m>G</m>. If <m>N</m> and <m>G/N</m> have composition series, then <m>G</m> must also have a composition series.</p>
             </statement>
         </exercise>
         <todo>Expand this solution.</todo>
@@ -444,14 +451,17 @@
             </statement>
             <hint>
                 <p>If <m>N</m> and <m>G/N</m> are solvable, then they have solvable series
-                <md><mrow>N = N_n \supset N_{n - 1} \supset \cdots \supset N_1 \supset N_0 = \{ e \}</mrow><mrow>G/N = G_n/N \supset G_{n - 1}/N \supset \cdots G_1/N \supset G_0/N = \{ N \}.</mrow></md></p>
+                    <md>
+                        <mrow>N = N_n \supset N_{n - 1} \supset \cdots \supset N_1 \supset N_0 = \{ e \}</mrow>
+                        <mrow>G/N = G_n/N \supset G_{n - 1}/N \supset \cdots G_1/N \supset G_0/N = \{ N \}.</mrow>
+                    </md></p>
             </hint>
         </exercise>
         <exercise number="13">
             <statement>
                 <p>Prove that <m>G</m> is a solvable group if and only if <m>G</m> has a series of subgroups
-                <me>G = P_n \supset P_{n - 1} \supset \cdots \supset P_1 \supset P_0 = \{ e \}</me>
-            where <m>P_i</m> is normal in <m>P_{i + 1}</m> and the order of <m>P_{i + 1} / P_i</m> is prime. </p>
+                    <me>G = P_n \supset P_{n - 1} \supset \cdots \supset P_1 \supset P_0 = \{ e \}</me>
+                where <m>P_i</m> is normal in <m>P_{i + 1}</m> and the order of <m>P_{i + 1} / P_i</m> is prime. </p>
             </statement>
         </exercise>
         <todo>Expand this solution.</todo>
@@ -470,7 +480,7 @@
                 <p>Prove that <m>D_n</m> is solvable for all integers <m>n</m>.</p>
             </statement>
             <hint>
-                <p>Use the fact that <m>D_n</m> has a cyclic subgroup of index 2.</p>
+                <p>Use the fact that <m>D_n</m> has a cyclic subgroup of index <m>2</m>.</p>
             </hint>
         </exercise>
         <todo>Expand this solution.</todo>
@@ -516,7 +526,7 @@
         <exercise number="22">
             <title>Zassenhaus Lemma</title>
             <statement>
-                <p>Let <m>H</m> and <m>K</m> be subgroups of a group <m>G</m>. Suppose also that <m>H^*</m> and <m>K^*</m> are normal subgroups of <m>H</m> and <m>K</m> respectively.  Then
+                <p>Let <m>H</m> and <m>K</m> be subgroups of a group <m>G</m>. Suppose also that <m>H^*</m> and <m>K^*</m> are normal subgroups of <m>H</m> and <m>K</m> respectively. Then
                 <ol>
                     <li><p><m>H^* ( H \cap K^*)</m> is a normal subgroup of <m>H^* ( H \cap K)</m>.</p></li>
                     <li><p><m>K^* ( H^* \cap K)</m> is a normal subgroup of <m>K^* ( H \cap K)</m>.</p></li>
@@ -540,7 +550,7 @@
         <title>Programming Exercises</title>
         <exercise>
             <statement>
-                <p>Write a program that will compute all possible abelian groups of order <m>n</m>.  What is the largest <m>n</m> for which your program will work?</p>
+                <p>Write a program that will compute all possible abelian groups of order <m>n</m>. What is the largest <m>n</m> for which your program will work?</p>
             </statement>
         </exercise>
     </exercises>

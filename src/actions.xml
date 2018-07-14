@@ -19,7 +19,7 @@
 
     <section xml:id="section-groups-acting-on-sets">
         <title>Groups Acting on Sets</title>
-        <p>Let <m>X</m> be a set and <m>G</m> be a group.  A  <term>(left) action</term><idx><h>Group</h><h>action</h></idx> of <m>G</m> on <m>X</m> is a map <m>G \times X \rightarrow X</m> given by <m>(g,x) \mapsto gx</m>, where
+        <p>Let <m>X</m> be a set and <m>G</m> be a group. A <term>(left) action</term><idx><h>Group</h><h>action</h></idx> of <m>G</m> on <m>X</m> is a map <m>G \times X \rightarrow X</m> given by <m>(g,x) \mapsto gx</m>, where
             <ol>
                 <li><p><m>ex = x</m> for all <m>x \in X</m>;</p></li>
                 <li><p><m>(g_1 g_2)x = g_1(g_2 x)</m> for all <m>x \in X</m> and all <m>g_1, g_2 \in G</m>.</p></li>
@@ -27,11 +27,11 @@
         Under these considerations <m>X</m> is called a <term><m>G</m>-set</term><idx><h><m>G</m>-set</h></idx>. Notice that we are not requiring <m>X</m> to be related to <m>G</m> in any way.  It is true that every group <m>G</m> acts on every set <m>X</m> by the trivial action <m>(g,x) \mapsto x</m>; however, group actions are more interesting if the set <m>X</m> is somehow related to the group <m>G</m>.</p>
 
         <example xml:id="example-actions-gl2">
-            <p>Let <m>G = GL_2( {\mathbb R} )</m> and <m>X = {\mathbb R}^2</m>. Then <m>G</m> acts on <m>X</m> by left multiplication. If <m>v \in {\mathbb R}^2</m> and <m>I</m> is the identity matrix, then <m>Iv = v</m>.  If <m>A</m> and <m>B</m> are <m>2 \times 2</m> invertible matrices, then <m>(AB)v = A(Bv)</m> since matrix multiplication is associative.</p>
+            <p>Let <m>G = GL_2( {\mathbb R} )</m> and <m>X = {\mathbb R}^2</m>. Then <m>G</m> acts on <m>X</m> by left multiplication. If <m>v \in {\mathbb R}^2</m> and <m>I</m> is the identity matrix, then <m>Iv = v</m>. If <m>A</m> and <m>B</m> are <m>2 \times 2</m> invertible matrices, then <m>(AB)v = A(Bv)</m> since matrix multiplication is associative.</p>
         </example>
 
         <example xml:id="example-actions-d4">
-            <p>Let <m>G = D_4</m> be the symmetry group of a square.  If <m>X = \{ 1, 2, 3, 4 \}</m> is the set of vertices of the square, then we can consider <m>D_4</m> to consist of the following permutations: 
+            <p>Let <m>G = D_4</m> be the symmetry group of a square. If <m>X = \{ 1, 2, 3, 4 \}</m> is the set of vertices of the square, then we can consider <m>D_4</m> to consist of the following permutations: 
                 <me>\{ (1), (13), (24), (1432), (1234), (12)(34), (14)(23), (13)(24) \}.</me>
             The elements of <m>D_4</m> act on <m>X</m> as functions.  The permutation <m>(13)(24)</m> acts on vertex <m>1</m> by sending it to vertex <m>3</m>, on vertex <m>2</m> by sending it to vertex <m>4</m>, and so on. It is easy to see that the  axioms of a group action are satisfied.</p>
         </example>
@@ -42,7 +42,10 @@
 
         <example xml:id="example-actions-left-mult">
             <p>If we let <m>X = G</m>, then every group <m>G</m> acts on itself by the left regular representation; that is, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,  where  <m>\lambda_g</m> is left multiplication:
-                <md><mrow>e \cdot x = \lambda_e x = ex = x</mrow><mrow>(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x = \lambda_g(hx) = g \cdot ( h \cdot x).</mrow></md>
+                <md>
+                    <mrow>e \cdot x = \lambda_e x = ex = x</mrow>
+                    <mrow>(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x = \lambda_g(hx) = g \cdot ( h \cdot x).</mrow>
+                </md>
             If <m>H</m> is a subgroup of <m>G</m>, then <m>G</m> is an <m>H</m>-set under left multiplication by elements of <m>H</m>.</p>
         </example>
 
@@ -51,7 +54,7 @@
                 <me>H \times G \rightarrow G,</me>
             via
                 <me>(h,g) \mapsto hgh^{-1}</me>
-            for <m>h \in H</m> and <m>g \in G</m>.  Clearly, the first axiom for a group action holds.  Observing that 
+            for <m>h \in H</m> and <m>g \in G</m>. Clearly, the first axiom for a group action holds. Observing that 
                 <md>
                     <mrow>(h_1 h_2, g) &amp; = h_1 h_2 g (h_1 h_2 )^{-1}</mrow>
                     <mrow>&amp; = h_1( h_2 g h_2^{-1}) h_1^{-1}</mrow>
@@ -77,7 +80,7 @@
             </proof>
         </proposition>
 
-        <p>If <m>X</m> is a <m>G</m>-set, then each partition of <m>X</m> associated with <m>G</m>-equivalence is called an <term>orbit</term><idx><h>Orbit</h></idx> of <m>X</m> under <m>G</m>.  We will denote the orbit that contains an element <m>x</m>  of <m>X</m> by <m>{\mathcal O}_x</m>.  <notation><usage>{\mathcal O}_x</usage><description>orbit of <m>x</m></description></notation></p>
+        <p>If <m>X</m> is a <m>G</m>-set, then each partition of <m>X</m> associated with <m>G</m>-equivalence is called an <term>orbit</term><idx><h>Orbit</h></idx> of <m>X</m> under <m>G</m>. We will denote the orbit that contains an element <m>x</m>  of <m>X</m> by <m>{\mathcal O}_x</m>. <notation><usage>{\mathcal O}_x</usage><description>orbit of <m>x</m></description></notation></p>
 
         <example xml:id="example-actions-permute">
             <p>Let <m>G</m> be the permutation group defined by
@@ -85,7 +88,7 @@
             and <m>X = \{ 1, 2, 3, 4, 5\}</m>. Then <m>X</m> is a <m>G</m>-set. The orbits are <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 =\{1, 2, 3\}</m> and <m>{\mathcal O}_4 = {\mathcal O}_5 = \{4, 5\}</m>. </p>
         </example>
 
-        <p>Now suppose that <m>G</m> is a group acting on a set <m>X</m> and let <m>g</m> be an element of <m>G</m>. The <term>fixed point set</term><idx><h>Fixed point set</h></idx> of <m>g</m> in <m>X</m>, denoted by <m>X_g</m>, is the set of all <m>x \in X</m> such that <m>gx = x</m>. <notation><usage>X_g</usage><description>fixed point set of <m>g</m></description></notation> We can also study the group elements <m>g</m> that fix a given <m>x \in X</m>. This set is more than a subset of  <m>G</m>, it is a subgroup. This subgroup is called the <term>stabilizer  subgroup</term><idx><h>Subgroup</h><h>stabilizer</h></idx> or <term>isotropy  subgroup</term><idx><h>Subgroup</h><h>isotropy</h></idx> of <m>x</m>. We will denote the stabilizer subgroup of <m>x</m> by <m>G_x</m>. <notation><usage>G_x</usage><description>isotropy subgroup of <m>x</m></description></notation></p>
+        <p>Now suppose that <m>G</m> is a group acting on a set <m>X</m> and let <m>g</m> be an element of <m>G</m>. The <term>fixed point set</term><idx><h>Fixed point set</h></idx> of <m>g</m> in <m>X</m>, denoted by <m>X_g</m>, is the set of all <m>x \in X</m> such that <m>gx = x</m>. <notation><usage>X_g</usage><description>fixed point set of <m>g</m></description></notation> We can also study the group elements <m>g</m> that fix a given <m>x \in X</m>. This set is more than a subset of  <m>G</m>, it is a subgroup. This subgroup is called the <term>stabilizer subgroup</term><idx><h>Subgroup</h><h>stabilizer</h></idx> or <term>isotropy  subgroup</term><idx><h>Subgroup</h><h>isotropy</h></idx> of <m>x</m>. We will denote the stabilizer subgroup of <m>x</m> by <m>G_x</m>. <notation><usage>G_x</usage><description>isotropy subgroup of <m>x</m></description></notation></p>
 
         <remark>
             <p>It is important to remember that <m>X_g \subset X</m> and <m>G_x \subset G</m>.</p>
@@ -176,6 +179,7 @@
                 </md>
             therefore, there are three conjugacy classes. The problem of finding the number of such partitions for any positive integer <m>n</m> is what computer scientists call <term>NP-complete</term>. This effectively means that the problem cannot be solved for a large <m>n</m> because the computations would be too time-consuming for even the largest computer.</p>
         </example>
+
         <theorem xml:id="theorem-pn">
             <statement>
                 <p>Let <m>G</m> be a group of order <m>p^n</m> where <m>p</m> is prime. Then <m>G</m> has a nontrivial center.</p>
@@ -192,8 +196,8 @@
                 <p>Let <m>G</m> be a group of order <m>p^2</m> where <m>p</m> is prime. Then <m>G</m> is abelian.</p>
             </statement>
             <proof>
-                <p>By Theorem<nbsp/><xref ref="theorem-pn"/>, <m>|Z(G)| = p</m> or <m>p^2</m>.  If <m>|Z(G)| = p^2</m>, then we are done. Suppose that <m>|Z(G)| = p</m>. Then <m>Z(G)</m> and <m>G / Z(G)</m> both have order <m>p</m> and must both be cyclic groups. Choosing a generator <m>aZ(G)</m> for <m>G / Z(G)</m>, we can write any element <m>gZ(G)</m> in the quotient group as <m>a^m Z(G)</m> for some integer <m>m</m>; hence, <m>g = a^m x</m> for some <m>x</m> in the center of <m>G</m>.  Similarly, if <m>hZ(G) \in G / Z(G)</m>, there exists a <m>y</m> in <m>Z(G)</m> such that <m>h = a^n y</m> for some integer <m>n</m>.  Since <m>x</m> and <m>y</m> are in the center of <m>G</m>, they commute with all other elements of <m>G</m>; therefore, 
-                    <me>gh  =  a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg,</me>
+                <p>By Theorem<nbsp/><xref ref="theorem-pn"/>, <m>|Z(G)| = p</m> or <m>p^2</m>. If <m>|Z(G)| = p^2</m>, then we are done. Suppose that <m>|Z(G)| = p</m>. Then <m>Z(G)</m> and <m>G / Z(G)</m> both have order <m>p</m> and must both be cyclic groups. Choosing a generator <m>aZ(G)</m> for <m>G / Z(G)</m>, we can write any element <m>gZ(G)</m> in the quotient group as <m>a^m Z(G)</m> for some integer <m>m</m>; hence, <m>g = a^m x</m> for some <m>x</m> in the center of <m>G</m>. Similarly, if <m>hZ(G) \in G / Z(G)</m>, there exists a <m>y</m> in <m>Z(G)</m> such that <m>h = a^n y</m> for some integer <m>n</m>.  Since <m>x</m> and <m>y</m> are in the center of <m>G</m>, they commute with all other elements of <m>G</m>; therefore, 
+                    <me>gh = a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg,</me>
                 and <m>G</m> must be abelian.</p>
             </proof>
         </corollary>
@@ -658,13 +662,13 @@
             <!-- See the file COPYING for copying conditions.  -->
             <paragraphs>
                 <title>Sage</title>
-                <p>Sage has many commands related to conjugacy, which is a group action.  It also has commands for orbits and stabilizers of permutation groups.  In the supplement, we illustrate the automorphism group of a (combinatorial) graph as another example of a group action on the vertex set of the graph.</p>
+                <p>Sage has many commands related to conjugacy, which is a group action. It also has commands for orbits and stabilizers of permutation groups.  In the supplement, we illustrate the automorphism group of a (combinatorial) graph as another example of a group action on the vertex set of the graph.</p>
             </paragraphs>
         </subsection>
 
         <subsection xml:id="actions-subsection-historical-note">
             <title>Historical Note</title>
-            <p>William Burnside<idx><h>Burnside, William</h></idx> was born in London in 1852. He attended Cambridge University from 1871 to 1875 and won the Smith's Prize in his last year. After his graduation he lectured at Cambridge.  He was made a member of the Royal Society in 1893. Burnside wrote approximately 150 papers on topics in applied mathematics, differential geometry, and probability, but his most famous contributions were in group theory.  Several of Burnside's conjectures have stimulated research to this day. One such conjecture was that every group of odd order is solvable; that is, for a group <m>G</m> of odd order, there exists a sequence of subgroups 
+            <p>William Burnside<idx><h>Burnside, William</h></idx> was born in London in 1852. He attended Cambridge University from 1871 to 1875 and won the Smith's Prize in his last year. After his graduation he lectured at Cambridge. He was made a member of the Royal Society in 1893. Burnside wrote approximately 150 papers on topics in applied mathematics, differential geometry, and probability, but his most famous contributions were in group theory.  Several of Burnside's conjectures have stimulated research to this day. One such conjecture was that every group of odd order is solvable; that is, for a group <m>G</m> of odd order, there exists a sequence of subgroups 
                 <me>G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}</me>
             such that <m>H_i</m> is normal in <m>H_{i+1}</m> and <m>H_{i+1} / H_i</m> is abelian. This conjecture was finally proven by W. Feit<idx><h>Feit, W.</h></idx> and J. Thompson<idx><h>Thompson, J.</h></idx> in 1963. Burnside's <pubtitle>The Theory of Groups of Finite Order</pubtitle>, published in 1897, was one of the first books to treat groups in a modern context as opposed to permutation groups. The second edition, published in 1911, is still a classic.</p>
         </subsection>
