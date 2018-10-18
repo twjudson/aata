@@ -12,657 +12,1724 @@
 <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
 <!-- See the file COPYING for copying conditions.  -->
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="domains">
-    <title>Integral Domains</title>
-    <introduction>
-        <p>One of the most important rings we study is the ring of integers. It was our first example of an algebraic structure: the first polynomial ring that we examined was <m>{\mathbb Z}[x]</m>. We also know that the integers sit naturally inside the field of rational numbers, <m>{\mathbb Q}</m>. The ring of integers is the model for all integral domains. In this chapter we will examine integral domains in general, answering questions about the ideal structure of integral domains, polynomial rings over integral domains, and whether or not an integral domain can be embedded in a field.</p>
-    </introduction>
+  <title>Integral Domains</title>
+  <introduction>
+    <p>
+      One of the most important rings we study is the ring of integers.
+      It was our first example of an algebraic structure:
+      the first polynomial ring that we examined was <m>{\mathbb Z}[x]</m>.
+      We also know that the integers sit naturally inside the field of rational numbers,
+      <m>{\mathbb Q}</m>.
+      The ring of integers is the model for all integral domains.
+      In this chapter we will examine integral domains in general,
+      answering questions about the ideal structure of integral domains,
+      polynomial rings over integral domains,
+      and whether or not an integral domain can be embedded in a field.
+    </p>
+  </introduction>
 
-    <section xml:id="section-field-of-fractions">
-        <title>Fields of Fractions</title>
-        <p>Every field is also an integral domain; however, there are many integral domains that are not fields. For example, the integers <m>{\mathbb Z}</m> form an integral domain but not a field. A question that naturally arises is how we might associate an integral domain with a field. There is a natural way to construct the rationals <m>{\mathbb Q}</m> from the integers: the rationals can be represented as formal quotients of two integers. The rational numbers are certainly a field. In fact, it can be shown that the rationals are the smallest field that contains the integers. Given an integral domain <m>D</m>, our question now becomes how to construct a smallest field <m>F</m> containing <m>D</m>. We will do this in the same way as we constructed the rationals from the integers.</p>
-        
-        <p>An element <m>p/q \in {\mathbb Q}</m> is the quotient of two integers <m>p</m> and <m>q</m>; however, different pairs of integers can represent the same rational number. For instance, <m>1/2 = 2/4 = 3/6</m>. We know that 
-            <me>\frac{a}{b} = \frac{c}{d}</me>
-        if and only if <m>ad = bc</m>. A more formal way of considering this problem is to examine fractions in terms of equivalence relations.  We can think of elements in <m>{\mathbb Q}</m> as ordered pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>. A quotient <m>p/q</m> can be written as <m>(p, q)</m>. For instance, <m>(3, 7)</m> would represent the fraction <m>3/7</m>. However, there are problems if we consider all possible pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>. There is no fraction <m>5/0</m> corresponding to the pair <m>(5,0)</m>.  Also, the pairs <m>(3,6)</m> and <m>(2,4)</m> both represent the fraction <m>1/2</m>. The first problem is easily solved if we require the second coordinate to be nonzero. The second problem is solved by considering two pairs <m>(a, b)</m> and <m>(c, d)</m> to be equivalent if <m>ad = bc</m>.</p>
-        
-        <p>If we use the approach of ordered pairs instead of fractions, then we can study integral domains in general. Let <m>D</m> be any integral domain and let 
-            <me>S = \{ (a, b) : a, b \in D \text{ and } b \neq 0 \}.</me>
-        Define a relation on <m>S</m> by <m>(a, b) \sim (c, d)</m> if <m>ad = bc</m>.</p>
-        
-        <lemma>
-            <statement>
-                <p>The relation <m>\sim</m> between elements of <m>S</m> is an equivalence relation.</p>
-            </statement>
-            <proof>
-                <p>Since <m>D</m> is commutative, <m>ab = ba</m>; hence, <m>\sim</m> is reflexive on <m>D</m>. Now suppose that <m>(a,b) \sim (c,d)</m>. Then <m>ad=bc</m> or <m>cb = da</m>. Therefore, <m>(c,d) \sim (a, b)</m> and the relation is symmetric. Finally, to show that the relation is transitive, let <m>(a, b) \sim (c, d)</m> and <m>(c, d) \sim (e,f)</m>. In this case <m>ad = bc</m> and <m>cf = de</m>. Multiplying both sides of <m>ad = bc</m> by <m>f</m> yields
-                    <me>a f d = a d f = b c f = b d e = bed.</me>
-                Since <m>D</m> is an integral domain, we can deduce that <m>af = be</m> or <m>(a,b ) \sim (e, f)</m>.</p>
-            </proof>
-        </lemma>
-        
-        <p>We will denote the set of equivalence classes on <m>S</m> by <m>F_D</m>. We now need to define the operations of addition and multiplication on <m>F_D</m>. Recall how fractions are added and multiplied in <m>{\mathbb Q}</m>:
-            <md>
-                <mrow>\frac{a}{b} + \frac{c}{d} &amp; = \frac{ad + b c}{b d};</mrow>
-                <mrow>\frac{a}{b} \cdot \frac{c}{d} &amp; = \frac{ac}{b d}.</mrow>
-            </md>
-        It seems reasonable to define the operations of addition and multiplication on <m>F_D</m> in a similar manner. If we denote the equivalence class of <m>(a, b) \in S</m> by <m>[a, b]</m>, then we are led to define the operations of addition and multiplication on <m>F_D</m> by
-            <me>[a, b] + [c, d] = [ad + b c,b d]</me>
-        and
-            <me>[a, b] \cdot [c, d] = [ac, b d],</me>
-        respectively.  The next lemma demonstrates that these operations are independent of the choice of representatives from each equivalence class.</p>
+  <section xml:id="section-field-of-fractions">
+    <title>Fields of Fractions</title>
+    <p>
+      Every field is also an integral domain;
+      however, there are many integral domains that are not fields.
+      For example,
+      the integers <m>{\mathbb Z}</m> form an integral domain but not a field.
+      A question that naturally arises is how we might associate an integral domain with a field.
+      There is a natural way to construct the rationals <m>{\mathbb Q}</m> from the integers:
+      the rationals can be represented as formal quotients of two integers.
+      The rational numbers are certainly a field.
+      In fact, it can be shown that the rationals are the smallest field that contains the integers.
+      Given an integral domain <m>D</m>,
+      our question now becomes how to construct a smallest field <m>F</m> containing <m>D</m>.
+      We will do this in the same way as we constructed the rationals from the integers.
+    </p>
 
-        <lemma>
-            <statement>
-                <p>The operations of addition and multiplication on <m>F_D</m> are well-defined.</p>
-            </statement>
-            <proof>
-                <p>We will prove that the operation of addition is well-defined. The proof that multiplication is well-defined is left as an exercise. Let <m>[a_1, b_1] = [a_2, b_2]</m> and <m>[c_1, d_1] =[ c_2, d_2]</m>. We must show that
-                    <me>[a_1 d_1 + b_1 c_1,b_1 d_1] = [a_2 d_2 + b_2 c_2,b_2 d_2]</me>
-                or, equivalently, that
-                    <me>(a_1 d_1 + b_1 c_1)( b_2 d_2) = (b_1 d_1) (a_2 d_2 + b_2 c_2).</me>
-                Since  <m>[a_1, b_1] = [a_2, b_2]</m> and <m>[c_1, d_1] =[ c_2, d_2]</m>, we know that <m>a_1 b_2 = b_1 a_2</m> and <m>c_1 d_2 = d_1 c_2</m>.  Therefore,
-                    <md>
-                        <mrow>(a_1 d_1 + b_1 c_1)( b_2 d_2)  &amp; =  a_1 d_1 b_2 d_2 + b_1 c_1 b_2 d_2</mrow>
-                        <mrow>&amp; = a_1 b_2 d_1 d_2 + b_1 b_2 c_1 d_2</mrow>
-                        <mrow>&amp; = b_1 a_2 d_1 d_2 + b_1 b_2 d_1 c_2</mrow>
-                        <mrow>&amp; = (b_1 d_1) (a_2 d_2 + b_2 c_2).</mrow>
-                    </md></p>
-            </proof>
-        </lemma>
+    <p>
+      An element <m>p/q \in {\mathbb Q}</m> is the quotient of two integers <m>p</m> and <m>q</m>;
+      however, different pairs of integers can represent the same rational number.
+      For instance, <m>1/2 = 2/4 = 3/6</m>.
+      We know that
+      <me>
+        \frac{a}{b} = \frac{c}{d}
+      </me>
+      if and only if <m>ad = bc</m>.
+      A more formal way of considering this problem is to examine fractions in terms of equivalence relations.
+      We can think of elements in
+      <m>{\mathbb Q}</m> as ordered pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.
+      A quotient <m>p/q</m> can be written as <m>(p, q)</m>.
+      For instance,
+      <m>(3, 7)</m> would represent the fraction <m>3/7</m>.
+      However, there are problems if we consider all possible pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.
+      There is no fraction <m>5/0</m> corresponding to the pair <m>(5,0)</m>.
+      Also, the pairs <m>(3,6)</m> and <m>(2,4)</m> both represent the fraction <m>1/2</m>.
+      The first problem is easily solved if we require the second coordinate to be nonzero.
+      The second problem is solved by considering two pairs <m>(a, b)</m> and <m>(c, d)</m> to be equivalent if <m>ad = bc</m>.
+    </p>
 
-        <lemma xml:id="lemma-field-of-fractions">
-            <statement>
-                <p>The set of equivalence classes of <m>S</m>, <m>F_D</m>, under the equivalence relation <m>\sim</m>, together with the operations of addition and  multiplication defined by
-                    <md>
-                        <mrow>[a, b] + [c, d] &amp; = [ad + b c, b d]</mrow>
-                        <mrow>[ a, b] \cdot [c, d] &amp; = [ac, b d],</mrow>
-                    </md>
-                is a field.</p>
-            </statement>
-            <proof>
-                <p>The additive and multiplicative identities are <m>[0,1]</m> and <m>[1,1]</m>, respectively. To show that <m>[0,1]</m> is the additive identity, observe that
-                    <me>[a, b] + [0, 1] =  [ a 1 + b 0, b 1] = [a,b].</me>
-                It is easy to show that <m>[1, 1]</m> is the multiplicative identity. Let <m>[a, b] \in F_D</m> such that <m>a \neq 0</m>. Then <m>[b, a]</m> is also in <m>F_D</m> and <m>[a,b] \cdot [b, a] = [1,1]</m>; hence, <m>[b, a]</m> is the multiplicative inverse for <m>[a, b]</m>.  Similarly, <m>[-a,b]</m> is the additive inverse of <m>[a, b]</m>. We leave as exercises the verification of the associative and  commutative properties of multiplication in <m>F_D</m>. We also leave it to the reader to show that <m>F_D</m> is an abelian group under addition.</p>
+    <p>
+      If we use the approach of ordered pairs instead of fractions,
+      then we can study integral domains in general.
+      Let <m>D</m> be any integral domain and let
+      <me>
+        S = \{ (a, b) : a, b \in D \text{ and } b \neq 0 \}
+      </me>.
+      Define a relation on <m>S</m> by <m>(a, b) \sim (c, d)</m> if <m>ad = bc</m>.
+    </p>
 
-                <p>It remains to show that the distributive property holds in <m>F_D</m>; however, 
-                    <md>
-                        <mrow>[a, b] [e, f] + [c, d][ e, f ] &amp; = [a e, b f ] + [c e, d f]</mrow>
-                        <mrow>&amp; = [a e d f + b f c e, b d f^2 ]</mrow>
-                        <mrow>&amp; = [a e d + b c e, b d f ]</mrow>
-                        <mrow>&amp; = [a d e + b c e, b d f ]</mrow>
-                        <mrow>&amp; = ( [a, b]  + [c, d] ) [ e, f ] </mrow>
-                    </md>
-                and the lemma is proved.</p>
-            </proof>
-        </lemma>
+    <lemma>
+      <statement>
+        <p>
+          The relation <m>\sim</m> between elements of <m>S</m> is an equivalence relation.
+        </p>
+      </statement>
 
-        <p>The field <m>F_D</m> in Lemma<nbsp/><xref ref="lemma-field-of-fractions"/> is called the <term>field of fractions</term><idx><h>Field</h><h>of fractions</h></idx> or <term>field of quotients</term><idx><h>Field</h><h>of quotients</h></idx> of the integral domain <m>D</m>.</p>
+      <proof>
+        <p>
+          Since <m>D</m> is commutative, <m>ab = ba</m>;
+          hence, <m>\sim</m> is reflexive on <m>D</m>.
+          Now suppose that <m>(a,b) \sim (c,d)</m>.
+          Then <m>ad=bc</m> or <m>cb = da</m>.
+          Therefore, <m>(c,d) \sim (a, b)</m> and the relation is symmetric.
+          Finally, to show that the relation is transitive,
+          let <m>(a, b) \sim (c, d)</m> and <m>(c, d) \sim (e,f)</m>.
+          In this case <m>ad = bc</m> and <m>cf = de</m>.
+          Multiplying both sides of <m>ad = bc</m> by <m>f</m> yields
+          <me>
+            a f d = a d f = b c f = b d e = bed
+          </me>.
+          Since <m>D</m> is an integral domain,
+          we can deduce that <m>af = be</m> or <m>(a,b ) \sim (e, f)</m>.
+        </p>
+      </proof>
+    </lemma>
 
-        <theorem xml:id="theorem-field-of-quotients">
-            <statement>
-                <p>Let <m>D</m> be an integral domain. Then <m>D</m> can be embedded in a field of fractions <m>F_D</m>, where any element in <m>F_D</m> can be expressed as the quotient of two elements in <m>D</m>. Furthermore, the field of fractions <m>F_D</m> is unique in the sense that if <m>E</m> is any field containing <m>D</m>, then there exists a map <m>\psi : F_D \rightarrow E</m> giving an isomorphism with a subfield of <m>E</m> such that <m>\psi(a) = a</m> for all elements <m>a \in D</m>, where we identify <m>a</m> with its image in <m>F_D</m>.</p>
-            </statement>
-            <proof>
-                <p>We will first demonstrate that <m>D</m> can be embedded in the field  <m>F_D</m>. Define a map <m>\phi : D \rightarrow F_D</m> by <m>\phi(a)  = [a, 1]</m>.  Then for <m>a</m> and <m>b</m> in <m>D</m>,
-                    <me>\phi( a + b ) = [a+b, 1] = [a, 1] + [b, 1] = \phi(a ) + \phi(b)</me>
-                and
-                    <me>\phi( a b ) = [a b, 1] = [a, 1]  [b, 1] = \phi(a ) \phi(b);</me>
-                hence, <m>\phi</m> is a homomorphism. To show that <m>\phi</m> is one-to-one, suppose that <m>\phi(a) = \phi( b)</m>. Then <m>[a, 1] = [b, 1]</m>, or <m>a = a1 = 1b = b</m>. Finally, any element of <m>F_D</m> can be expressed as the quotient of two elements in <m>D</m>, since   
-                    <me>\phi(a) [\phi(b)]^{-1} = [a, 1] [b, 1]^{-1} = [a, 1] \cdot [1, b] = [a, b].</me></p>
-                <!-- Typo corrected.  Suggested by Nathan Lander. -->
-                <!-- TWJ 2/13/2012 -->
-                
-                <p>Now let <m>E</m> be a field containing <m>D</m> and define a map <m>\psi :F_D \rightarrow E</m> by <m>\psi([a, b]) = a b^{-1}</m>. To show that <m>\psi</m> is well-defined, let <m>[a_1, b_1] = [a_2, b_2]</m>. Then <m>a_1 b_2 = b_1 a_2</m>. Therefore, <m>a_1 b_1^{-1} = a_2 b_2^{-1}</m> and <m>\psi( [a_1, b_1]) = \psi( [a_2, b_2])</m>.</p>
-                <p>If <m>[a, b ]</m> and <m>[c, d]</m> are in <m>F_D</m>, then
-                    <md>
-                        <mrow>\psi( [a, b] + [c, d] )  &amp; = \psi( [ad + b c, b d ] )</mrow>
-                        <mrow>&amp; =  (ad + b c)(b d)^{-1}</mrow>
-                        <mrow>&amp; = a b^{-1} + c d^{-1}</mrow>
-                        <mrow>&amp; = \psi( [a, b] ) + \psi( [c, d] )</mrow>
-                    </md>
-                and
-                    <md>
-                        <mrow>\psi( [a, b] \cdot [c, d] ) &amp; = \psi( [ac, b d ] )</mrow>
-                        <mrow>&amp; =  (ac)(b d)^{-1}</mrow>
-                        <mrow>&amp; = a b^{-1}  c d^{-1}</mrow>
-                        <mrow>&amp; = \psi( [a, b] )  \psi( [c, d] ).</mrow>
-                    </md>
-                Therefore, <m>\psi</m> is a homomorphism.</p>
-                
-                <p>To complete the proof of the theorem, we need to show that <m>\psi</m> is one-to-one. Suppose that <m>\psi( [a, b] ) = ab^{-1} = 0</m>. Then <m>a = 0b = 0</m> and <m>[a, b] = [0, b]</m>. Therefore, the kernel of <m>\psi</m> is the zero element <m>[ 0, b]</m> in <m>F_D</m>, and <m>\psi</m> is injective.</p>
-            </proof>
-        </theorem>
+    <p>
+      We will denote the set of equivalence classes on <m>S</m> by <m>F_D</m>.
+      We now need to define the operations of addition and multiplication on <m>F_D</m>.
+      Recall how fractions are added and multiplied in <m>{\mathbb Q}</m>:
+      <md>
+        <mrow>\frac{a}{b} + \frac{c}{d} &amp; = \frac{ad + b c}{b d};</mrow>
+        <mrow>\frac{a}{b} \cdot \frac{c}{d} &amp; = \frac{ac}{b d}</mrow>
+      </md>.
+      It seems reasonable to define the operations of addition and multiplication on <m>F_D</m> in a similar manner.
+      If we denote the equivalence class of <m>(a, b) \in S</m> by <m>[a, b]</m>,
+      then we are led to define the operations of addition and multiplication on <m>F_D</m> by
+      <me>
+        [a, b] + [c, d] = [ad + b c,b d]
+      </me>
+      and
+      <me>
+        [a, b] \cdot [c, d] = [ac, b d]
+      </me>,
+      respectively.
+      The next lemma demonstrates that these operations are independent of the choice of representatives from each equivalence class.
+    </p>
 
-        <example xml:id="example-domains-rational-polys">
-            <p>Since <m>{\mathbb Q}</m> is a field, <m>{\mathbb Q}[x]</m> is an integral domain. The field of fractions of <m>{\mathbb Q}[x]</m> is the set of all rational expressions <m>p(x)/q(x)</m>, where <m>p(x)</m> and <m>q(x)</m> are polynomials over the rationals and <m>q(x)</m> is not the zero polynomial. We will denote this field by <m>{\mathbb Q}(x)</m>. <notation><usage>\mathbb Q(x)</usage><description>field of rational functions over <m>\mathbb Q</m></description></notation></p>
-        </example>
+    <lemma>
+      <statement>
+        <p>
+          The operations of addition and multiplication on <m>F_D</m> are well-defined.
+        </p>
+      </statement>
 
-        <p>We will leave the proofs of the following corollaries of Theorem<nbsp/><xref ref="theorem-field-of-quotients"/> as exercises.</p>
+      <proof>
+        <p>
+          We will prove that the operation of addition is well-defined.
+          The proof that multiplication is well-defined is left as an exercise.
+          Let <m>[a_1, b_1] = [a_2, b_2]</m> and <m>[c_1, d_1] =[ c_2, d_2]</m>.
+          We must show that
+          <me>
+            [a_1 d_1 + b_1 c_1,b_1 d_1] = [a_2 d_2 + b_2 c_2,b_2 d_2]
+          </me>
+          or, equivalently, that
+          <me>
+            (a_1 d_1 + b_1 c_1)( b_2 d_2) = (b_1 d_1) (a_2 d_2 + b_2 c_2)
+          </me>.
+          Since  <m>[a_1, b_1] = [a_2, b_2]</m> and <m>[c_1, d_1] =[ c_2, d_2]</m>,
+          we know that <m>a_1 b_2 = b_1 a_2</m> and <m>c_1 d_2 = d_1 c_2</m>.
+          Therefore,
+          <md>
+            <mrow>(a_1 d_1 + b_1 c_1)( b_2 d_2)  &amp; =  a_1 d_1 b_2 d_2 + b_1 c_1 b_2 d_2</mrow>
+            <mrow>&amp; = a_1 b_2 d_1 d_2 + b_1 b_2 c_1 d_2</mrow>
+            <mrow>&amp; = b_1 a_2 d_1 d_2 + b_1 b_2 d_1 c_2</mrow>
+            <mrow>&amp; = (b_1 d_1) (a_2 d_2 + b_2 c_2)</mrow>
+          </md>.
+        </p>
+      </proof>
+    </lemma>
 
-        <corollary xml:id="corollary-char-zero-rationals">
-            <statement>
-                <p>Let <m>F</m> be a field of characteristic zero. Then <m>F</m> contains a subfield isomorphic to <m>{\mathbb Q}</m>.</p>
-            </statement>
-        </corollary>
+    <lemma xml:id="lemma-field-of-fractions">
+      <statement>
+        <p>
+          The set of equivalence classes of <m>S</m>,
+          <m>F_D</m>, under the equivalence relation <m>\sim</m>,
+          together with the operations of addition and  multiplication defined by
+          <md>
+            <mrow>[a, b] + [c, d] &amp; = [ad + b c, b d]</mrow>
+            <mrow>[ a, b] \cdot [c, d] &amp; = [ac, b d]</mrow>
+          </md>,
+          is a field.
+        </p>
+      </statement>
 
-        <corollary xml:id="corollary-char-p-zp">
-            <statement>
-                <p>Let <m>F</m> be a field of characteristic <m>p</m>. Then <m>F</m> contains a subfield isomorphic to <m>{\mathbb Z}_p</m>.</p>
-            </statement>
-        </corollary>
-    </section>
+      <proof>
+        <p>
+          The additive and multiplicative identities are <m>[0,1]</m> and <m>[1,1]</m>,
+          respectively.
+          To show that <m>[0,1]</m> is the additive identity, observe that
+          <me>
+            [a, b] + [0, 1] =  [ a 1 + b 0, b 1] = [a,b]
+          </me>.
+          It is easy to show that <m>[1, 1]</m> is the multiplicative identity.
+          Let <m>[a, b] \in F_D</m> such that <m>a \neq 0</m>.
+          Then <m>[b, a]</m> is also in <m>F_D</m> and <m>[a,b] \cdot [b, a] = [1,1]</m>;
+          hence, <m>[b, a]</m> is the multiplicative inverse for <m>[a, b]</m>.
+          Similarly, <m>[-a,b]</m> is the additive inverse of <m>[a, b]</m>.
+          We leave as exercises the verification of the associative and  commutative properties of multiplication in <m>F_D</m>.
+          We also leave it to the reader to show that <m>F_D</m> is an abelian group under addition.
+        </p>
 
-    <section xml:id="section-factorization-domains">
-        <title>Factorization in Integral Domains</title>
-        <introduction>
-            <p>The building blocks of the integers are the prime numbers. If <m>F</m> is a field, then irreducible polynomials in <m>F[x]</m> play a role that is very similar to that of the prime numbers in the ring of integers. Given an arbitrary integral domain, we are led to the following series of definitions.</p>
-            
-            <p>Let <m>R</m> be a commutative ring with identity, and let <m>a</m> and <m>b</m> be elements in <m>R</m>. We say that <m>a</m> <term>divides</term> <m>b</m>, and write <m>a \mid b</m>, if there exists an element <m>c \in R</m> such that <m>b = ac</m>. A <term>unit</term><idx><h>Unit</h></idx> in <m>R</m> is an element that has a multiplicative inverse.  Two elements <m>a</m> and <m>b</m> in <m>R</m> are said to be <term>associates</term><idx><h>Element</h><h>associate</h></idx><idx><h>Associate elements</h></idx> if there exists a unit <m>u</m> in <m>R</m> such that <m>a = ub</m>.</p>
-            
-            <p>Let <m>D</m> be an integral domain. A nonzero element <m>p \in D</m> that is not a unit is said to be <term>irreducible</term><idx><h>Element</h><h>irreducible</h></idx><idx><h>Irreducible element</h></idx> provided that whenever <m>p = ab</m>, either <m>a</m> or <m>b</m> is a unit. Furthermore, <m>p</m> is <term>prime</term><idx><h>Prime element</h></idx><idx><h>Element</h><h>prime</h></idx> if whenever <m>p \mid ab</m> either <m>p \mid a</m> or <m>p \mid b</m>.</p>
-            
-            <example xml:id="example-domains-q-xy">
-                <p>It is important to notice that prime and irreducible elements do not always coincide. Let <m>R</m> be the subring (with identity) of <m>{\mathbb Q}[x, y]</m> generated by <m>x^2</m>, <m>y^2</m>, and <m>xy</m>. Each of these elements is irreducible in <m>R</m>; however, <m>xy</m> is not prime, since <m>xy</m> divides <m>x^2 y^2</m> but does not divide either <m>x^2</m> or <m>y^2</m>.</p>
-            </example>
-            <!-- We are assuming that R is an integral domain and contains 1.  TWJ 8/9/2012 -->
-            <p>The Fundamental Theorem of Arithmetic states that every positive integer <m>n \gt 1</m> can be factored into a product of prime numbers <m>p_1 \cdots p_k</m>, where the <m>p_i</m>'s are not necessarily distinct. We also know that such factorizations are unique up to the order of the <m>p_i</m>'s. We can easily extend this result to the integers. The question arises of whether or not such factorizations are possible in other rings. Generalizing this definition, we say an integral domain <m>D</m> is a <term>unique factorization domain</term>,<idx><h>Unique factorization domain (<acro>UFD</acro>)</h></idx><idx><h>Domain</h><h>unique factorization</h></idx> or <term><acro>UFD</acro></term>, if <m>D</m> satisfies the following criteria.  
-                <ol>
-                    <li><p>Let <m>a \in D</m> such that <m>a \neq 0</m> and <m>a</m> is not a unit. Then <m>a</m> can be written as the product of irreducible elements in <m>D</m>.</p></li><!-- Definition corrected thanks to Pascal Honore - TWJ 9/10/2010 -->
-                    <li><p>Let <m>a = p_1 \cdots p_r = q_1 \cdots q_s</m>, where the <m>p_i</m>'s and the <m>q_i</m>'s are irreducible. Then <m>r=s</m> and there is a <m>\pi \in S_r</m> such that <m>p_i</m> and <m>q_{\pi(j)}</m> are associates for <m>j = 1, \ldots, r</m>.</p></li>
-                </ol></p>
-            
-            <example xml:id="example-domains-z-ufd">
-                <p>The integers are a unique factorization domain by the Fundamental Theorem of Arithmetic.</p>
-            </example>
-            
-            <example xml:id="example-domains-not-a-ufd">
-                <p>Not every integral domain is a unique factorization domain. The subring <m>{\mathbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i\}</m> of the complex numbers is an integral domain (Exercise<nbsp/><xref ref="exercise-rings-gaussian"/>, Chapter<nbsp/><xref ref="rings"/>). Let <m>z = a + b \sqrt{3}\, i</m> and define <m>\nu : {\mathbb Z}[ \sqrt{3}\, i ] \rightarrow {\mathbb N} \cup \{ 0 \}</m> by <m>\nu( z) = |z|^2 = a^2 + 3 b^2</m>. It is clear that <m>\nu(z) \geq 0</m> with equality when <m>z = 0</m>. Also, from our knowledge of complex numbers we know that <m>\nu(z w) = \nu(z) \nu(w)</m>. It is easy to show that if <m>\nu(z) = 1</m>, then <m>z</m> is a unit, and that the only units of <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> are <m>1</m> and <m>-1</m>.</p>
-                
-                <p>We claim that <m>4</m> has two distinct factorizations into irreducible elements: 
-                    <me>4 = 2 \cdot 2 = (1 - \sqrt{3}\, i) (1 + \sqrt{3}\, i).</me>
-                We must show that each of these factors is an irreducible element in <m>{\mathbb Z}[ \sqrt{3}\, i ]</m>. If <m>2</m> is not irreducible, then <m>2 = z w</m> for elements <m>z, w</m> in <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> where <m>\nu( z) = \nu(w) = 2</m>. However, there does not exist an element in <m>z</m> in <m>{\mathbb Z}[\sqrt{3}\, i ]</m> such that <m>\nu(z) = 2</m> because the equation <m>a^2 + 3 b^2 = 2</m> has no integer solutions. Therefore, <m>2</m> must be irreducible. A similar argument shows that both <m>1 - \sqrt{3}\, i</m> and <m>1 + \sqrt{3}\, i</m> are irreducible. Since <m>2</m> is not a unit multiple of either <m>1 - \sqrt{3}\, i</m> or <m>1 + \sqrt{3}\, i</m>, <m>4</m> has at least two distinct factorizations into irreducible elements.</p>
-            </example>
-        </introduction>
+        <p>
+          It remains to show that the distributive property holds in <m>F_D</m>; however,
+          <md>
+            <mrow>[a, b] [e, f] + [c, d][ e, f ] &amp; = [a e, b f ] + [c e, d f]</mrow>
+            <mrow>&amp; = [a e d f + b f c e, b d f^2 ]</mrow>
+            <mrow>&amp; = [a e d + b c e, b d f ]</mrow>
+            <mrow>&amp; = [a d e + b c e, b d f ]</mrow>
+            <mrow>&amp; = ( [a, b]  + [c, d] ) [ e, f ]</mrow>
+          </md>
+          and the lemma is proved.
+        </p>
+      </proof>
+    </lemma>
 
-        <subsection xml:id="domains-subsection-pids">
-            <title>Principal Ideal Domains</title>
-            <p>Let <m>R</m> be a commutative ring with identity. Recall that a principal ideal generated by <m>a \in R</m> is an ideal of the form <m>\langle a \rangle = \{ ra : r \in R \}</m>. An integral domain in which every ideal is principal is called a <term>principal ideal domain</term>,<idx><h>Principal ideal domain (<acro>PID</acro>)</h></idx><idx><h>Domain</h><h>principal ideal</h></idx> or <term><acro>PID</acro></term>.</p>
-            
-            <lemma xml:id="lemma-principal-ideal">
-                <statement>
-                    <p>Let <m>D</m> be an integral domain and let <m>a, b \in D</m>. Then
-                        <ol>
-                            <li><p><m>a \mid b</m> if and only if <m>\langle b \rangle \subset \langle a \rangle</m>.</p></li>
-                            <li><p><m>a</m> and <m>b</m> are associates if and only if <m>\langle b \rangle = \langle a \rangle</m>.</p></li>
-                            <li><p><m>a</m> is a unit in <m>D</m> if and only if <m>\langle a \rangle = D</m>.</p></li>
-                        </ol></p>
-                </statement>
-                <proof>
-                    <p>(1) Suppose that <m>a \mid b</m>. Then <m>b = ax</m> for some <m>x \in D</m>. Hence, for every <m>r</m> in <m>D</m>, <m>br =(ax)r = a(xr)</m> and <m>\langle b \rangle \subset \langle a \rangle</m>. Conversely, suppose that <m>\langle b \rangle \subset \langle a \rangle</m>. Then <m>b \in \langle a \rangle</m>. Consequently, <m>b =a x</m> for some <m>x \in D</m>. Thus, <m>a \mid b</m>.</p>
-                    
-                    <p>(2) Since <m>a</m> and <m>b</m> are associates, there exists a unit <m>u</m> such that <m>a = u b</m>. Therefore, <m>b \mid a</m> and <m>\langle a \rangle \subset \langle b \rangle</m>. Similarly, <m>\langle b \rangle \subset \langle a \rangle</m>. It follows that <m>\langle a \rangle = \langle b \rangle</m>. Conversely, suppose that <m>\langle a \rangle = \langle b \rangle</m>. By part (1), <m>a \mid b</m> and <m>b \mid a</m>. Then <m>a = bx</m> and <m>b = ay</m> for some <m>x, y \in D</m>. Therefore, <m>a = bx = ayx</m>. Since <m>D</m> is an integral domain, <m>x y = 1</m>; that is, <m>x</m> and <m>y</m> are units and <m>a</m> and <m>b</m> are associates.</p>
-                    
-                    <p>(3) An element <m>a \in D</m> is a unit if and only if <m>a</m> is an associate of <m>1</m>. However, <m>a</m> is an associate of <m>1</m> if and only if <m>\langle a \rangle = \langle 1 \rangle = D</m>.</p>
-                </proof>
-            </lemma>
-            
-            <theorem>
-                <statement>
-                    <p>Let <m>D</m> be a <acro>PID</acro> and <m>\langle p \rangle</m> be a nonzero ideal in <m>D</m>. Then <m>\langle p \rangle</m> is a maximal ideal if and only if <m>p</m> is irreducible.</p>
-                </statement>
-                <proof>
-                    <p>Suppose that <m>\langle p \rangle</m> is a maximal ideal. If some element <m>a</m> in <m>D</m> divides <m>p</m>, then <m>\langle p \rangle \subset \langle a \rangle</m>. Since <m>\langle p \rangle</m> is maximal, either <m>D = \langle a \rangle</m> or <m>\langle p \rangle = \langle a \rangle</m>. Consequently, either <m>a</m> and <m>p</m> are associates or <m>a</m> is a unit. Therefore, <m>p</m> is irreducible.</p>
-                    
-                    <p>Conversely, let <m>p</m> be irreducible. If <m>\langle a \rangle</m> is an ideal in <m>D</m> such that <m>\langle p \rangle \subset \langle a \rangle \subset D</m>, then <m>a \mid p</m>. Since <m>p</m> is irreducible, either <m>a</m> must be a unit or <m>a</m> and <m>p</m> are associates. Therefore, either <m>D = \langle a \rangle</m> or <m>\langle p \rangle = \langle a \rangle</m>. Thus, <m>\langle p \rangle</m> is a maximal ideal.</p>
-                </proof>
-            </theorem>
-            
-            <corollary xml:id="corollary-irreducible-pid">
-                <statement>
-                    <p>Let <m>D</m> be a <acro>PID</acro>. If <m>p</m> is irreducible, then <m>p</m> is prime.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>p</m> be irreducible and suppose that <m>p \mid ab</m>. Then <m>\langle ab \rangle \subset \langle p \rangle</m>. By Corollary<nbsp/><xref ref="corollary-maximal-ideal"/>, since <m>\langle p \rangle</m> is a maximal ideal, <m>\langle p \rangle</m> must also be a prime ideal. Thus, either <m>a \in \langle p \rangle</m> or <m>b \in \langle p \rangle</m>. Hence, either <m>p \mid a </m> or <m>p \mid b</m>.</p>
-                </proof>
-            </corollary>
-            
-            <lemma xml:id="lemma-acc">
-                <statement>
-                    <p>Let <m>D</m> be a <acro>PID</acro>. Let <m>I_1, I_2, \ldots</m> be a set of ideals such that <m>I_1 \subset I_2 \subset \cdots</m>. Then there exists an integer <m>N</m> such that <m>I_n = I_N</m> for all <m>n \geq N</m>.</p>
-                </statement>
-                <proof>
-                    <p>We claim that <m>I= \bigcup_{i = 1}^\infty I_i</m> is an ideal of <m>D</m>. Certainly <m>I</m> is not empty, since <m>I_1 \subset I</m> and <m>0 \in I</m>. If <m>a, b \in I</m>, then <m>a \in I_i</m> and <m>b \in I_j</m> for some <m>i</m> and <m>j</m> in <m>{\mathbb N}</m>. Without loss of generality we can assume that <m>i \leq j</m>. Hence, <m>a</m> and <m>b</m> are both in <m>I_j</m> and so <m>a - b</m> is also in <m>I_j</m>. Now let <m>r \in D</m> and <m>a \in I</m>. Again, we note that <m>a \in I_i</m> for some positive integer <m>i</m>. Since <m>I_i</m> is an ideal, <m>ra \in I_i</m> and hence must be in <m>I</m>. Therefore, we have shown that <m>I</m> is an ideal in <m>D</m>.</p>
-                    <!-- Typo corrected.  Suggested by C. Wall.  TWJ 2/16/2012 -->
-                    
-                    <p>Since <m>D</m> is a principal ideal domain, there exists an element <m>\overline{a} \in D</m> that generates <m>I</m>. Since <m>\overline{a}</m> is in  <m>I_N</m> for some <m>N \in {\mathbb N}</m>, we know that <m>I_N = I = \langle \overline{a} \rangle</m>. Consequently, <m>I_n = I_N</m> for <m>n \geq N</m>.</p>
-                </proof>
-            </lemma>
+    <p>
+      The field <m>F_D</m> in Lemma<nbsp/><xref ref="lemma-field-of-fractions"/> is called the
+      <term>field of fractions</term><idx><h>Field</h><h>of fractions</h></idx> or
+      <term>field of quotients</term><idx><h>Field</h><h>of quotients</h></idx> of the integral domain <m>D</m>.
+    </p>
 
-            <p>Any commutative ring satisfying the condition in Lemma<nbsp/><xref ref="lemma-acc"/> is said to satisfy the <term>ascending chain condition</term>,<idx><h>Ascending chain condition</h></idx> or <term>ACC</term>. Such rings are called <term>Noetherian rings</term>,<idx><h>Ring</h><h>Noetherian</h></idx> after Emmy Noether.</p>
+    <theorem xml:id="theorem-field-of-quotients">
+      <statement>
+        <p>
+          Let <m>D</m> be an integral domain.
+          Then <m>D</m> can be embedded in a field of fractions <m>F_D</m>,
+          where any element in <m>F_D</m> can be expressed as the quotient of two elements in <m>D</m>.
+          Furthermore,
+          the field of fractions <m>F_D</m> is unique in the sense that if <m>E</m> is any field containing <m>D</m>,
+          then there exists a map <m>\psi : F_D \rightarrow E</m> giving an isomorphism with a subfield of <m>E</m> such that
+          <m>\psi(a) = a</m> for all elements <m>a \in D</m>,
+          where we identify <m>a</m> with its image in <m>F_D</m>.
+        </p>
+      </statement>
 
-            <theorem>
-                <statement>
-                    <p>Every <acro>PID</acro> is a <acro>UFD</acro>.</p>
-                </statement>
-                <proof>
-                    <p><em>Existence of a factorization.</em> Let <m>D</m> be a <acro>PID</acro> and <m>a</m> be a nonzero element in <m>D</m> that is not a unit. If <m>a</m> is irreducible, then we are done. If not, then there exists a factorization <m>a = a_1 b_1</m>, where neither <m>a_1</m> nor <m>b_1</m> is a unit. Hence, <m>\langle a \rangle \subset \langle a_1 \rangle</m>. By Lemma<nbsp/><xref ref="lemma-principal-ideal"/>, we know that <m>\langle a \rangle \neq \langle a_1 \rangle</m>; otherwise, <m>a</m> and <m>a_1</m> would be associates and <m>b_1</m> would be a unit, which would contradict our assumption. Now suppose that <m>a_1 =  a_2 b_2</m>, where neither <m>a_2</m> nor <m>b_2</m> is a unit. By the same argument as before, <m>\langle a_1 \rangle \subset \langle a_2 \rangle</m>.  We can continue with this construction to obtain an ascending chain of ideals
-                        <me>\langle a \rangle \subset \langle a_1 \rangle \subset \langle a_2 \rangle \subset \cdots.</me>
-                    By Lemma<nbsp/><xref ref="lemma-acc"/>, there exists a positive integer <m>N</m> such that <m>\langle a_n \rangle = \langle a_N \rangle</m> for all <m>n \geq N</m>. Consequently, <m>a_N</m> must be irreducible. We have now shown that <m>a</m> is the product of two elements, one of which must be irreducible.</p>
-                    <!-- Label repaired.  Suggested by R. Beezer. -->
-                    <!-- TWJ 12/19/2011 -->
-                    <p>Now suppose that <m>a = c_1 p_1</m>, where <m>p_1</m> is irreducible. If <m>c_1</m> is not a unit, we can repeat the preceding argument to conclude that <m>\langle a \rangle \subset \langle c_1 \rangle</m>. Either <m>c_1</m> is irreducible or <m>c_1 = c_2 p_2</m>, where <m>p_2</m> is irreducible and <m>c_2</m> is not a unit. Continuing in this manner, we obtain another chain of ideals
-                        <me>\langle a \rangle \subset \langle c_1 \rangle \subset \langle c_2 \rangle \subset \cdots.</me>
-                    This chain must satisfy the ascending chain condition; therefore, 
-                        <me>a = p_1 p_2 \cdots p_r</me>
-                    for irreducible elements <m>p_1, \ldots, p_r</m>.</p>
-                    
-                    <p><em>Uniqueness of the factorization.</em> To show uniqueness, let
-                        <me>a = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s,</me>
-                    where each <m>p_i</m> and each <m>q_i</m> is irreducible. Without loss of generality, we can assume that <m>r \lt s</m>. Since <m>p_1</m> divides <m>q_1 q_2 \cdots q_s</m>, by Corollary<nbsp/><xref ref="corollary-irreducible-pid"/> it must divide some <m>q_i</m>. By rearranging the <m>q_i</m>'s, we can assume that <m>p_1 \mid q_1</m>; hence, <m>q_1 = u_1 p_1</m> for some unit <m>u_1</m> in <m>D</m>. Therefore,
-                        <me>a = p_1 p_2 \cdots p_r = u_1 p_1 q_2 \cdots q_s</me>
-                    or 
-                        <me>p_2 \cdots p_r = u_1 q_2 \cdots q_s.</me>
-                    Continuing in this manner, we can arrange the <m>q_i</m>'s such that <m>p_2 = q_2, p_3 = q_3, \ldots, p_r = q_r</m>, to obtain
-                        <me>u_1 u_2 \cdots u_r q_{r + 1} \cdots q_s = 1.</me>
-                    In this case <m>q_{r + 1} \cdots q_s</m> is a unit, which contradicts the fact that <m>q_{r + 1}, \ldots, q_s</m> are irreducibles. Therefore, <m>r = s</m> and the factorization of <m>a</m> is unique.</p>
-                </proof>
-            </theorem>
-            <!-- Label repaired.  Suggested by R. Beezer. -->
-            <!-- TWJ - 12/19/2011 -->
-            <corollary>
-                <statement>
-                    <p>Let <m>F</m> be a field. Then <m>F[x]</m> is a <acro>UFD</acro>.</p>
-                </statement>
-            </corollary>
-
-            <example xml:id="example-domains-zx-ufd">
-                <p>Every <acro>PID</acro> is a <acro>UFD</acro>, but it is not the case that every <acro>UFD</acro> is a <acro>PID</acro>. In Corollary<nbsp/><xref ref="corollary-integer-poly-ufd"/>, we will prove that <m>{\mathbb Z}[x]</m> is a <acro>UFD</acro>. However, <m>{\mathbb Z}[x]</m> is not a <acro>PID</acro>. Let <m>I = \{ 5 f(x) + x g(x) : f(x), g(x)  \in {\mathbb Z}[x] \}</m>. We can easily show that <m>I</m> is an ideal of <m>{\mathbb Z}[x]</m>. Suppose that <m>I = \langle p(x) \rangle</m>. Since <m>5 \in I</m>,  <m>5 = f(x) p(x)</m>. In this case <m>p(x) = p</m> must be a constant. Since <m>x \in I</m>, <m>x = p g(x)</m>; consequently, <m>p = \pm 1</m>. However, it follows from this fact that <m>\langle p(x) \rangle = {\mathbb Z}[x]</m>. But this would mean that <m>3</m> is in <m>I</m>. Therefore, we can write <m>3 = 5 f(x) + x g(x)</m> for  some <m>f(x)</m> and <m>g(x)</m> in <m>{\mathbb Z}[x]</m>. Examining the constant term of this polynomial, we see that <m>3 = 5 f(x)</m>, which is impossible.</p>
-            </example>
-        </subsection>
-
-        <subsection xml:id="domains-subsection-euclidean-domains">
-            <title>Euclidean Domains</title>
-            <p>We have repeatedly used the division algorithm when proving results about either <m>{\mathbb Z}</m> or <m>F[x]</m>, where <m>F</m> is a field.  We should now ask when a division algorithm is available for an integral domain.</p>
-
-            <p>Let <m>D</m> be an integral domain such that for each <m>a \in D</m> there is a nonnegative integer <m>\nu(a)</m> satisfying the following conditions. <notation><usage>\nu(a)</usage><description>Euclidean valuation of <m>a</m></description></notation>
-                <ol>
-                    <li><p>If <m>a</m> and <m>b</m> are nonzero elements in <m>D</m>, then <m>\nu(a) \leq \nu(ab)</m>.</p></li>
-                    <li><p>Let <m>a, b \in D</m> and suppose that <m>b \neq 0</m>. Then there exist elements <m>q, r \in D</m> such that <m>a = bq + r</m> and either <m>r = 0</m> or <m>\nu(r) \lt \nu(b)</m>.</p></li>
-                </ol>
-             Then <m>D</m> is called a <term>Euclidean domain</term><idx><h>Euclidean domain</h></idx><idx><h>Domain</h><h>Euclidean</h></idx> and <m>\nu</m> is called a <term>Euclidean valuation</term><idx><h>Euclidean valuation</h></idx>.</p>
-
-            <example xml:id="example-domains-abs-value">
-                <p>Absolute value on <m>{\mathbb Z}</m> is a Euclidean valuation.</p>
-            </example>
-
-            <example xml:id="example-domains-deg-poly-field-valuation">
-                <p>Let <m>F</m> be a field. Then the degree of a polynomial in <m>F[x]</m> is a Euclidean valuation.</p>
-            </example>
-
-            <example xml:id="example-domains-gaussian-valuation">
-                <p>Recall that the Gaussian integers in Example<nbsp/><xref ref="example-rings-gaussian-integers"/> of Chapter<nbsp/><xref ref="rings"/> are defined by
-                    <me>{\mathbb Z}[i] = \{  a + b i : a, b \in {\mathbb Z} \}.</me>
-                We usually measure the size of a complex number <m>a + bi</m> by its absolute value, <m>|a + bi| = \sqrt{ a^2 + b^2}</m>; however, <m>\sqrt{a^2 + b^2}</m> may not be an integer. For our valuation we will let <m>\nu(a + bi) = a^2 + b^2</m> to ensure that we have an integer.</p>
-
-                <p>We claim that <m>\nu( a+ bi) = a^2 + b^2</m> is a Euclidean valuation on <m>{\mathbb Z}[i]</m>. Let <m>z, w \in {\mathbb Z}[i]</m>. Then <m>\nu( zw) = |zw|^2 = |z|^2 |w|^2  = \nu(z) \nu(w)</m>. Since <m>\nu(z) \geq 1</m> for every nonzero <m>z \in {\mathbb Z}[i]</m>, <m>\nu( z) \leq \nu(z) \nu(w)</m>.</p>
-                <!-- correction to last sentence.  Suggested by R. Beezer. -->
-                <!-- TWJ 2/6/2013 -->
-                <p>Next, we must show that for any <m>z= a+bi</m> and <m>w = c+di</m> in <m>{\mathbb Z}[i]</m> with <m>w \neq 0</m>, there exist elements <m>q</m> and <m>r</m> in  <m>{\mathbb Z}[i]</m> such that <m>z = qw + r</m> with either <m>r=0</m> or  <m>\nu(r) \lt \nu(w)</m>.  We can view <m>z</m> and <m>w</m> as elements in <m>{\mathbb Q}(i) = \{ p + qi : p, q \in {\mathbb Q} \}</m>, the field of fractions of <m>{\mathbb Z}[i]</m>.  Observe that
-                    <md>
-                        <mrow>z w^{-1} &amp; = (a +b i) \frac{c -d i}{c^2 + d^2}</mrow>
-                        <mrow>&amp; = \frac{ac + b d}{c^2 + d^2} + \frac{b c -ad}{c^2 + d^2}i</mrow>
-                        <mrow>&amp; = \left( m_1 + \frac{n_1}{c^2 + d^2} \right) + \left( m_2 + \frac{n_2}{c^2 + d^2} \right) i</mrow>
-                        <mrow>&amp; = (m_1 + m_2 i) + \left( \frac{n_1}{c^2 + d^2} + \frac{n_2}{c^2 + d^2}i \right)</mrow>
-                        <mrow>&amp; = (m_1 + m_2 i) + (s + ti)</mrow>
-                    </md>
-                in <m>{\mathbb Q}(i)</m>. In the last steps we are writing the real and imaginary parts as an integer plus a proper fraction. That is, we take the closest integer <m>m_i</m> such that the fractional part satisfies <m>|n_i / (a^2 + b^2)| \leq 1/2</m>. For example, we write 
-                    <md>
-                        <mrow>\frac{9}{8} &amp; = 1 + \frac{1}{8}</mrow>
-                        <mrow>\frac{15}{8} &amp; = 2 - \frac{1}{8}.</mrow>
-                    </md>
-                Thus, <m>s</m> and <m>t</m> are the <q>fractional parts</q> of <m>z w^{-1} = (m_1 + m_2 i) + (s + ti)</m>. We also know that <m>s^2 + t^2 \leq 1/4 + 1/4 = 1/2</m>.  Multiplying by <m>w</m>, we have
-                    <me>z = z w^{-1} w = w (m_1 + m_2 i) + w (s + ti)  = q w + r,</me>
-                where <m>q = m_1 + m_2 i</m> and <m>r =  w (s + ti)</m>.  Since <m>z</m> and <m>qw</m> are in <m>{\mathbb Z}[i]</m>, <m>r</m> must be in <m>{\mathbb Z}[i]</m>.  Finally, we need to show that either <m>r = 0</m> or <m>\nu(r) \lt \nu(w)</m>.  However,
-                    <me>\nu(r) = \nu(w) \nu(s + ti) \leq \frac{1}{2} \nu(w) \lt \nu(w).</me></p>
-            </example>
-
-            <theorem>
-                <statement>
-                    <p>Every Euclidean domain is a principal ideal domain.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>D</m> be a Euclidean domain and let <m>\nu</m> be a Euclidean valuation on <m>D</m>. Suppose <m>I</m> is a nontrivial ideal in <m>D</m> and choose a nonzero element <m>b \in I</m> such that <m>\nu(b)</m> is minimal for all <m>a \in I</m>. Since <m>D</m> is a Euclidean domain, there exist elements <m>q</m> and <m>r</m> in <m>D</m> such that <m>a = bq + r</m> and either <m>r = 0</m> or <m>\nu(r) \lt \nu(b)</m>. But <m>r = a - bq</m> is in <m>I</m> since <m>I</m> is an ideal; therefore, <m>r = 0</m> by the minimality of <m>b</m>. It follows that <m>a = bq</m> and <m>I = \langle b \rangle</m>.</p>
-                </proof>
-            </theorem>
-
-            <corollary>
-                <statement>
-                    <p>Every Euclidean domain is a unique factorization domain.</p>
-                </statement>
-            </corollary>
-        </subsection>
-
-        <subsection xml:id="domains-subsection-factorization">
-            <title>Factorization in <m>D\lbrack x \rbrack</m></title>
-            <p>One of the most important polynomial rings is <m>{\mathbb Z}[x]</m>. One of the first questions that come to mind about <m>{\mathbb Z}[x]</m> is whether or not it is a <acro>UFD</acro>. We will prove a more general statement here. Our first task is to obtain a more general version of Gauss's Lemma (Theorem<nbsp/><xref ref="theorem-gauss-lemma"/>).</p>
-
-            <p>Let <m>D</m> be a unique factorization domain and suppose that 
-                <me>p(x) = a_n x^n + \cdots + a_1 x + a_0</me>
-            in <m>D[x]</m>.  Then the <term>content</term><idx><h>Polynomial</h><h>content of</h></idx> of <m>p(x)</m> is the greatest common divisor of <m>a_0, \ldots, a_n</m>. We say that <m>p(x)</m> is <term>primitive</term><idx><h>Primitive polynomial</h></idx><idx><h>Polynomial</h><h>primitive</h></idx> if <m>\gcd(a_0, \ldots, a_n ) = 1</m>.</p>
+      <proof>
+        <p>
+          We will first demonstrate that <m>D</m> can be embedded in the field  <m>F_D</m>.
+          Define a map <m>\phi : D \rightarrow F_D</m> by <m>\phi(a)  = [a, 1]</m>.
+          Then for <m>a</m> and <m>b</m> in <m>D</m>,
+          <me>
+            \phi( a + b ) = [a+b, 1] = [a, 1] + [b, 1] = \phi(a ) + \phi(b)
+          </me>
+          and
+          <me>
+            \phi( a b ) = [a b, 1] = [a, 1]  [b, 1] = \phi(a ) \phi(b);
+          </me>
+          hence, <m>\phi</m> is a homomorphism.
+          To show that <m>\phi</m> is one-to-one,
+          suppose that <m>\phi(a) = \phi( b)</m>.
+          Then <m>[a, 1] = [b, 1]</m>, or <m>a = a1 = 1b = b</m>.
+          Finally, any element of <m>F_D</m> can be expressed as the quotient of two elements in <m>D</m>, since
+          <me>
+            \phi(a) [\phi(b)]^{-1} = [a, 1] [b, 1]^{-1} = [a, 1] \cdot [1, b] = [a, b]
+          </me>.
+        </p>
             <!-- Typo corrected.  Suggested by Nathan Lander. -->
             <!-- TWJ 2/13/2012 -->
-            <example xml:id="example-domains-poly-gcd">
-                <p>In <m>{\mathbb Z}[x]</m> the polynomial <m>p(x)= 5 x^4 - 3 x^3 + x -4</m> is a primitive polynomial since the greatest common divisor of the coefficients is <m>1</m>; however, the polynomial <m>q(x) = 4 x^2 - 6 x + 8</m> is not primitive since the content of <m>q(x)</m> is <m>2</m>.</p>
-            </example>
+        <p>
+          Now let <m>E</m> be a field containing <m>D</m> and define a map
+          <m>\psi :F_D \rightarrow E</m> by <m>\psi([a, b]) = a b^{-1}</m>.
+          To show that <m>\psi</m> is well-defined,
+          let <m>[a_1, b_1] = [a_2, b_2]</m>.
+          Then <m>a_1 b_2 = b_1 a_2</m>.
+          Therefore, <m>a_1 b_1^{-1} = a_2 b_2^{-1}</m> and <m>\psi( [a_1, b_1]) = \psi( [a_2, b_2])</m>.
+        </p>
 
-            <theorem xml:id="theorem-domains-gauss-lemma">
-                <title>Gauss's Lemma</title>
-                <idx>
-                    <h>Gauss's Lemma</h>
-                </idx>
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro> and let <m>f(x)</m> and <m>g(x)</m> be primitive polynomials in <m>D[x]</m>.  Then <m>f(x) g(x)</m> is primitive.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>f(x) = \sum_{i=0}^{m} a_i x^i</m> and <m>g(x) = \sum_{i=0}^{n} b_i x^i</m>. Suppose that <m>p</m> is a prime dividing the coefficients of <m>f(x) g(x)</m>.  Let <m>r</m> be the smallest integer such that <m>p \notdivide a_r</m> and <m>s</m> be the smallest integer such that <m>p \notdivide b_s</m>.  The coefficient of <m>x^{r+s}</m> in <m>f(x) g(x)</m> is 
-                        <me>c_{r + s} = a_0 b_{r + s} + a_1 b_{r + s - 1} + \cdots + a_{r + s - 1} b_1 + a_{r + s} b_0.</me>
-                    Since <m>p</m> divides <m>a_0, \ldots, a_{r-1}</m> and <m>b_0, \ldots, b_{s-1}</m>, <m>p</m> divides every term of <m>c_{r+s}</m> except for the term <m>a_r b_s</m>. However, since <m>p \mid c_{r+s}</m>, either <m>p</m> divides <m>a_r</m> or <m>p</m> divides <m>b_s</m>. But this is impossible.</p>
-                </proof>
-            </theorem>
+        <p>
+          If <m>[a, b ]</m> and <m>[c, d]</m> are in <m>F_D</m>, then
+          <md>
+            <mrow>\psi( [a, b] + [c, d] )  &amp; = \psi( [ad + b c, b d ] )</mrow>
+            <mrow>&amp; =  (ad + b c)(b d)^{-1}</mrow>
+            <mrow>&amp; = a b^{-1} + c d^{-1}</mrow>
+            <mrow>&amp; = \psi( [a, b] ) + \psi( [c, d] )</mrow>
+          </md>
+          and
+          <md>
+            <mrow>\psi( [a, b] \cdot [c, d] ) &amp; = \psi( [ac, b d ] )</mrow>
+            <mrow>&amp; =  (ac)(b d)^{-1}</mrow>
+            <mrow>&amp; = a b^{-1}  c d^{-1}</mrow>
+            <mrow>&amp; = \psi( [a, b] )  \psi( [c, d] )</mrow>
+          </md>.
+          Therefore, <m>\psi</m> is a homomorphism.
+        </p>
 
-            <lemma>
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro>, and let <m>p(x)</m> and <m>q(x)</m> be in <m>D[x]</m>. Then the content of <m>p(x) q(x)</m> is equal to the product of the contents of <m>p(x)</m> and <m>q(x)</m>.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>p(x) = c p_1(x)</m> and <m>q(x) = d q_1(x)</m>, where <m>c</m> and <m>d</m> are the contents of <m>p(x)</m> and <m>q(x)</m>, respectively.  Then <m>p_1(x)</m> and <m>q_1(x)</m> are primitive. We can now write <m>p(x) q(x) = c d p_1(x) q_1(x)</m>. Since <m>p_1(x) q_1(x)</m> is primitive, the content of <m>p(x) q(x)</m> must be <m>cd</m>.</p>
-                </proof>
-            </lemma>
+        <p>
+          To complete the proof of the theorem,
+          we need to show that <m>\psi</m> is one-to-one.
+          Suppose that <m>\psi( [a, b] ) = ab^{-1} = 0</m>.
+          Then <m>a = 0b = 0</m> and <m>[a, b] = [0, b]</m>.
+          Therefore, the kernel of <m>\psi</m> is the zero element <m>[ 0, b]</m> in <m>F_D</m>,
+          and <m>\psi</m> is injective.
+        </p>
+      </proof>
+    </theorem>
 
-            <lemma xml:id="lemma-ufd-factorization">
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions. Suppose that <m>p(x) \in D[x]</m> and <m>p(x) = f(x) g(x)</m>, where <m>f(x)</m> and <m>g(x)</m> are in  <m>F[x]</m>. Then <m>p(x) = f_1(x) g_1(x)</m>, where <m>f_1(x)</m> and <m>g_1(x)</m> are in <m>D[x]</m>.  Furthermore, <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>a</m> and <m>b</m> be nonzero elements of <m>D</m> such that <m>a f(x), b g(x)</m> are in <m>D[x]</m>. We can find <m>a_1, b_2 \in D</m> such that <m>a f(x) = a_1 f_1(x)</m> and <m>b g(x) = b_1 g_1(x)</m>, where <m>f_1(x)</m> and <m>g_1(x)</m> are primitive polynomials in <m>D[x]</m>. Therefore, <m>a b p(x) = (a_1 f_1(x))( b_1 g_1(x))</m>.  Since <m>f_1(x)</m> and <m>g_1(x)</m> are primitive polynomials, it must be the case that <m>ab \mid a_1 b_1</m> by Gauss's Lemma. Thus there exists a <m>c \in D</m> such that <m>p(x) = c f_1(x) g_1(x)</m>. Clearly, <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.</p>
-                </proof>
-            </lemma>
+    <example xml:id="example-domains-rational-polys">
+      <p>
+        Since <m>{\mathbb Q}</m> is a field,
+        <m>{\mathbb Q}[x]</m> is an integral domain.
+        The field of fractions of <m>{\mathbb Q}[x]</m> is the set of all rational expressions <m>p(x)/q(x)</m>,
+        where <m>p(x)</m> and <m>q(x)</m> are polynomials over the rationals and <m>q(x)</m> is not the zero polynomial.
+        We will denote this field by <m>{\mathbb Q}(x)</m>.
 
-            <p>The following corollaries are direct consequences of Lemma<nbsp/><xref ref="lemma-ufd-factorization"/>.</p>
-            <corollary xml:id="corollary-irreducible-poly">
+        <notation>
+          <usage>\mathbb Q(x)</usage>
+          <description>field of rational functions over <m>\mathbb Q</m></description>
+        </notation>
 
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions. A primitive polynomial <m>p(x)</m> in <m>D[x]</m> is irreducible in <m>F[x]</m> if and only if it is irreducible in <m>D[x]</m>.</p>
-                </statement>
-            </corollary>
+      </p>
+    </example>
 
-            <corollary>
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions. If <m>p(x)</m> is a monic polynomial in <m>D[x]</m> with <m>p(x) = f(x) g(x)</m> in <m>F[x]</m>, then <m>p(x) = f_1(x) g_1(x)</m>, where <m>f_1(x)</m> and <m>g_1(x)</m> are in <m>D[x]</m>. Furthermore, <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.</p>
-                </statement>
-            </corollary>
+    <p>
+      We will leave the proofs of the following corollaries of Theorem<nbsp/><xref ref="theorem-field-of-quotients"/> as exercises.
+    </p>
 
-            <theorem>
-                <statement>
-                    <p>If <m>D</m> is a <acro>UFD</acro>, then <m>D[x]</m> is a <acro>UFD</acro>.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>p(x)</m> be a nonzero polynomial in <m>D[x]</m>. If <m>p(x)</m> is a constant polynomial, then it must have a unique factorization since <m>D</m> is a <acro>UFD</acro>. Now suppose that <m>p(x)</m> is a polynomial of positive degree in <m>D[x]</m>. Let <m>F</m> be the field of fractions of <m>D</m>, and let <m>p(x) = f_1(x) f_2(x) \cdots f_n(x)</m> by a factorization of <m>p(x)</m>, where each <m>f_i(x)</m> is irreducible. Choose <m>a_i \in D</m> such that <m>a_i f_i(x)</m> is in <m>D[x]</m>. There exist <m>b_1, \ldots, b_n \in D</m> such that <m>a_i f_i(x) = b_i g_i(x)</m>, where <m>g_i(x)</m> is a primitive polynomial in <m>D[x]</m>. By Corollary<nbsp/><xref ref="corollary-irreducible-poly"/>, each <m>g_i(x)</m> is irreducible in <m>D[x]</m>. Consequently, we can write
-                        <me>a_1 \cdots a_n p(x) = b_1 \cdots b_n g_1(x) \cdots g_n(x).</me>
-                    Let <m>b = b_1 \cdots b_n</m>. Since <m>g_1(x) \cdots g_n(x)</m> is primitive, <m>a_1 \cdots a_n</m> divides <m>b</m>. Therefore, <m>p(x) = a g_1(x) \cdots g_n(x)</m>, where <m>a \in D</m>. Since <m>D</m> is a <acro>UFD</acro>, we can factor <m>a</m> as <m>u c_1 \cdots c_k</m>, where <m>u</m> is a unit and each of the <m>c_i</m>'s is irreducible in <m>D</m>.</p>
-                    
-                    <p>We will now show the uniqueness of this factorization. Let
-                        <me>p(x) = a_1 \cdots a_m f_1(x) \cdots f_n(x) = b_1 \cdots b_r g_1(x) \cdots g_s(x)</me>
-                    be two factorizations of <m>p(x)</m>, where all of the factors are irreducible in <m>D[x]</m>. By Corollary<nbsp/><xref ref="corollary-irreducible-poly"/>, each of the <m>f_i</m>'s and <m>g_i</m>'s is irreducible in <m>F[x]</m>. The <m>a_i</m>'s and the <m>b_i</m>'s are units in <m>F</m>. Since <m>F[x]</m> is a <acro>PID</acro>, it is a <acro>UFD</acro>; therefore, <m>n=s</m>. Now rearrange the <m>g_i(x)</m>'s so that <m>f_i(x)</m> and <m>g_i(x)</m> are associates for <m>i = 1, \ldots, n</m>.  Then there exist <m>c_1, \ldots, c_n</m> and <m>d_1, \ldots, d_n</m> in <m>D</m> such that <m>(c_i / d_i) f_i(x) = g_i(x)</m> or <m>c_i f_i(x) = d_i g_i(x)</m>. The polynomials <m>f_i(x)</m> and <m>g_i(x)</m> are primitive; hence, <m>c_i</m> and <m>d_i</m> are associates in <m>D</m>. Thus, <m>a_1 \cdots a_m = u b_1 \cdots b_r</m> in <m>D</m>, where <m>u</m> is a unit in <m>D</m>. Since <m>D</m> is a unique factorization domain, <m>m = s</m>. Finally, we can reorder the <m>b_i</m>'s so that <m>a_i</m> and <m>b_i</m> are associates for each <m>i</m>. This completes the uniqueness part of the proof.</p>
-                </proof>
-            </theorem>
+    <corollary xml:id="corollary-char-zero-rationals">
+      <statement>
+        <p>
+          Let <m>F</m> be a field of characteristic zero.
+          Then <m>F</m> contains a subfield isomorphic to <m>{\mathbb Q}</m>.
+        </p>
+      </statement>
+    </corollary>
 
-            <p>The theorem that we have just proven has several obvious but important corollaries.</p>
+    <corollary xml:id="corollary-char-p-zp">
+      <statement>
+        <p>
+          Let <m>F</m> be a field of characteristic <m>p</m>.
+          Then <m>F</m> contains a subfield isomorphic to <m>{\mathbb Z}_p</m>.
+        </p>
+      </statement>
+    </corollary>
+  </section>
 
-            <corollary>
-                <statement>
-                    <p>Let <m>F</m> be a field. Then <m>F[x]</m> is a <acro>UFD</acro>.</p>
-                </statement>
-            </corollary>
+  <section xml:id="section-factorization-domains">
+    <title>Factorization in Integral Domains</title>
+    <introduction>
+      <p>
+        The building blocks of the integers are the prime numbers.
+        If <m>F</m> is a field,
+        then irreducible polynomials in <m>F[x]</m> play a role that is very similar to that of the prime numbers in the ring of integers.
+        Given an arbitrary integral domain,
+        we are led to the following series of definitions.
+      </p>
 
-            <corollary xml:id="corollary-integer-poly-ufd">
-                <statement>
-                    <p>The ring of polynomials over the integers, <m>{\mathbb Z}[x]</m>, is a <acro>UFD</acro>.</p>
-                </statement>
-            </corollary>
+      <p>
+        Let <m>R</m> be a commutative ring with identity,
+        and let <m>a</m> and <m>b</m> be elements in <m>R</m>.
+        We say that <m>a</m> <term>divides</term> <m>b</m>,
+        and write <m>a \mid b</m>,
+        if there exists an element <m>c \in R</m> such that <m>b = ac</m>.
+        A <term>unit</term>
+            <idx><h>Unit</h></idx>
+        in <m>R</m> is an element that has a multiplicative inverse.
+        Two elements <m>a</m> and <m>b</m> in <m>R</m> are said to be <term>associates</term>
+            <idx><h>Element</h><h>associate</h></idx>
+            <idx><h>Associate elements</h></idx>
+        if there exists a unit <m>u</m> in <m>R</m> such that <m>a = ub</m>.
+      </p>
 
-            <corollary>
-                <statement>
-                    <p>Let <m>D</m> be a <acro>UFD</acro>. Then <m>D[x_1, \ldots, x_n]</m> is a <acro>UFD</acro>.</p>
-                </statement>
-            </corollary>
+      <p>
+        Let <m>D</m> be an integral domain.
+        A nonzero element <m>p \in D</m> that is not a unit is said to be
+        <term>irreducible</term><idx><h>Element</h><h>irreducible</h></idx>
+            <idx><h>Irreducible element</h></idx>
+        provided that whenever <m>p = ab</m>,
+        either <m>a</m> or <m>b</m> is a unit.
+        Furthermore, <m>p</m> is <term>prime</term>
+            <idx><h>Prime element</h></idx>
+            <idx><h>Element</h><h>prime</h></idx>
+        if whenever <m>p \mid ab</m> either <m>p \mid a</m> or <m>p \mid b</m>.
+      </p>
 
-            <remark>
-                <p>It is important to notice that every Euclidean domain is a <acro>PID</acro> and every <acro>PID</acro> is a <acro>UFD</acro>. However, as demonstrated by our examples, the converse of each of these statements fails. There are principal ideal domains that are not Euclidean domains, and there are unique factorization domains that are not principal ideal domains (<m>{\mathbb Z}[x]</m>). </p>
-            </remark>
+      <example xml:id="example-domains-q-xy">
+        <p>
+          It is important to notice that prime and irreducible elements do not always coincide.
+          Let <m>R</m> be the subring
+          (with identity)
+          of <m>{\mathbb Q}[x, y]</m> generated by <m>x^2</m>,
+          <m>y^2</m>, and <m>xy</m>.
+          Each of these elements is irreducible in <m>R</m>;
+          however, <m>xy</m> is not prime,
+          since <m>xy</m> divides <m>x^2 y^2</m> but does not divide either <m>x^2</m> or <m>y^2</m>.
+        </p>
+      </example>
+            <!-- We are assuming that R is an integral domain and contains 1.  TWJ 8/9/2012 -->
+      <p>
+        The Fundamental Theorem of Arithmetic states that every positive integer <m>n \gt 1</m> can be factored into a product of prime numbers <m>p_1 \cdots p_k</m>,
+        where the <m>p_i</m>'s are not necessarily distinct.
+        We also know that such factorizations are unique up to the order of the <m>p_i</m>'s.
+        We can easily extend this result to the integers.
+        The question arises of whether or not such factorizations are possible in other rings.
+        Generalizing this definition,
+        we say an integral domain <m>D</m> is a
+        <term>unique factorization domain</term>,<idx><h>Unique factorization domain (<acro>UFD</acro>)</h></idx><idx><h>Domain</h><h>unique factorization</h></idx> or
+        <term><acro>UFD</acro></term>,
+        if <m>D</m> satisfies the following criteria.
+
+        <ol>
+          <li>
+            <p>
+              Let <m>a \in D</m> such that
+              <m>a \neq 0</m> and <m>a</m> is not a unit.
+              Then <m>a</m> can be written as the product of irreducible elements in <m>D</m>.
+            </p>
+          </li>
+<!-- Definition corrected thanks to Pascal Honore - TWJ 9/10/2010 -->
+          <li>
+            <p>
+              Let <m>a = p_1 \cdots p_r = q_1 \cdots q_s</m>,
+              where the <m>p_i</m>'s and the <m>q_i</m>'s are irreducible.
+              Then <m>r=s</m> and there is a
+              <m>\pi \in S_r</m> such that <m>p_i</m> and
+              <m>q_{\pi(j)}</m> are associates for <m>j = 1, \ldots, r</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+
+      <example xml:id="example-domains-z-ufd">
+        <p>
+          The integers are a unique factorization domain by the Fundamental Theorem of Arithmetic.
+        </p>
+      </example>
+
+      <example xml:id="example-domains-not-a-ufd">
+        <p>
+          Not every integral domain is a unique factorization domain.
+          The subring <m>{\mathbb Z}[ \sqrt{3}\, i ] = \{ a + b \sqrt{3}\, i\}</m> of the complex numbers is an integral domain (Exercise<nbsp/><xref ref="exercise-rings-gaussian"/>, Chapter<nbsp/><xref ref="rings"/>).
+          Let <m>z = a + b \sqrt{3}\, i</m> and define
+          <m>\nu : {\mathbb Z}[ \sqrt{3}\, i ] \rightarrow {\mathbb N} \cup \{ 0 \}</m> by <m>\nu( z) = |z|^2 = a^2 + 3 b^2</m>.
+          It is clear that <m>\nu(z) \geq 0</m> with equality when <m>z = 0</m>.
+          Also, from our knowledge of complex numbers we know that <m>\nu(z w) = \nu(z) \nu(w)</m>.
+          It is easy to show that if
+          <m>\nu(z) = 1</m>, then <m>z</m> is a unit,
+          and that the only units of
+          <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> are <m>1</m> and <m>-1</m>.
+        </p>
+
+        <p>
+          We claim that <m>4</m> has two distinct factorizations into irreducible elements:
+          <me>
+            4 = 2 \cdot 2 = (1 - \sqrt{3}\, i) (1 + \sqrt{3}\, i)
+          </me>.
+          We must show that each of these factors is an irreducible element in <m>{\mathbb Z}[ \sqrt{3}\, i ]</m>.
+          If <m>2</m> is not irreducible,
+          then <m>2 = z w</m> for elements
+          <m>z,
+          w</m> in <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> where <m>\nu( z) = \nu(w) = 2</m>.
+          However, there does not exist an element in <m>z</m> in
+          <m>{\mathbb Z}[\sqrt{3}\, i ]</m> such that <m>\nu(z) = 2</m> because the equation
+          <m>a^2 + 3 b^2 = 2</m> has no integer solutions.
+          Therefore, <m>2</m> must be irreducible.
+          A similar argument shows that both
+          <m>1 - \sqrt{3}\, i</m> and <m>1 + \sqrt{3}\, i</m> are irreducible.
+          Since <m>2</m> is not a unit multiple of either
+          <m>1 - \sqrt{3}\, i</m> or <m>1 + \sqrt{3}\, i</m>,
+          <m>4</m> has at least two distinct factorizations into irreducible elements.
+        </p>
+      </example>
+    </introduction>
+
+    <subsection xml:id="domains-subsection-pids">
+      <title>Principal Ideal Domains</title>
+      <p>
+        Let <m>R</m> be a commutative ring with identity.
+        Recall that a principal ideal generated by <m>a \in R</m> is an ideal of the form <m>\langle a \rangle = \{ ra : r \in R \}</m>.
+        An integral domain in which every ideal is principal is called a
+        <term>principal ideal domain</term>,<idx><h>Principal ideal domain (<acro>PID</acro>)</h></idx><idx><h>Domain</h><h>principal ideal</h></idx> or
+        <term><acro>PID</acro></term>.
+      </p>
+
+      <lemma xml:id="lemma-principal-ideal">
+        <statement>
+          <p>
+            Let <m>D</m> be an integral domain and let <m>a, b \in D</m>.
+            Then
+
+            <ol>
+              <li>
+                <p>
+                  <m>a \mid b</m> if and only if <m>\langle b \rangle \subset \langle a \rangle</m>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <m>a</m> and <m>b</m> are associates if and only if <m>\langle b \rangle = \langle a \rangle</m>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <m>a</m> is a unit in <m>D</m> if and only if <m>\langle a \rangle = D</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            (1) Suppose that <m>a \mid b</m>.
+            Then <m>b = ax</m> for some <m>x \in D</m>.
+            Hence, for every <m>r</m> in <m>D</m>,
+            <m>br =(ax)r = a(xr)</m> and <m>\langle b \rangle \subset \langle a \rangle</m>.
+            Conversely, suppose that <m>\langle b \rangle \subset \langle a \rangle</m>.
+            Then <m>b \in \langle a \rangle</m>.
+            Consequently, <m>b =a x</m> for some <m>x \in D</m>.
+            Thus, <m>a \mid b</m>.
+          </p>
+
+          <p>
+            (2) Since <m>a</m> and <m>b</m> are associates,
+            there exists a unit <m>u</m> such that <m>a = u b</m>.
+            Therefore, <m>b \mid a</m> and <m>\langle a \rangle \subset \langle b \rangle</m>.
+            Similarly, <m>\langle b \rangle \subset \langle a \rangle</m>.
+            It follows that <m>\langle a \rangle = \langle b \rangle</m>.
+            Conversely, suppose that <m>\langle a \rangle = \langle b \rangle</m>.
+            By part (1), <m>a \mid b</m> and <m>b \mid a</m>.
+            Then <m>a = bx</m> and <m>b = ay</m> for some <m>x, y \in D</m>.
+            Therefore, <m>a = bx = ayx</m>.
+            Since <m>D</m> is an integral domain, <m>x y = 1</m>;
+            that is, <m>x</m> and <m>y</m> are units and <m>a</m> and <m>b</m> are associates.
+          </p>
+
+          <p>
+            (3) An element <m>a \in D</m> is a unit if and only if <m>a</m> is an associate of <m>1</m>.
+            However, <m>a</m> is an associate of <m>1</m> if and only if <m>\langle a \rangle = \langle 1 \rangle = D</m>.
+          </p>
+        </proof>
+      </lemma>
+
+      <theorem>
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>PID</acro> and
+            <m>\langle p \rangle</m> be a nonzero ideal in <m>D</m>.
+            Then <m>\langle p \rangle</m> is a maximal ideal if and only if <m>p</m> is irreducible.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Suppose that <m>\langle p \rangle</m> is a maximal ideal.
+            If some element <m>a</m> in <m>D</m> divides <m>p</m>,
+            then <m>\langle p \rangle \subset \langle a \rangle</m>.
+            Since <m>\langle p \rangle</m> is maximal,
+            either <m>D = \langle a \rangle</m> or <m>\langle p \rangle = \langle a \rangle</m>.
+            Consequently,
+            either <m>a</m> and <m>p</m> are associates or <m>a</m> is a unit.
+            Therefore, <m>p</m> is irreducible.
+          </p>
+
+          <p>
+            Conversely, let <m>p</m> be irreducible.
+            If <m>\langle a \rangle</m> is an ideal in <m>D</m> such that
+            <m>\langle p \rangle \subset \langle a \rangle \subset D</m>,
+            then <m>a \mid p</m>.
+            Since <m>p</m> is irreducible,
+            either <m>a</m> must be a unit or <m>a</m> and <m>p</m> are associates.
+            Therefore, either <m>D = \langle a \rangle</m> or <m>\langle p \rangle = \langle a \rangle</m>.
+            Thus, <m>\langle p \rangle</m> is a maximal ideal.
+          </p>
+        </proof>
+      </theorem>
+
+      <corollary xml:id="corollary-irreducible-pid">
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>PID</acro>.
+            If <m>p</m> is irreducible, then <m>p</m> is prime.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>p</m> be irreducible and suppose that <m>p \mid ab</m>.
+            Then <m>\langle ab \rangle \subset \langle p \rangle</m>.
+            By Corollary<nbsp/><xref ref="corollary-maximal-ideal"/>, since <m>\langle p \rangle</m> is a maximal ideal,
+            <m>\langle p \rangle</m> must also be a prime ideal.
+            Thus, either <m>a \in \langle p \rangle</m> or <m>b \in \langle p \rangle</m>.
+            Hence, either <m>p \mid a </m> or <m>p \mid b</m>.
+          </p>
+        </proof>
+      </corollary>
+
+      <lemma xml:id="lemma-acc">
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>PID</acro>.
+            Let <m>I_1, I_2, \ldots</m> be a set of ideals such that <m>I_1 \subset I_2 \subset \cdots</m>.
+            Then there exists an integer <m>N</m> such that
+            <m>I_n = I_N</m> for all <m>n \geq N</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            We claim that <m>I= \bigcup_{i = 1}^\infty I_i</m> is an ideal of <m>D</m>.
+            Certainly <m>I</m> is not empty,
+            since <m>I_1 \subset I</m> and <m>0 \in I</m>.
+            If <m>a, b \in I</m>, then <m>a \in I_i</m> and
+            <m>b \in I_j</m> for some <m>i</m> and <m>j</m> in <m>{\mathbb N}</m>.
+            Without loss of generality we can assume that <m>i \leq j</m>.
+            Hence, <m>a</m> and <m>b</m> are both in <m>I_j</m> and so <m>a - b</m> is also in <m>I_j</m>.
+            Now let <m>r \in D</m> and <m>a \in I</m>.
+            Again, we note that <m>a \in I_i</m> for some positive integer <m>i</m>.
+            Since <m>I_i</m> is an ideal,
+            <m>ra \in I_i</m> and hence must be in <m>I</m>.
+            Therefore, we have shown that <m>I</m> is an ideal in <m>D</m>.
+          </p>
+            <!-- Typo corrected.  Suggested by C. Wall.  TWJ 2/16/2012 -->
+          <p>
+            Since <m>D</m> is a principal ideal domain,
+            there exists an element <m>\overline{a} \in D</m> that generates <m>I</m>.
+            Since <m>\overline{a}</m> is in <m>I_N</m> for some <m>N \in {\mathbb N}</m>,
+            we know that <m>I_N = I = \langle \overline{a} \rangle</m>.
+            Consequently, <m>I_n = I_N</m> for <m>n \geq N</m>.
+          </p>
+        </proof>
+      </lemma>
+
+      <p>
+        Any commutative ring satisfying the condition in Lemma<nbsp/><xref ref="lemma-acc"/> is said to satisfy the
+        <term>ascending chain condition</term>,<idx><h>Ascending chain condition</h></idx> or <term>ACC</term>.
+        Such rings are called <term>Noetherian rings</term>,
+            <idx><h>Ring</h><h>Noetherian</h></idx>
+        after Emmy Noether.
+      </p>
+
+      <theorem>
+        <statement>
+          <p>
+            Every <acro>PID</acro> is a <acro>UFD</acro>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            <em>Existence of a factorization.</em>
+            Let <m>D</m> be a <acro>PID</acro> and <m>a</m> be a nonzero element in <m>D</m> that is not a unit.
+            If <m>a</m> is irreducible, then we are done.
+            If not, then there exists a factorization <m>a = a_1 b_1</m>,
+            where neither <m>a_1</m> nor <m>b_1</m> is a unit.
+            Hence, <m>\langle a \rangle \subset \langle a_1 \rangle</m>.
+            By Lemma<nbsp/><xref ref="lemma-principal-ideal"/>,
+            we know that <m>\langle a \rangle \neq \langle a_1 \rangle</m>;
+            otherwise, <m>a</m> and <m>a_1</m> would be associates and <m>b_1</m> would be a unit,
+            which would contradict our assumption.
+            Now suppose that <m>a_1 =  a_2 b_2</m>,
+            where neither <m>a_2</m> nor <m>b_2</m> is a unit.
+            By the same argument as before,
+            <m>\langle a_1 \rangle \subset \langle a_2 \rangle</m>.
+            We can continue with this construction to obtain an ascending chain of ideals
+            <me>
+              \langle a \rangle \subset \langle a_1 \rangle \subset \langle a_2 \rangle \subset \cdots
+            </me>.
+            By Lemma<nbsp/><xref ref="lemma-acc"/>,
+            there exists a positive integer <m>N</m> such that
+            <m>\langle a_n \rangle = \langle a_N \rangle</m> for all <m>n \geq N</m>.
+            Consequently, <m>a_N</m> must be irreducible.
+            We have now shown that <m>a</m> is the product of two elements,
+            one of which must be irreducible.
+          </p>
+            <!-- Label repaired.  Suggested by R. Beezer. -->
+            <!-- TWJ 12/19/2011 -->
+          <p>
+            Now suppose that <m>a = c_1 p_1</m>,
+            where <m>p_1</m> is irreducible.
+            If <m>c_1</m> is not a unit,
+            we can repeat the preceding argument to conclude that <m>\langle a \rangle \subset \langle c_1 \rangle</m>.
+            Either <m>c_1</m> is irreducible or <m>c_1 = c_2 p_2</m>,
+            where <m>p_2</m> is irreducible and <m>c_2</m> is not a unit.
+            Continuing in this manner, we obtain another chain of ideals
+            <me>
+              \langle a \rangle \subset \langle c_1 \rangle \subset \langle c_2 \rangle \subset \cdots
+            </me>.
+            This chain must satisfy the ascending chain condition;
+            therefore,
+            <me>
+              a = p_1 p_2 \cdots p_r
+            </me>
+            for irreducible elements <m>p_1, \ldots, p_r</m>.
+          </p>
+
+          <p>
+            <em>Uniqueness of the factorization.</em> To show uniqueness, let
+            <me>
+              a = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s
+            </me>,
+            where each <m>p_i</m> and each <m>q_i</m> is irreducible.
+            Without loss of generality, we can assume that <m>r \lt s</m>.
+            Since <m>p_1</m> divides <m>q_1 q_2 \cdots q_s</m>,
+            by Corollary<nbsp/><xref ref="corollary-irreducible-pid"/> it must divide some <m>q_i</m>.
+            By rearranging the <m>q_i</m>'s, we can assume that <m>p_1 \mid q_1</m>;
+            hence, <m>q_1 = u_1 p_1</m> for some unit <m>u_1</m> in <m>D</m>.
+            Therefore,
+            <me>
+              a = p_1 p_2 \cdots p_r = u_1 p_1 q_2 \cdots q_s
+            </me>
+            or
+            <me>
+              p_2 \cdots p_r = u_1 q_2 \cdots q_s
+            </me>.
+            Continuing in this manner,
+            we can arrange the <m>q_i</m>'s such that <m>p_2 = q_2, p_3 = q_3, \ldots,
+            p_r = q_r</m>,
+            to obtain
+            <me>
+              u_1 u_2 \cdots u_r q_{r + 1} \cdots q_s = 1
+            </me>.
+            In this case <m>q_{r + 1} \cdots q_s</m> is a unit,
+            which contradicts the fact that <m>q_{r + 1}, \ldots, q_s</m> are irreducibles.
+            Therefore, <m>r = s</m> and the factorization of <m>a</m> is unique.
+          </p>
+        </proof>
+      </theorem>
+            <!-- Label repaired.  Suggested by R. Beezer. -->
+            <!-- TWJ - 12/19/2011 -->
+      <corollary>
+        <statement>
+          <p>
+            Let <m>F</m> be a field.
+            Then <m>F[x]</m> is a <acro>UFD</acro>.
+          </p>
+        </statement>
+      </corollary>
+
+      <example xml:id="example-domains-zx-ufd">
+        <p>
+          Every <acro>PID</acro> is a <acro>UFD</acro>,
+          but it is not the case that every <acro>UFD</acro> is a <acro>PID</acro>.
+          In Corollary<nbsp/><xref ref="corollary-integer-poly-ufd"/>,
+          we will prove that <m>{\mathbb Z}[x]</m> is a <acro>UFD</acro>.
+          However, <m>{\mathbb Z}[x]</m> is not a <acro>PID</acro>.
+          Let <m>I = \{ 5 f(x) + x g(x) : f(x),
+          g(x) \in {\mathbb Z}[x] \}</m>.
+          We can easily show that <m>I</m> is an ideal of <m>{\mathbb Z}[x]</m>.
+          Suppose that <m>I = \langle p(x) \rangle</m>.
+          Since <m>5 \in I</m>, <m>5 = f(x) p(x)</m>.
+          In this case <m>p(x) = p</m> must be a constant.
+          Since <m>x \in I</m>, <m>x = p g(x)</m>;
+          consequently, <m>p = \pm 1</m>.
+          However, it follows from this fact that <m>\langle p(x) \rangle = {\mathbb Z}[x]</m>.
+          But this would mean that <m>3</m> is in <m>I</m>.
+          Therefore, we can write <m>3 = 5 f(x) + x g(x)</m> for some <m>f(x)</m> and <m>g(x)</m> in <m>{\mathbb Z}[x]</m>.
+          Examining the constant term of this polynomial,
+          we see that <m>3 = 5 f(x)</m>, which is impossible.
+        </p>
+      </example>
+    </subsection>
+
+    <subsection xml:id="domains-subsection-euclidean-domains">
+      <title>Euclidean Domains</title>
+      <p>
+        We have repeatedly used the division algorithm when proving results about either <m>{\mathbb Z}</m> or <m>F[x]</m>,
+        where <m>F</m> is a field.
+        We should now ask when a division algorithm is available for an integral domain.
+      </p>
+
+      <p>
+        Let <m>D</m> be an integral domain such that for each <m>a \in D</m> there is a nonnegative integer <m>\nu(a)</m> satisfying the following conditions.
+
+        <notation>
+          <usage>\nu(a)</usage>
+          <description>Euclidean valuation of <m>a</m></description>
+        </notation>
+
+        <ol>
+          <li>
+            <p>
+              If <m>a</m> and <m>b</m> are nonzero elements in <m>D</m>,
+              then <m>\nu(a) \leq \nu(ab)</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Let <m>a, b \in D</m> and suppose that <m>b \neq 0</m>.
+              Then there exist elements <m>q,
+              r \in D</m> such that <m>a = bq + r</m> and either <m>r = 0</m> or <m>\nu(r) \lt \nu(b)</m>.
+            </p>
+          </li>
+        </ol>
+
+        Then <m>D</m> is called a <term>Euclidean domain</term>
+            <idx><h>Euclidean domain</h></idx>
+            <idx><h>Domain</h><h>Euclidean</h></idx>
+        and <m>\nu</m> is called a <term>Euclidean valuation</term>.
+            <idx><h>Euclidean valuation</h></idx>
+      </p>
+
+      <example xml:id="example-domains-abs-value">
+        <p>
+          Absolute value on <m>{\mathbb Z}</m> is a Euclidean valuation.
+        </p>
+      </example>
+
+      <example xml:id="example-domains-deg-poly-field-valuation">
+        <p>
+          Let <m>F</m> be a field.
+          Then the degree of a polynomial in <m>F[x]</m> is a Euclidean valuation.
+        </p>
+      </example>
+
+      <example xml:id="example-domains-gaussian-valuation">
+        <p>
+          Recall that the Gaussian integers in Example<nbsp/><xref ref="example-rings-gaussian-integers"/> of Chapter<nbsp/><xref ref="rings"/> are defined by
+          <me>
+            {\mathbb Z}[i] = \{  a + b i : a, b \in {\mathbb Z} \}
+          </me>.
+          We usually measure the size of a complex number <m>a + bi</m> by its absolute value,
+          <m>|a + bi| = \sqrt{ a^2 + b^2}</m>;
+          however, <m>\sqrt{a^2 + b^2}</m> may not be an integer.
+          For our valuation we will let
+          <m>\nu(a + bi) = a^2 + b^2</m> to ensure that we have an integer.
+        </p>
+
+        <p>
+          We claim that <m>\nu( a+ bi) = a^2 + b^2</m> is a Euclidean valuation on <m>{\mathbb Z}[i]</m>.
+          Let <m>z, w \in {\mathbb Z}[i]</m>.
+          Then <m>\nu( zw) = |zw|^2 = |z|^2 |w|^2 = \nu(z) \nu(w)</m>.
+          Since <m>\nu(z) \geq 1</m> for every nonzero <m>z \in {\mathbb Z}[i]</m>,
+          <m>\nu( z) \leq \nu(z) \nu(w)</m>.
+        </p>
+            <!-- correction to last sentence.  Suggested by R. Beezer. -->
+            <!-- TWJ 2/6/2013 -->
+        <p>
+          Next, we must show that for any <m>z= a+bi</m> and <m>w = c+di</m> in
+          <m>{\mathbb Z}[i]</m> with <m>w \neq 0</m>,
+          there exist elements <m>q</m> and <m>r</m> in  <m>{\mathbb Z}[i]</m> such that
+          <m>z = qw + r</m> with either <m>r=0</m> or  <m>\nu(r) \lt \nu(w)</m>.
+          We can view <m>z</m> and <m>w</m> as elements in <m>{\mathbb Q}(i) = \{ p + qi : p, q \in {\mathbb Q} \}</m>,
+          the field of fractions of <m>{\mathbb Z}[i]</m>.
+          Observe that
+          <md>
+            <mrow>z w^{-1} &amp; = (a +b i) \frac{c -d i}{c^2 + d^2}</mrow>
+            <mrow>&amp; = \frac{ac + b d}{c^2 + d^2} + \frac{b c -ad}{c^2 + d^2}i</mrow>
+            <mrow>&amp; = \left( m_1 + \frac{n_1}{c^2 + d^2} \right) + \left( m_2 + \frac{n_2}{c^2 + d^2} \right) i</mrow>
+            <mrow>&amp; = (m_1 + m_2 i) + \left( \frac{n_1}{c^2 + d^2} + \frac{n_2}{c^2 + d^2}i \right)</mrow>
+            <mrow>&amp; = (m_1 + m_2 i) + (s + ti)</mrow>
+          </md>
+          in <m>{\mathbb Q}(i)</m>.
+          In the last steps we are writing the real and imaginary parts as an integer plus a proper fraction.
+          That is, we take the closest integer <m>m_i</m> such that the fractional part satisfies <m>|n_i / (a^2 + b^2)| \leq 1/2</m>.
+          For example, we write
+          <md>
+            <mrow>\frac{9}{8} &amp; = 1 + \frac{1}{8}</mrow>
+            <mrow>\frac{15}{8} &amp; = 2 - \frac{1}{8}</mrow>
+          </md>.
+          Thus, <m>s</m> and <m>t</m> are the
+          <q>fractional parts</q>
+          of <m>z w^{-1} = (m_1 + m_2 i) + (s + ti)</m>.
+          We also know that <m>s^2 + t^2 \leq 1/4 + 1/4 = 1/2</m>.
+          Multiplying by <m>w</m>, we have
+          <me>
+            z = z w^{-1} w = w (m_1 + m_2 i) + w (s + ti)  = q w + r
+          </me>,
+          where <m>q = m_1 + m_2 i</m> and <m>r =  w (s + ti)</m>.
+          Since <m>z</m> and <m>qw</m> are in <m>{\mathbb Z}[i]</m>,
+          <m>r</m> must be in <m>{\mathbb Z}[i]</m>.
+          Finally, we need to show that either <m>r = 0</m> or <m>\nu(r) \lt \nu(w)</m>.
+          However,
+          <me>
+            \nu(r) = \nu(w) \nu(s + ti) \leq \frac{1}{2} \nu(w) \lt \nu(w)
+          </me>.
+        </p>
+      </example>
+
+      <theorem>
+        <statement>
+          <p>
+            Every Euclidean domain is a principal ideal domain.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>D</m> be a Euclidean domain and let <m>\nu</m> be a Euclidean valuation on <m>D</m>.
+            Suppose <m>I</m> is a nontrivial ideal in <m>D</m> and choose a nonzero element <m>b \in I</m> such that <m>\nu(b)</m> is minimal for all <m>a \in I</m>.
+            Since <m>D</m> is a Euclidean domain,
+            there exist elements <m>q</m> and <m>r</m> in <m>D</m> such that
+            <m>a = bq + r</m> and either <m>r = 0</m> or <m>\nu(r) \lt \nu(b)</m>.
+            But <m>r = a - bq</m> is in <m>I</m> since <m>I</m> is an ideal;
+            therefore, <m>r = 0</m> by the minimality of <m>b</m>.
+            It follows that <m>a = bq</m> and <m>I = \langle b \rangle</m>.
+          </p>
+        </proof>
+      </theorem>
+
+      <corollary>
+        <statement>
+          <p>
+            Every Euclidean domain is a unique factorization domain.
+          </p>
+        </statement>
+      </corollary>
+    </subsection>
+
+    <subsection xml:id="domains-subsection-factorization">
+      <title>Factorization in <m>D\lbrack x \rbrack</m></title>
+      <p>
+        One of the most important polynomial rings is <m>{\mathbb Z}[x]</m>.
+        One of the first questions that come to mind about
+        <m>{\mathbb Z}[x]</m> is whether or not it is a <acro>UFD</acro>.
+        We will prove a more general statement here.
+        Our first task is to obtain a more general version of Gauss's Lemma (Theorem<nbsp/><xref ref="theorem-gauss-lemma"/>).
+      </p>
+
+      <p>
+        Let <m>D</m> be a unique factorization domain and suppose that
+        <me>
+          p(x) = a_n x^n + \cdots + a_1 x + a_0
+        </me>
+        in <m>D[x]</m>.
+        Then the <term>content</term><idx><h>Polynomial</h><h>content of</h></idx> of <m>p(x)</m> is the greatest common divisor of <m>a_0, \ldots, a_n</m>.
+        We say that <m>p(x)</m> is <term>primitive</term>
+            <idx><h>Primitive polynomial</h></idx>
+            <idx><h>Polynomial</h><h>primitive</h></idx>
+        if <m>\gcd(a_0, \ldots, a_n ) = 1</m>.
+      </p>
+            <!-- Typo corrected.  Suggested by Nathan Lander. -->
+            <!-- TWJ 2/13/2012 -->
+      <example xml:id="example-domains-poly-gcd">
+        <p>
+          In <m>{\mathbb Z}[x]</m> the polynomial
+          <m>p(x)= 5 x^4 - 3 x^3 + x -4</m> is a primitive polynomial since the greatest common divisor of the coefficients is <m>1</m>;
+          however, the polynomial <m>q(x) = 4 x^2 - 6 x + 8</m> is not primitive since the content of <m>q(x)</m> is <m>2</m>.
+        </p>
+      </example>
+
+      <theorem xml:id="theorem-domains-gauss-lemma">
+        <title>Gauss's Lemma</title>
+        <idx>
+        <h>Gauss's Lemma</h>
+        </idx>
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro> and let <m>f(x)</m> and <m>g(x)</m> be primitive polynomials in <m>D[x]</m>.
+            Then <m>f(x) g(x)</m> is primitive.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>f(x) = \sum_{i=0}^{m} a_i x^i</m> and <m>g(x) = \sum_{i=0}^{n} b_i x^i</m>.
+            Suppose that <m>p</m> is a prime dividing the coefficients of <m>f(x) g(x)</m>.
+            Let <m>r</m> be the smallest integer such that
+            <m>p \notdivide a_r</m> and <m>s</m> be the smallest integer such that <m>p \notdivide b_s</m>.
+            The coefficient of <m>x^{r+s}</m> in <m>f(x) g(x)</m> is
+            <me>
+              c_{r + s} = a_0 b_{r + s} + a_1 b_{r + s - 1} + \cdots + a_{r + s - 1} b_1 + a_{r + s} b_0
+            </me>.
+            Since <m>p</m> divides <m>a_0, \ldots,
+            a_{r-1}</m> and <m>b_0, \ldots, b_{s-1}</m>,
+            <m>p</m> divides every term of <m>c_{r+s}</m> except for the term <m>a_r b_s</m>.
+            However, since <m>p \mid c_{r+s}</m>,
+            either <m>p</m> divides <m>a_r</m> or <m>p</m> divides <m>b_s</m>.
+            But this is impossible.
+          </p>
+        </proof>
+      </theorem>
+
+      <lemma>
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro>,
+            and let <m>p(x)</m> and <m>q(x)</m> be in <m>D[x]</m>.
+            Then the content of <m>p(x) q(x)</m> is equal to the product of the contents of <m>p(x)</m> and <m>q(x)</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>p(x) = c p_1(x)</m> and <m>q(x) = d q_1(x)</m>,
+            where <m>c</m> and <m>d</m> are the contents of <m>p(x)</m> and <m>q(x)</m>,
+            respectively.
+            Then <m>p_1(x)</m> and <m>q_1(x)</m> are primitive.
+            We can now write <m>p(x) q(x) = c d p_1(x) q_1(x)</m>.
+            Since <m>p_1(x) q_1(x)</m> is primitive,
+            the content of <m>p(x) q(x)</m> must be <m>cd</m>.
+          </p>
+        </proof>
+      </lemma>
+
+      <lemma xml:id="lemma-ufd-factorization">
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions.
+            Suppose that <m>p(x) \in D[x]</m> and <m>p(x) = f(x) g(x)</m>,
+            where <m>f(x)</m> and <m>g(x)</m> are in <m>F[x]</m>.
+            Then <m>p(x) = f_1(x) g_1(x)</m>,
+            where <m>f_1(x)</m> and <m>g_1(x)</m> are in <m>D[x]</m>.
+            Furthermore,
+            <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>a</m> and <m>b</m> be nonzero elements of <m>D</m> such that <m>a f(x),
+            b g(x)</m> are in <m>D[x]</m>.
+            We can find <m>a_1, b_2 \in D</m> such that
+            <m>a f(x) = a_1 f_1(x)</m> and <m>b g(x) = b_1 g_1(x)</m>,
+            where <m>f_1(x)</m> and <m>g_1(x)</m> are primitive polynomials in <m>D[x]</m>.
+            Therefore, <m>a b p(x) = (a_1 f_1(x))( b_1 g_1(x))</m>.
+            Since <m>f_1(x)</m> and <m>g_1(x)</m> are primitive polynomials,
+            it must be the case that <m>ab \mid a_1 b_1</m> by Gauss's Lemma.
+            Thus there exists a <m>c \in D</m> such that <m>p(x) = c f_1(x) g_1(x)</m>.
+            Clearly, <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.
+          </p>
+        </proof>
+      </lemma>
+
+      <p>
+        The following corollaries are direct consequences of Lemma<nbsp/><xref ref="lemma-ufd-factorization"/>.
+      </p>
+
+      <corollary xml:id="corollary-irreducible-poly">
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions.
+            A primitive polynomial <m>p(x)</m> in <m>D[x]</m> is irreducible in <m>F[x]</m> if and only if it is irreducible in <m>D[x]</m>.
+          </p>
+        </statement>
+      </corollary>
+
+      <corollary>
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro> and <m>F</m> its field of fractions.
+            If <m>p(x)</m> is a monic polynomial in <m>D[x]</m> with <m>p(x) = f(x) g(x)</m> in <m>F[x]</m>,
+            then <m>p(x) = f_1(x) g_1(x)</m>,
+            where <m>f_1(x)</m> and <m>g_1(x)</m> are in <m>D[x]</m>.
+            Furthermore,
+            <m>\deg f(x) = \deg f_1(x)</m> and <m>\deg g(x) = \deg g_1(x)</m>.
+          </p>
+        </statement>
+      </corollary>
+
+      <theorem>
+        <statement>
+          <p>
+            If <m>D</m> is a <acro>UFD</acro>,
+            then <m>D[x]</m> is a <acro>UFD</acro>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>p(x)</m> be a nonzero polynomial in <m>D[x]</m>.
+            If <m>p(x)</m> is a constant polynomial,
+            then it must have a unique factorization since <m>D</m> is a <acro>UFD</acro>.
+            Now suppose that <m>p(x)</m> is a polynomial of positive degree in <m>D[x]</m>.
+            Let <m>F</m> be the field of fractions of <m>D</m>,
+            and let <m>p(x) = f_1(x) f_2(x) \cdots f_n(x)</m> by a factorization of <m>p(x)</m>,
+            where each <m>f_i(x)</m> is irreducible.
+            Choose <m>a_i \in D</m> such that <m>a_i f_i(x)</m> is in <m>D[x]</m>.
+            There exist <m>b_1, \ldots,
+            b_n \in D</m> such that <m>a_i f_i(x) = b_i g_i(x)</m>,
+            where <m>g_i(x)</m> is a primitive polynomial in <m>D[x]</m>.
+            By Corollary<nbsp/><xref ref="corollary-irreducible-poly"/>, each <m>g_i(x)</m> is irreducible in <m>D[x]</m>.
+            Consequently, we can write
+            <me>
+              a_1 \cdots a_n p(x) = b_1 \cdots b_n g_1(x) \cdots g_n(x)
+            </me>.
+            Let <m>b = b_1 \cdots b_n</m>.
+            Since <m>g_1(x) \cdots g_n(x)</m> is primitive,
+            <m>a_1 \cdots a_n</m> divides <m>b</m>.
+            Therefore, <m>p(x) = a g_1(x) \cdots g_n(x)</m>, where <m>a \in D</m>.
+            Since <m>D</m> is a <acro>UFD</acro>,
+            we can factor <m>a</m> as <m>u c_1 \cdots c_k</m>,
+            where <m>u</m> is a unit and each of the <m>c_i</m>'s is irreducible in <m>D</m>.
+          </p>
+
+          <p>
+            We will now show the uniqueness of this factorization.
+            Let
+            <me>
+              p(x) = a_1 \cdots a_m f_1(x) \cdots f_n(x) = b_1 \cdots b_r g_1(x) \cdots g_s(x)
+            </me>
+            be two factorizations of <m>p(x)</m>,
+            where all of the factors are irreducible in <m>D[x]</m>.
+            By Corollary<nbsp/><xref ref="corollary-irreducible-poly"/>,
+            each of the <m>f_i</m>'s and <m>g_i</m>'s is irreducible in <m>F[x]</m>.
+            The <m>a_i</m>'s and the <m>b_i</m>'s are units in <m>F</m>.
+            Since <m>F[x]</m> is a <acro>PID</acro>, it is a <acro>UFD</acro>;
+            therefore, <m>n=s</m>.
+            Now rearrange the <m>g_i(x)</m>'s so that <m>f_i(x)</m> and <m>g_i(x)</m> are associates for <m>i = 1, \ldots, n</m>.
+            Then there exist <m>c_1, \ldots,
+            c_n</m> and <m>d_1, \ldots,
+            d_n</m> in <m>D</m> such that
+            <m>(c_i / d_i) f_i(x) = g_i(x)</m> or <m>c_i f_i(x) = d_i g_i(x)</m>.
+            The polynomials <m>f_i(x)</m> and <m>g_i(x)</m> are primitive;
+            hence, <m>c_i</m> and <m>d_i</m> are associates in <m>D</m>.
+            Thus, <m>a_1 \cdots a_m = u b_1 \cdots b_r</m> in <m>D</m>,
+            where <m>u</m> is a unit in <m>D</m>.
+            Since <m>D</m> is a unique factorization domain, <m>m = s</m>.
+            Finally, we can reorder the <m>b_i</m>'s so that <m>a_i</m> and <m>b_i</m> are associates for each <m>i</m>.
+            This completes the uniqueness part of the proof.
+          </p>
+        </proof>
+      </theorem>
+
+      <p>
+        The theorem that we have just proven has several obvious but important corollaries.
+      </p>
+
+      <corollary>
+        <statement>
+          <p>
+            Let <m>F</m> be a field.
+            Then <m>F[x]</m> is a <acro>UFD</acro>.
+          </p>
+        </statement>
+      </corollary>
+
+      <corollary xml:id="corollary-integer-poly-ufd">
+        <statement>
+          <p>
+            The ring of polynomials over the integers,
+            <m>{\mathbb Z}[x]</m>, is a <acro>UFD</acro>.
+          </p>
+        </statement>
+      </corollary>
+
+      <corollary>
+        <statement>
+          <p>
+            Let <m>D</m> be a <acro>UFD</acro>.
+            Then <m>D[x_1, \ldots, x_n]</m> is a <acro>UFD</acro>.
+          </p>
+        </statement>
+      </corollary>
+
+      <remark>
+        <p>
+          It is important to notice that every Euclidean domain is a <acro>PID</acro> and every <acro>PID</acro> is a <acro>UFD</acro>.
+          However, as demonstrated by our examples,
+          the converse of each of these statements fails.
+          There are principal ideal domains that are not Euclidean domains,
+          and there are unique factorization domains that are not principal ideal domains
+          (<m>{\mathbb Z}[x]</m>).
+        </p>
+      </remark>
             <!-- This file is part of the book                 -->
             <!--                                               -->
             <!--   Abstract Algebra: Theory and Applications   -->
             <!--                                               -->
             <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
             <!-- See the file COPYING for copying conditions.  -->
-            <paragraphs>
-                <title>Sage</title>
-                <p>Sage supports distinctions between <q>plain</q> rings, domains, principal ideal domains and fields.  Support is often very good for constructions and computations with PID's, but sometimes problems get significantly harder (computationally) when a ring has less structure that that of a PID.  So be aware when using Sage that some questions may go unanswered for rings with less structure.</p>
-            </paragraphs>
-        </subsection>
+      <paragraphs>
+        <title>Sage</title>
+        <p>
+          Sage supports distinctions between
+          <q>plain</q> rings, domains,
+          principal ideal domains and fields.
+          Support is often very good for constructions and computations with PID's, but sometimes problems get significantly harder (computationally) when a ring has less structure that that of a PID. So be aware when using Sage that some questions may go unanswered for rings with less structure.
+        </p>
+      </paragraphs>
 
-        <subsection xml:id="domains-subsection-historical-note">
-            <title>Historical Note</title>
-            <p>Karl Friedrich Gauss<idx><h>Gauss, Karl Friedrich</h></idx>, born in Brunswick, Germany on April 30, 1777, is considered to be one of the greatest mathematicians who ever lived. Gauss was truly a child prodigy. At the age of three he was able to detect errors in the books of his father's business. Gauss entered college at the age of 15. Before the age of 20, Gauss was able to construct a regular <m>17</m>-sided polygon with a ruler and compass. This was the first new construction of a regular <m>n</m>-sided polygon since the time of the ancient Greeks.  Gauss succeeded in showing that if <m>N= 2^{2^n} + 1</m> was prime, then it was possible to construct a regular <m>N</m>-sided polygon.</p>
-            
-            <p>Gauss obtained his Ph.D. in 1799 under the direction of Pfaff at the University of Helmstedt. In his dissertation he gave the first complete proof of the Fundamental Theorem of Algebra, which states that every polynomial with real coefficients can be factored into linear factors over the complex numbers. The acceptance of complex numbers was brought about by Gauss, who was the first person to use the notation of <m>i</m> for <m>\sqrt{-1}</m>.</p>
-            
-            <p>Gauss then turned his attention toward number theory; in 1801, he published his famous book on number theory, <em>Disquisitiones Arithmeticae</em>. Throughout his life Gauss was intrigued with this branch of mathematics. He once wrote, <q>Mathematics is the queen of the sciences, and the theory of numbers is the queen of mathematics.</q></p>
-            
-            <p>In 1807, Gauss was appointed director of the Observatory at the University of Göttingen, a position he held until his death. This position required him to study applications of mathematics to the sciences. He succeeded in making contributions to fields such as astronomy, mechanics, optics, geodesy, and magnetism. Along with Wilhelm Weber, he coinvented the first practical electric telegraph some years before a better version was invented by Samuel F. B. Morse.</p>
-            
-            <p>Gauss was clearly the most prominent mathematician in the world in the early nineteenth century. His status naturally made his discoveries subject to intense scrutiny. Gauss's cold and distant personality many times led him to ignore the work of his contemporaries, making him many enemies. He did not enjoy teaching very much, and young mathematicians who sought him out for encouragement were often rebuffed. Nevertheless, he had many outstanding students, including Eisenstein, Riemann, Kummer, Dirichlet, and Dedekind. Gauss also offered a great deal of encouragement to Sophie Germain (1776<ndash/>1831), who overcame the many obstacles facing women in her day to become a very prominent mathematician. Gauss died at the age of 78 in Göttingen on February 23, 1855.</p>
-        </subsection>
-    </section>
+    </subsection>
+
+    <subsection xml:id="domains-subsection-historical-note">
+      <title>Historical Note</title>
+      <p>
+        Karl Friedrich Gauss,
+            <idx><h>Gauss, Karl Friedrich</h></idx>
+        born in Brunswick, Germany on April 30, 1777,
+        is considered to be one of the greatest mathematicians who ever lived.
+        Gauss was truly a child prodigy.
+        At the age of three he was able to detect errors in the books of his father's business.
+        Gauss entered college at the age of 15.
+        Before the age of 20, Gauss was able to construct a regular <m>17</m>-sided polygon with a ruler and compass.
+        This was the first new construction of a regular <m>n</m>-sided polygon since the time of the ancient Greeks.
+        Gauss succeeded in showing that if <m>N= 2^{2^n} + 1</m> was prime,
+        then it was possible to construct a regular <m>N</m>-sided polygon.
+      </p>
+
+      <p>
+        Gauss obtained his Ph.D. in 1799 under the direction of Pfaff at the University of Helmstedt.
+        In his dissertation he gave the first complete proof of the Fundamental Theorem of Algebra,
+        which states that every polynomial with real coefficients can be factored into linear factors over the complex numbers.
+        The acceptance of complex numbers was brought about by Gauss,
+        who was the first person to use the notation of <m>i</m> for <m>\sqrt{-1}</m>.
+      </p>
+
+      <p>
+        Gauss then turned his attention toward number theory;
+        in 1801, he published his famous book on number theory,
+        <em>Disquisitiones Arithmeticae</em>.
+        Throughout his life Gauss was intrigued with this branch of mathematics.
+        He once wrote, <q>Mathematics is the queen of the sciences,
+        and the theory of numbers is the queen of mathematics.</q>
+      </p>
+
+      <p>
+        In 1807, Gauss was appointed director of the Observatory at the University of Göttingen,
+        a position he held until his death.
+        This position required him to study applications of mathematics to the sciences.
+        He succeeded in making contributions to fields such as astronomy,
+        mechanics,
+        optics, geodesy, and magnetism.
+        Along with Wilhelm Weber,
+        he coinvented the first practical electric telegraph some years before a better version was invented by Samuel F. B. Morse.
+      </p>
+
+      <p>
+        Gauss was clearly the most prominent mathematician in the world in the early nineteenth century.
+        His status naturally made his discoveries subject to intense scrutiny.
+        Gauss's cold and distant personality many times led him to ignore the work of his contemporaries,
+        making him many enemies.
+        He did not enjoy teaching very much,
+        and young mathematicians who sought him out for encouragement were often rebuffed.
+        Nevertheless, he had many outstanding students,
+        including Eisenstein, Riemann, Kummer, Dirichlet, and Dedekind.
+        Gauss also offered a great deal of encouragement to Sophie Germain (1776<ndash/>1831),
+        who overcame the many obstacles facing women in her day to become a very prominent mathematician.
+        Gauss died at the age of 78 in Göttingen on February 23, 1855.
+      </p>
+    </subsection>
+
+  </section>
     <!-- Exercises with Solutions  -->
     <!-- File: domains.xml  -->
     <!-- Title: Integral Domains -->
-    <exercises xml:id="exercises-domains" filenamebase="domains">
-        <title>Exercises</title>
-        <exercise number="1">
-            <statement>
-                <p>Let <m>z = a + b \sqrt{3}\, i</m> be in <m>{\mathbb Z}[ \sqrt{3}\, i]</m>. If <m>a^2 + 3 b^2 = 1</m>, show that <m>z</m> must be a unit. Show that the only units of <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> are <m>1</m> and <m>-1</m>. </p>
-            </statement>
-            <hint>
-                <p>Note that <m>z^{-1} = 1/(a + b\sqrt{3}\, i) = (a -b \sqrt{3}\, i)/(a^2 + 3b^2)</m> is in <m>{\mathbb Z}[\sqrt{3}\, i]</m> if and only if <m>a^2 + 3 b^2 = 1</m>. The only integer solutions to the equation are <m>a = \pm 1, b = 0</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="2">
-            <statement>
-                <p>The Gaussian integers, <m>{\mathbb Z}[i]</m>, are a <acro>UFD</acro>.  Factor each of the following elements in <m>{\mathbb Z}[i]</m> into a product of irreducibles.
-                    <ol cols="2">
-                        <li><p><m>5</m></p></li>
-                        <li><p><m>1 + 3i</m></p></li>
-                        <li><p><m>6 + 8i</m></p></li>
-                        <li><p><m>2</m></p></li>
-                    </ol></p>
-            </statement>
-            <hint>
-                <p>(a) <m>5 = -i(1 + 2i)(2 + i)</m>; (c) <m>6 + 8i = -i(1 + i)^2(2 + i)^2</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="3">
-            <statement>
-                <p>Let <m>D</m> be an integral domain. 
-                    <ol>
-                        <li><p>Prove that <m>F_D</m> is an abelian group under the operation of addition.</p></li>
-                        <li><p>Show that the operation of multiplication is well-defined in the field of fractions, <m>F_D</m>.</p></li>
-                        <li><p>Verify the associative and commutative properties for multiplication in <m>F_D</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <exercise number="4">
-            <statement>
-                <p>Prove or disprove: Any subring of a field <m>F</m> containing <m>1</m> is an integral domain.</p>
-            </statement>
-            <hint>
-                <p>True.</p>
-            </hint>
-        </exercise>
-        <exercise number="5">
-            <statement>
-                <p>Prove or disprove: If <m>D</m> is an integral domain, then every prime element in <m>D</m> is also irreducible in <m>D</m>.</p>
-            </statement>
-        </exercise>
-        <todo>Check this solution.</todo>
-        <exercise number="6">
-            <statement>
-                <p>Let <m>F</m> be a field of characteristic zero. Prove that <m>F</m> contains a subfield isomorphic to <m>{\mathbb Q}</m>.</p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="7">
-            <statement>
-                <p>Let <m>F</m> be a field.
-                    <ol>
-                        <li><p>Prove that the field of fractions of <m>F[x]</m>, denoted by <m>F(x)</m>, is isomorphic to the set all rational expressions <m>p(x) / q(x)</m>, where <m>q(x)</m> is not the zero polynomial. <notation><usage>F(x)</usage><description>field of rational functions in <m>x</m></description></notation></p></li>
-                        <li><p>Let <m>p(x_1, \ldots, x_n)</m> and <m>q(x_1, \ldots, x_n)</m> be polynomials in <m>F[x_1, \ldots, x_n]</m>. Show that the set of all rational expressions <m>p(x_1, \ldots, x_n) / q(x_1, \ldots, x_n)</m> is isomorphic to the field of fractions of <m>F[x_1, \ldots, x_n]</m>. We denote the field of fractions of <m>F[x_1, \ldots, x_n]</m> by <m>F(x_1, \ldots, x_n)</m>.  <notation><usage>F(x_1, \dots, x_n)</usage><description>field of rational functions in <m>x_1, \ldots, x_n</m></description></notation></p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="8">
-            <statement>
-                <p>Let <m>p</m> be prime and denote the field of fractions of <m>{\mathbb Z}_p[x]</m> by <m>{\mathbb Z}_p(x)</m>. Prove that <m>{\mathbb Z}_p(x)</m> is an infinite field of characteristic <m>p</m>.</p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="9">
-            <statement>
-                <p>Prove that the field of fractions of the Gaussian integers, <m>{\mathbb Z}[i]</m>, is 
-                    <me>{\mathbb Q}(i) = \{ p + q i : p, q \in {\mathbb Q}  \}.</me></p>
-            </statement>
-            <hint>
-                <p>Let <m>z = a + bi</m> and <m>w = c + di \neq 0</m> be in <m>{\mathbb Z}[i]</m>. Prove that <m>z/w \in {\mathbb Q}(i)</m>.</p>
-            </hint>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="10">
-            <statement>
-                <p>A field <m>F</m> is called a <term>prime field</term> if it has no proper subfields. If <m>E</m> is a subfield of <m>F</m> and <m>E</m> is a prime field, then <m>E</m> is a <term>prime subfield</term> of <m>F</m>. 
-                    <ol>
-                        <li><p>Prove that every field contains a unique prime subfield.</p></li>
-                        <li><p>If <m>F</m> is a field of characteristic 0, prove that the prime subfield of <m>F</m> is isomorphic to the field of rational numbers, <m>{\mathbb Q}</m>.</p></li>
-                        <li><p>If <m>F</m> is a field of characteristic <m>p</m>, prove that the prime subfield of <m>F</m> is isomorphic to  <m>{\mathbb Z}_p</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="11">
-            <statement>
-                <p>Let <m>{\mathbb Z}[ \sqrt{2}\, ] = \{ a + b \sqrt{2} : a, b \in {\mathbb Z} \}</m>. 
-                    <ol>
-                        <li><p>Prove that <m>{\mathbb Z}[ \sqrt{2}\, ]</m> is an integral domain.</p></li>
-                        <li><p>Find all of the units in <m>{\mathbb Z}[\sqrt{2}\, ]</m>.</p></li>
-                        <li><p>Determine the field of fractions of <m>{\mathbb Z}[ \sqrt{2}\, ]</m>.</p></li>
-                        <li><p>Prove that  <m>{\mathbb Z}[ \sqrt{2} i ]</m> is a Euclidean domain under the Euclidean valuation <m>\nu( a + b \sqrt{2}\, i) = a^2 + 2b^2</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="12">
-            <statement>
-                <p>Let <m>D</m> be a <acro>UFD</acro>. An element <m>d \in D</m> is a <term>greatest common divisor of <m>a</m> and <m>b</m> in <m>D</m></term> if <m>d \mid a</m> and <m>d \mid b</m> and <m>d</m> is divisible by any other element dividing both <m>a</m> and <m>b</m>.  
-                    <ol>
-                        <li><p>If <m>D</m> is a <acro>PID</acro> and <m>a</m> and <m>b</m> are both nonzero elements of <m>D</m>, prove there exists a unique greatest common divisor of <m>a</m> and <m>b</m> up to associates. That is, if <m>d</m> and <m>d'</m> are both greatest common divisors of <m>a</m> and <m>b</m>, then <m>d</m> and <m>d'</m> are associates. We write <m>\gcd( a, b)</m> for the greatest common divisor of <m>a</m> and <m>b</m>.</p></li>
-                        <li><p>Let <m>D</m> be a <acro>PID</acro> and <m>a</m> and <m>b</m> be nonzero elements of <m>D</m>. Prove that there exist elements <m>s</m> and <m>t</m> in <m>D</m> such that <m>\gcd(a, b) = as + bt</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="13">
-            <statement>
-                <p>Let <m>D</m> be an integral domain. Define a relation on <m>D</m> by <m>a \sim b</m> if <m>a</m> and <m>b</m> are associates in <m>D</m>. Prove that <m>\sim</m> is an equivalence relation on <m>D</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="14">
-            <statement>
-                <p>Let <m>D</m> be a Euclidean domain with Euclidean valuation <m>\nu</m>. If <m>u</m> is a unit in <m>D</m>, show that <m>\nu(u) = \nu(1)</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="15">
-            <statement>
-                <p>Let <m>D</m> be a Euclidean domain with Euclidean valuation <m>\nu</m>. If <m>a</m> and <m>b</m> are associates in <m>D</m>, prove that <m>\nu(a) = \nu(b)</m>.</p>
-            </statement>
-            <hint>
-                <p>Let <m>a = ub</m> with <m>u</m> a unit. Then <m>\nu(b) \leq \nu(ub) \leq \nu(a)</m>. Similarly, <m>\nu(a) \leq \nu(b)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="16">
-            <statement>
-                <p>Show that <m>{\mathbb Z}[\sqrt{5}\, i]</m> is not a unique factorization domain.</p>
-            </statement>
-            <hint>
-                <p>Show that 21 can be factored in two different ways.</p>
-            </hint>
-        </exercise>
-        <todo>Complete the solution.</todo>
-        <exercise number="17">
-            <statement>
-                <p>Prove or disprove: Every subdomain of a <acro>UFD</acro> is also a <acro>UFD</acro>.</p>
-            </statement>
-        </exercise>
-        <exercise number="18">
-            <statement>
-                <p>An ideal of a commutative ring <m>R</m> is said to be <term>finitely generated</term> if there exist elements <m>a_1, \ldots, a_n</m> in <m>R</m> such that every element <m>r \in R</m> can be written as <m>a_1 r_1 + \cdots + a_n r_n</m> for some <m>r_1, \ldots, r_n</m> in <m>R</m>. Prove that <m>R</m> satisfies the ascending chain condition if and only if every ideal of <m>R</m> is finitely generated.</p>
-            </statement>
-        </exercise>
-        <exercise number="19">
-            <statement>
-                <p>Let <m>D</m> be an integral domain with a descending chain of ideals <m>I_1 \supset I_2 \supset I_3 \supset \cdots</m>. Suppose that there exists an <m>N</m> such that <m>I_k = I_N</m> for all <m>k \geq N</m>. A ring satisfying this condition is said to satisfy the <term>descending chain condition</term>, or <term>DCC</term>. Rings satisfying the DCC are called <term>Artinian rings</term>, after Emil Artin. Show that if <m>D</m> satisfies the descending chain condition, it must satisfy the ascending chain condition.</p>
-            </statement>
-        </exercise>
-        <exercise number="20">
-            <statement>
-                <p>Let <m>R</m> be a commutative ring with identity. We define a <term>multiplicative subset</term> of <m>R</m> to be a subset <m>S</m> such that <m>1 \in S</m> and <m>ab \in S</m> if <m>a, b \in S</m>. 
-                    <ol>
-                        <li><p>Define a relation <m>\sim</m> on <m>R \times S</m> by <m>(a, s) \sim (a', s')</m> if there exists an <m>s^\ast \in S</m> such that <m>s^\ast(s' a -s a') = 0</m>. Show that <m>\sim</m> is an equivalence relation on <m>R \times S</m>.</p></li>
-                        <li><p>Let <m>a/s</m> denote the equivalence class of <m>(a,s) \in R \times S</m> and let <m> S^{-1}R</m> be the set of all equivalence classes with respect to <m>\sim</m>. Define the operations of addition and multiplication on <m>S^{-1} R</m> by
-                            <md>
-                                <mrow>\frac{a}{s} + \frac{b}{t} &amp; = \frac{at + b s}{s t}</mrow>
-                                <mrow>\frac{a}{s}  \frac{b}{t} &amp; = \frac{a b}{s t},</mrow>
-                            </md>
-                        respectively. Prove that these operations are well-defined on <m>S^{-1}R</m> and that <m>S^{-1}R</m> is a ring with identity under these operations. The ring <m>S^{-1}R</m> is called the <term>ring of quotients</term> of <m>R</m> with respect to <m>S</m>.</p></li>
-                        <li><p>Show that the map <m>\psi : R \rightarrow S^{-1}R</m> defined by <m>\psi(a) = a/1</m> is a ring homomorphism.</p></li>
-                        <li><p>If <m>R</m> has no zero divisors and <m>0 \notin S</m>, show that <m>\psi</m> is one-to-one.</p></li>
-                        <li><p>Prove that <m>P</m> is a prime ideal of <m>R</m> if and only if <m>S = R \setminus P</m> is a multiplicative subset of <m>R</m>.</p></li>
-                        <li><p>If <m>P</m> is a prime ideal of <m>R</m> and <m>S = R \setminus P</m>, show that the ring of quotients <m>S^{-1}R</m> has a unique maximal ideal. Any ring that has a unique maximal ideal is called a <term>local ring</term>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-    </exercises>
-    <references xml:id="domains-references">
-        <title>References and Suggested Readings</title>
-        <biblio type="raw"><!-- was [1] --><!-- Reference updated - TWJ 8/14/2010 -->
-        Atiyah, M. F.  and MacDonald, I. G. <title>Introduction to Commutative Algebra</title>. Westview Press, Boulder, CO, 1994.</biblio>
-        <biblio type="raw"><!-- was [2] --><!-- Reference updated - TWJ 8/14/2010 -->
-        Zariski, O. and Samuel, P. <title>Commutative Algebra</title>, vols. I and II. Springer, New York, 1975, 1960.</biblio>
-    </references>
+  <exercises xml:id="exercises-domains" filenamebase="domains">
+    <title>Exercises</title>
+    <exercise number="1">
+      <statement>
+        <p>
+          Let <m>z = a + b \sqrt{3}\, i</m> be in <m>{\mathbb Z}[ \sqrt{3}\, i]</m>.
+          If <m>a^2 + 3 b^2 = 1</m>, show that <m>z</m> must be a unit.
+          Show that the only units of
+          <m>{\mathbb Z}[ \sqrt{3}\, i ]</m> are <m>1</m> and <m>-1</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Note that <m>z^{-1} = 1/(a + b\sqrt{3}\, i) = (a -b \sqrt{3}\, i)/(a^2 + 3b^2)</m> is in
+          <m>{\mathbb Z}[\sqrt{3}\, i]</m> if and only if <m>a^2 + 3 b^2 = 1</m>.
+          The only integer solutions to the equation are <m>a = \pm 1, b = 0</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="2">
+      <statement>
+        <p>
+          The Gaussian integers, <m>{\mathbb Z}[i]</m>, are a <acro>UFD</acro>.
+          Factor each of the following elements in
+          <m>{\mathbb Z}[i]</m> into a product of irreducibles.
+
+          <ol cols="2">
+            <li>
+              <p>
+                <m>5</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>1 + 3i</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>6 + 8i</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>2</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>5 = -i(1 + 2i)(2 + i)</m>; (c) <m>6 + 8i = -i(1 + i)^2(2 + i)^2</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="3">
+      <statement>
+        <p>
+          Let <m>D</m> be an integral domain.
+
+          <ol>
+            <li>
+              <p>
+                Prove that <m>F_D</m> is an abelian group under the operation of addition.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Show that the operation of multiplication is well-defined in the field of fractions,
+                <m>F_D</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Verify the associative and commutative properties for multiplication in <m>F_D</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="4">
+      <statement>
+        <p>
+          Prove or disprove: Any subring of a field <m>F</m> containing <m>1</m> is an integral domain.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          True.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="5">
+      <statement>
+        <p>
+          Prove or disprove: If <m>D</m> is an integral domain,
+          then every prime element in <m>D</m> is also irreducible in <m>D</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Check this solution.</todo>
+
+    <exercise number="6">
+      <statement>
+        <p>
+          Let <m>F</m> be a field of characteristic zero.
+          Prove that <m>F</m> contains a subfield isomorphic to <m>{\mathbb Q}</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="7">
+      <statement>
+        <p>
+          Let <m>F</m> be a field.
+
+          <ol>
+            <li>
+              <p>
+                Prove that the field of fractions of <m>F[x]</m>, denoted by <m>F(x)</m>,
+                is isomorphic to the set all rational expressions <m>p(x) / q(x)</m>,
+                where <m>q(x)</m> is not the zero polynomial.
+
+                <notation>
+                  <usage>F(x)</usage>
+                  <description>field of rational functions in <m>x</m></description>
+                </notation>
+
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <m>p(x_1, \ldots, x_n)</m> and
+                <m>q(x_1, \ldots,
+                x_n)</m> be polynomials in <m>F[x_1, \ldots, x_n]</m>.
+                Show that the set of all rational expressions
+                <m>p(x_1, \ldots, x_n) / q(x_1, \ldots,
+                x_n)</m> is isomorphic to the field of fractions of <m>F[x_1, \ldots,
+                x_n]</m>.
+                We denote the field of fractions of
+                <m>F[x_1, \ldots,
+                x_n]</m> by <m>F(x_1, \ldots, x_n)</m>.
+
+                <notation>
+                  <usage>F(x_1, \dots, x_n)</usage>
+                  <description>field of rational functions in <m>x_1, \ldots, x_n</m></description>
+                </notation>
+
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="8">
+      <statement>
+        <p>
+          Let <m>p</m> be prime and denote the field of fractions of
+          <m>{\mathbb Z}_p[x]</m> by <m>{\mathbb Z}_p(x)</m>.
+          Prove that <m>{\mathbb Z}_p(x)</m> is an infinite field of characteristic <m>p</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="9">
+      <statement>
+        <p>
+          Prove that the field of fractions of the Gaussian integers,
+          <m>{\mathbb Z}[i]</m>, is
+          <me>
+            {\mathbb Q}(i) = \{ p + q i : p, q \in {\mathbb Q}  \}
+          </me>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Let <m>z = a + bi</m> and <m>w = c + di \neq 0</m> be in <m>{\mathbb Z}[i]</m>.
+          Prove that <m>z/w \in {\mathbb Q}(i)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="10">
+      <statement>
+        <p>
+          A field <m>F</m> is called a <term>prime field</term>
+          if it has no proper subfields.
+          If <m>E</m> is a subfield of <m>F</m> and <m>E</m> is a prime field,
+          then <m>E</m> is a <term>prime subfield</term> of <m>F</m>.
+
+          <ol>
+            <li>
+              <p>
+                Prove that every field contains a unique prime subfield.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>F</m> is a field of characteristic 0, prove that the prime subfield of <m>F</m> is isomorphic to the field of rational numbers,
+                <m>{\mathbb Q}</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>F</m> is a field of characteristic <m>p</m>,
+                prove that the prime subfield of <m>F</m> is isomorphic to <m>{\mathbb Z}_p</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="11">
+      <statement>
+        <p>
+          Let <m>{\mathbb Z}[ \sqrt{2}\, ] = \{ a + b \sqrt{2} : a, b \in {\mathbb Z} \}</m>.
+
+          <ol>
+            <li>
+              <p>
+                Prove that <m>{\mathbb Z}[ \sqrt{2}\, ]</m> is an integral domain.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Find all of the units in <m>{\mathbb Z}[\sqrt{2}\, ]</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Determine the field of fractions of <m>{\mathbb Z}[ \sqrt{2}\, ]</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Prove that <m>{\mathbb Z}[ \sqrt{2} i ]</m> is a Euclidean domain under the Euclidean valuation <m>\nu( a + b \sqrt{2}\, i) = a^2 + 2b^2</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="12">
+      <statement>
+        <p>
+          Let <m>D</m> be a <acro>UFD</acro>.
+          An element <m>d \in D</m> is a <term>greatest common divisor of <m>a</m> and <m>b</m> in <m>D</m></term>
+          if <m>d \mid a</m> and <m>d \mid b</m> and <m>d</m> is divisible by any other element dividing both <m>a</m> and <m>b</m>.
+
+          <ol>
+            <li>
+              <p>
+                If <m>D</m> is a <acro>PID</acro> and <m>a</m> and <m>b</m> are both nonzero elements of <m>D</m>,
+                prove there exists a unique greatest common divisor of <m>a</m> and <m>b</m> up to associates.
+                That is, if <m>d</m> and <m>d'</m> are both greatest common divisors of <m>a</m> and <m>b</m>,
+                then <m>d</m> and <m>d'</m> are associates.
+                We write <m>\gcd( a, b)</m> for the greatest common divisor of <m>a</m> and <m>b</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <m>D</m> be a <acro>PID</acro> and <m>a</m> and <m>b</m> be nonzero elements of <m>D</m>.
+                Prove that there exist elements <m>s</m> and <m>t</m> in <m>D</m> such that <m>\gcd(a, b) = as + bt</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="13">
+      <statement>
+        <p>
+          Let <m>D</m> be an integral domain.
+          Define a relation on <m>D</m> by
+          <m>a \sim b</m> if <m>a</m> and <m>b</m> are associates in <m>D</m>.
+          Prove that <m>\sim</m> is an equivalence relation on <m>D</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="14">
+      <statement>
+        <p>
+          Let <m>D</m> be a Euclidean domain with Euclidean valuation <m>\nu</m>.
+          If <m>u</m> is a unit in <m>D</m>,
+          show that <m>\nu(u) = \nu(1)</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="15">
+      <statement>
+        <p>
+          Let <m>D</m> be a Euclidean domain with Euclidean valuation <m>\nu</m>.
+          If <m>a</m> and <m>b</m> are associates in <m>D</m>,
+          prove that <m>\nu(a) = \nu(b)</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Let <m>a = ub</m> with <m>u</m> a unit.
+          Then <m>\nu(b) \leq \nu(ub) \leq \nu(a)</m>.
+          Similarly, <m>\nu(a) \leq \nu(b)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="16">
+      <statement>
+        <p>
+          Show that <m>{\mathbb Z}[\sqrt{5}\, i]</m> is not a unique factorization domain.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Show that 21 can be factored in two different ways.
+        </p>
+      </hint>
+    </exercise>
+
+    <todo>Complete the solution.</todo>
+
+    <exercise number="17">
+      <statement>
+        <p>
+          Prove or disprove: Every subdomain of a <acro>UFD</acro> is also a <acro>UFD</acro>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="18">
+      <statement>
+        <p>
+          An ideal of a commutative ring <m>R</m> is said to be
+          <term>finitely generated</term>
+          if there exist elements <m>a_1, \ldots,
+          a_n</m> in <m>R</m> such that every element <m>r \in R</m> can be written as
+          <m>a_1 r_1 + \cdots + a_n r_n</m> for some <m>r_1, \ldots,
+          r_n</m> in <m>R</m>.
+          Prove that <m>R</m> satisfies the ascending chain condition if and only if every ideal of <m>R</m> is finitely generated.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="19">
+      <statement>
+        <p>
+          Let <m>D</m> be an integral domain with a descending chain of ideals <m>I_1 \supset I_2 \supset I_3 \supset \cdots</m>.
+          Suppose that there exists an <m>N</m> such that
+          <m>I_k = I_N</m> for all <m>k \geq N</m>.
+          A ring satisfying this condition is said to satisfy the
+          <term>descending chain condition</term>, or <term>DCC</term>.
+          Rings satisfying the DCC are called
+          <term>Artinian rings</term>, after Emil Artin.
+          Show that if <m>D</m> satisfies the descending chain condition,
+          it must satisfy the ascending chain condition.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="20">
+      <statement>
+        <p>
+          Let <m>R</m> be a commutative ring with identity.
+          We define a <term>multiplicative subset</term>
+          of <m>R</m> to be a subset <m>S</m> such that <m>1 \in S</m> and
+          <m>ab \in S</m> if <m>a, b \in S</m>.
+
+          <ol>
+            <li>
+              <p>
+                Define a relation <m>\sim</m> on
+                <m>R \times S</m> by <m>(a, s) \sim (a', s')</m> if there exists an
+                <m>s^\ast \in S</m> such that <m>s^\ast(s' a -s a') = 0</m>.
+                Show that <m>\sim</m> is an equivalence relation on <m>R \times S</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <m>a/s</m> denote the equivalence class of <m>(a,s) \in R \times S</m> and let
+                <m> S^{-1}R</m> be the set of all equivalence classes with respect to <m>\sim</m>.
+                Define the operations of addition and multiplication on <m>S^{-1} R</m> by
+                <md>
+                  <mrow>\frac{a}{s} + \frac{b}{t} &amp; = \frac{at + b s}{s t}</mrow>
+                  <mrow>\frac{a}{s}  \frac{b}{t} &amp; = \frac{a b}{s t}</mrow>
+                </md>,
+                respectively.
+                Prove that these operations are well-defined on <m>S^{-1}R</m> and that <m>S^{-1}R</m> is a ring with identity under these operations.
+                The ring <m>S^{-1}R</m> is called the
+                <term>ring of quotients</term>
+                of <m>R</m> with respect to <m>S</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Show that the map <m>\psi : R \rightarrow S^{-1}R</m> defined by
+                <m>\psi(a) = a/1</m> is a ring homomorphism.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>R</m> has no zero divisors and <m>0 \notin S</m>,
+                show that <m>\psi</m> is one-to-one.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Prove that <m>P</m> is a prime ideal of <m>R</m> if and only if
+                <m>S = R \setminus P</m> is a multiplicative subset of <m>R</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>P</m> is a prime ideal of <m>R</m> and <m>S = R \setminus P</m>,
+                show that the ring of quotients <m>S^{-1}R</m> has a unique maximal ideal.
+                Any ring that has a unique maximal ideal is called a <term>local ring</term>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+  <references xml:id="domains-references">
+    <title>References and Suggested Readings</title>
+    <biblio type="raw">
+<!-- was [1] --><!-- Reference updated - TWJ 8/14/2010 -->
+      Atiyah, M. F.  and MacDonald, I. G.
+      <title>Introduction to Commutative Algebra</title>
+      . Westview Press, Boulder, CO, 1994.
+    </biblio>
+
+    <biblio type="raw">
+<!-- was [2] --><!-- Reference updated - TWJ 8/14/2010 -->
+      Zariski, O. and Samuel, P.
+      <title>Commutative Algebra</title>
+      , vols. I and II. Springer, New York, 1975, 1960.
+    </biblio>
+  </references>
     <!-- This file is part of the book                 -->
     <!--                                               -->
     <!--   Abstract Algebra: Theory and Applications   -->
     <!--                                               -->
     <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
     <!-- See the file COPYING for copying conditions.  -->
-    <section xml:id="domains-sage">
-        <title>Sage</title>
-        <introduction>
-            <p>We have already seen some integral domains and unique factorizations in the previous two chapters.  In addition to what we have already seen, Sage has support for some of the topics from this section, but the coverage is limited.  Some functions will work for some rings and not others, while some functions are not yet part of Sage.  So we will give some examples, but this is far from comprehensive.</p>
-        </introduction>
-        <subsection>
-            <title>Field of Fractions</title>
-            <p>Sage is frequently able to construct a field of fractions, or identify a certain field as the field of fractions.  For example, the ring of integers and the field of rational numbers are both implemented in Sage, and the integers <q>know</q> that the rationals is it's field of fractions.</p>
+  <section xml:id="domains-sage">
+    <title>Sage</title>
+    <introduction>
+      <p>
+        We have already seen some integral domains and unique factorizations in the previous two chapters.
+        In addition to what we have already seen, Sage has support for some of the topics from this section,
+        but the coverage is limited.
+        Some functions will work for some rings and not others,
+        while some functions are not yet part of Sage.
+        So we will give some examples,
+        but this is far from comprehensive.
+      </p>
+    </introduction>
+
+    <subsection>
+      <title>Field of Fractions</title>
+      <p>
+        Sage is frequently able to construct a field of fractions,
+        or identify a certain field as the field of fractions.
+        For example,
+        the ring of integers and the field of rational numbers are both implemented in Sage,
+        and the integers <q>know</q> that the rationals is it's field of fractions.
+      </p>
+
             <sage>
                 <input>
         Q = ZZ.fraction_field(); Q
@@ -679,7 +1746,13 @@
         True
         </output>
             </sage>
-            <p>In other cases Sage will construct a fraction field, in the spirit of Lemma<nbsp/><xref ref="lemma-field-of-fractions"/>.  So it is then possible to do basic calculations in the constructed field.</p>
+
+      <p>
+        In other cases Sage will construct a fraction field,
+        in the spirit of Lemma<nbsp/><xref ref="lemma-field-of-fractions"/>.
+        So it is then possible to do basic calculations in the constructed field.
+      </p>
+
             <sage>
                 <input>
         R.&lt;x&gt; = ZZ[]
@@ -708,10 +1781,17 @@
         -42*x^6 + 130*x^5 - 108*x^4 + 63*x^3 - 5*x^2 + 24*x + 48
         </output>
             </sage>
-        </subsection>
-        <subsection>
-            <title>Prime Subfields</title>
-            <p>Corollary<nbsp/><xref ref="corollary-char-p-zp"/> says every field of characteristic <m>p</m> has a subfield isomorphic to <m>{\mathbb Z}_p</m>.  For a finite field, the exact nature of this subfield is not a surprise, but Sage will allow us to extract it easily.</p>
+    </subsection>
+
+    <subsection>
+      <title>Prime Subfields</title>
+      <p>
+        Corollary<nbsp/><xref ref="corollary-char-p-zp"/> says every field of characteristic <m>p</m> has a subfield isomorphic to <m>{\mathbb Z}_p</m>.
+        For a finite field,
+        the exact nature of this subfield is not a surprise,
+        but Sage will allow us to extract it easily.
+      </p>
+
             <sage>
                 <input>
         F.&lt;c&gt; = FiniteField(3^5)
@@ -737,7 +1817,14 @@
         [0, 1, 2]
         </output>
             </sage>
-            <p>More generally, the fields mentioned in the conclusions of Corollary<nbsp/><xref ref="corollary-char-zero-rationals"/> and Corollary<nbsp/><xref ref="corollary-char-p-zp"/> are known as the <q>prime subfield</q> of the ring containing them.  Here is an example of the characteristic zero case.</p>
+
+      <p>
+        More generally,
+        the fields mentioned in the conclusions of Corollary<nbsp/><xref ref="corollary-char-zero-rationals"/> and Corollary<nbsp/><xref ref="corollary-char-p-zp"/> are known as the <q>prime subfield</q>
+        of the ring containing them.
+        Here is an example of the characteristic zero case.
+      </p>
+
             <sage>
                 <input>
         K.&lt;y&gt;=QuadraticField(-7); K
@@ -754,11 +1841,27 @@
         Rational Field
         </output>
             </sage>
-            <p>In a rough sense, every characteristic zero field contains a copy of the rational numbers (the fraction field of the integers), which can explain Sage's extensive support for rings and fields that extend the integers and the rationals.</p>
-        </subsection>
-        <subsection>
-            <title>Integral Domains</title>
-            <p>Sage can determine if some rings are integral domains and we can test products in them.  However, notions of units, irreducibles or prime elements are not generally supported (outside of what we have seen for polynomials in the previous chapter).  Worse, the construction below creates a ring within a larger field and so some functions (such as <c>.is_unit()</c>) pass through and give misleading results.  This is because the construction below creates a ring known as an <q>order in a number field.</q></p>
+
+      <p>
+        In a rough sense,
+        every characteristic zero field contains a copy of the rational numbers
+        (the fraction field of the integers),
+        which can explain Sage's extensive support for rings and fields that extend the integers and the rationals.
+      </p>
+    </subsection>
+
+    <subsection>
+      <title>Integral Domains</title>
+      <p>
+        Sage can determine if some rings are integral domains and we can test products in them.
+        However, notions of units,
+        irreducibles or prime elements are not generally supported
+        (outside of what we have seen for polynomials in the previous chapter).
+        Worse, the construction below creates a ring within a larger field and so some functions (such as <c>.is_unit()</c>) pass through and give misleading results.
+        This is because the construction below creates a ring known as an
+        <q>order in a number field.</q>
+      </p>
+
             <sage>
                 <input>
         K.&lt;x&gt; = ZZ[sqrt(-3)]; K
@@ -795,7 +1898,13 @@
         True
         </output>
             </sage>
-            <p>The following is a bit misleading, since <m>4</m>, as an element of <m>{\mathbb Z}[\sqrt{3}i]</m> does not have a multiplicative inverse, though seemingly we can compute one.</p>
+
+      <p>
+        The following is a bit misleading, since <m>4</m>,
+        as an element of <m>{\mathbb Z}[\sqrt{3}i]</m> does not have a multiplicative inverse,
+        though seemingly we can compute one.
+      </p>
+
             <sage>
                 <input>
         four = K(4)
@@ -813,10 +1922,16 @@
         1/4
         </output>
             </sage>
-        </subsection>
-        <subsection>
-            <title>Principal Ideals</title>
-            <p>When a ring is a principal ideal domain, such as the integers, or polynomials over a field, Sage works well.  Beyond that, support begins to weaken.</p>
+    </subsection>
+
+    <subsection>
+      <title>Principal Ideals</title>
+      <p>
+        When a ring is a principal ideal domain,
+        such as the integers, or polynomials over a field, Sage works well.
+        Beyond that, support begins to weaken.
+      </p>
+
             <sage>
                 <input>
         T.&lt;x&gt;=ZZ[]
@@ -863,18 +1978,23 @@
         NotImplementedError
         </output>
             </sage>
-        </subsection>
-    </section>
+    </subsection>
+
+  </section>
     <!-- This file is part of the book                 -->
     <!--                                               -->
     <!--   Abstract Algebra: Theory and Applications   -->
     <!--                                               -->
     <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
     <!-- See the file COPYING for copying conditions.  -->
-    <exercises xml:id="domains-sage-exercises">
-        <title>Sage Exercises</title>
-        <introduction>
-            <p>There are no Sage exercises for this section.</p>
-        </introduction>
-    </exercises>
+  <exercises xml:id="domains-sage-exercises">
+    <title>Sage Exercises</title>
+    <introduction>
+      <p>
+        There are no Sage exercises for this section.
+      </p>
+    </introduction>
+
+  </exercises>
 </chapter>
+

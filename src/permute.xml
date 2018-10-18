@@ -6,823 +6,1728 @@
 <!-- Copyright (C) 1997-2018  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 <chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="permute">
-    <title>Permutation Groups</title>
+  <title>Permutation Groups</title>
+  <introduction>
+    <p>
+      Permutation groups are central to the study of geometric symmetries and to Galois theory,
+      the study of finding solutions of polynomial equations.
+      They also provide abundant examples of nonabelian groups.
+    </p>
+
+    <p>
+      Let us recall for a moment the symmetries of the equilateral triangle
+      <m>\bigtriangleup ABC</m> from Chapter<nbsp/><xref ref="groups"/>.
+      The symmetries actually consist of permutations of the three vertices,
+      where a <term>permutation</term><idx><h>Permutation</h><h>definition of</h></idx> of the set
+      <m>S = \{ A, B, C \}</m> is a one-to-one and onto map <m>\pi :S \rightarrow S</m>.
+      The three vertices have the following six permutations.
+      <md>
+        <mrow>\begin{pmatrix}
+        A &amp; B &amp; C \\
+        A &amp; B &amp; C
+        \end{pmatrix}
+        \qquad
+        \begin{pmatrix}
+        A &amp; B &amp; C \\
+        C &amp; A &amp; B
+        \end{pmatrix}
+        \qquad
+        \begin{pmatrix}
+        A &amp; B &amp; C \\
+        B &amp; C &amp; A
+        \end{pmatrix}</mrow>
+        <mrow>\begin{pmatrix}
+        A &amp; B &amp; C \\
+        A &amp; C &amp; B
+        \end{pmatrix}
+        \qquad
+        \begin{pmatrix}
+        A &amp; B &amp; C \\
+        C &amp; B &amp; A
+        \end{pmatrix}
+        \qquad
+        \begin{pmatrix}
+        A &amp; B &amp; C \\
+        B &amp; A &amp; C
+        \end{pmatrix}</mrow>
+      </md>
+    </p>
+
+    <p>
+      We have used the array
+      <me>
+        \begin{pmatrix}
+        A &amp; B &amp; C \\
+        B &amp; C &amp; A
+        \end{pmatrix}
+      </me>
+      to denote the permutation that sends <m>A</m> to <m>B</m>,
+      <m>B</m> to <m>C</m>, and <m>C</m> to <m>A</m>.
+      That is,
+      <md>
+        <mrow>A &amp; \mapsto  B</mrow>
+        <mrow>B &amp; \mapsto  C</mrow>
+        <mrow>C &amp; \mapsto  A</mrow>
+      </md>.
+      The symmetries of a triangle form a group.
+      In this chapter we will study groups of this type.
+    </p>
+  </introduction>
+
+  <section xml:id="section-permutation-definitions">
+    <title>Definitions and Notation</title>
     <introduction>
-        <p>Permutation groups are central to the study of geometric symmetries and to Galois theory, the study of finding solutions of polynomial equations. They also provide abundant examples of nonabelian groups.</p>
-        
-        <p>Let us recall for a moment the symmetries of the equilateral triangle <m>\bigtriangleup ABC</m> from Chapter<nbsp/><xref ref="groups"/>. The symmetries actually consist of permutations of the three vertices, where a <term>permutation</term><idx><h>Permutation</h><h>definition of</h></idx> of the set <m>S = \{ A, B, C \}</m> is a one-to-one and onto map <m>\pi :S \rightarrow S</m>. The three vertices have the following six permutations.
-            <md>
-                <mrow>\begin{pmatrix}
-                A &amp; B &amp; C \\
-                A &amp; B &amp; C
-                \end{pmatrix}
-                \qquad
-                \begin{pmatrix}
-                A &amp; B &amp; C \\
-                C &amp; A &amp; B
-                \end{pmatrix}
-                \qquad
-                \begin{pmatrix}
-                A &amp; B &amp; C \\
-                B &amp; C &amp; A
-                \end{pmatrix}</mrow>
-                <mrow>\begin{pmatrix}
-                A &amp; B &amp; C \\
-                A &amp; C &amp; B
-                \end{pmatrix}
-                \qquad
-                \begin{pmatrix}
-                A &amp; B &amp; C \\
-                C &amp; B &amp; A
-                \end{pmatrix}
-                \qquad
-                \begin{pmatrix}
-                A &amp; B &amp; C \\
-                B &amp; A &amp; C
-                \end{pmatrix}</mrow>
-            </md></p>
-        <p>We have used the array
-            <me>\begin{pmatrix}
-            A &amp; B &amp; C \\
-            B &amp; C &amp; A
-            \end{pmatrix}</me>
-        to denote the permutation that sends <m>A</m> to <m>B</m>, <m>B</m> to <m>C</m>, and <m>C</m> to <m>A</m>. That is,
-            <md>
-                <mrow> A &amp; \mapsto  B</mrow>
-                <mrow> B &amp; \mapsto  C</mrow>
-                <mrow> C &amp; \mapsto  A.</mrow>
-            </md>
-        The symmetries of a triangle form a group. In this chapter we will study groups of this type.</p>
+      <p>
+        In general, the permutations of a set <m>X</m> form a group <m>S_X</m>.
+        If <m>X</m> is a finite set, we can assume <m>X=\{ 1, 2, \ldots, n\}</m>.
+        In this case we write <m>S_n</m> instead of <m>S_X</m>.
+
+        <notation>
+          <usage>S_n</usage>
+          <description>the symmetric group on <m>n</m> letters</description>
+        </notation>
+
+        The following theorem says that <m>S_n</m> is a group.
+        We call this group the <term>symmetric group</term>
+            <idx><h>Group</h><h>symmetric</h></idx>
+        on <m>n</m> letters.
+      </p>
+
+      <theorem>
+        <statement>
+          <p>
+            The symmetric group on <m>n</m> letters, <m>S_n</m>,
+            is a group with <m>n!</m> elements,
+            where the binary operation is the composition of maps.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            The identity of <m>S_n</m> is just the identity map that sends <m>1</m> to <m>1</m>,
+            <m>2</m> to <m>2</m>, <m>\ldots</m>, <m>n</m> to <m>n</m>.
+            If <m>f : S_n \rightarrow S_n</m> is a permutation,
+            then <m>f^{-1}</m> exists, since <m>f</m> is one-to-one and onto;
+            hence, every permutation has an inverse.
+            Composition of maps is associative,
+            which makes the group operation associative.
+            We leave the proof that <m>|S_n|= n!</m> as an exercise.
+          </p>
+        </proof>
+      </theorem>
+
+      <p>
+        A subgroup of <m>S_n</m> is called a
+        <term>permutation group</term>.
+            <idx><h>Group</h><h>permutation</h></idx>
+            <idx><h>Permutation group</h></idx>
+      </p>
+
+      <example xml:id="example-permute-s5">
+        <p>
+          Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>\identity</m> and the permutations
+          <md>
+            <mrow>\sigma
+            &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+            1 &amp; 2 &amp; 3 &amp; 5 &amp; 4
+            \end{pmatrix}</mrow>
+            <mrow>\tau
+            &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+            3 &amp; 2 &amp; 1 &amp; 4 &amp; 5
+            \end{pmatrix}</mrow>
+            <mrow>\mu
+            &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+            3 &amp; 2 &amp; 1 &amp; 5 &amp; 4
+            \end{pmatrix}</mrow>
+          </md>.
+          The following table tells us how to multiply elements in the permutation group <m>G</m>.
+        </p>
+
+        <sidebyside width="100%">
+            <!-- math table -->
+          <p>
+            <me>
+              \begin{array}{c|cccc}
+              \circ &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\ \hline
+              \identity &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
+              \sigma &amp; \sigma &amp; \identity &amp; \mu &amp; \tau \\
+              \tau &amp; \tau &amp; \mu &amp; \identity &amp; \sigma \\
+              \mu &amp; \mu &amp; \tau &amp; \sigma &amp; \identity
+              \end{array}
+            </me>
+          </p>
+        </sidebyside>
+      </example>
+
+      <remark>
+        <p>
+          Though it is natural to multiply elements in a group from left to right,
+          functions are composed from right to left.
+          Let <m>\sigma</m> and <m>\tau</m> be permutations on a set <m>X</m>.
+          To compose <m>\sigma</m> and <m>\tau</m> as functions,
+          we calculate <m>(\sigma \circ \tau)(x) = \sigma( \tau(x))</m>.
+          That is, we do <m>\tau</m> first, then <m>\sigma</m>.
+          There are several ways to approach this inconsistency.
+          <em>We will adopt the convention of multiplying permutations right to left.
+          To compute <m>\sigma \tau</m>,
+          do <m>\tau</m> first and then <m>\sigma</m>.</em> That is,
+          by <m>\sigma \tau (x)</m> we mean
+          <m>\sigma( \tau( x))</m>. (Another way of solving this problem would be to write functions on the right;
+          that is, instead of writing <m>\sigma(x)</m>,
+          we could write <m>(x)\sigma</m>.
+          We could also multiply permutations left to right to agree with the usual way of multiplying elements in a group.
+          Certainly all of these methods have been used.
+        </p>
+      </remark>
+
+      <example xml:id="example-permute-s4-nonabelian">
+        <p>
+          Permutation multiplication is not usually commutative.
+          Let
+          <md>
+            <mrow>\sigma
+            &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 \\
+            4 &amp; 1 &amp; 2 &amp; 3
+            \end{pmatrix}</mrow>
+            <mrow>\tau
+            &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 \\
+            2 &amp; 1 &amp; 4 &amp; 3
+            \end{pmatrix}</mrow>
+          </md>.
+          Then
+          <me>
+            \sigma \tau
+            =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 \\
+            1 &amp; 4 &amp; 3 &amp; 2
+            \end{pmatrix}
+          </me>,
+          but
+          <me>
+            \tau \sigma
+            =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 \\
+            3 &amp; 2 &amp; 1 &amp; 4
+            \end{pmatrix}
+          </me>.
+        </p>
+      </example>
     </introduction>
-    
-    <section xml:id="section-permutation-definitions">
-        <title>Definitions and Notation</title>
-        <introduction>
-            <p>In general, the permutations of a set <m>X</m> form a group <m>S_X</m>. If <m>X</m> is a finite set, we can assume <m>X=\{ 1, 2, \ldots, n\}</m>. In this case we write <m>S_n</m> instead of <m>S_X</m>. <notation><usage>S_n</usage><description>the symmetric group on <m>n</m> letters</description></notation> The following theorem says that <m>S_n</m> is a group. We call this group the <term>symmetric group</term><idx><h>Group</h><h>symmetric</h></idx> on <m>n</m> letters.</p>
-            
-            <theorem>
-                <statement>
-                    <p>The symmetric group on <m>n</m> letters, <m>S_n</m>, is a group with <m>n!</m> elements, where the binary operation is the composition of maps.</p>
-                </statement>
-                <proof>
-                    <p>The identity of <m>S_n</m> is just the identity map that sends <m>1</m> to <m>1</m>, <m>2</m> to <m>2</m>, <m>\ldots</m>, <m>n</m> to <m>n</m>. If <m>f : S_n \rightarrow S_n</m> is a permutation, then <m>f^{-1}</m> exists, since <m>f</m> is one-to-one and onto; hence, every permutation has an inverse. Composition of maps is associative, which makes the group operation associative. We leave the proof that <m>|S_n|= n!</m> as an exercise.</p>
-                </proof>
-            </theorem>
-            
-            <p>A subgroup of <m>S_n</m> is called a <term>permutation group</term><idx><h>Group</h><h>permutation</h></idx><idx><h>Permutation group</h></idx>.</p>
-            
-            <example xml:id="example-permute-s5">
-                <p>Consider the subgroup <m>G</m> of <m>S_5</m> consisting of the identity permutation <m>\identity</m> and the permutations 
-                    <md>
-                        <mrow>\sigma
-                        &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        1 &amp; 2 &amp; 3 &amp; 5 &amp; 4
-                        \end{pmatrix}</mrow>
-                        <mrow>\tau
-                        &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        3 &amp; 2 &amp; 1 &amp; 4 &amp; 5
-                        \end{pmatrix}</mrow>
-                        <mrow>\mu
-                        &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        3 &amp; 2 &amp; 1 &amp; 5 &amp; 4
-                        \end{pmatrix}.</mrow>
-                    </md>
-                The following table tells us how to multiply elements in the permutation group <m>G</m>.</p>
-                <sidebyside width="100%">
-                    <!-- math table -->
-                    <p>
-                        <me>\begin{array}{c|cccc}
-                        \circ &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\ \hline
-                        \identity &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
-                        \sigma &amp; \sigma &amp; \identity &amp; \mu &amp; \tau \\
-                        \tau &amp; \tau &amp; \mu &amp; \identity &amp; \sigma \\
-                        \mu &amp; \mu &amp; \tau &amp; \sigma &amp; \identity
-                        \end{array}</me></p>
-                </sidebyside>
-            </example>
-            
-            <remark>
-                <p>Though it is natural to multiply elements in a group from left to right, functions are composed from right to left. Let <m>\sigma</m> and <m>\tau</m> be permutations on a set <m>X</m>. To compose <m>\sigma</m> and <m>\tau</m> as functions, we calculate <m>(\sigma \circ \tau)(x) = \sigma( \tau(x))</m>. That is, we do <m>\tau</m> first, then <m>\sigma</m>. There are several ways to approach this inconsistency. <em>We will adopt the convention of multiplying permutations right to left. To compute <m>\sigma \tau</m>, do <m>\tau</m> first and then <m>\sigma</m>.</em> That is, by <m>\sigma \tau (x)</m> we mean <m>\sigma( \tau( x))</m>. (Another way of solving this problem would be to write functions on the right; that is, instead of writing <m>\sigma(x)</m>, we could write <m>(x)\sigma</m>. We could also multiply permutations left to right to agree with the usual way of multiplying elements in a group. Certainly all of these methods have been used.</p>
-            </remark>
-            
-            <example xml:id="example-permute-s4-nonabelian">
-                <p>Permutation multiplication is not usually commutative. Let
-                    <md><mrow>\sigma
-                        &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 \\
-                        4 &amp; 1 &amp; 2 &amp; 3
-                        \end{pmatrix}</mrow>
-                        <mrow>\tau
-                        &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 \\
-                        2 &amp; 1 &amp; 4 &amp; 3
-                        \end{pmatrix}.</mrow>
-                    </md>
-                Then
-                    <me>\sigma \tau
-                    =
-                    \begin{pmatrix}
-                    1 &amp; 2 &amp; 3 &amp; 4 \\
-                    1 &amp; 4 &amp; 3 &amp; 2
-                    \end{pmatrix},</me>
-                but
-                    <me>\tau \sigma
-                    =
-                    \begin{pmatrix}
-                    1 &amp; 2 &amp; 3 &amp; 4 \\
-                    3 &amp; 2 &amp; 1 &amp; 4
-                    \end{pmatrix}.
-                    </me></p>
-            </example>
-        </introduction>
-        
-        <subsection xml:id="permute-subsection-cycle-notation">
-            <title>Cycle Notation</title>
-            <p>The notation that we have used to represent permutations up to this point is cumbersome, to say the least. To work effectively with permutation groups, we need a more streamlined method of writing down and manipulating permutations.</p>
-            
-            <p>A permutation <m>\sigma \in S_X</m> is a <term>cycle of length</term><idx><h>Cycle</h><h>definition of</h></idx> <m>k</m> if there exist elements <m>a_1, a_2, \ldots, a_k \in X</m> such that
-                <md>
-                    <mrow>\sigma( a_1 ) &amp; = a_2</mrow>
-                    <mrow>\sigma( a_2 ) &amp; = a_3</mrow>
-                    <mrow>&amp; \vdots</mrow>
-                    <mrow>\sigma( a_k ) &amp; = a_1</mrow>
-                </md>
-            and <m>\sigma( x) = x</m> for all other elements <m>x \in X</m>. We will write <m>(a_1, a_2, \ldots, a_k )</m> to denote the cycle <m>\sigma</m>. <notation><usage>(a_1, a_2, \ldots, a_k )</usage><description>cycle of length <m>k</m></description></notation> Cycles are the building blocks of all permutations.</p>
-            <example xml:id="example-permute-cycle-notation">
-                <p>The permutation
-                    <me>\sigma =
-                    \begin{pmatrix}
-                    1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7\\
-                    6 &amp; 3 &amp; 5 &amp; 1 &amp; 4 &amp; 2 &amp; 7
-                    \end{pmatrix}
-                    =
-                    (1 6 2 3 5 4 )</me>
-                is a cycle of length <m>6</m>, whereas
-                    <me>\tau =
-                    \begin{pmatrix}
-                    1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
-                    1 &amp; 4 &amp; 2 &amp; 3 &amp; 5 &amp; 6
-                    \end{pmatrix}
-                    =
-                    (2 4 3)</me>
-                is a cycle of length <m>3</m>.</p>
-                <p>Not every permutation is a cycle. Consider the permutation
-                    <me>\begin{pmatrix}
-                    1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
-                    2 &amp; 4 &amp; 1 &amp; 3 &amp; 6 &amp; 5
-                    \end{pmatrix}
-                     = (1 2 4 3)(5 6).</me>
-                This permutation actually contains a cycle of length 2 and a cycle of length <m>4</m>.</p>
-            </example>
+
+    <subsection xml:id="permute-subsection-cycle-notation">
+      <title>Cycle Notation</title>
+      <p>
+        The notation that we have used to represent permutations up to this point is cumbersome,
+        to say the least.
+        To work effectively with permutation groups,
+        we need a more streamlined method of writing down and manipulating permutations.
+      </p>
+
+      <p>
+        A permutation <m>\sigma \in S_X</m> is a
+        <term>cycle of length</term><idx><h>Cycle</h><h>definition of</h></idx> <m>k</m> if there exist elements <m>a_1, a_2, \ldots,
+        a_k \in X</m> such that
+        <md>
+          <mrow>\sigma( a_1 ) &amp; = a_2</mrow>
+          <mrow>\sigma( a_2 ) &amp; = a_3</mrow>
+          <mrow>&amp; \vdots</mrow>
+          <mrow>\sigma( a_k ) &amp; = a_1</mrow>
+        </md>
+        and <m>\sigma( x) = x</m> for all other elements <m>x \in X</m>.
+        We will write <m>(a_1, a_2, \ldots,
+        a_k )</m> to denote the cycle <m>\sigma</m>.
+
+        <notation>
+          <usage>(a_1, a_2, \ldots, a_k )</usage>
+          <description>cycle of length <m>k</m></description>
+        </notation>
+
+        Cycles are the building blocks of all permutations.
+      </p>
+
+      <example xml:id="example-permute-cycle-notation">
+        <p>
+          The permutation
+          <me>
+            \sigma =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7\\
+            6 &amp; 3 &amp; 5 &amp; 1 &amp; 4 &amp; 2 &amp; 7
+            \end{pmatrix}
+            =
+            (1 6 2 3 5 4 )
+          </me>
+          is a cycle of length <m>6</m>, whereas
+          <me>
+            \tau =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+            1 &amp; 4 &amp; 2 &amp; 3 &amp; 5 &amp; 6
+            \end{pmatrix}
+            =
+            (2 4 3)
+          </me>
+          is a cycle of length <m>3</m>.
+        </p>
+
+        <p>
+          Not every permutation is a cycle.
+          Consider the permutation
+          <me>
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+            2 &amp; 4 &amp; 1 &amp; 3 &amp; 6 &amp; 5
+            \end{pmatrix}
+            = (1 2 4 3)(5 6)
+          </me>.
+          This permutation actually contains a cycle of length 2 and a cycle of length <m>4</m>.
+        </p>
+      </example>
             <!-- TWJ, 2011/11/20 -->
             <!-- Reworded this example to make cycle multiplication more clear. -->
-            <example xml:id="example-permute-cycle-mult">
-                <p>It is very easy to compute products of cycles. Suppose that
-                    <me>\sigma = (1 3 5 2 ) \quad \text{and} \quad \tau = (2 5 6).</me>
-                If we think of <m>\sigma</m> as
-                    <me>1 \mapsto 3, \qquad
-                    3 \mapsto 5, \qquad
-                    5 \mapsto 2, \qquad
-                    2 \mapsto 1,</me>
-                and <m>\tau</m> as
-                    <me>2 \mapsto 5, \qquad
-                    5 \mapsto 6, \qquad
-                    6 \mapsto 2,</me>
-                then for <m>\sigma \tau</m> remembering that we apply <m>\tau</m> first and then <m>\sigma</m>, it must be the case that
-                    <me>1 \mapsto 3, \qquad
-                    3 \mapsto 5, \qquad
-                    5 \mapsto 6, \qquad
-                    6 \mapsto 2 \mapsto 1,</me>
-                or <m>\sigma \tau =  (1 3 5 6 )</m>. If <m>\mu = (1634)</m>, then <m>\sigma \mu = (1 6 5 2)(3 4)</m>.</p>
-            </example>
+      <example xml:id="example-permute-cycle-mult">
+        <p>
+          It is very easy to compute products of cycles.
+          Suppose that
+          <me>
+            \sigma = (1 3 5 2 ) \quad \text{and} \quad \tau = (2 5 6)
+          </me>.
+          If we think of <m>\sigma</m> as
+          <me>
+            1 \mapsto 3, \qquad
+            3 \mapsto 5, \qquad
+            5 \mapsto 2, \qquad
+            2 \mapsto 1
+          </me>,
+          and <m>\tau</m> as
+          <me>
+            2 \mapsto 5, \qquad
+            5 \mapsto 6, \qquad
+            6 \mapsto 2
+          </me>,
+          then for <m>\sigma \tau</m> remembering that we apply <m>\tau</m> first and then <m>\sigma</m>,
+          it must be the case that
+          <me>
+            1 \mapsto 3, \qquad
+            3 \mapsto 5, \qquad
+            5 \mapsto 6, \qquad
+            6 \mapsto 2 \mapsto 1
+          </me>,
+          or <m>\sigma \tau =  (1 3 5 6 )</m>.
+          If <m>\mu = (1634)</m>, then <m>\sigma \mu = (1 6 5 2)(3 4)</m>.
+        </p>
+      </example>
 
-            <p>Two cycles in <m>S_X</m>, <m>\sigma = (a_1, a_2, \ldots, a_k )</m> and <m>\tau = (b_1, b_2, \ldots, b_l )</m>, are <term>disjoint</term><idx><h>Cycle</h><h>disjoint</h></idx> if <m>a_i \neq b_j</m> for all <m>i</m> and <m>j</m>.</p>
-            
-            <example xml:id="example-permute-cycles-disjoint">
-                <p>The cycles <m>(1 3 5)</m> and <m>(2 7 )</m> are disjoint; however, the cycles <m>(1 3 5)</m> and <m>(3 4 7 )</m> are not. Calculating their products, we find that
-                    <md>
-                        <mrow> (1 3 5)(2 7 ) &amp; = (1 3 5)(2 7 )</mrow>
-                        <mrow> (1 3 5)(3 4 7 ) &amp; = (1 3 4 7 5).</mrow>
-                    </md>
-                The product of two cycles that are not disjoint may reduce to something less complicated; the product of disjoint cycles cannot be simplified.</p>
-            </example>
+      <p>
+        Two cycles in <m>S_X</m>, <m>\sigma = (a_1, a_2, \ldots,
+        a_k )</m> and <m>\tau = (b_1, b_2, \ldots,
+        b_l )</m>, are <term>disjoint</term>
+            <idx><h>Cycle</h><h>disjoint</h></idx>
+        if <m>a_i \neq b_j</m> for all <m>i</m> and <m>j</m>.
+      </p>
+
+      <example xml:id="example-permute-cycles-disjoint">
+        <p>
+          The cycles <m>(1 3 5)</m> and <m>(2 7 )</m> are disjoint;
+          however, the cycles <m>(1 3 5)</m> and <m>(3 4 7 )</m> are not.
+          Calculating their products, we find that
+          <md>
+            <mrow>(1 3 5)(2 7 ) &amp; = (1 3 5)(2 7 )</mrow>
+            <mrow>(1 3 5)(3 4 7 ) &amp; = (1 3 4 7 5)</mrow>
+          </md>.
+          The product of two cycles that are not disjoint may reduce to something less complicated;
+          the product of disjoint cycles cannot be simplified.
+        </p>
+      </example>
             <!-- TWJ, 2011/11/20 -->
             <!-- Wording in the first sentence of the proof changed for clarification as suggested by R. Beezer and N. Lander. -->
-            <proposition>
-                <statement>
-                    <p> Let <m>\sigma</m> and <m>\tau</m> be two disjoint cycles in <m>S_X</m>. Then <m>\sigma \tau = \tau \sigma</m>.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>\sigma = (a_1, a_2, \ldots, a_k )</m> and <m>\tau = (b_1, b_2, \ldots, b_l )</m>. We must show that <m>\sigma \tau(x) = \tau \sigma(x)</m> for all <m>x \in X</m>. If <m>x</m> is neither in <m>\{ a_1, a_2, \ldots, a_k \}</m> nor <m>\{b_1, b_2, \ldots, b_l \}</m>, then both <m>\sigma</m> and <m>\tau</m> fix <m>x</m>. That is, <m>\sigma(x)=x</m> and <m>\tau(x)=x</m>. Hence, 
-                        <me>\sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x) = \tau( \sigma(x)) =  \tau \sigma(x).</me> 
-                    <em>Do not forget that we are multiplying permutations right to left, which is the opposite of the order in which we usually multiply group elements.</em>  Now suppose that <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>. Then <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; that is,
-                        <md>
-                            <mrow>a_1 &amp; \mapsto a_2</mrow>
-                            <mrow>a_2 &amp; \mapsto a_3</mrow>
-                            <mrow> &amp; \vdots</mrow>
-                            <mrow>a_{k-1} &amp; \mapsto a_k</mrow>
-                            <mrow>a_k &amp; \mapsto  a_1.</mrow>
-                        </md>
-                    However, <m>\tau(a_i) = a_i</m> since <m>\sigma</m> and <m>\tau</m> are disjoint. Therefore,
-                        <md>
-                            <mrow> \sigma \tau(a_i) &amp; = \sigma( \tau(a_i))</mrow>
-                            <mrow>&amp; = \sigma(a_i)</mrow>
-                            <mrow>&amp; = a_{(i \bmod k)+1}</mrow>
-                            <mrow>&amp; = \tau( a_{(i \bmod k)+1} )</mrow>
-                            <mrow>&amp; = \tau( \sigma(a_i) )</mrow>
-                            <mrow>&amp; = \tau \sigma(a_i).</mrow>
-                        </md>
-                    Similarly, if <m>x \in \{b_1, b_2, \ldots, b_l  \}</m>, then <m>\sigma</m> and <m>\tau</m> also commute.</p>
-                </proof>
-            </proposition>
+      <proposition>
+        <statement>
+          <p>
+            Let <m>\sigma</m> and <m>\tau</m> be two disjoint cycles in <m>S_X</m>.
+            Then <m>\sigma \tau = \tau \sigma</m>.
+          </p>
+        </statement>
 
-            <theorem>
-                <statement>
-                    <p>Every permutation in <m>S_n</m> can be written as the product of disjoint cycles.</p>
-                </statement>
-                <proof>
-                    <p>We can assume that <m>X = \{ 1, 2, \ldots, n \}</m>. If <m>\sigma \in S_n</m> and we define <m>X_1</m> to be <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>, then the set <m>X_1</m> is finite since <m>X</m> is finite. Now let <m>i</m> be the first integer in <m>X</m> that is not in <m>X_1</m> and define <m>X_2</m> by <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>. Again, <m>X_2</m> is a finite set. Continuing in this manner, we can define finite disjoint sets <m>X_3, X_4, \ldots</m>. Since <m>X</m> is a finite set, we are guaranteed that this process will end and there will be only a finite number of these sets, say <m>r</m>. If <m>\sigma_i</m> is the cycle defined by 
-                        <me>\sigma_i( x ) = 
-                        \left\{\begin{array}{ll}
-                        \sigma( x ) &amp; x \in X_i \\
-                        x   &amp; x \notin X_i, 
-                        \end{array}\right.</me> 
-                    then <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m>. Since the sets <m>X_1, X_2, \ldots, X_r</m> are disjoint, the cycles <m>\sigma_1, \sigma_2, \ldots, \sigma_r</m> must also be disjoint.</p>
-                </proof>
-            </theorem>
-            <example xml:id="example-permute-cycle-products">
-                <p>Let
-                    <md>
-                        <mrow>\sigma &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
-                        6 &amp; 4 &amp; 3 &amp; 1 &amp; 5 &amp; 2
-                        \end{pmatrix}</mrow>
-                        <mrow>\tau &amp; =
-                        \begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
-                        3 &amp; 2 &amp; 1 &amp; 5 &amp; 6 &amp; 4
-                        \end{pmatrix}.</mrow>
-                    </md>
-                Using cycle notation, we can write
-                    <md>
-                        <mrow>\sigma      &amp; = (1624)</mrow>
-                        <mrow>\tau        &amp; = (13)(456)</mrow>
-                        <mrow>\sigma \tau &amp; = (1 3 6) ( 2 4 5)</mrow>
-                        <mrow>\tau \sigma &amp; = (1 4 3 )(2 5 6).</mrow>
-                    </md></p>
-            </example>
+        <proof>
+          <p>
+            Let <m>\sigma = (a_1, a_2, \ldots,
+            a_k )</m> and <m>\tau = (b_1, b_2, \ldots, b_l )</m>.
+            We must show that <m>\sigma \tau(x) = \tau \sigma(x)</m> for all <m>x \in X</m>.
+            If <m>x</m> is neither in <m>\{ a_1, a_2, \ldots,
+            a_k \}</m> nor <m>\{b_1, b_2, \ldots, b_l \}</m>,
+            then both <m>\sigma</m> and <m>\tau</m> fix <m>x</m>.
+            That is, <m>\sigma(x)=x</m> and <m>\tau(x)=x</m>.
+            Hence,
+            <me>
+              \sigma \tau(x) = \sigma( \tau(x)) = \sigma(x) = x = \tau(x) = \tau( \sigma(x)) =  \tau \sigma(x)
+            </me>.
+            <em>Do not forget that we are multiplying permutations right to left,
+            which is the opposite of the order in which we usually multiply group elements.</em>
+            Now suppose that <m>x \in \{ a_1, a_2, \ldots, a_k \}</m>.
+            Then <m>\sigma( a_i ) = a_{(i \bmod k) + 1}</m>; that is,
+            <md>
+              <mrow>a_1 &amp; \mapsto a_2</mrow>
+              <mrow>a_2 &amp; \mapsto a_3</mrow>
+              <mrow>&amp; \vdots</mrow>
+              <mrow>a_{k-1} &amp; \mapsto a_k</mrow>
+              <mrow>a_k &amp; \mapsto  a_1</mrow>
+            </md>.
+            However, <m>\tau(a_i) = a_i</m> since <m>\sigma</m> and <m>\tau</m> are disjoint.
+            Therefore,
+            <md>
+              <mrow>\sigma \tau(a_i) &amp; = \sigma( \tau(a_i))</mrow>
+              <mrow>&amp; = \sigma(a_i)</mrow>
+              <mrow>&amp; = a_{(i \bmod k)+1}</mrow>
+              <mrow>&amp; = \tau( a_{(i \bmod k)+1} )</mrow>
+              <mrow>&amp; = \tau( \sigma(a_i) )</mrow>
+              <mrow>&amp; = \tau \sigma(a_i)</mrow>
+            </md>.
+            Similarly, if <m>x \in \{b_1, b_2, \ldots,
+            b_l  \}</m>, then <m>\sigma</m> and <m>\tau</m> also commute.
+          </p>
+        </proof>
+      </proposition>
 
-            <remark>
-                <p>From this point forward we will find it convenient to use cycle notation to represent permutations. When using cycle notation, we often denote the identity permutation by <m>(1)</m>.</p>
-            </remark>
-        </subsection>
+      <theorem>
+        <statement>
+          <p>
+            Every permutation in <m>S_n</m> can be written as the product of disjoint cycles.
+          </p>
+        </statement>
 
-        <subsection xml:id="permute-subsection-transpositions">
-            <title>Transpositions</title>
-            <p>The simplest permutation is a cycle of length <m>2</m>. Such cycles are called <term>transpositions</term><idx><h>Transposition</h></idx>. Since <me> (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 ) (a_1 a_2 ), </me> any cycle can be written as the product of transpositions, leading to the following proposition.</p>
-            <proposition>
-                <statement>
-                    <p>Any permutation of a finite set containing at least two elements can be written as the product of transpositions. </p>
-                </statement>
-            </proposition>
-            <example xml:id="example-permute-transpositions">
-                <p>Consider the permutation
-                    <me> ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 ).</me>
-                As we can see, there is no unique way to represent permutation as the product of transpositions. For instance, we can write the identity permutation as <m>(1 2 )(1 2 )</m>, as <m>(1 3 )(2 4 )(1 3 )( 2 4 )</m>, and in many other ways. However, as it turns out, no permutation can be written as the product of both an even number of transpositions and an odd number of transpositions. For instance, we could represent the permutation <m>(1 6)</m> by <me>(2 3 )(1 6)( 2 3)</me> or by <me>(3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6),</me> but <m>(1 6)</m> will always be the product of an odd number of transpositions. </p>
-            </example>
+        <proof>
+          <p>
+            We can assume that <m>X = \{ 1, 2, \ldots, n \}</m>.
+            If <m>\sigma \in S_n</m> and we define <m>X_1</m> to be <m>\{ \sigma(1), \sigma^2(1), \ldots \}</m>,
+            then the set <m>X_1</m> is finite since <m>X</m> is finite.
+            Now let <m>i</m> be the first integer in <m>X</m> that is not in <m>X_1</m> and define <m>X_2</m> by <m>\{ \sigma(i), \sigma^2(i), \ldots \}</m>.
+            Again, <m>X_2</m> is a finite set.
+            Continuing in this manner,
+            we can define finite disjoint sets <m>X_3, X_4, \ldots</m>.
+            Since <m>X</m> is a finite set,
+            we are guaranteed that this process will end and there will be only a finite number of these sets,
+            say <m>r</m>.
+            If <m>\sigma_i</m> is the cycle defined by
+            <me>
+              \sigma_i( x ) = 
+              \left\{\begin{array}{ll}
+              \sigma( x ) &amp; x \in X_i \\
+              x   &amp; x \notin X_i, 
+              \end{array}\right
+            </me>.
+            then <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r</m>.
+            Since the sets <m>X_1, X_2, \ldots, X_r</m> are disjoint,
+            the cycles <m>\sigma_1, \sigma_2, \ldots, \sigma_r</m> must also be disjoint.
+          </p>
+        </proof>
+      </theorem>
+
+      <example xml:id="example-permute-cycle-products">
+        <p>
+          Let
+          <md>
+            <mrow>\sigma &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+            6 &amp; 4 &amp; 3 &amp; 1 &amp; 5 &amp; 2
+            \end{pmatrix}</mrow>
+            <mrow>\tau &amp; =
+            \begin{pmatrix}
+            1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+            3 &amp; 2 &amp; 1 &amp; 5 &amp; 6 &amp; 4
+            \end{pmatrix}</mrow>
+          </md>.
+          Using cycle notation, we can write
+          <md>
+            <mrow>\sigma      &amp; = (1624)</mrow>
+            <mrow>\tau        &amp; = (13)(456)</mrow>
+            <mrow>\sigma \tau &amp; = (1 3 6) ( 2 4 5)</mrow>
+            <mrow>\tau \sigma &amp; = (1 4 3 )(2 5 6)</mrow>
+          </md>.
+        </p>
+      </example>
+
+      <remark>
+        <p>
+          From this point forward we will find it convenient to use cycle notation to represent permutations.
+          When using cycle notation,
+          we often denote the identity permutation by <m>(1)</m>.
+        </p>
+      </remark>
+    </subsection>
+
+    <subsection xml:id="permute-subsection-transpositions">
+      <title>Transpositions</title>
+      <p>
+        The simplest permutation is a cycle of length <m>2</m>.
+        Such cycles are called <term>transpositions</term>.
+            <idx><h>Transposition</h></idx>
+        Since
+        <me>
+          (a_1, a_2, \ldots, a_n ) = (a_1 a_n ) (a_1 a_{n-1} ) \cdots ( a_1 a_3 ) (a_1 a_2 )
+        </me>,
+        any cycle can be written as the product of transpositions,
+        leading to the following proposition.
+      </p>
+
+      <proposition>
+        <statement>
+          <p>
+            Any permutation of a finite set containing at least two elements can be written as the product of transpositions.
+          </p>
+        </statement>
+      </proposition>
+
+      <example xml:id="example-permute-transpositions">
+        <p>
+          Consider the permutation
+          <me>
+            ( 1 6 ) (2 5 3) = (1 6 )( 2 3 )( 2 5 ) = (1 6 )( 4 5 )(2 3 )( 4 5 )(2 5 )
+          </me>.
+          As we can see,
+          there is no unique way to represent permutation as the product of transpositions.
+          For instance,
+          we can write the identity permutation as <m>(1 2 )(1 2 )</m>,
+          as <m>(1 3 )(2 4 )(1 3 )( 2 4 )</m>, and in many other ways.
+          However, as it turns out,
+          no permutation can be written as the product of both an even number of transpositions and an odd number of transpositions.
+          For instance, we could represent the permutation <m>(1 6)</m> by
+          <me>
+            (2 3 )(1 6)( 2 3)
+          </me>
+          or by
+          <me>
+            (3 5) (1 6) (1 3) (1 6) (1 3) (3 5) (5 6)
+          </me>,
+          but <m>(1 6)</m> will always be the product of an odd number of transpositions.
+        </p>
+      </example>
             <!-- TWJ, 2010/03/31 -->
             <!-- Fixed the error in the equations below so that <m>a</m> gets moved out of the last transposition -->
-            <lemma xml:id="lemma-identity-even-trans">
-                <statement>
-                    <p>If the identity is written as the product of <m>r</m> transpositions,
-                        <me>\identity = \tau_1 \tau_2 \cdots \tau_r, </me>
-                    then <m>r</m> is an even number.</p>
-                </statement>
-                <proof>
-                    <p>We will employ induction  on <m>r</m>. A transposition cannot be the identity; hence, <m>r \gt 1</m>. If <m>r=2</m>, then we are done. Suppose that <m>r \gt 2</m>. In this case the product of the last two transpositions, <m>\tau_{r-1} \tau_r</m>, must be one of the following cases:
-                        <md>
-                            <mrow>(a b)(a b) &amp; = \identity</mrow>
-                            <mrow>(b c)(a b) &amp; = (a c)(b c)</mrow>
-                            <mrow>(c d)(a b) &amp; = (a b)(c d)</mrow>
-                            <mrow>(a c)(a b) &amp; = (a b)(b c),</mrow>
-                        </md>
-                    where <m>a</m>, <m>b</m>, <m>c</m>, and <m>d</m> are distinct.</p>
-                    
-                    <p>The first equation simply says that a transposition is its own inverse. If this case occurs, delete <m>\tau_{r-1} \tau_r</m> from the product to obtain
-                        <me> \identity = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}.</me>
-                    By induction <m>r - 2</m> is even; hence, <m>r</m> must be even.</p>
-                    
-                    <p>In each of the other three cases, we can replace <m>\tau_{r - 1} \tau_r</m> with the right-hand side of the corresponding equation to obtain a new product of <m>r</m> transpositions for the identity. In this new product the last occurrence of <m>a</m> will be in the next-to-the-last transposition. We can continue this process with <m>\tau_{r - 2} \tau_{r - 1}</m> to obtain either a product of <m>r - 2</m> transpositions or a new product of <m>r</m> transpositions where the last occurrence of <m>a</m> is in <m>\tau_{r - 2}</m>. If the identity is the product of <m>r - 2</m> transpositions, then again we are done, by our induction hypothesis; otherwise, we will repeat the procedure with <m>\tau_{r - 3} \tau_{r - 2}</m>.</p>
+      <lemma xml:id="lemma-identity-even-trans">
+        <statement>
+          <p>
+            If the identity is written as the product of <m>r</m> transpositions,
+            <me>
+              \identity = \tau_1 \tau_2 \cdots \tau_r
+            </me>,
+            then <m>r</m> is an even number.
+          </p>
+        </statement>
 
-                    <p>At some point either we will have two adjacent, identical transpositions canceling each other out or <m>a</m> will be shuffled so that it will appear only in the first transposition. However, the latter case cannot occur, because the identity would not fix <m>a</m> in this instance. Therefore, the identity permutation must be the product of <m>r-2</m> transpositions and, again by our induction hypothesis, we are done.</p>
-                </proof>
-            </lemma>
-            <theorem xml:id="theorem-even-and-odd">
-                <statement>
-                    <p>If a permutation <m>\sigma</m> can be expressed as the product of an even number of transpositions, then any other product of transpositions equaling <m>\sigma</m> must also contain an even number of transpositions. Similarly, if <m>\sigma</m> can be expressed as the product of an odd number of transpositions, then any other product of transpositions equaling <m>\sigma</m> must also contain an odd number of transpositions.</p>
-                </statement>
-                <proof>
-                    <p>Suppose that <me> \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n, </me> where <m>m</m> is even. We must show that <m>n</m> is also an even number.  The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>. Since <me> \identity = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1, </me> <m>n</m> must be even by Lemma<nbsp/><xref ref="lemma-identity-even-trans"/>. The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.</p>
-                </proof>
-            </theorem>
+        <proof>
+          <p>
+            We will employ induction  on <m>r</m>.
+            A transposition cannot be the identity;
+            hence, <m>r \gt 1</m>.
+            If <m>r=2</m>, then we are done.
+            Suppose that <m>r \gt 2</m>.
+            In this case the product of the last two transpositions,
+            <m>\tau_{r-1} \tau_r</m>, must be one of the following cases:
+            <md>
+              <mrow>(a b)(a b) &amp; = \identity</mrow>
+              <mrow>(b c)(a b) &amp; = (a c)(b c)</mrow>
+              <mrow>(c d)(a b) &amp; = (a b)(c d)</mrow>
+              <mrow>(a c)(a b) &amp; = (a b)(b c)</mrow>
+            </md>,
+            where <m>a</m>, <m>b</m>, <m>c</m>,
+            and <m>d</m> are distinct.
+          </p>
+
+          <p>
+            The first equation simply says that a transposition is its own inverse.
+            If this case occurs, delete
+            <m>\tau_{r-1} \tau_r</m> from the product to obtain
+            <me>
+              \identity = \tau_1 \tau_2 \cdots \tau_{r - 3} \tau_{r - 2}
+            </me>.
+            By induction <m>r - 2</m> is even;
+            hence, <m>r</m> must be even.
+          </p>
+
+          <p>
+            In each of the other three cases,
+            we can replace <m>\tau_{r - 1} \tau_r</m> with the right-hand side of the corresponding equation to obtain a new product of <m>r</m> transpositions for the identity.
+            In this new product the last occurrence of <m>a</m> will be in the next-to-the-last transposition.
+            We can continue this process with
+            <m>\tau_{r - 2} \tau_{r - 1}</m> to obtain either a product of <m>r - 2</m> transpositions or a new product of <m>r</m> transpositions where the last occurrence of <m>a</m> is in <m>\tau_{r - 2}</m>.
+            If the identity is the product of <m>r - 2</m> transpositions,
+            then again we are done, by our induction hypothesis;
+            otherwise, we will repeat the procedure with <m>\tau_{r - 3} \tau_{r - 2}</m>.
+          </p>
+
+          <p>
+            At some point either we will have two adjacent,
+            identical transpositions canceling each other out or <m>a</m> will be shuffled so that it will appear only in the first transposition.
+            However, the latter case cannot occur,
+            because the identity would not fix <m>a</m> in this instance.
+            Therefore, the identity permutation must be the product of <m>r-2</m> transpositions and,
+            again by our induction hypothesis, we are done.
+          </p>
+        </proof>
+      </lemma>
+
+      <theorem xml:id="theorem-even-and-odd">
+        <statement>
+          <p>
+            If a permutation <m>\sigma</m> can be expressed as the product of an even number of transpositions,
+            then any other product of transpositions equaling <m>\sigma</m> must also contain an even number of transpositions.
+            Similarly, if <m>\sigma</m> can be expressed as the product of an odd number of transpositions,
+            then any other product of transpositions equaling <m>\sigma</m> must also contain an odd number of transpositions.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Suppose that
+            <me>
+              \sigma = \sigma_1 \sigma_2 \cdots \sigma_m = \tau_1 \tau_2 \cdots \tau_n
+            </me>,
+            where <m>m</m> is even.
+            We must show that <m>n</m> is also an even number.
+            The inverse of <m>\sigma</m> is <m>\sigma_m \cdots \sigma_1</m>.
+            Since
+            <me>
+              \identity = \sigma \sigma_m \cdots \sigma_1 = \tau_1  \cdots \tau_n \sigma_m \cdots \sigma_1
+            </me>,
+            <m>n</m> must be even by Lemma<nbsp/><xref ref="lemma-identity-even-trans"/>.
+            The proof for the case in which <m>\sigma</m> can be expressed as an odd number of transpositions is left as an exercise.
+          </p>
+        </proof>
+      </theorem>
             <!-- Typo corrected.  Suggested by B. Whetter -->
             <!-- TWJ 0212/10/21 -->
-            <p>In light of Theorem<nbsp/><xref ref="theorem-even-and-odd"/>, we define a permutation to be <term>even</term><idx><h>Permutation</h><h>even</h></idx> if it can be expressed as an even number of transpositions and <term>odd</term><idx><h>Permutation</h><h>odd</h></idx> if it can be expressed as an odd number of transpositions.</p>
-        </subsection>
-        <subsection xml:id="permute-subsection-alternating-groups">
-            <title>The Alternating Groups</title>
-            <p>One of the most important subgroups of <m>S_n</m> is the set of all even permutations, <m>A_n</m>. <notation><usage>A_n</usage><description>the alternating group on <m>n</m> letters</description></notation> The group <m>A_n</m> is called the <term>alternating group on <m>n</m> letters</term><idx><h>Group</h><h>alternating</h></idx>.</p>
-            <theorem>
-                <statement>
-                    <p>The set <m>A_n</m> is a subgroup of <m>S_n</m>.</p>
-                </statement>
-                <proof>
-                    <p>Since the product of two even permutations must also be an even permutation, <m>A_n</m> is closed.  The identity is an even permutation and therefore is in <m>A_n</m>. If <m>\sigma</m> is an even permutation, then 
-                        <me>\sigma = \sigma_1 \sigma_2 \cdots \sigma_r,</me>
-                    where <m>\sigma_i</m> is a transposition and <m>r</m> is even. Since the inverse of any transposition is itself, 
-                        <me>\sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1</me>
-                    is also in <m>A_n</m>.</p>
-                </proof>
-            </theorem>
-            <proposition>
-                <statement>
-                    <p>The number of even permutations in <m>S_n</m>, <m>n \geq 2</m>, is equal to the number of odd permutations; hence, the order of <m>A_n</m> is <m>n!/2</m>.</p>
-                </statement>
-                <proof>
-                    <p>Let <m>A_n</m> be the set of even permutations in <m>S_n</m> and <m>B_n</m> be the set of odd permutations.  If we can show that there is a bijection between these sets, they must contain the same number of elements. Fix a transposition <m>\sigma</m> in <m>S_n</m>.  Since <m>n \geq 2</m>, such a <m>\sigma</m> exists.  Define 
-                         <me>\lambda_{\sigma} : A_n \rightarrow B_n</me>
-                     by 
-                         <me>\lambda_{\sigma} ( \tau ) = \sigma  \tau .</me>
-                     Suppose that <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>. Then <m>\sigma  \tau = \sigma  \mu</m> and so 
-                         <me> \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu = \mu. </me>
-                     Therefore, <m>\lambda_{\sigma}</m> is one-to-one.  We will leave the proof that <m>\lambda_{\sigma}</m> is surjective to the reader.</p>
-                </proof>
-            </proposition>
-            <example xml:id="example-permute-s4">
-                <p>The group <m>A_4</m> is the subgroup of <m>S_4</m> consisting of even permutations.  There are twelve elements in  <m>A_4</m>: 
-                    <md><mrow>&amp; (1)    &amp;&amp; (12)(34) &amp;&amp; (13)(24) &amp;&amp; (14)(23) </mrow><mrow>&amp; (123)  &amp;&amp; (132)    &amp;&amp; (124)    &amp;&amp; (142)    </mrow><mrow>&amp; (134)  &amp;&amp; (143)    &amp;&amp; (234)    &amp;&amp; (243).   </mrow></md>
-                One of the end-of-chapter exercises will be to write down all the subgroups of <m>A_4</m>. You will find that there is no subgroup of order 6.  Does this surprise you?</p>
-            </example>
-        </subsection>
-        <subsection xml:id="permute-historical-note">
-            <title>Historical Note</title>
-            <p>Lagrange<idx><h>Lagrange, Joseph-Louis</h></idx> first thought of permutations as functions from a set to itself, but it was Cauchy who developed the basic theorems and notation for permutations. He was the first to use cycle notation. Augustin-Louis Cauchy<idx><h>Cauchy, Augustin-Louis</h></idx> (1789<ndash/>1857) was born in Paris at the height of the French Revolution. His family soon left Paris for the village of Arcueil to escape the Reign of Terror. One of the family's neighbors there was Pierre-Simon Laplace<idx><h>Laplace, Pierre-Simon</h></idx> (1749<ndash/>1827), who encouraged him to seek a career in mathematics. Cauchy began his career as a mathematician by solving a problem in geometry given to him by Lagrange. Cauchy wrote over 800 papers on such diverse topics as differential equations, finite groups, applied mathematics, and complex analysis. He was one of the mathematicians responsible for making calculus rigorous. Perhaps more theorems and concepts in mathematics have the name Cauchy attached to them than that of any other mathematician.</p>
-        </subsection>
-    </section>
+      <p>
+        In light of Theorem<nbsp/><xref ref="theorem-even-and-odd"/>, we define a permutation to be <term>even</term>
+            <idx><h>Permutation</h><h>even</h></idx>
+        if it can be expressed as an even number of transpositions and <term>odd</term>
+            <idx><h>Permutation</h><h>odd</h></idx>
+        if it can be expressed as an odd number of transpositions.
+      </p>
+    </subsection>
 
-    <section xml:id="section-dihedral-groups">
-        <title>Dihedral Groups</title>
-        <introduction>
-            <p>Another special type of permutation group is the dihedral group. Recall the symmetry group of an equilateral triangle in Chapter<nbsp/><xref ref="groups"/>. Such groups consist of the  rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon. For <m>n = 3, 4, \ldots</m>, we define the <term>nth dihedral group</term><idx><h>Group</h><h>dihedral</h></idx> to be the group of rigid motions of a regular <m>n</m>-gon. We will denote this group by <m>D_n</m>.  <notation><usage>D_n</usage><description>the dihedral group</description></notation> We can number the vertices of a regular <m>n</m>-gon by <m>1, 2, \ldots, n</m> (Figure<nbsp/><xref ref="figure-regular"/>).  Notice that there are exactly <m>n</m> choices to replace the first vertex.  If we replace the first vertex by <m>k</m>, then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>; hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.  We summarize these results in the following theorem.</p>
+    <subsection xml:id="permute-subsection-alternating-groups">
+      <title>The Alternating Groups</title>
+      <p>
+        One of the most important subgroups of <m>S_n</m> is the set of all even permutations,
+        <m>A_n</m>.
+
+        <notation>
+          <usage>A_n</usage>
+          <description>the alternating group on <m>n</m> letters</description>
+        </notation>
+
+        The group <m>A_n</m> is called the
+        <term>alternating group on <m>n</m> letters</term>.
+            <idx><h>Group</h><h>alternating</h></idx>
+      </p>
+
+      <theorem>
+        <statement>
+          <p>
+            The set <m>A_n</m> is a subgroup of <m>S_n</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Since the product of two even permutations must also be an even permutation,
+            <m>A_n</m> is closed.
+            The identity is an even permutation and therefore is in <m>A_n</m>.
+            If <m>\sigma</m> is an even permutation, then
+            <me>
+              \sigma = \sigma_1 \sigma_2 \cdots \sigma_r
+            </me>,
+            where <m>\sigma_i</m> is a transposition and <m>r</m> is even.
+            Since the inverse of any transposition is itself,
+            <me>
+              \sigma^{-1} = \sigma_r \sigma_{r-1} \cdots \sigma_1
+            </me>
+            is also in <m>A_n</m>.
+          </p>
+        </proof>
+      </theorem>
+
+      <proposition>
+        <statement>
+          <p>
+            The number of even permutations in <m>S_n</m>,
+            <m>n \geq 2</m>, is equal to the number of odd permutations;
+            hence, the order of <m>A_n</m> is <m>n!/2</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            Let <m>A_n</m> be the set of even permutations in <m>S_n</m> and <m>B_n</m> be the set of odd permutations.
+            If we can show that there is a bijection between these sets,
+            they must contain the same number of elements.
+            Fix a transposition <m>\sigma</m> in <m>S_n</m>.
+            Since <m>n \geq 2</m>, such a <m>\sigma</m> exists.
+            Define
+            <me>
+              \lambda_{\sigma} : A_n \rightarrow B_n
+            </me>
+            by
+            <me>
+              \lambda_{\sigma} ( \tau ) = \sigma  \tau 
+            </me>.
+            Suppose that <m>\lambda_{\sigma} ( \tau ) = \lambda_{\sigma} ( \mu )</m>.
+            Then <m>\sigma  \tau = \sigma  \mu</m> and so
+            <me>
+              \tau = \sigma^{-1} \sigma \tau = \sigma^{-1} \sigma \mu = \mu
+            </me>.
+            Therefore, <m>\lambda_{\sigma}</m> is one-to-one.
+            We will leave the proof that
+            <m>\lambda_{\sigma}</m> is surjective to the reader.
+          </p>
+        </proof>
+      </proposition>
+
+      <example xml:id="example-permute-s4">
+        <p>
+          The group <m>A_4</m> is the subgroup of <m>S_4</m> consisting of even permutations.
+          There are twelve elements in  <m>A_4</m>:
+          <md>
+            <mrow>&amp; (1)    &amp;&amp; (12)(34) &amp;&amp; (13)(24) &amp;&amp; (14)(23)</mrow>
+            <mrow>&amp; (123)  &amp;&amp; (132)    &amp;&amp; (124)    &amp;&amp; (142)</mrow>
+            <mrow>&amp; (134)  &amp;&amp; (143)    &amp;&amp; (234)    &amp;&amp; (243)</mrow>
+          </md>.
+          One of the end-of-chapter exercises will be to write down all the subgroups of <m>A_4</m>.
+          You will find that there is no subgroup of order 6.
+          Does this surprise you?
+        </p>
+      </example>
+    </subsection>
+
+    <subsection xml:id="permute-historical-note">
+      <title>Historical Note</title>
+      <p>
+        Lagrange
+            <idx><h>Lagrange, Joseph-Louis</h></idx>
+        first thought of permutations as functions from a set to itself,
+        but it was Cauchy who developed the basic theorems and notation for permutations.
+        He was the first to use cycle notation.
+        Augustin-Louis Cauchy
+            <idx><h>Cauchy, Augustin-Louis</h></idx>
+        (1789<ndash/>1857) was born in Paris at the height of the French Revolution.
+        His family soon left Paris for the village of Arcueil to escape the Reign of Terror.
+        One of the family's neighbors there was Pierre-Simon Laplace
+            <idx><h>Laplace, Pierre-Simon</h></idx>
+        (1749<ndash/>1827), who encouraged him to seek a career in mathematics.
+        Cauchy began his career as a mathematician by solving a problem in geometry given to him by Lagrange.
+        Cauchy wrote over 800 papers on such diverse topics as differential equations,
+        finite groups, applied mathematics, and complex analysis.
+        He was one of the mathematicians responsible for making calculus rigorous.
+        Perhaps more theorems and concepts in mathematics have the name Cauchy attached to them than that of any other mathematician.
+      </p>
+    </subsection>
+
+  </section>
+
+  <section xml:id="section-dihedral-groups">
+    <title>Dihedral Groups</title>
+    <introduction>
+      <p>
+        Another special type of permutation group is the dihedral group.
+        Recall the symmetry group of an equilateral triangle in Chapter<nbsp/><xref ref="groups"/>.
+        Such groups consist of the rigid motions of a regular <m>n</m>-sided polygon or <m>n</m>-gon.
+        For <m>n = 3, 4, \ldots</m>, we define the
+        <term>nth dihedral group</term>
+            <idx><h>Group</h><h>dihedral</h></idx>
+        to be the group of rigid motions of a regular <m>n</m>-gon.
+        We will denote this group by <m>D_n</m>.
+
+        <notation>
+          <usage>D_n</usage>
+          <description>the dihedral group</description>
+        </notation>
+
+        We can number the vertices of a regular <m>n</m>-gon by
+        <m>1, 2, \ldots,
+        n</m> (Figure<nbsp/><xref ref="figure-regular"/>).
+        Notice that there are exactly <m>n</m> choices to replace the first vertex.
+        If we replace the first vertex by <m>k</m>,
+        then the second vertex must be replaced either by vertex <m>k+1</m> or by vertex <m>k-1</m>;
+        hence, there are <m>2n</m> possible rigid motions of the <m>n</m>-gon.
+        We summarize these results in the following theorem.
+      </p>
             <!-- Replaced figure with tikz figure - TWJ 5/7/2010 -->
-            <figure xml:id="figure-regular">
-                <caption>A regular <m>n</m>-gon</caption>
-                <image width="60%" xml:id="permute-ngon">
-                    <latex-image>
-                        <xi:include href="tikz/permute-ngon.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
+      <figure xml:id="figure-regular">
+        <caption>A regular <m>n</m>-gon</caption>
+        <image width="60%" xml:id="permute-ngon">
 
-            <theorem>
-                <statement>
-                    <p>The dihedral group, <m>D_n</m>, is a subgroup of <m>S_n</m> of order <m>2n</m>.</p>
-                </statement>
-            </theorem>
+            <latex-image>
+                <xi:include href="tikz/permute-ngon.tex" parse="text"/>
+            </latex-image>
+        </image>
+
+      </figure>
+
+      <theorem>
+        <statement>
+          <p>
+            The dihedral group, <m>D_n</m>,
+            is a subgroup of <m>S_n</m> of order <m>2n</m>.
+          </p>
+        </statement>
+      </theorem>
             <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/7/2010 -->
-            <figure xml:id="figure-rotations">
-                <caption>Rotations and reflections of a regular <m>n</m>-gon</caption>
-                <image xml:id="permute-motions-ngon">
-                    <latex-image>
-                        <xi:include href="tikz/permute-motions-ngon.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
+      <figure xml:id="figure-rotations">
+        <caption>Rotations and reflections of a regular <m>n</m>-gon</caption>
+        <image xml:id="permute-motions-ngon">
+
+            <latex-image>
+                <xi:include href="tikz/permute-motions-ngon.tex" parse="text"/>
+            </latex-image>
+        </image>
+
+      </figure>
             <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
-            <figure xml:id="figure-types">
-                <caption>Types of  reflections of a regular <m>n</m>-gon</caption>
-                <image xml:id="permute-reflections-ngon">
-                    <latex-image>
-                        <xi:include href="tikz/permute-reflections-ngon.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
-            <theorem xml:id="theorem-dn-generator">
-                <statement>
-                    <p>The group <m>D_n</m>, <m>n \geq 3</m>, consists of all products of the two elements <m>r</m> and <m>s</m>, satisfying the relations <md><mrow>r^n &amp; = 1</mrow><mrow> s^2 &amp; = 1</mrow><mrow> srs &amp; = r^{-1}.</mrow></md></p>
-                </statement>
-                <!-- TWJ, 2010/03/31 -->
-                <!-- I think that this is a correct proof and simplified, but the proof needs to be checked. -->
-                <proof>
-                    <p>The possible motions of a regular <m>n</m>-gon are either reflections or rotations (Figure<nbsp/><xref ref="figure-rotations"/>). There are exactly <m>n</m> possible rotations: 
-                        <me>\identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}.</me> 
-                    We will denote the rotation <m>360^{\circ} /n</m> by <m>r</m>. The rotation <m>r</m> generates all  of the other rotations. That is, 
-                        <me> r^k = k \cdot \frac{360^{\circ} }{n}.</me></p>
-                    
-                    <p>Label the <m>n</m> reflections <m>s_1, s_2, \ldots, s_n</m>, where <m>s_k</m> is the reflection that leaves vertex <m>k</m> fixed. There are two cases of reflections, depending on whether <m>n</m> is even or odd. If there are an even number of vertices, then two vertices are left fixed by a reflection, and <m>s_1 = s_{n/2 + 1}, s_2 = s_{n/2 + 2}, \ldots, s_{n/2}  = s_n</m>. If there are an odd number of vertices, then only a single vertex is left fixed by a reflection and <m>s_1, s_2, \ldots, s_n</m> are distinct (Figure<nbsp/><xref ref="figure-types"/>). In either case, the order of each <m>s_k</m> is two. Let <m>s = s_1</m>. Then <m>s^2 = 1</m> and <m>r^n = 1</m>. Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>, the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>. If the second vertex is replaced by <m>k+1</m>, then <m>t = r^k</m>. If the second vertex is replaced by <m>k-1</m>, then <m>t = s r^k</m>. Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>. That is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>,
-                        <me>D_n = \{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\}.</me>
-                    We will leave the proof that <m>srs = r^{-1}</m> as an exercise.</p>
-                </proof>
-            </theorem>
-            <example xml:id="example-permute-d4-group">
-                <p>The group of rigid motions of a square, <m>D_4</m>, consists of eight elements. With the vertices numbered <m>1</m>, <m>2</m>, <m>3</m>, <m>4</m> (Figure<nbsp/><xref ref="figure-d4"/>), the rotations are
-                    <md>
-                        <mrow>r   &amp; = (1234)</mrow>
-                        <mrow>r^2 &amp; = (13)(24)</mrow>
-                        <mrow>r^3 &amp; = (1432)</mrow>
-                        <mrow>r^4 &amp; = (1)</mrow>
-                    </md>
-                and the reflections are
-                    <md>
-                        <mrow>s_1 &amp; = (24)</mrow>
-                        <mrow>s_2 &amp; = (13).</mrow>
-                    </md>
-                The order of <m>D_4</m> is <m>8</m>. The remaining two elements are
-                    <md>
-                        <mrow>r s_1   &amp; = (12)(34)</mrow>
-                        <mrow>r^3 s_1 &amp; = (14)(23).</mrow>
-                    </md></p>
-            </example>
+      <figure xml:id="figure-types">
+        <caption>Types of  reflections of a regular <m>n</m>-gon</caption>
+        <image xml:id="permute-reflections-ngon">
 
-            <figure xml:id="figure-d4">
-                <caption>The group <m>D_4</m></caption>
-                <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
-                <image width="60%" xml:id="permute-dihedral-four">
-                    <latex-image>
-                        <xi:include href="tikz/permute-dihedral-four.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
-        </introduction>
+            <latex-image>
+                <xi:include href="tikz/permute-reflections-ngon.tex" parse="text"/>
+            </latex-image>
+        </image>
 
-        <subsection xml:id="permute-subsection-motion-group-cube">
-            <title>The Motion Group of a Cube</title>
-            <p>We can investigate the groups of rigid motions of  geometric objects other than a regular <m>n</m>-sided polygon to obtain interesting examples of permutation groups. Let us consider the group of rigid motions of a cube. One of the first questions that we can ask about this group is <q>what is its order?</q>  A cube has <m>6</m> sides. If a particular side is facing upward, then there are four possible rotations of the cube that will preserve the upward-facing side. Hence, the order of the group is <m>6 \cdot 4 = 24</m>. We have just proved the following proposition.</p>
-            <figure xml:id="figure-motions">
-                <caption>The motion group of a cube</caption>
-                <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
-                <image width="60%" xml:id="permute-motions-cube">
-                    <latex-image>
-                        <xi:include href="tikz/permute-motions-cube.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
-            <proposition xml:id="proposition-motions-cube">
-                <statement>
-                    <p>The group of rigid motions of a cube contains <m>24</m> elements.</p>
-                </statement>
-            </proposition>
-            <theorem>
-                <statement>
-                    <p>The group of rigid motions of a cube is <m>S_4</m>.</p>
-                </statement>
-                <proof>
-                    <p>From Proposition<nbsp/><xref ref="proposition-motions-cube"/>, we already know that the motion group of the cube has <m>24</m> elements, the same number of elements as there are in <m>S_4</m>.  There are exactly four diagonals in the cube. If we label these diagonals <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m>, we must show that the motion group of the cube will give us any permutation of the diagonals (Figure<nbsp/><xref ref="figure-motions"/>). If we can obtain all of these permutations, then <m>S_4</m> and the group of rigid motions of the cube must be the same. To obtain a transposition we can rotate the cube <m>180^{\circ}</m> about the axis joining the midpoints of opposite edges (Figure<nbsp/><xref ref="figure-transpose"/>). There are six such axes, giving all transpositions in <m>S_4</m>. Since every element in <m>S_4</m> is the product of a finite number of transpositions, the motion group of a cube must be <m>S_4</m>.</p>
-                </proof>
-            </theorem>
-            <figure xml:id="figure-transpose">
-                <caption>Transpositions in the motion group of a cube</caption>
-                <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
-                <image xml:id="permute-transpositions-cube">
-                    <latex-image>
-                        <xi:include href="tikz/permute-transpositions-cube.tex" parse="text"/>
-                    </latex-image>
-                </image>
-            </figure>
+      </figure>
+
+      <theorem xml:id="theorem-dn-generator">
+        <statement>
+          <p>
+            The group <m>D_n</m>, <m>n \geq 3</m>,
+            consists of all products of the two elements <m>r</m> and <m>s</m>,
+            satisfying the relations
+            <md>
+              <mrow>r^n &amp; = 1</mrow>
+              <mrow>s^2 &amp; = 1</mrow>
+              <mrow>srs &amp; = r^{-1}</mrow>
+            </md>.
+          </p>
+        </statement>
+            <!-- TWJ, 2010/03/31 -->
+            <!-- I think that this is a correct proof and simplified, but the proof needs to be checked. -->
+        <proof>
+          <p>
+            The possible motions of a regular <m>n</m>-gon are either reflections or rotations (Figure<nbsp/><xref ref="figure-rotations"/>).
+            There are exactly <m>n</m> possible rotations:
+            <me>
+              \identity, \frac{360^{\circ} }{n}, 2 \cdot \frac{360^{\circ} }{n}, \ldots, (n-1) \cdot \frac{360^{\circ} }{n}
+            </me>.
+            We will denote the rotation <m>360^{\circ} /n</m> by <m>r</m>.
+            The rotation <m>r</m> generates all  of the other rotations.
+            That is,
+            <me>
+              r^k = k \cdot \frac{360^{\circ} }{n}
+            </me>.
+          </p>
+
+          <p>
+            Label the <m>n</m> reflections <m>s_1, s_2, \ldots, s_n</m>,
+            where <m>s_k</m> is the reflection that leaves vertex <m>k</m> fixed.
+            There are two cases of reflections,
+            depending on whether <m>n</m> is even or odd.
+            If there are an even number of vertices,
+            then two vertices are left fixed by a reflection,
+            and <m>s_1 = s_{n/2 + 1}, s_2 = s_{n/2 + 2}, \ldots, s_{n/2}  = s_n</m>.
+            If there are an odd number of vertices,
+            then only a single vertex is left fixed by a reflection and
+            <m>s_1, s_2, \ldots,
+            s_n</m> are distinct (Figure<nbsp/><xref ref="figure-types"/>).
+            In either case, the order of each <m>s_k</m> is two.
+            Let <m>s = s_1</m>.
+            Then <m>s^2 = 1</m> and <m>r^n = 1</m>.
+            Since any rigid motion <m>t</m> of the <m>n</m>-gon replaces the first vertex by the vertex <m>k</m>,
+            the second vertex must be replaced by either <m>k+1</m> or by <m>k-1</m>.
+            If the second vertex is replaced by <m>k+1</m>, then <m>t = r^k</m>.
+            If the second vertex is replaced by <m>k-1</m>, then <m>t = s r^k</m>.
+            Hence, <m>r</m> and <m>s</m> generate <m>D_n</m>.
+            That is, <m>D_n</m> consists of all finite products of <m>r</m> and <m>s</m>,
+            <me>
+              D_n = \{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\}
+            </me>.
+            We will leave the proof that <m>srs = r^{-1}</m> as an exercise.
+          </p>
+        </proof>
+      </theorem>
+
+      <example xml:id="example-permute-d4-group">
+        <p>
+          The group of rigid motions of a square,
+          <m>D_4</m>, consists of eight elements.
+          With the vertices numbered <m>1</m>, <m>2</m>, <m>3</m>,
+          <m>4</m> (Figure<nbsp/><xref ref="figure-d4"/>), the rotations are
+          <md>
+            <mrow>r   &amp; = (1234)</mrow>
+            <mrow>r^2 &amp; = (13)(24)</mrow>
+            <mrow>r^3 &amp; = (1432)</mrow>
+            <mrow>r^4 &amp; = (1)</mrow>
+          </md>
+          and the reflections are
+          <md>
+            <mrow>s_1 &amp; = (24)</mrow>
+            <mrow>s_2 &amp; = (13)</mrow>
+          </md>.
+          The order of <m>D_4</m> is <m>8</m>.
+          The remaining two elements are
+          <md>
+            <mrow>r s_1   &amp; = (12)(34)</mrow>
+            <mrow>r^3 s_1 &amp; = (14)(23)</mrow>
+          </md>.
+        </p>
+      </example>
+
+      <figure xml:id="figure-d4">
+        <caption>The group <m>D_4</m></caption>
+            <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
+        <image width="60%" xml:id="permute-dihedral-four">
+
+            <latex-image>
+                <xi:include href="tikz/permute-dihedral-four.tex" parse="text"/>
+            </latex-image>
+        </image>
+
+      </figure>
+    </introduction>
+
+    <subsection xml:id="permute-subsection-motion-group-cube">
+      <title>The Motion Group of a Cube</title>
+      <p>
+        We can investigate the groups of rigid motions of geometric objects other than a regular <m>n</m>-sided polygon to obtain interesting examples of permutation groups.
+        Let us consider the group of rigid motions of a cube.
+        One of the first questions that we can ask about this group is
+        <q>what is its order?</q>
+        A cube has <m>6</m> sides.
+        If a particular side is facing upward,
+        then there are four possible rotations of the cube that will preserve the upward-facing side.
+        Hence, the order of the group is <m>6 \cdot 4 = 24</m>.
+        We have just proved the following proposition.
+      </p>
+
+      <figure xml:id="figure-motions">
+        <caption>The motion group of a cube</caption>
+            <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
+        <image width="60%" xml:id="permute-motions-cube">
+
+            <latex-image>
+                <xi:include href="tikz/permute-motions-cube.tex" parse="text"/>
+            </latex-image>
+        </image>
+
+      </figure>
+
+      <proposition xml:id="proposition-motions-cube">
+        <statement>
+          <p>
+            The group of rigid motions of a cube contains <m>24</m> elements.
+          </p>
+        </statement>
+      </proposition>
+
+      <theorem>
+        <statement>
+          <p>
+            The group of rigid motions of a cube is <m>S_4</m>.
+          </p>
+        </statement>
+
+        <proof>
+          <p>
+            From Proposition<nbsp/><xref ref="proposition-motions-cube"/>,
+            we already know that the motion group of the cube has <m>24</m> elements,
+            the same number of elements as there are in <m>S_4</m>.
+            There are exactly four diagonals in the cube.
+            If we label these diagonals <m>1</m>,
+            <m>2</m>, <m>3</m>, and <m>4</m>,
+            we must show that the motion group of the cube will give us any permutation of the diagonals (Figure<nbsp/><xref ref="figure-motions"/>).
+            If we can obtain all of these permutations,
+            then <m>S_4</m> and the group of rigid motions of the cube must be the same.
+            To obtain a transposition we can rotate the cube
+            <m>180^{\circ}</m> about the axis joining the midpoints of opposite edges (Figure<nbsp/><xref ref="figure-transpose"/>).
+            There are six such axes, giving all transpositions in <m>S_4</m>.
+            Since every element in <m>S_4</m> is the product of a finite number of transpositions,
+            the motion group of a cube must be <m>S_4</m>.
+          </p>
+        </proof>
+      </theorem>
+
+      <figure xml:id="figure-transpose">
+        <caption>Transpositions in the motion group of a cube</caption>
+            <!-- Replaced with tikz figure and change to a counterclockwise rotation - TWJ 5/8/2010 -->
+        <image xml:id="permute-transpositions-cube">
+
+            <latex-image>
+                <xi:include href="tikz/permute-transpositions-cube.tex" parse="text"/>
+            </latex-image>
+        </image>
+
+      </figure>
             <!-- This file is part of the book                 -->
             <!--                                               -->
             <!--   Abstract Algebra: Theory and Applications   -->
             <!--                                               -->
             <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
             <!-- See the file COPYING for copying conditions.  -->
-            <paragraphs>
-                <title>Sage</title>
-                <p>A permutation group is a very concrete representation of a group, and Sage support for permutations groups is very good <mdash/> making Sage a natural place for beginners to learn about group theory.</p>
-            </paragraphs>
-        </subsection>
-    </section>
+      <paragraphs>
+        <title>Sage</title>
+        <p>
+          A permutation group is a very concrete representation of a group,
+          and Sage support for permutations groups is very good <mdash/> making Sage a natural place for beginners to learn about group theory.
+        </p>
+      </paragraphs>
+
+    </subsection>
+
+  </section>
     <!-- Exercises with Solutions  -->
     <!-- File: permute.xml  -->
     <!-- Title: Permutation Groups -->
-    <exercises xml:id="exercises-permute" filenamebase="permute">
-        <title>Exercises</title>
-        <exercise number="1">
-            <statement>
-                <p>Write the following permutations in cycle notation.
-                    <ol cols="2">
-                        <li><p><me>\begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        2 &amp; 4 &amp; 1 &amp; 5 &amp; 3
-                        \end{pmatrix}</me></p></li>
-                        <li><p><me>\begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        4 &amp; 2 &amp; 5 &amp; 1 &amp; 3
-                        \end{pmatrix}</me></p></li>
-                        <li><p><me>\begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        3 &amp; 5 &amp; 1 &amp; 4 &amp; 2
-                        \end{pmatrix}</me></p></li>
-                        <li><p><me>\begin{pmatrix}
-                        1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-                        1 &amp; 4 &amp; 3 &amp; 2 &amp; 5
-                        \end{pmatrix}</me></p></li>
-                    </ol></p>
-            </statement>
-            <hint>
-                <p>(a) <m>(12453)</m>; (c) <m>(13)(25)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="2">
-            <statement>
-                <p>Compute each of the following.
-                    <ol cols="2">
-                        <li><p><m>(1345)(234)</m></p></li>
-                        <li><p><m>(12)(1253)</m></p></li>
-                        <li><p><m>(143)(23)(24)</m></p></li>
-                        <li><p><m>(1423)(34)(56)(1324)</m></p></li>
-                        <li><p><m>(1254)(13)(25)</m></p></li>
-                        <li><p><m>(1254) (13)(25)^2</m></p></li>
-                        <li><p><m>(1254)^{-1} (123)(45) (1254)</m></p></li>
-                        <li><p><m>(1254)^2 (123)(45)</m></p></li>
-                        <li><p><m>(123)(45) (1254)^{-2}</m></p></li>
-                        <li><p><m>(1254)^{100}</m></p></li>
-                        <li><p><m>|(1254)|</m></p></li>
-                        <li><p><m>|(1254)^2|</m></p></li>
-                        <li><p><m>(12)^{-1}</m></p></li>
-                        <li><p><m>(12537)^{-1}</m></p></li>
-                        <li><p><m>[(12)(34)(12)(47)]^{-1}</m></p></li>
-                        <li><p><m>[(1235)(467)]^{-1}</m></p></li>
-                    </ol></p>
-            </statement>
-            <hint>
-                <p>(a) <m>(135)(24)</m>; (c) <m>(14)(23)</m>; (e) <m>(1324)</m>; (g) <m>(134)(25)</m>; (n) <m>(17352)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="3">
-            <statement>
-                <p>Express the following permutations as products of transpositions and identify them as even or odd.
-                    <ol cols="2">
-                        <li><p><m>(14356)</m></p></li>
-                        <li><p><m>(156)(234)</m></p></li>
-                        <li><p><m>(1426)(142)</m></p></li>
-                        <li><p><m>(17254)(1423)(154632)</m></p></li>
-                        <li><p><m>(142637)</m></p></li>
-                    </ol></p>
-            </statement>
-            <hint>
-                <p>(a) <m>(16)(15)(13)(14)</m>; (c) <m>(16)(14)(12)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="4">
-            <statement>
-                <p>Find <m>(a_1, a_2, \ldots, a_n)^{-1}</m>.</p>
-            </statement>
-            <hint>
-                <p><m>(a_1, a_2, \ldots, a_n)^{-1} = (a_1, a_{n}, a_{n-1}, \ldots, a_2)</m></p>
-            </hint>
-        </exercise>
-        <exercise number="5">
-            <statement>
-                <p>List all of the subgroups of <m>S_4</m>. Find each of the following sets:
-                    <ol>
-                        <li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3 \}</m></p></li>
-                        <li><p><m>\{ \sigma \in S_4 : \sigma(2) = 2 \}</m></p></li>
-                        <li><p><m>\{ \sigma \in S_4 : \sigma(1) = 3</m> and <m>\sigma(2) = 2 \}</m>.</p></li>
-                    </ol>
-            Are any of these sets subgroups of <m>S_4</m>?</p>
-            </statement>
-            <hint>
-                <p>(a) <m>\{ (13), (13)(24), (132), (134), (1324), (1342) \}</m> is not a subgroup.</p>
-            </hint>
-        </exercise>
-        <exercise number="6">
-            <statement>
-                <p>Find all of the subgroups in <m>A_4</m>. What is the order of each subgroup?</p>
-            </statement>
-        </exercise>
-        <exercise number="7">
-            <statement>
-                <p>Find all possible orders of elements in <m>S_7</m> and <m>A_7</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="8">
-            <statement>
-                <p>Show that <m>A_{10}</m> contains an element of order <m>15</m>.</p>
-            </statement>
-            <hint>
-                <p><m>(12345)(678)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="9">
-            <statement>
-                <p>Does <m>A_8</m> contain an element of order <m>26</m>?</p>
-            </statement>
-        </exercise>
-        <exercise number="10">
-            <statement>
-                <p>Find an element of largest order in <m>S_n</m> for <m>n = 3, \ldots, 10</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="11">
-            <statement>
-                <p>What are the possible cycle structures of elements of <m>A_5</m>? What about <m>A_6</m>?</p>
-            </statement>
-            <hint>
-                <p>Permutations of the form 
-                    <me>(1), (a_1, a_2)(a_3, a_4), (a_1, a_2, a_3), (a_1, a_2, a_3, a_4, a_5)</me>
-                are possible for <m>A_5</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="12">
-            <statement>
-                <p>Let <m>\sigma \in S_n</m> have order <m>n</m>. Show that for all integers <m>i</m> and <m>j</m>, <m>\sigma^i = \sigma^j</m> if and only if <m>i \equiv j \pmod{n}</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="13" xml:id="exercise-permute-order-product-cycles">
-            <statement>
-                <p>Let <m>\sigma = \sigma_1 \cdots \sigma_m \in S_n</m> be the product of disjoint cycles. Prove that the order of <m>\sigma</m> is the least common multiple of the lengths of the cycles <m>\sigma_1, \ldots, \sigma_m</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="14">
-            <statement>
-                <p>Using cycle notation, list the elements in <m>D_5</m>.  What are <m>r</m> and <m>s</m>? Write every element as a product of <m>r</m> and <m>s</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="15">
-            <statement>
-                <p>If the diagonals of a cube are labeled as Figure<nbsp/><xref ref="figure-motions"/>, to which motion of the cube does the permutation <m>(12)(34)</m> correspond? What about the other permutations of the diagonals?</p>
-            </statement>
-        </exercise>
-        <exercise number="16">
-            <statement>
-                <p>Find the group of rigid motions of a tetrahedron. Show that this is the same group as <m>A_4</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="17">
-            <statement>
-                <p>Prove that <m>S_n</m> is nonabelian for <m>n \geq 3</m>.</p>
-            </statement>
-            <hint>
-                <p>Calculate <m>(123)(12)</m> and <m>(12)(123)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="18">
-            <statement>
-                <p>Show that <m>A_n</m> is nonabelian for <m>n \geq 4</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="19">
-            <statement>
-                <p>Prove that <m>D_n</m> is nonabelian for <m>n \geq 3</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="20" xml:id="exercise-permute-cycle-n-1-transpositions">
-            <statement>
-                <p>Let <m>\sigma \in S_n</m> be a cycle. Prove that <m>\sigma</m> can be written as the product of at most <m>n-1</m> transpositions.</p>
-            </statement>
-        </exercise>
-        <exercise number="21">
-            <statement>
-                <p>Let <m>\sigma \in S_n</m>. If <m>\sigma</m> is not a cycle, prove that <m>\sigma</m> can be written as the product of at most <m>n - 2</m> transpositions.</p>
-            </statement>
-        </exercise>
-        <exercise number="22">
-            <statement>
-                <p>If <m>\sigma</m> can be expressed as an odd number of transpositions, show that any other product of transpositions equaling <m>\sigma</m> must also be odd.</p>
-            </statement>
-        </exercise>
-        <exercise number="23">
-            <statement>
-                <p>If <m>\sigma</m> is a cycle of odd length, prove that <m>\sigma^2</m> is also a cycle.</p>
-            </statement>
-        </exercise>
-        <exercise number="24">
-            <statement>
-                <p>Show that a <m>3</m>-cycle is an even permutation.</p>
-            </statement>
-        </exercise>
-        <exercise number="25">
-            <statement>
-                <p>Prove that in <m>A_n</m> with <m>n \geq 3</m>, any permutation is a product of cycles of length <m>3</m>.</p>
-            </statement>
-            <hint>
-                <p>Consider the cases <m>(ab)(bc)</m> and <m>(ab)(cd)</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="26">
-            <statement>
-                <p>Prove that any element in <m>S_n</m> can be written as a finite product of the following permutations.
-                    <ol>
-                        <li><p><m>(1 2), (13), \ldots, (1n)</m></p></li>
-                        <li><p><m>(1 2), (23), \ldots, (n- 1,n)</m></p></li>
-                        <li><p><m>(12), (1 2 \ldots n )</m></p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <exercise number="27">
-            <statement>
-                <p>Let <m>G</m> be a group and define a map <m>\lambda_g : G \rightarrow G</m> by <m>\lambda_g(a) = g a</m>. Prove that <m>\lambda_g</m> is a permutation of <m>G</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="28">
-            <statement>
-                <p>Prove that there exist <m>n!</m> permutations of a set containing <m>n</m> elements.</p>
-            </statement>
-        </exercise>
-        <exercise number="29">
-            <statement>
-                <p>Recall that the <term>center</term> of a group <m>G</m> is
-                    <me>Z(G) = \{ g \in G : gx = xg \text{ for all } x \in G \}.</me>
-                Find the center of <m>D_8</m>. What about the center of <m>D_{10}</m>? What is the center of <m>D_n</m>?</p>
-            </statement>
-        </exercise>
-        <exercise number="30">
-            <statement>
-                <p>Let <m>\tau = (a_1, a_2, \ldots, a_k)</m> be a cycle of length <m>k</m>.
-                    <ol>
-                        <li><p>Prove that if <m>\sigma</m> is any permutation, then
-                            <me>\sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))</me>
-                        is a cycle of length <m>k</m>.</p></li>
-                        <li><p>Let <m>\mu</m> be a cycle of length <m>k</m>. Prove that there is a permutation <m>\sigma</m> such that <m>\sigma \tau \sigma^{-1 } = \mu</m>.</p></li>
-                    </ol></p>
-            </statement>
-            <hint>
-                <p>For (a), show that <m>\sigma \tau \sigma^{-1 }(\sigma(a_i)) = \sigma(a_{i + 1})</m>.</p>
-            </hint>
-        </exercise>
-        <exercise number="31">
-            <statement>
-                <p>For <m>\alpha</m> and <m>\beta</m> in <m>S_n</m>, define <m>\alpha \sim \beta</m> if there exists an <m>\sigma \in S_n</m> such that <m>\sigma \alpha \sigma^{-1} = \beta</m>.  Show that <m>\sim</m> is an equivalence relation on <m>S_n</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="32">
-            <statement>
-                <p>Let <m>\sigma \in S_X</m>. If <m>\sigma^n(x) = y</m>, we will say that <m>x \sim y</m>. 
-                    <ol>
-                        <li><p>Show that <m>\sim</m> is an equivalence relation on <m>X</m>.</p></li>
-                        <li><p>If <m>\sigma \in A_n</m> and <m>\tau \in S_n</m>, show that <m>\tau^{-1} \sigma \tau \in A_n</m>.</p></li><li><p>Define the <term>orbit</term> of <m>x \in X</m> under <m>\sigma \in S_X</m> to be the set 
-                            <me>{\mathcal O}_{x, \sigma} = \{ y : x \sim y  \}.</me>
-                        Compute the orbits of each of the following elements in <m>S_5</m>:
-                            <md>
-                                <mrow>\alpha &amp; = (1254)</mrow>
-                                <mrow>\beta &amp; = (123)(45)</mrow>
-                                <mrow>\gamma &amp; = (13)(25).</mrow>
-                            </md></p></li>
-                        <li><p>If <m>{\mathcal O}_{x, \sigma} \cap {\mathcal O}_{y, \sigma} \neq \emptyset</m>, prove that <m>{\mathcal O}_{x, \sigma} = {\mathcal O}_{y, \sigma}</m>. The orbits under a permutation <m>\sigma</m> are the equivalence classes corresponding to the equivalence relation <m>\sim</m>.</p></li>
-                        <li><p>A subgroup <m>H</m> of <m>S_X</m> is <term>transitive</term> if for every <m>x, y \in X</m>, there exists a <m>\sigma \in H</m> such that <m>\sigma(x) = y</m>. Prove that <m>\langle \sigma \rangle</m> is transitive if and only if <m>{\mathcal O}_{x, \sigma} = X</m> for some <m>x \in X</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-        <exercise number="33">
-            <statement>
-                <p>Let <m>\alpha \in S_n</m> for <m>n \geq 3</m>. If <m>\alpha \beta = \beta \alpha</m> for all <m>\beta \in S_n</m>, prove that <m>\alpha</m> must be the identity permutation; hence, the center of <m>S_n</m> is the trivial subgroup.</p>
-            </statement>
-        </exercise>
-        <exercise number="34" xml:id="permute-exercise-inverse-even">
-            <statement>
-                <p>If <m>\alpha</m> is even, prove that <m>\alpha^{-1}</m> is also even. Does a corresponding result hold if <m>\alpha</m> is odd?</p>
-            </statement>
-        </exercise>
-        <exercise number="35">
-            <statement>
-                <p>Show that  <m>\alpha^{-1} \beta^{-1} \alpha \beta</m> is even for <m>\alpha, \beta \in S_n</m>.</p>
-            </statement>
-        </exercise>
-        <exercise number="36">
-            <statement>
-                <p>Let <m>r</m> and <m>s</m> be the elements in <m>D_n</m> described in Theorem<nbsp/><xref ref="theorem-dn-generator"/>
-                    <ol>
-                        <li><p>Show that <m>srs = r^{-1}</m>.</p></li>
-                        <li><p>Show that <m>r^k s = s r^{-k}</m> in <m>D_n</m>.</p></li>
-                        <li><p>Prove that the order of <m>r^k \in D_n</m> is <m>n / \gcd(k,n)</m>.</p></li>
-                    </ol></p>
-            </statement>
-        </exercise>
-    </exercises>
+  <exercises xml:id="exercises-permute" filenamebase="permute">
+    <title>Exercises</title>
+    <exercise number="1">
+      <statement>
+        <p>
+          Write the following permutations in cycle notation.
+
+          <ol cols="2">
+            <li>
+              <p>
+                <me>
+                  \begin{pmatrix}
+                  1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+                  2 &amp; 4 &amp; 1 &amp; 5 &amp; 3
+                  \end{pmatrix}
+                </me>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <me>
+                  \begin{pmatrix}
+                  1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+                  4 &amp; 2 &amp; 5 &amp; 1 &amp; 3
+                  \end{pmatrix}
+                </me>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <me>
+                  \begin{pmatrix}
+                  1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+                  3 &amp; 5 &amp; 1 &amp; 4 &amp; 2
+                  \end{pmatrix}
+                </me>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <me>
+                  \begin{pmatrix}
+                  1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+                  1 &amp; 4 &amp; 3 &amp; 2 &amp; 5
+                  \end{pmatrix}
+                </me>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>(12453)</m>; (c) <m>(13)(25)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="2">
+      <statement>
+        <p>
+          Compute each of the following.
+
+          <ol cols="2">
+            <li>
+              <p>
+                <m>(1345)(234)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(12)(1253)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(143)(23)(24)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1423)(34)(56)(1324)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1254)(13)(25)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1254) (13)(25)^2</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1254)^{-1} (123)(45) (1254)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1254)^2 (123)(45)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(123)(45) (1254)^{-2}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1254)^{100}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>|(1254)|</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>|(1254)^2|</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(12)^{-1}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(12537)^{-1}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>[(12)(34)(12)(47)]^{-1}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>[(1235)(467)]^{-1}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>(135)(24)</m>; (c) <m>(14)(23)</m>; (e) <m>(1324)</m>; (g) <m>(134)(25)</m>; (n) <m>(17352)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="3">
+      <statement>
+        <p>
+          Express the following permutations as products of transpositions and identify them as even or odd.
+
+          <ol cols="2">
+            <li>
+              <p>
+                <m>(14356)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(156)(234)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1426)(142)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(17254)(1423)(154632)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(142637)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>(16)(15)(13)(14)</m>; (c) <m>(16)(14)(12)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="4">
+      <statement>
+        <p>
+          Find <m>(a_1, a_2, \ldots, a_n)^{-1}</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>(a_1, a_2, \ldots, a_n)^{-1} = (a_1, a_{n}, a_{n-1}, \ldots, a_2)</m>
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="5">
+      <statement>
+        <p>
+          List all of the subgroups of <m>S_4</m>.
+          Find each of the following sets:
+
+          <ol>
+            <li>
+              <p>
+                <m>\{ \sigma \in S_4 : \sigma(1) = 3 \}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>\{ \sigma \in S_4 : \sigma(2) = 2 \}</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>\{ \sigma \in S_4 : \sigma(1) = 3</m> and <m>\sigma(2) = 2 \}</m>.
+              </p>
+            </li>
+          </ol>
+
+          Are any of these sets subgroups of <m>S_4</m>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) <m>\{ (13), (13)(24), (132), (134), (1324), (1342) \}</m> is not a subgroup.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="6">
+      <statement>
+        <p>
+          Find all of the subgroups in <m>A_4</m>.
+          What is the order of each subgroup?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="7">
+      <statement>
+        <p>
+          Find all possible orders of elements in <m>S_7</m> and <m>A_7</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="8">
+      <statement>
+        <p>
+          Show that <m>A_{10}</m> contains an element of order <m>15</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>(12345)(678)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="9">
+      <statement>
+        <p>
+          Does <m>A_8</m> contain an element of order <m>26</m>?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="10">
+      <statement>
+        <p>
+          Find an element of largest order in <m>S_n</m> for <m>n = 3, \ldots, 10</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="11">
+      <statement>
+        <p>
+          What are the possible cycle structures of elements of <m>A_5</m>?
+          What about <m>A_6</m>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Permutations of the form
+          <me>
+            (1), (a_1, a_2)(a_3, a_4), (a_1, a_2, a_3), (a_1, a_2, a_3, a_4, a_5)
+          </me>
+          are possible for <m>A_5</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="12">
+      <statement>
+        <p>
+          Let <m>\sigma \in S_n</m> have order <m>n</m>.
+          Show that for all integers <m>i</m> and <m>j</m>,
+          <m>\sigma^i = \sigma^j</m> if and only if <m>i \equiv j \pmod{n}</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="13" xml:id="exercise-permute-order-product-cycles">
+      <statement>
+        <p>
+          Let <m>\sigma = \sigma_1 \cdots \sigma_m \in S_n</m> be the product of disjoint cycles.
+          Prove that the order of <m>\sigma</m> is the least common multiple of the lengths of the cycles <m>\sigma_1, \ldots, \sigma_m</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="14">
+      <statement>
+        <p>
+          Using cycle notation, list the elements in <m>D_5</m>.
+          What are <m>r</m> and <m>s</m>?
+          Write every element as a product of <m>r</m> and <m>s</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="15">
+      <statement>
+        <p>
+          If the diagonals of a cube are labeled as Figure<nbsp/><xref ref="figure-motions"/>,
+          to which motion of the cube does the permutation <m>(12)(34)</m> correspond?
+          What about the other permutations of the diagonals?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="16">
+      <statement>
+        <p>
+          Find the group of rigid motions of a tetrahedron.
+          Show that this is the same group as <m>A_4</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="17">
+      <statement>
+        <p>
+          Prove that <m>S_n</m> is nonabelian for <m>n \geq 3</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Calculate <m>(123)(12)</m> and <m>(12)(123)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="18">
+      <statement>
+        <p>
+          Show that <m>A_n</m> is nonabelian for <m>n \geq 4</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="19">
+      <statement>
+        <p>
+          Prove that <m>D_n</m> is nonabelian for <m>n \geq 3</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="20" xml:id="exercise-permute-cycle-n-1-transpositions">
+      <statement>
+        <p>
+          Let <m>\sigma \in S_n</m> be a cycle.
+          Prove that <m>\sigma</m> can be written as the product of at most <m>n-1</m> transpositions.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="21">
+      <statement>
+        <p>
+          Let <m>\sigma \in S_n</m>.
+          If <m>\sigma</m> is not a cycle,
+          prove that <m>\sigma</m> can be written as the product of at most <m>n - 2</m> transpositions.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="22">
+      <statement>
+        <p>
+          If <m>\sigma</m> can be expressed as an odd number of transpositions,
+          show that any other product of transpositions equaling <m>\sigma</m> must also be odd.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="23">
+      <statement>
+        <p>
+          If <m>\sigma</m> is a cycle of odd length,
+          prove that <m>\sigma^2</m> is also a cycle.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="24">
+      <statement>
+        <p>
+          Show that a <m>3</m>-cycle is an even permutation.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="25">
+      <statement>
+        <p>
+          Prove that in <m>A_n</m> with <m>n \geq 3</m>,
+          any permutation is a product of cycles of length <m>3</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Consider the cases <m>(ab)(bc)</m> and <m>(ab)(cd)</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="26">
+      <statement>
+        <p>
+          Prove that any element in <m>S_n</m> can be written as a finite product of the following permutations.
+
+          <ol>
+            <li>
+              <p>
+                <m>(1 2), (13), \ldots, (1n)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(1 2), (23), \ldots, (n- 1,n)</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <m>(12), (1 2 \ldots n )</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="27">
+      <statement>
+        <p>
+          Let <m>G</m> be a group and define a map
+          <m>\lambda_g : G \rightarrow G</m> by <m>\lambda_g(a) = g a</m>.
+          Prove that <m>\lambda_g</m> is a permutation of <m>G</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="28">
+      <statement>
+        <p>
+          Prove that there exist <m>n!</m> permutations of a set containing <m>n</m> elements.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="29">
+      <statement>
+        <p>
+          Recall that the <term>center</term> of a group <m>G</m> is
+          <me>
+            Z(G) = \{ g \in G : gx = xg \text{ for all } x \in G \}
+          </me>.
+          Find the center of <m>D_8</m>.
+          What about the center of <m>D_{10}</m>?
+          What is the center of <m>D_n</m>?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="30">
+      <statement>
+        <p>
+          Let <m>\tau = (a_1, a_2, \ldots,
+          a_k)</m> be a cycle of length <m>k</m>.
+
+          <ol>
+            <li>
+              <p>
+                Prove that if <m>\sigma</m> is any permutation, then
+                <me>
+                  \sigma \tau \sigma^{-1 } = ( \sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))
+                </me>
+                is a cycle of length <m>k</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <m>\mu</m> be a cycle of length <m>k</m>.
+                Prove that there is a permutation <m>\sigma</m> such that <m>\sigma \tau \sigma^{-1 } = \mu</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          For (a), show that <m>\sigma \tau \sigma^{-1 }(\sigma(a_i)) = \sigma(a_{i + 1})</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <exercise number="31">
+      <statement>
+        <p>
+          For <m>\alpha</m> and <m>\beta</m> in <m>S_n</m>,
+          define <m>\alpha \sim \beta</m> if there exists an
+          <m>\sigma \in S_n</m> such that <m>\sigma \alpha \sigma^{-1} = \beta</m>.
+          Show that <m>\sim</m> is an equivalence relation on <m>S_n</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="32">
+      <statement>
+        <p>
+          Let <m>\sigma \in S_X</m>.
+          If <m>\sigma^n(x) = y</m>, we will say that <m>x \sim y</m>.
+
+          <ol>
+            <li>
+              <p>
+                Show that <m>\sim</m> is an equivalence relation on <m>X</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>\sigma \in A_n</m> and <m>\tau \in S_n</m>,
+                show that <m>\tau^{-1} \sigma \tau \in A_n</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Define the <term>orbit</term> of <m>x \in X</m> under <m>\sigma \in S_X</m> to be the set
+                <me>
+                  {\mathcal O}_{x, \sigma} = \{ y : x \sim y  \}
+                </me>.
+                Compute the orbits of each of the following elements in <m>S_5</m>:
+                <md>
+                  <mrow>\alpha &amp; = (1254)</mrow>
+                  <mrow>\beta &amp; = (123)(45)</mrow>
+                  <mrow>\gamma &amp; = (13)(25)</mrow>
+                </md>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If <m>{\mathcal O}_{x, \sigma} \cap {\mathcal O}_{y, \sigma} \neq \emptyset</m>,
+                prove that <m>{\mathcal O}_{x, \sigma} = {\mathcal O}_{y, \sigma}</m>.
+                The orbits under a permutation <m>\sigma</m> are the equivalence classes corresponding to the equivalence relation <m>\sim</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A subgroup <m>H</m> of <m>S_X</m> is <term>transitive</term>
+                if for every <m>x, y \in X</m>,
+                there exists a <m>\sigma \in H</m> such that <m>\sigma(x) = y</m>.
+                Prove that <m>\langle \sigma \rangle</m> is transitive if and only if
+                <m>{\mathcal O}_{x, \sigma} = X</m> for some <m>x \in X</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="33">
+      <statement>
+        <p>
+          Let <m>\alpha \in S_n</m> for <m>n \geq 3</m>.
+          If <m>\alpha \beta = \beta \alpha</m> for all <m>\beta \in S_n</m>,
+          prove that <m>\alpha</m> must be the identity permutation;
+          hence, the center of <m>S_n</m> is the trivial subgroup.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="34" xml:id="permute-exercise-inverse-even">
+      <statement>
+        <p>
+          If <m>\alpha</m> is even, prove that <m>\alpha^{-1}</m> is also even.
+          Does a corresponding result hold if <m>\alpha</m> is odd?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="35">
+      <statement>
+        <p>
+          Show that <m>\alpha^{-1} \beta^{-1} \alpha \beta</m> is even for <m>\alpha, \beta \in S_n</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="36">
+      <statement>
+        <p>
+          Let <m>r</m> and <m>s</m> be the elements in <m>D_n</m> described in Theorem<nbsp/><xref ref="theorem-dn-generator"/>
+
+          <ol>
+            <li>
+              <p>
+                Show that <m>srs = r^{-1}</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Show that <m>r^k s = s r^{-k}</m> in <m>D_n</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Prove that the order of <m>r^k \in D_n</m> is <m>n / \gcd(k,n)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+  </exercises>
     <!-- This file is part of the book                 -->
     <!--                                               -->
     <!--   Abstract Algebra: Theory and Applications   -->
     <!--                                               -->
     <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
     <!-- See the file COPYING for copying conditions.  -->
-    <section xml:id="permute-sage">
-        <title>Sage</title>
-        <introduction>
-            <p>A good portion of Sage's support for group theory is based on routines from <acro>GAP</acro> (Groups, Algorithms, and Programming) at <url href="http://www.gap-system.org/">www.gap-system.org</url>, which is included in every copy of Sage.  This is a mature open source package, dating back to 1986. (Forward reference here to <acro>GAP</acro> console, etc.)</p>
-            <p>As we have seen, groups can be described in many different ways, such as sets of matrices, sets of complex numbers, or sets of symbols subject to defining relations.  A very concrete way to represent groups is via permutations (one-to-one and onto functions of the integers <m>1</m> through <m>n</m>), using function composition as the operation in the group, as described in this chapter.  Sage has many routines designed to work with groups of this type and they are also a good way for those learning group theory to gain experience with the basic ideas of group theory.  For both these reasons, we will concentrate on these types of groups.</p>
-        </introduction>
-        <subsection>
-            <title>Permutation Groups and Elements</title>
-            <p>The easiest way to work with permutation group elements in Sage is to write them in cycle notation.  Since these are products of disjoint cycles (which commute), we do not need to concern ourselves with the actual order of the cycles.  If we write <c>(1,3)(2,4)</c> we probably understand it to be a permutation (the topic of this chapter!) and we know that it could be an element of <m>S_4</m>, or perhaps a symmetric group on more symbols than just 4.  Sage cannot get started that easily and needs a bit of context, so we coerce a string of characters written with cycle notation into a symmetric group to make group elements.  Here are some examples and some sample computations.  Remember that Sage and your text differ on how to interpret the order of composing two permutations in a product.</p>
+  <section xml:id="permute-sage">
+    <title>Sage</title>
+    <introduction>
+      <p>
+        A good portion of Sage's support for group theory is based on routines from <acro>GAP</acro> (Groups, Algorithms,
+        and Programming) at <url href="http://www.gap-system.org/">www.gap-system.org</url>,
+        which is included in every copy of Sage.
+        This is a mature open source package,
+        dating back to 1986. (Forward reference here to <acro>GAP</acro> console, etc.)
+      </p>
+
+      <p>
+        As we have seen,
+        groups can be described in many different ways, such as sets of matrices,
+        sets of complex numbers, or sets of symbols subject to defining relations.
+        A very concrete way to represent groups is via permutations (one-to-one and onto functions of the integers <m>1</m> through <m>n</m>),
+        using function composition as the operation in the group,
+        as described in this chapter.
+        Sage has many routines designed to work with groups of this type and they are also a good way for those learning group theory to gain experience with the basic ideas of group theory.
+        For both these reasons, we will concentrate on these types of groups.
+      </p>
+    </introduction>
+
+    <subsection>
+      <title>Permutation Groups and Elements</title>
+      <p>
+        The easiest way to work with permutation group elements in Sage is to write them in cycle notation.
+        Since these are products of disjoint cycles
+        (which commute),
+        we do not need to concern ourselves with the actual order of the cycles.
+        If we write <c>(1,3)(2,4)</c> we probably understand it to be a permutation
+        (the topic of this chapter!)
+        and we know that it could be an element of <m>S_4</m>,
+        or perhaps a symmetric group on more symbols than just 4.
+        Sage cannot get started that easily and needs a bit of context,
+        so we coerce a string of characters written with cycle notation into a symmetric group to make group elements.
+        Here are some examples and some sample computations.
+        Remember that Sage and your text differ on how to interpret the order of composing two permutations in a product.
+      </p>
+
             <sage>
                 <input>
             G = SymmetricGroup(5)
@@ -838,7 +1743,12 @@
             </input>
                 <output>(1,5)(2,4)</output>
             </sage>
-            <p>If the next three examples seem confusing, or <q>backwards</q>, then now would be an excellent time to review the Sage discussion about the order of permutation composition in the subsection <xref ref="subsection-groups-of-symmetries" text="title"/>.</p>
+
+      <p>
+        If the next three examples seem confusing, or <q>backwards</q>,
+        then now would be an excellent time to review the Sage discussion about the order of permutation composition in the subsection <xref ref="subsection-groups-of-symmetries" text="title"/>.
+      </p>
+
             <sage>
                 <input>sigma*rho</input>
                 <output>(1,3,5,2)</output>
@@ -851,7 +1761,13 @@
                 <input>rho^-1*sigma*rho</input>
                 <output>(1,2,4)(3,5)</output>
             </sage>
-            <p>There are alternate ways to create permutation group elements, which can be useful in some situations, but they are not quite as useful in everday use.</p>
+
+      <p>
+        There are alternate ways to create permutation group elements,
+        which can be useful in some situations,
+        but they are not quite as useful in everday use.
+      </p>
+
             <sage>
                 <input>
             sigma1 = G("(1,3)(2,5,4)")
@@ -889,9 +1805,32 @@
                 <input>[sigma3(x) for x in G.domain()]</input>
                 <output>[3, 5, 1, 2, 4]</output>
             </sage>
-            <p>The second version of <m>\sigma</m> is a list of <q>tuples</q>, which requires a lot of commas and these must be enclosed in a list.  (A tuple of length one must be written like <c>(4,)</c> to distinguish it from using parentheses for grouping, as in <c>5*(4)</c>.)  The third version uses the <q>bottom-row</q> of the more cumbersome two-row notation introduced at the beginning of the chapter <mdash/> it is an ordered list of the <em>output values</em> of the permutation when considered as a function.</p>
-            <p>So we then see that despite three different input procedures, all the versions of <m>\sigma</m> print the same way, and moreso they are actually equal to each other.  (This is a subtle difference <mdash/> what an object <em>is</em> in Sage versus how an object <em>displays</em> itself.)</p>
-            <p>We can be even more careful about the nature of our elements.  Notice that once we get Sage started, it can promote the product <m>\tau\sigma</m> into the larger permutation group.  We can <q>promote</q> elements into larger permutation groups, but it is an error to try to shoe-horn an element into a too-small symmetric group.</p>
+
+      <p>
+        The second version of <m>\sigma</m> is a list of <q>tuples</q>,
+        which requires a lot of commas and these must be enclosed in a list.  (A tuple of length one must be written like <c>(4,)</c> to distinguish it from using parentheses for grouping,
+        as in <c>5*(4)</c>.)  The third version uses the <q>bottom-row</q>
+        of the more cumbersome two-row notation introduced at the beginning of the chapter <mdash/> it is an ordered list of the <em>output values</em>
+        of the permutation when considered as a function.
+      </p>
+
+      <p>
+        So we then see that despite three different input procedures,
+        all the versions of <m>\sigma</m> print the same way,
+        and moreso they are actually equal to each other.
+        (This is a subtle difference <mdash/> what an object <em>is</em>
+        in Sage versus how an object <em>displays</em> itself.)
+      </p>
+
+      <p>
+        We can be even more careful about the nature of our elements.
+        Notice that once we get Sage started,
+        it can promote the product
+        <m>\tau\sigma</m> into the larger permutation group.
+        We can <q>promote</q> elements into larger permutation groups,
+        but it is an error to try to shoe-horn an element into a too-small symmetric group.
+      </p>
+
             <sage>
                 <input>
             H = SymmetricGroup(4)
@@ -926,7 +1865,11 @@
             </input>
                 <output>Symmetric group of order 6! as a permutation group</output>
             </sage>
-            <p>It is an error to try to coerce a permutation with too many symbols into a permutation group employing too few symbols.</p>
+
+      <p>
+        It is an error to try to coerce a permutation with too many symbols into a permutation group employing too few symbols.
+      </p>
+
             <sage>
                 <input>tauH = H(tau)</input>
                 <output>
@@ -935,55 +1878,67 @@
             ValueError: Invalid permutation vector: (1,2,3,4,5,6)
             </output>
             </sage>
-            <p>Better than working with just elements of the symmetric group, we can create a variety of permutation groups in Sage.  Here is a sampling for starters:</p>
-            <table xml:id="table-sage-permutation-groups">
-                <caption>Some Sage permutation groups</caption>
-                <tabular halign="left" top="medium">
-                    <row bottom="medium">
-                        <cell>Sage Command</cell>
-                        <cell>Description</cell>
-                    </row>
-                    <row>
-                        <cell>
-                            <c>SymmetricGroup(n)</c>
-                        </cell>
-                        <cell>Permutations on <m>n</m> symbols, <m>n!</m> elements</cell>
-                    </row>
-                    <row>
-                        <cell>
-                            <c>DihedralGroup(n)</c>
-                        </cell>
-                        <cell>Symmetries of an <m>n</m>-gon, <m>2n</m> elements.</cell>
-                    </row>
-                    <row>
-                        <cell>
-                            <c>CyclicPermutationGroup(n)</c>
-                        </cell>
-                        <cell>Rotations of an <m>n</m>-gon (no flips), <m>n</m> elements</cell>
-                    </row>
-                    <row>
-                        <cell>
-                            <c>AlternatingGroup(n)</c>
-                        </cell>
-                        <cell>Alternating group on <m>n</m> symbols, <m>n!/2</m> elements</cell>
-                    </row>
-                    <row bottom="medium">
-                        <cell>
-                            <c>KleinFourGroup()</c>
-                        </cell>
-                        <cell>A non-cyclic group of order 4</cell>
-                    </row>
-                </tabular>
-            </table>
-            <sage type="practice"/>
-            <p>You can also locate Sage permutation groups with the <c>groups</c> catalog.  In the next cell place your cursor right after the final dot and hit the tab-key.  You will get a list of methods you can use to create permutation groups.  As always, place a question-mark after a method and hit the tab-key to get online documentation of a method.</p>
+
+      <p>
+        Better than working with just elements of the symmetric group,
+        we can create a variety of permutation groups in Sage.
+        Here is a sampling for starters:
+      </p>
+
+      <table xml:id="table-sage-permutation-groups">
+        <caption>Some Sage permutation groups</caption>
+        <tabular halign="left" top="medium">
+          <row bottom="medium">
+            <cell>Sage Command</cell>
+            <cell>Description</cell>
+          </row>
+          <row>
+            <cell><c>SymmetricGroup(n)</c></cell>
+            <cell>Permutations on <m>n</m> symbols, <m>n!</m> elements</cell>
+          </row>
+          <row>
+            <cell><c>DihedralGroup(n)</c></cell>
+            <cell>Symmetries of an <m>n</m>-gon, <m>2n</m> elements.</cell>
+          </row>
+          <row>
+            <cell><c>CyclicPermutationGroup(n)</c></cell>
+            <cell>Rotations of an <m>n</m>-gon (no flips), <m>n</m> elements</cell>
+          </row>
+          <row>
+            <cell><c>AlternatingGroup(n)</c></cell>
+            <cell>Alternating group on <m>n</m> symbols, <m>n!/2</m> elements</cell>
+          </row>
+          <row bottom="medium">
+            <cell><c>KleinFourGroup()</c></cell>
+            <cell>A non-cyclic group of order 4</cell>
+          </row>
+        </tabular>
+
+      </table>
+
+      <sage type="practice"/>
+
+      <p>
+        You can also locate Sage permutation groups with the <c>groups</c> catalog.
+        In the next cell place your cursor right after the final dot and hit the tab-key.
+        You will get a list of methods you can use to create permutation groups.
+        As always, place a question-mark after a method and hit the tab-key to get online documentation of a method.
+      </p>
+
             <sage doctest="not tested">
                 <input>groups.permutation.</input>
             </sage>
-        </subsection>
-        <subsection>
-            <title>Properties of Permutation Elements</title>
-            <p>Sometimes it is easier to grab an element out of a list of elements of a permutation group, and then it is already attached to a parent and there is no need for any coercion.  In the following, <c>rotate</c> and <c>flip</c> are automatically elements of <c>G</c> because of the way we procured them.</p>
+    </subsection>
+
+    <subsection>
+      <title>Properties of Permutation Elements</title>
+      <p>
+        Sometimes it is easier to grab an element out of a list of elements of a permutation group,
+        and then it is already attached to a parent and there is no need for any coercion.
+        In the following,
+        <c>rotate</c> and <c>flip</c> are automatically elements of <c>G</c> because of the way we procured them.
+      </p>
+
             <sage>
                 <input>
             D = DihedralGroup(5)
@@ -1002,7 +1957,12 @@
             </input>
                 <output>False</output>
             </sage>
-            <p>So we see from this final statement that the group of symmetries of a pentagon is not abelian.  But there is an easier way.</p>
+
+      <p>
+        So we see from this final statement that the group of symmetries of a pentagon is not abelian.
+        But there is an easier way.
+      </p>
+
             <sage>
                 <input>
             D = DihedralGroup(5)
@@ -1010,9 +1970,33 @@
             </input>
                 <output>False</output>
             </sage>
-            <p>There are many more methods you can use for both permutation groups and their individual elements.  Use the blank compute cell below to create a permutation group (any one you like) and an element of a permutation group (any one you like).  Then use tab-completion to see all the methods available for an element, or for a group (name, period, tab-key).  Some names you may recognize, some we will learn about in the coming chapters, some are highly-specialized research tools you can use when you write your Ph.D.<nbsp />thesis in group theory.  For any of these methods, remember that you can type the name, followed by a question mark, to see documentation and examples.  <em>Experiment and explore</em> <mdash/> it is really hard to break anything.</p>
-            <sage type="practice"/>
-            <p>Here are some selected examples of various methods available.</p>
+
+      <p>
+        There are many more methods you can use for both permutation groups and their individual elements.
+        Use the blank compute cell below to create a permutation group
+        (any one you like)
+        and an element of a permutation group
+        (any one you like).
+        Then use tab-completion to see all the methods available for an element,
+        or for a group
+        (name, period, tab-key).
+        Some names you may recognize,
+        some we will learn about in the coming chapters,
+        some are highly-specialized research tools you can use when you write your Ph.D.<nbsp />thesis in group theory.
+        For any of these methods,
+        remember that you can type the name,
+        followed by a question mark,
+        to see documentation and examples. 
+        <em>Experiment and explore</em>
+        <mdash/> it is really hard to break anything.
+      </p>
+
+      <sage type="practice"/>
+
+      <p>
+        Here are some selected examples of various methods available.
+      </p>
+
             <sage>
                 <input>
             A4 = AlternatingGroup(4)
@@ -1043,7 +2027,12 @@
                 <input>sigma.order()</input>
                 <output>3</output>
             </sage>
-            <p>A very useful method when studying the alternating group is the permutation group element method <c>.sign()</c>.  It will return <c>1</c> if a permutation is even and <c>-1</c> if a permutation is odd.</p>
+
+      <p>
+        A very useful method when studying the alternating group is the permutation group element method <c>.sign()</c>.
+        It will return <c>1</c> if a permutation is even and <c>-1</c> if a permutation is odd.
+      </p>
+
             <sage>
                 <input>
             G = SymmetricGroup(3)
@@ -1058,8 +2047,31 @@
                 <input>rho.sign()</input>
                 <output>1</output>
             </sage>
-            <p>We can create subgroups by giving the main group a list of <q>generators.</q>  These elements serve to <q>generate</q> a subgroup <mdash/> imagine multiplying these elements (and their inverses) together over and over, creating new elements that must also be in the subgroup and also become involved in new products, until you see no new elements.  Now that definition ends with a horribly imprecise statement, but it should suffice for now.  A better definition is that the subgroup generated by the elements is the smallest subgroup of the main group that contains all the generators <mdash/> which is fine if you know what all the subgroups might be.</p>
-            <p>With a single generator, the repeated products just become powers of the lone generator.  The subgroup generated then is cyclic.  With two (or more) generators, especially in a non-abelian group, the situation can be much, much more complicated.  So let us begin with just a single generator.  But do not forget to put it in a list anyway.</p>
+
+      <p>
+        We can create subgroups by giving the main group a list of <q>generators.</q>
+        These elements serve to <q>generate</q>
+        a subgroup <mdash/> imagine multiplying these elements
+        (and their inverses)
+        together over and over,
+        creating new elements that must also be in the subgroup and also become involved in new products,
+        until you see no new elements.
+        Now that definition ends with a horribly imprecise statement,
+        but it should suffice for now.
+        A better definition is that the subgroup generated by the elements is the smallest subgroup of the main group that contains all the generators <mdash/> which is fine if you know what all the subgroups might be.
+      </p>
+
+      <p>
+        With a single generator,
+        the repeated products just become powers of the lone generator.
+        The subgroup generated then is cyclic.
+        With two (or more) generators,
+        especially in a non-abelian group,
+        the situation can be much, much more complicated.
+        So let us begin with just a single generator.
+        But do not forget to put it in a list anyway.
+      </p>
+
             <sage>
                 <input>
             A4 = AlternatingGroup(4)
@@ -1092,7 +2104,16 @@
                 <input>sg.is_subgroup(A4)</input>
                 <output>True</output>
             </sage>
-            <p>We can now redo the example from the very beginning of this chapter.  We translate to elements to cycle notation, construct the subgroup from two generators (the subgroup is not cyclic), and since the subgroup is abelian, we do not have to view Sage's Cayley table as a diagonal reflection of the table in the example.</p>
+
+      <p>
+        We can now redo the example from the very beginning of this chapter.
+        We translate to elements to cycle notation,
+        construct the subgroup from two generators
+        (the subgroup is not cyclic),
+        and since the subgroup is abelian,
+        we do not have to view Sage's Cayley table as a diagonal reflection of the table in the example.
+      </p>
+
             <sage>
                 <input>
             G = SymmetricGroup(5)
@@ -1117,12 +2138,33 @@
                mu|    mu   tau sigma    id
             </output>
             </sage>
-            <sage type="practice"/>
-        </subsection>
-        <subsection xml:id="subsection-motion-group-cube">
-            <title>Motion Group of a Cube</title>
-            <p>We could mimic the example in the text and create elements of <m>S_4</m> as permutations of the diagonals.  A more obvious, but less insightful, construction is to view the 8 corners of the cube as the items being permuted.  Then some obvious symmetries of the cube come from running an axis through the center of a side, through to the center of the opposite side, with quarter-turns or half-turns about these axes forming symmetries.  With three such axes and four rotations per axis, we get 12 symmetries, except we have counted the identity permutation two extra times.</p>
-            <p>Label the four corners of the square top with <m>1</m> through <m>4</m>, placing <m>1</m> in the left-front corner, and following around clockwise when viewed from above.  Use <m>5</m> through <m>8</m> for the bottom square's corner, so that <m>5</m> is directly below <m>1</m>, <m>6</m> below <m>2</m>, etc.  We will use quarter-turns, clockwise, around each axis, when viewed from above, the front, and the right.</p>
+      <sage type="practice"/>
+    </subsection>
+
+    <subsection xml:id="subsection-motion-group-cube">
+      <title>Motion Group of a Cube</title>
+      <p>
+        We could mimic the example in the text and create elements of <m>S_4</m> as permutations of the diagonals.
+        A more obvious, but less insightful,
+        construction is to view the 8 corners of the cube as the items being permuted.
+        Then some obvious symmetries of the cube come from running an axis through the center of a side,
+        through to the center of the opposite side,
+        with quarter-turns or half-turns about these axes forming symmetries.
+        With three such axes and four rotations per axis, we get 12 symmetries,
+        except we have counted the identity permutation two extra times.
+      </p>
+
+      <p>
+        Label the four corners of the square top with <m>1</m> through <m>4</m>,
+        placing <m>1</m> in the left-front corner,
+        and following around clockwise when viewed from above.
+        Use <m>5</m> through <m>8</m> for the bottom square's corner,
+        so that <m>5</m> is directly below <m>1</m>,
+        <m>6</m> below <m>2</m>, etc.
+        We will use quarter-turns, clockwise,
+        around each axis, when viewed from above, the front, and the right.
+      </p>
+
             <sage>
                 <input>
             G = SymmetricGroup(8)
@@ -1147,111 +2189,234 @@
              (2,5,4)(3,6,8), (1,6,3)(4,5,7), (1,8,3)(2,5,7)]
             </output>
             </sage>
-            <p>Since we know from the discussion in the text that the symmetry group has <m>24</m> elements, we see that our three quarter-turns are sufficient to create every symmetry.  This prompts several questions which you can find in Exercise<nbsp/><xref ref="exercise-cube-symmetry"/>.</p>
-            <sage type="practice"/>
-        </subsection>
-    </section>
+
+      <p>
+        Since we know from the discussion in the text that the symmetry group has <m>24</m> elements,
+        we see that our three quarter-turns are sufficient to create every symmetry.
+        This prompts several questions which you can find in Exercise<nbsp/><xref ref="exercise-cube-symmetry"/>.
+      </p>
+
+      <sage type="practice"/>
+    </subsection>
+
+  </section>
     <!-- This file is part of the book                 -->
     <!--                                               -->
     <!--   Abstract Algebra: Theory and Applications   -->
     <!--                                               -->
     <!-- Copyright (C) 2010-2014  Robert A. Beezer     -->
     <!-- See the file COPYING for copying conditions.  -->
-    <exercises xml:id="permute-sage-exercises">
-        <title>Sage Exercises</title>
-        <introduction>
-            <p>These exercises are designed to help you become familiar with permutation groups in Sage.</p>
-        </introduction>
-        <exercise number="1">
-            <statement>
-                <p>Create the full symmetric group <m>S_{10}</m> with the command <c>G = SymmetricGroup(10)</c>.</p>
-            </statement>
-        </exercise>
-        <exercise number="2">
-            <statement>
-                <p>Create elements of <c>G</c> with the following (varying) syntax.  Pay attention to commas, quotes, brackets, parentheses.  The first two use a string (characters) as input, mimicking the way we write permuations (but with commas).  The second two use a list of tuples.</p>
-                <ul>
-                    <li>
-                        <p>
-                            <c>a = G("(5,7,2,9,3,1,8)")</c>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <c>b = G("(1,3)(4,5)")</c>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <c>c = G([(1,2),(3,4)])</c>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <c>d = G([(1,3),(2,5,8),(4,6,7,9,10)])</c>
-                        </p>
-                    </li>
-                </ul>
-                <ol>
-                    <li>
-                        <p>Compute <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.</p>
-                    </li>
-                    <li>
-                        <p>Compute the orders of each of these four individual elements (<c>a</c> through <c>d</c>) using a single permutation group element method.</p>
-                    </li>
-                    <li>
-                        <p>Use the permutation group element method <c>.sign()</c> to determine if <m>a,b,c,d</m> are even or odd permutations.</p>
-                    </li>
-                    <li>
-                        <p>Create two cyclic subgroups of <m>G</m> with the commands:
-                <ul><li><p><c>H = G.subgroup([a])</c></p></li><li><p><c>K = G.subgroup([d])</c></p></li></ul>
-                List, and study, the elements of each subgroup.  Without using Sage, list the order of each subgroup of <m>K</m>.  Then use Sage to construct a subgroup of <m>K</m> with order 10.</p>
-                    </li>
-                    <li>
-                        <p>More complicated subgroups can be formed by using two or more generators.  Construct a subgroup <m>L</m> of <m>G</m> with the command <c>L = G.subgroup([b,c])</c>.  Compute the order of <m>L</m> and list all of the elements of <m>L</m>.</p>
-                    </li>
-                </ol>
-            </statement>
-        </exercise>
-        <exercise number="3">
-            <statement>
-                <p>Construct the group of symmetries of the tetrahedron (also the alternating group on 4 symbols, <m>A_4</m>) with the command <c>A=AlternatingGroup(4)</c>.  Using tools such as orders of elements, and generators of subgroups, see if you can find <em>all of</em> the subgroups of <m>A_4</m> (each one exactly once).  Do this without using the <c>.subgroups()</c> method to justify the correctness of your answer (though it might be a convenient way to check your work).</p>
-                <p>Provide a nice summary as your answer<mdash/>not just piles of output.  So use Sage as a tool, as needed, but basically your answer will be a concise paragraph and/or table.  This is the one part of this assignment without clear, precise directions, so spend some time on this portion to get it right.  Hint: no subgroup of <m>A_4</m> requires more than two generators.</p>
-            </statement>
-        </exercise>
-        <exercise number="4" xml:id="exercise-cube-symmetry">
-            <statement>
-                <p>The subsection <xref ref="subsection-motion-group-cube" text="title"/> describes the <m>24</m> symmetries of a cube as a subgroup of the symmetric group <m>S_8</m> generated by three quarter-turns.  Answer the following questions about this symmetry group.</p>
-                <ol>
-                    <li>
-                        <p>From the list of elements of the group, can you locate the ten rotations about axes?  (Hint: the identity is easy, the other nine never send any symbol to itself.)</p>
-                    </li>
-                    <li>
-                        <p>Can you identify the six symmetries that are a transposition of diagonals?  (Hint: <c>[g for g in cube if g.order() == 2]</c> is a good preliminary filter.)</p>
-                    </li>
-                    <li>
-                        <p>Verify that any two of the quarter-turns (<c>above</c>, <c>front</c>, <c>right</c>) are sufficient to generate the whole group.  How do you know each pair generates the entire group?</p>
-                    </li>
-                    <li>
-                        <p>Can you express one of the diagonal transpositions as a product of quarter-turns?  This can be a notoriously difficult problem, especially for software.  It is known as the <q>word problem.</q></p>
-                    </li>
-                    <li>
-                        <p>Number the six faces of the cube with the numbers <m>1</m> through <m>6</m> (any way you like).  Now consider the same three symmetries we used before (quarter-turns about face-to-face axes), but now view them as permutations of the six faces.  In this way, we construct each symmetry as an element of <m>S_6</m>.  Verify that the subgroup generated by these symmetries is the whole symmetry group of the cube.  Again, rather than using three generators, try using just two.</p>
-                    </li>
-                </ol>
-            </statement>
-        </exercise>
-        <exercise number="5">
-            <statement>
-                <p>Save your work, and then see if you can crash your Sage session by building the subgroup of <m>S_{10}</m> generated by the elements <c>b</c> and <c>d</c> of orders <m>2</m> and <m>30</m> from above.  <em>Do not submit</em> the list of elements of <c>N</c> as part of your submitted worksheet.</p>
-                <sage type="display">
-                    <input>
-                N = G.subgroup([b,d])
-                N.list()
-                </input>
-                </sage>
-                <p>What is the order of <m>N</m>?</p>
-            </statement>
-        </exercise>
-    </exercises>
+  <exercises xml:id="permute-sage-exercises">
+    <title>Sage Exercises</title>
+    <introduction>
+      <p>
+        These exercises are designed to help you become familiar with permutation groups in Sage.
+      </p>
+    </introduction>
+
+    <exercise number="1">
+      <statement>
+        <p>
+          Create the full symmetric group <m>S_{10}</m> with the command <c>G = SymmetricGroup(10)</c>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="2">
+      <statement>
+        <p>
+          Create elements of <c>G</c> with the following (varying) syntax.
+          Pay attention to commas, quotes, brackets, parentheses.
+          The first two use a string (characters) as input,
+          mimicking the way we write permuations
+          (but with commas).
+          The second two use a list of tuples.
+        </p>
+
+        <ul>
+          <li>
+            <p>
+              <c>a = G("(5,7,2,9,3,1,8)")</c>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <c>b = G("(1,3)(4,5)")</c>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <c>c = G([(1,2),(3,4)])</c>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <c>d = G([(1,3),(2,5,8),(4,6,7,9,10)])</c>
+            </p>
+          </li>
+        </ul>
+
+        <ol>
+          <li>
+            <p>
+              Compute <m>a^3</m>, <m>bc</m>, <m>ad^{-1}b</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Compute the orders of each of these four individual elements (<c>a</c> through <c>d</c>) using a single permutation group element method.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Use the permutation group element method <c>.sign()</c> to determine if <m>a,b,c,d</m> are even or odd permutations.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Create two cyclic subgroups of <m>G</m> with the commands:
+
+              <ul>
+                <li>
+                  <p>
+                    <c>H = G.subgroup([a])</c>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <c>K = G.subgroup([d])</c>
+                  </p>
+                </li>
+              </ul>
+
+              List, and study, the elements of each subgroup.
+              Without using Sage, list the order of each subgroup of <m>K</m>.
+              Then use Sage to construct a subgroup of <m>K</m> with order 10.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              More complicated subgroups can be formed by using two or more generators.
+              Construct a subgroup <m>L</m> of <m>G</m> with the command <c>L = G.subgroup([b,c])</c>.
+              Compute the order of <m>L</m> and list all of the elements of <m>L</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise number="3">
+      <statement>
+        <p>
+          Construct the group of symmetries of the tetrahedron
+          (also the alternating group on 4 symbols, <m>A_4</m>)
+          with the command <c>A=AlternatingGroup(4)</c>.
+          Using tools such as orders of elements,
+          and generators of subgroups,
+          see if you can find <em>all of</em>
+          the subgroups of <m>A_4</m>
+          (each one exactly once).
+          Do this without using the <c>.subgroups()</c> method to justify the correctness of your answer
+          (though it might be a convenient way to check your work).
+        </p>
+
+        <p>
+          Provide a nice summary as your answer<mdash/>not just piles of output.
+          So use Sage as a tool, as needed,
+          but basically your answer will be a concise paragraph and/or table.
+          This is the one part of this assignment without clear,
+          precise directions,
+          so spend some time on this portion to get it right.
+          Hint: no subgroup of <m>A_4</m> requires more than two generators.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise number="4" xml:id="exercise-cube-symmetry">
+      <statement>
+        <p>
+          The subsection <xref ref="subsection-motion-group-cube" text="title"/> describes the <m>24</m> symmetries of a cube as a subgroup of the symmetric group <m>S_8</m> generated by three quarter-turns.
+          Answer the following questions about this symmetry group.
+        </p>
+
+        <ol>
+          <li>
+            <p>
+              From the list of elements of the group,
+              can you locate the ten rotations about axes? (Hint:
+              the identity is easy, the other nine never send any symbol to itself.)
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Can you identify the six symmetries that are a transposition of diagonals? (Hint:
+              <c>[g for g in cube if g.order() == 2]</c> is a good preliminary filter.)
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify that any two of the quarter-turns (<c>above</c>,
+              <c>front</c>,
+              <c>right</c>) are sufficient to generate the whole group.
+              How do you know each pair generates the entire group?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Can you express one of the diagonal transpositions as a product of quarter-turns?
+              This can be a notoriously difficult problem, especially for software.
+              It is known as the <q>word problem.</q>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Number the six faces of the cube with the numbers <m>1</m> through <m>6</m>
+              (any way you like).
+              Now consider the same three symmetries we used before (quarter-turns about face-to-face axes),
+              but now view them as permutations of the six faces.
+              In this way,
+              we construct each symmetry as an element of <m>S_6</m>.
+              Verify that the subgroup generated by these symmetries is the whole symmetry group of the cube.
+              Again, rather than using three generators, try using just two.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise number="5">
+      <statement>
+        <p>
+          Save your work,
+          and then see if you can crash your Sage session by building the subgroup of <m>S_{10}</m> generated by the elements <c>b</c> and <c>d</c> of orders <m>2</m> and <m>30</m> from above. <em>Do not submit</em>
+          the list of elements of <c>N</c> as part of your submitted worksheet.
+        </p>
+
+            <sage type="display">
+                <input>
+            N = G.subgroup([b,d])
+            N.list()
+            </input>
+            </sage>
+
+        <p>
+          What is the order of <m>N</m>?
+        </p>
+      </statement>
+    </exercise>
+
+  </exercises>
 </chapter>
+
