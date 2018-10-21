@@ -35,28 +35,28 @@
 <!-- Bold and italic for terminology macro -->
 <!-- http://tex.stackexchange.com/questions/46690/standard-order-for-bolditalic -->
 <xsl:template name="aata-terminology">
-	<xsl:text>% Definitions to bold italics&#xa;</xsl:text>
-	<xsl:text>\renewcommand{\terminology}[1]%&#xa;</xsl:text>
-	<xsl:text>{{\fontshape{\itdefault}\fontseries{\bfdefault}\selectfont #1\/}}&#xa;</xsl:text>
+    <xsl:text>% Definitions to bold italics&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\terminology}[1]%&#xa;</xsl:text>
+    <xsl:text>{{\fontshape{\itdefault}\fontseries{\bfdefault}\selectfont #1\/}}&#xa;</xsl:text>
 </xsl:template>
 
 <!-- Proof to small caps -->
 <!-- http://tex.stackexchange.com/questions/8089/changing-style-of-proof -->
 <xsl:template name="aata-proof-heading">
-	<xsl:text>% Proof environment with heading in small caps&#xa;</xsl:text>
-	<xsl:text>\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname&#xa;</xsl:text>
-	<xsl:text>\let\oldendproof\endproof&#xa;</xsl:text>
-	<xsl:text>\renewenvironment{proof}[1][\proofname]{\oldproof[\scshape #1]}{\oldendproof}&#xa;</xsl:text>
+    <xsl:text>% Proof environment with heading in small caps&#xa;</xsl:text>
+    <xsl:text>\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname&#xa;</xsl:text>
+    <xsl:text>\let\oldendproof\endproof&#xa;</xsl:text>
+    <xsl:text>\renewenvironment{proof}[1][\proofname]{\oldproof[\scshape #1]}{\oldendproof}&#xa;</xsl:text>
 </xsl:template>
 
 <xsl:template name="aata-historical-environment">
-	<xsl:text>% Environment for Historical Notes&#xa;</xsl:text>
-	<xsl:text>\setlength{\fboxrule}{0.5pt}&#xa;</xsl:text>
-	<xsl:text>\newcommand{\drawbox}{\raisebox{3pt}{\framebox[0.3\textwidth]{\hspace*{1in}}}}</xsl:text>
-	<xsl:text>\newenvironment{historicalnote}%&#xa;</xsl:text>
-	<xsl:text>{\vskip 3ex \noindent \drawbox \hfill \hspace*{4pt}%&#xa;</xsl:text>
-	<xsl:text>{\fontshape{\itdefault}\fontseries{\bfdefault}\selectfont{Historical Note}}&#xa;</xsl:text>
-	<xsl:text>\hfill \drawbox \vskip 2ex}{}&#xa;</xsl:text>
+    <xsl:text>% Environment for Historical Notes&#xa;</xsl:text>
+    <xsl:text>\setlength{\fboxrule}{0.5pt}&#xa;</xsl:text>
+    <xsl:text>\newcommand{\drawbox}{\raisebox{3pt}{\framebox[0.3\textwidth]{\hspace*{1in}}}}</xsl:text>
+    <xsl:text>\newenvironment{historicalnote}%&#xa;</xsl:text>
+    <xsl:text>{\vskip 3ex \noindent \drawbox \hfill \hspace*{4pt}%&#xa;</xsl:text>
+    <xsl:text>{\fontshape{\itdefault}\fontseries{\bfdefault}\selectfont{Historical Note}}&#xa;</xsl:text>
+    <xsl:text>\hfill \drawbox \vskip 2ex}{}&#xa;</xsl:text>
 </xsl:template>
 
 <xsl:template name="aata-chapter-heading">
@@ -94,10 +94,9 @@
 
 <!-- Stuff them into the preamble at the end -->
 <xsl:param name="latex.preamble.late">
-	<xsl:call-template name="aata-terminology" />
-	<xsl:call-template name="aata-proof-heading" />
-	<xsl:call-template name="aata-historical-environment" />
-	<xsl:call-template name="aata-chapter-heading" />
+    <xsl:call-template name="aata-terminology" />
+    <xsl:call-template name="aata-proof-heading" />
+    <xsl:call-template name="aata-historical-environment" />
 </xsl:param>
 
 <!-- We assume a common title so the template matches.       -->
@@ -105,10 +104,10 @@
 <!-- subsection of a section, or else the numbering of other -->
 <!-- subsections will be different when LaTeX auto-numbers   -->
 <xsl:template match="subsection[title='Historical Note']">
-	<xsl:apply-templates select="." mode="console-typeout" />
-	<xsl:text>\begin{historicalnote}&#xa;</xsl:text>
-	<xsl:apply-templates />
-	<xsl:text>\end{historicalnote}&#xa;</xsl:text>
+    <xsl:apply-templates select="." mode="console-typeout" />
+    <xsl:text>\begin{historicalnote}&#xa;</xsl:text>
+    <xsl:apply-templates />
+    <xsl:text>\end{historicalnote}&#xa;</xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>
