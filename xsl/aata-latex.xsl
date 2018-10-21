@@ -82,6 +82,17 @@
     <xsl:text>\titlespacing*{\chapter}{0pt}{0pt}{40pt}&#xa;</xsl:text>
 </xsl:template>
 
+<!-- Page headers, designed to mimic PWS-Kent original -->
+<!-- Slanted, uppercase, no periods (ie not LaTeX)     -->
+<!-- \sethead[even-left][even-center][even-right]      -->
+<!--         {odd-left}{odd-center}{odd-right}         -->
+<xsl:template match="book" mode="titleps-headings">
+    <xsl:text>{&#xa;</xsl:text>
+    <xsl:text>\sethead[\thepage][][\ifthechapter{\MakeUppercase{\textsl{\chaptertitlename\space\thechapter\space\space\chaptertitle}}}{}]&#xa;</xsl:text>
+    <xsl:text>{\ifthesection{\MakeUppercase{\textsl{\thesection\space\space\sectiontitle}}}{}}{}{\thepage}&#xa;</xsl:text>
+    <xsl:text>}&#xa;</xsl:text>
+</xsl:template>
+
 <!-- Stuff them into the preamble at the end -->
 <xsl:param name="latex.preamble.late">
     <xsl:call-template name="aata-terminology" />
