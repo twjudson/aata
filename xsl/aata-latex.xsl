@@ -59,37 +59,27 @@
     <xsl:text>\hfill \drawbox \vskip 2ex}{}&#xa;</xsl:text>
 </xsl:template>
 
-<xsl:template name="aata-chapter-heading">
-	<xsl:text>% RAB, 2010/06/17, 2014/10/14&#xa;</xsl:text>
-	<xsl:text>% Slightly modified chapter heading adjustments&#xa;</xsl:text>
-	<xsl:text>% makeSchapterhead is for starred version of \chapter&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>\makeatletter&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>\font\bigbolditalic=cmsl10 scaled\magstep5&#xa;</xsl:text>
-	<xsl:text>\def\@makechapterhead#1{%\vspace*{50pt}&#xa;</xsl:text>
-	<xsl:text>{ \parindent 0pt \centering% was\raggedright&#xa;</xsl:text>
-	<xsl:text>\ifnum \c@secnumdepth >\m@ne\rule{0.4\textwidth}{.5pt}\hfill%&#xa;</xsl:text>
-	<xsl:text>\raisebox{-.1in}{\fbox{\fbox{\bigbolditalic\thechapter\/}}}%&#xa;</xsl:text>
-	<xsl:text>\hfill\rule{0.4\textwidth}{.5pt}\par%&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>\vskip 20pt \fi \Huge \bf #1\par%&#xa;</xsl:text>
-	<xsl:text>\nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}%&#xa;</xsl:text>
-	<xsl:text>\vskip 36pt plus 12pt minus 6pt }%&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>\def\@makeschapterhead#1{%\vspace*{50pt}&#xa;</xsl:text>
-	<xsl:text>{ \parindent 0pt \centering% was \raggedright&#xa;</xsl:text>
-	<xsl:text>\hrule height .5pt\vspace{40pt}%&#xa;</xsl:text>
-	<xsl:text>\huge \bf #1\par%&#xa;</xsl:text>
-	<xsl:text>\nobreak \vskip 40pt \framebox[\hsize]{\hspace*{1in}}}%&#xa;</xsl:text>
-	<xsl:text>\vskip 36pt plus 12pt minus 6pt }%&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>% \clearpage below was \cleardoublepage&#xa;</xsl:text>
-	<xsl:text>\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@%&#xa;</xsl:text>
-	<xsl:text>\@afterindentfalse \secdef\@chapter\@schapter}&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
-	<xsl:text>\makeatother&#xa;</xsl:text>
-	<xsl:text>%&#xa;</xsl:text>
+<!-- RAB, 2010/06/17, 2014/10/14, 2018/10/20 -->
+<!-- Mimics chapter headings from PWS-Kent original     -->
+<!-- "bigbolditalic" is a scaled slanted 10pt font      -->
+<!-- Vertical distances chosen to match, experimentally -->
+<!-- \titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code] -->
+<xsl:template name="titlesec-chapter-style">
+    <xsl:text>\titleformat{\chapter}[block]%&#xa;</xsl:text>
+    <xsl:text>{\Huge\bfseries\font\bigbolditalic=cmsl10 scaled\magstep5}%&#xa;</xsl:text>
+    <xsl:text>{\rule{0.4\textwidth}{.5pt}\hfill%&#xa;</xsl:text>
+    <xsl:text>\raisebox{-.1in}{\fbox{\fbox{\bigbolditalic\thechapter\/}}}%&#xa;</xsl:text>
+    <xsl:text>\hfill\rule{0.4\textwidth}{.5pt}}%&#xa;</xsl:text>
+    <xsl:text>{0pt}{\vskip 20pt \centerline{#1}}%&#xa;</xsl:text>
+    <xsl:text>[{\vskip -10pt \framebox[\textwidth]{\relax}}]%&#xa;</xsl:text>
+    <!--  -->
+    <xsl:text>\titleformat{name=\chapter,numberless}[block]%&#xa;</xsl:text>
+    <xsl:text>{\Huge\bfseries}%&#xa;</xsl:text>
+    <xsl:text>{\rule{\textwidth}{.5pt}}%&#xa;</xsl:text>
+    <xsl:text>{0pt}{\vskip 20pt \centerline{#1}}%&#xa;</xsl:text>
+    <xsl:text>[{\vskip -10pt \framebox[\textwidth]{\relax}}]%&#xa;</xsl:text>
+    <!--  -->
+    <xsl:text>\titlespacing*{\chapter}{0pt}{0pt}{40pt}&#xa;</xsl:text>
 </xsl:template>
 
 <!-- Stuff them into the preamble at the end -->
