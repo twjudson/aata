@@ -163,59 +163,6 @@
         We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.
       </p>
 
-      <table xml:id="table-repetition-code">
-        <caption>A repetition code</caption>
-        <tabular halign="center" top="medium">
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <row>
-            <cell>Transmitted</cell>
-            <cell colspan="8">Received Word</cell>
-          </row>
-          <row bottom="medium">
-            <cell>Codeword</cell>
-            <cell><m>000</m></cell>
-            <cell><m>001</m></cell>
-            <cell><m>010</m></cell>
-            <cell><m>011</m></cell>
-            <cell><m>100</m></cell>
-            <cell><m>101</m></cell>
-            <cell><m>110</m></cell>
-            <cell><m>111</m></cell>
-          </row>
-          <row>
-            <cell><m>000</m></cell>
-            <cell><m>0</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>3</m></cell>
-          </row>
-          <row bottom="medium">
-            <cell><m>111</m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>2</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>1</m></cell>
-            <cell><m>0</m></cell>
-          </row>
-        </tabular>
-
-      </table>
-
       <example xml:id="example-algcodes-nearest">
         <p>
           Suppose that our original message is either a <m>0</m> or a <m>1</m>,
@@ -227,6 +174,59 @@
           The originally transmitted codeword must have been <m>(111)</m>.
           This method will detect and correct all single errors.
         </p>
+
+        <table xml:id="table-repetition-code">
+          <caption>A repetition code</caption>
+          <tabular halign="center" top="medium">
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+            <row>
+              <cell>Transmitted</cell>
+              <cell colspan="8">Received Word</cell>
+            </row>
+            <row bottom="medium">
+              <cell>Codeword</cell>
+              <cell><m>000</m></cell>
+              <cell><m>001</m></cell>
+              <cell><m>010</m></cell>
+              <cell><m>011</m></cell>
+              <cell><m>100</m></cell>
+              <cell><m>101</m></cell>
+              <cell><m>110</m></cell>
+              <cell><m>111</m></cell>
+            </row>
+            <row>
+              <cell><m>000</m></cell>
+              <cell><m>0</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>3</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>111</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>0</m></cell>
+            </row>
+          </tabular>
+
+        </table>
 
         <p>
           In <xref ref="table-repetition-code"/>,
@@ -698,49 +698,51 @@
           <m>{\mathbf c}_3 = (11100)</m>,
           and <m>{\mathbf c}_4 = (11011)</m> determine a single error-correcting code.
         </p>
+
+        <table xml:id="table-hamming-distance">
+          <caption>Hamming distances for an error-correcting code</caption>
+          <tabular halign="center" top="medium" left="medium" right="medium">
+            <row bottom="medium">
+              <cell/>
+              <cell><m>00000</m></cell>
+              <cell><m>00111</m></cell>
+              <cell><m>11100</m></cell>
+              <cell><m>11011</m></cell>
+            </row>
+            <row>
+              <cell><m>00000 </m></cell>
+              <cell><m>0</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>4</m></cell>
+            </row>
+            <row>
+              <cell><m>00111 </m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>0</m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>3</m></cell>
+            </row>
+            <row>
+              <cell><m>11100 </m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>0</m></cell>
+              <cell><m>3</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>11011 </m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>0</m></cell>
+            </row>
+          </tabular>
+
+        </table>
       </example>
 
-      <table xml:id="table-hamming-distance">
-        <caption>Hamming distances for an error-correcting code</caption>
-        <tabular halign="center" top="medium" left="medium" right="medium">
-          <row bottom="medium">
-            <cell/>
-            <cell><m>00000</m></cell>
-            <cell><m>00111</m></cell>
-            <cell><m>11100</m></cell>
-            <cell><m>11011</m></cell>
-          </row>
-          <row>
-            <cell><m>00000 </m></cell>
-            <cell><m>0</m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>4</m></cell>
-          </row>
-          <row>
-            <cell><m>00111 </m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>0</m></cell>
-            <cell><m>4</m></cell>
-            <cell><m>3</m></cell>
-          </row>
-          <row>
-            <cell><m>11100 </m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>4</m></cell>
-            <cell><m>0</m></cell>
-            <cell><m>3</m></cell>
-          </row>
-          <row bottom="medium">
-            <cell><m>11011 </m></cell>
-            <cell><m>4</m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>3</m></cell>
-            <cell><m>0</m></cell>
-          </row>
-        </tabular>
 
-      </table>
     </subsection>
 
     <subsection xml:id="algcodes-subsection-historical-note">
