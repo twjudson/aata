@@ -49,14 +49,14 @@
     <xsl:text>\renewenvironment{proof}[1][\proofname]{\oldproof[\scshape #1]}{\oldendproof}&#xa;</xsl:text>
 </xsl:template>
 
-<xsl:template name="aata-historical-environment">
-    <xsl:text>% Environment for Historical Notes&#xa;</xsl:text>
-    <xsl:text>\setlength{\fboxrule}{0.5pt}&#xa;</xsl:text>
-    <xsl:text>\newcommand{\drawbox}{\raisebox{3pt}{\framebox[0.3\textwidth]{\hspace*{1in}}}}</xsl:text>
-    <xsl:text>\newenvironment{historicalnote}%&#xa;</xsl:text>
-    <xsl:text>{\vskip 3ex \noindent \drawbox \hfill \hspace*{4pt}%&#xa;</xsl:text>
-    <xsl:text>{\fontshape{\itdefault}\fontseries{\bfdefault}\selectfont{Historical Note}}&#xa;</xsl:text>
-    <xsl:text>\hfill \drawbox \vskip 2ex}{}&#xa;</xsl:text>
+<!-- tcolorbox environment for AATA "Historical Notes"    -->
+<!-- Similar to PWS-Kent style, with no closing rectangle -->
+<!-- Presumes that tcolorbox is full loaded anyway        -->
+<!-- Eventually this will be an "aside-like"              -->
+ <xsl:template name="aata-historical-environment">
+    <xsl:text>% Environment for Historical Notes (AATA-specific)&#xa;</xsl:text>
+    <xsl:text>\tcbset{ aatahistoricalstyle/.style={size=minimal, boxrule=-0.3pt, frame empty, colback=white, colbacktitle=white, coltitle=black, fonttitle=\itshape\bfseries, before skip=3ex, bottomtitle=2ex, breakable, title={\raisebox{3pt}{\framebox[0.3\textwidth]{\relax}} \hfill {Historical Note} \hfill \raisebox{3pt}{\framebox[0.3\textwidth]{\relax}}}} }&#xa;</xsl:text>
+    <xsl:text>\newtcolorbox{historicalnote}{aatahistoricalstyle}&#xa;</xsl:text>
 </xsl:template>
 
 <!-- RAB, 2010/06/17, 2014/10/14, 2018/10/20 -->
