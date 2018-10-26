@@ -77,6 +77,18 @@ EPUBOUT    = $(SCRATCH)/epub
 SAGENBOUT  = $(SCRATCH)/sagenb
 JUPYTEROUT = $(SCRATCH)/jupyter
 
+# useful date string
+# http://stackoverflow.com/questions/1401482
+DATE=$(shell date +%Y-%m-%d)
+
+# zipfile for AIM/UTMOST study
+ZIPFILE=aata-html-$(DATE).zip
+
+# convenience for rsync command, hopefully not OS dependent
+# First does not include  --delete  switch at end due to PDF in directory
+# Second makes *exact* mirror of build directory
+RSYNC=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive
+RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive --delete
 
 # Following regularly presumes  xml:id="aata" on
 # the <book> element, so xsltproc creates  aata.tex
@@ -300,14 +312,13 @@ aimhtml:
 	install -d $(HTMLOUT) $(MBUSR)
 	cp -a $(SRC)/images $(HTMLOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
-	sed -i -e 's/002637997310187229905:qj2oy0jlpyu/008832104071767086392:pxbnbrlbfwa/' $(SRC)/bookinfo.xml
 	cd $(HTMLOUT); \
-	xsltproc --xinclude --stringparam html.annotation hypothesis $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
-	sed -i -e 's/008832104071767086392:pxbnbrlbfwa/002637997310187229905:qj2oy0jlpyu/' $(SRC)/bookinfo.xml
+	xsltproc --xinclude $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
-	zip -r $(SCRATCH)/aata-html-2018-datehere.zip aata-html/
-
+	zip -r $(ZIPFILE) aata-html/
+	$(RSYNCDELETE) $(SCRATCH)/$(ZIPFILE) beezer@userweb.pugetsound.edu:/home/beezer/mathbook.pugetsound.edu/beta
+	echo "Dropped in http://mathbook.pugetsound.edu/beta/"$(ZIPFILE)
 
 # EPUB 3.0 assembly
 #	TODO: fix retrieval of CSS (via wget?)
