@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="galois">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="galois" permid="hgP">
   <title>Galois Theory</title>
-  <introduction>
-    <p>
+  <introduction permid="zyO">
+    <p permid="gbJ">
       A classic problem of algebra is to find the solutions of a polynomial equation.
       The solution to the quadratic equation was known in antiquity.
       Italian mathematicians found general solutions to the general cubic and quartic equations in the sixteenth century;
@@ -21,7 +21,7 @@
       Certainly, equations such as
       <m>x^5 - 1 = 0</m> or <m>x^6 - x^3 - 6 = 0</m> could be solved,
       but no solution like the quadratic formula was found for the general quintic,
-      <me>
+      <me permid="jUE">
         a x^5 + b x^4 +c x^3 + d x^2 + e x + f = 0
       </me>.
       Finally, at the beginning of the nineteenth century, Ruffini and Abel both found quintics that could not be solved with any formula.
@@ -32,28 +32,28 @@
       and has had far-reaching implications beyond its original purpose.
     </p>
 
-    <p>
+    <p permid="MiS">
       In this chapter we will prove the Fundamental Theorem of Galois Theory.
       This result will be used to establish the insolvability of the quintic and to prove the Fundamental Theorem of Algebra.
     </p>
   </introduction>
 
-  <section xml:id="section-field-automorphisms">
+  <section xml:id="section-field-automorphisms" permid="iWc">
     <title>Field Automorphisms</title>
-    <introduction>
-      <p>
+    <introduction permid="fFX">
+      <p permid="sqb">
         Our first task is to establish a link between group theory and field theory by examining automorphisms of fields.
       </p>
 
-      <proposition>
+      <proposition permid="ZgR">
         <statement>
-          <p>
+          <p permid="IEs">
             The set of all automorphisms of a field <m>F</m> is a group under composition of functions.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="ISA">
+          <p permid="vGg">
             If <m>\sigma</m> and <m>\tau</m> are automorphisms of <m>F</m>,
             then so are <m>\sigma \tau</m> and <m>\sigma^{-1}</m>.
             The identity is certainly an automorphism;
@@ -62,9 +62,9 @@
         </proof>
       </proposition>
 
-      <proposition>
+      <proposition permid="Foa">
         <statement>
-          <p>
+          <p permid="oLB">
             Let <m>E</m> be a field extension of <m>F</m>.
             Then the set of all automorphisms of <m>E</m> that fix <m>F</m> elementwise is a group;
             that is, the set of all automorphisms <m>\sigma : E \rightarrow E</m> such that
@@ -72,8 +72,8 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="oZJ">
+          <p permid="bNp">
             We need only show that the set of automorphisms of <m>E</m> that fix <m>F</m> elementwise is a subgroup of the group of all automorphisms of <m>E</m>.
             Let <m>\sigma</m> and <m>\tau</m> be two automorphisms of <m>E</m> such that <m>\sigma( \alpha ) = \alpha</m> and
             <m>\tau( \alpha ) = \alpha</m> for all <m>\alpha \in F</m>.
@@ -84,14 +84,14 @@
         </proof>
       </proposition>
 
-      <p>
+      <p permid="Yxk">
         Let <m>E</m> be a field extension of <m>F</m>.
         We will denote the full group of automorphisms of <m>E</m> by <m>\aut(E)</m>.
         We define the <term>Galois group</term>
             <idx><h>Group</h><h>Galois</h></idx>
             <idx><h>Galois group</h></idx>
         of <m>E</m> over <m>F</m> to be the group of automorphisms of <m>E</m> that fix <m>F</m> elementwise; that is,
-        <me>
+        <me permid="QbN">
           G(E/F) = \{ \sigma \in \aut(E) : \sigma(\alpha) = \alpha \text{ for all } \alpha \in F \}
         </me>.
         If <m>f(x)</m> is a polynomial in <m>F[x]</m> and <m>E</m> is the splitting field of <m>f(x)</m> over <m>F</m>,
@@ -104,28 +104,28 @@
 
       </p>
 
-      <example xml:id="example-galois-complex-conj">
-        <p>
+      <example xml:id="example-galois-complex-conj" permid="iAD">
+        <p permid="qAO">
           Complex conjugation, defined by <m>\sigma : a + bi \mapsto a - bi</m>,
           is an automorphism of the complex numbers.
           Since
-          <me>
+          <me permid="wiW">
             \sigma(a) = \sigma(a + 0i) = a - 0i = a
           </me>,
           the automorphism defined by complex conjugation must be in <m>G( {\mathbb C} / {\mathbb R} )</m>.
         </p>
       </example>
 
-      <example xml:id="example-galois-q-sqrt5">
-        <p>
+      <example xml:id="example-galois-q-sqrt5" permid="OHM">
+        <p permid="WHX">
           Consider the fields <m>{\mathbb Q} \subset {\mathbb Q}(\sqrt{5}\, ) \subset {\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m>.
           Then for <m>a, b \in {\mathbb Q}( \sqrt{5}\, )</m>,
-          <me>
+          <me permid="cqf">
             \sigma( a + b \sqrt{3}\, ) = a - b \sqrt{3}
           </me>
           is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{5}\, )</m> fixed.
           Similarly,
-          <me>
+          <me permid="Ixo">
             \tau( a + b \sqrt{5}\, ) = a - b \sqrt{5}
           </me>
           is an automorphism of <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> leaving <m>{\mathbb Q}( \sqrt{3}\, )</m> fixed.
@@ -134,7 +134,7 @@
           <m>\{ \identity, \sigma, \tau, \mu \}</m> is the Galois group of
           <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> over <m>{\mathbb Q}</m>.
           The following table shows that this group is isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
-          <me>
+          <me permid="oEx">
             \begin{array}{c|cccc}
             &amp; \identity &amp; \sigma &amp; \tau &amp; \mu \\
             \hline
@@ -151,23 +151,23 @@
         </p>
       </example>
 
-      <proposition xml:id="proposition-roots-permute">
+      <proposition xml:id="proposition-roots-permute" permid="lvj">
         <statement>
-          <p>
+          <p permid="USK">
             Let <m>E</m> be a field extension of <m>F</m> and <m>f(x)</m> be a polynomial in <m>F[x]</m>.
             Then any automorphism in <m>G(E/F)</m> defines a permutation of the roots of <m>f(x)</m> that lie in <m>E</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="VgS">
+          <p permid="HUy">
             Let
-            <me>
+            <me permid="ULG">
               f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
             </me>
             and suppose that <m>\alpha \in E</m> is a zero of <m>f(x)</m>.
             Then for <m>\sigma \in G(E/F)</m>,
-            <md>
+            <md permid="ASP">
               <mrow>0 &amp; = \sigma( 0 )</mrow>
               <mrow>&amp; = \sigma( f( \alpha ))</mrow>
               <mrow>&amp; = \sigma(a_0 + a_1\alpha + a_2 \alpha^2 + \cdots + a_n \alpha^n)</mrow>
@@ -178,7 +178,7 @@
         </proof>
       </proposition>
 
-      <p>
+      <p permid="EEt">
         Let <m>E</m> be an algebraic extension of a field <m>F</m>.
         Two elements <m>\alpha, \beta \in E</m> are <term>conjugate</term>
             <idx><h>Conjugate elements</h></idx>
@@ -189,14 +189,14 @@
         <m>{\mathbb Q}</m> since they are both roots of the irreducible polynomial <m>x^2 - 2</m>.
       </p>
 
-      <p>
+      <p permid="kLC">
         A converse of the last proposition exists.
         The proof follows directly from <xref ref="lemma-field-isomorphism"/>.
       </p>
 
-      <proposition>
+      <proposition permid="RCs">
         <statement>
-          <p>
+          <p permid="AZT">
             If <m>\alpha</m> and <m>\beta</m> are conjugate over <m>F</m>,
             there exists an isomorphism
             <m>\sigma : F( \alpha ) \rightarrow F( \beta )</m> such that <m>\sigma</m> is the identity when restricted to <m>F</m>.
@@ -204,19 +204,19 @@
         </statement>
       </proposition>
 
-      <theorem xml:id="theorem-extension-order">
+      <theorem xml:id="theorem-extension-order" permid="gLq">
         <statement>
-          <p>
+          <p permid="XNq">
             Let <m>f(x)</m> be a polynomial in <m>F[x]</m> and suppose that <m>E</m> is the splitting field for <m>f(x)</m> over <m>F</m>.
             If <m>f(x)</m> has no repeated roots, then
-            <me>
+            <me permid="gZY">
               |G(E/F)| = [E:F]
             </me>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="Yby">
+          <p permid="obH">
             We will use mathematical induction on the degree of <m>f(x)</m>.
             If the degree of <m>f(x)</m> is <m>0</m> or <m>1</m>,
             then <m>E = F</m> and there is nothing to show.
@@ -227,7 +227,7 @@
             we can choose one of these roots,
             say <m>\alpha</m>, so that <m>F \subset F( \alpha ) \subset E</m>.
             Then
-            <me>
+            <me permid="Nhh">
               [E: F(\alpha)] = n/r \quad \text{and} \quad [F(\alpha): F] = r
             </me>.
             If <m>\beta</m> is any other root of <m>p(x)</m>,
@@ -239,11 +239,11 @@
             there are exactly <m>r</m> such isomorphisms.
             For each of these automorphisms,
             we can use our induction hypothesis on <m>[E: F(\alpha)] = n/r \lt n</m> to conclude that
-            <me>
+            <me permid="toq">
               |G(E/F(\alpha))| = [E:F(\alpha)]
             </me>.
             Consequently, there are
-            <me>
+            <me permid="Zvz">
               [E:F] = [E:F(\alpha)] [F( \alpha):F] = n
             </me>
             possible automorphisms of <m>E</m> that fix <m>F</m>,
@@ -266,16 +266,16 @@
             <!-- \] -->
             <!-- possible automorphisms of <m>E</m> that fix <m>F</m>, or <m>|G(E/F)| = [E:F]</m>. -->
             <!-- Proof fixed<mdash />I hope.  TWJ 24/4/2013 -->
-      <corollary>
+      <corollary permid="qfc">
         <statement>
-          <p>
+          <p permid="yfn">
             Let <m>F</m> be a finite field with a finite extension <m>E</m> such that <m>[E:F]=k</m>.
             Then <m>G(E/F)</m> is cyclic of order <m>k</m>.
           </p>
         </statement>
             <!-- Corrected statement of the corollary.  Suggested by K. Wenholz. - TWJ 5/15/2012 -->
-        <proof>
-          <p>
+        <proof permid="Smm">
+          <p permid="UiQ">
             Let <m>p</m> be the characteristic of <m>E</m> and <m>F</m> and assume that the orders of <m>E</m> and <m>F</m> are <m>p^m</m> and <m>p^n</m>,
             respectively.
             Then <m>nk = m</m>.
@@ -285,14 +285,14 @@
             Applying <xref ref="theorem-extension-order"/>, we find that <m>|G(E/F)| = k</m>.
           </p>
 
-          <p>
+          <p permid="ApZ">
             To prove that <m>G(E/F)</m> is cyclic,
             we must find a generator for <m>G(E/F)</m>.
             Let <m>\sigma : E \rightarrow E</m> be defined by <m>\sigma(\alpha) = \alpha^{p^n}</m>.
             We claim that <m>\sigma</m> is the element in <m>G(E/F)</m> that we are seeking.
             We first need to show that <m>\sigma</m> is in <m>\aut(E)</m>.
             If <m>\alpha</m> and <m>\beta</m> are in <m>E</m>,
-            <me>
+            <me permid="FCI">
               \sigma(\alpha + \beta) = (\alpha + \beta)^{p^n} = \alpha^{p^n} + \beta^{p^n} = \sigma(\alpha) + \sigma(\beta)
             </me>
             by <xref ref="lemma-freshmans-dream"/>.
@@ -306,7 +306,7 @@
             This means that <m>\sigma</m> leaves every element in <m>F</m> fixed.
             Finally, we must show that the order of <m>\sigma</m> is <m>k</m>.
             By <xref ref="theorem-extension-order"/>, we know that
-            <me>
+            <me permid="lJR">
               \sigma^k( \alpha ) = \alpha^{p^{nk}} = \alpha^{p^m} = \alpha
             </me>
             is the identity of <m>G( E/F)</m>.
@@ -318,22 +318,22 @@
             <!-- Corrected proof.  Suggested by M. Faucette. - TWJ 4/7/2014 -->
       </corollary>
 
-      <example xml:id="example-galois-group-sqrt3-5">
-        <p>
+      <example xml:id="example-galois-group-sqrt3-5" permid="uOV">
+        <p permid="CPg">
           We can now confirm that the Galois group of <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> over
           <m>{\mathbb Q}</m> in <xref ref="example-galois-q-sqrt5"/> is indeed isomorphic to <m>{\mathbb Z}_2 \times {\mathbb Z}_2</m>.
           Certainly the group <m>H = \{ \identity, \sigma, \tau, \mu \}</m> is a subgroup of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>;
           however, <m>H</m> must be all of <m>G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})</m>, since
-          <me>
+          <me permid="RRa">
             |H| = [{\mathbb Q}( \sqrt{3}, \sqrt{5}\, ):{\mathbb Q}] = |G({\mathbb Q}( \sqrt{3}, \sqrt{5}\, )/{\mathbb Q})| = 4
           </me>.
         </p>
       </example>
 
-      <example xml:id="example-galois-group-x4">
-        <p>
+      <example xml:id="example-galois-group-x4" permid="aWe">
+        <p permid="iWp">
           Let us compute the Galois group of
-          <me>
+          <me permid="xYj">
             f(x) = x^4 + x^3 + x^2 + x + 1
           </me>
           over <m>{\mathbb Q}</m>.
@@ -341,7 +341,7 @@
           Furthermore, since <m>(x -1)f(x) = x^5 - 1</m>,
           we can use DeMoivre's Theorem to determine that the roots of <m>f(x)</m> are <m>\omega^i</m>,
           where  <m>i = 1, \ldots, 4</m> and
-          <me>
+          <me permid="efs">
             \omega = \cos(2 \pi / 5 ) + i \sin(2 \pi / 5 )
           </me>.
           Hence, the splitting field of <m>f(x)</m> must be <m>{\mathbb Q}(\omega)</m>.
@@ -350,7 +350,7 @@
           <m>\sigma_i( \omega ) = \omega^i</m> for <m>i = 1, \ldots, 4</m>.
           It is easy to check that these are indeed distinct automorphisms in <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>.
           Since
-          <me>
+          <me permid="KmB">
             [{\mathbb Q}( \omega) : {\mathbb Q}] = | G( {\mathbb Q}( \omega) / {\mathbb Q})| = 4
           </me>,
           the <m>\sigma_i</m>'s must be all of <m>G( {\mathbb Q}( \omega) / {\mathbb Q} )</m>.
@@ -359,14 +359,14 @@
       </example>
     </introduction>
 
-    <subsection xml:id="galois-subsection-separable-extensions">
+    <subsection xml:id="galois-subsection-separable-extensions" permid="NnY">
       <title>Separable Extensions</title>
-      <p>
+      <p permid="fGk">
         Many of the results that we have just proven depend on the fact that a polynomial <m>f(x)</m> in <m>F[x]</m> has no repeated roots in its splitting field.
         It is evident that we need to know exactly when a polynomial factors into distinct linear factors in its splitting field.
         Let <m>E</m> be the splitting field of a polynomial <m>f(x)</m> in <m>F[x]</m>.
         Suppose that <m>f(x)</m> factors over <m>E</m> as
-        <me>
+        <me permid="qtK">
           f(x) = (x - \alpha_1)^{n_1} (x - \alpha_2)^{n_2} \cdots (x - \alpha_r)^{n_r} = \prod_{i = 1}^{r} (x - \alpha_i)^{n_i}
         </me>.
         We define the <term>multiplicity</term>
@@ -386,9 +386,9 @@
         f'(x)) = 1</m> (<xref ref="lemma-separable-derivative"/>).
       </p>
             <!--  2010/05/18 R Beezer, replaced "over F[x]" by "over F" -->
-      <proposition>
+      <proposition permid="nFV">
         <statement>
-          <p>
+          <p permid="hhc">
             Let <m>f(x)</m> be an irreducible polynomial over <m>F</m>.
             If the characteristic of <m>F</m> is <m>0</m>,
             then <m>f(x)</m> is separable.
@@ -398,8 +398,8 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="Bob">
+          <p permid="gxi">
             First assume that <m>\chr F = 0</m>.
             Since <m>\deg f'(x) \lt \deg f(x)</m> and <m>f(x)</m> is irreducible,
             the only way <m>\gcd( f(x),
@@ -412,7 +412,7 @@
         </proof>
       </proposition>
 
-      <p>
+      <p permid="LNt">
         Certainly extensions of a field <m>F</m> of the form
         <m>F(\alpha)</m> are some of the easiest to study and understand.
         Given a field extension <m>E</m> of <m>F</m>,
@@ -424,31 +424,31 @@
             <idx><h>Primitive element</h></idx>
         We already know that primitive elements exist for certain extensions.
         For example,
-        <me>
+        <me permid="WAT">
           {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) = {\mathbb Q}( \sqrt{3} + \sqrt{5}\, )
         </me>
         and
-        <me>
+        <me permid="CIc">
           {\mathbb Q}( \sqrt[3]{5}, \sqrt{5}\, i ) = {\mathbb Q}( \sqrt[6]{5}\, i )
         </me>.
         <xref ref="corollary-finite-extension-finite-field"/> tells us that there exists a primitive element for any finite extension of a finite field.
         The next theorem tells us that we can often find a primitive element.
       </p>
 
-      <theorem xml:id="theorem-primitive-element">
+      <theorem xml:id="theorem-primitive-element" permid="HyM">
         <title>Primitive Element Theorem</title>
         <idx>
         <h>Primitive Element Theorem</h>
         </idx>
         <statement>
-          <p>
+          <p permid="DUz">
             Let <m>E</m> be a finite separable extension of a field <m>F</m>.
             Then there exists an <m>\alpha \in E</m> such that <m>E=F( \alpha )</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="EiH">
+          <p permid="MEr">
             We already know that there is no problem if <m>F</m> is a finite field.
             Suppose that <m>E</m> is a finite extension of an infinite field.
             We will prove the result for <m>F(\alpha, \beta)</m>.
@@ -461,14 +461,14 @@
             All of these zeros have multiplicity <m>1</m>,
             since <m>E</m> is separable over <m>F</m>.
             Since <m>F</m> is infinite, we can find an <m>a</m> in <m>F</m> such that
-            <me>
+            <me permid="iPl">
               a \neq \frac{\alpha_i - \alpha}{\beta - \beta_j}
             </me>
             for all <m>i</m> and <m>j</m> with <m>j \neq 1</m>.
             Therefore, <m>a( \beta - \beta_j ) \neq \alpha_i - \alpha</m>.
             Let <m>\gamma = \alpha + a \beta</m>.
             Then
-            <me>
+            <me permid="OWu">
               \gamma = \alpha + a \beta \neq \alpha_i + a \beta_j;
             </me>
             hence, <m>\gamma - a \beta_j \neq \alpha_i</m> for all
@@ -490,17 +490,17 @@
 
   </section>
 
-  <section xml:id="section-fund-theorem-galois-theory">
+  <section xml:id="section-fund-theorem-galois-theory" permid="Pdl">
     <title>The Fundamental Theorem</title>
-    <introduction>
-      <p>
+    <introduction permid="LNg">
+      <p permid="QSL">
         The goal of this section is to prove the Fundamental Theorem of Galois Theory.
         This theorem explains the connection between the subgroups of <m>G(E/F)</m> and the intermediate fields between <m>E</m> and <m>F</m>.
       </p>
 
-      <proposition>
+      <proposition permid="xJB">
         <statement>
-          <p>
+          <p permid="Nol">
             Let <m>\{\sigma_i : i \in I \}</m> be a  collection of automorphisms of a field <m>F</m>.
             Then
 
@@ -509,22 +509,22 @@
               <description>field fixed by the automorphism <m>\sigma_i</m></description>
             </notation>
 
-            <me>
+            <me permid="vdD">
               F_{\{\sigma_i \}} = \{ a \in F : \sigma_i(a) = a \text{ for all } \sigma_i \}
             </me>
             is a subfield of <m>F</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="hvk">
+          <p permid="sLA">
             Let <m>\sigma_i(a) = a</m> and <m>\sigma_i(b)=b</m>.
             Then
-            <me>
+            <me permid="bkM">
               \sigma_i(a \pm b) = \sigma_i(a) \pm \sigma_i(b) = a \pm b
             </me>
             and
-            <me>
+            <me permid="HrV">
               \sigma_i(a b) = \sigma_i(a) \sigma_i(b) = a  b
             </me>.
             If <m>a \neq 0</m>,
@@ -535,9 +535,9 @@
         </proof>
       </proposition>
 
-      <corollary>
+      <corollary permid="Wml">
         <statement>
-          <p>
+          <p permid="emw">
             Let <m>F</m> be a field and let <m>G</m> be a subgroup of <m>\aut(F)</m>.
             Then
 
@@ -546,7 +546,7 @@
               <description>field fixed by the automorphism group <m>G</m></description>
             </notation>
 
-            <me>
+            <me permid="nze">
               F_G = \{ \alpha \in F : \sigma( \alpha ) = \alpha \text{ for all } \sigma \in G \}
             </me>
             is a subfield of <m>F</m>.
@@ -554,36 +554,36 @@
         </statement>
       </corollary>
 
-      <p>
+      <p permid="wZU">
         The subfield <m>F_{ \{\sigma_i \} }</m> of <m>F</m> is called the <term>fixed field</term>
             <idx><h>Field</h><h>fixed</h></idx>
         of <m>\{ \sigma_i \}</m>.
         The field fixed by a subgroup <m>G</m> of <m>\aut(F)</m> will be denoted by <m>F_G</m>.
       </p>
 
-      <example>
-        <p>
+      <example permid="Hdn">
+        <p permid="Pdy">
           Let <m>\sigma : {\mathbb Q}(\sqrt{3}, \sqrt{5}\, ) \rightarrow {\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> be the automorphism that maps <m>\sqrt{3}</m> to <m>-\sqrt{3}</m>.
           Then <m>{\mathbb Q}( \sqrt{5}\, )</m> is the subfield of
           <m>{\mathbb Q}(\sqrt{3}, \sqrt{5}\, )</m> left fixed by <m>\sigma</m>.
         </p>
       </example>
 
-      <proposition xml:id="proposition-fixed-field">
+      <proposition xml:id="proposition-fixed-field" permid="dQK">
         <statement>
-          <p>
+          <p permid="tvu">
             Let <m>E</m> be a splitting field over <m>F</m> of a separable polynomial.
             Then <m>E_{G(E/F)} = F</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="NCt">
+          <p permid="YSJ">
             Let <m>G = G(E/F)</m>.
             Clearly, <m>F \subset E_G \subset E</m>.
             Also, <m>E</m> must be a splitting field of <m>E_G</m> and <m>G(E/F) = G(E/E_G)</m>.
             By <xref ref="theorem-extension-order"/>,
-            <me>
+            <me permid="TGn">
               |G| = [E: E_G] =[ E:F]
             </me>.
             Therefore, <m>[E_G : F ] =1</m>.
@@ -592,31 +592,31 @@
         </proof>
       </proposition>
 
-      <p>
+      <p permid="dhd">
         A large number of mathematicians first learned Galois theory from Emil Artin's monograph on the subject [1]. The very clever proof of the following lemma is due to Artin.
       </p>
 
-      <lemma>
+      <lemma permid="JXT">
         <statement>
-          <p>
+          <p permid="ZCD">
             Let <m>G</m> be a finite group of automorphisms of <m>E</m> and let <m>F = E_G</m>.
             Then <m>[E:F] \leq |G|</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="tJC">
+          <p permid="EZS">
             Let <m>|G| = n</m>.
             We must show that any set of <m>n + 1</m> elements
             <m>\alpha_1, \ldots, \alpha_{n + 1}</m> in <m>E</m> is linearly dependent over <m>F</m>;
             that is, we need to find elements
             <m>a_i \in F</m>, not all zero, such that
-            <me>
+            <me permid="zNw">
               a_1 \alpha_1 + a_2 \alpha_2 + \cdots + a_{n + 1} \alpha_{n + 1} = 0
             </me>.
             Suppose that <m>\sigma_1 = \identity, \sigma_2, \ldots, \sigma_n</m> are the automorphisms in <m>G</m>.
             The homogeneous system of linear equations
-            <md>
+            <md permid="MbO">
               <mrow>\sigma_1( \alpha_1 ) x_1 + \sigma_1(\alpha_2) x_2 + \cdots + \sigma_1(\alpha_{n + 1} ) x_{n + 1} &amp; = 0</mrow>
               <mrow>\sigma_2( \alpha_1 ) x_1 + \sigma_2(\alpha_2) x_2 + \cdots + \sigma_2(\alpha_{n + 1} ) x_{n + 1} &amp; = 0</mrow>
               <mrow>&amp; \vdots &amp;</mrow>
@@ -627,14 +627,14 @@
             say <m>x_i = a_i</m> for <m>i = 1, 2, \ldots, n + 1</m>.
             Since <m>\sigma_1</m> is the identity,
             the first equation translates to
-            <me>
+            <me permid="fUF">
               a_1 \alpha_1 +  a_2 \alpha_2 + \cdots + a_{n + 1} \alpha_{n + 1} = 0
             </me>.
             The problem is that some of the <m>a_i</m>'s may be in <m>E</m> but not in <m>F</m>.
             We must show that this is impossible.
           </p>
             <!-- Corrected typo.  Suggested by K. Brooks. - TWJ 6/15/2012 -->
-          <p>
+          <p permid="lhb">
             Suppose that at least one of the <m>a_i</m>'s is in <m>E</m> but not in <m>F</m>.
             By rearranging the <m>\alpha_i</m>'s we may assume that <m>a_1</m> is nonzero.
             Since any nonzero multiple of a solution is also a solution,
@@ -653,7 +653,7 @@
             <m>x_{n + 1} = \sigma_i(a_{n+1} )</m> is also a solution of the original system.
             We know that a linear combination of two solutions of a homogeneous system is also a solution;
             consequently,
-            <md>
+            <md permid="siX">
               <mrow>x_1 &amp; = 1 -1 = 0</mrow>
               <mrow>x_2 &amp; = a_2 - \sigma_i(a_2)</mrow>
               <mrow>&amp; \vdots &amp;</mrow>
@@ -669,7 +669,7 @@
         </proof>
       </lemma>
 
-      <p>
+      <p permid="Jom">
         Let <m>E</m> be an algebraic extension of <m>F</m>.
         If every irreducible polynomial in <m>F[x]</m> with a root in <m>E</m> has all of its roots in <m>E</m>,
         then <m>E</m> is called a <term>normal extension</term>
@@ -679,28 +679,28 @@
         every irreducible polynomial in <m>F[x]</m> containing a root in <m>E</m> is the product of linear factors in <m>E[x]</m>.
       </p>
 
-      <theorem>
+      <theorem permid="MSz">
         <statement>
-          <p>
+          <p permid="kbI">
             Let <m>E</m> be a field extension of <m>F</m>.
             Then the following statements are equivalent.
 
-            <ol>
-              <li>
-                <p>
+            <ol permid="DNi">
+              <li permid="gZL">
+                <p permid="kiM">
                   <m>E</m> is a finite, normal,
                   separable extension of <m>F</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="NgU">
+                <p permid="QpV">
                   <m>E</m> is a splitting field over <m>F</m> of a separable polynomial.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="tod">
+                <p permid="wxe">
                   <m>F = E_G</m> for some finite group <m>G</m> of automorphisms of <m>E</m>.
                 </p>
               </li>
@@ -708,8 +708,8 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="kpQ">
+          <p permid="Rok">
             (1) <m>\Rightarrow</m> (2).
             Let <m>E</m> be a finite, normal,
             separable extension of <m>F</m>.
@@ -720,14 +720,14 @@
             hence, <m>E</m> is a splitting field for <m>f(x)</m>.
           </p>
 
-          <p>
+          <p permid="xvt">
             (2) <m>\Rightarrow</m> (3).
             Let <m>E</m> be the splitting field over <m>F</m> of a separable polynomial.
             By <xref ref="proposition-fixed-field"/>, <m>E_{G(E/F)} = F</m>.
             Since <m>| G(E/F)| = [E:F]</m>, this is a finite group.
           </p>
 
-          <p>
+          <p permid="dCC">
             (3) <m>\Rightarrow</m> (1).
             Let <m>F = E_G</m> for some finite group of automorphisms <m>G</m> of <m>E</m>.
             Since <m>[E:F] \leq |G|</m>, <m>E</m> is a finite extension of <m>F</m>.
@@ -751,19 +751,19 @@
         </proof>
       </theorem>
 
-      <corollary>
+      <corollary permid="Ctu">
         <statement>
-          <p>
+          <p permid="KtF">
             Let <m>K</m> be a field extension of <m>F</m> such that <m>F = K_G</m> for some finite group of automorphisms <m>G</m> of <m>K</m>.
             Then <m>G = G(K/F)</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="ytv">
+          <p permid="JJL">
             Since <m>F = K_G</m>, <m>G</m> is a subgroup of <m>G(K/F)</m>.
             Hence,
-            <me>
+            <me permid="Yqg">
               [K : F ] \leq |G| \leq |G(K/F)| = [K:F]
             </me>.
             It follows that <m>G = G(K/F)</m>,
@@ -772,13 +772,13 @@
         </proof>
       </corollary>
 
-      <p>
+      <p permid="pvv">
         Before we determine the exact correspondence between field extensions and automorphisms of fields,
         let us return to a familiar example.
       </p>
 
-      <example xml:id="example-galois-field-lattice">
-        <p>
+      <example xml:id="example-galois-field-lattice" permid="nkw">
+        <p permid="vkH">
           In <xref ref="example-galois-q-sqrt5"/> we examined the automorphisms of
           <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> fixing <m>{\mathbb Q}</m>.
           <xref ref="figure-galois-1"/> compares the lattice of field extensions of
@@ -787,10 +787,10 @@
         </p>
       </example>
 
-      <figure xml:id="figure-galois-1">
+      <figure xml:id="figure-galois-1" permid="BJN">
         <caption><m>G({\mathbb Q( \sqrt{3}, \sqrt{5}\, ) / {\mathbb Q})}</m></caption>
             <!-- Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010 -->
-        <image xml:id="galois-root3-root5">
+        <image xml:id="galois-root3-root5" permid="OAV">
 
             <latex-image>
                 <xi:include href="tikz/galois-root3-root5.tex" parse="text"/>
@@ -799,48 +799,48 @@
 
       </figure>
 
-      <p>
+      <p permid="VCE">
         We are now ready to state and prove the Fundamental Theorem of Galois Theory.
       </p>
 
-      <theorem xml:id="theorem-fundamental-galois">
+      <theorem xml:id="theorem-fundamental-galois" permid="sZI">
         <title>Fundamental Theorem of Galois Theory</title>
         <idx>
         <h>Fundamental Theorem of Galois Theory</h>
         </idx>
         <statement>
-          <p>
+          <p permid="QiR">
             Let <m>F</m> be a finite field or a field of characteristic zero.
             If <m>E</m> is a finite normal extension of <m>F</m> with Galois group <m>G(E/F)</m>,
             then the following statements are true.
 
-            <ol>
-              <li>
-                <p>
+            <ol permid="jUr">
+              <li permid="Zvm">
+                <p permid="cEn">
                   The map <m>K \mapsto G(E/K)</m> is a bijection of subfields <m>K</m> of <m>E</m> containing <m>F</m> with the subgroups of <m>G(E/F)</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="FCv">
+                <p permid="ILw">
                   If <m>F \subset K \subset E</m>, then
-                  <me>
+                  <me permid="Exp">
                     [E:K] = |G(E/K)| \text{ and } [K:F] = [G(E/F):G(E/K)]
                   </me>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="lJE">
+                <p permid="oSF">
                   <m>F \subset K \subset L \subset E</m> if and only if <m>\{ \identity \} \subset G(E/L) \subset G(E/K) \subset G(E/F)</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="RQN">
+                <p permid="UZO">
                   <m>K</m> is a normal extension of <m>F</m> if and only if <m>G(E/K)</m> is a normal subgroup of <m>G( E/F)</m>.
                   In this case
-                  <me>
+                  <me permid="kEy">
                     G(K/F) \cong G(E/F) / G( E/K )
                   </me>.
                 </p>
@@ -849,8 +849,8 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="QwZ">
+          <p permid="pQU">
             (1) Suppose that <m>G(E/K) = G(E/L) = G</m>.
             Both <m>K</m> and <m>L</m> are fixed fields of <m>G</m>;
             hence, <m>K=L</m> and the map defined by <m>K \mapsto G(E/K)</m> is one-to-one.
@@ -861,21 +861,21 @@
             Thus, <m>G(E/K) = G</m> and the map <m>K \mapsto G(E/K)</m> is a bijection.
           </p>
 
-          <p>
+          <p permid="VYd">
             (2) By Theorem <xref ref="theorem-extension-order"/>, <m>|G(E/K)| = [E:K]</m>;
             therefore,
-            <me>
+            <me permid="QLH">
               |G(E/F)| = [G(E/F):G(E/K)] \cdot |G(E/K)| = [E:F] = [E:K][K:F]
             </me>.
             Thus, <m>[K:F] = [G(E/F):G(E/K)]</m>.
           </p>
 
-          <p>
+          <p permid="Cfm">
             Statement (3) is illustrated in <xref ref="figure-galois-2"/>.
             We leave the proof of this property as an exercise.
           </p>
 
-          <p>
+          <p permid="imv">
             (4) This part takes a little more work.
             Let <m>K</m> be a normal extension of <m>F</m>.
             If <m>\sigma</m> is in <m>G(E/F)</m> and <m>\tau</m> is in <m>G(E/K)</m>,
@@ -888,14 +888,14 @@
             Hence, <m>\tau( \sigma( \alpha )) = \sigma( \alpha )</m> or <m>\sigma^{-1} \tau \sigma( \alpha) = \alpha</m>.
           </p>
 
-          <p>
+          <p permid="OtE">
             Conversely, let <m>G(E/K)</m> be a normal subgroup of <m>G(E/F)</m>.
             We need to show that <m>F = K_{G(K/F)}</m>.
             Let <m>\tau \in G(E/K)</m>.
             For all <m>\sigma \in G(E/F)</m> there exists a
             <m>\overline{\tau} \in G(E/K)</m> such that <m>\tau \sigma = \sigma \overline{\tau}</m>.
             Consequently, for all <m>\alpha \in K</m>
-            <me>
+            <me permid="wSQ">
               \tau( \sigma( \alpha ) ) = \sigma( \overline{\tau}( \alpha ) ) = \sigma( \alpha );
             </me>
             hence, <m>\sigma( \alpha )</m> must be in the fixed field of <m>G(E/K)</m>.
@@ -910,9 +910,9 @@
             Therefore, <m>\beta</m> belongs to the fixed field <m>F</m> of <m>G(E/F)</m>.
           </p>
 
-          <p>
+          <p permid="uAN">
             Finally, we must show that when <m>K</m> is a normal extension of <m>F</m>,
-            <me>
+            <me permid="cZZ">
               G(K/F) \cong G(E/F) / G(E/K)
             </me>.
             For <m>\sigma \in G(E/F)</m>,
@@ -922,27 +922,27 @@
             Consequently, we have a map
             <m>\phi:G(E/F) \rightarrow G(K/F)</m> defined by <m>\sigma \mapsto \sigma_K</m>.
             This map is a group homomorphism since
-            <me>
+            <me permid="Jhi">
               \phi( \sigma \tau ) = (\sigma \tau)_K = \sigma_K \tau_K  = \phi( \sigma) \phi( \tau )
             </me>.
             The kernel of <m>\phi</m> is <m>G(E/K)</m>.
             By (2),
-            <me>
+            <me permid="por">
               |G(E/F)| / |G(E/K)| = [K:F] = |G(K/F)|
             </me>.
             Hence, the image of <m>\phi</m> is <m>G(K/F)</m> and <m>\phi</m> is onto.
             Applying the First Isomorphism Theorem, we have
-            <me>
+            <me permid="VvA">
               G(K/F) \cong G(E/F) / G( E/K )
             </me>.
           </p>
         </proof>
       </theorem>
 
-      <figure xml:id="figure-galois-2">
+      <figure xml:id="figure-galois-2" permid="hQW">
         <caption>Subgroups of <m>G(E/F)</m> and subfields of <m>E</m></caption>
             <!-- Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010 -->
-        <image width="30%" xml:id="galois-correspondence">
+        <image width="30%" xml:id="galois-correspondence" permid="uIe">
 
             <latex-image>
                 <xi:include href="tikz/galois-correspondence.tex" parse="text"/>
@@ -951,8 +951,8 @@
 
       </figure>
 
-      <example xml:id="example-galois-x4-2">
-        <p>
+      <example xml:id="example-galois-x4-2" permid="TrF">
+        <p permid="brQ">
           In this example we will illustrate the Fundamental Theorem of Galois Theory by determining the lattice of subgroups of the Galois group of <m>f(x) = x^4 - 2</m>.
           We will compare this lattice to the lattice of field extensions of
           <m>{\mathbb Q}</m> that are contained in the splitting field of <m>x^4-2</m>.
@@ -966,12 +966,12 @@
           The splitting field of <m>f(x)</m> is then <m>{\mathbb Q}(\sqrt[4]{2}\, )(i) = {\mathbb Q}( \sqrt[4]{2}, i )</m>.
         </p>
 
-        <p>
+        <p permid="HyZ">
           Since <m>[ {\mathbb Q}( \sqrt[4]{2}\, ) : {\mathbb Q}] = 4</m> and <m>i</m> is not in <m>{\mathbb Q}( \sqrt[4]{2}\, )</m>,
           it must be the case that <m>[ {\mathbb Q}( \sqrt[4]{2}, i ): {\mathbb Q}(\sqrt[4]{2}\, )] = 2</m>.
           Hence, <m>[ {\mathbb Q}( \sqrt[4]{2}, i ):{\mathbb Q}] = 8</m>.
           The set
-          <me>
+          <me permid="BCJ">
             \{ 1, \sqrt[4]{2}, (\sqrt[4]{2}\, )^2, (\sqrt[4]{2}\, )^3, i, i \sqrt[4]{2}, i (\sqrt[4]{2}\, )^2, i(\sqrt[4]{2}\, )^3 \}
           </me>
           is a basis of <m>{\mathbb Q}( \sqrt[4]{2}, i )</m> over <m>{\mathbb Q}</m>.
@@ -979,7 +979,7 @@
           <m>{\mathbb Q}( \sqrt[4]{2}, i)</m> is illustrated in <xref ref="figure-galois-3"/>(a).
         </p>
             <!-- Corrected the automorphism sigma.  Suggested by R. Beezer. - TWJ 4/14/2011 -->
-        <p>
+        <p permid="nGi">
           The Galois group <m>G</m> of <m>f(x)</m> must be of order <m>8</m>.
           Let <m>\sigma</m> be the automorphism defined by
           <m>\sigma( \sqrt[4]{2}\, ) = i \sqrt[4]{2}</m> and <m>\sigma( i ) = i</m>,
@@ -995,10 +995,10 @@
         </p>
       </example>
 
-      <figure xml:id="figure-galois-3">
+      <figure xml:id="figure-galois-3" permid="NYf">
         <caption>Galois group of <m>x^4-2</m></caption>
             <!-- Replaced figure with tikz figure and corrected figure - TWJ 8/20/2010 -->
-        <image xml:id="galois-fourth-root2">
+        <image xml:id="galois-fourth-root2" permid="aPn">
 
             <latex-image>
                 <xi:include href="tikz/galois-fourth-root2.tex" parse="text"/>
@@ -1008,9 +1008,9 @@
       </figure>
     </introduction>
 
-    <subsection xml:id="galois-subsection-historical-note">
+    <subsection xml:id="galois-subsection-historical-note" permid="tvh">
       <title>Historical Note</title>
-      <p>
+      <p permid="rUC">
         Solutions for the cubic and quartic equations were discovered in the 1500s.
         Attempts to find solutions for the quintic equations puzzled some of history's best mathematicians.
         In 1798, P. Ruffini
@@ -1022,7 +1022,7 @@
         (1802<ndash/>1829) finally offered the first correct proof that quintics are not always solvable by radicals.
       </p>
 
-      <p>
+      <p permid="YbL">
         Abel inspired the work of Évariste Galois.
             <idx><h>Galois, Évariste</h></idx>
         Born in 1811, Galois began to display extraordinary mathematical talent at the age of 14.
@@ -1032,7 +1032,7 @@
         He was finally accepted at the École Normale in 1829.
       </p>
 
-      <p>
+      <p permid="EiU">
         Galois worked to develop a theory of solvability for polynomials.
         In 1829, at the age of 17, Galois presented two papers on the solution of algebraic equations to the Académie des Sciences de Paris.
         These papers were sent to Cauchy,
@@ -1042,7 +1042,7 @@
         Another paper was presented, but was not published until 1846.
       </p>
 
-      <p>
+      <p permid="kqd">
         Galois' democratic sympathies led him into the Revolution of 1830.
         He was expelled from school and sent to prison for his part in the turmoil.
         After his release in 1832,
@@ -1056,32 +1056,32 @@
 
   </section>
 
-  <section xml:id="section-galois-applications">
+  <section xml:id="section-galois-applications" permid="vku">
     <title>Applications</title>
-    <subsection xml:id="galois-subsection-solvable-by-radicals">
+    <subsection xml:id="galois-subsection-solvable-by-radicals" permid="ZCq">
       <title>Solvability by Radicals</title>
             <!-- Major clean up of the section -->
             <!-- TWJ 3/5/2013 -->
-      <p>
+      <p permid="Qxm">
         Throughout this section we shall assume that all fields have characteristic zero to ensure that irreducible polynomials do not have multiple roots.
         The immediate goal of this section is to determine when the roots of a polynomial <m>f(x)</m> can be computed with a finite number of operations on the coefficients of <m>f(x)</m>.
         The allowable operations are addition, subtraction,
         multiplication, division, and the extraction of <m>n</m>th roots.
         Certainly the solution to the quadratic equation,
         <m>a x^2 + b x +c = 0</m>, illustrates this process:
-        <me>
+        <me permid="hJS">
           x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
         </me>.
         The only one of these operations that might demand a larger field is the taking of <m>n</m>th roots.
         We are led to the following definition.
       </p>
 
-      <p>
+      <p permid="wEv">
         An extension field <m>E</m> of a field <m>F</m> is an
         <term>extension by radicals</term>
             <idx><h>Extension</h><h>radical</h></idx>
         if there exists a chain of subfields
-        <me>
+        <me permid="NRb">
           F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E
         </me>
         such for <m>i = 1, 2, \ldots, r</m>,
@@ -1093,7 +1093,7 @@
         Our goal is to arrive at criteria that will tell us whether or not a polynomial <m>f(x)</m> is solvable by radicals by examining the Galois group <m>f(x)</m>.
       </p>
 
-      <p>
+      <p permid="cLE">
         The easiest polynomial to solve by radicals is one of the form <m>x^n - a</m>.
         As we discussed in <xref ref="cyclic"/>,
         the roots of <m>x^n - 1</m> are called the
@@ -1106,11 +1106,11 @@
             <idx><h>Primitive <m>n</m>th root of unity</h></idx>
       </p>
 
-      <example xml:id="example-galois-group-xn-1">
-        <p>
+      <example xml:id="example-galois-group-xn-1" permid="MiF">
+        <p permid="TNr">
           The polynomial <m>x^n - 1</m> is solvable by radicals over <m>{\mathbb Q}</m>.
           The roots of this polynomial are <m>1, \omega, \omega^2, \ldots, \omega^{n - 1}</m>, where
-          <me>
+          <me permid="tYk">
             \omega = \cos\left( \frac{2 \pi}{n} \right) + i \sin\left( \frac{2 \pi}{n} \right)
           </me>.
           The splitting field of <m>x^n - 1</m> over
@@ -1118,10 +1118,10 @@
         </p>
       </example>
 
-      <p>
+      <p permid="ISN">
         We shall prove that a polynomial is solvable by radicals if its Galois group is solvable.
         Recall that a subnormal series of a group <m>G</m> is a finite sequence of subgroups
-        <me>
+        <me permid="aft">
           G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}
         </me>,
         where <m>H_i</m> is normal in <m>H_{i+1}</m>.
@@ -1135,16 +1135,16 @@
       </p>
             <!-- Corrected the definition of a solvable group.  Suggested by K. Halasz. -->
             <!-- TWJ 1/10/2014  -->
-      <lemma xml:id="lemma-xn-a-solvable">
+      <lemma xml:id="lemma-xn-a-solvable" permid="zUn">
         <statement>
-          <p>
+          <p permid="FJM">
             Let <m>F</m> be a field of characteristic zero and <m>E</m> be the splitting field of <m>x^n - a</m> over <m>F</m> with <m>a \in F</m>.
             Then <m>G(E/F)</m> is a solvable group.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="ZQL">
+          <p permid="aHW">
             The roots of <m>x^n - a</m> are <m>\sqrt[n]{a}, \omega \sqrt[n]{a}, \ldots, \omega^{n-1} \sqrt[n]{a}</m>,
             where <m>\omega</m> is a primitive <m>n</m>th root of unity.
             Suppose that <m>F</m> contains all of its <m>n</m>th roots of unity.
@@ -1157,7 +1157,7 @@
             Let <m>\sigma</m>  and <m>\tau</m> be in <m>G(E/F)</m> and suppose that
             <m>\sigma( \zeta ) = \omega^i \zeta</m> and <m>\tau( \zeta ) = \omega^j \zeta</m>.
             If <m>F</m> contains the roots of unity, then
-            <me>
+            <me permid="GmC">
               \sigma \tau( \zeta ) = \sigma( \omega^j \zeta) = \omega^j \sigma( \zeta ) = \omega^{i+j} \zeta = \omega^i \tau( \zeta ) = \tau( \omega^i \zeta ) = \tau \sigma( \zeta )
             </me>.
             Therefore, <m>\sigma \tau = \tau \sigma</m> and <m>G(E/F)</m> is abelian, and
@@ -1165,7 +1165,7 @@
           </p>
             <!-- typo correction in proof.  Suggested by L.Handricks and K. Kelley. -->
             <!-- TWJ - 5/3/2013 -->
-          <p>
+          <p permid="GPf">
             Now suppose that <m>F</m> does not contain a primitive <m>n</m>th root of unity.
             Let <m>\omega</m> be a generator of the cyclic group of the <m>n</m>th roots of unity.
             Let <m>\alpha</m> be a zero of <m>x^n - a</m>.
@@ -1179,18 +1179,18 @@
             <m>G(F( \omega)/ F)</m> is determined by <m>\sigma( \omega)</m>.
             It must be the case that <m>\sigma( \omega ) = \omega^i</m> for some integer <m>i</m> since all of the zeros of <m>x^n - 1</m> are powers of <m>\omega</m>.
             If <m>\tau( \omega ) = \omega^j</m> is in <m>G(F(\omega)/F)</m>, then
-            <me>
+            <me permid="mtL">
               \sigma \tau( \omega ) = \sigma( \omega^j ) = [ \sigma( \omega )]^j = \omega^{ij} = [\tau( \omega ) ]^i = \tau( \omega^i )  = \tau \sigma( \omega )
             </me>.
             Therefore, <m>G(F( \omega ) / F)</m> is abelian.
             By the Fundamental Theorem of Galois Theory the series
-            <me>
+            <me permid="SAU">
               \{ \identity \} \subset G(E/ F(\omega)) \subset G(E/F)
             </me>
             is a normal series.
             By our previous argument, <m>G(E/F(\omega))</m> is abelian.
             Since
-            <me>
+            <me permid="yId">
               G(E/F) /G(E/F( \omega)) \cong G(F(\omega)/F)
             </me>
             is also abelian, <m>G(E/F)</m> is solvable.
@@ -1198,16 +1198,16 @@
         </proof>
       </lemma>
 
-      <lemma xml:id="lemma-radical-extension">
+      <lemma xml:id="lemma-radical-extension" permid="gbw">
         <statement>
-          <p>
+          <p permid="lQV">
             Let <m>F</m> be a field of characteristic zero and let
-            <me>
+            <me permid="ePm">
               F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E
             </me>
             a radical extension of <m>F</m>.
             Then there exists a normal radical extension
-            <me>
+            <me permid="KWv">
               F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K
             </me>
             such that <m>K</m> that contains <m>E</m> and <m>K_i</m> is a normal extension of <m>K_{i-1}</m>.
@@ -1217,18 +1217,18 @@
             <!-- TWJ - 3/5/2013 -->
             <!-- Proof should be correct now. -->
             <!-- TWJ - 6/5/2013 -->
-        <proof>
-          <p>
+        <proof permid="FXU">
+          <p permid="mWo">
             Since <m>E</m> is a radical extension of <m>F</m>,
             there exists a chain of subfields
-            <me>
+            <me permid="rdE">
               F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_r = E
             </me>
             such for <m>i = 1, 2, \ldots, r</m>,
             we have  <m>F_i = F_{i - 1}(\alpha_i)</m> and
             <m>\alpha_i^{n_i} \in F_{i-1}</m> for some positive integer <m>n_i</m>.
             We will build a normal radical extension of <m>F</m>,
-            <me>
+            <me permid="XkN">
               F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K
             </me>
             such that <m>K \supseteq E</m>.
@@ -1245,7 +1245,7 @@
             In this case, <m>K_1 = F(\omega \beta)</m>.
             Thus, <m>K_1</m> is a normal radical extension of <m>F</m> containing <m>F_1</m>.
             Continuing in this manner, we obtain
-            <me>
+            <me permid="DrW">
               F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_r = K
             </me>
             such that <m>K_i</m> is a normal extension of <m>K_{i-1}</m> and
@@ -1254,32 +1254,32 @@
         </proof>
       </lemma>
 
-      <p>
+      <p permid="oZW">
         We will now prove the main theorem about solvability by radicals.
       </p>
 
-      <theorem xml:id="theorem-solvable-by-radicals">
+      <theorem xml:id="theorem-solvable-by-radicals" permid="TNe">
         <statement>
-          <p>
+          <p permid="wqa">
             Let <m>f(x)</m> be in <m>F[x]</m>, where <m>\chr F = 0</m>.
             If <m>f(x)</m> is solvable by radicals,
             then the Galois group of <m>f(x)</m> over <m>F</m> is solvable.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="wEi">
+          <p permid="Tdx">
             Since <m>f(x)</m> is solvable by radicals there exists an extension <m>E</m> of <m>F</m> by radicals <m>F = F_0 \subset F_1 \subset \cdots \subset F_n = E</m>.
             By  <xref ref="lemma-radical-extension"/>,
             we can assume that <m>E</m> is a splitting field <m>f(x)</m> and <m>F_i</m> is normal over <m>F_{i - 1}</m>.
             By the Fundamental Theorem of Galois Theory,
             <m>G(E/F_i)</m> is a normal subgroup of <m>G(E/F_{i - 1})</m>.
             Therefore, we have a subnormal series of subgroups of <m>G(E/F)</m>:
-            <me>
+            <me permid="jzf">
               \{ \identity \} \subset G(E/F_{n - 1}) \subset \cdots \subset G(E/F_1) \subset G(E/F)
             </me>.
             Again by the Fundamental Theorem of Galois Theory, we know that
-            <me>
+            <me permid="PGo">
               G(E/F_{i - 1})/G(E/F_i) \cong G(F_i/F_{i - 1})
             </me>.
             By <xref ref="lemma-xn-a-solvable"/>, <m>G(F_i/F_{i - 1})</m> is solvable;
@@ -1288,31 +1288,31 @@
         </proof>
       </theorem>
 
-      <p>
+      <p permid="Vhf">
         The converse of <xref ref="theorem-solvable-by-radicals"/> is also true.
         For a proof,
         see any of the references at the end of this chapter.
       </p>
     </subsection>
 
-    <subsection xml:id="galois-subsection-quintic">
+    <subsection xml:id="galois-subsection-quintic" permid="FJz">
       <title>Insolvability of the Quintic</title>
-      <p>
+      <p permid="Boo">
         We are now in a position to find a fifth-degree polynomial that is not solvable by radicals.
         We merely need to find a polynomial whose Galois group is <m>S_5</m>.
         We begin by proving a lemma.
       </p>
             <!-- Corrected the lemma by requiring that <m>p</m> be prime in <m>S_p</m>.  Suggested by R. Beezer and K. Brooks. - TWJ 6/15/2012 -->
-      <lemma xml:id="lemma-sn-generating">
+      <lemma xml:id="lemma-sn-generating" permid="spO">
         <statement>
-          <p>
+          <p permid="RYe">
             If <m>p</m> is prime,
             then any subgroup of <m>S_p</m> that contains a transposition and a cycle of length <m>p</m> must be all of <m>S_p</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="mfd">
+          <p permid="zkG">
             Let <m>G</m> be a subgroup of <m>S_p</m> that contains a transposition <m>\sigma</m> and <m>\tau</m> a cycle of length <m>p</m>.
             We may assume that <m>\sigma = (1 2)</m>.
             The order of <m>\tau</m> is <m>p</m> and <m>\tau^n</m> must be a cycle of length <m>p</m> for <m>1 \leq n \lt p</m>.
@@ -1328,9 +1328,9 @@
         </proof>
       </lemma>
 
-      <figure xml:id="figure-galois-4">
+      <figure xml:id="figure-galois-4" permid="hvx">
         <caption>The graph of <m>f(x) = x^5 - 6 x^3 - 27 x - 3</m></caption>
-        <image width="70%" xml:id="galois-quintic">
+        <image width="70%" xml:id="galois-quintic" permid="GWw">
 
             <sageplot>
             f(x) = x^5 - 6*x^3 -27*x -3
@@ -1365,8 +1365,8 @@
 				-->
       </figure>
 
-      <example xml:id="example-galois-x5">
-        <p>
+      <example xml:id="example-galois-x5" permid="YwX">
+        <p permid="zUA">
           We will show that <m>f(x) = x^5 - 6 x^3 - 27 x - 3 \in {\mathbb Q}[x]</m> is not solvable.
           We claim that the Galois group of <m>f(x)</m> over <m>{\mathbb Q}</m> is <m>S_5</m>.
           By Eisenstein's Criterion,
@@ -1375,7 +1375,7 @@
           The derivative of <m>f(x)</m> is <m>f'(x) = 5 x^4 - 18 x^2 - 27</m>;
           hence, setting <m>f'(x) = 0</m> and solving,
           we find that the only real roots of <m>f'(x)</m> are
-          <me>
+          <me permid="vNx">
             x = \pm \sqrt{ \frac{6 \sqrt{6} + 9 }{5} }
           </me>.
           Therefore, <m>f(x)</m> can have at most one maximum and one minimum.
@@ -1410,9 +1410,9 @@
             <!--  Changed <m>G(K/F )</m> to <m>G(K/{\mathbb Q} )</m>.  Suggested by Aleks Vlasev. - TWJ 8/10/2011 -->
     </subsection>
 
-    <subsection xml:id="galois-subsection-fun-theorem-of-algebra">
+    <subsection xml:id="galois-subsection-fun-theorem-of-algebra" permid="lQI">
       <title>The Fundamental Theorem of Algebra</title>
-      <p>
+      <p permid="NCG">
         It seems fitting that the last theorem that we will state and prove is the Fundamental Theorem of Algebra.
         This theorem was first proven by Gauss in his doctoral thesis.
         Prior to Gauss's proof,
@@ -1420,14 +1420,14 @@
         The Fundamental Theorem of Algebra states that every polynomial over the complex numbers factors into distinct linear factors.
       </p>
 
-      <theorem>
+      <theorem permid="EEg">
         <title>Fundamental Theorem of Algebra</title>
         <idx>
         <h>Fundamental Theorem</h>
         <h>of Algebra</h>
         </idx>
         <statement>
-          <p>
+          <p permid="cxj">
             The field of complex numbers is algebraically closed;
             that is, every polynomial in
             <m>{\mathbb C}[x]</m> has a root in <m>{\mathbb C}</m>.
@@ -1436,8 +1436,8 @@
                 <!--				<comment>
 					<p>For our proof we shall assume two facts from calculus.  We need the results that every polynomial of odd degree over <m>{\mathbb R}</m> has a real root and that every positive real number has a square root.</p>
 				</comment>-->
-        <proof>
-          <p>
+        <proof permid="cLr">
+          <p permid="frP">
             Suppose that <m>E</m> is a proper finite field extension of the complex numbers.
             Since any finite extension of a field of characteristic zero is a simple extension,
             there exists an <m>\alpha \in E</m> such that
@@ -1447,7 +1447,7 @@
             We must show that it is impossible for <m>L</m> to be a proper extension of <m>{\mathbb C}</m>.
           </p>
 
-          <p>
+          <p permid="LyY">
             Suppose that <m>L</m> is a proper extension of <m>{\mathbb C}</m>.
             Since <m>L</m> is the splitting field of
             <m>f(x)(x^2 + 1)</m> over <m>{\mathbb R}</m>,
@@ -1461,7 +1461,7 @@
             Therefore, <m>K = {\mathbb R}</m>.
           </p>
 
-          <p>
+          <p permid="rGh">
             We now know that <m>G(L/{\mathbb R})</m> must be a 2-group.
             It follows that <m>G(L / {\mathbb C})</m> is a <m>2</m>-group.
             We have assumed that <m>L \neq {\mathbb C}</m>;
@@ -1479,7 +1479,7 @@
         </proof>
       </theorem>
 
-      <p>
+      <p permid="tJP">
         Although our proof was strictly algebraic,
         we were forced to rely on results from calculus.
         It is necessary to assume the completeness axiom from analysis to show that every polynomial of odd degree has a real root and that every positive real number has a square root.
@@ -1488,9 +1488,9 @@
         It is also interesting to note that we can obtain a proof of such an important theorem from two very different fields of mathematics.
       </p>
 
-      <paragraphs>
+      <paragraphs permid="COT">
         <title>Sage</title>
-        <p>
+        <p permid="ZQY">
           Fields, field extensions,
           roots of polynomials, and group theory <mdash/> Sage has it all,
           and so it is possible to carefully study very complicated examples from Galois Theory with Sage.
@@ -1503,11 +1503,11 @@
     <!-- Exercises with Solutions  -->
     <!-- File: galois.xml  -->
     <!-- Title: Galois Theory -->
-  <exercises xml:id="exercises-galois" filenamebase="galois">
+  <exercises xml:id="exercises-galois" filenamebase="galois" permid="qAB">
     <title>Exercises</title>
-    <exercise number="1">
+    <exercise number="1" permid="kLp">
       <statement>
-        <p>
+        <p permid="amx">
           Compute each of the following Galois groups.
           Which of these field extensions are normal field extensions?
           If the extension is not normal,
@@ -1515,79 +1515,79 @@
           <m>{\mathbb Q}</m> in which the extension field is contained.
         </p>
 
-        <ol cols="2">
-          <li>
-            <p>
+        <ol cols="2" permid="QbA">
+          <li permid="xXW">
+            <p permid="BgX">
               <m>G({\mathbb Q}(\sqrt{30}\, ) / {\mathbb Q})</m>
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="eff">
+            <p permid="hog">
               <m>G({\mathbb Q}(\sqrt[4]{5}\, ) / {\mathbb Q})</m>
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="Kmo">
+            <p permid="Nvp">
               <m>G( {\mathbb Q}(\sqrt{2}, \sqrt{3}, \sqrt{5}\, )/ {\mathbb Q} )</m>
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="qtx">
+            <p permid="tCy">
               <m>G({\mathbb Q}(\sqrt{2}, \sqrt[3]{2}, i) / {\mathbb Q})</m>
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="WAG">
+            <p permid="ZJH">
               <m>G({\mathbb Q}(\sqrt{6}, i) / {\mathbb Q})</m>
             </p>
           </li>
         </ol>
       </statement>
-      <hint>
-        <p>
+      <hint permid="KHN">
+        <p permid="mmu">
           (a) <m>{\mathbb Z}_2</m>; (c) <m>{\mathbb Z}_2 \times {\mathbb Z}_2 \times {\mathbb Z}_2</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="2">
+    <exercise number="2" permid="QSy">
       <statement>
-        <p>
+        <p permid="GtG">
           Determine the separability of each of the following polynomials.
 
-          <ol cols="2">
-            <li>
-              <p>
+          <ol cols="2" permid="wiJ">
+            <li permid="HrI">
+              <p permid="KAJ">
                 <m>x^3 + 2 x^2 - x - 2</m> over <m>{\mathbb Q}</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="nyR">
+              <p permid="qHS">
                 <m>x^4 + 2 x^2 + 1</m> over <m>{\mathbb Q}</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="TGa">
+              <p permid="WPb">
                 <m>x^4 + x^2 + 1</m> over <m>{\mathbb Z}_3</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="zNj">
+              <p permid="CWk">
                 <m>x^3 +x^2 + 1</m> over <m>{\mathbb Z}_2</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="WWf">
+        <p permid="yAM">
           (a) Separable over <m>\mathbb Q</m> since
           <m>x^3 + 2 x^2 - x - 2 = (x - 1)(x + 1)(x + 2)</m>; (c) not separable over
           <m>\mathbb Z_3</m> since <m>x^4 + x^2 + 1 = (x + 1)^2 (x + 2)^2 </m>.
@@ -1595,16 +1595,16 @@
       </hint>
     </exercise>
 
-    <exercise number="3">
+    <exercise number="3" permid="wZH">
       <statement>
-        <p>
+        <p permid="mAP">
           Give the order and describe a generator of the Galois group of <m>\gf(729)</m> over <m>\gf(9)</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="jkx">
+        <p permid="eHV">
           If
-          <me>
+          <me permid="IbP">
             [\gf(729): \gf(9)] = [\gf(729): \gf(3)] /[\gf(9): \gf(3)] = 6/2 = 3
           </me>,
           then <m>G(\gf(729)/ \gf(9)) \cong {\mathbb Z}_3</m>.
@@ -1614,131 +1614,131 @@
       </hint>
     </exercise>
 
-    <exercise number="4">
+    <exercise number="4" permid="dgQ">
       <statement>
-        <p>
+        <p permid="SHY">
           Determine the Galois groups of each of the following polynomials in <m>{\mathbb Q}[x]</m>;
           hence, determine the solvability by radicals of each of the polynomials.
 
-          <ol cols="2">
-            <li>
-              <p>
+          <ol cols="2" permid="cpS">
+            <li permid="Exc">
+              <p permid="HGd">
                 <m>x^5 - 12 x^2 + 2</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="kEl">
+              <p permid="nNm">
                 <m>x^5 - 4 x^4 + 2 x + 2</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="QLu">
+              <p permid="TUv">
                 <m>x^3 - 5</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="wSD">
+              <p permid="AbE">
                 <m>x^4 - x^2 - 6</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="cZM">
+              <p permid="giN">
                 <m>x^5 + 1</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="JgV">
+              <p permid="MpW">
                 <m>(x^2 - 2)(x^2 + 2)</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="poe">
+              <p permid="sxf">
                 <m>x^8 - 1</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="Vvn">
+              <p permid="YEo">
                 <m>x^8 + 1</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="BCw">
+              <p permid="ELx">
                 <m>x^4 - 3 x^2 -10</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="vyP">
+        <p permid="KPe">
           (a) <m>S_5</m>; (c) <m>S_3</m>; (g) see <xref ref="example-galois-group-x4"/>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="5">
+    <exercise number="5" permid="JnZ">
       <statement>
-        <p>
+        <p permid="yPh">
           Find a primitive element in the splitting field of each of the following polynomials in <m>{\mathbb Q}[x]</m>.
 
-          <ol cols="2">
-            <li>
-              <p>
+          <ol cols="2" permid="Ixb">
+            <li permid="KWi">
+              <p permid="Ofj">
                 <m>x^4 - 1</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="rdr">
+              <p permid="ums">
                 <m>x^4 - 8 x^2 + 15</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="XkA">
+              <p permid="atB">
                 <m>x^4 - 2 x^2 - 15</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="DrJ">
+              <p permid="GAK">
                 <m>x^3 - 2</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="HNh">
+        <p permid="qWn">
           (a) <m>{\mathbb Q}(i)</m>
         </p>
       </hint>
     </exercise>
 
-    <exercise number="6">
+    <exercise number="6" permid="pvi">
       <statement>
-        <p>
+        <p permid="eWq">
           Prove that the Galois group of an irreducible quadratic polynomial is isomorphic to <m>{\mathbb Z}_2</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="7">
+    <exercise number="7" permid="VCr">
       <statement>
-        <p>
+        <p permid="Ldz">
           Prove that the Galois group of an irreducible cubic polynomial is isomorphic to <m>S_3</m> or <m>{\mathbb Z}_3</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="AiI">
+        <p permid="Xdw">
           Let <m>E</m> be the splitting field of a cubic polynomial in <m>F[x]</m>.
           Show that <m>[E:F]</m> is less than or equal to <m>6</m> and is divisible by <m>3</m>.
           Since <m>G(E/F)</m> is a subgroup of <m>S_3</m> whose order is divisible by <m>3</m>,
@@ -1747,9 +1747,9 @@
       </hint>
     </exercise>
 
-    <exercise number="8">
+    <exercise number="8" permid="BJA">
       <statement>
-        <p>
+        <p permid="rkI">
           Let <m>F \subset K \subset E</m> be fields.
           If <m>E</m> is a normal extension of <m>F</m>,
           show that <m>E</m> must also be a normal extension of <m>K</m>.
@@ -1759,15 +1759,15 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="9">
+    <exercise number="9" permid="hQJ">
       <statement>
-        <p>
+        <p permid="XrR">
           Let <m>G</m> be the Galois group of a polynomial of degree <m>n</m>.
           Prove that <m>|G|</m> divides <m>n!</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="sEj">
+        <p permid="DkF">
           <m>G</m> is a subgroup of <m>S_n</m>.
         </p>
       </hint>
@@ -1775,9 +1775,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="10">
+    <exercise number="10" permid="NXS">
       <statement>
-        <p>
+        <p permid="Dza">
           Let <m>F \subset E</m>.
           If <m>f(x)</m> is solvable over <m>F</m>,
           show that <m>f(x)</m> is also solvable over <m>E</m>.
@@ -1787,9 +1787,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="11">
+    <exercise number="11" permid="ufb">
       <statement>
-        <p>
+        <p permid="jGj">
           Construct a polynomial <m>f(x)</m> in
           <m>{\mathbb Q}[x]</m> of degree <m>7</m> that is not solvable by radicals.
         </p>
@@ -1798,9 +1798,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="12">
+    <exercise number="12" permid="amk">
       <statement>
-        <p>
+        <p permid="PNs">
           Let <m>p</m> be prime.
           Prove that there exists a polynomial
           <m>f(x) \in{\mathbb Q}[x]</m> of degree <m>p</m> with Galois group isomorphic to <m>S_p</m>.
@@ -1812,9 +1812,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="13">
+    <exercise number="13" permid="Gtt">
       <statement>
-        <p>
+        <p permid="vUB">
           Let <m>p</m> be a prime and
           <m>{\mathbb Z}_p(t)</m> be the field of rational functions over <m>{\mathbb Z}_p</m>.
           Prove that <m>f(x) = x^p - t</m> is an irreducible polynomial in <m>{\mathbb Z}_p(t)[x]</m>.
@@ -1825,9 +1825,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="14">
+    <exercise number="14" permid="mAC">
       <statement>
-        <p>
+        <p permid="cbK">
           Let <m>E</m> be an extension field of <m>F</m>.
           Suppose that <m>K</m> and <m>L</m> are two intermediate fields.
           If there exists an element
@@ -1841,9 +1841,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="15">
+    <exercise number="15" permid="SHL">
       <statement>
-        <p>
+        <p permid="IiT">
           Let <m>\sigma \in \aut( {\mathbb R} )</m>.
           If <m>a</m> is a positive real number,
           show that <m>\sigma( a) &gt; 0</m>.
@@ -1851,15 +1851,15 @@
       </statement>
     </exercise>
 
-    <exercise number="16">
+    <exercise number="16" permid="yOU">
       <statement>
-        <p>
+        <p permid="oqc">
           Let <m>K</m> be the splitting field of <m>x^3 + x^2 + 1 \in {\mathbb Z}_2[x]</m>.
           Prove or disprove that <m>K</m> is an extension by radicals.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="pJD">
+        <p permid="jrO">
           True.
         </p>
       </hint>
@@ -1867,9 +1867,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="17">
+    <exercise number="17" permid="eWd">
       <statement>
-        <p>
+        <p permid="Uxl">
           Let <m>F</m> be a field such that <m>\chr(F) \neq 2</m>.
           Prove that the splitting field of
           <m>f(x) = a x^2 + b x + c</m> is <m>F( \sqrt{\alpha}\, )</m>,
@@ -1880,9 +1880,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="18">
+    <exercise number="18" permid="Ldm">
       <statement>
-        <p>
+        <p permid="AEu">
           Prove or disprove: Two different subgroups of a Galois group will have different fixed fields.
         </p>
       </statement>
@@ -1890,9 +1890,9 @@
 
     <todo>Fix solution.</todo>
 
-    <exercise number="19">
+    <exercise number="19" permid="rkv">
       <statement>
-        <p>
+        <p permid="gLD">
           Let <m>K</m> be the splitting field of a polynomial over <m>F</m>.
           If <m>E</m> is a field extension of <m>F</m> contained in <m>K</m> and <m>[E:F] = 2</m>,
           then <m>E</m> is the splitting field of some polynomial in <m>F[x]</m>.
@@ -1900,33 +1900,33 @@
       </statement>
     </exercise>
 
-    <exercise number="20">
+    <exercise number="20" permid="XrE">
       <statement>
-        <p>
+        <p permid="MSM">
           We know that the cyclotomic polynomial
-          <me>
+          <me permid="gEz">
             \Phi_p(x) = \frac{x^p - 1}{x - 1} = x^{p - 1} + x^{p - 2} + \cdots + x + 1
           </me>
           is irreducible over <m>{\mathbb Q}</m> for every prime <m>p</m>.
           Let <m>\omega</m> be a zero of <m>\Phi_p(x)</m>,
           and consider the field <m>{\mathbb Q}(\omega)</m>.
 
-          <ol>
-            <li>
-              <p>
+          <ol permid="oEk">
+            <li permid="IbC">
+              <p permid="LkD">
                 Show that <m>\omega, \omega^2, \ldots, \omega^{p-1}</m> are distinct zeros of <m>\Phi_p(x)</m>,
                 and conclude that they are all the zeros of <m>\Phi_p(x)</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="oiL">
+              <p permid="rrM">
                 Show that <m>G( {\mathbb Q}( \omega ) / {\mathbb Q} )</m> is abelian of order <m>p - 1</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="UpU">
+              <p permid="XyV">
                 Show that the fixed field of
                 <m>G( {\mathbb Q}( \omega ) / {\mathbb Q} )</m> is <m>{\mathbb Q}</m>.
               </p>
@@ -1934,22 +1934,22 @@
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
-          <ol>
-            <li>
-              <p>
+      <hint permid="utw">
+        <p permid="PyX">
+          <ol permid="XFZ">
+            <li permid="Axd">
+              <p permid="DGe">
                 Clearly <m>\omega, \omega^2, \ldots, \omega^{p - 1}</m> are distinct since <m>\omega \neq 1</m> or 0.
                 To show that <m>\omega^i</m> is a zero of <m>\Phi_p</m>,
                 calculate <m>\Phi_p( \omega^i)</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="gEm">
+              <p permid="jNn">
                 The conjugates of <m>\omega</m> are <m>\omega, \omega^2, \ldots, \omega^{p - 1}</m>.
                 Define a map  <m>\phi_i: {\mathbb Q}(\omega) \rightarrow {\mathbb Q}(\omega^i)</m> by
-                <me>
+                <me permid="MLI">
                   \phi_i(a_0 + a_1 \omega + \cdots + a_{p - 2} \omega^{p - 2}) = a_0 + a_1 \omega^i + \cdots + c_{p - 2} (\omega^i)^{p - 2}
                 </me>,
                 where <m>a_i \in {\mathbb Q}</m>.
@@ -1958,8 +1958,8 @@
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="MLv">
+              <p permid="PUw">
                 Show that <m>\{ \omega, \omega^2, \ldots, \omega^{p - 1} \}</m> is a basis for
                 <m>{\mathbb Q}( \omega )</m> over <m>{\mathbb Q}</m>,
                 and consider which linear combinations of
@@ -1971,9 +1971,9 @@
       </hint>
     </exercise>
 
-    <exercise number="21">
+    <exercise number="21" permid="DyN">
       <statement>
-        <p>
+        <p permid="sZV">
           Let <m>F</m> be a finite field or a field of characteristic zero.
           Let <m>E</m> be a finite normal extension of <m>F</m> with Galois group <m>G(E/F)</m>.
           Prove that <m>F \subset K \subset L \subset E</m> if and only if <m>\{ \identity \} \subset G(E/L) \subset G(E/K) \subset G(E/F)</m>.
@@ -1981,9 +1981,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22">
+    <exercise number="22" permid="jFW">
       <statement>
-        <p>
+        <p permid="Zhe">
           Let <m>F</m> be a field of characteristic zero and let
           <m>f(x) \in F[x]</m> be a separable polynomial of degree <m>n</m>.
           If <m>E</m> is the splitting field of <m>f(x)</m>,
@@ -1997,49 +1997,49 @@
             <description>discriminant of a polynomial</description>
           </notation>
 
-          <ol>
-            <li>
-              <p>
+          <ol permid="ULt">
+            <li permid="lof">
+              <p permid="oxg">
                 If <m>f(x) = x^2 + b x + c</m>,
                 show that <m>\Delta^2 = b^2 - 4c</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="Rvo">
+              <p permid="UEp">
                 If <m>f(x) = x^3 + p x + q</m>,
                 show that <m>\Delta^2 = - 4p^3 - 27q^2</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="xCx">
+              <p permid="ALy">
                 Prove that <m>\Delta^2</m> is in <m>F</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="dJG">
+              <p permid="gSH">
                 If <m>\sigma \in G(E/F)</m> is a transposition of two roots of <m>f(x)</m>,
                 show that <m>\sigma( \Delta ) = -\Delta</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="JQP">
+              <p permid="MZQ">
                 If <m>\sigma \in G(E/F)</m> is an even permutation of the roots of <m>f(x)</m>,
                 show that <m>\sigma( \Delta ) = \Delta</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="pXY">
+              <p permid="tgZ">
                 Prove that <m>G(E/F)</m> is isomorphic to a subgroup of <m>A_n</m> if and only if <m>\Delta \in F</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="Wfh">
+              <p permid="Zoi">
                 Determine the Galois groups of
                 <m>x^3 + 2 x - 4</m> and <m>x^3 + x -3</m>.
               </p>
@@ -2103,18 +2103,18 @@
     </biblio>
   </references>
 
-  <section xml:id="galois-sage">
+  <section xml:id="galois-sage" permid="brD">
     <title>Sage</title>
-    <introduction>
-      <p>
+    <introduction permid="rUp">
+      <p permid="ufo">
         Again, our competence at examining fields with Sage will allow us to study the main concepts of Galois Theory easily.
         We will thoroughly examine Example 7 carefully using our computational tools.
       </p>
     </introduction>
 
-    <subsection>
+    <subsection permid="RXR">
       <title>Galois Groups</title>
-      <p>
+      <p permid="FYh">
         We will repeat <xref ref="example-galois-x4-2"/> and analyze carefully the splitting field of the polynomial <m>p(x)=x^4-2</m>.
         We begin with an initial field extension containing at least one root.
       </p>
@@ -2129,8 +2129,8 @@
         </output>
             </sage>
 
-      <p>
-        The <c>.galois_closure()</c> method will create an extension containing all of the roots of the defining polynomial of a number field.
+      <p permid="mfq">
+        The <c>.galois_closure()</c>method will create an extension containing all of the roots of the defining polynomial of a number field.
       </p>
 
             <sage>
@@ -2162,9 +2162,9 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="Smz">
         From the factorization,
-        it is clear that <c>L</c> is the splitting field of the polynomial,
+        it is clear that <c>L</c>is the splitting field of the polynomial,
         even if the factorization is not pretty.
         It is easy to then obtain the Galois group of this field extension.
       </p>
@@ -2179,7 +2179,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="ytI">
         We can examine this group, and identify it.
         Notice that since the field is a degree <m>8</m> extension,
         the group is described as a permutation group on <m>8</m> symbols.
@@ -2224,7 +2224,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="eAR">
         That's it.
         But maybe not very satisfying.
         Let us dig deeper for more understanding.
@@ -2274,16 +2274,16 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="KIa">
         The important thing to notice here is that we have arranged the splitting field so that the four roots,
         <c>a, -a, b, -b</c>, are very simple functions of the generators.
         In more traditional notation,
-        <c>a</c> is <m>2^{\frac{1}{4}}=\sqrt[4]{2}</m>,
-        and <c>b</c> is <m>2^{\frac{1}{4}}i=\sqrt[4]{2}i</m>
+        <c>a</c>is <m>2^{\frac{1}{4}}=\sqrt[4]{2}</m>,
+        and <c>b</c>is <m>2^{\frac{1}{4}}i=\sqrt[4]{2}i</m>
         (or their negatives).
       </p>
 
-      <p>
+      <p permid="qPj">
         We will find it easier to compute in the flattened tower,
         a now familiar construction.
       </p>
@@ -2302,7 +2302,7 @@
         </input>
             </sage>
 
-      <p>
+      <p permid="WWs">
         We can return to our original polynomial
         (over the rationals),
         and ask for its roots in the flattened tower,
@@ -2321,10 +2321,10 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="DdB">
         Hmmm.
         Do those look right?
-        If you look back at the factorization obtained in the field constructed with the <c>.galois_closure()</c> method,
+        If you look back at the factorization obtained in the field constructed with the <c>.galois_closure()</c>method,
         then they look right.
         But we can do better.
       </p>
@@ -2338,12 +2338,12 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="jkK">
         Yes, those are the roots.
       </p>
 
-      <p>
-        The <c>End()</c> command will create the group of automorphisms of the field <c>L</c>.
+      <p permid="PrT">
+        The <c>End()</c>command will create the group of automorphisms of the field <c>L</c>.
       </p>
 
             <sage>
@@ -2356,7 +2356,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="vzc">
         We can check that each of these automorphisms fixes the rational numbers elementwise.
         If a field homomorphism fixes 1, then it will fix the integers,
         and thus fix all fractions of integers.
@@ -2371,16 +2371,16 @@
         </output>
             </sage>
 
-      <p>
-        So each element of <c>G</c> fixes the rationals elementwise and thus <c>G</c> is the Galois group of the splitting field <c>L</c> over the rationals.
+      <p permid="bGl">
+        So each element of <c>G</c>fixes the rationals elementwise and thus <c>G</c>is the Galois group of the splitting field <c>L</c>over the rationals.
       </p>
 
-      <p>
+      <p permid="HNu">
         <xref ref="proposition-roots-permute"/> is fundamental.
         It says every automorphism in the Galois group of a field extension creates a permutation of the roots of a polynomial with coefficients in the base field.
         We have all of those ingredients here.
         So we will evaluate each automorphism of the Galois group at each of the four roots of our polynomial,
-        which in each case should be another root. (We use the <c>Sequence()</c> constructor just to get nicely-aligned output.)
+        which in each case should be another root. (We use the <c>Sequence()</c>constructor just to get nicely-aligned output.)
       </p>
 
             <sage>
@@ -2401,13 +2401,13 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="nUD">
         Each row of the output is a list of the roots, but permuted,
         and so corresponds to a permutation of four objects
         (the roots).
         For example,
-        the second row shows the second automorphism interchanging <c>a</c> with <c>-a</c>,
-        and <c>b</c> with <c>-b</c>.
+        the second row shows the second automorphism interchanging <c>a</c>with <c>-a</c>,
+        and <c>b</c>with <c>-b</c>.
         (Notice that the first row is the result of the identity automorphism,
         so we can mentally comine the first row with any other row to imagine a
         <q>two-row</q> form of a permutation.)
@@ -2445,16 +2445,16 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="UbM">
         Notice that we now have built an isomorphism from the Galois group to a group of permutations
         <em>using just four symbols</em>,
         rather than the eight used previously.
       </p>
     </subsection>
 
-    <subsection>
+    <subsection permid="yfa">
       <title>Fixed Fields</title>
-      <p>
+      <p permid="AiV">
         In a previous Sage exercise,
         we computed the fixed fields of single field automorphisms for finite fields.
         This was <q>easy</q> in the sense that we could just test every element of the field to see if it was fixed,
@@ -2464,23 +2464,23 @@
         or subgroups of automorphisms?
       </p>
 
-      <p>
+      <p permid="gqe">
         The answer is to use the vector space structure of the flattened tower.
         As a degree <m>8</m> extension of the rationals,
-        the first <m>8</m> powers of the primitive element <c>c</c> form a basis when the field is viewed as a vector space with the rationals as the scalars.
+        the first <m>8</m> powers of the primitive element <c>c</c>form a basis when the field is viewed as a vector space with the rationals as the scalars.
         It is sufficient to know how each field automorphism behaves on this basis to fully specify the definition of the automorphism.
         To wit,
-        <md>
+        <md permid="CmD">
           <mrow>\tau(x)&amp;=\tau\left(\sum_{i=0}^7\,q_ic^i\right)&amp;&amp;q_i\in{\mathbb Q}</mrow>
           <mrow>&amp;=\sum_{i=0}^7\,\tau(q_i)\tau(c^i)&amp;&amp;\tau\text{ is a field automorphism}</mrow>
           <mrow>&amp;=\sum_{i=0}^7\,q_i\tau(c^i)&amp;&amp;\text{rationals are fixed}</mrow>
         </md>
         So we can compute the value of a field automorphism at any linear combination of powers of the primitive element as a linear combination of the values of the field automorphism at just the powers of the primitive element.
         This is known as the <q>power basis</q>,
-        which we can obtain simply with the <c>.power_basis()</c> method.
+        which we can obtain simply with the <c>.power_basis()</c>method.
         We will begin with an example of how we can use this basis.
         We will illustrate with the fourth automorphism of the Galois group.
-        Notice that the <c>.vector()</c> method is a convenience that strips a linear combination of the powers of <c>c</c> into a vector of just the coefficients.  (Notice too that <m>\tau</m> is totally defined by the value of <m>\tau(c)</m>,
+        Notice that the <c>.vector()</c>method is a convenience that strips a linear combination of the powers of <c>c</c>into a vector of just the coefficients.  (Notice too that <m>\tau</m> is totally defined by the value of <m>\tau(c)</m>,
         since as a field automorphism <m>\tau(c^k)=(\tau(c))^k</m>.
         However, we still need to work with the entire power basis to exploit the vector space structure.)
       </p>
@@ -2545,8 +2545,8 @@
         </output>
             </sage>
 
-      <p>
-        The last line expresses the fact that <c>tau_matrix</c> is a matrix representation of the field automorphism,
+      <p permid="Mxn">
+        The last line expresses the fact that <c>tau_matrix</c>is a matrix representation of the field automorphism,
         viewed as a linear transformation of the vector space structure.
         As a representation of an invertible field homomorphism,
         the matrix is invertible.
@@ -2556,13 +2556,13 @@
         we are interested in other properties.
       </p>
 
-      <p>
+      <p permid="sEw">
         To construct fixed fields, we want to find elements fixed by automorphisms.
-        Continuing with <c>tau</c> from above, we seek elements <c>z</c>
+        Continuing with <c>tau</c>from above, we seek elements <c>z</c>
         (written as vectors)
         such that <c>tau_matrix*z=z</c>.
         These are eigenvectors for the eigenvalue <m>1</m>,
-        or elements of the null space of <c>(tau_matrix - I)</c> (null spaces are obtained with <c>.right_kernel()</c> in Sage).
+        or elements of the null space of <c>(tau_matrix - I)</c>(null spaces are obtained with <c>.right_kernel()</c>in Sage).
       </p>
 
             <sage>
@@ -2579,7 +2579,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="YLF">
         Each row of the basis matrix is a vector representing an element of the field,
         specifically <c>1</c>,
         <c>c + (1/38)*c^5</c>, <c>c^2 - (1/22)*c^6</c>, <c>c^3 + (1/278)*c^7</c>.
@@ -2619,19 +2619,19 @@
         </output>
             </sage>
 
-      <p>
-        Any element fixed by <c>tau</c> will be a linear combination of these four elements.
+      <p permid="ESO">
+        Any element fixed by <c>tau</c>will be a linear combination of these four elements.
         We can ignore any rational multiples present,
         the first element is just saying the rationals are fixed,
         and the last element is just a product of the middle two.
-        So fundamentally <c>tau</c> is fixing rationals, <c>b</c>
+        So fundamentally <c>tau</c>is fixing rationals, <c>b</c>
         (which is <m>\sqrt[4]{2}i</m>)
         and <c>a^2</c>
         (which is <m>\sqrt{2}</m>).
         Furthermore, <c>b^2 = -a^2</c>
         (the check follows),
-        so we can create any fixed element of <c>tau</c> by just adjoining <c>b</c>=<m>\sqrt[4]{2}i</m> to the rationals.
-        So the elements fixed by <c>tau</c> are <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
+        so we can create any fixed element of <c>tau</c>by just adjoining <c>b</c>=<m>\sqrt[4]{2}i</m> to the rationals.
+        So the elements fixed by <c>tau</c>are <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
       </p>
 
             <sage>
@@ -2644,9 +2644,9 @@
             </sage>
     </subsection>
 
-    <subsection>
+    <subsection permid="emj">
       <title>Galois Correspondence</title>
-      <p>
+      <p permid="kZX">
         The entire subfield structure of our splitting field is determined by the subgroup structure of the Galois group (<xref ref="theorem-fundamental-galois"/>),
         which is isomorphic to a group we know well.
         What are the subgroups of our Galois group,
@@ -2681,9 +2681,9 @@
         </output>
             </sage>
 
-      <p>
-        <c>tau</c> above is the fourth element of the automorphism group,
-        and the fourth permutation in <c>elements</c> is the permutation <c>(2,3)</c>,
+      <p permid="Rhg">
+        <c>tau</c>above is the fourth element of the automorphism group,
+        and the fourth permutation in <c>elements</c>is the permutation <c>(2,3)</c>,
         the generator
         (of order 2)
         for the second subgroup.
@@ -2691,7 +2691,7 @@
         we know that the corresponding fixed field is <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
       </p>
 
-      <p>
+      <p permid="xop">
         Let us analyze another subgroup of order 2, without all the explanation,
         and starting with the subgroup.
         The sixth subgroup is generated by the fifth automorphism,
@@ -2746,10 +2746,10 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="dvy">
         The first element indicates that the rationals are fixed
         (we knew that).
-        Scaling the second element gives <c>b - a</c> as a fixed element.
+        Scaling the second element gives <c>b - a</c>as a fixed element.
         Scaling the third and fourth fixed elements,
         we recognize that they can be obtained from powers of <c>b - a</c>.
       </p>
@@ -2771,16 +2771,16 @@
         </output>
             </sage>
 
-      <p>
-        So the fixed field of this subgroup can be formed by adjoining <c>b - a</c> to the rationals,
+      <p permid="JCH">
+        So the fixed field of this subgroup can be formed by adjoining <c>b - a</c>to the rationals,
         which in mathematical notation is <m>\sqrt[4]{2}i - \sqrt[4]{2} = (1-i)\sqrt[4]{2}</m>,
         so the fixed field is <m>{\mathbb Q}(\sqrt[4]{2}i - \sqrt[4]{2}) = {\mathbb Q}((1-i)\sqrt[4]{2})</m>.
       </p>
 
-      <p>
+      <p permid="pJQ">
         We can create this fixed field,
         though as created here it is not strictly a subfield of <c>L</c>.
-        We will use an expression for <c>b - a</c> that is a linear combination of powers of <c>c</c>.
+        We will use an expression for <c>b - a</c>that is a linear combination of powers of <c>c</c>.
       </p>
 
             <sage>
@@ -2795,18 +2795,18 @@
         </output>
             </sage>
 
-      <p>
-        The <c>.subfield()</c> method returns a pair.
+      <p permid="VQZ">
+        The <c>.subfield()</c>method returns a pair.
         The first item is a new number field,
         isomorphic to a subfield of <c>L</c>.
         The second item is an injective mapping from the new number field into <c>L</c>.
         In this case,
-        the image of the primitive element <c>c0</c> is the element we have specified as the generator of the subfield.
+        the image of the primitive element <c>c0</c>is the element we have specified as the generator of the subfield.
         The primitive element of the new field will satisfy the defining polynomial <m>x^4+8</m> <mdash/> you can check that
         <m>(1-i)\sqrt[4]{2}</m> is indeed a root of the polynomial <m>x^4 + 8</m>.
       </p>
 
-      <p>
+      <p permid="BYi">
         There are five subgroups of order <m>2</m>,
         we have found fixed fields for two of them.
         The other three are similar,
@@ -2821,7 +2821,7 @@
         to where it will be easier to deduce a primitive element for each field.
       </p>
 
-      <p>
+      <p permid="ifr">
         The seventh subgroup is generated by two elements of order <m>2</m> and is composed entirely of elements of order <m>2</m>
         (except the identity),
         so is isomorphic to <m>{\mathbb Z}_2\times{\mathbb Z}_2</m>.
@@ -2850,7 +2850,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="OmA">
         Outside of the rationals, there is a single fixed element.
       </p>
 
@@ -2863,7 +2863,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="utJ">
         Removing a scalar multiple,
         our primitive element is <c>a^2</c>,
         which mathematically is <m>\sqrt{2}</m>,
@@ -2881,7 +2881,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="aAS">
         One more subgroup.
         The penultimate subgroup has a permutation of order 4 as a generator,
         so is a cyclic group of order 4.
@@ -2905,7 +2905,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="GIb">
         So we compute the primitive element.
       </p>
 
@@ -2918,9 +2918,9 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="mPk">
         Since rationals are fixed,
-        we can remove the <m>-14</m> and the multiple and take <c>a^3*b</c> as the primitive element.
+        we can remove the <m>-14</m> and the multiple and take <c>a^3*b</c>as the primitive element.
         Mathematically, this is <m>2i</m>,
         so we might as well use just <m>i</m> as the primitive element and the fixed field is <m>{\mathbb Q}(i)</m>.
         We can then build the fixed field
@@ -2937,7 +2937,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="SWt">
         There is one more subgroup of order <m>4</m>,
         which we will leave as an exercise to analyze.
         There are also two trivial subgroups
@@ -2945,9 +2945,9 @@
         which are not very interesting or surprising.
       </p>
 
-      <p>
+      <p permid="zdC">
         If the above seems like too much work,
-        you can always just have Sage do it all with the <c>.subfields()</c> method.
+        you can always just have Sage do it all with the <c>.subfields()</c>method.
       </p>
 
             <sage>
@@ -3023,7 +3023,7 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="fkL">
         Ten subfields are described,
         which is what we would expect,
         given the 10 subgroups of the Galois group.
@@ -3044,9 +3044,9 @@
       </p>
     </subsection>
 
-    <subsection>
+    <subsection permid="Kts">
       <title>Normal Extensions</title>
-      <p>
+      <p permid="LrU">
         Consider the third subgroup in the list above,
         generated by the permutation <c>(1,4)</c>.
         As a subgroup of order <m>2</m>,
@@ -3103,17 +3103,17 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="rzd">
         As usual, ignoring rational multiples,
-        we see powers of <c>a</c> and recognize that <c>a</c> alone will be a primitive element for the fixed field,
+        we see powers of <c>a</c>and recognize that <c>a</c>alone will be a primitive element for the fixed field,
         which is thus <m>{\mathbb Q}(\sqrt[4]{2})</m>.
-        Recognize that <c>a</c> was our first root of <m>x^4-2</m>,
+        Recognize that <c>a</c>was our first root of <m>x^4-2</m>,
         and was used to create the first part of original tower,
         <c>N</c>.
-        So <c>N</c> is both <m>{\mathbb Q}(\sqrt[4]{2})</m> and the fixed field of <m>H=\langle(1,4)\rangle</m>.
+        So <c>N</c>is both <m>{\mathbb Q}(\sqrt[4]{2})</m> and the fixed field of <m>H=\langle(1,4)\rangle</m>.
       </p>
 
-      <p>
+      <p permid="XGm">
         <m>{\mathbb Q}(\sqrt[4]{2})</m> contains at least one root of the irreducible <m>x^4-2</m>,
         but not all of the roots
         (witness the factorization above)
@@ -3130,18 +3130,18 @@
         </output>
             </sage>
 
-      <p>
+      <p permid="DNv">
         As expected.
       </p>
     </subsection>
 
   </section>
 
-  <exercises xml:id="galois-sage-exercises">
+  <exercises xml:id="galois-sage-exercises" permid="WHK">
     <title>Sage Exercises</title>
-    <exercise number="1">
+    <exercise number="1" permid="PNf">
       <statement>
-        <p>
+        <p permid="Fon">
           In the analysis of <xref ref="example-galois-x4-2"/> with Sage,
           two subgroups of order <m>2</m> and one subgroup of order <m>4</m> were not analyzed.
           Determine the fixed fields of these three subgroups.
@@ -3149,9 +3149,9 @@
       </statement>
     </exercise>
 
-    <exercise number="2">
+    <exercise number="2" permid="vUo">
       <statement>
-        <p>
+        <p permid="lvw">
           Build the splitting field of
           <m>p(x)=x^3-6x^2+12x-10</m> and then determine the Galois group of <m>p(x)</m> as a concrete group of explicit permutations.
           Build the lattice of subgroups of the Galois group,
@@ -3168,9 +3168,9 @@
       </statement>
     </exercise>
 
-    <exercise number="3">
+    <exercise number="3" permid="cbx">
       <statement>
-        <p>
+        <p permid="RCF">
           The polynomial <m>x^5-x-1</m> has all of the symmetric group <m>S_5</m> as its Galois group.
           Because <m>S_5</m> is not solvable,
           we know this polynomial to be an example of a quintic polynomial that is not solvable by radicals.
@@ -3179,13 +3179,13 @@
           So this exercise will simulate that experience with a slightly smaller example.
         </p>
 
-        <p>
+        <p permid="xJO">
           Consider the polynomial <m>p(x)=x^4+x+1</m>.
         </p>
 
-        <ol>
-          <li>
-            <p>
+        <ol permid="ASC">
+          <li permid="TkB">
+            <p permid="WtC">
               Build the splitting field of <m>p(x)</m> one root at a time.
               Create an extension, factor there, discard linear factors,
               use the remaining irreducible factor to extend once more.
@@ -3197,24 +3197,24 @@
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="zrK">
+            <p permid="CAL">
               Factor the original polynomial over the final extension field in the tower.
               What is boring about this factorization in comparison to some other examples we have done?
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="fyT">
+            <p permid="iHU">
               Construct the full tower as an absolute field over <m>{\mathbb Q}</m>.
               From the degree of this extension and the degree of the original polynomial,
               infer the Galois group of the polynomial.
             </p>
           </li>
 
-          <li>
-            <p>
-              Using the mappings that allow you to translate between the tower and the absolute field (obtained from the <c>.structure()</c> method),
+          <li permid="LGc">
+            <p permid="OPd">
+              Using the mappings that allow you to translate between the tower and the absolute field (obtained from the <c>.structure()</c>method),
               choose one of the roots
               (any one)
               and express it in terms of the single generator of the absolute field.
@@ -3222,8 +3222,8 @@
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="rNl">
+            <p permid="uWm">
               Compute the group of automorphisms of the absolute field
               (but don't display the whole group in what you submit).
               Take all four roots
@@ -3234,8 +3234,8 @@
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="XUu">
+            <p permid="bdv">
               There is one nontrivial automorphism that has an especially simple form
               (it is the second one for me)
               when applied to the generator of the absolute field.
@@ -3243,8 +3243,8 @@
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="EbD">
+            <p permid="HkE">
               Consider the extension of <m>{\mathbb Q}</m> formed by adjoining just one of the roots.
               This is a subfield of the splitting field of the polynomial,
               so is the fixed field of a subgroup of the Galois group.
@@ -3255,9 +3255,9 @@
       </statement>
     </exercise>
 
-    <exercise number="4">
+    <exercise number="4" permid="IiG">
       <statement>
-        <p>
+        <p permid="dQX">
           Return to the splitting field of the quintic discussed in the introduction to the previous problem
           (<m>x^5-x-1</m>).
           Create the first two intermediate fields by adjoining two roots
@@ -3270,11 +3270,11 @@
           In other words,
           act as if your quotient by the linear factor is irreducible.
           If it is not,
-          then the <c>NumberField()</c> command should complain
+          then the <c>NumberField()</c>command should complain
           (which it will not).
         </p>
 
-        <p>
+        <p permid="JYg">
           After adjoining two roots,
           create the extension producing a third root, and do the division.
           You should now have a quadratic factor.
@@ -3284,62 +3284,62 @@
           and hence can determine <em>exactly</em> which group it is.
         </p>
 
-        <p>
+        <p permid="qfp">
           You can try to use this quadratic factor to create one more step in the extensions,
           and you will arrive at the splitting field,
           as can be seen with logic or division.
           However, this could take a long time to complete
           (save your work beforehand!).
-          You can try passing the <c>check=False</c> argument to the <c>NumberField()</c> command <mdash/> this will bypass checking irreducibility.
+          You can try passing the <c>check=False</c>argument to the <c>NumberField()</c>command <mdash/> this will bypass checking irreducibility.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="5">
+    <exercise number="5" permid="opP">
       <statement>
-        <p>
+        <p permid="Wmy">
           Create the finite field of order <m>3^6</m>,
           letting Sage supply the default polynomial for its construction.
           The polynomial <m>x^6+x^2+2x+1</m> is irreducible over this finite field.
           Check that this polynomial splits in the finite field,
-          and then use the <c>.roots()</c> method to collect the roots of the polynomial.
-          Get the group of automorphisms of the field with the <c>End()</c> command.
+          and then use the <c>.roots()</c>method to collect the roots of the polynomial.
+          Get the group of automorphisms of the field with the <c>End()</c>command.
         </p>
 
-        <p>
+        <p permid="CtH">
           You now have all of the pieces to associate each field automorphism with a permutation of the roots.
           From this, identify the Galois group and all of its subgroups.
           For each subgroup, determine the fixed field.
-          You might find the roots easier to work with if you use the <c>.log()</c> method to identify them as powers of the field's multiplicative generator.
+          You might find the roots easier to work with if you use the <c>.log()</c>method to identify them as powers of the field's multiplicative generator.
         </p>
 
-        <p>
+        <p permid="iAQ">
           Your Galois group in this example will be abelian.
           So every subgroup is normal, and hence any extension is also normal.
           Can you extend this example by choosing a nontrivial intermediate field with a nontrivial irreducible polynomial that has all of its roots in the intermediate field and a nontrivial irreducible polynomial with none of its roots in the intermediate field?
         </p>
 
-        <p>
+        <p permid="OHZ">
           Your results here are <q>typical</q>
           in the sense that the particular field or irreducible polynomial makes little difference in the qualitative nature of the results.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="6">
+    <exercise number="6" permid="UwY">
       <statement>
-        <p>
+        <p permid="uPi">
           The splitting field for the irreducible polynomial <m>p(x)=x^7-7x+3</m> has degree 168
           (hence this is the order of the Galois group).
           This polynomial is derived from an
           <q>Elkies trinomial curve,</q>
           a hyperelliptic curve (below) that produces polynomials with interesting Galois groups:
-          <me>
+          <me permid="itM">
             y^2 = x(81x^5 + 396x^4 + 738x^3 + 660x^2 + 269x + 48)
           </me>
         </p>
 
-        <p>
+        <p permid="aWr">
           For <m>p(x)</m> the resulting Galois group is <m>PSL(2,7)</m>,
           a simple group.
           If <m>SL(2,7)</m> is all <m>2\times 2</m> matrices over
@@ -3349,7 +3349,7 @@
           (after <m>A_5</m>).
         </p>
 
-        <p>
+        <p permid="HdA">
           See how far you can get in using Sage to build this splitting field.
           A degree <m>7</m> extension will yield one linear factor,
           and a subsequent degree <m>6</m> extension will yield two linear factors,
@@ -3363,11 +3363,11 @@
       </statement>
     </exercise>
 
-    <exercise number="7">
+    <exercise number="7" permid="AEh">
       <statement>
-        <p>
+        <p permid="nkJ">
           Return to <xref ref="example-galois-x4-2"/>,
-          and the complete list of subfields obtainable from the <c>.subfields()</c> method applied to the flattened tower.
+          and the complete list of subfields obtainable from the <c>.subfields()</c>method applied to the flattened tower.
           As mentioned, these are technically not subfields,
           but do have embeddings into the tower.
           Given two subfields,
@@ -3375,14 +3375,14 @@
           with an image that is a linear combination of powers of the primitive element for the tower.
         </p>
 
-        <p>
+        <p permid="TrS">
           If one subfield is contained in the other,
           then the image of the primitive element for the smaller field should be a linear combination of the (appropriate) powers of the image of the primitive element for the larger field.
           This is a linear algebra computation that should be possible in the tower,
           relative to the power basis for the whole tower.
         </p>
 
-        <p>
+        <p permid="zzb">
           Write a procedure to determine if two subfields are related by one being a subset of the other.
           Then use this procedure to create the lattice of subfields.
           The eventual goal would be a graphical display of the lattice,
@@ -3396,4 +3396,3 @@
 
   </exercises>
 </chapter>
-
