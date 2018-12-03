@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="integers">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="integers" permid="mtY">
   <title>The Integers</title>
-  <introduction>
-    <p>
+  <introduction permid="Ace">
+    <p permid="vVb">
       The integers are the building blocks of mathematics.
       In this chapter we will investigate the fundamental properties of the integers,
       including mathematical induction,
@@ -20,11 +20,11 @@
     </p>
   </introduction>
 
-  <section xml:id="section-math-induction">
+  <section xml:id="section-math-induction" permid="bUT">
     <title>Mathematical Induction</title>
-    <p>
+    <p permid="xoP">
       Suppose we wish to show that
-      <me>
+      <me permid="Ona">
         1 + 2 + \cdots + n = \frac{n(n + 1)}{2}
       </me>
       for any natural number <m>n</m>.
@@ -35,15 +35,15 @@
       a more generic method is required.
     </p>
 
-    <p>
+    <p permid="dvY">
       Suppose we have verified the equation for the first <m>n</m> cases.
       We will attempt to show that we can generate the formula for the <m>(n + 1)</m>th case from this knowledge.
       The formula is true for <m>n = 1</m> since
-      <me>
+      <me permid="uuj">
         1 = \frac{1(1 + 1)}{2}
       </me>.
       If we have verified the first <m>n</m> cases, then
-      <md>
+      <md permid="aBs">
         <mrow>1 + 2 + \cdots + n + (n + 1) &amp; = \frac{n(n + 1)}{2} + n + 1</mrow>
         <mrow>&amp; = \frac{n^2 + 3n + 2}{2}</mrow>
         <mrow>&amp; = \frac{(n + 1)[(n + 1) + 1]}{2}</mrow>
@@ -51,7 +51,7 @@
       This is exactly the formula for the <m>(n + 1)</m>th case.
     </p>
 
-    <p>
+    <p permid="JDh">
       This method of proof is known as
       <term>mathematical induction</term>.
       Instead of attempting to verify a statement about some subset <m>S</m> of the positive integers
@@ -63,14 +63,14 @@
       We summarize mathematical induction in the following axiom.
     </p>
 
-    <principle xml:id="principle-integers-first-pmi">
+    <principle xml:id="principle-integers-first-pmi" permid="Plc">
       <title>First Principle of Mathematical Induction</title>
       <idx>
       <h>Induction</h>
       <h>first principle of</h>
       </idx>
       <statement>
-        <p>
+        <p permid="yPH">
           Let <m>S(n)</m> be a statement about integers for
           <m>n \in {\mathbb N}</m> and suppose <m>S(n_0)</m> is true for some integer <m>n_0</m>.
           If for all integers <m>k</m> with <m>k \geq n_0</m>,
@@ -80,18 +80,18 @@
       </statement>
     </principle>
         <!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
-    <example xml:id="example-integers-induction-greater-than">
-      <p>
+    <example xml:id="example-integers-induction-greater-than" permid="HGD">
+      <p permid="rli">
         For all integers <m>n \geq 3</m>, <m>2^n \gt n + 4</m>.
         Since
-        <me>
+        <me permid="GIB">
           8 = 2^3 \gt 3 + 4 = 7
         </me>,
         the statement is true for <m>n_0 = 3</m>.
         Assume that <m>2^k \gt k + 4</m> for <m>k \geq 3</m>.
         Then <m>2^{k + 1} = 2 \cdot 2^{k} \gt 2(k + 4)</m>.
         But
-        <me>
+        <me permid="mPK">
           2(k + 4) = 2k + 8 \gt k + 5 = (k + 1) + 4
         </me>
         since <m>k</m> is positive.
@@ -100,17 +100,17 @@
       </p>
     </example>
 
-    <example xml:id="example-integers-induction-divisible">
-      <p>
+    <example xml:id="example-integers-induction-divisible" permid="nNM">
+      <p permid="Xsr">
         Every integer <m>10^{n + 1} + 3 \cdot 10^n + 5</m> is divisible by <m>9</m> for <m>n \in {\mathbb N}</m>.
         For <m>n = 1</m>,
-        <me>
+        <me permid="SWT">
           10^{1 + 1} + 3 \cdot 10 + 5 = 135 = 9 \cdot 15
         </me>
         is divisible by <m>9</m>.
         Suppose that <m>10^{k + 1} + 3 \cdot 10^k + 5</m> is divisible by <m>9</m> for <m>k \geq 1</m>.
         Then
-        <md>
+        <md permid="zec">
           <mrow>10^{(k + 1) + 1} + 3 \cdot 10^{k + 1} + 5&amp; = 10^{k + 2} + 3 \cdot 10^{k + 1} + 50 - 45</mrow>
           <mrow>&amp; = 10 (10^{k + 1} + 3 \cdot 10^{k} + 5) - 45</mrow>
         </md>
@@ -118,15 +118,15 @@
       </p>
     </example>
 
-    <example xml:id="example-integers-binomial-theorem">
-      <p>
+    <example xml:id="example-integers-binomial-theorem" permid="TUV">
+      <p permid="DzA">
         We will prove the binomial theorem using mathematical induction; that is,
-        <me>
+        <me permid="fll">
           (a + b)^n = \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}
         </me>,
         where <m>a</m> and <m>b</m> are real numbers,
         <m>n \in \mathbb{N}</m>, and
-        <me>
+        <me permid="Lsu">
           \binom{n}{k} = \frac{n!}{k! (n - k)!}
         </me>
         is the binomial coefficient.
@@ -142,11 +142,11 @@
         </notation>
 
         We first show that
-        <me>
+        <me permid="rzD">
           \binom{n + 1}{k} = \binom{n}{k} + \binom{n}{k - 1}
         </me>.
         This result follows from
-        <md>
+        <md permid="XGM">
           <mrow>\binom{n}{k} + \binom{n}{k - 1} &amp; = \frac{n!}{k!(n - k)!} +\frac{n!}{(k-1)!(n - k + 1)!}</mrow>
           <mrow>&amp; = \frac{(n + 1)!}{k!(n + 1 - k)!}</mrow>
           <mrow>&amp; =\binom{n + 1}{k}</mrow>
@@ -154,7 +154,7 @@
         If <m>n = 1</m>, the binomial theorem is easy to verify.
         Now assume that the result is true for <m>n</m> greater than or equal to <m>1</m>.
         Then
-        <md>
+        <md permid="DNV">
           <mrow>(a + b)^{n + 1} &amp; = (a + b)(a + b)^n</mrow>
           <mrow>&amp; = (a + b) \left( \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n - k}\right)</mrow>
           <mrow>&amp; = \sum_{k = 0}^{n} \binom{n}{k} a^{k + 1} b^{n - k} + \sum_{k = 0}^{n} \binom{n}{k} a^k b^{n + 1 - k}</mrow>
@@ -165,18 +165,18 @@
       </p>
     </example>
 
-    <p>
+    <p permid="pKq">
       We have an equivalent statement of the Principle of Mathematical Induction that is often very useful.
     </p>
 
-    <principle xml:id="principle-integers-second-pmi">
+    <principle xml:id="principle-integers-second-pmi" permid="vsl">
       <title>Second Principle of Mathematical Induction</title>
       <idx>
       <h>Induction</h>
       <h>second principle of</h>
       </idx>
       <statement>
-        <p>
+        <p permid="eWQ">
           Let <m>S(n)</m> be a statement about integers for
           <m>n \in {\mathbb N}</m> and suppose <m>S(n_0)</m> is true for some integer <m>n_0</m>.
           If <m>S(n_0), S(n_0 + 1), \ldots, S(k)</m> imply that
@@ -186,7 +186,7 @@
       </statement>
     </principle>
         <!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
-    <p>
+    <p permid="VRz">
       A nonempty subset <m>S</m> of
       <m>{\mathbb Z}</m> is <term>well-ordered</term>
           <idx><h>Well-ordered set</h></idx>
@@ -195,28 +195,28 @@
       However, the natural numbers are well-ordered.
     </p>
 
-    <principle>
+    <principle permid="bzu">
       <title>Principle of Well-Ordering</title>
       <statement>
-        <p>
+        <p permid="LdZ">
           Every nonempty subset of the natural numbers is well-ordered.
         </p>
       </statement>
     </principle>
 
-    <p>
+    <p permid="BYI">
       The Principle of Well-Ordering is equivalent to the Principle of Mathematical Induction.
     </p>
 
-    <lemma xml:id="lemma-integers-smallest-number">
+    <lemma xml:id="lemma-integers-smallest-number" permid="CWK">
       <statement>
-        <p>
+        <p permid="Gug">
           The Principle of Mathematical Induction implies that <m>1</m> is the least positive natural number.
         </p>
       </statement>
 
-      <proof>
-        <p>
+      <proof permid="xhy">
+        <p permid="Mjs">
           Let <m>S = \{ n \in {\mathbb N} : n \geq 1 \}</m>.
           Then <m>1 \in S</m>.
           Assume that <m>n \in S</m>.
@@ -231,17 +231,17 @@
     </lemma>
         <!--  Theorem reworded for clarity.  TWJ 12/17/2011 -->
         <!--  Suggested by K. Halasz and R. Beezer. -->
-    <theorem xml:id="theorem-integers-pmi-implies-pwo">
+    <theorem xml:id="theorem-integers-pmi-implies-pwo" permid="KBj">
       <statement>
-        <p>
+        <p permid="BKn">
           The Principle of Mathematical Induction implies the Principle of Well-Ordering.
           That is, every nonempty subset of
           <m>\mathbb N</m> contains a least element.
         </p>
       </statement>
 
-      <proof>
-        <p>
+      <proof permid="sxF">
+        <p permid="sqB">
           We must show that if <m>S</m> is a nonempty subset of the natural numbers,
           then <m>S</m> contains a least element.
           If <m>S</m> contains 1, then the theorem is true by <xref ref="lemma-integers-smallest-number"/>.
@@ -258,21 +258,21 @@
       </proof>
     </theorem>
         <!-- wording change.  Suggested by P. Diethelm.  TWJ 22/4/2013 -->
-    <p>
+    <p permid="ifR">
       Induction can also be very useful in formulating definitions.
       For instance, there are two ways to define <m>n!</m>,
       the factorial of a positive integer <m>n</m>.
 
-      <ul>
-        <li>
-          <p>
+      <ul permid="Yjp">
+        <li permid="Eqy">
+          <p permid="Dlf">
             The <em>explicit</em> definition:
             <m>n! = 1 \cdot 2 \cdot 3 \cdots (n - 1) \cdot n</m>.
           </p>
         </li>
 
-        <li>
-          <p>
+        <li permid="kxH">
+          <p permid="jso">
             The <em>inductive</em> or <em>recursive</em> definition:
             <m>1! = 1</m> and <m>n! = n(n - 1)!</m> for <m>n \gt 1</m>.
           </p>
@@ -285,41 +285,41 @@
     </p>
   </section>
 
-  <section xml:id="section-division-algorithm">
+  <section xml:id="section-division-algorithm" permid="Icc">
     <title>The Division Algorithm</title>
-    <introduction>
-      <p>
+    <introduction permid="gjn">
+      <p permid="cck">
         An application of the Principle of Well-Ordering that we will use often is the division algorithm.
       </p>
 
-      <theorem xml:id="theorem-integers-division_algorithm">
+      <theorem xml:id="theorem-integers-division_algorithm" permid="qIs">
         <title>Division Algorithm</title>
         <idx>
         <h>Division algorithm</h>
         <h>for integers</h>
         </idx>
         <statement>
-          <p>
+          <p permid="hRw">
             Let <m>a</m> and <m>b</m> be integers, with <m>b \gt 0</m>.
             Then there exist unique integers <m>q</m> and <m>r</m> such that
-            <me>
+            <me permid="jVe">
               a = bq + r
             </me>
             where <m>0 \leq r \lt b</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="YEO">
+          <p permid="YxK">
             This is a perfect example of the existence-and-uniqueness type of proof.
             We must first prove that the numbers <m>q</m> and <m>r</m> actually exist.
             Then we must show that if <m>q'</m> and <m>r'</m> are two other such numbers,
             then <m>q = q'</m> and <m>r = r'</m>.
           </p>
 
-          <p>
+          <p permid="EET">
             <em>Existence of <m>q</m> and <m>r</m>.</em> Let
-            <me>
+            <me permid="Qcn">
               S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}
             </me>.
             If <m>0 \in S</m>, then <m>b</m> divides <m>a</m>,
@@ -335,7 +335,7 @@
             We now show that <m>r \lt b</m>.
             Suppose that <m>r \gt b</m>.
             Then
-            <me>
+            <me permid="wjw">
               a - b(q + 1)= a - bq - b = r - b \gt 0
             </me>.
             In this case we would have <m>a - b(q + 1)</m> in the set <m>S</m>.
@@ -346,11 +346,11 @@
             Since <m>0 \notin S</m>, <m>r \neq b</m> and so <m>r \lt b</m>.
           </p>
 
-          <p>
+          <p permid="kMc">
             <em>Uniqueness of <m>q</m> and <m>r</m>.</em>
             Suppose there exist integers <m>r</m>, <m>r'</m>,
             <m>q</m>, and <m>q'</m> such that
-            <me>
+            <me permid="cqF">
               a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b
             </me>.
             Then <m> bq + r =  bq' + r'</m>.
@@ -363,7 +363,7 @@
         </proof>
       </theorem>
 
-      <p>
+      <p permid="Ijt">
         Let <m>a</m> and <m>b</m> be integers.
         If <m>b = ak</m> for some integer <m>k</m>, we write <m>a \mid b</m>.
         An integer <m>d</m> is called a
@@ -390,12 +390,12 @@
         if <m>\gcd( a, b ) = 1</m>.
       </p>
 
-      <theorem xml:id="theorem-integers-gcd">
+      <theorem xml:id="theorem-integers-gcd" permid="WPB">
         <statement>
-          <p>
+          <p permid="NYF">
             Let <m>a</m> and <m>b</m> be nonzero integers.
             Then there exist integers <m>r</m> and <m>s</m> such that
-            <me>
+            <me permid="IxO">
               \gcd( a, b) = ar + bs
             </me>.
             Furthermore,
@@ -403,10 +403,10 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="ELX">
+          <p permid="QTl">
             Let
-            <me>
+            <me permid="oEX">
               S = \{ am + bn : m, n \in {\mathbb Z} \text{ and } am + bn \gt 0 \}
             </me>.
             Clearly, the set <m>S</m> is nonempty;
@@ -416,7 +416,7 @@
             Write <m>a = dq + r'</m> where <m>0 \leq r' \lt d</m>.
             If <m>r' \gt 0</m>,
             then <!-- r changed to r' - TWJ 1/31/2011 -->
-            <md>
+            <md permid="UMg">
               <mrow>r'&amp; = a - dq</mrow>
               <mrow>&amp; = a - (ar + bs)q</mrow>
               <mrow>&amp; = a - arq - bsq</mrow>
@@ -429,11 +429,11 @@
             Therefore, <m>d</m> is a common divisor of <m>a</m> and <m>b</m>.
           </p>
 
-          <p>
+          <p permid="xau">
             Suppose that <m>d'</m> is another common divisor of <m>a</m> and <m>b</m>,
             and we want to show that <m>d' \mid d</m>.
             If we let <m>a = d'h</m> and <m>b = d'k</m>, then
-            <me>
+            <me permid="ATp">
               d = ar + bs = d'hr + d'ks = d'(hr + ks)
             </me>.
             So <m>d'</m> must divide <m>d</m>.
@@ -443,9 +443,9 @@
             <!-- Notation error in proof fixed (pointed out by Rocco Rossi) - TWJ 9/13/2010 -->
       </theorem>
 
-      <corollary xml:id="corollary-integers-coprime">
+      <corollary xml:id="corollary-integers-coprime" permid="jdT">
         <statement>
-          <p>
+          <p permid="SIy">
             Let <m>a</m> and <m>b</m> be two integers that are relatively prime.
             Then there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1</m>.
           </p>
@@ -453,17 +453,17 @@
       </corollary>
     </introduction>
 
-    <subsection xml:id="integers-subsection-euclidean-algorithm">
+    <subsection xml:id="integers-subsection-euclidean-algorithm" permid="SBh">
       <title>The Euclidean Algorithm</title>
-      <p>
+      <p permid="mfQ">
         Among other things, <xref ref="theorem-integers-gcd"/> allows us to compute the greatest common divisor of two integers.
       </p>
 
-      <example xml:id="example-integers-gcd">
-        <p>
+      <example xml:id="example-integers-gcd" permid="Uqu">
+        <p permid="jGJ">
           Let us compute the greatest common divisor of <m>945</m> and <m>2415</m>.
           First observe that
-          <md>
+          <md permid="hay">
             <mrow>2415 &amp; = 945 \cdot 2 + 525</mrow>
             <mrow>945 &amp; = 525 \cdot 1 + 420</mrow>
             <mrow>525 &amp; = 420 \cdot 1 + 105</mrow>
@@ -479,11 +479,11 @@
           Therefore, <m>\gcd( 945, 2415 ) = 105</m>.
         </p>
 
-        <p>
+        <p permid="PNS">
           If we work backward through the above sequence of equations,
           we can also obtain numbers <m>r</m> and <m>s</m> such that <m>945 r + 2415 s = 105</m>.
           Observe that
-          <md>
+          <md permid="NhH">
             <mrow>105 &amp; = 525 + (-1) \cdot 420</mrow>
             <mrow>&amp; = 525 + (-1) \cdot [945 + (-1) \cdot 525]</mrow>
             <mrow>&amp; = 2 \cdot 525 + (-1) \cdot 945</mrow>
@@ -496,10 +496,10 @@
         </p>
       </example>
 
-      <p>
+      <p permid="SmZ">
         To compute <m>\gcd(a,b) = d</m>,
         we are using repeated divisions to obtain a decreasing sequence of positive integers <m>r_1 \gt r_2 \gt \cdots \gt r_n = d</m>; that is,
-        <md>
+        <md permid="toQ">
           <mrow>b &amp; = a q_1 + r_1</mrow>
           <mrow>a &amp; = r_1 q_2 + r_2</mrow>
           <mrow>r_1 &amp; = r_2 q_3 + r_3</mrow>
@@ -509,7 +509,7 @@
         </md>.
         To find <m>r</m> and <m>s</m> such that <m>ar + bs = d</m>,
         we begin with this last equation and substitute results obtained from the previous equations:
-        <md>
+        <md permid="ZvZ">
           <mrow>d &amp; = r_n</mrow>
           <mrow>&amp; = r_{n - 2} - r_{n - 1} q_n</mrow>
           <mrow>&amp; = r_{n - 2} - q_n( r_{n - 3} - q_{n - 1} r_{n - 2} )</mrow>
@@ -524,9 +524,9 @@
       </p>
     </subsection>
 
-    <subsection xml:id="integers-subsection-prime-numbers">
+    <subsection xml:id="integers-subsection-prime-numbers" permid="yIq">
       <title>Prime Numbers</title>
-      <p>
+      <p permid="yui">
         Let <m>p</m> be an integer such that <m>p \gt 1</m>.
         We say that <m>p</m> is a <term>prime number</term>,
             <idx><h>Prime integer</h></idx>
@@ -536,23 +536,23 @@
             <idx><h>Composite integer</h></idx>
       </p>
 
-      <lemma xml:id="theorem-integers-prime-divisor">
+      <lemma xml:id="theorem-integers-prime-divisor" permid="MLV">
         <title>Euclid</title>
         <statement>
-          <p>
+          <p permid="mBp">
             Let <m>a</m> and <m>b</m> be integers and <m>p</m> be a prime number.
             If <m>p \mid ab</m>, then either <m>p \mid a</m> or <m>p \mid b</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="doH">
+          <p permid="dhD">
             Suppose that <m>p</m> does not divide <m>a</m>.
             We must show that <m>p \mid b</m>.
             Since <m>\gcd( a, p ) = 1</m>,
             there exist integers <m>r</m> and <m>s</m> such that <m>ar + ps = 1</m>.
             So
-            <me>
+            <me permid="FDi">
               b = b(ar + ps) = (ab)r + p(bs)
             </me>.
             Since <m>p</m> divides both <m>ab</m> and itself,
@@ -561,16 +561,16 @@
         </proof>
       </lemma>
 
-      <theorem xml:id="theorem-integers-infinite-primes">
+      <theorem xml:id="theorem-integers-infinite-primes" permid="AxD">
         <title>Euclid</title>
         <statement>
-          <p>
+          <p permid="ufO">
             There exist an infinite number of primes.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="kTg">
+          <p permid="JoM">
             We will prove this theorem by contradiction.
             Suppose that there are only a finite number of primes,
             say <m>p_1, p_2, \ldots, p_n</m>.
@@ -584,35 +584,35 @@
         </proof>
       </theorem>
             <!-- Error in proof fixed.  Suggested by R. Rossi.  TWJ 12/19/2011 -->
-      <theorem xml:id="theorem-fund-theorem-arithmetic">
+      <theorem xml:id="theorem-fund-theorem-arithmetic" permid="gEM">
         <title>Fundamental Theorem of Arithmetic</title>
         <idx>
         <h>Fundamental Theorem</h>
         <h>of Arithmetic</h>
         </idx>
         <statement>
-          <p>
+          <p permid="amX">
             Let <m>n</m> be an integer such that <m>n \gt 1</m>.
             Then
-            <me>
+            <me permid="lKr">
               n = p_1 p_2 \cdots p_k
             </me>,
             where <m>p_1, \ldots, p_k</m> are  primes
             (not necessarily distinct).
             Furthermore, this factorization is unique; that is, if
-            <me>
+            <me permid="RRA">
               n = q_1 q_2 \cdots q_l
             </me>,
             then <m>k = l</m> and the <m>q_i</m>'s are just the <m>p_i</m>'s rearranged.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="Rap">
+          <p permid="pvV">
             <em>Uniqueness.</em>  To show uniqueness we will use induction on <m>n</m>.
             The theorem is certainly true for <m>n = 2</m> since in this case <m>n</m> is prime.
             Now assume that the result holds for all integers <m>m</m> such that <m>1 \leq m \lt n</m>, and
-            <me>
+            <me permid="xYJ">
               n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l
             </me>,
             where <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> and <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>.
@@ -623,14 +623,14 @@
             <m>p_1 = q_i</m> and  <m>q_1 = p_j</m>.
             Hence, <m>p_1 = q_1</m> since <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.
             By the induction hypothesis,
-            <me>
+            <me permid="efS">
               n' = p_2 \cdots p_k = q_2 \cdots q_l
             </me>
             has a unique factorization.
             Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.
           </p>
 
-          <p>
+          <p permid="VDe">
             <em>Existence.</em> To show existence,
             suppose that there is some integer that cannot be written as the product of primes.
             Let <m>S</m> be the set of all such numbers.
@@ -643,12 +643,12 @@
             Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>,
             since <m>a</m> is the smallest element in <m>S</m>.
             So
-            <md>
+            <md permid="quk">
               <mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
               <mrow>a_2 &amp; = q_1 \cdots q_s</mrow>
             </md>.
             Therefore,
-            <me>
+            <me permid="Knb">
               a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s
             </me>.
             So <m>a \notin S</m>, which is a contradiction.
@@ -657,9 +657,9 @@
       </theorem>
     </subsection>
 
-    <subsection xml:id="integers-subsection-historical-note">
+    <subsection xml:id="integers-subsection-historical-note" permid="ePz">
       <title>Historical Note</title>
-      <p>
+      <p permid="eBr">
         Prime numbers were first studied by the ancient Greeks.
         Two important results from antiquity are Euclid's proof that an infinite number of primes exist and the Sieve of Eratosthenes,
         a method of computing all of the prime numbers less than a fixed positive integer <m>n</m>.
@@ -667,7 +667,7 @@
         Pierre Fermat (1601?<ndash/>1665) conjectured that
         <m>2^{2^n} + 1</m> was prime for all <m>n</m>,
         but later it was shown by Leonhard Euler (1707<ndash/>1783) that
-        <me>
+        <me permid="WBt">
           2^{2^5} + 1 = 4{,}294{,}967{,}297
         </me>
         is a composite number.
@@ -681,9 +681,9 @@
         there is currently a great deal of interest in determining whether or not a large number is prime.
       </p>
 
-      <paragraphs>
+      <paragraphs permid="vNK">
         <title>Sage</title>
-        <p>
+        <p permid="KIA">
           Sage's original purpose was to support research in number theory,
           so it is perfect for the types of computations with the integers that we have in this chapter.
         </p>
@@ -694,25 +694,25 @@
     <!-- Exercises with Solutions  -->
     <!-- File: integers.xml  -->
     <!-- Title: The Integers -->
-  <exercises xml:id="exercises-integers" filenamebase="integers">
+  <exercises xml:id="exercises-integers" filenamebase="integers" permid="Dsj">
     <title>Exercises</title>
-    <exercise number="1">
+    <exercise number="1" permid="sTe">
       <statement>
-        <p>
+        <p permid="AEU">
           Prove that
-          <me>
+          <me permid="CIC">
             1^2 + 2^2 + \cdots + n^2 = \frac{n(n + 1)(2n + 1)}{6}
           </me>
           for <m>n \in {\mathbb N}</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="pCZ">
+        <p permid="iWP">
           The base case,
           <m>S(1): [1(1 + 1)(2(1) + 1)]/6 = 1 = 1^2</m> is true.
           Assume that <m>S(k): 1^2 + 2^2 + \cdots + k^2 = [k(k + 1)(2k + 1)]/6</m> is true.
           Then
-          <md>
+          <md permid="iPL">
             <mrow>1^2 + 2^2 + \cdots + k^2 + (k + 1)^2 &amp; = [k(k + 1)(2k + 1)]/6 + (k + 1)^2</mrow>
             <mrow>&amp; = [(k + 1)((k + 1) + 1)(2(k + 1) + 1)]/6</mrow>
           </md>,
@@ -722,11 +722,11 @@
       </hint>
     </exercise>
 
-    <exercise number="2">
+    <exercise number="2" permid="Zan">
       <statement>
-        <p>
+        <p permid="gMd">
           Prove that
-          <me>
+          <me permid="ved">
             1^3 + 2^3 + \cdots + n^3 = \frac{n^2(n + 1)^2}{4}
           </me>
           for <m>n \in {\mathbb N}</m>.
@@ -734,14 +734,14 @@
       </statement>
     </exercise>
 
-    <exercise number="3">
+    <exercise number="3" permid="Fhw">
       <statement>
-        <p>
+        <p permid="MTm">
           Prove that <m>n! \gt 2^n</m> for <m>n \geq 4</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="hYA">
+        <p permid="PdY">
           The base case, <m>S(4): 4! = 24 \gt 16 =2^4</m> is true.
           Assume <m>S(k): k! \gt 2^k</m> is true.
           Then <m>(k + 1)! = k! (k + 1) \gt 2^k \cdot 2 = 2^{k + 1}</m>,
@@ -751,11 +751,11 @@
       </hint>
     </exercise>
 
-    <exercise number="4">
+    <exercise number="4" permid="loF">
       <statement>
-        <p>
+        <p permid="tav">
           Prove that
-          <me>
+          <me permid="blm">
             x + 4x + 7x + \cdots + (3n - 2)x = \frac{n(3n - 1)x}{2}
           </me>
           for <m>n \in {\mathbb N}</m>.
@@ -763,65 +763,65 @@
       </statement>
     </exercise>
 
-    <exercise number="5">
+    <exercise number="5" permid="RvO">
       <statement>
-        <p>
+        <p permid="ZhE">
           Prove that <m>10^{n + 1} + 10^n + 1</m> is divisible by <m>3</m> for <m>n \in {\mathbb N}</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="6">
+    <exercise number="6" permid="xCX">
       <statement>
-        <p>
+        <p permid="FoN">
           Prove that <m>4 \cdot 10^{2n} + 9 \cdot 10^{2n - 1} + 5</m> is divisible by <m>99</m> for <m>n \in {\mathbb N}</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="7">
+    <exercise number="7" permid="dKg">
       <statement>
-        <p>
+        <p permid="lvW">
           Show that
-          <me>
+          <me permid="nzE">
             \sqrt[n]{a_1 a_2 \cdots a_n} \leq \frac{1}{n} \sum_{k = 1}^{n} a_k
           </me>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="8">
+    <exercise number="8" permid="JRp">
       <statement>
-        <p>
+        <p permid="RDf">
           Prove the Leibniz rule for <m>f^{(n)} (x)</m>,
           where <m>f^{(n)}</m> is the <m>n</m>th derivative of <m>f</m>; that is,
           show that
-          <me>
+          <me permid="Mco">
             (fg)^{(n)}(x) = \sum_{k = 0}^{n} \binom{n}{k} f^{(k)}(x) g^{(n - k)}(x)
           </me>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="SPC">
+        <p permid="vlh">
           Follow the proof in <xref ref="example-integers-binomial-theorem"/>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="9">
+    <exercise number="9" permid="pYy">
       <statement>
-        <p>
+        <p permid="xKo">
           Use induction to prove that
           <m>1 + 2 + 2^2 + \cdots + 2^n = 2^{n + 1} - 1</m> for <m>n \in {\mathbb N}</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="10">
+    <exercise number="10" permid="WfH">
       <statement>
-        <p>
+        <p permid="dRx">
           Prove that
-          <me>
+          <me permid="sjx">
             \frac{1}{2}+ \frac{1}{6} + \cdots + \frac{1}{n(n + 1)} = \frac{n}{n + 1}
           </me>
           for <m>n \in {\mathbb N}</m>.
@@ -829,20 +829,20 @@
       </statement>
     </exercise>
 
-    <exercise number="11">
+    <exercise number="11" permid="CmQ">
       <statement>
-        <p>
+        <p permid="JYG">
           If <m>x</m> is a nonnegative real number,
           then show that <m>(1 + x)^n - 1 \geq nx</m> for <m>n = 0, 1, 2, \ldots</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="rsm">
+        <p permid="bsq">
           The base case,
           <m>S(0): (1 + x)^0 - 1 = 0 \geq 0 = 0 \cdot x</m> is true.
           Assume <m>S(k): (1 + x)^k -1 \geq kx</m> is true.
           Then
-          <md>
+          <md permid="kEY">
             <mrow>(1 + x)^{k + 1} - 1 &amp; = (1 + x)(1 + x)^k -1</mrow>
             <mrow>&amp; = (1 + x)^k + x(1 + x)^k - 1</mrow>
             <mrow>&amp; \geq kx + x(1 + x)^k</mrow>
@@ -855,10 +855,10 @@
       </hint>
     </exercise>
 
-    <exercise number="12">
+    <exercise number="12" permid="itZ">
       <title>Power Sets</title>
       <statement>
-        <p>
+        <p permid="qfP">
           Let <m>X</m> be a set.
           Define the <term>power set</term> of <m>X</m>,
           denoted <m>{\mathcal P}(X)</m>,
@@ -870,7 +870,7 @@
           </notation>
 
           For example,
-          <me>
+          <me permid="wTq">
             {\mathcal P}( \{a, b\} ) = \{ \emptyset, \{a\}, \{b\}, \{a, b\} \}
           </me>.
           For every positive integer <m>n</m>,
@@ -879,17 +879,17 @@
       </statement>
     </exercise>
 
-    <exercise number="13">
+    <exercise number="13" permid="OBi">
       <statement>
-        <p>
+        <p permid="WmY">
           Prove that the two principles of mathematical induction stated in Section <xref ref="section-math-induction"/> are equivalent.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="14">
+    <exercise number="14" permid="uIr">
       <statement>
-        <p>
+        <p permid="Cuh">
           Show that the Principle of Well-Ordering for the natural numbers implies that 1 is the smallest natural number.
           Use this result to show that the Principle of Well-Ordering implies the Principle of Mathematical Induction;
           that is, show that if <m>S \subset {\mathbb N}</m> such that <m>1 \in S</m> and
@@ -899,45 +899,45 @@
       </statement>
     </exercise>
 
-    <exercise number="15">
+    <exercise number="15" permid="aPA">
       <statement>
-        <p>
+        <p permid="iBq">
           For each of the following pairs of numbers <m>a</m> and <m>b</m>,
           calculate <m>\gcd(a,b)</m> and find integers <m>r</m> and <m>s</m> such that <m>\gcd(a,b) = ra + sb</m>.
 
-          <ol cols="2">
-            <li>
-              <p>
+          <ol cols="2" permid="LUX">
+            <li permid="cTi">
+              <p permid="bNP">
                 <m>14</m> and <m>39</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="Jar">
+              <p permid="HUY">
                 <m>234</m> and <m>165</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="phA">
+              <p permid="och">
                 <m>1739</m> and <m>9923</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="VoJ">
+              <p permid="Ujq">
                 <m>471</m> and <m>562</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="BvS">
+              <p permid="Aqz">
                 <m>23771</m> and <m>19945</m>
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="hDb">
+              <p permid="gxI">
                 <m>-4357</m> and <m>3754</m>
               </p>
             </li>
@@ -946,9 +946,9 @@
       </statement>
     </exercise>
 
-    <exercise number="16" xml:id="exercise-integers-gcd-1">
+    <exercise number="16" xml:id="exercise-integers-gcd-1" permid="GWJ">
       <statement>
-        <p>
+        <p permid="OIz">
           Let <m>a</m> and <m>b</m> be nonzero integers.
           If there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs =1</m>,
           show that <m>a</m> and <m>b</m> are relatively prime.
@@ -958,53 +958,53 @@
 
     <todo>Check references to the Fibonacci numbers</todo>
 
-    <exercise number="17">
+    <exercise number="17" permid="ndS">
       <title>Fibonacci Numbers</title>
       <statement>
-        <p>
+        <p permid="uPI">
           The Fibonacci numbers are
-          <me>
+          <me permid="daz">
             1, 1, 2, 3, 5, 8, 13, 21, \ldots
           </me>.
           We can define them inductively by <m>f_1 = 1</m>, <m>f_2 = 1</m>,
           and <m>f_{n + 2} = f_{n + 1} + f_n</m> for <m>n \in {\mathbb N}</m>.
 
-          <ol>
-            <li>
-              <p>
+          <ol permid="scg">
+            <li permid="yBm">
+              <p permid="xvT">
                 Prove that <m>f_n \lt 2^n</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="eIv">
+              <p permid="dDc">
                 Prove that <m>f_{n + 1} f_{n - 1} = f^2_n + (-1)^n</m>,
                 <m>n \geq 2</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="KPE">
+              <p permid="JKl">
                 Prove that <m>f_n = [(1 + \sqrt{5}\, )^n - (1 - \sqrt{5}\, )^n]/ 2^n \sqrt{5}</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="qWN">
+              <p permid="pRu">
                 Show that <m>\lim_{n \rightarrow \infty} f_n / f_{n + 1} = (\sqrt{5} - 1)/2</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="XdW">
+              <p permid="VYD">
                 Prove that <m>f_n</m> and <m>f_{n + 1}</m> are relatively prime.
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="Iqx">
+        <p permid="Hzz">
           For (a) and (b) use mathematical induction. (c) Show that <m>f_1 = 1</m>,
           <m>f_2 = 1</m>,
           and <m>f_{n + 2} = f_{n + 1} + f_n</m>. (d) Use part (c). (e) Use part (b) and <xref ref="exercise-integers-gcd-1"/>.
@@ -1012,48 +1012,48 @@
       </hint>
     </exercise>
 
-    <exercise number="18">
+    <exercise number="18" permid="Tlb">
       <statement>
-        <p>
+        <p permid="aWR">
           Let <m>a</m> and <m>b</m> be integers such that <m>\gcd(a,b) = 1</m>.
           Let <m>r</m> and <m>s</m> be integers such that <m>ar + bs = 1</m>.
           Prove that
-          <me>
+          <me permid="JhI">
             \gcd(a,s) = \gcd(r,b) = \gcd(r,s) =  1
           </me>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="19">
+    <exercise number="19" permid="zsk">
       <statement>
-        <p>
+        <p permid="Hea">
           Let <m>x, y \in {\mathbb N}</m> be relatively prime.
           If <m>xy</m> is a perfect square,
           prove that <m>x</m> and <m>y</m> must both be perfect squares.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="ALY">
+        <p permid="nGI">
           Use the Fundamental Theorem of Arithmetic.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="20">
+    <exercise number="20" permid="fzt">
       <statement>
-        <p>
+        <p permid="nlj">
           Using the division algorithm,
           show that every perfect square is of the form <m>4k</m> or <m>4k + 1</m> for some nonnegative integer <m>k</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="21">
+    <exercise number="21" permid="LGC">
       <statement>
-        <p>
+        <p permid="Tss">
           Suppose that <m>a, b, r, s</m> are pairwise relatively prime and that
-          <md>
+          <md permid="poR">
             <mrow>a^2 + b^2 &amp; = r^2</mrow>
             <mrow>a^2 - b^2 &amp; = s^2</mrow>
           </md>.
@@ -1063,9 +1063,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22">
+    <exercise number="22" permid="rNL">
       <statement>
-        <p>
+        <p permid="zzB">
           Let <m>n \in {\mathbb N}</m>.
           Use the division algorithm to prove that every integer is congruent mod <m>n</m> to precisely one of the integers <m>0, 1, \ldots, n-1</m>.
           Conclude that if <m>r</m> is an integer,
@@ -1076,9 +1076,9 @@
       </statement>
     </exercise>
 
-    <exercise number="23">
+    <exercise number="23" permid="XUU">
       <statement>
-        <p>
+        <p permid="fGK">
           Define the <term>least common multiple</term>
           of two nonzero integers <m>a</m> and <m>b</m>,
           denoted by <m>\lcm(a,b)</m>,
@@ -1094,33 +1094,33 @@
           Prove there exists a unique least common multiple for any two integers <m>a</m> and <m>b</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="FvR">
+        <p permid="TNR">
           Use the Principle of Well-Ordering and the division algorithm.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="24" xml:id="exercise-integers-lcm-gcd">
+    <exercise number="24" xml:id="exercise-integers-lcm-gcd" permid="Ecd">
       <statement>
-        <p>
+        <p permid="LNT">
           If <m>d= \gcd(a, b)</m> and <m>m = \lcm(a, b)</m>,
           prove that <m>dm = |ab|</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="25">
+    <exercise number="25" permid="kjm">
       <statement>
-        <p>
+        <p permid="rVc">
           Show that <m>\lcm(a,b) = ab</m> if and only if <m>\gcd(a,b) = 1</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="26" xml:id="exercise-integers-gcd-products">
+    <exercise number="26" xml:id="exercise-integers-gcd-products" permid="Qqv">
       <statement>
-        <p>
+        <p permid="Ycl">
           Prove that <m>\gcd(a,c) = \gcd(b,c) =1</m> if and only if
           <m>\gcd(ab,c) = 1</m> for integers <m>a</m>, <m>b</m>,
           and <m>c</m>.
@@ -1128,16 +1128,16 @@
       </statement>
     </exercise>
 
-    <exercise number="27">
+    <exercise number="27" permid="wxE">
       <statement>
-        <p>
+        <p permid="Eju">
           Let <m>a, b, c \in {\mathbb Z}</m>.
           Prove that if <m>\gcd(a,b) = 1</m> and
           <m>a \mid bc</m>, then <m>a \mid c</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="KfK">
+        <p permid="zVa">
           Since <m>\gcd(a,b) = 1</m>,
           there exist integers <m>r</m> and <m>s</m> such that <m>ar + bs = 1</m>.
           Thus, <m>acr + bcs = c</m>.
@@ -1145,9 +1145,9 @@
       </hint>
     </exercise>
 
-    <exercise number="28">
+    <exercise number="28" permid="cEN">
       <statement>
-        <p>
+        <p permid="kqD">
           Let <m>p \geq 2</m>.
           Prove that if <m>2^p - 1</m> is prime,
           then <m>p</m> must also be prime.
@@ -1155,14 +1155,14 @@
       </statement>
     </exercise>
 
-    <exercise number="29">
+    <exercise number="29" permid="ILW">
       <statement>
-        <p>
+        <p permid="QxM">
           Prove that there are an infinite number of primes of the form <m>6n + 5</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="CBl">
+        <p permid="gcj">
           Every prime must be of the form <m>2</m>, <m>3</m>,
           <m>6n + 1</m>, or <m>6n + 5</m>.
           Suppose there are only finitely many primes of the form <m>6k + 5</m>.
@@ -1170,17 +1170,17 @@
       </hint>
     </exercise>
 
-    <exercise number="30">
+    <exercise number="30" permid="oTf">
       <statement>
-        <p>
+        <p permid="wEV">
           Prove that there are an infinite number of primes of the form <m>4n - 1</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="31">
+    <exercise number="31" permid="Vao">
       <statement>
-        <p>
+        <p permid="cMe">
           Using the fact that <m>2</m> is prime,
           show that there do not exist integers <m>p</m> and <m>q</m> such that <m>p^2 = 2 q^2</m>.
           Demonstrate that therefore
@@ -1190,15 +1190,15 @@
     </exercise>
 
   </exercises>
-  <exercises xml:id="integers-exercises-programming">
+  <exercises xml:id="integers-exercises-programming" permid="jzs">
     <title>Programming Exercises</title>
-    <exercise>
+    <exercise permid="Bhx">
       <title>The Sieve of Eratosthenes</title>
       <idx>
       <h>Sieve of Eratosthenes</h>
       </idx>
       <statement>
-        <p>
+        <p permid="ITn">
           One method of computing all of the prime numbers less than a certain fixed positive integer <m>N</m> is to list all of the numbers <m>n</m> such that <m>1 \lt n \lt N</m>.
           Begin by eliminating all of the multiples of <m>2</m>.
           Next eliminate all of the multiples of <m>3</m>.
@@ -1219,16 +1219,16 @@
       </statement>
     </exercise>
 
-    <exercise>
+    <exercise permid="hoG">
       <idx>
       <h>Ackermann's function</h>
       </idx>
       <statement>
-        <p>
+        <p permid="paw">
           Let <m>{\mathbb N}^0 = {\mathbb N} \cup \{ 0 \}</m>.
           Ackermann's function is the function
           <m>A :{\mathbb N}^0 \times {\mathbb N}^0 \rightarrow {\mathbb N}^0</m> defined by the equations
-          <md>
+          <md permid="tYK">
             <mrow>A(0, y) &amp; = y + 1,</mrow>
             <mrow>A(x + 1, 0) &amp; = A(x, 1),</mrow>
             <mrow>A(x + 1, y + 1) &amp; = A(x, A(x + 1, y))</mrow>
@@ -1242,13 +1242,13 @@
       </statement>
     </exercise>
 
-    <exercise>
+    <exercise permid="NvP">
       <statement>
-        <p>
+        <p permid="VhF">
           Write a computer program that will implement the Euclidean algorithm.
           The program should accept two positive integers <m>a</m> and <m>b</m> as input and should output
           <m>\gcd( a,b)</m> as well as integers <m>r</m> and <m>s</m> such that
-          <me>
+          <me permid="afT">
             \gcd( a,b) = ra + sb
           </me>.
         </p>
@@ -1337,19 +1337,19 @@ theory.</p> -->
 
   </reading-questions>
 
-  <section xml:id="integers-sage">
+  <section xml:id="integers-sage" permid="ojl">
     <title>Sage</title>
-    <introduction>
-      <p>
+    <introduction permid="Mqw">
+      <p permid="oqC">
         Many properties of the algebraic objects we will study can be determined from properties of associated integers.
         And Sage has many powerful functions for analyzing integers.
       </p>
     </introduction>
 
-    <subsection>
+    <subsection permid="KWI">
       <title>Division Algorithm</title>
-      <p>
-        The code <c>a % b</c> will return the remainder upon division of <m>a</m> by <m>b</m>.
+      <p permid="qPJ">
+        The code <c>a % b</c>will return the remainder upon division of <m>a</m> by <m>b</m>.
         In other words,
         the result is the unique integer <m>r</m> such that (1) <m>0\leq r\lt b</m>,
         and (2) <m>a=bq+r</m> for some integer <m>q</m>
@@ -1374,8 +1374,8 @@ theory.</p> -->
                 <output>4</output>
             </sage>
 
-      <p>
-        It is also possible to get both the quotient and remainder at the same time with the <c>.quo_rem()</c> method
+      <p permid="WWS">
+        It is also possible to get both the quotient and remainder at the same time with the <c>.quo_rem()</c>method
         (quotient and remainder).
       </p>
 
@@ -1388,9 +1388,9 @@ theory.</p> -->
                 <output>(4, 2)</output>
             </sage>
 
-      <p>
+      <p permid="Deb">
         A remainder of zero indicates divisibility.
-        So <c>(a % b) == 0</c> will return <c>True</c> if <m>b</m> divides <m>a</m>,
+        So <c>(a % b) == 0</c>will return <c>True</c>if <m>b</m> divides <m>a</m>,
         and will otherwise return <c>False</c>.
       </p>
 
@@ -1403,8 +1403,8 @@ theory.</p> -->
                 <output>False</output>
             </sage>
 
-      <p>
-        The <c>.divides()</c> method is another option.
+      <p permid="jlk">
+        The <c>.divides()</c>method is another option.
       </p>
 
             <sage>
@@ -1423,9 +1423,9 @@ theory.</p> -->
             </sage>
     </subsection>
 
-    <subsection>
+    <subsection permid="rdR">
       <title>Greatest Common Divisor</title>
-      <p>
+      <p permid="Pst">
         The greatest common divisor of <m>a</m> and <m>b</m> is obtained with the command <c>gcd(a, b)</c>,
         where in our first uses, <m>a</m> and <m>b</m> are integers.
         Later, <m>a</m> and <m>b</m> can be other objects with a notion of divisibility and
@@ -1438,8 +1438,8 @@ theory.</p> -->
                 <output>4</output>
             </sage>
 
-      <p>
-        We can use the <c>gcd</c> command to determine if a pair of integers are relatively prime.
+      <p permid="vzC">
+        We can use the <c>gcd</c>command to determine if a pair of integers are relatively prime.
       </p>
 
             <sage>
@@ -1459,8 +1459,8 @@ theory.</p> -->
                 <output>False</output>
             </sage>
 
-      <p>
-        The command <c>xgcd(a,b)</c> (<q>eXtended GCD</q>) returns a triple where the first element is the greatest common divisor of <m>a</m> and <m>b</m> (as with the <c>gcd(a,b)</c> command above),
+      <p permid="bGL">
+        The command <c>xgcd(a,b)</c>(<q>eXtended GCD</q>) returns a triple where the first element is the greatest common divisor of <m>a</m> and <m>b</m> (as with the <c>gcd(a,b)</c>command above),
         but the next two elements are values of <m>r</m> and <m>s</m> such that <m>ra+sb=\gcd(a,b)</m>.
       </p>
 
@@ -1469,13 +1469,13 @@ theory.</p> -->
                 <output>(1, -137, 262)</output>
             </sage>
 
-      <p>
-        Portions of the triple can be extracted using <c>[ ]</c> (<q>indexing</q>) to access the entries of the triple,
+      <p permid="HNU">
+        Portions of the triple can be extracted using <c>[ ]</c>(<q>indexing</q>) to access the entries of the triple,
         starting with the first as number <c>0</c>.
         For example,
         the following should always return the result <c>True</c>,
-        even if you change the values of <c>a</c> and <c>b</c>.
-        Try changing the values of <c>a</c> and <c>b</c> below,
+        even if you change the values of <c>a</c>and <c>b</c>.
+        Try changing the values of <c>a</c>and <c>b</c>below,
         to see that the result is always <c>True</c>.
       </p>
 
@@ -1492,19 +1492,19 @@ theory.</p> -->
                 <output>True</output>
             </sage>
 
-      <p>
+      <p permid="nVd">
         Studying this block of code will go a long way towards helping you get the most out of Sage's output.
-        Note that <c>=</c> is how a value is
+        Note that <c>=</c>is how a value is
         <em>assigned</em> to a variable,
         while as in the last line,
-        <c>==</c> is how we compare two items for <em>equality</em>.
+        <c>==</c>is how we compare two items for <em>equality</em>.
       </p>
     </subsection>
 
-    <subsection>
+    <subsection permid="Xla">
       <title>Primes and Factoring</title>
-      <p>
-        The method <c>.is_prime()</c> will determine if an integer is prime or not.
+      <p permid="Ucm">
+        The method <c>.is_prime()</c>will determine if an integer is prime or not.
       </p>
 
             <sage>
@@ -1526,10 +1526,10 @@ theory.</p> -->
                 <output>True</output>
             </sage>
 
-      <p>
-        The command <c>random_prime(a, proof=True)</c> will generate a random prime number between <m>2</m> and <m>a</m>.
+      <p permid="Ajv">
+        The command <c>random_prime(a, proof=True)</c>will generate a random prime number between <m>2</m> and <m>a</m>.
         Experiment by executing the following two compute cells several times.
-        (Replacing <c>proof=True</c> by <c>proof=False</c> will speed up the search,
+        (Replacing <c>proof=True</c>by <c>proof=False</c>will speed up the search,
         but there will be a very, very,
         very small probability the result will not be prime.)
       </p>
@@ -1546,8 +1546,8 @@ theory.</p> -->
                 <output>True</output>
             </sage>
 
-      <p>
-        The command <c>prime_range(a, b)</c> returns an ordered list of all the primes from <m>a</m> to <m>b-1</m>,
+      <p permid="gqE">
+        The command <c>prime_range(a, b)</c>returns an ordered list of all the primes from <m>a</m> to <m>b-1</m>,
         inclusive.
         For example,
       </p>
@@ -1557,8 +1557,8 @@ theory.</p> -->
                 <output>[503, 509, 521, 523, 541, 547]</output>
             </sage>
 
-      <p>
-        The commands <c>next_prime(a)</c> and <c>previous_prime(a)</c> are other ways to get a single prime number of a desired size.
+      <p permid="MxN">
+        The commands <c>next_prime(a)</c>and <c>previous_prime(a)</c>are other ways to get a single prime number of a desired size.
         Give them a try below if you have an empty compute cell there
         (as you will if you are reading in the Sage Notebook,
         or are reading the online version). (The hash symbol, <c>#</c>,
@@ -1569,7 +1569,7 @@ theory.</p> -->
 
       <sage type="practice"/>
 
-      <p>
+      <p permid="sEW">
         In addition to checking if integers are prime or not,
         or generating prime numbers, Sage can also decompose any integer into its prime factors,
         as described by the Fundamental Theorem of Arithmetic (<xref ref="theorem-fund-theorem-arithmetic"/>).
@@ -1583,12 +1583,12 @@ theory.</p> -->
                 <output>2^3 * 5^2 * 13</output>
             </sage>
 
-      <p>
+      <p permid="YMf">
         So <m>2600 = 2^3\times 5^2\times 13</m> and this is the unique way to write <m>2600</m> as a product of prime numbers
         (other than rearranging the order of the primes themselves in the product).
       </p>
 
-      <p>
+      <p permid="ETo">
         While Sage will print a factorization nicely,
         it is carried internally as a list of pairs of integers,
         with each pair being a base (a prime number) and an exponent (a positive integer).
@@ -1634,7 +1634,7 @@ theory.</p> -->
                 <output>3</output>
             </sage>
 
-      <p>
+      <p permid="lax">
         The next compute cell reveals the internal version of the factorization by asking for the actual list.
         And we show how you could determine exactly how many terms the factorization has by using the length command,
         <c>len()</c>.
@@ -1649,7 +1649,7 @@ theory.</p> -->
                 <output>3</output>
             </sage>
 
-      <p>
+      <p permid="RhG">
         Can you extract the next two primes,
         and their exponents, from <c>a</c>?
       </p>
@@ -1658,10 +1658,10 @@ theory.</p> -->
     </subsection>
   </section>
 
-  <exercises xml:id="integers-sage-exercises">
+  <exercises xml:id="integers-sage-exercises" permid="PGB">
     <title>Sage Exercises</title>
-    <introduction>
-      <p>
+    <introduction permid="tCY">
+      <p permid="UxL">
         These exercises are about investigating basic properties of the integers,
         something we will frequently do when investigating groups.
         Sage worksheets have extensive capabilities for making new cells with carefully formatted text,
@@ -1671,33 +1671,33 @@ theory.</p> -->
       </p>
     </introduction>
 
-    <exercise number="1">
+    <exercise number="1" permid="ZKh">
       <statement>
-        <p>
-          Use the <c>next_prime()</c> command to construct two different 8-digit prime numbers and save them in variables named <c>a</c> and <c>b</c>.
+        <p permid="BoO">
+          Use the <c>next_prime()</c>command to construct two different 8-digit prime numbers and save them in variables named <c>a</c>and <c>b</c>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="2">
+    <exercise number="2" permid="FRq">
       <statement>
-        <p>
-          Use the <c>.is_prime()</c> method to verify that your primes <c>a</c> and <c>b</c> are really prime.
+        <p permid="hvX">
+          Use the <c>.is_prime()</c>method to verify that your primes <c>a</c>and <c>b</c>are really prime.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="3">
+    <exercise number="3" permid="lYz">
       <statement>
-        <p>
+        <p permid="NDg">
           Verify that <m>1</m> is the greatest common divisor of your two primes from the previous exercises.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="4">
+    <exercise number="4" permid="SfI">
       <statement>
-        <p>
+        <p permid="tKp">
           Find two integers that make a <q>linear combination</q>
           of your two primes equal to <m>1</m>.
           Include a verification of your result.
@@ -1705,20 +1705,20 @@ theory.</p> -->
       </statement>
     </exercise>
 
-    <exercise number="5">
+    <exercise number="5" permid="ymR">
       <statement>
-        <p>
+        <p permid="ZRy">
           Determine a factorization into powers of primes for <m>c=4\,598\,037\,234</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="6">
+    <exercise number="6" permid="eua">
       <statement>
-        <p>
-          Write a compute cell that defines the same value of <c>c</c> again,
-          and then defines a candidate divisor of <c>c</c> named <c>d</c>.
-          The third line of the cell should return <c>True</c> if and only if <c>d</c> is a divisor of <c>c</c>.
+        <p permid="FYH">
+          Write a compute cell that defines the same value of <c>c</c>again,
+          and then defines a candidate divisor of <c>c</c>named <c>d</c>.
+          The third line of the cell should return <c>True</c>if and only if <c>d</c>is a divisor of <c>c</c>.
           Illustrate the use of your cell by testing your code with <m>d=7</m> and in a new copy of the cell,
           testing your code with <m>d=11</m>.
         </p>
@@ -1727,4 +1727,3 @@ theory.</p> -->
 
   </exercises>
 </chapter>
-

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="matrix">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="matrix" permid="CSk">
   <title>Matrix Groups and Symmetry</title>
-  <introduction>
-    <p>
+  <introduction permid="Zki">
+    <p permid="cHE">
       When Felix Klein
           <idx><h>Klein, Felix</h></idx>
       (1849<ndash/>1925) accepted a chair at the University of Erlangen,
@@ -29,11 +29,11 @@
     </p>
   </introduction>
 
-  <section xml:id="section-matrix-groups">
+  <section xml:id="section-matrix-groups" permid="geN">
     <title>Matrix Groups</title>
-    <subsection xml:id="matrix-subsection-linear-algebra">
+    <subsection xml:id="matrix-subsection-linear-algebra" permid="iZt">
       <title>Some Facts from Linear Algebra</title>
-      <p>
+      <p permid="Mtn">
         Before we study matrix groups,
         we must recall some basic facts from linear algebra.
         One of the most fundamental ideas of linear algebra is that of a linear transformation.
@@ -42,7 +42,7 @@
         <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a map that preserves vector addition and scalar multiplication;
         that is, for vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m> in
         <m>{\mathbb R}^n</m> and a scalar <m>\alpha \in {\mathbb R}</m>,
-        <md>
+        <md permid="Ndh">
           <mrow>T({\mathbf x}+{\mathbf y}) &amp; = T({\mathbf x}) + T({\mathbf y})</mrow>
           <mrow>T(\alpha {\mathbf y}) &amp; = \alpha T({\mathbf y})</mrow>
         </md>.
@@ -53,7 +53,7 @@
         x_n)^\transpose</m> and <m>{\mathbf y} = (y_1, \ldots,
         y_n)^\transpose</m> in <m>{\mathbb R}^n</m> as column matrices,
         then an <m>m \times n</m> matrix
-        <me>
+        <me permid="UHG">
           A
           =
           \begin{pmatrix}
@@ -65,7 +65,7 @@
         </me>
         maps the vectors to <m>{\mathbb R}^m</m> linearly by matrix multiplication.
         Observe that if <m>\alpha</m> is a real number,
-        <me>
+        <me permid="AOP">
           A({\mathbf x} + {\mathbf y} ) 
           = 
           A {\mathbf x }+ A {\mathbf y} 
@@ -75,7 +75,7 @@
           A ( \alpha {\mathbf x})
         </me>,
         where
-        <me>
+        <me permid="gVY">
           {\mathbf x}
           =
           \begin{pmatrix}
@@ -94,10 +94,10 @@
 
       </p>
 
-      <p>
+      <p permid="sAw">
         Conversely, if <m>T : {\mathbb R}^n \rightarrow {\mathbb R}^m</m> is a linear map,
         we can associate a matrix <m>A</m> with <m>T</m> by considering what <m>T</m> does to the vectors
-        <md>
+        <md permid="Zrz">
           <mrow>{\mathbf e}_1 &amp; = (1, 0, \ldots, 0)^\transpose</mrow>
           <mrow>{\mathbf e}_2 &amp; = (0, 1, \ldots, 0)^\transpose</mrow>
           <mrow>&amp;  \vdots &amp;</mrow>
@@ -105,18 +105,18 @@
         </md>.
         We can write any vector <m>{\mathbf x} = (x_1, \ldots,
         x_n)^\transpose</m> as
-        <me>
+        <me permid="tkq">
           x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n
         </me>.
         Consequently, if
-        <md>
+        <md permid="FyI">
           <mrow>T({\mathbf e}_1) &amp; = (a_{11}, a_{21}, \ldots, a_{m1})^\transpose,</mrow>
           <mrow>T({\mathbf e}_2) &amp; = (a_{12}, a_{22}, \ldots, a_{m2})^\transpose,</mrow>
           <mrow>&amp;  \vdots &amp;</mrow>
           <mrow>T({\mathbf e}_n) &amp; = (a_{1n}, a_{2n}, \ldots, a_{mn})^\transpose</mrow>
         </md>,
         then
-        <md>
+        <md permid="lFR">
           <mrow>T({\mathbf x} ) &amp; = T(x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2 + \cdots + x_n {\mathbf e}_n)</mrow>
           <mrow>&amp; = x_1 T({\mathbf e}_1) + x_2 T({\mathbf e}_2) + \cdots + x_n T({\mathbf e}_n)</mrow>
           <mrow>&amp; = \left( \sum_{k=1}^{n} a_{1k} x_k, \ldots,  \sum_{k=1}^{n} a_{mk} x_k \right)^\transpose</mrow>
@@ -124,16 +124,16 @@
         </md>.
       </p>
 
-      <example xml:id="example-linear-transform">
-        <p>
+      <example xml:id="example-linear-transform" permid="YAo">
+        <p permid="rQC">
           If we let <m>T : {\mathbb R}^2 \rightarrow {\mathbb R}^2</m> be the map given by
-          <me>
+          <me permid="RNa">
             T(x_1, x_2) = (2 x_1 + 5 x_2, - 4 x_1 + 3 x_2)
           </me>,
           the axioms that <m>T</m> must satisfy to be a linear transformation are easily verified.
           The column vectors <m>T {\mathbf e}_1 = (2, -4)^\transpose</m> and
           <m>T {\mathbf e}_2 = (5,3)^\transpose</m> tell us that <m>T</m> is given by the matrix
-          <me>
+          <me permid="xUj">
             A =
             \begin{pmatrix}
             2 &amp; 5 \\
@@ -143,13 +143,13 @@
         </p>
       </example>
 
-      <p>
+      <p permid="YHF">
         Since we are interested in groups of matrices,
         we need to know which matrices have multiplicative inverses.
         Recall that an <m>n \times n</m> matrix <m>A</m> is <term>invertible</term>
             <idx><h>Matrix</h><h>invertible</h></idx>
         exactly when there exists another matrix <m>A^{-1}</m> such that <m>A A^{-1} = A^{-1} A = I</m>, where
-        <me>
+        <me permid="ebs">
           I =
           \begin{pmatrix}
           1 &amp; 0 &amp; \cdots &amp; 0 \\
@@ -164,17 +164,17 @@
             <idx><h>Matrix</h><h>nonsingular</h></idx>
       </p>
 
-      <example xml:id="inverse_matrix">
-        <p>
+      <example xml:id="inverse_matrix" permid="EHx">
+        <p permid="XXL">
           If <m>A</m> is the matrix
-          <me>
+          <me permid="KiB">
             \begin{pmatrix}
             2 &amp; 1 \\
             5 &amp; 3
             \end{pmatrix}
           </me>,
           then the inverse of <m>A</m> is
-          <me>
+          <me permid="qpK">
             A^{-1} =
             \begin{pmatrix}
             3 &amp; -1 \\
@@ -186,36 +186,36 @@
         </p>
       </example>
 
-      <p>
+      <p permid="EOO">
         Some other facts about determinants will also prove useful in the course of this chapter.
         Let <m>A</m> and <m>B</m> be <m>n \times n</m> matrices.
         From linear algebra we have the following properties of determinants.
 
-        <ul>
-          <li>
-            <p>
+        <ul permid="eDV">
+          <li permid="KLe">
+            <p permid="wma">
               The determinant is a homomorphism into the multiplicative group of real numbers;
               that is, <m>\det( A B) = (\det A )(\det B)</m>.
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="qSn">
+            <p permid="ctj">
               If <m>A</m> is an invertible matrix,
               then <m>\det(A^{-1}) = 1 / \det A</m>.
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="WZw">
+            <p permid="IAs">
               If we define the transpose of a matrix
               <m>A = (a_{ij})</m> to be <m>A^\transpose = (a_{ji})</m>,
               then <m>\det(A^\transpose) = \det A</m>.
             </p>
           </li>
 
-          <li>
-            <p>
+          <li permid="DgF">
+            <p permid="oHB">
               Let <m>T</m> be the linear transformation associated with an <m>n \times n</m> matrix <m>A</m>.
               Then <m>T</m> multiplies volumes by a factor of <m>|\det A|</m>.
               In the case of <m>{\mathbb R}^2</m>,
@@ -225,7 +225,7 @@
         </ul>
       </p>
 
-      <p>
+      <p permid="kVX">
         Linear maps, matrices,
         and determinants are covered in any elementary linear algebra text;
         however, if you have not had a course in linear algebra,
@@ -234,9 +234,9 @@
       </p>
     </subsection>
 
-    <subsection xml:id="matrix-subsection-general-linear-group">
+    <subsection xml:id="matrix-subsection-general-linear-group" permid="PgC">
       <title>The General and Special Linear Groups</title>
-      <p>
+      <p permid="Rdg">
         The set of all <m>n \times n</m> invertible matrices forms a group called the
         <term>general linear group</term>.
             <idx><h>Group</h><h>general linear</h></idx>
@@ -249,10 +249,10 @@
         This subgroup is called the <term>special linear group</term><idx><h>Group</h><h>special linear</h></idx> and is denoted by <m>SL_n({\mathbb R})</m>.
       </p>
 
-      <example xml:id="example-determinant">
-        <p>
+      <example xml:id="example-determinant" permid="kOG">
+        <p permid="EeU">
           Given a <m>2 \times 2</m> matrix
-          <me>
+          <me permid="WwT">
             A =
             \begin{pmatrix}
             a &amp; b \\
@@ -262,7 +262,7 @@
           the determinant of <m>A</m> is <m>ad-bc</m>.
           The group <m>GL_2({\mathbb R})</m> consists of those matrices in which <m>ad-bc \neq 0</m>.
           The inverse of <m>A</m> is
-          <me>
+          <me permid="CEc">
             A^{-1} =
             \frac{1}{ad-bc}
             \begin{pmatrix}
@@ -271,7 +271,7 @@
             \end{pmatrix}
           </me>.
           If <m>A</m> is in <m>SL_2({\mathbb R})</m>, then
-          <me>
+          <me permid="iLl">
             A^{-1} =
             \begin{pmatrix}
             d &amp; -b \\
@@ -281,7 +281,7 @@
           Geometrically,
           <m>SL_2({\mathbb R})</m> is the group that preserves the areas of parallelograms.
           Let
-          <me>
+          <me permid="OSu">
             A =
             \begin{pmatrix}
             1 &amp; 1 \\
@@ -298,10 +298,10 @@
         </p>
       </example>
 
-      <figure xml:id="figure-sl2">
+      <figure xml:id="figure-sl2" permid="xkp">
         <caption><m>SL_2(\mathbb R)</m> acting on the unit square</caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image xml:id="matrix-sl2r">
+        <image xml:id="matrix-sl2r" permid="dFT">
 
             <latex-image>
                 <xi:include href="tikz/matrix-sl2r.tex" parse="text"/>
@@ -311,9 +311,9 @@
       </figure>
     </subsection>
 
-    <subsection xml:id="matrix-subsection-orthogonal-group">
+    <subsection xml:id="matrix-subsection-orthogonal-group" permid="vnL">
       <title>The Orthogonal Group <m>O(n)</m></title>
-      <p>
+      <p permid="dry">
         Another subgroup of <m>GL_n({\mathbb R})</m> is the orthogonal group.
         A matrix <m>A</m> is <term>orthogonal</term>
             <idx><h>Orthogonal matrix</h></idx>
@@ -333,10 +333,10 @@
         We leave as an exercise the proof that <m>O(n)</m> is a subgroup of <m>GL_n( {\mathbb R})</m>.
       </p>
 
-      <example xml:id="orthogonal">
-        <p>
+      <example xml:id="orthogonal" permid="dkh">
+        <p permid="kmd">
           The following matrices are orthogonal:
-          <me>
+          <me permid="uZD">
             \begin{pmatrix}
             3/5 &amp; -4/5 \\
             4/5 &amp; 3/5
@@ -356,7 +356,7 @@
         </p>
       </example>
 
-      <p>
+      <p permid="JyH">
         There is a more geometric way of viewing the group <m>O(n)</m>.
         The orthogonal matrices are exactly those matrices that preserve the length of vectors.
         We can define the length of a vector using the
@@ -366,7 +366,7 @@
         The Euclidean inner product of two vectors
         <m>{\mathbf x}=(x_1, \ldots,
         x_n)^\transpose</m> and <m>{\mathbf y}=(y_1, \ldots, y_n)^\transpose</m> is
-        <me>
+        <me permid="bgM">
           \langle  {\mathbf x}, {\mathbf y} \rangle
           =
           {\mathbf x}^\transpose {\mathbf y}
@@ -386,7 +386,7 @@
           <description>length of a vector <m>\mathbf x</m></description>
         </notation>
 
-        <me>
+        <me permid="HnV">
           \| {\mathbf x} \| = \sqrt{\langle  {\mathbf x}, {\mathbf x} \rangle}  = \sqrt{x_1^2 + \cdots + x_n^2}
         </me>.
         Associated with the notion of the length of a vector is the idea of the distance between two vectors.
@@ -396,41 +396,41 @@
         We leave as an exercise the proof of the following proposition about the properties of Euclidean inner products.
       </p>
 
-      <proposition>
+      <proposition permid="xcY">
         <statement>
-          <p>
+          <p permid="fCk">
             Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>,
             and <m>{\mathbf w}</m> be vectors in
             <m>{\mathbb R}^n</m> and <m>\alpha \in {\mathbb R}</m>.
             Then
 
-            <ol>
-              <li>
-                <p>
+            <ol permid="ZUc">
+              <li permid="vCg">
+                <p permid="UOK">
                   <m>\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x} \rangle</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="bJp">
+                <p permid="AVT">
                   <m>\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="HQy">
+                <p permid="hdc">
                   <m>\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle {\mathbf x}, {\mathbf y} \rangle</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="nXH">
+                <p permid="Nkl">
                   <m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> with equality exactly when <m>{\mathbf x} = 0</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="UeQ">
+                <p permid="tru">
                   If <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m> for all
                   <m>{\mathbf x}</m> in <m>{\mathbb R}^n</m>,
                   then <m>{\mathbf y} = 0</m>.
@@ -441,11 +441,11 @@
         </statement>
       </proposition>
 
-      <example xml:id="example-on-preserves-length">
-        <p>
+      <example xml:id="example-on-preserves-length" permid="Jrq">
+        <p permid="Qtm">
           The vector <m>{\mathbf x} =(3,4)^\transpose</m> has length <m>\sqrt{3^2 + 4^2} = 5</m>.
           We can also see that the orthogonal matrix
-          <me>
+          <me permid="nve">
             A=
             \begin{pmatrix}
             3/5 &amp; -4/5 \\
@@ -457,11 +457,11 @@
         </p>
       </example>
 
-      <p>
+      <p permid="pFQ">
         Since <m>\det(A A^\transpose) = \det(I) = 1</m> and <m>\det(A) = \det( A^\transpose )</m>,
         the determinant of any orthogonal matrix is either <m>1</m> or <m>-1</m>.
         Consider the column vectors
-        <me>
+        <me permid="TCn">
           {\mathbf a}_j =
           \begin{pmatrix}
           a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj}
@@ -470,7 +470,7 @@
         of the orthogonal matrix <m>A= (a_{ij})</m>.
         Since <m>AA^\transpose = I</m>,
         <m>\langle {\mathbf a}_r, {\mathbf a}_s \rangle = \delta_{rs}</m>, where
-        <me>
+        <me permid="zJw">
           \delta_{rs}
           =
           \begin{cases}
@@ -490,7 +490,7 @@
         it follows that <m>A^{-1} = A^\transpose</m>.
       </p>
 
-      <p>
+      <p permid="VMZ">
         We say that a matrix <m>A</m> is
         <term>distance-preserving</term>,
             <idx><h>Matrix</h><h>distance-preserving</h></idx>
@@ -504,41 +504,41 @@
         says that these notions are the same.
       </p>
 
-      <theorem xml:id="theorem-orthnormal-matrix">
+      <theorem xml:id="theorem-orthnormal-matrix" permid="QVP">
         <statement>
-          <p>
+          <p permid="uLi">
             Let <m>A</m> be an <m>n \times n</m> matrix.
             The following statements are equivalent.
 
-            <ol>
-              <li>
-                <p>
+            <ol permid="tMT">
+              <li permid="AlZ">
+                <p permid="ZyD">
                   The columns of the matrix <m>A</m> form an orthonormal set.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="gti">
+                <p permid="FFM">
                   <m>A^{-1} = A^\transpose</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="MAr">
+                <p permid="lMV">
                   For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>,
                   <m>\langle A{\mathbf x}, A {\mathbf y} \rangle = \langle {\mathbf x}, {\mathbf y} \rangle</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="sHA">
+                <p permid="RUe">
                   For vectors <m>{\mathbf x}</m> and <m>{\mathbf y}</m>,
                   <m>\| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \|</m>.
                 </p>
               </li>
 
-              <li>
-                <p>
+              <li permid="YOJ">
+                <p permid="ybn">
                   For any vector <m>{\mathbf x}</m>,
                   <m>\| A{\mathbf x} \| = \| {\mathbf x}\|</m>.
                 </p>
@@ -547,14 +547,14 @@
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="lyA">
+          <p permid="Fkn">
             We have already shown (1) and (2) to be equivalent.
           </p>
 
-          <p>
+          <p permid="lrw">
             <m>(2) \Rightarrow (3)</m>.
-            <md>
+            <md permid="fQF">
               <mrow>\langle A{\mathbf x}, A{\mathbf y} \rangle &amp; = (A {\mathbf x})^\transpose A {\mathbf y}</mrow>
               <mrow>&amp; = {\mathbf x}^\transpose A^\transpose A {\mathbf y}</mrow>
               <mrow>&amp; = {\mathbf x}^\transpose {\mathbf y}</mrow>
@@ -562,10 +562,10 @@
             </md>.
           </p>
 
-          <p>
+          <p permid="RyF">
             <m>(3) \Rightarrow (2)</m>.
             Since
-            <md>
+            <md permid="LXO">
               <mrow>\langle {\mathbf x}, {\mathbf x} \rangle &amp; = \langle A{\mathbf x}, A{\mathbf x} \rangle</mrow>
               <mrow>&amp; = {\mathbf x}^\transpose A^\transpose A {\mathbf x}</mrow>
               <mrow>&amp; = \langle {\mathbf x}, A^\transpose A{\mathbf x} \rangle</mrow>
@@ -576,11 +576,11 @@
             <!-- Replaced y with x in <m>(2) \Rightarrow (3)</m>. -->
             <!-- Suggested by M. Huggins -->
             <!-- TWJ 24/4/2013 -->
-          <p>
+          <p permid="xFO">
             <m>(3) \Rightarrow (4)</m>.
             If <m>A</m> is inner product-preserving,
             then <m>A</m> is distance-preserving, since
-            <md>
+            <md permid="Ymg">
               <mrow>\| A{\mathbf x} - A{\mathbf y} \|^2 &amp; = \| A({\mathbf x} - {\mathbf y}) \|^2</mrow>
               <mrow>&amp; = \langle A({\mathbf x} - {\mathbf y}), A({\mathbf x} - {\mathbf y}) \rangle</mrow>
               <mrow>&amp; = \langle {\mathbf x} - {\mathbf y}, {\mathbf x} - {\mathbf y} \rangle</mrow>
@@ -588,24 +588,24 @@
             </md>.
           </p>
 
-          <p>
+          <p permid="dMX">
             <m>(4) \Rightarrow (5)</m>.
             If <m>A</m> is distance-preserving,
             then <m>A</m> is length-preserving.
             Letting <m>{\mathbf y} = 0</m>, we have
-            <me>
+            <me permid="Etp">
               \| A{\mathbf x}\| = \| A{\mathbf x}- A{\mathbf y} \| = \| {\mathbf x}- {\mathbf y} \| = \| {\mathbf x} \|
             </me>.
           </p>
 
-          <p>
+          <p permid="JUg">
             <m>(5) \Rightarrow (3)</m>.
             We use the following identity to show that length-preserving implies inner product-preserving:
-            <me>
+            <me permid="kAy">
               \langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2} \left[ \|{\mathbf x} +{\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right]
             </me>.
             Observe that
-            <md>
+            <md permid="QHH">
               <mrow>\langle A {\mathbf x}, A {\mathbf y} \rangle &amp; = \frac{1}{2} \left[ \|A {\mathbf x} + A {\mathbf y} \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
               <mrow>&amp; = \frac{1}{2} \left[ \|A ( {\mathbf x} + {\mathbf y} ) \|^2 - \|A {\mathbf x} \|^2 -  \|A {\mathbf y} \|^2 \right]</mrow>
               <mrow>&amp; = \frac{1}{2} \left[ \|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \|{\mathbf y}\|^2 \right]</mrow>
@@ -615,11 +615,11 @@
         </proof>
       </theorem>
 
-      <figure xml:id="figure-o2">
+      <figure xml:id="figure-o2" permid="ibr">
         <caption><m>O(2)</m> acting on <m>\mathbb R^2</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
             <!-- Fixed tikz figure - TWJ 12/8/2011 -->
-        <image xml:id="matrix-o2">
+        <image xml:id="matrix-o2" permid="JNc">
 
             <latex-image>
                 <xi:include href="tikz/matrix-o2.tex" parse="text"/>
@@ -628,15 +628,15 @@
 
       </figure>
             <!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
-      <example xml:id="example-o2">
-        <p>
+      <example xml:id="example-o2" permid="pyz">
+        <p permid="wAv">
           Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more closely.
           An element <m>T \in O(2)</m> is determined by its action on
           <m>{\mathbf e}_1 = (1, 0)^\transpose</m> and <m>{\mathbf e}_2 = (0, 1)^\transpose</m>.
           If <m>T({\mathbf e}_1) = (a,b)^\transpose</m>,
           then <m>a^2 + b^2 = 1</m> and <m>T({\mathbf e}_2) = (-b, a)^\transpose</m>.
           Hence, <m>T</m> can be represented by
-          <me>
+          <me permid="wOQ">
             A
             =
             \begin{pmatrix}
@@ -653,14 +653,14 @@
           A matrix <m>T</m> in <m>O(2)</m> either reflects or rotates a vector in
           <m>{\mathbb R}^2</m> (<xref ref="figure-o2"/>).
           A reflection about the horizontal axis is given by the matrix
-          <me>
+          <me permid="cVZ">
             \begin{pmatrix}
             1 &amp; 0 \\
             0 &amp; -1
             \end{pmatrix}
           </me>,
           whereas a rotation by an angle <m>\theta</m> in a counterclockwise direction must come from a matrix of the form
-          <me>
+          <me permid="Jdi">
             \begin{pmatrix}
             \cos \theta &amp; \sin \theta \\
             \sin \theta &amp; -\cos \theta
@@ -671,7 +671,7 @@
         </p>
       </example>
 
-      <p>
+      <p permid="BUi">
         Two of the other matrix or matrix-related groups that we will consider are the special orthogonal group  and the group of Euclidean motions.
         The <term>special orthogonal group</term>,
             <idx><h>Group</h><h>special orthogonal</h></idx>
@@ -698,7 +698,7 @@
           <description>Euclidean group</description>
         </notation>
 
-        <me>
+        <me permid="pkr">
           (A, {\mathbf x}) (B, {\mathbf y}) = (AB, A {\mathbf y} +{\mathbf x})
         </me>.
         The identity of the group is <m>(I,{\mathbf 0})</m>;
@@ -707,10 +707,10 @@
         you are asked to check that <m>E(n)</m> is indeed a group under this operation.
       </p>
 
-      <figure xml:id="figure-isometries">
+      <figure xml:id="figure-isometries" permid="OiA">
         <caption>Translations in <m>\mathbb R^2</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image xml:id="matrix-r2-translations">
+        <image xml:id="matrix-r2-translations" permid="pUl">
 
             <latex-image>
                 <xi:include href="tikz/matrix-r2-translations.tex" parse="text"/>
@@ -722,10 +722,10 @@
 
   </section>
 
-  <section xml:id="section-symmetry">
+  <section xml:id="section-symmetry" permid="MlW">
     <title>Symmetry</title>
-    <introduction>
-      <p>
+    <introduction permid="Frr">
+      <p permid="ION">
         An <term>isometry</term>
             <idx><h>Isometry</h></idx>
         or <term>rigid motion</term>
@@ -733,7 +733,7 @@
         in <m>{\mathbb R}^n</m> is a distance-preserving function <m>f</m> from
         <m>{\mathbb R}^n</m> to <m>{\mathbb R}^n</m>.
         This means that <m>f</m> must satisfy
-        <me>
+        <me permid="VrA">
           \| f({\mathbf x}) - f({\mathbf y}) \| =\|{\mathbf x} - {\mathbf y} \|
         </me>
         for all <m>{\mathbf x}, {\mathbf y} \in {\mathbb R}^n</m>.
@@ -746,7 +746,7 @@
         however, <m>T</m> cannot be in <m>O(n)</m> since it is not a linear map.
       </p>
 
-      <p>
+      <p permid="oVW">
         We are mostly interested in isometries in <m>{\mathbb R}^2</m>.
         In fact, the only isometries in
         <m>{\mathbb R}^2</m> are rotations and reflections about the origin,
@@ -758,10 +758,10 @@
         The proof is very easy to generalize.
       </p>
 
-      <figure xml:id="figure-glide">
+      <figure xml:id="figure-glide" permid="hrx">
         <caption>Glide reflections</caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image xml:id="matrix-glide-reflections">
+        <image xml:id="matrix-glide-reflections" permid="Wbu">
 
             <latex-image>
                 <xi:include href="tikz/matrix-glide-reflections.tex" parse="text"/>
@@ -770,22 +770,22 @@
 
       </figure>
 
-      <lemma>
+      <lemma permid="tcZ">
         <statement>
-          <p>
+          <p permid="LJt">
             An isometry <m>f</m> that fixes the origin in
             <m>{\mathbb R}^2</m> is a linear transformation.
             In particular, <m>f</m> is given by an element in <m>O(2)</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="xMS">
+          <p permid="qbp">
             Let <m>f</m> be an isometry in <m>{\mathbb R}^2</m> fixing the origin.
             We will first show that <m>f</m> preserves inner products.
             Since <m>f(0) = 0</m>,
             <m>\| f({\mathbf x})\| = \| {\mathbf x} \|</m>; therefore,
-            <md>
+            <md permid="tUk">
               <mrow>\| {\mathbf x} \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| {\mathbf y} \|^2  &amp; = \| f({\mathbf x}) \|^2 - 2 \langle f({\mathbf x}), f({\mathbf y}) \rangle + \| f({\mathbf y}) \|^2</mrow>
               <mrow>&amp; = \langle f({\mathbf x}) -  f({\mathbf y}), f({\mathbf x}) - f({\mathbf y}) \rangle</mrow>
               <mrow>&amp; = \| f({\mathbf x}) - f({\mathbf y}) \|^2</mrow>
@@ -794,18 +794,18 @@
               <mrow>&amp; = \| {\mathbf x} \|^2 - 2 \langle {\mathbf x}, {\mathbf y} \rangle + \| {\mathbf y} \|^2</mrow>
             </md>.
             Consequently,
-            <me>
+            <me permid="ByJ">
               \langle f({\mathbf x}), f({\mathbf y}) \rangle = \langle {\mathbf x}, {\mathbf y} \rangle
             </me>.
             Now let <m>{\mathbf e}_1</m> and <m>{\mathbf e_2}</m> be
             <m>(1, 0)^\transpose</m> and <m>(0, 1)^\transpose</m>,
             respectively.
             If
-            <me>
+            <me permid="hFS">
               {\mathbf x} = (x_1, x_2) = x_1 {\mathbf e}_1 + x_2 {\mathbf e}_2
             </me>,
             then
-            <me>
+            <me permid="NNb">
               f({\mathbf x}) = \langle f({\mathbf x}), f({\mathbf e}_1) \rangle f({\mathbf e}_1) + \langle f({\mathbf x}), f({\mathbf e}_2) \rangle f({\mathbf e}_2) = x_1 f({\mathbf e}_1)+x_2 f({\mathbf e}_2)
             </me>.
             The linearity of <m>f</m> easily follows.
@@ -813,7 +813,7 @@
         </proof>
       </lemma>
 
-      <p>
+      <p permid="Vdf">
         For any arbitrary isometry, <m>f</m>,
         <m>T_{\mathbf x} f</m> will fix the origin for some vector
         <m>{\mathbf x}</m> in <m>{\mathbb R}^2</m>;
@@ -821,27 +821,27 @@
         Consequently,
         <m>f({\mathbf y}) = A {\mathbf y} + {\mathbf x}</m>.
         Given the isometries
-        <md>
+        <md permid="GiC">
           <mrow>f({\mathbf y}) &amp; = A {\mathbf y} + {\mathbf x}_1</mrow>
           <mrow>g({\mathbf y}) &amp; = B {\mathbf y} + {\mathbf x}_2</mrow>
         </md>,
         their composition is
-        <me>
+        <me permid="abt">
           f(g({\mathbf y})) = f(B {\mathbf y} + {\mathbf x}_2) = AB {\mathbf y} + A{\mathbf x}_2 + {\mathbf x}_1
         </me>.
         This last computation allows us to identify the group of isometries on <m>{\mathbb R}^2</m> with <m>E(2)</m>.
       </p>
 
-      <theorem>
+      <theorem permid="gOH">
         <statement>
-          <p>
+          <p permid="aSr">
             The group of isometries on
             <m>{\mathbb R}^2</m> is the Euclidean group, <m>E(2)</m>.
           </p>
         </statement>
       </theorem>
 
-      <p>
+      <p permid="Bko">
         A <term>symmetry group</term>
             <idx><h>Group</h><h>symmetry</h></idx>
         in <m>{\mathbb R}^n</m> is a subgroup of the group of isometries on
@@ -853,16 +853,16 @@
         but the symmetry group of the origin in <m>{\mathbb R}^2</m> is <m>O(2)</m>.
       </p>
 
-      <theorem>
+      <theorem permid="MVQ">
         <statement>
-          <p>
+          <p permid="GZA">
             The only finite symmetry groups in
             <m>{\mathbb R}^2</m> are <m>{\mathbb Z}_n</m> and <m>D_n</m>.
           </p>
         </statement>
 
-        <proof>
-          <p>
+        <proof permid="RFJ">
+          <p permid="Wiy">
             Let <m>G = \{ f_1, f_2, \ldots,
             f_n \}</m> be a finite symmetry group that fixes a set of points in <m>X \subset \mathbb R^2</m>.
             Choose a point <m>\mathbf x \in X</m>.
@@ -870,7 +870,7 @@
             Define a set <m>S =\{ \mathbf y_1, \mathbf y_2, \ldots \mathbf y_n\}</m>,
             where <m>\mathbf y_i = f_i(\mathbf x)</m>.
             Now, let
-            <me>
+            <me permid="mpL">
               \mathbf z = \frac{1}{n} \sum_{i=1}^n \mathbf x_i
             </me>.
             While the point <m>\mathbf z</m> is not necessarily in the set <m>X</m>,
@@ -879,13 +879,13 @@
             we may now assume that <m>\mathbf z</m> is the origin.
           </p>
 
-          <p>
+          <p permid="CpH">
             Any finite symmetry group <m>G</m> in
             <m>{\mathbb R}^2</m> that fixes the origin must be a finite subgroup of <m>O(2)</m>,
             since translations and glide reflections have infinite order.
             By <xref ref="example-o2"/>,
             elements in <m>O(2)</m> are either rotations of the form
-            <me>
+            <me permid="SwU">
               R_{\theta}
               =
               \begin{pmatrix}
@@ -894,7 +894,7 @@
               \end{pmatrix}
             </me>
             or reflections of the form
-            <me>
+            <me permid="yEd">
               T_{\phi}
               =
               \begin{pmatrix}
@@ -921,7 +921,7 @@
           </p>
           <case>
             <title>Case 1</title>
-            <p>
+            <p permid="iwQ">
               The determinant of every element in <m>G</m> is one.
               In this case every element in <m>G</m> must be a rotation.
               Since <m>G</m> is finite, there is a smallest angle, say <m>\theta_0</m>,
@@ -936,7 +936,7 @@
           </case>
           <case>
             <title>Case 2</title>
-            <p>
+            <p permid="ODZ">
               The group <m>G</m> contains a reflection <m>T</m>.
               The kernel of the homomorphism <m>\phi : G \rightarrow \{-1, 1\}</m> given by
               <m>A \mapsto \det(A)</m> consists of elements whose determinant is 1.
@@ -945,11 +945,11 @@
               order <m>n</m>.
               Hence, <m>|G| = 2n</m>.
               The elements of <m>G</m> are
-              <me>
+              <me permid="eLm">
                 R_{\theta}, \ldots, R_{\theta}^{n-1},  TR_{\theta}, \ldots, TR_{\theta}^{n-1}
               </me>.
               These elements satisfy the relation
-              <me>
+              <me permid="KSv">
                 TR_{\theta}T = R_{\theta}^{-1}
               </me>.
               Consequently,
@@ -960,9 +960,9 @@
       </theorem>
     </introduction>
 
-    <subsection xml:id="matrix-subsection-wallpaper">
+    <subsection xml:id="matrix-subsection-wallpaper" permid="buU">
       <title>The Wallpaper Groups</title>
-      <p>
+      <p permid="upJ">
         Suppose that we wish to study wallpaper patterns in the plane or crystals in three dimensions.
         Wallpaper patterns are simply repeating patterns in the plane (<xref ref="figure-wallpaper"/>).
         The analogs of wallpaper patterns in <m>{\mathbb R}^3</m> are crystals,
@@ -970,10 +970,10 @@
         The mathematical equivalent of a wallpaper or crystal pattern is called a lattice.
       </p>
 
-      <figure xml:id="figure-wallpaper">
+      <figure xml:id="figure-wallpaper" permid="XCm">
         <caption>A wallpaper pattern in <m>\mathbb R^2</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image xml:id="matrix-wallpaper-r2">
+        <image xml:id="matrix-wallpaper-r2" permid="CiD">
 
             <latex-image>
                 <xi:include href="tikz/matrix-wallpaper-r2.tex" parse="text"/>
@@ -982,10 +982,10 @@
 
       </figure>
 
-      <figure xml:id="figure-crystals">
+      <figure xml:id="figure-crystals" permid="DJv">
         <caption>A crystal structure in <m>\mathbb R^3</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image width="50%" xml:id="matrix-crystal-r3">
+        <image width="50%" xml:id="matrix-crystal-r3" permid="ipM">
 
             <latex-image>
                 <xi:include href="tikz/matrix-crystal-r3.tex" parse="text"/>
@@ -994,7 +994,7 @@
 
       </figure>
 
-      <p>
+      <p permid="awS">
         Let us examine wallpaper patterns in the plane a little more closely.
         Suppose that <m>{\mathbf x}</m> and
         <m>{\mathbf y}</m> are linearly independent vectors in <m>{\mathbb R}^2</m>;
@@ -1009,7 +1009,7 @@
         for the lattice.
       </p>
 
-      <p>
+      <p permid="GEb">
         Notice that a lattice can have several bases.
         For example, the vectors <m>(1,1)^\transpose</m> and
         <m>(2,0)^\transpose</m> have the  same lattice as the vectors <m>(-1, 1)^\transpose</m> and
@@ -1018,14 +1018,14 @@
         Given two bases for the same lattice,
         say <m>\{ {\mathbf x}_1, {\mathbf x}_2 \}</m> and <m>\{ {\mathbf y}_1, {\mathbf y}_2 \}</m>,
         we can write
-        <md>
+        <md permid="PCo">
           <mrow>{\mathbf y}_1 &amp; = \alpha_1  {\mathbf x}_1 + \alpha_2 {\mathbf x}_2</mrow>
           <mrow>{\mathbf y}_2 &amp; = \beta_1  {\mathbf x}_1 + \beta_2 {\mathbf x}_2</mrow>
         </md>,
         where <m>\alpha_1</m>, <m>\alpha_2</m>, <m>\beta_1</m>,
         and <m>\beta_2</m> are integers.
         The matrix corresponding to this transformation is
-        <me>
+        <me permid="qZE">
           U
           =
           \begin{pmatrix}
@@ -1036,7 +1036,7 @@
         If we wish to give <m>{\mathbf x}_1</m> and <m>{\mathbf x}_2</m> in terms of
         <m>{\mathbf y}_1</m> and <m>{\mathbf y}_2</m>,
         we need only calculate <m>U^{-1}</m>; that is,
-        <me>
+        <me permid="XgN">
           U^{-1}
           \begin{pmatrix}
           {\mathbf y}_1 \\ {\mathbf y}_2
@@ -1050,14 +1050,14 @@
         <m>U^{-1}</m> must also have integer entries;
         hence the determinants of both <m>U</m> and <m>U^{-1}</m> must be integers.
         Because <m>U U^{-1} = I</m>,
-        <me>
+        <me permid="DnW">
           \det(U U^{-1}) =\det(U) \det( U^{-1}) = 1;
         </me>
         consequently, <m>\det(U) = \pm 1</m>.
         A matrix with determinant <m>\pm 1</m> and integer entries is called <term>unimodular</term>.
             <idx><h>Matrix</h><h>unimodular</h></idx>
         For example, the matrix
-        <me>
+        <me permid="jvf">
           \begin{pmatrix}
           3 &amp; 1 \\
           5 &amp; 2
@@ -1067,10 +1067,10 @@
         It should be clear that there is a minimum length for vectors in a lattice.
       </p>
 
-      <figure xml:id="figure-lattice">
+      <figure xml:id="figure-lattice" permid="jQE">
         <caption>A lattice in  <m>\mathbb R^2</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/11/2010 -->
-        <image xml:id="matrix-lattice-r2">
+        <image xml:id="matrix-lattice-r2" permid="OwV">
 
             <latex-image>
                 <xi:include href="tikz/matrix-lattice-r2.tex" parse="text"/>
@@ -1079,7 +1079,7 @@
 
       </figure>
 
-      <p>
+      <p permid="mLk">
         We can classify lattices by studying their symmetry groups.
         The symmetry group of a lattice is the subgroup of <m>E(2)</m> that maps the lattice to itself.
         We consider two lattices in
@@ -1093,7 +1093,7 @@
         The natural question that now arises is how many space groups exist.
       </p>
 
-      <p>
+      <p permid="SSt">
         A space group is composed of two parts:
         a <term>translation subgroup</term><idx><h>Subgroup</h><h>translation</h></idx> and a <term>point</term>.
             <idx><h>Group</h><h>point</h></idx>
@@ -1107,22 +1107,22 @@
         (see [5] or [6]).
       </p>
 
-      <theorem>
+      <theorem permid="VFI">
         <statement>
-          <p>
+          <p permid="ngJ">
             Every translation group in
             <m>{\mathbb R}^2</m> is isomorphic to <m>{\mathbb Z} \times {\mathbb Z}</m>.
           </p>
         </statement>
       </theorem>
 
-      <p>
+      <p permid="yZC">
         The point group of <m>G</m> is <m>G_0 = \{A : (A,b) \in G \text{ for some } b \}</m>.
         In particular, <m>G_0</m> must be a subgroup of <m>O(2)</m>.
         Suppose that <m>{\mathbf x}</m> is a vector in a lattice <m>L</m> with space group <m>G</m>,
         translation group <m>H</m>, and point group <m>G_0</m>.
         For any element <m>(A, {\mathbf y})</m> in <m>G</m>,
-        <md>
+        <md permid="vJx">
           <mrow>(A, {\mathbf y}) (I, {\mathbf x}) (A, {\mathbf y})^{-1} &amp; = (A,A {\mathbf x} + {\mathbf y}) (A^{-1},-A^{-1} {\mathbf y})</mrow>
           <mrow>&amp; = (A A^{-1},-A A^{-1} {\mathbf y} + A {\mathbf x} + {\mathbf y})</mrow>
           <mrow>&amp; = (I, A {\mathbf x});</mrow>
@@ -1136,16 +1136,16 @@
         The proof of the following theorem can be found in [2], [5], or [6].
       </p>
 
-      <theorem>
+      <theorem permid="BMR">
         <statement>
-          <p>
+          <p permid="TnS">
             The point group in the wallpaper groups is isomorphic to <m>{\mathbb Z}_n</m> or <m>D_n</m>,
             where <m>n = 1, 2, 3, 4, 6</m>.
           </p>
         </statement>
       </theorem>
 
-      <p>
+      <p permid="fgL">
         To answer the question of how the point groups and the translation groups can be combined,
         we must look at the different types of lattices.
         Lattices can be classified by the structure of a single lattice cell.
@@ -1157,10 +1157,10 @@
         glide reflections, both, or none.
       </p>
 
-      <figure xml:id="figure-lattice-types">
+      <figure xml:id="figure-lattice-types" permid="PXN">
         <caption>Types of lattices in  <m>\mathbb R^2</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
-        <image xml:id="matrix-lattices-r2">
+        <image xml:id="matrix-lattices-r2" permid="uEe">
 
             <latex-image>
                 <xi:include href="tikz/matrix-lattices-r2.tex" parse="text"/>
@@ -1169,9 +1169,9 @@
 
       </figure>
 
-      <table xml:id="table-wallpaper">
+      <table xml:id="table-wallpaper" permid="TgO">
         <caption>The 17 wallpaper groups</caption>
-        <tabular halign="center" top="medium">
+        <tabular halign="center" top="medium" permid="znX">
           <row>
             <cell>Notation and</cell>
             <cell/>
@@ -1278,18 +1278,18 @@
 
       </table>
 
-      <theorem>
+      <theorem permid="hUa">
         <statement>
-          <p>
+          <p permid="zvb">
             There are exactly 17 wallpaper groups.
           </p>
         </statement>
       </theorem>
 
-      <figure xml:id="figure-p4m">
+      <figure xml:id="figure-p4m" permid="weW">
         <caption>The wallpaper groups p4m and  p4g</caption>
             <!-- Replaced figure with tikz figure - TWJ 6/14/2010 -->
-        <image xml:id="matrix-p4m-p4g">
+        <image xml:id="matrix-p4m-p4g" permid="aLn">
 
             <latex-image>
                 <xi:include href="tikz/matrix-p4m-p4g.tex" parse="text"/>
@@ -1298,7 +1298,7 @@
 
       </figure>
 
-      <p>
+      <p permid="LnU">
         The 17 wallpaper groups are listed in <xref ref="table-wallpaper"/>.
         The groups p3m1 and p31m can be distinguished by whether or not all of their threefold centers lie on the reflection axes:
         those of p3m1 must, whereas those of p31m may not.
@@ -1307,18 +1307,18 @@
         including [5], [6], [10], and [11].
       </p>
 
-      <paragraphs>
+      <paragraphs permid="zXE">
         <title>Sage</title>
-        <p>
+        <p permid="rvd">
           We have not yet included any Sage material related to this chapter.
         </p>
       </paragraphs>
 
     </subsection>
 
-    <subsection xml:id="matrix-subsection-historical-note">
+    <subsection xml:id="matrix-subsection-historical-note" permid="HCd">
       <title>Historical Note</title>
-      <p>
+      <p permid="cmf">
         Symmetry groups have intrigued mathematicians for a long time.
         Leonardo da Vinci was probably the first person to know all of the point groups.
         At the International Congress of Mathematicians in 1900, David Hilbert
@@ -1341,20 +1341,20 @@
     <!-- Exercises with Solutions  -->
     <!-- File: matrix.xml  -->
     <!-- Title: Matrix Groups and Symmetry -->
-  <exercises xml:id="exercises-matrix" filenamebase="matrix">
+  <exercises xml:id="exercises-matrix" filenamebase="matrix" permid="nJm">
     <title>Exercises</title>
-    <exercise number="1">
+    <exercise number="1" permid="Obj">
       <statement>
-        <p>
+        <p permid="tFP">
           Prove the identity
-          <me>
+          <me permid="bQG">
             \langle {\mathbf x}, {\mathbf y} \rangle = \frac{1}{2} \left[ \|{\mathbf x} + {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2 \right]
           </me>.
         </p>
       </statement>
-      <hint>
-        <p>
-          <md>
+      <hint permid="Kbk">
+        <p permid="omc">
+          <md permid="HXP">
             <mrow>\frac{1}{2} \left[ \|{\mathbf x} + {\mathbf y}\|^2 + \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2 \right] &amp; = \frac{1}{2} \left[ \langle x + y, x + y \rangle - \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2 \right]</mrow>
             <mrow>&amp; = \frac{1}{2} \left[ \| {\mathbf x}\|^2 + 2 \langle x, y \rangle + \| {\mathbf y}\|^2 - \|{\mathbf x}\|^2 - \| {\mathbf y}\|^2 \right]</mrow>
             <mrow>&amp; = \langle {\mathbf x}, {\mathbf y} \rangle</mrow>
@@ -1363,24 +1363,24 @@
       </hint>
     </exercise>
 
-    <exercise number="2">
+    <exercise number="2" permid="uis">
       <statement>
-        <p>
+        <p permid="ZMY">
           Show that <m>O(n)</m> is a group.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="3">
+    <exercise number="3" permid="apB">
       <statement>
-        <p>
+        <p permid="FUh">
           Prove that the following matrices are orthogonal.
           Are any of these matrices in <m>SO(n)</m>?
 
-          <ol cols="2">
-            <li>
-              <p>
-                <me>
+          <ol cols="2" permid="Gbl">
+            <li permid="EVS">
+              <p permid="eiw">
+                <me permid="Umh">
                   \begin{pmatrix}
                   1/\sqrt{2} &amp; -1/\sqrt{2} \\
                   1/\sqrt{2} &amp; 1/\sqrt{2}
@@ -1389,9 +1389,9 @@
               </p>
             </li>
 
-            <li>
-              <p>
-                <me>
+            <li permid="ldb">
+              <p permid="KpF">
+                <me permid="Atq">
                   \begin{pmatrix}
                   1 / \sqrt{5} &amp; 2 / \sqrt{5} \\
                   - 2 /\sqrt{5} &amp; 1/ \sqrt{5}
@@ -1400,9 +1400,9 @@
               </p>
             </li>
 
-            <li>
-              <p>
-                <me>
+            <li permid="Rkk">
+              <p permid="qwO">
+                <me permid="gAz">
                   \begin{pmatrix}
                   4/ \sqrt{5} &amp; 0 &amp; 3 / \sqrt{5} \\
                   -3 / \sqrt{5} &amp; 0 &amp; 4 / \sqrt{5} \\
@@ -1412,9 +1412,9 @@
               </p>
             </li>
 
-            <li>
-              <p>
-                <me>
+            <li permid="xrt">
+              <p permid="WDX">
+                <me permid="MHI">
                   \begin{pmatrix}
                   1/3 &amp; 2/3 &amp; - 2/3 \\
                   - 2/3 &amp; 2/3 &amp; 1/3 \\
@@ -1426,23 +1426,23 @@
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="CwL">
+        <p permid="Utl">
           (a) is in <m>SO(2)</m>; (c) is not in <m>O(3)</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="4">
+    <exercise number="4" permid="GwK">
       <statement>
-        <p>
+        <p permid="mbq">
           Determine the symmetry group of each of the figures in <xref ref="figure-exercise-symmetry-groups"/>.
         </p>
 
-        <figure xml:id="figure-exercise-symmetry-groups">
+        <figure xml:id="figure-exercise-symmetry-groups" permid="Siz">
           <caption/>
             <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
-          <image xml:id="exercise-symmetry-groups">
+          <image xml:id="exercise-symmetry-groups" permid="GSw">
 
             <latex-image>
                 <xi:include href="tikz/exercise-symmetry-groups.tex" parse="text"/>
@@ -1453,41 +1453,41 @@
       </statement>
     </exercise>
 
-    <exercise number="5">
+    <exercise number="5" permid="mDT">
       <statement>
-        <p>
+        <p permid="ypI">
           Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>,
           and <m>{\mathbf w}</m> be vectors in
           <m>{\mathbb R}^n</m> and <m>\alpha \in {\mathbb R}</m>.
           Prove each of the following properties of inner products.
 
-          <ol>
-            <li>
-              <p>
+          <ol permid="miu">
+            <li permid="Cbm">
+              <p permid="bnQ">
                 <m>\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x} \rangle</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="iiv">
+              <p permid="HuZ">
                 <m>\langle {\mathbf x}, {\mathbf y} + {\mathbf w} \rangle = \langle {\mathbf x}, {\mathbf y} \rangle + \langle {\mathbf x}, {\mathbf w} \rangle</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="OpE">
+              <p permid="nCi">
                 <m>\langle \alpha {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf x}, \alpha {\mathbf y} \rangle = \alpha \langle {\mathbf x}, {\mathbf y} \rangle</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="uwN">
+              <p permid="TJr">
                 <m>\langle {\mathbf x}, {\mathbf x} \rangle \geq 0</m> with equality exactly when <m>{\mathbf x} = 0</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="aDW">
+              <p permid="zQA">
                 If <m>\langle {\mathbf x}, {\mathbf y} \rangle = 0</m> for all
                 <m>{\mathbf x}</m> in <m>{\mathbb R}^n</m>,
                 then <m>{\mathbf y} = 0</m>.
@@ -1496,18 +1496,18 @@
           </ol>
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="uSm">
+        <p permid="AAu">
           (a) <m>\langle {\mathbf x}, {\mathbf y} \rangle = \langle {\mathbf y}, {\mathbf x} \rangle</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="6" xml:id="exercise-matrix-en-group">
+    <exercise number="6" xml:id="exercise-matrix-en-group" permid="SLc">
       <statement>
-        <p>
+        <p permid="ewR">
           Verify that
-          <me>
+          <me permid="sOR">
             E(n) = \{(A, {\mathbf x}) : A \in O(n) \text{ and } {\mathbf x} \in {\mathbb R}^n \}
           </me>
           is a group.
@@ -1517,17 +1517,17 @@
 
     <todo>Expand this solution.</todo>
 
-    <exercise number="7">
+    <exercise number="7" permid="ySl">
       <statement>
-        <p>
+        <p permid="KEa">
           Prove that <m>\{ (2,1), (1,1) \}</m> and
           <m>\{ ( 12, 5), ( 7, 3) \}</m> are bases for the same lattice.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="nnN">
+        <p permid="gHD">
           Use the unimodular matrix
-          <me>
+          <me permid="Fdj">
             \begin{pmatrix}
             5 &amp; 2 \\
             2 &amp; 1
@@ -1537,9 +1537,9 @@
       </hint>
     </exercise>
 
-    <exercise number="8">
+    <exercise number="8" permid="eZu">
       <statement>
-        <p>
+        <p permid="qLj">
           Let <m>G</m> be a subgroup of <m>E(2)</m> and suppose that <m>T</m> is the translation subgroup of <m>G</m>.
           Prove that the point group of <m>G</m> is isomorphic to <m>G/T</m>.
         </p>
@@ -1548,9 +1548,9 @@
 
     <todo>Expand this solution.</todo>
 
-    <exercise number="9">
+    <exercise number="9" permid="LgD">
       <statement>
-        <p>
+        <p permid="WSs">
           Let <m>A \in SL_2({\mathbb R})</m> and suppose that the vectors <m>{\mathbf x}</m> and
           <m>{\mathbf y}</m> form two sides of a parallelogram in <m>{\mathbb R}^2</m>.
           Prove that the area of this parallelogram is the same as the area of the parallelogram with sides
@@ -1561,14 +1561,14 @@
 
     <todo>Expand this solution.</todo>
 
-    <exercise number="10">
+    <exercise number="10" permid="rnM">
       <statement>
-        <p>
+        <p permid="CZB">
           Prove that <m>SO(n)</m> is a normal subgroup of <m>O(n)</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="LQx">
+        <p permid="MOM">
           Show that the kernel of the map <m>\det : O(n) \rightarrow {\mathbb R}^*</m> is <m>SO(n)</m>.
         </p>
       </hint>
@@ -1576,17 +1576,17 @@
 
     <todo>Expand this solution.</todo>
 
-    <exercise number="11">
+    <exercise number="11" permid="XuV">
       <statement>
-        <p>
+        <p permid="jgK">
           Show that any isometry <m>f</m> in <m>{\mathbb R}^n</m> is a one-to-one map.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="12">
+    <exercise number="12" permid="DCe">
       <statement>
-        <p>
+        <p permid="PnT">
           Prove or disprove:
           an element in <m>E(2)</m> of the form <m>(A, {\mathbf x})</m>,
           where <m>{\mathbf x} \neq 0</m>, has infinite order.
@@ -1596,14 +1596,14 @@
 
     <todo>Expand this solution. Complete the PMI part.</todo>
 
-    <exercise number="13">
+    <exercise number="13" permid="jJn">
       <statement>
-        <p>
+        <p permid="vvc">
           Prove or disprove: There exists an infinite abelian subgroup of <m>O(n)</m>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="kth">
+        <p permid="sVV">
           True.
         </p>
       </hint>
@@ -1611,9 +1611,9 @@
 
     <todo>Expand this solution. Find the example.</todo>
 
-    <exercise number="14">
+    <exercise number="14" permid="PQw">
       <statement>
-        <p>
+        <p permid="bCl">
           Let <m>{\mathbf x} = (x_1, x_2)</m> be a point on the unit circle in <m>{\mathbb R}^2</m>;
           that is, <m>x_1^2 + x_2^2 = 1</m>.
           If <m>A \in O(2)</m>, show that
@@ -1622,24 +1622,24 @@
       </statement>
     </exercise>
 
-    <exercise number="15">
+    <exercise number="15" permid="vXF">
       <statement>
-        <p>
+        <p permid="HJu">
           Let <m>G</m> be a group with a subgroup <m>H</m>
           (not necessarily normal)
           and a normal subgroup <m>N</m>.
           Then <m>G</m> is a <term>semidirect product</term>
           of <m>N</m> by <m>H</m> if
 
-          <ul>
-            <li>
-              <p>
+          <ul permid="SpD">
+            <li permid="jnO">
+              <p permid="kHC">
                 <m>H \cap N = \{ \identity \}</m>;
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="PuX">
+              <p permid="QOL">
                 <m>HN=G</m>.
               </p>
             </li>
@@ -1647,22 +1647,22 @@
 
           Show that each of the following is true.
 
-          <ol>
-            <li>
-              <p>
+          <ol permid="ywM">
+            <li permid="LuY">
+              <p permid="wVU">
                 <m>S_3</m> is the semidirect product of <m>A_3</m> by <m>H = \{(1), (12) \}</m>.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="rCh">
+              <p permid="ddd">
                 The quaternion group, <m>Q_8</m>,
                 cannot be written as a semidirect product.
               </p>
             </li>
 
-            <li>
-              <p>
+            <li permid="XJq">
+              <p permid="Jkm">
                 <m>E(2)</m> is the semidirect product of <m>O(2)</m> by <m>H</m>,
                 where <m>H</m> consists of all translations in <m>{\mathbb R}^2</m>.
               </p>
@@ -1674,31 +1674,31 @@
 
     <todo>Expand solution.</todo>
 
-    <exercise number="16">
+    <exercise number="16" permid="ceO">
       <statement>
-        <p>
+        <p permid="nQD">
           Determine which of the 17 wallpaper groups preserves the symmetry of the pattern in <xref ref="figure-wallpaper"/>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="17">
+    <exercise number="17" permid="IlX">
       <statement>
-        <p>
+        <p permid="TXM">
           Determine which of the 17 wallpaper groups preserves the symmetry of the pattern in <xref ref="figure-exercise-wallpaper"/>.
         </p>
       </statement>
-      <hint>
-        <p>
+      <hint permid="pda">
+        <p permid="Zde">
           <m>p6m</m>
         </p>
       </hint>
     </exercise>
 
-    <figure xml:id="figure-exercise-wallpaper">
+    <figure xml:id="figure-exercise-wallpaper" permid="Ito">
       <caption/>
             <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
-      <image xml:id="exercise-wallpaper">
+      <image xml:id="exercise-wallpaper" permid="mZF">
 
             <latex-image>
                 <xi:include href="tikz/exercise-wallpaper.tex" parse="text"/>
@@ -1707,9 +1707,9 @@
 
     </figure>
 
-    <exercise number="18">
+    <exercise number="18" permid="otg">
       <statement>
-        <p>
+        <p permid="AeV">
           Find the rotation group of a dodecahedron.
         </p>
       </statement>
@@ -1717,9 +1717,9 @@
 
     <todo>Elaborate on this solution.</todo>
 
-    <exercise number="19">
+    <exercise number="19" permid="UAp">
       <statement>
-        <p>
+        <p permid="gme">
           For each of the 17 wallpaper groups,
           draw a wallpaper pattern having that group as a symmetry group.
         </p>
@@ -1866,21 +1866,20 @@
 
   </reading-questions>
 
-  <section xml:id="matrix-sage">
+  <section xml:id="matrix-sage" permid="stf">
     <title>Sage</title>
-    <p>
+    <p permid="oAx">
       There is no Sage material for this chapter.
     </p>
   </section>
 
-  <exercises xml:id="matrix-sage-exercises">
+  <exercises xml:id="matrix-sage-exercises" permid="TQv">
     <title>Sage Exercises</title>
-    <introduction>
-      <p>
+    <introduction permid="AHy">
+      <p permid="NyG">
         There are no Sage exercises for this chapter.
       </p>
     </introduction>
 
   </exercises>
 </chapter>
-
