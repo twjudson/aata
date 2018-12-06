@@ -1828,7 +1828,7 @@
         We first define the elements of the set <m>X</m>.
       </p>
 
-            <sage>
+            <sage permid="QOU">
                 <input>
         X = (24).divisors()
         X
@@ -1847,7 +1847,7 @@
         This is the set of relations.
       </p>
 
-            <sage>
+            <sage permid="wWd">
                 <input>
         R = [(a,b) for a in X for b in X if a.divides(b)]; R
         </input>
@@ -1866,7 +1866,7 @@
         <mdash/> a minimal set of comparisons which the assumption of transitivity would expand into the set of all the relations.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="bnZ">
                 <input>
         D = Poset([X, R])
         D.plot()
@@ -1889,7 +1889,7 @@
         but a lambda function is quickest when the function is simple.
       </p>
 
-            <sage>
+            <sage permid="ddm">
                 <input>
         divisible = lambda x, y: x.divides(y)
         L = Poset([X, divisible])
@@ -1899,7 +1899,7 @@
         True
         </output>
             </sage>
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="Hvi">
                 <input>
         L.plot()
         </input>
@@ -1919,7 +1919,7 @@
         though there might be other, equally plausible, alternatives.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="nCr">
                 <input>
         Q = Posets.PentagonPoset()
         Q.plot()
@@ -1933,7 +1933,7 @@
         This is the classic example where the elements are subsets of a set with <m>n</m> elements and the relation is <q>subset of.</q>
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="TJA">
                 <input>
         S = Posets.BooleanLattice(4)
         S.plot()
@@ -1951,7 +1951,7 @@
         the more <q>vertically stretched</q> the plot will be.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="zQJ">
                 <input>
         T = Posets.RandomPoset(20,0.05)
         T.plot()
@@ -1968,7 +1968,7 @@
         which is the fundamental structure of a poset.
       </p>
 
-            <sage>
+            <sage permid="Jkv">
                 <input>
         D.is_lequal(4, 8)
         </input>
@@ -1976,7 +1976,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="prE">
                 <input>
         D.is_lequal(4, 4)
         </input>
@@ -1984,7 +1984,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="VyN">
                 <input>
         D.is_less_than(4, 8)
         </input>
@@ -1992,7 +1992,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="BFW">
                 <input>
         D.is_less_than(4, 4)
         </input>
@@ -2000,7 +2000,7 @@
         False
         </output>
             </sage>
-            <sage>
+            <sage permid="hNf">
                 <input>
         D.is_lequal(6, 8)
         </input>
@@ -2008,7 +2008,7 @@
         False
         </output>
             </sage>
-            <sage>
+            <sage permid="NUo">
                 <input>
         D.is_lequal(8, 6)
         </input>
@@ -2025,7 +2025,7 @@
         (or equal).
       </p>
 
-            <sage>
+            <sage permid="ubx">
                 <input>
         D.is_gequal(8, 4)
         </input>
@@ -2033,7 +2033,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="aiG">
                 <input>
         D.is_greater_than(4, 8)
         </input>
@@ -2048,7 +2048,7 @@
         but copied here to be repeatable.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="fXS">
                 <input>
         X = range(20)
         C = [[18, 7],  [9, 11], [9, 10], [11, 8], [6, 10],
@@ -2059,7 +2059,7 @@
         P.plot()
         </input>
             </sage>
-            <sage>
+            <sage permid="GpP">
                 <input>
         P.minimal_elements()
         </input>
@@ -2067,7 +2067,7 @@
         [18, 9, 6, 0]
         </output>
             </sage>
-            <sage>
+            <sage permid="mwY">
                 <input>
         P.maximal_elements()
         </input>
@@ -2083,7 +2083,7 @@
         Each level set is obtained by removing all of the previous level sets and then taking the minimal elements of the result.
       </p>
 
-            <sage>
+            <sage permid="SEh">
                 <input>
         P.level_sets()
         </input>
@@ -2109,7 +2109,7 @@
         <q>topological sort.</q>
       </p>
 
-            <sage>
+            <sage permid="yLq">
                 <input>
         linear = P.linear_extension(); linear
         </input>
@@ -2125,7 +2125,7 @@
         of the random poset <c>P</c>by inducing the subposet on a union of some of the level sets.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="Mfb">
                 <input>
         level = P.level_sets()
         bottomhalf = sum([level[i] for i in range(5)], [])
@@ -2139,7 +2139,7 @@
         but reverses any comparisons.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="smk">
                 <input>
         Pdual = P.dual()
         Pdual.plot()
@@ -2151,7 +2151,7 @@
         <q>is a multiple of.</q>
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="Ytt">
                 <input>
         Ddual = D.dual()
         Ddual.plot()
@@ -2175,14 +2175,14 @@
         such as the prototypical <c>BooleanLattice</c>.
       </p>
 
-            <sage>
+            <sage permid="eSz">
                 <input>
         P = Posets.AntichainPoset(8)
         P.is_lattice()
         </input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="KZI">
                 <input>
         LatticePoset(P)
         </input>
@@ -2201,7 +2201,7 @@
         the set of all integer compositions of a fixed integer <m>n</m> is a poset that is also a lattice.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="EAC">
                 <input>
         CP = Posets.IntegerCompositions(5)
         C = LatticePoset(CP)
@@ -2216,7 +2216,7 @@
             <!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
             <!-- RAB 2015/05/20, 6.7 -->
             <!-- Should try to fix this coercion -->
-            <sage>
+            <sage permid="rgR">
                 <input>
         par = C.an_element().parent()
         a = par([1, 1, 1, 2])
@@ -2227,7 +2227,7 @@
         ([1, 1, 1, 2], [2, 1, 1, 1])
         </output>
             </sage>
-            <sage>
+            <sage permid="Xoa">
                 <input>
         C.meet(a, b)
         </input>
@@ -2235,7 +2235,7 @@
         [2, 1, 2]
         </output>
             </sage>
-            <sage>
+            <sage permid="Dvj">
                 <input>
         c = par([1, 4])
         d = par([2, 3])
@@ -2245,7 +2245,7 @@
         ([1, 4], [2, 3])
         </output>
             </sage>
-            <sage>
+            <sage permid="jCs">
                 <input>
         C.join(c, d)
         </input>
@@ -2264,7 +2264,7 @@
         An example of the former is the <c>.is_distributive()</c>method.
       </p>
 
-            <sage>
+            <sage permid="PJB">
                 <input>
         C.is_distributive()
         </input>
@@ -2282,7 +2282,7 @@
         but for a lattice it is guaranteed to return exactly one element.
       </p>
 
-            <sage>
+            <sage permid="vQK">
                 <input>
         C.top()
         </input>
@@ -2290,7 +2290,7 @@
         [1, 1, 1, 1, 1]
         </output>
             </sage>
-            <sage>
+            <sage permid="bXT">
                 <input>
         C.bottom()
         </input>
@@ -2315,7 +2315,7 @@
         but they are really just fancy functions.)
       </p>
 
-            <sage>
+            <sage permid="Ifc">
                 <input>
         comp = C.complements()
         comp[par([1, 1, 1, 2])]
@@ -2334,7 +2334,7 @@
         so you may get different output each time you inspect the dictionary.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="kHL">
                 <input>
         comp
         </input>
@@ -2357,13 +2357,13 @@
          [5]: [[1, 1, 1, 1, 1]]}
         </output>
             </sage>
-            <sage>
+            <sage permid="oml">
                 <input>
         [len(e[1]) for e in comp.items()]
         </input>
                 <output>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</output>
             </sage>
-            <sage>
+            <sage permid="Utu">
                 <input>
         C.is_complemented()
         </input>

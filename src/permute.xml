@@ -1715,7 +1715,7 @@
         Remember that Sage and your text differ on how to interpret the order of composing two permutations in a product.
       </p>
 
-            <sage>
+            <sage permid="pNd">
                 <input>
             G = SymmetricGroup(5)
             sigma = G("(1,3)(2,5,4)")
@@ -1723,7 +1723,7 @@
             </input>
                 <output>(2,4,5)</output>
             </sage>
-            <sage>
+            <sage permid="VUm">
                 <input>
             rho = G("(2,4)(1,5)")
             rho^3
@@ -1736,15 +1736,15 @@
         then now would be an excellent time to review the Sage discussion about the order of permutation composition in the subsection <xref ref="subsection-groups-of-symmetries" text="title"/>.
       </p>
 
-            <sage>
+            <sage permid="Cbv">
                 <input>sigma*rho</input>
                 <output>(1,3,5,2)</output>
             </sage>
-            <sage>
+            <sage permid="iiE">
                 <input>rho*sigma</input>
                 <output>(1,4,5,3)</output>
             </sage>
-            <sage>
+            <sage permid="OpN">
                 <input>rho^-1*sigma*rho</input>
                 <output>(1,2,4)(3,5)</output>
             </sage>
@@ -1755,40 +1755,40 @@
         but they are not quite as useful in everday use.
       </p>
 
-            <sage>
+            <sage permid="uwW">
                 <input>
             sigma1 = G("(1,3)(2,5,4)")
             sigma1
             </input>
                 <output>(1,3)(2,5,4)</output>
             </sage>
-            <sage>
+            <sage permid="aEf">
                 <input>
             sigma2 = G([(1,3),(2,5,4)])
             sigma2
             </input>
                 <output>(1,3)(2,5,4)</output>
             </sage>
-            <sage>
+            <sage permid="GLo">
                 <input>
             sigma3 = G([3,5,1,2,4])
             sigma3
             </input>
                 <output>(1,3)(2,5,4)</output>
             </sage>
-            <sage>
+            <sage permid="mSx">
                 <input>sigma1 == sigma2</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="SZG">
                 <input>sigma2 == sigma3</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="zgP">
                 <input>sigma2.cycle_tuples()</input>
                 <output>[(1, 3), (2, 5, 4)]</output>
             </sage>
-            <sage>
+            <sage permid="fnY">
                 <input>[sigma3(x) for x in G.domain()]</input>
                 <output>[3, 5, 1, 2, 4]</output>
             </sage>
@@ -1818,7 +1818,7 @@
         but it is an error to try to shoe-horn an element into a too-small symmetric group.
       </p>
 
-            <sage>
+            <sage permid="Lvh">
                 <input>
             H = SymmetricGroup(4)
             sigma = H("(1,2,3,4)")
@@ -1829,23 +1829,23 @@
             </input>
                 <output>(1,3)(2,4,5,6)</output>
             </sage>
-            <sage>
+            <sage permid="rCq">
                 <input>sigma.parent()</input>
                 <output>Symmetric group of order 4! as a permutation group</output>
             </sage>
-            <sage>
+            <sage permid="XJz">
                 <input>tau.parent()</input>
                 <output>Symmetric group of order 6! as a permutation group</output>
             </sage>
-            <sage>
+            <sage permid="DQI">
                 <input>rho.parent()</input>
                 <output>Symmetric group of order 6! as a permutation group</output>
             </sage>
-            <sage>
+            <sage permid="jXR">
                 <input>tau.parent() == rho.parent()</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="Qfa">
                 <input>
             sigmaG = G(sigma)
             sigmaG.parent()
@@ -1857,7 +1857,7 @@
         It is an error to try to coerce a permutation with too many symbols into a permutation group employing too few symbols.
       </p>
 
-            <sage>
+            <sage permid="wmj">
                 <input>tauH = H(tau)</input>
                 <output>
             Traceback (most recent call last):
@@ -1912,7 +1912,7 @@
         As always, place a question-mark after a method and hit the tab-key to get online documentation of a method.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="dyL">
                 <input>groups.permutation.</input>
             </sage>
     </subsection>
@@ -1926,7 +1926,7 @@
         <c>rotate</c>and <c>flip</c>are automatically elements of <c>G</c>because of the way we procured them.
       </p>
 
-            <sage>
+            <sage permid="cts">
                 <input>
             D = DihedralGroup(5)
             elements = D.list(); elements
@@ -1936,7 +1936,7 @@
              (1,3)(4,5), (1,5,4,3,2), (1,4,2,5,3), (1,2)(3,5)]
             </output>
             </sage>
-            <sage>
+            <sage permid="IAB">
                 <input>
             rotate = elements[2]
             flip = elements[3]
@@ -1950,7 +1950,7 @@
         But there is an easier way.
       </p>
 
-            <sage>
+            <sage permid="oHK">
                 <input>
             D = DihedralGroup(5)
             D.is_abelian()
@@ -1984,33 +1984,33 @@
         Here are some selected examples of various methods available.
       </p>
 
-            <sage>
+            <sage permid="UOT">
                 <input>
             A4 = AlternatingGroup(4)
             A4.order()
             </input>
                 <output>12</output>
             </sage>
-            <sage>
+            <sage permid="AWc">
                 <input>A4.is_finite()</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="hdl">
                 <input>A4.is_abelian()</input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="Nku">
                 <input>A4.is_cyclic()</input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="trD">
                 <input>
             sigma = A4("(1,2,4)")
             sigma^-1
             </input>
                 <output>(1,4,2)</output>
             </sage>
-            <sage>
+            <sage permid="ZyM">
                 <input>sigma.order()</input>
                 <output>3</output>
             </sage>
@@ -2020,7 +2020,7 @@
         It will return <c>1</c>if a permutation is even and <c>-1</c>if a permutation is odd.
       </p>
 
-            <sage>
+            <sage permid="FFV">
                 <input>
             G = SymmetricGroup(3)
             sigma = G("(1,2)")
@@ -2030,7 +2030,7 @@
             </input>
                 <output>-1</output>
             </sage>
-            <sage>
+            <sage permid="lNe">
                 <input>rho.sign()</input>
                 <output>1</output>
             </sage>
@@ -2059,7 +2059,7 @@
         But do not forget to put it in a list anyway.
       </p>
 
-            <sage>
+            <sage permid="RUn">
                 <input>
             A4 = AlternatingGroup(4)
             sigma = A4("(1,2,4)")
@@ -2071,23 +2071,23 @@
             generated by [(1,2,4)]
             </output>
             </sage>
-            <sage>
+            <sage permid="ybw">
                 <input>sg.order()</input>
                 <output>3</output>
             </sage>
-            <sage>
+            <sage permid="eiF">
                 <input>sg.list()</input>
                 <output>[(), (1,2,4), (1,4,2)]</output>
             </sage>
-            <sage>
+            <sage permid="KpO">
                 <input>sg.is_abelian()</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="qwX">
                 <input>sg.is_cyclic()</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="WEg">
                 <input>sg.is_subgroup(A4)</input>
                 <output>True</output>
             </sage>
@@ -2101,7 +2101,7 @@
         we do not have to view Sage's Cayley table as a diagonal reflection of the table in the example.
       </p>
 
-            <sage>
+            <sage permid="CLp">
                 <input>
             G = SymmetricGroup(5)
             sigma = G("(4,5)")
@@ -2111,7 +2111,7 @@
             </input>
                 <output>[(), (1,3), (4,5), (1,3)(4,5)]</output>
             </sage>
-            <sage>
+            <sage permid="iSy">
                 <input>
             text_names = ['id', 'sigma', 'tau', 'mu']
             H.cayley_table(names=text_names)
@@ -2152,7 +2152,7 @@
         around each axis, when viewed from above, the front, and the right.
       </p>
 
-            <sage>
+            <sage permid="OZH">
                 <input>
             G = SymmetricGroup(8)
             above = G("(1,2,3,4)(5,6,7,8)")
@@ -2163,7 +2163,7 @@
             </input>
                 <output>24</output>
             </sage>
-            <sage>
+            <sage permid="vgQ">
                 <input>cube.list()</input>
                 <output>
             [(), (1,2,3,4)(5,6,7,8), (1,2,6,5)(3,7,8,4),
@@ -2386,7 +2386,7 @@
           the list of elements of <c>N</c>as part of your submitted worksheet.
         </p>
 
-            <sage type="display">
+            <sage type="display" permid="JFU">
                 <input>
             N = G.subgroup([b,d])
             N.list()

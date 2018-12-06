@@ -2826,7 +2826,7 @@
         You can then use a question mark at the end of a method name to learn about the various parameters.
       </p>
 
-            <sage doctest="not tested">
+            <sage doctest="not tested" permid="JyQ">
                 <input>codes.</input>
             </sage>
 
@@ -2840,7 +2840,7 @@
         A second parameter is <c>r</c>and we can see from the formulas in the documenation that setting <c>r=3</c>will give length <m>7</m>.
       </p>
 
-            <sage>
+            <sage permid="pFZ">
                 <input>H = codes.HammingCode(GF(2), 3); H</input>
                 <output>[7, 4] Hamming Code over GF(2)</output>
             </sage>
@@ -2853,7 +2853,7 @@
         First the dimension.
       </p>
 
-            <sage>
+            <sage permid="VNi">
                 <input>H.dimension()</input>
                 <output>4</output>
             </sage>
@@ -2862,7 +2862,7 @@
         The code is small enough that we can list all the codewords.
       </p>
 
-            <sage>
+            <sage permid="BUr">
                 <input>H.list()</input>
                 <output>
             [(0, 0, 0, 0, 0, 0, 0), (1, 0, 0, 0, 0, 1, 1), (0, 1, 0, 0, 1, 0, 1),
@@ -2880,7 +2880,7 @@
         so they are always single error-correcting.
       </p>
 
-            <sage>
+            <sage permid="ibA">
                 <input>H.minimum_distance()</input>
                 <output>3</output>
             </sage>
@@ -2893,7 +2893,7 @@
         so we perform much of the subsequent analysis of these matrices within Sage.
       </p>
 
-            <sage>
+            <sage permid="OiJ">
                 <input>C = H.parity_check_matrix(); C</input>
                 <output>
             [1 0 1 0 1 0 1]
@@ -2913,7 +2913,7 @@
         So here is another place where we need to mentally translate between a choice made in the text and a choice made by the Sage developers.
       </p>
 
-            <sage>
+            <sage permid="upS">
                 <input>G = H.generator_matrix(); G</input>
                 <output>
             [1 0 0 0 0 1 1]
@@ -2930,7 +2930,7 @@
         for reasons described above.
       </p>
 
-            <sage>
+            <sage permid="axb">
                 <input>C*G.transpose() == zero_matrix(3, 4)</input>
                 <output>True</output>
             </sage>
@@ -2944,7 +2944,7 @@
         and the Sage method is <c>.systematic_generator_matrix()</c>.
       </p>
 
-            <sage>
+            <sage permid="GEk">
                 <input>H.systematic_generator_matrix()</input>
                 <output>
             [1 0 0 0 0 1 1]
@@ -2962,7 +2962,7 @@
         Suppose we receive the length <m>7</m> binary vector <c>r</c>.
       </p>
 
-            <sage>
+            <sage permid="mLt">
                 <input>r = vector(GF(2), [1, 1, 1, 1, 0, 0, 1]); r</input>
                 <output>(1, 1, 1, 1, 0, 0, 1)</output>
             </sage>
@@ -2973,7 +2973,7 @@
         as the next computation does not yield the zero vector.
       </p>
 
-            <sage>
+            <sage permid="SSC">
                 <input>C*r</input>
                 <output>(1, 1, 0)</output>
             </sage>
@@ -2985,7 +2985,7 @@
         The default algorithm is syndrome decoding.
       </p>
 
-            <sage>
+            <sage permid="yZL">
                 <input>H.decode_to_code(r)</input>
                 <output>(1, 1, 0, 1, 0, 0, 1)</output>
             </sage>
@@ -3004,7 +3004,7 @@
         fifth and sixth locations.
       </p>
 
-            <sage>
+            <sage permid="fgU">
                 <input>
             message = vector(GF(2), [1, 1, 0, 1, 0, 0, 1])
             errors = vector(GF(2), [0, 0, 1, 0, 1, 1, 0])
@@ -3019,11 +3019,11 @@
         so we assume no errors at all, and decode incorrectly.
       </p>
 
-            <sage>
+            <sage permid="Lod">
                 <input>H.decode_to_code(received) == message</input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="rvm">
                 <input>H.decode_to_code(received) == received</input>
                 <output>True</output>
             </sage>

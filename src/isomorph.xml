@@ -1708,7 +1708,7 @@
         First, two isomorphic groups.
       </p>
 
-            <sage>
+            <sage permid="AAD">
                 <input>
     m = 12
     n = 7
@@ -1718,7 +1718,7 @@
     1
     </output>
             </sage>
-            <sage>
+            <sage permid="gHM">
                 <input>
     G = CyclicPermutationGroup(m)
     H = CyclicPermutationGroup(n)
@@ -1735,7 +1735,7 @@
         Now, two non-isomorphic groups.
       </p>
 
-            <sage>
+            <sage permid="MOV">
                 <input>
     m = 15
     n = 21
@@ -1745,7 +1745,7 @@
     3
     </output>
             </sage>
-            <sage>
+            <sage permid="sWe">
                 <input>
     G = CyclicPermutationGroup(m)
     H = CyclicPermutationGroup(n)
@@ -1775,7 +1775,7 @@
         (<c>database_gap</c>).
       </p>
 
-            <sage>
+            <sage permid="Zdn">
                 <input>
     m = 6
     n = 5
@@ -1812,7 +1812,7 @@
         and we can realize them all:
       </p>
 
-            <sage>
+            <sage permid="Fkw">
                 <input>
     [CyclicPermutationGroup(p) for p in [1, 2, 3, 5, 7, 11, 13]]
     </input>
@@ -1837,7 +1837,7 @@
         the two tests below are sufficient.
       </p>
 
-            <sage>
+            <sage permid="lrF">
                 <input>
     G = CyclicPermutationGroup(4)
     H = KleinFourGroup()
@@ -1850,7 +1850,7 @@
     False
     </output>
             </sage>
-            <sage>
+            <sage permid="RyO">
                 <input>
     H.is_isomorphic(K)
     </input>
@@ -1882,7 +1882,7 @@
         But let us do it anyway.
       </p>
 
-            <sage>
+            <sage permid="xFX">
                 <input>
     G = CyclicPermutationGroup(6)
     H = SymmetricGroup(3)
@@ -1902,7 +1902,7 @@
         is just <m>S_3</m>, the symmetric group on <m>3</m> symbols.
       </p>
 
-            <sage>
+            <sage permid="dNg">
                 <input>
     G = DihedralGroup(3)
     H = SymmetricGroup(3)
@@ -1951,7 +1951,7 @@
         so that the greatest common divisor computation performs correctly.
       </p>
 
-            <sage>
+            <sage permid="JUp">
                 <input>
     Z36 = Integers(36)
     U = [x for x in Z36 if gcd(ZZ(x), 36) == 1]
@@ -1970,7 +1970,7 @@
         relative to multiplication, so let us examine those next.
       </p>
 
-            <sage>
+            <sage permid="qby">
                 <input>
     [x.multiplicative_order() for x in U]
     </input>
@@ -1991,7 +1991,7 @@
         Notice that we choose the elements from the list <c>U</c>so that they are sure to be elements of <c>Z36</c>and behave properly when multiplied.
       </p>
 
-            <sage>
+            <sage permid="WiH">
                 <input>
     a = U[1]
     A = [a^i for i in srange(6)]
@@ -2001,7 +2001,7 @@
     [1, 5, 25, 17, 13, 29]
     </output>
             </sage>
-            <sage>
+            <sage permid="CpQ">
                 <input>
     b = U[11]
     B = [b^i for i in srange(2)]
@@ -2019,7 +2019,7 @@
         So this is a good start.
       </p>
 
-            <sage>
+            <sage permid="iwZ">
                 <input>[x for x in A if x in B]</input>
                 <output>[1]</output>
             </sage>
@@ -2030,7 +2030,7 @@
         but we illustrate the Sage commands that will check this in a non-abelian situation.
       </p>
 
-            <sage>
+            <sage permid="OEi">
                 <input>
     all([x*y == y*x for x in A for y in B])
     </input>
@@ -2045,7 +2045,7 @@
         and is required if we want Sage to do the check.
       </p>
 
-            <sage>
+            <sage permid="uLr">
                 <input>
     T = sorted([x*y for x in A for y in B])
     T
@@ -2054,7 +2054,7 @@
     [1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35]
     </output>
             </sage>
-            <sage>
+            <sage permid="aSA">
                 <input>
     T == U
     </input>
