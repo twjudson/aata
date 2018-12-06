@@ -1935,20 +1935,20 @@
         You can also recall the generator with the <c>.gen()</c>command.
       </p>
 
-            <sage>
+            <sage permid="LXK">
                 <input>
             G = 3*ZZ
             -12 in G
             </input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="seT">
                 <input>
             37 in G
             </input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="Ymc">
                 <input>
             G.gen()
             </input>
@@ -1964,21 +1964,21 @@
         Throughout, pay close attention to the use of parentheses and square brackets for when you experiment on your own.
       </p>
 
-            <sage>
+            <sage permid="Etl">
                 <input>
             G = AdditiveAbelianGroup([14])
             G.order()
             </input>
                 <output>14</output>
             </sage>
-            <sage>
+            <sage permid="kAu">
                 <input>G.list()</input>
                 <output>
             [(0), (1), (2), (3), (4), (5), (6), (7),
              (8), (9), (10), (11), (12), (13)]
             </output>
             </sage>
-            <sage>
+            <sage permid="QHD">
                 <input>
             a = G.gen(0)
             a
@@ -1994,25 +1994,25 @@
         Notice that we can perform repeated additions with the shortcut of taking integer multiples of an element.
       </p>
 
-            <sage>
+            <sage permid="wOM">
                 <input>
             a + a
             </input>
                 <output>(2)</output>
             </sage>
-            <sage>
+            <sage permid="cVV">
                 <input>
             a + a + a + a
             </input>
                 <output>(4)</output>
             </sage>
-            <sage>
+            <sage permid="Jde">
                 <input>
             4*a
             </input>
                 <output>(4)</output>
             </sage>
-            <sage>
+            <sage permid="pkn">
                 <input>
             37*a
             </input>
@@ -2031,7 +2031,7 @@
             <!-- This test evokes the warning, then next one tests fine, as it normally should -->
             <!-- Adjust sentence above once it goes away -->
             <!-- Used ... below to mark out a line number that doctesting complained about -->
-            <sage doctest="invisible">
+            <sage doctest="invisible" permid="TCj">
                 <input>
             G([2])
             </input>
@@ -2043,49 +2043,49 @@
             (2)
             </output>
             </sage>
-            <sage>
+            <sage permid="Vrw">
                 <input>
             b = G([2]); b
             </input>
                 <output>(2)</output>
             </sage>
-            <sage>
+            <sage permid="ByF">
                 <input>
             b + b
             </input>
                 <output>(4)</output>
             </sage>
-            <sage>
+            <sage permid="hFO">
                 <input>
             2*b == 4*a
             </input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="NMX">
                 <input>
             7*b
             </input>
                 <output>(0)</output>
             </sage>
-            <sage>
+            <sage permid="tUg">
                 <input>
             b.order()
             </input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="abp">
                 <input>
             c = a - 6*b; c
             </input>
                 <output>(3)</output>
             </sage>
-            <sage>
+            <sage permid="Giy">
                 <input>
             c + c + c + c
             </input>
                 <output>(12)</output>
             </sage>
-            <sage>
+            <sage permid="mpH">
                 <input>
             c.order()
             </input>
@@ -2099,27 +2099,27 @@
         (which should be renamed in Sage).
       </p>
 
-            <sage>
+            <sage permid="SwQ">
                 <input>H = G.submodule([b]); H</input>
                 <output>Additive abelian group isomorphic to Z/7</output>
             </sage>
-            <sage>
+            <sage permid="yDZ">
                 <input>H.list()</input>
                 <output>[(0), (2), (4), (6), (8), (10), (12)]</output>
             </sage>
-            <sage>
+            <sage permid="eLi">
                 <input>H.order()</input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="KSr">
                 <input>e = H.gen(0); e</input>
                 <output>(2)</output>
             </sage>
-            <sage>
+            <sage permid="qZA">
                 <input>3*e</input>
                 <output>(6)</output>
             </sage>
-            <sage>
+            <sage permid="XgJ">
                 <input>e.order()</input>
                 <output>7</output>
             </sage>
@@ -2129,31 +2129,31 @@
         We can test this by building a new subgroup and comparing the two subgroups.
       </p>
 
-            <sage>
+            <sage permid="DnS">
                 <input>f = 12*a; f</input>
                 <output>(12)</output>
             </sage>
-            <sage>
+            <sage permid="jvb">
                 <input>f.order()</input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="PCk">
                 <input>K = G.submodule([f]); K</input>
                 <output>Additive abelian group isomorphic to Z/7</output>
             </sage>
-            <sage>
+            <sage permid="vJt">
                 <input>K.order()</input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="bQC">
                 <input>K.list()</input>
                 <output>[(0), (2), (4), (6), (8), (10), (12)]</output>
             </sage>
-            <sage>
+            <sage permid="HXL">
                 <input>K.gen(0)</input>
                 <output>(2)</output>
             </sage>
-            <sage>
+            <sage permid="oeU">
                 <input>H == K</input>
                 <output>True</output>
             </sage>
@@ -2184,18 +2184,18 @@
         so we multiply elements, and repeated products can be written as powers.
       </p>
 
-            <sage>
+            <sage permid="Umd">
                 <input>
             G.&lt;a&gt; = AbelianGroup([14])
             G.order()
             </input>
                 <output>14</output>
             </sage>
-            <sage>
+            <sage permid="Atm">
                 <input>G.list()</input>
                 <output>(1, a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9, a^10, a^11, a^12, a^13)</output>
             </sage>
-            <sage>
+            <sage permid="gAv">
                 <input>a.order()</input>
                 <output>14</output>
             </sage>
@@ -2206,33 +2206,33 @@
         Now products, with repeated products written as exponentiation.
       </p>
 
-            <sage>
+            <sage permid="MHE">
                 <input>
             b = a^2
             b.order()
             </input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="sON">
                 <input>b*b*b</input>
                 <output>a^6</output>
             </sage>
-            <sage>
+            <sage permid="YVW">
                 <input>
             c = a^7
             c.order()
             </input>
                 <output>2</output>
             </sage>
-            <sage>
+            <sage permid="Fdf">
                 <input>c^2</input>
                 <output>1</output>
             </sage>
-            <sage>
+            <sage permid="lko">
                 <input>b*c</input>
                 <output>a^9</output>
             </sage>
-            <sage>
+            <sage permid="Rrx">
                 <input>b^37*c^42</input>
                 <output>a^4</output>
             </sage>
@@ -2244,14 +2244,14 @@
         Also, comparison of subgroups is not implemented.
       </p>
 
-            <sage>
+            <sage permid="xyG">
                 <input>
             H = G.subgroup([a^2])
             H.order()
             </input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="dFP">
                 <input>
             K = G.subgroup([a^12])
             K.order()
@@ -2259,7 +2259,7 @@
                 <output>7</output>
             </sage>
             <!-- Subgroup equality is buggy, L and H are the subgroup of order 7 -->
-            <sage type="hidden">
+            <sage type="hidden" permid="zJs">
                 <input>
                 L = G.subgroup([a^4])
                 H == L
@@ -2274,7 +2274,7 @@
         and check its order.
       </p>
 
-            <sage>
+            <sage permid="JMY">
                 <input>
             allsg = G.subgroups(); allsg
             </input>
@@ -2285,7 +2285,7 @@
              Trivial Abelian subgroup]
             </output>
             </sage>
-            <sage>
+            <sage permid="pUh">
                 <input>
             sub = allsg[2]
             sub.order()
@@ -2304,33 +2304,33 @@
         As before, notice that the notation and syntax is multiplicative.
       </p>
 
-            <sage>
+            <sage permid="Wbq">
                 <input>
             G=CyclicPermutationGroup(14)
             a = G.gen(0); a
             </input>
                 <output>(1,2,3,4,5,6,7,8,9,10,11,12,13,14)</output>
             </sage>
-            <sage>
+            <sage permid="Ciz">
                 <input>
             b = a^2
             b = a^2; b
             </input>
                 <output>(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)</output>
             </sage>
-            <sage>
+            <sage permid="ipI">
                 <input>b.order()</input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="OwR">
                 <input>a*a*b*b*b</input>
                 <output>(1,9,3,11,5,13,7)(2,10,4,12,6,14,8)</output>
             </sage>
-            <sage>
+            <sage permid="uEa">
                 <input>c = a^37*b^26; c</input>
                 <output>(1,6,11,2,7,12,3,8,13,4,9,14,5,10)</output>
             </sage>
-            <sage>
+            <sage permid="aLj">
                 <input>c.order()</input>
                 <output>14</output>
             </sage>
@@ -2339,18 +2339,18 @@
         We can create subgroups, check their orders, and list their elements.
       </p>
 
-            <sage>
+            <sage permid="GSs">
                 <input>
             H = G.subgroup([a^2])
             H.order()
             </input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="mZB">
                 <input>H.gen(0)</input>
                 <output>(1,3,5,7,9,11,13)(2,4,6,8,10,12,14)</output>
             </sage>
-            <sage>
+            <sage permid="TgK">
                 <input>H.list()</input>
                 <output>
             [(),
@@ -2384,7 +2384,7 @@
         and are not related to the letters used above for specific elements <mdash/> they just match up with the group elements in the order given by <c>.list()</c>.
       </p>
 
-            <sage>
+            <sage permid="znT">
                 <input>
             G.&lt;a&gt; = AbelianGroup([14])
             G.cayley_table()
@@ -2414,7 +2414,7 @@
         the table could be more informative using these names.
       </p>
 
-            <sage>
+            <sage permid="fvc">
                 <input>
             K.&lt;b&gt; = AbelianGroup([10])
             K.cayley_table(names='elements')
@@ -2454,44 +2454,44 @@
         See the notes following the computations.
       </p>
 
-            <sage>
+            <sage permid="LCl">
                 <input>
             G = CyclotomicField(14)
             w = G.gen(0); w
             </input>
                 <output>zeta14</output>
             </sage>
-            <sage>
+            <sage permid="rJu">
                 <input>
             wc = CDF(w)
             wc.abs()
             </input>
                 <output>1.0</output>
             </sage>
-            <sage>
+            <sage permid="XQD">
                 <input>wc.arg()/N(2*pi/14)</input>
                 <output>1.0</output>
             </sage>
-            <sage>
+            <sage permid="DXM">
                 <input>
             b = w^2
             b.multiplicative_order()
             </input>
                 <output>7</output>
             </sage>
-            <sage>
+            <sage permid="keV">
                 <input>bc = CDF(b); bc</input>
                 <output>0.62348980185... + 0.781831482468...*I</output>
             </sage>
-            <sage>
+            <sage permid="Qme">
                 <input>bc.abs()</input>
                 <output>1.0</output>
             </sage>
-            <sage>
+            <sage permid="wtn">
                 <input>bc.arg()/N(2*pi/14)</input>
                 <output>2.0</output>
             </sage>
-            <sage>
+            <sage permid="cAw">
                 <input>sg = [b^i for i in range(7)]; sg</input>
                 <output>
             [1, zeta14^2, zeta14^4,
@@ -2499,29 +2499,29 @@
             -zeta14, -zeta14^3, -zeta14^5]
             </output>
             </sage>
-            <sage>
+            <sage permid="IHF">
                 <input>
             c = sg[3]; d = sg[5]
             c*d
             </input>
                 <output>zeta14^2</output>
             </sage>
-            <sage>
+            <sage permid="oOO">
                 <input>
             c = sg[3]; d = sg[6]
             c*d in sg
             </input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="UVX">
                 <input>c*d == sg[2]</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="Bdg">
                 <input>sg[5]*sg[6] == sg[4]</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="hkp">
                 <input>G.multiplication_table(elements=sg)</input>
                 <output>
             *  a b c d e f g
@@ -2638,7 +2638,7 @@
           Determine the elements of the cyclic subgroup of <m>U</m> generated by <m>7</m> with a list comprehension as follows:
         </p>
 
-            <sage type="display">
+            <sage type="display" permid="fQB">
                 <input>
             R = Integers(40)
             a = R(7)

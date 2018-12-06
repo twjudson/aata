@@ -2174,7 +2174,7 @@
         We begin with an initial field extension containing at least one root.
       </p>
 
-            <sage>
+            <sage permid="yEm">
                 <input>
         x = polygen(QQ, 'x')
         N.&lt;a&gt; = NumberField(x^4 - 2); N
@@ -2188,7 +2188,7 @@
         The <c>.galois_closure()</c>method will create an extension containing all of the roots of the defining polynomial of a number field.
       </p>
 
-            <sage>
+            <sage permid="eLv">
                 <input>
         L.&lt;b&gt; = N.galois_closure(); L
         </input>
@@ -2196,7 +2196,7 @@
         Number Field in b with defining polynomial x^8 + 28*x^4 + 2500
         </output>
             </sage>
-            <sage>
+            <sage permid="KSE">
                 <input>
         L.degree()
         </input>
@@ -2204,7 +2204,7 @@
         8
         </output>
             </sage>
-            <sage>
+            <sage permid="qZN">
                 <input>
         y = polygen(L, 'y')
         (y^4 - 2).factor()
@@ -2224,7 +2224,7 @@
         It is easy to then obtain the Galois group of this field extension.
       </p>
 
-            <sage>
+            <sage permid="XgW">
                 <input>
         G = L.galois_group(); G
         </input>
@@ -2243,7 +2243,7 @@
         it is not hard to guess the nature of the group.
       </p>
 
-            <sage>
+            <sage permid="Dof">
                 <input>
         G.is_abelian()
         </input>
@@ -2251,7 +2251,7 @@
         False
         </output>
             </sage>
-            <sage>
+            <sage permid="jvo">
                 <input>
         G.order()
         </input>
@@ -2259,7 +2259,7 @@
         8
         </output>
             </sage>
-            <sage>
+            <sage permid="PCx">
                 <input>
         G.list()
         </input>
@@ -2270,7 +2270,7 @@
         (1,7,8,2)(3,5,6,4), (1,8)(2,7)(3,6)(4,5)]
         </output>
             </sage>
-            <sage>
+            <sage permid="vJG">
                 <input>
         G.is_isomorphic(DihedralGroup(4))
         </input>
@@ -2290,7 +2290,7 @@
         The following construction should be familiar by now.
       </p>
 
-            <sage>
+            <sage permid="bQP">
                 <input>
         x = polygen(QQ, 'x')
         p = x^4 - 2
@@ -2300,7 +2300,7 @@
         Number Field in a with defining polynomial x^4 - 2
         </output>
             </sage>
-            <sage>
+            <sage permid="HXY">
                 <input>
         y = polygen(N, 'y')
         p = p.subs(x=y)
@@ -2310,7 +2310,7 @@
         (y - a) * (y + a) * (y^2 + a^2)
         </output>
             </sage>
-            <sage>
+            <sage permid="ofh">
                 <input>
         M.&lt;b&gt; = NumberField(y^2 + a^2); M
         </input>
@@ -2319,7 +2319,7 @@
         its base field
         </output>
             </sage>
-            <sage>
+            <sage permid="Umq">
                 <input>
         z = polygen(M, 'z')
         (z^4 - 2).factor()
@@ -2343,7 +2343,7 @@
         a now familiar construction.
       </p>
 
-            <sage>
+            <sage permid="Atz">
                 <input>
         L.&lt;c&gt; = M.absolute_field(); L
         </input>
@@ -2351,7 +2351,7 @@
         Number Field in c with defining polynomial x^8 + 28*x^4 + 2500
         </output>
             </sage>
-            <sage>
+            <sage permid="gAI">
                 <input>
         fromL, toL = L.structure()
         </input>
@@ -2364,7 +2364,7 @@
         custom-designed to contain these roots.
       </p>
 
-            <sage>
+            <sage permid="MHR">
                 <input>
         roots = p.roots(ring=L, multiplicities=False); roots
         </input>
@@ -2384,7 +2384,7 @@
         But we can do better.
       </p>
 
-            <sage>
+            <sage permid="sPa">
                 <input>
         [fromL(r) for r in roots]
         </input>
@@ -2401,7 +2401,7 @@
         The <c>End()</c>command will create the group of automorphisms of the field <c>L</c>.
       </p>
 
-            <sage>
+            <sage permid="YWj">
                 <input>
         G = End(L); G
         </input>
@@ -2417,7 +2417,7 @@
         and thus fix all fractions of integers.
       </p>
 
-            <sage>
+            <sage permid="Fds">
                 <input>
         [tau(1) for tau in G]
         </input>
@@ -2438,7 +2438,7 @@
         which in each case should be another root. (We use the <c>Sequence()</c>constructor just to get nicely-aligned output.)
       </p>
 
-            <sage>
+            <sage permid="lkB">
                 <input>
         Sequence([[fromL(tau(r)) for r in roots] for tau in G], cr=True)
         </input>
@@ -2472,7 +2472,7 @@
         of these elements generate a group.
       </p>
 
-            <sage>
+            <sage permid="RrK">
                 <input>
         S4 = SymmetricGroup(4)
         elements = [S4([1, 2, 3, 4]),
@@ -2490,7 +2490,7 @@
          (1,2)(3,4), (1,4), (1,3,4,2)]
         </output>
             </sage>
-            <sage>
+            <sage permid="xyT">
                 <input>
         P = S4.subgroup(elements)
         P.is_isomorphic(DihedralGroup(4))
@@ -2540,7 +2540,7 @@
         However, we still need to work with the entire power basis to exploit the vector space structure.)
       </p>
 
-            <sage>
+            <sage permid="dGc">
                 <input>
         basis = L.power_basis(); basis
         </input>
@@ -2548,7 +2548,7 @@
         [1, c, c^2, c^3, c^4, c^5, c^6, c^7]
         </output>
             </sage>
-            <sage>
+            <sage permid="JNl">
                 <input>
         tau = G[3]
         z = 4 + 5*c+ 6*c^3-7*c^6
@@ -2559,7 +2559,7 @@
         6006/25*c^2 - 11/6*c + 4
         </output>
             </sage>
-            <sage>
+            <sage permid="pUu">
                 <input>
         tz.vector()
         </input>
@@ -2567,7 +2567,7 @@
         (4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
         </output>
             </sage>
-            <sage>
+            <sage permid="WbD">
                 <input>
         tau_matrix = column_matrix([tau(be).vector() for be in basis])
         tau_matrix
@@ -2583,7 +2583,7 @@
         [  0       0       0  11/1500    0       0        0   -779/750]
         </output>
             </sage>
-            <sage>
+            <sage permid="CiM">
                 <input>
         tau_matrix*z.vector()
         </input>
@@ -2591,7 +2591,7 @@
         (4, -11/6, 6006/25, 779/125, 0, 1/12, -98/25, 11/250)
         </output>
             </sage>
-            <sage>
+            <sage permid="ipV">
                 <input>
         tau_matrix*(z.vector()) == (tau(z)).vector()
         </input>
@@ -2620,7 +2620,7 @@
         or elements of the null space of <c>(tau_matrix - I)</c>(null spaces are obtained with <c>.right_kernel()</c>in Sage).
       </p>
 
-            <sage>
+            <sage permid="Oxe">
                 <input>
         K = (tau_matrix-identity_matrix(8)).right_kernel(); K
         </input>
@@ -2641,7 +2641,7 @@
         Let's take a closer look at these fixed elements, in terms we recognize.
       </p>
 
-            <sage>
+            <sage permid="uEn">
                 <input>
         fromL(1)
         </input>
@@ -2649,7 +2649,7 @@
         1
         </output>
             </sage>
-            <sage>
+            <sage permid="aLw">
                 <input>
         fromL(c + (1/38)*c^5)
         </input>
@@ -2657,7 +2657,7 @@
         60/19*b
         </output>
             </sage>
-            <sage>
+            <sage permid="GSF">
                 <input>
         fromL(c^2 - (1/22)*c^6)
         </input>
@@ -2665,7 +2665,7 @@
         150/11*a^2
         </output>
             </sage>
-            <sage>
+            <sage permid="mZO">
                 <input>
         fromL(c^3 + (1/278)*c^7)
         </input>
@@ -2689,7 +2689,7 @@
         So the elements fixed by <c>tau</c>are <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
       </p>
 
-            <sage>
+            <sage permid="TgX">
                 <input>
         a^2 + b^2
         </input>
@@ -2709,7 +2709,7 @@
         we just list the <em>generators</em> of each subgroup.)
       </p>
 
-            <sage>
+            <sage permid="zog">
                 <input>
         sg = P.subgroups();
         [H.gens() for H in sg]
@@ -2727,7 +2727,7 @@
          [(2,3), (1,2)(3,4), (1,4)]]
         </output>
             </sage>
-            <sage>
+            <sage permid="fvp">
                 <input>
         [H.order() for H in sg]
         </input>
@@ -2753,7 +2753,7 @@
         so let us determine the elements that are fixed.
       </p>
 
-            <sage>
+            <sage permid="LCy">
                 <input>
         tau = G[4]
         tau_matrix = column_matrix([tau(be).vector() for be in basis])
@@ -2768,7 +2768,7 @@
         [     0      0      0      1      0      0      0 13/614]
         </output>
             </sage>
-            <sage>
+            <sage permid="rJH">
                 <input>
         fromL(tau(1))
         </input>
@@ -2776,7 +2776,7 @@
         1
         </output>
             </sage>
-            <sage>
+            <sage permid="XQQ">
                 <input>
         fromL(tau(c+(1/158)*c^5))
         </input>
@@ -2784,7 +2784,7 @@
         120/79*b - 120/79*a
         </output>
             </sage>
-            <sage>
+            <sage permid="DXZ">
                 <input>
         fromL(tau(c^2+(1/78)*c^6))
         </input>
@@ -2792,7 +2792,7 @@
         -200/39*a*b
         </output>
             </sage>
-            <sage>
+            <sage permid="kfi">
                 <input>
         fromL(tau(c^3+(13/614)*c^7))
         </input>
@@ -2809,7 +2809,7 @@
         we recognize that they can be obtained from powers of <c>b - a</c>.
       </p>
 
-            <sage>
+            <sage permid="Qmr">
                 <input>
         (b-a)^2
         </input>
@@ -2817,7 +2817,7 @@
         -2*a*b
         </output>
             </sage>
-            <sage>
+            <sage permid="wtA">
                 <input>
         (b-a)^3
         </input>
@@ -2838,7 +2838,7 @@
         We will use an expression for <c>b - a</c>that is a linear combination of powers of <c>c</c>.
       </p>
 
-            <sage>
+            <sage permid="cAJ">
                 <input>
         subinfo = L.subfield((79/120)*(c+(1/158)*c^5)); subinfo
         </input>
@@ -2888,7 +2888,7 @@
         We will work via a loop over the four automorphisms.
       </p>
 
-            <sage>
+            <sage permid="IHS">
                 <input>
         V = QQ^8
         for tau in [G[0], G[1], G[3], G[6]]:
@@ -2909,7 +2909,7 @@
         Outside of the rationals, there is a single fixed element.
       </p>
 
-            <sage>
+            <sage permid="oPb">
                 <input>
         fromL(tau(c^2 - (1/22)*c^6))
         </input>
@@ -2926,7 +2926,7 @@
         Again, we can build this fixed field, but ignore the mapping.
       </p>
 
-            <sage>
+            <sage permid="UWk">
                 <input>
         F, mapping = L.subfield((11/150)*(c^2 - (1/22)*c^6))
         F
@@ -2943,7 +2943,7 @@
         The individual permutations of the subgroup correspond to automorphisms 0, 1, 2, 7.
       </p>
 
-            <sage>
+            <sage permid="Bdt">
                 <input>
         V = QQ^8
         for tau in [G[0], G[1], G[2], G[7]]:
@@ -2964,7 +2964,7 @@
         So we compute the primitive element.
       </p>
 
-            <sage>
+            <sage permid="hkC">
                 <input>
         fromL(tau(c^4))
         </input>
@@ -2982,7 +2982,7 @@
         (and ignore the mapping also returned).
       </p>
 
-            <sage>
+            <sage permid="NrL">
                 <input>
         F, mapping = L.subfield((c^4+14)/-48)
         F
@@ -3005,7 +3005,7 @@
         you can always just have Sage do it all with the <c>.subfields()</c>method.
       </p>
 
-            <sage>
+            <sage permid="tyU">
                 <input>
         L.subfields()
         </input>
@@ -3110,7 +3110,7 @@
         We determine the fixed elements as before.
       </p>
 
-            <sage>
+            <sage permid="ZGd">
                 <input>
         tau = G[6]
         tau_matrix = column_matrix([tau(be).vector() for be in basis])
@@ -3125,7 +3125,7 @@
         [    0     0     0     1     0     0     0 11/58]
         </output>
             </sage>
-            <sage>
+            <sage permid="FNm">
                 <input>
         fromL(tau(1))
         </input>
@@ -3133,7 +3133,7 @@
         1
         </output>
             </sage>
-            <sage>
+            <sage permid="lUv">
                 <input>
         fromL(tau(c+(-1/82)*c^5))
         </input>
@@ -3141,7 +3141,7 @@
         -120/41*a
         </output>
             </sage>
-            <sage>
+            <sage permid="SbE">
                 <input>
         fromL(tau(c^2+(-1/22)*c^6))
         </input>
@@ -3149,7 +3149,7 @@
         150/11*a^2
         </output>
             </sage>
-            <sage>
+            <sage permid="yiN">
                 <input>
         fromL(tau(c^3+(11/58)*c^7))
         </input>
@@ -3176,7 +3176,7 @@
         By part (4) of <xref ref="theorem-fundamental-galois"/> the automorphism group of the extension is not normal in the full Galois group.
       </p>
 
-            <sage>
+            <sage permid="epW">
                 <input>
         sg[2].is_normal(P)
         </input>

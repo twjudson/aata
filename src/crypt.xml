@@ -1069,7 +1069,7 @@
         rather than just <m>21</m> as we have done here.
       </p>
 
-            <sage>
+            <sage permid="SZT">
                 <input>
             p_a = next_prime(10^10)
             q_a = next_prime(p_a)
@@ -1088,7 +1088,7 @@
         but we could use Sage's built-in function just as well.
       </p>
 
-            <sage>
+            <sage permid="zhc">
                 <input>
             m_a = euler_phi(n_a)
             m_b = euler_phi(n_b)
@@ -1113,11 +1113,11 @@
         We do this twice <mdash/>- for both Alice and Bob.
       </p>
 
-            <sage>
+            <sage permid="fol">
                 <input>factor(m_a)</input>
                 <output>2^6 * 3 * 11 * 17 * 131 * 521 * 73259 * 557041</output>
             </sage>
-            <sage>
+            <sage permid="Lvu">
                 <input>
         E_a = 5*23
         D_a = inverse_mod(E_a, m_a)
@@ -1125,11 +1125,11 @@
         </input>
                 <output>20869565321739130555</output>
             </sage>
-            <sage>
+            <sage permid="rCD">
                 <input>factor(m_b)</input>
                 <output>2^3 * 3^4 * 107 * 1298027 * 2500000001</output>
             </sage>
-            <sage>
+            <sage permid="XJM">
                 <input>
             E_b = 7*29
             D_b = inverse_mod(E_b, m_b)
@@ -1151,19 +1151,19 @@
         For the record, here are all the keys:
       </p>
 
-            <sage>
+            <sage permid="DQV">
                 <input>print("Alice's public key, n:", n_a, "E:", E_a)</input>
                 <output>Alice's public key, n: 100000000520000000627 E: 115</output>
             </sage>
-            <sage>
+            <sage permid="jYe">
                 <input>print("Alice's private key, D:", D_a)</input>
                 <output>Alice's private key, D: 20869565321739130555</output>
             </sage>
-            <sage>
+            <sage permid="Qfn">
                 <input>print("Bob's public key, n:", n_b, "E:", E_b)</input>
                 <output>Bob's public key, n: 225000000300000000091 E: 203</output>
             </sage>
-            <sage>
+            <sage permid="wmw">
                 <input>print("Bob's private key, D:", D_b)</input>
                 <output>Bob's private key, D: 24384236482463054195</output>
             </sage>
@@ -1189,7 +1189,7 @@
         (we say the list is in <q>little-endian</q> order).
       </p>
 
-            <sage>
+            <sage permid="ctF">
                 <input>
             word = 'Sage'
             digits = [ord(letter) for letter in word]
@@ -1197,7 +1197,7 @@
             </input>
                 <output>[83, 97, 103, 101]</output>
             </sage>
-            <sage>
+            <sage permid="IAO">
                 <input>
             message = ZZ(digits, 128)
             message
@@ -1211,7 +1211,7 @@
         since this is an act that only she should be able to perform.
       </p>
 
-            <sage>
+            <sage permid="oHX">
                 <input>
             signed = power_mod(message, D_a, n_a)
             signed
@@ -1226,7 +1226,7 @@
         she could have obtained Bob's public key off his web site or maybe Bob announced his public key in an advertisement in the <pubtitle>New York Times</pubtitle>.
       </p>
 
-            <sage>
+            <sage permid="UPg">
                 <input>
             encrypted = power_mod(signed, E_b, n_b)
             encrypted
@@ -1256,7 +1256,7 @@
         which only he knows, and which he has kept secure.
       </p>
 
-            <sage>
+            <sage permid="AWp">
                 <input>
             decrypted = power_mod(encrypted, D_b, n_b)
             decrypted
@@ -1274,7 +1274,7 @@
         he could obtain Alice's key off her web site or maybe Alice announced her public key in an advertisement in the <pubtitle>New York Times</pubtitle>.
       </p>
 
-            <sage>
+            <sage permid="hdy">
                 <input>
             received = power_mod(decrypted, E_a, n_a)
             received
@@ -1288,7 +1288,7 @@
         and we use a list comprehension to do this repeatedly.
       </p>
 
-            <sage>
+            <sage permid="NkH">
                 <input>
             digits = received.digits(base=128)
             letters = [chr(ascii) for ascii in digits]
@@ -1302,7 +1302,7 @@
         we can combine the letters into a string.
       </p>
 
-            <sage>
+            <sage permid="trQ">
                 <input>''.join(letters)</input>
                 <output>'Sage'</output>
             </sage>

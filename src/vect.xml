@@ -1137,7 +1137,7 @@
         The simplest way to create a vector space is to begin with a field and use an exponent to indicate the number of entries in the vectors of the space.
       </p>
 
-            <sage>
+            <sage permid="rYc">
                 <input>
         V = QQ^4; V
         </input>
@@ -1145,7 +1145,7 @@
         Vector space of dimension 4 over Rational Field
         </output>
             </sage>
-            <sage>
+            <sage permid="Yfl">
                 <input>
         F.&lt;a&gt; = FiniteField(3^4)
         W = F^5; W
@@ -1159,7 +1159,7 @@
         Elements can be built with the vector constructor.
       </p>
 
-            <sage>
+            <sage permid="Emu">
                 <input>
         v = vector(QQ, [1, 1/2, 1/3, 1/4]); v
         </input>
@@ -1167,7 +1167,7 @@
         (1, 1/2, 1/3, 1/4)
         </output>
             </sage>
-            <sage>
+            <sage permid="ktD">
                 <input>
         v in V
         </input>
@@ -1175,7 +1175,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="QAM">
                 <input>
         w = vector(F, [1, a^2, a^4, a^6, a^8]); w
         </input>
@@ -1183,7 +1183,7 @@
         (1, a^2, a^3 + 1, a^3 + a^2 + a + 1, a^2 + a + 2)
         </output>
             </sage>
-            <sage>
+            <sage permid="wHV">
                 <input>
         w in W
         </input>
@@ -1210,7 +1210,7 @@
         which together create linear combinations.
       </p>
 
-            <sage>
+            <sage permid="cPe">
                 <input>
         u = vector(QQ, [ 1, 2,  3, 4,   5,  6])
         v = vector(QQ, [-1, 2, -4, 8, -16, 32])
@@ -1220,7 +1220,7 @@
         (5, 2, 17, -4, 47, -46)
         </output>
             </sage>
-            <sage>
+            <sage permid="IWn">
                 <input>
         w = vector(F, [1, a^2, a^4, a^6,  a^8])
         x = vector(F, [1,   a, 2*a,   a,    1])
@@ -1242,7 +1242,7 @@
         However, the most direct way is to begin with a set of vectors to use as a spanning set.
       </p>
 
-            <sage>
+            <sage permid="pdw">
                 <input>
         u = vector(QQ, [1, -1, 3])
         v = vector(QQ, [2, 1, -1])
@@ -1256,7 +1256,7 @@
         [   0    1 -7/3]
         </output>
             </sage>
-            <sage>
+            <sage permid="VkF">
                 <input>
         3*u - 6*v + (1/2)*w in S
         </input>
@@ -1264,7 +1264,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="BrO">
                 <input>
         vector(QQ, [4, -1, -2]) in S
         </input>
@@ -1281,7 +1281,7 @@
         with the <c>.basis()</c>method.
       </p>
 
-            <sage>
+            <sage permid="hyX">
                 <input>
         S.basis()
         </input>
@@ -1323,7 +1323,7 @@
         Here is an example.
       </p>
 
-            <sage>
+            <sage permid="NGg">
                 <input>
         u = vector(QQ, [1, -1,  3])
         v = vector(QQ, [2,  1, -1])
@@ -1334,7 +1334,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="tNp">
                 <input>
         S1 = (QQ^3).subspace([u, v, w])
         S2 = (QQ^3).subspace([u-v, v-w, w-u])
@@ -1350,7 +1350,7 @@
         it is easy to determine the dimension of a vector space.
       </p>
 
-            <sage>
+            <sage permid="ZUy">
                 <input>
         u = vector(QQ, [1, -1,  3,  4])
         v = vector(QQ, [2,  1, -1, -2])
@@ -1374,7 +1374,7 @@
         The dimension equals the number of vectors in the spanning set if and only if the spanning set is linearly independent.
       </p>
 
-            <sage>
+            <sage permid="GbH">
                 <input>
         F.&lt;a&gt; = FiniteField(3^4)
         u = vector(F, [a^i for i in range(0,  7, 1)])
@@ -1387,7 +1387,7 @@
         3
         </output>
             </sage>
-            <sage>
+            <sage permid="miQ">
                 <input>
         S = (F^7).subspace([u, v, a^3*u + a^11*v])
         S.dimension()
@@ -1430,7 +1430,7 @@
         So here are some operations in our new vector space.
       </p>
 
-            <sage>
+            <sage permid="SpZ">
                 <input>
         F.&lt;a&gt; = FiniteField(7^6)
         u = 2*a^5 + 6*a^4 + 2*a^3 + 3*a^2 + 2*a + 3
@@ -1441,7 +1441,7 @@
         6*a^5 + 3*a^4 + 6*a^3 + 2*a^2 + 2
         </output>
             </sage>
-            <sage>
+            <sage permid="yxi">
                 <input>
         4*u
         </input>
@@ -1449,7 +1449,7 @@
         a^5 + 3*a^4 + a^3 + 5*a^2 + a + 5
         </output>
             </sage>
-            <sage>
+            <sage permid="eEr">
                 <input>
         2*u + 5*v
         </input>
@@ -1478,7 +1478,7 @@
         and what the field of scalars is.
       </p>
 
-            <sage>
+            <sage permid="KLA">
                 <input>
         V = F.vector_space(); V
         </input>
@@ -1486,7 +1486,7 @@
         Vector space of dimension 6 over Finite Field of size 7
         </output>
             </sage>
-            <sage>
+            <sage permid="qSJ">
                 <input>
         R = V.base_ring(); R
         </input>
@@ -1494,7 +1494,7 @@
         Finite Field of size 7
         </output>
             </sage>
-            <sage>
+            <sage permid="WZS">
                 <input>
         R == FiniteField(7)
         </input>
@@ -1502,7 +1502,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="Dhb">
                 <input>
         V.dimension()
         </input>
@@ -1524,7 +1524,7 @@
         Second, elements of the field can be converted to elements of the vector space easily.
       </p>
 
-            <sage>
+            <sage permid="jok">
                 <input>
         x = V(u); x
         </input>
@@ -1532,7 +1532,7 @@
         (3, 2, 3, 2, 6, 2)
         </output>
             </sage>
-            <sage>
+            <sage permid="Pvt">
                 <input>
         y = V(v); y
         </input>
@@ -1548,7 +1548,7 @@
         <m>({\mathbb Z}_7)^6</m>.
       </p>
 
-            <sage>
+            <sage permid="vCC">
                 <input>
         V(u + v) == V(u) + V(v)
         </input>
@@ -1556,7 +1556,7 @@
         True
         </output>
             </sage>
-            <sage>
+            <sage permid="bJL">
                 <input>
         two = R(2)
         V(two*u) == two*V(u)
@@ -1691,7 +1691,7 @@
           Evaluate the following to create a module and a submodule.
         </p>
 
-                <sage>
+                <sage permid="HQU">
                     <input>
             M = ZZ^3
             u = M([1, 0, 0])

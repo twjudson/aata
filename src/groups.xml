@@ -2330,22 +2330,22 @@
     <subsection permid="pZY">
       <title>Integers mod n</title>
 
-            <sage>
+            <sage permid="Hvv">
                 <input>
             Z8 = Integers(8)
             Z8
             </input>
                 <output>Ring of integers modulo 8</output>
             </sage>
-            <sage>
+            <sage permid="nCE">
                 <input>Z8.list()</input>
                 <output>[0, 1, 2, 3, 4, 5, 6, 7]</output>
             </sage>
-            <sage>
+            <sage permid="TJN">
                 <input>a = Z8.an_element(); a</input>
                 <output>0</output>
             </sage>
-            <sage>
+            <sage permid="zQW">
                 <input>a.parent()</input>
                 <output>Ring of integers modulo 8</output>
             </sage>
@@ -2368,47 +2368,47 @@
         integers and then with integers mod 8.
       </p>
 
-            <sage>
+            <sage permid="fYf">
                 <input>
             a = 6
             a
             </input>
                 <output>6</output>
             </sage>
-            <sage>
+            <sage permid="Mfo">
                 <input>a.parent()</input>
                 <output>Integer Ring</output>
             </sage>
-            <sage>
+            <sage permid="smx">
                 <input>
             b = 7
             c = a + b; c
             </input>
                 <output>13</output>
             </sage>
-            <sage>
+            <sage permid="YtG">
                 <input>
             d = Z8(6)
             d
             </input>
                 <output>6</output>
             </sage>
-            <sage>
+            <sage permid="EAP">
                 <input>d.parent()</input>
                 <output>Ring of integers modulo 8</output>
             </sage>
-            <sage>
+            <sage permid="kHY">
                 <input>
             e = Z8(7)
             f = d+e; f
             </input>
                 <output>5</output>
             </sage>
-            <sage>
+            <sage permid="QPh">
                 <input>g = Z8(85); g</input>
                 <output>5</output>
             </sage>
-            <sage>
+            <sage permid="wWq">
                 <input>f == g</input>
                 <output>True</output>
             </sage>
@@ -2423,7 +2423,7 @@
         here forming the Cayley table for the addition.
       </p>
 
-            <sage>
+            <sage permid="ddz">
                 <input>Z8.addition_table(names='elements')</input>
                 <output>
             +  0 1 2 3 4 5 6 7
@@ -2490,7 +2490,7 @@
         </me>
       </p>
 
-            <sage>
+            <sage permid="JkI">
                 <input>
             triangle = SymmetricGroup(3)
             rho2 = triangle([3,1,2])
@@ -2498,7 +2498,7 @@
             </input>
                 <output>(1,3,2)</output>
             </sage>
-            <sage>
+            <sage permid="prR">
                 <input>[rho2(x) for x in triangle.domain()]</input>
                 <output>[3, 1, 2]</output>
             </sage>
@@ -2516,7 +2516,7 @@
         A good exercise would be to pair up each element with its name as given in <xref ref="figure-s3-symmetry"/>.
       </p>
 
-            <sage>
+            <sage permid="Vza">
                 <input>[[a(x) for x in triangle.domain()] for a in triangle]</input>
                 <output>[[1, 2, 3], [2, 1, 3], [2, 3, 1], [3, 1, 2], [1, 3, 2], [3, 2, 1]]</output>
             </sage>
@@ -2542,7 +2542,7 @@
         but reverse the order on each product to compute Sage-style and exactly mirror what the text does.
       </p>
 
-            <sage>
+            <sage permid="BGj">
                 <input>
             mu1 = triangle([1,3,2])
             mu2 = triangle([3,2,1])
@@ -2553,15 +2553,15 @@
             </input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="hNs">
                 <input>[product(x) for x in triangle.domain()]</input>
                 <output>[3, 2, 1]</output>
             </sage>
-            <sage>
+            <sage permid="NUB">
                 <input>rho1*mu1 == mu1*rho1</input>
                 <output>False</output>
             </sage>
-            <sage>
+            <sage permid="ubK">
                 <input>mu1*rho1 == mu3</input>
                 <output>True</output>
             </sage>
@@ -2577,7 +2577,7 @@
         We will use <c>u</c>as shorthand for <m>\mu</m> and <c>r</c>as shorthand for <m>\rho</m>.
       </p>
 
-            <sage>
+            <sage permid="aiT">
                 <input>triangle.cayley_table()</input>
                 <output>
             *  a b c d e f
@@ -2590,7 +2590,7 @@
             f| f d e b c a
             </output>
             </sage>
-            <sage>
+            <sage permid="Gqc">
                 <input>triangle.cayley_table(names='elements')</input>
                 <output>
                   *       ()   (1,2) (1,2,3) (1,3,2)   (2,3)   (1,3)
@@ -2603,7 +2603,7 @@
               (1,3)|   (1,3) (1,3,2)   (2,3)   (1,2) (1,2,3)      ()
             </output>
             </sage>
-            <sage>
+            <sage permid="mxl">
                 <input>triangle.cayley_table(names=['id','u3','r1','r2','u1','u2'])</input>
                 <output>
              *  id u3 r1 r2 u1 u2
@@ -2643,7 +2643,7 @@
         can you identify <m>-1</m>, <m>I</m>, <m>J</m> and <m>K</m>?
       </p>
 
-            <sage>
+            <sage permid="SEu">
                 <input>
             Q = QuaternionGroup()
             [[a(x) for x in Q.domain()] for a in Q]
@@ -2655,7 +2655,7 @@
              [4, 1, 2, 3, 8, 5, 6, 7], [7, 6, 5, 8, 1, 4, 3, 2]]
             </output>
             </sage>
-            <sage>
+            <sage permid="yLD">
                 <input>Q.cayley_table()</input>
                 <output>
             *  a b c d e f g h
@@ -2679,7 +2679,7 @@
         you can ask Sage for a list of its outputs when viewed as a function.
       </p>
 
-            <sage>
+            <sage permid="eSM">
                 <input>
             id = Q.identity()
             [id(x) for x in Q.domain()]
@@ -2697,7 +2697,7 @@
         we can easily compute <m>-I</m>, and so on.
       </p>
 
-            <sage>
+            <sage permid="KZV">
                 <input>
             minus_one = Q([3, 4, 1, 2, 7, 8, 5, 6])
             minus_one*minus_one == Q.identity()
@@ -2722,15 +2722,15 @@
         Here are facts about the quaternions we can compute without any knowledge of just how the elements are written or multiplied.
       </p>
 
-            <sage>
+            <sage permid="rhe">
                 <input>Q.is_finite()</input>
                 <output>True</output>
             </sage>
-            <sage>
+            <sage permid="Xon">
                 <input>Q.order()</input>
                 <output>8</output>
             </sage>
-            <sage>
+            <sage permid="Dvw">
                 <input>Q.is_abelian()</input>
                 <output>False</output>
             </sage>
@@ -2752,7 +2752,7 @@
         so do not list it unless you want a lot of output! (I dare you.)
       </p>
 
-            <sage>
+            <sage permid="jCF">
                 <input>
             S8 = SymmetricGroup(8)
             a = S8.random_element()
@@ -2760,7 +2760,7 @@
             </input>
                 <output>[5, 2, 6, 4, 1, 8, 3, 7]</output>
             </sage>
-            <sage>
+            <sage permid="PJO">
                 <input>S8.order()</input>
                 <output>40320</output>
             </sage>
@@ -2772,7 +2772,7 @@
         and Sage regards this as a property of <c>Q</c>.
       </p>
 
-            <sage>
+            <sage permid="vQX">
                 <input>Q.is_subgroup(S8)</input>
                 <output>True</output>
             </sage>
@@ -2784,7 +2784,7 @@
         using multiplication as the operation.
       </p>
 
-            <sage>
+            <sage permid="bYg">
                 <input>
             H = [CC(1), CC(-1), CC(I), CC(-I)]
             CC.multiplication_table(elements=H,
