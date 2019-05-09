@@ -496,9 +496,9 @@
             <idx><h>Matrix</h><h>distance-preserving</h></idx>
         <term>length-preserving</term>,
             <idx><h>Matrix</h><h>length-preserving</h></idx>
-        or <term>inner product-preserving</term><idx><h>Matrix</h><h>inner product-preserving</h></idx> when <m>\| T{\mathbf x}- T{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|</m>,
-        <m>\| T{\mathbf x} \| =\| {\mathbf x} \|</m>,
-        or <m>\langle T{\mathbf x}, T{\mathbf y} \rangle = \langle {\mathbf x},{\mathbf y} \rangle</m>,
+        or <term>inner product-preserving</term><idx><h>Matrix</h><h>inner product-preserving</h></idx> when <m>\| A{\mathbf x}- A{\mathbf y} \| =\| {\mathbf x}- {\mathbf y} \|</m>,
+        <m>\| A{\mathbf x} \| =\| {\mathbf x} \|</m>,
+        or <m>\langle A{\mathbf x}, A{\mathbf y} \rangle = \langle {\mathbf x},{\mathbf y} \rangle</m>,
         respectively.
         The following theorem, which characterizes the orthogonal group,
         says that these notions are the same.
@@ -630,12 +630,12 @@
             <!-- Clarified what it means to be a reflection - TWJ 12/8/2011 -->
       <example xml:id="example-o2" permid="pyz">
         <p permid="wAv">
-          Let us examine the orthogonal group  on <m>{\mathbb R}^2</m> a bit more closely.
-          An element <m>T \in O(2)</m> is determined by its action on
+          Let us examine the orthogonal group on <m>{\mathbb R}^2</m> a bit more closely.
+          An element <m>A \in O(2)</m> is determined by its action on
           <m>{\mathbf e}_1 = (1, 0)^\transpose</m> and <m>{\mathbf e}_2 = (0, 1)^\transpose</m>.
-          If <m>T({\mathbf e}_1) = (a,b)^\transpose</m>,
-          then <m>a^2 + b^2 = 1</m> and <m>T({\mathbf e}_2) = (-b, a)^\transpose</m>.
-          Hence, <m>T</m> can be represented by
+          If <m>A{\mathbf e}_1 = (a,b)^\transpose</m>,
+          then <m>a^2 + b^2 = 1</m>, since the length of a vector must be preserved when it is multiplied by <m>A</m>. Since multiplication of an element of <m>O(2)</m> preserves length and orthogonality, <m>A{\mathbf e}_2 = \pm(-b, a)^\transpose</m>.
+          If we choose <m>A{\mathbf e}_2 = (-b, a)^\transpose</m>, then
           <me permid="wOQ">
             A
             =
@@ -647,27 +647,45 @@
             \begin{pmatrix}
             \cos \theta &amp; - \sin \theta \\
             \sin \theta &amp; \cos \theta
-            \end{pmatrix}
-          </me>,
+            \end{pmatrix},
+          </me>
           where <m>0 \leq \theta \lt 2 \pi</m>.
-          A matrix <m>T</m> in <m>O(2)</m> either reflects or rotates a vector in
-          <m>{\mathbb R}^2</m> (<xref ref="figure-o2"/>).
-          A reflection about the horizontal axis is given by the matrix
-          <me permid="cVZ">
+          The matrix <m>A</m> rotates a vector in <m>\mathbb R^2</m> counterclockwise about the origin by an angle of <m>\theta</m> (<xref ref="figure-o2"/>).</p>
+
+          <p>If we choose <m>A{\mathbf e}_2 = (b, -a)^\transpose</m>, then we obtain the matrix
+		  <me>
+            B
+            =
             \begin{pmatrix}
-            1 &amp; 0 \\
-            0 &amp; -1
+            a &amp; b \\
+            b &amp; -a
             \end{pmatrix}
-          </me>,
-          whereas a rotation by an angle <m>\theta</m> in a counterclockwise direction must come from a matrix of the form
-          <me permid="Jdi">
+            =
             \begin{pmatrix}
             \cos \theta &amp; \sin \theta \\
             \sin \theta &amp; -\cos \theta
-            \end{pmatrix}
-          </me>.
-          A reflection about a line <m>\ell</m> is simply a reflection about the horizontal axis followed by a rotation.
-          If <m>\det A =-1</m>, then <m>A</m> gives a reflection.
+            \end{pmatrix}.
+          </me>
+          Here, <m>\det B = -1</m> and 
+          <me>
+            B^2
+            =
+            \begin{pmatrix}
+            1 &amp; 0 \\
+            0 &amp; 1
+            \end{pmatrix}.
+          </me>
+          A reflection about the horizontal axis is given by the matrix
+          <me permid="cVZ">
+            C
+            =
+            \begin{pmatrix}
+            1 &amp; 0 \\
+            0 &amp; -1
+            \end{pmatrix},
+          </me>
+          and <m>B = AC</m> (see <xref ref="figure-o2"/>). Thus,
+          a reflection about a line <m>\ell</m> is simply a reflection about the horizontal axis followed by a rotation.
         </p>
       </example>
 
@@ -862,26 +880,10 @@
         </statement>
 
         <proof permid="RFJ">
-          <p permid="Wiy">
-            Let <m>G = \{ f_1, f_2, \ldots,
-            f_n \}</m> be a finite symmetry group that fixes a set of points in <m>X \subset \mathbb R^2</m>.
-            Choose a point <m>\mathbf x \in X</m>.
-            This point may not be a fixed point<mdash/>it could be moved by <m>G</m> to another point in <m>X</m>.
-            Define a set <m>S =\{ \mathbf y_1, \mathbf y_2, \ldots \mathbf y_n\}</m>,
-            where <m>\mathbf y_i = f_i(\mathbf x)</m>.
-            Now, let
-            <me permid="mpL">
-              \mathbf z = \frac{1}{n} \sum_{i=1}^n \mathbf x_i
-            </me>.
-            While the point <m>\mathbf z</m> is not necessarily in the set <m>X</m>,
-            it is fixed by every element in the symetry group.
-            Without loss of generality,
-            we may now assume that <m>\mathbf z</m> is the origin.
-          </p>
-
           <p permid="CpH">
+          	We simply need to find all of the finite subgroups <m>G</m> of <m>E(2)</m>.
             Any finite symmetry group <m>G</m> in
-            <m>{\mathbb R}^2</m> that fixes the origin must be a finite subgroup of <m>O(2)</m>,
+            <m>{\mathbb R}^2</m> must fix the origin  and must be a finite subgroup of <m>O(2)</m>,
             since translations and glide reflections have infinite order.
             By <xref ref="example-o2"/>,
             elements in <m>O(2)</m> are either rotations of the form
