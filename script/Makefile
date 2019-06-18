@@ -169,7 +169,7 @@ electronic:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-electronic.pdf
 
@@ -191,7 +191,7 @@ print:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-print.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-print.pdf
 
