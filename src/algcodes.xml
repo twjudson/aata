@@ -2815,8 +2815,8 @@
     <subsection permid="UKt">
       <title>Constructing Linear Codes</title>
       <p permid="ylE">
-        The <c>codes</c>object can be used to get a concise listing of the available implemented codes.
-        Type <c>codes.</c>and press the <c>Tab</c>key and most interfaces to Sage will give you a list.
+        The <c>codes</c> object can be used to get a concise listing of the available implemented codes.
+        Type <c>codes.</c> and press the <c>Tab</c> key and most interfaces to Sage will give you a list.
         You can then use a question mark at the end of a method name to learn about the various parameters.
       </p>
 
@@ -2830,8 +2830,8 @@
         and the <m>4</m> is the dimension,
         meaning this code has <m>2^4=16</m> vectors comprising the code.
         The documentation assumes we know a few things from later in the course.
-        We use <c>GF(2)</c>to specify that our code is binary <mdash/> this will make more sense at the end of the course.
-        A second parameter is <c>r</c>and we can see from the formulas in the documenation that setting <c>r=3</c>will give length <m>7</m>.
+        We use <c>GF(2)</c> to specify that our code is binary <mdash/> this will make more sense at the end of the course.
+        A second parameter is <c>r</c> and we can see from the formulas in the documenation that setting <c>r=3</c> will give length <m>7</m>.
       </p>
 
             <sage permid="pFZ">
@@ -2963,7 +2963,7 @@
 
       <p permid="HFq">
         We can recognize that one or more errors has occured,
-        since <c>r</c>is not in the code,
+        since <c>r</c> is not in the code,
         as the next computation does not yield the zero vector.
       </p>
 
@@ -2973,7 +2973,7 @@
             </sage>
 
       <p permid="nMz">
-        A linear code has a <c>.decode</c>method.
+        A linear code has a <c>.decode</c> method.
         You may choose from several different algorithms,
         while the Hamming codes have their own custom algorithm.
         The default algorithm is syndrome decoding.
@@ -3028,7 +3028,7 @@
     <exercise number="1" permid="UoU">
       <statement>
         <p permid="ClD">
-          Create the (binary) Golay code with the <c>codes.GolayCode()</c>constructor.
+          Create the (binary) Golay code with the <c>codes.GolayCode()</c> constructor.
           Read the documentation to be sure you build the binary version
           (not ternary),
           and do not build the extended version
@@ -3084,12 +3084,12 @@
             <p permid="aVr">
               Construct the (binary) Golay code and obtain the parity-check matrix.
               Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.
-              You may find the matrix methods <c>.augment()</c>and <c>.stack()</c>useful,
-              as well as the constructors <c>zero_vector()</c>and <c>ones_matrix()</c>(remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)
+              You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful,
+              as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c>(remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)
             </p>
 
             <p permid="HcA">
-              Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c>constructor and compute the length,
+              Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c> constructor and compute the length,
               dimension and minimum distance of the extended code.
             </p>
           </li>
@@ -3103,9 +3103,9 @@
 
           <li permid="oKB">
             <p permid="TqS">
-              Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c>and the correct keyword to obtain the extended version.
+              Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c> and the correct keyword to obtain the extended version.
               With luck, the sorted lists of your codewords and Sage's codewords will be equal.
-              If not, the linear code method <c>.is_permutation_equivalent()</c>should return <c>True</c>to indicate that your code and Sage's are just rearrangements of each other.
+              If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.
             </p>
           </li>
         </ol>
@@ -3118,7 +3118,7 @@
           <em>Note:</em> This problem is on holiday
           (as of Sage 6.7),
           while some buggy Sage code for the minimum distance of a Hamming code gets sorted out.
-          The <c>r = 2</c>case produces an error message and for <c>r &gt; 5</c>the computation of the minimum distance has become intolerably slow.
+          The <c>r = 2</c> case produces an error message and for <c>r &gt; 5</c> the computation of the minimum distance has become intolerably slow.
           So it is a bit harder to make a reasonable conjecture from just <m>3</m> cases.
         </p>
 
@@ -3128,12 +3128,12 @@
         </p>
 
         <p permid="aOn">
-          You can construct the dual of a code in Sage with the <c>.dual_code()</c>method.
+          You can construct the dual of a code in Sage with the <c>.dual_code()</c> method.
           Construct the binary Hamming codes, and their duals,
-          with the parameter <c>r</c>ranging from <c>2</c>to <c>5</c>,
+          with the parameter <c>r</c> ranging from <c>2</c> to <c>5</c>,
           inclusive.
           Build a table with six columns
-          (perhaps employing the <c>html.table()</c>function)
+          (perhaps employing the <c>html.table()</c> function)
           that lists <m>r</m>,
           the length of the codes,
           the dimensions of the original and the dual,
@@ -3175,7 +3175,7 @@
 
         <p permid="zqX">
           Write a Python function,
-          named <c>is_perfect()</c>which accepts a linear code as input and returns <c>True</c>or <c>False</c>.
+          named <c>is_perfect()</c> which accepts a linear code as input and returns <c>True</c> or <c>False</c>.
           Demonstrate your function by checking that the (binary) Golay code is perfect,
           and then use a loop to verify that the (binary) Hamming codes are perfect for all lengths below <m>32</m>.
         </p>

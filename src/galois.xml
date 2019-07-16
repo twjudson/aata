@@ -2123,7 +2123,7 @@
             </sage>
 
       <p permid="mfq">
-        The <c>.galois_closure()</c>method will create an extension containing all of the roots of the defining polynomial of a number field.
+        The <c>.galois_closure()</c> method will create an extension containing all of the roots of the defining polynomial of a number field.
       </p>
 
             <sage permid="eLv">
@@ -2157,7 +2157,7 @@
 
       <p permid="Smz">
         From the factorization,
-        it is clear that <c>L</c>is the splitting field of the polynomial,
+        it is clear that <c>L</c> is the splitting field of the polynomial,
         even if the factorization is not pretty.
         It is easy to then obtain the Galois group of this field extension.
       </p>
@@ -2271,8 +2271,8 @@
         The important thing to notice here is that we have arranged the splitting field so that the four roots,
         <c>a, -a, b, -b</c>, are very simple functions of the generators.
         In more traditional notation,
-        <c>a</c>is <m>2^{\frac{1}{4}}=\sqrt[4]{2}</m>,
-        and <c>b</c>is <m>2^{\frac{1}{4}}i=\sqrt[4]{2}i</m>
+        <c>a</c> is <m>2^{\frac{1}{4}}=\sqrt[4]{2}</m>,
+        and <c>b</c> is <m>2^{\frac{1}{4}}i=\sqrt[4]{2}i</m>
         (or their negatives).
       </p>
 
@@ -2317,7 +2317,7 @@
       <p permid="DdB">
         Hmmm.
         Do those look right?
-        If you look back at the factorization obtained in the field constructed with the <c>.galois_closure()</c>method,
+        If you look back at the factorization obtained in the field constructed with the <c>.galois_closure()</c> method,
         then they look right.
         But we can do better.
       </p>
@@ -2336,7 +2336,7 @@
       </p>
 
       <p permid="PrT">
-        The <c>End()</c>command will create the group of automorphisms of the field <c>L</c>.
+        The <c>End()</c> command will create the group of automorphisms of the field <c>L</c>.
       </p>
 
             <sage permid="YWj">
@@ -2365,7 +2365,7 @@
             </sage>
 
       <p permid="bGl">
-        So each element of <c>G</c>fixes the rationals elementwise and thus <c>G</c>is the Galois group of the splitting field <c>L</c>over the rationals.
+        So each element of <c>G</c> fixes the rationals elementwise and thus <c>G</c> is the Galois group of the splitting field <c>L</c> over the rationals.
       </p>
 
       <p permid="HNu">
@@ -2373,7 +2373,7 @@
         It says every automorphism in the Galois group of a field extension creates a permutation of the roots of a polynomial with coefficients in the base field.
         We have all of those ingredients here.
         So we will evaluate each automorphism of the Galois group at each of the four roots of our polynomial,
-        which in each case should be another root. (We use the <c>Sequence()</c>constructor just to get nicely-aligned output.)
+        which in each case should be another root. (We use the <c>Sequence()</c> constructor just to get nicely-aligned output.)
       </p>
 
             <sage permid="lkB">
@@ -2399,8 +2399,8 @@
         and so corresponds to a permutation of four objects
         (the roots).
         For example,
-        the second row shows the second automorphism interchanging <c>a</c>with <c>-a</c>,
-        and <c>b</c>with <c>-b</c>.
+        the second row shows the second automorphism interchanging <c>a</c> with <c>-a</c>,
+        and <c>b</c> with <c>-b</c>.
         (Notice that the first row is the result of the identity automorphism,
         so we can mentally comine the first row with any other row to imagine a
         <q>two-row</q> form of a permutation.)
@@ -2460,7 +2460,7 @@
       <p permid="gqe">
         The answer is to use the vector space structure of the flattened tower.
         As a degree <m>8</m> extension of the rationals,
-        the first <m>8</m> powers of the primitive element <c>c</c>form a basis when the field is viewed as a vector space with the rationals as the scalars.
+        the first <m>8</m> powers of the primitive element <c>c</c> form a basis when the field is viewed as a vector space with the rationals as the scalars.
         It is sufficient to know how each field automorphism behaves on this basis to fully specify the definition of the automorphism.
         To wit,
         <md permid="CmD">
@@ -2470,10 +2470,10 @@
         </md>
         So we can compute the value of a field automorphism at any linear combination of powers of the primitive element as a linear combination of the values of the field automorphism at just the powers of the primitive element.
         This is known as the <q>power basis</q>,
-        which we can obtain simply with the <c>.power_basis()</c>method.
+        which we can obtain simply with the <c>.power_basis()</c> method.
         We will begin with an example of how we can use this basis.
         We will illustrate with the fourth automorphism of the Galois group.
-        Notice that the <c>.vector()</c>method is a convenience that strips a linear combination of the powers of <c>c</c>into a vector of just the coefficients.  (Notice too that <m>\tau</m> is totally defined by the value of <m>\tau(c)</m>,
+        Notice that the <c>.vector()</c> method is a convenience that strips a linear combination of the powers of <c>c</c> into a vector of just the coefficients.  (Notice too that <m>\tau</m> is totally defined by the value of <m>\tau(c)</m>,
         since as a field automorphism <m>\tau(c^k)=(\tau(c))^k</m>.
         However, we still need to work with the entire power basis to exploit the vector space structure.)
       </p>
@@ -2539,7 +2539,7 @@
             </sage>
 
       <p permid="Mxn">
-        The last line expresses the fact that <c>tau_matrix</c>is a matrix representation of the field automorphism,
+        The last line expresses the fact that <c>tau_matrix</c> is a matrix representation of the field automorphism,
         viewed as a linear transformation of the vector space structure.
         As a representation of an invertible field homomorphism,
         the matrix is invertible.
@@ -2551,11 +2551,11 @@
 
       <p permid="sEw">
         To construct fixed fields, we want to find elements fixed by automorphisms.
-        Continuing with <c>tau</c>from above, we seek elements <c>z</c>
+        Continuing with <c>tau</c> from above, we seek elements <c>z</c>
         (written as vectors)
         such that <c>tau_matrix*z=z</c>.
         These are eigenvectors for the eigenvalue <m>1</m>,
-        or elements of the null space of <c>(tau_matrix - I)</c>(null spaces are obtained with <c>.right_kernel()</c>in Sage).
+        or elements of the null space of <c>(tau_matrix - I)</c>(null spaces are obtained with <c>.right_kernel()</c> in Sage).
       </p>
 
             <sage permid="Oxe">
@@ -2613,18 +2613,18 @@
             </sage>
 
       <p permid="ESO">
-        Any element fixed by <c>tau</c>will be a linear combination of these four elements.
+        Any element fixed by <c>tau</c> will be a linear combination of these four elements.
         We can ignore any rational multiples present,
         the first element is just saying the rationals are fixed,
         and the last element is just a product of the middle two.
-        So fundamentally <c>tau</c>is fixing rationals, <c>b</c>
+        So fundamentally <c>tau</c> is fixing rationals, <c>b</c>
         (which is <m>\sqrt[4]{2}i</m>)
         and <c>a^2</c>
         (which is <m>\sqrt{2}</m>).
         Furthermore, <c>b^2 = -a^2</c>
         (the check follows),
-        so we can create any fixed element of <c>tau</c>by just adjoining <c>b</c>=<m>\sqrt[4]{2}i</m> to the rationals.
-        So the elements fixed by <c>tau</c>are <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
+        so we can create any fixed element of <c>tau</c> by just adjoining <c>b</c>=<m>\sqrt[4]{2}i</m> to the rationals.
+        So the elements fixed by <c>tau</c> are <m>{\mathbb Q}(\sqrt[4]{2}i)</m>.
       </p>
 
             <sage permid="TgX">
@@ -2675,8 +2675,8 @@
             </sage>
 
       <p permid="Rhg">
-        <c>tau</c>above is the fourth element of the automorphism group,
-        and the fourth permutation in <c>elements</c>is the permutation <c>(2,3)</c>,
+        <c>tau</c> above is the fourth element of the automorphism group,
+        and the fourth permutation in <c>elements</c> is the permutation <c>(2,3)</c>,
         the generator
         (of order 2)
         for the second subgroup.
@@ -2742,7 +2742,7 @@
       <p permid="dvy">
         The first element indicates that the rationals are fixed
         (we knew that).
-        Scaling the second element gives <c>b - a</c>as a fixed element.
+        Scaling the second element gives <c>b - a</c> as a fixed element.
         Scaling the third and fourth fixed elements,
         we recognize that they can be obtained from powers of <c>b - a</c>.
       </p>
@@ -2765,7 +2765,7 @@
             </sage>
 
       <p permid="JCH">
-        So the fixed field of this subgroup can be formed by adjoining <c>b - a</c>to the rationals,
+        So the fixed field of this subgroup can be formed by adjoining <c>b - a</c> to the rationals,
         which in mathematical notation is <m>\sqrt[4]{2}i - \sqrt[4]{2} = (1-i)\sqrt[4]{2}</m>,
         so the fixed field is <m>{\mathbb Q}(\sqrt[4]{2}i - \sqrt[4]{2}) = {\mathbb Q}((1-i)\sqrt[4]{2})</m>.
       </p>
@@ -2773,7 +2773,7 @@
       <p permid="pJQ">
         We can create this fixed field,
         though as created here it is not strictly a subfield of <c>L</c>.
-        We will use an expression for <c>b - a</c>that is a linear combination of powers of <c>c</c>.
+        We will use an expression for <c>b - a</c> that is a linear combination of powers of <c>c</c>.
       </p>
 
             <sage permid="cAJ">
@@ -2792,12 +2792,12 @@
             </sage>
 
       <p permid="VQZ">
-        The <c>.subfield()</c>method returns a pair.
+        The <c>.subfield()</c> method returns a pair.
         The first item is a new number field,
         isomorphic to a subfield of <c>L</c>.
         The second item is an injective mapping from the new number field into <c>L</c>.
         In this case,
-        the image of the primitive element <c>c0</c>is the element we have specified as the generator of the subfield.
+        the image of the primitive element <c>c0</c> is the element we have specified as the generator of the subfield.
         The primitive element of the new field will satisfy the defining polynomial <m>x^4+8</m> <mdash/> you can check that
         <m>(1-i)\sqrt[4]{2}</m> is indeed a root of the polynomial <m>x^4 + 8</m>.
       </p>
@@ -2917,7 +2917,7 @@
 
       <p permid="mPk">
         Since rationals are fixed,
-        we can remove the <m>-14</m> and the multiple and take <c>a^3*b</c>as the primitive element.
+        we can remove the <m>-14</m> and the multiple and take <c>a^3*b</c> as the primitive element.
         Mathematically, this is <m>2i</m>,
         so we might as well use just <m>i</m> as the primitive element and the fixed field is <m>{\mathbb Q}(i)</m>.
         We can then build the fixed field
@@ -2945,7 +2945,7 @@
 
       <p permid="zdC">
         If the above seems like too much work,
-        you can always just have Sage do it all with the <c>.subfields()</c>method.
+        you can always just have Sage do it all with the <c>.subfields()</c> method.
       </p>
 
             <sage permid="tyU">
@@ -3103,12 +3103,12 @@
 
       <p permid="rzd">
         As usual, ignoring rational multiples,
-        we see powers of <c>a</c>and recognize that <c>a</c>alone will be a primitive element for the fixed field,
+        we see powers of <c>a</c> and recognize that <c>a</c> alone will be a primitive element for the fixed field,
         which is thus <m>{\mathbb Q}(\sqrt[4]{2})</m>.
-        Recognize that <c>a</c>was our first root of <m>x^4-2</m>,
+        Recognize that <c>a</c> was our first root of <m>x^4-2</m>,
         and was used to create the first part of original tower,
         <c>N</c>.
-        So <c>N</c>is both <m>{\mathbb Q}(\sqrt[4]{2})</m> and the fixed field of <m>H=\langle(1,4)\rangle</m>.
+        So <c>N</c> is both <m>{\mathbb Q}(\sqrt[4]{2})</m> and the fixed field of <m>H=\langle(1,4)\rangle</m>.
       </p>
 
       <p permid="XGm">
@@ -3212,7 +3212,7 @@
 
           <li permid="LGc">
             <p permid="OPd">
-              Using the mappings that allow you to translate between the tower and the absolute field (obtained from the <c>.structure()</c>method),
+              Using the mappings that allow you to translate between the tower and the absolute field (obtained from the <c>.structure()</c> method),
               choose one of the roots
               (any one)
               and express it in terms of the single generator of the absolute field.
@@ -3268,7 +3268,7 @@
           In other words,
           act as if your quotient by the linear factor is irreducible.
           If it is not,
-          then the <c>NumberField()</c>command should complain
+          then the <c>NumberField()</c> command should complain
           (which it will not).
         </p>
 
@@ -3288,7 +3288,7 @@
           as can be seen with logic or division.
           However, this could take a long time to complete
           (save your work beforehand!).
-          You can try passing the <c>check=False</c>argument to the <c>NumberField()</c>command <mdash/> this will bypass checking irreducibility.
+          You can try passing the <c>check=False</c> argument to the <c>NumberField()</c> command <mdash/> this will bypass checking irreducibility.
         </p>
       </statement>
     </exercise>
@@ -3300,15 +3300,15 @@
           letting Sage supply the default polynomial for its construction.
           The polynomial <m>x^6+x^2+2x+1</m> is irreducible over this finite field.
           Check that this polynomial splits in the finite field,
-          and then use the <c>.roots()</c>method to collect the roots of the polynomial.
-          Get the group of automorphisms of the field with the <c>End()</c>command.
+          and then use the <c>.roots()</c> method to collect the roots of the polynomial.
+          Get the group of automorphisms of the field with the <c>End()</c> command.
         </p>
 
         <p permid="CtH">
           You now have all of the pieces to associate each field automorphism with a permutation of the roots.
           From this, identify the Galois group and all of its subgroups.
           For each subgroup, determine the fixed field.
-          You might find the roots easier to work with if you use the <c>.log()</c>method to identify them as powers of the field's multiplicative generator.
+          You might find the roots easier to work with if you use the <c>.log()</c> method to identify them as powers of the field's multiplicative generator.
         </p>
 
         <p permid="iAQ">
@@ -3365,7 +3365,7 @@
       <statement>
         <p permid="nkJ">
           Return to <xref ref="example-galois-x4-2"/>,
-          and the complete list of subfields obtainable from the <c>.subfields()</c>method applied to the flattened tower.
+          and the complete list of subfields obtainable from the <c>.subfields()</c> method applied to the flattened tower.
           As mentioned, these are technically not subfields,
           but do have embeddings into the tower.
           Given two subfields,
