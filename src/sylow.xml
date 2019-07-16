@@ -1349,7 +1349,7 @@
     <subsection permid="LGp">
       <title>Sylow Subgroups</title>
       <p permid="jUR">
-        The Sage permutation group method <c>.sylow_subgroup(p)</c>will return a single Sylow <m>p</m>-subgroup.
+        The Sage permutation group method <c>.sylow_subgroup(p)</c> will return a single Sylow <m>p</m>-subgroup.
         If the prime is not a proper divisor of the group order it returns a subgroup of order <m>p^0</m>,
         in other words, a trivial subgroup.
         So be careful about how you construct your primes.
@@ -1357,7 +1357,7 @@
         since any two Sylow <m>p</m>-subgroups are conjugate,
         and hence isomorphic (<xref ref="theorem-second-sylow"/>).
         This also means we can create other Sylow <m>p</m>-subgroups by conjugating the one we have.
-        The permutation group method <c>.conjugate(g)</c>will conjugate the group by <c>g</c>.
+        The permutation group method <c>.conjugate(g)</c> will conjugate the group by <c>g</c>.
       </p>
 
       <p permid="Qca">
@@ -1534,7 +1534,7 @@
       <title>Normalizers</title>
       <p permid="hal">
         A new command that is relevant to this section is the construction of a normalizer.
-        The Sage command <c>G.normalizer(H)</c>will return the subgroup of <c>G</c>containing elements that normalize the subgroup <c>H</c>.
+        The Sage command <c>G.normalizer(H)</c> will return the subgroup of <c>G</c> containing elements that normalize the subgroup <c>H</c>.
         We illustrate its use with the Sylow subgroups from above.
       </p>
 
@@ -1584,9 +1584,9 @@
 
       <p permid="Nhu">
         The normalizer of a subgroup always contains the whole subgroup,
-        so the normalizer of <c>S2</c>is as small as possible.
-        We already knew <c>S3</c>is normal in <c>G</c>,
-        so it is no surprise that its normalizer is as big as possible <mdash/> every element of <c>G</c>normalizes <c>S3</c>.
+        so the normalizer of <c>S2</c> is as small as possible.
+        We already knew <c>S3</c> is normal in <c>G</c>,
+        so it is no surprise that its normalizer is as big as possible <mdash/> every element of <c>G</c> normalizes <c>S3</c>.
         Let us compute a normalizer in <m>D_{18}</m> that is more <q>interesting.</q>
       </p>
 
@@ -1655,7 +1655,7 @@
       <p permid="ZvM">
         We saw earlier Sage's permutation group method <c>.is_simple()</c>.
         <xref ref="example-group-pn"/> tells us that a group of order <m>64</m> is never simple.
-        The dicyclic group <c>DiCyclicGroup(16)</c>is a non-abelian group of <m>64</m>,
+        The dicyclic group <c>DiCyclicGroup(16)</c> is a non-abelian group of <m>64</m>,
         so we can test this method on this group.
         It turns out this group has many normal subgroups <mdash/> the list will always contain the trivial subgroup and the group itself,
         so any number exceeding <m>2</m> indicates a non-trivial normal subgroup.
@@ -1770,7 +1770,7 @@
 
       <p permid="xYw">
         You can interact with <acro>GAP</acro> in Sage in several ways.
-        The most direct is by creating a permutation group via Sage's <c>gap()</c>command.
+        The most direct is by creating a permutation group via Sage's <c>gap()</c> command.
       </p>
 
             <sage permid="apX">
@@ -1786,9 +1786,9 @@
       <p permid="efF">
         Now we can use most any <acro>GAP</acro> command with <c>G</c>,
         via the convention that most <acro>GAP</acro> commands expect a group as the first argument,
-        and we instead provide the group by using the object-oriented<c>G.</c>syntax.
-        If you consult the <acro>GAP</acro> documentation you will see that <c>Center</c>is a <acro>GAP</acro> command that expects a group as its lone argument,
-        and <c>Centralizer</c>is a <acro>GAP</acro> command that expects two arguments <mdash/> a group and then a group element.
+        and we instead provide the group by using the object-oriented<c>G.</c> syntax.
+        If you consult the <acro>GAP</acro> documentation you will see that <c>Center</c> is a <acro>GAP</acro> command that expects a group as its lone argument,
+        and <c>Centralizer</c> is a <acro>GAP</acro> command that expects two arguments <mdash/> a group and then a group element.
       </p>
 
             <sage permid="Gxg">
@@ -1809,11 +1809,11 @@
             </sage>
 
       <p permid="KmO">
-        If you use the Sage Notebook interface you can set the first line of a compute cell to <c>%gap</c>and the entire cell will be interpreted as if you were interacting directly with <acro>GAP</acro>.
+        If you use the Sage Notebook interface you can set the first line of a compute cell to <c>%gap</c> and the entire cell will be interpreted as if you were interacting directly with <acro>GAP</acro>.
         This means you would now use <acro>GAP</acro>'s syntax,
         which you can see above is slightly different than Sage's universal syntax.
         You can also use the drop-down box at the top of a worksheet,
-        and select <c>gap</c>as the system
+        and select <c>gap</c> as the system
         (rather than <c>sage</c>)
         and your whole worksheet will be interpreted as <acro>GAP</acro> commands.
         Here is one simple example,
@@ -1841,7 +1841,7 @@
 
           <li permid="gxv">
             <p permid="oLO">
-              Assignment is <c>:=</c>not <c>=</c>.
+              Assignment is <c>:=</c> not <c>=</c>.
               If you forget the colon,
               you will get an error message such as <c>Variable: 'G' must have a value</c>
             </p>
@@ -1872,9 +1872,9 @@
         you can also use the <acro>GAP</acro> <q>console.</q> Again,
         you need to use <acro>GAP</acro> syntax,
         and you do not have many of the conveniences of the Sage notebook.
-        It is also good to know in advance that <c>quit;</c>is how you can leave the <acro>GAP</acro> console and get back to Sage.
+        It is also good to know in advance that <c>quit;</c> is how you can leave the <acro>GAP</acro> console and get back to Sage.
         If you run Sage at the command-line,
-        use the command <c>gap_console()</c>to start <acro>GAP</acro> running.
+        use the command <c>gap_console()</c> to start <acro>GAP</acro> running.
       </p>
 
       <p permid="iPy">
@@ -1896,7 +1896,7 @@
           This exercise verifies <xref ref="theorem-commutator-subgroup-theorem"/>.
           The commutator subgroup is computed with the permutation group method <c>.commutator()</c>.
           For the dihedral group of order <m>40</m>,
-          <m>D_{20}</m> (<c>DihedralGroup(20)</c>in Sage),
+          <m>D_{20}</m> (<c>DihedralGroup(20)</c> in Sage),
           compute the commutator subgroup and form the quotient with the dihedral group.
           Then verify that this quotient is abelian.
           Can you identify the quotient group exactly (in other words,
@@ -1949,12 +1949,12 @@
           Let <m>G</m> be the dihedral group of order <m>36</m>,
           <m>D_{18}</m>.
           Let <m>H</m> be the one Sylow <m>3</m>-subgroup.
-          Let <m>K</m> be the subgroup of order <m>6</m> generated by the two permutations <c>a</c>and <c>b</c>given below.
+          Let <m>K</m> be the subgroup of order <m>6</m> generated by the two permutations <c>a</c> and <c>b</c> given below.
           First, form a list of the distinct conjugates of <m>K</m> by the elements of <m>H</m>,
           and determine the number of subgroups in this list.
           Compare this with the index given in the statement of the lemma,
           employing a single (long) statement making use of the <c>.order()</c>,
-          <c>.normalizer()</c>and <c>.intersection()</c>methods with <c>G</c>,
+          <c>.normalizer()</c> and <c>.intersection()</c> methods with <c>G</c>,
           <m>H</m> and <m>K</m>, <em>only</em>.
         </p>
 
@@ -1975,7 +1975,7 @@
           The dicyclic groups are an infinite family of non-abelian groups with order <m>4n</m>,
           which includes the quaternions
           (the case of <m>n=2</m>).
-          So the permutation group <c>DiCyclicGroup(12)</c>has order 48.
+          So the permutation group <c>DiCyclicGroup(12)</c> has order 48.
           Use Sage to follow the logic of the proof in <xref ref="example-group-48"/> and construct a normal subgroup in this group.
           (In other words,
           do not just ask for a list of the normal subgroups from Sage,
@@ -2004,7 +2004,7 @@
           and so can be used to create a group action.
           For such an action,
           from each group element form a Sage permutation of the subgroups by numbering the six subgroups and using these integers as markers for the subgroups.
-          You will find the Python list method <c>.index()</c>very helpful.
+          You will find the Python list method <c>.index()</c> very helpful.
           Now use all of these permutations to generate a permutation group (a subgroup of <m>S_6</m>).
           Finally, use permutation group methods for orbits and stabilisers,
           <etc/> to explore the actions.

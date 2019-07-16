@@ -1680,19 +1680,19 @@
     <subsection permid="TEn">
       <title>Isomorphism Testing</title>
       <p permid="hmG">
-        If <c>G</c>and <c>H</c>are two permutation groups,
-        then the command <c>G.is_isomorphic(H)</c>will return <c>True</c>or <c>False</c>as the two groups are,
+        If <c>G</c> and <c>H</c> are two permutation groups,
+        then the command <c>G.is_isomorphic(H)</c> will return <c>True</c> or <c>False</c> as the two groups are,
         or are not,
         isomorphic.
         Since <q>isomorpic to</q> is an equivalence relation by <xref ref="theorem-isomorph-5"/>,
-        it does not matter which group plays the role of <c>G</c>and which plays the role of <c>H</c>.
+        it does not matter which group plays the role of <c>G</c> and which plays the role of <c>H</c>.
       </p>
 
       <p permid="NtP">
         So we have a few more examples to work with,
         let us introduce the Sage command that creates an external direct product.
-        If <c>G</c>and <c>H</c>are two permutation groups,
-        then the command <c>direct_product_permgroups([G,H])</c>will return the external direct product as a new permutation group.
+        If <c>G</c> and <c>H</c> are two permutation groups,
+        then the command <c>direct_product_permgroups([G,H])</c> will return the external direct product as a new permutation group.
         Notice that this is a function
         (not a method)
         and the input is a list.
@@ -1940,13 +1940,13 @@
       <p permid="vql">
         Given an integer <m>n</m>, the set of positive integers less than <m>n</m>,
         and relatively prime to <m>n</m> forms a group under multiplication mod <m>n</m>.
-        We will work in the set <c>Integers(n)</c>where we can add <em>and</em> multiply,
+        We will work in the set <c>Integers(n)</c> where we can add <em>and</em> multiply,
         but we want to stay strictly with multiplication only.
       </p>
 
       <p permid="bxu">
         First we build the subgroup itself.
-        Notice how we must convert <c>x</c>into an integer
+        Notice how we must convert <c>x</c> into an integer
         (an element of <c>ZZ</c>)
         so that the greatest common divisor computation performs correctly.
       </p>
@@ -1988,7 +1988,7 @@
         and the last element of order <m>2</m>, for no particular reason.
         After your work through this once,
         we encourage you to try other choices to understand why some choices lead to an internal direct product and some do not.
-        Notice that we choose the elements from the list <c>U</c>so that they are sure to be elements of <c>Z36</c>and behave properly when multiplied.
+        Notice that we choose the elements from the list <c>U</c> so that they are sure to be elements of <c>Z36</c> and behave properly when multiplied.
       </p>
 
             <sage permid="WiH">
@@ -2013,7 +2013,7 @@
             </sage>
 
       <p permid="TSV">
-        So <c>A</c>and <c>B</c>are two cyclic subgroups.
+        So <c>A</c> and <c>B</c> are two cyclic subgroups.
         Notice that their intersection is the identity element,
         one of our requirements for an internal direct product.
         So this is a good start.
@@ -2025,7 +2025,7 @@
             </sage>
 
       <p permid="Aae">
-        <c>Z36</c>is an abelian group,
+        <c>Z36</c> is an abelian group,
         thus the condition on all products commuting will hold,
         but we illustrate the Sage commands that will check this in a non-abelian situation.
       </p>
@@ -2040,7 +2040,7 @@
             </sage>
 
       <p permid="ghn">
-        Finally, we need to check that by forming products with elements from <c>A</c>and <c>B</c>we create the entire group.
+        Finally, we need to check that by forming products with elements from <c>A</c> and <c>B</c> we create the entire group.
         Sorting the resulting list will make a check easier for us visually,
         and is required if we want Sage to do the check.
       </p>
@@ -2066,19 +2066,19 @@
       <p permid="Mow">
         That's it.
         We now condense all this information into the statement that
-        <q><c>U</c>is the internal direct product of <c>A</c>and <c>B</c>.</q>
+        <q><c>U</c> is the internal direct product of <c>A</c> and <c>B</c>.</q>
         By <xref ref="theorem-isomorph-directproducts"/>,
-        we see that <c>U</c>is isomorphic to a product of a cyclic group of order <m>6</m> and a cyclic group of order <m>2</m>.
+        we see that <c>U</c> is isomorphic to a product of a cyclic group of order <m>6</m> and a cyclic group of order <m>2</m>.
         So in a very real sense,
-        <c>U</c>is no more or less complicated than <m>{\mathbb Z}_6\times{\mathbb Z}_2</m>,
+        <c>U</c> is no more or less complicated than <m>{\mathbb Z}_6\times{\mathbb Z}_2</m>,
         which is in turn isomorphic to <m>{\mathbb Z}_3\times{\mathbb Z}_2\times{\mathbb Z}_2</m>.
         So we totally understand the <q>structure</q> of <c>U</c>.
-        For example, we can see that <c>U</c>is not cyclic,
+        For example, we can see that <c>U</c> is not cyclic,
         since when written as a product of cyclic groups,
         the two orders are not relatively prime.
-        The final expression of <c>U</c>suggests you could find three cyclic subgroups of <c>U</c>,
+        The final expression of <c>U</c> suggests you could find three cyclic subgroups of <c>U</c>,
         with orders <m>3</m>, <m>2</m> and <m>2</m>,
-        so that <c>U</c>is an internal direct product of the three subgroups.
+        so that <c>U</c> is an internal direct product of the three subgroups.
       </p>
     </subsection>
   </section>
@@ -2120,11 +2120,11 @@
         </p>
 
         <p permid="zqk">
-          One such representation is included in Sage as <c>QuaternionGroup()</c><mdash/> your answer should look very similar,
+          One such representation is included in Sage as <c>QuaternionGroup()</c> <mdash/> your answer should look very similar,
           but perhaps not identical.
           Do not submit your answer for a representation of the quaternions,
           but I strongly suggest working this particular group representation until you are sure you have it right <mdash/> the problems below might be very difficult otherwise.
-          You can use Sage's <c>.is_isomorphic()</c>method to check if your representations are correct.
+          You can use Sage's <c>.is_isomorphic()</c> method to check if your representations are correct.
           However, do not use this as a substitute for the part of each question that asks you to investigate properties of your representation towards this end.
         </p>
 
@@ -2168,7 +2168,7 @@
       <statement>
         <p permid="fxt">
           Consider the symmetries of a 10-gon,
-          <m>D_{10}</m> in your text, <c>DihedralGroup(10)</c>in Sage.
+          <m>D_{10}</m> in your text, <c>DihedralGroup(10)</c> in Sage.
           Presume that the vertices of the 10-gon have been labeled <m>1</m> through <m>10</m> in order.
           Identify the permutation that is a <m>180</m> degree rotation and use it to generate a subgroup <m>R</m> of order <m>2</m>.
           Then identify the permutation that is a <m>72</m> degree rotation,

@@ -1857,7 +1857,7 @@
             </sage>
 
       <p permid="ziG">
-        We construct the poset by giving the the <c>Poset</c>constructor a list containing the elements and the relations.
+        We construct the poset by giving the the <c>Poset</c> constructor a list containing the elements and the relations.
         We can then easily get a <q>plot</q> of the poset.
         Notice the plot just shows the <q>cover relations</q>
         <mdash/> a minimal set of comparisons which the assumption of transitivity would expand into the set of all the relations.
@@ -1873,15 +1873,15 @@
             </sage>
 
       <p permid="fpP">
-        Another approach to creating a <c>Poset</c>is to let the poset constructor run over all the pairs of elements,
+        Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements,
         and all we do is give the constructor a way to test if two elements are comparable.
-        Our comparison function should expect two elements and then return <c>True</c>or <c>False</c>.
+        Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.
         A <q>lambda</q> function is one way to quickly build such a function.
         This may be a new idea for you,
         but mastering lambda functions can be a great convenience.
         Notice that <q>lambda</q> is a word reserved for just this purpose
         (so, for example,
-        <c>lambda</c>is a bad choice for the name of an eigenvalue of a matrix).
+        <c>lambda</c> is a bad choice for the name of an eigenvalue of a matrix).
         There are other ways to make functions in Sage,
         but a lambda function is quickest when the function is simple.
       </p>
@@ -1906,7 +1906,7 @@
         Sage also has a collection of stock posets.
         Some are one-shot constructions,
         while others are members of parameterized families.
-        Use tab-completion on <c>Posets.</c>to see the full list.
+        Use tab-completion on <c>Posets.</c> to see the full list.
         Here are some examples.
       </p>
 
@@ -2015,10 +2015,10 @@
             </sage>
 
       <p permid="QgR">
-        Notice that <c>6</c>and <c>8</c>are not comparable in this poset
+        Notice that <c>6</c> and <c>8</c> are not comparable in this poset
         (it is a <em>partial</em> order).
-        The methods <c>.is_gequal()</c>and <c>.is_greater_than()</c>work similarly,
-        but returns <c>True</c>if the first element is greater
+        The methods <c>.is_gequal()</c> and <c>.is_greater_than()</c> work similarly,
+        but returns <c>True</c> if the first element is greater
         (or equal).
       </p>
 
@@ -2091,7 +2091,7 @@
             </sage>
 
       <p permid="ICs">
-        If we make two elements in <c>R</c>comparable when they had not previously been,
+        If we make two elements in <c>R</c> comparable when they had not previously been,
         this is an extension of <c>R</c>.
         Consider all possible extensions of one poset <mdash/> we can make a poset from all of these,
         where set inclusion is the relation.
@@ -2119,7 +2119,7 @@
       <p permid="oJB">
         We can construct subposets by giving a set of elements to induce the new poset.
         Here we take roughly the <q>bottom half</q>
-        of the random poset <c>P</c>by inducing the subposet on a union of some of the level sets.
+        of the random poset <c>P</c> by inducing the subposet on a union of some of the level sets.
       </p>
 
             <sage doctest="not tested" permid="Mfb">
@@ -2162,12 +2162,12 @@
         Every lattice is a poset,
         so all the commands above will perform equally well for a lattice.
         But how do you create a lattice?
-        Simple <mdash/> first create a poset and then feed it into the <c>LatticePoset()</c>constructor.
+        Simple <mdash/> first create a poset and then feed it into the <c>LatticePoset()</c> constructor.
         But realize that just because you give this constructor a poset,
         it does not mean a lattice will always come back out.
         Only if the poset is <em>already</em>
         a lattice will it get upgraded from a poset to a lattice for Sage's purposes,
-        and you will get a <c>ValueError</c>if the upgrade is not possible.
+        and you will get a <c>ValueError</c> if the upgrade is not possible.
         Finally, notice that some of the posets Sage constructs are already recognized as lattices,
         such as the prototypical <c>BooleanLattice</c>.
       </p>
@@ -2258,7 +2258,7 @@
       </p>
 
       <p permid="FHM">
-        An example of the former is the <c>.is_distributive()</c>method.
+        An example of the former is the <c>.is_distributive()</c> method.
       </p>
 
             <sage permid="PJB">
@@ -2271,10 +2271,10 @@
             </sage>
 
       <p permid="lOV">
-        An example of the latter is the <c>.top()</c>method.
+        An example of the latter is the <c>.top()</c> method.
         What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.
         For a poset,
-        <c>.top()</c>and <c>.bottom()</c>may return an element or may not
+        <c>.top()</c> and <c>.bottom()</c> may return an element or may not
         (returning <c>None</c>),
         but for a lattice it is guaranteed to return exactly one element.
       </p>
@@ -2303,7 +2303,7 @@
 
       <p permid="ydn">
         Complements now make sense in a lattice.
-        The result of the <c>.complements()</c>method is a dictionary that uses elements of the lattice as the keys.
+        The result of the <c>.complements()</c> method is a dictionary that uses elements of the lattice as the keys.
         We say the dictionary is <q>indexed</q>
         by the elements of the lattice.
         The result is a list of the complements of the element.
@@ -2380,8 +2380,8 @@
     <exercise number="1" permid="myC">
       <statement>
         <p permid="bLp">
-          Use <c>R = Posets.RandomPoset(30,0.05)</c>to construct a random poset.
-          Use <c>R.plot()</c>to get an idea of what you have built.
+          Use <c>R = Posets.RandomPoset(30,0.05)</c> to construct a random poset.
+          Use <c>R.plot()</c> to get an idea of what you have built.
         </p>
 
         <ol permid="AgI">
@@ -2400,13 +2400,13 @@
 
           <li permid="xVW">
             <p permid="Avd">
-              Use <c>.minimal_elements()</c>and <c>.maximal_elements()</c>to find the smallest and largest elements of your poset.
+              Use <c>.minimal_elements()</c> and <c>.maximal_elements()</c> to find the smallest and largest elements of your poset.
             </p>
           </li>
 
           <li permid="edf">
             <p permid="gCm">
-              Use <c>LatticePoset(R)</c>to see if the poset <c>R</c>is a lattice by attempting to convert it into a lattice.
+              Use <c>LatticePoset(R)</c> to see if the poset <c>R</c> is a lattice by attempting to convert it into a lattice.
             </p>
           </li>
 
@@ -2431,23 +2431,23 @@
         <ol permid="gnR">
           <li permid="qrx">
             <p permid="sQE">
-              Determine the one and zero element using <c>.top()</c>and <c>.bottom()</c>.
+              Determine the one and zero element using <c>.top()</c> and <c>.bottom()</c>.
             </p>
           </li>
 
           <li permid="WyG">
             <p permid="YXN">
               Determine all the pairs of elements of the lattice that are complements of each other <em>without</em>
-              using the <c>.complement()</c>method,
-              but rather just use the <c>.meet()</c>and <c>.join()</c>methods.
+              using the <c>.complement()</c> method,
+              but rather just use the <c>.meet()</c> and <c>.join()</c> methods.
               Extra credit if you can output each pair just once.
             </p>
           </li>
 
           <li permid="CFP">
             <p permid="FeW">
-              Determine if the lattice is distributive using just the <c>.meet()</c>and <c>.join()</c>methods,
-              and not the <c>.is_distributive()</c>method.
+              Determine if the lattice is distributive using just the <c>.meet()</c> and <c>.join()</c> methods,
+              and not the <c>.is_distributive()</c> method.
             </p>
           </li>
         </ol>
@@ -2457,7 +2457,7 @@
     <exercise number="3" permid="yMU">
       <statement>
         <p permid="nZH">
-          Construct several specific diamond lattices with <c>Posets.DiamondPoset(n)</c>by varying the value of <c>n</c>.
+          Construct several specific diamond lattices with <c>Posets.DiamondPoset(n)</c> by varying the value of <c>n</c>.
           Once you feel you have enough empirical evidence,
           give answers, with justifications,
           to the following questions for <em>general</em> values of <m>n</m>,
@@ -2473,7 +2473,7 @@
 
           <li permid="OUh">
             <p permid="Rto">
-              Read the documentation of the <c>.antichains()</c>method to learn what an antichain is.
+              Read the documentation of the <c>.antichains()</c> method to learn what an antichain is.
               How many antichains are there?
             </p>
           </li>
@@ -2490,23 +2490,23 @@
     <exercise number="4" permid="eUd">
       <statement>
         <p permid="UgQ">
-          Use <c>Posets.BooleanLattice(4)</c>to construct an instance of the prototypical Boolean algebra on <m>16</m> elements
+          Use <c>Posets.BooleanLattice(4)</c> to construct an instance of the prototypical Boolean algebra on <m>16</m> elements
           (<ie/>, all subsets of a <m>4</m>-set).
         </p>
 
         <p permid="AnZ">
-          Then use <c>Posets.IntegerCompositions(5)</c>to construct the poset whose <m>16</m> elements are the compositions of the integer <m>5</m>.
+          Then use <c>Posets.IntegerCompositions(5)</c> to construct the poset whose <m>16</m> elements are the compositions of the integer <m>5</m>.
           We have seen above that the integer composition lattice is distributive and complemented,
           making it a Boolean algebra.
           And by <xref ref="theorem-classification-boolean-algebra"/> we can conclude that these two Boolean algebras are isomorphic.
         </p>
 
         <p permid="gvi">
-          Use the <c>.plot()</c>method to see the similarity visually.
-          Then use the method <c>.hasse_diagram()</c>on each poset to obtain a directed graph
+          Use the <c>.plot()</c> method to see the similarity visually.
+          Then use the method <c>.hasse_diagram()</c> on each poset to obtain a directed graph
           (which you can also plot,
           though the embedding into the plane may not be as informative).
-          Employ the graph method <c>.is_isomorphic()</c>to see that the two Hasse diagrams really are the <q>same.</q>
+          Employ the graph method <c>.is_isomorphic()</c> to see that the two Hasse diagrams really are the <q>same.</q>
         </p>
       </statement>
     </exercise>
@@ -2517,7 +2517,7 @@
           (Advanced) For the previous question,
           construct an <em>explicit</em> isomorphism between the two Boolean algebras.
           This would be a bijective function
-          (constructed with the <c>def</c>command)
+          (constructed with the <c>def</c> command)
           that converts compositions into sets
           (or if, you choose, sets into compositions)
           and which respects the meet and join operations.

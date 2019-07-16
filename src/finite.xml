@@ -1706,7 +1706,7 @@
       <title>Creating Finite Fields</title>
       <p permid="Vwn">
         By <xref ref="theorem-finite-splitting-field"/> we know that all finite fields of a given order are isomorphic and that possible orders are limited to powers of primes.
-        We can use the <c>FiniteField()</c>command, as before,
+        We can use the <c>FiniteField()</c> command, as before,
         or a shorter equivalent is <c>GF()</c>.
         Optionally, we can specify an irreducible polynomial for the contruction of the field.
         We can view this polynomial as the generator of the principal ideal of a polynomial ring,
@@ -1716,8 +1716,8 @@
 
       <p permid="BDw">
         Absent providing an irreducible polynomial, Sage will use a Conway polynomial.
-        You can determine these with the <c>conway_polynomial()</c>command,
-        or just build a finite field and request the defining polynomial with the <c>.polynomial()</c>method.
+        You can determine these with the <c>conway_polynomial()</c> command,
+        or just build a finite field and request the defining polynomial with the <c>.polynomial()</c> method.
       </p>
 
             <sage permid="WpY">
@@ -1755,7 +1755,7 @@
 
       <p permid="hKF">
         Just to be more readable,
-        we coerce a list of coefficients into the set of polynomials (obtained with the <c>.parent()</c>method on a simple polynomial) to define a polynomial.
+        we coerce a list of coefficients into the set of polynomials (obtained with the <c>.parent()</c> method on a simple polynomial) to define a polynomial.
       </p>
 
             <sage permid="uSI">
@@ -1790,10 +1790,10 @@
     <subsection permid="ePM">
       <title>Logarithms in Finite Fields</title>
       <p permid="NRO">
-        One useful command we have not described is the <c>.log()</c>method for elements of a finite field.
+        One useful command we have not described is the <c>.log()</c> method for elements of a finite field.
         Since we now know that the multiplicative group of nonzero elements is cyclic,
         we can express every element as a power of the generator.
-        The <c>log</c>method will return that power.
+        The <c>log</c> method will return that power.
       </p>
 
       <p permid="tYX">
@@ -1877,7 +1877,7 @@
           The generator used in Sage is also a generator of this multiplicative group.
           To see this, create a finite field of order <m>2^7</m>.
           Create two lists of the elements of the field:
-          first, use the <c>.list()</c>method,
+          first, use the <c>.list()</c> method,
           then use a list comprehension to generate the proper powers of the generator you specified when you created the field.
         </p>
 
@@ -1885,8 +1885,8 @@
           The second list should be the whole field, but will be missing zero.
           Create the zero element of the field
           (perhaps by coercing <m>0</m> into the field)
-          and <c>.append()</c>it to the list of powers.
-          Apply the <c>sorted()</c>command to each list and then test the lists for equality.
+          and <c>.append()</c> it to the list of powers.
+          Apply the <c>sorted()</c> command to each list and then test the lists for equality.
         </p>
       </statement>
     </exercise>
@@ -1923,30 +1923,30 @@
         <p permid="blz">
           This problem investigates the <q>separableness</q>
           of <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m>.
-          You can create this number field quickly with the <c>NumberFieldTower</c>constructor,
+          You can create this number field quickly with the <c>NumberFieldTower</c> constructor,
           along with the polynomials <m>x^2-3</m> and <m>x^2-7</m>.
-          Flatten the tower with the <c>.absolute_field()</c>method and use the <c>.structure()</c>method to retrieve mappings between the tower and the flattened version.
-          Name the tower <c>N</c>and use <c>a</c>and <c>b</c>as generators.
-          Name the flattened version <c>L</c>with <c>c</c>as a generator.
+          Flatten the tower with the <c>.absolute_field()</c> method and use the <c>.structure()</c> method to retrieve mappings between the tower and the flattened version.
+          Name the tower <c>N</c> and use <c>a</c> and <c>b</c> as generators.
+          Name the flattened version <c>L</c> with <c>c</c> as a generator.
         </p>
 
         <p permid="HsI">
-          Create a nontrivial (<q>random</q>) element of <c>L</c>using as many powers of <c>c</c>as possible
-          (check the degree of <c>L</c>to see how many linearly independent powers there are).
+          Create a nontrivial (<q>random</q>) element of <c>L</c> using as many powers of <c>c</c> as possible
+          (check the degree of <c>L</c> to see how many linearly independent powers there are).
           Request from Sage the minimum polynomial of your random element,
           thus ensuring the element is a root.
           Construct the minimum polynomial as a polynomial over <c>N</c>,
           the field tower,
           and find its factorization.
           Your factorization should have only linear factors.
-          Each root should be an expression in <c>a</c>and <c>b</c>,
+          Each root should be an expression in <c>a</c> and <c>b</c>,
           so convert each root into an expression with mathematical notation involving <m>\sqrt{3}</m> and <m>\sqrt{7}</m>.
           Use one of the mappings to verify that one of the roots is indeed the original random element.
         </p>
 
         <p permid="nzR">
           Create a few more random elements, and find a factorization
-          (in <c>N</c>or in <c>L</c>).
+          (in <c>N</c> or in <c>L</c>).
           For a field to be separable,
           every element of the field should be a root of
           <em>some</em> separable polynomial.
@@ -1961,8 +1961,8 @@
         <p permid="THa">
           <xref ref="exercise-frobenius-map"/> describes the Frobenius Map,
           an automorphism of a finite field.
-          If <c>F</c>is a finite field in Sage,
-          then <c>End(F)</c>will create the automorphism group of F, the set of all bijective mappings between the field and itself.
+          If <c>F</c> is a finite field in Sage,
+          then <c>End(F)</c> will create the automorphism group of F, the set of all bijective mappings between the field and itself.
         </p>
 
         <ol permid="ZYP">
@@ -2049,7 +2049,7 @@
                 <mrow>&amp;\{x^2|x\in F\}&amp;&amp;\{a-x^2|x\in F\}</mrow>
               </md>
               using Sage sets with the <m>Set()</m> constructor.  (Be careful:
-            <c>set()</c>is a Python command which behaves differently in fundamental ways.)
+            <c>set()</c> is a Python command which behaves differently in fundamental ways.)
             </p>
           </li>
 
