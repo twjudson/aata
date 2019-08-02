@@ -3,8 +3,8 @@
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
 <!--                                                  -->
-<!-- Text: Copyright (C) 1997-2018  Thomas W. Judson  -->
-<!-- Sage: Copyright (C) 2010-2018  Robert A. Beezer  -->
+<!-- Text: Copyright (C) 1997-2019  Thomas W. Judson  -->
+<!-- Sage: Copyright (C) 2010-2019  Robert A. Beezer  -->
 <!-- See the file COPYING for copying conditions.     -->
 <!-- This file is part of the book                    -->
 <!--                                                  -->
@@ -1700,7 +1700,7 @@
       </statement>
     </exercise>
 
-    <todo>Fix references to torsion subgroup</todo>
+    <!--Todo Fix references to torsion subgroup-->
 
     <exercise number="31" permid="qwo">
       <statement>
@@ -1893,16 +1893,16 @@
 
   </exercises>
 
-  <references xml:id="cyclic-references">
+  <references xml:id="cyclic-references" permid="KnF">
     <title>References and Suggested Readings</title>
         <!-- was [1] -->
         <!-- reference updated - TWJ 5/6/2010 -->
-    <biblio type="raw">
+    <biblio type="raw" permid="quO">
       Koblitz, N.
       <title>A Course in Number Theory and Cryptography</title>. 2nd ed. Springer, New York, 1994.
     </biblio>
         <!-- was [2] -->
-    <biblio type="raw" xml:id="biblio-pomerance-1990">
+    <biblio type="raw" xml:id="biblio-pomerance-1990" permid="WBX">
       Pomerance, C. <q>Cryptology and Computational Number Theory<mdash/>An Introduction,</q> in
       <title>Cryptology and Computational Number Theory</title>, Pomerance, C., ed. Proceedings of Symposia in Applied Mathematics, vol. 42, American Mathematical Society, Providence, RI, 1990. This book gives an excellent account of how the method of repeated squares is used in cryptography.
     </biblio>
@@ -1932,7 +1932,7 @@
         <m>3\mathbb Z</m> from <xref ref="example-cyclic-z3"/>, simply use <c>3*ZZ</c>.
         As an infinite set, there is not a whole lot you can do with this.
         You can test if integers are in this set, or not.
-        You can also recall the generator with the <c>.gen()</c>command.
+        You can also recall the generator with the <c>.gen()</c> command.
       </p>
 
             <sage permid="LXK">
@@ -2024,24 +2024,19 @@
         new elements of the group by coercing an integer
         (in a list of length <m>1</m>)
         into the group.
-        You may get a <c>DeprecationWarning</c>the first time you use this syntax to create a new element.
+        You may get a <c>DeprecationWarning</c> the first time you use this syntax if you are using an old version of Sage.
         The mysterious warning can be safely ignored.
       </p>
             <!-- Only to doctesting, warning to disappear "a few months" after 2015/05/20      -->
             <!-- This test evokes the warning, then next one tests fine, as it normally should -->
             <!-- Adjust sentence above once it goes away -->
+            <!-- Adjustments made with v8.8              -->
             <!-- Used ... below to mark out a line number that doctesting complained about -->
             <sage doctest="invisible" permid="TCj">
                 <input>
             G([2])
             </input>
-                <output>
-            doctest:...: DeprecationWarning: The default behaviour changed! If you
-            *really* want a linear combination of smith generators, use
-            .linear_combination_of_smith_form_gens.
-            See http://trac.sagemath.org/16261 for details.
-            (2)
-            </output>
+                <output>(2)</output>
             </sage>
             <sage permid="Vrw">
                 <input>
@@ -2095,7 +2090,7 @@
       <p permid="iKY">
         It is possible to create cyclic subgroups,
         from an element designated to be the new generator.
-        Unfortunately, to do this requires the <c>.submodule()</c>method
+        Unfortunately, to do this requires the <c>.submodule()</c> method
         (which should be renamed in Sage).
       </p>
 
@@ -2125,7 +2120,7 @@
             </sage>
 
       <p permid="OSh">
-        The cyclic subgroup <c>H</c>just created has more than one generator.
+        The cyclic subgroup <c>H</c> just created has more than one generator.
         We can test this by building a new subgroup and comparing the two subgroups.
       </p>
 
@@ -2160,7 +2155,7 @@
 
       <p permid="uZq">
         Certainly the list of elements,
-        and the common generator of <c>(2)</c>lead us to belive that <c>H</c>and <c>K</c>are the same,
+        and the common generator of <c>(2)</c> lead us to belive that <c>H</c> and <c>K</c> are the same,
         but the comparison in the last line leaves no doubt.
       </p>
 
@@ -2178,8 +2173,8 @@
       <p permid="HnI">
         We can create an abstract cyclic group in the style of <xref ref="theorem-cyclic-subgroup"/>,
         <xref ref="theorem-cyclic-abelian"/>, and <xref ref="theorem-cyclic-subgroups"/>.
-        In the syntax below <c>a</c>is a name for the generator,
-        and <c>14</c>is the order of the element.
+        In the syntax below <c>a</c> is a name for the generator,
+        and <c>14</c> is the order of the element.
         Notice that the notation is now multiplicative,
         so we multiply elements, and repeated products can be written as powers.
       </p>
@@ -2238,7 +2233,7 @@
             </sage>
 
       <p permid="TCa">
-        Subgroups can be formed with a <c>.subgroup()</c>command.
+        Subgroups can be formed with a <c>.subgroup()</c> command.
         But do not try to list the contents of a subgroup,
         it'll look strangely unfamiliar.
         Also, comparison of subgroups is not implemented.
@@ -2354,12 +2349,12 @@
                 <input>H.list()</input>
                 <output>
             [(),
-             (1,3,5,7,9,11,13)(2,4,6,8,10,12,14),
-             (1,5,9,13,3,7,11)(2,6,10,14,4,8,12),
-             (1,7,13,5,11,3,9)(2,8,14,6,12,4,10),
-             (1,9,3,11,5,13,7)(2,10,4,12,6,14,8),
+             (1,13,11,9,7,5,3)(2,14,12,10,8,6,4),
              (1,11,7,3,13,9,5)(2,12,8,4,14,10,6),
-             (1,13,11,9,7,5,3)(2,14,12,10,8,6,4)]
+             (1,9,3,11,5,13,7)(2,10,4,12,6,14,8),
+             (1,7,13,5,11,3,9)(2,8,14,6,12,4,10),
+             (1,5,9,13,3,7,11)(2,6,10,14,4,8,12),
+             (1,3,5,7,9,11,13)(2,4,6,8,10,12,14)]
             </output>
             </sage>
 
@@ -2542,7 +2537,7 @@
         <ol permid="ozX">
           <li permid="yie">
             <p permid="MAe">
-            <c>zeta14</c>is the name of the generator used for the cyclotomic field,
+            <c>zeta14</c> is the name of the generator used for the cyclotomic field,
               it is a primitive root of unity (a <m>14</m>th root of unity in this case).
               We have captured it as <c>w</c>.
             </p>
@@ -2550,13 +2545,13 @@
 
           <li permid="epn">
             <p permid="sHn">
-              The syntax <c>CDF(w)</c>will convert the complex number <c>w</c>into the more familiar form with real and imaginary parts.
+              The syntax <c>CDF(w)</c> will convert the complex number <c>w</c> into the more familiar form with real and imaginary parts.
             </p>
           </li>
 
           <li permid="Kww">
             <p permid="YOw">
-              The method <c>.abs()</c>will return the modulus of a complex number,
+              The method <c>.abs()</c> will return the modulus of a complex number,
               <m>r</m> as described in the text.
               For elements of <m>{\mathbb C}^\ast</m> this should always equal <m>1</m>.
             </p>
@@ -2564,20 +2559,20 @@
 
           <li permid="qDF">
             <p permid="EVF">
-              The method <c>.arg()</c>will return the argument of a complex number,
+              The method <c>.arg()</c> will return the argument of a complex number,
               <m>\theta</m> as described in the text.
               Every element of the cyclic group in this example should have an argument that is an integer multiple of <m>\frac{2\pi}{14}</m>.
-              The <c>N()</c>syntax converts the symbolic value of <c>pi</c>to a numerical approximation.
+              The <c>N()</c> syntax converts the symbolic value of <c>pi</c> to a numerical approximation.
             </p>
           </li>
 
           <li permid="WKO">
             <p permid="lcO">
-            <c>sg</c>is a list of elements that form a cyclic subgroup of order 7, composed of the first 7 powers of <c>b = w^2</c>.
+            <c>sg</c> is a list of elements that form a cyclic subgroup of order 7, composed of the first 7 powers of <c>b = w^2</c>.
               So, for example,
-              the last comparison multiplies the fifth power of <c>b</c>with the sixth power of <c>b</c>,
+              the last comparison multiplies the fifth power of <c>b</c> with the sixth power of <c>b</c>,
               which would be the eleventh power of <c>b</c>.
-              But since <c>b</c>has order 7, this reduces to the fourth power.
+              But since <c>b</c> has order 7, this reduces to the fourth power.
             </p>
           </li>
 
@@ -2619,7 +2614,7 @@
     <exercise number="1" permid="dcD">
       <statement>
         <p permid="AOC">
-          Execute the statement <c>R = Integers(40)</c>to create the set <c>[0,1,2,...,39]</c>This is a group under addition mod <m>40</m>,
+          Execute the statement <c>R = Integers(40)</c> to create the set <c>[0,1,2,...,39]</c>This is a group under addition mod <m>40</m>,
           which we will ignore.
           Instead we are interested in the subset of elements which have an inverse under
           <em>multiplication</em> mod <m>40</m>.

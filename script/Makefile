@@ -145,7 +145,7 @@ sage:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-sage.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-sage.pdf
 
@@ -211,7 +211,7 @@ draft:
 	cp -a $(SRC)/images $(PDFOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
 	cd $(PDFOUT); \
-	xsltproc --xinclude --stringparam author-tools 'yes' \
+	xsltproc -o aata.tex --xinclude --stringparam author-tools 'yes' \
 	--stringparam latex.draft 'yes' $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-draft.pdf

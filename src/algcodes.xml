@@ -3,8 +3,8 @@
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
 <!--                                                  -->
-<!-- Text: Copyright (C) 1997-2018  Thomas W. Judson  -->
-<!-- Sage: Copyright (C) 2010-2018  Robert A. Beezer  -->
+<!-- Text: Copyright (C) 1997-2019  Thomas W. Judson  -->
+<!-- Sage: Copyright (C) 2010-2019  Robert A. Beezer  -->
 <!-- See the file COPYING for copying conditions.     -->
 <!-- This file is part of the book                    -->
 <!--                                                  -->
@@ -848,7 +848,7 @@
         <statement>
           <p permid="XFm">
             Let <m>d_{\min}</m> be the minimum distance for a group code <m>C</m>.
-            Then <m>d_{\min}</m> is the minimum of all the nonzero weights of the nonzero codewords in <m>C</m>.
+            Then <m>d_{\min}</m> is the minimum weight of all the nonzero codewords in <m>C</m>.
             That is,
             <me permid="UDC">
               d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}
@@ -2808,9 +2808,9 @@
 
   </exercises>
 
-  <references xml:id="algcodes-references">
+  <references xml:id="algcodes-references" permid="GJf">
     <title>References and Suggested Readings</title>
-    <biblio type="raw">
+    <biblio type="raw" permid="mQo">
 <!-- was [1] -->
       Blake, I. F. <q>Codes and Designs,</q>
       <title>Mathematics Magazine</title>
@@ -2818,13 +2818,13 @@
       (1979), 81<ndash/>95.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw">
+    <biblio type="raw" permid="SXx">
 <!-- was [2] -->
       Hill, R.
       <title>A First Course in Coding Theory</title>. Oxford University Press, Oxford, 1990.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="zeG">
 <!-- was [3] -->
       Levinson, N. <q>Coding Theory: A Counterexample to G. H. Hardy's Conception of Applied Mathematics,</q>
       <title>American Mathematical Monthly</title>
@@ -2832,25 +2832,25 @@
       (1970), 249<ndash/>58.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw">
+    <biblio type="raw" permid="flP">
 <!-- was [4] -->
       Lidl, R. and Pilz, G.
       <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw">
+    <biblio type="raw" permid="LsY">
 <!-- was [5] -->
       MacWilliams, F. J. and Sloane, N. J. A.
       <title>The Theory of Error-Correcting Codes</title>. North-Holland Mathematical Library, 16, Elsevier, Amsterdam, 1983.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="rAh">
 <!-- was [6] -->
       Roman, S.
       <title>Coding and Information Theory</title>. Springer-Verlag, New York, 1992.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="XHq">
 <!-- was [7] -->
       Shannon, C. E. <q>A Mathematical Theory of Communication,</q>
       <title>Bell System Technical Journal</title>
@@ -2858,13 +2858,13 @@
       (1948), 379<ndash/>423, 623<ndash/>56.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="DOz">
 <!-- was [8] -->
       Thompson, T. M.
       <title>From Error-Correcting Codes through Sphere Packing to Simple Groups</title>. Carus Monograph Series, No. 21. Mathematical Association of America, Washington, DC, 1983.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw">
+    <biblio type="raw" permid="jVI">
 <!-- was [9] -->
       van Lint, J. H.
       <title>Introduction to Coding Theory</title>. Springer, New York, 1999.
@@ -2884,8 +2884,8 @@
     <subsection permid="UKt">
       <title>Constructing Linear Codes</title>
       <p permid="ylE">
-        The <c>codes</c>object can be used to get a concise listing of the available implemented codes.
-        Type <c>codes.</c>and press the <c>Tab</c>key and most interfaces to Sage will give you a list.
+        The <c>codes</c> object can be used to get a concise listing of the available implemented codes.
+        Type <c>codes.</c> and press the <c>Tab</c> key and most interfaces to Sage will give you a list.
         You can then use a question mark at the end of a method name to learn about the various parameters.
       </p>
 
@@ -2899,8 +2899,8 @@
         and the <m>4</m> is the dimension,
         meaning this code has <m>2^4=16</m> vectors comprising the code.
         The documentation assumes we know a few things from later in the course.
-        We use <c>GF(2)</c>to specify that our code is binary <mdash/> this will make more sense at the end of the course.
-        A second parameter is <c>r</c>and we can see from the formulas in the documenation that setting <c>r=3</c>will give length <m>7</m>.
+        We use <c>GF(2)</c> to specify that our code is binary <mdash/> this will make more sense at the end of the course.
+        A second parameter is <c>r</c> and we can see from the formulas in the documenation that setting <c>r=3</c> will give length <m>7</m>.
       </p>
 
             <sage permid="pFZ">
@@ -3032,7 +3032,7 @@
 
       <p permid="HFq">
         We can recognize that one or more errors has occured,
-        since <c>r</c>is not in the code,
+        since <c>r</c> is not in the code,
         as the next computation does not yield the zero vector.
       </p>
 
@@ -3042,7 +3042,7 @@
             </sage>
 
       <p permid="nMz">
-        A linear code has a <c>.decode</c>method.
+        A linear code has a <c>.decode</c> method.
         You may choose from several different algorithms,
         while the Hamming codes have their own custom algorithm.
         The default algorithm is syndrome decoding.
@@ -3097,7 +3097,7 @@
     <exercise number="1" permid="UoU">
       <statement>
         <p permid="ClD">
-          Create the (binary) Golay code with the <c>codes.GolayCode()</c>constructor.
+          Create the (binary) Golay code with the <c>codes.GolayCode()</c> constructor.
           Read the documentation to be sure you build the binary version
           (not ternary),
           and do not build the extended version
@@ -3153,12 +3153,12 @@
             <p permid="aVr">
               Construct the (binary) Golay code and obtain the parity-check matrix.
               Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.
-              You may find the matrix methods <c>.augment()</c>and <c>.stack()</c>useful,
-              as well as the constructors <c>zero_vector()</c>and <c>ones_matrix()</c>(remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)
+              You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful,
+              as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c>(remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)
             </p>
 
             <p permid="HcA">
-              Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c>constructor and compute the length,
+              Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c> constructor and compute the length,
               dimension and minimum distance of the extended code.
             </p>
           </li>
@@ -3172,9 +3172,9 @@
 
           <li permid="oKB">
             <p permid="TqS">
-              Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c>and the correct keyword to obtain the extended version.
+              Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c> and the correct keyword to obtain the extended version.
               With luck, the sorted lists of your codewords and Sage's codewords will be equal.
-              If not, the linear code method <c>.is_permutation_equivalent()</c>should return <c>True</c>to indicate that your code and Sage's are just rearrangements of each other.
+              If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.
             </p>
           </li>
         </ol>
@@ -3187,7 +3187,7 @@
           <em>Note:</em> This problem is on holiday
           (as of Sage 6.7),
           while some buggy Sage code for the minimum distance of a Hamming code gets sorted out.
-          The <c>r = 2</c>case produces an error message and for <c>r &gt; 5</c>the computation of the minimum distance has become intolerably slow.
+          The <c>r = 2</c> case produces an error message and for <c>r &gt; 5</c> the computation of the minimum distance has become intolerably slow.
           So it is a bit harder to make a reasonable conjecture from just <m>3</m> cases.
         </p>
 
@@ -3197,12 +3197,12 @@
         </p>
 
         <p permid="aOn">
-          You can construct the dual of a code in Sage with the <c>.dual_code()</c>method.
+          You can construct the dual of a code in Sage with the <c>.dual_code()</c> method.
           Construct the binary Hamming codes, and their duals,
-          with the parameter <c>r</c>ranging from <c>2</c>to <c>5</c>,
+          with the parameter <c>r</c> ranging from <c>2</c> to <c>5</c>,
           inclusive.
           Build a table with six columns
-          (perhaps employing the <c>html.table()</c>function)
+          (perhaps employing the <c>html.table()</c> function)
           that lists <m>r</m>,
           the length of the codes,
           the dimensions of the original and the dual,
@@ -3244,7 +3244,7 @@
 
         <p permid="zqX">
           Write a Python function,
-          named <c>is_perfect()</c>which accepts a linear code as input and returns <c>True</c>or <c>False</c>.
+          named <c>is_perfect()</c> which accepts a linear code as input and returns <c>True</c> or <c>False</c>.
           Demonstrate your function by checking that the (binary) Golay code is perfect,
           and then use a loop to verify that the (binary) Hamming codes are perfect for all lengths below <m>32</m>.
         </p>

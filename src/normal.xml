@@ -4,8 +4,8 @@
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
 <!--                                                  -->
-<!-- Text: Copyright (C) 1997-2018  Thomas W. Judson  -->
-<!-- Sage: Copyright (C) 2010-2018  Robert A. Beezer  -->
+<!-- Text: Copyright (C) 1997-2019  Thomas W. Judson  -->
+<!-- Sage: Copyright (C) 2010-2019  Robert A. Beezer  -->
 <!-- See the file COPYING for copying conditions.     -->
 <!-- This file is part of the book                    -->
 <!--                                                  -->
@@ -795,7 +795,7 @@
       </statement>
     </exercise>
 
-    <todo>Expand the solution to #8.</todo>
+    <!--Todo Expand the solution to #8.-->
 
     <exercise number="8" permid="NbD">
       <statement>
@@ -1001,9 +1001,9 @@
             </sage>
 
       <p permid="wkJ">
-        So <c>C</c>is a list of lists,
-        with every element of the group <c>G</c>occuring exactly once somewhere.
-        You could ask Sage to print out <c>C</c>for you if you like,
+        So <c>C</c> is a list of lists,
+        with every element of the group <c>G</c> occuring exactly once somewhere.
+        You could ask Sage to print out <c>C</c> for you if you like,
         but we will try to avoid that here.
         We want to multiply two cosets (lists) together.
         How do we do this?
@@ -1033,7 +1033,7 @@
 
       <p permid="crS">
         What have we accomplished?
-        In the first line we create <c>p</c>as the product of two group elements,
+        In the first line we create <c>p</c> as the product of two group elements,
         one from coset <m>1</m> and one from coset <m>3</m>
         (<c>C[1]</c>, <c>C[3]</c>).
         Since we can choose <em>any</em> element from each coset,
@@ -1041,7 +1041,7 @@
         (<c>C[ ][0]</c>).
         Then we count our way through all the cosets,
         selecting only cosets that contain <c>p</c>.
-        Since <c>p</c>will only be in one coset,
+        Since <c>p</c> will only be in one coset,
         we expect a list with just one element.
         Here, our one-element list contains only <c>2</c>.
         So we say the product of coset <m>1</m> and coset <m>3</m> is coset <m>2</m>.
@@ -1071,7 +1071,7 @@
       <p permid="oGk">
         Good.
         We have the same result.
-        If you are still trusting us on <c>S</c>being a normal subgroup of <c>G</c>,
+        If you are still trusting us on <c>S</c> being a normal subgroup of <c>G</c>,
         then this is the result that the theory predicts.
         Make a copy of the above compute cell and try other choices for the representatives of each coset.
         Then try the product of other cosets,
@@ -1101,9 +1101,9 @@
         and note the colon ending the line.
         The inputs to the function are the numbers of the cosets we want to multiply and the complete list of the cosets.
         The middle two lines should look familiar from above.
-        We know <c>c</c>is a one-element list,
-        so <c>c[0]</c>will extract this one coset number,
-        and <c>return</c>is what determines that this is the output of the function.
+        We know <c>c</c> is a one-element list,
+        so <c>c[0]</c> will extract this one coset number,
+        and <c>return</c> is what determines that this is the output of the function.
         Notice that the indentation above must be exactly as shown.
         We could have written all this computation on a single line without making a new function,
         but that begins to get unwieldly.
@@ -1133,7 +1133,7 @@
       <p permid="NiU">
         Now let us examine a situation where the subgroup is not normal.
         So we will see that our definition of coset multiplication is insufficient in this case.
-        And realize that our new <c>coset_product</c>function is also useless since it assumes the cosets come from a normal subgroup.
+        And realize that our new <c>coset_product</c> function is also useless since it assumes the cosets come from a normal subgroup.
       </p>
 
       <p permid="tqd">
@@ -1197,7 +1197,7 @@
         You can easily ask Sage if a subgroup is normal or not.
         This is viewed as a property of the subgroup,
         but you must tell Sage what the <q>supergroup</q> is,
-        since the answer can change depending on this value. (For example <c>H.is_normal(H)</c>will always be <c>True</c>.) Here are our two examples from above.
+        since the answer can change depending on this value. (For example <c>H.is_normal(H)</c> will always be <c>True</c>.) Here are our two examples from above.
       </p>
 
             <sage permid="WEt">
@@ -1226,7 +1226,7 @@
       <p permid="xZW">
         The text proves in <xref ref="section-simplicity-of-an"/> that <m>A_5</m> is simple,
         <ie/> <m>A_5</m> has no normal subgroups.
-        We could build every subgroup of <m>A_5</m> and ask if it is normal in <m>A_5</m> using the <c>.is_normal()</c>method.
+        We could build every subgroup of <m>A_5</m> and ask if it is normal in <m>A_5</m> using the <c>.is_normal()</c> method.
         But Sage has this covered for us already.
       </p>
 
@@ -1260,8 +1260,8 @@
       <p permid="Koo">
         This is useful, but also a bit unsettling.
         We have the quotient group, but any notion of cosets has been lost,
-        since <c>Q</c>is returned as a new permutation group on a different set of symbols.
-        We cannot presume that the numbers used for the new permutation group <c>Q</c>bear any resemblance to the cosets we get from the <c>.cosets()</c>method.
+        since <c>Q</c> is returned as a new permutation group on a different set of symbols.
+        We cannot presume that the numbers used for the new permutation group <c>Q</c> bear any resemblance to the cosets we get from the <c>.cosets()</c> method.
         But we can see that the quotient group is described as a group generated by two elements of order two.
         We could ask for the order of the group,
         or by Lagrange's Theorem we know the quotient has order <m>4</m>.
@@ -1299,7 +1299,7 @@
         [H.order() for H in N]
         </input>
                 <output>
-        [1, 2, 4, 8, 8, 8, 16]
+        [16, 8, 8, 8, 4, 2, 1]
         </output>
             </sage>
 
@@ -1321,7 +1321,7 @@
           <m>A_5</m>, and check that each is not a normal subgroup
           (except for the two trivial cases).
           This command might take a couple seconds to run.
-          Compare this with the time needed to run the <c>.is_simple()</c>method and realize that there is a significant amount of theory and cleverness brought to bear in speeding up commands like this.
+          Compare this with the time needed to run the <c>.is_simple()</c> method and realize that there is a significant amount of theory and cleverness brought to bear in speeding up commands like this.
           (It is possible that your Sage installation lacks <acro>GAP</acro>'s <q>Table of Marks</q>
           library and you will be unable to compute the list of subgroups.)
         </p>
@@ -1333,12 +1333,12 @@
         <p permid="uvw">
           Consider the quotient group of the group of symmetries of an <m>8</m>-gon,
           formed with the cyclic subgroup of order <m>4</m> generated by a quarter-turn.
-          Use the <c>coset_product</c>function to determine the Cayley table for this quotient group.
+          Use the <c>coset_product</c> function to determine the Cayley table for this quotient group.
           Use the number of each coset,
-          as produced by the <c>.cosets()</c>method as names for the elements of the quotient group.
+          as produced by the <c>.cosets()</c> method as names for the elements of the quotient group.
           You will need to build the table <q>by hand</q>
           as there is no easy way to have Sage's Cayley table command do this one for you.
-          You can build a table in the Sage Notebook pop-up editor (shift-click on a blue line) or you might read the documentation of the <c>html.table()</c>method.
+          You can build a table in the Sage Notebook pop-up editor (shift-click on a blue line) or you might read the documentation of the <c>html.table()</c> method.
         </p>
       </statement>
     </exercise>
@@ -1347,8 +1347,8 @@
       <statement>
         <p permid="aCF">
           Consider the cyclic subgroup of order <m>4</m> in the symmetries of an <m>8</m>-gon.
-          Verify that the subgroup is normal by first building the raw left and right cosets (without using the <c>.cosets()</c>method) and then checking their equality in Sage,
-          all with a single command that employs sorting with the <c>sorted()</c>command.
+          Verify that the subgroup is normal by first building the raw left and right cosets (without using the <c>.cosets()</c> method) and then checking their equality in Sage,
+          all with a single command that employs sorting with the <c>sorted()</c> command.
         </p>
       </statement>
     </exercise>
@@ -1359,7 +1359,7 @@
           Again, use the same cyclic subgroup of order <m>4</m> in the group of symmetries of an <m>8</m>-gon.
           Check that the subgroup is normal by using part (2) of <xref ref="theorem-normal-equivalents"/>.
           Construct a one-line command that does the complete check and returns <c>True</c>.
-          Maybe sort the elements of the subgroup <c>S</c>first,
+          Maybe sort the elements of the subgroup <c>S</c> first,
           then slowly build up the necessary lists,
           commands, and conditions in steps.
           Notice that this check does not require ever building the cosets.
@@ -1372,7 +1372,7 @@
         <p permid="mQX">
           Repeat the demonstration from the previous subsection that for the symmetries of a tetrahedron,
           a cyclic subgroup of order <m>3</m> results in an undefined coset multiplication.
-          Above, the default setting for the <c>.cosets()</c>method builds right cosets <mdash/> but in this problem,
+          Above, the default setting for the <c>.cosets()</c> method builds right cosets <mdash/> but in this problem,
           work instead with left cosets.
           You need to choose two cosets to multiply,
           and then demonstrate two choices for representatives that lead to different results for the product of the cosets.
@@ -1384,7 +1384,7 @@
       <statement>
         <p permid="SYg">
           Construct some dihedral groups of order <m>2n</m> (<ie/> symmetries of an <m>n</m>-gon,
-          <m>D_{n}</m> in the text, <c>DihedralGroup(n)</c>in Sage).
+          <m>D_{n}</m> in the text, <c>DihedralGroup(n)</c> in Sage).
           Maybe all of them for <m>3\leq n \leq 100</m>.
           For each dihedral group,
           construct a list of the orders of each of the normal subgroups (so use <c>.normal_subgroups()</c>).

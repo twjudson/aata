@@ -3,8 +3,8 @@
 <!--                                                  -->
 <!-- Abstract Algebra: Theory and Applications        -->
 <!--                                                  -->
-<!-- Text: Copyright (C) 1997-2018  Thomas W. Judson  -->
-<!-- Sage: Copyright (C) 2010-2018  Robert A. Beezer  -->
+<!-- Text: Copyright (C) 1997-2019  Thomas W. Judson  -->
+<!-- Sage: Copyright (C) 2010-2019  Robert A. Beezer  -->
 <!-- See the file COPYING for copying conditions.     -->
 <!-- This file is part of the book                    -->
 <!--                                                  -->
@@ -789,7 +789,7 @@
       </hint>
     </exercise>
 
-    <todo>Finish solution.</todo>
+    <!--Todo Finish solution.-->
 
     <exercise number="3" permid="ymE">
       <statement>
@@ -915,7 +915,7 @@
       </statement>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="14" permid="nNz">
       <statement>
@@ -926,7 +926,7 @@
       </statement>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="15" permid="TUI">
       <statement>
@@ -936,7 +936,7 @@
       </statement>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="16" permid="AbR">
       <statement>
@@ -961,7 +961,7 @@
       </hint>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="18" permid="Mqj">
       <statement>
@@ -973,7 +973,7 @@
       </statement>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="19" permid="sxs">
       <statement>
@@ -993,7 +993,7 @@
       </statement>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="21" permid="ELK">
       <title>The Frattini Lemma</title>
@@ -1017,7 +1017,7 @@
       </statement>
     </exercise>
 
-    <todo>Fix this and complete the solution.</todo>
+    <!--Todo Fix this and complete the solution.-->
 
     <exercise number="23" permid="Rac">
       <statement>
@@ -1033,7 +1033,7 @@
       </hint>
     </exercise>
 
-    <todo>Complete the solution.</todo>
+    <!--Todo Complete the solution.-->
 
     <exercise number="24" permid="xhl">
       <statement>
@@ -1343,10 +1343,10 @@
 
   </exercises>
 
-  <references xml:id="sylow-references">
+  <references xml:id="sylow-references" permid="Sgz">
         <!-- %TWJ 8/13/2010 - References checked and updated -->
     <title>References and Suggested Readings</title>
-    <biblio type="raw">
+    <biblio type="raw" permid="ynI">
 <!-- was [1] -->
       Edwards, H. <q>A Short History of the Fields Medal,</q>
       <title>Mathematical Intelligencer</title>
@@ -1354,7 +1354,7 @@
       (1978), 127<ndash/>29.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="euR">
 <!-- was [2] -->
       Feit, W. and Thompson, J. G. <q>Solvability of Groups of Odd Order,</q>
       <title>Pacific Journal of Mathematics</title>
@@ -1362,7 +1362,7 @@
       (1963), 775<ndash/>1029.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="KCa">
 <!-- was [3] -->
       Gallian, J. A. <q>The Search for Finite Simple Groups,</q>
       <title>Mathematics Magazine</title>
@@ -1370,7 +1370,7 @@
       (1976), 163<ndash/>79.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="qJj">
 <!-- was [4] -->
       Gorenstein, D. <q>Classifying the Finite Simple Groups,</q>
       <title>Bulletin of the American Mathematical Society</title>
@@ -1378,13 +1378,13 @@
       (1986), 1<ndash/>98.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="WQs">
 <!-- was [5] -->
       Gorenstein, D.
       <title>Finite Groups</title>. AMS Chelsea Publishing, Providence RI, 1968.
     </biblio>
 
-    <biblio type="raw">
+    <biblio type="raw" permid="CXB">
 <!-- was [6] -->
       Gorenstein, D., Lyons, R., and Solomon, R.
       <title>The Classification of Finite Simple Groups</title>. American Mathematical Society, Providence RI, 1994.
@@ -1397,7 +1397,7 @@
     <subsection permid="LGp">
       <title>Sylow Subgroups</title>
       <p permid="jUR">
-        The Sage permutation group method <c>.sylow_subgroup(p)</c>will return a single Sylow <m>p</m>-subgroup.
+        The Sage permutation group method <c>.sylow_subgroup(p)</c> will return a single Sylow <m>p</m>-subgroup.
         If the prime is not a proper divisor of the group order it returns a subgroup of order <m>p^0</m>,
         in other words, a trivial subgroup.
         So be careful about how you construct your primes.
@@ -1405,7 +1405,7 @@
         since any two Sylow <m>p</m>-subgroups are conjugate,
         and hence isomorphic (<xref ref="theorem-second-sylow"/>).
         This also means we can create other Sylow <m>p</m>-subgroups by conjugating the one we have.
-        The permutation group method <c>.conjugate(g)</c>will conjugate the group by <c>g</c>.
+        The permutation group method <c>.conjugate(g)</c> will conjugate the group by <c>g</c>.
       </p>
 
       <p permid="Qca">
@@ -1448,10 +1448,10 @@
         S2 = G.sylow_subgroup(2); S2
         </input>
                 <output>
-        Subgroup of (Dihedral group of order 36 as a permutation group)
-        generated by
+        Subgroup generated by
         [(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
-        (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]
+         (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]
+        of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
             <sage permid="PgY">
@@ -1464,28 +1464,28 @@
              [(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
              (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
              Permutation Group with generators
-             [(1,3)(4,18)(5,17)(6,16)(7,15)(8,14)(9,13)(10,12),
+             [(1,7)(2,6)(3,5)(8,18)(9,17)(10,16)(11,15)(12,14),
              (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-             Permutation Group with generators
-             [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-             (1,17)(2,16)(3,15)(4,14)(5,13)(6,12)(7,11)(8,10)],
-             Permutation Group with generators
-             [(1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
-             (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
-             Permutation Group with generators
-             [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
-             (1,15)(2,14)(3,13)(4,12)(5,11)(6,10)(7,9)(16,18)],
              Permutation Group with generators
              [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
              (1,13)(2,12)(3,11)(4,10)(5,9)(6,8)(14,18)(15,17)],
              Permutation Group with generators
-             [(1,7)(2,6)(3,5)(8,18)(9,17)(10,16)(11,15)(12,14),
+             [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+             (1,15)(2,14)(3,13)(4,12)(5,11)(6,10)(7,9)(16,18)],
+             Permutation Group with generators
+             [(1,3)(4,18)(5,17)(6,16)(7,15)(8,14)(9,13)(10,12),
+             (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
+             Permutation Group with generators
+             [(1,9)(2,8)(3,7)(4,6)(10,18)(11,17)(12,16)(13,15),
              (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)],
              Permutation Group with generators
              [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
              (1,11)(2,10)(3,9)(4,8)(5,7)(12,18)(13,17)(14,16)],
              Permutation Group with generators
-             [(1,9)(2,8)(3,7)(4,6)(10,18)(11,17)(12,16)(13,15),
+             [(1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18),
+             (1,17)(2,16)(3,15)(4,14)(5,13)(6,12)(7,11)(8,10)],
+             Permutation Group with generators
+             [(1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
              (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]]
             </output>
             </sage>
@@ -1513,10 +1513,10 @@
         S3 = G.sylow_subgroup(3); S3
         </input>
                 <output>
-        Subgroup of (Dihedral group of order 36 as a permutation group)
-        generated by
+        Subgroup generated by
         [(1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18),
-        (1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]
+         (1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]
+        of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
             <sage permid="HCz">
@@ -1582,7 +1582,7 @@
       <title>Normalizers</title>
       <p permid="hal">
         A new command that is relevant to this section is the construction of a normalizer.
-        The Sage command <c>G.normalizer(H)</c>will return the subgroup of <c>G</c>containing elements that normalize the subgroup <c>H</c>.
+        The Sage command <c>G.normalizer(H)</c> will return the subgroup of <c>G</c> containing elements that normalize the subgroup <c>H</c>.
         We illustrate its use with the Sylow subgroups from above.
       </p>
 
@@ -1594,10 +1594,10 @@
         N2 = G.normalizer(S2); N2
         </input>
                 <output>
-        Subgroup of (Dihedral group of order 36 as a permutation group)
-        generated by
+        Subgroup generated by
         [(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
-        (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]
+         (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]
+        of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
             <sage permid="Mms">
@@ -1613,12 +1613,12 @@
         N3 = G.normalizer(S3); N3
         </input>
                 <output>
-        Subgroup of (Dihedral group of order 36 as a permutation group)
-        generated by
+        Subgroup generated by
         [(2,18)(3,17)(4,16)(5,15)(6,14)(7,13)(8,12)(9,11),
-        (1,2)(3,18)(4,17)(5,16)(6,15)(7,14)(8,13)(9,12)(10,11),
-        (1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18),
-        (1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]
+         (1,2)(3,18)(4,17)(5,16)(6,15)(7,14)(8,13)(9,12)(10,11),
+         (1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18),
+         (1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]
+        of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
             <sage permid="YAK">
@@ -1632,9 +1632,9 @@
 
       <p permid="Nhu">
         The normalizer of a subgroup always contains the whole subgroup,
-        so the normalizer of <c>S2</c>is as small as possible.
-        We already knew <c>S3</c>is normal in <c>G</c>,
-        so it is no surprise that its normalizer is as big as possible <mdash/> every element of <c>G</c>normalizes <c>S3</c>.
+        so the normalizer of <c>S2</c> is as small as possible.
+        We already knew <c>S3</c> is normal in <c>G</c>,
+        so it is no surprise that its normalizer is as big as possible <mdash/> every element of <c>G</c> normalizes <c>S3</c>.
         Let us compute a normalizer in <m>D_{18}</m> that is more <q>interesting.</q>
       </p>
 
@@ -1656,11 +1656,11 @@
         N
         </input>
                 <output>
-        Subgroup of (Dihedral group of order 36 as a permutation group)
-        generated by
+        Subgroup generated by
         [(1,2)(3,18)(4,17)(5,16)(6,15)(7,14)(8,13)(9,12)(10,11),
-        (1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
-        (1,13,7)(2,14,8)(3,15,9)(4,16,10)(5,17,11)(6,18,12)]
+         (1,5)(2,4)(6,18)(7,17)(8,16)(9,15)(10,14)(11,13),
+         (1,13,7)(2,14,8)(3,15,9)(4,16,10)(5,17,11)(6,18,12)]
+        of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
             <sage permid="QWl">
@@ -1703,7 +1703,7 @@
       <p permid="ZvM">
         We saw earlier Sage's permutation group method <c>.is_simple()</c>.
         <xref ref="example-group-pn"/> tells us that a group of order <m>64</m> is never simple.
-        The dicyclic group <c>DiCyclicGroup(16)</c>is a non-abelian group of <m>64</m>,
+        The dicyclic group <c>DiCyclicGroup(16)</c> is a non-abelian group of <m>64</m>,
         so we can test this method on this group.
         It turns out this group has many normal subgroups <mdash/> the list will always contain the trivial subgroup and the group itself,
         so any number exceeding <m>2</m> indicates a non-trivial normal subgroup.
@@ -1813,12 +1813,12 @@
 
             <sage permid="uiO">
                 <input>gap.version()</input>
-                <output>'4.8.6'</output>
+                <output>'4.10.1'</output>
             </sage>
 
       <p permid="xYw">
         You can interact with <acro>GAP</acro> in Sage in several ways.
-        The most direct is by creating a permutation group via Sage's <c>gap()</c>command.
+        The most direct is by creating a permutation group via Sage's <c>gap()</c> command.
       </p>
 
             <sage permid="apX">
@@ -1834,9 +1834,9 @@
       <p permid="efF">
         Now we can use most any <acro>GAP</acro> command with <c>G</c>,
         via the convention that most <acro>GAP</acro> commands expect a group as the first argument,
-        and we instead provide the group by using the object-oriented<c>G.</c>syntax.
-        If you consult the <acro>GAP</acro> documentation you will see that <c>Center</c>is a <acro>GAP</acro> command that expects a group as its lone argument,
-        and <c>Centralizer</c>is a <acro>GAP</acro> command that expects two arguments <mdash/> a group and then a group element.
+        and we instead provide the group by using the object-oriented<c>G.</c> syntax.
+        If you consult the <acro>GAP</acro> documentation you will see that <c>Center</c> is a <acro>GAP</acro> command that expects a group as its lone argument,
+        and <c>Centralizer</c> is a <acro>GAP</acro> command that expects two arguments <mdash/> a group and then a group element.
       </p>
 
             <sage permid="Gxg">
@@ -1857,11 +1857,11 @@
             </sage>
 
       <p permid="KmO">
-        If you use the Sage Notebook interface you can set the first line of a compute cell to <c>%gap</c>and the entire cell will be interpreted as if you were interacting directly with <acro>GAP</acro>.
+        If you use the Sage Notebook interface you can set the first line of a compute cell to <c>%gap</c> and the entire cell will be interpreted as if you were interacting directly with <acro>GAP</acro>.
         This means you would now use <acro>GAP</acro>'s syntax,
         which you can see above is slightly different than Sage's universal syntax.
         You can also use the drop-down box at the top of a worksheet,
-        and select <c>gap</c>as the system
+        and select <c>gap</c> as the system
         (rather than <c>sage</c>)
         and your whole worksheet will be interpreted as <acro>GAP</acro> commands.
         Here is one simple example,
@@ -1889,7 +1889,7 @@
 
           <li permid="gxv">
             <p permid="oLO">
-              Assignment is <c>:=</c>not <c>=</c>.
+              Assignment is <c>:=</c> not <c>=</c>.
               If you forget the colon,
               you will get an error message such as <c>Variable: 'G' must have a value</c>
             </p>
@@ -1920,9 +1920,9 @@
         you can also use the <acro>GAP</acro> <q>console.</q> Again,
         you need to use <acro>GAP</acro> syntax,
         and you do not have many of the conveniences of the Sage notebook.
-        It is also good to know in advance that <c>quit;</c>is how you can leave the <acro>GAP</acro> console and get back to Sage.
+        It is also good to know in advance that <c>quit;</c> is how you can leave the <acro>GAP</acro> console and get back to Sage.
         If you run Sage at the command-line,
-        use the command <c>gap_console()</c>to start <acro>GAP</acro> running.
+        use the command <c>gap_console()</c> to start <acro>GAP</acro> running.
       </p>
 
       <p permid="iPy">
@@ -1944,7 +1944,7 @@
           This exercise verifies <xref ref="theorem-commutator-subgroup-theorem"/>.
           The commutator subgroup is computed with the permutation group method <c>.commutator()</c>.
           For the dihedral group of order <m>40</m>,
-          <m>D_{20}</m> (<c>DihedralGroup(20)</c>in Sage),
+          <m>D_{20}</m> (<c>DihedralGroup(20)</c> in Sage),
           compute the commutator subgroup and form the quotient with the dihedral group.
           Then verify that this quotient is abelian.
           Can you identify the quotient group exactly (in other words,
@@ -1997,12 +1997,12 @@
           Let <m>G</m> be the dihedral group of order <m>36</m>,
           <m>D_{18}</m>.
           Let <m>H</m> be the one Sylow <m>3</m>-subgroup.
-          Let <m>K</m> be the subgroup of order <m>6</m> generated by the two permutations <c>a</c>and <c>b</c>given below.
+          Let <m>K</m> be the subgroup of order <m>6</m> generated by the two permutations <c>a</c> and <c>b</c> given below.
           First, form a list of the distinct conjugates of <m>K</m> by the elements of <m>H</m>,
           and determine the number of subgroups in this list.
           Compare this with the index given in the statement of the lemma,
           employing a single (long) statement making use of the <c>.order()</c>,
-          <c>.normalizer()</c>and <c>.intersection()</c>methods with <c>G</c>,
+          <c>.normalizer()</c> and <c>.intersection()</c> methods with <c>G</c>,
           <m>H</m> and <m>K</m>, <em>only</em>.
         </p>
 
@@ -2023,7 +2023,7 @@
           The dicyclic groups are an infinite family of non-abelian groups with order <m>4n</m>,
           which includes the quaternions
           (the case of <m>n=2</m>).
-          So the permutation group <c>DiCyclicGroup(12)</c>has order 48.
+          So the permutation group <c>DiCyclicGroup(12)</c> has order 48.
           Use Sage to follow the logic of the proof in <xref ref="example-group-48"/> and construct a normal subgroup in this group.
           (In other words,
           do not just ask for a list of the normal subgroups from Sage,
@@ -2052,7 +2052,7 @@
           and so can be used to create a group action.
           For such an action,
           from each group element form a Sage permutation of the subgroups by numbering the six subgroups and using these integers as markers for the subgroups.
-          You will find the Python list method <c>.index()</c>very helpful.
+          You will find the Python list method <c>.index()</c> very helpful.
           Now use all of these permutations to generate a permutation group (a subgroup of <m>S_6</m>).
           Finally, use permutation group methods for orbits and stabilisers,
           <etc/> to explore the actions.
