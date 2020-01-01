@@ -41,12 +41,10 @@
 </xsl:template>
 
 <!-- Proof to small caps -->
-<!-- http://tex.stackexchange.com/questions/8089/changing-style-of-proof -->
-<xsl:template name="aata-proof-heading">
-    <xsl:text>% Proof environment with heading in small caps&#xa;</xsl:text>
-    <xsl:text>\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname&#xa;</xsl:text>
-    <xsl:text>\let\oldendproof\endproof&#xa;</xsl:text>
-    <xsl:text>\renewenvironment{proof}[1][\proofname]{\oldproof[\scshape #1]}{\oldendproof}&#xa;</xsl:text>
+<!-- Inherited from old PWS-Kent style                          -->
+<!-- Otherwise identical to default tcb-style, so keep in sync? -->
+<xsl:template match="proof" mode="tcb-style">
+    <xsl:text>bwminimalstyle, fonttitle=\normalfont\scshape, attach title to upper, after title={\space}, after upper={\space\space\hspace*{\stretch{1}}\(\blacksquare\)},&#xa;</xsl:text>
 </xsl:template>
 
 <!-- tcolorbox environment for AATA "Historical Notes"    -->
@@ -96,7 +94,6 @@
 <!-- Stuff them into the preamble at the end -->
 <xsl:param name="latex.preamble.late">
     <xsl:call-template name="aata-terminology" />
-    <xsl:call-template name="aata-proof-heading" />
     <xsl:call-template name="aata-historical-environment" />
 </xsl:param>
 
