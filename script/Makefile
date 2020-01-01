@@ -119,6 +119,7 @@ diagrams:
 
 # HTML version
 #   Copies in image files from source directory
+#   Publisher file is a relative path to master source file
 #   Move to server: generated *.html and
 #   entire directories - /images and /knowl
 html:
@@ -126,7 +127,7 @@ html:
 	cp -a $(SRC)/images $(HTMLOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
 	cd $(HTMLOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	xsltproc -xinclude -stringparam publisher ../publisher/public.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
