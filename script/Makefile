@@ -237,7 +237,7 @@ doctest:
 	-rm $(DOCTEST)/*.py; \
 	install -d $(DOCTEST)
 	cd $(DOCTEST); \
-	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/mathbook-sage-doctest.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/pretext-sage-doctest.xsl $(SRC)/aata.xml; \
 	$(SAGE) -tp 0 .
 
 # SageMathCloud worksheets
@@ -247,7 +247,7 @@ doctest:
 smc:
 	install -d $(SMCOUT) $(MBUSR)
 	cp -a $(SRC)/images $(SMCOUT)
-	cp -a $(MB)/css/mathbook-content.css $(MB)/css/mathbook-add-on.css $(SMCOUT)
+	cp -a $(MB)/css/pretext-content.css $(MB)/css/pretext-add-on.css $(SMCOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-smc.xsl $(MBUSR)
 	cd $(SMCOUT); \
 	xsltproc --xinclude $(MBUSR)/aata-smc.xsl $(SRC)/aata.xml
@@ -327,9 +327,9 @@ epub:
 	rm -rf $(EPUBOUT)
 	install -d $(EPUBOUT) $(EPUBOUT)/EPUB/css $(EPUBOUT)/EPUB/xhtml
 	cd $(EPUBOUT); \
-	xsltproc --xinclude  $(MBXSL)/mathbook-epub.xsl $(SRC)/aata.xml
+	xsltproc --xinclude  $(MBXSL)/pretext-epub.xsl $(SRC)/aata.xml
 	rm -rf $(EPUBOUT)/knowl
-	cp ~/mathbook/local/epub-trial/mathbook-content.css $(EPUBOUT)/EPUB/css/
+	cp ~/mathbook/local/epub-trial/pretext-content.css $(EPUBOUT)/EPUB/css/
 	cp -a $(SRC)/images $(EPUBOUT)/EPUB/xhtml
 	cp -a $(EPUBOUT)/EPUB/xhtml/images/cover_aata_2014.png $(EPUBOUT)/EPUB/xhtml/images/cover.png
 	#
