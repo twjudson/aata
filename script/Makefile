@@ -314,12 +314,12 @@ aimhtml:
 	cp -a $(SRC)/images $(HTMLOUT)
 	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
 	cd $(HTMLOUT); \
-	xsltproc --xinclude $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	xsltproc -xinclude -stringparam publisher ../publisher/AIM-test-sites.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
 	zip -r $(ZIPFILE) aata-html/
-	$(RSYNCDELETE) $(SCRATCH)/$(ZIPFILE) beezer@userweb.pugetsound.edu:/home/beezer/mathbook.pugetsound.edu/beta
-	echo "Dropped in http://mathbook.pugetsound.edu/beta/"$(ZIPFILE)
+	${RSYNCDELETE} $(SCRATCH)/${ZIPFILE} utmost@utmost.aimath.org:/home/utmost/www/pretextbook.org/htdocs/beta
+	echo "Dropped in http://pretextbook.org/beta/"${ZIPFILE}
 
 # EPUB 3.0 assembly
 #	TODO: fix retrieval of CSS (via wget?)
