@@ -35,6 +35,7 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
+#   zip             (Runestone, AIM HTML builds)
 #   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
 #####
@@ -76,8 +77,10 @@ JUPYTEROUT = $(SCRATCH)/jupyter
 # http://stackoverflow.com/questions/1401482
 DATE=$(shell date +%Y-%m-%d)
 
-# zipfile for AIM/UTMOST study
-ZIPFILE=aata-html-$(DATE).zip
+# zipfiles AIM/UTMOST study, Runestone version
+ZIPAIM=aata-html-$(DATE).zip
+ZIPRS=AATA-runestone-$(DATE).zip
+
 
 # convenience for rsync command, hopefully not OS dependent
 # First does not include  --delete  switch at end due to PDF in directory
@@ -192,6 +195,20 @@ print:
 viewprint:
 	$(PDFVIEWER) $(PDFOUT)/aata-print.pdf &
 
+# Runestone HTML
+#   Modeled on raw HTML
+#   Will produce a zip file
+#   SOME TOTALLY HARDCODED PATHS
+runestone:
+	install -d $(HTMLOUT) $(MBUSR) $(HTMLOUT)/_static
+	cp -a $(SRC)/images $(HTMLOUT)
+	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
+	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/dist/runestone.js $(HTMLOUT)/_static
+	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/common/js/jquery.idle-timer.js $(HTMLOUT)/_static
+	cd $(HTMLOUT); \
+	xsltproc --xinclude -stringparam publisher ../publisher/runestone.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml; \
+	zip -r $(SCRATCH)/$(ZIPRS) .
+
 
 ######
 # Sage
@@ -239,6 +256,6 @@ aimhtml:
 	xsltproc -xinclude -stringparam publisher ../publisher/AIM-test-sites.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
-	zip -r $(ZIPFILE) aata-html/
-	${RSYNCDELETE} $(SCRATCH)/${ZIPFILE} utmost@utmost.aimath.org:/home/utmost/www/pretextbook.org/htdocs/beta
-	echo "Dropped in http://pretextbook.org/beta/"${ZIPFILE}
+	zip -r $(ZIPAIM) aata-html/
+	${RSYNCDELETE} $(SCRATCH)/${ZIPAIM} utmost@utmost.aimath.org:/home/utmost/www/pretextbook.org/htdocs/beta
+	echo "Dropped in http://pretextbook.org/beta/"${ZIPAIM}
