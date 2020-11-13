@@ -853,27 +853,24 @@
           </li>
         </ol>
 
-        <sidebyside permid="qCo">
+        <program permid="qCo">
+            <input>
+                x := ceiling(sqrt(n))
+                y := 1
 
-            <program>
-                <input>
-                    x := ceiling(sqrt(n))
+                1 : while x^2 - y^2 &gt; n do
+                    y := y + 1
+
+                if x^2 - y^2 &lt; n then
+                    x := x + 1
                     y := 1
-
-                    1 : while x^2 - y^2 &gt; n do
-                        y := y + 1
-
-                    if x^2 - y^2 &lt; n then
-                        x := x + 1
-                        y := 1
-                        goto 1
-                    else if x^2 - y^2 = 0 then
-                        a := x - y
-                        b := x + y
-                        write n = a * b
-                </input>
-            </program>
-        </sidebyside>
+                    goto 1
+                else if x^2 - y^2 = 0 then
+                    a := x - y
+                    b := x + y
+                    write n = a * b
+            </input>
+        </program>
       </statement>
     </exercise>
 
