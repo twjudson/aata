@@ -54,15 +54,15 @@
           Let <m>H</m> be the subgroup of <m>S_3</m> consisting of elements <m>(1)</m> and <m>(12)</m>.
           Since
           <me permid="iQY">
-            (123) H = \{ (123), (13) \} \quad \text{and} \quad H (123) = \{ (123), (23) \}
+            (123) H = \{ (1 \, 2 \, 3), (1 \, 3) \} \quad \text{and} \quad H (1 \, 2 \, 3) = \{ (1 \, 2 \, 3), (2 \, 3) \}
           </me>,
           <m>H</m> cannot be a normal subgroup of <m>S_3</m>.
           However, the subgroup <m>N</m>,
-          consisting of the permutations <m>(1)</m>, <m>(123)</m>,
-          and <m>(132)</m>, is normal since the cosets of <m>N</m> are
+          consisting of the permutations <m>(1)</m>, <m>(1 \, 2 \, 3)</m>,
+          and <m>(1 \, 3 \, 2)</m>, is normal since the cosets of <m>N</m> are
           <md permid="OYh">
-            <mrow>N  =   \{ (1), (123), (132) \}</mrow>
-            <mrow>(12) N =  N (12)  =  \{ (12), (13), (23) \}</mrow>
+            <mrow>N  =   \{ (1), (1 \, 2 \, 3), (1 \, 3 \, 2) \}</mrow>
+            <mrow>(1 \, 2) N =  N (1 \, 2)  =  \{ (1 \, 2), (1 \, 3), (2 \, 3) \}</mrow>
           </md>.
         </p>
       </example>
@@ -194,7 +194,7 @@
       <example xml:id="example-normal-factor-s3" permid="rtz">
         <p permid="qQW">
           Consider the normal subgroup of <m>S_3</m>,
-          <m>N = \{ (1), (123), (132) \}</m>.
+          <m>N = \{ (1), (1 \, 2 \, 3), (1 \, 3 \, 2) \}</m>.
           The cosets of <m>N</m> in <m>S_3</m> are <m>N</m> and <m>(12) N</m>.
           The factor group <m>S_3 / N</m> has the following multiplication table.
         </p>
@@ -202,9 +202,9 @@
         <p permid="WYf">
           <me permid="HtI">
             \begin{array}{c|cc}
-            &amp; N &amp; (12) N \\ \hline
-            N &amp; N &amp; (12) N \\
-            (12) N &amp; (12) N &amp; N
+            &amp; N &amp; (1 \, 2) N \\ \hline
+            N &amp; N &amp; (1 \, 2) N \\
+            (1 \, 2) N &amp; (1 \, 2) N &amp; N
             \end{array}
           </me>
         </p>
@@ -215,7 +215,7 @@
           however, notice that <m>S_3 / N</m> is a smaller group.
           The factor group displays a certain amount of information about <m>S_3</m>.
           Actually, <m>N = A_3</m>, the group of even permutations,
-          and <m>(12) N = \{ (12), (13), (23) \}</m> is the set of odd permutations.
+          and <m>(1 \, 2) N = \{ (1 \, 2), (1 \, 3), (2 \, 3) \}</m> is the set of odd permutations.
           The information captured in <m>G/N</m> is parity;
           that is, multiplying two even or two odd permutations results in an even permutation,
           whereas multiplying an odd permutation by an even permutation yields an odd permutation.
@@ -313,12 +313,12 @@
           <p permid="cNr">
             To show that the <m>3</m>-cycles generate <m>A_n</m>,
             we need only show that any pair of transpositions can be written as the product of <m>3</m>-cycles.
-            Since <m>(a b) = (b a)</m>,
+            Since <m>(a, b) = (b, a)</m>,
             every pair of transpositions must be one of the following:
             <md permid="MdB">
-              <mrow>(ab)(ab) &amp; = \identity</mrow>
-              <mrow>(ab)(cd) &amp; = (acb)(acd)</mrow>
-              <mrow>(ab)(ac) &amp; = (acb)</mrow>
+              <mrow>(a,b)(a,b) &amp; = \identity</mrow>
+              <mrow>(a,b)(c,d) &amp; = (a,c,b)(a,c,d)</mrow>
+              <mrow>(a,b)(a,c) &amp; = (a,c,b)</mrow>
             </md>.
           </p>
         </proof>
@@ -340,8 +340,8 @@
             n \}</m> and we let <m>k</m> vary.
             Every <m>3</m>-cycle is the product of <m>3</m>-cycles of this form, since
             <md permid="YrT">
-              <mrow>(i a j) &amp; = (i j a)^2</mrow>
-              <mrow>(i a b) &amp; = (i j b) (i j a)^2</mrow>
+              <mrow>(i, a, j) &amp; = (i, j, a)^2</mrow>
+              <mrow>(i, a, b) &amp; = (i, j, b) (i, j, a)^2</mrow>
               <mrow>(j a b) &amp; = (i j b)^2 (i j a)</mrow>
               <mrow>(a b c) &amp; = (i j a)^2 (i j c) (i j b)^2 (i j a)</mrow>
             </md>.
