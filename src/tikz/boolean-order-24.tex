@@ -1,29 +1,35 @@
 \begin{tikzpicture}[scale=0.6]
 
+\coordinate (24-label) at (0,3.5);
+\coordinate (8-label) at (-1.5, 2);
+\coordinate (12-label) at (1.5,2);
+\coordinate (4-label) at (-1.5,0);
+\coordinate (6-label) at (1.5,0);
+\coordinate (2-label) at (-1.5,-2);
+\coordinate (3-label) at (1.5,-2);
+\coordinate (1-label) at (0,-3.5);
 
-\draw  (1.2,2.4) -- (0.35,3.1);
-\draw  (-1.2,2.4) -- (-0.35,3.1);
-\draw  (1.2,-2.4) -- (0.35,-3.1);
-\draw  (-1.2,-2.4) -- (-0.35,-3.1);
+\node at (24-label) {$24$};
+\node at (8-label) {$8$};
+\node at (12-label) {$12$};
+\node at (4-label) {$4$};
+\node at (6-label) {$6$};
+\node at (2-label) {2};
+\node at (3-label) {3};
+\node at (1-label) {1};
 
-\draw (1.5,1.6) -- (1.5,0.4);
-\draw (-1.5,1.6) -- (-1.5,0.4);
-\draw (1.5,-1.6) -- (1.5,-0.4);
-\draw (-1.5,-1.6) -- (-1.5,-0.4);
+\draw  ([xshift=-5,yshift=-10]24-label) -- ([xshift=5,yshift=10]8-label);
+\draw  ([xshift=5,yshift=-10]24-label) -- ([xshift=-5,yshift=10]12-label);
 
-\draw (-1.1,0.2) -- (1.1,1.8);
-\draw (-1.1,-1.8) -- (1.1,-0.2);
+\draw ([yshift=-10]8-label) -- ([yshift=10]4-label);
+\draw ([yshift=-10]12-label) -- ([yshift=10]6-label);
+\draw ([xshift=-10,yshift=-5]12-label) -- ([xshift=10,yshift=5]4-label);
 
-\node at (0, 3.5) {24};
+\draw ([yshift=-10]4-label) -- ([yshift=10]2-label);
+\draw ([yshift=-10]6-label) -- ([yshift=10]3-label);
+\draw ([xshift=-10,yshift=-5]6-label) -- ([xshift=10,yshift=5]2-label);
 
-\node at (1.5, 2) {12};
-\node at (1.5, 0) {6};
-\node at (1.5, -2) {3};
-
-\node at (-1.5, 2) {8};
-\node at (-1.5, 0) {4};
-\node at (-1.5, -2) {2};
-
-\node at (0, -3.5) {1};
+\draw  ([xshift=5,yshift=-10]2-label) -- ([xshift=-5,yshift=10]1-label);
+\draw  ([xshift=-5,yshift=-10]3-label) -- ([xshift=5,yshift=10]1-label);
 
 \end{tikzpicture}

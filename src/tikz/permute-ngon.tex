@@ -1,13 +1,23 @@
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}[scale=1.3]
 
-\draw (1,0) -- (45:1) -- (90:1) -- (135:1) -- (180:1);
-\draw[dashed] (-1,0) -- (225:1) -- (270:1);
-\draw (270:1) -- (315:1) -- (1,0);
-\node [above] at (0,1) {$1$};
-\node [left] at (-1,0) {$n-1$};
-\node [right] at (1,0) {$3$};
-\node at (45:1.2) {$2$};
-\node at (135:1.2) {$n$};
-\node at (315:1.2) {$4$};
+\coordinate (pt-1) at (90:1);
+\coordinate (pt-2) at (45:1);
+\coordinate (pt-3) at (0:1);
+\coordinate (pt-4) at (315:1);
+\coordinate (pt-5) at (270:1);
+\coordinate (pt-6) at (225:1);
+\coordinate (pt-7) at (180:1);
+\coordinate (pt-8) at (135:1);
+
+\draw (pt-7) -- (pt-8) -- (pt-1) -- (pt-2) -- (pt-3) -- (pt-4) -- (pt-5);
+\draw[dashed] (pt-5) -- (pt-6) -- (pt-7);
+
+\node [above] at (pt-1) {$1$};
+\node [above right] at (pt-2)  {$2$};
+\node [right] at (pt-3) {$3$};
+\node [below right] at (pt-4) {$4$};
+\node [below] at (pt-5) {$5$};
+\node [left] at (pt-7) {$n-1$};
+\node [above left] at (pt-8) {$n$};
 
 \end{tikzpicture}

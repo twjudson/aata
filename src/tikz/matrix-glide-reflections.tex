@@ -1,15 +1,34 @@
 \begin{tikzpicture}[scale=1.5]
 
-\draw [->]  (0,-1.5) -- (0,1.5);
-\draw  [->] (-1,0) -- (1.75,0);
-\node [right] at (0,2) {$y$};
-\node [below] at (2,0) {$x$};
-\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+\coordinate (left-x-axis-start) at (-1,0);
+\coordinate (left-x-axis-end) at (1.75,0);
+\coordinate (left-y-axis-start) at (0,-1.5);
+\coordinate (left-y-axis-end) at (0,1.5);
+\coordinate (left-origin) at (0,0);
 
-\draw [->]  (4,-1.5) -- (4,1.5);
-\draw  [->] (3,0) -- (5.75,0);
-\node [right] at (4,2) {$y$};
-\node [below] at (6,0) {$x$};
-\draw [->, very thick, black]  (4.5,0) -- +(330:1.25) node [right] {$T({\mathbf x})$};
+\draw  [->] (left-x-axis-start) -- (left-x-axis-end);
+\draw [->]  (left-y-axis-start) -- (left-y-axis-end);
+
+\node [below] at (left-x-axis-end) {$x$};
+\node [right] at (left-y-axis-end) {$y$};
+
+\draw [->, very thick, black]  (left-origin) -- (30:1.25) node [right] {$\mathbf x$};
+
+\coordinate (right-x-axis-start) at (3,0);
+\coordinate (right-x-axis-end) at (5.75,0);
+\coordinate (right-y-axis-start) at (4,-1.5);
+\coordinate (right-y-axis-end) at (4,1.5);
+\coordinate (right-origin) at (4,0);
+
+\coordinate (arc-start) at (4.5,0);
+\coordinate (arc-label) at (4.5,0.15);
+
+\draw  [->] (right-x-axis-start) -- (right-x-axis-end);
+\draw [->]  (right-y-axis-start) -- (right-y-axis-end);
+
+\node [below] at (right-x-axis-end) {$x$};
+\node [right] at (right-y-axis-end) {$y$};
+
+\draw [->, very thick, black]  (right-origin) ++(0.5,0) -- ++(330:1.25) node [right] {$T({\mathbf x})$};
 
 \end{tikzpicture}

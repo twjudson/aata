@@ -1,24 +1,38 @@
 \begin{tikzpicture}[scale=0.7]
 
-\draw  (0,0) node [left] {$A$} -- (9,0) node [right] {$E$} -- (6,4) -- cycle;
-\draw  (6,0)  -- (4,2.667);
+\coordinate (A) at (0,0);
+\coordinate (B) at (4,2.667);
+\coordinate (C) at (6,0);
+\coordinate (D) at (6,4);
+\coordinate (E) at (9,0);
 
-\draw  (0,-0.1) -- (0,-0.7);
-\draw  (9,-0.1) -- (9,-0.7);
-\draw [<-] (0,-0.4) -- (4,-0.4);
-\draw [->] (5,-0.4) -- (9,-0.4);
+\coordinate (one) at (2.5,1.6) ;
+\coordinate (alpha) at (3,0);
+\coordinate (beta) at (3, 2.7);
+\coordinate (pt-x) at (4.5,0);
 
+\node [left] at (A)  {$A$};
+\node [right] at ([xshift=5]B)  {$B$};
+\node [above right] at (C)  {$C$};
+\node [above right] at (D)  {$D$};
+\node [right] at (E)  {$E$};
+
+\node [below] at (one)  {$1$};
+\node [above] at (alpha)  {$\alpha$};
+\node at (beta)  {$\beta$};
+\node at ([yshift=-15]pt-x)  {$x$};
+
+\draw  (0,0) -- (E) -- (D) -- cycle;
+\draw  (C)  -- (B);
+
+\draw  ([yshift=-5]A) -- ([yshift=-25]A);
+\draw  ([yshift=-5]E) -- ([yshift=-25]E);
+\draw [<-] ([yshift=-15]A) -- ([xshift=-10,yshift=-15]pt-x);
+\draw [->] ([xshift=10,yshift=-15]pt-x) -- ([yshift=-15]E) ;
+%
 \draw (-0.1,0.133) -- (-0.5,0.667);
 \draw (5.9,4.133) -- (5.5,4.667);
 \draw [<-]  (-0.3, 0.4) -- (2.7,2.4);
 \draw [->]  (3.3,2.8) -- (5.7,4.4);
-
-\node [right] at (4.15,2.667)  {$B$};
-\node [above] at (6.15,0)  {$C$};
-\node [right] at (6.1,4)  {$D$};
-\node [below] at (2.5,1.6)  {$1$};
-\node [above] at (3,0)  {$\alpha$};
-\node at (3,2.6)  {$\beta$};
-\node at (4.5,-0.4)  {$x$};
 
 \end{tikzpicture}

@@ -1,18 +1,19 @@
 \begin{tikzpicture}[scale=0.7]
 
-\node at (0,0) {$a'$};
-\node at (0,1) {$b$};
-\node at (0,2) {$a$};
-\node at (4,1) {$a$};
+\coordinate (top-a) at (0,2);
+\coordinate (mid-b) at (0,1);
+\coordinate (bottom-a-prime) at (0,0);
+\coordinate (right-a) at (4,1);
 
-\draw (-3,1) -- (-0.2,1);
-\draw (0.2,1) -- (3.8,1);
-\draw (4.2,1) -- (5,1);
+\node at (bottom-a-prime) {$a'$};
+\node at (mid-b) {$b$};
+\node at (top-a) {$a$};
+\node at (right-a) {$a$};
 
-\draw (-2,1) -- (-2,2) -- (-0.2,2);
-\draw (-2,1) -- (-2,0) -- (-0.2,0);
+\draw (-3,1) -- ([xshift=-10]mid-b) ([xshift=10]mid-b) -- ([xshift=-10]right-a)  ([xshift=10]right-a) -- (5,1);
 
-\draw (0.2,2) -- (2,2) -- (2,1);
-\draw (0.2,0) -- (2,0) -- (2,1);
+\draw (-2,1) -- (-2,2) -- ([xshift=-10]top-a) ([xshift=10]top-a)  -- (2,2) -- (2,1);
+
+\draw (-2,1) -- (-2,0) -- ([xshift=-10]bottom-a-prime) ([xshift=10]bottom-a-prime) -- (2,0) -- (2,1);
 
 \end{tikzpicture}

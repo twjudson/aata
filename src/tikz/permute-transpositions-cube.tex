@@ -1,19 +1,65 @@
 \begin{tikzpicture}[scale=1.5]
 
-\draw (0,0) node [below] {2} -- (0,2) node [above] {4} -- (2,2) node [above] {3}-- (2,0) node [below] {1} -- cycle;
-\draw (0,2)  -- (0.8,2.3) node [above] {1} -- (2.8,2.3) node [above] {2}-- (2.8,0.3) node [below] {4} -- (2,0);
-\draw (2,2) -- (2.8,2.3);
-\draw[dashed] (0,0) -- (0.8,0.3) -- (2.8,0.3);
-\draw[dashed] (0.8,2.3) -- (0.8,0.3)  node [below] {3};
+%left cube
 
-\draw[densely dotted] (1,0) -- (1.8,2.3);
+\coordinate (left-front-face-1) at (2,0);
+\coordinate (left-front-face-2) at (0,0);
+\coordinate (left-front-face-3) at (2,2);
+\coordinate (left-front-face-4) at (0,2);
 
-\draw (3.5,0) node [below] {1} -- (3.5,2) node [above] {4} -- (5.5,2) node [above] {3}-- (5.5,0) node [below] {2} -- cycle;
-\draw (3.5,2)  -- (4.3,2.3) node [above] {2} -- (6.3,2.3) node [above] {1}-- (6.3,0.3) node [below] {4} -- (5.5,0);
-\draw (5.5,2) -- (6.3,2.3);
-\draw[dashed] (3.5,0) -- (4.3,0.3) -- (6.3,0.3);
-\draw[dashed] (4.3,2.3) -- (4.3,0.3) node [below] {3};
+\coordinate (left-back-face-1) at (0.8,2.3);
+\coordinate (left-back-face-2) at (2.8,2.3);
+\coordinate (left-back-face-3) at (0.8,0.3);
+\coordinate (left-back-face-4) at (2.8,0.3);
+\coordinate (left-mid-front) at (1,0);
+\coordinate (left-mid-back) at (1.8, 2.3);
 
-\draw[densely dotted] (4.5,0) -- (5.3,2.3);
+\draw (left-front-face-2) rectangle (left-front-face-3);
+\draw (left-front-face-4) -- (left-back-face-1) --  (left-back-face-2) -- (left-back-face-4) -- (left-front-face-1);
+\draw (left-front-face-3) -- (left-back-face-2);
+\draw [dashed] (left-front-face-2) -- (left-back-face-3) -- (left-back-face-1);
+\draw [dashed] (left-back-face-3) -- (left-back-face-4);
+\draw[densely dotted] (left-mid-front) -- (left-mid-back);
+
+\node [below] at (left-front-face-1) {$1$};
+\node [below] at (left-front-face-2) {$2$};
+\node [above] at (left-front-face-3) {$3$};
+\node [above] at (left-front-face-4) {$4$};
+
+\node [above] at (left-back-face-1) {$1$};
+\node [above] at (left-back-face-2) {$2$};
+\node [below] at (left-back-face-3) {$3$};
+\node [below] at (left-back-face-4) {$4$};
+
+%right cube
+
+\coordinate (right-front-face-1) at (3.5,0);
+\coordinate (right-front-face-2) at (5.5,0);
+\coordinate (right-front-face-3) at (5.5,2);
+\coordinate (right-front-face-4) at (3.5,2);
+
+\coordinate (right-back-face-1) at (6.3,2.3);
+\coordinate (right-back-face-2) at (4.3,2.3);
+\coordinate (right-back-face-3) at (4.3,0.3);
+\coordinate (right-back-face-4) at (6.3,0.3);
+\coordinate (right-mid-front) at (4.5,0);
+\coordinate (right-mid-back) at (5.3, 2.3);
+
+\draw (right-front-face-1) rectangle (right-front-face-3);
+\draw (right-front-face-4) -- (right-back-face-2) -- (right-back-face-1) -- (right-back-face-4) -- (right-front-face-2);
+\draw  (right-front-face-3) -- (right-back-face-1);
+\draw [dashed] (right-front-face-1) -- (right-back-face-3) -- (right-back-face-2);
+\draw [dashed]  (right-back-face-3) --  (right-back-face-4);
+\draw[densely dotted] (right-mid-front) -- (right-mid-back);
+
+\node [below] at (right-front-face-1) {$1$};
+\node [below] at (right-front-face-2) {$2$};
+\node [above] at (right-front-face-3) {$3$};
+\node [above] at (right-front-face-4) {$4$};
+
+\node [above] at (right-back-face-1) {$1$};
+\node [above] at (right-back-face-2) {$2$};
+\node [below] at (right-back-face-3) {$3$};
+\node [below] at (right-back-face-4) {$4$};
 
 \end{tikzpicture}

@@ -1,46 +1,91 @@
-\begin{tikzpicture}[scale=0.5]
-\draw (-6,8) ellipse (2 and 3);
-\draw (0,8) ellipse (2 and 3);
-\draw (6,8) ellipse (2 and 3);
+\begin{tikzpicture}[scale=1]
 
-\node at (-7.5,11) {$A$};
-\node at (-1.5,11) {$B$};
-\node at (4.5,11) {$C$};
-\node at (-6, 9.5) {1};
-\node at (-6, 8) {2};
-\node at (-6, 6.5) {3};
-\node at (0, 9.5) {$a$};
-\node at (0, 8) {$b$};
-\node at (0, 6.5) {$c$};
-\node at (6, 9.5) {$X$};
-\node at (6, 8) {$Y$};
-\node at (6, 6.5) {$Z$};
-\node at (-3,10) {$f$};
-\node at (3,10) {$g$};
+%Top diagram
 
-\draw [->] (0.5,9.5) -- (5.5,6.7);
-\draw [->] (0.5,8) -- (5.5,6.5);
-\draw [->] (0.5,6.5) -- (5.5,9.5);
+\coordinate (top-A) at (-7.5,11);
+\coordinate (top-B) at (-1.5,11);
+\coordinate (top-C) at (4.5,11);
 
-\draw [->] (-5.5,9.5) -- (-0.5,8);
-\draw [->] (-5.5,8) -- (-0.5,6.5);
-\draw [->] (-5.5,6.5) -- (-0.5,9.5);
+\coordinate (top-f) at (-3,10);
+\coordinate (top-g) at (3,10);
 
-\draw (-3,0) ellipse (2 and 3);
-\draw (3,0) ellipse (2 and 3);
+\coordinate (top-A-1) at (-6, 9.5);
+\coordinate (top-A-2) at (-6, 8);
+\coordinate (top-A-3) at (-6, 6.5);
 
-\node at (-5,3) {$A$};
-\node at (1.5,3) {$C$};
-\node at (-3, 1.5) {1};
-\node at (-3, 0) {2};
-\node at (-3, -1.5) {3};
-\node at (3, 1.5) {$X$};
-\node at (3, 0) {$Y$};
-\node at (3, -1.5) {$Z$};
-\node at (0,2.5) {$g \circ f$};
+\coordinate (top-B-a) at (0,9.5);
+\coordinate (top-B-b) at (0,8);
+\coordinate (top-B-c) at (0,6.5);
 
-\draw [->] (-2.5,1.5) -- (2.5,-1.3);
-\draw [->] (-2.5,0) -- (2.5,1.5);
-\draw [->] (-2.5,-1.5) -- (2.5,-1.5);
+\coordinate (top-C-X) at (6,9.5);
+\coordinate (top-C-Y) at (6,8);
+\coordinate (top-C-Z) at (6,6.5);
+
+\draw (top-A-2) ellipse (2 and 3);
+\draw (top-B-b) ellipse (2 and 3);
+\draw (top-C-Y) ellipse (2 and 3);
+
+\node at (top-A) {$A$};
+\node at (top-B) {$B$};
+\node at (top-C) {$C$};
+
+\node at (top-f) {$f$};
+\node at (top-g) {$g$};
+
+\node at (top-A-1) {1};
+\node at (top-A-2) {2};
+\node at (top-A-3) {3};
+
+\node at (top-B-a) {$a$};
+\node at (top-B-b) {$b$};
+\node at (top-B-c) {$c$};
+
+\node at (top-C-X) {$X$};
+\node at (top-C-Y) {$Y$};
+\node at (top-C-Z) {$Z$};
+
+\draw [->] ([xshift=10]top-A-1) -- ([xshift=-10]top-B-b);
+\draw [->] ([xshift=10]top-A-2) -- ([xshift=-10]top-B-c);
+\draw [->] ([xshift=10]top-A-3) -- ([xshift=-10]top-B-a);
+
+\draw [->] ([xshift=10]top-B-a) -- ([xshift=-10,yshift=5]top-C-Z);
+\draw [->] ([xshift=10]top-B-b) -- ([xshift=-10]top-C-Z);
+\draw [->] ([xshift=10]top-B-c) -- ([xshift=-10]top-C-X);
+
+%Bottom diagram
+
+\coordinate (bottom-A) at (-5,3);
+\coordinate (bottom-C) at (1.5,3);
+
+\coordinate (bottom-gof) at (0,2.5);
+
+\coordinate (bottom-A-1) at (-3,1.5);
+\coordinate (bottom-A-2) at (-3,0);
+\coordinate (bottom-A-3) at (-3,-1.5);
+
+\coordinate (bottom-C-X) at (3,1.5);
+\coordinate (bottom-C-Y) at (3,0);
+\coordinate (bottom-C-Z) at (3,-1.5);
+
+
+\draw (bottom-A-2) ellipse (2 and 3);
+\draw (bottom-C-Y) ellipse (2 and 3);
+
+\node at (bottom-A) {$A$};
+\node at (bottom-C) {$C$};
+\node at (bottom-gof) {$g \circ f$};
+
+\node at (bottom-A-1) {1};
+\node at (bottom-A-2) {2};
+\node at (bottom-A-3) {3};
+\node at (bottom-C-X) {$X$};
+\node at (bottom-C-Y) {$Y$};
+\node at (bottom-C-Z) {$Z$};
+
+
+\draw [->] ([xshift=10]bottom-A-1) -- ([xshift=-10,yshift=5]bottom-C-Z);
+\draw [->] ([xshift=10]bottom-A-2) -- ([xshift=-10]bottom-C-X);
+\draw [->] ([xshift=10]bottom-A-3) -- ([xshift=-10]bottom-C-Z);
 
 \end{tikzpicture}
+

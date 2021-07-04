@@ -1,15 +1,34 @@
 \begin{tikzpicture}[scale=1.5]
 
-\draw [->]  (0,-1) -- (0,1.75);
-\draw  [->] (-1,0) -- (1.75,0);
-\node [right] at (0,2) {$y$};
-\node [below] at (2,0) {$x$};
-\draw [->, very thick, black]  (0,0) -- (30:1.25) node [right] {$\mathbf x$};
+%draw left graph
+\coordinate (left-x-axis-start) at (-1,0);
+\coordinate (left-x-axis-end) at (1.75,0);
+\coordinate (left-y-axis-start) at (0,-1);
+\coordinate (left-y-axis-end) at (0,1.75);
+\coordinate (left-origin) at (0,0);
 
-\draw [->]  (4,-1) -- (4,1.75);
-\draw  [->] (3,0) -- (5.75,0);
-\node [right] at (4,2) {$y$};
-\node [below] at (6,0) {$x$};
-\draw [->, very thick, black]  (4.5,1) -- +(30:1.25) node [right] {${\mathbf x} + {\mathbf y}$};
+\draw  [->] (left-x-axis-start) -- (left-x-axis-end);
+\draw [->]  (left-y-axis-start) -- (left-y-axis-end);
+
+\node [below] at (left-x-axis-end) {$x$};
+\node [right] at (left-y-axis-end) {$y$};
+
+\draw [->, very thick, black]  (left-origin) -- (30:1.25) node [right] {$\mathbf x$};
+
+%draw right graph
+\coordinate (right-x-axis-start) at (3,0);
+\coordinate (right-x-axis-end) at (5.75,0);
+\coordinate (right-y-axis-start) at (4,-1);
+\coordinate (right-y-axis-end) at (4,1.75);
+\coordinate (right-origin) at (4,0);
+
+\draw  [->] (right-x-axis-start) -- (right-x-axis-end);
+\draw [->]  (right-y-axis-start) -- (right-y-axis-end);
+
+\node [below] at (right-x-axis-end) {$x$};
+\node [right] at (right-y-axis-end) {$y$};
+
+\coordinate (right-vector-head) at (4.5,1);
+\draw [->, very thick, black]  (right-vector-head) -- +(30:1.25) node [right] {${\mathbf x} + {\mathbf y}$};
 
 \end{tikzpicture}

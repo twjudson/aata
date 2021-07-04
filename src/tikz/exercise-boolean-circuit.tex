@@ -1,40 +1,85 @@
 \begin{tikzpicture}[scale=0.7,node distance=5mm, text height=1.5ex,text depth=.25ex]
-\node at (-1,1) {$a$};
-\node at (0,1) {$b$};
-\node at (1,1) {$c$};
 
-\node at (-1,0) {$a'$};
-\node at (0,0) {$b'$};
-\node at (1,0) {$c$};
 
-\node at (-1,-1) {$a$};
-\node at (0,-1) {$b'$};
-\node at (1,-1) {$c'$};
+%top circuit
 
-\draw (-2,0) -- (-2,1) -- (-1.3,1)  (-0.7,1) -- (-0.3,1)  (0.3,1) -- (0.7,1) (1.3,1) -- (2,1) -- (2,0);
-\draw (-2,0) -- (-2,-1) -- (-1.3,-1)  (-0.7,-1) -- (-0.3,-1)  (0.3,-1) -- (0.7,-1) (1.3,-1) -- (2,-1) -- (2,0);
-\draw (-3,0) -- (-1.3,0)  (-0.7,0) -- (-0.3,0)  (0.3,0) -- (0.7,0) (1.3,0) -- (3,0);
+\coordinate (top-a-prime) at (-2,8);
+\coordinate (top-a) at (0,9);
+\coordinate (top-b-prime) at (1,9);
+\coordinate (top-b) at (0.5,7);
 
-\node at (-2,5) {$a$};
-\node at (1,5) {$a$};
-\node at (2,5) {$b$};
+\node at (top-a-prime) {$a'$};
+\node at  (top-a) {$a$};
+\node at  (top-b) {$b$};
+\node at  (top-b-prime) {$b'$};
 
-\node at (1.5,4) {$a'$};
+\draw (-3,8) -- ([xshift=-10]top-a-prime)  ([xshift=10]top-a-prime) -- (-1,8) (2,8) -- (3,8);
+\draw (-1,8) -- (-1,9) -- ([xshift=-10]top-a)  ([xshift=10]top-a) -- ([xshift=-10]top-b-prime)  ([xshift=10]top-b-prime) -- (2,9) -- (2,8);
+\draw (-1,8) -- (-1,7) -- ([xshift=-10]top-b)  ([xshift=10]top-b) -- (2,7) -- (2,8);
 
-\node at (-2,3) {$b$};
-\node at (1,3) {$a'$};
-\node at (2,3) {$b$};
+%middle circuit
 
-\draw (-3,4) -- (-3,5) -- (-2.3,5) (-1.7,5) -- (-1,5) -- (-1,4)  (0,4) -- (0,5) -- (0.7,5)  (1.3,5) -- (1.8,5) (2.3,5) -- (3,5) -- (3,4);
-\draw (-3,4) -- (-3,3) -- (-2.3,3) (-1.7,3) -- (-1,3) -- (-1,4)  (0,4) -- (0,3) -- (0.7,3)  (1.3,3) -- (1.8,3) (2.3,3) -- (3,3) -- (3,4);
-\draw (-4,4) -- (-3,4)  (-1,4) -- (1.2,4) (1.8,4) -- (4,4);
 
-\node at (-2,8) {$a'$};
-\node at (0,9) {$a$};
-\node at (1,9) {$b'$};
-\node at (0.5,7) {$b$};
+\coordinate (middle-a-left-top) at (-2,5);
+\coordinate (middle-a-center-top) at (1,5);
+\coordinate (middle-b-right-top) at (2,5);
 
-\draw (-3,8) -- (-2.3,8) (-1.7,8) -- (-1,8) (2,8) -- (3,8);
-\draw (-1,8) -- (-1,9) -- (-0.3,9) (0.3,9) -- (0.7,9) (1.3,9) -- (2,9) -- (2,8);
-\draw (-1,8) -- (-1,7) -- (0.2,7) (0.8,7)  -- (2,7) -- (2,8);
+\node at (middle-a-left-top) {$a$};
+\node at (middle-a-center-top) {$a$};
+\node at (middle-b-right-top) {$b$};
+
+\draw (-3,4) -- (-3,5) -- ([xshift=-10]middle-a-left-top)  ([xshift=10]middle-a-left-top) -- (-1,5) -- (-1,4)  (0,4) -- (0,5) -- ([xshift=-10]middle-a-center-top) ([xshift=10]middle-a-center-top) -- ([xshift=-10]middle-b-right-top)  ([xshift=10]middle-b-right-top) -- (3,5) -- (3,4);
+
+\coordinate (middle-a-prime-right-mid) at (1.5,4);
+
+\node at (middle-a-prime-right-mid) {$a'$};
+
+\draw (-4,4) -- (-3,4)  (-1,4) -- ([xshift=-10]middle-a-prime-right-mid) ([xshift=10]middle-a-prime-right-mid) -- (4,4);
+
+\coordinate (middle-b-left-bottom) at (-2,3);
+\coordinate (middle-a-prime-center-bottom) at (1,3);
+\coordinate (middle-b-right-bottom) at (2,3);
+
+\node at (middle-b-left-bottom) {$b$};
+\node at (middle-a-prime-center-bottom) {$a'$};
+\node at (middle-b-right-bottom) {$b$};
+
+
+\draw (-3,4) -- (-3,3) -- ([xshift=-10]middle-b-left-bottom) ([xshift=10]middle-b-left-bottom) -- (-1,3) -- (-1,4)  (0,4) -- (0,3) -- ([xshift=-10]middle-a-prime-center-bottom)   ([xshift=10]middle-a-prime-center-bottom)  -- ([xshift=-10]middle-b-right-bottom) ([xshift=10]middle-b-right-bottom)-- (3,3) -- (3,4);
+
+
+%bottom circuit
+\coordinate (bottom-a-top) at (-1,1);
+\coordinate (bottom-b-top) at (0,1);
+\coordinate (bottom-c-top) at (1,1);
+
+\node at (bottom-a-top) {$a$};
+\node at (bottom-b-top) {$b$};
+\node at (bottom-c-top) {$c$};
+
+\draw (-2,0) -- (-2,1) -- ([xshift=-10]bottom-a-top)  ([xshift=10]bottom-a-top) --  ([xshift=-10]bottom-b-top)  ([xshift=10]bottom-b-top) -- ([xshift=-10]bottom-c-top)  ([xshift=10]bottom-c-top) -- (2,1) -- (2,0);
+
+\coordinate (bottom-a-prime-mid) at (-1,0);
+\coordinate (bottom-b-prime-mid) at (0,0);
+\coordinate (bottom-c-mid) at (1,0);
+
+\node at (bottom-a-prime-mid) {$a'$};
+\node at (bottom-b-prime-mid) {$b'$};
+\node at (bottom-c-mid) {$c$};
+
+\draw (-3,0) -- ([xshift=-10]bottom-a-prime-mid) ([xshift=10]bottom-a-prime-mid) -- ([xshift=-10]bottom-b-prime-mid)   ([xshift=10]bottom-b-prime-mid)  -- ([xshift=-10]bottom-c-mid) ([xshift=10]bottom-c-mid)  -- (3,0);
+
+\coordinate (bottom-a-bottom) at (-1,-1);
+\coordinate (bottom-b-prime-bottom) at (0,-1);
+\coordinate (bottom-c-prime-bottom) at (1,-1);
+
+\node at (bottom-a-bottom) {$a$};
+\node at (bottom-b-prime-bottom) {$b'$};
+\node at (bottom-c-prime-bottom) {$c'$};
+
+\draw (-2,0) -- (-2,-1) -- ([xshift=-10]bottom-a-bottom) ([xshift=10]bottom-a-bottom) -- ([xshift=-10]bottom-b-prime-bottom) ([xshift=10]bottom-b-prime-bottom) --  ([xshift=-10]bottom-c-prime-bottom)   ([xshift=10]bottom-c-prime-bottom)  -- (2,-1) -- (2,0);
+
+
+
+
 \end{tikzpicture}

@@ -1,15 +1,34 @@
+
 \begin{tikzpicture}[scale=1]
 
-\draw (40:1.2) -- (90:1.7) -- (140:1.2) -- (220:1.2) -- (270:1.7) -- (320:1.2) -- cycle;
-\draw (90:1.7) -- (90:2.1) node [above] {$H$};
-\draw (270:1.7) -- (270:2.1) node [below] {$H$};
-\draw (40:1.2) -- (40:1.6);
-\node at (40:1.9) {$H$};
-\draw (140:1.2) -- (140:1.6);
-\node at (140:1.9) {$H$};
-\draw (220:1.2) -- (220:1.6);
-\node at (220:1.9) {$H$};
-\draw (320:1.2) -- (320:1.6);
-\node at (320:1.9) {$H$};
+\coordinate (pt-1) at (40:1.2);
+\coordinate (pt-2) at (90:1.7);
+\coordinate (pt-3) at (140:1.2);
+\coordinate (pt-4) at (220:1.2);
+\coordinate (pt-5) at (270:1.7);
+\coordinate (pt-6) at (320:1.2);
+
+\coordinate (pt-1-label) at (40:1.9);
+\coordinate (pt-2-label) at (90:2.1);
+\coordinate (pt-3-label) at (140:1.9);
+\coordinate (pt-4-label) at (220:1.9);
+\coordinate (pt-5-label) at (270:2.1);
+\coordinate (pt-6-label) at (320:1.9);
+
+\node [above right] at (pt-1-label) {$H$};
+\node [above] at (pt-2-label) {$H$};
+\node [above left] at (pt-3-label) {$H$};
+\node[below left]  at (pt-4-label) {$H$};
+\node [below] at (pt-5-label) {$H$};
+\node [below right] at (pt-6-label) {$H$};
+
+\draw (pt-1) -- (pt-2) -- (pt-3) -- (pt-4) -- (pt-5) -- (pt-6) -- cycle;
+
+\draw (pt-1) -- (pt-1-label);
+\draw (pt-2) -- (pt-2-label);
+\draw (pt-3) -- (pt-3-label);
+\draw (pt-4) -- (pt-4-label);
+\draw (pt-5) -- (pt-5-label);
+\draw (pt-6) -- (pt-6-label);
 
 \end{tikzpicture}

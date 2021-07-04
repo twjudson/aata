@@ -1,24 +1,31 @@
 \begin{tikzpicture}[scale=0.7]
 
-\node at (0,0) {1};
-\node at (0,2) {5};
-\node at (0,4) {10};
-\node at (0,6) {30};
+\coordinate (pt-30) at (0,6);
+\coordinate (pt-10) at (0,4);
+\coordinate (pt-15) at (2,4);
+\coordinate (pt-2) at (-2,2);
+\coordinate (pt-5) at (0,2);
+\coordinate (pt-3) at (2,2);
+\coordinate (pt-1) at (0,0);
 
-\node at (-2,2) {2};
-\node at (2,2) {3};
-\node at (2,4) {15};
+\node at (pt-30) {$30$};
+\node at (pt-10) {$10$};
+\node at (pt-15) {$15$};
+\node at (pt-2) {$2$};
+\node at (pt-5) {$5$};
+\node at (pt-3) {$3$};
+\node at (pt-1) {$1$};
 
-\draw (0,0.25) -- (0,1.75);
-\draw (0,2.25) -- (0,3.75);
-\draw (0,4.25) -- (0,5.75);
-\draw (2,2.25) -- (2,3.75);
 
-\draw (0.2,0.25) -- (2,1.75);
-\draw (-0.2,0.25) -- (-2,1.75);
-\draw (0.2,2.25) -- (1.8,3.75);
-\draw (-1.8,2.25) -- (-0.2,3.75);
-\draw (-2,2.25) -- (-0.2,5.75);
-\draw (2,4.25) -- (0.2,5.75);
+\draw ([yshift=-10]pt-5) -- ([yshift=10]pt-1);
+\draw ([yshift=-10]pt-10) -- ([yshift=10]pt-5);
+\draw ([yshift=-10]pt-30) -- ([yshift=10]pt-10);
+\draw ([yshift=-10]pt-15) -- ([yshift=10]pt-3);
+\draw ([yshift=-10]pt-3) -- ([xshift=10,yshift=10]pt-1);
+\draw ([yshift=-10]pt-2) -- ([xshift=-10,yshift=10]pt-1);
+\draw ([xshift=-10,yshift=-10]pt-15) -- ([xshift=10,yshift=10]pt-5);
+\draw ([xshift=-10,yshift=-10]pt-10) -- ([xshift=10,yshift=10]pt-2);
+\draw ([xshift=-10,yshift=-10]pt-30) -- ([yshift=10]pt-2);
+\draw ([xshift=10,yshift=-10]pt-30) -- ([yshift=10]pt-15);
 
 \end{tikzpicture}

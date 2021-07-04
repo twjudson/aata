@@ -1,87 +1,142 @@
-\begin{tikzpicture}[scale=0.7]
-\draw (0,0) -- (0:2) -- (60:2) -- cycle;
-\node [left] at (0,0) {$A$};
-\node at (1,2.1) {$B$};
-\node [right] at (0:2) {$C$};
+\begin{tikzpicture}[scale=1.2]
 
-\draw [->] (2,1) -- (4,1);
-\node [above] at (3,1) {\emph{reflection}};
+%identity
+\draw (0,15) coordinate(A-identity-left) -- (2,15) coordinate(C-identity-left) -- ++(120:2)  coordinate(B-identity-left)-- cycle;
+\node [left] at (A-identity-left) {$A$};
+\node [above] at (B-identity-left) {$B$};
+\node [right] at (C-identity-left) {$C$};
 
-\draw (4,0) -- (0:6) -- ++(120:2) -- cycle;
-\node [left] at (4,0) {$B$};
-\node [right] at (0:6) {$C$};
-\node at (5,2.1) {$A$};
+\draw (4,15) coordinate(A-identity-right) -- (6,15) coordinate(C-identity-right) -- ++(120:2) coordinate(B-identity-right) -- cycle;
+\node [left] at (A-identity-right) {$A$};
+\node [above] at (B-identity-right) {$B$};
+\node [right] at (C-identity-right) {$C$};
 
-\node [right] at (7,1) {$ \mu_3 = \begin{pmatrix}A & B & C \\ B & A & C\end{pmatrix}$};
+\coordinate (identity-label) at (3,16);
+\node [above] at (identity-label) {\emph{identity}};
 
-\draw (0,3) -- (2,3) -- ++(120:2) -- cycle;
-\node [left] at (0,3) {$A$};
-\node at (1,5.1) {$B$};
-\node [right] at (2,3) {$C$};
+\coordinate (identity-head-arrow) at (2,16);
+\coordinate (identity-tail-arrow) at (4,16);
 
-\draw [->] (2,4) -- (4,4);
-\node [above] at (3,4) {\emph{reflection}};
+\draw [->] (identity-head-arrow) -- (identity-tail-arrow);
 
-\draw (4,3) -- (6,3) -- ++(120:2) -- cycle;
-\node [left] at (4,3) {$C$};
-\node [right] at (6,3) {$A$};
-\node at (5,5.1) {$B$};
-\node [right] at (7,4) {$ \mu_2 = \begin{pmatrix}A & B & C \\ C & B & A\end{pmatrix}$};
+\coordinate (identity-permute) at (7,16);
 
-\draw (0,6) -- (2,6) -- ++(120:2) -- cycle;
-\node [left] at (0,6) {$A$};
-\node at (1,8.1) {$B$};
-\node [right] at (2,6) {$C$};
+\node [right] at (identity-permute) {$ id = \begin{pmatrix}A & B & C \\ A & B & C\end{pmatrix}$};
 
-\draw [->] (2,7) -- (4,7);
-\node [above] at (3,7) {\emph{reflection}};
+%120 degree rotation
+\draw (0,12) coordinate(A-120-rotation-left) -- (2,12) coordinate(C-120-rotation-left) -- ++(120:2) coordinate(B-120-rotation-left) -- cycle;
 
-\draw (4,6) -- (6,6) -- ++(120:2) -- cycle;
-\node [left] at (4,6) {$A$};
-\node [right] at (6,6) {$B$};
-\node at (5,8.1) {$C$};
-\node [right] at (7,7) {$ \mu_1 = \begin{pmatrix}A & B & C \\ A & C & B\end{pmatrix}$};
+\node [left] at (A-120-rotation-left) {$A$};
+\node [above] at (B-120-rotation-left) {$B$};
+\node [right] at (C-120-rotation-left) {$C$};
 
-\draw (0,9) -- (2,9) -- ++(120:2) -- cycle;
-\node [left] at (0,9) {$A$};
-\node at (1,11.1) {$B$};
-\node [right] at (2,9) {$C$};
+\draw (4,12) coordinate(A-120-rotation-right) -- (6,12) coordinate(B-120-rotation-right) -- ++(120:2) coordinate(C-120-rotation-right) -- cycle;
+\node [left] at (A-120-rotation-right) {$C$};
+\node [right] at (B-120-rotation-right) {$B$};
+\node [above] at (C-120-rotation-right) {$A$};
 
-\draw [->] (2,10) -- (4,10);
-\node [above] at (3,10) {\emph{rotation}};
+\coordinate (120-rotation-label) at (3,13);
+\node [above] at (120-rotation-label) {\emph{rotation}};
 
-\draw (4,9) -- (6,9) -- ++(120:2) -- cycle;
-\node [left] at (4,9) {$B$};
-\node [right] at (6,9) {$A$};
-\node at (5,11.1) {$C$};
-\node [right] at (7,10) {$ \rho_2 = \begin{pmatrix}A & B & C \\ C & A & B\end{pmatrix}$};
+\coordinate (120-rotation-head-arrow) at (2,13);
+\coordinate (120-rotation-tail-arrow) at (4,13);
 
-\draw (0,12) -- (2,12) -- ++(120:2) -- cycle;
-\node [left] at (0,12) {$A$};
-\node at (1,14.1) {$B$};
-\node [right] at (2,12) {$C$};
+\draw [->] (120-rotation-head-arrow) -- (120-rotation-tail-arrow);
 
-\draw [->] (2,13) -- (4,13);
-\node [above] at (3,13) {\emph{rotation}};
+\coordinate (120-rotation-permute) at (7,13);
 
-\draw (4,12) -- (6,12) -- ++(120:2) -- cycle;
-\node [left] at (4,12) {$C$};
-\node [right] at (6,12) {$B$};
-\node at (5,14.1) {$A$};
-\node [right] at (7,13) {$ \rho_1 = \begin{pmatrix}A & B & C \\ B & C & A\end{pmatrix}$};
+\node [right] at (120-rotation-permute) {$ \rho_1 = \begin{pmatrix}A & B & C \\ B & C & A\end{pmatrix}$};
 
-\draw (0,15) -- (2,15) -- ++(120:2) -- cycle;
-\node [left] at (0,15) {$A$};
-\node at (1,17.1) {$B$};
-\node [right] at (2,15) {$C$};
+%240 degree rotation
+\draw (0,9) coordinate(A-240-rotation-left) -- (2,9) coordinate(C-240-rotation-left) -- ++(120:2) coordinate(B-240-rotation-left) -- cycle;
 
-\draw [->] (2,16) -- (4,16);
-\node [above] at (3,16) {\emph{identity}};
+\node [left] at (A-240-rotation-left) {$A$};
+\node [above] at (B-240-rotation-left) {$B$};
+\node [right] at (C-240-rotation-left) {$C$};
 
-\draw (4,15) -- (6,15) -- ++(120:2) -- cycle;
-\node [left] at (4,15) {$A$};
-\node [right] at (6,15) {$C$};
-\node at (5,17.1) {$B$};
-\node [right] at (7,16) {$ id = \begin{pmatrix}A & B & C \\ A & B & C\end{pmatrix}$};
+\draw (4,9) coordinate(A-240-rotation-right) -- (6,9) coordinate(B-240-rotation-right) -- ++(120:2) coordinate(C-240-rotation-right) -- cycle;
+\node [left] at (A-240-rotation-right) {$B$};
+\node [right] at (B-240-rotation-right) {$A$};
+\node [above] at (C-240-rotation-right) {$C$};
+
+\coordinate (240-rotation-label) at (3,10);
+\node [above] at (240-rotation-label) {\emph{rotation}};
+
+\coordinate (240-rotation-head-arrow) at (2,10);
+\coordinate (240-rotation-tail-arrow) at (4,10);
+
+\draw [->] (240-rotation-head-arrow) -- (240-rotation-tail-arrow);
+
+\coordinate (240-rotation-permute) at (7,10);
+
+\node [right] at (240-rotation-permute) {$ \rho_2 = \begin{pmatrix}A & B & C \\ C & A & B\end{pmatrix}$};
+
+%reflection A fixed
+
+\draw (0,6) coordinate(A-fixed-A-left) -- (2,6) coordinate(A-fixed-C-left) -- ++(120:2) coordinate(A-fixed-B-left) -- cycle;
+\node [left] at (A-fixed-A-left) {$A$};
+\node [above] at (A-fixed-B-left) {$B$};
+\node [right] at (A-fixed-C-left) {$C$};
+
+\coordinate (A-fixed-label) at (3,7);
+\node [above] at (A-fixed-label) {\emph{reflection}};
+
+\coordinate (A-fixed-head-arrow) at (2,7);
+\coordinate (A-fixed-tail-arrow) at (4,7);
+\draw [->] (A-fixed-head-arrow) -- (A-fixed-tail-arrow);
+
+\draw (4,6) coordinate(A-fixed-A-right) -- (6,6) coordinate(A-fixed-C-right) -- ++(120:2) coordinate(A-fixed-B-right) -- cycle;
+\node [left] at (A-fixed-A-right) {$A$};
+\node [above] at (A-fixed-B-right) {$C$};
+\node [right] at (A-fixed-C-right) {$B$};
+
+\coordinate (A-fixed-permute) at (7,7);
+
+\node [right] at (A-fixed-permute) {$ \mu_1 = \begin{pmatrix}A & B & C \\ A & C & B\end{pmatrix}$};
+
+%reflection B fixed
+
+\draw (0,3) coordinate(B-fixed-A-left) -- (2,3)  coordinate(B-fixed-C-left) -- ++(120:2)  coordinate(B-fixed-B-left) -- cycle;
+\node [left] at (B-fixed-A-left) {$A$};
+\node [above] at (B-fixed-B-left) {$B$};
+\node [right] at (B-fixed-C-left) {$C$};
+
+\coordinate (B-fixed-label) at (3,4);
+\node [above] at (B-fixed-label) {\emph{reflection}};
+
+\coordinate (B-fixed-head-arrow) at (2,4);
+\coordinate (B-fixed-tail-arrow) at (4,4);
+\draw [->] (B-fixed-head-arrow) -- (B-fixed-tail-arrow);
+
+\draw (4,3) coordinate(B-fixed-A-right) -- (6,3) coordinate(B-fixed-C-right) -- ++(120:2) coordinate(B-fixed-B-right) -- cycle;
+\node [left] at (B-fixed-A-right) {$C$};
+\node [above] at (B-fixed-B-right) {$B$};
+\node [right] at (B-fixed-C-right) {$A$};
+
+\coordinate (B-fixed-permute) at (7,4);
+\node [right] at (B-fixed-permute) {$ \mu_2 = \begin{pmatrix}A & B & C \\ C & B & A\end{pmatrix}$};
+
+%reflection C fixed
+
+\draw (0,0) coordinate(C-fixed-A-left) -- (0:2) coordinate(C-fixed-C-left) -- (60:2) coordinate(C-fixed-B-left) -- cycle;
+\node [left] at (C-fixed-A-left) {$A$};
+\node [above] at (C-fixed-B-left) {$B$};
+\node [right] at (C-fixed-C-left) {$C$};
+
+\coordinate (C-fixed-label) at (3,1);
+\node [above] at (C-fixed-label) {\emph{reflection}};
+
+\coordinate (C-fixed-head-arrow) at (2,1);
+\coordinate (C-fixed-tail-arrow) at (4,1);
+\draw [->] (C-fixed-head-arrow) -- (C-fixed-tail-arrow);
+
+
+\draw (4,0) coordinate(C-fixed-A-right) -- (0:6) coordinate(C-fixed-C-right) -- ++(120:2) coordinate(C-fixed-B-right)  -- cycle;
+\node [left] at (C-fixed-A-right) {$B$};
+\node [above] at (C-fixed-B-right) {$A$};
+\node [right] at (C-fixed-C-right) {$C$};
+
+\coordinate (C-fixed-permute) at (7,1);
+\node [right] at (C-fixed-permute) {$ \mu_3 = \begin{pmatrix} A & B & C \\ B & A & C\end{pmatrix}$};
 
 \end{tikzpicture}

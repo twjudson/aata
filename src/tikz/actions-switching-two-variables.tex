@@ -1,15 +1,51 @@
 \begin{tikzpicture}[scale=0.8]
 
-\draw (1,0) rectangle (3,2);
-\node at (2,1)  {$f$};
-\draw [->] (3,1) -- (3.5,1) node [right] {$f(a,b)$};
-\draw [->] (0.5,1.5) node [left] {$a$} -- (1,1.5);
-\draw [->] (0.5,0.5) node [left] {$b$} -- (1,0.5);
+%left diagram
 
-\draw (7,0) rectangle (9,2);
-\node at (8,1)  {$f$};
-\draw [->] (9,1) -- (9.5,1) node [right] {$f(b,a) = g(a,b)$};
-\draw [->] (6.3,1.5) node [left] {$a$} -- (6.5,1.5) -- (7,0.5);
-\draw [->] (6.3,0.5) node [left] {$b$} -- (6.5,0.5) -- (7,1.5);
+\coordinate (left-pt1) at (1,0);
+\coordinate (left-pt2) at (3,2);
+\coordinate (left-f-label) at (2,1);
+\coordinate (left-a-head) at (0.5,1.5);
+\coordinate (left-a-tail) at (1,1.5);
+\coordinate (left-b-head) at (0.5,0.5);
+\coordinate (left-b-tail) at (1,0.5);
+\coordinate (left-f-head) at (3,1);
+\coordinate (left-f-tail) at (3.5,1);
+
+\node [left] at (left-a-head)  {$a$};
+\node [left] at (left-b-head)  {$b$};
+\node at (left-f-label)  {$f$};
+\node [right] at (left-f-tail) {$f(a,b)$};
+
+\draw (left-pt1) rectangle (left-pt2);
+
+\draw [->] (left-a-head) -- (left-a-tail);
+\draw [->] (left-b-head) -- (left-b-tail);
+\draw [->] (left-f-head) -- (left-f-tail);
+
+%right diagram
+
+\coordinate (right-pt1) at (7,0);
+\coordinate (right-pt2) at (9,2);
+\coordinate (right-f-label) at (8,1);
+
+\coordinate (right-a-head) at (6.3,1.5);
+\coordinate (right-a-tail) at (7,1.5);
+\coordinate (right-b-head) at (6.3,0.5);
+\coordinate (right-b-tail) at (7,0.5);
+\coordinate (right-f-head) at (9,1);
+\coordinate (right-f-tail) at (9.5,1);
+
+\node [left] at (right-a-head)  {$a$};
+\node [left] at (right-b-head)  {$b$};
+\node at (right-f-label)  {$f$};
+\node [right] at (right-f-tail) {$f(b,a) = g(a,b)$};
+
+\draw (right-pt1) rectangle (right-pt2);
+
+\draw [->] (right-f-head) -- (right-f-tail);
+
+\draw [->] (right-a-head) -- (6.5,1.5) -- (right-b-tail);
+\draw [->] (right-b-head) -- (6.5,0.5) -- (right-a-tail);
 
 \end{tikzpicture}

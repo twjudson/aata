@@ -1,19 +1,47 @@
 \begin{tikzpicture}[scale=1.5]
 
-\draw [->]  (0,-0.5) -- (0,2);
-\draw  [->] (-0.5,0) -- (2,0);
-\node [right] at (0,2) {$y$};
-\node [below] at (2,0) {$x$};
-\draw [->, very thick, black]  (0,0) -- (0,1) node [left] {$(0,1)$};
-\draw  [->, very thick, black] (0,0) -- (1,0) node [below] {$(1,0)$};
-\draw (0,1) -- (1,1) -- (1,0);
+\coordinate (left-x-axis-start) at (-0.5,0);
+\coordinate (left-x-axis-end) at (2,0);
+\coordinate (left-y-axis-start) at (0,-0.5);
+\coordinate (left-y-axis-end) at (0,2);
+\coordinate (left-origin) at (0,0);
+\coordinate (left-unit-x) at (1,0);
+\coordinate (left-unit-y) at (0,1);
+\coordinate (left-pt-1-1) at (1,1);
 
-\draw [->]  (4,-0.5) -- (4,2);
-\draw  [->] (3.5,0) -- (6,0);
-\node [right] at (4,2) {$y$};
-\node [below] at (6,0) {$x$};
-\draw [->, very thick, black]  (4,0) -- (5,1) node [above] {$(1,1)$};
-\draw  [->, very thick, black] (4,0) -- (5,0) node [below] {$(1,0)$};
-\draw (5,1) -- (6,1) -- (5,0);
+\node [right] at  (left-y-axis-end) {$y$};
+\node [below] at (left-x-axis-end) {$x$};
+\node [below] at (left-unit-x) {$(1,0)$};
+\node [left] at (left-unit-y) {$(0,1)$};
+
+\draw [->]  (left-x-axis-start) -- (left-x-axis-end);
+\draw  [->] (left-y-axis-start)  -- (left-y-axis-end);
+\draw [->, very thick, black]  (left-origin) -- (left-unit-x);
+\draw  [->, very thick, black] (left-origin) -- (left-unit-y);
+\draw (left-unit-x) -- (left-pt-1-1) -- (left-unit-y);
+
+\coordinate (right-x-axis-start) at (3.5,0);
+\coordinate (right-x-axis-end) at (6,0);
+\coordinate (right-y-axis-start) at (4,-0.5);
+\coordinate (right-y-axis-end) at (4,2);
+\coordinate (right-origin) at (4,0);
+\coordinate (right-unit-x) at (5,0);
+\coordinate (right-unit-y) at (0,5);
+\coordinate (right-pt-1-1) at (5,1);
+\coordinate (right-pt-2-1) at (6,1);
+
+\node [right] at  (right-y-axis-end) {$y$};
+\node [below] at (right-x-axis-end) {$x$};
+\node [below] at (right-unit-x) {$(1,0)$};
+\node [above] at (right-pt-1-1) {$(1,1)$};
+
+\draw [->]  (right-x-axis-start) -- (right-x-axis-end);
+\draw  [->] (right-y-axis-start)  -- (right-y-axis-end);
+
+\draw [->, very thick, black]  (right-origin) -- (right-pt-1-1);
+\draw  [->, very thick, black] (right-origin) -- (right-unit-x);
+
+\draw (right-pt-1-1) --  (right-pt-2-1) -- (right-unit-x) ;
 
 \end{tikzpicture}
+

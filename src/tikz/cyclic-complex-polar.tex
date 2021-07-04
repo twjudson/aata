@@ -1,17 +1,34 @@
-\begin{tikzpicture}[scale=0.5]
+\begin{tikzpicture}[scale=0.8]
 
-\draw [->]  (0,-5) -- (0,5);
-\draw  [->] (-8,0) -- (8,0);
-\node [right] at (0,5) {$y$};
-\node [below] at (8,0) {$x$};
-\node [below] at (0.5,0) {$0$};
+\coordinate (x-axis-min) at (-8,0);
+\coordinate (x-axis-max) at (8,0);
+\coordinate (y-axis-min) at (0,-5);
+\coordinate (y-axis-max) at (0,5);
+\coordinate (origin) at (0,0);
 
-\draw (0,0) -- (35:6);
-\draw (2,0) arc (0:35:2);
+\draw  [->] (x-axis-min) -- (x-axis-max);
+\draw  [->] (y-axis-min) -- (y-axis-max);
 
-\filldraw[fill=black, draw=black] (35:6) circle (0.05cm);
-\node [right] at (35:6) {$a + bi$};
-\node [above] at (35:3) {$r$};
-\node [right] at (17:2) {$\theta$};
+\node [right] at (y-axis-max) {$y$};
+\node [below] at (x-axis-max) {$x$};
+\node [below right] at (origin) {$0$};
+
+\coordinate (ray-end) at (35:6);
+\coordinate (ray-label) at (35:3);
+
+\draw (origin) -- (ray-end);
+\filldraw[fill=black, draw=black] (ray-end) circle (0.05cm);
+\node [right] at (ray-end) {$a + bi$};
+\node [above] at (ray-label) {$r$};
+
+\coordinate (arc-begin) at (2,0);
+\coordinate (arc-label) at (17.5:2);
+
+\draw (arc-begin) arc (0:35:2);
+
+
+
+
+\node [right] at (arc-label) {$\theta$};
 
 \end{tikzpicture}

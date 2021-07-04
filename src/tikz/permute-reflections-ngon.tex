@@ -1,19 +1,65 @@
-\begin{tikzpicture}[scale=1.2]
+\begin{tikzpicture}[scale=1.5]
 
-\draw (2,0)  +(18:1) node [right] {5} -- +(90:1) node [above] {1} -- +(162:1) node [left] {2} -- +(234:1) node [left] {3} -- +(306:1) node [right] {4} -- cycle;
-\draw[dashed] (2,-0.80901) -- (2,1);
+%Draw the top hexagons
 
-\draw (-2,0)  +(18:1) node [right] {2} -- +(90:1) node [above] {1} -- +(162:1) node [left] {5} -- +(234:1) node [left] {4} -- +(306:1) node [right] {3} -- cycle;
-\draw[dashed] (-2,-0.80901) -- (-2,1);
+\coordinate (center-top-left) at (-2,3);
+\coordinate (top-arrow-head) at (0.5,3);
+\coordinate (top-arrow-tail) at (-0.5,3);
 
-\draw [->] (-0.5,0) -- (0.5,0);
+\draw (center-top-left)  +(30:1) coordinate (pt-2-top-left) -- +(90:1) coordinate (pt-1-top-left) -- +(150:1) coordinate (pt-6-top-left) -- +(210:1) coordinate (pt-5-top-left)  -- +(270:1) coordinate (pt-4-top-left)   -- +(330:1) coordinate (pt-3-top-left)  -- cycle;
 
-\draw (2,3)  +(30:1) node [right] {6} -- +(90:1) node [above] {1} -- +(150:1) node [left] {2} -- +(210:1) node [left] {3} -- +(270:1) node [below] {4}  -- +(330:1) node [right] {5} -- cycle;
-\draw[dashed] (2,2) -- (2,4);
+\node [above] at (pt-1-top-left) {$1$};
+\node [above right] at (pt-2-top-left) {$2$};
+\node [below right] at (pt-3-top-left) {$3$};
+\node [below] at (pt-4-top-left) {$4$};
+\node [below left] at (pt-5-top-left) {$5$};
+\node [above left] at (pt-6-top-left) {$6$};
 
-\draw (-2,3)  +(30:1) node [right] {2} -- +(90:1) node [above] {1} -- +(150:1) node [left] {6} -- +(210:1) node [left] {5} -- +(270:1) node [below] {4}  -- +(330:1) node [right] {3} -- cycle;
-\draw[dashed] (-2,2) -- (-2,4);
+\draw[dashed] (pt-1-top-left) -- (pt-4-top-left);
 
-\draw [->] (-0.5,3) -- (0.5,3);
+\coordinate (center-top-right) at (2,3);
+
+\draw (center-top-right)  +(30:1) coordinate (pt-2-top-right) -- +(90:1) coordinate (pt-1-top-right) -- +(150:1) coordinate (pt-6-top-right) -- +(210:1) coordinate (pt-5-top-right)  -- +(270:1) coordinate (pt-4-top-right)   -- +(330:1) coordinate (pt-3-top-right)  -- cycle;
+
+\node [above] at (pt-1-top-right) {$1$};
+\node [above right] at (pt-2-top-right) {$6$};
+\node [below right] at (pt-3-top-right) {$5$};
+\node [below] at (pt-4-top-right) {$4$};
+\node [below left] at (pt-5-top-right) {$3$};
+\node [above left] at (pt-6-top-right) {$2$};
+
+\draw[dashed] (pt-1-top-right) -- (pt-4-top-right);
+
+\draw [->] (top-arrow-tail) -- (top-arrow-head);
+
+%draw the bottom pentagons
+
+\coordinate (center-bottom-left) at (-2,0); 
+\coordinate (bottom-arrow-head) at (0.5,0);
+\coordinate (bottom-arrow-tail) at (-0.5,0);
+
+\draw (center-bottom-left)  +(18:1) coordinate (pt-2-bottom-left) -- +(90:1) coordinate (pt-1-bottom-left) -- +(162:1) coordinate (pt-5-bottom-left) -- +(234:1) coordinate (pt-4-bottom-left)  -- +(306:1) coordinate (pt-3-bottom-left)  -- cycle;
+
+\node [above] at (pt-1-bottom-left) {$1$};
+\node [right] at (pt-2-bottom-left) {$2$};
+\node [below right] at (pt-3-bottom-left) {$3$};
+\node [below left] at (pt-4-bottom-left) {$4$};
+\node [left] at (pt-5-bottom-left) {$5$};
+
+\draw[dashed] (pt-1-bottom-left) -- ++ (270:1.81);
+
+\coordinate (center-bottom-right) at (2,0);
+
+\draw (center-bottom-right)  +(18:1) coordinate (pt-2-bottom-right) -- +(90:1) coordinate (pt-1-bottom-right) -- +(162:1) coordinate (pt-6-bottom-right) -- +(234:1) coordinate (pt-5-bottom-right)  -- +(306:1) coordinate (pt-4-bottom-right)  -- cycle;
+
+\node [above] at (pt-1-bottom-right) {$1$};
+\node [above right] at (pt-2-bottom-right) {$6$};
+\node [below] at (pt-4-bottom-right) {$4$};
+\node [below left] at (pt-5-bottom-right) {$3$};
+\node [above left] at (pt-6-bottom-right) {$2$};
+
+\draw[dashed] (pt-1-bottom-right) -- ++ (270:1.81);
+
+\draw [->] (bottom-arrow-tail) -- (bottom-arrow-head);
 
 \end{tikzpicture}

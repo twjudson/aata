@@ -1,14 +1,38 @@
-\begin{tikzpicture}[scale=1.5]
+\begin{tikzpicture}[scale=0.8]
 
-\draw (0,0)  -- (0,2) -- (2,2) -- (2,0) -- cycle;
-\draw (0,2)  -- (0.8,2.3) -- (2.8,2.3) -- (2.8,0.3) -- (2,0);
-\draw (2,2) -- (2.8,2.3);
-\draw[dashed] (0,0) -- (0.8,0.3) -- (2.8,0.3);
-\draw[dashed] (0.8,2.3) -- (0.8,0.3);
+\coordinate (front-face-1) at (4,0);
+\coordinate (front-face-2) at (0,0);
+\coordinate (front-face-3) at (0,4);
+\coordinate (front-face-4) at (4,4);
 
-\draw[densely dotted] (0,0) node [below] {2}-- (2.8,2.3) node [above] {2};
-\draw[densely dotted] (0,2) node [above] {4} -- (2.8,0.3) node [below] {4};
-\draw[densely dotted] (2,0) node [below] {1} -- (0.8,2.3) node [above] {1};
-\draw[densely dotted] (2,2) node [above] {3} -- (0.8,0.3) node [below] {3};
+\coordinate (back-face-1) at (1.5,4.7);
+\coordinate (back-face-2) at (5.5,4.7);
+\coordinate (back-face-3) at (5.5,0.7);
+\coordinate (back-face-4) at (1.5,0.7);
+
+\draw (front-face-1) rectangle (front-face-3);
+\draw (back-face-1) -- (back-face-2) -- (back-face-3);
+\draw [dashed] (back-face-1) -- (back-face-4) -- (back-face-3);
+
+\draw [dashed] (front-face-2) -- (back-face-4);
+\draw (front-face-3) -- (back-face-1);
+\draw (front-face-1) -- (back-face-3);
+\draw (front-face-4) -- (back-face-2);
+
+\draw[densely dotted] (front-face-1) -- (back-face-1);
+\draw[densely dotted] (front-face-2) -- (back-face-2);
+\draw[densely dotted] (front-face-3) -- (back-face-3);
+\draw[densely dotted] (front-face-4) -- (back-face-4);
+
+
+\node [below] at (front-face-1) {$1$};
+\node [below] at (front-face-2) {$2$};
+\node [above] at (front-face-3) {$3$};
+\node [above] at (front-face-4) {$4$};
+
+\node [above] at (back-face-1) {$1$};
+\node [above] at (back-face-2) {$2$};
+\node [below] at (back-face-3) {$3$};
+\node [below] at (back-face-4) {$4$};
 
 \end{tikzpicture}

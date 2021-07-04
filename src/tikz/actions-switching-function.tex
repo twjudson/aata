@@ -1,11 +1,36 @@
-\begin{tikzpicture}[scale=1.25]
+\begin{tikzpicture}[scale=1]
+\coordinate (input-x1-head) at (0.5,1.6);
+\coordinate (input-x1-tail) at (1,1.6);
 
-\draw (1,0) rectangle (2.7,2);
-\node at (1.85,1)  {$f$};
-\draw [->] (2.7,1) -- (3.2,1) node [right] {$f(x_1, x_2, \ldots, x_n)$};
-\draw [->] (0.5,0.4) node [left] {$x_n$} -- (1,0.4);
-\draw [->] (0.5,1.2) node [left] {$x_2$} -- (1,1.2);
-\draw [->] (0.5,1.6) node [left] {$x_1$} -- (1,1.6);
-\node at (0.5,0.85)  [left] {$\vdots$};
+\coordinate (input-x2-head) at (0.5,1.2);
+\coordinate (input-x2-tail) at (1,1.2);
+
+\coordinate (input-xn-head) at (0.5,0.4);
+\coordinate (input-xn-tail) at (1,0.4);
+
+\coordinate (input-vdots) at (0.5,0.85);
+
+\coordinate (lower-left-square) at (1,0);
+\coordinate (upper-right-square) at (2.7,2);
+
+\coordinate (f-label) at (1.85,1);
+
+\coordinate (output-head) at (2.7,1);
+\coordinate (output-tail) at (3.2,1);
+
+\node [left] at (input-x1-head) {$x_1$};
+\node [left] at (input-x2-head) {$x_2$};
+\node [left] at (input-vdots) {$\vdots$};
+\node [left] at (input-xn-head) {$x_n$};
+
+\node at (f-label)  {$f$};
+
+\node [right] at (output-tail) {$f(x_1, x_2, \ldots, x_n)$};
+
+\draw (lower-left-square) rectangle (upper-right-square);
+\draw [->] (input-x1-head) -- (input-x1-tail);
+\draw [->] (input-x2-head) -- (input-x2-tail);
+\draw [->] (input-xn-head) -- (input-xn-tail);
+\draw [->] (output-head) -- (output-tail);
 
 \end{tikzpicture}

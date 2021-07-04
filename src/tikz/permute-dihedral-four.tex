@@ -1,10 +1,25 @@
-\begin{tikzpicture}[scale=1.2]
+\begin{tikzpicture}[scale=0.8]
 
-\draw (0,0)  +(45:2) node [right] {2} -- +(135:2) node [left] {1} -- +(225:2) node [left] {4} -- +(315:2) node [right] {3} -- cycle;
+\coordinate (pt-1) at (0,4);
+\coordinate (pt-2) at (4,4);
+\coordinate (pt-3) at (4,0);
+\coordinate (pt-4) at (0,0);
 
-\draw[dashed] (0,-1.6) -- (0,1.6);
-\draw[dashed] (-1.6,0) -- (1.6,0);
-\draw[dashed] (45:2.2) -- (225:2.2);
-\draw[dashed] (135:2.2) -- (315:2.2);
+\coordinate (mid-left) at (0,2);
+\coordinate (mid-right) at (4,2);
+\coordinate (mid-up) at (2,4);
+\coordinate (mid-down) at (2,0);
+
+\draw (pt-1) rectangle (pt-3);
+
+\draw[dashed] ([xshift=-8,yshift=8]pt-1) -- ([xshift=8,yshift=-8]pt-3);
+\draw[dashed] ([xshift=8,yshift=8]pt-2) -- ([xshift=-8,yshift=-8]pt-4);
+\draw[dashed] ([xshift=-8]mid-left)-- ([xshift=8]mid-right);
+\draw[dashed] ([yshift=8]mid-up)-- ([yshift=-8]mid-down);
+
+\node [left] at (pt-1) {1};
+\node [right] at (pt-2) {2};
+\node [right] at (pt-3) {3};
+\node [left] at (pt-4) {4};
 
 \end{tikzpicture}

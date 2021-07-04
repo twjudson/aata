@@ -1,66 +1,107 @@
 \begin{tikzpicture}[scale=0.8]
 
-\draw  (-1,0.5) -- (-5.5,1.5);
-\draw  (-0.5,0.5) -- (-2.5,1.5);
-\draw  (0,0.5) -- (0,1.5);
-\draw  (0.5,0.5) -- (2.5,1.5);
-\draw  (1,0.5) -- (5.5,1.5);
+%Subfields of  Q-4-root-2-comma-i
 
-\draw  (-5.5,2.5) -- (-3.5,3.5);
-\draw  (-3,2.5) -- (-3,3.5);
-\draw  (-0.5,2.5) -- (-2.5,3.5);
-\draw  (0,2.5) -- (0,3.5);
-\draw  (5.5,2.5) -- (3.5,3.5);
-\draw  (3,2.5) -- (3,3.5);
-\draw  (0.5,2.5) -- (2.5,3.5);
-\draw  (3,2.5) -- (3,3.5);
+\coordinate (Q-4-root-2-comma-i) at (0,14);
 
-\draw  (-3,4.5) -- (-0.5,5.5);
-\draw  (0,4.5) -- (0,5.5);
-\draw  (3,4.5) -- (0.5,5.5);
+\coordinate (Q-4-root-2) at (-6,12);
+\coordinate (Q-4-root-2-i) at (-3,12);
+\coordinate (Q-2-comma-i) at (0,12);
+\coordinate (Q-1-plus-i-4-root-2) at (3,12);
+\coordinate (Q-1-minus-i-4-root-2) at (6,12);
 
-\node at (0,0)  {$\{  \identity \}$};
-\node at (-6,2)  {$\{  \identity, \tau \}$};
-\node at (-3,2)  {$\{  \identity, \sigma^2 \tau \}$};
-\node at (0,2)  {$\{  \identity, \sigma^2 \}$};
-\node at (3,2)  {$\{  \identity, \sigma \tau \}$};
-\node at (6,2)  {$\{  \identity, \sigma^3 \tau \}$};
-\node at (-3,4)  {$\{  \identity, \sigma^2, \tau, \sigma^2 \tau \}$};
-\node at (0,4)  {$\{  \identity, \sigma, \sigma^2, \sigma^3 \}$};
-\node at (3,4)  {$\{  \identity, \sigma^2, \sigma \tau, \sigma^3 \tau \}$};
-\node at (0,6)  {$D_4$};
-\node at (6,0) {(b)};
+\coordinate (Q-2-i) at (3,10);
+\coordinate (Q-i) at (0,10);
+\coordinate (Q-2) at (-3,10);
 
-\draw  (-0.5,8.5) -- (-2.5,9.5);
-\draw  (0,8.5) -- (0,9.5);
-\draw  (0.5,8.5) -- (2.5,9.5);
+\coordinate (Q) at (0,8);
+\coordinate (label-a) at (6,8);
 
-\draw  (-5.5,11.5) -- (-3.5,10.5);
-\draw  (-3,11.5) -- (-3,10.5);
-\draw  (-0.5,11.5) -- (-2.5,10.5);
+\node at (Q-4-root-2-comma-i)  {${\mathbb Q}(\sqrt[4]{2}, i )$};
 
-\draw  (0,10.5) -- (0,11.5);
+\node at (Q-4-root-2)  {${\mathbb Q}( \sqrt[4]{2}\, )$};
+\node at (Q-4-root-2-i)  {${\mathbb Q}( \sqrt[4]{2}\, i)$};
+\node at (Q-2-comma-i)  {${\mathbb Q}( \sqrt{2}, i)$};
+\node at (Q-1-plus-i-4-root-2)  {${\mathbb Q}((1 + i) \sqrt[4]{2}\,)$};
+\node at (Q-1-minus-i-4-root-2)  {${\mathbb Q}( (1 - i)\sqrt[4]{2}\, )$};
 
-\draw  (5.5,11.5) -- (3.5,10.5);
-\draw  (3,11.5) -- (3,10.5);
-\draw  (0.5,11.5) -- (2.5,10.5);
+\node at (Q-2)  {${\mathbb Q}(\sqrt{2}\, )$};
+\node at (Q-i)  {${\mathbb Q}(i)$};
+\node at (Q-2-i)  {${\mathbb Q}(\sqrt{2}\, i)$};
 
-\draw  (-5.5,12.5) -- (-1,13.5);
-\draw  (-2.5,12.5) -- (-0.5,13.5);
-\draw  (0,12.5) -- (0,13.5);
-\draw  (2.5,12.5) -- (0.5,13.5);
-\draw  (5.5,12.5) -- (1,13.5);
+\node at (Q)  {${\mathbb Q}$};
+\node at (label-a) {(a)};
 
-\node at (0,8)  {${\mathbb Q}$};
-\node at (-3,10)  {${\mathbb Q}(\sqrt{2}\, )$};
-\node at (0,10)  {${\mathbb Q}(i)$};
-\node at (3,10)  {${\mathbb Q}(\sqrt{2}\, i)$};
-\node at (-6,12)  {${\mathbb Q}( \sqrt[4]{2}\, )$};
-\node at (-3,12)  {${\mathbb Q}( \sqrt[4]{2}\, i)$};
-\node at (0,12)  {${\mathbb Q}( \sqrt{2}, i)$};
-\node at (3,12)  {${\mathbb Q}((1 + i) \sqrt[4]{2}\,)$};
-\node at (6,12)  {${\mathbb Q}( (1 - i)\sqrt[4]{2}\, )$};
-\node at (0,14)  {${\mathbb Q}(\sqrt[4]{2}, i )$};
-\node at (6,8) {(a)};
+
+\draw  ([xshift=-20,yshift=-10]Q-4-root-2-comma-i) -- ([yshift=10]Q-4-root-2);
+\draw  ([xshift=-10,yshift=-10]Q-4-root-2-comma-i) -- ([yshift=10]Q-4-root-2-i);
+\draw  ([yshift=-10]Q-4-root-2-comma-i) -- ([yshift=10]Q-2-comma-i);
+\draw  ([xshift=10,yshift=-10]Q-4-root-2-comma-i) -- ([yshift=10]Q-1-plus-i-4-root-2);
+\draw  ([xshift=20,yshift=-10]Q-4-root-2-comma-i) -- ([yshift=10]Q-1-minus-i-4-root-2) ;
+
+\draw  ([yshift=-10]Q-4-root-2) -- ([xshift=-10,yshift=10]Q-2);
+\draw  ([yshift=-10]Q-4-root-2-i) -- ([yshift=10]Q-2);
+\draw  ([xshift=-10,yshift=-10]Q-2-comma-i) --([xshift=10,yshift=10]Q-2);
+\draw   ([yshift=-10]Q-2-comma-i) -- ([yshift=10]Q-i);
+
+\draw  ([xshift=10,yshift=-10]Q-2-comma-i) -- ([xshift=-10,yshift=10]Q-2-i);
+\draw  ([yshift=-10]Q-1-plus-i-4-root-2) -- ([yshift=10]Q-2-i);
+\draw  ([xshift=10,yshift=-10]Q-1-minus-i-4-root-2) -- ([xshift=10,yshift=10]Q-2-i);
+
+
+\draw  ([yshift=-10]Q-2) -- ([xshift=-10,yshift=10]Q);
+\draw  ([yshift=-10]Q-i) -- ([yshift=10]Q);
+\draw  ([yshift=-10]Q-2-i) -- ([xshift=10,yshift=10]Q);
+
+%Galois Group of D4
+
+\coordinate (D4) at (0,6);
+
+\coordinate (id-sigma-2-tau-sigma-2-tau) at (-3,4);
+\coordinate (id-sigma-2-sigma-2-sigma-3) at (0,4);
+\coordinate (id-sigma-2-sigma-tau-sigma-3-tau) at (3,4);
+
+\coordinate (id-tau) at (-6,2);
+\coordinate (id-sigma-2-tau) at (-3,2);
+\coordinate (id-sigma-2) at (0,2);
+\coordinate (id-sigma-tau) at (3,2);
+\coordinate (id-sigma-3-tau) at (6,2);
+
+\coordinate (id) at (0,0);
+\coordinate (label-b) at (6,0);
+
+\node at (D4)  {$D_4$};
+
+\node at (id-sigma-2-tau-sigma-2-tau)  {$\{  \identity, \sigma^2, \tau, \sigma^2 \tau \}$};
+\node at (id-sigma-2-sigma-2-sigma-3)  {$\{  \identity, \sigma, \sigma^2, \sigma^3 \}$};
+\node at (id-sigma-2-sigma-tau-sigma-3-tau)  {$\{  \identity, \sigma^2, \sigma \tau, \sigma^3 \tau \}$};
+
+\node at (id-tau)  {$\{  \identity, \tau \}$};
+\node at (id-sigma-2-tau)  {$\{  \identity, \sigma^2 \tau \}$};
+\node at (id-sigma-2)  {$\{  \identity, \sigma^2 \}$};
+\node at (id-sigma-tau)  {$\{  \identity, \sigma \tau \}$};
+\node at (id-sigma-3-tau)  {$\{  \identity, \sigma^3 \tau \}$};
+
+\node at (id)  {$\{  \identity \}$};
+\node at (label-b) {(b)};
+
+\draw  ([xshift=-10,yshift=-10]D4) -- ([yshift=10]id-sigma-2-tau-sigma-2-tau);
+\draw  ([yshift=-10]D4) -- ([yshift=10]id-sigma-2-sigma-2-sigma-3);
+\draw  ([xshift=10,yshift=-10]D4) -- ([yshift=10]id-sigma-2-sigma-tau-sigma-3-tau);
+
+\draw ([xshift=-10,yshift=-10]id-sigma-2-tau-sigma-2-tau) -- ([yshift=10]id-tau);
+\draw ([yshift=-10]id-sigma-2-tau-sigma-2-tau) -- ([yshift=10]id-sigma-2-tau);
+\draw  ([xshift=10,yshift=-10]id-sigma-2-tau-sigma-2-tau) -- ([xshift=-10,yshift=10]id-sigma-2);
+\draw   ([yshift=-10]id-sigma-2-sigma-2-sigma-3) -- ([yshift=10]id-sigma-2);
+\draw  ([xshift=-10,yshift=-10]id-sigma-2-sigma-tau-sigma-3-tau) -- ([xshift=10,yshift=10]id-sigma-2);
+\draw  ([yshift=-10]id-sigma-2-sigma-tau-sigma-3-tau) -- ([yshift=10]id-sigma-tau);
+\draw  ([xshift=10,yshift=-10]id-sigma-2-sigma-tau-sigma-3-tau) -- ([yshift=10]id-sigma-3-tau);
+
+
+\draw  ([yshift=-10]id-tau) -- ([xshift=-20,yshift=10]id);
+\draw  ([yshift=-10]id-sigma-2-tau) -- ([xshift=-10,yshift=10]id);
+\draw  ([yshift=-10]id-sigma-2) -- ([yshift=10]id);
+\draw  ([yshift=-10]id-sigma-tau) -- ([xshift=10,yshift=10]id);
+\draw  ([yshift=-10]id-sigma-3-tau) -- ([xshift=20,yshift=10]id);
 
 \end{tikzpicture}

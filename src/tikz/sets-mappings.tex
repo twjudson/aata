@@ -1,31 +1,70 @@
-\begin{tikzpicture}[scale=0.5]
-\draw (0,0) ellipse (2 and 3);
-\draw (7,0) ellipse (2 and 3);
-\draw (0,8) ellipse (2 and 3);
-\draw (7,8) ellipse (2 and 3);
-\draw [->] (0.5,9.5) -- (6.5,8);
-\draw [->] (0.5,8) -- (6.5,6.7);
-\draw [->] (0.5,6.5) -- (6.5,6.5);
-\draw [->] (0.5,1.5) -- (6.5,1.5);
-\draw [->] (0.5,1.3) -- (6.5,0);
-\draw [->] (0.5,0) -- (6.5,-1.5);
-\draw [->] (0.5,-1.5) -- (6.5,1.3);
-\node at (0, 1.5) {1};
-\node at (0, 0) {2};
-\node at (0, -1.5) {3};
-\node at (7, 1.5) {$a$};
-\node at (7, 0) {$b$};
-\node at (7, -1.5) {$c$};
-\node at (0, 9.5) {1};
-\node at (0, 8) {2};
-\node at (0, 6.5) {3};
-\node at (7, 9.5) {$a$};
-\node at (7, 8) {$b$};
-\node at (7, 6.5) {$c$};
-\node at (-1.5,11) {$A$};
-\node at (5.5,11) {$B$};
-\node at (-1.5,3) {$A$};
-\node at (5.5,3) {$B$};
-\node at (3.5,3) {$g$};
-\node at (3.5,10) {$f$};
+\begin{tikzpicture}[scale=1]
+
+
+%top diagram
+\coordinate (top-A-1) at (0,9.5);
+\coordinate (top-A-2) at (0,8);
+\coordinate (top-A-3) at (0,6.5);
+
+\coordinate (top-B-a) at (7,9.5);
+\coordinate (top-B-b) at (7,8);
+\coordinate (top-B-c) at (7,6.5);
+
+\coordinate (top-A) at (-1.5,11) ;
+\coordinate (top-B) at (5.5,11) ;
+\coordinate (top-f) at (3.5,10);
+
+\draw (top-A-2) ellipse (2 and 3);
+\draw (top-B-b)  ellipse (2 and 3);
+
+\node at (top-A-1) {1};
+\node at (top-A-2)  {2};
+\node at (top-A-3) {3};
+
+\node at (top-B-a){$a$};
+\node at (top-B-b) {$b$};
+\node at (top-B-c){$c$};
+
+\node at (top-A) {$A$};
+\node at (top-B) {$B$};
+\node at (top-f) {$f$};
+
+\draw [->] ([xshift=10]top-A-1)  -- ([xshift=-10]top-B-b);
+\draw [->] ([xshift=10]top-A-2) -- ([xshift=-10,yshift=5]top-B-c);
+\draw [->] ([xshift=10]top-A-3) -- ([xshift=-10]top-B-c);
+
+%bottom diagram
+\coordinate (bottom-A-1) at (0,1.5);
+\coordinate (bottom-A-2) at (0,0);
+\coordinate (bottom-A-3) at (0,-1.5);
+
+\coordinate (bottom-B-a) at (7,1.5);
+\coordinate (bottom-B-b) at (7,0);
+\coordinate (bottom-B-c) at (7,-1.5);
+
+\draw (bottom-A-2) ellipse (2 and 3);
+\draw (bottom-B-b) ellipse (2 and 3);
+
+\coordinate (bottom-A) at (-1.5,3) ;
+\coordinate (bottom-B) at (5.5,3) ;
+\coordinate (bottom-g) at (3.5,3);
+
+\node at (bottom-A) {$A$};
+\node at (bottom-B) {$B$};
+\node at (bottom-g) {$g$};
+
+\node at (bottom-A-1) {1};
+\node at (bottom-A-2)  {2};
+\node at  (bottom-A-3)  {3};
+
+\node at (bottom-B-a)  {$a$};
+\node at (bottom-B-b) {$b$};
+\node at (bottom-B-c)  {$c$};
+
+
+\draw [->] ([xshift=10]bottom-A-1) -- ([xshift=-10]bottom-B-a);
+\draw [->] ([xshift=10,yshift=-5]bottom-A-1) -- ([xshift=-10]bottom-B-b);
+\draw [->] ([xshift=10]bottom-A-2) -- ([xshift=-10]bottom-B-c);
+\draw [->] ([xshift=10]bottom-A-3) -- ([xshift=-10,yshift=-5]bottom-B-a);
+
 \end{tikzpicture}

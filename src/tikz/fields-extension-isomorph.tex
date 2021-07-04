@@ -1,32 +1,45 @@
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=2]
 
-\draw [<-] (0,0.5) -- (0,1.5);
-\draw [<-] (0,2.5) -- (0,3.5);
+\coordinate (E-p) at (0,4);
+\coordinate (F-q) at (4,4);
 
+\coordinate (E-alpha) at (0,2);
+\coordinate (F-beta) at (4,2);
 
-\draw [<-] (4,0.5) -- (4,1.5);
-\draw  [<-] (4,2.5) -- (4,3.5);
+\coordinate (E) at (0,0);
+\coordinate (F) at (4,0);
 
+\coordinate (phi) at (2,0);
+\coordinate (phi-bar) at (2,2);
+\coordinate (psi) at (2,4);
 
-\draw [->] (1.5,0) -- (2.5,0);
-\draw [->] (1.5,2) -- (2.5,2);
-\draw [->] (1.5,4) -- (2.5,4);
+\coordinate (sigma) at (0,3);
+\coordinate (tau) at (4,3);
 
+\node at (E)  {$E$};
+\node at (F)  {$F$};
 
-\node at (0,0)  {$E$};
-\node at (4,0)  {$F$};
+\node at (E-alpha)  {$E(\alpha)$};
+\node at (F-beta)  {$F(\beta)$};
 
-\node at (0,2)  {$E(\alpha)$};
-\node at (4,2)  {$F(\beta)$};
+\node at (E-p)  {$E[x] / \langle p(x) \rangle$};
+\node at (F-q)  {$F[x]/\langle q(x) \rangle$};
 
-\node at (0,4)  {$E[x] / \langle p(x) \rangle$};
-\node at (4,4)  {$F[x]/\langle q(x) \rangle$};
+\node [above] at (phi) {$\phi$};
+\node [above] at (phi-bar) {$\overline{\phi}$};
+\node [above] at (psi) {$\psi$};
 
-\node [above] at (2,0) {$\phi$};
-\node [above] at (2,2) {$\overline{\phi}$};
-\node [above] at (2,4) {$\psi$};
+\node [right] at (sigma) {$\sigma$};
+\node [right] at (tau) {$\tau$};
 
-\node [right] at (0,3) {$\sigma$};
-\node [right] at (4,3) {$\tau$};
+\draw [->] ([xshift=10]E) -- ([xshift=-10]F);
+\draw [->] ([xshift=10]E-alpha) -- ([xshift=-10]F-beta);
+\draw [->] ([xshift=15]E-p) -- ([xshift=-15]F-q);
+
+\draw [->] ([yshift=-10]E-alpha) -- ([yshift=10]E);
+\draw [->] ([yshift=-10]E-p) -- ([yshift=10]E-alpha);
+
+\draw [->] ([yshift=-10]F-beta) -- ([yshift=10]F);
+\draw [->] ([yshift=-10]F-q) -- ([yshift=10]F-beta);
 
 \end{tikzpicture}

@@ -1,30 +1,48 @@
-\begin{tikzpicture}[scale=1.65]
+\begin{tikzpicture}[scale=0.8]
 
-\draw [->]  (0,-1.5) -- (0,1.5);
-\draw  [->] (-1.75,0) -- (1.75,0);
-\node [right] at (0,1.5) {$y$};
-\node [below] at (1.75,0) {$x$};
-\node [below] at (0.1,0) {$0$};
+ \pgfmathsetmacro{\pointsize}{0.1}
 
-\draw (0,0) circle (1);
+\coordinate (x-axis-min) at (-4.5,0);
+\coordinate (x-axis-max) at (4.5,0);
+\coordinate (y-axis-min) at (0,-4.5);
+\coordinate (y-axis-max) at (0,4.5);
+\coordinate (origin) at (0,0);
 
-\filldraw[fill=black, draw=black] (0:1) circle (0.03);
-\filldraw[fill=black, draw=black] (45:1) circle (0.03);
-\filldraw[fill=black, draw=black] (90:1) circle (0.03);
-\filldraw[fill=black, draw=black] (135:1) circle (0.03);
-\filldraw[fill=black, draw=black] (180:1) circle (0.03);
-\filldraw[fill=black, draw=black] (225:1) circle (0.03);
-\filldraw[fill=black, draw=black] (270:1) circle (0.03);
-\filldraw[fill=black, draw=black] (315:1) circle (0.03);
+\draw  [->] (x-axis-min) -- (x-axis-max);
+\draw  [->] (y-axis-min) -- (y-axis-max);
+
+\node [above] at (y-axis-max) {$y$};
+\node [right] at (x-axis-max) {$x$};
+\node [below right] at (origin) {$0$};
+
+\draw (origin) circle (4);
+
+\coordinate (pt-omega-0) at (0:4);
+\coordinate (pt-omega-1) at (45:4);
+\coordinate (pt-omega-2) at (90:4);
+\coordinate (pt-omega-3) at (135:4);
+\coordinate (pt-omega-4) at (180:4);
+\coordinate (pt-omega-5) at (225:4);
+\coordinate (pt-omega-6) at (270:4);
+\coordinate (pt-omega-7) at (315:4);
+
+\filldraw[fill=black, draw=black] (pt-omega-0) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-1) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-2) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-3) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-4) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-5) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-6) circle (\pointsize);
+\filldraw[fill=black, draw=black] (pt-omega-7) circle (\pointsize);
 
 
-\node [right] at (1,-0.15) {1};
-\node [right] at (45:1) {$\omega$};
-\node [left] at (0,1.15) {$i$};
-\node [left] at (135:1) {$\omega^3$};
-\node [left] at (-1,-0.15) {$-1$};
-\node [left] at (225:1) {$\omega^5$};
-\node [left] at (0,-1.15) {$-i$};
-\node [right] at (315:1) {$\omega^7$};
+\node [above right] at (pt-omega-0) {1};
+\node [above right] at (pt-omega-1) {$\omega$};
+\node [above left] at (pt-omega-2) {$i$};
+\node [above left] at (pt-omega-3) {$\omega^3$};
+\node [above left] at (pt-omega-4) {$-1$};
+\node [below left] at (pt-omega-5) {$\omega^5$};
+\node [below left] at (pt-omega-6) {$-i$};
+\node [below right] at (pt-omega-7) {$\omega^7$};
 
 \end{tikzpicture}

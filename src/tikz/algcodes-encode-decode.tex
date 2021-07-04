@@ -1,27 +1,59 @@
 \begin{tikzpicture}[scale=1]
 
-\draw [->] (0,8)  node [above] {\emph{$m$-digit message}} -- (0,7.5);
+\coordinate (m-digit-message) at (0,8);
+\coordinate (encoder) at (0,7);
+\coordinate (n-digit-code-word) at (0,6);
+\coordinate (transmitter) at (0,5);
+\coordinate (noise) at (0,4);
+\coordinate (receiver) at (0,3);
+\coordinate (n-digit-received-word) at (0,2);
+\coordinate (decoder) at (0,1);
+\coordinate (m-digit-received-message) at (0,0);
 
-\node at (0,7) {Encoder};
-\draw (-1.5,6.5) rectangle (1.5,7.5);
-\draw (0,6.5)  -- (0,6.25);
-\draw [->] (0,5.75)  -- (0,5.5);
-\node at (0,6) {\emph{$n$-digit code word}};
+\coordinate (encoder-rectangle-left) at (-1.5,6.5);
+\coordinate (encoder-rectangle-right) at (1.5,7.5);
+\coordinate (encoder-rectangle-top) at (0,7.5);
+\coordinate (encoder-rectangle-bottom) at (0,6.5);
 
-\node at (0,5) {Transmitter};
-\draw (-1.5,4.5) rectangle (1.5,5.5);
-\draw (0,4.5)  -- (0,4.25);
-\draw [->] (0,3.75)  -- (0,3.5);
-\node at (0,4) {\emph{Noise}};
+\coordinate (transmitter-rectangle-left) at (-1.5,4.5);
+\coordinate (transmitter-rectangle-right) at (1.5,5.5);
+\coordinate (transmitter-rectangle-top) at (0,5.5);
+\coordinate (transmitter-rectangle-bottom) at (0,4.5);
 
-\node at (0,3) {Receiver};
-\draw (-1.5,2.5) rectangle (1.5,3.5);
-\draw (0,2.5)  -- (0,2.25);
-\draw [->] (0,1.75)  -- (0,1.5);
-\node at (0,2) {\emph{$n$-digit received word}};
+\coordinate (receiver-rectangle-left) at (-1.5,2.5);
+\coordinate (receiver-rectangle-right) at (1.5,3.5);
+\coordinate (receiver-rectangle-top) at (0,3.5);
+\coordinate (receiver-rectangle-bottom) at (0,2.5);
 
-\node at (0,1) {Decoder};
-\draw (-1.5,0.5) rectangle (1.5,1.5);
-\draw [->] (0,0.5)  -- (0,0) node [below] {\emph{$m$-digit received message or error}};
+\coordinate (decoder-rectangle-left) at (-1.5,0.5);
+\coordinate (decoder-rectangle-right) at (1.5,1.5);
+\coordinate (decoder-rectangle-top) at (0,1.5);
+\coordinate (decoder-rectangle-bottom) at (0,0.5);
+
+\draw [->] ([yshift=-5]m-digit-message) -- (encoder-rectangle-top); 
+\draw (encoder-rectangle-left) rectangle  (encoder-rectangle-right);
+\draw (encoder-rectangle-bottom) -- ([yshift=5]n-digit-code-word);
+
+\draw [->] ([yshift=-5]n-digit-code-word) -- (transmitter-rectangle-top); 
+\draw (transmitter-rectangle-left) rectangle  (transmitter-rectangle-right);
+\draw (transmitter-rectangle-bottom) -- ([yshift=5]noise);
+
+\draw [->] ([yshift=-5]noise) -- (receiver-rectangle-top); 
+\draw (receiver-rectangle-left) rectangle  (receiver-rectangle-right);
+\draw (receiver-rectangle-bottom) -- ([yshift=5]n-digit-received-word);
+
+\draw [->] ([yshift=-5]n-digit-received-word) -- (decoder-rectangle-top); 
+\draw (decoder-rectangle-left) rectangle  (decoder-rectangle-right);
+\draw [->] (decoder-rectangle-bottom) -- ([yshift=5]m-digit-received-message);
+
+\node at (m-digit-message) {\emph{$m$-digit message}};
+\node at (encoder) {Encoder};
+\node at (n-digit-code-word) {\emph{$n$-digit code word}};
+\node at (transmitter) {Transmitter};
+\node at (noise) {\emph{Noise}};
+\node at (receiver) {Receiver};
+\node at (n-digit-received-word) {\emph{$n$-digit received word}};
+\node at (decoder) {Decoder};
+\node at (m-digit-received-message) {\emph{$m$-digit received message or error}};
 
 \end{tikzpicture}

@@ -1,27 +1,57 @@
 \begin{tikzpicture}[scale=0.85]
 
-\draw (0,0) rectangle (2,2);
-\node at (-0.2,0) [below] {$B$};
-\node at (2.2,0) [below] {$W$};
-\node at (-0.2,2) [above] {$W$};
-\node at (2.2,2) [above] {$W$};
 
-\draw (3.5,0) rectangle (5.5,2);
-\node at (3.3,0) [below] {$W$};
-\node at (5.7,0) [below] {$B$};
-\node at (3.3,2) [above] {$W$};
-\node at (5.7,2) [above] {$W$};
+%lower left square
+\coordinate (lower-left-pt-a) at (0,0);
+\coordinate (lower-left-pt-b) at (0,2);
+\coordinate (lower-left-pt-c) at (2,0);
+\coordinate (lower-left-pt-d) at (2,2);
 
-\draw (0,3.5) rectangle (2,5.5);
-\node at (-0.2,3.5) [below] {$W$};
-\node at (2.2,3.5) [below] {$W$};
-\node at (-0.2,5.5) [above] {$B$};
-\node at (2.2,5.5) [above] {$W$};
+\node at (lower-left-pt-a) [below] {$B$};
+\node at (lower-left-pt-c) [below] {$W$};
+\node at (lower-left-pt-b) [above] {$W$};
+\node at (lower-left-pt-d) [above] {$W$};
 
-\draw (3.5,3.5) rectangle (5.5,5.5);
-\node at (3.3,3.5) [below] {$W$};
-\node at (5.7,3.5) [below] {$W$};
-\node at (3.3,5.5) [above] {$W$};
-\node at (5.7,5.5) [above] {$B$};
+\draw (lower-left-pt-a) rectangle (lower-left-pt-d);
+
+%lower right square
+\coordinate (lower-right-pt-a) at (3.5,0);
+\coordinate (lower-right-pt-b) at (3.5,2);
+\coordinate (lower-right-pt-c) at (5.5,0);
+\coordinate (lower-right-pt-d) at (5.5,2);
+
+\node at (lower-right-pt-a) [below] {$W$};
+\node at (lower-right-pt-c) [below] {$B$};
+\node at (lower-right-pt-b) [above] {$W$};
+\node at (lower-right-pt-d) [above] {$W$};
+
+\draw (lower-right-pt-a) rectangle (lower-right-pt-d);
+
+%upper left square
+\coordinate (upper-left-pt-a) at (0,3.5);
+\coordinate (upper-left-pt-b) at (0,5.5);
+\coordinate (upper-left-pt-c) at (2,3.5);
+\coordinate (upper-left-pt-d) at (2,5.5);
+
+\node at (upper-left-pt-a) [below] {$W$};
+\node at (upper-left-pt-c) [below] {$W$};
+\node at (upper-left-pt-b) [above] {$B$};
+\node at (upper-left-pt-d) [above] {$W$};
+
+\draw (upper-left-pt-a) rectangle (upper-left-pt-d);
+
+%upper right square
+\coordinate (upper-right-pt-a) at (3.5,3.5);
+\coordinate (upper-right-pt-b) at (3.5,5.5);
+\coordinate (upper-right-pt-c) at (5.5,3.5);
+\coordinate (upper-right-pt-d) at (5.5,5.5);
+
+\node at (upper-right-pt-a) [below] {$W$};
+\node at (upper-right-pt-c) [below] {$W$};
+\node at (upper-right-pt-b) [above] {$W$};
+\node at (upper-right-pt-d) [above] {$B$};
+
+\draw (upper-right-pt-a) rectangle (upper-right-pt-d);
 
 \end{tikzpicture}
+

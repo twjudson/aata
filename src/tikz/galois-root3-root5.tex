@@ -1,31 +1,41 @@
-\begin{tikzpicture}[scale=0.8] \
+\begin{tikzpicture}[scale=0.8] 
 
-\draw  (2,0.5) -- (2,1.5);
-\draw  (2,-0.5) -- (2,-1.5);
+\coordinate (id-sigma-tau-mu) at (2,2);
+\coordinate (id-sigma) at (0,0);
+\coordinate (id-tau) at (2,0);
+\coordinate (id-mu) at (4,0);
+\coordinate (id) at (2,-2);
 
-\draw  (0.25,0.5) -- (1.5,1.5);
-\draw  (0.25,-0.5) -- (1.5,-1.5);
-\draw  (3.75,0.5) -- (2.5,1.5);
-\draw  (3.75,-0.5) -- (2.5,-1.5);
+\node at (id-sigma-tau-mu)  {$\{  \identity, \sigma, \tau, \mu \}$};
+\node at (id-sigma)  {$\{  \identity, \sigma \}$};
+\node at (id-tau)  {$\{  \identity, \tau \}$};
+\node at (id-mu)  {$\{  \identity, \mu \}$};
+\node at (id)  {$\{  \identity \}$};
 
-\draw  (9,0.5) -- (9,1.5);
-\draw  (9,-0.5) -- (9,-1.5);
+\draw  ([yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-tau);
+\draw  ([yshift=-10]id-tau) -- ([yshift=10]id);
+\draw  ([xshift=-10,yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-sigma);
+\draw  ([xshift=10,yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-mu);
+\draw  ([yshift=-10]id-sigma) -- ([xshift=-10,yshift=10]id);
+\draw  ([yshift=-10]id-mu) -- ([xshift=10,yshift=10]id);
 
-\draw  (7.25,0.5) -- (8.5,1.5);
-\draw  (7.25,-0.5) -- (8.5,-1.5);
-\draw  (10.75,0.5) -- (9.5,1.5);
-\draw  (10.75,-0.5) -- (9.5,-1.5);
+\coordinate (Q-3-5) at (9,2);
+\coordinate (Q-3) at (7,0);
+\coordinate (Q-5) at (9,0);
+\coordinate (Q-15) at (11,0);
+\coordinate (Q) at (9,-2);
 
-\node at (0,0)  {$\{  \identity, \sigma \}$};
-\node at (2,0)  {$\{  \identity, \tau \}$};
-\node at (4,0)  {$\{  \identity, \mu \}$};
-\node at (2,2)  {$\{  \identity, \sigma, \tau, \mu \}$};
-\node at (2,-2)  {$\{  \identity \}$};
+\node at (Q-3-5)  {${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$};
+\node at (Q-3)  {${\mathbb Q}(\sqrt{3}\, )$};
+\node at (Q-5)  {${\mathbb Q}(\sqrt{5}\, )$};
+\node at (Q-15)  {${\mathbb Q}(\sqrt{15}\, )$};
+\node at (Q)  {${\mathbb Q}$};
 
-\node at (7,0)  {${\mathbb Q}(\sqrt{3}\, )$};
-\node at (9,0)  {${\mathbb Q}(\sqrt{5}\, )$};
-\node at (11,0)  {${\mathbb Q}(\sqrt{15}\, )$};
-\node at (9,2)  {${\mathbb Q}(\sqrt{3}, \sqrt{5}\, )$};
-\node at (9,-2)  {${\mathbb Q}$};
+\draw  ([yshift=-10]Q-3-5) -- ([yshift=10]Q-5);
+\draw  ([yshift=-10]Q-5) -- ([yshift=10]Q);
+\draw  ([xshift=-10,yshift=-10]Q-3-5) -- ([yshift=10]Q-3);
+\draw  ([xshift=10,yshift=-10]Q-3-5) -- ([yshift=10]Q-15);
+\draw  ([yshift=-10]Q-3) -- ([xshift=-10,yshift=10]Q);
+\draw  ([yshift=-10]Q-15) -- ([xshift=10,yshift=10]Q);
 
 \end{tikzpicture}

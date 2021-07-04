@@ -1,24 +1,31 @@
 \begin{tikzpicture}[scale=0.8,node distance=5mm, text height=1.5ex,text depth=.25ex]
 
+\coordinate (a-left) at (2,1);
+\coordinate (a-center) at (5,1);
+\coordinate (a-right) at (8,1);
+\coordinate (b-left) at (2,-1);
+\coordinate (b-prime-center) at (5,-1);
+\coordinate (b-right) at (8,-1);
+
+\node at (a-left) {$a$};
+\node at (b-left) {$b$};
+
+\node at (a-center) {$a$};
+\node at (b-prime-center) {$b'$};
+
+\node at (a-right) {$a$};
+\node at (b-right) {$b$};
+
 \draw (0,0) -- (1,0) (3,0) -- (4,0) (6,0) -- (7,0) (9,0) -- (10,0);
 
-\draw (1,0) -- (1,1) -- (1.7,1)  (2.3,1)-- (3,1) -- (3,0);
-\draw (1,0) -- (1,-1) -- (1.7,-1)  (2.3,-1)-- (3,-1) -- (3,0);
+\draw (1,0) -- (1,1) -- ([xshift=-10]a-left)  ([xshift=10]a-left) -- (3,1) -- (3,0);
+\draw (1,0) -- (1,-1) -- ([xshift=-10]b-left)  ([xshift=10]b-left)-- (3,-1) -- (3,0);
 
-\draw (4,0) -- (4,1) -- (4.7,1)  (5.3,1)-- (6,1) -- (6,0);
-\draw (4,0) -- (4,-1) -- (4.7,-1)  (5.3,-1)-- (6,-1) -- (6,0);
+\draw (4,0) -- (4,1) --  ([xshift=-10]a-center)  ([xshift=10]a-center)  -- (6,1) -- (6,0);
+\draw (4,0) -- (4,-1) -- ([xshift=-10]b-prime-center)  ([xshift=10]b-prime-center) -- (6,-1) -- (6,0);
 
-\draw (7,0) -- (7,1) -- (7.7,1)  (8.3,1)-- (9,1) -- (9,0);
-\draw (7,0) -- (7,-1) -- (7.7,-1)  (8.3,-1)-- (9,-1) -- (9,0);
-
-
-\node at (2,1) {$a$};
-\node at (2,-1) {$b$};
-
-\node at (5,1) {$a$};
-\node at (5,-1) {$b'$};
-
-\node at (8,1) {$a$};
-\node at (8,-1) {$b$};
+\draw (7,0) -- (7,1) -- ([xshift=-10]a-right)  ([xshift=10]a-right)  -- (9,1) -- (9,0);
+\draw (7,0) -- (7,-1) -- ([xshift=-10]b-right)  ([xshift=10]b-right) -- (9,-1) -- (9,0);
 
 \end{tikzpicture}
+

@@ -1,14 +1,16 @@
 \begin{tikzpicture}[scale=0.8]
 
-\draw  (0.3,0) -- (1.7,0) -- (1.7,1) -- (2.7,1);
-\draw  (1.7,0) -- (1.7,-1) -- (2.7,-1);
-\draw  (3.3,1) -- (4.3,1) -- (4.3,0);
-\draw  (3.3,-1) -- (4.3,-1) -- (4.3,0);
-\draw  (4.3,0) -- (5.7,0);
+\coordinate (A) at (0,0);
+\coordinate (a) at (3,1);
+\coordinate (B) at (6,0);
+\coordinate (b) at (3,-1);
 
-\node at (0,0) {$A$};
-\node at (3,1) {$a$};
-\node at (3,-1) {$b$};
-\node at (6,0) {$B$};
+\node [left] at (A) {$A$};
+\node at (a) {$a$};
+\node [right] at (B) {$B$};
+\node at (b) {$b$};
+
+\draw  (0,0) -- (1.7,0) -- (1.7,1) -- ([xshift=-10]a)  ([xshift=10]a) -- (4.3,1) -- (4.3,0) -- (6,0);
+\draw  (1.7,0) -- (1.7,-1) -- ([xshift=-10]b)  ([xshift=10]b) -- (4.3,-1) -- (4.3,0);
 
 \end{tikzpicture}
