@@ -45,8 +45,6 @@
 #	A) Set default directory to be the location of this file
 #	B) At command line:  make html  (and employ targets)
 
-
-
 # The included file contains customized versions
 # of locations of the principal components of this
 # project and names of various helper executables
@@ -59,12 +57,12 @@ include Makefile.paths
 MBXSL = $(MB)/xsl
 MBSCRIPT = $(MB)/pretext
 MBUSR = $(MB)/user
-MBDTD = $(MB)/schema/dtd
 
 # These are source and custom XSL subdirectories
 # for the two AATA repositories
 SRC = $(AATA)/src
 XSL = $(AATA)/xsl
+PUB = $(AATA)/publisher
 
 # These paths are subdirectories of
 # a scratch directory
@@ -107,11 +105,11 @@ RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --
 #   this should be run if diagram source changes
 #   NB: targets below copy versions out of repo and clobber these
 diagrams:
-	install -d $(HTMLOUT)/images
+	install -d $(HTMLOUT)/generated/latex-image  $(HTMLOUT)/generated/sageplot
 	-rm $(HTMLOUT)/images/*
-	$(MBSCRIPT)/pretext -v -c latex-image -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/pretext -v -c sageplot    -f pdf -d $(HTMLOUT)/images $(SRC)/aata.xml
-	$(MBSCRIPT)/pretext -v -c sageplot    -f svg -d $(HTMLOUT)/images $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c latex-image -f svg -d $(HTMLOUT)/generated/latex-image $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f pdf -d $(HTMLOUT)/generated/sageplot $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f svg -d $(HTMLOUT)/generated/sageplot $(SRC)/aata.xml
 
 
 ##########
@@ -123,12 +121,10 @@ diagrams:
 #   Publisher file is a relative path to master source file
 #   Move to server: generated *.html and
 #   entire directories - /images and /knowl
-html:
-	install -d $(HTMLOUT) $(MBUSR)
-	cp -a $(SRC)/images $(HTMLOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
+html: stage-extra-xsl place-html-files
+	install -d $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude -stringparam publisher ../publisher/public.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	xsltproc -xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
@@ -139,15 +135,13 @@ viewhtml:
 #   which becomes PDF, along with index entries
 #   Includes *all* material, and is fully electronic
 #   This is the AATA/Sage downloadable Annual Edition
-sage:
+sage: stage-extra-xsl place-pdf-files
 	# delete old  xsltproc  output
 	# dash prevents error if not found
 	-rm $(PDFOUT)/aata.tex
-	install -d $(PDFOUT) $(MBUSR)
-	cp -a $(SRC)/images $(PDFOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-sage.xsl $(MBUSR)
+	install -d $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude  -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-sage.pdf
 
@@ -163,15 +157,13 @@ viewsage:
 #   No Sage material
 #   This is default downloadable Annual Edition
 #   ie, aata-YYYYMMDD.pdf in repository download section
-electronic:
+electronic: stage-extra-xsl place-pdf-files
 	# delete old  xsltproc  output
 	# dash prevents error if not found
 	-rm $(PDFOUT)/aata.tex
-	install -d $(PDFOUT) $(MBUSR)
-	cp -a $(SRC)/images $(PDFOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-electronic.xsl $(MBUSR)
+	install -d $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-electronic.pdf
 
@@ -185,15 +177,13 @@ viewelectronic:
 #     as sent to Orthogonal Publishing for modification
 #   Black on white, no live URLs, etc
 #   This is the "printable" downloadable Annual Edition
-print:
+print: stage-extra-xsl place-pdf-files
 	# delete old  xsltproc  output
 	# dash prevents error if not found
 	-rm $(PDFOUT)/aata.tex
-	install -d $(PDFOUT) $(MBUSR)
-	cp -a $(SRC)/images $(PDFOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-print.xsl $(MBUSR)
+	install -d $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
+	xsltproc -o aata.tex --xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
 	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
 	mv aata.pdf aata-print.pdf
 
@@ -205,14 +195,12 @@ viewprint:
 #   Modeled on raw HTML
 #   Will produce a zip file
 #   SOME TOTALLY HARDCODED PATHS
-runestone:
-	install -d $(HTMLOUT) $(MBUSR) $(HTMLOUT)/_static
-	cp -a $(SRC)/images $(HTMLOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
+runestone: stage-extra-xsl place-html-files
+	install -d $(HTMLOUT)$(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/dist/runestone.js $(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/common/js/jquery.idle-timer.js $(HTMLOUT)/_static
 	cd $(HTMLOUT); \
-	xsltproc --xinclude -stringparam publisher ../publisher/runestone.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml; \
 	zip -r $(SCRATCH)/$(ZIPRS) .
 
 # LEVELS should go away in favor of a publisher file
@@ -241,17 +229,61 @@ doctest:
 	xsltproc --xinclude --stringparam chunk.level 2 $(MBXSL)/pretext-sage-doctest.xsl $(SRC)/aata.xml; \
 	$(SAGE) -tp 0 .
 
+###########
+# Utilities
+###########
+
+# Repetitive stanzas
+
+# Six additional XSL files, just copy them all
+# Long-term we want to reduce reliance on these
+stage-extra-xsl:
+	install -d $(MBUSR)
+	cp $(XSL)/aata-html.xsl $(XSL)/aata-latex.xsl $(XSL)/aata-jupyter.xsl $(MBUSR)
+	cp $(XSL)/aata-electronic.xsl $(XSL)/aata-sage.xsl $(XSL)/aata-print.xsl $(MBUSR)
+
+# "Manually" copy extra files for compilation, as expected
+#  by filenames generated by managed directories scheme
+
+#  Moving latex-image SVG files includes a rename to
+#  "generated" via a "\." construction, explained at
+#  https://unix.stackexchange.com/questions/409225/
+#  cp-behaves-weirdly-when-dot-or-dot-dot-are-the-source-directory
+#  refernced from
+#  https://unix.stackexchange.com/questions/412259/
+#  how-can-i-copy-a-directory-and-rename-it-in-the-same-command
+
+place-pdf-files:
+	install -d $(PDFOUT) $(PDFOUT)/external $(PDFOUT)/generated
+	# /. forces copy to rename images as generated
+	cp -a $(AATA)/images/. $(PDFOUT)/generated
+	cp -a $(AATA)/external $(PDFOUT)
+
+place-html-files:
+	install -d  $(HTMLOUT)/external $(HTMLOUT)/generated
+	# /. forces copy to rename images as generated
+	cp -a $(AATA)/images/. $(HTMLOUT)/generated
+	cp -a $(AATA)/external $(HTMLOUT)
+
+place-jupyter-files:
+	install -d $(JUPYTEROUT)/external $(JUPYTEROUT)/generated
+	# /. forces copy to rename images as generated
+	cp -a $(AATA)/images/. $(JUPYTEROUT)/generated
+	cp -a $(AATA)/external $(JUPYTEROUT)
+
 ##############
 # Experimental
 ##############
 
-# These are in-progress and/or totally broken
+# These are in-progress, experimental, and/or totally broken
+
+# via pretext/pretext, so no need to move any files, etc.
+epub:
+	$(MBSCRIPT)/pretext -v -c all -f epub-svg -p $(PUB)/epub.xml -d $(SCRATCH) $(SRC)/aata.xml
 
 # Jupyter Notebooks - experimental
-jupyter:
-	install -d $(JUPYTEROUT) $(MBUSR)
-	cp -a $(SRC)/images $(JUPYTEROUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-jupyter.xsl $(MBUSR)
+jupyter:  stage-extra-xsl place-jupyter-files
+	install -d $(JUPYTEROUT)
 	cd $(JUPYTEROUT); \
 	xsltproc --xinclude $(MBUSR)/aata-jupyter.xsl $(SRC)/aata.xml
 
@@ -260,12 +292,10 @@ jupyter:
 # Date and upload
 # HTML version
 #   Copies in image files from source directory
-aimhtml:
-	install -d $(HTMLOUT) $(MBUSR)
-	cp -a $(SRC)/images $(HTMLOUT)
-	cp $(XSL)/aata-common.xsl $(XSL)/aata-html.xsl $(MBUSR)
+aimhtml: stage-extra-xsl place-html-files
+	install -d $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude -stringparam publisher ../publisher/AIM-test-sites.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	xsltproc -xinclude -stringparam publisher $(PUB)/AIM-test-sites.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
 	zip -r $(ZIPAIM) aata-html/
