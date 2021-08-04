@@ -29,9 +29,6 @@
     <xsl:text>textwidth=4.375in,textheight=9in</xsl:text>
 </xsl:param>
 
-<!-- Makes hyperlinks, program listings, etc. black & white -->
-<xsl:param name="latex.print" select="'yes'" />
-
 <!-- Each Chapter has a <paragraphs> about Sage,      -->
 <!-- which will be included by default                -->
 <!-- But print copies of AATA will not include        -->

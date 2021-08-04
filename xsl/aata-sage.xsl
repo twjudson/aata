@@ -25,10 +25,6 @@
 	<xsl:text>left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,headsep=0.25in</xsl:text>
 </xsl:param>
 
-<!-- Makes hyperlinks, program listings, etc. active and colored -->
-<!-- (This is the default, but set here just to be explicit)     -->
-<xsl:param name="latex.print" select="'no'" />
-
 <!-- Each Chapter has a <paragraphs> about Sage, -->
 <!-- which will be included by default           -->
 <!-- The PDF version contains the two            -->
