@@ -29,8 +29,6 @@
 <!-- 
 <xsl:param name="exercise.text.statement" select="'yes'" />
 <xsl:param name="exercise.text.hint" select="'no'" />
-<xsl:param name="exercise.backmatter.statement" select="'no'" />
-<xsl:param name="exercise.backmatter.hint" select="'yes'" />
 -->
 
 <!-- Each Chapter has a <paragraphs> about Sage, -->
