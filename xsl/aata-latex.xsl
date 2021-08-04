@@ -14,9 +14,6 @@
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/pretext-latex.xsl" />
 
-<!-- List Chapters and Sections in printed Table of Contents -->
-<xsl:param name="toc.level" select="'2'" />
-
 <!-- Exercises have "hint" and "solution"s -->
 <!--   Hints: for a backmatter section     -->
 <!--   Solutions: should not see them in   -->
