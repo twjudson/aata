@@ -17,10 +17,6 @@
 <!-- List Chapters and Sections in any eventual Table of Contents -->
 <xsl:param name="toc.level" select="'2'" />
 
-<!-- Examples are knowlized by default -->
-<!-- With no titles, we turn this off  -->
-<!-- <xsl:param name="html.knowl.example" select="'no'" /> -->
-
 <!-- Exercises have "hint" and "solution"s -->
 <!--   Hints: for a backmatter section     -->
 <!--   Solutions: should not see them in   -->
