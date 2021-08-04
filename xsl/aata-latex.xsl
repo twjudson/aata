@@ -14,13 +14,6 @@
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/pretext-latex.xsl" />
 
-<!-- Exercises have "hint" and "solution"s -->
-<!--   Hints: for a backmatter section     -->
-<!--   Solutions: should not see them in   -->
-<!--              any public print version -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
-<xsl:param name="exercise.text.hint" select="'no'" />
-
 <!-- Formatting adjustments and overrides     -->
 <!-- Named templates in case we want to       -->
 <!-- change up preamble easily in an override -->

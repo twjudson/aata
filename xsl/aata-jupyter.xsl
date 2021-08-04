@@ -14,16 +14,6 @@
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/pretext-jupyter.xsl" />
 
-<!-- Exercises have "hint" and "solution"s -->
-<!--   Hints: for a backmatter section     -->
-<!--   Solutions: should not see them in   -->
-<!--              any public print version -->
-<!-- HTML: knowlize as available/appropriate -->
-<!-- 
-<xsl:param name="exercise.text.statement" select="'yes'" />
-<xsl:param name="exercise.text.hint" select="'no'" />
--->
-
 <!-- Each Chapter has a <paragraphs> about Sage, -->
 <!-- which will be included by default           -->
 <!-- The Jupyter version contains the two        -->

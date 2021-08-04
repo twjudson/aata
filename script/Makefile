@@ -87,6 +87,14 @@ ZIPRS=AATA-runestone-$(DATE).zip
 RSYNC=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive
 RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive --delete
 
+# String parameters
+#   For passage into the  pretext/pretext script
+#   These will become obsolete when they migrate to the publisher file
+
+# Don't show hints (at all) in HTML main body
+NOHINT=exercise.divisional.hint no
+
+
 ###############
 # Preliminaries
 ###############
@@ -129,7 +137,7 @@ viewhtml:
 #   This is the AATA/Sage downloadable Annual Edition
 sage: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
@@ -143,7 +151,7 @@ viewsage:
 #   ie, aata-YYYYMMDD.pdf in repository download section
 electronic: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
@@ -158,7 +166,7 @@ viewelectronic:
 #   This is the "printable" downloadable Annual Edition
 print: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory
@@ -180,7 +188,7 @@ runestone: stage-extra-xsl place-html-files
 # This elects embossable format, easy to clone for braille-electronic
 braille:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -x $(NOHINT) -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 
 ######
