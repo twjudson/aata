@@ -13,8 +13,6 @@
 
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/pretext-html.xsl" />
-<!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
-<xsl:import href="aata-common.xsl" />
 
 <!-- List Chapters and Sections in sidebar Table of Contents -->
 <xsl:param name="toc.level" select="'2'" />

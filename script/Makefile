@@ -72,11 +72,6 @@ DOCTEST    = $(SCRATCH)/doctest
 JUPYTEROUT = $(SCRATCH)/jupyter
 BRAILLEOUT = $(SCRATCH)/braille
 
-# These levels need to go into a publisher file, once that
-# prospect is implemented.  For now, we economize with a
-# string, these match "xsl/aata-common.xsl"
-LEVELS=numbering.theorems.level 1 numbering.equations.level 1 numbering.footnotes.level 0 numbering.maximum.level 2
-
 # useful date string
 # http://stackoverflow.com/questions/1401482
 DATE=$(shell date +%Y-%m-%d)
@@ -203,11 +198,10 @@ runestone: stage-extra-xsl place-html-files
 	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml; \
 	zip -r $(SCRATCH)/$(ZIPRS) .
 
-# LEVELS should go away in favor of a publisher file
 # This elects embossable format, easy to clone for braille-electronic
 braille:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -x $(LEVELS) -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 
 ######

@@ -13,8 +13,6 @@
 
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
 <xsl:import href="../xsl/pretext-jupyter.xsl" />
-<!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
-<xsl:import href="aata-common.xsl" />
 
 <!-- List Chapters and Sections in any eventual Table of Contents -->
 <xsl:param name="toc.level" select="'2'" />
