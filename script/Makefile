@@ -125,42 +125,26 @@ viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
 
 # Full PDF version with Sage
-#   copies in all image files, which is overkill (SVG's)
-#   produces  aata-sage.tex  in scratch directory
-#   which becomes PDF, along with index entries
 #   Includes *all* material, and is fully electronic
 #   This is the AATA/Sage downloadable Annual Edition
-sage: stage-extra-xsl place-pdf-files
-	# delete old  xsltproc  output
-	# dash prevents error if not found
-	-rm $(PDFOUT)/aata.tex
+sage: stage-extra-xsl
 	install -d $(PDFOUT)
-	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude  -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-sage.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
-	mv aata.pdf aata-sage.pdf
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
 viewsage:
 	$(PDFVIEWER) $(PDFOUT)/aata-sage.pdf &
 
 # Electronic PDF version
-#   copies in all image files, which is overkill (SVG's)
-#   produces  aata-electronic.tex  in scratch directory
-#   which becomes PDF, along with index entries
 #   Similar to "print" but with links, etc.
 #   No Sage material
 #   This is default downloadable Annual Edition
 #   ie, aata-YYYYMMDD.pdf in repository download section
-electronic: stage-extra-xsl place-pdf-files
-	# delete old  xsltproc  output
-	# dash prevents error if not found
-	-rm $(PDFOUT)/aata.tex
+electronic: stage-extra-xsl
 	install -d $(PDFOUT)
-	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-electronic.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
-	mv aata.pdf aata-electronic.pdf
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
 viewelectronic:
@@ -172,15 +156,10 @@ viewelectronic:
 #     as sent to Orthogonal Publishing for modification
 #   Black on white, no live URLs, etc
 #   This is the "printable" downloadable Annual Edition
-print: stage-extra-xsl place-pdf-files
-	# delete old  xsltproc  output
-	# dash prevents error if not found
-	-rm $(PDFOUT)/aata.tex
+print: stage-extra-xsl
 	install -d $(PDFOUT)
-	cd $(PDFOUT); \
-	xsltproc -o aata.tex --xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-print.xsl $(SRC)/aata.xml; \
-	$(ENGINE) aata.tex; $(ENGINE) aata.tex; \
-	mv aata.pdf aata-print.pdf
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory
 viewprint:
@@ -246,12 +225,6 @@ stage-extra-xsl:
 #  refernced from
 #  https://unix.stackexchange.com/questions/412259/
 #  how-can-i-copy-a-directory-and-rename-it-in-the-same-command
-
-place-pdf-files:
-	install -d $(PDFOUT) $(PDFOUT)/external $(PDFOUT)/generated
-	# /. forces copy to rename images as generated
-	cp -a $(AATA)/images/. $(PDFOUT)/generated
-	cp -a $(AATA)/external $(PDFOUT)
 
 place-html-files:
 	install -d  $(HTMLOUT)/external $(HTMLOUT)/generated
