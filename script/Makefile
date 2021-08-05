@@ -87,12 +87,30 @@ ZIPRS=AATA-runestone-$(DATE).zip
 RSYNC=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive
 RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive --delete
 
+###################
 # String parameters
+###################
+
 #   For passage into the  pretext/pretext script
 #   These will become obsolete when they migrate to the publisher file
 
 # Don't show hints (at all) in HTML main body
 NOHINT=exercise.divisional.hint no
+
+# font size for LaTeX
+TEN=latex.font.size 10pt
+ELEVEN=latex.font.size 11pt
+
+# page geometries for LaTeX
+# commas and equals seem to transfer fine, spaces would not
+#
+# Print edition text body is 4 3/8 x 6 5/8 inches
+# Updated empirically from 2015 Annual Edition
+PAGEPRINT=latex.geometry textwidth=4.375in,textheight=9in
+# PDF-only is wider, eg better for Sage material
+# Default is "letterpaper", we could fine-tune margins if desired
+# 1.25 inch side margins, 0.75 inch top/bottom
+PAGEELECTRIC=latex.geometry left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,headsep=0.25in
 
 
 ###############
@@ -136,7 +154,7 @@ viewhtml:
 #   This is the AATA/Sage downloadable Annual Edition
 sage: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
@@ -150,7 +168,7 @@ viewsage:
 #   ie, aata-YYYYMMDD.pdf in repository download section
 electronic: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
@@ -165,7 +183,7 @@ viewelectronic:
 #   This is the "printable" downloadable Annual Edition
 print: stage-extra-xsl
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TEN) $(PAGEPRINT) -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory

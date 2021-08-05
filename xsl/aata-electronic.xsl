@@ -20,16 +20,6 @@
 <!-- aata-latex.xsl  will subsequently import  aata-common.xsl -->
 <xsl:import href="aata-latex.xsl" />
 
-<xsl:param name="latex.font.size" select="'11pt'" />
-
-<!-- Print edition is 4 3/8 inches wide for body -->
-<!-- PDF only is wider, eg better for Sage material -->
-<!-- Default is "letterpaper", we could fine-tune margins if desired   -->
-<!-- 1.25 inch side margins, 0.75 inch top/bottom -->
-<xsl:param name="latex.geometry">
-	<xsl:text>left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,headsep=0.25in</xsl:text>
-</xsl:param>
-
 <!-- Each Chapter has a <paragraphs> about Sage,      -->
 <!-- which will be included by default                -->
 <!-- But print copies of AATA will not include        -->
