@@ -143,10 +143,8 @@ diagrams:
 #   Move to server: generated *.html and
 #   entire directories - /images and /knowl
 html:
-	install -d $(MBUSR)
-	cp $(XSL)/aata-html.xsl $(MBUSR)
 	install -d $(HTMLOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-html.xsl -d $(HTMLOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/public.xml -d $(HTMLOUT) $(SRC)/aata.xml
 
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
@@ -156,9 +154,9 @@ viewhtml:
 #   This is the AATA/Sage downloadable Annual Edition
 sage:
 	install -d $(MBUSR)
-	cp $(XSL)/aata-sage.xsl $(MBUSR)
+	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-sage.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
@@ -172,9 +170,9 @@ viewsage:
 #   ie, aata-YYYYMMDD.pdf in repository download section
 electronic:
 	install -d $(MBUSR)
-	cp $(XSL)/aata-electronic.xsl $(MBUSR)
+	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-electronic.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/electronic.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
@@ -189,9 +187,9 @@ viewelectronic:
 #   This is the "printable" downloadable Annual Edition
 print:
 	install -d $(MBUSR)
-	cp $(XSL)/aata-print.xsl $(MBUSR)
+	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TEN) $(PAGEPRINT) -p $(PUB)/public-print.xml -X $(MBUSR)/aata-print.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TEN) $(PAGEPRINT) -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory
@@ -203,13 +201,11 @@ viewprint:
 #   Will produce a zip file
 #   SOME TOTALLY HARDCODED PATHS
 runestone: place-runestone-files
-	install -d $(MBUSR)
-	cp $(XSL)/aata-html.xsl $(MBUSR)
 	install -d $(HTMLOUT) $(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/dist/runestone.js $(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/common/js/jquery.idle-timer.js $(HTMLOUT)/_static
 	cd $(HTMLOUT); \
-	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml; \
+	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBXSL)/pretext-html.xsl $(SRC)/aata.xml; \
 	zip -r $(SCRATCH)/$(ZIPRS) .
 
 # This elects embossable format, easy to clone for braille-electronic
@@ -279,20 +275,16 @@ epub:
 
 # Jupyter Notebooks - experimental
 jupyter: place-jupyter-files
-	install -d $(MBUSR)
-	cp $(XSL)/aata-jupyter.xsl $(MBUSR)
 	install -d $(JUPYTEROUT)
 	cd $(JUPYTEROUT); \
-	xsltproc --xinclude $(MBUSR)/aata-jupyter.xsl $(SRC)/aata.xml
+	xsltproc --xinclude $(MBXSL)/pretext-jupyter.xsl $(SRC)/aata.xml
 
 # This makes a zip file of a version for use at AIM Books
 # Clean out directories first by hand
 # Date by hand and upload
 aimhtml:
-	install -d $(MBUSR)
-	cp $(XSL)/aata-html.xsl $(MBUSR)
 	install -d $(HTMLOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/AIM-test-sites.xml -X $(MBUSR)/aata-html.xsl -d $(HTMLOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/AIM-test-sites.xml -d $(HTMLOUT) $(SRC)/aata.xml
 	# zip for easy transfer to AIM servers
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
