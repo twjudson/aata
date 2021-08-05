@@ -20,12 +20,4 @@
 <!-- aata-latex.xsl  will subsequently import  aata-common.xsl -->
 <xsl:import href="aata-latex.xsl" />
 
-<!-- Each Chapter has a <paragraphs> about Sage,      -->
-<!-- which will be included by default                -->
-<!-- But print copies of AATA will not include        -->
-<!-- the two Sage sections (discussion and exercise)  -->
-<!-- This is where we kill these two sections         -->
-<xsl:template match="section[title='Sage']" />
-<xsl:template match="exercises[title='Sage Exercises']" />
-
 </xsl:stylesheet>
