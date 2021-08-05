@@ -151,7 +151,8 @@ viewhtml:
 
 # Full PDF version with Sage
 #   Includes *all* material, and is fully electronic
-#   This is the AATA/Sage downloadable Annual Edition
+#   For the website downloads this is
+#   aata-YYYYMMDD-sage-N-M.pdf version
 sage:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
@@ -184,7 +185,8 @@ viewelectronic:
 #   This will be source for the Annual Edition,
 #     as sent to Orthogonal Publishing for modification
 #   Black on white, no live URLs, etc
-#   This is the "printable" downloadable Annual Edition
+#   For the website downloads this is
+#   aata-YYYYMMDD-print.pdf version
 print:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
