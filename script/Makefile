@@ -124,10 +124,9 @@ diagrams:
 #   Publisher file is a relative path to master source file
 #   Move to server: generated *.html and
 #   entire directories - /images and /knowl
-html: stage-extra-xsl place-html-files
+html: stage-extra-xsl
 	install -d $(HTMLOUT)
-	cd $(HTMLOUT); \
-	xsltproc -xinclude -stringparam publisher $(PUB)/public.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/public.xml -X $(MBUSR)/aata-html.xsl -d $(HTMLOUT) $(SRC)/aata.xml
 
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
@@ -177,7 +176,7 @@ viewprint:
 #   Modeled on raw HTML
 #   Will produce a zip file
 #   SOME TOTALLY HARDCODED PATHS
-runestone: stage-extra-xsl place-html-files
+runestone: stage-extra-xsl place-runestone-files
 	install -d $(HTMLOUT)$(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/dist/runestone.js $(HTMLOUT)/_static
 	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/common/js/jquery.idle-timer.js $(HTMLOUT)/_static
@@ -234,7 +233,7 @@ stage-extra-xsl:
 #  https://unix.stackexchange.com/questions/412259/
 #  how-can-i-copy-a-directory-and-rename-it-in-the-same-command
 
-place-html-files:
+place-runestone-files:
 	install -d  $(HTMLOUT)/external $(HTMLOUT)/generated
 	# /. forces copy to rename images as generated
 	cp -a $(AATA)/images/. $(HTMLOUT)/generated
@@ -264,13 +263,11 @@ jupyter:  stage-extra-xsl place-jupyter-files
 
 # This makes a zip file of a version for use at AIM Books
 # Clean out directories first by hand
-# Date and upload
-# HTML version
-#   Copies in image files from source directory
-aimhtml: stage-extra-xsl place-html-files
+# Date by hand and upload
+aimhtml: stage-extra-xsl
 	install -d $(HTMLOUT)
-	cd $(HTMLOUT); \
-	xsltproc -xinclude -stringparam publisher $(PUB)/AIM-test-sites.xml $(MBUSR)/aata-html.xsl $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/AIM-test-sites.xml -X $(MBUSR)/aata-html.xsl -d $(HTMLOUT) $(SRC)/aata.xml
+	# zip for easy transfer to AIM servers
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
 	zip -r $(ZIPAIM) aata-html/
