@@ -66,6 +66,7 @@ PUB = $(AATA)/publisher
 
 # These paths are subdirectories of
 # a scratch directory
+DIAGOUT    = $(SCRATCH)/diagram
 HTMLOUT    = $(SCRATCH)/html
 PDFOUT     = $(SCRATCH)/pdf
 DOCTEST    = $(SCRATCH)/doctest
@@ -120,17 +121,18 @@ PAGEELECTRIC=latex.geometry left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,he
 # Diagrams
 #   invoke mbx script to manufacture diagrams
 #   tikz as SVG for HTML
-#   sageplot as PDF for LaTeX, SVG for HTML
+#   one sageplot as PDF for LaTeX, SVG for HTML
 #   these outputs are in source repo now, and
 #   are typically just copied out
 #   this should be run if diagram source changes
-#   NB: targets below copy versions out of repo and clobber these
+#   NB: need to manually copy these to commit to source,
+#       on a branch for testing
+#   NB: could upgrade to use publisher file for location?
 diagrams:
-	install -d $(HTMLOUT)/generated/latex-image  $(HTMLOUT)/generated/sageplot
-	-rm $(HTMLOUT)/images/*
-	$(MBSCRIPT)/pretext -v -c latex-image -f svg -d $(HTMLOUT)/generated/latex-image $(SRC)/aata.xml
-	$(MBSCRIPT)/pretext -v -c sageplot    -f pdf -d $(HTMLOUT)/generated/sageplot $(SRC)/aata.xml
-	$(MBSCRIPT)/pretext -v -c sageplot    -f svg -d $(HTMLOUT)/generated/sageplot $(SRC)/aata.xml
+	install -d $(DIAGOUT)/generated/latex-image  $(DIAGOUT)/generated/sageplot
+	$(MBSCRIPT)/pretext -v -c latex-image -f svg -d $(DIAGOUT)/generated/latex-image $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f pdf -d $(DIAGOUT)/generated/sageplot $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -v -c sageplot    -f svg -d $(DIAGOUT)/generated/sageplot $(SRC)/aata.xml
 
 
 ##########
