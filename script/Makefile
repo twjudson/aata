@@ -212,10 +212,13 @@ runestone: place-runestone-files
 	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBXSL)/pretext-html.xsl $(SRC)/aata.xml; \
 	zip -r $(SCRATCH)/$(ZIPRS) .
 
-# This elects embossable format, easy to clone for braille-electronic
-braille:
+braille-emboss:
 	install -d $(BRAILLEOUT)
 	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -x $(NOHINT) -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+
+braille-electronic:
+	install -d $(BRAILLEOUT)
+	$(MBSCRIPT)/pretext -vv -c all -f braille-electronic -x $(NOHINT) -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 
 ######
