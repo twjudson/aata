@@ -290,7 +290,7 @@ epub:
 jupyter: place-jupyter-files
 	install -d $(JUPYTEROUT)
 	cd $(JUPYTEROUT); \
-	xsltproc --xinclude $(MBXSL)/pretext-jupyter.xsl $(SRC)/aata.xml
+	xsltproc --xinclude -stringparam publisher $(PUB)/public.xml $(MBXSL)/pretext-jupyter.xsl $(SRC)/aata.xml
 
 # This makes a zip file of a version for use at AIM Books
 # Clean out directories first by hand
