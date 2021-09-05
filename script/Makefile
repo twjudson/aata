@@ -101,6 +101,7 @@ NOHINT=exercise.divisional.hint no
 # font size for LaTeX
 TEN=latex.font.size 10pt
 ELEVEN=latex.font.size 11pt
+TWELVE=latex.font.size 12pt
 
 # page geometries for LaTeX
 # commas and equals seem to transfer fine, spaces would not
@@ -112,6 +113,11 @@ PAGEPRINT=latex.geometry textwidth=4.375in,textheight=9in
 # Default is "letterpaper", we could fine-tune margins if desired
 # 1.25 inch side margins, 0.75 inch top/bottom
 PAGEELECTRIC=latex.geometry left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,headsep=0.25in
+# Designed to math a ReMarkable e-reader screen's shape
+# CM Bright font is loaded *early* so as to not clobber the
+#     latex.preaqmble.late  inside  aata-latex.xsl  in use
+# ToC adjustment seems to be ineffective
+PAGEREMARKABLE=latex.geometry "paperwidth=5.750in, paperheight=7.666in, total={5.250in, 7.166in}" latex.preamble.early "\\usepackage{cmbright}" toc.level 1
 
 
 ###############
@@ -298,3 +304,13 @@ aimhtml:
 	zip -r $(ZIPAIM) aata-html/
 	${RSYNCDELETE} $(SCRATCH)/${ZIPAIM} utmost@utmost.aimath.org:/home/utmost/www/pretextbook.org/htdocs/beta
 	echo "Dropped in http://pretextbook.org/beta/"${ZIPAIM}
+
+# Like Sage-inclusive PDF, but with page geometry that matches the shape
+# of a ReMarkable e-reader screen, see PAGEREMARKABLE defined above
+remarkable:
+	install -d $(MBUSR)
+	cp $(XSL)/aata-latex.xsl $(MBUSR)
+	install -d $(PDFOUT)
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TWELVE) $(PAGEREMARKABLE) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-remarkable.pdf
+
