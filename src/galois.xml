@@ -217,9 +217,10 @@
 
         <proof>
 
-        	<p>We will use mathematical induction on <m>[E:F]</m>. If <m>[E:F] = 1</m>, then <m>E = F</m> and there is nothing to show. If <m>[E:F] \gt 1</m>, let <m>f(x) = p(x)q(x)</m>, where <m>p(x)</m> is irreducible of degree <m>d</m>. We may assume that <m>d \gt 1</m>; otherwise, <m>f(x)</m> splits over <m>F</m> and  <m>[E:F] = 1</m>. Let <m>\alpha</m> be a root of <m>p(x)</m>. If <m>\phi: F(\alpha) \to  E</m> is any injective homomorphism, then <m>\phi( \alpha) = \beta</m> is a root of <m>p(x)</m>, and <m>\phi: F(\alpha) \to F(\beta)</m> is a field automorphism. Since <m>f(x)</m> has no repeated roots, <m>p(x)</m> has exactly <m>d</m> roots <m>\beta \in E</m>. By <xref ref="galois-proposition-roots-permute"/>, there are exactly <m>d</m> isomorphisms <m>\phi: F(\alpha) \to F(\beta_i)</m> that fix <m>F</m>, one for each root <m>\beta_1, \ldots, \beta_d</m> of <m>p(x)</m> (see <xref ref="galois-figure-group-order"/>).</p>
 
+        	<p>We will use mathematical induction on <m>[E:F]</m>. If <m>[E:F] = 1</m>, then <m>E = F</m> and there is nothing to show. If <m>[E:F] \gt 1</m>, let <m>f(x) = p(x)q(x)</m>, where <m>p(x)</m> is irreducible of degree <m>d</m>. We may assume that <m>d \gt 1</m>; otherwise, <m>f(x)</m> splits over <m>F</m> and  <m>[E:F] = 1</m>. Let <m>\alpha</m> be a root of <m>p(x)</m>. If <m>\phi: F(\alpha) \to  E</m> is any injective homomorphism, then <m>\phi( \alpha) = \beta</m> is a root of <m>p(x)</m>, and <m>\phi: F(\alpha) \to F(\beta)</m> is a field automorphism. Since <m>f(x)</m> has no repeated roots, <m>p(x)</m> has exactly <m>d</m> roots <m>\beta \in E</m>. By <xref ref="galois-proposition-roots-permute"/>, there are exactly <m>d</m> isomorphisms <m>\phi: F(\alpha) \to F(\beta_i)</m> that fix <m>F</m>, one for each root <m>\beta_1, \ldots, \beta_d</m> of <m>p(x)</m> (see <xref ref="galois-figure-group-order"/>).</p>
 			<figure xml:id="galois-figure-group-order">
+
 				<caption></caption>
 				<p><me>\begin{CD}
 				E  @>\psi>>  E  \\
@@ -252,7 +253,11 @@
             </me>.
             If <m>\beta</m> is any other root of <m>p(x)</m>,
             then <m>F \subset F( \beta ) \subset E</m>.
+<<<<<<< HEAD
             By <xref ref="fields-lemma-field-isomorphism"/>,
+=======
+            By <xref ref="finite-lemma-field-isomorphism"/>,
+>>>>>>> 49f6eeef49ce50c7e37c56d3cbb553e6fa892a3d
             there exists a unique isomorphism
             <m>\sigma: F( \alpha ) \rightarrow F( \beta )</m> for each such <m>\beta</m> that fixes <m>F</m> elementwise.
             Since <m>E</m> is a splitting field of <m>p(x)</m>,
@@ -803,6 +808,7 @@
         <p permid="vkH">
           In <xref ref="galois-example-q-sqrt5"/> we examined the automorphisms of
           <m>{\mathbb Q}( \sqrt{3}, \sqrt{5}\, )</m> fixing <m>{\mathbb Q}</m>.
+
           <xref ref="galois-figure-1"/> compares the lattice of field extensions of
           <m>{\mathbb Q}</m> with the lattice of subgroups of <m>G( {\mathbb Q}( \sqrt{3}, \sqrt{5}\, ) /{\mathbb Q})</m>.
           The Fundamental Theorem of Galois Theory tells us what the relationship is between the two lattices.
@@ -825,7 +831,7 @@
         We are now ready to state and prove the Fundamental Theorem of Galois Theory.
       </p>
 
-      <theorem xml:id="theorem-fundamental-galois" permid="sZI">
+      <theorem xml:id="galois-theorem-fundamental-galois" permid="sZI">
         <title>Fundamental Theorem of Galois Theory</title>
         <idx>
         <h>Fundamental Theorem of Galois Theory</h>
@@ -961,6 +967,7 @@
         </proof>
       </theorem>
 
+
       <figure xml:id="galois-figure-2" permid="hQW">
         <caption>Subgroups of <m>G(E/F)</m> and subfields of <m>E</m></caption>
         <p><me>\begin{CD}
@@ -1000,6 +1007,7 @@
           is a basis of <m>{\mathbb Q}( \sqrt[4]{2}, i )</m> over <m>{\mathbb Q}</m>.
           The lattice of field extensions of <m>{\mathbb Q}</m> contained in
           <m>{\mathbb Q}( \sqrt[4]{2}, i)</m> is illustrated in <xref ref="galois-figure-3"/>(a).
+
         </p>
             <!-- Corrected the automorphism sigma.  Suggested by R. Beezer. - TWJ 4/14/2011 -->
         <p permid="nGi">
@@ -2720,7 +2728,7 @@
     <subsection permid="emj">
       <title>Galois Correspondence</title>
       <p permid="kZX">
-        The entire subfield structure of our splitting field is determined by the subgroup structure of the Galois group (<xref ref="theorem-fundamental-galois"/>),
+        The entire subfield structure of our splitting field is determined by the subgroup structure of the Galois group (<xref ref="galois-theorem-fundamental-galois"/>),
         which is isomorphic to a group we know well.
         What are the subgroups of our Galois group,
         expressed as permutation groups? (For brevity,
@@ -3196,7 +3204,7 @@
         but not all of the roots
         (witness the factorization above)
         and therefore does not qualify as a normal extension.
-        By part (4) of <xref ref="theorem-fundamental-galois"/> the automorphism group of the extension is not normal in the full Galois group.
+        By part (4) of <xref ref="galois-theorem-fundamental-galois"/> the automorphism group of the extension is not normal in the full Galois group.
       </p>
 
             <sage permid="epW">
@@ -3466,7 +3474,11 @@
           Then use this procedure to create the lattice of subfields.
           The eventual goal would be a graphical display of the lattice,
           using the existing plotting facilities available for lattices,
+<<<<<<< HEAD
           similar to the top half of <xref ref="galois-figure-3"/>.
+=======
+          similar to the top half of <xref ref="galois-figure-galois-3"/>.
+>>>>>>> 49f6eeef49ce50c7e37c56d3cbb553e6fa892a3d
           This is a <q>challenging</q> exercise,
           which is code for <q>it is speculative and has not been tested.</q>
         </p>

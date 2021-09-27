@@ -2689,17 +2689,23 @@
 
       <p permid="yCZ">
         Now <m>-1</m> should have the property that <m>-1\cdot -1= 1</m>.
-        We see that the identity element <c>a</c> is on the diagonal of the Cayley table only when we compute <c>d*d</c>.
+        We see that the identity element <c>a</c> is on the diagonal of the Cayley table only when we compute <c>c*c</c>.
         We can verify this easily,
-        borrowing the fourth <q>bottom row</q>
-        element from the list above.
-        With this information, once we locate <m>I</m>,
+        by extracting the third element of the column headings of the Cayley table.
+        Now that we have identified <m>-1</m>, once we locate <m>I</m>,
         we can easily compute <m>-I</m>, and so on.
       </p>
 
-            <sage permid="KZV">
+            <sage>
                 <input>
-            minus_one = Q([3, 4, 1, 2, 7, 8, 5, 6])
+            minus_one = Q.cayley_table().column_keys()[2]
+            [minus_one(x) for x in Q.domain()]
+            </input>
+                <output>[3, 4, 1, 2, 7, 8, 5, 6]</output>
+            </sage>
+
+            <sage>
+                <input>
             minus_one*minus_one == Q.identity()
             </input>
                 <output>True</output>
