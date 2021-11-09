@@ -27,14 +27,14 @@
     </p>
   </introduction>
 
-  <section xml:id="section-error-detecting-correcting-codes" permid="lIE">
+  <section xml:id="algcodes-section-error-detecting-correcting-codes" permid="lIE">
     <title>Error-Detecting and Correcting Codes</title>
     <introduction permid="XTu">
       <p permid="Jgi">
-        Let us examine a simple model of a communications system for transmitting and receiving coded messages (<xref ref="figure-encoding"/>).
+        Let us examine a simple model of a communications system for transmitting and receiving coded messages (<xref ref="algcodes-figure-encoding"/>).
       </p>
 
-      <figure xml:id="figure-encoding" permid="BBJ">
+      <figure xml:id="algcodes-figure-encoding" permid="BBJ">
         
         <caption>Encoding and decoding messages</caption>
             <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
@@ -67,7 +67,7 @@
         Our goal is to transmit error-free messages as cheaply and quickly as possible.
       </p>
 
-      <example xml:id="example-algcodes-repeat" permid="isz">
+      <example xml:id="algcodes-example-repeat" permid="isz">
         <p permid="lIR">
           One possible coding scheme would be to send a message several times and to compare the received copies with one another.
           Suppose that the message to be encoded is a binary <m>n</m>-tuple <m>(x_{1}, x_{2}, \ldots,
@@ -93,7 +93,7 @@
         </p>
       </example>
 
-      <example xml:id="example-algcodes-even-parity" permid="OzI">
+      <example xml:id="algcodes-example-even-parity" permid="OzI">
         <p permid="RQa">
           <term>Even parity</term>, a commonly used coding scheme,
           is much more efficient than the simple repetition scheme.
@@ -164,7 +164,7 @@
         We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.
       </p>
 
-      <example xml:id="example-algcodes-nearest" permid="uGR">
+      <example xml:id="algcodes-example-nearest" permid="uGR">
         <p permid="KlB">
           Suppose that our original message is either a <m>0</m> or a <m>1</m>,
           and that <m>0</m> encodes to <m>(000)</m> and <m>1</m> encodes to <m>(111)</m>.
@@ -176,7 +176,7 @@
           This method will detect and correct all single errors.
         </p>
 
-        <table xml:id="table-repetition-code" permid="cww">
+        <table xml:id="algcodes-table-repetition-code" permid="cww">
           <title>A repetition code</title>
           <tabular halign="center" top="medium" permid="IDF">
             <col/>
@@ -230,9 +230,9 @@
         </table>
 
         <p permid="qsK">
-          In <xref ref="table-repetition-code"/>,
+          In <xref ref="algcodes-table-repetition-code"/>,
           we present all possible words that might be received for the transmitted codewords <m>(000)</m> and <m>(111)</m>.
-          <xref ref="table-repetition-code"/> also shows the number of bits by which each received <m>3</m>-tuple differs from each original codeword.
+          <xref ref="algcodes-table-repetition-code"/> also shows the number of bits by which each received <m>3</m>-tuple differs from each original codeword.
         </p>
       </example>
     </introduction>
@@ -242,7 +242,7 @@
             <!-- Label repaired.  Suggested by R. Beezer. -->
             <!-- TWJ - 12/19/2011 -->
       <p permid="fyg">
-        The coding scheme presented in <xref ref="example-algcodes-nearest"/> is not a complete solution to the problem because it does not account for the possibility of multiple errors.
+        The coding scheme presented in <xref ref="algcodes-example-nearest"/> is not a complete solution to the problem because it does not account for the possibility of multiple errors.
         For example,
         either a (000) or a (111) could be sent and a (001) received.
         We have no means of deciding from the received word whether there was a single error in the third bit or two errors,
@@ -268,7 +268,7 @@
         but can be skipped without loss of continuity.
         </fn></p>
 
-      <figure xml:id="figure-channel" permid="rMy">
+      <figure xml:id="algcodes-figure-channel" permid="rMy">
         
         <caption>Binary symmetric channel</caption>
             <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
@@ -287,7 +287,7 @@
         Let <m>p</m> be the probability that the signal is correctly received.
         Then <m>q = 1 - p</m> is the probability of an incorrect reception.
         If a <m>1</m> is sent,
-        then the probability that a <m>1</m> is received is <m>p</m> and the probability that a <m>0</m> is received is <m>q</m> (<xref ref="figure-channel"/>).
+        then the probability that a <m>1</m> is received is <m>p</m> and the probability that a <m>0</m> is received is <m>q</m> (<xref ref="algcodes-figure-channel"/>).
         The probability that no errors occur during the transmission of a binary codeword of length <m>n</m> is <m>p^{n}</m>.
         For example,
         if <m>p=0.999</m> and a message consisting of 10,000 bits is sent,
@@ -331,7 +331,7 @@
         </proof>
       </theorem>
 
-      <example xml:id="example-algcodes-probability" permid="WzG">
+      <example xml:id="algcodes-example-probability" permid="WzG">
         <p permid="WzT">
           Suppose that <m>p = 0.995</m> and a <m>500</m>-bit message is sent.
           The probability that the message was sent error-free is
@@ -378,7 +378,7 @@
         then <m>D</m> must be onto.
       </p>
 
-      <example xml:id="example-algcodes-block-code" permid="OVh">
+      <example xml:id="algcodes-example-block-code" permid="OVh">
         <p permid="CHc">
           The even-parity coding system developed to detect single errors in <acro>ASCII</acro> characters is an <m>(8,7)</m>-block code.
           The encoding function is
@@ -429,7 +429,7 @@
 
       </p>
 
-      <example xml:id="example-algcodes-min-distance" permid="vcq">
+      <example xml:id="algcodes-example-min-distance" permid="vcq">
         <p permid="iOl">
           Let <m>{\mathbf x} = (10101)</m>,
           <m>{\mathbf y} = (11010)</m>,
@@ -512,12 +512,12 @@
         then <m>d({\mathbf x}, {\mathbf y}) = 2</m>.
         If <m>{\mathbf x}</m> is transmitted and a single error occurs,
         then <m>{\mathbf y}</m> can never be received.
-        <xref ref="table-4-bit-words"/> gives the distances between all 4-bit codewords in which the first three bits carry information and the fourth is an even parity check bit.
+        <xref ref="algcodes-table-4-bit-words"/> gives the distances between all 4-bit codewords in which the first three bits carry information and the fourth is an even parity check bit.
         We can see that the minimum distance here is <m>2</m>;
         hence, the code is suitable as a single error-detecting code.
       </p>
 
-      <table xml:id="table-4-bit-words" permid="hgp">
+      <table xml:id="algcodes-table-4-bit-words" permid="hgp">
         <title>Distances between 4-bit codewords</title>
         <tabular halign="center" top="medium" left="medium" right="medium" permid="Nny">
           <row bottom="medium">
@@ -659,7 +659,7 @@
         then we can detect multiple errors when a code has a minimum distance that is greater than or equal to <m>3</m>.
       </p>
 
-      <theorem xml:id="theorem-min-distance" permid="CGP">
+      <theorem xml:id="algcodes-theorem-min-distance" permid="CGP">
         <statement>
           <p permid="ryd">
             Let <m>C</m> be a code with <m>d_{\min} = 2n + 1</m>.
@@ -692,16 +692,16 @@
         </proof>
       </theorem>
 
-      <example xml:id="example-algcodes-single-correct" permid="bjz">
+      <example xml:id="algcodes-example-single-correct" permid="bjz">
         <p permid="OVu">
-          In <xref ref="table-hamming-distance"/>,
+          In <xref ref="algcodes-table-hamming-distance"/>,
           the codewords <m>{\mathbf c}_1 = (00000)</m>,
           <m>{\mathbf c}_2 = (00111)</m>,
           <m>{\mathbf c}_3 = (11100)</m>,
           and <m>{\mathbf c}_4 = (11011)</m> determine a single error-correcting code.
         </p>
 
-        <table xml:id="table-hamming-distance" permid="oKO">
+        <table xml:id="algcodes-table-hamming-distance" permid="oKO">
           <title>Hamming distances for an error-correcting code</title>
           <tabular halign="center" top="medium" left="medium" right="medium" permid="URX">
             <row bottom="medium">
@@ -770,7 +770,7 @@
     </subsection>
   </section>
 
-  <section xml:id="section-linear-codes" permid="RPN">
+  <section xml:id="algcodes-section-linear-codes" permid="RPN">
     <title>Linear Codes</title>
     <introduction permid="EaD">
       <p permid="hIS">
@@ -797,7 +797,7 @@
         </me>.
       </p>
 
-      <example xml:id="example-algcodes-weights" permid="aOa">
+      <example xml:id="algcodes-example-weights" permid="aOa">
         <p permid="vcD">
           Suppose that we have a code that consists of the following 7-tuples:
           <md permid="Ipk">
@@ -875,7 +875,7 @@
     <subsection xml:id="algcodes-subsection-linear-codes" permid="Iwb">
       <title>Linear Codes</title>
       <p permid="UZb">
-        From <xref ref="example-algcodes-weights"/>,
+        From <xref ref="algcodes-example-weights"/>,
         it is now easy to check that the minimum nonzero weight is <m>3</m>;
         hence, the code does indeed detect and correct all single errors.
         We have now reduced the problem of finding <q>good</q>
@@ -912,7 +912,7 @@
         </md>.
       </p>
 
-      <example xml:id="example-algcodes-matrixcodes" permid="nxR">
+      <example xml:id="algcodes-example-matrixcodes" permid="nxR">
         <p permid="bjM">
           Suppose that the words to be encoded consist of all binary <m>3</m>-tuples and that our encoding scheme is even-parity.
           To encode an arbitrary <m>3</m>-tuple,
@@ -955,7 +955,7 @@
 
       </p>
 
-      <example xml:id="example-algcodes-group-code" permid="TFa">
+      <example xml:id="algcodes-example-group-code" permid="TFa">
         <p permid="HqV">
           Suppose that
           <me permid="Znv">
@@ -1013,7 +1013,7 @@
         if it is determined by the null space of some matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
       </p>
 
-      <example xml:id="example-algcodes-linear-code" permid="zMj">
+      <example xml:id="algcodes-example-linear-code" permid="zMj">
         <p permid="nye">
           Let <m>C</m> be the code given by the matrix
           <me permid="xQf">
@@ -1042,7 +1042,7 @@
     </subsection>
   </section>
 
-  <section xml:id="section-parity-check" permid="xWW">
+  <section xml:id="algcodes-section-parity-check" permid="xWW">
     <title>Parity-Check and Generator Matrices</title>
     <p permid="Mpj">
       We need to find a systematic way of generating linear codes as well as fast methods of decoding.
@@ -1090,7 +1090,7 @@
       the matrix <m>G</m> will allow us to quickly encode it into a linear codeword <m>{\mathbf y}</m>.
     </p>
 
-    <example xml:id="example-algcodes-parity-check" permid="GVj">
+    <example xml:id="algcodes-example-parity-check" permid="GVj">
       <p permid="TFn">
         Suppose that we have the following eight words to be encoded:
         <me permid="CzY">
@@ -1165,11 +1165,11 @@
           (100011) &amp; (101110) &amp; (110101) &amp; (111000).
           \end{array}
         </me>
-        An even easier way to compute the null space is with the generator matrix <m>G</m> (<xref ref="table-matrix-gen-code"/>).
+        An even easier way to compute the null space is with the generator matrix <m>G</m> (<xref ref="algcodes-table-matrix-gen-code"/>).
       </p>
     </example>
 
-    <table xml:id="table-matrix-gen-code" permid="RXr">
+    <table xml:id="algcodes-table-matrix-gen-code" permid="RXr">
       <title>A matrix-generated code</title>
       <tabular halign="center" top="medium" permid="yeA">
         <row bottom="medium">
@@ -1230,7 +1230,7 @@
       the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called
       <term>information bits</term>
       and the last <m>m</m> bits are called <term>check bits</term>.
-      In <xref ref="example-algcodes-parity-check"/>,
+      In <xref ref="algcodes-example-parity-check"/>,
       the first three bits are the information bits and the last three are the check bits.
     </p>
 
@@ -1274,7 +1274,7 @@
       we need to prove a lemma.
     </p>
 
-    <lemma xml:id="lemma-parity-check" permid="Clq">
+    <lemma xml:id="algcodes-lemma-parity-check" permid="Clq">
       <statement>
         <p permid="Zuz">
           Let <m>H = (A \mid I_m )</m> be an
@@ -1331,7 +1331,7 @@
         <p permid="usJ">
           First suppose that <m>{\mathbf y} \in C</m>.
           Then <m>G {\mathbf x} = {\mathbf y}</m> for some <m>{\mathbf x} \in {\mathbb Z}_2^m</m>.
-          By <xref ref="lemma-parity-check"/>,
+          By <xref ref="algcodes-lemma-parity-check"/>,
           <m>H {\mathbf y} = HG {\mathbf x} = {\mathbf 0}</m>.
         </p>
 
@@ -1376,7 +1376,7 @@
       <m>H{\mathbf e}_i</m> is exactly the <m>i</m>th column of the matrix <m>H</m>.
     </p>
 
-    <example xml:id="example-algcodes-ith-column" permid="ncs">
+    <example xml:id="algcodes-example-ith-column" permid="ncs">
       <p permid="fTF">
         Observe that
         <me permid="kwu">
@@ -1400,7 +1400,7 @@
       We state this result in the following proposition and leave the proof as an exercise.
     </p>
 
-    <proposition xml:id="proposition-column" permid="JPP">
+    <proposition xml:id="algcodes-proposition-column" permid="JPP">
       <statement>
         <p permid="ARP">
           Let <m>{\mathbf e}_i</m> be the binary <m>n</m>-tuple with a <m>1</m> in the <m>i</m>th coordinate and <m>0</m>'s elsewhere and suppose that <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
@@ -1409,7 +1409,7 @@
       </statement>
     </proposition>
 
-    <theorem xml:id="theorem-single-error" permid="Ruo">
+    <theorem xml:id="algcodes-theorem-single-error" permid="Ruo">
       <statement>
         <p permid="cpf">
           Let <m>H</m> be an <m>m \times n</m> binary matrix.
@@ -1432,12 +1432,12 @@
 
         <p permid="mOk">
           Conversely, suppose that no column of <m>H</m> is the zero column.
-          By <xref ref="proposition-column"/>, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>.
+          By <xref ref="algcodes-proposition-column"/>, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>.
         </p>
       </proof>
     </theorem>
 
-    <example xml:id="example-algcodes-null-space" permid="TjB">
+    <example xml:id="algcodes-example-null-space" permid="TjB">
       <p permid="MaO">
         If we consider the matrices
         <me permid="QDD">
@@ -1462,12 +1462,12 @@
     </example>
 
     <p permid="xgl">
-      We can even do better than <xref ref="theorem-single-error"/>.
+      We can even do better than <xref ref="algcodes-theorem-single-error"/>.
       This theorem gives us conditions on a matrix <m>H</m> that tell us when the minimum weight of the code formed by the null space of <m>H</m> is <m>2</m>.
       We can also determine when the minimum distance of a linear code is <m>3</m> by examining the corresponding matrix.
     </p>
 
-    <example xml:id="example-algcodes-check-matrix" permid="zqK">
+    <example xml:id="algcodes-example-check-matrix" permid="zqK">
       <p permid="shX">
         If we let
         <me permid="cRV">
@@ -1548,7 +1548,7 @@
         <!-- TWJ - 10/1/2014 -->
   </section>
 
-  <section xml:id="section-efficient-decoding" permid="eef">
+  <section xml:id="algcodes-section-efficient-decoding" permid="eef">
     <title>Efficient Decoding</title>
     <introduction permid="khM">
       <p permid="tXk">
@@ -1558,7 +1558,7 @@
         This can be a serious impediment if the code is very large.
       </p>
 
-      <example xml:id="example-algcodes-syndrome" permid="fxT">
+      <example xml:id="algcodes-example-syndrome" permid="fxT">
         <p permid="Ypg">
           Given the binary matrix
           <me permid="Vnw">
@@ -1603,7 +1603,7 @@
         The following proposition allows the quick detection and correction of errors.
       </p>
 
-      <proposition xml:id="proposition-syndrome" permid="pWY">
+      <proposition xml:id="algcodes-proposition-syndrome" permid="pWY">
         <statement>
           <p permid="gYY">
             Let the <m>m \times n</m> binary matrix <m>H</m> determine a linear code and let
@@ -1628,7 +1628,7 @@
             <!--Made the proof into a complete sentence.  TWJ 3/6/2014-->
       <p permid="GlC">
         This proposition tells us that the syndrome of a received word depends solely on the error and not on the transmitted codeword.
-        The proof of the following theorem follows immediately from <xref ref="proposition-syndrome"/> and from the fact that
+        The proof of the following theorem follows immediately from <xref ref="algcodes-proposition-syndrome"/> and from the fact that
         <m>H{\mathbf e}</m> is the <m>i</m>th column of the matrix <m>H</m>.
       </p>
 
@@ -1646,7 +1646,7 @@
         </statement>
       </theorem>
 
-      <example xml:id="example-algcodes-detecting-errors" permid="LFc">
+      <example xml:id="algcodes-example-detecting-errors" permid="LFc">
         <p permid="Ewp">
           Consider the matrix
           <me permid="NIX">
@@ -1703,7 +1703,7 @@
         there are <m>2^{n-m}</m> distinct cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m>.
       </p>
 
-      <example xml:id="example-algcodes-coset-decoding" permid="MaB">
+      <example xml:id="algcodes-example-coset-decoding" permid="MaB">
         <p permid="kDy">
           Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
           <me permid="ZXp">
@@ -1720,11 +1720,11 @@
           </me>.
           There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>,
           each with order <m>2^2 =4</m>.
-          These cosets are listed in <xref ref="table-cosets-of-c"/>.
+          These cosets are listed in <xref ref="algcodes-table-cosets-of-c"/>.
         </p>
       </example>
 
-      <table xml:id="table-cosets-of-c" permid="tuH">
+      <table xml:id="algcodes-table-cosets-of-c" permid="tuH">
         <title>Cosets of <m>C</m></title>
         <tabular halign="center" top="medium" permid="FIZ">
           <row>
@@ -1791,9 +1791,9 @@
         <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.
       </p>
 
-      <example xml:id="example-algcodes-representative" permid="shK">
+      <example xml:id="algcodes-example-representative" permid="shK">
         <p permid="QKH">
-          In <xref ref="table-cosets-of-c"/>,
+          In <xref ref="algcodes-table-cosets-of-c"/>,
           notice that we have chosen a representative of the least possible weight for each coset.
           These representatives are coset leaders.
           Now suppose that <m>{\mathbf r} = (01111)</m> is the received word.
@@ -1812,7 +1812,7 @@
             <idx><h>Decoding table</h></idx>
       </p>
 
-      <table xml:id="table-syndrome" permid="ZBQ">
+      <table xml:id="algcodes-table-syndrome" permid="ZBQ">
         <title>Syndromes for each coset</title>
         <tabular halign="center" top="medium" permid="lQi">
           <row bottom="medium">
@@ -1876,9 +1876,9 @@
         </proof>
       </proposition>
 
-      <example xml:id="example-algcodes-decoding-table" permid="YoT">
+      <example xml:id="algcodes-example-decoding-table" permid="YoT">
         <p permid="wRQ">
-          <xref ref="table-syndrome"/> is a decoding table for the code <m>C</m> given in <xref ref="example-algcodes-coset-decoding"/>.
+          <xref ref="algcodes-table-syndrome"/> is a decoding table for the code <m>C</m> given in <xref ref="algcodes-example-coset-decoding"/>.
           If <m>{\mathbf x} = (01111)</m> is received,
           then its syndrome can be computed to be
           <me permid="mlH">
@@ -1980,7 +1980,7 @@
     <!-- Exercises with Solutions  -->
     <!-- File: algcodes.xml  -->
     <!-- Title: Algebraic Coding Theory -->
-  <exercises xml:id="exercises-algcodes" filenamebase="algcodes" permid="NfU">
+  <exercises xml:id="algcodes-exercises" filenamebase="algcodes" permid="NfU">
     <title>Exercises</title>
     <exercise number="1" permid="kDl" xml:id="algcodes-exercise-acceptable-codes">
       <statement>
@@ -2986,7 +2986,7 @@
 
       <p permid="PjP">
         Here is a partial test that these two matrices are correct,
-        exercising <xref ref="lemma-parity-check"/>.
+        exercising <xref ref="algcodes-lemma-parity-check"/>.
         Notice that we need to use the transpose of the generator matrix,
         for reasons described above.
       </p>
@@ -3141,7 +3141,7 @@
       <statement>
         <p permid="isM">
           One technique for improving the characteristics of a code is to add an overall parity-check bit,
-          much like the lone parity-check bit of the <acro>ASCII</acro> code described in <xref ref="example-algcodes-even-parity"/>.
+          much like the lone parity-check bit of the <acro>ASCII</acro> code described in <xref ref="algcodes-example-even-parity"/>.
           Such codes are referred to as the
           <term>extended</term> version of the original.
         </p>
