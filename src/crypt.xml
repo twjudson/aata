@@ -69,7 +69,7 @@
     </p>
   </introduction>
 
-  <section xml:id="section-private-key-crypt" permid="Qkr">
+  <section xml:id="crypt-section-private-key" permid="Qkr">
     <title>Private Key Cryptography</title>
     <p permid="ztx">
       In <term>single</term>
@@ -90,7 +90,7 @@
       however, <m>f</m> must be extremely difficult to guess from available examples of coded messages.
     </p>
 
-    <example xml:id="example-crypt-caesar" permid="zWa">
+    <example xml:id="crypt-example-caesar" permid="zWa">
       <p permid="RSA">
         One of the first and most famous private key cryptosystems was the shift code used by Julius Caesar.
         We first digitize the alphabet by letting <m>\text{A}  = 00, \text{B}  = 01, \ldots, \text{Z} = 25</m>.
@@ -126,7 +126,7 @@
       the frequency analysis of the characters appearing in the intercepted message often makes its decryption possible.
     </p>
 
-    <example xml:id="example-crypt-analysis" permid="gdj">
+    <example xml:id="crypt-example-analysis" permid="gdj">
       <p permid="xZJ">
         Suppose we receive a message that we know was encrypted by using a shift transformation on single letters of the <m>26</m>-letter alphabet.
         To find out exactly what the shift transformation was,
@@ -154,7 +154,7 @@
           <idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>
       In these ciphers a character in the enciphered message represents exactly one character in the original message.
       Such cryptosystems are not very sophisticated and are quite easy to break.
-      In fact, in a simple shift as described in <xref ref="example-crypt-caesar"/>, there are only <m>26</m> possible keys.
+      In fact, in a simple shift as described in <xref ref="crypt-example-caesar"/>, there are only <m>26</m> possible keys.
       It would be quite easy to try them all rather than to use frequency analysis.
     </p>
 
@@ -170,7 +170,7 @@
         c = ap + b \bmod 26
       </me>
       for <m>p</m>.
-      By <xref ref="proposition-zn-equiv-classes"/>,
+      By <xref ref="groups-proposition-zn-equiv-classes"/>,
       this is possible exactly when <m>a</m> has an inverse or,
       equivalently, when <m>\gcd( a, 26) =1</m>.
       In this case
@@ -182,7 +182,7 @@
           <idx><h>Cryptosystem</h><h>affine</h></idx>
     </p>
 
-    <example xml:id="example-crypt-affine-crypt" permid="Mks">
+    <example xml:id="crypt-example-affine-crypt" permid="Mks">
       <p permid="egS">
         Let us consider the affine cryptosystem <m>f(p) = ap + b \bmod 26</m>.
         For this cryptosystem to work we must choose an <m>a \in {\mathbb Z}_{26}</m> that is invertible.
@@ -224,7 +224,7 @@
       </me>.
     </p>
 
-    <example xml:id="example-crypt-help" permid="srB">
+    <example xml:id="crypt-example-help" permid="srB">
       <p permid="Kob">
         Suppose that we wish to encode the word HELP. The corresponding digit string is <m>7, 4, 11, 15</m>.
         If
@@ -255,12 +255,12 @@
       The pair <em>th</em> appears quite often;
       the pair <em>qz</em> never appears.
       To avoid decryption by a third party,
-      we must use a larger matrix than the one we used in <xref ref="example-crypt-help"/>.
+      we must use a larger matrix than the one we used in <xref ref="crypt-example-help"/>.
     </p>
         <!-- TWJ 4/7/2010 Need to resolve this reference -->
   </section>
 
-  <section xml:id="section-public-key-crypt" permid="wrA">
+  <section xml:id="crypt-section-public-key" permid="wrA">
     <title>Public Key Cryptography</title>
     <introduction permid="EFT">
       <p permid="vfd">
@@ -327,7 +327,7 @@
         Only Alice knows <m>D</m>.
       </p>
 
-      <example xml:id="example-crypt-rsa" permid="IFS">
+      <example xml:id="crypt-example-rsa" permid="IFS">
         <p permid="qvk">
           Before exploring the theory behind the <acro>RSA</acro> cryptosystem or attempting to use large integers,
           we will use some small integers just to see that the system does indeed work.
@@ -368,7 +368,7 @@
         </me>.
         There are two cases to consider.
         In the first case assume that <m>\gcd(x, n) = 1</m>.
-        Then by <xref ref="theorem-eulers_theorem"/>,
+        Then by <xref ref="cosets-theorem-eulers_theorem"/>,
         <me permid="jfg">
           y^D = (x^E)^D = x^{DE} = x^{km + 1} = (x^{\phi(n)})^k x = (1)^k x = x \bmod n
         </me>.
@@ -385,7 +385,7 @@
         There is then an integer <m>r</m>,
         with <m>r \lt q</m> and <m>x = rp</m>.
         Note that we have <m>\gcd(x, q) = 1</m> and that <m>m=\phi(n)=(p - 1)(q - 1)=\phi(p)\phi(q)</m>.
-        Then, using <xref ref="theorem-eulers_theorem"/>, but now mod <m>q</m>,
+        Then, using <xref ref="cosets-theorem-eulers_theorem"/>, but now mod <m>q</m>,
         <me permid="Pmp">
           x^{km} = x^{k\phi(p)\phi(q)} = (x^{\phi(q)})^{k\phi(p)} = (1)^{k\phi(p)} = 1 \bmod q
         </me>.
@@ -401,7 +401,7 @@
         We can now ask how one would go about breaking the <acro>RSA</acro> cryptosystem.
         To find <m>D</m> given <m>n</m> and <m>E</m>,
         we simply need to factor <m>n</m> and solve for <m>D</m> by using the Euclidean algorithm.
-        If we had known that <m>667 = 23 \cdot 29</m> in <xref ref="example-crypt-rsa"/>, we could have recovered <m>D</m>.
+        If we had known that <m>667 = 23 \cdot 29</m> in <xref ref="crypt-example-rsa"/>, we could have recovered <m>D</m>.
       </p>
     </subsection>
 
@@ -553,13 +553,13 @@
     <!-- Exercises with Solutions  -->
     <!-- File: crypt.xml  -->
     <!-- Title: Introduction to Cryptography -->
-  <exercises xml:id="exercises-crypt" filenamebase="crypt" permid="rHH">
+  <exercises xml:id="crypt-exercises" filenamebase="crypt" permid="rHH">
     <title>Exercises</title>
 
     <exercise number="1" permid="oNb" xml:id="crypt-exercise-i-love-math">
       <statement>
         <p permid="Htv">
-          Encode <c>IXLOVEXMATH</c> using the cryptosystem in <xref ref="example-crypt-caesar"/>.
+          Encode <c>IXLOVEXMATH</c> using the cryptosystem in <xref ref="crypt-example-caesar"/>.
         </p>
       </statement>
       <hint permid="xbu">
@@ -573,7 +573,7 @@
       <statement>
         <p permid="nAE">
           Decode <c>ZLOOA WKLVA EHARQ WKHA ILQDO</c>,
-          which was encoded using the cryptosystem in <xref ref="example-crypt-caesar"/>.
+          which was encoded using the cryptosystem in <xref ref="crypt-example-caesar"/>.
         </p>
       </statement>
     </exercise>
