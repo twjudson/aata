@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=1.5]
+
+\coordinate (left-x-axis-start) at (-0.5,0);
+\coordinate (left-x-axis-end) at (2,0);
+\coordinate (left-y-axis-start) at (0,-0.5);
+\coordinate (left-y-axis-end) at (0,2);
+\coordinate (left-origin) at (0,0);
+\coordinate (left-unit-x) at (1,0);
+\coordinate (left-unit-y) at (0,1);
+\coordinate (left-pt-1-1) at (1,1);
+
+\node [right] at  (left-y-axis-end) {$y$};
+\node [below] at (left-x-axis-end) {$x$};
+\node [below] at (left-unit-x) {$(1,0)$};
+\node [left] at (left-unit-y) {$(0,1)$};
+
+\draw [->]  (left-x-axis-start) -- (left-x-axis-end);
+\draw  [->] (left-y-axis-start)  -- (left-y-axis-end);
+\draw [->, very thick, black]  (left-origin) -- (left-unit-x);
+\draw  [->, very thick, black] (left-origin) -- (left-unit-y);
+\draw (left-unit-x) -- (left-pt-1-1) -- (left-unit-y);
+
+\end{tikzpicture}
