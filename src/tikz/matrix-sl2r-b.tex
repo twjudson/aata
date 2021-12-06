@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=1.5]
+
+\coordinate (right-x-axis-start) at (-0.5,0);
+\coordinate (right-x-axis-end) at (2,0);
+\coordinate (right-y-axis-start) at (0,-0.5);
+\coordinate (right-y-axis-end) at (0,2);
+\coordinate (right-origin) at (0,0);
+\coordinate (right-unit-x) at (1,0);
+\coordinate (right-unit-y) at (0,1);
+\coordinate (right-pt-1-1) at (1,1);
+\coordinate (right-pt-2-1) at (2,1);
+
+\node [right] at  (right-y-axis-end) {$y$};
+\node [below] at (right-x-axis-end) {$x$};
+\node [below] at (right-unit-x) {$(1,0)$};
+\node [above] at (right-pt-1-1) {$(1,1)$};
+
+\draw [->]  (right-x-axis-start) -- (right-x-axis-end);
+\draw  [->] (right-y-axis-start)  -- (right-y-axis-end);
+
+\draw [->, very thick, black]  (right-origin) -- (right-pt-1-1);
+\draw  [->, very thick, black] (right-origin) -- (right-unit-x);
+
+\draw (right-pt-1-1) -- (right-pt-2-1) -- (right-unit-x);
+
+\draw (-0.75, -0.55) rectangle (2.1,2.15);
+
+\end{tikzpicture}
