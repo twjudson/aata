@@ -1,30 +1,32 @@
+
 \begin{tikzpicture}[scale=2]
 
 %\draw (-1.3, -1.1) rectangle (2.3,2.0); %set bounding box
-\draw (-1.3, -1.1)  (2.3,-1.1)  (2.3,2.0)  (-1.3,2.0); %set bounding box
 
 
-\coordinate (right-x-axis-start) at (-1,0);
-\coordinate (right-x-axis-end) at (1.75,0);
-\coordinate (right-y-axis-start) at (0,-1);
-\coordinate (right-y-axis-end) at (0,1.75);
-\coordinate (right-origin) at (0,0);
-\coordinate (right-cos-sin) at (30:1.25);
-\coordinate (right-sin-cos) at (120:1.25);
+
+\coordinate (x-axis-start) at (-1.3,0);
+\coordinate (x-axis-end) at (2.3,0);
+\coordinate (y-axis-start) at (0,-1.3);
+\coordinate (y-axis-end) at (0,2.3);
+\coordinate (origin) at (0,0);
+\coordinate (cos-sin) at (30:1.25);
+\coordinate (sin-cos) at (120:1.25);
 \coordinate (arc-start) at (0.5,0);
 \coordinate (arc-label) at (0.5,0.15);
 
-\node [below] at (right-x-axis-end) {$x$};
-\node [right] at (right-y-axis-end) {$y$};
+\node [below] at (x-axis-end) {$x$};
+\node [right] at (y-axis-end) {$y$};
 \node [right] at (arc-label) {$\theta$};
 
-\draw [->]  (right-x-axis-start) -- (right-x-axis-end);
-\draw  [->] (right-y-axis-start) -- (right-y-axis-end);
+\draw [->]  (x-axis-start) -- (x-axis-end);
+\draw  [->] (y-axis-start) -- (y-axis-end);
 
-\draw [->, very thick, black]  (right-origin) -- ++(right-sin-cos) node [above] {$(\sin \theta, - \cos \theta)$};
-\draw  [->, very thick, black] (right-origin) -- ++(right-cos-sin) node [right] {$(\cos \theta, \sin \theta)$};
+\draw [->, very thick, black]  (origin) -- ++(sin-cos) node [above] {$(\sin \theta, - \cos \theta)$};
+\draw  [->, very thick, black] (origin) -- ++(cos-sin) node [right] {$(\cos \theta, \sin \theta)$};
 
 \draw (arc-start) arc (0:30:0.5);
 
 \end{tikzpicture}
+
 

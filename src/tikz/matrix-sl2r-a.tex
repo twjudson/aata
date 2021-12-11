@@ -1,26 +1,26 @@
 \begin{tikzpicture}[scale=1.5]
 
 %\draw (-0.75, -0.55) rectangle (2.1,2.15); %set bounding box
-\draw (-0.75, -0.55) (2.1,-0.55) (2.1,2.15) (-0.75,2.15); %set bounding box
 
-\coordinate (left-x-axis-start) at (-0.5,0);
-\coordinate (left-x-axis-end) at (2,0);
-\coordinate (left-y-axis-start) at (0,-0.5);
-\coordinate (left-y-axis-end) at (0,2);
-\coordinate (left-origin) at (0,0);
-\coordinate (left-unit-x) at (1,0);
-\coordinate (left-unit-y) at (0,1);
-\coordinate (left-pt-1-1) at (1,1);
 
-\node [right] at  (left-y-axis-end) {$y$};
-\node [below] at (left-x-axis-end) {$x$};
-\node [below] at (left-unit-x) {$(1,0)$};
-\node [left] at (left-unit-y) {$(0,1)$};
+\coordinate (x-axis-start) at (-1.0,0);
+\coordinate (x-axis-end) at (2.5,0);
+\coordinate (y-axis-start) at (0,-1.0);
+\coordinate (y-axis-end) at (0,2.5);
+\coordinate (origin) at (0,0);
+\coordinate (unit-x) at (1,0);
+\coordinate (unit-y) at (0,1);
+\coordinate (pt-1-1) at (1,1);
 
-\draw [->]  (left-x-axis-start) -- (left-x-axis-end);
-\draw  [->] (left-y-axis-start)  -- (left-y-axis-end);
-\draw [->, very thick, black]  (left-origin) -- (left-unit-x);
-\draw  [->, very thick, black] (left-origin) -- (left-unit-y);
-\draw (left-unit-x) -- (left-pt-1-1) -- (left-unit-y);
+\node [right] at  (y-axis-end) {$y$};
+\node [below] at (x-axis-end) {$x$};
+\node [below] at (unit-x) {$(1,0)$};
+\node [left] at (unit-y) {$(0,1)$};
+
+\draw [->]  (x-axis-start) -- (x-axis-end);
+\draw  [->] (y-axis-start)  -- (y-axis-end);
+\draw [->, very thick, black]  (origin) -- (unit-x);
+\draw  [->, very thick, black] (origin) -- (unit-y);
+\draw (unit-x) -- (pt-1-1) -- (unit-y);
 
 \end{tikzpicture}
