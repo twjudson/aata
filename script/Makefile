@@ -209,11 +209,8 @@ viewprint:
 # Runestone HTML
 #   Modeled on raw HTML
 #   Will produce a zip file
-#   SOME TOTALLY HARDCODED PATHS
 runestone: place-runestone-files
-	install -d $(HTMLOUT) $(HTMLOUT)/_static
-	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/dist/runestone.js $(HTMLOUT)/_static
-	cp /home/rob/mathbook/python-virtual/env/lib/python3.6/site-packages/runestone/common/js/jquery.idle-timer.js $(HTMLOUT)/_static
+	install -d $(HTMLOUT)
 	cd $(HTMLOUT); \
 	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBXSL)/pretext-html.xsl $(SRC)/aata.xml; \
 	zip -r $(SCRATCH)/$(ZIPRS) .

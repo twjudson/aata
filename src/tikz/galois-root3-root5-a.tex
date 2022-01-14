@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=0.8] 
+
+\coordinate (id-sigma-tau-mu) at (2,2);
+\coordinate (id-sigma) at (0,0);
+\coordinate (id-tau) at (2,0);
+\coordinate (id-mu) at (4,0);
+\coordinate (id) at (2,-2);
+
+\node at (id-sigma-tau-mu)  {$\{  \identity, \sigma, \tau, \mu \}$};
+\node at (id-sigma)  {$\{  \identity, \sigma \}$};
+\node at (id-tau)  {$\{  \identity, \tau \}$};
+\node at (id-mu)  {$\{  \identity, \mu \}$};
+\node at (id)  {$\{  \identity \}$};
+
+\draw  ([yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-tau);
+\draw  ([yshift=-10]id-tau) -- ([yshift=10]id);
+\draw  ([xshift=-10,yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-sigma);
+\draw  ([xshift=10,yshift=-10]id-sigma-tau-mu) -- ([yshift=10]id-mu);
+\draw  ([yshift=-10]id-sigma) -- ([xshift=-10,yshift=10]id);
+\draw  ([yshift=-10]id-mu) -- ([xshift=10,yshift=10]id);
+
+\end{tikzpicture}
