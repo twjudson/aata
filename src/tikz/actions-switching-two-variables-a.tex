@@ -1,0 +1,26 @@
+\begin{tikzpicture}[scale=0.8]
+
+%left diagram
+
+\coordinate (left-pt1) at (1,0);
+\coordinate (left-pt2) at (3,2);
+\coordinate (left-f-label) at (2,1);
+\coordinate (left-a-head) at (0.5,1.5);
+\coordinate (left-a-tail) at (1,1.5);
+\coordinate (left-b-head) at (0.5,0.5);
+\coordinate (left-b-tail) at (1,0.5);
+\coordinate (left-f-head) at (3,1);
+\coordinate (left-f-tail) at (3.5,1);
+
+\node [left] at (left-a-head)  {$a$};
+\node [left] at (left-b-head)  {$b$};
+\node at (left-f-label)  {$f$};
+\node [right] at (left-f-tail) {$f(a,b)$};
+
+\draw (left-pt1) rectangle (left-pt2);
+
+\draw [->] (left-a-head) -- (left-a-tail);
+\draw [->] (left-b-head) -- (left-b-tail);
+\draw [->] (left-f-head) -- (left-f-tail);
+
+\end{tikzpicture}

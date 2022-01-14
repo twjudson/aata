@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=0.8]
+
+
+
+%right diagram
+
+\coordinate (right-pt1) at (7,0);
+\coordinate (right-pt2) at (9,2);
+\coordinate (right-f-label) at (8,1);
+
+\coordinate (right-a-head) at (6.3,1.5);
+\coordinate (right-a-tail) at (7,1.5);
+\coordinate (right-b-head) at (6.3,0.5);
+\coordinate (right-b-tail) at (7,0.5);
+\coordinate (right-f-head) at (9,1);
+\coordinate (right-f-tail) at (9.5,1);
+
+\node [left] at (right-a-head)  {$a$};
+\node [left] at (right-b-head)  {$b$};
+\node at (right-f-label)  {$f$};
+\node [right] at (right-f-tail) {$f(b,a) = g(a,b)$};
+
+\draw (right-pt1) rectangle (right-pt2);
+
+\draw [->] (right-f-head) -- (right-f-tail);
+
+\draw [->] (right-a-head) -- (6.5,1.5) -- (right-b-tail);
+\draw [->] (right-b-head) -- (6.5,0.5) -- (right-a-tail);
+
+\end{tikzpicture}
