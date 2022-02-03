@@ -95,9 +95,6 @@ RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --
 #   For passage into the  pretext/pretext script
 #   These will become obsolete when they migrate to the publisher file
 
-# Don't show hints (at all) in HTML main body
-NOHINT=exercise.divisional.hint no
-
 # font size for LaTeX
 TEN=latex.font.size 10pt
 ELEVEN=latex.font.size 11pt
@@ -152,7 +149,7 @@ diagrams:
 #   entire directories - /images and /knowl
 html:
 	install -d $(HTMLOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/public.xml -d $(HTMLOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -p $(PUB)/public.xml -d $(HTMLOUT) $(SRC)/aata.xml
 
 viewhtml:
 	$(HTMLVIEWER) $(HTMLOUT)/aata.html &
@@ -165,7 +162,7 @@ sage:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
@@ -181,7 +178,7 @@ electronic:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/electronic.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/electronic.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
@@ -199,7 +196,7 @@ print:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TEN) $(PAGEPRINT) -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(TEN) $(PAGEPRINT) -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory
@@ -217,11 +214,11 @@ runestone: place-runestone-files
 
 braille-emboss:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -x $(NOHINT) -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 braille-electronic:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-electronic -x $(NOHINT) -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-electronic -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 
 ######
@@ -294,7 +291,7 @@ jupyter: place-jupyter-files
 # Date by hand and upload
 aimhtml:
 	install -d $(HTMLOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f html -x $(NOHINT) -p $(PUB)/AIM-test-sites.xml -d $(HTMLOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f html -p $(PUB)/AIM-test-sites.xml -d $(HTMLOUT) $(SRC)/aata.xml
 	# zip for easy transfer to AIM servers
 	mv $(SCRATCH)/html $(SCRATCH)/aata-html
 	cd $(SCRATCH); \
@@ -308,6 +305,6 @@ remarkable:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(NOHINT) $(TWELVE) $(PAGEREMARKABLE) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(TWELVE) $(PAGEREMARKABLE) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-remarkable.pdf
 
