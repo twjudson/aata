@@ -4,7 +4,7 @@
 <!--                                               -->
 <!--   Abstract Algebra: Theory and Applications   -->
 <!--                                               -->
-<!-- Copyright (C) 1997-2014  Thomas W. Judson     -->
+<!-- Copyright (C) 1997-2022  Thomas W. Judson     -->
 <!-- See the file COPYING for copying conditions.  -->
 
 <!-- AATA customizations for ALL LaTeX runs of any type -->

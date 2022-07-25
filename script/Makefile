@@ -2,7 +2,7 @@
 ##                                               ##
 ##   Abstract Algebra: Theory and Applications   ##
 ##                                               ##
-## Copyright (C) 2015-2016  Robert A. Beezer     ##
+## Copyright (C) 2015-2022  Robert A. Beezer     ##
 ## See the file COPYING for copying conditions.  ##
 
 #######################
