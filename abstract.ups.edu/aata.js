@@ -2,6 +2,13 @@
 //   based off same
 //   for "First Course in Linear Algebra" website
 
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                          IMPORTANT
+// When this file is edited, update dummy version string on all 
+// pages, so browsers will load a new copy, not an old cached copy
+// Scheme: version=yyyy-n
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
