@@ -5,7 +5,7 @@
 // <p><img alt="New" src="graphics/rednew.gif"></a> Follow the book on <a href="http://twitter.com/">Twitter</a> @ <a href="http://twitter.com/FCLAbook">FCLAbook</a>.</p>
 function news_flash(){
     // Include leading space after rednew graphic
-    flash ='<p><img alt="New" src="graphics/rednew.gif">  The 2021 Annual Edition is now available.  Electronic editions have been updated.  Print is being made available at online retailers - see the <a href="purchase.html">Purchase</a> page for the latest details.</p>'
+    flash ='<p><img alt="New" src="graphics/rednew.gif">  The 2022 Annual Edition is now available.  Electronic editions have been updated.  Print is being made available at online retailers - see the <a href="purchase.html">Purchase</a> page for the latest details.</p>'
     //flash ='<p><img alt="New" src="graphics/rednew.gif">  <a href="aata-es">Spanish Edition 2017</a> now available.</p>'
     // '<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2017 Annual Edition</a> now available in electronic formats.  Hardcover version also available from online bookstores for less than $26, see the <a href="purchase.html">Purchase</a> page for details.</p>'
     //'<p><img alt="New" src="graphics/rednew.gif">  <a href="download.html">2017 Annual Edition</a> now available in electronic formats.  Hardcover version to be widely available soon.  ISBN will be <tt>9781944325053</tt>.</p>'
