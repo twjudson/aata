@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This file provides the overall configuration for your PreTeXt
+    project. To edit the content of your document, open `src/aata.xml`
+    (default location).
+-->
+<project>
+  <targets>
+    <target name="web">
+      <format>html</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/web</output-dir>
+    </target>
+    <target name="runestone">
+      <format>html</format>
+      <source>src/aata.xml</source>
+      <publication>publisher/runestone.xml</publication>
+      <output-dir>published/AATA</output-dir>
+    </target>
+    <target name="print" pdf-method="xelatex">
+      <format>pdf</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/print</output-dir>
+    </target>
+    <target name="print-latex">
+      <format>latex</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/print-latex</output-dir>
+    </target>
+    <target name="subset">
+      <format>html</format>
+      <source>src/aata.xml</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/subset</output-dir>
+      <stringparam key="debug.skip-knowls" value="yes"/>
+      <!-- edit this to change the section/chapter/etc. to include
+           in your subset build -->
+      <xmlid-root>ch_first</xmlid-root>
+    </target>
+  </targets>
+  <executables>
+      <latex>latex</latex>
+      <pdflatex>pdflatex</pdflatex>
+      <xelatex>xelatex</xelatex>
+      <pdfsvg>pdf2svg</pdfsvg>
+      <asy>asy</asy>
+      <sage>sage</sage>
+      <pdfpng>convert</pdfpng>
+      <pdfeps>pdftops</pdfeps>
+      <node>node</node>
+      <liblouis>file2brl</liblouis>
+    </executables>
+</project>
