@@ -74,26 +74,6 @@ JUPYTEROUT = $(SCRATCH)/jupyter
 BRAILLEOUT = $(SCRATCH)/braille
 
 
-###################
-# String parameters
-###################
-
-#   For passage into the  pretext/pretext script
-#   These will become obsolete when they migrate to the publisher file
-
-# font size for LaTeX
-TWELVE=latex.font.size 12pt
-
-# page geometries for LaTeX
-# commas and equals seem to transfer fine, spaces would not
-#
-# Designed to math a ReMarkable e-reader screen's shape
-# CM Bright font is loaded *early* so as to not clobber the
-#     latex.preaqmble.late  inside  aata-latex.xsl  in use
-# ToC adjustment seems to be ineffective
-PAGEREMARKABLE=latex.geometry "paperwidth=5.750in, paperheight=7.666in, total={5.250in, 7.166in}" latex.preamble.early "\\usepackage{cmbright}" toc.level 1
-
-
 ###############
 # Preliminaries
 ###############
@@ -254,6 +234,17 @@ jupyter: place-jupyter-files
 	install -d $(JUPYTEROUT)
 	cd $(JUPYTEROUT); \
 	xsltproc --xinclude -stringparam publisher $(PUB)/public.xml $(MBXSL)/pretext-jupyter.xsl $(SRC)/aata.xml
+
+# String parameter conveniences for Remakable target,
+# despite being deprecated 2022-10. Could fork public.xml
+# once some common material is modularized
+
+# Designed to match a ReMarkable e-reader screen's shape
+# CM Bright font is loaded *early* so as to not clobber the
+#     latex.preaqmble.late  inside  aata-latex.xsl  in use
+# ToC adjustment seems to be ineffective
+TWELVE=latex.font.size 12pt
+PAGEREMARKABLE=latex.geometry "paperwidth=5.750in, paperheight=7.666in, total={5.250in, 7.166in}" latex.preamble.early "\\usepackage{cmbright}" toc.level 1
 
 # Like Sage-inclusive PDF, but with page geometry that matches the shape
 # of a ReMarkable e-reader screen, see PAGEREMARKABLE defined above
