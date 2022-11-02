@@ -35,7 +35,6 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
-#   zip             (Runestone builds)
 #   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
 #####
@@ -68,17 +67,11 @@ PUB = $(AATA)/publisher
 # a scratch directory
 DIAGOUT    = $(SCRATCH)/diagram
 HTMLOUT    = $(SCRATCH)/html
+RSOUT      = $(SCRATCH)/runestone
 PDFOUT     = $(SCRATCH)/pdf
 DOCTEST    = $(SCRATCH)/doctest
 JUPYTEROUT = $(SCRATCH)/jupyter
 BRAILLEOUT = $(SCRATCH)/braille
-
-# useful date string
-# http://stackoverflow.com/questions/1401482
-DATE=$(shell date +%Y-%m-%d)
-
-# zipfiles, Runestone version
-ZIPRS=AATA-runestone-$(DATE).zip
 
 
 ###################
@@ -188,13 +181,11 @@ viewprint:
 	$(PDFVIEWER) $(PDFOUT)/aata-print.pdf &
 
 # Runestone HTML
-#   Modeled on raw HTML
-#   Will produce a zip file
-runestone: place-runestone-files
-	install -d $(HTMLOUT)
-	cd $(HTMLOUT); \
-	xsltproc --xinclude -stringparam publisher $(PUB)/runestone.xml $(MBXSL)/pretext-html.xsl $(SRC)/aata.xml; \
-	zip -r $(SCRATCH)/$(ZIPRS) .
+#   Modeled on HTML
+#   Not for production, just for local testing
+runestone:
+	install -d $(RSOUT)
+	$(MBSCRIPT)/pretext -vv -c all -f html -p $(PUB)/runestone.xml -d $(RSOUT) $(SRC)/aata.xml
 
 braille-emboss:
 	install -d $(BRAILLEOUT)
@@ -241,12 +232,6 @@ doctest:
 #  https://unix.stackexchange.com/questions/412259/
 #  how-can-i-copy-a-directory-and-rename-it-in-the-same-command
 #  These become unnecessary once the pretext/pretext script is employed
-
-place-runestone-files:
-	install -d  $(HTMLOUT)/external $(HTMLOUT)/generated
-	# /. forces copy to rename images as generated
-	cp -a $(AATA)/images/. $(HTMLOUT)/generated
-	cp -a $(AATA)/external $(HTMLOUT)
 
 place-jupyter-files:
 	install -d $(JUPYTEROUT)/external $(JUPYTEROUT)/generated
