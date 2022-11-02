@@ -89,16 +89,12 @@ ZIPRS=AATA-runestone-$(DATE).zip
 #   These will become obsolete when they migrate to the publisher file
 
 # font size for LaTeX
-TEN=latex.font.size 10pt
 ELEVEN=latex.font.size 11pt
 TWELVE=latex.font.size 12pt
 
 # page geometries for LaTeX
 # commas and equals seem to transfer fine, spaces would not
 #
-# Print edition text body is 4 3/8 x 6 5/8 inches
-# Updated empirically from 2015 Annual Edition
-PAGEPRINT=latex.geometry textwidth=4.375in,textheight=9in
 # PDF-only is wider, eg better for Sage material
 # Default is "letterpaper", we could fine-tune margins if desired
 # 1.25 inch side margins, 0.75 inch top/bottom
@@ -189,7 +185,7 @@ print:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(TEN) $(PAGEPRINT) -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
 
 # View PDF from correct directory
