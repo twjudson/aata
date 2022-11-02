@@ -89,16 +89,11 @@ ZIPRS=AATA-runestone-$(DATE).zip
 #   These will become obsolete when they migrate to the publisher file
 
 # font size for LaTeX
-ELEVEN=latex.font.size 11pt
 TWELVE=latex.font.size 12pt
 
 # page geometries for LaTeX
 # commas and equals seem to transfer fine, spaces would not
 #
-# PDF-only is wider, eg better for Sage material
-# Default is "letterpaper", we could fine-tune margins if desired
-# 1.25 inch side margins, 0.75 inch top/bottom
-PAGEELECTRIC=latex.geometry left=1.25in,right=1.25in,top=0.75in,bottom=0.75in,headsep=0.25in
 # Designed to math a ReMarkable e-reader screen's shape
 # CM Bright font is loaded *early* so as to not clobber the
 #     latex.preaqmble.late  inside  aata-latex.xsl  in use
@@ -151,7 +146,7 @@ sage:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/public.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-sage.pdf
 
 # View PDF from correct directory
@@ -167,7 +162,7 @@ electronic:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f pdf -x $(ELEVEN) $(PAGEELECTRIC) -p $(PUB)/electronic.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/electronic.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-electronic.pdf
 
 # View PDF from correct directory
