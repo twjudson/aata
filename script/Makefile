@@ -35,7 +35,7 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
-#   zip             (Runestone, AIM HTML builds)
+#   zip             (Runestone builds)
 #   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
 #####
@@ -77,16 +77,9 @@ BRAILLEOUT = $(SCRATCH)/braille
 # http://stackoverflow.com/questions/1401482
 DATE=$(shell date +%Y-%m-%d)
 
-# zipfiles AIM/UTMOST study, Runestone version
-ZIPAIM=aata-html-$(DATE).zip
+# zipfiles, Runestone version
 ZIPRS=AATA-runestone-$(DATE).zip
 
-
-# convenience for rsync command, hopefully not OS dependent
-# First does not include  --delete  switch at end due to PDF in directory
-# Second makes *exact* mirror of build directory
-RSYNC=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive
-RSYNCDELETE=rsync --verbose  --progress --stats --compress --rsh=/usr/bin/ssh --recursive --delete
 
 ###################
 # String parameters
@@ -285,19 +278,6 @@ jupyter: place-jupyter-files
 	install -d $(JUPYTEROUT)
 	cd $(JUPYTEROUT); \
 	xsltproc --xinclude -stringparam publisher $(PUB)/public.xml $(MBXSL)/pretext-jupyter.xsl $(SRC)/aata.xml
-
-# This makes a zip file of a version for use at AIM Books
-# Clean out directories first by hand
-# Date by hand and upload
-aimhtml:
-	install -d $(HTMLOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f html -p $(PUB)/AIM-test-sites.xml -d $(HTMLOUT) $(SRC)/aata.xml
-	# zip for easy transfer to AIM servers
-	mv $(SCRATCH)/html $(SCRATCH)/aata-html
-	cd $(SCRATCH); \
-	zip -r $(ZIPAIM) aata-html/
-	${RSYNCDELETE} $(SCRATCH)/${ZIPAIM} utmost@utmost.aimath.org:/home/utmost/www/pretextbook.org/htdocs/beta
-	echo "Dropped in http://pretextbook.org/beta/"${ZIPAIM}
 
 # Like Sage-inclusive PDF, but with page geometry that matches the shape
 # of a ReMarkable e-reader screen, see PAGEREMARKABLE defined above
