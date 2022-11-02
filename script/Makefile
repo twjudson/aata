@@ -169,11 +169,11 @@ runestone:
 
 braille-emboss:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-emboss -p $(PUB)/braille.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 braille-electronic:
 	install -d $(BRAILLEOUT)
-	$(MBSCRIPT)/pretext -vv -c all -f braille-electronic -p $(PUB)/public.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f braille-electronic -p $(PUB)/braille.xml -d $(BRAILLEOUT) $(SRC)/aata.xml
 
 
 ######
