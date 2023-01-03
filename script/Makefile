@@ -227,7 +227,7 @@ place-jupyter-files:
 
 # via pretext/pretext, so no need to move any files, etc.
 epub:
-	$(MBSCRIPT)/pretext -v -c all -f epub-svg -p $(PUB)/epub.xml -d $(SCRATCH) $(SRC)/aata.xml
+	$(MBSCRIPT)/pretext -vv -c all -f epub-svg -p $(PUB)/epub.xml -d $(SCRATCH) $(SRC)/aata.xml
 
 # Jupyter Notebooks - experimental
 jupyter: place-jupyter-files
