@@ -70,6 +70,7 @@ HTMLOUT    = $(SCRATCH)/html
 RSOUT      = $(SCRATCH)/runestone
 PDFOUT     = $(SCRATCH)/pdf
 DOCTEST    = $(SCRATCH)/doctest
+EPUBOUT    = $(SCRATCH)/epub
 JUPYTEROUT = $(SCRATCH)/jupyter
 BRAILLEOUT = $(SCRATCH)/braille
 
@@ -227,7 +228,8 @@ place-jupyter-files:
 
 # via pretext/pretext, so no need to move any files, etc.
 epub:
-	$(MBSCRIPT)/pretext -vv -c all -f epub-svg -p $(PUB)/epub.xml -d $(SCRATCH) $(SRC)/aata.xml
+	install -d $(EPUBOUT)
+	$(MBSCRIPT)/pretext -vv -c all -f epub-svg -p $(PUB)/epub.xml -d $(EPUBOUT) $(SRC)/aata.xml
 
 # Jupyter Notebooks - experimental
 jupyter: place-jupyter-files
