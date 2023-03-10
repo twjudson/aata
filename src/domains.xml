@@ -627,83 +627,88 @@
         </statement>
 
         <proof permid="twH">
-          <p permid="dLg">
-            <em>Existence of a factorization.</em>
-            Let <m>D</m> be a <acro>PID</acro> and <m>a</m> be a nonzero element in <m>D</m> that is not a unit.
-            If <m>a</m> is irreducible, then we are done.
-            If not, then there exists a factorization <m>a = a_1 b_1</m>,
-            where neither <m>a_1</m> nor <m>b_1</m> is a unit.
-            Hence, <m>\langle a \rangle \subset \langle a_1 \rangle</m>.
-            By <xref ref="domains-lemma-principal-ideal"/>,
-            we know that <m>\langle a \rangle \neq \langle a_1 \rangle</m>;
-            otherwise, <m>a</m> and <m>a_1</m> would be associates and <m>b_1</m> would be a unit,
-            which would contradict our assumption.
-            Now suppose that <m>a_1 =  a_2 b_2</m>,
-            where neither <m>a_2</m> nor <m>b_2</m> is a unit.
-            By the same argument as before,
-            <m>\langle a_1 \rangle \subset \langle a_2 \rangle</m>.
-            We can continue with this construction to obtain an ascending chain of ideals
-            <me permid="ZZC">
-              \langle a \rangle \subset \langle a_1 \rangle \subset \langle a_2 \rangle \subset \cdots
-            </me>.
-            By <xref ref="domains-lemma-acc"/>,
-            there exists a positive integer <m>N</m> such that
-            <m>\langle a_n \rangle = \langle a_N \rangle</m> for all <m>n \geq N</m>.
-            Consequently, <m>a_N</m> must be irreducible.
-            We have now shown that <m>a</m> is the product of two elements,
-            one of which must be irreducible.
-          </p>
-            <!-- Label repaired.  Suggested by R. Beezer. -->
-            <!-- TWJ 12/19/2011 -->
-          <p permid="JSp">
-            Now suppose that <m>a = c_1 p_1</m>,
-            where <m>p_1</m> is irreducible.
-            If <m>c_1</m> is not a unit,
-            we can repeat the preceding argument to conclude that <m>\langle a \rangle \subset \langle c_1 \rangle</m>.
-            Either <m>c_1</m> is irreducible or <m>c_1 = c_2 p_2</m>,
-            where <m>p_2</m> is irreducible and <m>c_2</m> is not a unit.
-            Continuing in this manner, we obtain another chain of ideals
-            <me permid="GgL">
-              \langle a \rangle \subset \langle c_1 \rangle \subset \langle c_2 \rangle \subset \cdots
-            </me>.
-            This chain must satisfy the ascending chain condition;
-            therefore,
-            <me permid="mnU">
-              a = p_1 p_2 \cdots p_r
-            </me>
-            for irreducible elements <m>p_1, \ldots, p_r</m>.
-          </p>
+          <case>
+            <title>Existence of a factorization</title>
+            <p permid="dLg">
+              Let <m>D</m> be a <acro>PID</acro> and <m>a</m> be a nonzero element in <m>D</m> that is not a unit.
+              If <m>a</m> is irreducible, then we are done.
+              If not, then there exists a factorization <m>a = a_1 b_1</m>,
+              where neither <m>a_1</m> nor <m>b_1</m> is a unit.
+              Hence, <m>\langle a \rangle \subset \langle a_1 \rangle</m>.
+              By <xref ref="domains-lemma-principal-ideal"/>,
+              we know that <m>\langle a \rangle \neq \langle a_1 \rangle</m>;
+              otherwise, <m>a</m> and <m>a_1</m> would be associates and <m>b_1</m> would be a unit,
+              which would contradict our assumption.
+              Now suppose that <m>a_1 =  a_2 b_2</m>,
+              where neither <m>a_2</m> nor <m>b_2</m> is a unit.
+              By the same argument as before,
+              <m>\langle a_1 \rangle \subset \langle a_2 \rangle</m>.
+              We can continue with this construction to obtain an ascending chain of ideals
+              <me permid="ZZC">
+                \langle a \rangle \subset \langle a_1 \rangle \subset \langle a_2 \rangle \subset \cdots
+              </me>.
+              By <xref ref="domains-lemma-acc"/>,
+              there exists a positive integer <m>N</m> such that
+              <m>\langle a_n \rangle = \langle a_N \rangle</m> for all <m>n \geq N</m>.
+              Consequently, <m>a_N</m> must be irreducible.
+              We have now shown that <m>a</m> is the product of two elements,
+              one of which must be irreducible.
+            </p>
+              <!-- Label repaired.  Suggested by R. Beezer. -->
+              <!-- TWJ 12/19/2011 -->
+            <p permid="JSp">
+              Now suppose that <m>a = c_1 p_1</m>,
+              where <m>p_1</m> is irreducible.
+              If <m>c_1</m> is not a unit,
+              we can repeat the preceding argument to conclude that <m>\langle a \rangle \subset \langle c_1 \rangle</m>.
+              Either <m>c_1</m> is irreducible or <m>c_1 = c_2 p_2</m>,
+              where <m>p_2</m> is irreducible and <m>c_2</m> is not a unit.
+              Continuing in this manner, we obtain another chain of ideals
+              <me permid="GgL">
+                \langle a \rangle \subset \langle c_1 \rangle \subset \langle c_2 \rangle \subset \cdots
+              </me>.
+              This chain must satisfy the ascending chain condition;
+              therefore,
+              <me permid="mnU">
+                a = p_1 p_2 \cdots p_r
+              </me>
+              for irreducible elements <m>p_1, \ldots, p_r</m>.
+            </p>
+          </case>
 
-          <p permid="pZy">
-            <em>Uniqueness of the factorization.</em> To show uniqueness, let
-            <me permid="Svd">
-              a = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s
-            </me>,
-            where each <m>p_i</m> and each <m>q_i</m> is irreducible.
-            Without loss of generality, we can assume that <m>r \lt s</m>.
-            Since <m>p_1</m> divides <m>q_1 q_2 \cdots q_s</m>,
-            by <xref ref="domains-corollary-irreducible-pid"/> it must divide some <m>q_i</m>.
-            By rearranging the <m>q_i</m>'s, we can assume that <m>p_1 \mid q_1</m>;
-            hence, <m>q_1 = u_1 p_1</m> for some unit <m>u_1</m> in <m>D</m>.
-            Therefore,
-            <me permid="yCm">
-              a = p_1 p_2 \cdots p_r = u_1 p_1 q_2 \cdots q_s
-            </me>
-            or
-            <me permid="eJv">
-              p_2 \cdots p_r = u_1 q_2 \cdots q_s
-            </me>.
-            Continuing in this manner,
-            we can arrange the <m>q_i</m>'s such that <m>p_2 = q_2, p_3 = q_3, \ldots,
-            p_r = q_r</m>,
-            to obtain
-            <me permid="KQE">
-              u_1 u_2 \cdots u_r q_{r + 1} \cdots q_s = 1
-            </me>.
-            In this case <m>q_{r + 1} \cdots q_s</m> is a unit,
-            which contradicts the fact that <m>q_{r + 1}, \ldots, q_s</m> are irreducibles.
-            Therefore, <m>r = s</m> and the factorization of <m>a</m> is unique.
-          </p>
+          <case>
+            <title>Uniqueness of the factorization</title>
+            <p permid="pZy">
+              To show uniqueness, let
+              <me permid="Svd">
+                a = p_1 p_2 \cdots p_r = q_1 q_2 \cdots q_s
+              </me>,
+              where each <m>p_i</m> and each <m>q_i</m> is irreducible.
+              Without loss of generality, we can assume that <m>r \lt s</m>.
+              Since <m>p_1</m> divides <m>q_1 q_2 \cdots q_s</m>,
+              by <xref ref="domains-corollary-irreducible-pid"/> it must divide some <m>q_i</m>.
+              By rearranging the <m>q_i</m>'s, we can assume that <m>p_1 \mid q_1</m>;
+              hence, <m>q_1 = u_1 p_1</m> for some unit <m>u_1</m> in <m>D</m>.
+              Therefore,
+              <me permid="yCm">
+                a = p_1 p_2 \cdots p_r = u_1 p_1 q_2 \cdots q_s
+              </me>
+              or
+              <me permid="eJv">
+                p_2 \cdots p_r = u_1 q_2 \cdots q_s
+              </me>.
+              Continuing in this manner,
+              we can arrange the <m>q_i</m>'s such that <m>p_2 = q_2, p_3 = q_3, \ldots,
+              p_r = q_r</m>,
+              to obtain
+              <me permid="KQE">
+                u_1 u_2 \cdots u_r q_{r + 1} \cdots q_s = 1
+              </me>.
+              In this case <m>q_{r + 1} \cdots q_s</m> is a unit,
+              which contradicts the fact that <m>q_{r + 1}, \ldots, q_s</m> are irreducibles.
+              Therefore, <m>r = s</m> and the factorization of <m>a</m> is unique.
+            </p>
+          </case>
         </proof>
       </theorem>
             <!-- Label repaired.  Suggested by R. Beezer. -->

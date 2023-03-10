@@ -317,49 +317,55 @@
             then <m>q = q'</m> and <m>r = r'</m>.
           </p>
 
-          <p permid="EET">
-            <em>Existence of <m>q</m> and <m>r</m>.</em> Let
-            <me permid="Qcn">
-              S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}
-            </me>.
-            If <m>0 \in S</m>, then <m>b</m> divides <m>a</m>,
-            and  we can let <m>q = a/b</m> and <m>r = 0</m>.
-            If <m>0 \notin S</m>, we can use the Well-Ordering Principle.
-            We must first show that <m>S</m> is nonempty.
-            If <m>a \gt 0</m>, then <m>a - b \cdot 0 \in S</m>.
-            If <m>a \lt 0</m>, then <m>a - b(2a) = a(1 - 2b) \in S</m>.
-            In either case <m>S \neq \emptyset</m>.
-            By the Well-Ordering Principle,
-            <m>S</m> must have a smallest member, say <m>r = a - bq</m>.
-            Therefore, <m>a = bq + r</m>, <m>r \geq 0</m>.
-            We now show that <m>r \lt b</m>.
-            Suppose that <m>r \gt b</m>.
-            Then
-            <me permid="wjw">
-              a - b(q + 1)= a - bq - b = r - b \gt 0
-            </me>.
-            In this case we would have <m>a - b(q + 1)</m> in the set <m>S</m>.
-            But then <m>a - b(q + 1) \lt a - bq</m>,
-            which would contradict the fact that
-            <m>r = a - bq</m> is the smallest member  of <m>S</m>.
-            So <m>r \leq b</m>.
-            Since <m>0 \notin S</m>, <m>r \neq b</m> and so <m>r \lt b</m>.
-          </p>
+          <case>
+            <title>Existence of <m>q</m> and <m>r</m></title>
+            <p permid="EET">
+              Let
+              <me permid="Qcn">
+                S = \{ a - bk : k \in {\mathbb Z} \text{ and } a - bk \geq 0 \}
+              </me>.
+              If <m>0 \in S</m>, then <m>b</m> divides <m>a</m>,
+              and  we can let <m>q = a/b</m> and <m>r = 0</m>.
+              If <m>0 \notin S</m>, we can use the Well-Ordering Principle.
+              We must first show that <m>S</m> is nonempty.
+              If <m>a \gt 0</m>, then <m>a - b \cdot 0 \in S</m>.
+              If <m>a \lt 0</m>, then <m>a - b(2a) = a(1 - 2b) \in S</m>.
+              In either case <m>S \neq \emptyset</m>.
+              By the Well-Ordering Principle,
+              <m>S</m> must have a smallest member, say <m>r = a - bq</m>.
+              Therefore, <m>a = bq + r</m>, <m>r \geq 0</m>.
+              We now show that <m>r \lt b</m>.
+              Suppose that <m>r \gt b</m>.
+              Then
+              <me permid="wjw">
+                a - b(q + 1)= a - bq - b = r - b \gt 0
+              </me>.
+              In this case we would have <m>a - b(q + 1)</m> in the set <m>S</m>.
+              But then <m>a - b(q + 1) \lt a - bq</m>,
+              which would contradict the fact that
+              <m>r = a - bq</m> is the smallest member  of <m>S</m>.
+              So <m>r \leq b</m>.
+              Since <m>0 \notin S</m>, <m>r \neq b</m> and so <m>r \lt b</m>.
+            </p>
+          </case>
 
-          <p permid="kMc">
-            <em>Uniqueness of <m>q</m> and <m>r</m>.</em>
-            Suppose there exist integers <m>r</m>, <m>r'</m>,
-            <m>q</m>, and <m>q'</m> such that
-            <me permid="cqF">
-              a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b
-            </me>.
-            Then <m> bq + r =  bq' + r'</m>.
-            Assume that <m>r' \geq r</m>.
-            From the last equation we have <m>b(q - q') = r' - r</m>;
-            therefore, <m>b</m> must divide <m>r' - r</m> and <m>0 \leq r'- r \leq r' \lt b</m>.
-            This is possible only if <m>r' - r = 0</m>.
-            Hence, <m>r = r'</m> and  <m>q = q'</m>.
-          </p>
+          <case>
+            <title>Uniqueness of <m>q</m> and <m>r</m></title>
+            <p permid="kMc">
+              <em>Uniqueness of <m>q</m> and <m>r</m>.</em>
+              Suppose there exist integers <m>r</m>, <m>r'</m>,
+              <m>q</m>, and <m>q'</m> such that
+              <me permid="cqF">
+                a = bq + r, 0 \leq r \lt b \quad \text{and}\quad a = bq' + r', 0 \leq r' \lt b
+              </me>.
+              Then <m> bq + r =  bq' + r'</m>.
+              Assume that <m>r' \geq r</m>.
+              From the last equation we have <m>b(q - q') = r' - r</m>;
+              therefore, <m>b</m> must divide <m>r' - r</m> and <m>0 \leq r'- r \leq r' \lt b</m>.
+              This is possible only if <m>r' - r = 0</m>.
+              Hence, <m>r = r'</m> and  <m>q = q'</m>.
+            </p>
+          </case>
         </proof>
       </theorem>
 
@@ -608,51 +614,57 @@
         </statement>
 
         <proof permid="Rap">
-          <p permid="pvV">
-            <em>Uniqueness.</em>  To show uniqueness we will use induction on <m>n</m>.
-            The theorem is certainly true for <m>n = 2</m> since in this case <m>n</m> is prime.
-            Now assume that the result holds for all integers <m>m</m> such that <m>1 \leq m \lt n</m>, and
-            <me permid="xYJ">
-              n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l
-            </me>,
-            where <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> and <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>.
-            By <xref ref="integers-theorem-prime-divisor"/>, <m>p_1  \mid  q_i</m> for some
-            <m>i = 1, \ldots,
-            l</m> and <m>q_1  \mid  p_j</m> for some <m>j = 1, \ldots, k</m>.
-            Since all of the <m>p_i</m>'s and <m>q_i</m>'s are prime,
-            <m>p_1 = q_i</m> and  <m>q_1 = p_j</m>.
-            Hence, <m>p_1 = q_1</m> since <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.
-            By the induction hypothesis,
-            <me permid="efS">
-              n' = p_2 \cdots p_k = q_2 \cdots q_l
-            </me>
-            has a unique factorization.
-            Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.
-          </p>
+          <case>
+            <title>Uniqueness</title>
+            <p permid="pvV">
+              To show uniqueness we will use induction on <m>n</m>.
+              The theorem is certainly true for <m>n = 2</m> since in this case <m>n</m> is prime.
+              Now assume that the result holds for all integers <m>m</m> such that <m>1 \leq m \lt n</m>, and
+              <me permid="xYJ">
+                n = p_1 p_2 \cdots p_k = q_1 q_2 \cdots q_l
+              </me>,
+              where <m>p_1 \leq p_2 \leq \cdots \leq p_k</m> and <m>q_1 \leq q_2 \leq \cdots \leq q_l</m>.
+              By <xref ref="integers-theorem-prime-divisor"/>, <m>p_1  \mid  q_i</m> for some
+              <m>i = 1, \ldots,
+              l</m> and <m>q_1  \mid  p_j</m> for some <m>j = 1, \ldots, k</m>.
+              Since all of the <m>p_i</m>'s and <m>q_i</m>'s are prime,
+              <m>p_1 = q_i</m> and  <m>q_1 = p_j</m>.
+              Hence, <m>p_1 = q_1</m> since <m>p_1 \leq p_j = q_1 \leq q_i = p_1</m>.
+              By the induction hypothesis,
+              <me permid="efS">
+                n' = p_2 \cdots p_k = q_2 \cdots q_l
+              </me>
+              has a unique factorization.
+              Hence, <m>k = l</m> and <m>q_i = p_i</m> for <m>i = 1, \ldots, k</m>.
+            </p>
+          </case>
 
-          <p permid="VDe">
-            <em>Existence.</em> To show existence,
-            suppose that there is some integer that cannot be written as the product of primes.
-            Let <m>S</m> be the set of all such numbers.
-            By the Principle of Well-Ordering,
-            <m>S</m> has a smallest number, say <m>a</m>.
-            If the only positive factors of <m>a</m> are <m>a</m> and <m>1</m>,
-            then <m>a</m> is prime, which is a contradiction.
-            Hence, <m>a = a_1 a_2</m> where
-            <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.
-            Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>,
-            since <m>a</m> is the smallest element in <m>S</m>.
-            So
-            <md permid="quk">
-              <mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
-              <mrow>a_2 &amp; = q_1 \cdots q_s</mrow>
-            </md>.
-            Therefore,
-            <me permid="Knb">
-              a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s
-            </me>.
-            So <m>a \notin S</m>, which is a contradiction.
-          </p>
+          <case>
+            <title>Existence</title>
+            <p permid="VDe">
+              To show existence,
+              suppose that there is some integer that cannot be written as the product of primes.
+              Let <m>S</m> be the set of all such numbers.
+              By the Principle of Well-Ordering,
+              <m>S</m> has a smallest number, say <m>a</m>.
+              If the only positive factors of <m>a</m> are <m>a</m> and <m>1</m>,
+              then <m>a</m> is prime, which is a contradiction.
+              Hence, <m>a = a_1 a_2</m> where
+              <m>1 \lt a_1 \lt a</m> and <m>1 \lt a_2 \lt a</m>.
+              Neither <m>a_1\in S</m> nor <m>a_2 \in S</m>,
+              since <m>a</m> is the smallest element in <m>S</m>.
+              So
+              <md permid="quk">
+                <mrow>a_1 &amp; = p_1 \cdots p_r</mrow>
+                <mrow>a_2 &amp; = q_1 \cdots q_s</mrow>
+              </md>.
+              Therefore,
+              <me permid="Knb">
+                a = a_1 a_2 = p_1 \cdots p_r q_1 \cdots q_s
+              </me>.
+              So <m>a \notin S</m>, which is a contradiction.
+            </p>
+          </case>
         </proof>
       </theorem>
     </subsection>
