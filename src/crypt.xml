@@ -22,18 +22,15 @@
     </p>
 
     <p permid="CJC">
-      The message to be sent is called the <term>plaintext</term>
-          <idx><h>Plaintext</h></idx>
+      The message to be sent is called the <term>plaintext</term><idx><h>Plaintext</h></idx>
       message.
-      The disguised message is called the <term>ciphertext</term>.
-          <idx><h>Ciphertext</h></idx>
+      The disguised message is called the <idx><h>Ciphertext</h></idx><term>ciphertext</term>.  
       The plaintext and the ciphertext are both written in an <term>alphabet</term>,
       consisting of <term>letters</term>
       or <term>characters</term>.
       Characters can include not only the familiar alphabetic characters A, <m>\ldots</m>, Z and a, <m>\ldots</m>,
       z but also digits, punctuation marks, and blanks.
-      A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <term>cipher</term>,
-          <idx><h>Cipher</h></idx>
+      A <term>cryptosystem</term>,<idx><h>Cryptosystem</h><h>definition of</h></idx> or <idx><h>Cipher</h></idx><term>cipher</term>,
       has two parts: <term>encryption</term>,
       the process of transforming a plaintext message to a ciphertext message,
       and <term>decryption</term>,
@@ -43,8 +40,7 @@
     <p permid="iQL">
       There are many different families of cryptosystems,
       each distinguished by a particular encryption algorithm.
-      Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <term>key</term>.
-          <idx><h>Key</h><h>definition of</h></idx>
+      Cryptosystems in a specified cryptographic family are distinguished from one another by a parameter to the encryption function called a <idx><h>Key</h><h>definition of</h></idx><term>key</term>.
       A classical cryptosystem has a single key,
       which must be kept secret,
       known only to the sender and the receiver of the message.
@@ -58,9 +54,7 @@
     <p permid="OXU">
       Systems that use two separate keys,
       one for encoding and another for decoding,
-      are called <term>public key cryptosystems</term>.
-          <idx><h>Key</h><h>public</h></idx>
-          <idx><h>Cryptosystem</h><h>public key</h></idx>
+      are called <idx><h>Key</h><h>public</h></idx><idx><h>Cryptosystem</h><h>public key</h></idx><term>public key cryptosystems</term>.
       Since knowledge of the encoding key does not allow anyone to guess at the decoding key,
       the encoding key can be made public.
       A public key cryptosystem allows <m>A</m> and <m>B</m> to send messages to <m>C</m> using the same encoding key.
@@ -72,12 +66,8 @@
   <section xml:id="crypt-section-private-key" permid="Qkr">
     <title>Private Key Cryptography</title>
     <p permid="ztx">
-      In <term>single</term>
-          <idx><h>Key</h><h>single</h></idx>
-          <idx><h>Cryptosystem</h><h>single key</h></idx>
-      or <term>private key cryptosystems</term>
-          <idx><h>Key</h><h>private</h></idx>
-          <idx><h>Cryptosystem</h><h>private key</h></idx>
+      In <idx><h>Key</h><h>single</h></idx><idx><h>Cryptosystem</h><h>single key</h></idx><term>single</term>
+      or <term>private key cryptosystems</term><idx><h>Key</h><h>private</h></idx><idx><h>Cryptosystem</h><h>private key</h></idx>
       the same key is used for both encrypting and decrypting messages.
       To encrypt a plaintext message,
       we apply to the message some function which is kept secret,
@@ -118,8 +108,7 @@
     </example>
 
     <p permid="LHP">
-      <term>Cryptanalysis</term>
-          <idx><h>Cryptanalysis</h></idx>
+      <term>Cryptanalysis</term><idx><h>Cryptanalysis</h></idx>
       is concerned with deciphering a received or intercepted message.
       Methods from probability and statistics are great aids in deciphering an intercepted message;
       for example,
@@ -150,8 +139,7 @@
 
     <p permid="rOY">
       Simple shift codes are examples of
-      <term>monoalphabetic cryptosystems</term>.
-          <idx><h>Cryptosystem</h><h>monoalphabetic</h></idx>
+      <idx><h>Cryptosystem</h><h>monoalphabetic</h></idx><term>monoalphabetic cryptosystems</term>.
       In these ciphers a character in the enciphered message represents exactly one character in the original message.
       Such cryptosystems are not very sophisticated and are quite easy to break.
       In fact, in a simple shift as described in <xref ref="crypt-example-caesar"/>, there are only <m>26</m> possible keys.
@@ -178,8 +166,7 @@
         f^{-1}(p) = a^{-1} p - a^{-1} b \bmod 26
       </me>.
       Such a cryptosystem is called an
-      <term>affine cryptosystem</term>.
-          <idx><h>Cryptosystem</h><h>affine</h></idx>
+      <idx><h>Cryptosystem</h><h>affine</h></idx><term>affine cryptosystem</term>.  
     </p>
 
     <example xml:id="crypt-example-affine-crypt" permid="Mks">
@@ -266,10 +253,8 @@
       <p permid="vfd">
         If traditional cryptosystems are used,
         anyone who knows enough to encode a message will also know enough to decode an intercepted message.
-        In 1976, W. Diffie
-            <idx><h>Diffie, W.</h></idx>
-        and M. Hellman
-            <idx><h>Hellman, M.</h></idx>
+        In 1976, W. Diffie<idx><h>Diffie, W.</h></idx>
+        and M. Hellman<idx><h>Hellman, M.</h></idx>
         proposed public key cryptography,
         which is based on the observation that the encryption and decryption procedures need not have the same key.
         This removes the requirement that the encoding key be kept secret.
@@ -287,12 +272,9 @@
     <subsection xml:id="crypt-subsection-rsa" permid="aJw">
       <title>The <acro>RSA</acro> Cryptosystem</title>
       <p permid="rfe">
-        The <acro>RSA</acro> cryptosystem introduced by R. Rivest,
-            <idx><h>Rivest, R.</h></idx>
-        A. Shamir,
-            <idx><h>Shamir, A.</h></idx>
-        and L. Adleman
-            <idx><h>Adleman, L.</h></idx>
+        The <acro>RSA</acro> cryptosystem introduced by R. Rivest,<idx><h>Rivest, R.</h></idx>
+        A. Shamir,<idx><h>Shamir, A.</h></idx>
+        and L. Adleman<idx><h>Adleman, L.</h></idx>
         in 1978, is based on the difficulty of factoring large numbers.
         Though it is not a difficult task to find two large random primes and multiply them together,
         factoring a 150-digit number that is the product of two large primes would take 100 million computers operating at 10 million instructions per second about 50 million years under the fastest algorithms available in the early 1990s.
@@ -831,8 +813,7 @@
       <statement>
         <p permid="ppR">
           A better algorithm for factoring odd positive integers is
-          <term>Fermat's factorization algorithm</term>.
-              <idx><h>Fermat's factorizationalgorithm</h></idx>
+          <idx><h>Fermat's factorization algorithm</h></idx><term>Fermat's factorization algorithm</term>.
         </p>
 
         <ol permid="MUm">
@@ -895,8 +876,7 @@
           <me permid="kUt">
             2^{17-1} \equiv 2^{16} \equiv 1 \pmod{17}
           </me>.
-          We say that an odd composite number <m>n</m> is a <term>pseudoprime</term>
-              <idx><h>Pseudoprime</h></idx>
+          We say that an odd composite number <m>n</m> is a <term>pseudoprime</term><idx><h>Pseudoprime</h></idx>
           if
           <me permid="RbC">
             2^{n-1} \equiv 1 \pmod{n}
@@ -966,8 +946,7 @@
 
         <p permid="NSB">
           There exist composite numbers that are pseudoprimes for all bases to which they are relatively prime.
-          These numbers are called <term>Carmichael numbers</term>.
-              <idx><h>Carmichael numbers</h></idx>
+          These numbers are called <idx><h>Carmichael numbers</h></idx><term>Carmichael numbers</term>.
           The first Carmichael number is <m>561 = 3 \cdot 11 \cdot 17</m>.
           In 1992, Alford, Granville,
           and Pomerance proved that there are an infinite number of Carmichael numbers [4]. However, Carmichael numbers are very rare.
