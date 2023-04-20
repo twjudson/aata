@@ -3,6 +3,17 @@
 # Create a new PreTeXt project.
 pretext new -d .
 
+# Build pretext project
+pretext build
+pretext generate
+
+# Add new remote repositories for origin (forked) and upstream (original)
+git remote add upstream https://github.com/twjudson/aata
+# git remote add origin **How do you tell the url of the personal, forked branch when anyone could do so?
+
+# git pull origin main
+# git reset --hard origin/main
+
 # For the Digital System Design book...
 #echo "Installing Digital System Design textbook..."
 #apt install iverilog
