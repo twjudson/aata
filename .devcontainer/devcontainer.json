@@ -1,0 +1,87 @@
+// <h1>devcontainer.json -- define the development container</h1>
+// <p>See the <a
+//         href="https://containers.dev/implementors/json_reference/">reference</a>
+//     for this file. This was based on the <a
+//         href="https://github.com/PreTeXtBook/pretext-codespace/blob/main/.devcontainer/pretext-full/devcontainer.json">PreTeXt
+//         codespace</a>.</p>
+{
+    "name": "Runestone editor",
+    // <p>For now, the bookserver requires an old version of asyncpg that
+    //     doesn't build on Python 3.11, so stick with 3.10.</p>
+    "image": "mcr.microsoft.com/devcontainers/python:3.10",
+    "forwardPorts": [
+        // <p>The port used for a Thrift connection between the VSCode CodeChat
+        //     extension and the CodeChat Server.</p>
+        27376,
+        // <p>The port used for an HTTP connection from the CodeChat Client to
+        //     the CodeChat Server.</p>
+        27377,
+        // <p>The port used by a websocket connection between the CodeChat
+        //     Server and the CodeChat Client.</p>
+        27378
+    ],
+    "portsAttributes": {
+        "27376": {
+            "label": "VSCode extension <-> CodeChat Server",
+            "requireLocalPort": true
+        },
+        "27377": {
+            "label": "CodeChat Client",
+            "requireLocalPort": true,
+            "protocol": "https",
+            // <p>Per <a
+            //         href="https://github.com/community/community/discussions/10394">this
+            //         issue</a>, setting port visibility isn't supported yet.
+            //     Since the CodeChat Client runs in the local browser, this is
+            //     required so it can request pages from the CodeChat Server
+            //     running in the codespaces container.</p>
+            "visibility": "public"
+        },
+        "27378": {
+            "label": "CodeChat Client<->Server websocket",
+            "requireLocalPort": true,
+            // <p>Likewise, not yet supported. It's used by the CodeChat Client
+            //     in the local browser to communicate with the CodeChat Server
+            //     in the codespaces container using a websocket.</p>
+            "visibility": "public"
+        }
+    },
+    // <p>Use <code>postCreateCommand</code> to run commands after the container
+    //     is created. See the <a href="https://containers.dev/implementors/json_reference/#lifecycle-scripts">docs</a>.</p>
+    "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+
+    // <p>Use a Dockerfile to build a container, so that users see very quick startup times.<p>
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    // <p>Configure tool-specific properties.</p>
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "source/main.ptx",
+                "project.ptx",
+                "publication/publication.ptx"
+            ]
+        },
+        "vscode": {
+            "settings": {
+                "editor.quickSuggestions": {
+                    "other": "off"
+                },
+                "editor.snippetSuggestions": "top",
+                "xml.validation.enabled": false,
+                // Enable word wrapping.
+                "editor.wordWrap": "on",
+                // Use the custom CodeChat Server start command to deal with port weirdness in a CodeSpace.
+                "CodeChat.CodeChatServer.Command": "/workspaces/Runestone-codespace/.devcontainer/CodeChat_Server.sh"
+            },
+            "extensions": [
+                "CodeChat.codechat",
+                "mshr-h.VerilogHDL",
+                "ms-vscode.live-server",
+                "oscarlevin.pretext-tools"
+            ]
+        }
+    }
+}
