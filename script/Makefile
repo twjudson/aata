@@ -69,6 +69,7 @@ DIAGOUT    = $(SCRATCH)/diagram
 HTMLOUT    = $(SCRATCH)/html
 RSOUT      = $(SCRATCH)/runestone
 PDFOUT     = $(SCRATCH)/pdf
+LATEXOUT   = $(SCRATCH)/latex
 DOCTEST    = $(SCRATCH)/doctest
 EPUBOUT    = $(SCRATCH)/epub
 JUPYTEROUT = $(SCRATCH)/jupyter
@@ -150,12 +151,22 @@ viewelectronic:
 #   Black on white, no live URLs, etc
 #   For the website downloads this is
 #   aata-YYYYMMDD-print.pdf version
+#   See below and keep in sync
 print:
 	install -d $(MBUSR)
 	cp $(XSL)/aata-latex.xsl $(MBUSR)
 	install -d $(PDFOUT)
 	$(MBSCRIPT)/pretext -vv -c all -f pdf -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(PDFOUT) $(SRC)/aata.xml
 	mv $(PDFOUT)/aata.pdf $(PDFOUT)/aata-print.pdf
+
+# LaTeX for Print PDF version
+#   See above, and keep in sync
+latex-source:
+	install -d $(MBUSR)
+	cp $(XSL)/aata-latex.xsl $(MBUSR)
+	install -d $(LATEXOUT)
+	$(MBSCRIPT)/pretext -vv -c all -f latex -p $(PUB)/print.xml -X $(MBUSR)/aata-latex.xsl -d $(LATEXOUT) $(SRC)/aata.xml
+	mv $(LATEXOUT)/aata.tex $(LATEXOUT)/aata-print.tex
 
 # View PDF from correct directory
 viewprint:
