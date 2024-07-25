@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="boolean" permid="dAp">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="boolean">
   <title>Lattices and Boolean Algebras</title>
-  <introduction permid="bZx">
-    <p permid="dWb">
+  <introduction>
+    <p>
       The axioms of a ring give structure to the operations of addition and multiplication on a set.
       However, we can construct algebraic structures,
       known as lattices and Boolean algebras,
@@ -29,11 +29,11 @@
     </p>
   </introduction>
 
-  <section xml:id="boolean-section-lattices" permid="Tbk">
+  <section xml:id="boolean-section-lattices">
     <title>Lattices</title>
-    <subsection xml:id="boolean-subsection-poset" permid="JHy">
+    <subsection xml:id="boolean-subsection-poset">
       <title>Partially Ordered Sets</title>
-      <p permid="sJA">
+      <p>
         We begin the study of lattices and Boolean algebras by generalizing the idea of inequality.
         Recall that a <term>relation</term>
         on a set <m>X</m> is a subset of <m>X \times X</m>.
@@ -41,23 +41,23 @@
         <term>partial order</term><idx><h>Partial order</h></idx>
         of <m>X</m> if it satisfies the following axioms.
 
-        <ol permid="sCj">
-          <li permid="YJs">
-            <p permid="biz">
+        <ol>
+          <li>
+            <p>
               The relation is <term>reflexive</term>:
               <m>(a, a) \in P</m> for all <m>a \in X</m>.
             </p>
           </li>
 
-          <li permid="EQB">
-            <p permid="HpI">
+          <li>
+            <p>
               The relation is <term>antisymmetric</term>:
               if <m>(a,b) \in P</m> and <m>(b,a) \in P</m>, then <m>a = b</m>.
             </p>
           </li>
 
-          <li permid="kXK">
-            <p permid="nwR">
+          <li>
+            <p>
               The relation is <term>transitive</term>:
               if <m>(a, b) \in P</m> and
               <m>(b, c) \in P</m>, then <m>(a, c) \in P</m>.
@@ -79,23 +79,23 @@
 
       </p>
 
-      <example xml:id="boolean-example-z-less-equal" permid="QgE">
-        <p permid="UCp">
+      <example xml:id="boolean-example-z-less-equal">
+        <p>
           The set of integers
           (or rationals or reals)
           is a poset where <m>a \leq b</m> has the usual meaning for two integers <m>a</m> and <m>b</m> in <m>{\mathbb Z}</m>.
         </p>
       </example>
 
-      <example xml:id="boolean-example-power-set-subset" permid="wnN">
-        <p permid="AJy">
+      <example xml:id="boolean-example-power-set-subset">
+        <p>
           Let <m>X</m> be any set.
           We will define the <term>power set</term><idx><h>Power set</h></idx>
           of <m>X</m> to be the set of all subsets of <m>X</m>.
           We denote the power set of <m>X</m> by <m>{\mathcal P}(X)</m>.
           For example, let <m>X = \{ a, b, c \}</m>.
           Then <m>{\mathcal P}(X)</m> is  the set of all subsets of the set  <m>\{ a, b, c \}</m>:
-          <md permid="qyO">
+          <md>
             <mrow>&amp; \emptyset &amp; &amp; \{ a \} &amp; &amp; \{ b \} &amp; &amp; \{ c \} &amp;</mrow>
             <mrow>&amp; \{ a, b \} &amp; &amp; \{ a, c\} &amp; &amp;\{ b, c\} &amp; &amp; \{ a, b, c \}. &amp;</mrow>
           </md>
@@ -106,10 +106,10 @@
         </p>
       </example>
 
-      <figure xml:id="boolean-figure-partial-order" permid="JHL">
+      <figure xml:id="boolean-figure-partial-order">
         <caption>Partial order on <m>\mathcal P( \{ a, b, c \})</m></caption>
             <!-- Replaced figure with tikz figure and corrected figure - TWJ 8/17/2010 -->
-        <image width="40%" xml:id="boolean-order-abc" permid="akx">
+        <image width="40%" xml:id="boolean-order-abc">
         	<description>A graph with the set consisting of a, b, c at the top level;  The sets (a, b), (a, c), and (b, c) at the second level; the threee sets consisting of a, b, and c at the third level; and the empty set at the fourth level.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-order-abc.tex" parse="text"/>
@@ -118,16 +118,16 @@
 
       </figure>
 
-      <example xml:id="boolean-example-subgroup-poset" permid="cuW">
-        <p permid="gQH">
+      <example xml:id="boolean-example-subgroup-poset">
+        <p>
           Let <m>G</m> be a group.
           The set of subgroups of <m>G</m> is a poset,
           where the partial order is set inclusion.
         </p>
       </example>
 
-      <example xml:id="boolean-example-p-order-not-unique" permid="ICf">
-        <p permid="MXQ">
+      <example xml:id="boolean-example-p-order-not-unique">
+        <p>
           There can be more than one partial order on a particular set.
           We can form a partial order on
           <m>{\mathbb N}</m> by <m>a \preceq b</m> if <m>a \mid b</m>.
@@ -141,17 +141,17 @@
         </p>
       </example>
 
-      <example xml:id="boolean-example-poset-divisors-24" permid="oJo">
-        <p permid="teZ">
+      <example xml:id="boolean-example-poset-divisors-24">
+        <p>
           Let <m>X = \{ 1, 2, 3, 4, 6, 8, 12, 24 \}</m> be the set of divisors of <m>24</m> with the partial order defined in <xref ref="boolean-example-p-order-not-unique"/>.
           <xref ref="boolean-figure-poset-divisors-24"/> shows the partial order on <m>X</m>.
         </p>
       </example>
 
-      <figure xml:id="boolean-figure-poset-divisors-24" permid="pOU">
+      <figure xml:id="boolean-figure-poset-divisors-24">
         <caption>A partial order on the divisors of <m>24</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-        <image width="25%" xml:id="boolean-order-24" permid="GrG">
+        <image width="25%" xml:id="boolean-order-24">
         	<description>A graph with 24 at the top level,, 8 and 12 at the second level, 4 (connected to 8 and 12) and 6 (connected to 12) at the third level, 2 (connected to 4 and 6) and 3 (connected to 6) at the fourth level, and 1 at the bottom level.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-order-24.tex" parse="text"/>
@@ -160,7 +160,7 @@
 
       </figure>
 
-      <p permid="YQJ">
+      <p>
         Let <m>Y</m> be a subset of a poset <m>X</m>.
         An element <m>u</m> in <m>X</m> is an <term>upper bound</term><idx><h>Upper bound</h></idx>
         of <m>Y</m> if <m>a \preceq u</m> for every element <m>a \in Y</m>.
@@ -178,8 +178,8 @@
         of <m>Y</m>.
       </p>
 
-      <example xml:id="boolean-example-poset-gcd" permid="UQx">
-        <p permid="Zmi">
+      <example xml:id="boolean-example-poset-gcd">
+        <p>
           Let <m>Y = \{ 2, 3, 4, 6 \}</m> be contained in the set <m>X</m> of <xref ref="boolean-example-poset-divisors-24"/>.
           Then <m>Y</m> has upper bounds <m>12</m> and <m>24</m>,
           with <m>12</m> as a least upper bound.
@@ -188,14 +188,14 @@
         </p>
       </example>
 
-      <p permid="EXS">
+      <p>
         As it turns out,
         least upper bounds and greatest lower bounds are unique if they exist.
       </p>
 
-      <theorem permid="rDU">
+      <theorem>
         <statement>
-          <p permid="GyK">
+          <p>
             Let <m>Y</m> be a nonempty subset of a poset <m>X</m>.
             If <m>Y</m> has a least upper bound,
             then <m>Y</m> has a unique least upper bound.
@@ -204,8 +204,8 @@
           </p>
         </statement>
 
-        <proof permid="ACh">
-          <p permid="PiC">
+        <proof>
+          <p>
             Let <m>u_1</m> and <m>u_2</m> be least upper bounds for <m>Y</m>.
             By the definition of the least upper bound,
             <m>u_1 \preceq u</m> for all upper bounds <m>u</m> of <m>Y</m>.
@@ -217,7 +217,7 @@
         </proof>
       </theorem>
 
-      <p permid="lfb">
+      <p>
         On many posets it is possible to define binary operations by using the greatest lower bound and the least upper bound of two elements.
         A <term>lattice</term><idx><h>Lattice</h><h>definition of</h></idx> is a poset <m>L</m> such that every pair of elements in <m>L</m> has a least upper bound and a greatest lower bound.
         The least upper bound of <m>a,
@@ -241,8 +241,8 @@
 
       </p>
 
-      <example xml:id="boolean-example-lub-glb" permid="AXG">
-        <p permid="Ftr">
+      <example xml:id="boolean-example-lub-glb">
+        <p>
           Let <m>X</m> be a set.
           Then the power set of <m>X</m>,
           <m>{\mathcal P}(X)</m>, is a lattice.
@@ -257,8 +257,8 @@
         </p>
       </example>
 
-      <example xml:id="boolean-example-subgroup-lattice" permid="heP">
-        <p permid="lAA">
+      <example xml:id="boolean-example-subgroup-lattice">
+        <p>
           Let <m>G</m> be a group and suppose that <m>X</m> is the set of subgroups of <m>G</m>.
           Then <m>X</m> is a poset ordered by set-theoretic inclusion,
           <m>\subset</m>.
@@ -270,7 +270,7 @@
         </p>
       </example>
 
-      <p permid="Rmk">
+      <p>
         In set theory we have certain duality conditions.
         For example, by De Morgan's laws,
         any statement about sets that is true about
@@ -278,52 +278,52 @@
         We also have a duality principle for lattices.
       </p>
 
-      <axiom permid="jZv">
+      <axiom>
         <title>Principle of Duality</title>
         <idx>
         <h>Lattices, Principle of Duality for</h>
         </idx>
         <statement>
-          <p permid="ovg">
+          <p>
             Any statement that is true for all lattices remains true when <m>\preceq</m> is replaced by <m>\succeq</m> and <m>\vee</m> and <m>\wedge</m> are interchanged throughout the statement.
           </p>
         </statement>
       </axiom>
 
-      <p permid="xtt">
+      <p>
         The following theorem tells us that a lattice is an algebraic structure with two binary operations that satisfy certain axioms.
       </p>
 
-      <theorem permid="XLd">
+      <theorem>
         <statement>
-          <p permid="mFT">
+          <p>
             If <m>L</m> is a lattice,
             then the binary operations <m>\vee</m> and <m>\wedge</m> satisfy the following properties for <m>a,
             b, c \in L</m>.
 
-            <ol permid="jix">
-              <li permid="ReT">
-                <p permid="TEa">
+            <ol>
+              <li>
+                <p>
                   Commutative laws:
                   <m>a \vee b = b \vee a</m> and <m>a \wedge b = b \wedge a</m>.
                 </p>
               </li>
 
-              <li permid="xmc">
-                <p permid="zLj">
+              <li>
+                <p>
                   Associative laws:
                   <m>a \vee ( b \vee c) = (a \vee b) \vee c</m> and <m>a \wedge (b \wedge c) = (a \wedge b) \wedge c</m>.
                 </p>
               </li>
 
-              <li permid="dtl">
-                <p permid="fSs">
+              <li>
+                <p>
                   Idempotent laws: <m>a \vee a = a</m> and <m>a \wedge a = a</m>.
                 </p>
               </li>
 
-              <li permid="JAu">
-                <p permid="LZB">
+              <li>
+                <p>
                   Absorption laws:
                   <m>a \vee (a \wedge b) = a</m> and <m>a \wedge ( a \vee b ) =a</m>.
                 </p>
@@ -332,25 +332,25 @@
           </p>
         </statement>
 
-        <proof permid="gJq">
-          <p permid="vpL">
+        <proof>
+          <p>
             By the Principle of Duality,
             we need only prove the first statement in each part.
           </p>
 
-          <p permid="bwU">
+          <p>
             (1) By definition <m>a \vee b</m> is the least upper bound of <m>\{ a, b\}</m>,
             and <m>b \vee a</m> is the least upper bound of <m>\{ b, a \}</m>;
             however, <m>\{ a, b\} = \{ b, a \}</m>.
           </p>
 
-          <p permid="HEd">
+          <p>
             (2) We will show that <m>a \vee ( b \vee c)</m> and
             <m>(a \vee b) \vee c</m> are both least upper bounds of <m>\{ a, b, c \}</m>.
             Let <m>d =  a \vee b</m>.
             Then <m>c \preceq  d \vee c = (a \vee b) \vee c</m>.
             We also know that
-            <me permid="WFX">
+            <me>
               a \preceq a \vee b =d \preceq d \vee c = (a \vee b) \vee c
             </me>.
             A similar argument demonstrates that <m>b \preceq (a \vee b) \vee c</m>.
@@ -366,12 +366,12 @@
             Consequently, <m>a \vee ( b \vee c) = (a \vee b) \vee c</m>.
           </p>
 
-          <p permid="nLm">
+          <p>
             (3) The join of <m>a</m> and <m>a</m> is the least upper bound of <m>\{ a \}</m>;
             hence, <m>a \vee a = a</m>.
           </p>
 
-          <p permid="TSv">
+          <p>
             (4) Let <m>d = a \wedge b</m>.
             Then <m>a \preceq a \vee d</m>.
             On the other hand, <m>d = a \wedge b \preceq a</m>,
@@ -381,16 +381,16 @@
         </proof>
       </theorem>
 
-      <p permid="dAC">
+      <p>
         Given any arbitrary set <m>L</m> with operations <m>\vee</m> and <m>\wedge</m>,
         satisfying the conditions of the previous theorem,
         it is natural to ask whether or not this set comes from some lattice.
         The following theorem says that this is always the case.
       </p>
 
-      <theorem xml:id="boolean-theorem-partial-order" permid="DSm">
+      <theorem xml:id="boolean-theorem-partial-order">
         <statement>
-          <p permid="SNc">
+          <p>
             Let <m>L</m> be a nonempty set with two binary operations <m>\vee</m> and <m>\wedge</m> satisfying the commutative,
             associative,
             idempotent, and absorption laws.
@@ -404,8 +404,8 @@
           </p>
         </statement>
 
-        <proof permid="MQz">
-          <p permid="zZE">
+        <proof>
+          <p>
             We first show that <m>L</m> is a poset under <m>\preceq</m>.
             Since <m>a \vee a = a</m>,
             <m>a \preceq a</m> and <m>\preceq</m> is reflexive.
@@ -418,13 +418,13 @@
             Let <m>a \preceq b</m> and <m>b \preceq c</m>.
             Then <m>a \vee b = b</m> and <m>b \vee c = c</m>.
             Thus,
-            <me permid="CNg">
+            <me>
               a \vee c = a \vee (b \vee c ) = ( a \vee b) \vee c = b \vee c = c
             </me>,
             or <m>a \preceq c</m>.
           </p>
 
-          <p permid="ggN">
+          <p>
             To show that <m>L</m> is a lattice,
             we must prove that <m>a \vee b</m> and <m>a \wedge b</m> are,
             respectively,
@@ -436,7 +436,7 @@
             Let <m>u</m> be any other upper bound of both <m>a</m> and <m>b</m>.
             Then <m>a \preceq u</m> and <m>b \preceq u</m>.
             But <m>a \vee b \preceq u</m> since
-            <me permid="iUp">
+            <me>
               (a \vee b) \vee u = a \vee (b \vee u) = a \vee u = u
             </me>.
             The proof that <m>a \wedge b</m> is the greatest lower bound of <m>a</m> and <m>b</m> is left as an exercise.
@@ -446,10 +446,10 @@
     </subsection>
   </section>
 
-  <section xml:id="boolean-section-boolean-algebras" permid="zit">
+  <section xml:id="boolean-section-boolean-algebras">
     <title>Boolean Algebras</title>
-    <introduction permid="IgG">
-      <p permid="Kdk">
+    <introduction>
+      <p>
         Let us investigate the example of the power set,
         <m>{\mathcal P}(X)</m>, of a set <m>X</m> more closely.
         The power set is a lattice that is ordered by inclusion.
@@ -478,10 +478,10 @@
 
       </p>
 
-      <p permid="qkt">
+      <p>
         Let <m>A</m> be in <m>{\mathcal P}(X)</m>.
         Recall that the complement of <m>A</m> is
-        <me permid="Pby">
+        <me>
           A' = X \setminus A = \{ x : x \in X \text{ and } x \notin A \}
         </me>.
         We know that <m>A \cup A' = X</m> and <m>A \cap A' = \emptyset</m>.
@@ -498,41 +498,41 @@
 
       </p>
 
-      <p permid="WrC">
+      <p>
         In a lattice <m>L</m>,
         the binary operations <m>\vee</m> and <m>\wedge</m> satisfy commutative and associative laws;
         however, they need not satisfy the distributive law
-        <me permid="viH">
+        <me>
           a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c );
         </me>
         however, in <m>{\mathcal P}(X)</m> the distributive law is satisfied since
-        <me permid="bpQ">
+        <me>
           A \cap ( B \cup C ) = (A \cap B ) \cup ( A \cap C )
         </me>
         for <m>A, B, C \in {\mathcal P}(X)</m>.
         We will say that a lattice <m>L</m> is
         <term>distributive</term><idx><h>Lattice</h><h>distributive</h></idx> if the following distributive law holds:
-        <me permid="HwZ">
+        <me>
           a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )
         </me>
         for all <m>a, b, c \in L</m>.
       </p>
 
-      <theorem xml:id="boolean-theorem-distributive-lattice" permid="riv">
+      <theorem xml:id="boolean-theorem-distributive-lattice">
         <statement>
-          <p permid="yUl">
+          <p>
             A lattice <m>L</m> is distributive if and only if
-            <me permid="nEi">
+            <me>
               a \vee ( b \wedge c ) = ( a \vee b ) \wedge ( a \vee c )
             </me>
             for all <m>a, b, c \in L</m>.
           </p>
         </statement>
 
-        <proof permid="sXI">
-          <p permid="MnW">
+        <proof>
+          <p>
             Let us assume that <m>L</m> is a distributive lattice.
-            <md permid="TLr">
+            <md>
               <mrow>a \vee ( b \wedge c ) &amp; = [a \vee (a \wedge c) ] \vee ( b \wedge c )</mrow>
               <mrow>&amp; = a \vee [(a \wedge c)  \vee ( b \wedge c )]</mrow>
               <mrow>&amp; = a \vee [(c \wedge a) \vee ( c \wedge b )]</mrow>
@@ -546,7 +546,7 @@
         </proof>
       </theorem>
 
-      <p permid="CyL">
+      <p>
         A <term>Boolean algebra</term><idx><h>Boolean algebra</h><h>definition of</h></idx> is a lattice <m>B</m> with a greatest element <m>I</m> and a smallest element <m>O</m> such that <m>B</m> is both distributive and complemented.
         The power set of <m>X</m>,
         <m>{\mathcal P}(X)</m>, is our prototype for a Boolean algebra.
@@ -555,44 +555,44 @@
         The following theorem allows us to characterize Boolean algebras in terms of the binary relations <m>\vee</m> and <m>\wedge</m> without mention of the fact that a Boolean algebra is a poset.
       </p>
 
-      <theorem permid="XpE">
+      <theorem>
         <statement>
-          <p permid="fbu">
+          <p>
             A set <m>B</m> is a Boolean algebra if and only if there exist binary operations <m>\vee</m> and <m>\wedge</m> on <m>B</m> satisfying the following axioms.
 
-            <ol permid="PpG">
-              <li permid="pHD">
-                <p permid="sgK">
+            <ol>
+              <li>
+                <p>
                   <m>a \vee b = b \vee a</m> and
                   <m>a \wedge b = b \wedge a</m> for <m>a, b \in B</m>.
                 </p>
               </li>
 
-              <li permid="VOM">
-                <p permid="YnT">
+              <li>
+                <p>
                   <m>a \vee ( b \vee c) = (a \vee b) \vee c</m> and
                   <m>a \wedge ( b \wedge c) = (a \wedge b) \wedge c</m> for <m>a,
                   b, c \in B</m>.
                 </p>
               </li>
 
-              <li permid="BVV">
-                <p permid="Evc">
+              <li>
+                <p>
                   <m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m> and
                   <m>a \vee ( b \wedge c ) = (a \vee b ) \wedge ( a \vee c )</m> for <m>a,
                   b, c \in B</m>.
                 </p>
               </li>
 
-              <li permid="ide">
-                <p permid="kCl">
+              <li>
+                <p>
                   There exist elements <m>I</m> and <m>O</m> such that <m>a \vee O = a</m> and
                   <m>a \wedge I = a</m> for all <m>a \in B</m>.
                 </p>
               </li>
 
-              <li permid="Okn">
-                <p permid="QJu">
+              <li>
+                <p>
                   For every <m>a \in B</m> there exists an <m>a' \in B</m> such that
                   <m>a \vee a' = I</m> and <m>a \wedge a' = O</m>.
                 </p>
@@ -601,11 +601,11 @@
           </p>
         </statement>
 
-        <proof permid="ZeR">
-          <p permid="svf">
+        <proof>
+          <p>
             Let <m>B</m> be a set satisfying (1)<ndash/>(5) in the theorem.
             One of the idempotent laws is satisfied since
-            <md permid="fZJ">
+            <md>
               <mrow>a &amp; = a \vee O</mrow>
               <mrow>&amp; = a \vee (a \wedge a')</mrow>
               <mrow>&amp; = (a \vee a) \wedge (a \vee a')</mrow>
@@ -613,11 +613,11 @@
               <mrow>&amp; = a \vee a</mrow>
             </md>.
             Observe that
-            <me permid="zSA">
+            <me>
               I \vee b = (b \vee b' ) \vee b = (b' \vee b ) \vee b = b' \vee (b \vee b) = b' \vee b = I
             </me>.
             Consequently, the first of the two absorption laws holds, since
-            <md permid="MgS">
+            <md>
               <mrow>a \vee (a \wedge b) &amp; = (a \wedge I) \vee (a \wedge b)</mrow>
               <mrow>&amp; = a \wedge (I \vee b)</mrow>
               <mrow>&amp; = a  \wedge I</mrow>
@@ -630,14 +630,14 @@
             Condition (4) tells us that <m>B</m> is a distributive lattice.
           </p>
 
-          <p permid="YCo">
+          <p>
             For <m>a \in B</m>, <m>O \vee a = a</m>;
             hence, <m>O \preceq a</m> and <m>O</m> is the smallest element in <m>B</m>.
             To show that <m>I</m> is the largest element in <m>B</m>,
             we will first show that <m>a \vee b = b</m> is equivalent to <m>a \wedge b = a</m>.
             Since <m>a \vee I = a</m> for all <m>a \in B</m>,
             using the absorption laws we can determine that
-            <me permid="Yvk">
+            <me>
               a \vee I =(a \wedge I) \vee I = I \vee ( I \wedge a) = I
             </me>
             or <m>a \preceq I</m> for all <m>a</m> in <m>B</m>.
@@ -645,7 +645,7 @@
             <m>B</m> must be a Boolean algebra.
           </p>
 
-          <p permid="EJx">
+          <p>
             Conversely, suppose that <m>B</m> is a Boolean algebra.
             Let <m>I</m> and <m>O</m> be the greatest and least elements in <m>B</m>,
             respectively.
@@ -656,51 +656,51 @@
         </proof>
       </theorem>
 
-      <p permid="iFU">
+      <p>
         Many other identities hold in Boolean algebras.
         Some of these identities are listed in the following theorem.
       </p>
 
-      <theorem permid="DwN">
+      <theorem>
         <statement>
-          <p permid="LiD">
+          <p>
             Let <m>B</m> be a Boolean algebra.
             Then
 
-            <ol permid="vwP">
-              <li permid="urw">
-                <p permid="wQD">
+            <ol>
+              <li>
+                <p>
                   <m>a \vee I = I</m> and <m>a \wedge O = O</m> for all <m>a \in B</m>.
                 </p>
               </li>
 
-              <li permid="ayF">
-                <p permid="cXM">
+              <li>
+                <p>
                   If <m>a \vee b = a \vee c</m> and <m>a \wedge b = a \wedge c</m> for <m>a,
                   b, c \in B</m>, then <m>b = c</m>.
                 </p>
               </li>
 
-              <li permid="GFO">
-                <p permid="JeV">
+              <li>
+                <p>
                   If <m>a \vee b = I</m> and <m>a \wedge b = O</m>, then <m>b = a'</m>.
                 </p>
               </li>
 
-              <li permid="mMX">
-                <p permid="pme">
+              <li>
+                <p>
                   <m>(a')'=a</m> for all <m>a \in B</m>.
                 </p>
               </li>
 
-              <li permid="SUg">
-                <p permid="Vtn">
+              <li>
+                <p>
                   <m>I' = O</m> and <m>O' = I</m>.
                 </p>
               </li>
 
-              <li permid="zbp">
-                <p permid="BAw">
+              <li>
+                <p>
                   <m>(a \vee b)' = a' \wedge b'</m> and <m>(a \wedge b)' = a' \vee b'</m> <idx><h>De Morgan's laws</h><h>for Boolean algebras</h></idx>(De Morgan's Laws).
                 </p>
               </li>
@@ -708,12 +708,12 @@
           </p>
         </statement>
 
-        <proof permid="Fma">
-          <p permid="kQG">
+        <proof>
+          <p>
             We will prove only (2).
             The rest of the identities are left as exercises.
             For <m>a \vee b = a \vee c</m> and <m>a \wedge b = a \wedge c</m>, we have
-            <md permid="ECt">
+            <md>
               <mrow>b &amp; = b \vee (b \wedge a)</mrow>
               <mrow>&amp; = b \vee (a \wedge b)</mrow>
               <mrow>&amp; = b \vee (a \wedge c)</mrow>
@@ -731,18 +731,18 @@
       </theorem>
     </introduction>
 
-    <subsection xml:id="boolean-subsection-finite-algebras" permid="pOH">
+    <subsection xml:id="boolean-subsection-finite-algebras">
       <title>Finite Boolean Algebras</title>
-      <p permid="VWd">
+      <p>
         A Boolean algebra is a <term>finite Boolean algebra</term><idx><h>Boolean algebra</h><h>finite</h></idx> if it contains a finite number of elements as a set.
         Finite Boolean algebras are particularly nice since we can classify them up to isomorphism.
       </p>
 
-      <p permid="Cdm">
+      <p>
         Let <m>B</m> and <m>C</m> be Boolean algebras.
         A bijective map <m>\phi : B \rightarrow C</m> is an
         <term>isomorphism</term><idx><h>Boolean algebra</h><h>isomorphism</h></idx><idx><h>Isomorphism</h><h>of Boolean algebras</h></idx> of Boolean algebras  if
-        <md permid="kJC">
+        <md>
           <mrow>\phi( a \vee b ) &amp; = \phi(a) \vee \phi(b)</mrow>
           <mrow>\phi( a \wedge b ) &amp; = \phi(a) \wedge \phi(b)</mrow>
         </md>
@@ -750,7 +750,7 @@
       </p>
             <!--  2010/05/18 R Beezer, added a "nonzero" to  b  in definition of an atom -->
             <!--  Identified by Ricky Roy, U of Puget Sound -->
-      <p permid="ikv">
+      <p>
         We will show that any finite Boolean algebra is isomorphic to the Boolean algebra obtained by taking the power set of some finite set <m>X</m>.
         We will need a few lemmas and definitions before we prove this result.
         Let <m>B</m> be a finite Boolean algebra.
@@ -761,17 +761,17 @@
         <m>a</m> is an atom of <m>B</m> if there is no <m>b \in B</m> with <m>b \neq O</m> distinct from <m>a</m> such that <m>O \preceq b \preceq a</m>.
       </p>
 
-      <lemma permid="tth">
+      <lemma>
         <statement>
-          <p permid="DEe">
+          <p>
             Let <m>B</m> be a finite Boolean algebra.
             If <m>b</m> is a element of <m>B</m> with <m>b \neq O</m>,
             then there is an atom <m>a</m> in <m>B</m> such that <m>a \preceq b</m>.
           </p>
         </statement>
 
-        <proof permid="RAs">
-          <p permid="QXP">
+        <proof>
+          <p>
             If <m>b</m> is an atom, let <m>a =b</m>.
             Otherwise, choose an element <m>b_1</m>,
             not equal to <m>O</m> or <m>b</m>,
@@ -783,7 +783,7 @@
             such that  <m>b_2 \preceq b_1</m>.
             Again, if <m>b_2</m> is an atom, let <m>a = b_2</m>.
             Continuing this process, we can obtain a chain
-            <me permid="QQL">
+            <me>
               O \preceq \cdots \preceq b_3 \preceq b_2 \preceq b_1 \preceq b
             </me>.
             Since <m>B</m> is a finite Boolean algebra,
@@ -794,16 +794,16 @@
         </proof>
       </lemma>
 
-      <lemma xml:id="boolean-lemma-zero-vee" permid="ZAq">
+      <lemma xml:id="boolean-lemma-zero-vee">
         <statement>
-          <p permid="jLn">
+          <p>
             Let <m>a</m> and <m>b</m> be atoms in a finite Boolean algebra <m>B</m> such that <m>a \neq b</m>.
             Then <m>a \wedge b = O</m>.
           </p>
         </statement>
 
-        <proof permid="xHB">
-          <p permid="xeY">
+        <proof>
+          <p>
             Since <m>a \wedge b</m> is the greatest lower bound of <m>a</m> and <m>b</m>,
             we know that <m>a \wedge b \preceq a</m>.
             Hence, either <m>a \wedge b = a</m> or <m>a \wedge b = O</m>.
@@ -815,27 +815,27 @@
         </proof>
       </lemma>
 
-      <lemma xml:id="boolean-lemma-partial-order-equivalence" permid="FHz">
+      <lemma xml:id="boolean-lemma-partial-order-equivalence">
         <statement>
-          <p permid="PSw">
+          <p>
             Let <m>B</m> be a Boolean algebra and <m>a, b \in B</m>.
             The following statements are equivalent.
 
-            <ol permid="bDY">
-              <li permid="fiy">
-                <p permid="hHF">
+            <ol>
+              <li>
+                <p>
                   <m>a \preceq b</m>.
                 </p>
               </li>
 
-              <li permid="LpH">
-                <p permid="NOO">
+              <li>
+                <p>
                   <m>a \wedge b' = O</m>.
                 </p>
               </li>
 
-              <li permid="rwQ">
-                <p permid="tVX">
+              <li>
+                <p>
                   <m>a' \vee b = I</m>.
                 </p>
               </li>
@@ -843,12 +843,12 @@
           </p>
         </statement>
 
-        <proof permid="dOK">
-          <p permid="dmh">
+        <proof>
+          <p>
             (1) <m>\Rightarrow</m> (2).
             If <m>a \preceq b</m>, then <m>a \vee b = b</m>.
             Therefore,
-            <md permid="wXU">
+            <md>
               <mrow>a \wedge b' &amp; = a \wedge (a \vee b)'</mrow>
               <mrow>&amp; = a \wedge ( a' \wedge b')</mrow>
               <mrow>&amp; = ( a \wedge a') \wedge b'</mrow>
@@ -857,15 +857,15 @@
             </md>.
           </p>
 
-          <p permid="Jtq">
+          <p>
             (2) <m>\Rightarrow</m> (3).
             If <m>a \wedge b' = O</m>, then <m>a' \vee b = (a \wedge b')' = O' = I</m>.
           </p>
 
-          <p permid="pAz">
+          <p>
             (3) <m>\Rightarrow</m> (1).
             If <m>a' \vee b = I</m>, then
-            <md permid="dfd">
+            <md>
               <mrow>a &amp; =  a \wedge (a' \vee b)</mrow>
               <mrow>&amp; =  (a \wedge a') \vee (a  \wedge  b)</mrow>
               <mrow>&amp; = O \vee (a  \wedge  b)</mrow>
@@ -876,17 +876,17 @@
         </proof>
       </lemma>
 
-      <lemma permid="lOI">
+      <lemma>
         <statement>
-          <p permid="vZF">
+          <p>
             Let <m>B</m> be a Boolean algebra and <m>b</m> and <m>c</m> be elements in <m>B</m> such that <m>b \not\preceq c</m>.
             Then there exists an atom <m>a \in B</m> such that
             <m>a \preceq b</m> and <m>a \not\preceq c</m>.
           </p>
         </statement>
 
-        <proof permid="JVT">
-          <p permid="VHI">
+        <proof>
+          <p>
             By <xref ref="boolean-lemma-partial-order-equivalence"/>, <m>b \wedge c' \neq O</m>.
             Hence, there exists an atom <m>a</m> such that <m>a \preceq b \wedge c'</m>.
             Consequently, <m>a \preceq b</m> and <m>a \not\preceq c</m>.
@@ -894,9 +894,9 @@
         </proof>
       </lemma>
 
-      <lemma xml:id="lemma-atoms" permid="RVR">
+      <lemma xml:id="lemma-atoms">
         <statement>
-          <p permid="cgO">
+          <p>
             Let <m>b \in B</m> and <m>a_1, \ldots,
             a_n</m> be the atoms of <m>B</m> such that <m>a_i \preceq b</m>.
             Then <m>b = a_1 \vee \cdots \vee a_n</m>.
@@ -907,8 +907,8 @@
           </p>
         </statement>
 
-        <proof permid="qdc">
-          <p permid="BOR">
+        <proof>
+          <p>
             Let <m>b_1 = a_1 \vee \cdots \vee a_n</m>.
             Since <m>a_i \preceq b</m> for each <m>i</m>,
             we know that <m>b_1 \preceq b</m>.
@@ -923,10 +923,10 @@
             Therefore, <m>b \preceq b_1</m>.
           </p>
 
-          <p permid="hWa">
+          <p>
             Now suppose that <m>b = a_1 \vee \cdots \vee a_n</m>.
             If <m>a</m> is an atom less than <m>b</m>,
-            <me permid="Jmm">
+            <me>
               a = a \wedge b  = a \wedge( a_1 \vee \cdots \vee a_n ) = (a \wedge a_1) \vee \cdots \vee ( a \wedge a_n )
             </me>.
             But each term is <m>O</m> or <m>a</m> with
@@ -936,16 +936,16 @@
         </proof>
       </lemma>
 
-      <theorem xml:id="boolean-theorem-classification-boolean-algebra" permid="NlY">
+      <theorem xml:id="boolean-theorem-classification-boolean-algebra">
         <statement>
-          <p permid="rpM">
+          <p>
             Let <m>B</m> be a finite Boolean algebra.
             Then there exists a set <m>X</m> such that <m>B</m> is isomorphic to <m>{\mathcal P}(X)</m>.
           </p>
         </statement>
 
-        <proof permid="ltj">
-          <p permid="Odj">
+        <proof>
+          <p>
             We will show that <m>B</m> is isomorphic to <m>{\mathcal P}(X)</m>,
             where <m>X</m> is the set of atoms of <m>B</m>.
             Let <m>a \in B</m>.
@@ -955,13 +955,13 @@
             a_n \in X</m>.
             Consequently,
             we can define a  map <m>\phi : B \rightarrow {\mathcal P}(X)</m> by
-            <me permid="ptv">
+            <me>
               \phi(a) = \phi(  a_1 \vee \cdots \vee a_n ) = \{a_1, \ldots, a_n \}
             </me>.
             Clearly, <m>\phi</m> is onto.
           </p>
 
-          <p permid="uks">
+          <p>
             Now let <m>a = a_1 \vee \cdots \vee a_n</m> and
             <m>b = b_1 \vee \cdots \vee b_m</m> be elements in <m>B</m>,
             where each <m>a_i</m> and each <m>b_i</m> is an atom.
@@ -971,9 +971,9 @@
             Consequently, <m>\phi</m> is injective.
           </p>
 
-          <p permid="arB">
+          <p>
             The join of <m>a</m> and <m>b</m> is preserved by <m>\phi</m> since
-            <md permid="VAE">
+            <md>
               <mrow>\phi(a \vee b) &amp; = \phi( a_1 \vee \cdots \vee a_n \vee b_1 \vee \cdots \vee b_m )</mrow>
               <mrow>&amp; = \{ a_1, \ldots, a_n, b_1, \ldots, b_m \}</mrow>
               <mrow>&amp; = \{ a_1, \ldots, a_n \} \cup \{ b_1, \ldots, b_m \}</mrow>
@@ -985,13 +985,13 @@
         </proof>
       </theorem>
 
-      <p permid="OrE">
+      <p>
         We leave the proof of the following corollary as an exercise.
       </p>
 
-      <corollary permid="yda">
+      <corollary>
         <statement>
-          <p permid="InX">
+          <p>
             The order of any finite Boolean algebra must be <m>2^n</m> for some positive integer <m>n</m>.
           </p>
         </statement>
@@ -999,17 +999,17 @@
     </subsection>
   </section>
 
-  <section xml:id="boolean-section-algebra-of-circuits" permid="fpC">
+  <section xml:id="boolean-section-algebra-of-circuits">
     <title>The Algebra of Electrical Circuits</title>
-    <introduction permid="onP">
-      <p permid="ONd">
+    <introduction>
+      <p>
         The usefulness of Boolean algebras has become increasingly apparent over the past several decades with the development of the modern computer.
         The circuit design of computer chips can be expressed in terms of Boolean algebras.
         In this section we will develop the Boolean algebra of electrical circuits and switches;
         however, these results can easily be generalized to the design of integrated computer circuitry.
       </p>
 
-      <p permid="uUm">
+      <p>
         A <term>switch</term><idx><h>Switch</h><h>definition of</h></idx> is a device,
         located at some point in an electrical circuit,
         that controls the flow of current through the circuit.
@@ -1025,7 +1025,7 @@
         that is, two switches that are both labeled with the same letter <m>a</m> will always be open at the same time and closed at the same time.
       </p>
 
-      <p permid="bbv">
+      <p>
         Given two switches,
         we can construct two fundamental types of circuits.
         Two switches <m>a</m> and <m>b</m> are in <term>series</term><idx><h>Circuit</h><h>series</h></idx>
@@ -1039,10 +1039,10 @@
         We denote a parallel combination of circuits <m>a</m> and <m>b</m> by <m>a \vee b</m>.
       </p>
 
-      <figure xml:id="boolean-figure-a-wedge-b" permid="fLo">
+      <figure xml:id="boolean-figure-a-wedge-b">
         <caption><m>a \wedge b</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-        <image width="60%" xml:id="boolean-wedge" permid="myP">
+        <image width="60%" xml:id="boolean-wedge">
         	<description>A graph with a path from left to right that connect A, a, b, and B in that order.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-wedge.tex" parse="text"/>
@@ -1051,10 +1051,10 @@
 
       </figure>
 
-      <figure xml:id="boolean-figure-a-vee-b" permid="LSx">
+      <figure xml:id="boolean-figure-a-vee-b">
         <caption><m>a \vee b</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-        <image width="60%" xml:id="boolean-parallel" permid="SFY">
+        <image width="60%" xml:id="boolean-parallel">
         	<description>A graph from left ot right that has two paths.  Starting on the left A goes to a on the top path and a goes to B.  The second path starts on the left at A and then goes to b on the bottom path and b goes to B.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-parallel.tex" parse="text"/>
@@ -1063,13 +1063,13 @@
 
       </figure>
 
-      <p permid="HiE">
+      <p>
         We can build more complicated electrical circuits out of series and parallel circuits by replacing any switch in the circuit with one of these two fundamental types of circuits.
         Circuits constructed in this manner are called
         <idx><h>Circuit</h><h>series-parallel</h></idx><term>series-parallel circuits</term>.
       </p>
 
-      <p permid="npN">
+      <p>
         We will consider two circuits equivalent if they act the same.
         That is, if we set the switches in equivalent circuits exactly the same we will obtain the same result.
         For example, in a series circuit
@@ -1088,10 +1088,10 @@
         <m>a \vee a' = I</m> are shown in <xref ref="boolean-figure-boolean-i-and-o-a"/> and <xref ref="boolean-figure-boolean-i-and-o-b"/>, respectively.
       </p>
 
-      <figure xml:id="boolean-figure-boolean-distributive" permid="rZG">
+      <figure xml:id="boolean-figure-boolean-distributive">
         <caption><m>a \wedge ( b \vee c ) = (a \wedge b ) \vee ( a \wedge c )</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/17/2010 -->
-        <image width="75%" xml:id="boolean-distributive" permid="yNh">
+        <image width="75%" xml:id="boolean-distributive">
         	<description>Two graphs.  The graph on the left has two paths. a goes to b on the top path and a goes to c on the bottom path, after which the two paths rejoin. The graph on the right also has two paths.  A single path splits to two paths. On the top path a goes to b.  On the bottom path a goes to c.  Then the two paths rejoin.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-distributive.tex" parse="text"/>
@@ -1102,10 +1102,10 @@
 
     <sidebyside width="40%" margins="auto" valign="middle">
 
-      <figure xml:id="boolean-figure-boolean-i-and-o-a" permid="YgPa">
+      <figure xml:id="boolean-figure-boolean-i-and-o-a">
         <caption><m>a \wedge a' = O</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/18/2010 -->
-        <image width="65%" xml:id="boolean-one-zero-a" permid="eUqa">
+        <image width="65%" xml:id="boolean-one-zero-a">
         	<description>In the graph,  a is goes to to a'.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-one-zero-a.tex" parse="text"/>
@@ -1113,10 +1113,10 @@
         </image>
       </figure>
 
-      <figure xml:id="boolean-figure-boolean-i-and-o-b" permid="YgPb">
+      <figure xml:id="boolean-figure-boolean-i-and-o-b">
         <caption><m>a \vee a' = I</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/18/2010 -->
-        <image width="65%" xml:id="boolean-one-zero-b" permid="eUqb">
+        <image width="65%" xml:id="boolean-one-zero-b">
           <description>The graph splits into two paths.  The top path is a and the bottom path is a' after which the paths rejoin.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-one-zero-b.tex" parse="text"/>
@@ -1126,8 +1126,8 @@
 
     </sidebyside>
 
-      <example xml:id="boolean-example-switching-circuit" permid="PLf">
-        <p permid="RHJ">
+      <example xml:id="boolean-example-switching-circuit">
+        <p>
           Every Boolean expression represents a switching circuit.
           For example,
           given the expression <m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m>,
@@ -1135,27 +1135,27 @@
         </p>
       </example>
 
-      <theorem xml:id="boolean-theorem-circuit" permid="jDW">
+      <theorem xml:id="boolean-theorem-circuit">
         <statement>
-          <p permid="XwV">
+          <p>
             The set of all circuits is a Boolean algebra.
           </p>
         </statement>
       </theorem>
 
-      <p permid="TwW">
+      <p>
         We leave as an exercise the proof of this theorem for the Boolean algebra axioms not yet verified.
         We can now apply the techniques of Boolean algebras to switching theory.
       </p>
             <!--  2010/05/18 R Beezer, meet/join mixup at end, added one new step -->
             <!--  Identified by Ricky Roy, U of Puget Sound -->
-      <example xml:id="boolean-example-circuit" permid="vSo">
-        <p permid="xOS">
+      <example xml:id="boolean-example-circuit">
+        <p>
           Given a complex circuit,
           we can now apply the techniques of Boolean algebra to reduce it to a simpler one.
           Consider the circuit in  <xref ref="boolean-figure-circuit-2"/>.
           Since
-          <md permid="BHN">
+          <md>
             <mrow>(a \vee b) \wedge (a \vee b') \wedge (a \vee b) &amp; = (a \vee b) \wedge (a \vee b) \wedge (a \vee b')</mrow>
             <mrow>&amp; = (a \vee b) \wedge (a \vee b')</mrow>
             <mrow>&amp; = a \vee ( b \wedge b')</mrow>
@@ -1166,10 +1166,10 @@
         </p>
       </example>
 
-      <figure xml:id="boolean-figure-circuit-2" permid="EnY">
+      <figure xml:id="boolean-figure-circuit-2">
         <caption><m>(a \vee b) \wedge (a \vee b') \wedge (a \vee b)</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/19/2010 -->
-        <image width="70%" xml:id="boolean-switching" permid="Lbz">
+        <image width="70%" xml:id="boolean-switching">
         	<description>A graph from left to right that splits into a top path a and bottom path b and then rejoins.  The graph continues and splits into a top  path a and a bottom path b', rejoins and splits into two paths, a and b, and finally rejoins.</description>
             <latex-image>
                 <xi:include href="tikz/boolean-switching.tex" parse="text"/>
@@ -1177,9 +1177,9 @@
         </image>
 
       </figure>
-      <paragraphs component="sage-blurb" permid="mUb">
+      <paragraphs component="sage-blurb">
         <title>Sage</title>
-        <p permid="zEf">
+        <p>
           Sage has a full suite of functionality for both posets and lattices,
           all as part of its excellent support for combinatorics.
           There is little in this chapter that cannot be investigated with Sage.
@@ -1188,9 +1188,9 @@
 
     </introduction>
 
-    <subsection xml:id="boolean-subsection-historical-note" permid="VVQ">
+    <subsection xml:id="boolean-subsection-historical-note">
       <title>Historical Note</title>
-      <p permid="uyN">
+      <p>
         George Boole<idx><h>Boole, George</h></idx>
         (1815<ndash/>1864) was the first person to study lattices.
         In 1847, he published <em>The Investigation of the Laws of Thought</em>,
@@ -1205,7 +1205,7 @@
         that mathematics was the study of symbols and abstract operations.
       </p>
 
-      <p permid="aFW">
+      <p>
         Set theory and logic were further advanced by such mathematicians as Alfred North Whitehead<idx><h>Whitehead, Alfred North</h></idx>
         (1861<ndash/>1947), Bertrand Russell<idx><h>Russell, Bertrand</h></idx>
         (1872<ndash/>1970), and David Hilbert<idx><h>Hilbert, David</h></idx>
@@ -1221,7 +1221,7 @@
         there will always be statements that can never be proven either true or false.
       </p>
 
-      <p permid="GNf">
+      <p>
         As often occurs,
         this basic research in pure mathematics later became indispensable in a wide variety of applications.
         Boolean algebras and logic have become essential in the design of the large-scale integrated circuitry found on today's computer chips.
@@ -1231,11 +1231,11 @@
     </subsection>
   </section>
 
-  <reading-questions permid="nQZ">
+  <reading-questions>
 
-    <exercise permid="LuU">
+    <exercise>
       <statement>
-        <p permid="QeN">
+        <p>
           Describe succinctly what a poset is.
           Do not just list the defining properties,
           but give a description that another student of algebra who has never seen a poset might understand.
@@ -1247,9 +1247,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="rCd">
+    <exercise>
       <statement>
-        <p permid="wlW">
+        <p>
           How does a lattice differ from a poset?
           Answer this in the spirit of the previous question.
         </p>
@@ -1257,9 +1257,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="XJm">
+    <exercise>
       <statement>
-        <p permid="ctf">
+        <p>
           How does a Boolean algebra differ from a lattice?
           Again, answer this in the spirit of the previous two questions.
         </p>
@@ -1267,18 +1267,18 @@
       <response/>
     </exercise>
 
-    <exercise permid="DQv">
+    <exercise>
       <statement>
-        <p permid="IAo">
+        <p>
           Give two (perhaps related) reasons why any discussion of finite Boolean algebras might center on the example of the power set of a finite set.
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="jXE">
+    <exercise>
       <statement>
-        <p permid="oHx">
+        <p>
           Describe a major innovation of the middle twentieth century made possible by Boolean algebra.
         </p>
       </statement>
@@ -1289,12 +1289,12 @@
     <!-- Exercises with Solutions  -->
     <!-- File: boolean.xml  -->
     <!-- Title: Lattices and Boolean Algebras -->
-  <exercises xml:id="boolean-exercises" filenamebase="boolean" permid="uyA">
+  <exercises xml:id="boolean-exercises" filenamebase="boolean">
     <title>Exercises</title>
 
-    <exercise number="1" permid="bpD" xml:id="boolean-exercise-lattice-power-set">
+    <exercise number="1" xml:id="boolean-exercise-lattice-power-set">
       <statement>
-        <p permid="QCq">
+        <p>
           Draw the lattice diagram for the power set of
           <m>X = \{ a, b, c, d \}</m> with the set inclusion relation,
           <m>\subset</m>.
@@ -1302,16 +1302,16 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="HwM" xml:id="boolean-exercise-lattice-divisors-of-30">
+    <exercise number="2" xml:id="boolean-exercise-lattice-divisors-of-30">
       <statement>
-        <p permid="wJz">
+        <p>
           Draw the diagram for the set of positive integers that are divisors of <m>30</m>.
           Is this poset a Boolean algebra?
         </p>
       </statement>
-      <hint permid="iyD">
+      <hint>
         <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
-        <image width="40%" xml:id="hint-divisors-30" permid="jEj">
+        <image width="40%" xml:id="hint-divisors-30">
           <description>A graph with 30 at the top level which is connected to 10 and 15 at the second level.  The third level has 2, which is connected to 30 and 10, and 5, which is connected to 10 and 15, and 3 which is connected to 15.  The bottom level is 1 which is connected to 2, 3, and 5.</description>
           <latex-image>
               <xi:include href="tikz/hint-divisors-30.tex" parse="text"/>
@@ -1320,17 +1320,17 @@
       </hint>
     </exercise>
 
-    <exercise number="3" permid="nDV" xml:id="boolean-exercise-lattice-subgroups-Z12">
+    <exercise number="3" xml:id="boolean-exercise-lattice-subgroups-Z12">
       <statement>
-        <p permid="cQI">
+        <p>
           Draw a diagram of the lattice of subgroups of <m>{\mathbb Z}_{12}</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="4" permid="TLe" xml:id="boolean-exercise-divisors-210">
+    <exercise number="4" xml:id="boolean-exercise-divisors-210">
       <statement>
-        <p permid="IXR">
+        <p>
           Let <m>B</m> be the set of positive integers that are divisors of <m>210</m>.
           Define an order on <m>B</m> by <m>a \preceq b</m> if <m>a \mid b</m>.
           Prove that <m>B</m> is a Boolean algebra.
@@ -1344,69 +1344,69 @@
       </hint>
     </exercise>
 
-    <exercise number="5" permid="zSn" xml:id="boolean-exercise-Z-poset">
+    <exercise number="5" xml:id="boolean-exercise-Z-poset">
       <statement>
-        <p permid="pfa">
+        <p>
           Prove or disprove:
           <m>{\mathbb Z}</m> is a poset under the relation <m>a \preceq b</m> if <m>a \mid b</m>.
         </p>
       </statement>
-      <hint permid="Hbn">
-        <p permid="Sdi">
+      <hint>
+        <p>
           False.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="6" permid="fZw" xml:id="boolean-exercise-boolean-switching-circuit">
+    <exercise number="6" xml:id="boolean-exercise-boolean-switching-circuit">
       <statement>
-        <p permid="Vmj">
+        <p>
           Draw the switching circuit for each of the following Boolean expressions.
 
-          <ol cols="2" permid="HLh">
-            <li permid="XDZ">
-              <p permid="adg">
+          <ol cols="2">
+            <li>
+              <p>
                 <m>(a \vee b \vee a') \wedge a</m>
               </p>
             </li>
 
-            <li permid="DLi">
-              <p permid="Gkp">
+            <li>
+              <p>
                 <m>(a \vee b)' \wedge (a \vee b)</m>
               </p>
             </li>
 
-            <li permid="jSr">
-              <p permid="mry">
+            <li>
+              <p>
                 <m>a \vee (a \wedge b)</m>
               </p>
             </li>
 
-            <li permid="PZA">
-              <p permid="SyH">
+            <li>
+              <p>
                 <m>(c \vee a \vee b) \wedge c' \wedge (a \vee b)'</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="TpF">
-        <p permid="ykr">
+      <hint>
+        <p>
           (a) <m>(a \vee b \vee a') \wedge a</m>
         </p>
 
-        <image width="50%" xml:id="hint-switching-circuit-part-a" permid="PLs">
+        <image width="50%" xml:id="hint-switching-circuit-part-a">
           <description>A graph from left to right which splits into three paths, a b, and b' and then rejoins into a single path and goes through a.</description>
           <latex-image>
               <xi:include href="tikz/hint-switching-circuit-part-a.tex" parse="text"/>
           </latex-image>
         </image>
 
-        <p permid="erA">
+        <p>
           (c) <m>a \vee (a \wedge b)</m>
         </p>
 
-        <image width="50%" xml:id="hint-switching-circuit-part-c" permid="vSB">
+        <image width="50%" xml:id="hint-switching-circuit-part-c">
           <description>A graph from left to right which splits into two paths and then rejoins.  The top path is a then b.  The bottom path is a.</description>
           <latex-image>
               <xi:include href="tikz/hint-switching-circuit-part-c.tex" parse="text"/>
@@ -1417,30 +1417,30 @@
 
     <!--Todo Complete this solution.-->
 
-    <exercise number="7" permid="MgF" xml:id="boolean-exercise-circuit-3-switches">
+    <exercise number="7" xml:id="boolean-exercise-circuit-3-switches">
       <statement>
-        <p permid="Bts">
+        <p>
           Draw a circuit that will be closed exactly when only one of three switches <m>a</m>,
           <m>b</m>, and <m>c</m> are closed.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="8" permid="snO" xml:id="boolean-exercise-equivalent-circuits">
+    <exercise number="8" xml:id="boolean-exercise-equivalent-circuits">
       <statement>
-        <p permid="hAB">
+        <p>
           Prove or disprove that the two circuits shown are equivalent.
         </p>
 
-        <image width="80%" xml:id="exercise-equivalent-circuits" permid="bZK">
+        <image width="80%" xml:id="exercise-equivalent-circuits">
           <description>Two graphs.  The graph on the left splits into three paths, a-b-c, a'-b, and a-c', and then rejoins.  The graph on the right splits into two paths, a-b and a-c', and then rejoins.</description>
           <latex-image>
               <xi:include href="tikz/exercise-equivalent-circuits.tex" parse="text"/>
           </latex-image>
         </image>
       </statement>
-      <hint permid="LLg">
-        <p permid="KyJ">
+      <hint>
+        <p>
           Not equivalent.
         </p>
       </hint>
@@ -1448,9 +1448,9 @@
 
     <!--Todo Complete this solution.-->
 
-    <exercise number="9" permid="YuX" xml:id="boolean-exercise-power-set-cardinality">
+    <exercise number="9" xml:id="boolean-exercise-power-set-cardinality">
       <statement>
-        <p permid="NHK">
+        <p>
           Let <m>X</m> be a finite set containing <m>n</m> elements.
           Prove that <m>|{\cal P}(X)| = 2^n</m>.
           Conclude that the order of any finite Boolean algebra must be <m>2^n</m> for some <m>n \in {\mathbb N}</m>.
@@ -1458,41 +1458,41 @@
       </statement>
     </exercise>
 
-    <exercise number="10" permid="ECg" xml:id="boolean-exercise-circuit-to-boolean">
+    <exercise number="10" xml:id="boolean-exercise-circuit-to-boolean">
       <statement>
-        <p permid="tOT">
+        <p>
           For each of the following circuits,
           write a Boolean expression.
           If the circuit can be replaced by one with fewer switches,
           give the Boolean expression and draw a diagram for the new circuit.
         </p>
 
-        <image width="50%" xml:id="exercise-boolean-circuit" permid="IgT">
+        <image width="50%" xml:id="exercise-boolean-circuit">
           <description>Three graphs.  The top graph from left to right is a', then splits into a top path a-b' and a on the bottom and then rejoins.  The middle graph from left to right splits into two paths with a on the top path and b on the bottom path.  The graph then rejoins and splits into three paths with the top path a-b, the middle path a', and the bottom path a'-b.  The graph then rejoins.  The bottom graph splits into three paths with top path a-b-c, middle path a'-b'-c, and the bottom path a-b'-c'.  The paths then rejoin.</description>
           <latex-image>
               <xi:include href="tikz/exercise-boolean-circuit.tex" parse="text"/>
           </latex-image>
         </image>
       </statement>
-      <hint permid="EgH">
-        <p permid="qFS">
+      <hint>
+        <p>
           (a) <m>a' \wedge [(a \wedge b') \vee b] = a \wedge (a \vee b) </m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="11" permid="kJp" xml:id="boolean-exercise-lattice-nonzero-integers">
+    <exercise number="11" xml:id="boolean-exercise-lattice-nonzero-integers">
       <statement>
-        <p permid="ZWc">
+        <p>
           Prove or disprove: The set of all nonzero integers is a lattice,
           where <m>a \preceq b</m> is defined by <m>a \mid b</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="12" permid="QQy" xml:id="boolean-exercise-partial-order">
+    <exercise number="12" xml:id="boolean-exercise-partial-order">
       <statement>
-        <p permid="Gdl">
+        <p>
           Let <m>L</m> be a nonempty set with two binary operations <m>\vee</m> and <m>\wedge</m> satisfying the commutative,
           associative,
           idempotent, and absorption laws.
@@ -1506,9 +1506,9 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="13" permid="wXH" xml:id="boolean-exercise-LUB-subgroups-H-K">
+    <exercise number="13" xml:id="boolean-exercise-LUB-subgroups-H-K">
       <statement>
-        <p permid="mku">
+        <p>
           Let <m>G</m> be a group and <m>X</m> be the set of subgroups of <m>G</m> ordered by set-theoretic inclusion.
           If <m>H</m> and <m>K</m> are subgroups of <m>G</m>,
           show that the least upper bound of <m>H</m> and <m>K</m> is the subgroup generated by <m>H \cup K</m>.
@@ -1518,9 +1518,9 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="14" permid="deQ" xml:id="boolean-exercise-ideals-poset">
+    <exercise number="14" xml:id="boolean-exercise-ideals-poset">
       <statement>
-        <p permid="SrD">
+        <p>
           Let <m>R</m> be a ring and suppose that <m>X</m> is the set of ideals of <m>R</m>.
           Show that <m>X</m> is a poset ordered by set-theoretic inclusion,
           <m>\subset</m>.
@@ -1529,8 +1529,8 @@
           Prove that the set of ideals of <m>R</m> is a lattice under these operations.
         </p>
       </statement>
-      <hint permid="IQA">
-        <p permid="WNb">
+      <hint>
+        <p>
           Let <m>I, J</m> be ideals in <m>R</m>.
           We need to show that <m>I + J = \{ r + s : r \in I \text{ and } s \in J \}</m> is the smallest ideal in <m>R</m> containing both <m>I</m> and <m>J</m>.
           If <m>r_1, r_2 \in I</m> and <m>s_1, s_2 \in J</m>,
@@ -1541,39 +1541,39 @@
       </hint>
     </exercise>
 
-    <exercise number="15" permid="JlZ" xml:id="boolean-exercise-boolean-identities">
+    <exercise number="15" xml:id="boolean-exercise-boolean-identities">
       <statement>
-        <p permid="yyM">
+        <p>
           Let <m>B</m> be a Boolean algebra.
           Prove each of the following identities.
 
-          <ol permid="nSq">
-            <li permid="wgJ">
-              <p permid="yFQ">
+          <ol>
+            <li>
+              <p>
                 <m>a \vee I = I</m> and <m>a \wedge O = O</m> for all <m>a \in B</m>.
               </p>
             </li>
 
-            <li permid="cnS">
-              <p permid="eMZ">
+            <li>
+              <p>
                 If <m>a \vee b = I</m> and <m>a \wedge b = O</m>, then <m>b = a'</m>.
               </p>
             </li>
 
-            <li permid="Ivb">
-              <p permid="KUi">
+            <li>
+              <p>
                 <m>(a')'=a</m> for all <m>a \in B</m>.
               </p>
             </li>
 
-            <li permid="oCk">
-              <p permid="rbr">
+            <li>
+              <p>
                 <m>I' = O</m> and <m>O' = I</m>.
               </p>
             </li>
 
-            <li permid="UJt">
-              <p permid="XiA">
+            <li>
+              <p>
                 <m>(a \vee b)' = a' \wedge b'</m> and <m>(a \wedge b)' = a' \vee b'</m> (De Morgan's laws).
               </p>
             </li>
@@ -1584,9 +1584,9 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="16" permid="pti" xml:id="boolean-exercise-sitching-functions-boolean-algebra">
+    <exercise number="16" xml:id="boolean-exercise-sitching-functions-boolean-algebra">
       <statement>
-        <p permid="eFV">
+        <p>
           By drawing the appropriate diagrams,
           complete the proof of <xref ref="boolean-theorem-circuit"/> to show that the switching functions form a Boolean algebra.
         </p>
@@ -1595,12 +1595,12 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="17" permid="VAr" xml:id="boolean-exercise-binary-ops-boolean-alg">
+    <exercise number="17" xml:id="boolean-exercise-binary-ops-boolean-alg">
       <statement>
-        <p permid="KNe">
+        <p>
           Let <m>B</m> be a Boolean algebra.
           Define binary operations <m>+</m> and <m>\cdot</m> on <m>B</m> by
-          <md permid="hOW">
+          <md>
             <mrow>a + b &amp; = (a \wedge b') \vee (a' \wedge b)</mrow>
             <mrow>a \cdot b &amp; = a \wedge b</mrow>
           </md>.
@@ -1611,22 +1611,22 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="18" permid="BHA" xml:id="boolean-exercise-totally-ordered">
+    <exercise number="18" xml:id="boolean-exercise-totally-ordered">
       <statement>
-        <p permid="qUn">
+        <p>
           Let <m>X</m> be a poset such that for every <m>a</m> and <m>b</m> in <m>X</m>,
           either <m>a \preceq b</m> or <m>b \preceq a</m>.
           Then <m>X</m> is said to be a <term>totally ordered set</term>.
 
-          <ol permid="TZz">
-            <li permid="FAv">
-              <p permid="HZC">
+          <ol>
+            <li>
+              <p>
                 Is <m>a \mid b</m> a total order on <m>{\mathbb N}</m>?
               </p>
             </li>
 
-            <li permid="lHE">
-              <p permid="ogL">
+            <li>
+              <p>
                 Prove that <m>{\mathbb N}</m>,
                 <m>{\mathbb Z}</m>, <m>{\mathbb Q}</m>,
                 and <m>{\mathbb R}</m> are totally ordered sets under the usual ordering <m>\leq</m>.
@@ -1635,8 +1635,8 @@
           </ol>
         </p>
       </statement>
-      <hint permid="NAt">
-        <p permid="CUk">
+      <hint>
+        <p>
           (a) No.
         </p>
       </hint>
@@ -1644,9 +1644,9 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="19" permid="hOJ" xml:id="boolean-exercise-order-perserving">
+    <exercise number="19" xml:id="boolean-exercise-order-perserving">
       <statement>
-        <p permid="Xbw">
+        <p>
           Let <m>X</m> and <m>Y</m> be posets.
           A map <m>\phi : X \rightarrow Y</m> is
           <term>order-preserving</term>
@@ -1661,17 +1661,17 @@
       </statement>
     </exercise>
 
-    <exercise number="20" permid="NVS" xml:id="boolean-exercise-identity-a-equal-b">
+    <exercise number="20" xml:id="boolean-exercise-identity-a-equal-b">
       <statement>
-        <p permid="DiF">
+        <p>
           Let <m>B</m> be a Boolean algebra.
           Prove that <m>a = b</m> if and only if
           <m>(a \wedge b') \vee ( a' \wedge b) = O</m> for <m>a,
           b \in B</m>.
         </p>
       </statement>
-      <hint permid="FVU">
-        <p permid="jbt">
+      <hint>
+        <p>
           <m>( \Rightarrow)</m>. <m>a = b \Rightarrow (a \wedge b') \vee (a' \wedge b) = (a \wedge a') \vee (a' \wedge a) = O \vee O = O</m>.
           <m>( \Leftarrow)</m>. <m>( a \wedge b') \vee (a' \wedge b) = O \Rightarrow a \vee b = (a \vee a) \vee b = a \vee (a \vee b) = a \vee [I \wedge (a \vee b)] = a \vee [(a \vee a') \wedge (a \vee b)] = [a \vee (a \wedge b')] \vee [a \vee (a' \wedge b)] = a \vee [(a \wedge b') \vee (a' \wedge b)] = a \vee 0 = a</m>.
           A symmetric argument shows that <m>a \vee b = b</m>.
@@ -1679,9 +1679,9 @@
       </hint>
     </exercise>
 
-    <exercise number="21" permid="udb" xml:id="boolean-exercise-identity-a-equal-0">
+    <exercise number="21" xml:id="boolean-exercise-identity-a-equal-0">
       <statement>
-        <p permid="jpO">
+        <p>
           Let <m>B</m> be a Boolean algebra.
           Prove that <m>a = O</m> if and only if
           <m>(a \wedge b') \vee ( a' \wedge b) = b</m> for all <m>b \in B</m>.
@@ -1689,9 +1689,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22" permid="akk" xml:id="boolean-exercise-product">
+    <exercise number="22" xml:id="boolean-exercise-product">
       <statement>
-        <p permid="PwX">
+        <p>
           Let <m>L</m> and <m>M</m> be lattices.
           Define an order relation on
           <m>L \times M</m> by <m>( a, b) \preceq (c, d)</m> if
@@ -1702,12 +1702,12 @@
     </exercise>
 
   </exercises>
-  <exercises xml:id="boolean-exercises-programming" permid="aFJ">
+  <exercises xml:id="boolean-exercises-programming">
     <title>Programming Exercises</title>
 
-    <exercise permid="Grt" xml:id="boolean-programming-exercise-boolean-polys">
+    <exercise xml:id="boolean-programming-exercise-boolean-polys">
       <statement>
-        <p permid="vEg">
+        <p>
           A <term>Boolean</term><idx><h>Boolean function</h></idx><idx><h>Function</h><h>Boolean</h></idx>
           or <term>switching function on <m>n</m> variables</term><idx><h>Switching function</h></idx><idx><h>Function</h><h>switching</h></idx>
           is a map <m>f : \{O, I\}^n \rightarrow \{ 0, I\}</m>.
@@ -1721,9 +1721,9 @@
           Write a program to evaluate Boolean polynomials.
         </p>
 
-        <table xml:id="table-boolean-polynomials" permid="ooc">
+        <table xml:id="table-boolean-polynomials">
           <title>Boolean polynomials</title>
-          <tabular halign="center" top="medium" left="medium" permid="Uvl">
+          <tabular halign="center" top="medium" left="medium">
             <col/>
             <col right="medium"/>
             <col/>
@@ -1791,17 +1791,17 @@
 \end{table}
 
 -->
-  <references xml:id="boolean-references" permid="QcR">
+  <references xml:id="boolean-references">
     <title>References and Suggested Readings</title>
         <!-- %TWJ 8/19/2010 - References checked. -->
-    <biblio type="raw" permid="wka">
+    <biblio type="raw">
 <!-- was [1] --><!-- Out of print - TWJ 8/19/2010 -->
       Donnellan, T.
       <title>Lattice Theory</title>
       . Pergamon Press, Oxford, 1968.
     </biblio>
 
-    <biblio type="raw" permid="crj">
+    <biblio type="raw">
 <!-- was [2] -->
       Halmos, P. R. <q>The Basic Concepts of Algebraic Logic,</q>
       <title>American Mathematical Monthly</title>
@@ -1809,7 +1809,7 @@
       (1956), 363<ndash/>87.
     </biblio>
 
-    <biblio type="raw" permid="Iys">
+    <biblio type="raw">
 <!-- was [3] -->
       Hohn, F. <q>Some Mathematical Aspects of Switching,</q>
       <title>American Mathematical Monthly</title>
@@ -1817,19 +1817,19 @@
       (1955), 75<ndash/>90.
     </biblio>
 
-    <biblio type="raw" permid="oFB">
+    <biblio type="raw">
 <!-- was [4] --><!-- Out of print - TWJ 8/19/2010 -->
       Hohn, F.
       <title>Applied Boolean Algebra</title>. 2nd ed. Macmillan, New York, 1966.
     </biblio>
 
-    <biblio type="raw" permid="UMK">
+    <biblio type="raw">
 <!-- was [5] --><!-- Reference updated - TWJ 8/19/2010 -->
       Lidl, R. and Pilz, G.
       <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998.
     </biblio>
 
-    <biblio type="raw" permid="ATT">
+    <biblio type="raw">
 <!-- was [6] --><!-- Reference updated - TWJ 8/19/2010 -->
       Whitesitt, J.
       <title>Boolean Algebra and Its Applications</title>. Dover, Mineola, NY, 2010.
@@ -1838,23 +1838,23 @@
 
 
 
-  <section xml:id="boolean-sage" component="sage-info" permid="LwL">
+  <section xml:id="boolean-sage" component="sage-info">
     <title>Sage</title>
-    <introduction permid="UuY">
-      <p permid="kvh">
+    <introduction>
+      <p>
         Sage has support for both partially ordered sets (<q>posets</q>) and lattices,
         and does an excellent job of providing visual depictions of both.
       </p>
     </introduction>
 
-    <subsection permid="CcZ">
+    <subsection>
       <title>Creating Partially Ordered Sets</title>
-      <p permid="mUo">
+      <p>
         <xref ref="boolean-example-poset-divisors-24"/> in the text is a good example to replicate as a demonstration of Sage commands.
         We first define the elements of the set <m>X</m>.
       </p>
 
-            <sage permid="QOU">
+            <sage>
                 <input>
         X = (24).divisors()
         X
@@ -1864,7 +1864,7 @@
         </output>
             </sage>
 
-      <p permid="Tbx">
+      <p>
         One approach to creating the relation is to specify <em>every</em>
         instance where one element is comparable to the another.
         So we build a list of pairs,
@@ -1873,7 +1873,7 @@
         This is the set of relations.
       </p>
 
-            <sage permid="wWd">
+            <sage>
                 <input>
         R = [(a,b) for a in X for b in X if a.divides(b)]; R
         </input>
@@ -1885,14 +1885,14 @@
         </output>
             </sage>
 
-      <p permid="ziG">
+      <p>
         We construct the poset by giving the the <c>Poset</c> constructor a list containing the elements and the relations.
         We can then easily get a <q>plot</q> of the poset.
         Notice the plot just shows the <q>cover relations</q>
         <mdash/> a minimal set of comparisons which the assumption of transitivity would expand into the set of all the relations.
       </p>
 
-            <sage doctest="not tested" permid="bnZ">
+            <sage doctest="not tested">
                 <input>
         D = Poset([X, R])
         D.plot()
@@ -1901,7 +1901,7 @@
         </output>
             </sage>
 
-      <p permid="fpP">
+      <p>
         Another approach to creating a <c>Poset</c> is to let the poset constructor run over all the pairs of elements,
         and all we do is give the constructor a way to test if two elements are comparable.
         Our comparison function should expect two elements and then return <c>True</c> or <c>False</c>.
@@ -1915,7 +1915,7 @@
         but a lambda function is quickest when the function is simple.
       </p>
 
-            <sage permid="ddm">
+            <sage>
                 <input>
         divisible = lambda x, y: x.divides(y)
         L = Poset([X, divisible])
@@ -1925,13 +1925,13 @@
         True
         </output>
             </sage>
-            <sage doctest="not tested" permid="Hvi">
+            <sage doctest="not tested">
                 <input>
         L.plot()
         </input>
             </sage>
 
-      <p permid="LwY">
+      <p>
         Sage also has a collection of stock posets.
         Some are one-shot constructions,
         while others are members of parameterized families.
@@ -1939,13 +1939,13 @@
         Here are some examples.
       </p>
 
-      <p permid="rEh">
+      <p>
         A one-shot construction.
         Perhaps what you would expect,
         though there might be other, equally plausible, alternatives.
       </p>
 
-            <sage doctest="not tested" permid="nCr">
+            <sage doctest="not tested">
                 <input>
         Q = Posets.PentagonPoset()
         Q.plot()
@@ -1954,19 +1954,19 @@
         </output>
             </sage>
 
-      <p permid="XLq">
+      <p>
         A parameterized family.
         This is the classic example where the elements are subsets of a set with <m>n</m> elements and the relation is <q>subset of.</q>
       </p>
 
-            <sage doctest="not tested" permid="TJA">
+            <sage doctest="not tested">
                 <input>
         S = Posets.BooleanLattice(4)
         S.plot()
         </input>
             </sage>
 
-      <p permid="DSz">
+      <p>
         And random posets.
         These can be useful for testing and experimenting,
         but are unlikely to exhibit special cases that may be important.
@@ -1977,7 +1977,7 @@
         the more <q>vertically stretched</q> the plot will be.
       </p>
 
-            <sage doctest="not tested" permid="zQJ">
+            <sage doctest="not tested">
                 <input>
         T = Posets.RandomPoset(20,0.05)
         T.plot()
@@ -1985,16 +1985,16 @@
             </sage>
     </subsection>
 
-    <subsection permid="iki">
+    <subsection>
       <title>Properties of a Poset</title>
-      <p permid="jZI">
+      <p>
         Once you have a poset, what can you do with it?
         Let's return to our first example, <c>D</c>.
         We can of course determine if one element is less than another,
         which is the fundamental structure of a poset.
       </p>
 
-            <sage permid="Jkv">
+            <sage>
                 <input>
         D.is_lequal(4, 8)
         </input>
@@ -2002,7 +2002,7 @@
         True
         </output>
             </sage>
-            <sage permid="prE">
+            <sage>
                 <input>
         D.is_lequal(4, 4)
         </input>
@@ -2010,7 +2010,7 @@
         True
         </output>
             </sage>
-            <sage permid="VyN">
+            <sage>
                 <input>
         D.is_less_than(4, 8)
         </input>
@@ -2018,7 +2018,7 @@
         True
         </output>
             </sage>
-            <sage permid="BFW">
+            <sage>
                 <input>
         D.is_less_than(4, 4)
         </input>
@@ -2026,7 +2026,7 @@
         False
         </output>
             </sage>
-            <sage permid="hNf">
+            <sage>
                 <input>
         D.is_lequal(6, 8)
         </input>
@@ -2034,7 +2034,7 @@
         False
         </output>
             </sage>
-            <sage permid="NUo">
+            <sage>
                 <input>
         D.is_lequal(8, 6)
         </input>
@@ -2043,7 +2043,7 @@
         </output>
             </sage>
 
-      <p permid="QgR">
+      <p>
         Notice that <c>6</c> and <c>8</c> are not comparable in this poset
         (it is a <em>partial</em> order).
         The methods <c>.is_gequal()</c> and <c>.is_greater_than()</c> work similarly,
@@ -2051,7 +2051,7 @@
         (or equal).
       </p>
 
-            <sage permid="ubx">
+            <sage>
                 <input>
         D.is_gequal(8, 4)
         </input>
@@ -2059,7 +2059,7 @@
         True
         </output>
             </sage>
-            <sage permid="aiG">
+            <sage>
                 <input>
         D.is_greater_than(4, 8)
         </input>
@@ -2068,13 +2068,13 @@
         </output>
             </sage>
 
-      <p permid="woa">
+      <p>
         We can find the largest and smallest elements of a poset.
         This is a random poset built with a 10%probability,
         but copied here to be repeatable.
       </p>
 
-            <sage doctest="not tested" permid="fXS">
+            <sage doctest="not tested">
                 <input>
         X = range(20)
         C = [[18, 7],  [9, 11], [9, 10], [11, 8], [6, 10],
@@ -2085,7 +2085,7 @@
         P.plot()
         </input>
             </sage>
-            <sage permid="GpP">
+            <sage>
                 <input>
         P.minimal_elements()
         </input>
@@ -2093,7 +2093,7 @@
         [18, 9, 6, 0]
         </output>
             </sage>
-            <sage permid="mwY">
+            <sage>
                 <input>
         P.maximal_elements()
         </input>
@@ -2102,14 +2102,14 @@
         </output>
             </sage>
 
-      <p permid="cvj">
+      <p>
         Elements of a poset can be partioned into level sets.
         In plots of posets,
         elements at the same level are plotted vertically at the same height.
         Each level set is obtained by removing all of the previous level sets and then taking the minimal elements of the result.
       </p>
 
-            <sage permid="SEh">
+            <sage>
                 <input>
         P.level_sets()
         </input>
@@ -2119,7 +2119,7 @@
         </output>
             </sage>
 
-      <p permid="ICs">
+      <p>
         If we make two elements in <c>R</c> comparable when they had not previously been,
         this is an extension of <c>R</c>.
         Consider all possible extensions of one poset <mdash/> we can make a poset from all of these,
@@ -2135,7 +2135,7 @@
         <q>topological sort.</q>
       </p>
 
-            <sage permid="yLq">
+            <sage>
                 <input>
         linear = P.linear_extension(); linear
         </input>
@@ -2145,13 +2145,13 @@
         </output>
             </sage>
 
-      <p permid="oJB">
+      <p>
         We can construct subposets by giving a set of elements to induce the new poset.
         Here we take roughly the <q>bottom half</q>
         of the random poset <c>P</c> by inducing the subposet on a union of some of the level sets.
       </p>
 
-            <sage doctest="not tested" permid="Mfb">
+            <sage doctest="not tested">
                 <input>
         level = P.level_sets()
         bottomhalf = sum([level[i] for i in range(5)], [])
@@ -2160,24 +2160,24 @@
         </input>
             </sage>
 
-      <p permid="UQK">
+      <p>
         The dual of a poset retains the same set of elements,
         but reverses any comparisons.
       </p>
 
-            <sage doctest="not tested" permid="smk">
+            <sage doctest="not tested">
                 <input>
         Pdual = P.dual()
         Pdual.plot()
         </input>
             </sage>
 
-      <p permid="AXT">
+      <p>
         Taking the dual of the divisibility poset from <xref ref="boolean-example-poset-divisors-24"/> would be like changing the relation to
         <q>is a multiple of.</q>
       </p>
 
-            <sage doctest="not tested" permid="Ytt">
+            <sage doctest="not tested">
                 <input>
         Ddual = D.dual()
         Ddual.plot()
@@ -2185,9 +2185,9 @@
             </sage>
     </subsection>
 
-    <subsection permid="Orr">
+    <subsection>
       <title>Lattices</title>
-      <p permid="hfc">
+      <p>
         Every lattice is a poset,
         so all the commands above will perform equally well for a lattice.
         But how do you create a lattice?
@@ -2201,14 +2201,14 @@
         such as the prototypical <c>BooleanLattice</c>.
       </p>
 
-            <sage permid="eSz">
+            <sage>
                 <input>
         P = Posets.AntichainPoset(8)
         P.is_lattice()
         </input>
                 <output>False</output>
             </sage>
-            <sage permid="KZI">
+            <sage>
                 <input>
         LatticePoset(P)
         </input>
@@ -2219,7 +2219,7 @@
         </output>
             </sage>
 
-      <p permid="Nml">
+      <p>
         An integer composition of <m>n</m> is a list of positive integers that sum to <m>n</m>.
         A composition <m>C_1</m> covers a composition <m>C_2</m> if <m>C_2</m> can be formed from <m>C_1</m> by adding consecutive parts.
         For example, <m>C_1 = [2, 1, 2] \succeq [3, 2] = C_2</m>.
@@ -2227,7 +2227,7 @@
         the set of all integer compositions of a fixed integer <m>n</m> is a poset that is also a lattice.
       </p>
 
-            <sage doctest="not tested" permid="EAC">
+            <sage doctest="not tested">
                 <input>
         CP = Posets.IntegerCompositions(5)
         C = LatticePoset(CP)
@@ -2235,14 +2235,14 @@
         </input>
             </sage>
 
-      <p permid="ttu">
+      <p>
         A meet or a join is a fundamental operation in a lattice.
       </p>
             <!-- % RAB 2012/08/11, Sage 5.2 -->
             <!-- % Seems we cannot create lattice elements reliably via __call__ , try again later? -->
             <!-- RAB 2015/05/20, 6.7 -->
             <!-- Should try to fix this coercion -->
-            <sage permid="rgR">
+            <sage>
                 <input>
         par = C.an_element().parent()
         a = par([1, 1, 1, 2])
@@ -2253,7 +2253,7 @@
         ([1, 1, 1, 2], [2, 1, 1, 1])
         </output>
             </sage>
-            <sage permid="Xoa">
+            <sage>
                 <input>
         C.meet(a, b)
         </input>
@@ -2261,7 +2261,7 @@
         [2, 1, 2]
         </output>
             </sage>
-            <sage permid="Dvj">
+            <sage>
                 <input>
         c = par([1, 4])
         d = par([2, 3])
@@ -2271,7 +2271,7 @@
         ([1, 4], [2, 3])
         </output>
             </sage>
-            <sage permid="jCs">
+            <sage>
                 <input>
         C.join(c, d)
         </input>
@@ -2280,17 +2280,17 @@
         </output>
             </sage>
 
-      <p permid="ZAD">
+      <p>
         Once a poset is upgraded to lattice status,
         then additional commands become available,
         or the character of their results changes.
       </p>
 
-      <p permid="FHM">
+      <p>
         An example of the former is the <c>.is_distributive()</c> method.
       </p>
 
-            <sage permid="PJB">
+            <sage>
                 <input>
         C.is_distributive()
         </input>
@@ -2299,7 +2299,7 @@
         </output>
             </sage>
 
-      <p permid="lOV">
+      <p>
         An example of the latter is the <c>.top()</c> method.
         What your text calls a largest element and a smallest element of a lattice, Sage calls a top and a bottom.
         For a poset,
@@ -2308,7 +2308,7 @@
         but for a lattice it is guaranteed to return exactly one element.
       </p>
 
-            <sage permid="vQK">
+            <sage>
                 <input>
         C.top()
         </input>
@@ -2316,7 +2316,7 @@
         [1, 1, 1, 1, 1]
         </output>
             </sage>
-            <sage permid="bXT">
+            <sage>
                 <input>
         C.bottom()
         </input>
@@ -2325,12 +2325,12 @@
         </output>
             </sage>
 
-      <p permid="RWe">
+      <p>
         Notice that the returned values are all elements of the lattice,
         in this case ordered lists of integers summing to <m>5</m>.
       </p>
 
-      <p permid="ydn">
+      <p>
         Complements now make sense in a lattice.
         The result of the <c>.complements()</c> method is a dictionary that uses elements of the lattice as the keys.
         We say the dictionary is <q>indexed</q>
@@ -2341,7 +2341,7 @@
         but they are really just fancy functions.)
       </p>
 
-            <sage permid="Ifc">
+            <sage>
                 <input>
         comp = C.complements()
         comp[par([1, 1, 1, 2])]
@@ -2351,7 +2351,7 @@
         </output>
             </sage>
 
-      <p permid="ekw">
+      <p>
         The lattice of integer compositions is a complemented lattice,
         as we can see by the result that each element has a single (unique) complement,
         evidenced by the lists of length <m>1</m> in the values of the dictionary.
@@ -2360,7 +2360,7 @@
         so you may get different output each time you inspect the dictionary.
       </p>
 
-            <sage doctest="not tested" permid="kHL">
+            <sage doctest="not tested">
                 <input>
         comp
         </input>
@@ -2383,20 +2383,20 @@
          [5]: [[1, 1, 1, 1, 1]]}
         </output>
             </sage>
-            <sage permid="oml">
+            <sage>
                 <input>
         [len(e[1]) for e in comp.items()]
         </input>
                 <output>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</output>
             </sage>
-            <sage permid="Utu">
+            <sage>
                 <input>
         C.is_complemented()
         </input>
                 <output>True</output>
             </sage>
 
-      <p permid="KrF">
+      <p>
         There are many more commands which apply to posets and lattices,
         so build a few and use tab-completion liberally to explore.
         There is more to discover than we can cover in just a single chapter,
@@ -2404,19 +2404,19 @@
       </p>
     </subsection>
   </section>
-  <exercises xml:id="boolean-sage-exercises" component="sage-exercises" permid="GMS">
+  <exercises xml:id="boolean-sage-exercises" component="sage-exercises">
     <title>Sage Exercises</title>
 
-    <exercise number="1" permid="myC" xml:id="boolean-sage-exercise-construct-poset">
+    <exercise number="1" xml:id="boolean-sage-exercise-construct-poset">
       <statement>
-        <p permid="bLp">
+        <p>
           Use <c>R = Posets.RandomPoset(30,0.05)</c> to construct a random poset.
           Use <c>R.plot()</c> to get an idea of what you have built.
         </p>
 
-        <ol permid="AgI">
-          <li permid="RON">
-            <p permid="UnU">
+        <ol>
+          <li>
+            <p>
               Illustrate the use of the poset methods:
             <c>.is_lequal()</c>,
             <c>.is_less_than()</c>,
@@ -2428,20 +2428,20 @@
             </p>
           </li>
 
-          <li permid="xVW">
-            <p permid="Avd">
+          <li>
+            <p>
               Use <c>.minimal_elements()</c> and <c>.maximal_elements()</c> to find the smallest and largest elements of your poset.
             </p>
           </li>
 
-          <li permid="edf">
-            <p permid="gCm">
+          <li>
+            <p>
               Use <c>LatticePoset(R)</c> to see if the poset <c>R</c> is a lattice by attempting to convert it into a lattice.
             </p>
           </li>
 
-          <li permid="Kko">
-            <p permid="MJv">
+          <li>
+            <p>
               Find a linear extension of your poset.
               Confirm that any pair of elements that are comparable in the poset will be similarly comparable in the linear extension.
             </p>
@@ -2450,23 +2450,23 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="SFL" xml:id="boolean-sage-exercise-divisors-72">
+    <exercise number="2" xml:id="boolean-sage-exercise-divisors-72">
       <statement>
-        <p permid="HSy">
+        <p>
           Construct the poset on the positive divisors of
           <m>72=2^3\cdot 3^2</m> with divisiblity as the relation,
           and then convert to a lattice.
         </p>
 
-        <ol permid="gnR">
-          <li permid="qrx">
-            <p permid="sQE">
+        <ol>
+          <li>
+            <p>
               Determine the one and zero element using <c>.top()</c> and <c>.bottom()</c>.
             </p>
           </li>
 
-          <li permid="WyG">
-            <p permid="YXN">
+          <li>
+            <p>
               Determine all the pairs of elements of the lattice that are complements of each other <em>without</em>
               using the <c>.complement()</c> method,
               but rather just use the <c>.meet()</c> and <c>.join()</c> methods.
@@ -2474,8 +2474,8 @@
             </p>
           </li>
 
-          <li permid="CFP">
-            <p permid="FeW">
+          <li>
+            <p>
               Determine if the lattice is distributive using just the <c>.meet()</c> and <c>.join()</c> methods,
               and not the <c>.is_distributive()</c> method.
             </p>
@@ -2484,9 +2484,9 @@
       </statement>
     </exercise>
 
-    <exercise number="3" permid="yMU" xml:id="boolean-sage-exercise-diamond-lattices">
+    <exercise number="3" xml:id="boolean-sage-exercise-diamond-lattices">
       <statement>
-        <p permid="nZH">
+        <p>
           Construct several specific diamond lattices with <c>Posets.DiamondPoset(n)</c> by varying the value of <c>n</c>.
           Once you feel you have enough empirical evidence,
           give answers, with justifications,
@@ -2494,22 +2494,22 @@
           based on observations obtained from your experiments with Sage.
         </p>
 
-        <ol permid="Mva">
-          <li permid="iMY">
-            <p permid="lmf">
+        <ol>
+          <li>
+            <p>
               Which elements have complements and which do not, and why?
             </p>
           </li>
 
-          <li permid="OUh">
-            <p permid="Rto">
+          <li>
+            <p>
               Read the documentation of the <c>.antichains()</c> method to learn what an antichain is.
               How many antichains are there?
             </p>
           </li>
 
-          <li permid="vbq">
-            <p permid="xAx">
+          <li>
+            <p>
               Is the lattice distributive?
             </p>
           </li>
@@ -2517,21 +2517,21 @@
       </statement>
     </exercise>
 
-    <exercise number="4" permid="eUd" xml:id="boolean-sage-exercise-algebra-16-elements">
+    <exercise number="4" xml:id="boolean-sage-exercise-algebra-16-elements">
       <statement>
-        <p permid="UgQ">
+        <p>
           Use <c>Posets.BooleanLattice(4)</c> to construct an instance of the prototypical Boolean algebra on <m>16</m> elements
           (<ie/>, all subsets of a <m>4</m>-set).
         </p>
 
-        <p permid="AnZ">
+        <p>
           Then use <c>Posets.IntegerCompositions(5)</c> to construct the poset whose <m>16</m> elements are the compositions of the integer <m>5</m>.
           We have seen above that the integer composition lattice is distributive and complemented,
           making it a Boolean algebra.
           And by <xref ref="boolean-theorem-classification-boolean-algebra"/> we can conclude that these two Boolean algebras are isomorphic.
         </p>
 
-        <p permid="gvi">
+        <p>
           Use the <c>.plot()</c> method to see the similarity visually.
           Then use the method <c>.hasse_diagram()</c> on each poset to obtain a directed graph
           (which you can also plot,
@@ -2541,9 +2541,9 @@
       </statement>
     </exercise>
 
-    <exercise number="5" permid="Lbm" xml:id="boolean-sage-exercise-isomorphism">
+    <exercise number="5" xml:id="boolean-sage-exercise-isomorphism">
       <statement>
-        <p permid="MCr">
+        <p>
           (Advanced) For the previous question,
           construct an <em>explicit</em> isomorphism between the two Boolean algebras.
           This would be a bijective function

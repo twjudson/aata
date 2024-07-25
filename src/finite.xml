@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="finite" permid="Gnc">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="finite">
   <title>Finite Fields</title>
-  <introduction permid="YFb">
-    <p permid="xpc">
+  <introduction>
+    <p>
       Finite fields appear in many applications of algebra,
       including coding theory and cryptography.
       We already know one finite field,
@@ -24,9 +24,9 @@
     </p>
   </introduction>
 
-  <section xml:id="finite-section-field" permid="jzF">
+  <section xml:id="finite-section-field">
     <title>Structure of a Finite Field</title>
-    <p permid="Gnp">
+    <p>
       Recall that a field <m>F</m> has
       <term>characteristic</term>
       <m>p</m> if <m>p</m> is the smallest positive integer such that for every nonzero element <m>\alpha</m> in <m>F</m>,
@@ -40,29 +40,29 @@
       This discussion is summarized in the following proposition.
     </p>
 
-    <proposition permid="Plp">
+    <proposition>
       <statement>
-        <p permid="WXf">
+        <p>
           If <m>F</m> is a finite field,
           then the characteristic of <m>F</m> is <m>p</m>, where <m>p</m> is prime.
         </p>
       </statement>
     </proposition>
 
-    <p permid="muy">
+    <p>
       Throughout this chapter we will assume that <m>p</m> is a prime number unless otherwise stated.
     </p>
 
-    <proposition permid="vsy">
+    <proposition>
       <statement>
-        <p permid="Deo">
+        <p>
           If <m>F</m> is a finite field of characteristic <m>p</m>,
           then the order of <m>F</m> is <m>p^n</m> for some <m>n \in {\mathbb N}</m>.
         </p>
       </statement>
 
-      <proof permid="BRE">
-        <p permid="fGX">
+      <proof>
+        <p>
           Let <m>\phi : {\mathbb Z} \rightarrow F</m> be the ring homomorphism defined by <m>\phi(n) = n \cdot 1</m>.
           Since the characteristic of <m>F</m> is <m>p</m>,
           the kernel of <m>\phi</m> must be
@@ -74,7 +74,7 @@
           Suppose that <m>[F : K] = n</m> is the dimension of <m>F</m>,
           where <m>F</m> is a <m>K</m> vector space.
           There must exist elements <m>\alpha_1, \ldots, \alpha_n \in F</m> such that any element <m>\alpha</m> in <m>F</m> can be written uniquely in the form
-          <me permid="XlA">
+          <me>
             \alpha = a_1 \alpha_1 + \cdots + a_n \alpha_n
           </me>,
           where the <m>a_i</m>'s are in <m>K</m>.
@@ -85,33 +85,33 @@
       </proof>
     </proposition>
 
-    <lemma xml:id="finite-lemma-freshmans-dream" permid="bzH">
+    <lemma xml:id="finite-lemma-freshmans-dream">
       <title>Freshman's Dream</title>
       <idx>
       <h>Freshman's Dream</h>
       </idx>
       <statement>
-        <p permid="PsG">
+        <p>
           Let <m>p</m> be prime and <m>D</m> be an integral domain of characteristic <m>p</m>.
           Then
-          <me permid="DsJ">
+          <me>
             a^{p^n} + b^{p^n} = (a + b)^{p^n}
           </me>
           for all positive integers <m>n</m>.
         </p>
       </statement>
 
-      <proof permid="hYN">
-        <p permid="LOg">
+      <proof>
+        <p>
           We will prove this lemma using mathematical induction on <m>n</m>.
           We can use the binomial formula
           (see <xref ref="integers"/>, <xref ref="integers-example-binomial-theorem"/>)
           to verify the case for <m>n = 1</m>; that is,
-          <me permid="jzS">
+          <me>
             (a + b)^p = \sum_{k = 0}^{p} \binom{p}{k} a^k b^{p - k}
           </me>.
           If <m>0 \lt k \lt p</m>, then
-          <me permid="PHb">
+          <me>
             \binom{p}{k} = \frac{p!}{k!(p - k)!}
           </me>
           must be divisible by <m>p</m>,
@@ -121,11 +121,11 @@
           Therefore, <m>(a + b)^p = a^p + b^p</m>.
         </p>
 
-        <p permid="rVp">
+        <p>
           Now suppose that the result holds for all <m>k</m>,
           where <m>1 \leq k \leq n</m>.
           By the induction hypothesis,
-          <me permid="vOk">
+          <me>
             (a + b)^{p^{n + 1}} = ((a + b)^p)^{p^{n}} = (a^p + b^p)^{p^{n}} = (a^p)^{p^{n}} + (b^p)^{p^{n}} = a^{p^{n + 1}} + b^{p^{n + 1}}
           </me>.
           Therefore, the lemma is true for <m>n + 1</m> and the proof is complete.
@@ -133,7 +133,7 @@
       </proof>
     </lemma>
 
-    <p permid="SBH">
+    <p>
       Let <m>F</m> be a field.
       A polynomial <m>f(x) \in F[x]</m> of degree <m>n</m> is <term>separable</term><idx><h>Polynomial separable</h></idx>
       if it has <m>n</m> distinct roots in the splitting field of <m>f(x)</m>;
@@ -142,8 +142,8 @@
       <term>separable extension</term><idx><h>Extension</h><h>separable</h></idx> of <m>F</m> if every element in <m>E</m> is the root of a separable polynomial in <m>F[x]</m>.
     </p>
         <!-- Corrected typo.  Suggested by C. Wall. - TWJ 5/15/2012 -->
-    <example permid="Acr">
-      <p permid="Ucz">
+    <example>
+      <p>
         The polynomial <m>x^2 - 2</m> is separable over
         <m>{\mathbb Q}</m> since it factors as <m>(x - \sqrt{2}\, )(x + \sqrt{2}\, )</m>.
         In fact, <m>{\mathbb Q}(\sqrt{2}\, )</m> is a separable extension of <m>{\mathbb Q}</m>.
@@ -151,42 +151,42 @@
         If <m>b = 0</m>, then <m>\alpha</m> is a root of <m>x - a</m>.
         If <m>b \neq 0</m>,
         then <m>\alpha</m> is the root  of the separable polynomial
-        <me permid="bVt">
+        <me>
           x^2 - 2 a x + a^2 - 2 b^2 = (x - (a + b \sqrt{2}\, ))(x - (a - b \sqrt{2}\, ))
         </me>.
       </p>
     </example>
         <!-- Notation error corrected.  Suggested by C. Wall.  TWJ 5/15/2012 -->
-    <p permid="yIQ">
+    <p>
       Fortunately,
       we have an easy test to  determine the separability of any polynomial.
       Let
-      <me permid="IcC">
+      <me>
         f(x) = a_0 + a_1 x + \cdots + a_n x^n
       </me>
       be any polynomial in <m>F[x]</m>.
       Define the <term>derivative</term><idx><h>Derivative</h></idx>
       of <m>f(x)</m> to be
-      <me permid="ojL">
+      <me>
         f'(x) = a_1 + 2 a_2 x + \cdots + n a_n x^{n - 1}
       </me>.
     </p>
 
-    <lemma xml:id="finite-lemma-separable-derivative" permid="HGQ">
+    <lemma xml:id="finite-lemma-separable-derivative">
       <statement>
-        <p permid="vzP">
+        <p>
           Let <m>F</m> be a field and <m>f(x) \in F[x]</m>.
           Then <m>f(x)</m> is separable if and only if <m>f(x)</m> and <m>f'(x)</m> are relatively prime.
         </p>
       </statement>
 
-      <proof permid="OfW">
-        <p permid="Ycy">
+      <proof>
+        <p>
           Let <m>f(x)</m> be separable.
           Then <m>f(x)</m> factors over some extension field of <m>F</m> as <m>f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)</m>,
           where <m>\alpha_i \neq \alpha_j</m> for <m>i \neq j</m>.
           Taking the derivative of <m>f(x)</m>, we see that
-          <md permid="UqU">
+          <md>
             <mrow>f'(x) &amp; = (x - \alpha_2) \cdots (x - \alpha_n)</mrow>
             <mrow>&amp; + (x - \alpha_1) (x - \alpha_3) \cdots (x - \alpha_n)</mrow>
             <mrow>&amp; + \cdots + (x - \alpha_1) \cdots (x - \alpha_{n - 1})</mrow>
@@ -194,12 +194,12 @@
           Hence, <m>f(x)</m> and <m>f'(x)</m> can have no common factors.
         </p>
 
-        <p permid="EjH">
+        <p>
           To prove the converse,
           we will show that the contrapositive of the statement is true.
           Suppose that <m>f(x) = (x - \alpha)^k g(x)</m>, where <m>k \gt 1</m>.
           Differentiating, we have
-          <me permid="Ayd">
+          <me>
             f'(x) = k ( x - \alpha)^{k-1} g(x) + (x- \alpha)^k g'(x)
           </me>.
           Therefore, <m>f(x)</m> and <m>f'(x)</m> have a common factor.
@@ -207,9 +207,9 @@
       </proof>
     </lemma>
 
-    <theorem xml:id="finite-theorem-splitting-field" permid="WPO">
+    <theorem xml:id="finite-theorem-splitting-field">
       <statement>
-        <p permid="mgd">
+        <p>
           For every prime <m>p</m> and every positive integer <m>n</m>,
           there exists a finite field <m>F</m> with <m>p^n</m> elements.
           Furthermore,
@@ -219,8 +219,8 @@
       </statement>
             <!-- % TWJ 11/20/2011 -->
             <!-- % Reference to Lemma 22.4 corrected in proof.  Suggested by A. Johnston. -->
-      <proof permid="RaC">
-        <p permid="kqQ">
+      <proof>
+        <p>
           Let <m>f(x) = x^{p^n} - x</m> and let <m>F</m> be the splitting field of <m>f(x)</m>.
           Then by <xref ref="finite-lemma-separable-derivative"/>,
           <m>f(x)</m> has <m>p^n</m> distinct zeros in <m>F</m>,
@@ -234,12 +234,12 @@
           We also need to show that the additive inverse and the multiplicative inverse of each root of <m>f(x)</m> are roots of <m>f(x)</m>.
           For any zero <m>\alpha</m> of <m>f(x)</m>,
           we know that <m>-\alpha</m> is also a zero of <m>f(x)</m>, since
-          <me permid="gFm">
+          <me>
             f(-\alpha) = (-\alpha)^{p^n} - (-\alpha) = -\alpha^{p^n} + \alpha = -(\alpha^{p^n} - \alpha) = 0
           </me>,
           provided <m>p</m> is odd.
           If <m>p = 2</m>, then
-          <me permid="MMv">
+          <me>
             f(-\alpha) =  (-\alpha)^{2^n} - (-\alpha) = \alpha + \alpha = 0
           </me>.
           If <m>\alpha \neq 0</m>,
@@ -248,7 +248,7 @@
           the subfield must be all of <m>F</m>.
         </p>
 
-        <p permid="QxZ">
+        <p>
           Let <m>E</m> be any other field of order <m>p^n</m>.
           To show that <m>E</m> is isomorphic to <m>F</m>,
           we must show that every element in <m>E</m> is a root of <m>f(x)</m>.
@@ -264,7 +264,7 @@
       </proof>
     </theorem>
 
-    <p permid="ePZ">
+    <p>
       The unique finite field with <m>p^n</m> elements is called the <term>Galois field</term><idx><h>Galois field</h></idx><idx><h>Field</h><h>Galois</h></idx>
       of order <m>p^n</m>.
       We will denote this field by <m>\gf(p^n)</m>.
@@ -276,9 +276,9 @@
 
     </p>
 
-    <theorem xml:id="finite-theorem-subfields" permid="CWX">
+    <theorem xml:id="finite-theorem-subfields">
       <statement>
-        <p permid="Snm">
+        <p>
           Every subfield of the Galois field
           <m>\gf(p^n)</m> has <m>p^m</m> elements,
           where <m>m</m> divides <m>n</m>.
@@ -288,15 +288,15 @@
         </p>
       </statement>
 
-      <proof permid="xhL">
-        <p permid="wFi">
+      <proof>
+        <p>
           Let <m>F</m> be a subfield of <m>E = \gf(p^n)</m>.
           Then <m>F</m> must be a field extension of <m>K</m> that contains <m>p^m</m> elements,
           where <m>K</m> is isomorphic to <m>{\mathbb Z}_p</m>.
           Then <m>m \mid n</m>, since <m>[E:K] = [E:F][F:K]</m>.
         </p>
 
-        <p permid="cMr">
+        <p>
           To prove the converse, suppose that
           <m>m \mid n</m> for some <m>m \gt 0</m>.
           Then <m>p^m -1</m> divides <m>p^n -1</m>.
@@ -311,17 +311,17 @@
       </proof>
     </theorem>
         <!--  2010/05/18 R Beezer, added space before Figure citation -->
-    <example xml:id="finite-example-gf-p24" permid="gjA">
-      <p permid="AjI">
+    <example xml:id="finite-example-gf-p24">
+      <p>
         The lattice of subfields of
         <m>\gf(p^{24})</m> is given in <xref ref="finite-figure-field-lattice"/>.
       </p>
     </example>
 
-    <figure xml:id="finite-figure-field-lattice" permid="rer">
+    <figure xml:id="finite-figure-field-lattice">
       <caption>Subfields of <m>\gf(p^{24})</m></caption>
             <!-- Replaced figure with tikz figure - TWJ 8/20/2010 -->
-      <image width="50%" xml:id="finite-subfield-lattice" permid="YFo">
+      <image width="50%" xml:id="finite-subfield-lattice">
       		<description>A lattice of field inclusions with the top level a Galois field of p^24 elements.  The second level has Galois fields of p^8 and p^12 elements which are included in the top level.  The third level has Galois fields of p^4 (included in the fields of p^8 and p^12 elements) and p^6 elements (included in the field of p^12 elements).  The fourth level has Galois fields of p^2 (included in the fields of p^4 and p^16 elements) and p^3 elements (included in the field of p^6 elements). The bottom level a Galois field of p elements (included in the fields of p^2 and p^3 elements).</description>
             <latex-image>
                 <xi:include href="tikz/finite-subfield-lattice.tex" parse="text"/>
@@ -330,7 +330,7 @@
 
     </figure>
 
-    <p permid="KXi">
+    <p>
       With each field <m>F</m> we have a multiplicative group of nonzero elements of <m>F</m> which we will denote by <m>F^*</m>.
 
       <notation>
@@ -342,20 +342,20 @@
       This result follows from the more general result that we will prove in the next theorem.
     </p>
 
-    <theorem xml:id="finite-theorem-mult-group-finite-field" permid="jeg">
+    <theorem xml:id="finite-theorem-mult-group-finite-field">
       <statement>
-        <p permid="yuv">
+        <p>
           If <m>G</m> is a finite subgroup of <m>F^\ast</m>,
           the multiplicative group of nonzero elements of a field <m>F</m>,
           then <m>G</m> is cyclic.
         </p>
       </statement>
 
-      <proof permid="doU">
-        <p permid="ITA">
+      <proof>
+        <p>
           Let <m>G</m> be a finite subgroup of <m>F^\ast</m> of order <m>n</m>.
           By the Fundamental Theorem of Finite Abelian Groups (<xref ref="struct-theorem-finite-abelian-groups"/>),
-          <me permid="sTE">
+          <me>
             G \cong {\mathbb Z}_{p_1^{e_1}} \times \cdots \times {\mathbb Z}_{p_k^{e_k}}
           </me>,
           where <m>n = p_1^{e_1} \cdots p_k^{e_k}</m> and the  <m>p_1, \ldots,
@@ -377,23 +377,23 @@
     </theorem>
         <!-- Rewrote the first part of the proof.  Suggested by R. Beezer. -->
         <!-- TWJ - 24/4/2013 -->
-    <corollary xml:id="finite-corollary-cyclic-group-finite-field" permid="nNZ">
+    <corollary xml:id="finite-corollary-cyclic-group-finite-field">
       <statement>
-        <p permid="HOh">
+        <p>
           The multiplicative group of all nonzero elements of a finite field is cyclic.
         </p>
       </statement>
     </corollary>
 
-    <corollary xml:id="finite-corollary-finite-extension-finite-field" permid="TVi">
+    <corollary xml:id="finite-corollary-finite-extension-finite-field">
       <statement>
-        <p permid="nVq">
+        <p>
           Every finite extension <m>E</m> of a finite field <m>F</m> is a simple extension of <m>F</m>.
         </p>
       </statement>
 
-      <proof permid="auo">
-        <p permid="paJ">
+      <proof>
+        <p>
           Let <m>\alpha</m> be a generator for the cyclic group
           <m>E^{\ast}</m> of nonzero elements of <m>E</m>.
           Then <m>E = F( \alpha )</m>.
@@ -401,11 +401,11 @@
       </proof>
     </corollary>
 
-    <example xml:id="finite-example-gf-2-4" permid="MqJ">
-      <p permid="gqR">
+    <example xml:id="finite-example-gf-2-4">
+      <p>
         The finite field <m>\gf(2^4)</m> is isomorphic to the field <m>{\mathbb Z}_2[x]/ \langle 1 + x + x^4 \rangle</m>.
         Therefore, the elements of  <m>\gf(2^4)</m> can be taken to be
-        <me permid="ZaN">
+        <me>
           \{ a_0 + a_1 \alpha + a_2 \alpha^2 + a_3 \alpha^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \alpha + \alpha^4 = 0 \}
         </me>.
         Remembering that <m>1 + \alpha +\alpha^4 = 0</m>,
@@ -413,7 +413,7 @@
         <m>\gf(2^4)</m> exactly as we add and multiply polynomials.
         The multiplicative group of <m>\gf(2^4)</m> is isomorphic to
         <m>{\mathbb  Z}_{15}</m> with generator <m>\alpha</m>:
-        <md permid="FhW">
+        <md>
           <mrow>&amp; \alpha^1 = \alpha &amp; &amp; \alpha^6 = \alpha^2 + \alpha^3 &amp; &amp; \alpha^{11} = \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
           <mrow>&amp; \alpha^2 = \alpha^2 &amp; &amp; \alpha^7 = 1 + \alpha + \alpha^3 &amp; &amp; \alpha^{12} = 1 + \alpha + \alpha^2 + \alpha^3 &amp;</mrow>
           <mrow>&amp; \alpha^3 = \alpha^3 &amp; &amp; \alpha^8 = 1 + \alpha^2 &amp; &amp; \alpha^{13} = 1 + \alpha^2 + \alpha^3 &amp;</mrow>
@@ -424,12 +424,12 @@
     </example>
   </section>
 
-  <section xml:id="finite-section-poly-codes" permid="PGO">
+  <section xml:id="finite-section-poly-codes">
     <title>Polynomial Codes</title>
         <!-- TWJ 2012/11/21 -->
         <!-- Chapter reference updated.  Suggested by J. Buller. -->
-    <introduction permid="EMk">
-      <p permid="dwl">
+    <introduction>
+      <p>
         With knowledge of polynomial rings and finite fields,
         it is now possible to derive more sophisticated codes than those of <xref ref="algcodes"/>.
         First let us recall that an <m>(n, k)</m>-block code consists of a one-to-one encoding function
@@ -438,7 +438,7 @@
         A code is a linear code if it is the null space of a matrix <m>H \in {\mathbb M}_{k \times n}({\mathbb Z}_2)</m>.
       </p>
 
-      <p permid="JDu">
+      <p>
         We are interested in a class of codes known as <idx><h>Code</h><h>cyclic</h></idx><term>cyclic codes</term>.
         Let <m>\phi : {\mathbb Z}_2^k \rightarrow {\mathbb Z}_2^n</m> be a binary <m>(n,k)</m>-block code.
         Then <m>\phi</m> is a <term>cyclic code</term>
@@ -448,10 +448,10 @@
         Cyclic codes are particularly easy to implement on a computer using shift registers [2, 3].
       </p>
 
-      <example xml:id="finite-example-6-3-linear-code" permid="sxS">
-        <p permid="Mya">
+      <example xml:id="finite-example-6-3-linear-code">
+        <p>
           Consider the <m>(6,3)</m>-linear codes generated by the two matrices
-          <me permid="lpf">
+          <me>
             G_1 
             = 
             \begin{pmatrix}
@@ -476,7 +476,7 @@
             \end{pmatrix}
           </me>.
           Messages in the first code are encoded as follows:
-          <me permid="Rwo">
+          <me>
             \begin{array}{rclccrcl}
             (000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (100100) \\
             (001) &amp; \mapsto &amp; (001001) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (101101) \\
@@ -486,7 +486,7 @@
           </me>
           It is easy to see that the codewords form a cyclic code.
           In the second code, 3-tuples are encoded in the following manner:
-          <me permid="xDx">
+          <me>
             \begin{array}{rclccrcl}
             (000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (111100) \\
             (001) &amp; \mapsto &amp; (001111) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (110011) \\
@@ -500,9 +500,9 @@
       </example>
     </introduction>
 
-    <subsection xml:id="finite-subsection-poly-codes" permid="mul">
+    <subsection xml:id="finite-subsection-poly-codes">
       <title>Polynomial Codes</title>
-      <p permid="fVs">
+      <p>
         We would like to find an easy method of obtaining cyclic linear codes.
         To accomplish this,
         we can use our knowledge of finite fields and  polynomial rings over <m>{\mathbb Z}_2</m>.
@@ -510,13 +510,13 @@
         Stated another way, the <m>n</m>-tuple
         <m>(a_0, a_1, \ldots,
         a_{n - 1} )</m> corresponds to the polynomial
-        <me permid="dKG">
+        <me>
           f(x) = a_0 + a_1 x + \cdots + a_{n-1} x^{n - 1}
         </me>,
         where the degree of <m>f(x)</m> is at most <m>n - 1</m>.
         For example,
         the polynomial corresponding to the <m>5</m>-tuple <m>(10011)</m> is
-        <me permid="JRP">
+        <me>
           1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4
         </me>.
         Conversely, with any polynomial <m>f(x) \in {\mathbb Z}_2[x]</m> with
@@ -524,7 +524,7 @@
         The polynomial <m>x + x^2 + x^4</m> corresponds to the <m>5</m>-tuple <m>(01101)</m>.
       </p>
 
-      <p permid="McB">
+      <p>
         Let us fix a nonconstant polynomial <m>g(x)</m> in
         <m>{\mathbb Z}_2[x]</m> of degree <m>n - k</m>.
         We can define an <m>(n,k)</m>-code <m>C</m> in the following manner.
@@ -537,9 +537,9 @@
         <idx><h>Polynomial</h><h>code</h></idx><idx><h>Code</h><h>polynomial</h></idx><term>polynomial codes</term>.
       </p>
 
-      <example xml:id="finite-example-generator-63-code" permid="AxQ">
+      <example xml:id="finite-example-generator-63-code">
             <!-- Changed minimal polynomial from  (1 + x^3)x^3 &amp; = x^2 + x^5 to (1 + x^3)x^2 &amp; = x^2 + x^5.  Discovered by Jon Buller - TWJ 3/25/2011 -->
-        <p permid="sFj">
+        <p>
           If we let <m>g(x)= 1 + x^3</m>,
           we can define a <m>(6,3)</m>-code <m>C</m> as follows.
           To encode a <m>3</m>-tuple <m>( a_0, a_1, a_2 )</m>,
@@ -551,7 +551,7 @@
           (see <xref ref="vect-exercise-linear-transformation"/>, <xref ref="vect"/>).
           Let us compute the kernel of <m>\phi</m>.
           Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when
-          <md permid="pYY">
+          <md>
             <mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
             <mrow>&amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5</mrow>
           </md>.
@@ -560,18 +560,18 @@
           Therefore, <m>\ker \phi = \{ (000) \}</m> and <m>\phi</m> is one-to-one.
         </p>
 
-        <p permid="YMs">
+        <p>
           To calculate a generator matrix for <m>C</m>,
           we merely need to examine the way the polynomials <m>1</m>,
           <m>x</m>, and <m>x^2</m> are encoded:
-          <md permid="Cnq">
+          <md>
             <mrow>(1 + x^3) \cdot 1 &amp; = 1 + x^3</mrow>
             <mrow>(1 + x^3)x &amp; = x + x^4</mrow>
             <mrow>(1 + x^3)x^2 &amp; = x^2 + x^5</mrow>
           </md>.
           We obtain the code corresponding to the generator matrix <m>G_1</m> in <xref ref="finite-example-6-3-linear-code"/>.
           The parity-check matrix for this code is
-          <me permid="Wgh">
+          <me>
             H
             = 
             \begin{pmatrix}
@@ -585,16 +585,16 @@
         </p>
       </example>
 
-      <p permid="sjK">
+      <p>
         Rings of polynomials have a great deal of structure;
         therefore, our immediate goal is to establish a link between polynomial codes and ring theory.
         Recall that <m>x^n - 1 = (x - 1)( x^{n - 1} + \cdots + x + 1)</m>.
         The factor ring
-        <me permid="iuz">
+        <me>
           R_n = {\mathbb Z}_2[x]/ \langle x^n - 1 \rangle
         </me>
         can be considered to be the ring of polynomials of the form
-        <me permid="OBI">
+        <me>
           f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}
         </me>
         that satisfy the condition <m>t^n = 1</m>.
@@ -605,26 +605,26 @@
         In this manner we can interpret a linear code as a subset of <m>{\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.
       </p>
 
-      <p permid="YqT">
+      <p>
         The additional ring structure on polynomial codes is very powerful in describing cyclic codes.
         A cyclic shift of an <m>n</m>-tuple can be described by polynomial multiplication.
         If <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is a code polynomial in <m>R_n</m>, then
-        <me permid="uIR">
+        <me>
           tf(t) = a_{n - 1} + a_0 t + \cdots + a_{n - 2} t^{n - 1}
         </me>
         is the cyclically shifted word obtained from multiplying <m>f(t)</m> by <m>t</m>.
         The following theorem gives a beautiful classification of cyclic codes in terms of the ideals of <m>R_n</m>.
       </p>
 
-      <theorem xml:id="finite-theorem-cyclic-code" permid="bVg">
+      <theorem xml:id="finite-theorem-cyclic-code">
         <statement>
-          <p permid="eBE">
+          <p>
             A linear code <m>C</m> in <m>{\mathbb Z}_2^n</m> is cyclic if and only if it is an ideal in <m>R_n = {\mathbb Z}[x] / \langle x^n - 1 \rangle</m>.
           </p>
         </statement>
 
-        <proof permid="Jwd">
-          <p permid="VhS">
+        <proof>
+          <p>
             Let <m>C</m> be a linear cyclic code and suppose that <m>f(t)</m> is in <m>C</m>.
             Then <m>t f(t)</m> must also be in <m>C</m>.
             Consequently,
@@ -637,7 +637,7 @@
             Hence, <m>C</m> is an ideal.
           </p>
 
-          <p permid="Bpb">
+          <p>
             Conversely, let <m>C</m> be an ideal in <m>{\mathbb Z}_2[x]/\langle x^n + 1\rangle</m>.
             Suppose that <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is a codeword in <m>C</m>.
             Then <m>t f(t)</m> is a codeword in <m>C</m>;
@@ -646,7 +646,7 @@
         </proof>
       </theorem>
 
-      <p permid="Eyc">
+      <p>
         <xref ref="finite-theorem-cyclic-code"/> tells us that knowing the ideals of <m>R_n</m> is equivalent to knowing the linear cyclic codes in <m>{\mathbb Z}_2^n</m>.
         Fortunately, the ideals in <m>R_n</m> are easy to describe.
         The  natural ring homomorphism <m>\phi : {\mathbb Z}_2[x] \rightarrow R_n</m> defined by
@@ -664,17 +664,17 @@
         Since <m>\langle x^n - 1 \rangle</m> is contained in <m>I</m>,
         it must be the case that <m>g(x)</m> divides <m>x^n - 1</m>.
         Consequently, every ideal <m>C</m> in <m>R_n</m> is of the form
-        <me permid="aQa">
+        <me>
           C = \langle g(t) \rangle = \{ f(t)g(t) : f(t) \in R_n \text{ and } g(x) \mid (x^n - 1) \text{ in } {\mathbb Z}_2[x] \}
         </me>.
         The unique monic polynomial of the smallest degree that generates <m>C</m> is called the
         <term>minimal generator polynomial</term><idx><h>Minimal generator polynomial</h></idx><idx><h>Polynomial</h><h>minimal generator</h></idx> of <m>C</m>.
       </p>
 
-      <example xml:id="finite-example-factor-x7-1" permid="gEZ">
-        <p permid="ETB">
+      <example xml:id="finite-example-factor-x7-1">
+        <p>
           If we factor <m>x^7 - 1</m> into irreducible components, we have
-          <me permid="GXj">
+          <me>
             x^7 - 1 = (1 + x)(1 + x + x^3)(1+ x^2 + x^3)
           </me>.
           We see that <m>g(t) = (1 + t + t^3)</m> generates an ideal <m>C</m> in <m>R_7</m>.
@@ -683,7 +683,7 @@
           it is easy to calculate a generator matrix by examining what <m>g(t)</m> does to the polynomials 1, <m>t</m>,
           <m>t^2</m>, and <m>t^3</m>.
           A generator matrix for <m>C</m> is
-          <me permid="nes">
+          <me>
             G =
             \begin{pmatrix}
             1 &amp; 0 &amp; 0 &amp; 0 \\
@@ -698,12 +698,12 @@
         </p>
       </example>
 
-      <p permid="kFl">
+      <p>
         In general, we can determine a generator matrix for an <m>(n, k)</m>-code <m>C</m> by the manner in which the elements <m>t^k</m> are encoded.
         Let <m>x^n - 1 = g(x) h(x)</m> in <m>{\mathbb Z}_2[x]</m>.
         If <m>g(x) = g_0 + g_1 x + \cdots + g_{n-k} x^{n-k}</m> and <m>h(x) = h_0 + h_1 x + \cdots + h_k x^k</m>,
         then the <m>n \times k</m> matrix
-        <me permid="TlB">
+        <me>
           G = 
           \begin{pmatrix}
           g_0 &amp; 0   &amp; \cdots &amp; 0 \\
@@ -717,7 +717,7 @@
         </me>
         is a generator matrix for the code <m>C</m> with generator polynomial <m>g(t)</m>.
         The parity-check matrix for <m>C</m> is the <m>(n - k) \times n</m> matrix
-        <me permid="zsK">
+        <me>
           H =
           \begin{pmatrix}
           0   &amp; \cdots &amp; 0   &amp; 0      &amp; h_k    &amp; \cdots &amp; h_0 \\
@@ -729,9 +729,9 @@
         We will leave the details of the proof of the following proposition as an exercise.
       </p>
 
-      <proposition permid="ojy">
+      <proposition>
         <statement>
-          <p permid="jlx">
+          <p>
             Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>x^n - 1 = g(x) h(x)</m>.
             Then <m>G</m> and <m>H</m> are generator and parity-check matrices for <m>C</m>,
             respectively.
@@ -740,14 +740,14 @@
         </statement>
       </proposition>
 
-      <example xml:id="finite-example-parity-check-x7-1" permid="MMi">
-        <p permid="laK">
+      <example xml:id="finite-example-parity-check-x7-1">
+        <p>
           In <xref ref="finite-example-factor-x7-1"/>,
-          <me permid="fzT">
+          <me>
             x^7 - 1 = g(x) h(x) = (1 + x + x^3)(1 + x + x^2 + x^4)
           </me>.
           Therefore, a parity-check matrix for this code is
-          <me permid="LHc">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
@@ -758,12 +758,12 @@
         </p>
       </example>
 
-      <p permid="QMu">
+      <p>
         To determine the error-detecting and error-correcting capabilities of a cyclic code,
         we need to know something about determinants.
         If <m>\alpha_1, \ldots, \alpha_n</m> are elements in a field <m>F</m>,
         then the <m>n \times n</m> matrix
-        <me permid="rOl">
+        <me>
           \begin{pmatrix}
           1          &amp; 1          &amp; \cdots &amp; 1 \\
           \alpha_1   &amp; \alpha_2   &amp; \cdots &amp; \alpha_n \\
@@ -778,12 +778,12 @@
         We will need the following lemma in our investigation of cyclic codes.
       </p>
 
-      <lemma xml:id="finite-lemma-vandermode-det" permid="UqH">
+      <lemma xml:id="finite-lemma-vandermode-det">
         <statement>
-          <p permid="bGY">
+          <p>
             Let <m>\alpha_1, \ldots, \alpha_n</m> be elements in a field <m>F</m> with <m>n \geq 2</m>.
             Then
-            <me permid="XVu">
+            <me>
               \det
               \begin{pmatrix}
               1              &amp; 1              &amp; \cdots &amp; 1 \\
@@ -799,13 +799,13 @@
           </p>
         </statement>
 
-        <proof permid="unf">
-          <p permid="hwk">
+        <proof>
+          <p>
             We will induct on <m>n</m>.
             If <m>n = 2</m>,
             then the determinant is <m>\alpha_2 - \alpha_1</m>.
             Let us assume the result for <m>n - 1</m> and consider the polynomial <m>p(x)</m> defined by
-            <me permid="EcD">
+            <me>
               p(x) = \det
               \begin{pmatrix}
               1              &amp; 1              &amp; \cdots &amp; 1              &amp; 1 \\
@@ -821,11 +821,11 @@
             since the substitution of any one of these elements in the last column will produce a column identical to the last column in the matrix.
             Remember that the determinant of a matrix is zero if it has two identical columns.
             Therefore,
-            <me permid="kjM">
+            <me>
               p(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_{n-1}) \beta
             </me>,
             where
-            <me permid="QqV">
+            <me>
               \beta = (-1)^{n + n} \det
               \begin{pmatrix}
               1              &amp; 1              &amp; \cdots &amp; 1 \\
@@ -836,7 +836,7 @@
               \end{pmatrix}
             </me>.
             By our induction hypothesis,
-            <me permid="wye">
+            <me>
               \beta = (-1)^{n+n} \prod_{1 \leq j \lt i \leq n - 1} (\alpha_i - \alpha_j)
             </me>.
             If we let <m>x = \alpha_n</m>,
@@ -845,42 +845,42 @@
         </proof>
       </lemma>
 
-      <p permid="wTD">
+      <p>
         The following theorem gives us an estimate on the error detection and correction capabilities for a particular generator polynomial.
       </p>
 
-      <theorem xml:id="finite-theorem-min-dist-cyclic-code" permid="Icp">
+      <theorem xml:id="finite-theorem-min-dist-cyclic-code">
         <statement>
-          <p permid="KIN">
+          <p>
             Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>.
             If <m>s</m> consecutive powers of <m>\omega</m> are roots of <m>g(x)</m>,
             then the minimum distance of <m>C</m> is at least <m>s + 1</m>.
           </p>
         </statement>
 
-        <proof permid="pDm">
-          <p permid="NDt">
+        <proof>
+          <p>
             Suppose that
-            <me permid="cFn">
+            <me>
               g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0
             </me>.
             Let <m>f(x)</m> be some polynomial in <m>C</m> with <m>s</m> or fewer nonzero coefficients.
             We can assume that
-            <me permid="IMw">
+            <me>
               f(x) = a_{i_0} x^{i_0} + a_{i_1} x^{i_1} + \cdots + a_{i_{s - 1}} x^{i_{s - 1}}
             </me>
             be some polynomial in <m>C</m>.
             It will suffice to show that all of the <m>a_i</m>'s must be 0.
             Since
-            <me permid="oTF">
+            <me>
               g( \omega^r) = g(\omega^{r + 1}) = \cdots = g( \omega^{r + s - 1}) = 0
             </me>
             and <m>g(x)</m> divides <m>f(x)</m>,
-            <me permid="VaO">
+            <me>
               f( \omega^r) = f(\omega^{r + 1}) = \cdots = f( \omega^{r + s - 1}) = 0
             </me>.
             Equivalently, we have the following system of equations:
-            <md permid="hpg">
+            <md>
               <mrow>a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots + a_{i_{s - 1}} (\omega^r)^{i_{s - 1}} &amp; = 0</mrow>
               <mrow>a_{i_0} (\omega^{r + 1})^{i_0} + a_{i_1} (\omega^{r + 1})^{i_2} + \cdots + a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} &amp; = 0</mrow>
               <mrow>&amp; \vdots</mrow>
@@ -888,7 +888,7 @@
             </md>.
             Therefore, <m>(a_{i_0}, a_{i_1}, \ldots,
             a_{i_{s - 1}})</m> is a solution to the homogeneous system of linear equations
-            <md permid="Nwp">
+            <md>
               <mrow>(\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots + (\omega^{i_{s - 1}})^r x_{n - 1} &amp; = 0</mrow>
               <mrow>(\omega^{i_0})^{r + 1} x_0 + (\omega^{i_1})^{r + 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + 1} x_{n - 1} &amp; = 0</mrow>
               <mrow>&amp; \vdots</mrow>
@@ -896,7 +896,7 @@
             </md>.
             However, this system has a unique solution,
             since the determinant of the matrix
-            <me permid="BhX">
+            <me>
               \begin{pmatrix}
               (\omega^{i_0})^r &amp; (\omega^{i_1})^r &amp; \cdots &amp; (\omega^{i_{s-1}})^r \\
               (\omega^{i_0})^{r+1} &amp; (\omega^{i_1})^{r+1} &amp; \cdots &amp;
@@ -913,9 +913,9 @@
       </theorem>
     </subsection>
 
-    <subsection xml:id="finite-subsection-bch-codes" permid="SBu">
+    <subsection xml:id="finite-subsection-bch-codes">
       <title><acro>BCH</acro> Codes</title>
-      <p permid="daM">
+      <p>
         Some of the most important codes,
         discovered independently by A. Hocquenghem in 1959 and by R. C. Bose and D. V. Ray-Chaudhuri in 1960, are <acro>BCH</acro> codes.
         The European and transatlantic communication systems both use <acro>BCH</acro> codes.
@@ -927,13 +927,13 @@
         One advantage of <acro>BCH</acro> codes is that efficient error correction algorithms exist for them.
       </p>
 
-      <p permid="JhV">
+      <p>
         The idea behind <acro>BCH</acro> codes is to choose a generator polynomial of smallest degree that has the largest error detection and error correction  capabilities.
         Let <m>d = 2r + 1</m> for some <m>r \geq 0</m>.
         Suppose that <m>\omega</m> is a primitive <m>n</m>th root of unity over <m>{\mathbb Z}_2</m>,
         and let <m>m_i(x)</m> be the minimal polynomial over <m>{\mathbb Z}_2</m> of <m>\omega^i</m>.
         If
-        <me permid="tDy">
+        <me>
           g(x) = \lcm[ m_1(x), m_{2}(x), \ldots, m_{2r}(x)]
         </me>,
         then the cyclic code <m>\langle g(t) \rangle</m> in <m>R_n</m> is called the
@@ -943,30 +943,30 @@
         the minimum distance of <m>C</m> is at least <m>d</m>.
       </p>
 
-      <theorem permid="sTr">
+      <theorem>
         <statement>
-          <p permid="qPW">
+          <p>
             Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m>.
             The following statements are equivalent.
 
-            <ol permid="VoW">
-              <li permid="mnh">
-                <p permid="rGU">
+            <ol>
+              <li>
+                <p>
                   The code <m>C</m> is a <acro>BCH</acro> code whose minimum distance is at least <m>d</m>.
                 </p>
               </li>
 
-              <li permid="Suq">
-                <p permid="XOd">
+              <li>
+                <p>
                   A code polynomial <m>f(t)</m> is in <m>C</m> if and only if
                   <m>f( \omega^i) = 0</m> for <m>1 \leq i \lt d</m>.
                 </p>
               </li>
 
-              <li permid="yBz">
-                <p permid="DVm">
+              <li>
+                <p>
                   The matrix
-                  <me permid="ZKH">
+                  <me>
                     H =
                     \begin{pmatrix}
                     1      &amp; \omega      &amp; \omega^2    &amp; \cdots &amp; \omega^{n-1}\\
@@ -983,8 +983,8 @@
           </p>
         </statement>
 
-        <proof permid="VKv">
-          <p permid="tKC">
+        <proof>
+          <p>
             (1) <m>\Rightarrow</m> (2).
             If <m>f(t)</m> is in <m>C</m>,
             then <m>g(x) \mid f(x)</m> in <m>{\mathbb Z}_2[x]</m>.
@@ -997,13 +997,13 @@
             Consequently, <m>f(x)</m> is a codeword.
           </p>
 
-          <p permid="ZRL">
+          <p>
             (2) <m>\Rightarrow</m> (3).
             Let <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1}v t^{n - 1}</m> be in <m>R_n</m>.
             The corresponding <m>n</m>-tuple in
             <m>{\mathbb Z}_2^n</m> is <m>{\mathbf x} = (a_0 a_1 \cdots a_{n - 1})^\transpose</m>.
             By (2),
-            <me permid="FRQ">
+            <me>
               H {\mathbf x} =
               \begin{pmatrix}
               a_0 + a_1 \omega + \cdots + a_{n-1} \omega^{n-1} \\
@@ -1024,7 +1024,7 @@
             Thus, <m>H</m> is a parity-check matrix for <m>C</m>.
           </p>
 
-          <p permid="FYU">
+          <p>
             (3) <m>\Rightarrow</m> (1).
             By (3), a code polynomial <m>f(t) = a_0 + a_1 t + \cdots + a_{n - 1} t^{n - 1}</m> is in <m>C</m> exactly when
             <m>f(\omega^i) = 0</m> for <m>i = 1, \ldots, 2r</m>.
@@ -1035,16 +1035,16 @@
         </proof>
       </theorem>
 
-      <example xml:id="finite-example-x15-1" permid="ZaA">
-        <p permid="RhT">
+      <example xml:id="finite-example-x15-1">
+        <p>
           It is easy to verify that <m>x^{15} - 1 \in {\mathbb Z}_2[x]</m> has a factorization
-          <me permid="lYZ">
+          <me>
             x^{15} - 1 = (x + 1)(x^2 + x + 1)(x^4 + x + 1)(x^4 + x^3 + 1)(x^4 + x^3 + x^2 + x + 1)
           </me>,
           where each of the factors is an irreducible polynomial.
           Let <m>\omega</m> be a root of <m>1 + x + x^4</m>.
           The Galois field <m>\gf(2^4)</m> is
-          <me permid="Sgi">
+          <me>
             \{ a_0 + a_1 \omega + a_2 \omega^2 + a_3 \omega^3 : a_i \in {\mathbb Z}_2 \text{ and } 1 + \omega + \omega^4 = 0 \}
           </me>.
           By <xref ref="finite-example-gf-p24"/>,
@@ -1054,7 +1054,7 @@
           <m>\omega^4</m> are also roots of <m>m_1(x)</m>.
           The minimal polynomial of <m>\omega^3</m> is <m>m_2(x) = 1 + x + x^2 + x^3 + x^4</m>.
           Therefore,
-          <me permid="ynr">
+          <me>
             g(x) = m_1(x) m_2(x) = 1 + x^4 + x^6 + x^7 + x^8
           </me>
           has roots <m>\omega</m>, <m>\omega^2</m>,
@@ -1064,7 +1064,7 @@
           If <m>x^{15} -1 = g(x)h(x)</m>,
           then <m>h(x) = 1 + x^4 + x^6 + x^7</m>;
           therefore, a parity-check matrix for this code is
-          <me permid="euA">
+          <me>
             \left(<!-- This matrix is too large for pmatrix - TWJ 8/19/2010 -->
             \begin{array}{ccccccccccccccc}
             0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
@@ -1081,9 +1081,9 @@
         </p>
       </example>
 
-      <paragraphs component="sage-blurb" permid="Dsw">
+      <paragraphs component="sage-blurb">
         <title>Sage</title>
-        <p permid="ppe">
+        <p>
           Finite fields are important in a variety of applied disciplines,
           such as cryptography and coding theory
           (see introductions to these topics in other chapters).
@@ -1095,47 +1095,47 @@
 
   </section>
 
-    <reading-questions permid="RdC">
+    <reading-questions>
 
-    <exercise permid="klZ">
+    <exercise>
       <statement>
-        <p permid="oVS">
+        <p>
           When is a field extension separable?
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="Qti">
+    <exercise>
       <statement>
-        <p permid="Vdb">
+        <p>
           What are the possible orders for subfields of a finite field?
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="wAr">
+    <exercise>
       <statement>
-        <p permid="Bkk">
+        <p>
           What is the structure of the non-zero elements of a finite field?
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="cHA">
+    <exercise>
       <statement>
-        <p permid="hrt">
+        <p>
           Provide a characterization of finite fields using the concept of a splitting field.
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="IOJ">
+    <exercise>
       <statement>
-        <p permid="NyC">
+        <p>
           Why is a theorem in this chapter titled
           <q>The Freshman's Dream?</q>
         </p>
@@ -1147,75 +1147,75 @@
     <!-- Exercises with Solutions  -->
     <!-- File: finite.xml  -->
     <!-- Title: Finite Fields -->
-  <exercises xml:id="finite-exercises" filenamebase="finite" permid="KWV">
+  <exercises xml:id="finite-exercises" filenamebase="finite">
     <title>Exercises</title>
 
-    <exercise number="1" permid="loS" xml:id="finite-exercise-calculate-degree">
+    <exercise number="1" xml:id="finite-exercise-calculate-degree">
       <statement>
-        <p permid="BYV">
+        <p>
           Calculate each of the following.
         </p>
 
-        <ol cols="2" permid="Bwf">
-          <li permid="eII">
-            <p permid="kcv">
+        <ol cols="2">
+          <li>
+            <p>
               <m>[\gf(3^6) : \gf(3^3)]</m>
             </p>
           </li>
 
-          <li permid="KPR">
-            <p permid="QjE">
+          <li>
+            <p>
               <m>[\gf(128): \gf(16)]</m>
             </p>
           </li>
 
-          <li permid="qXa">
-            <p permid="wqN">
+          <li>
+            <p>
               <m>[\gf(625) : \gf(25) ]</m>
             </p>
           </li>
 
-          <li permid="Xej">
-            <p permid="cxW">
+          <li>
+            <p>
               <m>[\gf(p^{12}): \gf(p^2)]</m>
             </p>
           </li>
         </ol>
       </statement>
-      <hint permid="mIG">
-        <p permid="Wnl">
+      <hint>
+        <p>
           Make sure that you have a field extension.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="2" permid="Rwb" xml:id="finite-exercise-gf-pm-gf-pn">
+    <exercise number="2" xml:id="finite-exercise-gf-pm-gf-pn">
       <statement>
-        <p permid="ige">
+        <p>
           Calculate <m>[\gf(p^m): \gf(p^n)]</m>, where <m>n \mid m</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="3" permid="xDk" xml:id="finite-exercise-gf-p-30">
+    <exercise number="3" xml:id="finite-exercise-gf-p-30">
       <statement>
-        <p permid="Onn">
+        <p>
           What is the lattice of subfields for <m>\gf(p^{30})</m>?
         </p>
       </statement>
     </exercise>
 
-    <exercise number="4" permid="dKt" xml:id="finite-exercise-Z-2-alpha">
+    <exercise number="4" xml:id="finite-exercise-Z-2-alpha">
       <statement>
-        <p permid="uuw">
+        <p>
           Let <m>\alpha</m> be a zero of
           <m>x^3 + x^2 + 1</m> over <m>{\mathbb Z}_2</m>.
           Construct a finite field of order <m>8</m>.
           Show that <m>x^3 + x^2 + 1</m> splits in <m>{\mathbb Z}_2(\alpha)</m>.
         </p>
       </statement>
-      <hint permid="Llq">
-        <p permid="Cuu">
+      <hint>
+        <p>
           There are eight elements in <m>{\mathbb Z}_2(\alpha)</m>.
           Exhibit two more zeros of <m>x^3 + x^2 + 1</m> other than <m>\alpha</m> in these eight elements.
         </p>
@@ -1224,14 +1224,14 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="5" permid="JRC" xml:id="finite-exercise-gf-27">
+    <exercise number="5" xml:id="finite-exercise-gf-27">
       <statement>
-        <p permid="aBF">
+        <p>
           Construct a finite field of order <m>27</m>.
         </p>
       </statement>
-      <hint permid="XzI">
-        <p permid="iBD">
+      <hint>
+        <p>
           Find an irreducible polynomial <m>p(x)</m> in
           <m>{\mathbb Z}_3[x]</m> of degree <m>3</m> and show that
           <m>{\mathbb Z}_3[x]/ \langle p(x) \rangle</m> has <m>27</m> elements.
@@ -1241,62 +1241,62 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="6" permid="pYL" xml:id="finite-exercise-Q-star-cyclic">
+    <exercise number="6" xml:id="finite-exercise-Q-star-cyclic">
       <statement>
-        <p permid="GIO">
+        <p>
           Prove or disprove: <m>{\mathbb Q}^\ast</m> is cyclic.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="7" permid="WfU" xml:id="finite-exercise-factor-Z2-polys">
+    <exercise number="7" xml:id="finite-exercise-factor-Z2-polys">
       <statement>
-        <p permid="mPX">
+        <p>
           Factor each of the following polynomials in <m>{\mathbb Z}_2[x]</m>.
 
-          <ol cols="2" permid="hDo">
-            <li permid="Dls">
-              <p permid="IFf">
+          <ol cols="2">
+            <li>
+              <p>
                 <m>x^5- 1</m>
               </p>
             </li>
 
-            <li permid="jsB">
-              <p permid="oMo">
+            <li>
+              <p>
                 <m>x^6 + x^5 + x^4 + x^3 + x^2 + x + 1</m>
               </p>
             </li>
 
-            <li permid="PzK">
-              <p permid="UTx">
+            <li>
+              <p>
                 <m>x^9 - 1</m>
               </p>
             </li>
 
-            <li permid="vGT">
-              <p permid="BaG">
+            <li>
+              <p>
                 <m>x^4 +x^3 + x^2 + x + 1</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="PVj">
-        <p permid="OIM">
+      <hint>
+        <p>
           (a) <m>x^5 -1 = (x+1)(x^4+x^3 + x^2 + x+ 1)</m>; (c) <m>x^9 -1 = (x+1)( x^2 + x+ 1)(x^6+x^3+1)</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="8" permid="Cnd" xml:id="finite-exercise-Z-2-x-over-degrre-3">
+    <exercise number="8" xml:id="finite-exercise-Z-2-x-over-degrre-3">
       <statement>
-        <p permid="SXg">
+        <p>
           Prove or disprove:
           <m>{\mathbb Z}_2[x] / \langle x^3 + x + 1 \rangle \cong {\mathbb Z}_2[x] / \langle x^3 + x^2 + 1 \rangle</m>.
         </p>
       </statement>
-      <hint permid="cjB">
-        <p permid="uPV">
+      <hint>
+        <p>
           True.
         </p>
       </hint>
@@ -1304,9 +1304,9 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="9" permid="ium" xml:id="finite-exercise-cyclic-codes">
+    <exercise number="9" xml:id="finite-exercise-cyclic-codes">
       <statement>
-        <p permid="zep">
+        <p>
           Determine the number of cyclic codes of length <m>n</m> for <m>n = 6, 7, 8, 10</m>.
         </p>
       </statement>
@@ -1314,9 +1314,9 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="10" permid="OBv" xml:id="finite-exercise-even-parity">
+    <exercise number="10" xml:id="finite-exercise-even-parity">
       <statement>
-        <p permid="fly">
+        <p>
           Prove that the ideal <m>\langle t + 1 \rangle</m> in <m>R_n</m> is the code in
           <m>{\mathbb Z}_2^n</m> consisting of all words of even parity.
         </p>
@@ -1325,28 +1325,28 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="11" permid="uIE" xml:id="finite-exercise-BCH">
+    <exercise number="11" xml:id="finite-exercise-BCH">
       <statement>
-        <p permid="LsH">
+        <p>
           Construct all <acro>BCH</acro> codes of
 
-          <ol cols="2" permid="NKx">
-            <li permid="YTw">
-              <p permid="enj">
+          <ol cols="2">
+            <li>
+              <p>
                 length <m>7</m>.
               </p>
             </li>
 
-            <li permid="FaF">
-              <p permid="Kus">
+            <li>
+              <p>
                 length <m>15</m>.
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="AMl">
-        <p permid="aXe">
+      <hint>
+        <p>
           (a) Use the fact that <m>x^7 - 1 = (x + 1)( x^3 + x + 1)(x^3 + x^2 + 1)</m>.
         </p>
       </hint>
@@ -1354,22 +1354,22 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="12" permid="aPN" xml:id="finite-exercise-algebraically-closed">
+    <exercise number="12" xml:id="finite-exercise-algebraically-closed">
       <statement>
-        <p permid="rzQ">
+        <p>
           Prove or disprove: There exists a finite field that is algebraically closed.
         </p>
       </statement>
-      <hint permid="NaD">
-        <p permid="Hen">
+      <hint>
+        <p>
           False.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="13" permid="GWW" xml:id="finite-exercise-Zp-x">
+    <exercise number="13" xml:id="finite-exercise-Zp-x">
       <statement>
-        <p permid="XGZ">
+        <p>
           Let <m>p</m> be prime.
           Prove that the field of rational functions
           <m>{\mathbb Z}_p(x)</m> is an infinite field of characteristic <m>p</m>.
@@ -1379,9 +1379,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="14" permid="nef" xml:id="finite-exercise-integral-domian-p">
+    <exercise number="14" xml:id="finite-exercise-integral-domian-p">
       <statement>
-        <p permid="DOi">
+        <p>
           Let <m>D</m> be an integral domain of characteristic <m>p</m>.
           Prove that <m>(a - b)^{p^n} = a^{p^n} - b^{p^n}</m> for all <m>a,
           b \in D</m>.
@@ -1391,9 +1391,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="15" xml:id="finite-exercise-sum-of-squares" permid="Tlo">
+    <exercise number="15" xml:id="finite-exercise-sum-of-squares">
       <statement>
-        <p permid="jVr">
+        <p>
           Show that every element in a finite field can be written as the sum of two squares.
         </p>
       </statement>
@@ -1401,9 +1401,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="16" permid="zsx" xml:id="finite-exercise-subfields">
+    <exercise number="16" xml:id="finite-exercise-subfields">
       <statement>
-        <p permid="QcA">
+        <p>
           Let <m>E</m> and <m>F</m> be subfields of a finite field <m>K</m>.
           If <m>E</m> is isomorphic to <m>F</m>, show that <m>E = F</m>.
         </p>
@@ -1412,32 +1412,32 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="17" permid="fzG" xml:id="finite-exercise-separable-extension">
+    <exercise number="17" xml:id="finite-exercise-separable-extension">
       <statement>
-        <p permid="wjJ">
+        <p>
           Let <m>F \subset E \subset K</m> be fields.
           If <m>K</m> is a separable extension of <m>F</m>,
           show that <m>K</m> is also separable extension of <m>E</m>.
         </p>
       </statement>
-      <hint permid="xRF">
-        <p permid="nlw">
+      <hint>
+        <p>
           If <m>p(x) \in F[x]</m>, then <m>p(x) \in E[x]</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="18" permid="LGP" xml:id="finite-exercise-F-alpha">
+    <exercise number="18" xml:id="finite-exercise-F-alpha">
       <statement>
-        <p permid="cqS">
+        <p>
           Let <m>E</m> be an extension of a finite field <m>F</m>,
           where <m>F</m> has <m>q</m> elements.
           Let <m>\alpha \in E</m> be algebraic over <m>F</m> of degree <m>n</m>.
           Prove that <m>F( \alpha )</m> has <m>q^n</m> elements.
         </p>
       </statement>
-      <hint permid="KfX">
-        <p permid="TsF">
+      <hint>
+        <p>
           Since <m>\alpha</m> is algebraic over <m>F</m> of degree <m>n</m>,
           we can write any element <m>\beta \in F(\alpha)</m> uniquely as
           <m>\beta = a_0 + a_1 \alpha + \cdots + a_{n - 1} \alpha^{n - 1}</m> with <m>a_i \in F</m>.
@@ -1447,9 +1447,9 @@
       </hint>
     </exercise>
 
-    <exercise number="19" permid="rNY" xml:id="finite-exercise-simple-extension">
+    <exercise number="19" xml:id="finite-exercise-simple-extension">
       <statement>
-        <p permid="Iyb">
+        <p>
           Show that every finite extension of a finite field <m>F</m> is simple;
           that is, if <m>E</m> is a finite extension of a finite field <m>F</m>,
           prove that there exists an
@@ -1460,9 +1460,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="20" permid="XVh" xml:id="finite-exercise-irreducible-poly">
+    <exercise number="20" xml:id="finite-exercise-irreducible-poly">
       <statement>
-        <p permid="oFk">
+        <p>
           Show that for every <m>n</m> there exists an irreducible polynomial of degree <m>n</m> in <m>{\mathbb Z}_p[x]</m>.
         </p>
       </statement>
@@ -1470,9 +1470,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="21" xml:id="finite-exercise-frobenius-map" permid="Ecq">
+    <exercise number="21" xml:id="finite-exercise-frobenius-map">
       <statement>
-        <p permid="UMt">
+        <p>
           Prove that the <term>Frobenius map</term>
           <m>\Phi : \gf(p^n) \rightarrow \gf(p^n)</m> given by
           <m>\Phi : \alpha \mapsto \alpha^p</m> is an automorphism of order <m>n</m>.
@@ -1480,9 +1480,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22" permid="kjz" xml:id="finite-exercise-GF-pn-a-p">
+    <exercise number="22" xml:id="finite-exercise-GF-pn-a-p">
       <statement>
-        <p permid="ATC">
+        <p>
           Show that every element in
           <m>\gf(p^n)</m> can be written in the form <m>a^p</m> for some unique <m>a \in \gf(p^n)</m>.
         </p>
@@ -1491,9 +1491,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="23" permid="QqI" xml:id="finite-exercise-E-cap-F">
+    <exercise number="23" xml:id="finite-exercise-E-cap-F">
       <statement>
-        <p permid="haL">
+        <p>
           Let <m>E</m> and <m>F</m> be subfields of <m>\gf(p^n)</m>.
           If <m>|E| = p^r</m> and <m>|F| = p^s</m>,
           what is the order of <m>E \cap F</m>?
@@ -1501,16 +1501,16 @@
       </statement>
     </exercise>
 
-    <exercise number="24" permid="wxR" xml:id="finite-exercise-wilsons-ther">
+    <exercise number="24" xml:id="finite-exercise-wilsons-ther">
       <title>Wilson's Theorem</title>
       <statement>
-        <p permid="NhU">
+        <p>
           Let <m>p</m> be prime.
           Prove that <m>(p-1)! \equiv -1 \pmod{p}</m>.
         </p>
       </statement>
-      <hint permid="bei">
-        <p permid="zzO">
+      <hint>
+        <p>
           Factor <m>x^{p-1} - 1</m> over <m>{\mathbb Z}_p</m>.
         </p>
       </hint>
@@ -1518,9 +1518,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="25" permid="cFa" xml:id="finite-exercise-minimal-gen-poly">
+    <exercise number="25" xml:id="finite-exercise-minimal-gen-poly">
       <statement>
-        <p permid="tpd">
+        <p>
           If <m>g(t)</m> is the minimal generator polynomial for a cyclic code <m>C</m> in <m>R_n</m>,
           prove that the constant term of <m>g(x)</m> is <m>1</m>.
         </p>
@@ -1529,9 +1529,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="26" permid="IMj" xml:id="finite-exercise-burst">
+    <exercise number="26" xml:id="finite-exercise-burst">
       <statement>
-        <p permid="Zwm">
+        <p>
           Often it is conceivable that a burst of errors might occur during transmission,
           as in the case of a power surge.
           Such a momentary burst of interference might alter several consecutive bits in a codeword.
@@ -1544,9 +1544,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="27" permid="oTs" xml:id="finite-exercise-R-n">
+    <exercise number="27" xml:id="finite-exercise-R-n">
       <statement>
-        <p permid="FDv">
+        <p>
           Prove that the rings <m>R_n</m> and
           <m>{\mathbb Z}_2^n</m> are isomorphic as vector spaces.
         </p>
@@ -1555,9 +1555,9 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="28" permid="VaB" xml:id="finite-exercise-code-gen-gt">
+    <exercise number="28" xml:id="finite-exercise-code-gen-gt">
       <statement>
-        <p permid="lKE">
+        <p>
           Let <m>C</m> be a code in <m>R_n</m> that is generated by <m>g(t)</m>.
           If <m>\langle f(t) \rangle</m> is another code in <m>R_n</m>,
           show that <m>\langle g(t) \rangle \subset \langle f(t) \rangle</m> if and only if <m>f(x)</m> divides <m>g(x)</m> in <m>{\mathbb Z}_2[x]</m>.
@@ -1567,13 +1567,13 @@
 
     <!--Todo Finish proof.-->
 
-    <exercise number="29" permid="BhK" xml:id="finite-exercise-generator-matrix">
+    <exercise number="29" xml:id="finite-exercise-generator-matrix">
       <statement>
-        <p permid="RRN">
+        <p>
           Let <m>C = \langle g(t) \rangle</m> be a cyclic code in <m>R_n</m> and suppose that <m>x^n - 1 = g(x) h(x)</m>,
           where <m>g(x) = g_0 + g_1 x + \cdots + g_{n - k} x^{n - k}</m> and <m>h(x) = h_0 + h_1 x +  \cdots + h_k x^k</m>.
           Define <m>G</m> to be the <m>n \times k</m> matrix
-          <me permid="bzU">
+          <me>
             G = 
             \begin{pmatrix}
             g_0 &amp; 0   &amp; \cdots &amp; 0 \\
@@ -1586,7 +1586,7 @@
             \end{pmatrix}
           </me>
           and <m>H</m> to be the <m>(n-k) \times n</m> matrix
-          <me permid="HHd">
+          <me>
             H =
             \begin{pmatrix}
             0   &amp; \cdots &amp; 0   &amp; 0      &amp; h_k    &amp; \cdots &amp; h_0 \\
@@ -1595,21 +1595,21 @@
             h_k &amp; \cdots &amp; h_0 &amp; 0      &amp; 0      &amp; \cdots &amp; 0 
             \end{pmatrix}
           </me>.
-          <ol permid="tRG">
-            <li permid="xwg">
-              <p permid="CPT">
+          <ol>
+            <li>
+              <p>
                 Prove that <m>G</m> is a generator matrix for <m>C</m>.
               </p>
             </li>
 
-            <li permid="dDp">
-              <p permid="iXc">
+            <li>
+              <p>
                 Prove that <m>H</m> is a parity-check matrix for <m>C</m>.
               </p>
             </li>
 
-            <li permid="JKy">
-              <p permid="Pel">
+            <li>
+              <p>
                 Show that <m>HG = 0</m>.
               </p>
             </li>
@@ -1619,10 +1619,10 @@
     </exercise>
 
   </exercises>
-  <exercises xml:id="finite-exercises-bch-codes" permid="ree">
+  <exercises xml:id="finite-exercises-bch-codes">
     <title>Additional Exercises: Error Correction for <acro>BCH</acro> Codes</title>
-    <introduction permid="hoT">
-      <p permid="pKD">
+    <introduction>
+      <p>
         <acro>BCH</acro> codes have very attractive error correction algorithms.
         Let <m>C</m> be a <acro>BCH</acro> code in <m>R_n</m>,
         and suppose that a code polynomial <m>c(t) = c_0 + c_1 t + \cdots + c_{n-1} t^{n-1}</m> is transmitted.
@@ -1640,48 +1640,48 @@
       </p>
     </introduction>
 
-    <exercise permid="Nwc" xml:id="finite-exercise-code-poly">
+    <exercise xml:id="finite-exercise-code-poly">
       <statement>
-        <p permid="xYW">
+        <p>
           Show that <m>w(t)</m> is a code polynomial if and only if <m>s_i = 0</m> for all <m>i</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise permid="tDl" xml:id="finite-exercise-error-locator">
+    <exercise xml:id="finite-exercise-error-locator">
       <statement>
-        <p permid="egf">
+        <p>
           Show that
-          <me permid="TVv">
+          <me>
             s_i = w( \omega^i) = e( \omega^i) = \omega^{i a_1} + \omega^{i a_2} + \cdots + \omega^{i a_k}
           </me>
           for <m>i = 1, \ldots, 2r</m>.
           The <term>error-locator polynomial</term><idx><h>Polynomial</h><h>error-locator</h></idx> is defined to be
-          <me permid="AcE">
+          <me>
             s(x) = (x + \omega^{a_1})(x + \omega^{a_2}) \cdots  (x + \omega^{a_k})
           </me>.
         </p>
       </statement>
     </exercise>
 
-    <exercise permid="ZKu" xml:id="finite-exercise-15-7-block-code">
+    <exercise xml:id="finite-exercise-15-7-block-code">
       <statement>
-        <p permid="Kno">
+        <p>
           Recall the <m>(15,7)</m>-block <acro>BCH</acro> code in <xref ref="finite-example-parity-check-x7-1"/>.
           By <xref ref="algcodes-theorem-min-distance"/>, this code is capable of correcting two errors.
           Suppose that these errors occur in bits <m>a_1</m> and <m>a_2</m>.
           The error-locator polynomial is <m>s(x) = (x + \omega^{a_1})(x + \omega^{a_2})</m>.
           Show that
-          <me permid="gjN">
+          <me>
             s(x) = x^2 + s_1 x + \left( s_1^2 + \frac{s_3}{s_1} \right)
           </me>.
         </p>
       </statement>
     </exercise>
 
-    <exercise permid="FRD" xml:id="finite-exercise-original-code-poly">
+    <exercise xml:id="finite-exercise-original-code-poly">
       <statement>
-        <p permid="qux">
+        <p>
           Let <m>w(t) = 1 + t^2 +t^4 + t^5 + t^7 + t^{12} + t^{13}</m>.
           Determine what the originally transmitted code polynomial was.
         </p>
@@ -1690,39 +1690,39 @@
 
   </exercises>
 
-  <references xml:id="finite-references" permid="Yrk">
+  <references xml:id="finite-references">
     <title>References and Suggested Readings</title>
-    <biblio type="raw" permid="Eyt">
+    <biblio type="raw">
 <!-- was [1] --><!-- Reference updated 5/4/2010 - TWJ -->
       Childs, L.
       <title>A Concrete Introduction to Higher Algebra</title>. 2nd ed. Springer-Verlag, New York, 1995.
     </biblio>
 
-    <biblio type="raw" permid="kFC">
+    <biblio type="raw">
 <!-- was [2] --><!-- No longer in print 8/20/2010 - TWJ -->
       Gåding, L. and Tambour, T.
       <title>Algebra for Computer Science</title>. Springer-Verlag, New York, 1988.
     </biblio>
 
-    <biblio type="raw" permid="QML">
+    <biblio type="raw">
 <!-- was [3] --><!-- Reference updated 8/20/2010 - TWJ -->
       Lidl, R. and Pilz, G.
       <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998. An excellent presentation of finite fields and their applications.
     </biblio>
 
-    <biblio type="raw" permid="wTU">
+    <biblio type="raw">
 <!-- was [4] --><!-- No longer in print 8/20/2010 - TWJ -->
       Mackiw, G.
       <title>Applications of Abstract Algebra</title>. Wiley, New York, 1985.
     </biblio>
 
-    <biblio type="raw" permid="dbd">
+    <biblio type="raw">
 <!-- was [5] -->
       Roman, S.
       <title>Coding and Information Theory</title>. Springer-Verlag, New York, 1992.
     </biblio>
 
-    <biblio type="raw" permid="Jim">
+    <biblio type="raw">
 <!-- was [6] --><!-- Reference updated - TWJ 8/20/2010 -->
       van Lint, J. H.
       <title>Introduction to Coding Theory</title>. Springer, New York, 1999.
@@ -1731,10 +1731,10 @@
 
 
 
-  <section xml:id="finite-sage" component="sage-info" permid="vNX">
+  <section xml:id="finite-sage" component="sage-info">
     <title>Sage</title>
-    <introduction permid="kTt">
-      <p permid="VRM">
+    <introduction>
+      <p>
         You have noticed in this chapter that finite fields have a great deal of structure.
         We have also seen finite fields in Sage regularly as examples of rings and fields.
         Now we can combine the two,
@@ -1742,9 +1742,9 @@
       </p>
     </introduction>
 
-    <subsection permid="yID">
+    <subsection>
       <title>Creating Finite Fields</title>
-      <p permid="Vwn">
+      <p>
         By <xref ref="finite-theorem-splitting-field"/> we know that all finite fields of a given order are isomorphic and that possible orders are limited to powers of primes.
         We can use the <c>FiniteField()</c> command, as before,
         or a shorter equivalent is <c>GF()</c>.
@@ -1754,13 +1754,13 @@
         rule for powers of the field's generator that allow us to multiply elements and reformulate them as linear combinations of lesser powers.
       </p>
 
-      <p permid="BDw">
+      <p>
         Absent providing an irreducible polynomial, Sage will use a Conway polynomial.
         You can determine these with the <c>conway_polynomial()</c> command,
         or just build a finite field and request the defining polynomial with the <c>.polynomial()</c> method.
       </p>
 
-            <sage permid="WpY">
+            <sage>
                 <input>
         F.&lt;a&gt; = GF(7^15); F
         </input>
@@ -1768,7 +1768,7 @@
         Finite Field in a of size 7^15
         </output>
             </sage>
-            <sage permid="Cxh">
+            <sage>
                 <input>
         F.polynomial()
         </input>
@@ -1776,7 +1776,7 @@
         a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
         </output>
             </sage>
-            <sage permid="iEq">
+            <sage>
                 <input>
         a^15 + 5*a^6 + 6*a^5 + 6*a^4 + 4*a^3 + a^2 + 2*a + 4
         </input>
@@ -1784,7 +1784,7 @@
         0
         </output>
             </sage>
-            <sage permid="OLz">
+            <sage>
                 <input>
         conway_polynomial(7, 15)
         </input>
@@ -1793,12 +1793,12 @@
         </output>
             </sage>
 
-      <p permid="hKF">
+      <p>
         Just to be more readable,
         we coerce a list of coefficients into the set of polynomials (obtained with the <c>.parent()</c> method on a simple polynomial) to define a polynomial.
       </p>
 
-            <sage permid="uSI">
+            <sage>
                 <input>
         y = polygen(Integers(7), 'y')
         P = y.parent()
@@ -1809,7 +1809,7 @@
         y^8 + 2*y^7 + 6*y^6 + 3*y^5 + 3*y^4 + 6*y^3 + 2*y^2 + 5*y + 4
         </output>
             </sage>
-            <sage permid="aZR">
+            <sage>
                 <input>
         p.is_irreducible()
         </input>
@@ -1817,7 +1817,7 @@
         True
         </output>
             </sage>
-            <sage permid="Hha">
+            <sage>
                 <input>
         T.&lt;b&gt; = GF(7^15, modulus=p); T
         </input>
@@ -1827,16 +1827,16 @@
             </sage>
     </subsection>
 
-    <subsection permid="ePM">
+    <subsection>
       <title>Logarithms in Finite Fields</title>
-      <p permid="NRO">
+      <p>
         One useful command we have not described is the <c>.log()</c> method for elements of a finite field.
         Since we now know that the multiplicative group of nonzero elements is cyclic,
         we can express every element as a power of the generator.
         The <c>log</c> method will return that power.
       </p>
 
-      <p permid="tYX">
+      <p>
         Usually we will want to use the generator as the base of a lograithm computation in a finite field.
         However, other bases may be used,
         wih the understanding that if the base is not a generator,
@@ -1844,7 +1844,7 @@
         (<ie/> there may not be a solution to the relevant equation).
       </p>
 
-            <sage permid="noj">
+            <sage>
                 <input>
         F.&lt;a&gt; = GF(5^4)
         a^458
@@ -1853,7 +1853,7 @@
         3*a^3 + 2*a^2 + a + 3
         </output>
             </sage>
-            <sage permid="Tvs">
+            <sage>
                 <input>
         (3*a^3 + 2*a^2 + a + 3).log(a)
         </input>
@@ -1861,7 +1861,7 @@
         458
         </output>
             </sage>
-            <sage permid="zCB">
+            <sage>
                 <input>
         exponent = (3*a^3 + 2*a^2 + a + 3).log(2*a^3 + 4*a^2 + 4*a)
         exponent
@@ -1870,7 +1870,7 @@
         211
         </output>
             </sage>
-            <sage permid="fJK">
+            <sage>
                 <input>
         (2*a^3 + 4*a^2 + 4*a)^exponent == 3*a^3 + 2*a^2 + a + 3
         </input>
@@ -1878,7 +1878,7 @@
         True
         </output>
             </sage>
-            <sage permid="LQT">
+            <sage>
                 <input>
         (3*a^3 + 2*a^2 + a + 3).log(a^2 + 4*a + 4)
         </input>
@@ -1890,7 +1890,7 @@
         </output>
             </sage>
 
-      <p permid="agg">
+      <p>
         Since we already know many Sage commands,
         there is not much else worth introducing before we can work profitably with finite fields.
         The exercises explore the ways we can examine and exploit the structure of finite fields in Sage.
@@ -1899,21 +1899,21 @@
 
   </section>
 
-  <exercises xml:id="finite-sage-exercises" component="sage-exercises" permid="Xln">
+  <exercises xml:id="finite-sage-exercises" component="sage-exercises">
     <title>Sage Exercises</title>
 
-    <exercise number="1" permid="lYM" xml:id="finite-sage-exercise-field-order-25">
+    <exercise number="1" xml:id="finite-sage-exercise-field-order-25">
       <statement>
-        <p permid="WBG">
+        <p>
           Create a finite field of order <m>5^2</m> and then factor <m>p(x)=x^{25}-x</m> over this field.
           Comment on what is interesting about this result and why it is not a surprise.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="2" permid="SfV" xml:id="finite-sage-exercise-cyclic-group">
+    <exercise number="2" xml:id="finite-sage-exercise-cyclic-group">
       <statement>
-        <p permid="CIP">
+        <p>
           <xref ref="finite-corollary-cyclic-group-finite-field"/> says that the nonzero elements of a finite field are a cyclic group under multiplication.
           The generator used in Sage is also a generator of this multiplicative group.
           To see this, create a finite field of order <m>2^7</m>.
@@ -1922,7 +1922,7 @@
           then use a list comprehension to generate the proper powers of the generator you specified when you created the field.
         </p>
 
-        <p permid="iPY">
+        <p>
           The second list should be the whole field, but will be missing zero.
           Create the zero element of the field
           (perhaps by coercing <m>0</m> into the field)
@@ -1932,9 +1932,9 @@
       </statement>
     </exercise>
 
-    <exercise number="3" permid="yne" xml:id="finite-sage-exercise-subfields">
+    <exercise number="3" xml:id="finite-sage-exercise-subfields">
       <statement>
-        <p permid="OXh">
+        <p>
           Subfields of a finite field are completely classified by <xref ref="finite-theorem-subfields"/>.
           It is possible to create two finite fields of the correct orders for the superfield/subfield relationship to hold,
           and to translate between one and the other.
@@ -1944,7 +1944,7 @@
           and necessarily will be cyclic.
         </p>
 
-        <p permid="veq">
+        <p>
           Create a finite field of order <m>3^6</m>.
           Theory says there is a subfield of order <m>3^2</m>, since <m>2|6</m>.
           Determine a generator of multiplicative order <m>8</m> for the nonzero elements of this subfield,
@@ -1959,9 +1959,9 @@
       </statement>
     </exercise>
 
-    <exercise number="4" permid="eun" xml:id="finite-sage-exercise-separableness">
+    <exercise number="4" xml:id="finite-sage-exercise-separableness">
       <statement>
-        <p permid="blz">
+        <p>
           This problem investigates the <q>separableness</q>
           of <m>{\mathbb Q}(\sqrt{3},\sqrt{7})</m>.
           You can create this number field quickly with the <c>NumberFieldTower</c> constructor,
@@ -1971,7 +1971,7 @@
           Name the flattened version <c>L</c> with <c>c</c> as a generator.
         </p>
 
-        <p permid="HsI">
+        <p>
           Create a nontrivial (<q>random</q>) element of <c>L</c> using as many powers of <c>c</c> as possible
           (check the degree of <c>L</c> to see how many linearly independent powers there are).
           Request from Sage the minimum polynomial of your random element,
@@ -1985,7 +1985,7 @@
           Use one of the mappings to verify that one of the roots is indeed the original random element.
         </p>
 
-        <p permid="nzR">
+        <p>
           Create a few more random elements, and find a factorization
           (in <c>N</c> or in <c>L</c>).
           For a field to be separable,
@@ -1997,26 +1997,26 @@
       </statement>
     </exercise>
 
-    <exercise number="5" permid="KBw" xml:id="finite-sage-exercise-Frobenius">
+    <exercise number="5" xml:id="finite-sage-exercise-Frobenius">
       <statement>
-        <p permid="THa">
+        <p>
           <xref ref="finite-exercise-frobenius-map"/> describes the Frobenius Map,
           an automorphism of a finite field.
           If <c>F</c> is a finite field in Sage,
           then <c>End(F)</c> will create the automorphism group of F, the set of all bijective mappings between the field and itself.
         </p>
 
-        <ol permid="ZYP">
-          <li permid="ini">
-            <p permid="nGV">
+        <ol>
+          <li>
+            <p>
               Work <xref ref="finite-exercise-frobenius-map"/> to gain an understanding of how and why the Frobenius mapping is a field automorphism.
               (Do not include any of this in your answer to this question,
               but understand that the following will be much easier if you do this problem first.)
             </p>
           </li>
 
-          <li permid="Our">
-            <p permid="TOe">
+          <li>
+            <p>
               For some small, but not trivial,
               finite fields locate the Frobenius map in the automorphism group.
               Small might mean <m>p=2,3,5,7</m> and <m>3\leq n\leq 10</m>,
@@ -2024,8 +2024,8 @@
             </p>
           </li>
 
-          <li permid="uBA">
-            <p permid="zVn">
+          <li>
+            <p>
               Once you have located the Frobenius map,
               describe the other automorphisms.
               In other words, with a bit of investigation,
@@ -2039,15 +2039,15 @@
             </p>
           </li>
 
-          <li permid="aIJ">
-            <p permid="gcw">
+          <li>
+            <p>
               What is the <q>structure</q> of the automorphism group?
               What special status does the Frobenius map have in this group?
             </p>
           </li>
 
-          <li permid="GPS">
-            <p permid="MjF">
+          <li>
+            <p>
               For any field,
               the subfield known as the fixed field is an important construction,
               and will be especially important in the next chapter.
@@ -2066,27 +2066,27 @@
       </statement>
     </exercise>
 
-    <exercise number="6" permid="qIF" xml:id="finite-sage-exercise-sum-of-squares">
+    <exercise number="6" xml:id="finite-sage-exercise-sum-of-squares">
       <statement>
-        <p permid="zOj">
+        <p>
           <xref ref="finite-exercise-sum-of-squares"/> suggests that every element of a finite field may be written (expressed) as a sum of squares.
           This exercise suggests computational experiments which might help you formulate a proof for the exercise.
         </p>
 
-        <ol permid="GfY">
-          <li permid="mXb">
-            <p permid="sqO">
+        <ol>
+          <li>
+            <p>
               Construct two small, but not too small, finite fields,
               one with <m>p=2</m> and the other with an odd prime.
               Repeat the following for each field, <m>F</m>.
             </p>
           </li>
 
-          <li permid="Tek">
-            <p permid="YxX">
+          <li>
+            <p>
               Choose a <q>random</q> element of the field, say <m>a\in F</m>.
               Construct the sets
-              <md permid="syf">
+              <md>
                 <mrow>&amp;\{x^2|x\in F\}&amp;&amp;\{a-x^2|x\in F\}</mrow>
               </md>
               using Sage sets with the <m>Set()</m> constructor.  (Be careful:
@@ -2094,8 +2094,8 @@
             </p>
           </li>
 
-          <li permid="zlt">
-            <p permid="EFg">
+          <li>
+            <p>
               Examine the size of the two sets and the size of their intersection (<c>.intersection()</c>).
               Try different elements for <m>a</m>,
               perhaps writing a loop to try <em>all</em> possible values.
@@ -2103,14 +2103,14 @@
             </p>
           </li>
 
-          <li permid="fsC">
-            <p permid="kMp">
+          <li>
+            <p>
               Suppose you have an element of the intersection. (You can get one with <c>.an_element()</c>.) How does this lead to the sum of squares proposed in the exercise?
             </p>
           </li>
 
-          <li permid="LzL">
-            <p permid="QTy">
+          <li>
+            <p>
               Can you write a Python function that accepts a finite field whose order is a power of an odd prime and then lists each element as a sum of squares?
             </p>
           </li>

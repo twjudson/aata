@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="algcodes" permid="jTr">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="algcodes">
   <title>Algebraic Coding Theory</title>
-  <introduction permid="rMl">
-    <p permid="cYZ">
+  <introduction>
+    <p>
       Coding theory is an application of algebra that has become increasingly important over the last several decades.
       When we transmit data,
       we are concerned about sending a message over a channel that could be affected by <q>noise.</q>
@@ -27,18 +27,18 @@
     </p>
   </introduction>
 
-  <section xml:id="algcodes-section-error-detecting-correcting-codes" permid="lIE">
+  <section xml:id="algcodes-section-error-detecting-correcting-codes">
     <title>Error-Detecting and Correcting Codes</title>
-    <introduction permid="XTu">
-      <p permid="Jgi">
+    <introduction>
+      <p>
         Let us examine a simple model of a communications system for transmitting and receiving coded messages (<xref ref="algcodes-figure-encoding"/>).
       </p>
 
-      <figure xml:id="algcodes-figure-encoding" permid="BBJ">
+      <figure xml:id="algcodes-figure-encoding">
         
         <caption>Encoding and decoding messages</caption>
             <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
-        <image width="60%" xml:id="algcodes-encode-decode" permid="Qie">
+        <image width="60%" xml:id="algcodes-encode-decode">
         	<description>A vertical flow chart where an m-digit message is passed to an encoder which is represented by a rectangle to become an n-digit codeword which is passed to a transmitter that is also represented by a rectangle.  The outcome of the transmitter may have noise and is passed to the receiver which is prepresented by a rectangle.  The receiver passes an n-digit received word to a decoder that is represented by a rectangle.  The decoder produces an m-digit received word or an error.</description>
             <latex-image>
                 <xi:include href="tikz/algcodes-encode-decode.tex" parse="text"/>
@@ -47,7 +47,7 @@
 
       </figure>
 
-      <p permid="pnr">
+      <p>
         Uncoded messages may be composed of letters or characters,
         but typically they consist of binary <m>m</m>-tuples.
         These messages are encoded into codewords,
@@ -67,13 +67,13 @@
         Our goal is to transmit error-free messages as cheaply and quickly as possible.
       </p>
 
-      <example xml:id="algcodes-example-repeat" permid="isz">
-        <p permid="lIR">
+      <example xml:id="algcodes-example-repeat">
+        <p>
           One possible coding scheme would be to send a message several times and to compare the received copies with one another.
           Suppose that the message to be encoded is a binary <m>n</m>-tuple <m>(x_{1}, x_{2}, \ldots,
           x_{n})</m>.
           The message is encoded into a binary <m>3n</m>-tuple by simply repeating the message three times:
-          <me permid="pBM">
+          <me>
             (x_{1}, x_{2}, \ldots, x_{n}) \mapsto (x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n}, x_{1}, x_{2}, \ldots, x_{n})
           </me>.
           To decode the message,
@@ -93,8 +93,8 @@
         </p>
       </example>
 
-      <example xml:id="algcodes-example-even-parity" permid="OzI">
-        <p permid="RQa">
+      <example xml:id="algcodes-example-even-parity">
+        <p>
           <term>Even parity</term>, a commonly used coding scheme,
           is much more efficient than the simple repetition scheme.
           The <acro>ASCII</acro> (American Standard Code for Information Interchange) coding system uses binary <m>8</m>-tuples,
@@ -104,14 +104,14 @@
           What can or should be done with the extra bit?
           Using the full eight bits, we can detect single transmission errors.
           For example, the <acro>ASCII</acro> codes for A, B, and C are
-          <md permid="VIV">
+          <md>
             <mrow>\text{A} &amp; = 65_{10} = 01000001_{2},</mrow>
             <mrow>\text{B} &amp; = 66_{10} = 01000010_{2},</mrow>
             <mrow>\text{C} &amp; = 67_{10} = 01000011_{2}</mrow>
           </md>.
           Notice that the leftmost bit is always set to 0;
           that is, the <m>128</m> <acro>ASCII</acro> characters have codes
-          <md permid="BQe">
+          <md>
             <mrow>00000000_{2} &amp; = 0_{10},</mrow>
             <mrow>&amp; \vdots</mrow>
             <mrow>01111111_{2} &amp; = 127_{10}</mrow>
@@ -119,7 +119,7 @@
           The bit can be used for error checking on the other seven bits.
           It is set to either <m>0</m> or <m>1</m> so that the total number of <m>1</m> bits in the representation of a character is even.
           Using even parity, the codes for A, B, and C now become
-          <md permid="hXn">
+          <md>
             <mrow>\text{A} &amp; = 01000001_{2},</mrow>
             <mrow>\text{B} &amp; = 01000010_{2},</mrow>
             <mrow>\text{C} &amp; = 11000011_{2}</mrow>
@@ -131,7 +131,7 @@
           the leftmost bit is called a <term>parity check bit</term>.
         </p>
 
-        <p permid="xXj">
+        <p>
           By far the most common error-detecting codes used in computers are based on the addition of a parity bit.
           Typically, a computer stores information in <m>m</m>-tuples called <term>words</term>.
           Common word lengths are <m>8</m>,
@@ -142,7 +142,7 @@
           depending on the number of <m>1</m>s in the word.
         </p>
 
-        <p permid="ees">
+        <p>
           Adding a parity check bit allows the detection of all single errors because changing a single bit either increases or decreases the number of <m>1</m>s by one,
           and in either case the parity has been changed from even to odd,
           so the new word is not a codeword.
@@ -151,7 +151,7 @@
         </p>
       </example>
 
-      <p permid="VuA">
+      <p>
         The even parity system is easy to implement, but has two drawbacks.
         First, multiple errors are not detectable.
         Suppose an A is sent and the first and seventh bits are changed from <m>0</m> to <m>1</m>.
@@ -164,8 +164,8 @@
         We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.
       </p>
 
-      <example xml:id="algcodes-example-nearest" permid="uGR">
-        <p permid="KlB">
+      <example xml:id="algcodes-example-nearest">
+        <p>
           Suppose that our original message is either a <m>0</m> or a <m>1</m>,
           and that <m>0</m> encodes to <m>(000)</m> and <m>1</m> encodes to <m>(111)</m>.
           If only a single error occurs during transmission,
@@ -176,9 +176,9 @@
           This method will detect and correct all single errors.
         </p>
 
-        <table xml:id="algcodes-table-repetition-code" permid="cww">
+        <table xml:id="algcodes-table-repetition-code">
           <title>A repetition code</title>
-          <tabular halign="center" top="medium" permid="IDF">
+          <tabular halign="center" top="medium">
             <col/>
             <col/>
             <col/>
@@ -229,7 +229,7 @@
 
         </table>
 
-        <p permid="qsK">
+        <p>
           In <xref ref="algcodes-table-repetition-code"/>,
           we present all possible words that might be received for the transmitted codewords <m>(000)</m> and <m>(111)</m>.
           <xref ref="algcodes-table-repetition-code"/> also shows the number of bits by which each received <m>3</m>-tuple differs from each original codeword.
@@ -237,11 +237,11 @@
       </example>
     </introduction>
 
-    <subsection xml:id="algcodes-subsection-max-likelihood" permid="QaA">
+    <subsection xml:id="algcodes-subsection-max-likelihood">
       <title>Maximum-Likelihood Decoding</title>
             <!-- Label repaired.  Suggested by R. Beezer. -->
             <!-- TWJ - 12/19/2011 -->
-      <p permid="fyg">
+      <p>
         The coding scheme presented in <xref ref="algcodes-example-nearest"/> is not a complete solution to the problem because it does not account for the possibility of multiple errors.
         For example,
         either a (000) or a (111) could be sent and a (001) received.
@@ -266,11 +266,11 @@
         but can be skipped without loss of continuity.
         </fn></p>
 
-      <figure xml:id="algcodes-figure-channel" permid="rMy">
+      <figure xml:id="algcodes-figure-channel">
         
         <caption>Binary symmetric channel</caption>
             <!-- Replaced figure with tikz figure - TWJ 5/10/2010 -->
-        <image width="40%" xml:id="algcodes-binary-channel" permid="wpn">
+        <image width="40%" xml:id="algcodes-binary-channel">
         	<description>A schematic diagram where a zero has probabilty p that it will be decoded as a zero and probability q that it will be decoded as a one, which are represented by arrows from 0 to 0 and 1 to 1, respectively.  A one has probabilty p that it will be decoded as a one and probability q that it will be decoded as a zero, which are represented by arrows from 1 to 1 and 0 to 1, respectively.</description>
             <latex-image>
                 <xi:include href="tikz/algcodes-binary-channel.tex" parse="text"/>
@@ -279,7 +279,7 @@
 
       </figure>
 
-      <p permid="LFp">
+      <p>
         A <term>binary symmetric channel</term><idx><h>Binary symmetric channel</h></idx> is a model that consists of a transmitter capable of sending a binary signal,
         either a <m>0</m> or a <m>1</m>, together with a receiver.
         Let <m>p</m> be the probability that the signal is correctly received.
@@ -290,71 +290,71 @@
         For example,
         if <m>p=0.999</m> and a message consisting of 10,000 bits is sent,
         then the probability of a perfect transmission is
-        <me permid="Oew">
+        <me>
           (0.999)^{10,000} \approx 0.00005
         </me>.
       </p>
 
-      <theorem permid="qsx">
+      <theorem>
         <statement>
-          <p permid="LqU">
+          <p>
             If a binary <m>n</m>-tuple
             <m>(x_{1}, \ldots,
             x_{n})</m> is transmitted across a binary symmetric channel with probability <m>p</m> that no error will occur in each coordinate,
             then the probability that there are errors in exactly <m>k</m> coordinates is
-            <me permid="ulF">
+            <me>
               \binom{n}{k} q^kp^{n - k}
             </me>.
           </p>
         </statement>
 
-        <proof permid="wwe">
-          <p permid="duy">
+        <proof>
+          <p>
             Fix <m>k</m> different coordinates.
             We first compute the probability that an error has occurred in this fixed set of coordinates.
             The probability of an error occurring in a particular one of these <m>k</m> coordinates is <m>q</m>;
             the probability that an error will not occur in any of the remaining <m>n-k</m> coordinates is <m>p</m>.
             The probability of each of these <m>n</m> independent events is <m>q^{k}p^{n-k}</m>.
             The number of possible error patterns with exactly <m>k</m> errors occurring is equal to
-            <me permid="asO">
+            <me>
               \binom{n}{k}  = \frac{n!}{k!(n - k)!}
             </me>,
             the number of combinations of <m>n</m> things taken <m>k</m> at a time.
             Each of these error patterns has probability <m>q^{k}p^{n-k}</m> of occurring;
             hence, the probability of all of these error patterns is
-            <me permid="GzX">
+            <me>
               \binom{n}{k}  q^{k}p^{n - k}
             </me>.
           </p>
         </proof>
       </theorem>
 
-      <example xml:id="algcodes-example-probability" permid="WzG">
-        <p permid="WzT">
+      <example xml:id="algcodes-example-probability">
+        <p>
           Suppose that <m>p = 0.995</m> and a <m>500</m>-bit message is sent.
           The probability that the message was sent error-free is
-          <me permid="mHg">
+          <me>
             p^{n} = (0.995)^{500} \approx 0.082
           </me>.
           The probability of exactly one error occurring is
-          <me permid="SOp">
+          <me>
             \binom{n}{1}  qp^{n - 1}= 500(0.005)(0.995)^{499} \approx 0.204
           </me>.
           The probability of exactly two errors is
-          <me permid="yVy">
+          <me>
             \binom{n}{2} q^{2}p^{n - 2}= \frac{500 \cdot 499}{2}(0.005)^{2}(0.995)^{498} \approx 0.257
           </me>.
           The probability of more than two errors is approximately
-          <me permid="fcH">
+          <me>
             1 - 0.082 - 0.204 - 0.257 = 0.457
           </me>.
         </p>
       </example>
     </subsection>
 
-    <subsection xml:id="algcodes-subsection-block-codes" permid="whJ">
+    <subsection xml:id="algcodes-subsection-block-codes">
       <title>Block Codes</title>
-      <p permid="XTH">
+      <p>
         If we are to develop efficient error-detecting and error-correcting codes,
         we will need more sophisticated mathematical tools.
         Group theory  will allow faster methods of encoding and decoding messages.
@@ -363,11 +363,11 @@
         each of which can be encoded into <m>n</m> binary digits.
         More specifically, an <m>(n, m)</m>-block code consists of an
         <term>encoding function</term>
-        <me permid="LjQ">
+        <me>
           E:{\mathbb Z}^{m}_{2} \rightarrow {\mathbb Z}^{n}_{2}
         </me>
         and a <term>decoding function</term>
-        <me permid="rqZ">
+        <me>
           D:{\mathbb Z}^{n}_{2} \rightarrow {\mathbb Z}^{m}_{2}
         </me>.
         A <term>codeword</term> is any element in the image of <m>E</m>.
@@ -376,18 +376,18 @@
         then <m>D</m> must be onto.
       </p>
 
-      <example xml:id="algcodes-example-block-code" permid="OVh">
-        <p permid="CHc">
+      <example xml:id="algcodes-example-block-code">
+        <p>
           The even-parity coding system developed to detect single errors in <acro>ASCII</acro> characters is an <m>(8,7)</m>-block code.
           The encoding function is
-          <me permid="Xyi">
+          <me>
             E(x_7, x_6, \ldots, x_1) = (x_8, x_7,  \ldots, x_1)
           </me>,
           where <m>x_8 = x_7 + x_6 + \cdots + x_1</m> with addition in <m>{\mathbb Z}_2</m>.
         </p>
       </example>
 
-      <p permid="EaQ">
+      <p>
         Let <m>{\mathbf x} = (x_1, \ldots,
         x_n)</m> and <m>{\mathbf y} = (y_1, \ldots,
         y_n)</m> be binary <m>n</m>-tuples.
@@ -425,62 +425,62 @@
 
       </p>
 
-      <example xml:id="algcodes-example-min-distance" permid="vcq">
-        <p permid="iOl">
+      <example xml:id="algcodes-example-min-distance">
+        <p>
           Let <m>{\mathbf x} = (10101)</m>,
           <m>{\mathbf y} = (11010)</m>,
           and <m>{\mathbf z} = (00011)</m> be all of the codewords in some code <m>C</m>.
           Then we have the following Hamming distances:
-          <me permid="DFr">
+          <me>
             d({\mathbf x},{\mathbf y}) = 4, \qquad d({\mathbf x},{\mathbf z}) = 3, \qquad d({\mathbf y},{\mathbf z}) = 3
           </me>.
           The minimum distance  for this code is 3.
           We also have the following weights:
-          <me permid="jMA">
+          <me>
             w({\mathbf x}) = 3, \qquad w({\mathbf y}) = 3, \qquad w({\mathbf z}) = 2
           </me>.
         </p>
       </example>
 
-      <p permid="khZ">
+      <p>
         The following proposition lists some basic properties about the weight of a codeword and the distance between two codewords.
         The proof is left as an exercise.
       </p>
 
-      <proposition permid="iNY">
+      <proposition>
         <statement>
-          <p permid="UKG">
+          <p>
             Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>,
             and <m>{\mathbf z}</m> be binary <m>n</m>-tuples.
             Then
 
-            <ol permid="UDp">
-              <li permid="CzL">
-                <p permid="URK">
+            <ol>
+              <li>
+                <p>
                   <m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m>;
                 </p>
               </li>
 
-              <li permid="iGU">
-                <p permid="AYT">
+              <li>
+                <p>
                   <m>d( {\mathbf x}, {\mathbf y}) \geq 0</m>;
                 </p>
               </li>
 
-              <li permid="OOd">
-                <p permid="hgc">
+              <li>
+                <p>
                   <m>d( {\mathbf x}, {\mathbf y}) = 0</m> exactly when <m>{\mathbf x} = {\mathbf y}</m>;
                 </p>
               </li>
 
-              <li permid="uVm">
-                <p permid="Nnl">
+              <li>
+                <p>
                   <m>d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})</m>;
                 </p>
               </li>
 
-              <li permid="bcv">
-                <p permid="tuu">
+              <li>
+                <p>
                   <m>d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf z}, {\mathbf y})</m>.
                 </p>
               </li>
@@ -489,13 +489,13 @@
         </statement>
       </proposition>
 
-      <p permid="Qpi">
+      <p>
         The weights in a particular code are usually much easier to compute than the Hamming distances between all codewords in the code.
         If a code is set up carefully,
         we can use this fact to our advantage.
       </p>
 
-      <p permid="wwr">
+      <p>
         Suppose that <m>{\mathbf x} = (1101)</m> and
         <m>{\mathbf y} = (1100)</m> are codewords in some code.
         If we transmit <m>(1101)</m> and an error occurs in the rightmost bit,
@@ -513,9 +513,9 @@
         hence, the code is suitable as a single error-detecting code.
       </p>
 
-      <table xml:id="algcodes-table-4-bit-words" permid="hgp">
+      <table xml:id="algcodes-table-4-bit-words">
         <title>Distances between 4-bit codewords</title>
-        <tabular halign="center" top="medium" left="medium" right="medium" permid="Nny">
+        <tabular halign="center" top="medium" left="medium" right="medium">
           <row bottom="medium">
             <cell/>
             <cell><m>0000</m></cell>
@@ -619,7 +619,7 @@
 
       </table>
 
-      <p permid="cDA">
+      <p>
         To determine exactly what the error-detecting and error-correcting capabilities for a code are,
         we need to analyze the minimum distance for the code.
         Let <m>{\mathbf x}</m> and <m>{\mathbf y}</m> be codewords.
@@ -635,7 +635,7 @@
         However, suppose that <m>d({\mathbf x}, {\mathbf y}) = 2</m>,
         <m>{\mathbf y}</m> is sent,
         and a noncodeword <m>{\mathbf z}</m> is received such that
-        <me permid="PTJ">
+        <me>
           d({\mathbf x}, {\mathbf z}) = d({\mathbf y}, {\mathbf z}) = 1
         </me>.
         Then the decoder cannot decide between
@@ -644,7 +644,7 @@
         we do not know what the error is.
       </p>
 
-      <p permid="IKJ">
+      <p>
         Suppose <m>d_{\min} \geq 3</m>.
         Then the maximum-likelihood decoding scheme corrects all single errors.
         Starting with a codeword <m>{\mathbf x}</m>,
@@ -655,9 +655,9 @@
         then we can detect multiple errors when a code has a minimum distance that is greater than or equal to <m>3</m>.
       </p>
 
-      <theorem xml:id="algcodes-theorem-min-distance" permid="CGP">
+      <theorem xml:id="algcodes-theorem-min-distance">
         <statement>
-          <p permid="ryd">
+          <p>
             Let <m>C</m> be a code with <m>d_{\min} = 2n + 1</m>.
             Then <m>C</m> can correct any <m>n</m> or fewer errors.
             Furthermore,
@@ -665,13 +665,13 @@
           </p>
         </statement>
 
-        <proof permid="cDn">
-          <p permid="JBH">
+        <proof>
+          <p>
             Suppose that a codeword <m>{\mathbf x}</m> is sent and the word
             <m>{\mathbf y}</m> is received with at most <m>n</m> errors.
             Then <m>d( {\mathbf x}, {\mathbf y}) \leq n</m>.
             If <m>{\mathbf z}</m> is any codeword other than <m>{\mathbf x}</m>, then
-            <me permid="waS">
+            <me>
               2n+1 \leq d( {\mathbf x}, {\mathbf z}) \leq d( {\mathbf x}, {\mathbf y}) + d( {\mathbf y}, {\mathbf z}) \leq n + d( {\mathbf y}, {\mathbf z})
             </me>.
             Hence, <m>d({\mathbf y}, {\mathbf z} ) \geq n+1</m> and
@@ -688,8 +688,8 @@
         </proof>
       </theorem>
 
-      <example xml:id="algcodes-example-single-correct" permid="bjz">
-        <p permid="OVu">
+      <example xml:id="algcodes-example-single-correct">
+        <p>
           In <xref ref="algcodes-table-hamming-distance"/>,
           the codewords <m>{\mathbf c}_1 = (00000)</m>,
           <m>{\mathbf c}_2 = (00111)</m>,
@@ -697,9 +697,9 @@
           and <m>{\mathbf c}_4 = (11011)</m> determine a single error-correcting code.
         </p>
 
-        <table xml:id="algcodes-table-hamming-distance" permid="oKO">
+        <table xml:id="algcodes-table-hamming-distance">
           <title>Hamming distances for an error-correcting code</title>
-          <tabular halign="center" top="medium" left="medium" right="medium" permid="URX">
+          <tabular halign="center" top="medium" left="medium" right="medium">
             <row bottom="medium">
               <cell/>
               <cell><m>00000</m></cell>
@@ -743,9 +743,9 @@
 
     </subsection>
 
-    <subsection xml:id="algcodes-subsection-historical-note" permid="coS">
+    <subsection xml:id="algcodes-subsection-historical-note">
       <title>Historical Note</title>
-      <p permid="oRS">
+      <p>
         Modern coding theory began in 1948 with C. Shannon's<idx><h>Shannon, C.</h></idx>
         paper, <q>A Mathematical Theory of Information</q>
         [7]. This paper offered an example of an algebraic code,
@@ -764,10 +764,10 @@
     </subsection>
   </section>
 
-  <section xml:id="algcodes-section-linear-codes" permid="RPN">
+  <section xml:id="algcodes-section-linear-codes">
     <title>Linear Codes</title>
-    <introduction permid="EaD">
-      <p permid="hIS">
+    <introduction>
+      <p>
         To gain more knowledge of a particular code and develop more efficient techniques of encoding,
         decoding,
         and error detection, we need to add additional structure to our codes.
@@ -776,7 +776,7 @@
         is a code that is also a subgroup of <m>{\mathbb Z}_2^n</m>.
       </p>
 
-      <p permid="NQb">
+      <p>
         To check that a code is a group code,
         we need only verify one thing.
         If we add any two elements in the code,
@@ -785,15 +785,15 @@
         since every codeword is its own inverse,
         nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword.
         For instance,
-        <me permid="cib">
+        <me>
           (11000101) + (11000101) = (00000000)
         </me>.
       </p>
 
-      <example xml:id="algcodes-example-weights" permid="aOa">
-        <p permid="vcD">
+      <example xml:id="algcodes-example-weights">
+        <p>
           Suppose that we have a code that consists of the following 7-tuples:
-          <md permid="Ipk">
+          <md>
             <mrow>&amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
             <mrow>&amp;(0100110) &amp; &amp; (0101001) &amp; &amp; (0110011) &amp; &amp; (0111100)</mrow>
             <mrow>&amp;(1000011) &amp; &amp; (1001100) &amp; &amp; (1010110) &amp; &amp; (1011001)</mrow>
@@ -809,17 +809,17 @@
         </p>
       </example>
 
-      <lemma permid="Weh">
+      <lemma>
         <statement>
-          <p permid="tnq">
+          <p>
             Let <m>{\mathbf x}</m> and
             <m>{\mathbf y}</m> be binary <m>n</m>-tuples.
             Then <m>w({\mathbf x} + {\mathbf y}) = d({\mathbf x}, {\mathbf y})</m>.
           </p>
         </statement>
 
-        <proof permid="FPQ">
-          <p permid="pIQ">
+        <proof>
+          <p>
             Suppose that <m>{\mathbf x}</m> and
             <m>{\mathbf y}</m> are binary <m>n</m>-tuples.
             Then the distance between <m>{\mathbf x}</m> and
@@ -827,7 +827,7 @@
             <m>{\mathbf x}</m> and <m>{\mathbf y}</m> differ.
             But <m>{\mathbf x}</m> and
             <m>{\mathbf y}</m> differ in a particular coordinate exactly when the sum in the coordinate is <m>1</m>, since
-            <md permid="owt">
+            <md>
               <mrow>1 + 1 &amp; = 0</mrow>
               <mrow>0 + 0 &amp; = 0</mrow>
               <mrow>1 + 0 &amp; = 1</mrow>
@@ -839,22 +839,22 @@
         </proof>
       </lemma>
 
-      <theorem permid="sRE">
+      <theorem>
         <statement>
-          <p permid="XFm">
+          <p>
             Let <m>d_{\min}</m> be the minimum distance for a group code <m>C</m>.
             Then <m>d_{\min}</m> is the minimum weight of all the nonzero codewords in <m>C</m>.
             That is,
-            <me permid="UDC">
+            <me>
               d_{\min} = \min\{ w({\mathbf x}) : { {\mathbf x} \neq {\mathbf 0} } \}
             </me>.
           </p>
         </statement>
 
-        <proof permid="IKw">
-          <p permid="VPZ">
+        <proof>
+          <p>
             Observe that
-            <md permid="AKL">
+            <md>
               <mrow>d_{\min} &amp; =  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}\neq{\mathbf y} \}</mrow>
               <mrow>&amp;=  \min \{ d({\mathbf x},{\mathbf y}) : {\mathbf x}+{\mathbf y} \neq {\mathbf 0} \}</mrow>
               <mrow>&amp;= \min\{ w({\mathbf x} + {\mathbf y}) : {\mathbf x}+{\mathbf y}\neq {\mathbf 0} \}</mrow>
@@ -865,9 +865,9 @@
       </theorem>
     </introduction>
 
-    <subsection xml:id="algcodes-subsection-linear-codes" permid="Iwb">
+    <subsection xml:id="algcodes-subsection-linear-codes">
       <title>Linear Codes</title>
-      <p permid="UZb">
+      <p>
         From <xref ref="algcodes-example-weights"/>,
         it is now easy to check that the minimum nonzero weight is <m>3</m>;
         hence, the code does indeed detect and correct all single errors.
@@ -876,10 +876,10 @@
         One easy way to generate group codes is to employ a bit of matrix theory.
       </p>
 
-      <p permid="Bgk">
+      <p>
         Define the <term>inner product</term><idx><h>Inner product</h></idx>
         of two binary <m>n</m>-tuples to be
-        <me permid="gRU">
+        <me>
           {\mathbf x} \cdot {\mathbf y} = x_1 y_1 + \cdots + x_n y_n
         </me>,
         where <m>{\mathbf x} = (x_1, x_2, \ldots,
@@ -891,7 +891,7 @@
         if <m>{\mathbf x} = (011001)^\transpose</m> and <m>{\mathbf y} = (110101)^\transpose</m>,
         then <m>{\mathbf x} \cdot {\mathbf y} = 0</m>.
         We can also look at an inner product as the product of a row matrix with a column matrix; that is,
-        <md permid="MZd">
+        <md>
           <mrow>{\mathbf x} \cdot {\mathbf y} &amp; = {\mathbf x}^\transpose  {\mathbf y}</mrow>
           <mrow>&amp; =
           \begin{pmatrix}
@@ -904,8 +904,8 @@
         </md>.
       </p>
 
-      <example xml:id="algcodes-example-matrixcodes" permid="nxR">
-        <p permid="bjM">
+      <example xml:id="algcodes-example-matrixcodes">
+        <p>
           Suppose that the words to be encoded consist of all binary <m>3</m>-tuples and that our encoding scheme is even-parity.
           To encode an arbitrary <m>3</m>-tuple,
           we add a fourth bit to obtain an even number of <m>1</m>s.
@@ -913,7 +913,7 @@
           <m>{\mathbf x} = (x_1, x_2, \ldots,
           x_n)^\transpose</m> has an even number of <m>1</m>s exactly when <m>x_1 + x_2 + \cdots + x_n = 0</m>;
           hence, a <m>4</m>-tuple <m>{\mathbf x} = (x_1, x_2, x_3, x_4)^\transpose</m> has an even number of <m>1</m>s if <m> x_1+ x_2+ x_3+ x_4 = 0</m>, or
-          <me permid="tgm">
+          <me>
             {\mathbf x} \cdot {\mathbf 1} =  {\mathbf x}^\transpose {\mathbf 1} =
             \begin{pmatrix}
             x_1 &amp; x_2 &amp; x_3 &amp; x_4
@@ -926,7 +926,7 @@
         </p>
       </example>
 
-      <p permid="hnt">
+      <p>
         Let <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m> denote the set of all
         <m>m \times n</m> matrices with entries in <m>{\mathbb Z}_2</m>.
         We do matrix operations as usual except that all our addition and multiplication operations occur in <m>{\mathbb Z}_2</m>.
@@ -947,10 +947,10 @@
 
       </p>
 
-      <example xml:id="algcodes-example-group-code" permid="TFa">
-        <p permid="HqV">
+      <example xml:id="algcodes-example-group-code">
+        <p>
           Suppose that
-          <me permid="Znv">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
@@ -962,35 +962,35 @@
           <m>H{\mathbf x} = {\mathbf 0}</m>.
           Equivalently,
           the following system of equations must be satisfied:
-          <md permid="lBN">
+          <md>
             <mrow>x_2 +  x_4  &amp; =  0</mrow>
             <mrow>x_1 + x_2 + x_3  + x_4 &amp; =  0</mrow>
             <mrow>x_3  + x_4  +  x_5 &amp; =  0</mrow>
           </md>.
           The set of binary <m>5</m>-tuples satisfying these equations is
-          <me permid="FuE">
+          <me>
             (00000) \qquad (11110) \qquad (10101) \qquad (01011)
           </me>.
           This code is easily determined to be a group code.
         </p>
       </example>
 
-      <theorem permid="HqI">
+      <theorem>
         <statement>
-          <p permid="DMv">
+          <p>
             Let <m>H</m> be in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
             Then the null space of <m>H</m> is a group code.
           </p>
         </statement>
 
-        <proof permid="oRF">
-          <p permid="BXi">
+        <proof>
+          <p>
             Since each element of <m>{\mathbb Z}_2^n</m> is its own inverse,
             the only thing that really needs to be checked here is closure.
             Let <m>{\mathbf x}, {\mathbf y} \in \Null(H)</m> for some matrix <m>H</m> in <m>{\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
             Then <m>H{\mathbf x} = {\mathbf 0}</m> and <m>H{\mathbf y} = {\mathbf 0}</m>.
             So
-            <me permid="RIW">
+            <me>
               H({\mathbf x}+{\mathbf y}) = H{\mathbf x} + H{\mathbf y} = {\mathbf 0} + {\mathbf 0} = {\mathbf 0}
             </me>.
             Hence, <m>{\mathbf x} + {\mathbf y}</m> is in the null space of <m>H</m> and therefore must be a codeword.
@@ -999,15 +999,15 @@
       </theorem>
             <!-- typo correction.  Suggested by J. Buller. -->
             <!-- TWJ - 12/20/2011 -->
-      <p permid="NuC">
+      <p>
         A code is a <term>linear code</term><idx><h>Code</h><h>linear</h></idx>
         if it is determined by the null space of some matrix <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
       </p>
 
-      <example xml:id="algcodes-example-linear-code" permid="zMj">
-        <p permid="nye">
+      <example xml:id="algcodes-example-linear-code">
+        <p>
           Let <m>C</m> be the code given by the matrix
-          <me permid="xQf">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
@@ -1018,7 +1018,7 @@
           Suppose that the <m>6</m>-tuple <m>{\mathbf x} = (010011)^\transpose</m> is received.
           It is a simple matter of matrix multiplication to determine whether or not <m>{\mathbf x}</m> is a codeword.
           Since
-          <me permid="dXo">
+          <me>
             H{\mathbf x} =
             \begin{pmatrix} 
             0 \\ 1 \\ 1
@@ -1033,9 +1033,9 @@
     </subsection>
   </section>
 
-  <section xml:id="algcodes-section-parity-check" permid="xWW">
+  <section xml:id="algcodes-section-parity-check">
     <title>Parity-Check and Generator Matrices</title>
-    <p permid="Mpj">
+    <p>
       We need to find a systematic way of generating linear codes as well as fast methods of decoding.
       By examining the properties of a matrix <m>H</m> and by carefully choosing <m>H</m>,
       it is possible to develop very efficient methods of encoding and decoding messages.
@@ -1043,7 +1043,7 @@
       we will introduce standard generator and canonical parity-check matrices.
     </p>
 
-    <p permid="sws">
+    <p>
       Suppose that <m>H</m> is an
       <m>m \times n</m> matrix with entries in <m>{\mathbb Z}_2</m> and <m>n \gt m</m>.
       If the last <m>m</m> columns of the matrix form the
@@ -1051,7 +1051,7 @@
       then the matrix is a <idx><h>Matrix</h><h>parity-check</h></idx><term>canonical parity-check matrix</term>.
       More specifically, <m>H= (A \mid I_m)</m>,
       where <m>A</m> is the <m>m \times (n-m)</m> matrix
-      <me permid="Kex">
+      <me>
         \begin{pmatrix}
         a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1,n-m} \\
         a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2,n-m} \\
@@ -1060,7 +1060,7 @@
         \end{pmatrix}
       </me>
       and <m>I_m</m> is the <m>m \times m</m> identity matrix
-      <me permid="qlG">
+      <me>
         \begin{pmatrix}
         1 &amp; 0 &amp; \cdots &amp; 0 \\
         0 &amp; 1 &amp; \cdots &amp; 0 \\
@@ -1070,7 +1070,7 @@
       </me>.
       With each canonical parity-check matrix we can associate an <m>n \times (n-m)</m>
       <term>standard generator matrix</term><idx><h>Matrix</h><h>generator</h></idx>
-      <me permid="WsP">
+      <me>
         G = \left( \frac{I_{n-m}}{A} \right)
       </me>.
       Our goal will be to show that an <m>\mathbf x</m> satisfying
@@ -1079,14 +1079,14 @@
       the matrix <m>G</m> will allow us to quickly encode it into a linear codeword <m>{\mathbf y}</m>.
     </p>
 
-    <example xml:id="algcodes-example-parity-check" permid="GVj">
-      <p permid="TFn">
+    <example xml:id="algcodes-example-parity-check">
+      <p>
         Suppose that we have the following eight words to be encoded:
-        <me permid="CzY">
+        <me>
           (000), (001), (010), \ldots, (111)
         </me>.
         For
-        <me permid="iHh">
+        <me>
           A =
           \begin{pmatrix}
           0 &amp; 1 &amp; 1 \\
@@ -1095,7 +1095,7 @@
           \end{pmatrix}
         </me>,
         the associated standard generator and canonical parity-check matrices are
-        <me permid="OOq">
+        <me>
           G=
           \begin{pmatrix}
           1 &amp; 0 &amp; 0 \\
@@ -1107,7 +1107,7 @@
           \end{pmatrix}
         </me>
         and
-        <me permid="uVz">
+        <me>
           H =
           \begin{pmatrix}
           0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1118,11 +1118,11 @@
         respectively.
       </p>
 
-      <p permid="zMw">
+      <p>
         Observe that the rows in <m>H</m>  represent the parity checks on certain bit positions in a <m>6</m>-tuple.
         The <m>1</m>s in the identity matrix serve as parity checks for the <m>1</m>s in the same row.
         If <m>{\mathbf x} = (x_1, x_2, x_3, x_4, x_5, x_6)</m>, then
-        <me permid="bcI">
+        <me>
           {\mathbf 0}
           =
           H{\mathbf x}
@@ -1134,7 +1134,7 @@
           \end{pmatrix}
         </me>,
         which yields a system of equations:
-        <md permid="nra">
+        <md>
           <mrow>x_2 + x_3 + x_4 &amp; = 0</mrow>
           <mrow>x_1 + x_2 + x_5 &amp; = 0</mrow>
           <mrow>x_1 + x_3 + x_6 &amp; = 0</mrow>
@@ -1148,7 +1148,7 @@
         and <m>x_3</m> can be arbitrary but <m>x_4</m>,
         <m>x_5</m>, and <m>x_6</m> must be chosen to ensure parity.
         The null space of <m>H</m> is easily computed to be
-        <me permid="HjR">
+        <me>
           \begin{array}{cccc}
           (000000) &amp; (001101) &amp; (010110) &amp; (011011) \\
           (100011) &amp; (101110) &amp; (110101) &amp; (111000).
@@ -1158,9 +1158,9 @@
       </p>
     </example>
 
-    <table xml:id="algcodes-table-matrix-gen-code" permid="RXr">
+    <table xml:id="algcodes-table-matrix-gen-code">
       <title>A matrix-generated code</title>
-      <tabular halign="center" top="medium" permid="yeA">
+      <tabular halign="center" top="medium">
         <row bottom="medium">
           <cell>Message Word <m>\mathbf x</m></cell>
           <cell>Codeword <m>G \mathbf x</m></cell>
@@ -1201,9 +1201,9 @@
 
     </table>
 
-    <theorem permid="YYN">
+    <theorem>
       <statement>
-        <p permid="jTE">
+        <p>
           If <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m> is a canonical parity-check matrix,
           then <m>\Null(H)</m> consists of all
           <m>{\mathbf x} \in {\mathbb Z}_2^n</m> whose first <m>n-m</m> bits are arbitrary but whose last <m>m</m> bits are determined by <m>H{\mathbf x} = {\mathbf 0}</m>.
@@ -1213,7 +1213,7 @@
       </statement>
     </theorem>
 
-    <p permid="YDB">
+    <p>
       We leave the proof of this theorem as an exercise.
       In light of the theorem,
       the first <m>n - m</m> bits in <m>{\mathbf x}</m> are called
@@ -1223,9 +1223,9 @@
       the first three bits are the information bits and the last three are the check bits.
     </p>
 
-    <theorem permid="FfW">
+    <theorem>
       <statement>
-        <p permid="QaN">
+        <p>
           Suppose that <m>G</m> is an
           <m>n \times k</m> standard generator matrix.
           Then <m>C = \left\{{\mathbf y} : G{\mathbf x} ={\mathbf y}\text{ for }{\mathbf x}\in {\mathbb Z}_2^k\right\}</m> is an <m>(n,k)</m>-block code.
@@ -1233,11 +1233,11 @@
         </p>
       </statement>
 
-      <proof permid="UYO">
-        <p permid="ier">
+      <proof>
+        <p>
           Let <m>G {\mathbf x}_1 = {\mathbf y}_1</m> and <m>G {\mathbf x}_2 ={\mathbf y}_2</m> be two codewords.
           Then <m>{\mathbf y}_1 + {\mathbf y}_2</m> is in <m>C</m> since
-          <me permid="Tyj">
+          <me>
             G( {\mathbf x}_1 + {\mathbf x}_2) = G {\mathbf x}_1 + G {\mathbf x}_2 = {\mathbf y}_1 + {\mathbf y}_2
           </me>.
           We must also show that two message blocks cannot be encoded into the same codeword.
@@ -1245,7 +1245,7 @@
           then <m>{\mathbf x} = {\mathbf y}</m>.
           Suppose that <m>G {\mathbf x} = G {\mathbf y}</m>.
           Then
-          <me permid="zFs">
+          <me>
             G {\mathbf x} - G {\mathbf y} = G( {\mathbf x} - {\mathbf y}) = {\mathbf 0}
           </me>.
           However, the first <m>k</m> coordinates in
@@ -1258,14 +1258,14 @@
       </proof>
     </theorem>
 
-    <p permid="EKK">
+    <p>
       Before we can prove the relationship between canonical parity-check matrices and standard generating matrices,
       we need to prove a lemma.
     </p>
 
-    <lemma xml:id="algcodes-lemma-parity-check" permid="Clq">
+    <lemma xml:id="algcodes-lemma-parity-check">
       <statement>
-        <p permid="Zuz">
+        <p>
           Let <m>H = (A \mid I_m )</m> be an
           <m>m \times n</m> canonical parity-check matrix and <m>G = \left( \frac{I_{n-m} }{A} \right)</m> be the corresponding
           <m>n \times (n-m)</m> standard generator matrix.
@@ -1273,11 +1273,11 @@
         </p>
       </statement>
 
-      <proof permid="lWZ">
-        <p permid="OlA">
+      <proof>
+        <p>
           Let <m>C = HG</m>.
           The <m>ij</m>th entry in <m>C</m> is
-          <md permid="LTK">
+          <md>
             <mrow>c_{ij} &amp; = \sum_{k=1}^n h_{ik} g_{kj}</mrow>
             <mrow>&amp; =  \sum_{k=1}^{n-m} h_{ik} g_{kj} + \sum_{k=n-m+1}^n h_{ik} g_{kj}</mrow>
             <mrow>&amp; = \sum_{k=1}^{n-m} a_{ik} \delta_{kj} + \sum_{k=n-m+1}^n \delta_{i-(m-n),k} a_{kj}</mrow>
@@ -1285,7 +1285,7 @@
             <mrow>&amp; = 0</mrow>
           </md>,
           where
-          <me permid="fMB">
+          <me>
             \delta_{ij} =
             \begin{cases}
             1 &amp; i = j \\
@@ -1302,9 +1302,9 @@
       </proof>
     </lemma>
 
-    <theorem permid="lnf">
+    <theorem>
       <statement>
-        <p permid="whW">
+        <p>
           Let <m>H = (A \mid I_m )</m> be an
           <m>m \times n</m> canonical parity-check matrix and let <m>G = \left( \frac{I_{n-m} }{A} \right) </m> be the
           <m>n \times (n-m)</m> standard generator matrix associated with <m>H</m>.
@@ -1315,22 +1315,22 @@
         </p>
       </statement>
 
-      <proof permid="BfX">
-        <p permid="usJ">
+      <proof>
+        <p>
           First suppose that <m>{\mathbf y} \in C</m>.
           Then <m>G {\mathbf x} = {\mathbf y}</m> for some <m>{\mathbf x} \in {\mathbb Z}_2^m</m>.
           By <xref ref="algcodes-lemma-parity-check"/>,
           <m>H {\mathbf y} = HG {\mathbf x} = {\mathbf 0}</m>.
         </p>
 
-        <p permid="azS">
+        <p>
           Conversely, suppose that <m>{\mathbf y} = (y_1, \ldots,
           y_n)^\transpose</m> is in the null space of <m>H</m>.
           We need to find an <m>{\mathbf x}</m> in
           <m>{\mathbb Z}_2^{n-m}</m> such that <m>G {\mathbf x}^\transpose = {\mathbf y}</m>.
           Since <m>H {\mathbf y} = {\mathbf 0}</m>,
           the following set of equations must be satisfied:
-          <md permid="saT">
+          <md>
             <mrow>a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow>
             <mrow>a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+2} &amp; = 0</mrow>
             <mrow>&amp; \vdots</mrow>
@@ -1338,7 +1338,7 @@
           </md>.
           Equivalently, <m>y_{n-m+1}, \ldots,
           y_n</m> are determined by <m>y_1, \ldots, y_{n-m}</m>:
-          <md permid="Yic">
+          <md>
             <mrow>y_{n-m+1} &amp; = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m}</mrow>
             <mrow>y_{n-m+2} &amp; = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m}</mrow>
             <mrow>&amp; \vdots</mrow>
@@ -1350,10 +1350,10 @@
       </proof>
     </theorem>
 
-    <p permid="kRT">
+    <p>
       It would be helpful if we could compute the minimum distance of a linear code directly from its matrix <m>H</m> in order to determine the error-detecting and error-correcting capabilities of the code.
       Suppose that
-      <md permid="Epl">
+      <md>
         <mrow>{\mathbf e}_1 &amp; = (100 \cdots 00)^\transpose</mrow>
         <mrow>{\mathbf e}_2 &amp; = (010 \cdots 00)^\transpose</mrow>
         <mrow>&amp; \vdots</mrow>
@@ -1364,10 +1364,10 @@
       <m>H{\mathbf e}_i</m> is exactly the <m>i</m>th column of the matrix <m>H</m>.
     </p>
 
-    <example xml:id="algcodes-example-ith-column" permid="ncs">
-      <p permid="fTF">
+    <example xml:id="algcodes-example-ith-column">
+      <p>
         Observe that
-        <me permid="kwu">
+        <me>
           \begin{pmatrix}
           1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
           1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
@@ -1384,29 +1384,29 @@
       </p>
     </example>
 
-    <p permid="QZc">
+    <p>
       We state this result in the following proposition and leave the proof as an exercise.
     </p>
 
-    <proposition xml:id="algcodes-proposition-column" permid="JPP">
+    <proposition xml:id="algcodes-proposition-column">
       <statement>
-        <p permid="ARP">
+        <p>
           Let <m>{\mathbf e}_i</m> be the binary <m>n</m>-tuple with a <m>1</m> in the <m>i</m>th coordinate and <m>0</m>'s elsewhere and suppose that <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
           Then <m>H{\mathbf e}_i</m> is the <m>i</m>th column of the matrix <m>H</m>.
         </p>
       </statement>
     </proposition>
 
-    <theorem xml:id="algcodes-theorem-single-error" permid="Ruo">
+    <theorem xml:id="algcodes-theorem-single-error">
       <statement>
-        <p permid="cpf">
+        <p>
           Let <m>H</m> be an <m>m \times n</m> binary matrix.
           Then the null space of <m>H</m> is a single error-detecting code if and only if no column of <m>H</m> consists entirely of zeros.
         </p>
       </statement>
 
-      <proof permid="hng">
-        <p permid="GHb">
+      <proof>
+        <p>
           Suppose that <m>\Null(H)</m> is a single error-detecting code.
           Then the minimum distance of the code must be at least <m>2</m>.
           Since the null space is a group code,
@@ -1418,17 +1418,17 @@
           hence, the code must have the capability to detect at least single errors.
         </p>
 
-        <p permid="mOk">
+        <p>
           Conversely, suppose that no column of <m>H</m> is the zero column.
           By <xref ref="algcodes-proposition-column"/>, <m>H{\mathbf e}_i \neq {\mathbf 0}</m>.
         </p>
       </proof>
     </theorem>
 
-    <example xml:id="algcodes-example-null-space" permid="TjB">
-      <p permid="MaO">
+    <example xml:id="algcodes-example-null-space">
+      <p>
         If we consider the matrices
-        <me permid="QDD">
+        <me>
           H_1 =
           \begin{pmatrix}
           1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1437,7 +1437,7 @@
           \end{pmatrix}
         </me>
         and
-        <me permid="wKM">
+        <me>
           H_2 =
           \begin{pmatrix}
           1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1449,16 +1449,16 @@
       </p>
     </example>
 
-    <p permid="xgl">
+    <p>
       We can even do better than <xref ref="algcodes-theorem-single-error"/>.
       This theorem gives us conditions on a matrix <m>H</m> that tell us when the minimum weight of the code formed by the null space of <m>H</m> is <m>2</m>.
       We can also determine when the minimum distance of a linear code is <m>3</m> by examining the corresponding matrix.
     </p>
 
-    <example xml:id="algcodes-example-check-matrix" permid="zqK">
-      <p permid="shX">
+    <example xml:id="algcodes-example-check-matrix">
+      <p>
         If we let
-        <me permid="cRV">
+        <me>
           H =
           \begin{pmatrix}
           1 &amp; 1 &amp; 1 &amp; 0 \\
@@ -1478,20 +1478,20 @@
       </p>
     </example>
 
-    <theorem permid="xBx">
+    <theorem>
       <statement>
-        <p permid="Iwo">
+        <p>
           Let <m>H</m> be a binary matrix.
           The null space of <m>H</m> is a single error-correcting code if and only if <m>H</m> does not contain any zero columns and no two columns of <m>H</m> are identical.
         </p>
       </statement>
 
-      <proof permid="Nup">
-        <p permid="SVt">
+      <proof>
+        <p>
           The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has <m>1</m>s in the <m>i</m>th and <m>j</m>th entries and 0s elsewhere,
           and <m>w( {\mathbf e}_{i} +{\mathbf e}_{j}) = 2</m> for <m>i \neq j</m>.
           Since
-          <me permid="IZe">
+          <me>
             {\mathbf 0} = H({\mathbf e}_{i} +{\mathbf e}_{j}) = H{\mathbf e}_{i} + H{\mathbf e}_{j}
           </me>
           can only occur if the <m>i</m>th and <m>j</m>th columns are identical,
@@ -1500,13 +1500,13 @@
       </proof>
     </theorem>
 
-    <p permid="dnu">
+    <p>
       Suppose now that we have a canonical parity-check matrix <m>H</m> with three rows.
       Then we might ask how many more columns we can add to the matrix and still have a null space that is a single error-detecting and single error-correcting code.
       Since each column has three entries,
       there are <m>2^3 = 8</m> possible distinct columns.
       We cannot add the columns
-      <me permid="pgn">
+      <me>
         \begin{pmatrix}
         0 \\ 0 \\ 0 
         \end{pmatrix},
@@ -1523,7 +1523,7 @@
       So we can add as many as four columns and still maintain a minimum distance of <m>3</m>.
     </p>
 
-    <p permid="JuD">
+    <p>
       In general, if <m>H</m> is an
       <m>m \times n</m> canonical parity-check matrix,
       then there are <m>n-m</m> information positions in each codeword.
@@ -1536,20 +1536,20 @@
         <!-- TWJ - 10/1/2014 -->
   </section>
 
-  <section xml:id="algcodes-section-efficient-decoding" permid="eef">
+  <section xml:id="algcodes-section-efficient-decoding">
     <title>Efficient Decoding</title>
-    <introduction permid="khM">
-      <p permid="tXk">
+    <introduction>
+      <p>
         We are now at the stage where we are able to generate linear codes that detect and correct errors fairly easily,
         but it is still a time-consuming process to decode a received <m>n</m>-tuple and determine which is the closest codeword,
         because the received <m>n</m>-tuple must be compared to each possible codeword to determine the proper decoding.
         This can be a serious impediment if the code is very large.
       </p>
 
-      <example xml:id="algcodes-example-syndrome" permid="fxT">
-        <p permid="Ypg">
+      <example xml:id="algcodes-example-syndrome">
+        <p>
           Given the binary matrix
-          <me permid="Vnw">
+          <me>
             H =
             \begin{pmatrix}
             1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1559,7 +1559,7 @@
           </me>
           and the <m>5</m>-tuples <m>{\mathbf x} = (11011)^\transpose</m> and <m>{\mathbf y} = (01011)^\transpose</m>,
           we can compute
-          <me permid="BuF">
+          <me>
             H{\mathbf x} =
             \begin{pmatrix}
             0 \\ 0 \\ 0 
@@ -1583,16 +1583,16 @@
       </example>
             <!-- typo correction.  Suggested by E. Martin. -->
             <!-- TWJ - 1/2/2013 -->
-      <p permid="aet">
+      <p>
         If <m>H</m> is an <m>m \times n</m> matrix and <m>{\mathbf x} \in {\mathbb Z}_2^n</m>,
         then we say that the <term>syndrome</term><idx><h>Syndrome of a code</h></idx>
         of <m>{\mathbf x}</m> is <m>H{\mathbf x}</m>.
         The following proposition allows the quick detection and correction of errors.
       </p>
 
-      <proposition xml:id="algcodes-proposition-syndrome" permid="pWY">
+      <proposition xml:id="algcodes-proposition-syndrome">
         <statement>
-          <p permid="gYY">
+          <p>
             Let the <m>m \times n</m> binary matrix <m>H</m> determine a linear code and let
             <m>{\mathbf x}</m> be the received <m>n</m>-tuple.
             Write <m>{\mathbf x}</m> as <m>{\mathbf x} = {\mathbf c} +{\mathbf e}</m>,
@@ -1603,25 +1603,25 @@
           </p>
         </statement>
 
-        <proof permid="tBy">
-          <p permid="zcC">
+        <proof>
+          <p>
             The proof follows from the fact that
-            <me permid="hBO">
+            <me>
               H{\mathbf x} = H({\mathbf c} +{\mathbf e}) = H{\mathbf c} + H{\mathbf e} = {\mathbf 0} + H{\mathbf e} = H{\mathbf e}
             </me>.
           </p>
         </proof>
       </proposition>
             <!--Made the proof into a complete sentence.  TWJ 3/6/2014-->
-      <p permid="GlC">
+      <p>
         This proposition tells us that the syndrome of a received word depends solely on the error and not on the transmitted codeword.
         The proof of the following theorem follows immediately from <xref ref="algcodes-proposition-syndrome"/> and from the fact that
         <m>H{\mathbf e}</m> is the <m>i</m>th column of the matrix <m>H</m>.
       </p>
 
-      <theorem permid="dIG">
+      <theorem>
         <statement>
-          <p permid="oDx">
+          <p>
             Let <m>H \in {\mathbb M}_{ m \times n} ( {\mathbb Z}_2)</m> and suppose that the linear code corresponding to <m>H</m> is single error-correcting.
             Let <m>{\mathbf r}</m> be a received <m>n</m>-tuple that was transmitted with at most one error.
             If the syndrome of <m>{\mathbf r}</m> is <m>{\mathbf 0}</m>,
@@ -1633,10 +1633,10 @@
         </statement>
       </theorem>
 
-      <example xml:id="algcodes-example-detecting-errors" permid="LFc">
-        <p permid="Ewp">
+      <example xml:id="algcodes-example-detecting-errors">
+        <p>
           Consider the matrix
-          <me permid="NIX">
+          <me>
             H =
             \begin{pmatrix}
             1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1648,7 +1648,7 @@
           <m>{\mathbf y} = (111111)^\transpose</m>,
           and <m>{\mathbf z} = (010111)^\transpose</m> have been received.
           Then
-          <me permid="tQg">
+          <me>
             H{\mathbf x} =
             \begin{pmatrix}
             1 \\ 1 \\ 1 
@@ -1673,9 +1673,9 @@
       </example>
     </introduction>
 
-    <subsection xml:id="algcodes-subsection-coset-decoding" permid="oDk">
+    <subsection xml:id="algcodes-subsection-coset-decoding">
       <title>Coset Decoding</title>
-      <p permid="tBL">
+      <p>
         We can use group theory to obtain another way of decoding messages.
         A linear code <m>C</m> is a subgroup of <m>{\mathbb Z}_2^n</m>. <term>Coset</term><idx><h>Coset decoding</h></idx>
         or <term>standard decoding</term><idx><h>Standard decoding</h></idx>
@@ -1688,10 +1688,10 @@
         there are <m>2^{n - (n - m)} = 2^m</m> distinct cosets of <m>C</m> in <m>{\mathbb Z}_2^n</m>.
       </p>
 
-      <example xml:id="algcodes-example-coset-decoding" permid="MaB">
-        <p permid="kDy">
+      <example xml:id="algcodes-example-coset-decoding">
+        <p>
           Let <m>C</m> be the <m>(5,3)</m>-linear code given by the parity-check matrix
-          <me permid="ZXp">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
@@ -1700,7 +1700,7 @@
             \end{pmatrix}
           </me>.
           The code consists of the codewords
-          <me permid="Gey">
+          <me>
             (00000) \quad (01101) \quad (10011) \quad (11110)
           </me>.
           There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>,
@@ -1709,9 +1709,9 @@
         </p>
       </example>
 
-      <table xml:id="algcodes-table-cosets-of-c" permid="tuH">
+      <table xml:id="algcodes-table-cosets-of-c">
         <title>Cosets of <m>C</m></title>
-        <tabular halign="center" top="medium" permid="FIZ">
+        <tabular halign="center" top="medium">
           <row>
             <cell>Coset</cell>
             <cell>Coset</cell>
@@ -1756,7 +1756,7 @@
 
       </table>
 
-      <p permid="ZIU">
+      <p>
         Our task is to find out how knowing the cosets might help us to decode a message.
         Suppose that <m>{\mathbf x}</m> was the original codeword sent and that
         <m>{\mathbf r}</m> is the <m>n</m>-tuple received.
@@ -1775,8 +1775,8 @@
         <m>{\mathbf r} + {\mathbf e}</m> to obtain <m>{\mathbf x}</m>.
       </p>
 
-      <example xml:id="algcodes-example-representative" permid="shK">
-        <p permid="QKH">
+      <example xml:id="algcodes-example-representative">
+        <p>
           In <xref ref="algcodes-table-cosets-of-c"/>,
           notice that we have chosen a representative of the least possible weight for each coset.
           These representatives are coset leaders.
@@ -1787,7 +1787,7 @@
         </p>
       </example>
 
-      <p permid="FQd">
+      <p>
         A potential problem with this method of decoding is that we might have to examine every coset for the received codeword.
         The following proposition gives a method of implementing coset decoding.
         It states that we can associate a syndrome with each coset;
@@ -1795,9 +1795,9 @@
         Such a list is called a  <idx><h>Decoding table</h></idx><term>decoding table</term>.
       </p>
 
-      <table xml:id="algcodes-table-syndrome" permid="ZBQ">
+      <table xml:id="algcodes-table-syndrome">
         <title>Syndromes for each coset</title>
-        <tabular halign="center" top="medium" permid="lQi">
+        <tabular halign="center" top="medium">
           <row bottom="medium">
             <cell>Syndrome</cell>
             <cell>Coset Leader</cell>
@@ -1838,9 +1838,9 @@
 
       </table>
 
-      <proposition permid="fTs">
+      <proposition>
         <statement>
-          <p permid="Ngh">
+          <p>
             Let <m>C</m> be an <m>(n,k)</m>-linear code given by the matrix <m>H</m> and suppose that <m>{\mathbf x}</m> and
             <m>{\mathbf y}</m> are in <m>{\mathbb Z}_2^n</m>.
             Then <m>{\mathbf x}</m> and
@@ -1849,8 +1849,8 @@
           </p>
         </statement>
 
-        <proof permid="ZIH">
-          <p permid="fjL">
+        <proof>
+          <p>
             Two <m>n</m>-tuples <m>{\mathbf x}</m> and
             <m>{\mathbf y}</m> are in the same coset of <m>C</m> exactly when <m>{\mathbf x} - {\mathbf y} \in C</m>;
             however, this is equivalent to
@@ -1859,12 +1859,12 @@
         </proof>
       </proposition>
 
-      <example xml:id="algcodes-example-decoding-table" permid="YoT">
-        <p permid="wRQ">
+      <example xml:id="algcodes-example-decoding-table">
+        <p>
           <xref ref="algcodes-table-syndrome"/> is a decoding table for the code <m>C</m> given in <xref ref="algcodes-example-coset-decoding"/>.
           If <m>{\mathbf x} = (01111)</m> is received,
           then its syndrome can be computed to be
-          <me permid="mlH">
+          <me>
             H {\mathbf x} =
             \begin{pmatrix}
             0 \\ 1 \\ 0
@@ -1876,7 +1876,7 @@
         </p>
       </example>
 
-      <p permid="lXm">
+      <p>
         Given an <m>(n,k)</m>-block code,
         the question arises of whether or not coset decoding is a manageable scheme.
         A decoding table requires a list of cosets and syndromes,
@@ -1885,9 +1885,9 @@
         We have a huge number of codewords, <m>2^{24}</m>,
         yet there are only <m>2^{32 - 24} = 2^{8} = 256</m> cosets.
       </p>
-      <paragraphs component="sage-blurb" permid="FBv">
+      <paragraphs component="sage-blurb">
         <title>Sage</title>
-        <p permid="Sev">
+        <p>
           Sage has a substantial repertoire of commands for coding theory,
           including the ability to build many different families of codes.
         </p>
@@ -1895,11 +1895,11 @@
     </subsection>
   </section>
 
-    <reading-questions permid="gmA">
+    <reading-questions>
 
-    <exercise permid="nCe">
+    <exercise>
       <statement>
-        <p permid="slX">
+        <p>
           Suppose a binary code has minimum distance <m>d=6</m>.
           How many errors can be detected?
           How many errors can be corrected?
@@ -1908,9 +1908,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="TJn">
+    <exercise>
       <statement>
-        <p permid="Ytg">
+        <p>
           Explain why it is impossible for the 8-bit string with decimal value <m>56_{10}</m> to be an <acro>ASCII</acro> code for a character.
           Assume the leftmost bit of the string is being used as a parity-check bit.
         </p>
@@ -1918,9 +1918,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="zQw">
+    <exercise>
       <statement>
-        <p permid="EAp">
+        <p>
           Suppose we receive the 8-bit string with decimal value <m>56_{10}</m> when we are expecting <acro>ASCII</acro> characters with a parity-check bit in the first bit
           (leftmost).
           We know an error has occurred in transmission.
@@ -1934,11 +1934,11 @@
       <response/>
     </exercise>
 
-    <exercise permid="fXF">
+    <exercise>
       <statement>
-        <p permid="kHy">
+        <p>
           Suppose a linear code <m>C</m> is created as the null space of the parity-check matrix
-          <me permid="wVQ">
+          <me>
             H =\begin{bmatrix}
             0 \amp 1 \amp 0 \amp 1 \amp 0 \\
             1 \amp 1 \amp 1 \amp 1 \amp 0 \\
@@ -1953,9 +1953,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="MeO">
+    <exercise>
       <statement>
-        <p permid="QOH">
+        <p>
           For <m>H</m> and <m>x</m> as in the previous question,
           suppose that <m>x</m> is received as a message.
           Give a maximum likelihood decoding of the received message.
@@ -1968,15 +1968,15 @@
     <!-- Exercises with Solutions  -->
     <!-- File: algcodes.xml  -->
     <!-- Title: Algebraic Coding Theory -->
-  <exercises xml:id="algcodes-exercises" filenamebase="algcodes" permid="NfU">
+  <exercises xml:id="algcodes-exercises" filenamebase="algcodes">
     <title>Exercises</title>
-    <exercise number="1" permid="kDl" xml:id="algcodes-exercise-acceptable-codes">
+    <exercise number="1" xml:id="algcodes-exercise-acceptable-codes">
       <statement>
-        <p permid="SzU">
+        <p>
           Why is the following encoding scheme not acceptable?
         </p>
 
-        <tabular halign="center" top="medium" permid="AZg">
+        <tabular halign="center" top="medium">
           <row bottom="medium">
             <cell>Information</cell>
             <cell><m>0</m></cell>
@@ -2005,155 +2005,155 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="QKu" xml:id="algcodes-exercise-not-a-group-code">
+    <exercise number="2" xml:id="algcodes-exercise-not-a-group-code">
       <statement>
-        <p permid="yHd">
+        <p>
           Without doing any addition,
           explain why the following set of <m>4</m>-tuples in
           <m>{\mathbb Z}_2^4</m> cannot be a group code.
-          <me permid="SsQ">
+          <me>
             (0110) \quad (1001) \quad (1010) \quad (1100)
           </me>
         </p>
       </statement>
-      <hint permid="esA">
-        <p permid="HMu">
+      <hint>
+        <p>
           This cannot be a group code since <m>(0000) \notin C</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="3" permid="wRD" xml:id="algcodes-exercise-hamming-distance">
+    <exercise number="3" xml:id="algcodes-exercise-hamming-distance">
       <statement>
-        <p permid="eOm">
+        <p>
           Compute the Hamming distances between the following pairs of <m>n</m>-tuples.
 
-          <ol cols="2" permid="AKy">
-            <li permid="HjE">
-              <p permid="ZBD">
+          <ol cols="2">
+            <li>
+              <p>
                 <m>(011010), (011100)</m>
               </p>
             </li>
 
-            <li permid="nqN">
-              <p permid="FIM">
+            <li>
+              <p>
                 <m>(11110101), (01010100)</m>
               </p>
             </li>
 
-            <li permid="TxW">
-              <p permid="lPV">
+            <li>
+              <p>
                 <m>(00110), (01111)</m>
               </p>
             </li>
 
-            <li permid="zFf">
-              <p permid="RXe">
+            <li>
+              <p>
                 <m>(1001), (0111)</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="qGS">
-        <p permid="nTD">
+      <hint>
+        <p>
           (a) <m>2</m>; (c) <m>2</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="4" permid="cYM" xml:id="algcodes-exercise-weights">
+    <exercise number="4" xml:id="algcodes-exercise-weights">
       <statement>
-        <p permid="KVv">
+        <p>
           Compute the weights of the following <m>n</m>-tuples.
 
-          <ol cols="2" permid="gRH">
-            <li permid="fMo">
-              <p permid="yen">
+          <ol cols="2">
+            <li>
+              <p>
                 <m>(011010)</m>
               </p>
             </li>
 
-            <li permid="LTx">
-              <p permid="elw">
+            <li>
+              <p>
                 <m>(11110101)</m>
               </p>
             </li>
 
-            <li permid="saG">
-              <p permid="KsF">
+            <li>
+              <p>
                 <m>(01111)</m>
               </p>
             </li>
 
-            <li permid="YhP">
-              <p permid="qzO">
+            <li>
+              <p>
                 <m>(1011)</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="CVk">
-        <p permid="UaM">
+      <hint>
+        <p>
           (a) <m>3</m>; (c) <m>4</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="5" permid="JfV" xml:id="algcodes-exercise-minimum-weight-7">
+    <exercise number="5" xml:id="algcodes-exercise-minimum-weight-7">
       <statement>
-        <p permid="rcE">
+        <p>
           Suppose that a linear code <m>C</m> has a minimum weight of <m>7</m>.
           What are the error-detection and error-correction capabilities of <m>C</m>?
         </p>
       </statement>
     </exercise>
 
-    <exercise number="6" permid="pne" xml:id="algcodes-exercise-minimum-distance">
+    <exercise number="6" xml:id="algcodes-exercise-minimum-distance">
       <statement>
-        <p permid="XjN">
+        <p>
           In each of the following codes,
           what is the minimum distance for the code?
           What is the best situation we might hope for in connection with error detection and error correction?
 
-          <ol permid="MYQ">
-            <li permid="EoY">
-              <p permid="WGX">
+          <ol>
+            <li>
+              <p>
                 <m>(011010) \; (011100) \; (110111) \; (110000)</m>
               </p>
             </li>
 
-            <li permid="kwh">
-              <p permid="COg">
+            <li>
+              <p>
                 <m>(011100) \; (011011) \; (111011) \; (100011) \\ (000000) \; (010101) \; (110100) \; (110011)</m>
               </p>
             </li>
 
-            <li permid="QDq">
-              <p permid="iVp">
+            <li>
+              <p>
                 <m>(000000) \; (011100) \; (110101) \; (110001)</m>
               </p>
             </li>
 
-            <li permid="wKz">
-              <p permid="Pcy">
+            <li>
+              <p>
                 <m>(0110110) \; (0111100) \; (1110000) \; (1111111) \\ (1001001) \; (1000011) \; (0001111) \; (0000000)</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="vqL">
-        <p permid="AhV">
+      <hint>
+        <p>
           (a) <m>d_{\min} = 2</m>; (c) <m>d_{\min} = 1</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="7" permid="Vun" xml:id="algcodes-exercise-null-space">
+    <exercise number="7" xml:id="algcodes-exercise-null-space">
       <statement>
-        <p permid="DqW">
+        <p>
           Compute the null space of each of the following matrices.
           What type of <m>(n,k)</m>-block codes are the null spaces?
           Can you find a matrix
@@ -2161,10 +2161,10 @@
           that generates each code?
           Are your generator matrices unique?
 
-          <ol cols="2" permid="tfZ">
-            <li permid="cRI">
-              <p permid="vjH">
-                <me permid="yzZ">
+          <ol cols="2">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
@@ -2174,9 +2174,9 @@
               </p>
             </li>
 
-            <li permid="IYR">
-              <p permid="bqQ">
-                <me permid="eHi">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
@@ -2187,9 +2187,9 @@
               </p>
             </li>
 
-            <li permid="pga">
-              <p permid="HxZ">
-                <me permid="KOr">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
                   0 &amp; 1 &amp; 0 &amp; 1 &amp; 1
@@ -2198,9 +2198,9 @@
               </p>
             </li>
 
-            <li permid="Vnj">
-              <p permid="nFi">
-                <me permid="qVA">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
                   0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
@@ -2213,13 +2213,13 @@
           </ol>
         </p>
       </statement>
-      <hint permid="HFd">
-        <p permid="gpe">
-          <ol permid="owg">
-            <li permid="Bus">
-              <p permid="TMr">
+      <hint>
+        <p>
+          <ol>
+            <li>
+              <p>
                 <m>(00000), (00101), (10011), (10110)</m>
-                <me permid="XcJ">
+                <me>
                   G = 
                   \begin{pmatrix}
                   0 &amp; 1 \\
@@ -2232,10 +2232,10 @@
               </p>
             </li>
 
-            <li permid="hBB">
-              <p permid="zTA">
+            <li>
+              <p>
                 <m>(000000), (010111), (101101), (111010)</m>
-                <me permid="DjS">
+                <me>
                   G = 
                   \begin{pmatrix}
                   1 &amp; 0 \\
@@ -2253,20 +2253,20 @@
       </hint>
     </exercise>
 
-    <exercise number="8" permid="BBw" xml:id="algcodes-exercise-5-2-block-code">
+    <exercise number="8" xml:id="algcodes-exercise-5-2-block-code">
       <statement>
-        <p permid="jyf">
+        <p>
           Construct a <m>(5,2)</m>-block code.
           Discuss both the error-detection and error-correction capabilities of your code.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="9" permid="hIF" xml:id="algcodes-exercise-null-space-code">
+    <exercise number="9" xml:id="algcodes-exercise-null-space-code">
       <statement>
-        <p permid="PFo">
+        <p>
           Let <m>C</m> be the code obtained from the null space of the matrix
-          <me permid="oaU">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 \\
@@ -2275,22 +2275,22 @@
             \end{pmatrix}
           </me>.
           Decode the message
-          <me permid="Uid">
+          <me>
             01111 \quad 10101 \quad 01110 \quad 00011
           </me>
           if possible.
         </p>
       </statement>
-      <hint permid="AaE">
-        <p permid="Mwn">
+      <hint>
+        <p>
           Multiple errors occur in one of the received words.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="10" permid="NPO" xml:id="algcodes-exercise-probability">
+    <exercise number="10" xml:id="algcodes-exercise-probability">
       <statement>
-        <p permid="vMx">
+        <p>
           Suppose that a <m>1000</m>-bit binary message is transmitted.
           Assume that the probability of a single error is <m>p</m> and that the errors occurring in different bits are independent of one another.
           If <m>p = 0.01</m>,
@@ -2301,18 +2301,18 @@
       </statement>
     </exercise>
 
-    <exercise number="11" xml:id="algcodes-exercise-check-matrices" permid="tWX">
+    <exercise number="11" xml:id="algcodes-exercise-check-matrices">
       <statement>
-        <p permid="bTG">
+        <p>
           Which matrices are canonical parity-check matrices?
           For those matrices that are canonical parity-check matrices,
           what are the corresponding standard generator matrices?
           What are the error-detection and error-correction capabilities of the code generated by each of these matrices?
 
-          <ol cols="2" permid="Zni">
-            <li permid="mlu">
-              <p permid="EDt">
-                <me permid="Apm">
+          <ol cols="2">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
@@ -2323,9 +2323,9 @@
               </p>
             </li>
 
-            <li permid="SsD">
-              <p permid="kKC">
-                <me permid="gwv">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
@@ -2336,9 +2336,9 @@
               </p>
             </li>
 
-            <li permid="yzM">
-              <p permid="QRL">
-                <me permid="MDE">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 1 &amp; 1 &amp; 0 \\
                   1 &amp; 0 &amp; 0 &amp; 1
@@ -2347,9 +2347,9 @@
               </p>
             </li>
 
-            <li permid="eGV">
-              <p permid="wYU">
-                <me permid="sKN">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
@@ -2362,10 +2362,10 @@
           </ol>
         </p>
       </statement>
-      <hint permid="swf">
-        <p permid="sDw">
+      <hint>
+        <p>
           (a) A canonical parity-check matrix with standard generator matrix
-          <me permid="YRW">
+          <me>
             G = 
             \begin{pmatrix}
             1 \\ 1 \\ 0 \\ 0 \\ 1
@@ -2373,9 +2373,9 @@
           </me>.
         </p>
 
-        <p permid="YKF">
+        <p>
           (c) A canonical parity-check matrix with standard generator matrix
-          <me permid="EZf">
+          <me>
             G = 
             \begin{pmatrix}
             1 &amp; 0 \\
@@ -2388,24 +2388,24 @@
       </hint>
     </exercise>
 
-    <exercise number="12" permid="aeg" xml:id="algcodes-exercise-syndromes">
+    <exercise number="12" xml:id="algcodes-exercise-syndromes">
       <statement>
-        <p permid="IaP">
+        <p>
           List all possible syndromes for the codes generated by each of the matrices in <xref ref="algcodes-exercise-check-matrices"/>.
         </p>
       </statement>
-      <hint permid="EKx">
-        <p permid="ERO">
+      <hint>
+        <p>
           (a) All possible syndromes occur.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="13" permid="Glp" xml:id="algcodes-exercise-syndrome-transmission-error">
+    <exercise number="13" xml:id="algcodes-exercise-syndrome-transmission-error">
       <statement>
-        <p permid="ohY">
+        <p>
           Let
-          <me permid="JIY">
+          <me>
             H =
             \begin{pmatrix}
             0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
@@ -2415,27 +2415,27 @@
           </me>.
           Compute the syndrome caused by each of the following transmission errors.
 
-          <ol permid="Fur">
-            <li permid="jqO">
-              <p permid="BIN">
+          <ol>
+            <li>
+              <p>
                 An error in the first bit.
               </p>
             </li>
 
-            <li permid="PxX">
-              <p permid="hPW">
+            <li>
+              <p>
                 An error in the third bit.
               </p>
             </li>
 
-            <li permid="vFg">
-              <p permid="NXf">
+            <li>
+              <p>
                 An error in the last bit.
               </p>
             </li>
 
-            <li permid="bMp">
-              <p permid="ueo">
+            <li>
+              <p>
                 Errors in the third and fourth bits.
               </p>
             </li>
@@ -2444,9 +2444,9 @@
       </statement>
     </exercise>
 
-    <exercise number="14" permid="msy" xml:id="algcodes-exercise-cosets-Z8">
+    <exercise number="14" xml:id="algcodes-exercise-cosets-Z8">
       <statement>
-        <p permid="Uph">
+        <p>
           Let <m>C</m> be the group code in
           <m>{\mathbb Z}_2^3</m> defined by the codewords <m>(000)</m> and <m>(111)</m>.
           Compute the cosets of <m>C</m> in <m>{\mathbb Z}_2^3</m>.
@@ -2457,17 +2457,17 @@
       </statement>
     </exercise>
 
-    <exercise number="15" permid="SzH" xml:id="algcodes-exercise-find-cosets">
+    <exercise number="15" xml:id="algcodes-exercise-find-cosets">
       <statement>
-        <p permid="Awq">
+        <p>
           For each of the following matrices,
           find the cosets of the corresponding code <m>C</m>.
           Give a decoding table for each code if possible.
 
-          <ol cols="2" permid="lBA">
-            <li permid="HTy">
-              <p permid="alx">
-                <me permid="VXq">
+          <ol cols="2">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
                   1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
@@ -2477,9 +2477,9 @@
               </p>
             </li>
 
-            <li permid="oaH">
-              <p permid="GsG">
-                <me permid="Cez">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   0 &amp; 0 &amp; 1 &amp; 0 &amp; 0  \\
                   1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\
@@ -2490,9 +2490,9 @@
               </p>
             </li>
 
-            <li permid="UhQ">
-              <p permid="mzP">
-                <me permid="ilI">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
                   0 &amp; 1 &amp; 0 &amp; 1 &amp; 1
@@ -2501,9 +2501,9 @@
               </p>
             </li>
 
-            <li permid="AoZ">
-              <p permid="SGY">
-                <me permid="OsR">
+            <li>
+              <p>
+                <me>
                   \begin{pmatrix}
                   1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
                   1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
@@ -2516,8 +2516,8 @@
           </ol>
         </p>
       </statement>
-      <hint permid="dnh">
-        <p permid="kYX">
+      <hint>
+        <p>
           (a) <m>C</m>, <m>(10000) + C</m>,
           <m>(01000) + C</m>, <m>(00100) + C</m>, <m>(00010) + C</m>,
           <m>(11000) + C</m>, <m>(01100) + C</m>, <m>(01010) + C</m>.
@@ -2526,28 +2526,28 @@
       </hint>
     </exercise>
 
-    <exercise number="16" permid="yGQ" xml:id="algcodes-exercise-proof-distance">
+    <exercise number="16" xml:id="algcodes-exercise-proof-distance">
       <statement>
-        <p permid="gDz">
+        <p>
           Let <m>{\mathbf x}</m>, <m>{\mathbf y}</m>,
           and <m>{\mathbf z}</m> be binary <m>n</m>-tuples.
           Prove each of the following statements.
 
-          <ol permid="RIJ">
-            <li permid="EYS">
-              <p permid="XqR">
+          <ol>
+            <li>
+              <p>
                 <m>w({\mathbf x}) = d( {\mathbf x}, {\mathbf 0})</m>
               </p>
             </li>
 
-            <li permid="lgb">
-              <p permid="Dya">
+            <li>
+              <p>
                 <m>d( {\mathbf x}, {\mathbf y}) = d( {\mathbf x} + {\mathbf z}, {\mathbf y} + {\mathbf z} )</m>
               </p>
             </li>
 
-            <li permid="Rnk">
-              <p permid="jFj">
+            <li>
+              <p>
                 <m>d({\mathbf x}, {\mathbf y}) = w({\mathbf x}- {\mathbf y})</m>
               </p>
             </li>
@@ -2556,33 +2556,33 @@
       </statement>
     </exercise>
 
-    <exercise number="17" permid="eNZ" xml:id="algcodes-exercise-metric">
+    <exercise number="17" xml:id="algcodes-exercise-metric">
       <statement>
-        <p permid="MKI">
+        <p>
           A <term>metric</term> on a set <m>X</m> is a map
           <m>d: X \times X \rightarrow {\mathbb R}</m> satisfying the following conditions.
 
-          <ol permid="xPS">
-            <li permid="xut">
-              <p permid="vTB">
+          <ol>
+            <li>
+              <p>
                 <m>d( {\mathbf x}, {\mathbf y}) \geq 0</m> for all <m>{\mathbf x}, {\mathbf y} \in X</m>;
               </p>
             </li>
 
-            <li permid="dBC">
-              <p permid="caK">
+            <li>
+              <p>
                 <m>d( {\mathbf x}, {\mathbf y}) = 0</m> exactly when <m>{\mathbf x} = {\mathbf y}</m>;
               </p>
             </li>
 
-            <li permid="JIL">
-              <p permid="IhT">
+            <li>
+              <p>
                 <m>d( {\mathbf x}, {\mathbf y})= d( {\mathbf y}, {\mathbf x})</m>;
               </p>
             </li>
 
-            <li permid="pPU">
-              <p permid="opc">
+            <li>
+              <p>
                 <m>d( {\mathbf x}, {\mathbf y}) \leq d( {\mathbf x}, {\mathbf z}) + d( {\mathbf z}, {\mathbf y})</m>.
               </p>
             </li>
@@ -2596,41 +2596,41 @@
       </statement>
     </exercise>
 
-    <exercise number="18" permid="KVi" xml:id="algcodes-exercise-i-th-coordinate">
+    <exercise number="18" xml:id="algcodes-exercise-i-th-coordinate">
       <statement>
-        <p permid="sRR">
+        <p>
           Let <m>C</m> be a linear code.
           Show that either the <m>i</m>th coordinates in the codewords of <m>C</m> are all zeros or exactly half of them are zeros.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="19" permid="rcr" xml:id="algcodes-exercise-even-weight">
+    <exercise number="19" xml:id="algcodes-exercise-even-weight">
       <statement>
-        <p permid="YZa">
+        <p>
           Let <m>C</m> be a linear code.
           Show that either every codeword has even weight or exactly half of the codewords have even weight.
         </p>
       </statement>
-      <hint permid="hXa">
-        <p permid="Rgg">
+      <hint>
+        <p>
           Let <m>{\mathbf x} \in C</m> have odd weight and define a map from the set of odd codewords to the set of even codewords by <m>{\mathbf y} \mapsto {\mathbf x} + {\mathbf y}</m>.
           Show that this map is a bijection.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="20" permid="XjA" xml:id="algcodes-exercise-even-weight-linear-code">
+    <exercise number="20" xml:id="algcodes-exercise-even-weight-linear-code">
       <statement>
-        <p permid="Fgj">
+        <p>
           Show that the codewords of even weight in a linear code <m>C</m> are also a linear code.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="21" permid="DqJ" xml:id="algcodes-exercise-ascii-characters">
+    <exercise number="21" xml:id="algcodes-exercise-ascii-characters">
       <statement>
-        <p permid="lns">
+        <p>
           If we are to use an error-correcting linear code to transmit the 128 <acro>ASCII</acro> characters,
           what size matrix must be used?
           What size matrix must be used to transmit the extended <acro>ASCII</acro> character set of 256 characters?
@@ -2639,9 +2639,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22" permid="jxS" xml:id="algcodes-exercise-canonical-parity-check-matrix">
+    <exercise number="22" xml:id="algcodes-exercise-canonical-parity-check-matrix">
       <statement>
-        <p permid="RuB">
+        <p>
           Find the canonical parity-check matrix that gives the even parity check bit code with three information positions.
           What is the matrix for seven information positions?
           What are the corresponding standard generator matrices?
@@ -2649,44 +2649,44 @@
       </statement>
     </exercise>
 
-    <exercise number="23" permid="PFb" xml:id="algcodes-exercise-20-information-positions">
+    <exercise number="23" xml:id="algcodes-exercise-20-information-positions">
       <statement>
-        <p permid="xBK">
+        <p>
           How many check positions are needed for a single error-correcting code with 20 information positions?
           With 32 information positions?
         </p>
       </statement>
-      <hint permid="mGT">
-        <p permid="xnp">
+      <hint>
+        <p>
           For <m>20</m> information positions,
           at least 6 check bits are needed to ensure an error-correcting code.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="24" permid="vMk" xml:id="algcodes-exercise-binary-code">
+    <exercise number="24" xml:id="algcodes-exercise-binary-code">
       <statement>
-        <p permid="dIT">
+        <p>
           Let <m>{\mathbf e}_i</m> be the binary <m>n</m>-tuple with a <m>1</m> in the <m>i</m>th coordinate and <m>0</m>'s elsewhere and suppose that <m>H \in {\mathbb M}_{m \times n}({\mathbb Z}_2)</m>.
           Show that <m>H{\mathbf e}_i</m> is the <m>i</m>th column of the matrix <m>H</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="25" xml:id="algcodes-exercise-dual-code" permid="bTt">
+    <exercise number="25" xml:id="algcodes-exercise-dual-code">
       <statement>
-        <p permid="JQc">
+        <p>
           Let <m>C</m> be an <m>(n,k)</m>-linear code.
           Define the <term>dual</term> or
           <term>orthogonal code</term> of <m>C</m>  to be
-          <me permid="mVB">
+          <me>
             C^\perp = \{ {\mathbf x} \in {\mathbb Z}_2^n :  {\mathbf x} \cdot {\mathbf y} = 0 \text{ for all } {\mathbf y} \in C \}
           </me>.
-          <ol permid="dXb">
-            <li permid="VXd">
-              <p permid="Uwl">
+          <ol>
+            <li>
+              <p>
                 Find the dual code of the linear code <m>C</m> where <m>C</m> is given by the matrix
-                <me permid="TcK">
+                <me>
                   \begin{pmatrix}
                   1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
                   0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
@@ -2696,14 +2696,14 @@
               </p>
             </li>
 
-            <li permid="Cem">
-              <p permid="ADu">
+            <li>
+              <p>
                 Show that <m>C^\perp</m> is an <m>(n, n-k)</m>-linear code.
               </p>
             </li>
 
-            <li permid="ilv">
-              <p permid="gKD">
+            <li>
+              <p>
                 Find the standard generator and parity-check matrices of <m>C</m> and <m>C^\perp</m>.
                 What happens in general?
                 Prove your conjecture.
@@ -2714,19 +2714,19 @@
       </statement>
     </exercise>
 
-    <exercise number="26" permid="IaC" xml:id="algcodes-exercise-hamming-code">
+    <exercise number="26" xml:id="algcodes-exercise-hamming-code">
       <statement>
-        <p permid="pXl">
+        <p>
           Let <m>H</m> be an <m>m \times n</m> matrix over <m>{\mathbb Z}_2</m>,
           where the <m>i</m>th column is the number <m>i</m> written in binary with <m>m</m> bits.
           The null space of such a matrix is called a
           <term>Hamming code</term>.
 
-          <ol permid="Kek">
-            <li permid="GOf">
-              <p permid="Fnn">
+          <ol>
+            <li>
+              <p>
                 Show  that the matrix
-                <me permid="rFu">
+                <me>
                   H =
                   \begin{pmatrix}
                   0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
@@ -2739,8 +2739,8 @@
               </p>
             </li>
 
-            <li permid="mVo">
-              <p permid="luw">
+            <li>
+              <p>
                 The column corresponding to the syndrome also marks the bit that was in error;
                 that is, the <m>i</m>th column of the matrix is <m>i</m> written as a binary number,
                 and the syndrome immediately tells us which bit is in error.
@@ -2750,8 +2750,8 @@
               </p>
             </li>
 
-            <li permid="Tcx">
-              <p permid="RBF">
+            <li>
+              <p>
                 Give a binary matrix <m>H</m> for the Hamming code with six information positions and four check positions.
                 What are the check positions and what are the information positions?
                 Encode the messages <m>(101101)</m> and <m>(001001)</m>.
@@ -2760,8 +2760,8 @@
               </p>
             </li>
 
-            <li permid="zjG">
-              <p permid="xIO">
+            <li>
+              <p>
                 What is the number of check bits and the number of information bits in an <m>(m,n)</m>-block Hamming code?
                 Give both an upper and a lower bound on the number of information bits in terms of the number of check bits.
                 Hamming codes having the maximum possible number of information bits with <m>k</m> check bits are called <term>perfect</term>.
@@ -2778,11 +2778,11 @@
     </exercise>
 
   </exercises>
-  <exercises xml:id="algcodes-exercises-programming" permid="tnd">
+  <exercises xml:id="algcodes-exercises-programming">
     <title>Programming Exercises</title>
-    <exercise permid="ohL">
+    <exercise>
       <statement>
-        <p permid="Weu">
+        <p>
           Write a program to implement a <m>(16, 12)</m>-linear code.
           Your program should be able to encode and decode messages using coset decoding.
           Once your program is written,
@@ -2794,9 +2794,9 @@
 
   </exercises>
 
-  <references xml:id="algcodes-references" permid="GJf">
+  <references xml:id="algcodes-references">
     <title>References and Suggested Readings</title>
-    <biblio type="raw" permid="mQo">
+    <biblio type="raw">
 <!-- was [1] -->
       Blake, I. F. <q>Codes and Designs,</q>
       <title>Mathematics Magazine</title>
@@ -2804,13 +2804,13 @@
       (1979), 81<ndash/>95.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw" permid="SXx">
+    <biblio type="raw">
 <!-- was [2] -->
       Hill, R.
       <title>A First Course in Coding Theory</title>. Oxford University Press, Oxford, 1990.
     </biblio>
 
-    <biblio type="raw" permid="zeG">
+    <biblio type="raw">
 <!-- was [3] -->
       Levinson, N. <q>Coding Theory: A Counterexample to G. H. Hardy's Conception of Applied Mathematics,</q>
       <title>American Mathematical Monthly</title>
@@ -2818,25 +2818,25 @@
       (1970), 249<ndash/>58.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw" permid="flP">
+    <biblio type="raw">
 <!-- was [4] -->
       Lidl, R. and Pilz, G.
       <title>Applied Abstract Algebra</title>. 2nd ed. Springer, New York, 1998.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw" permid="LsY">
+    <biblio type="raw">
 <!-- was [5] -->
       MacWilliams, F. J. and Sloane, N. J. A.
       <title>The Theory of Error-Correcting Codes</title>. North-Holland Mathematical Library, 16, Elsevier, Amsterdam, 1983.
     </biblio>
 
-    <biblio type="raw" permid="rAh">
+    <biblio type="raw">
 <!-- was [6] -->
       Roman, S.
       <title>Coding and Information Theory</title>. Springer-Verlag, New York, 1992.
     </biblio>
 
-    <biblio type="raw" permid="XHq">
+    <biblio type="raw">
 <!-- was [7] -->
       Shannon, C. E. <q>A Mathematical Theory of Communication,</q>
       <title>Bell System Technical Journal</title>
@@ -2844,13 +2844,13 @@
       (1948), 379<ndash/>423, 623<ndash/>56.
     </biblio>
 
-    <biblio type="raw" permid="DOz">
+    <biblio type="raw">
 <!-- was [8] -->
       Thompson, T. M.
       <title>From Error-Correcting Codes through Sphere Packing to Simple Groups</title>. Carus Monograph Series, No. 21. Mathematical Association of America, Washington, DC, 1983.
     </biblio>
         <!-- Reference updated - TWJ 6/1/2010 -->
-    <biblio type="raw" permid="jVI">
+    <biblio type="raw">
 <!-- was [9] -->
       van Lint, J. H.
       <title>Introduction to Coding Theory</title>. Springer, New York, 1999.
@@ -2859,27 +2859,27 @@
 
 
 
-  <section xml:id="algcodes-sage" component="sage-info" permid="Klo">
+  <section xml:id="algcodes-sage" component="sage-info">
     <title>Sage</title>
-    <introduction permid="QoV">
-      <p permid="msL">
+    <introduction>
+      <p>
         Sage has a full suite of linear codes and a variety of methods that may be used to investigate them.
       </p>
     </introduction>
 
-    <subsection permid="UKt">
+    <subsection>
       <title>Constructing Linear Codes</title>
-      <p permid="ylE">
+      <p>
         The <c>codes</c> object can be used to get a concise listing of the available implemented codes.
         Type <c>codes.</c> and press the <c>Tab</c> key and most interfaces to Sage will give you a list.
         You can then use a question mark at the end of a method name to learn about the various parameters.
       </p>
 
-            <sage doctest="not tested" permid="JyQ">
+            <sage doctest="not tested">
                 <input>codes.</input>
             </sage>
 
-      <p permid="esN">
+      <p>
         We will use the classic binary Hamming <m>(7,4)</m> code as an illustration.  <q>Binary</q>
         means we have vectors with just 0's and 1's, the <m>7</m> is the length and means the vectors have <m>7</m> coordinates,
         and the <m>4</m> is the dimension,
@@ -2889,29 +2889,29 @@
         A second parameter is <c>r</c> and we can see from the formulas in the documenation that setting <c>r=3</c> will give length <m>7</m>.
       </p>
 
-            <sage permid="pFZ">
+            <sage>
                 <input>H = codes.HammingCode(GF(2), 3); H</input>
                 <output>[7, 4] Hamming Code over GF(2)</output>
             </sage>
     </subsection>
 
-    <subsection permid="ARC">
+    <subsection>
       <title>Properties of Linear Codes</title>
-      <p permid="KzW">
+      <p>
         We can examine the Hamming code we just built.
         First the dimension.
       </p>
 
-            <sage permid="VNi">
+            <sage>
                 <input>H.dimension()</input>
                 <output>4</output>
             </sage>
 
-      <p permid="qHf">
+      <p>
         The code is small enough that we can list all the codewords.
       </p>
 
-            <sage permid="BUr">
+            <sage>
                 <input>H.list()</input>
                 <output>
             [(0, 0, 0, 0, 0, 0, 0), (1, 0, 0, 0, 0, 1, 1), (0, 1, 0, 0, 1, 0, 1),
@@ -2923,18 +2923,18 @@
             </output>
             </sage>
 
-      <p permid="WOo">
+      <p>
         The minimum distance is perhaps one of the most important properties.
         Hamming codes always have minimum distance <m>d=3</m>,
         so they are always single error-correcting.
       </p>
 
-            <sage permid="ibA">
+            <sage>
                 <input>H.minimum_distance()</input>
                 <output>3</output>
             </sage>
 
-      <p permid="CVx">
+      <p>
         We know that the parity-check matrix and the generator matrix are useful for the construction,
         description and analysis of linear codes.
         The Sage method names are just a bit cryptic.
@@ -2942,7 +2942,7 @@
         so we perform much of the subsequent analysis of these matrices within Sage.
       </p>
 
-            <sage permid="OiJ">
+            <sage>
                 <input>C = H.parity_check_matrix(); C</input>
                 <output>
             [1 0 1 0 1 0 1]
@@ -2951,7 +2951,7 @@
             </output>
             </sage>
 
-      <p permid="jcG">
+      <p>
         The generator matrix here in the text has
         <em>columns</em> that are codewords,
         and linear combinations of the columns
@@ -2962,7 +2962,7 @@
         So here is another place where we need to mentally translate between a choice made in the text and a choice made by the Sage developers.
       </p>
 
-            <sage permid="upS">
+            <sage>
                 <input>G = H.generator_matrix(); G</input>
                 <output>
             [1 0 0 0 0 1 1]
@@ -2972,19 +2972,19 @@
             </output>
             </sage>
 
-      <p permid="PjP">
+      <p>
         Here is a partial test that these two matrices are correct,
         exercising <xref ref="algcodes-lemma-parity-check"/>.
         Notice that we need to use the transpose of the generator matrix,
         for reasons described above.
       </p>
 
-            <sage permid="axb">
+            <sage>
                 <input>C*G.transpose() == zero_matrix(3, 4)</input>
                 <output>True</output>
             </sage>
 
-      <p permid="vqY">
+      <p>
         Note that the parity-check may not be canonical and the generator matrix may not be standard.
         Sage can produce a generator matrix that has a set of columns that forms an identity matrix,
         though no guarantee is made that these columns are the first columns.
@@ -2993,7 +2993,7 @@
         and the Sage method is <c>.systematic_generator_matrix()</c>.
       </p>
 
-            <sage permid="GEk">
+            <sage>
                 <input>H.systematic_generator_matrix()</input>
                 <output>
             [1 0 0 0 0 1 1]
@@ -3004,56 +3004,56 @@
             </sage>
     </subsection>
 
-    <subsection permid="gYL">
+    <subsection>
       <title>Decoding with a Linear Code</title>
-      <p permid="byh">
+      <p>
         We can decode received messages originating from a linear code.
         Suppose we receive the length <m>7</m> binary vector <c>r</c>.
       </p>
 
-            <sage permid="mLt">
+            <sage>
                 <input>r = vector(GF(2), [1, 1, 1, 1, 0, 0, 1]); r</input>
                 <output>(1, 1, 1, 1, 0, 0, 1)</output>
             </sage>
 
-      <p permid="HFq">
+      <p>
         We can recognize that one or more errors has occured,
         since <c>r</c> is not in the code,
         as the next computation does not yield the zero vector.
       </p>
 
-            <sage permid="SSC">
+            <sage>
                 <input>C*r</input>
                 <output>(1, 1, 0)</output>
             </sage>
 
-      <p permid="nMz">
+      <p>
         A linear code has a <c>.decode</c> method.
         You may choose from several different algorithms,
         while the Hamming codes have their own custom algorithm.
         The default algorithm is syndrome decoding.
       </p>
 
-            <sage permid="yZL">
+            <sage>
                 <input>H.decode_to_code(r)</input>
                 <output>(1, 1, 0, 1, 0, 0, 1)</output>
             </sage>
 
-      <p permid="TTI">
+      <p>
         So if we are willing to assume that only one error occured
         (which we might,
         if the probability of an indivual entry of the vector being in error is very low),
         then we see that an error occured in the third position.
       </p>
 
-      <p permid="AaR">
+      <p>
         Remember that it could happen that there was more than just one error.
         For example,
         suppose the message was the same as before and errors occurred in the third,
         fifth and sixth locations.
       </p>
 
-            <sage permid="fgU">
+            <sage>
                 <input>
             message = vector(GF(2), [1, 1, 0, 1, 0, 0, 1])
             errors = vector(GF(2), [0, 0, 1, 0, 1, 1, 0])
@@ -3063,26 +3063,26 @@
                 <output>(1, 1, 1, 1, 1, 1, 1)</output>
             </sage>
 
-      <p permid="gia">
+      <p>
         It then appears that we have received a codeword,
         so we assume no errors at all, and decode incorrectly.
       </p>
 
-            <sage permid="Lod">
+            <sage>
                 <input>H.decode_to_code(received) == message</input>
                 <output>False</output>
             </sage>
-            <sage permid="rvm">
+            <sage>
                 <input>H.decode_to_code(received) == received</input>
                 <output>True</output>
             </sage>
     </subsection>
   </section>
-  <exercises xml:id="algcodes-sage-exercises" component="sage-exercises" permid="Zum">
+  <exercises xml:id="algcodes-sage-exercises" component="sage-exercises">
     <title>Sage Exercises</title>
-    <exercise number="1" permid="UoU" xml:id="algcodes-sage-exercise-golay-code">
+    <exercise number="1" xml:id="algcodes-sage-exercise-golay-code">
       <statement>
-        <p permid="ClD">
+        <p>
           Create the (binary) Golay code with the <c>codes.GolayCode()</c> constructor.
           Read the documentation to be sure you build the binary version
           (not ternary),
@@ -3090,23 +3090,23 @@
           (which is the default).
         </p>
 
-        <ol permid="qlt">
-          <li permid="DTz">
-            <p permid="CsH">
+        <ol>
+          <li>
+            <p>
               Use Sage methods to compute the length,
               dimension and minimum distance of the code.
             </p>
           </li>
 
-          <li permid="kaI">
-            <p permid="izQ">
+          <li>
+            <p>
               How many errors can this code detect?
               How many can it correct?
             </p>
           </li>
 
-          <li permid="QhR">
-            <p permid="OGZ">
+          <li>
+            <p>
               Find a nonzero codeword and introduce three errors by adding a vector with three 1's
               (your choice)
               to create a received message.
@@ -3114,8 +3114,8 @@
             </p>
           </li>
 
-          <li permid="wpa">
-            <p permid="uOi">
+          <li>
+            <p>
               Recycle your choices from the previous part,
               but now add one more error.
               Does the new received message get decoded properly?
@@ -3125,39 +3125,39 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="Awd" xml:id="algcodes-sage-exercise-parity-check-bit">
+    <exercise number="2" xml:id="algcodes-sage-exercise-parity-check-bit">
       <statement>
-        <p permid="isM">
+        <p>
           One technique for improving the characteristics of a code is to add an overall parity-check bit,
           much like the lone parity-check bit of the <acro>ASCII</acro> code described in <xref ref="algcodes-example-even-parity"/>.
           Such codes are referred to as the
           <term>extended</term> version of the original.
         </p>
 
-        <ol permid="WsC">
-          <li permid="cwj">
-            <p permid="aVr">
+        <ol>
+          <li>
+            <p>
               Construct the (binary) Golay code and obtain the parity-check matrix.
               Use Sage commands to enlarge this matrix to create a new parity check matrix that has an additional overall parity-check bit.
               You may find the matrix methods <c>.augment()</c> and <c>.stack()</c> useful,
               as well as the constructors <c>zero_vector()</c> and <c>ones_matrix()</c>(remembering that we specify the binary entries as being from the field <c>GF(2)</c>.)
             </p>
 
-            <p permid="HcA">
+            <p>
               Create the extended code by supplying your enlarged parity-check matrix to the <c>codes.from_parity_check_matrix()</c> constructor and compute the length,
               dimension and minimum distance of the extended code.
             </p>
           </li>
 
-          <li permid="IDs">
-            <p permid="njJ">
+          <li>
+            <p>
               How are the properties of this new code better?
               At what cost?
             </p>
           </li>
 
-          <li permid="oKB">
-            <p permid="TqS">
+          <li>
+            <p>
               Now create the extended (binary) Golay code with the Sage constructor <c>codes.GolayCode()</c> and the correct keyword to obtain the extended version.
               With luck, the sorted lists of your codewords and Sage's codewords will be equal.
               If not, the linear code method <c>.is_permutation_equivalent()</c> should return <c>True</c> to indicate that your code and Sage's are just rearrangements of each other.
@@ -3167,9 +3167,9 @@
       </statement>
     </exercise>
 
-    <exercise number="3" permid="gDm" xml:id="algcodes-sage-exercise-buggy-sage-code">
+    <exercise number="3" xml:id="algcodes-sage-exercise-buggy-sage-code">
       <statement>
-        <p permid="OzV">
+        <p>
           <em>Note:</em> This problem is on holiday
           (as of Sage 6.7),
           while some buggy Sage code for the minimum distance of a Hamming code gets sorted out.
@@ -3177,12 +3177,12 @@
           So it is a bit harder to make a reasonable conjecture from just <m>3</m> cases.
         </p>
 
-        <p permid="uHe">
+        <p>
           The dual of an <m>(n,k)</m> block code is formed as all the set of all binary vectors which are orthogonal to every vector of the original code.
           <xref ref="algcodes-exercise-dual-code"/> describes this construction and asks about some of its properties.
         </p>
 
-        <p permid="aOn">
+        <p>
           You can construct the dual of a code in Sage with the <c>.dual_code()</c> method.
           Construct the binary Hamming codes, and their duals,
           with the parameter <c>r</c> ranging from <c>2</c> to <c>5</c>,
@@ -3195,22 +3195,22 @@
           and the minimum distances of the orginal and the dual.
         </p>
 
-        <p permid="GVw">
+        <p>
           Conjecture formulas for the dimension and minimum distance of the dual of the Hamming code as expressions in the parameter <m>r</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="4" permid="MKv" xml:id="algcodes-sage-exercise-perfect-code">
+    <exercise number="4" xml:id="algcodes-sage-exercise-perfect-code">
       <statement>
-        <p permid="ncF">
+        <p>
           A code with minimum distance <m>d</m> is called <term>perfect</term>
           if every possible vector is within Hamming distance <m>(d-1)/2</m> of some codeword.
           If we expand our notion of geometry to account for the Hamming distance as the metric,
           then we can speak of a sphere of radius <m>r</m> around a vector (or codeword.
           For a code of length <m>n</m>,
           such a sphere will contain
-          <me permid="DTM">
+          <me>
             1 + {n\choose 1} + {n\choose 2} + \cdots + {n\choose r}
           </me>
           vectors within in it.
@@ -3219,16 +3219,16 @@
           (This is the connection that means that coding theory meshes with sphere packing problems.)
         </p>
 
-        <p permid="TjO">
+        <p>
           A consequence of a code of dimension <m>k</m> being perfect is that
-          <me permid="kaV">
+          <me>
             2^k\left({n\choose 0} + {n\choose 1} + {n\choose 2} + \cdots + {n\choose \frac{d-1}{2}}\right) = 2^n
           </me>
           Conversely, if a code has minimum distance <m>d</m> and the condition above is true,
           then the code is perfect.
         </p>
 
-        <p permid="zqX">
+        <p>
           Write a Python function,
           named <c>is_perfect()</c> which accepts a linear code as input and returns <c>True</c> or <c>False</c>.
           Demonstrate your function by checking that the (binary) Golay code is perfect,

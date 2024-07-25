@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sylow" permid="TkO">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sylow">
   <title>The Sylow Theorems</title>
-  <introduction permid="gSU">
-    <p permid="Ejh">
+  <introduction>
+    <p>
       We already know that the converse of Lagrange's Theorem is false.
       If <m>G</m> is a group of order <m>m</m> and <m>n</m> divides <m>m</m>,
       then <m>G</m> does not necessarily possess a subgroup of order <m>n</m>.
@@ -23,10 +23,10 @@
     </p>
   </introduction>
 
-  <section xml:id="sylow-section-sylow-theorems" permid="ILJ">
+  <section xml:id="sylow-section-sylow-theorems">
     <title>The Sylow Theorems</title>
-    <introduction permid="Nad">
-      <p permid="kqq">
+    <introduction>
+      <p>
         We will use what we have learned about group actions to prove the Sylow Theorems.
         Recall for a moment what it means for <m>G</m> to act on itself by conjugation and how conjugacy classes are distributed in the group according to the class equation,
         discussed in <xref ref="actions"/>.
@@ -34,14 +34,14 @@
         Let <m>x_1, \ldots,
         x_k</m> be representatives from each  of the distinct conjugacy classes of <m>G</m> that consist of more than one element.
         Then the class equation can be written as
-        <me permid="OWH">
+        <me>
           |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)]
         </me>,
         where <m>Z(G) = \{g \in G : gx = xg \text{ for all } x \in G\}</m> is the center of <m>G</m> and 
         <m>C(x_i) = \{ g \in G : g x_i = x_i g \}</m> is the centralizer subgroup of <m>x_i</m>.
       </p>
 
-      <p permid="Qxz">
+      <p>
         We begin our investigation of the Sylow Theorems by examining subgroups of order <m>p</m>,
         where <m>p</m> is prime.
         A group <m>G</m> is a <term><m>p</m>-group</term><idx><h>Group</h><h><m>p</m>-group</h></idx>
@@ -51,18 +51,18 @@
         <term><m>p</m>-subgroup</term><idx><h>Subgroup!<m>p</m>-subgroup</h></idx> if it is a <m>p</m>-group.
       </p>
 
-      <theorem xml:id="sylow-theorem-cauchy" permid="yWy">
+      <theorem xml:id="sylow-theorem-cauchy">
         <title>Cauchy</title>
         <idx><h>Cauchy's Theorem</h></idx>
         <statement>
-          <p permid="Zhr">
+          <p>
             Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p</m> divides the order of <m>G</m>.
             Then <m>G</m> contains a subgroup of order <m>p</m>.
           </p>
         </statement>
 
-        <proof permid="Zov">
-          <p permid="LdM">
+        <proof>
+          <p>
             We will use induction on the order of <m>G</m>.
             If <m>|G|=p</m>,
             then clearly <m>G</m> itself is the required subgroup.
@@ -71,14 +71,14 @@
             has an element of order <m>p</m>.
             Assume that <m>|G|= n</m> and
             <m>p \mid n</m> and consider the class equation of <m>G</m>:
-            <me permid="vdQ">
+            <me>
               |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)]
             </me>.
             We have two cases.
           </p>
           <case>
             <title>Case 1</title>
-            <p permid="rkV">
+            <p>
               Suppose the order of one of the centralizer subgroups,
               <m>C(x_i)</m>,
               is divisible by <m>p</m> for some <m>i</m>, <m>i = 1, \ldots, k</m>.
@@ -90,7 +90,7 @@
           </case>
           <case>
             <title>Case 2</title>
-            <p permid="Xse">
+            <p>
               Suppose the order of no centralizer subgroup is divisible by <m>p</m>.
               Then <m>p</m> divides <m>[G:C(x_i)]</m>,
               the order of each conjugacy class in the class equation;
@@ -103,17 +103,17 @@
         </proof>
       </theorem>
 
-      <corollary permid="wbS">
+      <corollary>
         <statement>
-          <p permid="iBd">
+          <p>
             Let <m>G</m> be a finite group.
             Then <m>G</m> is a <m>p</m>-group if and only if <m>|G| = p^n</m>.
           </p>
         </statement>
       </corollary>
 
-      <example xml:id="sylow-example-a5-subgroups" permid="cjb">
-        <p permid="OIm">
+      <example xml:id="sylow-example-a5-subgroups">
+        <p>
           Let us consider the group <m>A_5</m>.
           We know that <m>|A_5| = 60 = 2^2 \cdot 3 \cdot 5</m>.
           By Cauchy's Theorem,
@@ -123,28 +123,28 @@
         </p>
       </example>
 
-      <p permid="wEI">
+      <p>
         We are now ready to state and prove the first of the Sylow Theorems.
         The proof is very similar to the proof of Cauchy's Theorem.
       </p>
 
-      <theorem permid="fdH">
+      <theorem>
         <title>First Sylow Theorem</title>
         <statement>
-          <p permid="FoA">
+          <p>
             Let <m>G</m> be a finite group and <m>p</m> a prime such that <m>p^r</m> divides <m>|G|</m>.
             Then <m>G</m> contains a subgroup of order <m>p^r</m>.
           </p>
         </statement>
 
-        <proof permid="FvE">
-          <p permid="Dzn">
+        <proof>
+          <p>
             We induct on the order of <m>G</m> once again.
             If <m>|G| = p</m>, then we are done.
             Now suppose that the order of <m>G</m> is <m>n</m> with <m>n \gt p</m> and that the theorem is true for all groups of order less than <m>n</m>,
             where <m>p</m> divides <m>n</m>.
             We shall apply the class equation once again:
-            <me permid="bkZ">
+            <me>
               |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)]
             </me>.
             First suppose that <m>p</m> does not divide <m>[G:C(x_i)]</m> for some <m>i</m>.
@@ -153,7 +153,7 @@
             Now we can apply the induction hypothesis to <m>C(x_i)</m>.
           </p>
 
-          <p permid="jGw">
+          <p>
             Hence, we may assume that <m>p</m> divides <m>[G:C(x_i)]</m> for all <m>i</m>.
             Since <m>p</m> divides <m>|G|</m>,
             the class equation says that <m>p</m> must divide <m>|Z(G)|</m>;
@@ -171,7 +171,7 @@
         </proof>
       </theorem>
 
-      <p permid="cLR">
+      <p>
         A <term>Sylow <m>p</m>-subgroup</term><idx><h>Subgroup</h><h>Sylow<m>p</m>-subgroup</h></idx><idx><h>Sylow <m>p</m>-subgroup</h></idx>
         <m>P</m> of a group <m>G</m> is a maximal <m>p</m>-subgroup of <m>G</m>.
         To prove the other two Sylow Theorems,
@@ -181,17 +181,17 @@
         For any subgroup <m>H</m>, <m>{\mathcal S}</m> is a <m>H</m>-set,
         where  <m>H</m> acts on <m>{\mathcal S}</m> by conjugation.
         That is, we have an action
-        <me permid="Hsi">
+        <me>
           H \times {\mathcal S} \rightarrow {\mathcal S}
         </me>
         defined by
-        <me permid="nzr">
+        <me>
           h \cdot K \mapsto hKh^{-1}
         </me>
         for <m>K</m> in <m>{\mathcal S}</m>.
       </p>
 
-      <p permid="ITa">
+      <p>
         The set
 
         <notation>
@@ -199,7 +199,7 @@
           <description>normalizer of s subgroup <m>H</m></description>
         </notation>
 
-        <me permid="TGA">
+        <me>
           N(H) = \{  g \in G : g H g^{-1} = H\}
         </me>
         is a subgroup of <m>G</m> called the the
@@ -209,17 +209,17 @@
         In fact, <m>N(H)</m> is the largest subgroup of <m>G</m> in which <m>H</m> is normal.
       </p>
 
-      <lemma xml:id="sylow-lemma-p-order" permid="jNA">
+      <lemma xml:id="sylow-lemma-p-order">
         <statement>
-          <p permid="qfC">
+          <p>
             Let <m>P</m> be a Sylow <m>p</m>-subgroup of a finite group <m>G</m> and let <m>x</m> have as its order a power of <m>p</m>.
             If <m>x^{-1} P x = P</m>, then <m>x \in P</m>.
           </p>
         </statement>
             <!-- typo corrected.  Suggested by L. Franklin. -->
             <!-- TWJ - 12/19/2011 -->
-        <proof permid="dYo">
-          <p permid="PNF">
+        <proof>
+          <p>
             Certainly <m>x \in N(P)</m>, and the cyclic subgroup,
             <m>\langle xP \rangle \subset N(P)/P</m>,
             has as its order a power of <m>p</m>.
@@ -235,16 +235,16 @@
         </proof>
       </lemma>
 
-      <lemma xml:id="sylow-lemma-distinct-conjugates" permid="PUJ">
+      <lemma xml:id="sylow-lemma-distinct-conjugates">
         <statement>
-          <p permid="WmL">
+          <p>
             Let <m>H</m> and <m>K</m> be subgroups of <m>G</m>.
             The number of distinct <m>H</m>-conjugates of <m>K</m> is <m>[H:N(K) \cap H]</m>.
           </p>
         </statement>
 
-        <proof permid="Kfx">
-          <p permid="vUO">
+        <proof>
+          <p>
             We define a bijection between the conjugacy classes of <m>K</m> and the right cosets of
             <m>N(K) \cap H</m> by <m>h^{-1}Kh \mapsto (N(K) \cap H)h</m>.
             To show that this map is a bijection,
@@ -258,10 +258,10 @@
         </proof>
       </lemma>
 
-      <theorem xml:id="sylow-theorem-second-sylow" permid="LkQ">
+      <theorem xml:id="sylow-theorem-second-sylow">
         <title>Second Sylow Theorem</title>
         <statement>
-          <p permid="lvJ">
+          <p>
             Let <m>G</m> be a finite group and <m>p</m> a prime dividing <m>|G|</m>.
             Then all Sylow <m>p</m>-subgroups of <m>G</m> are conjugate.
             That is, if <m>P_1</m> and <m>P_2</m> are two Sylow <m>p</m>-subgroups,
@@ -269,24 +269,24 @@
           </p>
         </statement>
 
-        <proof permid="lCN">
-          <p permid="cbX">
+        <proof>
+          <p>
             Let <m>P</m> be a Sylow <m>p</m>-subgroup of <m>G</m> and suppose that <m>|G|=p^r m</m> with <m>|P|=p^r</m>.
             Let
-            <me permid="zNJ">
+            <me>
               {\mathcal S} = \{ P = P_1, P_2, \ldots, P_k \}
             </me>
             consist of the distinct conjugates of <m>P</m> in <m>G</m>.
             By <xref ref="sylow-lemma-distinct-conjugates"/>, <m>k = [G: N(P)]</m>.
             Notice that
-            <me permid="fUS">
+            <me>
               |G|= p^r m = |N(P)| \cdot [G: N(P)]= |N(P)| \cdot k
             </me>.
             Since <m>p^r</m> divides <m>|N(P)|</m>,
             <m>p</m> cannot divide <m>k</m>.
           </p>
 
-          <p permid="Ijg">
+          <p>
             Given any other Sylow <m>p</m>-subgroup <m>Q</m>,
             we must show that <m>Q \in {\mathcal S}</m>.
             Consider the <m>Q</m>-conjugacy classes of each <m>P_i</m>.
@@ -305,20 +305,20 @@
         </proof>
       </theorem>
 
-      <theorem xml:id="sylow-theorem-third-sylow" permid="rrZ">
+      <theorem xml:id="sylow-theorem-third-sylow">
         <title>Third Sylow Theorem</title>
         <statement>
-          <p permid="RCS">
+          <p>
             Let <m>G</m> be a finite group and let <m>p</m> be a prime dividing the order of <m>G</m>.
             Then the number of Sylow <m>p</m>-subgroups is congruent to
             <m>1 \pmod{p}</m> and divides <m>|G|</m>.
           </p>
         </statement>
 
-        <proof permid="RJW">
-          <p permid="oqp">
+        <proof>
+          <p>
             Let <m>P</m> be a Sylow <m>p</m>-subgroup acting on the set of Sylow <m>p</m>-subgroups,
-            <me permid="Mcb">
+            <me>
               {\mathcal S} = \{ P = P_1, P_2, \ldots, P_k \}
             </me>,
             by conjugation.
@@ -330,12 +330,12 @@
             <m>|{\mathcal S}| \equiv 1 \pmod{p}</m>.
           </p>
 
-          <p permid="Uxy">
+          <p>
             Now suppose that <m>G</m> acts on <m>{\mathcal S}</m> by conjugation.
             Since all Sylow <m>p</m>-subgroups are conjugate,
             there can be only one orbit under this action.
             For <m>P \in {\mathcal S}</m>,
-            <me permid="sjk">
+            <me>
               |{\mathcal S}| = |\text{orbit of }P| = [G : N(P)]
             </me>
             by <xref ref="sylow-lemma-distinct-conjugates"/>.
@@ -347,9 +347,9 @@
       </theorem>
     </introduction>
 
-    <subsection xml:id="sylow-subsection-historical-note" permid="zrX">
+    <subsection xml:id="sylow-subsection-historical-note">
       <title>Historical Note</title>
-      <p permid="zdP">
+      <p>
         Peter Ludvig Mejdell Sylow<idx><h>Sylow, Ludvig</h></idx>
         was born in 1832 in Christiania, Norway
         (now Oslo).
@@ -369,11 +369,11 @@
 
   </section>
 
-  <section xml:id="sylow-section-applications" permid="oSS">
+  <section xml:id="sylow-section-applications">
     <title>Examples and Applications</title>
-    <introduction permid="thm">
-      <example xml:id="sylow-example-5-sylow-subgroups"  permid="Iqk">
-        <p permid="uPv">
+    <introduction>
+      <example xml:id="sylow-example-5-sylow-subgroups" >
+        <p>
           Using the Sylow Theorems,
           we can determine that <m>A_5</m> has subgroups of orders <m>2</m>,
           <m>3</m>, <m>4</m>, and <m>5</m>.
@@ -392,15 +392,15 @@
         </p>
       </example>
 
-      <p permid="paj">
+      <p>
         The Sylow Theorems allow us to prove many useful results about finite groups.
         By using them,
         we can often conclude a great deal about groups of a particular order if certain hypotheses are satisfied.
       </p>
 
-      <theorem xml:id="sylow-theorem-pq-cyclic" permid="Xzi">
+      <theorem xml:id="sylow-theorem-pq-cyclic">
         <statement>
-          <p permid="xKb">
+          <p>
             If <m>p</m> and <m>q</m> are distinct primes with <m>p \lt q </m>,
             then every group <m>G</m> of order <m>pq</m> has a single subgroup of order <m>q</m> and this subgroup is normal in <m>G</m>.
             Hence, <m>G</m> cannot be simple.
@@ -409,8 +409,8 @@
           </p>
         </statement>
 
-        <proof permid="xRf">
-          <p permid="AEH">
+        <proof>
+          <p>
             We know that <m>G</m> contains a subgroup <m>H</m> of order <m>q</m>.
             The number of conjugates of <m>H</m> divides <m>pq</m> and is equal to <m>1 + kq</m> for <m>k = 0, 1, \ldots</m>.
             However, <m>1 + q</m> is already too large to divide the order of the group;
@@ -418,7 +418,7 @@
             That is, <m>H</m> must be normal in <m>G</m>.
           </p>
 
-          <p permid="gLQ">
+          <p>
             The group <m>G</m> also has a Sylow <m>p</m>-subgroup,
             say <m>K</m>.
             The number of conjugates of <m>K</m> must divide <m>q</m> and be equal to <m>1 + kp</m> for <m>k = 0, 1, \ldots</m>.
@@ -436,15 +436,15 @@
         </proof>
       </theorem>
 
-      <example xml:id="example-z15" permid="oxt">
-        <p permid="aWE">
+      <example xml:id="example-z15">
+        <p>
           Every group of order <m>15</m> is cyclic.
           This is true because <m>15 = 5 \cdot 3</m> and <m>5 \not\equiv 1 \pmod{3}</m>.
         </p>
       </example>
 
-      <example xml:id="example-group-99-subgroups" permid="UEC">
-        <p permid="HdN">
+      <example xml:id="example-group-99-subgroups">
+        <p>
           Let us classify all of the groups of order <m>99 = 3^2 \cdot 11</m> up to isomorphism.
           First we will show that every group <m>G</m> of order <m>99</m> is abelian.
           By the Third Sylow Theorem, there are <m>1 + 3k</m> Sylow <m>3</m>-subgroups,
@@ -465,28 +465,28 @@
         </p>
       </example>
 
-      <p permid="Vhs">
+      <p>
         To determine all of the groups of order <m>5 \cdot 7 \cdot 47 = 1645</m>,
         we need the following theorem.
       </p>
 
-      <theorem xml:id="sylow-theorem-commutator-subgroup-theorem" permid="DGr">
+      <theorem xml:id="sylow-theorem-commutator-subgroup-theorem">
         <statement>
-          <p permid="dRk">
+          <p>
             Let <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> be the subgroup consisting of all finite products of elements of the form <m>aba^{-1}b^{-1}</m> in a group <m>G</m>.
             Then <m>G'</m> is a normal subgroup of <m>G</m> and <m>G/G'</m> is abelian.
           </p>
         </statement>
       </theorem>
 
-      <p permid="BoB">
+      <p>
         The subgroup <m>G'</m> of <m>G</m> is called the
         <term>commutator subgroup</term><idx><h>Subgroup</h><h>commutator</h></idx> of <m>G</m>.
         We leave the proof of this theorem as an exercise (<xref ref="normal-exercise-commutator"/> in <xref ref="normal"/>).
       </p>
 
-      <example xml:id="sylow-example-sylow-group-1645-subgroups" permid="ALL">
-        <p permid="nkW">
+      <example xml:id="sylow-example-sylow-group-1645-subgroups">
+        <p>
           We will now show that every group of order <m>5 \cdot 7 \cdot 47 = 1645</m> is abelian,
           and cyclic by <xref ref="isomorph-theorem-z-pq" />.
           By the Third Sylow Theorem,
@@ -509,9 +509,9 @@
       </example>
     </introduction>
 
-    <subsection xml:id="sylow-subsection-finite-simple-groups" permid="fzg">
+    <subsection xml:id="sylow-subsection-finite-simple-groups">
       <title>Finite Simple Groups</title>
-      <p permid="fkY">
+      <p>
         Given a finite group,
         one can ask whether or not that group has any normal subgroups.
         Recall that a simple group is one with no proper nontrivial normal subgroups.
@@ -521,8 +521,8 @@
         Usually, some sort of counting argument is involved.
       </p>
 
-      <example xml:id="sylow-example-group-20-not-simple" permid="NvC">
-        <p permid="Tsf">
+      <example xml:id="sylow-example-group-20-not-simple">
+        <p>
           Let us show that no group <m>G</m> of order <m>20</m> can be simple.
           By the Third Sylow Theorem,
           <m>G</m> contains one or more Sylow <m>5</m>-subgroups.
@@ -534,8 +534,8 @@
         </p>
       </example>
 
-      <example xml:id="sylow-example-group-pn" permid="tCL">
-        <p permid="zzo">
+      <example xml:id="sylow-example-group-pn">
+        <p>
           Let <m>G</m> be a finite group of order <m>p^n</m>,
           <m>n \gt 1</m> and <m>p</m> prime.
           By <xref ref="actions-theorem-pn"/>, <m>G</m> has a nontrivial center.
@@ -550,8 +550,8 @@
         </p>
       </example>
 
-      <example xml:id="sylow-example-group-56" permid="ZJU">
-        <p permid="fGx">
+      <example xml:id="sylow-example-group-56">
+        <p>
           No group of order <m>56= 2^3 \cdot 7</m> is simple.
           We have seen that if we can show that there is only one Sylow <m>p</m>-subgroup for some prime <m>p</m> dividing 56,
           then this must be a normal subgroup and we are done.
@@ -560,7 +560,7 @@
           If there is only a single Sylow <m>7</m>-subgroup, then it must be normal.
         </p>
 
-        <p permid="LNG">
+        <p>
           On the other hand,
           suppose that there are eight Sylow <m>7</m>-subgroups.
           Then each of these subgroups must be cyclic;
@@ -577,7 +577,7 @@
         </p>
       </example>
 
-      <p permid="Lsh">
+      <p>
         For other groups <m>G</m>,
         it is more difficult to prove that <m>G</m> is not simple.
         Suppose <m>G</m> has order <m>48</m>.
@@ -585,40 +585,40 @@
         We need the following lemma to prove that no group of order <m>48</m> is simple.
       </p>
 
-      <lemma xml:id="sylow-lemma-hk-subgroup" permid="hot">
+      <lemma xml:id="sylow-lemma-hk-subgroup">
         <statement>
-          <p permid="CtU">
+          <p>
             Let <m>H</m> and <m>K</m> be finite subgroups of a group <m>G</m>.
             Then
-            <me permid="Yqt">
+            <me>
               |HK| = \frac{|H| \cdot |K|}{|H \cap K|}
             </me>.
           </p>
         </statement>
 
-        <proof permid="qmG">
-          <p permid="MSZ">
+        <proof>
+          <p>
             Recall that
-            <me permid="ExC">
+            <me>
               HK = \{ hk : h \in H, k \in K \}
             </me>.
             Certainly, <m>|HK| \leq |H| \cdot |K|</m> since some element in <m>HK</m> could be written as the product of different elements in <m>H</m> and <m>K</m>.
             It is quite possible that <m>h_1 k_1 = h_2 k_2</m> for
             <m>h_1, h_2 \in H</m> and <m>k_1, k_2 \in K</m>.
             If this is the case, let
-            <me permid="kEL">
+            <me>
               a = (h_1)^{-1} h_2 = k_1 (k_2)^{-1}
             </me>.
             Notice that <m>a \in H \cap K</m>,
             since <m>(h_1)^{-1} h_2</m> is in <m>H</m> and
             <m>k_2 (k_1)^{-1}</m> is in <m>K</m>; consequently,
-            <md permid="QLU">
+            <md>
               <mrow>h_2 &amp; =  h_1 a^{-1}</mrow>
               <mrow>k_2 &amp; =  a k_1</mrow>
             </md>.
           </p>
 
-          <p permid="tai">
+          <p>
             Conversely, let <m>h = h_1 b^{-1}</m> and
             <m>k = b k_1</m> for <m>b \in H \cap K</m>.
             Then <m>h k = h_1 k_1</m>, where <m>h \in H</m> and <m>k \in K</m>.
@@ -631,8 +631,8 @@
         </proof>
       </lemma>
 
-      <example xml:id="sylow-example-group-48" permid="FRd">
-        <p permid="rUP">
+      <example xml:id="sylow-example-group-48">
+        <p>
           To demonstrate that a group <m>G</m> of order <m>48</m> is not simple,
           we will show that <m>G</m> contains either a normal subgroup of order <m>8</m> or a normal subgroup of order <m>16</m>.
           By the Third Sylow Theorem,
@@ -641,13 +641,13 @@
           then it must be a normal subgroup.
         </p>
             <!-- %TWJ 11/30/2011 - Reference to the Lemma fixed.  Suggested by L. Franklin. -->
-        <p permid="YbY">
+        <p>
           Suppose that the other case is true,
           and two of the three Sylow <m>2</m>-subgroups are <m>H</m> and <m>K</m>.
           We claim that  <m>|H \cap K| = 8</m>.
           If <m>|H \cap K| \leq 4</m>,
           then by <xref ref="sylow-lemma-hk-subgroup"/>,
-          <me permid="wTd">
+          <me>
             |HK| \geq \frac{16 \cdot 16}{4} =64
           </me>,
           which is impossible.
@@ -665,30 +665,30 @@
             <!-- TWJ - 12/19/2011 -->
       </example>
 
-      <p permid="rzq">
+      <p>
         The following famous conjecture of Burnside was proved in a long and difficult paper by Feit and Thompson [2].
       </p>
 
-      <theorem permid="Bhk">
+      <theorem>
         <title>Odd Order Theorem</title>
         <idx>
         <h>Odd Order Theorem</h>
         </idx>
         <statement>
-          <p permid="JYt">
+          <p>
             Every finite simple group of nonprime order must be of even order.
           </p>
         </statement>
       </theorem>
 
-      <p permid="XGz">
+      <p>
         The proof of this theorem laid the groundwork for a program in the 1960s and 1970s that classified all finite simple groups.
         The success of this program is one of the outstanding achievements of modern mathematics.
       </p>
 
-      <paragraphs component="sage-blurb" permid="cEA">
+      <paragraphs component="sage-blurb">
         <title>Sage</title>
-        <p permid="DNI">
+        <p>
           Sage will compute a single Sylow <m>p</m>-subgroup for each prime divisor <m>p</m> of the order of the group.
           Then, with conjugacy,
           all of the Sylow <m>p</m>-subgroups can be enumerated.
@@ -701,20 +701,20 @@
   </section>
 
   
-  <reading-questions permid="EPk">
+  <reading-questions>
 
-    <exercise permid="RyB">
+    <exercise>
       <statement>
-        <p permid="Wiu">
+        <p>
           State Sylow's First Theorem.
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="xFK">
+    <exercise>
       <statement>
-        <p permid="CpD">
+        <p>
           How many groups are there of order <m>69</m>?
           Why?
         </p>
@@ -722,9 +722,9 @@
       <response/>
     </exercise>
 
-    <exercise permid="dMT">
+    <exercise>
       <statement>
-        <p permid="iwM">
+        <p>
           Give two descriptions, fundamentally different in character,
           of the normalizer of a subgroup.
         </p>
@@ -732,18 +732,18 @@
       <response/>
     </exercise>
 
-    <exercise permid="JUc">
+    <exercise>
       <statement>
-        <p permid="ODV">
+        <p>
           Suppose that <m>G</m> is an abelian group.  What is the commutator subgroup of <m>G</m>, and how do you know?
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="qbl">
+    <exercise>
       <statement>
-        <p permid="uLe">
+        <p>
           What's all the fuss about Sylow's Theorems?
         </p>
       </statement>
@@ -754,19 +754,19 @@
     <!-- Exercises with Solutions  -->
     <!-- File: sylow.xml  -->
     <!-- Title: The Sylow Theorems -->
-  <exercises xml:id="sylow-exercises" filenamebase="sylow" permid="kiZ">
+  <exercises xml:id="sylow-exercises" filenamebase="sylow">
     <title>Exercises</title>
 
-    <exercise number="1" permid="lYm" xml:id="sylow-exercise-order-18">
+    <exercise number="1" xml:id="sylow-exercise-order-18">
       <statement>
-        <p permid="NCT">
+        <p>
           What are the orders of all Sylow <m>p</m>-subgroups where <m>G</m> has order <m>18</m>,
           <m>24</m>,
           <m>54</m>, <m>72</m>, and <m>80</m>?
         </p>
       </statement>
-      <hint permid="CAY">
-        <p permid="NYs">
+      <hint>
+        <p>
           If <m>|G| = 18 = 2 \cdot 3^2</m>,
           then the order of a Sylow <m>2</m>-subgroup is <m>2</m>,
           and the order of a Sylow <m>3</m>-subgroup is <m>9</m>.
@@ -774,14 +774,14 @@
       </hint>
     </exercise>
 
-    <exercise number="2" permid="Sfv" xml:id="sylow-exercise-S4">
+    <exercise number="2" xml:id="sylow-exercise-S4">
       <statement>
-        <p permid="tKc">
+        <p>
           Find all the Sylow <m>3</m>-subgroups of <m>S_4</m> and show that they are all conjugate.
         </p>
       </statement>
-      <hint permid="OPq">
-        <p permid="ufB">
+      <hint>
+        <p>
           The four Sylow <m>3</m>-subgroups of <m>S_4</m> are <m>P_1 = \{ (1), (1 \, 2 \, 3), (1 \, 3 \, 2) \}</m>,
           <m>P_2 = \{ (1), (1 \, 2 \, 4), (1 \, 4 \, 2) \}</m>,
           <m>P_3 = \{ (1), (1 \, 3 \, 4), (1 \, 4 \, 3) \}</m>,
@@ -792,31 +792,31 @@
 
     <!--Todo Finish solution.-->
 
-    <exercise number="3" permid="ymE" xml:id="sylow-exercise-order-45">
+    <exercise number="3" xml:id="sylow-exercise-order-45">
       <statement>
-        <p permid="ZRl">
+        <p>
           Show that every group of order <m>45</m> has a normal subgroup of order <m>9</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="4" permid="etN" xml:id="sylow-exercise-normalizer">
+    <exercise number="4" xml:id="sylow-exercise-normalizer">
       <statement>
-        <p permid="FYu">
+        <p>
           Let <m>H</m> be a Sylow <m>p</m>-subgroup of <m>G</m>.
           Prove that <m>H</m> is the only Sylow <m>p</m>-subgroup of <m>G</m> contained in <m>N(H)</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="5" xml:id="sylow-exercise-order-96" permid="KAW">
+    <exercise number="5" xml:id="sylow-exercise-order-96">
       <statement>
-        <p permid="mfD">
+        <p>
           Prove that no group of order <m>96</m> is simple.
         </p>
       </statement>
-      <hint permid="nsa">
-        <p permid="amK">
+      <hint>
+        <p>
           Since <m>|G| = 96 = 2^5 \cdot 3</m>,
           <m>G</m> has either one or three Sylow <m>2</m>-subgroups by the Third Sylow Theorem.
           If there is only one subgroup, we are done.
@@ -830,17 +830,17 @@
       </hint>
     </exercise>
 
-    <exercise number="6" permid="qIf" xml:id="sylow-exercise-order-160">
+    <exercise number="6" xml:id="sylow-exercise-order-160">
       <statement>
-        <p permid="SmM">
+        <p>
           Prove that no group of order <m>160</m> is simple.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="7" permid="WPo" xml:id="sylow-exercise-order-pk">
+    <exercise number="7" xml:id="sylow-exercise-order-pk">
       <statement>
-        <p permid="ytV">
+        <p>
           If <m>H</m> is a normal subgroup of a finite group <m>G</m> and
           <m>|H| = p^k</m> for some prime <m>p</m>,
           show that <m>H</m> is contained in every Sylow <m>p</m>-subgroup of <m>G</m>.
@@ -848,9 +848,9 @@
       </statement>
     </exercise>
 
-    <exercise number="8" permid="CWx" xml:id="sylow-exercise-order-p2q2">
+    <exercise number="8" xml:id="sylow-exercise-order-p2q2">
       <statement>
-        <p permid="eBe">
+        <p>
           Let <m>G</m> be a group of order <m>p^2 q^2</m>,
           where <m>p</m> and <m>q</m> are distinct primes such that
           <m>q \nmid p^2 - 1</m> and <m>p \nmid q^2 - 1</m>.
@@ -858,38 +858,38 @@
           Find a pair of primes for which this is true.
         </p>
       </statement>
-      <hint permid="LUK">
-        <p permid="GtT">
+      <hint>
+        <p>
           Show that <m>G</m> has a normal Sylow <m>p</m>-subgroup of order <m>p^2</m> and a normal Sylow <m>q</m>-subgroup of order <m>q^2</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="9" permid="jdG" xml:id="sylow-exercise-order-33">
+    <exercise number="9" xml:id="sylow-exercise-order-33">
       <statement>
-        <p permid="KIn">
+        <p>
           Show that a group of order <m>33</m> has only one Sylow <m>3</m>-subgroup.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="10" permid="PkP" xml:id="sylow-exercise-normalizer-normal">
+    <exercise number="10" xml:id="sylow-exercise-normalizer-normal">
       <statement>
-        <p permid="qPw">
+        <p>
           Let <m>H</m> be a subgroup of a group <m>G</m>.
           Prove or disprove that the normalizer of <m>H</m> is normal in <m>G</m>.
         </p>
       </statement>
-      <hint permid="Eql">
-        <p permid="mBc">
+      <hint>
+        <p>
           False.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="11" permid="vrY" xml:id="sylow-exercise-divisible-by-p">
+    <exercise number="11" xml:id="sylow-exercise-divisible-by-p">
       <statement>
-        <p permid="WWF">
+        <p>
           Let <m>G</m> be a finite group whose order is divisible by a prime <m>p</m>.
           Prove that if there is only one Sylow <m>p</m>-subgroup in <m>G</m>,
           it must be a normal subgroup of <m>G</m>.
@@ -897,18 +897,18 @@
       </statement>
     </exercise>
 
-    <exercise number="12" permid="bzh" xml:id="sylow-exercise-p-to-r-1">
+    <exercise number="12" xml:id="sylow-exercise-p-to-r-1">
       <statement>
-        <p permid="DdO">
+        <p>
           Let <m>G</m> be a group of order <m>p^r</m>, <m>p</m> prime.
           Prove that <m>G</m> contains a normal subgroup of order <m>p^{r-1}</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="13" permid="HGq" xml:id="sylow-exercise-order-pnk">
+    <exercise number="13" xml:id="sylow-exercise-order-pnk">
       <statement>
-        <p permid="jkX">
+        <p>
           Suppose that <m>G</m> is a finite group of order <m>p^n k</m>,
           where <m>k \lt p</m>.
           Show that <m>G</m> must contain a normal subgroup.
@@ -918,9 +918,9 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="14" permid="nNz" xml:id="sylow-exercise-normalizer-conjugate">
+    <exercise number="14" xml:id="sylow-exercise-normalizer-conjugate">
       <statement>
-        <p permid="Psg">
+        <p>
           Let <m>H</m> be a subgroup of a finite group <m>G</m>.
           Prove that <m>g N(H) g^{-1} = N(gHg^{-1})</m> for any <m>g \in G</m>.
         </p>
@@ -929,9 +929,9 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="15" permid="TUI" xml:id="sylow-exercise-order-108">
+    <exercise number="15" xml:id="sylow-exercise-order-108">
       <statement>
-        <p permid="vzp">
+        <p>
           Prove that a group of order <m>108</m> must have a normal subgroup.
         </p>
       </statement>
@@ -939,22 +939,22 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="16" permid="AbR" xml:id="sylow-exercise-order-175">
+    <exercise number="16" xml:id="sylow-exercise-order-175">
       <statement>
-        <p permid="bGy">
+        <p>
           Classify all the groups of order <m>175</m> up to isomorphism.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="17" permid="gja" xml:id="sylow-exercise-order-255">
+    <exercise number="17" xml:id="sylow-exercise-order-255">
       <statement>
-        <p permid="HNH">
+        <p>
           Show that every group of order <m>255</m> is cyclic.
         </p>
       </statement>
-      <hint permid="BvF">
-        <p permid="SIl">
+      <hint>
+        <p>
           If <m>G</m> is abelian, then <m>G</m> is cyclic,
           since <m>|G| = 3 \cdot 5 \cdot 17</m>.
           Now look at <xref ref="sylow-example-sylow-group-1645-subgroups"/>.
@@ -964,9 +964,9 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="18" permid="Mqj" xml:id="sylow-exercise-G-isomorphic-P1-Pn">
+    <exercise number="18" xml:id="sylow-exercise-G-isomorphic-P1-Pn">
       <statement>
-        <p permid="nUQ">
+        <p>
           Let <m>G</m> have order <m>p_1^{e_1} \cdots p_n^{e_n}</m> and suppose that <m>G</m> has <m>n</m> Sylow <m>p</m>-subgroups
           <m>P_1, \ldots, P_n</m> where <m>|P_i| = p_i^{e_i}</m>.
           Prove that <m>G</m> is isomorphic to <m>P_1 \times \cdots \times P_n</m>.
@@ -976,18 +976,18 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="19" permid="sxs" xml:id="sylow-exercise-inner-automorphism">
+    <exercise number="19" xml:id="sylow-exercise-inner-automorphism">
       <statement>
-        <p permid="UbZ">
+        <p>
           Let <m>P</m> be a normal Sylow <m>p</m>-subgroup of <m>G</m>.
           Prove that every inner automorphism of <m>G</m> fixes <m>P</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="20" permid="YEB" xml:id="sylow-exercise-odd-order-nonabelain">
+    <exercise number="20" xml:id="sylow-exercise-odd-order-nonabelain">
       <statement>
-        <p permid="Aji">
+        <p>
           What is the smallest possible order of a group <m>G</m> such that <m>G</m> is nonabelian and <m>|G|</m> is odd?
           Can you find such a group?
         </p>
@@ -996,10 +996,10 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="21" permid="ELK" xml:id="sylow-exercise-frattini-lemma">
+    <exercise number="21" xml:id="sylow-exercise-frattini-lemma">
       <title>The Frattini Lemma</title>
       <statement>
-        <p permid="gqr">
+        <p>
           If <m>H</m> is a normal subgroup of a finite group <m>G</m> and <m>P</m> is a Sylow <m>p</m>-subgroup of <m>H</m>,
           for each <m>g \in G</m> show that there is an <m>h</m> in <m>H</m> such that <m>gPg^{-1} = hPh^{-1}</m>.
           Also, show that if <m>N</m> is the normalizer of <m>P</m>,
@@ -1008,9 +1008,9 @@
       </statement>
     </exercise>
 
-    <exercise number="22" permid="kST" xml:id="sylow-exercise-order-pnq">
+    <exercise number="22" xml:id="sylow-exercise-order-pnq">
       <statement>
-        <p permid="MxA">
+        <p>
           Show that if the order of <m>G</m> is <m>p^nq</m>,
           where <m>p</m> and <m>q</m> are primes and <m>p&gt;q</m>,
           then <m>G</m> contains a normal subgroup.
@@ -1020,14 +1020,14 @@
 
     <!--Todo Fix this and complete the solution.-->
 
-    <exercise number="23" permid="Rac" xml:id="sylow-exercise-distinct-conjugates">
+    <exercise number="23" xml:id="sylow-exercise-distinct-conjugates">
       <statement>
-        <p permid="sEJ">
+        <p>
           Prove that the number of distinct conjugates of a subgroup <m>H</m> of a finite group <m>G</m> is <m>[G : N(H) ]</m>.
         </p>
       </statement>
-      <hint permid="StQ">
-        <p permid="yPu">
+      <hint>
+        <p>
           Define a mapping between the right cosets of <m>N(H)</m> in <m>G</m> and the conjugates of <m>H</m> in <m>G</m> by <m>N(H) g \mapsto g^{-1} H g</m>.
           Prove that this map is a bijection.
         </p>
@@ -1036,38 +1036,38 @@
 
     <!--Todo Complete the solution.-->
 
-    <exercise number="24" permid="xhl" xml:id="sylow-exercise-S5-D4">
+    <exercise number="24" xml:id="sylow-exercise-S5-D4">
       <statement>
-        <p permid="YLS">
+        <p>
           Prove that a Sylow <m>2</m>-subgroup of <m>S_5</m> is isomorphic to <m>D_4</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="25" permid="dou" xml:id="sylow-exercise-another-proof">
+    <exercise number="25" xml:id="sylow-exercise-another-proof">
       <title>Another Proof of the Sylow Theorems</title>
       <statement>
-        <p permid="ETb">
-          <ol permid="obU">
-            <li permid="sLN">
-              <p permid="aIj">
+        <p>
+          <ol>
+            <li>
+              <p>
                 Suppose <m>p</m> is prime and <m>p</m> does not divide <m>m</m>.
                 Show that
-                <me permid="hKf">
+                <me>
                   p \nmid \binom{p^k m}{p^k}
                 </me>.
               </p>
             </li>
 
-            <li permid="YSW">
-              <p permid="GPs">
+            <li>
+              <p>
                 Let <m>{\mathcal S}</m> denote the set of all <m>p^k</m> element subsets of <m>G</m>.
                 Show that <m>p</m> does not divide <m>|{\mathcal S}|</m>.
               </p>
             </li>
 
-            <li permid="Faf">
-              <p permid="mWB">
+            <li>
+              <p>
                 Define an action of <m>G</m> on
                 <m>{\mathcal S}</m> by left multiplication,
                 <m>aT = \{ at : t \in T \}</m> for <m>a \in G</m> and <m>T \in {\mathcal S}</m>.
@@ -1075,28 +1075,28 @@
               </p>
             </li>
 
-            <li permid="lho">
-              <p permid="TdK">
+            <li>
+              <p>
                 Prove <m>p \nmid | {\mathcal O}_T|</m> for some <m>T \in {\mathcal S}</m>.
               </p>
             </li>
 
-            <li permid="Rox">
-              <p permid="zkT">
+            <li>
+              <p>
                 Let <m>\{ T_1, \ldots, T_u \}</m> be an orbit such that
                 <m>p \nmid u</m> and <m>H = \{ g \in G : gT_1 = T_1 \}</m>.
                 Prove that <m>H</m> is a subgroup of <m>G</m> and show that <m>|G| = u |H|</m>.
               </p>
             </li>
 
-            <li permid="xvG">
-              <p permid="fsc">
+            <li>
+              <p>
                 Show that <m>p^k</m> divides <m>|H|</m> and <m>p^k \leq |H|</m>.
               </p>
             </li>
 
-            <li permid="dCP">
-              <p permid="Lzl">
+            <li>
+              <p>
                 Show that <m>|H| = |{\mathcal O}_T| \leq p^k</m>;
                 conclude that therefore <m>p^k = |H|</m>.
               </p>
@@ -1106,17 +1106,17 @@
       </statement>
     </exercise>
 
-    <exercise number="26" permid="JvD" xml:id="sylow-exercise-G-prime">
+    <exercise number="26" xml:id="sylow-exercise-G-prime">
       <statement>
-        <p permid="lak">
+        <p>
           Let <m>G</m> be a group.
           Prove that <m>G' = \langle a b a^{-1} b^{-1} : a, b \in G \rangle</m> is a normal subgroup of <m>G</m> and <m>G/G'</m> is abelian.
           Find an example to show that
           <m>\{ a b a^{-1} b^{-1} : a, b \in G \}</m> is not necessarily a group.
         </p>
       </statement>
-      <hint permid="qWA">
-        <p permid="eWD">
+      <hint>
+        <p>
           Let <m>a G', b G' \in G/G'</m>.
           Then <m>(a G')( b G') = ab G' = ab(b^{-1}a^{-1}ba) G' = (abb^{-1}a^{-1})ba G' = ba G'</m>.
         </p>
@@ -1125,10 +1125,10 @@
 
   </exercises>
 
-  <exercises xml:id="sylow-exercises-project" permid="Qqi">
+  <exercises xml:id="sylow-exercises-project">
     <title>A Project</title>
-    <introduction permid="pCM">
-      <p permid="hvK">
+    <introduction>
+      <p>
         The main objective of finite group theory is to classify all possible finite groups up to isomorphism.
         This problem is very difficult even if we try to classify the groups of order less than or equal to <m>60</m>.
         However, we can break the problem down into several intermediate problems.
@@ -1139,9 +1139,9 @@
       </p>
     </introduction>
 
-    <table xml:id="table-sylow-project" permid="afG">
+    <table xml:id="table-sylow-project">
       <title>Numbers of distinct groups <m>G</m>, <m>|G| \leq 60</m></title>
-      <tabular halign="center" top="medium" left="medium" permid="GmP">
+      <tabular halign="center" top="medium" left="medium">
         <col/>
         <col right="medium"/>
         <col/>
@@ -1315,27 +1315,27 @@
     </table>
         <!--Fix INTRO
 -->
-    <exercise permid="VJV" xml:id="sylow-exercise-simple-groups-order-leq-60">
+    <exercise xml:id="sylow-exercise-simple-groups-order-leq-60">
       <statement>
-        <p permid="Rht">
+        <p>
           Find all simple groups <m>G</m> ( <m>|G| \leq 60</m>).
           <em>Do not use the Odd Order Theorem unless you are prepared to prove it.</em>
         </p>
       </statement>
     </exercise>
 
-    <exercise permid="BRe" xml:id="sylow-exercise-groups-number-distinct-groups-order-leq-60">
+    <exercise xml:id="sylow-exercise-groups-number-distinct-groups-order-leq-60">
       <statement>
-        <p permid="xoC">
+        <p>
           Find the number of distinct groups <m>G</m>,
           where the order of <m>G</m> is <m>n</m> for <m>n = 1, \ldots, 60</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise permid="hYn" xml:id="sylow-exercise-find-groups-leq-60">
+    <exercise xml:id="sylow-exercise-find-groups-leq-60">
       <statement>
-        <p permid="dvL">
+        <p>
           Find the actual groups
           (up to isomorphism)
           for each <m>n</m>.
@@ -1345,10 +1345,10 @@
 
   </exercises>
 
-  <references xml:id="sylow-references" permid="Sgz">
+  <references xml:id="sylow-references">
         <!-- %TWJ 8/13/2010 - References checked and updated -->
     <title>References and Suggested Readings</title>
-    <biblio type="raw" permid="ynI">
+    <biblio type="raw">
 <!-- was [1] -->
       Edwards, H. <q>A Short History of the Fields Medal,</q>
       <title>Mathematical Intelligencer</title>
@@ -1356,7 +1356,7 @@
       (1978), 127<ndash/>29.
     </biblio>
 
-    <biblio type="raw" permid="euR">
+    <biblio type="raw">
 <!-- was [2] -->
       Feit, W. and Thompson, J. G. <q>Solvability of Groups of Odd Order,</q>
       <title>Pacific Journal of Mathematics</title>
@@ -1364,7 +1364,7 @@
       (1963), 775<ndash/>1029.
     </biblio>
 
-    <biblio type="raw" permid="KCa">
+    <biblio type="raw">
 <!-- was [3] -->
       Gallian, J. A. <q>The Search for Finite Simple Groups,</q>
       <title>Mathematics Magazine</title>
@@ -1372,7 +1372,7 @@
       (1976), 163<ndash/>79.
     </biblio>
 
-    <biblio type="raw" permid="qJj">
+    <biblio type="raw">
 <!-- was [4] -->
       Gorenstein, D. <q>Classifying the Finite Simple Groups,</q>
       <title>Bulletin of the American Mathematical Society</title>
@@ -1380,13 +1380,13 @@
       (1986), 1<ndash/>98.
     </biblio>
 
-    <biblio type="raw" permid="WQs">
+    <biblio type="raw">
 <!-- was [5] -->
       Gorenstein, D.
       <title>Finite Groups</title>. AMS Chelsea Publishing, Providence RI, 1968.
     </biblio>
 
-    <biblio type="raw" permid="CXB">
+    <biblio type="raw">
 <!-- was [6] -->
       Gorenstein, D., Lyons, R., and Solomon, R.
       <title>The Classification of Finite Simple Groups</title>. American Mathematical Society, Providence RI, 1994.
@@ -1394,11 +1394,11 @@
   </references>
 
 
-  <section xml:id="sylow-sage" component="sage-info" permid="Vab">
+  <section xml:id="sylow-sage" component="sage-info">
     <title>Sage</title>
-    <subsection permid="LGp">
+    <subsection>
       <title>Sylow Subgroups</title>
-      <p permid="jUR">
+      <p>
         The Sage permutation group method <c>.sylow_subgroup(p)</c> will return a single Sylow <m>p</m>-subgroup.
         If the prime is not a proper divisor of the group order it returns a subgroup of order <m>p^0</m>,
         in other words, a trivial subgroup.
@@ -1410,7 +1410,7 @@
         The permutation group method <c>.conjugate(g)</c> will conjugate the group by <c>g</c>.
       </p>
 
-      <p permid="Qca">
+      <p>
         With repeated conjugations of a single Sylow <m>p</m>-subgroup,
         we will always create duplicate subgroups.
         So we need to use a slightly complicated construction to form a list of just the unique subgroups as the list of conjugates.
@@ -1421,7 +1421,7 @@
         so the function is defined for use later.
       </p>
 
-            <sage permid="CSG">
+            <sage>
                 <input>
             def all_sylow(G, p):
                 '''Form the set of all distinct Sylow p-subgroups of G'''
@@ -1435,7 +1435,7 @@
             </input>
             </sage>
 
-      <p permid="wjj">
+      <p>
         Lets investigate the Sylow subgroups of the dihedral group <m>D_{18}</m>.
         As a group of order <m>36=2^2\cdot 3^2</m>,
         we know by the First Sylow Theorem that there is a Sylow <m>2</m>-subgroup of order <m>4</m> and a Sylow <m>3</m>-subgroup of order <m>9</m>.
@@ -1444,7 +1444,7 @@
         (These commands take a while to execute, so be patient.)
       </p>
 
-            <sage permid="iZP">
+            <sage>
                 <input>
         G = DihedralGroup(18)
         S2 = G.sylow_subgroup(2); S2
@@ -1456,7 +1456,7 @@
         of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
-            <sage permid="PgY">
+            <sage>
                 <input>
             uniqS2 = all_sylow(G, 2)
             uniqS2
@@ -1491,25 +1491,25 @@
              (1,10)(2,11)(3,12)(4,13)(5,14)(6,15)(7,16)(8,17)(9,18)]]
             </output>
             </sage>
-            <sage permid="voh">
+            <sage>
                 <input>
             len(uniqS2)
             </input>
                 <output>9</output>
             </sage>
 
-      <p permid="cqs">
+      <p>
         The Third Sylow Theorem tells us that for <m>p=2</m> we would expect <m>1, 3</m> or <m>9</m> Sylow <m>2</m>-subgroups,
         so our computational result of <m>9</m> subgroups is consistent with what the theory predicts.
         Can you visualize each of these subgroups as symmetries of an <m>18</m>-gon?
         Notice that we also have many subgroups of order <m>2</m> inside of these subgroups of order <m>4</m>.
       </p>
 
-      <p permid="IxB">
+      <p>
         Now for the case of <m>p=3</m>.
       </p>
 
-            <sage permid="bvq">
+            <sage>
                 <input>
         G = DihedralGroup(18)
         S3 = G.sylow_subgroup(3); S3
@@ -1521,7 +1521,7 @@
         of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
-            <sage permid="HCz">
+            <sage>
                 <input>
             uniqS3 = all_sylow(G, 3)
             uniqS3
@@ -1532,14 +1532,14 @@
             (1,15,11,7,3,17,13,9,5)(2,16,12,8,4,18,14,10,6)]]
             </output>
             </sage>
-            <sage permid="nJI">
+            <sage>
                 <input>
             len(uniqS3)
             </input>
                 <output>1</output>
             </sage>
 
-      <p permid="oEK">
+      <p>
         What does the Third Sylow Theorem predict?
         Just <m>1</m> or <m>4</m> Sylow <m>3</m>-subgroups.
         Having found just one subgroup computationally,
@@ -1549,7 +1549,7 @@
         Let us check anyway.
       </p>
 
-            <sage permid="TQR">
+            <sage>
                 <input>
         S3.is_normal(G)
         </input>
@@ -1558,13 +1558,13 @@
         </output>
             </sage>
 
-      <p permid="ULT">
+      <p>
         At least one of the subgroups of order <m>3</m> contained in this Sylow <m>3</m>-subgroup should be obvious by looking at the orders of the generators,
         and then you may even notice that the generators given could be reduced,
         and one is a power of the other.
       </p>
 
-            <sage permid="zYa">
+            <sage>
                 <input>
         S3.is_cyclic()
         </input>
@@ -1573,22 +1573,22 @@
         </output>
             </sage>
 
-      <p permid="ATc">
+      <p>
         Remember that there are many other subgroups, of other orders.
         For example,
         can you construct a subgroup of order <m>6=2\cdot 3</m> in <m>D_{18}</m>?
       </p>
     </subsection>
 
-    <subsection permid="rNy">
+    <subsection>
       <title>Normalizers</title>
-      <p permid="hal">
+      <p>
         A new command that is relevant to this section is the construction of a normalizer.
         The Sage command <c>G.normalizer(H)</c> will return the subgroup of <c>G</c> containing elements that normalize the subgroup <c>H</c>.
         We illustrate its use with the Sylow subgroups from above.
       </p>
 
-            <sage permid="gfj">
+            <sage>
                 <input>
         G = DihedralGroup(18)
         S2 = G.sylow_subgroup(2)
@@ -1602,7 +1602,7 @@
         of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
-            <sage permid="Mms">
+            <sage>
                 <input>
         N2 == S2
         </input>
@@ -1610,7 +1610,7 @@
         True
         </output>
             </sage>
-            <sage permid="stB">
+            <sage>
                 <input>
         N3 = G.normalizer(S3); N3
         </input>
@@ -1623,7 +1623,7 @@
         of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
-            <sage permid="YAK">
+            <sage>
                 <input>
         N3 == G
         </input>
@@ -1632,7 +1632,7 @@
         </output>
             </sage>
 
-      <p permid="Nhu">
+      <p>
         The normalizer of a subgroup always contains the whole subgroup,
         so the normalizer of <c>S2</c> is as small as possible.
         We already knew <c>S3</c> is normal in <c>G</c>,
@@ -1640,7 +1640,7 @@
         Let us compute a normalizer in <m>D_{18}</m> that is more <q>interesting.</q>
       </p>
 
-            <sage permid="EHT">
+            <sage>
                 <input>
         G = DihedralGroup(18)
         a = G("(1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18)")
@@ -1652,7 +1652,7 @@
         6
         </output>
             </sage>
-            <sage permid="kPc">
+            <sage>
                 <input>
         N = G.normalizer(H)
         N
@@ -1665,7 +1665,7 @@
         of (Dihedral group of order 36 as a permutation group)
         </output>
             </sage>
-            <sage permid="QWl">
+            <sage>
                 <input>
         N.order()
         </input>
@@ -1674,7 +1674,7 @@
         </output>
             </sage>
 
-      <p permid="toD">
+      <p>
         So for this subgroup of order <m>6</m>,
         the normalizer is strictly bigger than the subgroup,
         but still strictly smaller than the whole group
@@ -1682,7 +1682,7 @@
         Trivially, a subgroup is normal in its normalizer:
       </p>
 
-            <sage permid="xdu">
+            <sage>
                 <input>
         H.is_normal(G)
         </input>
@@ -1690,7 +1690,7 @@
         False
         </output>
             </sage>
-            <sage permid="dkD">
+            <sage>
                 <input>
         H.is_normal(N)
         </input>
@@ -1700,9 +1700,9 @@
             </sage>
     </subsection>
 
-    <subsection permid="XUH">
+    <subsection>
       <title>Finite Simple Groups</title>
-      <p permid="ZvM">
+      <p>
         We saw earlier Sage's permutation group method <c>.is_simple()</c>.
         <xref ref="sylow-example-group-pn"/> tells us that a group of order <m>64</m> is never simple.
         The dicyclic group <c>DiCyclicGroup(16)</c> is a non-abelian group of <m>64</m>,
@@ -1711,7 +1711,7 @@
         so any number exceeding <m>2</m> indicates a non-trivial normal subgroup.
       </p>
 
-            <sage permid="JrM">
+            <sage>
                 <input>
         DC=DiCyclicGroup(16)
         DC.order()
@@ -1720,7 +1720,7 @@
         64
         </output>
             </sage>
-            <sage permid="pyV">
+            <sage>
                 <input>
         DC.is_simple()
         </input>
@@ -1728,7 +1728,7 @@
         False
         </output>
             </sage>
-            <sage permid="VGe">
+            <sage>
                 <input>
         ns = DC.normal_subgroups()
         len(ns)
@@ -1738,7 +1738,7 @@
         </output>
             </sage>
 
-      <p permid="FCV">
+      <p>
         Here is a rather interesting group,
         one of the <m>26</m> sporadic simple groups,
         known as the Higman-Sims group, <m>HS</m>.
@@ -1751,7 +1751,7 @@
         Amazing.
       </p>
 
-            <sage permid="BNn">
+            <sage>
                 <input>
         G = SymmetricGroup(100)
         a = G([(1,60),  (2,72),  (3,81),  (4,43),  (5,11),  (6,87),
@@ -1774,7 +1774,7 @@
         (2, 5)
         </output>
             </sage>
-            <sage permid="hUw">
+            <sage>
                 <input>
         HS = G.subgroup([a, b])
         HS.order()
@@ -1783,7 +1783,7 @@
         44352000
         </output>
             </sage>
-            <sage permid="ObF">
+            <sage>
                 <input>
         HS.is_simple()
         </input>
@@ -1792,16 +1792,16 @@
         </output>
             </sage>
 
-      <p permid="lKe">
+      <p>
         We saw this group earlier in the exercises for <xref ref="actions"/> on group actions,
         where it was the single non-trivial normal subgroup of the automorphism group of the Higman-Sims graph,
         hence its name.
       </p>
     </subsection>
 
-    <subsection permid="EbQ">
+    <subsection>
       <title><acro>GAP</acro> Console and Interface</title>
-      <p permid="RRn">
+      <p>
         This concludes our exclusive study of group theory,
         though we will be using groups some in the subsequent sections.
         As we have remarked,
@@ -1813,17 +1813,17 @@
         Every copy of Sage includes a copy of <acro>GAP</acro> and is easy to see which version of <acro>GAP</acro> is included:
       </p>
 
-            <sage permid="uiO">
+            <sage>
                 <input>gap.version()</input>
                 <output>'4.12.2'</output>
             </sage>
 
-      <p permid="xYw">
+      <p>
         You can interact with <acro>GAP</acro> in Sage in several ways.
         The most direct is by creating a permutation group via Sage's <c>gap()</c> command.
       </p>
 
-            <sage permid="apX">
+            <sage>
                 <input>
         G = gap('Group( (1,2,3,4,5,6), (1,3,5) )')
         G
@@ -1833,7 +1833,7 @@
         </output>
             </sage>
 
-      <p permid="efF">
+      <p>
         Now we can use most any <acro>GAP</acro> command with <c>G</c>,
         via the convention that most <acro>GAP</acro> commands expect a group as the first argument,
         and we instead provide the group by using the object-oriented<c>G.</c> syntax.
@@ -1841,7 +1841,7 @@
         and <c>Centralizer</c> is a <acro>GAP</acro> command that expects two arguments <mdash/> a group and then a group element.
       </p>
 
-            <sage permid="Gxg">
+            <sage>
                 <input>
         G.Center()
         </input>
@@ -1849,7 +1849,7 @@
         Group( [ (1,3,5)(2,4,6) ] )
         </output>
             </sage>
-            <sage permid="mEp">
+            <sage>
                 <input>
         G.Centralizer('(1, 3, 5)')
         </input>
@@ -1858,7 +1858,7 @@
         </output>
             </sage>
 
-      <p permid="KmO">
+      <p>
         If you use the Sage Notebook interface you can set the first line of a compute cell to <c>%gap</c> and the entire cell will be interpreted as if you were interacting directly with <acro>GAP</acro>.
         This means you would now use <acro>GAP</acro>'s syntax,
         which you can see above is slightly different than Sage's universal syntax.
@@ -1871,7 +1871,7 @@
         This particular example will not run properly in a Sage Cell in a web page version of this section.
       </p>
 
-            <sage type="display" permid="Kxf">
+            <sage type="display">
                 <input>
         %gap
         G := Group( (1,2,3,4,5,6), (1,3,5) );
@@ -1879,26 +1879,26 @@
         </input>
             </sage>
 
-      <p permid="qtX">
+      <p>
         Notice that
 
-        <ul permid="Ujd">
-          <li permid="Aqm">
-            <p permid="IEF">
+        <ul>
+          <li>
+            <p>
               We do not need to wrap the individual permutations in as many quotation marks as we do in Sage.
             </p>
           </li>
 
-          <li permid="gxv">
-            <p permid="oLO">
+          <li>
+            <p>
               Assignment is <c>:=</c> not <c>=</c>.
               If you forget the colon,
               you will get an error message such as <c>Variable: 'G' must have a value</c>
             </p>
           </li>
 
-          <li permid="MEE">
-            <p permid="USX">
+          <li>
+            <p>
               A line <em>must</em> end with a semi-colon.
               If you forget, several lines will be merged together.
             </p>
@@ -1906,18 +1906,18 @@
         </ul>
       </p>
 
-      <p permid="WBg">
+      <p>
         You can get help about <acro>GAP</acro> commands with a command such as the following,
         though you will soon see that <acro>GAP</acro> assumes you know a lot more algebra than Sage assumes you know.
       </p>
 
-            <sage doctest="not tested" permid="qEo">
+            <sage doctest="not tested">
                 <input>
         print(gap.help('SymmetricGroup', pager=False))
         </input>
             </sage>
 
-      <p permid="CIp">
+      <p>
         In the command-line version of Sage,
         you can also use the <acro>GAP</acro> <q>console.</q> Again,
         you need to use <acro>GAP</acro> syntax,
@@ -1927,7 +1927,7 @@
         use the command <c>gap_console()</c> to start <acro>GAP</acro> running.
       </p>
 
-      <p permid="iPy">
+      <p>
         It is a comfort to know that with Sage you get a complete copy of <acro>GAP</acro>,
         installed and all ready to run.
         However, this is not a tutorial on <acro>GAP</acro>,
@@ -1938,12 +1938,12 @@
 
   </section>
 
-  <exercises xml:id="sylow-sage-exercises" component="sage-exercises" permid="wxr">
+  <exercises xml:id="sylow-sage-exercises" component="sage-exercises">
     <title>Sage Exercises</title>
 
-    <exercise number="1" permid="Ofw" xml:id="sylow-sage-exercise-commutator-subgroup-theorem">
+    <exercise number="1" xml:id="sylow-sage-exercise-commutator-subgroup-theorem">
       <statement>
-        <p permid="JCU">
+        <p>
           This exercise verifies <xref ref="sylow-theorem-commutator-subgroup-theorem"/>.
           The commutator subgroup is computed with the permutation group method <c>.commutator()</c>.
           For the dihedral group of order <m>40</m>,
@@ -1956,9 +1956,9 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="umF" xml:id="sylow-sage-exercise-A5">
+    <exercise number="2" xml:id="sylow-sage-exercise-A5">
       <statement>
-        <p permid="pKd">
+        <p>
           For each possible prime,
           find all of the distinct Sylow <m>p</m>-subgroups of the alternating group <m>A_5</m>.
           Confirm that your results are consistent with the Third Sylow Theorem for each prime.
@@ -1966,16 +1966,16 @@
           Explain how this would explain or predict some aspects of your answers.
         </p>
 
-        <p permid="VRm">
+        <p>
           Count the number of distinct elements contained in the union of all the Sylow subgroups you just found.
           What is interesting about this count?
         </p>
       </statement>
     </exercise>
 
-    <exercise number="3" permid="atO" xml:id="sylow-sage-exercise-D36">
+    <exercise number="3" xml:id="sylow-sage-exercise-D36">
       <statement>
-        <p permid="BYv">
+        <p>
           For the dihedral group <m>D_{36}</m>
           (symmetries of a <m>36</m>-gon)
           and each possible prime,
@@ -1984,7 +1984,7 @@
           Now compute the actual number of distinct Sylow <m>p</m>-subgroups for each prime and comment on the result.
         </p>
 
-        <p permid="ifE">
+        <p>
           It can be proved that <em>any group</em>
           with order <m>72</m> is not a simple group,
           using techniques such as those used in the later examples in this chapter.
@@ -1993,9 +1993,9 @@
       </statement>
     </exercise>
 
-    <exercise number="4" permid="GAX" xml:id="sylow-sage-exercise-distinct-conjugates-lemma">
+    <exercise number="4" xml:id="sylow-sage-exercise-distinct-conjugates-lemma">
       <statement>
-        <p permid="OmN">
+        <p>
           This exercise verifies <xref ref="sylow-lemma-distinct-conjugates"/>.
           Let <m>G</m> be the dihedral group of order <m>36</m>,
           <m>D_{18}</m>.
@@ -2009,7 +2009,7 @@
           <m>H</m> and <m>K</m>, <em>only</em>.
         </p>
 
-            <sage type="display" permid="WLx">
+            <sage type="display">
                 <input>
             G = DihedralGroup(18)
             a = G("(1,7,13)(2,8,14)(3,9,15)(4,10,16)(5,11,17)(6,12,18)")
@@ -2019,9 +2019,9 @@
       </statement>
     </exercise>
 
-    <exercise number="5" permid="mIg" xml:id="sylow-sage-exercise-order-48">
+    <exercise number="5" xml:id="sylow-sage-exercise-order-48">
       <statement>
-        <p permid="utW">
+        <p>
           <xref ref="sylow-example-group-48"/> shows that every group of order <m>48</m> has a normal subgroup.
           The dicyclic groups are an infinite family of non-abelian groups with order <m>4n</m>,
           which includes the quaternions
@@ -2036,9 +2036,9 @@
       </statement>
     </exercise>
 
-    <exercise number="6" permid="SPp" xml:id="sylow-sage-exercise-second-third-sylow-theorems">
+    <exercise number="6" xml:id="sylow-sage-exercise-second-third-sylow-theorems">
       <statement>
-        <p permid="aBf">
+        <p>
           The proofs of the Second and Third Sylow Theorems
           (<xref ref="sylow-theorem-second-sylow"/>, <xref ref="sylow-theorem-third-sylow"/>)
           employ a group action on sets of Sylow <m>p</m>-subgroups, For the Second Theorem,
@@ -2048,7 +2048,7 @@
           and how they are different when we use different groups acting on the same set.
         </p>
 
-        <p permid="GIo">
+        <p>
           Construct the six Sylow <m>5</m>-subgroups of the alternating group <m>A_5</m>.
           This will be the set of objects for both of our actions.
           Conjugating one of these Sylow <m>5</m>-subgroups by an element of <m>A_5</m> will produce another Sylow <m>5</m>-subgroup,
@@ -2061,13 +2061,13 @@
           <etc/> to explore the actions.
         </p>
 
-        <p permid="mPx">
+        <p>
           For the first action, use all of <m>A_5</m> as the group.
           Show that the resulting action is transitive.
           In other words, there is exactly one single orbit.
         </p>
 
-        <p permid="SWG">
+        <p>
           For the second action,
           use just one of the Sylow <m>5</m>-subgroups as the group.
           Write the class equation for this action in a format that suggests the

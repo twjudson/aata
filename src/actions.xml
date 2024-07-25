@@ -9,10 +9,10 @@
 <!-- This file is part of the book                    -->
 <!--                                                  -->
 <!-- See the file COPYING for copying conditions.     -->
-<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="actions" permid="elJ">
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="actions">
   <title>Group Actions</title>
-  <introduction permid="fFx">
-    <p permid="FuR">
+  <introduction>
+    <p>
       Group actions generalize group multiplication.
       If <m>G</m> is a group and <m>X</m> is an arbitrary set,
       a group action of an element <m>g \in G</m> and <m>x \in X</m> is a product,
@@ -23,23 +23,23 @@
     </p>
   </introduction>
 
-  <section xml:id="actions-section-groups-acting-on-sets" permid="nFv">
+  <section xml:id="actions-section-groups-acting-on-sets">
     <title>Groups Acting on Sets</title>
-    <p permid="Lyy">
+    <p>
       Let <m>X</m> be a set and <m>G</m> be a group.
       A <term>(left) action</term><idx><h>Group</h><h>action</h></idx>
       of <m>G</m> on <m>X</m> is a map
       <m>G \times X \rightarrow X</m> given by <m>(g,x) \mapsto gx</m>, where
 
-      <ol permid="cps">
-        <li permid="IwB">
-          <p permid="tXx">
+      <ol>
+        <li>
+          <p>
             <m>ex = x</m> for all <m>x \in X</m>;
           </p>
         </li>
 
-        <li permid="oDK">
-          <p permid="aeG">
+        <li>
+          <p>
             <m>(g_1 g_2)x = g_1(g_2 x)</m> for all <m>x \in X</m> and all <m>g_1, g_2 \in G</m>.
           </p>
         </li>
@@ -52,8 +52,8 @@
       however, group actions are more interesting if the set <m>X</m> is somehow related to the group <m>G</m>.
     </p>
 
-    <example xml:id="actions-example-gl2" permid="JXt">
-      <p permid="rrm">
+    <example xml:id="actions-example-gl2">
+      <p>
         Let <m>G = GL_2( {\mathbb R} )</m> and <m>X = {\mathbb R}^2</m>.
         Then <m>G</m> acts on <m>X</m> by left multiplication.
         If <m>v \in {\mathbb R}^2</m> and <m>I</m> is the identity matrix,
@@ -63,12 +63,12 @@
       </p>
     </example>
 
-    <example xml:id="actions-example-d4" permid="qeC">
-      <p permid="Xyv">
+    <example xml:id="actions-example-d4">
+      <p>
         Let <m>G = D_4</m> be the symmetry group of a square.
         If <m>X = \{ 1, 2, 3, 4 \}</m> is the set of vertices of the square,
         then we can consider <m>D_4</m> to consist of the following permutations:
-        <me permid="IDS">
+        <me>
           \{ (1), (1 \, 3), (2 \, 4), (1 \, 4 \, 3 \, 2), (1 \, 2 \, 3 \, 4), (1 \, 2)(3 \, 4), (1 \, 4)(2 \, 3), (1 \, 3)(2 \, 4) \}
         </me>.
         The elements of <m>D_4</m> act on <m>X</m> as functions.
@@ -78,23 +78,23 @@
       </p>
     </example>
 
-    <p permid="rFH">
+    <p>
       In general, if <m>X</m> is any set and <m>G</m> is a subgroup of <m>S_X</m>,
       the group of all permutations acting on <m>X</m>,
       then <m>X</m> is a <m>G</m>-set under the group action
-      <me permid="oLb">
+      <me>
         (\sigma, x) \mapsto \sigma(x)
       </me>
       for <m>\sigma \in G</m> and <m>x \in X</m>.
     </p>
 
-    <example xml:id="actions-example-left-mult" permid="WlL">
-      <p permid="DFE">
+    <example xml:id="actions-example-left-mult">
+      <p>
         If we let <m>X = G</m>,
         then every group <m>G</m> acts on itself by the left regular representation;
         that is, <m>(g,x) \mapsto \lambda_g(x) = gx</m>,
         where  <m>\lambda_g</m> is left multiplication:
-        <md permid="USk">
+        <md>
           <mrow>e \cdot x = \lambda_e x = ex = x</mrow>
           <mrow>(gh) \cdot x = \lambda_{gh}x = \lambda_g \lambda_h x = \lambda_g(hx) = g \cdot ( h \cdot x)</mrow>
         </md>.
@@ -103,23 +103,23 @@
       </p>
     </example>
 
-    <example xml:id="actions-example-conjugation" permid="CsU">
-      <p permid="jMN">
+    <example xml:id="actions-example-conjugation">
+      <p>
         Let <m>G</m> be a group and suppose that <m>X=G</m>.
         If <m>H</m> is a subgroup of <m>G</m>,
         then <m>G</m> is an <m>H</m>-set under <idx><h>Conjugation</h></idx><term>conjugation</term>;
         that is, we can define an action of <m>H</m> on <m>G</m>,
-        <me permid="AZt">
+        <me>
           H \times G \rightarrow G
         </me>,
         via
-        <me permid="hgC">
+        <me>
           (h,g) \mapsto hgh^{-1}
         </me>
         for <m>h \in H</m> and <m>g \in G</m>.
         Clearly, the first axiom for a group action holds.
         Observing that
-        <md permid="NnL">
+        <md>
           <mrow>(h_1 h_2, g) &amp; = h_1 h_2 g (h_1 h_2 )^{-1}</mrow>
           <mrow>&amp; = h_1( h_2 g h_2^{-1}) h_1^{-1}</mrow>
           <mrow>&amp; =  (h_1, (h_2, g) )</mrow>
@@ -128,12 +128,12 @@
       </p>
     </example>
 
-    <example xml:id="actions-example-left-cosets" permid="iAd">
-      <p permid="PTW">
+    <example xml:id="actions-example-left-cosets">
+      <p>
         Let <m>H</m> be a subgroup of <m>G</m> and
         <m>{\mathcal L}_H</m> the set of left cosets of <m>H</m>.
         The set <m>{\mathcal L}_H</m> is a <m>G</m>-set under the action
-        <me permid="tuU">
+        <me>
           (g, xH) \mapsto gxH
         </me>.
         Again, it is easy to see that the first axiom is true.
@@ -142,7 +142,7 @@
       </p>
     </example>
 
-    <p permid="XMQ">
+    <p>
       If <m>G</m> acts on a set <m>X</m> and <m>x, y \in X</m>,
       then <m>x</m> is said to be <term><m>G</m>-equivalent</term><idx><h><m>G</m>-equivalent</h></idx>
       to <m>y</m> if there exists a <m>g \in G</m> such that <m>gx =y</m>.
@@ -150,16 +150,16 @@
       <m>x \sim y</m> if two elements are <m>G</m>-equivalent.
     </p>
 
-    <proposition permid="luJ">
+    <proposition>
       <statement>
-        <p permid="mHt">
+        <p>
           Let <m>X</m> be a <m>G</m>-set.
           Then <m>G</m>-equivalence is an equivalence relation on <m>X</m>.
         </p>
       </statement>
 
-      <proof permid="Qwz">
-        <p permid="QZp">
+      <proof>
+        <p>
           The relation <m>\sim</m> is reflexive since <m>ex = x</m>.
           Suppose that <m>x \sim y</m> for <m>x, y \in X</m>.
           Then there exists a <m>g</m> such that <m>gx = y</m>.
@@ -173,7 +173,7 @@
       </proof>
     </proposition>
 
-    <p permid="DTZ">
+    <p>
       If <m>X</m> is a <m>G</m>-set,
       then each partition of <m>X</m> associated with <m>G</m>-equivalence is called an <term>orbit</term><idx><h>Orbit</h></idx>
       of <m>X</m> under <m>G</m>.
@@ -186,10 +186,10 @@
 
     </p>
 
-    <example xml:id="actions-example-permute" permid="OHm">
-      <p permid="wbf">
+    <example xml:id="actions-example-permute">
+      <p>
         Let <m>G</m> be the permutation group defined by
-        <me permid="ZCd">
+        <me>
           G =\{(1), (1 \,  2  \, 3), (1 \, 3  \, 2), (4 \,  5), (1 \,  2  \, 3)(4  \, 5), (1 \, 3  \, 2)(4  \, 5) \}
         </me>
         and <m>X = \{ 1, 2, 3, 4, 5\}</m>.
@@ -198,7 +198,7 @@
       </p>
     </example>
 
-    <p permid="kbi">
+    <p>
       Now suppose that <m>G</m> is a group acting on a set <m>X</m> and let <m>g</m> be an element of <m>G</m>.
       The <term>fixed point set</term><idx><h>Fixed point set</h></idx>
       of <m>g</m> in <m>X</m>, denoted by <m>X_g</m>,
@@ -223,27 +223,27 @@
 
     </p>
 
-    <remark permid="zyo">
-      <p permid="ZnI">
+    <remark>
+      <p>
         It is important to remember that
         <m>X_g \subset X</m> and <m>G_x \subset G</m>.
       </p>
     </remark>
 
-    <example xml:id="actions-example-stabilizer" permid="uOv">
-      <p permid="cio">
+    <example xml:id="actions-example-stabilizer">
+      <p>
         Let <m>X = \{1, 2, 3, 4, 5, 6\}</m> and suppose that <m>G</m> is the permutation group given by the permutations
-        <me permid="FJm">
+        <me>
           \{ (1), (1 \, 2)(3  \, 4  \, 5  \, 6), (3 \,  5)(4  \, 6), (1  \, 2)( 3  \, 6  \, 5  \, 4) \}
         </me>.
         Then the fixed point sets  of <m>X</m> under the action of <m>G</m> are
-        <md permid="lQv">
+        <md>
           <mrow>X_{(1)}  =  X,</mrow>
           <mrow>X_{(3 \,  5)(4  \, 6)}  =  \{1,2\},</mrow>
           <mrow>X_{(1 \, 2)(3  \, 4  \, 5  \, 6)}  = X_{(1  \, 2)(3  \, 6  \,5  \, 4)}  =  \emptyset</mrow>
         </md>,
         and the stabilizer subgroups are
-        <md permid="RXE">
+        <md>
           <mrow>G_1 =  G_2  =  \{(1), (3  \, 5)(4  \, 6) \},</mrow>
           <mrow>G_3  = G_4  = G_5  = G_6 =  \{(1)\}</mrow>
         </md>.
@@ -251,17 +251,17 @@
       </p>
     </example>
 
-    <proposition permid="RBS">
+    <proposition>
       <statement>
-        <p permid="SOC">
+        <p>
           Let <m>G</m> be a group acting on a set <m>X</m> and <m>x \in X</m>.
           The stabilizer group of <m>x</m>,
           <m>G_x</m>, is a subgroup of <m>G</m>.
         </p>
       </statement>
 
-      <proof permid="wDI">
-        <p permid="xgy">
+      <proof>
+        <p>
           Clearly, <m>e \in G_x</m> since the identity fixes every element in the set <m>X</m>.
           Let <m>g, h \in G_x</m>.
           Then <m>gx = x</m> and <m>hx = x</m>.
@@ -274,22 +274,22 @@
       </proof>
     </proposition>
 
-    <p permid="Qir">
+    <p>
       We will denote the number of elements in the fixed point set of an element <m>g \in G</m> by <m>|X_g|</m> and denote the number of elements in the orbit of <m>x \in X</m> by <m>|{\mathcal O}_x|</m>.
       The next theorem demonstrates the relationship between orbits of an element <m>x \in X</m> and the left cosets of <m>G_x</m> in <m>G</m>.
     </p>
         <!-- typo corrected.  Suggested by L. Franklin. -->
         <!-- TWJ - 12/19/2011 -->
-    <theorem xml:id="actions-theorem-orbit" permid="sZi">
+    <theorem xml:id="actions-theorem-orbit">
       <statement>
-        <p permid="ulS">
+        <p>
           Let <m>G</m> be a finite group and <m>X</m> a finite <m>G</m>-set.
           If <m>x \in X</m>, then <m>|{\mathcal O}_x| = [G:G_x]</m>.
         </p>
       </statement>
 
-      <proof permid="YaY">
-        <p permid="dnH">
+      <proof>
+        <p>
           We know that <m>|G|/|G_x|</m> is the number of left cosets of <m>G_x</m> in <m>G</m> by Lagrange's Theorem (<xref ref="cosets-theorem-lagrange"/>).
           We will define a bijective  map <m>\phi</m> between the orbit
           <m>{\mathcal O}_x</m> of <m>X</m> and the set of left cosets
@@ -300,13 +300,13 @@
           To show that <m>\phi</m> is one-to-one,
           assume that <m>\phi(y_1) = \phi(y_2)</m>.
           Then
-          <me permid="yeN">
+          <me>
             \phi(y_1) = g_1 G_x = g_2 G_x = \phi(y_2)
           </me>,
           where <m>g_1 x = y_1</m> and <m>g_2 x = y_2</m>.
           Since <m>g_1 G_x = g_2 G_x</m>,
           there exists a <m>g \in G_x</m> such that <m>g_2 = g_1 g</m>,
-          <me permid="elW">
+          <me>
             y_2 = g_2 x = g_1 g x = g_1 x = y_1;
           </me>
           consequently, the map <m>\phi</m> is  one-to-one.
@@ -318,28 +318,28 @@
     </theorem>
   </section>
 
-  <section xml:id="actions-section-class-equation" permid="TME">
+  <section xml:id="actions-section-class-equation">
     <title>The Class Equation</title>
     <!--NOTATION TABLE\label{noteXG}-->
-    <p permid="wpA">
+    <p>
       Let <m>X</m> be a finite <m>G</m>-set and <m>X_G</m> be the set of fixed points in <m>X</m>; that is,
-      <me permid="Ktf">
+      <me>
         X_G = \{ x \in X : gx = x \text{ for all } g \in G \}
       </me>.
       Since the orbits of the action partition <m>X</m>,
-      <me permid="qAo">
+      <me>
         |X| = |X_G| + \sum_{i = k}^n |{\mathcal O}_{x_i}|
       </me>,
       where <m>x_k, \ldots,
       x_n</m> are representatives from the distinct nontrivial orbits of <m>X</m>.
     </p>
 
-    <p permid="cwJ">
+    <p>
       Now consider the special case in which <m>G</m> acts on itself by conjugation,
       <m>(g,x) \mapsto gxg^{-1}</m>.
       The <term>center</term><idx><h>Group</h><h>center of</h></idx>
       of <m>G</m>,
-      <me permid="WHx">
+      <me>
         Z(G) = \{x : xg = gx \text{ for all } g \in G \}
       </me>,
       is the set of points that are fixed by conjugation.
@@ -348,35 +348,35 @@
       of <m>G</m>.
       If <m>x_1, \ldots,
       x_k</m> are representatives from each of the nontrivial conjugacy classes of <m>G</m> and <m>|{\mathcal O}_{x_1}| = n_1, \ldots, |{\mathcal O}_{x_k}| = n_k</m>, then
-      <me permid="COG">
+      <me>
         |G| = |Z(G)| + n_1 + \cdots + n_k
       </me>.
       The stabilizer subgroups of each of the <m>x_i</m>'s, <m>C(x_i) = \{ g \in G: g x_i = x_i g \}</m>,
       are called the <term>centralizer subgroups</term><idx><h>Subgroup</h><h>centralizer</h></idx><idx><h>Centralizer</h><h>of a subgroup</h></idx> of the <m>x_i</m>'s.
       From <xref ref="actions-theorem-orbit"/>, we obtain the
       <idx><h>Class equation</h></idx><term>class equation</term>:
-      <me permid="iVP">
+      <me>
         |G| = |Z(G)| + [G: C(x_1) ] + \cdots + [ G: C(x_k)]
       </me>.
       One of the consequences of the class equation is that the order of each conjugacy class must divide the order of <m>G</m>.
     </p>
         <!-- Reference repaired. TWJ 12/19/2011 -->
         <!-- Typo corrected. Suggested by A. Vance. TWJ 11/13/2011 -->
-    <example xml:id="actions-example-conjugacy-class-s3" permid="aVE">
-      <p permid="Ipx">
+    <example xml:id="actions-example-conjugacy-class-s3">
+      <p>
         It is easy to check that  the conjugacy classes in <m>S_3</m> are the following:
-        <me permid="PcY">
+        <me>
           \{ (1) \},  \quad \{ (1 \, 2 \, 3), (1 \, 3 \, 2) \}, \quad \{(1 \, 2), (1 \, 3), (2 \, 3) \}
         </me>.
         The class equation is <m>6 = 1+2+3</m>.
       </p>
     </example>
 
-    <example xml:id="actions-example-conjugacy-class-d4" permid="HcN">
-      <p permid="owG">
+    <example xml:id="actions-example-conjugacy-class-d4">
+      <p>
         The center of <m>D_4</m> is <m>\{ (1), (1 \, 3)(2 \, 4) \}</m>,
         and the conjugacy classes are
-        <me permid="vkh">
+        <me>
           \{ (1 \, 3), (2 \, 4) \}, \quad \{ (1 \, 4 \, 3 \, 2), (1 \, 2 \, 3 \, 4) \}, \quad \{ (1 \, 2)(3 \, 4), (1 \, 4)(2 \, 3) \}
         </me>.
         Thus, the class equation for <m>D_4</m> is <m>8 = 2 + 2 + 2 + 2</m>.
@@ -384,14 +384,14 @@
     </example>
         <!-- %Example corrected.  There are 5 classes. TWJ 9/7/2010 -->
         <!-- %Example clarified.  Suggested by B. Whetter.  TWJ 11/17/2012 -->
-    <example xml:id="actions-example-conjugacy-class-sn" permid="njW">
-      <p permid="UDP">
+    <example xml:id="actions-example-conjugacy-class-sn">
+      <p>
         For <m>S_n</m> it takes a bit of work to find the conjugacy classes.
         We begin with cycles.
         Suppose that <m>\sigma = ( a_1, \ldots,
         a_k)</m> is a cycle and let <m>\tau \in S_n</m>.
         By <xref ref="cosets-theorem-cycle-length-theorem"/>,
-        <me permid="brq">
+        <me>
           \tau \sigma \tau^{-1} = ( \tau( a_1), \ldots, \tau(a_k))
         </me>.
         Consequently, any two cycles of the same length are conjugate.
@@ -401,11 +401,11 @@
         <m>\tau \in S_n</m> whose cycle decomposition has the same lengths.
       </p>
 
-      <p permid="AKY">
+      <p>
         The number of conjugate classes in <m>S_n</m> is the number of ways in which <m>n</m> can be partitioned into sums of positive integers.
         In the case of <m>S_3</m> for example,
         we can partition the integer <m>3</m> into the following three sums:
-        <md permid="Hyz">
+        <md>
           <mrow>3 &amp; =  1 + 1 + 1</mrow>
           <mrow>3 &amp; =  1 + 2</mrow>
           <mrow>3 &amp; =  3;</mrow>
@@ -416,18 +416,18 @@
       </p>
     </example>
 
-    <theorem xml:id="actions-theorem-pn" permid="Zgr">
+    <theorem xml:id="actions-theorem-pn">
       <statement>
-        <p permid="atb">
+        <p>
           Let <m>G</m> be a group of order <m>p^n</m> where <m>p</m> is prime.
           Then <m>G</m> has a nontrivial center.
         </p>
       </statement>
 
-      <proof permid="Eih">
-        <p permid="JuQ">
+      <proof>
+        <p>
           We apply the class equation
-          <me permid="nFI">
+          <me>
             |G| = |Z(G)| + n_1 + \cdots + n_k
           </me>.
           Since each <m>n_i \gt 1</m> and <m>n_i \mid |G|</m>,
@@ -442,16 +442,16 @@
       </proof>
     </theorem>
         <!-- Typo fixed.  Suggested by A. Vance.  TWJ 11/17/2012 -->
-    <corollary xml:id="actions-corollary-p2abelian" permid="dQk">
+    <corollary xml:id="actions-corollary-p2abelian">
       <statement>
-        <p permid="Lkd">
+        <p>
           Let <m>G</m> be a group of order <m>p^2</m> where <m>p</m> is prime.
           Then <m>G</m> is abelian.
         </p>
       </statement>
 
-      <proof permid="oZj">
-        <p permid="pBZ">
+      <proof>
+        <p>
           By <xref ref="actions-theorem-pn"/>, <m>|Z(G)| = p</m> or <m>p^2</m>.
           Suppose that <m>|Z(G)| = p</m>.
           Then <m>Z(G)</m> and <m>G / Z(G)</m> both have order <m>p</m> and must both be cyclic groups.
@@ -464,7 +464,7 @@
           <m>h = a^n y</m> for some integer <m>n</m>.
           Since <m>x</m> and <m>y</m> are in the center of <m>G</m>,
           they commute with all other elements of <m>G</m>; therefore,
-          <me permid="TMR">
+          <me>
             gh = a^m x a^n y =  a^{m+n} x y = a^n y a^m x = hg
           </me>,
           and <m>G</m> must be abelian. Hence, <m>|Z(G)| = p^2</m>.
@@ -473,10 +473,10 @@
     </corollary>
   </section>
 
-  <section xml:id="actions-section-burnsides-counting-theorem" permid="zTN">
+  <section xml:id="actions-section-burnsides-counting-theorem">
     <title>Burnside's Counting Theorem</title>
-    <introduction permid="LMG">
-      <p permid="lCa">
+    <introduction>
+      <p>
         Suppose that we wish to color the vertices of a square with two different colors,
         say black and white.
         We might suspect that there would be <m>2^4=16</m> different colorings.
@@ -486,10 +486,10 @@
         <m>90^\circ</m> (<xref ref="actions-figure-coloring"/>).
       </p>
 
-      <figure xml:id="actions-figure-coloring" permid="xQs">
+      <figure xml:id="actions-figure-coloring">
         <caption>Equivalent colorings of square</caption>
             <!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
-        <image width="60%" xml:id="actions-colorings-square" permid="gLd">
+        <image width="60%" xml:id="actions-colorings-square">
         	<description> Four squares with vertices labeled clockwise BWWW, WBWW, WWWB, and WWBW beginning in the upper left corner.</description>
             <latex-image>
                 <xi:include href="tikz/actions-colorings-square.tex" parse="text"/>
@@ -498,35 +498,35 @@
 
       </figure>
 
-      <p permid="RJj">
+      <p>
         Burnside's Counting Theorem offers a method of computing the number of distinguishable ways in which something can be done.
         In addition to its geometric applications,
         the theorem has interesting applications to areas in switching theory and chemistry.
         The proof of Burnside's Counting Theorem depends on the following lemma.
       </p>
 
-      <lemma xml:id="actions-lemma-gset" permid="xJb">
+      <lemma xml:id="actions-lemma-gset">
         <statement>
-          <p permid="fcU">
+          <p>
             Let <m>X</m> be a <m>G</m>-set and suppose that <m>x \sim y</m>.
             Then <m>G_x</m> is isomorphic to <m>G_y</m>.
             In particular, <m>|G_x| = |G_y|</m>.
           </p>
         </statement>
 
-        <proof permid="ISa">
-          <p permid="VJi">
+        <proof>
+          <p>
             Let <m>G</m> act on <m>X</m> by <m>(g,x) \mapsto g \cdot x</m>.
             Since <m>x \sim y</m>,
             there exists a <m>g \in G</m> such that <m>g \cdot x=y</m>.
             Let <m>a \in G_x</m>.
             Since
-            <me permid="zUa">
+            <me>
               gag^{-1} \cdot y = ga \cdot g^{-1}y = ga \cdot x = g \cdot x = y
             </me>,
             we can define a map <m>\phi: G_x \rightarrow G_y</m> by <m>\phi(a) = gag^{-1}</m>.
             The map <m>\phi</m> is a homomorphism since
-            <me permid="gbj">
+            <me>
               \phi(ab) = gabg^{-1} = gag^{-1} gbg^{-1} = \phi(a) \phi(b)
             </me>.
             Suppose that <m>\phi(a) = \phi(b)</m>.
@@ -535,7 +535,7 @@
             To show that <m>\phi</m> is onto,
             let <m>b</m> be in <m>G_y</m>;
             then <m>g^{-1}bg</m> is in <m>G_x</m> since
-            <me permid="Mis">
+            <me>
               g^{-1}bg \cdot x = g^{-1}b \cdot gx = g^{-1}b \cdot y = g^{-1} \cdot y = x;
             </me>
             and <m>\phi(g^{-1}bg ) = b</m>.
@@ -544,73 +544,73 @@
       </lemma>
             <!-- % Notation error pointed out by S. Engle corrected. -->
             <!-- % TWJ 11/20/2011 -->
-      <theorem permid="FnA">
+      <theorem>
         <title>Burnside</title>
         <idx>
         <h>Burnside's Counting Theorem</h>
         </idx>
         <statement>
-          <p permid="GAk">
+          <p>
             Let <m>G</m> be a  finite group acting on a set <m>X</m> and let <m>k</m> denote the number of orbits of <m>X</m>.
             Then
-            <me permid="spB">
+            <me>
               k = \frac{1}{|G|} \sum_{g \in G} |X_g|
             </me>.
           </p>
         </statement>
 
-        <proof permid="kpq">
-          <p permid="BQr">
+        <proof>
+          <p>
             We look at all the fixed points <m>x</m> of all the elements in <m>g \in G</m>;
             that is, we look at all <m>g</m>'s and all <m>x</m>'s such that <m>gx =x</m>.
             If viewed in terms of fixed point sets,
             the number of all <m>g</m>'s fixing <m>x</m>'s is
-            <me permid="YwK">
+            <me>
               \sum_{g \in G} |X_g|
             </me>.
             However, if viewed in terms of the stabilizer subgroups,
             this number is
-            <me permid="EDT">
+            <me>
               \sum_{x \in X} |G_x|;
             </me>
             hence, <m>\sum_{g \in G} |X_g| = \sum_{x \in X} |G_x|</m>.
             By <xref ref="actions-lemma-gset"/>,
-            <me permid="kLc">
+            <me>
               \sum_{y \in {\mathcal O}_x} |G_y|  =  | {\mathcal O}_x| \cdot |G_x|
             </me>.
             By <xref ref="actions-theorem-orbit"/> and Lagrange's Theorem,
             this expression is equal  to <m>|G|</m>.
             Summing over all of the <m>k</m> distinct orbits, we conclude that
-            <me permid="QSl">
+            <me>
               \sum_{g \in G} |X_g| = \sum_{x \in X} |G_x| = k \cdot |G|
             </me>.
           </p>
         </proof>
       </theorem>
 
-      <example xml:id="actions-example-burnside" permid="Trf">
-        <p permid="gSh">
+      <example xml:id="actions-example-burnside">
+        <p>
           Let <m>X = \{1, 2, 3, 4, 5 \}</m> and suppose that <m>G</m> is the permutation group <m>G= \{(1), (1  \, 3), (1  \, 3)(2  \, 5), (2  \, 5) \}</m>.
           The orbits of <m>X</m> are <m>\{1, 3\}</m>,
           <m>\{2, 5\}</m>, and <m>\{4\}</m>.
           The fixed point sets are
-          <md permid="dgD">
+          <md>
             <mrow>X_{(1)} &amp; =  X</mrow>
             <mrow>X_{(1 \, 3)} &amp; =  \{2, 4, 5 \}</mrow>
             <mrow>X_{(1  \, 3)(2  \, 5)} &amp; =  \{4\}</mrow>
             <mrow>X_{(2 \,  5)} &amp; =  \{1, 3, 4 \}</mrow>
           </md>.
           Burnside's Theorem says that
-          <me permid="wZu">
+          <me>
             k = \frac{1}{|G|} \sum_{g \in G} |X_g| = \frac{1}{4}(5 + 3 + 1 + 3) = 3
           </me>.
         </p>
       </example>
     </introduction>
 
-    <subsection xml:id="actions-subsection-geometric-example" permid="KsS">
+    <subsection xml:id="actions-subsection-geometric-example">
       <title>A Geometric Example</title>
-      <p permid="XcW">
+      <p>
         Before we apply Burnside's Theorem to switching-theory problems,
         let us examine the number of ways in which the vertices of a square can be colored black or white.
         Notice that we can sometimes obtain equivalent colorings by simply applying a rigid motion to the square.
@@ -619,10 +619,10 @@
         it does not matter which vertex was colored black since a rotation will give an equivalent coloring.
       </p>
 
-      <p permid="Dkf">
+      <p>
         The  symmetry group of a square,
         <m>D_4</m>, is given by the following permutations:
-        <md permid="JnM">
+        <md>
           <mrow>&amp;(1)    &amp; &amp;(1 \, 3)     &amp; &amp; (2 \, 4)     &amp; &amp; (1 \, 4 \, 3 \, 2)</mrow>
           <mrow>&amp;(1 \, 2 \, 3 \, 4) &amp; &amp;(1 \, 2)(3 \, 4) &amp; &amp; (1 \, 4)(2 \, 3) &amp; &amp; (1 \, 3)(2 \, 4)</mrow>
         </md>
@@ -635,7 +635,7 @@
         <m>\widetilde{ \sigma }</m> of the possible colorings given by
         <m>\widetilde{\sigma}(f) = f \circ \sigma</m> for <m>f : X \rightarrow Y</m>.
         For example, suppose that <m>f</m> is defined by
-        <md permid="puV">
+        <md>
           <mrow>f(1) &amp; =  B</mrow>
           <mrow>f(2) &amp; =  W</mrow>
           <mrow>f(3) &amp; =  W</mrow>
@@ -649,15 +649,15 @@
         that is, <m>\widetilde{X}</m> is the set of all possible maps from <m>X</m> to <m>Y</m>.
         Now we must compute the number of <m>\widetilde{G}</m>-equivalence classes.
 
-        <ol permid="wij">
-          <li permid="UKT">
-            <p permid="GlP">
+        <ol>
+          <li>
+            <p>
               <m>\widetilde{X}_{(1)} = \widetilde{X}</m> since the identity fixes every possible coloring. <m>|\widetilde{X}| = 2^4 =~16</m>.
             </p>
           </li>
 
-          <li permid="ASc">
-            <p permid="msY">
+          <li>
+            <p>
               <m>\widetilde{X}_{(1 \,  2  \, 3  \, 4)}</m> consists of all
               <m>f \in \widetilde{X}</m> such that <m>f</m> is unchanged by the permutation <m>(1 \, 2 \, 3  \, 4)</m>.
               In this case <m>f(1) = f(2) = f(3) = f(4)</m>,
@@ -667,57 +667,57 @@
             </p>
           </li>
 
-          <li permid="gZl">
-            <p permid="SAh">
+          <li>
+            <p>
               <m>|\widetilde{X}_{(1 \,  4  \, 3  \, 2)}| = 2</m>.
             </p>
           </li>
 
-          <li permid="Ngu">
-            <p permid="yHq">
+          <li>
+            <p>
               For <m>\widetilde{X}_{(1 \, 3)(2  \, 4)}</m>,
               <m>f(1) = f(3)</m> and <m>f(2) = f(4)</m>.
               Thus, <m>|\widetilde{X}_{(1 \, 3)(2 \, 4)}| = 2^2 = 4</m>.
             </p>
           </li>
 
-          <li permid="tnD">
-            <p permid="eOz">
+          <li>
+            <p>
               <m>|\widetilde{X}_{(1 \,  2)(3 \, 4)}| = 4</m>.
             </p>
           </li>
 
-          <li permid="ZuM">
-            <p permid="KVI">
+          <li>
+            <p>
               <m>|\widetilde{X}_{(1  \, 4)(2  \, 3)}| = 4</m>.
             </p>
           </li>
 
-          <li permid="FBV">
-            <p permid="rcR">
+          <li>
+            <p>
               For <m>\widetilde{X}_{(1  \, 3 )}</m>,
               <m>f(1) = f(3)</m> and the other corners can be of any color;
               hence, <m>|\widetilde{X}_{(1  \, 3)}| = 2^3 = 8</m>.
             </p>
           </li>
 
-          <li permid="lJe">
-            <p permid="Xka">
+          <li>
+            <p>
               <m>|\widetilde{X}_{(2  \, 4)}| = 8</m>.
             </p>
           </li>
         </ol>
 
         By Burnside's Theorem, we can conclude that there are exactly
-        <me permid="FnN">
+        <me>
           \frac{1}{8} ( 2^4 + 2^1 + 2^2 + 2^1  + 2^2 + 2^2 +2^3 + 2^3) = 6
         </me>
         ways to color the vertices of the square.
       </p>
 
-      <proposition xml:id="actions-proposition-action-function" permid="Mif">
+      <proposition xml:id="actions-proposition-action-function">
         <statement>
-          <p permid="yVL">
+          <p>
             Let <m>G</m> be a permutation group of <m>X</m> and
             <m>\widetilde{X}</m> the set of functions from <m>X</m> to <m>Y</m>.
             Then <m>G</m> induces a group
@@ -730,13 +730,13 @@
           </p>
         </statement>
 
-        <proof permid="cKR">
-          <p permid="hXA">
+        <proof>
+          <p>
             Let <m>\sigma \in G</m> and <m>f \in  \widetilde{X}</m>.
             Since <m>\sigma</m> permutes the elements of <m>X</m>, <m>f \circ \sigma</m> must also be in <m>\widetilde{X}</m>.
             Suppose that <m>g</m> is another function from <m>X</m> to <m>Y</m> such that <m>\widetilde{\sigma}(f) = \widetilde{\sigma}(g)</m>.
             Then for each <m>x \in X</m>,
-            <me permid="VCe">
+            <me>
               f( \sigma(x )) = \widetilde{\sigma}(f)(x) = \widetilde{\sigma}(g)(x) = g( \sigma(x ))
             </me>.
             Since <m>\sigma</m> is a permutation of <m>X</m>,
@@ -747,7 +747,7 @@
             since the two sets are the same size.
           </p>
 
-          <p permid="OeJ">
+          <p>
             Suppose that <m>\sigma</m> is a permutation of <m>X</m> with cycle decomposition <m>\sigma = \sigma_1 \sigma_2 \cdots \sigma_n</m>.
             Any <m>f</m> in <m>{\widetilde{X}}_{\sigma}</m> must have the same value on each cycle of <m>\sigma</m>.
             Since there are <m>n</m> cycles and <m>|Y|</m> possible values for each cycle,
@@ -756,8 +756,8 @@
         </proof>
       </proposition>
 
-      <example xml:id="actions-example-burnside-x7" permid="spo">
-        <p permid="MZq">
+      <example xml:id="actions-example-burnside-x7">
+        <p>
           Let <m>X = \{1, 2, \ldots, 7\}</m> and suppose that <m>Y = \{ A, B, C \}</m>.
           If <m>g</m> is the permutation of <m>X</m> given by <m>(1 \,  3)(2  \, 4  \, 5) = (1 \,  3)(2 \,  4  \, 5)(6)(7)</m>,
           then <m>n = 4</m>.
@@ -767,11 +767,11 @@
         </p>
       </example>
             <!-- Label problem fixed.  Suggested by L. Franklin.  TWJ 12/8/2011 -->
-      <example xml:id="actions-example-color-square" permid="Ywx">
-        <p permid="tgz">
+      <example xml:id="actions-example-color-square">
+        <p>
           Suppose that we wish to color the vertices of a square using four different colors.
           By <xref ref="actions-proposition-action-function"/>, we can immediately decide that there are
-          <me permid="BJn">
+          <me>
             \frac{1}{8} (4^4 + 4^1 + 4^2 + 4^1 + 4^2 + 4^ 2 + 4^3 + 4^3) = 55
           </me>
           possible ways.
@@ -779,9 +779,9 @@
       </example>
     </subsection>
 
-    <subsection xml:id="actions-subsection-switching-functions" permid="qAb">
+    <subsection xml:id="actions-subsection-switching-functions">
       <title>Switching Functions</title>
-      <p permid="jro">
+      <p>
         In switching theory we are concerned with the design of electronic circuits with binary inputs and outputs.
         The simplest of these circuits is a switching function that has <m>n</m> inputs and a single output (<xref ref="actions-figure-switching-n-variables"/>).
         Large electronic circuits can often be constructed by combining smaller modules of this kind.
@@ -791,10 +791,10 @@
         However, we can often replace one switching function with another merely by permuting the input leads to the circuit (<xref ref="actions-figure-switching-two-variables"/>).
       </p>
 
-      <figure xml:id="actions-figure-switching-n-variables" permid="gwI">
+      <figure xml:id="actions-figure-switching-n-variables">
         <caption>A switching function of <m>n</m> variables</caption>
             <!-- Replaced figure with tikz figure - TWJ 6/28/2010 -->
-        <image width="80%" xml:id="actions-switching-function" permid="MSm">
+        <image width="80%" xml:id="actions-switching-function">
         	<description>A function, f, represented by a box with inputs, x1, x2, ..., xn, on the left, and an output f(x1, x2, ..., xn) on the right.</description>
             <latex-image>
                 <xi:include href="tikz/actions-switching-function.tex" parse="text"/>
@@ -803,7 +803,7 @@
 
       </figure>
 
-      <p permid="Pyx">
+      <p>
         We define a <term>switching</term><idx><h>Function</h><h>switching</h></idx><idx><h>Switching function</h></idx>
         or <term>Boolean function</term><idx><h>Boolean function</h></idx><idx><h>Function</h><h>Boolean</h></idx>
         of <m>n</m> variables to be a function from
@@ -814,9 +814,9 @@
       </p>
 
 <!--
-      <figure xml:id="actions-figure-switching-two-variables" permid="MDR">
+      <figure xml:id="actions-figure-switching-two-variables">
         <caption>Switching functions of two variables</caption>
-        <image xml:id="actions-switching-two-variables" permid="sZv">
+        <image xml:id="actions-switching-two-variables">
         	<description>Two functions, f, represented by rectangle. The function on the left is represented by a rectangle that has inputs a and b on the left and output f(a, b).  The function on the right is represented by a rectangle that has inputs a and b with leads switched on the left and an output f(b, a) on the right.</description>
             <latex-image>
                 <xi:include href="tikz/actions-switching-two-variables.tex" parse="text"/>
@@ -828,10 +828,10 @@
 
 
 
-     <figure xml:id="actions-figure-switching-two-variables" permid="MDR">
+     <figure xml:id="actions-figure-switching-two-variables">
         <caption>Switching functions in two variables</caption>
         <sidebyside widths="35% 50%" margins="auto" valign="middle">
-          <image xml:id="actions-switching-two-variables-a" permid="sZva">
+          <image xml:id="actions-switching-two-variables-a">
             <description>The function on the left is represented by a rectangle that has inputs a and b on the left and output f(a, b).</description>
               <latex-image>
                   <xi:include href="tikz/actions-switching-two-variables-a.tex" parse="text"/>
@@ -839,7 +839,7 @@
           </image>
 
 
-          <image xml:id="actions-switching-two-variables-b" permid="sZvb">
+          <image xml:id="actions-switching-two-variables-b">
             <description>The function on the right is represented by a rectangle that has inputs a and b with leads switched on the left and an output f(b, a) on the right.</description>
               <latex-image>
                   <xi:include href="tikz/actions-switching-two-variables-b.tex" parse="text"/>
@@ -849,14 +849,14 @@
       </figure>
 
 
-      <p permid="vFG">
+      <p>
         The possible switching functions  with two input variables <m>a</m> and <m>b</m> are listed in <xref ref="actions-table-switching-2-variables"/>.
         Two switching functions <m>f</m> and <m>g</m> are equivalent if <m>g</m> can be obtained from <m>f</m> by a permutation of the input variables.
         For example, <m>g(a, b, c) = f(b, c, a)</m>.
         In this  case <m>g \sim f</m> via the permutation <m>(a,c,b)</m>.
         In the case of switching functions of two variables,
         the permutation <m>(a,b)</m> reduces 16 possible switching functions to 12 equivalent functions since
-        <md permid="hQw">
+        <md>
           <mrow>f_2 &amp; \sim  f_4</mrow>
           <mrow>f_3 &amp; \sim  f_5</mrow>
           <mrow>f_{10} &amp; \sim f_{12}</mrow>
@@ -864,9 +864,9 @@
         </md>.
       </p>
 
-      <table xml:id="actions-table-switching-2-variables" permid="luW">
+      <table xml:id="actions-table-switching-2-variables">
         <title>Switching functions in two variables</title>
-        <tabular halign="center" top="medium" left="medium" permid="xJo">
+        <tabular halign="center" top="medium" left="medium">
           <col/>
           <col right="medium"/>
           <col/>
@@ -1009,7 +1009,7 @@
 
       </table>
 
-      <p permid="bMP">
+      <p>
         For three input variables there are
         <m>2^{2^3} = 256</m> possible switching functions;
         in the case of four variables there are <m>2^{2^4} =65{,}536</m>.
@@ -1017,7 +1017,7 @@
         It is necessary to employ Burnside's Theorem.
       </p>
 
-      <p permid="HTY">
+      <p>
         Consider a switching function with three possible inputs,
         <m>a</m>, <m>b</m>, and <m>c</m>.
         As we have mentioned,
@@ -1032,7 +1032,7 @@
         For example, each binary triple
         <m>(a, b, c)</m> has a specific output associated with it.
         The permutation <m>(acb)</m> changes outputs as follows:
-        <md permid="NXF">
+        <md>
           <mrow>(0, 0, 0) &amp; \mapsto  (0, 0, 0)</mrow>
           <mrow>(0, 0, 1) &amp; \mapsto  (0, 1, 0)</mrow>
           <mrow>(0, 1, 0) &amp; \mapsto  (1, 0, 0)</mrow>
@@ -1042,11 +1042,11 @@
         </md>.
       </p>
 
-      <p permid="obh">
+      <p>
         Let <m>X</m> be the set of output values for a switching function in <m>n</m> variables.
         Then <m>|X|=2^n</m>.
         We can enumerate these values as follows:
-        <md permid="ueO">
+        <md>
           <mrow>(0, \ldots, 0, 1) &amp; \mapsto  0</mrow>
           <mrow>(0, \ldots, 1, 0) &amp; \mapsto  1</mrow>
           <mrow>(0, \ldots, 1, 1) &amp; \mapsto  2</mrow>
@@ -1055,25 +1055,25 @@
         </md>.
         Now let us consider a circuit with four input variables and a single output.
         Suppose that we can permute the leads of any circuit according to the following permutation group:
-        <md permid="alX">
+        <md>
           <mrow>(a), \quad (a,c), \quad (b,d), \quad (a,d,c,b),</mrow>
           <mrow>(a,b,c,d), \quad (a,b)(c,d), \quad (a,d)(b,c), \quad (a,c)(b,d)</mrow>
         </md>.
         The permutations of the four possible input variables induce the permutations of the output values in <xref ref="actions-table-switching-permutation"/>.
       </p>
 
-      <p permid="Uiq">
+      <p>
         Hence, there are
-        <me permid="Gtg">
+        <me>
           \frac{1}{8} (2^{16} + 2 \cdot 2^{12} + 2 \cdot 2^6 + 3 \cdot 2^{10}) = 9616
         </me>
         possible switching functions of four variables under this group of permutations.
         This number will be even smaller if we consider the full symmetric group on four letters.
       </p>
 
-      <table xml:id="actions-table-switching-permutation" permid="RCf">
+      <table xml:id="actions-table-switching-permutation">
         <title>Permutations of switching functions in four variables</title>
-        <tabular halign="left" top="medium" permid="dQx">
+        <tabular halign="left" top="medium">
           <row>
             <cell>Group</cell>
             <cell/>
@@ -1127,9 +1127,9 @@
         </tabular>
 
       </table>
-      <paragraphs component="sage-blurb" permid="Hym">
+      <paragraphs component="sage-blurb">
         <title>Sage</title>
-        <p permid="Apz">
+        <p>
           Sage has many commands related to conjugacy, which is a group action.
           It also has commands for orbits and stabilizers of permutation groups.
           In the supplement,
@@ -1139,9 +1139,9 @@
 
     </subsection>
 
-    <subsection xml:id="actions-subsection-historical-note" permid="WHk">
+    <subsection xml:id="actions-subsection-historical-note">
       <title>Historical Note</title>
-      <p permid="sLa">
+      <p>
         William Burnside<idx><h>Burnside, William</h></idx>
         was born in London in 1852.
         He attended Cambridge University from 1871 to 1875 and won the Smith's Prize in his last year.
@@ -1154,7 +1154,7 @@
         One such conjecture was that every group of odd order is solvable;
         that is, for a group <m>G</m> of odd order,
         there exists a sequence of subgroups
-        <me permid="mAp">
+        <me>
           G = H_n \supset H_{n-1} \supset \cdots \supset H_1 \supset H_0 = \{ e \}
         </me>
         such that <m>H_i</m> is normal in <m>H_{i+1}</m> and <m>H_{i+1} / H_i</m> is abelian.
@@ -1170,47 +1170,47 @@
 
   </section>
 
-  <reading-questions permid="MtJ">
+  <reading-questions>
 
-    <exercise permid="dcZ">
+    <exercise>
       <statement>
-        <p permid="hMS">
+        <p>
           Give an informal description of a group action.
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="Jki">
+    <exercise>
       <statement>
-        <p permid="NUb">
+        <p>
           Describe the class equation.
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="prr">
+    <exercise>
       <statement>
-        <p permid="ubk">
+        <p>
           What are the groups of order <m>49</m>?
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="VyA">
+    <exercise>
       <statement>
-        <p permid="ait">
+        <p>
           How many switching functions are there with 5 inputs? (Give both a simple expression and the total number as a single integer.)
         </p>
       </statement>
       <response/>
     </exercise>
 
-    <exercise permid="BFJ">
+    <exercise>
       <statement>
-        <p permid="GpC">
+        <p>
           The <q>Historical Note</q> mentions the proof of Burnside's Conjecture.
           How long was the proof?
         </p>
@@ -1222,12 +1222,12 @@
     <!-- Exercises with Solutions  -->
     <!-- File: actions.xml  -->
     <!-- Title: Group Actions -->
-  <exercises xml:id="actions-exercises" filenamebase="actions" permid="PcL">
+  <exercises xml:id="actions-exercises" filenamebase="actions">
     <title>Exercises</title>
 
-    <exercise number="1" permid="EDG" xml:id="actions-exercise-equivalence-relation">
+    <exercise number="1" xml:id="actions-exercise-equivalence-relation">
       <statement>
-        <p permid="qlT">
+        <p>
           <xref first="actions-example-gl2" last="actions-example-left-cosets">Examples</xref> in the first section each describe an action of a group <m>G</m> on a set <m>X</m>,
           which will give rise to the equivalence relation defined by <m>G</m>-equivalence.
           For each example,
@@ -1235,8 +1235,8 @@
           the <m>G</m>-<term>equivalence classes</term>.
         </p>
       </statement>
-      <hint permid="BnB">
-        <p permid="nMM">
+      <hint>
+        <p>
           <xref ref="actions-example-gl2"/>:
           <m>0</m>, <m>{\mathbb R}^2 \setminus \{ 0 \}</m>.
           <xref ref="actions-example-d4"/>:
@@ -1247,21 +1247,21 @@
 
     <!--Todo Fix solution to Exercise 1.-->
 
-    <exercise number="2" xml:id="actions-exercise-permutation" permid="kKP">
+    <exercise number="2" xml:id="actions-exercise-permutation">
       <statement>
-        <p permid="Wtc">
+        <p>
           Compute all <m>X_g</m> and all <m>G_x</m> for each of the following permutation groups.
 
-          <ol permid="fjY">
-            <li permid="RQn">
-              <p permid="Drj">
+          <ol>
+            <li>
+              <p>
                 <m>X= \{1, 2, 3\}</m>,
                 <m>G=S_3=\{(1), (1 \, 2), (1 \, 3), (2 \, 3), (1 \, 2 \, 3), (1 \, 3 \, 2) \}</m>
               </p>
             </li>
 
-            <li permid="xXw">
-              <p permid="jys">
+            <li>
+              <p>
                 <m>X = \{1, 2, 3, 4, 5, 6\}</m>,
                 <m>G = \{(1), (1 \, 2), (3 \, 4 \, 5), (3 \, 5 \, 4), (1 \, 2)(3 \, 4 \, 5), (1 \, 2)(3 \, 5 \, 4) \}</m>
               </p>
@@ -1269,8 +1269,8 @@
           </ol>
         </p>
       </statement>
-      <hint permid="NBT">
-        <p permid="TTV">
+      <hint>
+        <p>
           (a) <m>X_{(1)} = \{1, 2, 3 \}</m>, <m>X_{(1 \, 2)} = \{3 \}</m>,
           <m>X_{(1 \, 3)} = \{ 2 \}</m>, <m>X_{(2 \, 3)} = \{1 \}</m>,
           <m>X_{(1 \, 2 \, 3)} = X_{(1 \, 3 \, 2)} = \emptyset</m>. <m>G_1 = \{ (1), (2 \, 3) \}</m>,
@@ -1279,43 +1279,43 @@
       </hint>
     </exercise>
 
-    <exercise number="3" permid="QRY" xml:id="actions-exercise-equivalence-classes">
+    <exercise number="3" xml:id="actions-exercise-equivalence-classes">
       <statement>
-        <p permid="CAl">
+        <p>
           Compute the <m>G</m>-equivalence classes of <m>X</m> for each of the <m>G</m>-sets in <xref ref="actions-exercise-permutation"/>.
           For each <m>x \in X</m> verify that <m>|G|=|{\mathcal O}_x| \cdot |G_x|</m>.
         </p>
       </statement>
-      <hint permid="ZQl">
-        <p permid="Abe">
+      <hint>
+        <p>
           (a) <m>{\mathcal O}_1 = {\mathcal O}_2 = {\mathcal O}_3 = \{ 1, 2, 3\}</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="4" permid="wZh" xml:id="actions-exercise-R-G-set">
+    <exercise number="4" xml:id="actions-exercise-R-G-set">
       <statement>
-        <p permid="iHu">
+        <p>
           Let <m>G</m> be the additive group of real numbers.
           Let the action of <m>\theta \in G</m> on the real plane
           <m>{\mathbb R}^2</m> be given by rotating the plane counterclockwise about the origin through <m>\theta</m> radians.
           Let <m>P</m> be a point on the plane other than the origin.
 
-          <ol permid="Lrh">
-            <li permid="CHp">
-              <p permid="oil">
+          <ol>
+            <li>
+              <p>
                 Show that <m>{\mathbb R}^2</m> is a <m>G</m>-set.
               </p>
             </li>
 
-            <li permid="iOy">
-              <p permid="Upu">
+            <li>
+              <p>
                 Describe geometrically the orbit containing <m>P</m>.
               </p>
             </li>
 
-            <li permid="OVH">
-              <p permid="AwD">
+            <li>
+              <p>
                 Find the group <m>G_P</m>.
               </p>
             </li>
@@ -1324,21 +1324,21 @@
       </statement>
     </exercise>
 
-    <exercise number="5" permid="dgq" xml:id="actions-exercise-A4">
+    <exercise number="5" xml:id="actions-exercise-A4">
       <statement>
-        <p permid="OOD">
+        <p>
           Let <m>G = A_4</m> and suppose that <m>G</m> acts on itself by conjugation;
           that is, <m>(g,h)~\mapsto~ghg^{-1}</m>.
 
-          <ol permid="ryq">
-            <li permid="nyr">
-              <p permid="YZn">
+          <ol>
+            <li>
+              <p>
                 Determine the conjugacy classes (orbits) of each element of <m>G</m>.
               </p>
             </li>
 
-            <li permid="TFA">
-              <p permid="Fgw">
+            <li>
+              <p>
                 Determine all of the isotropy subgroups for each element of <m>G</m>.
               </p>
             </li>
@@ -1347,42 +1347,42 @@
       </statement>
     </exercise>
 
-    <exercise number="6" permid="Jnz" xml:id="actions-exercise-conjugacy-class">
+    <exercise number="6" xml:id="actions-exercise-conjugacy-class">
       <statement>
-        <p permid="uVM">
+        <p>
           Find the conjugacy classes and the class equation for each of the following groups.
 
-          <ol cols="4" permid="XFz">
-            <li permid="Mbb">
-              <p permid="xBX">
+          <ol cols="4">
+            <li>
+              <p>
                 <m>S_4</m>
               </p>
             </li>
 
-            <li permid="sik">
-              <p permid="dJg">
+            <li>
+              <p>
                 <m>D_5</m>
               </p>
             </li>
 
-            <li permid="Ypt">
-              <p permid="JQp">
+            <li>
+              <p>
                 <m>{\mathbb Z}_9</m>
               </p>
             </li>
 
-            <li permid="EwC">
-              <p permid="pXy">
+            <li>
+              <p>
                 <m>Q_8</m>
               </p>
             </li>
           </ol>
         </p>
       </statement>
-      <hint permid="ysV">
-        <p permid="gin">
+      <hint>
+        <p>
           The conjugacy classes for <m>S_4</m> are
-          <md permid="rki">
+          <md>
             <mrow>{\mathcal O}_{(1)} = \{ (1) \},</mrow>
             <mrow>{\mathcal O}_{(12)} = \{ (1 \, 2), (1 \, 3), (1 \, 4), (2 \, 3), (2 \, 4), (3 \, 4) \},</mrow>
             <mrow>{\mathcal O}_{(1 \, 2)(3 \, 4)} = \{ (1 \, 2)(3 \, 4), (1 \, 3)(2 \, 4), (1 \, 4)(2 \, 3) \},</mrow>
@@ -1394,53 +1394,53 @@
       </hint>
     </exercise>
 
-    <exercise number="7" permid="puI" xml:id="actions-exercise-S5">
+    <exercise number="7" xml:id="actions-exercise-S5">
       <statement>
-        <p permid="bcV">
+        <p>
           Write the class equation for <m>S_5</m> and for <m>A_5</m>.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="8" permid="VBR" xml:id="actions-exercise-square">
+    <exercise number="8" xml:id="actions-exercise-square">
       <statement>
-        <p permid="Hke">
+        <p>
           If a square remains fixed in the plane,
           how many different ways can the corners of the square be colored if three colors are used?
         </p>
       </statement>
-      <hint permid="qOw">
-        <p permid="Mpw">
+      <hint>
+        <p>
           <m>(3^4 + 3^1 + 3^2 + 3^1 + 3^2 + 3^2 + 3^3 + 3^3)/8 = 21</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="9" permid="BJa" xml:id="actions-exercise-triangle">
+    <exercise number="9" xml:id="actions-exercise-triangle">
       <statement>
-        <p permid="nrn">
+        <p>
           How many ways can the vertices of an equilateral triangle be colored using three different colors?
         </p>
       </statement>
     </exercise>
 
-    <exercise number="10" permid="hQj" xml:id="actions-exercise-6-sided-die">
+    <exercise number="10" xml:id="actions-exercise-6-sided-die">
       <statement>
-        <p permid="Tyw">
+        <p>
           Find the number of ways a six-sided die can be constructed if each side is marked differently with <m>1, \ldots, 6</m> dots.
         </p>
       </statement>
     </exercise>
 
-    <exercise number="11" permid="NXs" xml:id="actions-exercise-cube">
+    <exercise number="11" xml:id="actions-exercise-cube">
       <statement>
-        <p permid="zFF">
+        <p>
           Up to a rotation,
           how many ways can the faces of a cube be colored with three different colors?
         </p>
       </statement>
-      <hint permid="Prg">
-        <p permid="swF">
+      <hint>
+        <p>
           The group of rigid motions of the cube can be described by the allowable permutations of the six faces and is isomorphic to <m>S_4</m>.
           There are the identity cycle, 6 permutations with the structure <m>(abcd)</m> that correspond to the quarter turns, 3 permutations with the structure
           <m>(ab)(cd)</m> that correspond to the half turns, 6 permutations with the structure
@@ -1451,9 +1451,9 @@
       </hint>
     </exercise>
 
-    <exercise number="12" permid="ueB" xml:id="actions-exercise-edges-cube">
+    <exercise number="12" xml:id="actions-exercise-edges-cube">
       <statement>
-        <p permid="fMO">
+        <p>
           Consider <m>12</m> straight wires of equal lengths with their ends soldered together to form the edges of a cube.
           Either silver or copper wire can be used for each edge.
           How many different ways can the cube be constructed?
@@ -1461,9 +1461,9 @@
       </statement>
     </exercise>
 
-    <exercise number="13" permid="alK" xml:id="actions-exercise-corners-cube">
+    <exercise number="13" xml:id="actions-exercise-corners-cube">
       <statement>
-        <p permid="LTX">
+        <p>
           Suppose that we color each of the eight corners of a cube.
           Using three different colors,
           how many ways can the corners be colored up to a rotation of the cube?
@@ -1471,9 +1471,9 @@
       </statement>
     </exercise>
 
-    <exercise number="14" permid="GsT" xml:id="actions-exercise-tetrahedron">
+    <exercise number="14" xml:id="actions-exercise-tetrahedron">
       <statement>
-        <p permid="sbg">
+        <p>
           Each of the faces of a regular tetrahedron can be painted either red or white.
           Up to a rotation,
           how many different ways can the tetrahedron be painted?
@@ -1481,45 +1481,45 @@
       </statement>
     </exercise>
 
-    <exercise number="15" permid="mAc" xml:id="actions-exercise-hexagon">
+    <exercise number="15" xml:id="actions-exercise-hexagon">
       <statement>
-        <p permid="Yip">
+        <p>
           Suppose that the vertices of a regular hexagon are to be colored either red or white.
           How many ways can this be done up to a symmetry of the hexagon?
         </p>
       </statement>
-      <hint permid="UaZ">
-        <p permid="YDO">
+      <hint>
+        <p>
           <m>(1 \cdot 2^6 + 3 \cdot 2^4 + 4 \cdot 2^3 + 2 \cdot 2^2 + 2 \cdot 2^1)/12 = 13</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="16" permid="SHl" xml:id="actions-exercise-benzene">
+    <exercise number="16" xml:id="actions-exercise-benzene">
       <statement>
-        <p permid="Epy">
+        <p>
           A molecule of benzene is made up of six carbon atoms and six hydrogen atoms,
           linked together in a hexagonal shape as in <xref ref="actions-figure-exercise-benzene"/>.
 
-          <ol permid="DMI">
-            <li permid="Jgv">
-              <p permid="uHr">
+          <ol>
+            <li>
+              <p>
                 How many different compounds can be formed by replacing one or more of the hydrogen atoms with a chlorine atom?
               </p>
             </li>
 
-            <li permid="pnE">
-              <p permid="aOA">
+            <li>
+              <p>
                 Find the number of different chemical compounds that can be formed by replacing three of the six hydrogen atoms in a benzene ring with a <m>CH_3</m> radical.
               </p>
             </li>
           </ol>
         </p>
 
-        <figure xml:id="actions-figure-exercise-benzene" permid="kwH">
+        <figure xml:id="actions-figure-exercise-benzene">
           <caption>A benzene ring</caption>
             <!-- Replaced figure with tikz figure - TWJ 5/6/2010 -->
-          <image width="30%" xml:id="exercise-benzene" permid="ZgE">
+          <image width="30%" xml:id="exercise-benzene">
           	<description>A hexagon with hydrogen atoms, H, attached at each vertex.</description>
             <latex-image>
                 <xi:include href="tikz/exercise-benzene.tex" parse="text"/>
@@ -1530,9 +1530,9 @@
       </statement>
     </exercise>
 
-    <exercise number="17" permid="yOu" xml:id="actions-exercise-input-variables">
+    <exercise number="17" xml:id="actions-exercise-input-variables">
       <statement>
-        <p permid="QDQ">
+        <p>
           How many equivalence classes of switching functions are there if the input variables <m>x_1</m>,
           <m>x_2</m>,
           and <m>x_3</m> can be permuted by any permutation in <m>S_3</m>?
@@ -1540,16 +1540,16 @@
           and <m>x_4</m> can be permuted by any permutation in <m>S_4</m>?
         </p>
       </statement>
-      <hint permid="MwA">
-        <p permid="EKX">
+      <hint>
+        <p>
           <m>(1 \cdot 2^8 + 3 \cdot 2^6 + 2 \cdot 2^4)/6 = 80</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="18" permid="eVD" xml:id="actions-exercise-switching-functions">
+    <exercise number="18" xml:id="actions-exercise-switching-functions">
       <statement>
-        <p permid="wKZ">
+        <p>
           How many equivalence classes of switching functions are there if the input variables <m>x_1</m>,
           <m>x_2</m>,
           <m>x_3</m>,
@@ -1558,9 +1558,9 @@
       </statement>
     </exercise>
 
-    <exercise number="19" permid="LcM" xml:id="actions-exercise-necktie">
+    <exercise number="19" xml:id="actions-exercise-necktie">
       <statement>
-        <p permid="cSi">
+        <p>
           A striped necktie has <m>12</m> bands of color.
           Each band can be colored by one of four possible colors.
           How many possible different-colored neckties are there?
@@ -1568,9 +1568,9 @@
       </statement>
     </exercise>
 
-    <exercise number="20" permid="rjV" xml:id="actions-exercise-faithfully">
+    <exercise number="20" xml:id="actions-exercise-faithfully">
       <statement>
-        <p permid="IZr">
+        <p>
           A group acts <term>faithfully</term>
           on a <m>G</m>-set <m>X</m> if the identity is the only element of <m>G</m> that leaves every element of <m>X</m> fixed.
           Show that <m>G</m> acts faithfully on <m>X</m> if and only if no two distinct elements of <m>G</m> have the same action on each element of <m>X</m>.
@@ -1578,9 +1578,9 @@
       </statement>
     </exercise>
 
-    <exercise number="21" permid="Xre" xml:id="actions-exercise-abelian-pn">
+    <exercise number="21" xml:id="actions-exercise-abelian-pn">
       <statement>
-        <p permid="pgA">
+        <p>
           Let <m>p</m> be prime.
           Show that the number of different abelian groups of order <m>p^n</m>
           (up to isomorphism)
@@ -1591,24 +1591,24 @@
 
     <!--Todo Finish this solution.-->
 
-    <exercise number="22" xml:id="actions-exercise-centralizer" permid="Dyn">
+    <exercise number="22" xml:id="actions-exercise-centralizer">
       <statement>
-        <p permid="VnJ">
+        <p>
           Let <m>a \in G</m>.
           Show that for any <m>g \in G</m>,
           <m>gC(a) g^{-1} = C(gag^{-1})</m>.
         </p>
       </statement>
-      <hint permid="xnC">
-        <p permid="kSg">
+      <hint>
+        <p>
           Use the fact that <m>x \in g C(a) g^{-1}</m> if and only if <m>g^{-1}x g \in C(a)</m>.
         </p>
       </hint>
     </exercise>
 
-    <exercise number="23" permid="jFw" xml:id="actions-exercise-ZG">
+    <exercise number="23" xml:id="actions-exercise-ZG">
       <statement>
-        <p permid="BuS">
+        <p>
           Let <m>|G| = p^n</m> be a nonabelian group for <m>p</m> prime.
           Prove that <m>|Z(G)| \lt p^{n - 1}</m>.
         </p>
@@ -1617,9 +1617,9 @@
 
     <!--Todo Complete this solution.-->
 
-    <exercise number="24" permid="PMF" xml:id="actions-exercise-finite-G-set">
+    <exercise number="24" xml:id="actions-exercise-finite-G-set">
       <statement>
-        <p permid="hCb">
+        <p>
           Let <m>G</m> be a group with order <m>p^n</m> where <m>p</m> is prime and <m>X</m> a finite <m>G</m>-set.
           If <m>X_G = \{ x \in X : gx = x \text{ for all }g \in G \}</m> is the set of elements in <m>X</m> fixed by the group action,
           then prove that <m>|X| \equiv |X_G| \pmod{ p}</m>.
@@ -1629,9 +1629,9 @@
 
     <!--Todo Complete this solution.-->
 
-    <exercise number="25" permid="vTO" xml:id="actions-exercise-subgroup-p2">
+    <exercise number="25" xml:id="actions-exercise-subgroup-p2">
       <statement>
-        <p permid="NJk">
+        <p>
           If <m>G</m> is a group of order <m>p^n</m>,
           where <m>p</m> is prime and <m>n \geq 2</m>,
           show that <m>G</m> must have a proper subgroup of order <m>p</m>.
@@ -1644,11 +1644,11 @@
     <!--Todo Complete this solution.-->
   </exercises>
 
-  <exercises xml:id="actions-exercises-programming" permid="vjU">
+  <exercises xml:id="actions-exercises-programming">
     <title>Programming Exercise</title>
-    <exercise permid="caX" xml:id="actions-programming-exercise-conjugacy-classes-Sn">
+    <exercise xml:id="actions-programming-exercise-conjugacy-classes-Sn">
       <statement>
-        <p permid="tQt">
+        <p>
           Write a program to compute the number of conjugacy classes in <m>S_n</m>.
           What is the largest <m>n</m> for which your program will work?
         </p>
@@ -1657,16 +1657,16 @@
 
   </exercises>
 
-  <references xml:id="actions-references" permid="JDL">
+  <references xml:id="actions-references">
     <title>References and Suggested Reading</title>
         <!-- %TWJ 6/28/2010 - References checked. -->
-    <biblio type="raw" permid="pKU">
+    <biblio type="raw">
 <!-- was [1] -->
       Bruijin, de, N. G. <q>Pólya's Theory of Counting,</q> in
       <title>Applied Combinatorial Mathematics</title>, Beckenbach, E. F., ed. Wiley, New York, 1964.
     </biblio>
 
-    <biblio type="raw" permid="VSd">
+    <biblio type="raw">
 <!-- was [2] -->
       Eidswick, J. A. <q>Cubelike Puzzles<mdash/>What Are They and How Do You Solve Them?</q>
       <title>American Mathematical Monthly</title>
@@ -1674,30 +1674,30 @@
       (1986), 157<ndash/>76.
     </biblio>
 
-    <biblio type="raw" permid="BZm">
+    <biblio type="raw">
 <!-- was [3] -->
       Harary, F., Palmer, E. M., and Robinson, R. W. <q>Pólya's Contributions to Chemical Enumeration,</q> in
       <title>Chemical Applications of Graph Theory</title>, Balaban, A. T., ed. Academic Press, London, 1976.
     </biblio>
 
-    <biblio type="raw" permid="igv">
+    <biblio type="raw">
 <!-- was [4] -->
       Gårding, L. and Tambour, T.
       <title>Algebra for Computer Science</title>. Springer-Verlag, New York, 1988.
     </biblio>
         <!-- %TWJ 6/28/2010 - This is out of print -->
-    <biblio type="raw" permid="OnE">
+    <biblio type="raw">
 <!-- was [5] -->
       Laufer, H. B.
       <title>Discrete Mathematics and Applied Modern Algebra</title>. PWS-Kent, Boston, 1984.
     </biblio>
         <!-- %TWJ 6/28/2010 - This is out of print -->
-    <biblio type="raw" permid="uuN">
+    <biblio type="raw">
 <!-- was [6] -->Pólya, G. and Read, R. C.
       <title>Combinatorial Enumeration of Groups, Graphs, and Chemical Compounds</title>. Springer-Verlag, New York, 1985.
     </biblio>
         <!-- %TWJ 6/28/2010 - This is out of print -->
-    <biblio type="raw" permid="aBW">
+    <biblio type="raw">
 <!-- was [7] -->
       Shapiro, L. W. <q>Finite Groups Acting on Sets with Applications,</q>
       <title>Mathematics Magazine</title>, May<ndash/>June 1973, 136<ndash/>47.
@@ -1706,10 +1706,10 @@
 
 
 
-  <section xml:id="actions-sage" component="sage-info" permid="gaW">
+  <section xml:id="actions-sage" component="sage-info">
     <title>Sage</title>
-    <introduction permid="rTP">
-      <p permid="dXB">
+    <introduction>
+      <p>
         Groups can be realized in many ways,
         such as as sets of permutations, as sets of matrices,
         or as sets of abstract symbols related by certain rules (<q>presentations</q>) and in myriad other ways.
@@ -1724,7 +1724,7 @@
         with its own definitions and theorems.
       </p>
 
-      <p permid="KeK">
+      <p>
         We will describe Sage's commands applicable when a group action arises naturally via conjugation,
         and then move into the more general situation in a more general application.
       </p>
@@ -1732,9 +1732,9 @@
       <!--Todo Construct a general n beads, m colors enumeration example (any of this in Sage already?)-->
     </introduction>
 
-    <subsection permid="COt">
+    <subsection>
       <title>Conjugation as a Group Action</title>
-      <p permid="YSj">
+      <p>
         We might think we need to be careful how Sage defines conjugation
         (<m>gxg^{-1}</m> versus <m>g^{-1}xg</m>)
         and the difference between Sage and the text on the order of products.
@@ -1742,7 +1742,7 @@
         Here are the group action commands for the particular action that is conjugation of the elements of the group.
       </p>
 
-      <p permid="EZs">
+      <p>
         Sage has a permutation group method <c>.center()</c> which returns the subgroup of fixed points.
         The permutation group method, <c>.centralizer(g)</c>,
         returns a subgroup that is the stabilizer of the group element <c>g</c>.
@@ -1754,12 +1754,12 @@
         as we do in the example below.
       </p>
 
-      <p permid="lgB">
+      <p>
         Here is an example of the above commands in action.
         Notice that an abelian group would be a bad choice for this example.
       </p>
 
-            <sage permid="Itx">
+            <sage>
                 <input>
         D = DihedralGroup(8)
         C = D.center(); C
@@ -1769,7 +1769,7 @@
         of (Dihedral group of order 16 as a permutation group)
         </output>
             </sage>
-            <sage permid="oAG">
+            <sage>
                 <input>
         C.list()
         </input>
@@ -1777,7 +1777,7 @@
         [(), (1,5)(2,6)(3,7)(4,8)]
         </output>
             </sage>
-            <sage permid="UHP">
+            <sage>
                 <input>
         a = D("(1,2)(3,8)(4,7)(5,6)")
         C1 = D.centralizer(a); C1.list()
@@ -1786,7 +1786,7 @@
         [(), (1,2)(3,8)(4,7)(5,6), (1,5)(2,6)(3,7)(4,8), (1,6)(2,5)(3,4)(7,8)]
         </output>
             </sage>
-            <sage permid="AOY">
+            <sage>
                 <input>
         b = D("(1,2,3,4,5,6,7,8)")
         C2 = D.centralizer(b); C2.order()
@@ -1795,7 +1795,7 @@
         8
         </output>
             </sage>
-            <sage permid="gWh">
+            <sage>
                 <input>
         CCR = D.conjugacy_classes_representatives(); CCR
         </input>
@@ -1804,7 +1804,7 @@
          (1,3,5,7)(2,4,6,8), (1,4,7,2,5,8,3,6), (1,5)(2,6)(3,7)(4,8)]
         </output>
             </sage>
-            <sage permid="Ndq">
+            <sage>
                 <input>
         r = CCR[2]; r
         </input>
@@ -1812,7 +1812,7 @@
         (1,2)(3,8)(4,7)(5,6)
         </output>
             </sage>
-            <sage permid="tkz">
+            <sage>
                 <input>
         conj = []
         x = [conj.append(g^-1*r*g) for g in D if not g^-1*r*g in conj]
@@ -1826,7 +1826,7 @@
         </output>
             </sage>
 
-      <p permid="RnK">
+      <p>
         Notice that in the one conjugacy class constructed all the elements have the same cycle structure,
         which is no accident.
         Notice too that <c>rep</c> and <c>a</c> are the same element,
@@ -1834,13 +1834,13 @@
         which is a variant of the conclusion of <xref ref="actions-theorem-orbit"/>.
       </p>
 
-      <p permid="xuT">
+      <p>
         Verify that the following is a demonstration of the class equation in the special case when the action is conjugation,
         but would be valid for any group,
         rather than just <c>D</c>.
       </p>
 
-            <sage permid="ZrI">
+            <sage>
                 <input>
         sizes = [D.order()/D.centralizer(g).order()
                      for g in D.conjugacy_classes_representatives()]
@@ -1850,7 +1850,7 @@
         [1, 4, 4, 2, 2, 2, 1]
         </output>
             </sage>
-            <sage permid="FyR">
+            <sage>
                 <input>
         D.order() == sum(sizes)
         </input>
@@ -1860,9 +1860,9 @@
             </sage>
     </subsection>
 
-    <subsection permid="iVC">
+    <subsection>
       <title>Graph Automorphisms</title>
-      <p permid="dCc">
+      <p>
         As mentioned,
         group actions can be even more interesting when the set they act on is different from the group itself.
         One class of examples is the group of symmetries of a geometric solid,
@@ -1873,7 +1873,7 @@
         (<q>rigid motions</q>).
       </p>
 
-      <p permid="JJl">
+      <p>
         In this section we will examine something very similar.
         A <term>graph</term> is a mathematical object,
         consisting of vertices and edges,
@@ -1884,18 +1884,18 @@
         but there is no notion of any geometric relationships being preserved.
       </p>
 
-      <p permid="pQu">
+      <p>
         Here is an example.
         You will need to run the first compute cell to define the graph and get a nice graphic representation.
       </p>
 
-            <sage doctest="not tested" permid="XCv">
+            <sage doctest="not tested">
                 <input>
         Q = graphs.CubeGraph(3)
         Q.plot(layout='spring')
         </input>
             </sage>
-            <sage permid="lGa">
+            <sage>
                 <input>
         A = Q.automorphism_group()
         A.order()
@@ -1905,7 +1905,7 @@
         </output>
             </sage>
 
-      <p permid="VXD">
+      <p>
         Your plot should look like the vertices and edges of a cube,
         but may not quite look regular, which is fine,
         since the geometry is not relevant.
@@ -1924,12 +1924,12 @@
         but all the vertices of the first end in a zero and the second cycle has vertices ending in a one.
       </p>
 
-      <p permid="CeM">
+      <p>
         We can create explicitly the permutation that interchanges these two opposite faces,
         using a text version of the permutation in cycle notation.
       </p>
 
-            <sage permid="RNj">
+            <sage>
                 <input>
         a = A("('000','001')('010','011')('110','111')('100','101')")
         a in A
@@ -1939,14 +1939,14 @@
         </output>
             </sage>
 
-      <p permid="ilV">
+      <p>
         We can use this group to illustrate the relevant Sage commands for group actions.
       </p>
             <!-- Order of inner list may be "random" when other packages are in use.   -->
             <!-- So we show this as an example, and test its cardinality, which will   -->
             <!-- verify correctness as a set.  Names of the vertices should be flagged -->
             <!-- elsewhere if it changes.                                              -->
-            <sage doctest="not tested" permid="DJE">
+            <sage doctest="not tested">
                 <input>
         A.orbits()
         </input>
@@ -1954,19 +1954,19 @@
         [['000', '001', '010', '100', '011', '101', '110', '111']]
         </output>
             </sage>
-            <sage doctest="invisible" permid="jQN">
+            <sage doctest="invisible">
                 <input>len(A.orbits()[0])</input>
                 <output>8</output>
             </sage>
 
-      <p permid="Ote">
+      <p>
         So this action has only one (big) orbit.
         This implies that every vertex is <q>like</q> any other.
         When a permutation group behaves this way,
         we say the group is <term>transitive</term>.
       </p>
 
-            <sage permid="xUs">
+            <sage>
                 <input>
         A.is_transitive()
         </input>
@@ -1975,7 +1975,7 @@
         </output>
             </sage>
 
-      <p permid="uAn">
+      <p>
         If every vertex is <q>the same</q>
         we can compute the stabilizer of any vertex,
         since they will all be isomorphic.
@@ -1983,7 +1983,7 @@
         we compute its stabilizer.
       </p>
 
-            <sage doctest="random" permid="ebB">
+            <sage doctest="random">
                 <input>
         S = A.stabilizer('000')
         S.list()
@@ -1998,7 +1998,7 @@
         </output>
             </sage>
 
-      <p permid="aHw">
+      <p>
         That <c>S</c> has <m>6</m> elements is no surprise,
         since the group has order <m>48</m> and the size of the lone orbit is <m>8</m>.
         But we can go one step further.
@@ -2012,7 +2012,7 @@
         and in this case we can see that each element of the stabilizer is determined by how it permutes the neighbors of the stabilized vertex.
       </p>
 
-      <p permid="GOF">
+      <p>
         Transitive groups are both unusual and important.
         To contrast,
         here is a graph automorphism group that is far from transitive
@@ -2021,13 +2021,13 @@
         Run the first compute cell to see a path on <m>11</m> vertices.
       </p>
 
-            <sage doctest="not tested" permid="PXW">
+            <sage doctest="not tested">
                 <input>
         P = graphs.PathGraph(11)
         P.plot()
         </input>
             </sage>
-            <sage permid="KiK">
+            <sage>
                 <input>
         A = P.automorphism_group()
         A.list()
@@ -2037,13 +2037,13 @@
         </output>
             </sage>
 
-      <p permid="mVO">
+      <p>
         The automorphism group is the trivial identity automorphism (always) and an order <m>2</m> permutation that
         <q>flips</q> the path end-to-end.
         The group is far from transitive and there are many orbits.
       </p>
 
-            <sage permid="qpT">
+            <sage>
                 <input>
         A.is_transitive()
         </input>
@@ -2051,7 +2051,7 @@
         False
         </output>
             </sage>
-            <sage permid="Wxc">
+            <sage>
                 <input>
         A.orbits()
         </input>
@@ -2060,13 +2060,13 @@
         </output>
             </sage>
 
-      <p permid="TcX">
+      <p>
         Most of the stabilizers are trivial, with one exception.
         As subgroups of a group of order <m>2</m>,
         there really are not too many options.
       </p>
 
-            <sage permid="CEl">
+            <sage>
                 <input>
         A.stabilizer(2).list()
         </input>
@@ -2074,7 +2074,7 @@
         [()]
         </output>
             </sage>
-            <sage permid="iLu">
+            <sage>
                 <input>
         A.stabilizer(5).list()
         </input>
@@ -2083,11 +2083,11 @@
         </output>
             </sage>
 
-      <p permid="zkg">
+      <p>
         How would this final example have been different if we had used a path on <m>10</m> vertices?
       </p>
 
-      <p permid="frp">
+      <p>
         <em>NOTE</em>: There was once a small bug with stabilizers being created as subgroups of symmetric groups on fewer symbols than the correct number.
         This is fixed in Sage 4.8 and newer.
         Note the correct output below,
@@ -2096,7 +2096,7 @@
         you should definitely update your copy of Sage.
       </p>
 
-            <sage permid="OSD">
+            <sage>
                 <input>
         G = SymmetricGroup(4)
         S = G.stabilizer(4)
@@ -2109,12 +2109,12 @@
     </subsection>
 
   </section>
-  <exercises xml:id="actions-sage-exercises" component="sage-exercises" permid="brd">
+  <exercises xml:id="actions-sage-exercises" component="sage-exercises">
     <title>Sage Exercises</title>
 
-    <exercise number="1" permid="Iig" xml:id="actions-sage-exercise-Higman-Sims-graph">
+    <exercise number="1" xml:id="actions-sage-exercise-Higman-Sims-graph">
       <statement>
-        <p permid="ZXC">
+        <p>
           Construct the Higman-Sims graph with the command <c>graphs.HigmanSimsGraph()</c>.
           Then construct the automorphism group and determine the order of the one interesting normal subgroup of this group.
           You can try plotting the graph,
@@ -2123,9 +2123,9 @@
       </statement>
     </exercise>
 
-    <exercise number="2" permid="opp" xml:id="actions-sage-exercise-11-vertices">
+    <exercise number="2" xml:id="actions-sage-exercise-11-vertices">
       <statement>
-        <p permid="GeL">
+        <p>
           This exercise asks you to verify the class equation outside of the usual situation where the group action is conjugation.
           Consider the example of the automorphism group of the path on <m>11</m> vertices.
           First construct the list of orbits.
@@ -2140,9 +2140,9 @@
       </statement>
     </exercise>
 
-    <exercise number="3" permid="Uwy" xml:id="actions-sage-exercise-simple-graph">
+    <exercise number="3" xml:id="actions-sage-exercise-simple-graph">
       <statement>
-        <p permid="mlU">
+        <p>
           Construct a simple graph
           (no loops or multiple edges),
           with at least two vertices and at least one edge,
@@ -2152,7 +2152,7 @@
           The graph below looks like a triangle or <m>3</m>-cycle.
         </p>
 
-            <sage doctest="not tested" permid="wff">
+            <sage doctest="not tested">
                 <input>
             G = Graph([(1,2), (2,3), (3,1)])
             G.plot()
@@ -2161,9 +2161,9 @@
       </statement>
     </exercise>
 
-    <exercise number="4" permid="ADH" xml:id="actions-sage-exercise-group-pairs">
+    <exercise number="4" xml:id="actions-sage-exercise-group-pairs">
       <statement>
-        <p permid="yAm">
+        <p>
           For the following two pairs of groups,
           compute the list of conjugacy class representatives for each group in the pair.
           For each part,
@@ -2171,16 +2171,16 @@
           with thoughtful and insightful comments.
         </p>
 
-        <ol permid="jTR">
-          <li permid="VuN">
-            <p permid="GVJ">
+        <ol>
+          <li>
+            <p>
               The full symmetric group on 5 symbols, <m>S_5</m>,
               and the alternating group on 5 symbols, <m>A_5</m>.
             </p>
           </li>
 
-          <li permid="BBW">
-            <p permid="ncS">
+          <li>
+            <p>
               The dihedral groups that are symmetries of a <m>7</m>-gon and an <m>8</m>-gon,
               <m>D_{7}</m> and <m>D_{8}</m>.
             </p>
@@ -2189,9 +2189,9 @@
       </statement>
     </exercise>
 
-    <exercise number="5" permid="gKQ" xml:id="actions-sage-exercise-cube-graph">
+    <exercise number="5" xml:id="actions-sage-exercise-cube-graph">
       <statement>
-        <p permid="eHv">
+        <p>
           Use the command <c>graphs.CubeGraph(4)</c> to build the four-dimensional cube graph,
           <m>Q_4</m>.
           Using a plain <c>.plot()</c> command
@@ -2201,15 +2201,15 @@
           which will provide a group action on the vertex set.
         </p>
 
-        <ol permid="Qba">
-          <li permid="hJf">
-            <p permid="Tkb">
+        <ol>
+          <li>
+            <p>
               Construct the orbits of this action, and comment.
             </p>
           </li>
 
-          <li permid="NQo">
-            <p permid="zrk">
+          <li>
+            <p>
               Construct a stabilizer of a single vertex
               (which is a subgroup of the full automorphism group)
               and then consider the action of
@@ -2223,15 +2223,15 @@
       </statement>
     </exercise>
 
-    <exercise number="6" permid="MRZ" xml:id="actions-sage-exercise-order-16">
+    <exercise number="6" xml:id="actions-sage-exercise-order-16">
       <statement>
-        <p permid="KOE">
+        <p>
           Build the graph given by the commands below.
           The result should be a symmetric-looking graph with an automorphism group of order <m>16</m>.
         </p>
             <!-- Graph is number 3.8 in Cvetkovic, Doob, Sachs -->
             <!-- CycleGraph provides a good layout             -->
-                <sage doctest="not tested" permid="cmo">
+                <sage doctest="not tested">
                     <input>
             G = graphs.CycleGraph(8)
             G.add_edges([(0,2),(1,3),(4,6),(5,7)])
@@ -2239,7 +2239,7 @@
             </input>
                 </sage>
 
-        <p permid="qVN">
+        <p>
           Repeat the two parts of the previous exercise,
           but realize that in the second part there are now two different stabilizers to create,
           so build both and compare the differences in the stabilizers and their orbits.
