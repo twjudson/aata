@@ -4,59 +4,12 @@
     project. To edit the content of your document, open `src/aata.xml`
     (default location).
 -->
-<project>
+<project ptx-version="2" source="src" publication=".">
   <targets>
-    <target name="web">
-      <format>html</format>
-      <source>src/aata.xml</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/web</output-dir>
-    </target>
-    <target name="french">
-      <format>html</format>
-      <source>src/aata.xml</source>
-      <publication>publication/publication-french.ptx</publication>
-      <output-dir>output/web</output-dir>
-    </target>
-    <target name="runestone">
-      <format>html</format>
-      <source>src/aata.xml</source>
-      <publication>publisher/runestone.xml</publication>
-      <output-dir>published/AATA</output-dir>
-    </target>
-    <target name="print" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>src/aata.xml</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/print</output-dir>
-    </target>
-    <target name="print-latex">
-      <format>latex</format>
-      <source>src/aata.xml</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/print-latex</output-dir>
-    </target>
-    <target name="subset">
-      <format>html</format>
-      <source>src/aata.xml</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/subset</output-dir>
-      <stringparam key="debug.skip-knowls" value="yes"/>
-      <!-- edit this to change the section/chapter/etc. to include
-           in your subset build -->
-      <xmlid-root>ch_first</xmlid-root>
-    </target>
+    <target name="web" format="html" source="aata.xml" publication="publication/publication.ptx"/>
+    <target name="french" format="html" source="aata.xml" publication="publication/publication-french.ptx"/>
+    <target name="runestone" format="html" source="aata.xml" publication="publisher/runestone.xml"/>
+    <target name="print" format="pdf" pdf-method="xelatex" source="aata.xml" publication="publication/publication.ptx"/>
+    <target name="print-latex" format="latex" source="aata.xml" publication="publication/publication.ptx"/>
   </targets>
-  <executables>
-      <latex>latex</latex>
-      <pdflatex>pdflatex</pdflatex>
-      <xelatex>xelatex</xelatex>
-      <pdfsvg>pdf2svg</pdfsvg>
-      <asy>asy</asy>
-      <sage>sage</sage>
-      <pdfpng>convert</pdfpng>
-      <pdfeps>pdftops</pdfeps>
-      <node>node</node>
-      <liblouis>file2brl</liblouis>
-    </executables>
 </project>
