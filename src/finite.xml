@@ -105,7 +105,7 @@
         <p>
           We will prove this lemma using mathematical induction on <m>n</m>.
           We can use the binomial formula
-          (see <xref ref="integers"/>, <xref ref="integers-example-binomial-theorem"/>)
+          (see <xref ref="integers-example-binomial-theorem"/>)
           to verify the case for <m>n = 1</m>; that is,
           <md>
             (a + b)^p = \sum_{k = 0}^{p} \binom{p}{k} a^k b^{p - k}
@@ -478,24 +478,24 @@
           Messages in the first code are encoded as follows:
           <md>
             \begin{array}{rclccrcl}
-            (000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (100100) \\
-            (001) &amp; \mapsto &amp; (001001) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (101101) \\
-            (010) &amp; \mapsto &amp; (010010) &amp; &amp; &amp; (110) &amp; \mapsto &amp; (110110) \\
-            (011) &amp; \mapsto &amp; (011011) &amp; &amp; &amp; (111) &amp; \mapsto &amp; (111111).
+            (\codeword{000}) &amp; \mapsto &amp; (\codeword{000000}) &amp; &amp; &amp; (\codeword{100}) &amp; \mapsto &amp; (\codeword{100100}) \\
+            (\codeword{001}) &amp; \mapsto &amp; (\codeword{001001}) &amp; &amp; &amp; (\codeword{101}) &amp; \mapsto &amp; (\codeword{101101}) \\
+            (\codeword{010}) &amp; \mapsto &amp; (\codeword{010010}) &amp; &amp; &amp; (\codeword{110}) &amp; \mapsto &amp; (\codeword{110110}) \\
+            (\codeword{011}) &amp; \mapsto &amp; (\codeword{011011}) &amp; &amp; &amp; (\codeword{111}) &amp; \mapsto &amp; (\codeword{111111}).
             \end{array}
           </md>
           It is easy to see that the codewords form a cyclic code.
           In the second code, 3-tuples are encoded in the following manner:
           <md>
             \begin{array}{rclccrcl}
-            (000) &amp; \mapsto &amp; (000000) &amp; &amp; &amp; (100) &amp; \mapsto &amp; (111100) \\
-            (001) &amp; \mapsto &amp; (001111) &amp; &amp; &amp; (101) &amp; \mapsto &amp; (110011) \\
-            (010) &amp; \mapsto &amp; (011110) &amp; &amp; &amp; (110) &amp; \mapsto &amp; (100010) \\
-            (011) &amp; \mapsto &amp; (010001) &amp; &amp; &amp; (111) &amp; \mapsto &amp; (101101).
+            (\codeword{000}) &amp; \mapsto &amp; (\codeword{000000}) &amp; &amp; &amp; (\codeword{100}) &amp; \mapsto &amp; (\codeword{111100}) \\
+            (\codeword{001}) &amp; \mapsto &amp; (\codeword{001111}) &amp; &amp; &amp; (\codeword{101}) &amp; \mapsto &amp; (\codeword{110011}) \\
+            (\codeword{010}) &amp; \mapsto &amp; (\codeword{011110}) &amp; &amp; &amp; (\codeword{110}) &amp; \mapsto &amp; (\codeword{100010}) \\
+            (\codeword{011}) &amp; \mapsto &amp; (\codeword{010001}) &amp; &amp; &amp; (\codeword{111}) &amp; \mapsto &amp; (\codeword{101101}).
             \end{array}
           </md>
           This code cannot be cyclic,
-          since <m>(101101)</m> is a codeword but <m>(011011)</m> is not a codeword.
+          since <m>(\codeword{101101})</m> is a codeword but <m>(\codeword{011011})</m> is not a codeword.
         </p>
       </example>
     </introduction>
@@ -515,13 +515,13 @@
         </md>,
         where the degree of <m>f(x)</m> is at most <m>n - 1</m>.
         For example,
-        the polynomial corresponding to the <m>5</m>-tuple <m>(10011)</m> is
+        the polynomial corresponding to the <m>5</m>-tuple <m>(\codeword{10011})</m> is
         <md>
           1 + 0 x + 0 x^2 + 1 x^3 + 1 x^4 = 1 + x^3 + x^4
         </md>.
         Conversely, with any polynomial <m>f(x) \in {\mathbb Z}_2[x]</m> with
         <m>\deg f(x) \lt n</m> we can associate a binary <m>n</m>-tuple.
-        The polynomial <m>x + x^2 + x^4</m> corresponds to the <m>5</m>-tuple <m>(01101)</m>.
+        The polynomial <m>x + x^2 + x^4</m> corresponds to the <m>5</m>-tuple <m>(\codeword{01101})</m>.
       </p>
 
       <p>
@@ -548,16 +548,16 @@
           It is easy to check that this map is a group homomorphism.
           In fact, if we regard <m>{\mathbb Z}_2^n</m> as a vector space over <m>{\mathbb Z}_2</m>,
           <m>\phi</m> is a linear transformation of vector spaces
-          (see <xref ref="vect-exercise-linear-transformation"/>, <xref ref="vect"/>).
+          (see <xref ref="vect-exercise-linear-transformation"/>).
           Let us compute the kernel of <m>\phi</m>.
-          Observe that <m>\phi ( a_0, a_1, a_2 ) = (000000)</m> exactly when
+          Observe that <m>\phi ( a_0, a_1, a_2 ) = (\codeword{000000})</m> exactly when
           <md>
             <mrow>0 + 0x + 0x^2 + 0x^3 + 0x^4 + 0 x^5 &amp; = (1 + x^3) ( a_0 + a_1 x + a_2 x^2 )</mrow>
             <mrow>&amp; = a_0 + a_1 x + a_2 x^2 + a_0 x^3 + a_1 x^4 + a_2 x^5</mrow>
           </md>.
           Since the polynomials over a field form an integral domain,
           <m>a_0 + a_1 x + a_2 x^2</m> must be the zero polynomial.
-          Therefore, <m>\ker \phi = \{ (000) \}</m> and <m>\phi</m> is one-to-one.
+          Therefore, <m>\ker \phi = \{ (\codeword{000}) \}</m> and <m>\phi</m> is one-to-one.
         </p>
 
         <p>
@@ -680,7 +680,7 @@
           We see that <m>g(t) = (1 + t + t^3)</m> generates an ideal <m>C</m> in <m>R_7</m>.
           This code is a <m>(7, 4)</m>-block code.
           As in <xref ref="finite-example-generator-63-code"/>,
-          it is easy to calculate a generator matrix by examining what <m>g(t)</m> does to the polynomials 1, <m>t</m>,
+          it is easy to calculate a generator matrix by examining what <m>g(t)</m> does to the polynomials <m>1</m>, <m>t</m>,
           <m>t^2</m>, and <m>t^3</m>.
           A generator matrix for <m>C</m> is
           <md>
@@ -883,7 +883,7 @@
             <md>
               <mrow>a_{i_0} (\omega^r)^{i_0} + a_{i_1} (\omega^r)^{i_1} + \cdots + a_{i_{s - 1}} (\omega^r)^{i_{s - 1}} &amp; = 0</mrow>
               <mrow>a_{i_0} (\omega^{r + 1})^{i_0} + a_{i_1} (\omega^{r + 1})^{i_2} + \cdots + a_{i_{s-1}} (\omega^{r+1})^{i_{s-1}} &amp; = 0</mrow>
-              <mrow>&amp; \vdots</mrow>
+              <mrow>&amp; \aatavdots{=}</mrow>
               <mrow>a_{i_0} (\omega^{r + s - 1})^{i_0} + a_{i_1} (\omega^{r + s - 1})^{i_1} + \cdots + a_{i_{s - 1}} (\omega^{r + s - 1})^{i_{s - 1}} &amp; = 0</mrow>
             </md>.
             Therefore, <m>(a_{i_0}, a_{i_1}, \ldots,
@@ -891,7 +891,7 @@
             <md>
               <mrow>(\omega^{i_0})^r x_0 + (\omega^{i_1})^r x_1 + \cdots + (\omega^{i_{s - 1}})^r x_{n - 1} &amp; = 0</mrow>
               <mrow>(\omega^{i_0})^{r + 1} x_0 + (\omega^{i_1})^{r + 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + 1} x_{n - 1} &amp; = 0</mrow>
-              <mrow>&amp; \vdots</mrow>
+              <mrow>&amp; \aatavdots{=}</mrow>
               <mrow>(\omega^{i_0})^{r + s - 1} x_0 + (\omega^{i_1})^{r + s - 1} x_1 + \cdots + (\omega^{i_{s - 1}})^{r + s - 1} x_{n - 1} &amp; = 0</mrow>
             </md>.
             However, this system has a unique solution,

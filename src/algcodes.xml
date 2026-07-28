@@ -78,11 +78,11 @@
           </md>.
           To decode the message,
           we choose as the <m>i</m>th digit the one that appears in the <m>i</m>th place in at least two of the three transmissions.
-          For example, if the original message is <m>(0110)</m>,
-          then the transmitted message will be <m>(0110\;  0110\;  0110)</m>.
+          For example, if the original message is <m>(\codeword{0110})</m>,
+          then the transmitted message will be <m>(\codeword{0110}\;  \codeword{0110}\;  \codeword{0110})</m>.
           If there is a transmission error in the fifth digit,
-          then the received codeword will be <m>(0110\;  1110\;  0110)</m>,
-          which will be correctly decoded as <m>(0110)</m>.<fn>
+          then the received codeword will be <m>(\codeword{0110}\;  \codeword{1110}\;  \codeword{0110})</m>,
+          which will be correctly decoded as <m>(\codeword{0110})</m>.<fn>
           We will adopt the convention that bits are numbered left to right in binary <m>n</m>-tuples.
           </fn> This triple-repetition method will automatically detect and correct all single errors,
           but it is slow and inefficient:
@@ -105,26 +105,26 @@
           Using the full eight bits, we can detect single transmission errors.
           For example, the <acro>ASCII</acro> codes for A, B, and C are
           <md>
-            <mrow>\text{A} &amp; = 65_{10} = 01000001_{2},</mrow>
-            <mrow>\text{B} &amp; = 66_{10} = 01000010_{2},</mrow>
-            <mrow>\text{C} &amp; = 67_{10} = 01000011_{2}</mrow>
+            <mrow>\text{A} &amp; = \codeword{65}_{10} = \codeword{01000001}_{2},</mrow>
+            <mrow>\text{B} &amp; = \codeword{66}_{10} = \codeword{01000010}_{2},</mrow>
+            <mrow>\text{C} &amp; = \codeword{67}_{10} = \codeword{01000011}_{2}</mrow>
           </md>.
-          Notice that the leftmost bit is always set to 0;
+          Notice that the leftmost bit is always set to <m>0</m>;
           that is, the <m>128</m> <acro>ASCII</acro> characters have codes
           <md>
-            <mrow>00000000_{2} &amp; = 0_{10},</mrow>
-            <mrow>&amp; \vdots</mrow>
-            <mrow>01111111_{2} &amp; = 127_{10}</mrow>
+            <mrow>\codeword{00000000}_{2} &amp; = \codeword{0}_{10},</mrow>
+            <mrow>&amp; \aatavdots{=}</mrow>
+            <mrow>\codeword{01111111}_{2} &amp; = \codeword{127}_{10}</mrow>
           </md>.
           The bit can be used for error checking on the other seven bits.
           It is set to either <m>0</m> or <m>1</m> so that the total number of <m>1</m> bits in the representation of a character is even.
           Using even parity, the codes for A, B, and C now become
           <md>
-            <mrow>\text{A} &amp; = 01000001_{2},</mrow>
-            <mrow>\text{B} &amp; = 01000010_{2},</mrow>
-            <mrow>\text{C} &amp; = 11000011_{2}</mrow>
+            <mrow>\text{A} &amp; = \codeword{01000001}_{2},</mrow>
+            <mrow>\text{B} &amp; = \codeword{01000010}_{2},</mrow>
+            <mrow>\text{C} &amp; = \codeword{11000011}_{2}</mrow>
           </md>.
-          Suppose an A is sent and a transmission error in the sixth bit is caused by noise over the communication channel so that  <m>(0100\; 0101)</m> is received.
+          Suppose an A is sent and a transmission error in the sixth bit is caused by noise over the communication channel so that  <m>(\codeword{0100}\; \codeword{0101})</m> is received.
           We know an error has occurred since the received word has an odd number of <m>1</m>s,
           and we can now request that the codeword be transmitted again.
           When used for error checking,
@@ -158,7 +158,7 @@
         The received word is a codeword,
         but will be decoded into a C instead of an A. Second,
         we do not have the ability to correct errors.
-        If the 8-tuple <m>(1001\; 1000)</m> is received,
+        If the 8-tuple <m>(\codeword{1001}\; \codeword{1000})</m> is received,
         we know that an error has occurred,
         but we have no idea which bit has been changed.
         We will now investigate a coding scheme that will not only allow us to detect transmission errors but will actually correct the errors.
@@ -167,12 +167,12 @@
       <example xml:id="algcodes-example-nearest">
         <p>
           Suppose that our original message is either a <m>0</m> or a <m>1</m>,
-          and that <m>0</m> encodes to <m>(000)</m> and <m>1</m> encodes to <m>(111)</m>.
+          and that <m>0</m> encodes to <m>(\codeword{000})</m> and <m>1</m> encodes to <m>(\codeword{111})</m>.
           If only a single error occurs during transmission,
           we can detect and correct the error.
-          For example, if a <m>(101)</m> is received,
+          For example, if a <m>(\codeword{101})</m> is received,
           then the second bit must have been changed from a <m>1</m> to a <m>0</m>.
-          The originally transmitted codeword must have been <m>(111)</m>.
+          The originally transmitted codeword must have been <m>(\codeword{111})</m>.
           This method will detect and correct all single errors.
         </p>
 
@@ -194,17 +194,17 @@
             </row>
             <row bottom="medium">
               <cell>Codeword</cell>
-              <cell><m>000</m></cell>
-              <cell><m>001</m></cell>
-              <cell><m>010</m></cell>
-              <cell><m>011</m></cell>
-              <cell><m>100</m></cell>
-              <cell><m>101</m></cell>
-              <cell><m>110</m></cell>
-              <cell><m>111</m></cell>
+              <cell><m>\codeword{000}</m></cell>
+              <cell><m>\codeword{001}</m></cell>
+              <cell><m>\codeword{010}</m></cell>
+              <cell><m>\codeword{011}</m></cell>
+              <cell><m>\codeword{100}</m></cell>
+              <cell><m>\codeword{101}</m></cell>
+              <cell><m>\codeword{110}</m></cell>
+              <cell><m>\codeword{111}</m></cell>
             </row>
             <row>
-              <cell><m>000</m></cell>
+              <cell><m>\codeword{000}</m></cell>
               <cell><m>0</m></cell>
               <cell><m>1</m></cell>
               <cell><m>1</m></cell>
@@ -215,7 +215,7 @@
               <cell><m>3</m></cell>
             </row>
             <row bottom="medium">
-              <cell><m>111</m></cell>
+              <cell><m>\codeword{111}</m></cell>
               <cell><m>3</m></cell>
               <cell><m>2</m></cell>
               <cell><m>2</m></cell>
@@ -231,7 +231,7 @@
 
         <p>
           In <xref ref="algcodes-table-repetition-code"/>,
-          we present all possible words that might be received for the transmitted codewords <m>(000)</m> and <m>(111)</m>.
+          we present all possible words that might be received for the transmitted codewords <m>(\codeword{000})</m> and <m>(\codeword{111})</m>.
           <xref ref="algcodes-table-repetition-code"/> also shows the number of bits by which each received <m>3</m>-tuple differs from each original codeword.
         </p>
       </example>
@@ -244,14 +244,14 @@
       <p>
         The coding scheme presented in <xref ref="algcodes-example-nearest"/> is not a complete solution to the problem because it does not account for the possibility of multiple errors.
         For example,
-        either a (000) or a (111) could be sent and a (001) received.
+        either a <m>(\codeword{000})</m> or a <m>(\codeword{111})</m> could be sent and a <m>(\codeword{001})</m> received.
         We have no means of deciding from the received word whether there was a single error in the third bit or two errors,
         one in the first bit and one in the second.
         No matter what coding scheme is used,
         an incorrect message could be received.
-        We could transmit a (000),
+        We could transmit a <m>(\codeword{000})</m>,
         have errors in all three bits,
-        and receive the codeword (111).
+        and receive the codeword <m>(\codeword{111})</m>.
         It is important to make explicit assumptions about the likelihood and distribution of transmission errors so that,
         in a particular application,
         it will be known whether a given error detection scheme is appropriate.
@@ -406,7 +406,7 @@
         <m>w({\mathbf x})</m>, of a binary codeword
         <m>{\mathbf x}</m> is the number of <m>1</m>s in <m>{\mathbf x}</m>.
         Clearly, <m>w({\mathbf x}) = d({\mathbf x}, {\mathbf 0})</m>,
-        where <m>{\mathbf 0} = (00 \cdots 0)</m>.
+        where <m>{\mathbf 0} = (\codeword{00 \cdots 0})</m>.
 
         <notation>
           <usage><m>d(\mathbf x, \mathbf y)</m></usage>
@@ -427,14 +427,14 @@
 
       <example xml:id="algcodes-example-min-distance">
         <p>
-          Let <m>{\mathbf x} = (10101)</m>,
-          <m>{\mathbf y} = (11010)</m>,
-          and <m>{\mathbf z} = (00011)</m> be all of the codewords in some code <m>C</m>.
+          Let <m>{\mathbf x} = (\codeword{10101})</m>,
+          <m>{\mathbf y} = (\codeword{11010})</m>,
+          and <m>{\mathbf z} = (\codeword{00011})</m> be all of the codewords in some code <m>C</m>.
           Then we have the following Hamming distances:
           <md>
             d({\mathbf x},{\mathbf y}) = 4, \qquad d({\mathbf x},{\mathbf z}) = 3, \qquad d({\mathbf y},{\mathbf z}) = 3
           </md>.
-          The minimum distance  for this code is 3.
+          The minimum distance for this code is <m>3</m>.
           We also have the following weights:
           <md>
             w({\mathbf x}) = 3, \qquad w({\mathbf y}) = 3, \qquad w({\mathbf z}) = 2
@@ -496,15 +496,15 @@
       </p>
 
       <p>
-        Suppose that <m>{\mathbf x} = (1101)</m> and
-        <m>{\mathbf y} = (1100)</m> are codewords in some code.
-        If we transmit <m>(1101)</m> and an error occurs in the rightmost bit,
-        then (1100) will be received.
-        Since <m>(1100)</m> is a codeword,
-        the decoder will decode <m>(1100)</m> as the transmitted message.
+        Suppose that <m>{\mathbf x} = (\codeword{1101})</m> and
+        <m>{\mathbf y} = (\codeword{1100})</m> are codewords in some code.
+        If we transmit <m>(\codeword{1101})</m> and an error occurs in the rightmost bit,
+        then <m>(\codeword{1100})</m> will be received.
+        Since <m>(\codeword{1100})</m> is a codeword,
+        the decoder will decode <m>(\codeword{1100})</m> as the transmitted message.
         This code is clearly not very appropriate for error detection.
         The problem is that <m>d({\mathbf x}, {\mathbf y}) = 1</m>.
-        If <m>{\mathbf x} = (1100)</m> and <m>{\mathbf y} = (1010)</m> are codewords,
+        If <m>{\mathbf x} = (\codeword{1100})</m> and <m>{\mathbf y} = (\codeword{1010})</m> are codewords,
         then <m>d({\mathbf x}, {\mathbf y}) = 2</m>.
         If <m>{\mathbf x}</m> is transmitted and a single error occurs,
         then <m>{\mathbf y}</m> can never be received.
@@ -518,17 +518,17 @@
         <tabular halign="center" top="medium" left="medium" right="medium">
           <row bottom="medium">
             <cell/>
-            <cell><m>0000</m></cell>
-            <cell><m>0011</m></cell>
-            <cell><m>0101</m></cell>
-            <cell><m>0110</m></cell>
-            <cell><m>1001</m></cell>
-            <cell><m>1010</m></cell>
-            <cell><m>1100</m></cell>
-            <cell><m>1111</m></cell>
+            <cell><m>\codeword{0000}</m></cell>
+            <cell><m>\codeword{0011}</m></cell>
+            <cell><m>\codeword{0101}</m></cell>
+            <cell><m>\codeword{0110}</m></cell>
+            <cell><m>\codeword{1001}</m></cell>
+            <cell><m>\codeword{1010}</m></cell>
+            <cell><m>\codeword{1100}</m></cell>
+            <cell><m>\codeword{1111}</m></cell>
           </row>
           <row>
-            <cell><m>0000</m></cell>
+            <cell><m>\codeword{0000}</m></cell>
             <cell><m>0</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
@@ -539,7 +539,7 @@
             <cell><m>4</m></cell>
           </row>
           <row>
-            <cell><m>0011</m></cell>
+            <cell><m>\codeword{0011}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>0</m></cell>
             <cell><m>2</m></cell>
@@ -550,7 +550,7 @@
             <cell><m>2</m></cell>
           </row>
           <row>
-            <cell><m>0101</m></cell>
+            <cell><m>\codeword{0101}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
             <cell><m>0</m></cell>
@@ -561,7 +561,7 @@
             <cell><m>2</m></cell>
           </row>
           <row>
-            <cell><m>0110</m></cell>
+            <cell><m>\codeword{0110}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
@@ -572,7 +572,7 @@
             <cell><m>2</m></cell>
           </row>
           <row>
-            <cell><m>1001</m></cell>
+            <cell><m>\codeword{1001}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
@@ -583,7 +583,7 @@
             <cell><m>2</m></cell>
           </row>
           <row>
-            <cell><m>1010</m></cell>
+            <cell><m>\codeword{1010}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
             <cell><m>4</m></cell>
@@ -594,7 +594,7 @@
             <cell><m>2</m></cell>
           </row>
           <row>
-            <cell><m>1100</m></cell>
+            <cell><m>\codeword{1100}</m></cell>
             <cell><m>2</m></cell>
             <cell><m>4</m></cell>
             <cell><m>2</m></cell>
@@ -605,7 +605,7 @@
             <cell><m>2</m></cell>
           </row>
           <row bottom="medium">
-            <cell><m>1111</m></cell>
+            <cell><m>\codeword{1111}</m></cell>
             <cell><m>4</m></cell>
             <cell><m>2</m></cell>
             <cell><m>2</m></cell>
@@ -691,10 +691,10 @@
       <example xml:id="algcodes-example-single-correct">
         <p>
           In <xref ref="algcodes-table-hamming-distance"/>,
-          the codewords <m>{\mathbf c}_1 = (00000)</m>,
-          <m>{\mathbf c}_2 = (00111)</m>,
-          <m>{\mathbf c}_3 = (11100)</m>,
-          and <m>{\mathbf c}_4 = (11011)</m> determine a single error-correcting code.
+          the codewords <m>{\mathbf c}_1 = (\codeword{00000})</m>,
+          <m>{\mathbf c}_2 = (\codeword{00111})</m>,
+          <m>{\mathbf c}_3 = (\codeword{11100})</m>,
+          and <m>{\mathbf c}_4 = (\codeword{11011})</m> determine a single error-correcting code.
         </p>
 
         <table xml:id="algcodes-table-hamming-distance">
@@ -702,34 +702,34 @@
           <tabular halign="center" top="medium" left="medium" right="medium">
             <row bottom="medium">
               <cell/>
-              <cell><m>00000</m></cell>
-              <cell><m>00111</m></cell>
-              <cell><m>11100</m></cell>
-              <cell><m>11011</m></cell>
+              <cell><m>\codeword{00000}</m></cell>
+              <cell><m>\codeword{00111}</m></cell>
+              <cell><m>\codeword{11100}</m></cell>
+              <cell><m>\codeword{11011}</m></cell>
             </row>
             <row>
-              <cell><m>00000 </m></cell>
+              <cell><m>\codeword{00000} </m></cell>
               <cell><m>0</m></cell>
               <cell><m>3</m></cell>
               <cell><m>3</m></cell>
               <cell><m>4</m></cell>
             </row>
             <row>
-              <cell><m>00111 </m></cell>
+              <cell><m>\codeword{00111} </m></cell>
               <cell><m>3</m></cell>
               <cell><m>0</m></cell>
               <cell><m>4</m></cell>
               <cell><m>3</m></cell>
             </row>
             <row>
-              <cell><m>11100 </m></cell>
+              <cell><m>\codeword{11100} </m></cell>
               <cell><m>3</m></cell>
               <cell><m>4</m></cell>
               <cell><m>0</m></cell>
               <cell><m>3</m></cell>
             </row>
             <row bottom="medium">
-              <cell><m>11011 </m></cell>
+              <cell><m>\codeword{11011} </m></cell>
               <cell><m>4</m></cell>
               <cell><m>3</m></cell>
               <cell><m>3</m></cell>
@@ -786,7 +786,7 @@
         nor is it necessary to check that <m>{\mathbf 0}</m> is a codeword.
         For instance,
         <md>
-          (11000101) + (11000101) = (00000000)
+          (\codeword{11000101}) + (\codeword{11000101}) = (\codeword{00000000})
         </md>.
       </p>
 
@@ -794,10 +794,10 @@
         <p>
           Suppose that we have a code that consists of the following 7-tuples:
           <md>
-            <mrow>&amp;(0000000) &amp; &amp; (0001111) &amp;  &amp; (0010101) &amp; &amp; (0011010)</mrow>
-            <mrow>&amp;(0100110) &amp; &amp; (0101001) &amp; &amp; (0110011) &amp; &amp; (0111100)</mrow>
-            <mrow>&amp;(1000011) &amp; &amp; (1001100) &amp; &amp; (1010110) &amp; &amp; (1011001)</mrow>
-            <mrow>&amp;(1100101) &amp; &amp; (1101010) &amp; &amp; (1110000) &amp; &amp; (1111111)</mrow>
+            <mrow>&amp;(\codeword{0000000}) &amp; &amp; (\codeword{0001111}) &amp;  &amp; (\codeword{0010101}) &amp; &amp; (\codeword{0011010})</mrow>
+            <mrow>&amp;(\codeword{0100110}) &amp; &amp; (\codeword{0101001}) &amp; &amp; (\codeword{0110011}) &amp; &amp; (\codeword{0111100})</mrow>
+            <mrow>&amp;(\codeword{1000011}) &amp; &amp; (\codeword{1001100}) &amp; &amp; (\codeword{1010110}) &amp; &amp; (\codeword{1011001})</mrow>
+            <mrow>&amp;(\codeword{1100101}) &amp; &amp; (\codeword{1101010}) &amp; &amp; (\codeword{1110000}) &amp; &amp; (\codeword{1111111})</mrow>
           </md>.
           It is a straightforward though tedious task to verify that this code is also a subgroup of
           <m>{\mathbb Z}_2^7</m> and, therefore, a group code.
@@ -888,7 +888,7 @@
         Since we will be working with matrices,
         we will write binary <m>n</m>-tuples as column vectors for the remainder of this chapter.
         </fn> For example,
-        if <m>{\mathbf x} = (011001)^\transpose</m> and <m>{\mathbf y} = (110101)^\transpose</m>,
+        if <m>{\mathbf x} = (\codeword{011001})^\transpose</m> and <m>{\mathbf y} = (\codeword{110101})^\transpose</m>,
         then <m>{\mathbf x} \cdot {\mathbf y} = 0</m>.
         We can also look at an inner product as the product of a row matrix with a column matrix; that is,
         <md>
@@ -969,7 +969,7 @@
           </md>.
           The set of binary <m>5</m>-tuples satisfying these equations is
           <md>
-            (00000) \qquad (11110) \qquad (10101) \qquad (01011)
+            (\codeword{00000}) \qquad (\codeword{11110}) \qquad (\codeword{10101}) \qquad (\codeword{01011})
           </md>.
           This code is easily determined to be a group code.
         </p>
@@ -1015,7 +1015,7 @@
             1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1
             \end{pmatrix}
           </md>.
-          Suppose that the <m>6</m>-tuple <m>{\mathbf x} = (010011)^\transpose</m> is received.
+          Suppose that the <m>6</m>-tuple <m>{\mathbf x} = (\codeword{010011})^\transpose</m> is received.
           It is a simple matter of matrix multiplication to determine whether or not <m>{\mathbf x}</m> is a codeword.
           Since
           <md>
@@ -1083,7 +1083,7 @@
       <p>
         Suppose that we have the following eight words to be encoded:
         <md>
-          (000), (001), (010), \ldots, (111)
+          (\codeword{000}), (\codeword{001}), (\codeword{010}), \ldots, (\codeword{111})
         </md>.
         For
         <md>
@@ -1150,8 +1150,8 @@
         The null space of <m>H</m> is easily computed to be
         <md>
           \begin{array}{cccc}
-          (000000) &amp; (001101) &amp; (010110) &amp; (011011) \\
-          (100011) &amp; (101110) &amp; (110101) &amp; (111000).
+          (\codeword{000000}) &amp; (\codeword{001101}) &amp; (\codeword{010110}) &amp; (\codeword{011011}) \\
+          (\codeword{100011}) &amp; (\codeword{101110}) &amp; (\codeword{110101}) &amp; (\codeword{111000}).
           \end{array}
         </md>
         An even easier way to compute the null space is with the generator matrix <m>G</m> (<xref ref="algcodes-table-matrix-gen-code"/>).
@@ -1166,36 +1166,36 @@
           <cell>Codeword <m>G \mathbf x</m></cell>
         </row>
         <row>
-          <cell><m>000</m></cell>
-          <cell><m>000000</m></cell>
+          <cell><m>\codeword{000}</m></cell>
+          <cell><m>\codeword{000000}</m></cell>
         </row>
         <row>
-          <cell><m>001</m></cell>
-          <cell><m>001101</m></cell>
+          <cell><m>\codeword{001}</m></cell>
+          <cell><m>\codeword{001101}</m></cell>
         </row>
         <row>
-          <cell><m>010</m></cell>
-          <cell><m>010110</m></cell>
+          <cell><m>\codeword{010}</m></cell>
+          <cell><m>\codeword{010110}</m></cell>
         </row>
         <row>
-          <cell><m>011</m></cell>
-          <cell><m>011011</m></cell>
+          <cell><m>\codeword{011}</m></cell>
+          <cell><m>\codeword{011011}</m></cell>
         </row>
         <row>
-          <cell><m>100</m></cell>
-          <cell><m>100011</m></cell>
+          <cell><m>\codeword{100}</m></cell>
+          <cell><m>\codeword{100011}</m></cell>
         </row>
         <row>
-          <cell><m>101</m></cell>
-          <cell><m>101110</m></cell>
+          <cell><m>\codeword{101}</m></cell>
+          <cell><m>\codeword{101110}</m></cell>
         </row>
         <row>
-          <cell><m>110</m></cell>
-          <cell><m>110101</m></cell>
+          <cell><m>\codeword{110}</m></cell>
+          <cell><m>\codeword{110101}</m></cell>
         </row>
         <row bottom="medium">
-          <cell><m>111</m></cell>
-          <cell><m>111000</m></cell>
+          <cell><m>\codeword{111}</m></cell>
+          <cell><m>\codeword{111000}</m></cell>
         </row>
       </tabular>
 
@@ -1333,7 +1333,7 @@
           <md>
             <mrow>a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m} + y_{n-m+1} &amp; = 0</mrow>
             <mrow>a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m} + y_{n-m+2} &amp; = 0</mrow>
-            <mrow>&amp; \vdots</mrow>
+            <mrow>&amp; \aatavdots{=}</mrow>
             <mrow>a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m} + y_{n-m+m} &amp; = 0</mrow>
           </md>.
           Equivalently, <m>y_{n-m+1}, \ldots,
@@ -1341,7 +1341,7 @@
           <md>
             <mrow>y_{n-m+1} &amp; = a_{11} y_1 + a_{12} y_2 + \cdots + a_{1, n-m} y_{n-m}</mrow>
             <mrow>y_{n-m+2} &amp; = a_{21} y_1 + a_{22} y_2 + \cdots + a_{2, n-m} y_{n-m}</mrow>
-            <mrow>&amp; \vdots</mrow>
+            <mrow>&amp; \aatavdots{=}</mrow>
             <mrow>y_{n} &amp; = a_{m1} y_1 + a_{m2} y_2 + \cdots + a_{m, n-m} y_{n-m}</mrow>
           </md>.
           Consequently,
@@ -1354,10 +1354,10 @@
       It would be helpful if we could compute the minimum distance of a linear code directly from its matrix <m>H</m> in order to determine the error-detecting and error-correcting capabilities of the code.
       Suppose that
       <md>
-        <mrow>{\mathbf e}_1 &amp; = (100 \cdots 00)^\transpose</mrow>
-        <mrow>{\mathbf e}_2 &amp; = (010 \cdots 00)^\transpose</mrow>
-        <mrow>&amp; \vdots</mrow>
-        <mrow>{\mathbf e}_n &amp; = (000 \cdots 01)^\transpose</mrow>
+        <mrow>{\mathbf e}_1 &amp; = (\codeword{100 \cdots 00})^\transpose</mrow>
+        <mrow>{\mathbf e}_2 &amp; = (\codeword{010 \cdots 00})^\transpose</mrow>
+        <mrow>&amp; \aatavdots{=}</mrow>
+        <mrow>{\mathbf e}_n &amp; = (\codeword{000 \cdots 01})^\transpose</mrow>
       </md>
       are the <m>n</m>-tuples in <m>{\mathbb Z}_2^n</m> of weight <m>1</m>.
       For an <m>m \times n</m> binary matrix <m>H</m>,
@@ -1469,9 +1469,9 @@
         and want to determine whether or not <m>H</m> is the canonical parity-check matrix for an error-correcting code,
         it is necessary to make certain that
         <m>\Null(H)</m> does not contain any <m>4</m>-tuples of weight <m>2</m>.
-        That is, <m>(1100)</m>, <m>(1010)</m>,
-        <m>(1001)</m>, <m>(0110)</m>,
-        <m>(0101)</m>, and <m>(0011)</m> must not be in <m>\Null(H)</m>.
+        That is, <m>(\codeword{1100})</m>, <m>(\codeword{1010})</m>,
+        <m>(\codeword{1001})</m>, <m>(\codeword{0110})</m>,
+        <m>(\codeword{0101})</m>, and <m>(\codeword{0011})</m> must not be in <m>\Null(H)</m>.
         The next theorem states that we can indeed determine that the code generated by <m>H</m> is error-correcting by examining the columns of <m>H</m>.
         Notice in this example that not only does <m>H</m> have no zero columns,
         but also that no two columns are the same.
@@ -1488,7 +1488,7 @@
 
       <proof>
         <p>
-          The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has <m>1</m>s in the <m>i</m>th and <m>j</m>th entries and 0s elsewhere,
+          The <m>n</m>-tuple <m>{\mathbf e}_{i} +{\mathbf e}_{j}</m> has <m>1</m>s in the <m>i</m>th and <m>j</m>th entries and <m>0</m>s elsewhere,
           and <m>w( {\mathbf e}_{i} +{\mathbf e}_{j}) = 2</m> for <m>i \neq j</m>.
           Since
           <md>
@@ -1557,7 +1557,7 @@
             1 &amp; 0 &amp; 0 &amp; 0 &amp; 1
             \end{pmatrix}
           </md>
-          and the <m>5</m>-tuples <m>{\mathbf x} = (11011)^\transpose</m> and <m>{\mathbf y} = (01011)^\transpose</m>,
+          and the <m>5</m>-tuples <m>{\mathbf x} = (\codeword{11011})^\transpose</m> and <m>{\mathbf y} = (\codeword{01011})^\transpose</m>,
           we can compute
           <md>
             H{\mathbf x} =
@@ -1644,9 +1644,9 @@
             1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1
             \end{pmatrix}
           </md>
-          and suppose that the  <m>6</m>-tuples <m>{\mathbf x} = (111110)^\transpose</m>,
-          <m>{\mathbf y} = (111111)^\transpose</m>,
-          and <m>{\mathbf z} = (010111)^\transpose</m> have been received.
+          and suppose that the  <m>6</m>-tuples <m>{\mathbf x} = (\codeword{111110})^\transpose</m>,
+          <m>{\mathbf y} = (\codeword{111111})^\transpose</m>,
+          and <m>{\mathbf z} = (\codeword{010111})^\transpose</m> have been received.
           Then
           <md>
             H{\mathbf x} =
@@ -1666,7 +1666,7 @@
           <m>{\mathbf z}</m> has an error in the fourth bit.
           The transmitted codewords for
           <m>{\mathbf x}</m> and <m>{\mathbf z}</m> must have been
-          <m>(110110)</m> and <m>(010011)</m>, respectively.
+          <m>(\codeword{110110})</m> and <m>(\codeword{010011})</m>, respectively.
           The syndrome of <m>{\mathbf y}</m> does not occur in any of the columns of the matrix <m>H</m>,
           so multiple errors must have occurred to produce <m>{\mathbf y}</m>.
         </p>
@@ -1701,7 +1701,7 @@
           </md>.
           The code consists of the codewords
           <md>
-            (00000) \quad (01101) \quad (10011) \quad (11110)
+            (\codeword{00000}) \quad (\codeword{01101}) \quad (\codeword{10011}) \quad (\codeword{11110})
           </md>.
           There are <m>2^{5-2} = 2^3</m> cosets of <m>C</m> in <m>{\mathbb Z}_2^5</m>,
           each with order <m>2^2 =4</m>.
@@ -1722,35 +1722,35 @@
           </row>
           <row>
             <cell><m>C</m></cell>
-            <cell><m>(00000)  (01101)  (10011)  (11110)</m></cell>
+            <cell><m>(\codeword{00000})  (\codeword{01101})  (\codeword{10011})  (\codeword{11110})</m></cell>
           </row>
           <row>
-            <cell><m>(10000) + C</m></cell>
-            <cell><m>(10000)  (11101)  (00011)  (01110)</m></cell>
+            <cell><m>(\codeword{10000}) + C</m></cell>
+            <cell><m>(\codeword{10000})  (\codeword{11101})  (\codeword{00011})  (\codeword{01110})</m></cell>
           </row>
           <row>
-            <cell><m>(01000) + C</m></cell>
-            <cell><m>(01000)  (00101)  (11011)  (10110)</m></cell>
+            <cell><m>(\codeword{01000}) + C</m></cell>
+            <cell><m>(\codeword{01000})  (\codeword{00101})  (\codeword{11011})  (\codeword{10110})</m></cell>
           </row>
           <row>
-            <cell><m>(00100) + C</m></cell>
-            <cell><m>(00100)  (01001)  (10111)  (11010)</m></cell>
+            <cell><m>(\codeword{00100}) + C</m></cell>
+            <cell><m>(\codeword{00100})  (\codeword{01001})  (\codeword{10111})  (\codeword{11010})</m></cell>
           </row>
           <row>
-            <cell><m>(00010) + C</m></cell>
-            <cell><m>(00010)  (01111)  (10001)  (11100)</m></cell>
+            <cell><m>(\codeword{00010}) + C</m></cell>
+            <cell><m>(\codeword{00010})  (\codeword{01111})  (\codeword{10001})  (\codeword{11100})</m></cell>
           </row>
           <row>
-            <cell><m>(00001) + C</m></cell>
-            <cell><m>(00001)  (01100)  (10010)  (11111)</m></cell>
+            <cell><m>(\codeword{00001}) + C</m></cell>
+            <cell><m>(\codeword{00001})  (\codeword{01100})  (\codeword{10010})  (\codeword{11111})</m></cell>
           </row>
           <row>
-            <cell><m>(10100) + C</m></cell>
-            <cell><m>(00111)  (01010)  (10100)  (11001)</m></cell>
+            <cell><m>(\codeword{10100}) + C</m></cell>
+            <cell><m>(\codeword{00111})  (\codeword{01010})  (\codeword{10100})  (\codeword{11001})</m></cell>
           </row>
           <row bottom="medium">
-            <cell><m>(00110) + C</m></cell>
-            <cell><m>(00110)  (01011)  (10101)  (11000)</m></cell>
+            <cell><m>(\codeword{00110}) + C</m></cell>
+            <cell><m>(\codeword{00110})  (\codeword{01011})  (\codeword{10101})  (\codeword{11000})</m></cell>
           </row>
         </tabular>
 
@@ -1780,10 +1780,10 @@
           In <xref ref="algcodes-table-cosets-of-c"/>,
           notice that we have chosen a representative of the least possible weight for each coset.
           These representatives are coset leaders.
-          Now suppose that <m>{\mathbf r} = (01111)</m> is the received word.
+          Now suppose that <m>{\mathbf r} = (\codeword{01111})</m> is the received word.
           To decode <m>{\mathbf r}</m>,
-          we find that it is in the coset <m>(00010) + C</m>;
-          hence, the originally transmitted codeword must have been <m>(01101) = (01111) + (00010)</m>.
+          we find that it is in the coset <m>(\codeword{00010}) + C</m>;
+          hence, the originally transmitted codeword must have been <m>(\codeword{01101}) = (\codeword{01111}) + (\codeword{00010})</m>.
         </p>
       </example>
 
@@ -1803,36 +1803,36 @@
             <cell>Coset Leader</cell>
           </row>
           <row>
-            <cell><m>(000)</m></cell>
-            <cell><m>(00000)</m></cell>
+            <cell><m>(\codeword{000})</m></cell>
+            <cell><m>(\codeword{00000})</m></cell>
           </row>
           <row>
-            <cell><m>(001)</m></cell>
-            <cell><m>(00001)</m></cell>
+            <cell><m>(\codeword{001})</m></cell>
+            <cell><m>(\codeword{00001})</m></cell>
           </row>
           <row>
-            <cell><m>(010)</m></cell>
-            <cell><m>(00010)</m></cell>
+            <cell><m>(\codeword{010})</m></cell>
+            <cell><m>(\codeword{00010})</m></cell>
           </row>
           <row>
-            <cell><m>(011)</m></cell>
-            <cell><m>(10000)</m></cell>
+            <cell><m>(\codeword{011})</m></cell>
+            <cell><m>(\codeword{10000})</m></cell>
           </row>
           <row>
-            <cell><m>(100)</m></cell>
-            <cell><m>(00100)</m></cell>
+            <cell><m>(\codeword{100})</m></cell>
+            <cell><m>(\codeword{00100})</m></cell>
           </row>
           <row>
-            <cell><m>(101)</m></cell>
-            <cell><m>(01000)</m></cell>
+            <cell><m>(\codeword{101})</m></cell>
+            <cell><m>(\codeword{01000})</m></cell>
           </row>
           <row>
-            <cell><m>(110)</m></cell>
-            <cell><m>(00110)</m></cell>
+            <cell><m>(\codeword{110})</m></cell>
+            <cell><m>(\codeword{00110})</m></cell>
           </row>
           <row bottom="medium">
-            <cell><m>(111)</m></cell>
-            <cell><m>(10100)</m></cell>
+            <cell><m>(\codeword{111})</m></cell>
+            <cell><m>(\codeword{10100})</m></cell>
           </row>
         </tabular>
 
@@ -1862,7 +1862,7 @@
       <example xml:id="algcodes-example-decoding-table">
         <p>
           <xref ref="algcodes-table-syndrome"/> is a decoding table for the code <m>C</m> given in <xref ref="algcodes-example-coset-decoding"/>.
-          If <m>{\mathbf x} = (01111)</m> is received,
+          If <m>{\mathbf x} = (\codeword{01111})</m> is received,
           then its syndrome can be computed to be
           <md>
             H {\mathbf x} =
@@ -1871,7 +1871,7 @@
             \end{pmatrix}
           </md>.
           Examining the decoding table,
-          we determine that the coset leader is <m>(00010)</m>.
+          we determine that the coset leader is <m>(\codeword{00010})</m>.
           It is now easy to decode the received codeword.
         </p>
       </example>
@@ -1945,7 +1945,7 @@
             0 \amp 0 \amp 1 \amp 1 \amp 1
             \end{bmatrix}
           </md>
-          Then <m>x=11100</m> is not a codeword.
+          Then <m>x=\codeword{11100}</m> is not a codeword.
           Describe a computation, and give the result of that computation,
           which verifies that <m>x</m> is not a codeword of the code <m>C</m>.
         </p>
@@ -1991,15 +1991,15 @@
           </row>
           <row bottom="medium">
             <cell>Codeword</cell>
-            <cell><m>000</m></cell>
-            <cell><m>001</m></cell>
-            <cell><m>010</m></cell>
-            <cell><m>011</m></cell>
-            <cell><m>101</m></cell>
-            <cell><m>110</m></cell>
-            <cell><m>111</m></cell>
-            <cell><m>000</m></cell>
-            <cell><m>001</m></cell>
+            <cell><m>\codeword{000}</m></cell>
+            <cell><m>\codeword{001}</m></cell>
+            <cell><m>\codeword{010}</m></cell>
+            <cell><m>\codeword{011}</m></cell>
+            <cell><m>\codeword{101}</m></cell>
+            <cell><m>\codeword{110}</m></cell>
+            <cell><m>\codeword{111}</m></cell>
+            <cell><m>\codeword{000}</m></cell>
+            <cell><m>\codeword{001}</m></cell>
           </row>
         </tabular>
       </statement>
@@ -2012,13 +2012,13 @@
           explain why the following set of <m>4</m>-tuples in
           <m>{\mathbb Z}_2^4</m> cannot be a group code.
           <md>
-            (0110) \quad (1001) \quad (1010) \quad (1100)
+            (\codeword{0110}) \quad (\codeword{1001}) \quad (\codeword{1010}) \quad (\codeword{1100})
           </md>
         </p>
       </statement>
       <hint>
         <p>
-          This cannot be a group code since <m>(0000) \notin C</m>.
+          This cannot be a group code since <m>(\codeword{0000}) \notin C</m>.
         </p>
       </hint>
     </exercise>
@@ -2031,25 +2031,25 @@
           <ol cols="2">
             <li>
               <p>
-                <m>(011010), (011100)</m>
+                <m>(\codeword{011010}), (\codeword{011100})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(11110101), (01010100)</m>
+                <m>(\codeword{11110101}), (\codeword{01010100})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(00110), (01111)</m>
+                <m>(\codeword{00110}), (\codeword{01111})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(1001), (0111)</m>
+                <m>(\codeword{1001}), (\codeword{0111})</m>
               </p>
             </li>
           </ol>
@@ -2070,25 +2070,25 @@
           <ol cols="2">
             <li>
               <p>
-                <m>(011010)</m>
+                <m>(\codeword{011010})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(11110101)</m>
+                <m>(\codeword{11110101})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(01111)</m>
+                <m>(\codeword{01111})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(1011)</m>
+                <m>(\codeword{1011})</m>
               </p>
             </li>
           </ol>
@@ -2120,25 +2120,25 @@
           <ol>
             <li>
               <p>
-                <m>(011010) \; (011100) \; (110111) \; (110000)</m>
+                <m>(\codeword{011010}) \; (\codeword{011100}) \; (\codeword{110111}) \; (\codeword{110000})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(011100) \; (011011) \; (111011) \; (100011) \\ (000000) \; (010101) \; (110100) \; (110011)</m>
+                <m>(\codeword{011100}) \; (\codeword{011011}) \; (\codeword{111011}) \; (\codeword{100011}) \\ (\codeword{000000}) \; (\codeword{010101}) \; (\codeword{110100}) \; (\codeword{110011})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(000000) \; (011100) \; (110101) \; (110001)</m>
+                <m>(\codeword{000000}) \; (\codeword{011100}) \; (\codeword{110101}) \; (\codeword{110001})</m>
               </p>
             </li>
 
             <li>
               <p>
-                <m>(0110110) \; (0111100) \; (1110000) \; (1111111) \\ (1001001) \; (1000011) \; (0001111) \; (0000000)</m>
+                <m>(\codeword{0110110}) \; (\codeword{0111100}) \; (\codeword{1110000}) \; (\codeword{1111111}) \\ (\codeword{1001001}) \; (\codeword{1000011}) \; (\codeword{0001111}) \; (\codeword{0000000})</m>
               </p>
             </li>
           </ol>
@@ -2218,7 +2218,7 @@
           <ol>
             <li>
               <p>
-                <m>(00000), (00101), (10011), (10110)</m>
+                <m>(\codeword{00000}), (\codeword{00101}), (\codeword{10011}), (\codeword{10110})</m>
                 <md>
                   G = 
                   \begin{pmatrix}
@@ -2234,7 +2234,7 @@
 
             <li>
               <p>
-                <m>(000000), (010111), (101101), (111010)</m>
+                <m>(\codeword{000000}), (\codeword{010111}), (\codeword{101101}), (\codeword{111010})</m>
                 <md>
                   G = 
                   \begin{pmatrix}
@@ -2276,7 +2276,7 @@
           </md>.
           Decode the message
           <md>
-            01111 \quad 10101 \quad 01110 \quad 00011
+            \codeword{01111} \quad \codeword{10101} \quad \codeword{01110} \quad \codeword{00011}
           </md>
           if possible.
         </p>
@@ -2448,7 +2448,7 @@
       <statement>
         <p>
           Let <m>C</m> be the group code in
-          <m>{\mathbb Z}_2^3</m> defined by the codewords <m>(000)</m> and <m>(111)</m>.
+          <m>{\mathbb Z}_2^3</m> defined by the codewords <m>(\codeword{000})</m> and <m>(\codeword{111})</m>.
           Compute the cosets of <m>C</m> in <m>{\mathbb Z}_2^3</m>.
           Why was there no need to specify right or left cosets?
           Give the single transmission error, if any,
@@ -2518,9 +2518,9 @@
       </statement>
       <hint>
         <p>
-          (a) <m>C</m>, <m>(10000) + C</m>,
-          <m>(01000) + C</m>, <m>(00100) + C</m>, <m>(00010) + C</m>,
-          <m>(11000) + C</m>, <m>(01100) + C</m>, <m>(01010) + C</m>.
+          (a) <m>C</m>, <m>(\codeword{10000}) + C</m>,
+          <m>(\codeword{01000}) + C</m>, <m>(\codeword{00100}) + C</m>, <m>(\codeword{00010}) + C</m>,
+          <m>(\codeword{11000}) + C</m>, <m>(\codeword{01100}) + C</m>, <m>(\codeword{01010}) + C</m>.
           A decoding table does not exist for <m>C</m> since this is only a single error-detecting code.
         </p>
       </hint>
@@ -2631,9 +2631,9 @@
     <exercise number="21" xml:id="algcodes-exercise-ascii-characters">
       <statement>
         <p>
-          If we are to use an error-correcting linear code to transmit the 128 <acro>ASCII</acro> characters,
+          If we are to use an error-correcting linear code to transmit the <m>128</m> <acro>ASCII</acro> characters,
           what size matrix must be used?
-          What size matrix must be used to transmit the extended <acro>ASCII</acro> character set of 256 characters?
+          What size matrix must be used to transmit the extended <acro>ASCII</acro> character set of <m>256</m> characters?
           What if we require only error detection in both cases?
         </p>
       </statement>
@@ -2652,14 +2652,14 @@
     <exercise number="23" xml:id="algcodes-exercise-20-information-positions">
       <statement>
         <p>
-          How many check positions are needed for a single error-correcting code with 20 information positions?
-          With 32 information positions?
+          How many check positions are needed for a single error-correcting code with <m>20</m> information positions?
+          With <m>32</m> information positions?
         </p>
       </statement>
       <hint>
         <p>
           For <m>20</m> information positions,
-          at least 6 check bits are needed to ensure an error-correcting code.
+          at least <m>6</m> check bits are needed to ensure an error-correcting code.
         </p>
       </hint>
     </exercise>
@@ -2754,8 +2754,8 @@
               <p>
                 Give a binary matrix <m>H</m> for the Hamming code with six information positions and four check positions.
                 What are the check positions and what are the information positions?
-                Encode the messages <m>(101101)</m> and <m>(001001)</m>.
-                Decode the received words <m>(0010000101)</m> and <m>(0000101100)</m>.
+                Encode the messages <m>(\codeword{101101})</m> and <m>(\codeword{001001})</m>.
+                Decode the received words <m>(\codeword{0010000101})</m> and <m>(\codeword{0000101100})</m>.
                 What are the possible syndromes for this code?
               </p>
             </li>
